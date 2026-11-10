@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <VanillaFactionsExpanded.FactionTitle>Новая фракция: {FactionName}</VanillaFactionsExpanded.FactionTitle>
+  <VanillaFactionsExpanded.ModInfo>Фракцию добавляет {ModName}. Сейчас её нет в вашем мире.</VanillaFactionsExpanded.ModInfo>
+  <VanillaFactionsExpanded.AnUnknownMod>неизвестный мод</VanillaFactionsExpanded.AnUnknownMod>
+  <VanillaFactionsExpanded.HiddenFactionInfo>Это скрытая фракция. Она не отображается в списке фракций.</VanillaFactionsExpanded.HiddenFactionInfo>
+  <VanillaFactionsExpanded.RequiredFactionInfo>Мод {ModName} помечает эту фракцию как обязательную.</VanillaFactionsExpanded.RequiredFactionInfo>
+  <VanillaFactionsExpanded.NonSpawningFactionInfo>Эта фракция не должна появляться в мире. Обычно её можно пропустить.</VanillaFactionsExpanded.NonSpawningFactionInfo>
+  <VanillaFactionsExpanded.FactionSelectOption>Выберите, как поступить:</VanillaFactionsExpanded.FactionSelectOption>
+  <VanillaFactionsExpanded.FactionButtonAdd>Добавить фракцию</VanillaFactionsExpanded.FactionButtonAdd>
+  <VanillaFactionsExpanded.FactionButtonAddFull>Добавить фракцию с поселениями</VanillaFactionsExpanded.FactionButtonAddFull>
+  <VanillaFactionsExpanded.FactionButtonSkip>Ничего не делать</VanillaFactionsExpanded.FactionButtonSkip>
+  <VanillaFactionsExpanded.FactionButtonIgnore>Больше не спрашивать об этой фракции</VanillaFactionsExpanded.FactionButtonIgnore>
+  <VanillaFactionsExpanded.FactionMessageFailed>Не удалось добавить фракцию.</VanillaFactionsExpanded.FactionMessageFailed>
+  <VanillaFactionsExpanded.FactionMessageFailedFull>Не удалось создать фракцию с поселениями.</VanillaFactionsExpanded.FactionMessageFailedFull>
+  <VanillaFactionsExpanded.FactionMessageSuccessFull>Добавлена фракция {FactionName} с поселениями: {Amount}.</VanillaFactionsExpanded.FactionMessageSuccessFull>
+  <VanillaFactionsExpanded.FactionMessageSuccess>Добавлена фракция {FactionName}.</VanillaFactionsExpanded.FactionMessageSuccess>
+  <VanillaFactionsExpanded.FactionDiscoveryRequired>Это обязательная фракция: её нужно добавить в игру.</VanillaFactionsExpanded.FactionDiscoveryRequired>
+  <VanillaFactionsExpanded.FactionFailedMessage>Не удалось создать эту фракцию. Рекомендуется повторить попытку; теперь её добавление можно пропустить. Пропуск может вызвать проблемы.</VanillaFactionsExpanded.FactionFailedMessage>
+  <VanillaFactionsExpanded.FactionSettlementsToSpawn>Количество поселений (рекомендуется {0}): {1}</VanillaFactionsExpanded.FactionSettlementsToSpawn>
+  <VanillaFactionsExpanded.FactionMinDistance>Минимальное расстояние до баз игрока (рекомендуется {0}): {1}</VanillaFactionsExpanded.FactionMinDistance>
+  <VanillaFactionsExpanded.FactionButtonSpawn>Создать</VanillaFactionsExpanded.FactionButtonSpawn>
+  <VanillaFactionsExpanded.FactionButtonCancel>Отмена</VanillaFactionsExpanded.FactionButtonCancel>
+</LanguageData>

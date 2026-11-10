@@ -1,0 +1,46 @@
+{
+  "SmartSpeed": {
+    "packageId": "sarg.smartspeed",
+    "files": [
+      {
+        "source": "Smart Speed (4 скорость)/1.6/Assemblies/SmartSpeed.dll",
+        "projectFile": "Components/SmartSpeed/Assemblies/SmartSpeed.dll",
+        "sourceRawSha256": "40663f892d7bf40e618893b955f5471eb3dc92652f62cbf745aa586eeae852f8",
+        "sha256": "40663f892d7bf40e618893b955f5471eb3dc92652f62cbf745aa586eeae852f8"
+      },
+      {
+        "source": "Smart Speed (4 скорость)/Languages/English/Keyed/ACSmartSpeedStrings.xml",
+        "projectFile": "Components/SmartSpeed/Languages/English/Keyed/ACSmartSpeedStrings.xml",
+        "sourceRawSha256": "4dea5708b251a8b3fc5d9daec56fb8872b4ebbed16e8f7aea57156bed930c611",
+        "sha256": "f3414cc55776b9329eeab911acdcd1c0712d3d1bf055aa99a6a413b66d3443a7"
+      },
+      {
+        "source": "Smart Speed (4 скорость)/Textures/UI/TimeControls/TimeSpeedButton_Ultrafast.png",
+        "projectFile": "Components/SmartSpeed/Textures/UI/TimeControls/TimeSpeedButton_Ultrafast.png",
+        "sourceRawSha256": "16a0bf02fffe8dc71475013bcfbf86e506fe13ba3b14f910d81112ac067ef56a",
+        "sha256": "16a0bf02fffe8dc71475013bcfbf86e506fe13ba3b14f910d81112ac067ef56a"
+      },
+      {
+        "source": "Smart Speed (4 скорость)/Textures/UI/SmartSpeedLogo.png",
+        "projectFile": "Components/SmartSpeed/Textures/UI/SmartSpeedLogo.png",
+        "sourceRawSha256": "23ac7f6586620161df6e377b5440fda8788d55af2066dd91d061f8b59e3b1951",
+        "sha256": "23ac7f6586620161df6e377b5440fda8788d55af2066dd91d061f8b59e3b1951"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "SmarterConstruction": {
+    "packageId": "dhultgren.smarterconstruction",
+    "files": [
+      {
+        "source": "Smarter Construction (Умное строительство)/v1.6/Assemblies/SmarterConstruction.dll",
+        "projectFile": "Components/SmarterConstruction/Assemblies/SmarterConstruction.dll",
+        "sourceRawSha256": "3bf9915efd6c1e07d6f34b63897d3954478ccd09464223bf9e3572360e50fad7",
+        "sha256": "3bf9915efd6c1e07d6f34b63897d3954478ccd09464223bf9e3572360e50fad7"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  }
+}

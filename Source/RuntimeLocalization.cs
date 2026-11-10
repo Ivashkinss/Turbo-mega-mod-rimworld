@@ -7,7 +7,7 @@ using Verse;
 
 namespace TurboMegaMod
 {
-    // Only reviewed display strings in these two components are localized.
+    // Only reviewed display strings in selected components are localized.
     public sealed class TurboMegaMod : Mod
     {
         public TurboMegaMod(ModContentPack content) : base(content)
@@ -38,7 +38,8 @@ namespace TurboMegaMod
             return name.StartsWith("AM.AMSettings.", StringComparison.Ordinal)
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnQuantity", StringComparison.Ordinal)
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable", StringComparison.Ordinal)
-                || name == "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod";
+                || name == "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod"
+                || name == "SmartSpeed.SmartSpeed_Mod";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -87,7 +88,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

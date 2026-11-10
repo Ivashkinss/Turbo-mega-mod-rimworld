@@ -89,6 +89,14 @@ namespace DynamicTradeInterface.Mod
         public static string SettingsCategory() { return "Dynamic trade interface"; }
     }
 }
+namespace SmartSpeed
+{
+    public static class SmartSpeed_Mod
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string SettingsCategory() { return "Smart Speed"; }
+    }
+}
 namespace DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes
 {
     public static class BookDrawable
@@ -156,7 +164,8 @@ public static class RuntimeLocalizationTests
         var serial = new AM.AutoDuel.AutoFriendlyDuelMapComp();
         serial.UpdatePawnsThatCanDuel(false);
         Check(serial.Count == 2, "Serial processing changed");
-        Console.WriteLine("{\"runtimeChecks\":17,\"realHarmony\":true,\"passed\":true}");
+        Check(SmartSpeed.SmartSpeed_Mod.SettingsCategory() == "Smart Speed — скорость игры", "Smart Speed title not translated");
+        Console.WriteLine("{\"runtimeChecks\":18,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

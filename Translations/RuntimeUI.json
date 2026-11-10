@@ -8,7 +8,8 @@
     "Loading...": "Загрузка...",
     "{0} available for trading.{1}{2} total on map.": "Доступно для торговли: {0}.{1}Всего на карте: {2}.",
     "{0}/{1} projects researched.": "Изучено технологий: {0}/{1}.",
-    "Dynamic trade interface": "Динамическое окно торговли"
+    "Dynamic trade interface": "Динамическое окно торговли",
+    "Smart Speed": "Smart Speed — скорость игры"
   },
   "corpseOffsetModes": {
     "None": "Не смещать",

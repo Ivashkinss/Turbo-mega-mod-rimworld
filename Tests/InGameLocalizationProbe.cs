@@ -90,7 +90,8 @@ public static class InGameLocalizationProbe
             "AM.AMSettings.SimpleSettings+MemberWrapper|ValueToString",
             "DynamicTradeInterface.UserInterface.Columns.ColumnQuantity|PostOpen",
             "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod|SettingsCategory",
-            "DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable+<GetIcons>d__1|MoveNext"
+            "DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable+<GetIcons>d__1|MoveNext",
+            "SmartSpeed.SmartSpeed_Mod|SettingsCategory"
         };
         foreach (string target in targets)
         {
@@ -117,6 +118,21 @@ public static class InGameLocalizationProbe
         var duelMethod = AccessTools.Method(AccessTools.TypeByName("AM.AutoDuel.AutoFriendlyDuelMapComp"), "UpdatePawnsThatCanDuel");
         var duelPatch = Harmony.GetPatchInfo(duelMethod);
         if (duelPatch == null || !duelPatch.Owners.Contains("turbomegamod.melee.waylith")) errors.Add("Missing main-thread snapshot patch");
+        foreach (string component in new[] { "SmartSpeed", "SmarterConstruction" })
+        {
+            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == component);
+            string expectedPath = Path.Combine(root, "Components", component, "Assemblies", component + ".dll");
+            if (assembly == null || !string.Equals(Path.GetFullPath(assembly.Location), Path.GetFullPath(expectedPath), StringComparison.OrdinalIgnoreCase))
+                errors.Add("Utility assembly was not loaded from integrated component: " + component);
+            else
+            {
+                bool patched = Harmony.GetAllPatchedMethods().Any(method => {
+                    var info = Harmony.GetPatchInfo(method);
+                    return info.Prefixes.Concat(info.Postfixes).Concat(info.Transpilers).Any(patch => patch.PatchMethod.Module.Assembly == assembly);
+                });
+                if (!patched) errors.Add("Utility installed no game patches: " + component);
+            }
+        }
         string report = "{\"keyed\":" + keyed + ",\"scalarFields\":" + fields + ",\"grammarLines\":" + rules
             + ",\"displayPatches\":" + patches + ",\"passed\":" + (errors.Count == 0 ? "true" : "false")
             + ",\"errors\":[" + string.Join(",", errors.Select(Escape)) + "]}";

@@ -1,0 +1,11 @@
+{
+  "components": [
+    "SmartSpeed",
+    "SmarterConstruction"
+  ],
+  "resourceHashesVerified": 5,
+  "smartSpeedRussianKeys": 16,
+  "separateHarmonyCopies": 0,
+  "standaloneAndOriginalActiveLoadGuardsVerified": true,
+  "passed": true
+}

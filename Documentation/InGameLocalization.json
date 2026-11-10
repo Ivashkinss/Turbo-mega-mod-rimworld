@@ -1,15 +1,23 @@
 {
-  "keyed": 968,
+  "keyed": 1006,
   "scalarFields": 225,
   "grammarLines": 45,
-  "displayPatches": 6,
+  "displayPatches": 7,
   "passed": true,
   "errors": [],
-  "runtimeErrors": 2,
-  "knownExternalRuntimeErrors": 2,
-  "unexpectedRuntimeErrors": 0,
-  "externalIssue": "Installed Odyssey Russian faction-name rule lacks keyword-> at DefInjected/RulePackDef/RulePacks_Namers_Factions.xml:138. Game files unchanged.",
-  "observedSecondsAfterProbe": 60,
   "gameVersion": "1.7.5000 rev1275",
-  "visualUiVerified": false
+  "scope": "Full active set excluding removed Camera+ and original utility packages; utilities loaded from this project",
+  "sourceSaveWasCopied": true,
+  "observedMapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4233,
+    "ticksAdvanced": 0
+  },
+  "gpuDeviceLost": false,
+  "runtimeErrorFree": false,
+  "remainingIssues": "VEF initializer and old saved Camera+ components; see CrashInvestigation.json",
+  "visualUiVerified": false,
+  "factionDialogRussianKeysVerified": 21,
+  "integratedUtilityAssembliesAndGamePatchesVerified": true
 }

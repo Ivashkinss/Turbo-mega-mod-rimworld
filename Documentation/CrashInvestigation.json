@@ -1,0 +1,155 @@
+{
+  "gameVersion": "1.7.5000 rev1275",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "driver": "617.42",
+  "failure": "VK_ERROR_DEVICE_LOST; MapRenderFeature.MapMainPass stops making progress",
+  "status": "Camera+ alone reproduced the GPU crash when added to the working base. Camera+ removed and excluded at user request. Full remaining set rendered a fresh map and a copy of the user save without GPU loss during the observed tests.",
+  "userConfirmedVisualSuccess": [
+    "Core-DLC-Fullscreen",
+    "IntegratedBase-Fullscreen",
+    "SavedCopy-FullSet-NoCamera"
+  ],
+  "coldCacheStartupDelay": {
+    "type": "MapPreview.TrueTerrainColors",
+    "milliseconds": 42656,
+    "scope": "Fresh test profile without cached terrain colors. Existing user cache copied for later comparable tests."
+  },
+  "importantLimit": "Timer survival alone is not a successful map test. Frame/tick activity is separate. Saved-copy tests were paused by the VEF faction dialog, so they prove rendering and loading, not active simulation during that pause.",
+  "remainingNonfatalIssues": [
+    "VEF GetDefaultCache field-injection initializer warning",
+    "Old saved CameraPlus.CameraSettings and CameraPlus.SavedViews nodes produce missing-class warnings; the original save was not edited",
+    "Existing Core/DLC Russian translation errors"
+  ],
+  "cases": [
+    {
+      "test": "BasePlus-Camera-MapPreview",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 150
+    },
+    {
+      "test": "BasePlus-CameraOnly",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 120
+    },
+    {
+      "test": "Core-DLC-Fullscreen",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 90
+    },
+    {
+      "test": "Final-Utilities-And-FactionRU",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 120,
+      "actualMapActivity": {
+        "mapLoaded": true,
+        "observedActiveSeconds": 30,
+        "framesAdvanced": 4233,
+        "ticksAdvanced": 0
+      },
+      "localization": {
+        "keyed": 1006,
+        "scalarFields": 225,
+        "grammarLines": 45,
+        "displayPatches": 7,
+        "passed": true,
+        "errors": []
+      }
+    },
+    {
+      "test": "FullMods-Fullscreen",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 100
+    },
+    {
+      "test": "FullMods-NoMelee-Fullscreen",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 150
+    },
+    {
+      "test": "FullMods-Windowed",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 100
+    },
+    {
+      "test": "FullSet-NoCamera-WarmCache",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 150,
+      "actualMapActivity": {
+        "mapLoaded": true,
+        "observedActiveSeconds": 30,
+        "framesAdvanced": 4256,
+        "ticksAdvanced": 1784
+      }
+    },
+    {
+      "test": "FullSet-NoMapPreview",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 150
+    },
+    {
+      "test": "Integrated-Utilities2-Fullscreen",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 150,
+      "actualMapActivity": {
+        "mapLoaded": true,
+        "observedActiveSeconds": 30,
+        "framesAdvanced": 4098,
+        "ticksAdvanced": 1766
+      }
+    },
+    {
+      "test": "IntegratedBase-Fullscreen",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 150,
+      "actualMapActivity": {
+        "mapLoaded": true,
+        "observedActiveSeconds": 30,
+        "framesAdvanced": 3973,
+        "ticksAdvanced": 1757
+      }
+    },
+    {
+      "test": "NoVEF-NoHands-Fullscreen",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 150
+    },
+    {
+      "test": "SaveCopy-Windowed",
+      "gpuDeviceLost": true,
+      "termination": "gpu_crash",
+      "maximumRunSeconds": 150
+    },
+    {
+      "test": "SavedCopy-FullSet-NoCamera",
+      "gpuDeviceLost": false,
+      "termination": "stopped_by_test_timer",
+      "maximumRunSeconds": 150,
+      "actualMapActivity": {
+        "mapLoaded": true,
+        "observedActiveSeconds": 30,
+        "framesAdvanced": 4225,
+        "ticksAdvanced": 0
+      },
+      "localization": {
+        "keyed": 985,
+        "scalarFields": 225,
+        "grammarLines": 45,
+        "displayPatches": 7,
+        "passed": true,
+        "errors": []
+      }
+    }
+  ]
+}

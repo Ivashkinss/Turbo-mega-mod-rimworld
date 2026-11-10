@@ -11,6 +11,7 @@
   <TMM.Literal.0ba4719b1186>Доступно для торговли: {0}.{1}Всего на карте: {2}.</TMM.Literal.0ba4719b1186>
   <TMM.Literal.163c4d1b4cb8>Изучено технологий: {0}/{1}.</TMM.Literal.163c4d1b4cb8>
   <TMM.Literal.8caceb0e58e8>Динамическое окно торговли</TMM.Literal.8caceb0e58e8>
+  <TMM.Literal.d4fcd5db6145>Smart Speed — скорость игры</TMM.Literal.d4fcd5db6145>
   <TMM.CorpseOffset.None>Не смещать</TMM.CorpseOffset.None>
   <TMM.CorpseOffset.InterpolateToCorrect>Плавно возвращать на место</TMM.CorpseOffset.InterpolateToCorrect>
   <TMM.CorpseOffset.KeepOffset>Сохранять смещение</TMM.CorpseOffset.KeepOffset>

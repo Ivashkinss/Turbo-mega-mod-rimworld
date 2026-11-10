@@ -13,8 +13,9 @@
     "grammarLines": 0,
     "errors": []
   },
-  "runtimeLiteralStrings": 9,
+  "runtimeLiteralStrings": 10,
   "runtimeEnumLabels": 3,
+  "VEFFactionDiscoveryKeyed": 21,
   "duplicateRussianKeys": 0,
   "checks": [
     "format parameters including format specifiers",

@@ -2,14 +2,15 @@
   "gameVersion": "1.6.4871 rev590",
   "targetVersion": "1.6",
   "installedCount": 32,
-  "includedCount": 29,
-  "excludedCount": 3,
+  "includedCount": 28,
+  "excludedCount": 4,
   "missingRequiredPackagesFromIncludedSet": [],
   "notes": [
     "Это состав проекта, не готовый объединённый мод.",
     "Наличие папки Russian не доказывает полноту перевода для 1.6.",
     "Наличие исходников старых версий не доказывает наличие исходников 1.6.",
-    "Оригинальные моды и настройки игры не изменены."
+    "Оригинальные моды и настройки игры не изменены.",
+    "11 ноября: Camera+ исключена и удалена по просьбе пользователя; Smart Speed и Smarter Construction встроены и проверены с отключёнными оригиналами. gameVersion выше — историческая версия исходной инвентаризации."
   ],
   "mods": [
     {
@@ -347,8 +348,8 @@
       "name": "Camera+",
       "packageId": "brrainz.cameraplus",
       "author": "Andreas Pardeike",
-      "include": true,
-      "decision": "Включить в объединение.",
+      "include": false,
+      "decision": "Исключить и удалить по прямой просьбе пользователя 11 ноября 2026; GPU-вылет воспроизведён при добавлении Camera+ к рабочей основе.",
       "supportedVersions": [
         "1.0",
         "1.1",
@@ -381,8 +382,8 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "excluded_user_request",
+      "translationStatus": "excluded"
     },
     {
       "folder": "CharacterEditor",
@@ -1269,8 +1270,8 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated_game_loaded_and_patched",
+      "translationStatus": "project_russian_keys_verified"
     },
     {
       "folder": "Smarter Construction (Умное строительство)",
@@ -1306,8 +1307,8 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated_game_loaded_and_patched",
+      "translationStatus": "no_user_text_found"
     },
     {
       "folder": "Snap Out! (Успокоение срывающихся колонистов)",
@@ -1583,5 +1584,6 @@
       "integrationStatus": "pending",
       "translationStatus": "see_LocalizationAudit"
     }
-  ]
+  ],
+  "currentGameVersion": "1.7.5000 rev1275"
 }

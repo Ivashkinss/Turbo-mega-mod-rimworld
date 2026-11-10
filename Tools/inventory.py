@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 PROJECT = Path(__file__).resolve().parents[1]
 MODS = PROJECT.parent
 EXCLUDED = {
+    "brrainz.cameraplus": "Camera+ — исключено и удалено по просьбе пользователя 11 ноября 2026.",
     "sjaandi.realtiltmod": "Освещение и тени — исключено пользователем.",
     "vanillaexpanded.vtexe": "HD-текстуры — исключено пользователем.",
     "icc.eov.flak": "Ретекстуры брони — исключено пользователем.",

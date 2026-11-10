@@ -1,13 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <loadFolders>
   <v1.6>
     <li>/</li>
     <li>Components/NeatStorage</li>
     <li>Components/Fridge</li>
+    <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
+    <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
   </v1.6>
   <v1.7>
     <li>/</li>
     <li>Components/NeatStorage</li>
     <li>Components/Fridge</li>
+    <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
+    <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
   </v1.7>
 </loadFolders>

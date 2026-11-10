@@ -14,7 +14,8 @@ def main():
     data = json.loads((PROJECT / "Translations/RuntimeUI.json").read_text(encoding="utf-8"))
     actual = set()
     for path in (TARGETS["MeleeAnimation"] / "1.6/Assemblies/zAnimationMod.dll",
-                 TARGETS["DynamicTradeInterface"] / "1.6/Assemblies/DynamicTradeInterface.dll"):
+                 TARGETS["DynamicTradeInterface"] / "1.6/Assemblies/DynamicTradeInterface.dll",
+                 PROJECT / "Components/SmartSpeed/Assemblies/SmartSpeed.dll"):
         actual.update(user_strings(path))
     missing = set(data["literals"]) - actual
     if missing:

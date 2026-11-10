@@ -1,6 +1,6 @@
 # Аудит русификации исходных компонентов — RimWorld 1.6
 
-Актуально на 11 ноября 2026: ниже сохранён исторический аудит оригиналов. Он не описывает покрытие текущего Turbo mega mod. В текущей сборке 1201 уникальная русская запись; подготовленные переводы Melee Animation и Dynamic Trade Interface сверены с установленными DLL/XML и с данными внутри RimWorld 1.7.5000. Результаты: LocalizationCheckpoint.json, RuntimeLocalizationTests.json, InGameLocalization.json и Verification.json. Визуальное качество всех окон и боевых сцен ещё не проверено.
+Актуально на 11 ноября 2026: ниже сохранён исторический аудит оригиналов. Он не описывает покрытие текущего Turbo mega mod. В текущей сборке 1239 уникальных русских записей; подготовленные переводы Melee Animation и Dynamic Trade Interface сверены с установленными DLL/XML и с данными внутри RimWorld 1.7.5000. Результаты: LocalizationCheckpoint.json, RuntimeLocalizationTests.json, InGameLocalization.json и Verification.json. Визуальное качество всех окон и боевых сцен ещё не проверено.
 
 Отчёт описывает установленные оригиналы до изменений в ColonyProject.
 
