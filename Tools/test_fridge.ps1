@@ -9,6 +9,11 @@ if ($LASTEXITCODE -ne 0) { throw "Test compile failed: $LASTEXITCODE" }
 $result = & $runnerPath
 if ($LASTEXITCODE -ne 0) { throw "Fridge layout tests failed: $LASTEXITCODE" }
 $report = $result | ConvertFrom-Json
-$report | Add-Member -NotePropertyName sourceSha256 -NotePropertyValue ((Get-FileHash -LiteralPath (Join-Path $projectPath 'Source\FridgeItemGraphicWorker.cs') -Algorithm SHA256).Hash.ToLowerInvariant())
+$sourceText = [IO.File]::ReadAllText((Join-Path $projectPath 'Source\FridgeItemGraphicWorker.cs')).Replace("`r`n", "`n")
+$sourceBytes = [Text.Encoding]::UTF8.GetBytes($sourceText)
+$sha256 = [Security.Cryptography.SHA256]::Create()
+try { $sourceHash = [BitConverter]::ToString($sha256.ComputeHash($sourceBytes)).Replace('-', '').ToLowerInvariant() }
+finally { $sha256.Dispose() }
+$report | Add-Member -NotePropertyName sourceSha256 -NotePropertyValue $sourceHash
 $report | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $projectPath 'Documentation\FridgeLayoutTests.json') -Encoding utf8
 Write-Output $result

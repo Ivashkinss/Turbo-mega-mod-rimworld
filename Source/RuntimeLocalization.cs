@@ -13,6 +13,7 @@ namespace TurboMegaMod
         public TurboMegaMod(ModContentPack content) : base(content)
         {
             RuntimeLocalization.Apply();
+            MeleeCompatibility.Apply();
         }
     }
 
@@ -37,7 +38,7 @@ namespace TurboMegaMod
             return name.StartsWith("AM.AMSettings.", StringComparison.Ordinal)
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnQuantity", StringComparison.Ordinal)
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable", StringComparison.Ordinal)
-                || name == "DynamicTradeInterface.DynamicTradeInterfaceMod";
+                || name == "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -69,6 +70,15 @@ namespace TurboMegaMod
             return false;
         }
 
+        private static bool IsEnumDisplay(MethodBase method)
+        {
+            string type = method.DeclaringType.FullName;
+            // The real settings UI uses this shared formatter for both the
+            // selected value and menu entries, rather than ToString in DrawEnum.
+            return (type == "AM.AMSettings.SimpleSettings+MemberWrapper" && method.Name == "ValueToString")
+                || (type == "AM.AMSettings.SimpleSettings" && method.Name == "DrawWindow");
+        }
+
         internal static void Apply()
         {
             var harmony = new Harmony("turbomegamod.runtime.localization");
@@ -87,7 +97,7 @@ namespace TurboMegaMod
                     foreach (MethodBase method in methods)
                     {
                         if (method.IsAbstract || method.ContainsGenericParameters || method.GetMethodBody() == null) continue;
-                        bool enumDisplay = method.Name.IndexOf("DrawEnum", StringComparison.Ordinal) >= 0;
+                        bool enumDisplay = IsEnumDisplay(method);
                         if (!enumDisplay && !ContainsLiteral(method)) continue;
                         harmony.Patch(method, transpiler: patch);
                         patched++;
@@ -99,7 +109,7 @@ namespace TurboMegaMod
 
         private static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
         {
-            bool enumDisplay = __originalMethod.Name.IndexOf("DrawEnum", StringComparison.Ordinal) >= 0;
+            bool enumDisplay = IsEnumDisplay(__originalMethod);
             MethodInfo translate = AccessTools.Method(typeof(RuntimeLocalization), "Translate");
             MethodInfo enumLabel = AccessTools.Method(typeof(RuntimeLocalization), "EnumLabel");
             foreach (CodeInstruction instruction in instructions)
@@ -125,7 +135,7 @@ namespace TurboMegaMod
             }
         }
 
-        private static string Translate(string key) { return Translator.TranslateSimple(key); }
+        private static string Translate(string key) { return Translator.Translate(key).RawText; }
 
         private static string EnumLabel(object value)
         {

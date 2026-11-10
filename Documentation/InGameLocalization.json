@@ -1,0 +1,15 @@
+{
+  "keyed": 968,
+  "scalarFields": 225,
+  "grammarLines": 45,
+  "displayPatches": 6,
+  "passed": true,
+  "errors": [],
+  "runtimeErrors": 2,
+  "knownExternalRuntimeErrors": 2,
+  "unexpectedRuntimeErrors": 0,
+  "externalIssue": "Installed Odyssey Russian faction-name rule lacks keyword-> at DefInjected/RulePackDef/RulePacks_Namers_Factions.xml:138. Game files unchanged.",
+  "observedSecondsAfterProbe": 60,
+  "gameVersion": "1.7.5000 rev1275",
+  "visualUiVerified": false
+}

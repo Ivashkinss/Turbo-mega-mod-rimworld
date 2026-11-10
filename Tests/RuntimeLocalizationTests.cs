@@ -9,13 +9,16 @@ using System.Xml;
 namespace Verse
 {
     public class ModContentPack { }
+    public class Pawn { }
     public class Mod { public Mod(ModContentPack content) { } }
     public static class Log { public static void Message(string message) { } }
     public static class Translator
     {
         public static readonly Dictionary<string, string> Values = new Dictionary<string, string>();
-        public static string TranslateSimple(string key) { return Values[key]; }
+        public static string TranslateSimple(string key) { return System.Text.RegularExpressions.Regex.Replace(Values[key], "<[^>]*>", ""); }
+        public static TaggedString Translate(string key) { return new TaggedString { RawText = Values[key] }; }
     }
+    public struct TaggedString { public string RawText; }
 }
 namespace AM.AMSettings
 {
@@ -25,7 +28,47 @@ namespace AM.AMSettings
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static string DrawWindow() { return "Loading..."; }
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static string DrawEnum(object value) { return value.ToString(); }
+        public static string Description() { return "<i>No description</i>"; }
+        public class MemberWrapper
+        {
+            [MethodImpl(MethodImplOptions.NoInlining)]
+            public string ValueToString(object value)
+            {
+                if (value is float) return string.Format("{0:F0}%", (float)value * 100);
+                return value == null ? "<null>" : value.ToString();
+            }
+        }
+    }
+}
+namespace AM.AutoDuel
+{
+    public class AutoFriendlyDuelMapComp
+    {
+        private readonly int mainThread = System.Threading.Thread.CurrentThread.ManagedThreadId;
+        public int Count;
+        public IEnumerable<Verse.Pawn> EnumeratePossiblePawns()
+        {
+            if (System.Threading.Thread.CurrentThread.ManagedThreadId != mainThread)
+                throw new InvalidOperationException("Map pawns enumerated off main thread");
+            yield return new Verse.Pawn();
+            yield return new Verse.Pawn();
+        }
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public void UpdatePawnsThatCanDuel(bool parallel)
+        {
+            if (parallel)
+            {
+                var source = EnumeratePossiblePawns();
+                System.Threading.Tasks.Task.Run(delegate
+                {
+                    foreach (var pawn in source) Count++;
+                }).Wait();
+            }
+            else
+            {
+                foreach (var pawn in EnumeratePossiblePawns()) Count++;
+            }
+        }
     }
 }
 namespace DynamicTradeInterface.UserInterface.Columns
@@ -36,6 +79,24 @@ namespace DynamicTradeInterface.UserInterface.Columns
         public static string Tooltip() { return string.Format("{0} available for trading.{1}{2} total on map.", 5, "\n", 12); }
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static string Branched(bool loading) { return loading ? "Loading..." : "untouched"; }
+    }
+}
+namespace DynamicTradeInterface.Mod
+{
+    public static class DynamicTradeInterfaceMod
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string SettingsCategory() { return "Dynamic trade interface"; }
+    }
+}
+namespace DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes
+{
+    public static class BookDrawable
+    {
+        public static IEnumerable<string> GetIcons()
+        {
+            yield return string.Format("{0}/{1} projects researched.", 2, 5);
+        }
     }
 }
 namespace UnrelatedMod
@@ -71,10 +132,31 @@ public static class RuntimeLocalizationTests
         Check(DynamicTradeInterface.UserInterface.Columns.ColumnQuantity.Branched(true) == "Загрузка...", "Branch label damaged");
         Check(DynamicTradeInterface.UserInterface.Columns.ColumnQuantity.Branched(false) == "untouched", "Unrelated branch changed");
         Check(UnrelatedMod.Display.Draw() == "Loading...", "Patch leaked into another component");
-        Check(AM.AMSettings.SimpleSettings.DrawEnum(AM.AMSettings.CorpseOffsetMode.None) == "Не смещать", "Enum label not translated");
-        Check(AM.AMSettings.SimpleSettings.DrawEnum(AM.AMSettings.CorpseOffsetMode.KeepOffset) == "Сохранять смещение", "Enum value changed");
-        Check(AM.AMSettings.SimpleSettings.DrawEnum(25) == "25", "Non-enum ToString changed");
-        Console.WriteLine("{\"runtimeChecks\":8,\"realHarmony\":true,\"passed\":true}");
+        var formatter = new AM.AMSettings.SimpleSettings.MemberWrapper();
+        Check(formatter.ValueToString(AM.AMSettings.CorpseOffsetMode.None) == "Не смещать", "Enum label not translated");
+        Check(formatter.ValueToString(AM.AMSettings.CorpseOffsetMode.KeepOffset) == "Сохранять смещение", "Enum value changed");
+        Check(formatter.ValueToString(25) == "25", "Non-enum ToString changed");
+        Check(formatter.ValueToString(AM.AMSettings.CorpseOffsetMode.InterpolateToCorrect)
+            == "Плавно возвращать на место", "Third enum label not translated");
+        Check(DynamicTradeInterface.Mod.DynamicTradeInterfaceMod.SettingsCategory()
+            == "Динамическое окно торговли", "Actual settings type not patched");
+        foreach (string icon in DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable.GetIcons())
+            Check(icon == "Изучено технологий: 2/5.", "Iterator display text not translated");
+        Check(formatter.ValueToString(0.5f) == "50%", "Percent formatting changed");
+        Check(formatter.ValueToString(null) == "<null>", "Null formatting changed");
+        Check(AM.AMSettings.SimpleSettings.Description() == "<i>Нет описания</i>", "Display markup was lost");
+        bool reproduced = false;
+        try { new AM.AutoDuel.AutoFriendlyDuelMapComp().UpdatePawnsThatCanDuel(true); }
+        catch (AggregateException) { reproduced = true; }
+        Check(reproduced, "Threading regression was not reproduced before patching");
+        TurboMegaMod.MeleeCompatibility.ApplySnapshotPatch();
+        var parallel = new AM.AutoDuel.AutoFriendlyDuelMapComp();
+        parallel.UpdatePawnsThatCanDuel(true);
+        Check(parallel.Count == 2, "Snapshot did not preserve both pawns in parallel processing");
+        var serial = new AM.AutoDuel.AutoFriendlyDuelMapComp();
+        serial.UpdatePawnsThatCanDuel(false);
+        Check(serial.Count == 2, "Serial processing changed");
+        Console.WriteLine("{\"runtimeChecks\":17,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

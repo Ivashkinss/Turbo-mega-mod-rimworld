@@ -1,0 +1,45 @@
+{
+  "baselineCommit": "274c144da92ddd13d72e8df890a47b3251d9434b",
+  "xmlSha256LF": {
+    "Components/Fridge/Defs/ThingDefs_Buildings/Buildings_Fridge.xml": "18cb5e0ec059e11278ffbdee6f9be950e81b772c008553e9b4cc1c8e364f0885",
+    "Components/Fridge/Patches/Template.xml": "e9e01d727cccc13319df4e910688c1d6d0b2fc99c3a847699f6c7eaca81d025d",
+    "Components/Fridge/Patches/VanillaNutrientPasteExpanded.xml": "84773265fc63becc346793384fc43a8b9a0a28c97a1d0bc80d8acd5e211243a4",
+    "Components/NeatStorage/Defs/ThingCategoryDef/ThingCategory.xml": "e6dde198e680d9dd718efcccb012230554148dfe41301963d6f39ae86e86ab85",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_Corpse.xml": "834835f063cb6ada7db2c32c4cd41ad3767dfffc27a7893c7dd43d6595eb52f0",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_CrateAndPallet.xml": "baa456e06468fc997fe6532d786b41541595216a074c0924cc59cb41ce706053",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_DisplayShelf.xml": "2b6ed2b4939349f00a577ef088096e8fa43f39b0f7695aab2c9921e4809dc067",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_DisplayTable.xml": "0b92338a6696bb0eef642d86a8d7bb47a57732a5705cafadee743cb072d62bb5",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_Others.xml": "5b787c6f774f8cb4d51d01eb64c6fad9d3dd2c2303ec861c22e856a91bbc91fe",
+    "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_WeaponRack.xml": "fc2011ec6dc3b39a491b66ac5fa737b65e652bc20fc6ff1159fa2547766054f1"
+  },
+  "fridgeCapacities": {
+    "sbz_Fridge": [
+      2,
+      2
+    ],
+    "sbz_LargeFridge": [
+      15,
+      30
+    ],
+    "sbz_SingleChestFridge": [
+      3,
+      3
+    ],
+    "sbz_DoubleChestFridge": [
+      3,
+      6
+    ],
+    "sbz_SingleWallFridge": [
+      3,
+      3
+    ],
+    "sbz_DoubleWallFridge": [
+      3,
+      6
+    ],
+    "sbz_CorpseFridge": [
+      5,
+      20
+    ]
+  }
+}

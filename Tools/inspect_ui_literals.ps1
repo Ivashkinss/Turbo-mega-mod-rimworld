@@ -1,4 +1,5 @@
-param([Parameter(Mandatory=$true)][string]$AssemblyPath)
+param([Parameter(Mandatory=$true)][string]$AssemblyPath, [switch]$AllMethods,
+      [string]$TypePattern = '.*', [string]$MethodPattern = '.*', [switch]$IncludeInstructions)
 $ErrorActionPreference = 'Stop'
 $opcodeMap = @{}
 foreach ($field in [Reflection.Emit.OpCodes].GetFields([Reflection.BindingFlags]'Static,Public')) {
@@ -9,20 +10,53 @@ $stream = [IO.File]::OpenRead((Resolve-Path -LiteralPath $AssemblyPath))
 $pe = [Reflection.PortableExecutable.PEReader]::new($stream)
 $reader = [Reflection.Metadata.PEReaderExtensions]::GetMetadataReader($pe)
 $results = @()
+function Get-TypeName($handle) {
+    $definition = $reader.GetTypeDefinition($handle)
+    $parent = $definition.GetDeclaringType()
+    if (!$parent.IsNil) { return (Get-TypeName $parent) + '+' + $reader.GetString($definition.Name) }
+    return ($reader.GetString($definition.Namespace) + '.' + $reader.GetString($definition.Name)).TrimStart('.')
+}
+function Get-CallName([int]$token) {
+    $row = $token -band 16777215
+    switch ($token -shr 24) {
+        43 {
+            $spec = $reader.GetMethodSpecification([Reflection.Metadata.Ecma335.MetadataTokens]::MethodSpecificationHandle($row))
+            return Get-CallName ([Reflection.Metadata.Ecma335.MetadataTokens]::GetToken($spec.Method))
+        }
+        6 {
+            $definition = $reader.GetMethodDefinition([Reflection.Metadata.Ecma335.MetadataTokens]::MethodDefinitionHandle($row))
+            return (Get-TypeName $definition.GetDeclaringType()) + '::' + $reader.GetString($definition.Name)
+        }
+        10 {
+            $member = $reader.GetMemberReference([Reflection.Metadata.Ecma335.MetadataTokens]::MemberReferenceHandle($row))
+            $parentToken = [Reflection.Metadata.Ecma335.MetadataTokens]::GetToken($member.Parent)
+            $parentName = ''
+            if (($parentToken -shr 24) -eq 1) {
+                $parent = $reader.GetTypeReference([Reflection.Metadata.Ecma335.MetadataTokens]::TypeReferenceHandle($parentToken -band 16777215))
+                $parentName = $reader.GetString($parent.Namespace) + '.' + $reader.GetString($parent.Name)
+            }
+            return $parentName + '::' + $reader.GetString($member.Name)
+        }
+    }
+    return $token.ToString('X8')
+}
 try {
     foreach ($typeHandle in $reader.TypeDefinitions) {
         $type = $reader.GetTypeDefinition($typeHandle)
-        $typeName = $reader.GetString($type.Namespace) + '.' + $reader.GetString($type.Name)
+        $typeName = Get-TypeName $typeHandle
+        if ($typeName -notmatch $TypePattern) { continue }
         foreach ($methodHandle in $type.GetMethods()) {
             $method = $reader.GetMethodDefinition($methodHandle)
+            if ($reader.GetString($method.Name) -notmatch $MethodPattern) { continue }
             if (!$method.RelativeVirtualAddress) { continue }
             $bytes = [Reflection.Metadata.PEReaderExtensions]::GetMethodBody($pe,$method.RelativeVirtualAddress).GetILBytes()
             $literals = @()
             $calls = @()
+            $instructions = @()
             $cursor = 0
             while ($cursor -lt $bytes.Length) {
                 $number = [int]$bytes[$cursor++]
-                if ($number -eq 254) { $number = 65280 + [int]$bytes[$cursor++] }
+                if ($number -eq 254) { $number = 65024 + [int]$bytes[$cursor++] }
                 $opcode = $opcodeMap[$number]
                 $length = switch ([string]$opcode.OperandType) {
                     'InlineNone' {0}
@@ -42,16 +76,18 @@ try {
                 }
                 if ($opcode.Name -in @('call','callvirt','newobj')) {
                     $token = [BitConverter]::ToInt32($bytes,$cursor)
-                    if (($token -shr 24) -eq 10) {
-                        $member = $reader.GetMemberReference([Reflection.Metadata.Ecma335.MetadataTokens]::MemberReferenceHandle($token -band 16777215))
-                        $memberName = $reader.GetString($member.Name)
-                        $calls += $memberName
-                    }
+                    $calls += Get-CallName $token
+                }
+                if ($IncludeInstructions) {
+                    $operand = if ($length -eq 4) { [BitConverter]::ToInt32($bytes,$cursor).ToString('X8') } else { '' }
+                    $instructions += ($opcode.Name + ' ' + $operand).Trim()
                 }
                 $cursor += $length
             }
-            if ($literals.Count -and ($calls -match 'Label|Button|Tooltip|Checkbox|TextField|Translate|Radio|FloatMenu|Dialog|Header|Slider')) {
-                $results += [pscustomobject]@{Type=$typeName; Method=$reader.GetString($method.Name); Strings=$literals; Calls=@($calls | Select-Object -Unique)}
+            if ($AllMethods -or ($literals.Count -and ($calls -match 'Label|Button|Tooltip|Checkbox|TextField|Translate|Radio|FloatMenu|Dialog|Header|Slider'))) {
+                $row = [ordered]@{Type=$typeName; Method=$reader.GetString($method.Name); Strings=$literals; Calls=@($calls | Select-Object -Unique)}
+                if ($IncludeInstructions) { $row.Instructions = $instructions }
+                $results += [pscustomobject]$row
             }
         }
     }

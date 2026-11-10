@@ -13,5 +13,14 @@
     "grammarLines": 0,
     "errors": []
   },
-  "duplicateRussianKeys": 0
+  "runtimeLiteralStrings": 9,
+  "runtimeEnumLabels": 3,
+  "duplicateRussianKeys": 0,
+  "checks": [
+    "format parameters including format specifiers",
+    "grammar token names",
+    "rule names and weights",
+    "rich text tags and nesting",
+    "line breaks"
+  ]
 }

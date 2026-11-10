@@ -3,17 +3,20 @@
   <name>Turbo mega mod</name>
   <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
   <packageId>colonyproject.integrated</packageId>
-  <supportedVersions><li>1.6</li></supportedVersions>
-  <description>Первый этап объединения: 27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge. В большом холодильнике продукты размещаются адаптивной сеткой с увеличенными изображениями при небольшой загрузке. Добавлен русский перевод хранилищ и настроек Adaptive Storage Framework; восстановлены 615 русских строк Dev In Your Language.
+  <supportedVersions><li>1.6</li><li>1.7</li></supportedVersions>
+  <description>27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge с исходной вместимостью. Большой холодильник использует адаптивную сетку предметов. Добавлены русские переводы хранилищ, Adaptive Storage, Melee Animation и Dynamic Trade Interface; восстановлены 615 русских строк Dev In Your Language. Всего 1201 русская запись, включая 45 строк боевого журнала.
 
-Для этой промежуточной версии нужны Adaptive Storage Framework и Harmony. Исходные Neat Storage и [sbz] Fridge нужно отключить: их содержимое уже включено сюда. Остальные выбранные моды пока не интегрированы. Игровая проверка этой версии ещё не выполнена.</description>
+Нужны Adaptive Storage Framework и Harmony. Для RimWorld 1.7 используйте обновлённую Harmony с поддержкой .NET 10 (проверена версия мода Harmony 3.0.2.0). Для русификации анимаций и торговли оставьте Melee Animation и Dynamic Trade Interface включёнными и загрузите Turbo mega mod после них. Исходные Neat Storage и [sbz] Fridge уже встроены; не включайте их отдельно. На 1.7 исправлено чтение списка участников дружеских поединков из фонового потока. Остальные выбранные моды пока не объединены. Загрузка и переводы проверены внутри RimWorld 1.7.5000; визуальная проверка всех окон ещё требуется.</description>
   <modDependencies>
+    <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl></li>
     <li><packageId>adaptive.storage.framework</packageId><displayName>Adaptive Storage Framework</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3033901359</steamWorkshopUrl></li>
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
     <li>adaptive.storage.framework</li>
     <li>latta.devl10n</li>
+    <li>co.uk.epicguru.meleeanimation</li>
+    <li>zeracronius.dynamictradeinterface</li>
   </loadAfter>
   <incompatibleWith>
     <li>sbz.NeatStorage</li>

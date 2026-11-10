@@ -6,3 +6,4 @@ TestRuns/
 Tools/Build/
 *.pdb
 *.log
+Assemblies/TurboMegaMod.TestProbe.dll

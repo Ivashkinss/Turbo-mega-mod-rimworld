@@ -1,4 +1,4 @@
-"""Check integrated data against installed originals, including inheritance."""
+"""Check packaged resources and optionally installed originals, including inheritance."""
 
 import hashlib
 import json
@@ -46,16 +46,29 @@ def vector(text):
 
 
 def main():
-    project_xml = list(PROJECT.rglob("*.xml"))
+    project_xml = [path for folder in ("About", "Components", "Languages", "ThirdParty")
+                   for path in (PROJECT / folder).rglob("*.xml")] + [PROJECT / "LoadFolders.xml"]
     for path in project_xml:
         ET.parse(str(path))
-    source = definitions(MODS / "Neat Storage/1.6/Defs")
+    changes = json.loads((PROJECT / "Documentation/StorageChanges.json").read_text(encoding="utf-8"))
+    baseline = json.loads((PROJECT / "Documentation/StorageBaseline.json").read_text(encoding="utf-8"))
+    for name, expected in baseline["xmlSha256LF"].items():
+        actual = (PROJECT / name).read_bytes().replace(b"\r\n", b"\n")
+        assert hashlib.sha256(actual).hexdigest() == expected, name
     integrated = definitions(PROJECT / "Components/NeatStorage/Defs")
-    old, new = capacities(source), capacities(integrated)
+    new = capacities(integrated)
+    old = {item["defName"]: (item["originalStacksPerCell"], item["originalTotalStacks"])
+           for item in changes["storages"]}
+    original_storage = MODS / "Neat Storage/1.6/Defs"
+    if original_storage.is_dir():
+        assert capacities(definitions(original_storage)) == old
     assert len(new) == 27 and old.keys() == new.keys()
     for name in old:
         assert new[name] == tuple(value * 2 for value in old[name]), (name, old[name], new[name])
-    fridge_old = capacities(definitions(MODS / "[sbz] Fridge (Холодильники)/1.6/Defs"))
+    fridge_old = {name: tuple(value) for name, value in baseline["fridgeCapacities"].items()}
+    original_fridge = MODS / "[sbz] Fridge (Холодильники)/1.6/Defs"
+    if original_fridge.is_dir():
+        assert capacities(definitions(original_fridge)) == fridge_old
     fridge_new = capacities(definitions(PROJECT / "Components/Fridge/Defs"))
     assert fridge_old == fridge_new and len(fridge_new) == 7
 
@@ -107,18 +120,22 @@ def main():
     fridge_xml = PROJECT / "Components/Fridge/Defs/ThingDefs_Buildings/Buildings_Fridge.xml"
     original_xml = MODS / "[sbz] Fridge (Холодильники)/1.6/Defs/ThingDefs_Buildings/Buildings_Fridge.xml"
     tree = ET.parse(str(fridge_xml))
-    original_tree = ET.parse(str(original_xml))
+    original_tree = ET.parse(str(original_xml)) if original_xml.is_file() else None
     selector = "/Defs/AdaptiveStorage.GraphicsDef[defName='sbz_LargeFridgeASF']/itemGraphics/columns/*/rows/*"
     assert (PROJECT / "Assemblies/TurboMegaMod.dll").is_file(), "Compile the game assembly first"
-    for column, (cell, original) in enumerate(zip(tree.xpath(selector), original_tree.xpath(selector), strict=True)):
+    assert len(tree.xpath(selector)) == 2
+    for column, cell in enumerate(tree.xpath(selector)):
         assert cell.findtext("workerClass") == "TurboMegaMod.FridgeItemGraphicWorker"
         offset = vector(cell.findtext("drawOffsetNorth"))
         assert offset == ((0.5, 0, 0) if column == 0 else (-0.5, 0, 0.5))
-        for orientation in ("", "East", "West"):
-            assert cell.findtext("drawOffset" + orientation) == original.findtext("drawOffset" + orientation)
+        if original_tree is not None:
+            original = original_tree.xpath(selector)[column]
+            for orientation in ("", "East", "West"):
+                assert cell.findtext("drawOffset" + orientation) == original.findtext("drawOffset" + orientation)
     layout = json.loads((PROJECT / "Documentation/FridgeLayoutTests.json").read_text(encoding="utf-8-sig"))
     assert layout["passed"] and layout["cases"] == 720
-    assert layout["sourceSha256"] == hashlib.sha256((PROJECT / "Source/FridgeItemGraphicWorker.cs").read_bytes()).hexdigest()
+    assert layout["sourceSha256"] == hashlib.sha256(
+        (PROJECT / "Source/FridgeItemGraphicWorker.cs").read_bytes().replace(b"\r\n", b"\n")).hexdigest()
     english_dev, _ = entries([MODS / "Dev In Your Language/1.6/Languages/English"])
     assert len(english_dev) == 615
     for key, original in english_dev.items():
@@ -130,15 +147,26 @@ def main():
     for source in dev_repair["sources"]:
         assert hashlib.sha256((MODS / source["source"]).read_bytes()).hexdigest() == source["sha256"]
 
-    changes = json.loads((PROJECT / "Documentation/StorageChanges.json").read_text(encoding="utf-8"))
+    verified_originals = 0
+    verified_assets = 0
     for source in changes["sources"]:
-        assert hashlib.sha256((MODS / source["source"]).read_bytes()).hexdigest() == source["sourceSha256"]
+        original = MODS / source["source"]
+        if original.is_file():
+            assert hashlib.sha256(original.read_bytes()).hexdigest() == source["sourceSha256"]
+            verified_originals += 1
+        packaged = source.get("projectFile")
+        if packaged and packaged.endswith(".png"):
+            assert hashlib.sha256((PROJECT / packaged).read_bytes()).hexdigest() == source["sourceSha256"]
+            verified_assets += 1
     summary = {
         "xmlFilesParsed": len(project_xml),
         "storagesWithVerifiedDoubleCapacity": len(new),
         "fridgesWithUnchangedCapacity": len(fridge_new),
         "uniqueRussianEntries": len(languages),
-        "originalSourceHashesVerified": len(changes["sources"]),
+        "originalSourceHashesVerified": verified_originals,
+        "packagedXmlBaselineHashesVerified": len(baseline["xmlSha256LF"]),
+        "packagedAssetHashesVerified": verified_assets,
+        "storageBaselineCommit": baseline["baselineCommit"],
         "fridgeWorkerCasesVerified": layout["cases"],
         "recoveredDevMenuRussianKeys": len(english_dev),
         "duplicateDefs": 0,
