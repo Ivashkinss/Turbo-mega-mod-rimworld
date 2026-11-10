@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <sbz_CorpseSpot.description>Место для компактного хранения трупов. Вместимость: до 24 трупов.</sbz_CorpseSpot.description>
+  <sbz_CorpseSpot.label>место для трупов</sbz_CorpseSpot.label>
+  <sbz_Crate.description>Большой ящик для хранения разных предметов. Вместимость: до 48 стопок.</sbz_Crate.description>
+  <sbz_Crate.label>большой ящик</sbz_Crate.label>
+  <sbz_DisplayCabinet.description>Шкаф для хранения и демонстрации предметов. Вместимость: до 16 стопок.</sbz_DisplayCabinet.description>
+  <sbz_DisplayCabinet.label>витринный шкаф</sbz_DisplayCabinet.label>
+  <sbz_DisplayShelf.description>Стеллаж для хранения и демонстрации предметов. Вместимость: до 12 стопок.</sbz_DisplayShelf.description>
+  <sbz_DisplayShelf.label>витринный стеллаж</sbz_DisplayShelf.label>
+  <sbz_DisplayTable.description>Витрина для демонстрации предметов. Вместимость: до 2 стопок.</sbz_DisplayTable.description>
+  <sbz_DisplayTable.label>выставочная витрина</sbz_DisplayTable.label>
+  <sbz_Drum.description>Бочка для хранения различных предметов. Вместимость: до 12 стопок.</sbz_Drum.description>
+  <sbz_Drum.label>бочка</sbz_Drum.label>
+  <sbz_HalfPallet.description>Поддон половинного размера для хранения разных предметов. Вместимость: до 24 стопок.</sbz_HalfPallet.description>
+  <sbz_HalfPallet.label>половинный поддон</sbz_HalfPallet.label>
+  <sbz_HangerShelf.description>Узкая стойка с вешалками для одежды. Вместимость: до 8 стопок.</sbz_HangerShelf.description>
+  <sbz_HangerShelf.label>узкая вешалка для одежды</sbz_HangerShelf.label>
+  <sbz_HorizontalWeaponRack.description>Стойка для горизонтального размещения оружия. Вместимость: до 24 стопок.</sbz_HorizontalWeaponRack.description>
+  <sbz_HorizontalWeaponRack.label>горизонтальная оружейная стойка</sbz_HorizontalWeaponRack.label>
+  <sbz_MeatHook.description>Крюки для подвешивания мяса и трупов. Вместимость: до 24 стопок.</sbz_MeatHook.description>
+  <sbz_MeatHook.label>крюки для мяса</sbz_MeatHook.label>
+  <sbz_MidCrate.description>Ящик среднего размера для хранения разных предметов. Вместимость: до 24 стопок.</sbz_MidCrate.description>
+  <sbz_MidCrate.label>средний ящик</sbz_MidCrate.label>
+  <sbz_MiniPallet.description>Небольшой поддон для хранения разных предметов. Вместимость: до 12 стопок.</sbz_MiniPallet.description>
+  <sbz_MiniPallet.label>мини-поддон</sbz_MiniPallet.label>
+  <sbz_NarrowDisplayCabinet.description>Узкий шкаф для хранения и демонстрации предметов. Вместимость: до 8 стопок.</sbz_NarrowDisplayCabinet.description>
+  <sbz_NarrowDisplayCabinet.label>узкий витринный шкаф</sbz_NarrowDisplayCabinet.label>
+  <sbz_NarrowTallDisplayShelf.description>Высокий узкий стеллаж для хранения и демонстрации предметов. Вместимость: до 12 стопок.</sbz_NarrowTallDisplayShelf.description>
+  <sbz_NarrowTallDisplayShelf.label>узкий высокий стеллаж</sbz_NarrowTallDisplayShelf.label>
+  <sbz_OpenShelf.description>Открытый стеллаж для хранения разных предметов. Вместимость: до 24 стопок.</sbz_OpenShelf.description>
+  <sbz_OpenShelf.label>открытый стеллаж</sbz_OpenShelf.label>
+  <sbz_Pallet.description>Поддон для хранения разных предметов. Вместимость: до 48 стопок.</sbz_Pallet.description>
+  <sbz_Pallet.label>поддон</sbz_Pallet.label>
+  <sbz_RoundPedestal.description>Круглый постамент для демонстрации предметов. Вместимость: до 2 стопок.</sbz_RoundPedestal.description>
+  <sbz_RoundPedestal.label>круглый постамент</sbz_RoundPedestal.label>
+  <sbz_Safe.description>Сейф для хранения различных предметов. Вместимость: до 12 стопок.</sbz_Safe.description>
+  <sbz_Safe.label>сейф</sbz_Safe.label>
+  <sbz_SmallCrate.description>Маленький ящик для хранения разных предметов. Вместимость: до 12 стопок.</sbz_SmallCrate.description>
+  <sbz_SmallCrate.label>маленький ящик</sbz_SmallCrate.label>
+  <sbz_SmallDisplayShelf.description>Маленький стеллаж для хранения и демонстрации предметов. Вместимость: до 6 стопок.</sbz_SmallDisplayShelf.description>
+  <sbz_SmallDisplayShelf.label>малый витринный стеллаж</sbz_SmallDisplayShelf.label>
+  <sbz_TallCrate.description>Высокий ящик для хранения разных предметов. Вместимость: до 48 стопок.</sbz_TallCrate.description>
+  <sbz_TallCrate.label>высокий ящик</sbz_TallCrate.label>
+  <sbz_TallDisplayShelf.description>Высокий стеллаж для хранения и демонстрации предметов. Вместимость: до 24 стопок.</sbz_TallDisplayShelf.description>
+  <sbz_TallDisplayShelf.label>высокий витринный стеллаж</sbz_TallDisplayShelf.label>
+  <sbz_TextileRack.description>Стойка для хранения разных видов ткани. Вместимость: до 12 стопок.</sbz_TextileRack.description>
+  <sbz_TextileRack.label>стойка для текстиля</sbz_TextileRack.label>
+  <sbz_TwoTierDisplayShelf.description>Двухъярусный стеллаж для хранения и демонстрации предметов. Вместимость: до 24 стопок.</sbz_TwoTierDisplayShelf.description>
+  <sbz_TwoTierDisplayShelf.label>двухъярусный стеллаж</sbz_TwoTierDisplayShelf.label>
+  <sbz_VerticalWeaponRack.description>Стойка для вертикального размещения оружия. Вместимость: до 24 стопок.</sbz_VerticalWeaponRack.description>
+  <sbz_VerticalWeaponRack.label>вертикальная оружейная стойка</sbz_VerticalWeaponRack.label>
+  <sbz_WeaponRack.description>Стойка для хранения и демонстрации оружия. Вместимость: до 12 стопок.</sbz_WeaponRack.description>
+  <sbz_WeaponRack.label>оружейная стойка</sbz_WeaponRack.label>
+  <sbz_WideHangerShelf.description>Широкая стойка с вешалками для одежды. Вместимость: до 16 стопок.</sbz_WideHangerShelf.description>
+  <sbz_WideHangerShelf.label>вешалка для одежды</sbz_WideHangerShelf.label>
+</LanguageData>

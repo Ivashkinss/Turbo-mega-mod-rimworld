@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.dotnet/
+Tools/.dotnet/
+TestRuns/
+Tools/Build/
+*.pdb
+*.log

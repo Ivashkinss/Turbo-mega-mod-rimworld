@@ -1,0 +1,1587 @@
+{
+  "gameVersion": "1.6.4871 rev590",
+  "targetVersion": "1.6",
+  "installedCount": 32,
+  "includedCount": 29,
+  "excludedCount": 3,
+  "missingRequiredPackagesFromIncludedSet": [],
+  "notes": [
+    "Это состав проекта, не готовый объединённый мод.",
+    "Наличие папки Russian не доказывает полноту перевода для 1.6.",
+    "Наличие исходников старых версий не доказывает наличие исходников 1.6.",
+    "Оригинальные моды и настройки игры не изменены."
+  ],
+  "mods": [
+    {
+      "folder": "2009463077",
+      "name": "Harmony",
+      "packageId": "brrainz.harmony",
+      "author": "Andreas Pardeike",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [
+        "Ludeon.RimWorld"
+      ],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "Current",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "[sbz] Fridge (Холодильники)",
+      "name": "[sbz] Fridge",
+      "packageId": "sbz.NeatStorageFridge",
+      "author": "seobongzu",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "adaptive.storage.framework"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "adaptive.storage.framework"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "integrated_not_game_tested",
+      "translationStatus": "project_xml_translated_not_game_tested"
+    },
+    {
+      "folder": "Adaptive Storage Framework (Библиотека)",
+      "name": "Adaptive Storage Framework",
+      "packageId": "adaptive.storage.framework",
+      "author": "",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "Ludeon.RimWorld",
+        "rwmt.Multiplayer"
+      ],
+      "loadBefore": [
+        "OskarPotocki.VanillaFactionsExpanded.Core"
+      ],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [
+        "Source/AdaptiveStorage/AdaptiveStorageFrameworkMod.cs",
+        "Source/AdaptiveStorage/AdaptiveStorageFrameworkSettings.cs",
+        "Source/AdaptiveStorage/AllowedRequirement.cs",
+        "Source/AdaptiveStorage/BackCompatibility/CodeInstructionEx.cs",
+        "Source/AdaptiveStorage/BackCompatibility/DrawPhase.cs",
+        "Source/AdaptiveStorage/BackCompatibility/GenEx.cs",
+        "Source/AdaptiveStorage/BackCompatibility/StatModifierQuality.cs",
+        "Source/AdaptiveStorage/BackCompatibility/StatUtilityEx.cs",
+        "Source/AdaptiveStorage/ContentColorExtensions.cs",
+        "Source/AdaptiveStorage/ContentColorSource.cs",
+        "Source/AdaptiveStorage/ContentLabelStyleDef.cs",
+        "Source/AdaptiveStorage/ContentLabelStyleDefOf.cs",
+        "Source/AdaptiveStorage/ContentLabelWorker.cs",
+        "Source/AdaptiveStorage/ContentsITab.cs",
+        "Source/AdaptiveStorage/DefEditorWindow.cs",
+        "Source/AdaptiveStorage/Extension.cs",
+        "Source/AdaptiveStorage/Fishery/CollectionExtensions.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/FishSet.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/FishSet.Debug.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/FishSet.Enumerator.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/FishSet.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/Internal/CollectionThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/Internal/ReplaceBehaviour.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/Internal/Tails.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.Debug.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.Entry.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.Enumerator.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.KeyCollection.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/IntFishTable.ValueCollection.cs",
+        "Source/AdaptiveStorage/Fishery/Collections/NibbleArray.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Extensions/TypeExtensions.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Extensions/ValueTypeExtensions.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Generated/Guard.Collection.g.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Generated/Guard.Comparable.Numeric.g.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Generated/ThrowHelper.Collection.g.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.Boolean.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.Comparable.Generic.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.Comparable.Numeric.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.IO.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.String.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Guard.Tasks.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.Collection.Generic.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.Comparable.Generic.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.Comparable.Numeric.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.IO.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.String.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.Tasks.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/Internals/Guard.ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/ThrowHelper.cs",
+        "Source/AdaptiveStorage/Fishery/Diagnostics/ThrowHelper.Generic.cs",
+        "Source/AdaptiveStorage/Fishery/Equality.cs",
+        "Source/AdaptiveStorage/Fishery/FishMath.cs",
+        "Source/AdaptiveStorage/Fishery/FishTranspiler.cs",
+        "Source/AdaptiveStorage/Fishery/FunctionPointers/Equals.cs",
+        "Source/AdaptiveStorage/Fishery/FunctionPointers/MethodFactory.cs",
+        "Source/AdaptiveStorage/Fishery/FunctionPointers/MethodFactory.Equals.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/FishPool.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/IFishPoolable.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/PooledIList.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/PooledList.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/PooledStringBuilder.cs",
+        "Source/AdaptiveStorage/Fishery/Pools/PooledStringBuilderHandler.cs",
+        "Source/AdaptiveStorage/Fishery/Reflection.cs",
+        "Source/AdaptiveStorage/Fishery/UtilityF.cs",
+        "Source/AdaptiveStorage/GizmoUtility.cs",
+        "Source/AdaptiveStorage/GodModeGizmos.cs",
+        "Source/AdaptiveStorage/GraphicsDef.cs",
+        "Source/AdaptiveStorage/GraphicsDefSelector.cs",
+        "Source/AdaptiveStorage/GroupContentsITab.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/AddITabToLegacyStorages.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/AddITabToStockpileZones.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/AdjustSelectionBracketPosition.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/AdjustThingTemperature.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/AutomaticallyOpenTab.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/CacheZoomAndMousePosition.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/DeregisteredAtThingGridEvent.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/EnablePackingOnMinify.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/FixVanillaVegetarianFilter.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/HideStorageGizmos.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/HideStoredThingLabels.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/HideStoredThingsFromSectionLayerAndOverlayDrawer.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/ImprovedConfigErrors.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/InitializeGraphicsDefs.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/NotifyItemStackChanged.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/PreventSelectionInRect.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/PreventSelectionUnderMouse.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/RegisteredAtThingGridEvent.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/RemoveInvalidDefsOnStorageSettingsLoading.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/ReplaceLegacyStorageInspectString.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/SaveGameCompatibility.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/StorageLimit.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/StoreUtilityPatches.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/ThingDefStatDrawEntries.cs",
+        "Source/AdaptiveStorage/HarmonyPatches/UpdateInvalidHaulablesAndMergeables.cs",
+        "Source/AdaptiveStorage/InspectStringUtility.cs",
+        "Source/AdaptiveStorage/InspectTabUtility.cs",
+        "Source/AdaptiveStorage/InternalDefOf.cs",
+        "Source/AdaptiveStorage/ItemGraphic.cs",
+        "Source/AdaptiveStorage/ItemGraphicWorker.cs",
+        "Source/AdaptiveStorage/LabelFormat.cs",
+        "Source/AdaptiveStorage/LegacyStorageUtility.cs",
+        "Source/AdaptiveStorage/Minified.cs",
+        "Source/AdaptiveStorage/MinifiedExtension.cs",
+        "Source/AdaptiveStorage/ModCompatibility/ActiveMods.cs",
+        "Source/AdaptiveStorage/ModCompatibility/LWM.cs",
+        "Source/AdaptiveStorage/ModCompatibility/Multiplayer.cs",
+        "Source/AdaptiveStorage/ModCompatibility/PackageIDs.cs",
+        "Source/AdaptiveStorage/ModCompatibility/PerformanceFish.cs",
+        "Source/AdaptiveStorage/ModCompatibility/ReflectionUtility.cs",
+        "Source/AdaptiveStorage/ModCompatibility/SaveOurShip2.cs",
+        "Source/AdaptiveStorage/ModCompatibility/ToggleableOverlays.cs",
+        "Source/AdaptiveStorage/OnStartup.cs",
+        "Source/AdaptiveStorage/PrintDatas/CorpsePrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/ITransformableGraphicPrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/ITransformableThingPrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/MinifiedThingPrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/OptimizedPrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/PrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/UnsupportedGraphicPrintData.cs",
+        "Source/AdaptiveStorage/PrintDatas/UnsupportedThingPrintData.cs",
+        "Source/AdaptiveStorage/RotateInShelvesMode.cs",
+        "Source/AdaptiveStorage/SpawnMode.cs",
+        "Source/AdaptiveStorage/StackBehaviour.cs",
+        "Source/AdaptiveStorage/StatDrawEntries.cs",
+        "Source/AdaptiveStorage/StatPart.cs",
+        "Source/AdaptiveStorage/StorageCell.cs",
+        "Source/AdaptiveStorage/StorageCellRect.cs",
+        "Source/AdaptiveStorage/StorageGraphic.cs",
+        "Source/AdaptiveStorage/StorageGraphicData.cs",
+        "Source/AdaptiveStorage/StorageGraphicWorker.cs",
+        "Source/AdaptiveStorage/StorageRenderer.cs",
+        "Source/AdaptiveStorage/Strings.cs",
+        "Source/AdaptiveStorage/ThingClass.cs",
+        "Source/AdaptiveStorage/ThingCollection.cs",
+        "Source/AdaptiveStorage/ThingGridEventHandler.cs",
+        "Source/AdaptiveStorage/TransformableGraphicSingle.cs",
+        "Source/AdaptiveStorage/Utility/BetterQuickSearchWidget.cs",
+        "Source/AdaptiveStorage/Utility/CellData.cs",
+        "Source/AdaptiveStorage/Utility/CellTable.cs",
+        "Source/AdaptiveStorage/Utility/CollectionExtensions.cs",
+        "Source/AdaptiveStorage/Utility/CommandWithFloatMenu.cs",
+        "Source/AdaptiveStorage/Utility/Exposable.cs",
+        "Source/AdaptiveStorage/Utility/GraphicDataExtensions.cs",
+        "Source/AdaptiveStorage/Utility/GraphicTransformScope.cs",
+        "Source/AdaptiveStorage/Utility/GUIScope.cs",
+        "Source/AdaptiveStorage/Utility/IHasPosition.cs",
+        "Source/AdaptiveStorage/Utility/ItemRenderControls.cs",
+        "Source/AdaptiveStorage/Utility/ListingExtensions.cs",
+        "Source/AdaptiveStorage/Utility/MatrixExtensions.cs",
+        "Source/AdaptiveStorage/Utility/PrintUtility.cs",
+        "Source/AdaptiveStorage/Utility/ReflectionExtensions.cs",
+        "Source/AdaptiveStorage/Utility/ScopedStatList.cs",
+        "Source/AdaptiveStorage/Utility/ScopedValue.cs",
+        "Source/AdaptiveStorage/Utility/StoreUtilityExtensions.cs",
+        "Source/AdaptiveStorage/Utility/ThingDefExtensions.cs",
+        "Source/AdaptiveStorage/Utility/ThingExtensions.cs",
+        "Source/AdaptiveStorage/Utility/ThingFilterExtensions.cs",
+        "Source/AdaptiveStorage/Utility/ThingMakerUtility.cs",
+        "Source/AdaptiveStorage/Utility/UIHelpers.cs",
+        "Source/AdaptiveStorage/Utility/ValuesByQuality.cs",
+        "Source/AdaptiveStorage/Utility/VectorExtensions.cs",
+        "Source/AdaptiveStorage/Utility/WorkerClassMaker.cs",
+        "Source/ITransformable/ITransformable.cs",
+        "Source/ITransformable/RotationAngle.cs",
+        "Source/ITransformable/TransformData.cs"
+      ],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "project_xml_translated_not_game_tested"
+    },
+    {
+      "folder": "Almost There! (Караваны не спят)",
+      "name": "Almost There! Fork",
+      "packageId": "duz.almosttherefork",
+      "author": "Duztamva",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "SmashPhil.VehicleFramework"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {
+            "IfModNotActive": "SmashPhil.VehicleFramework"
+          }
+        },
+        {
+          "path": "VF",
+          "conditions": {
+            "IfModActive": "SmashPhil.VehicleFramework"
+          }
+        },
+        {
+          "path": "VF/1.6",
+          "conditions": {
+            "IfModActive": "SmashPhil.VehicleFramework"
+          }
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [
+        "1.2/Source/AlmostThere/Base.cs",
+        "1.2/Source/AlmostThere/Harmony/Caravan.cs",
+        "1.2/Source/AlmostThere/Properties/AssemblyInfo.cs",
+        "1.2/Source/AlmostThere/Storage/ExtendedCaravanData.cs",
+        "1.2/Source/AlmostThere/Storage/ExtendedDataStorage.cs",
+        "1.4/Source/AlmostThere/Base.cs",
+        "1.4/Source/AlmostThere/Harmony/Caravan.cs",
+        "1.4/Source/AlmostThere/Properties/AssemblyInfo.cs",
+        "1.4/Source/AlmostThere/Storage/ExtendedCaravanData.cs",
+        "1.4/Source/AlmostThere/Storage/ExtendedDataStorage.cs"
+      ],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Camera+ (Управление камерой)",
+      "name": "Camera+",
+      "packageId": "brrainz.cameraplus",
+      "author": "Andreas Pardeike",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "CharacterEditor",
+      "name": "Character Editor",
+      "packageId": "void.charactereditor",
+      "author": "void",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "Ludeon.RimWorld",
+        "Ludeon.RimWorld.Royalty",
+        "Ludeon.RimWorld.Ideology",
+        "Ludeon.RimWorld.Biotech",
+        "Ludeon.RimWorld.Anomaly",
+        "UnlimitedHugs.HugsLib"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "v1.6",
+          "conditions": {}
+        },
+        {
+          "path": "v1.6/Gradients",
+          "conditions": {
+            "IfModActive": "automatic.gradienthair"
+          }
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Common Sense (Умные действия колонистов)",
+      "name": "Common Sense",
+      "packageId": "avilmask.CommonSense",
+      "author": "avilmask",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "UnlimitedHugs.HugsLib",
+        "sumghaiDubwise.Replimat",
+        "Dubwise.DubsBadHygiene",
+        "Owlchemist.BadHygieneLite",
+        "Atlas.AndroidTiers",
+        "aRandomKiwi.AndroidTiersTXSerie"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Dev In Your Language",
+      "name": "Dev In Your Language",
+      "packageId": "latta.devl10n",
+      "author": "latta",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "1.6",
+          "conditions": {}
+        },
+        {
+          "path": "/",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "1.6/Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Dynamic Trade Interface",
+      "name": "Dynamic Trade Interface",
+      "packageId": "zeracronius.dynamictradeinterface",
+      "author": "Zeracronius",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        },
+        {
+          "path": "1.6/Mods/VPE",
+          "conditions": {
+            "IfModActive": "VanillaExpanded.VPsycastsE"
+          }
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "FSharp.Core",
+      "name": "FSharp.Core",
+      "packageId": "latta.fsharp.core",
+      "author": "latta",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "HugsLib (Библиотека)",
+      "name": "HugsLib",
+      "packageId": "UnlimitedHugs.HugsLib",
+      "author": "UnlimitedHugs",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "Ludeon.RimWorld",
+        "Ludeon.RimWorld.Royalty",
+        "Ludeon.RimWorld.Ideology",
+        "Ludeon.RimWorld.Biotech",
+        "Ludeon.RimWorld.Anomaly",
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "v1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Interaction Bubbles (Речевые пузыри)",
+      "name": "Interaction Bubbles",
+      "packageId": "Jaxe.Bubbles",
+      "author": "Jaxe",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Map Preview (Предпросмотр карты)",
+      "name": "Map Preview",
+      "packageId": "m00nl1ght.MapPreview",
+      "author": "m00nl1ght",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {
+        "v1.3": [
+          "brrainz.harmony",
+          "UnlimitedHugs.HugsLib"
+        ],
+        "v1.4": [],
+        "v1.5": [],
+        "v1.6": []
+      },
+      "loadAfter": [
+        "Ludeon.RimWorld",
+        "Ludeon.RimWorld.Royalty",
+        "Ludeon.RimWorld.Ideology",
+        "Ludeon.RimWorld.Biotech",
+        "Ludeon.RimWorld.Anomaly",
+        "Ludeon.RimWorld.Odyssey",
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "1.3/Languages/Russian",
+        "1.4/Languages/Russian",
+        "1.5/Languages/Russian",
+        "1.6/Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Melee Animation (Анимация ближнего боя)",
+      "name": "Melee Animation",
+      "packageId": "co.uk.epicguru.meleeanimation",
+      "author": "Epicguru",
+      "include": true,
+      "decision": "Оставить анимации — явное решение пользователя.",
+      "supportedVersions": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "projectjedi.lightsabers",
+        "erdelf.humanoidalienraces",
+        "Krkr.rule56",
+        "ceteam.combatextended",
+        "taranchuk.performanceoptimizer",
+        "Nals.FacialAnimation"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        },
+        {
+          "path": "Patch_FacialAnimation/1.6",
+          "conditions": {
+            "IfModActive": "Nals.FacialAnimation"
+          }
+        },
+        {
+          "path": "Patch_Lightsabers/1.6",
+          "conditions": {
+            "IfModActive": "projectjedi.lightsabers"
+          }
+        },
+        {
+          "path": "Patch_AlienRaces/1.6",
+          "conditions": {
+            "IfModActive": "erdelf.humanoidalienraces"
+          }
+        },
+        {
+          "path": "Patch_CAI5000/1.6",
+          "conditions": {
+            "IfModActive": "Krkr.rule56"
+          }
+        },
+        {
+          "path": "Patch_CombatExtended/1.6",
+          "conditions": {
+            "IfModActive": "ceteam.combatextended"
+          }
+        },
+        {
+          "path": "Patch_PerformanceOptimizer/1.6",
+          "conditions": {
+            "IfModActive": "Taranchuk.PerformanceOptimizer"
+          }
+        },
+        {
+          "path": "Patch_Tacticowl/1.6",
+          "conditions": {
+            "IfModActive": "owlchemist.tacticowl"
+          }
+        },
+        {
+          "path": "Patch_Vehicles/1.6",
+          "conditions": {
+            "IfModActive": "SmashPhil.VehicleFramework"
+          }
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "More Planning",
+      "name": "More Planning (Continued)",
+      "packageId": "Mlie.MorePlanning",
+      "author": "Alan Dariva, Usagirei",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {
+        "v1.3": [
+          "brrainz.harmony",
+          "UnlimitedHugs.HugsLib"
+        ],
+        "v1.4": [
+          "brrainz.harmony",
+          "UnlimitedHugs.HugsLib"
+        ],
+        "v1.5": [
+          "brrainz.harmony",
+          "UnlimitedHugs.HugsLib"
+        ],
+        "v1.6": [
+          "brrainz.harmony"
+        ]
+      },
+      "loadAfter": [
+        "brrainz.harmony",
+        "UnlimitedHugs.HugsLib"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE.md"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Neat Storage",
+      "name": "[sbz] Neat Storage",
+      "packageId": "sbz.NeatStorage",
+      "author": "seobongzu",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "adaptive.storage.framework"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "adaptive.storage.framework"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian (Русский)"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "integrated_not_game_tested",
+      "translationStatus": "project_xml_translated_not_game_tested"
+    },
+    {
+      "folder": "Nice Bill Tab (Фильтр рецептов)",
+      "name": "Nice Bill Tab",
+      "packageId": "Andromeda.NiceBillTab",
+      "author": "Andromeda",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "CETeam.CombatExtended",
+        "CETeam.CombatExtendedGuns",
+        "CETeam.CombatExtendedArmors",
+        "CETeam.CombatExtendedMelee",
+        "kathanon.floatsubmenu",
+        "kathanon.searchablemenus"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Pick Up And Haul (Переноска нескольких предметов)",
+      "name": "Pick Up And Haul",
+      "packageId": "Mehni.PickUpAndHaul",
+      "author": "Mehni",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {
+        "v1.1": [
+          "brrainz.harmony"
+        ],
+        "v1.2": [
+          "brrainz.harmony"
+        ],
+        "v1.3": [
+          "brrainz.harmony"
+        ],
+        "v1.4": [
+          "brrainz.harmony"
+        ],
+        "v1.5": [
+          "brrainz.harmony"
+        ],
+        "v1.6": [
+          "brrainz.harmony"
+        ]
+      },
+      "loadAfter": [
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [
+        "Source/IHoldMultipleThings/IHoldMultipleThings.cs",
+        "Source/IHoldMultipleThingsv1.0/IHoldMultipleThings.cs",
+        "Source/IHoldMultipleThingsv1.0/Properties/AssemblyInfo.cs",
+        "Source/PickUpAndHaul/CompatHelper.cs",
+        "Source/PickUpAndHaul/CompHauledToInventory.cs",
+        "Source/PickUpAndHaul/DebugLog.cs",
+        "Source/PickUpAndHaul/FishTranspiler.cs",
+        "Source/PickUpAndHaul/HarmonyPatches.cs",
+        "Source/PickUpAndHaul/IHoldMultipleThings_Support.cs",
+        "Source/PickUpAndHaul/JobDriver_HaulToInventory.cs",
+        "Source/PickUpAndHaul/JobDriver_UnloadYourHauledInventory.cs",
+        "Source/PickUpAndHaul/Modbase.cs",
+        "Source/PickUpAndHaul/ModCompatibilityCheck.cs",
+        "Source/PickUpAndHaul/PawnUnloadChecker.cs",
+        "Source/PickUpAndHaul/Settings.cs",
+        "Source/PickUpAndHaul/WorkGiver_HaulToInventory.cs",
+        "Source/PickUpAndHaulv1.0/CompHauledToInventory.cs",
+        "Source/PickUpAndHaulv1.0/DebugLog.cs",
+        "Source/PickUpAndHaulv1.0/ExtendedStorage_Support.cs",
+        "Source/PickUpAndHaulv1.0/HarmonyPatches.cs",
+        "Source/PickUpAndHaulv1.0/IHoldMultipleThings_Support.cs",
+        "Source/PickUpAndHaulv1.0/JobDriver_HaulToInventory.cs",
+        "Source/PickUpAndHaulv1.0/JobDriver_UnloadYourHauledInventory.cs",
+        "Source/PickUpAndHaulv1.0/ModCompatibilityCheck.cs",
+        "Source/PickUpAndHaulv1.0/PawnUnloadChecker.cs",
+        "Source/PickUpAndHaulv1.0/Properties/AssemblyInfo.cs",
+        "Source/PickUpAndHaulv1.0/WorkGiver_HaulToInventory.cs"
+      ],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Realistic Lighting and Shadows (Свет и тени)",
+      "name": "Realistic Lighting and Shadows",
+      "packageId": "sjaandi.realtiltmod",
+      "author": "Sjaandi",
+      "include": false,
+      "decision": "Освещение и тени — исключено пользователем.",
+      "supportedVersions": [
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "excluded",
+      "translationStatus": "excluded"
+    },
+    {
+      "folder": "Realistic Rooms Rewritten (Снижение требований к комнатам)",
+      "name": "Realistic Rooms Rewritten",
+      "packageId": "Lucifer.RealisticRooms",
+      "author": "Lucifer",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [
+        "Source/Properties/AssemblyInfo.cs",
+        "Source/RealisticRoomsSettings.cs"
+      ],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "RunAndGun (Стрельба на ходу)",
+      "name": "RunAndGun",
+      "packageId": "roolo.RunAndGun.kotobike",
+      "author": "Roolo,Updated by Ogliss,kotobike",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.6"
+      ],
+      "dependencies": [
+        "UnlimitedHugs.HugsLib"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "UnlimitedHugs.HugsLib"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [],
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [
+        "1.1/Source/RunAndGun/Base.cs",
+        "1.1/Source/RunAndGun/CompProperties_RunAndGun.cs",
+        "1.1/Source/RunAndGun/CompRunAndGun.cs",
+        "1.1/Source/RunAndGun/Dialog_CE.cs",
+        "1.1/Source/RunAndGun/DictWeaponRecordHandler.cs",
+        "1.1/Source/RunAndGun/Extensions.cs",
+        "1.1/Source/RunAndGun/Harmony/JobDriver_Goto_SetupToils.cs",
+        "1.1/Source/RunAndGun/Harmony/MentalStateHandler_TryStartMentalState.cs",
+        "1.1/Source/RunAndGun/Harmony/Pawn_GetGizmos.cs",
+        "1.1/Source/RunAndGun/Harmony/Pawn_TicksPerMove.cs",
+        "1.1/Source/RunAndGun/Harmony/Verb_TryCastNextBurstShot.cs",
+        "1.1/Source/RunAndGun/Harmony/Verb_TryStartCastOn.cs",
+        "1.1/Source/RunAndGun/Harmony/VerbProperties_AdjustedAccuracy.cs",
+        "1.1/Source/RunAndGun/ModExtensions/DefModExtension_RunAndGun.cs",
+        "1.1/Source/RunAndGun/Properties/AssemblyInfo.cs",
+        "1.1/Source/RunAndGun/Stance_RunAndGun.cs",
+        "1.1/Source/RunAndGun/Stance_RunAndGun_Cooldown.cs",
+        "1.1/Source/RunAndGun/Utilities/DrawUtility.cs",
+        "1.1/Source/RunAndGun/Utilities/WeaponUtility.cs",
+        "1.1/Source/RunAndGun/WeaponRecord.cs",
+        "1.3/Source/RunAndGun/Base.cs",
+        "1.3/Source/RunAndGun/CompProperties_RunAndGun.cs",
+        "1.3/Source/RunAndGun/CompRunAndGun.cs",
+        "1.3/Source/RunAndGun/Dialog_CE.cs",
+        "1.3/Source/RunAndGun/DictWeaponRecordHandler.cs",
+        "1.3/Source/RunAndGun/Extensions.cs",
+        "1.3/Source/RunAndGun/Harmony/JobDriver_Goto_SetupToils.cs",
+        "1.3/Source/RunAndGun/Harmony/MentalStateHandler_TryStartMentalState.cs",
+        "1.3/Source/RunAndGun/Harmony/Pawn_GetGizmos.cs",
+        "1.3/Source/RunAndGun/Harmony/Pawn_TicksPerMove.cs",
+        "1.3/Source/RunAndGun/Harmony/Verb_TryCastNextBurstShot.cs",
+        "1.3/Source/RunAndGun/Harmony/Verb_TryStartCastOn.cs",
+        "1.3/Source/RunAndGun/Harmony/VerbProperties_AdjustedAccuracy.cs",
+        "1.3/Source/RunAndGun/ModExtensions/DefModExtension_RunAndGun.cs",
+        "1.3/Source/RunAndGun/Stance_RunAndGun.cs",
+        "1.3/Source/RunAndGun/Stance_RunAndGun_Cooldown.cs",
+        "1.3/Source/RunAndGun/Utilities/DrawUtility.cs",
+        "1.3/Source/RunAndGun/Utilities/WeaponUtility.cs",
+        "1.3/Source/RunAndGun/WeaponRecord.cs",
+        "1.4/Source/RunAndGun/Base.cs",
+        "1.4/Source/RunAndGun/CompProperties_RunAndGun.cs",
+        "1.4/Source/RunAndGun/CompRunAndGun.cs",
+        "1.4/Source/RunAndGun/Dialog_CE.cs",
+        "1.4/Source/RunAndGun/DictWeaponRecordHandler.cs",
+        "1.4/Source/RunAndGun/Extensions.cs",
+        "1.4/Source/RunAndGun/Harmony/JobDriver_Goto_SetupToils.cs",
+        "1.4/Source/RunAndGun/Harmony/MentalStateHandler_TryStartMentalState.cs",
+        "1.4/Source/RunAndGun/Harmony/Pawn_GetGizmos.cs",
+        "1.4/Source/RunAndGun/Harmony/Pawn_TicksPerMove.cs",
+        "1.4/Source/RunAndGun/Harmony/Verb_TryCastNextBurstShot.cs",
+        "1.4/Source/RunAndGun/Harmony/Verb_TryStartCastOn.cs",
+        "1.4/Source/RunAndGun/Harmony/VerbProperties_AdjustedAccuracy.cs",
+        "1.4/Source/RunAndGun/ModExtensions/DefModExtension_RunAndGun.cs",
+        "1.4/Source/RunAndGun/Stance_RunAndGun.cs",
+        "1.4/Source/RunAndGun/Stance_RunAndGun_Cooldown.cs",
+        "1.4/Source/RunAndGun/Utilities/DrawUtility.cs",
+        "1.4/Source/RunAndGun/Utilities/WeaponUtility.cs",
+        "1.4/Source/RunAndGun/WeaponRecord.cs",
+        "1.5/Source/RunAndGun/Base.cs",
+        "1.5/Source/RunAndGun/CompProperties_RunAndGun.cs",
+        "1.5/Source/RunAndGun/CompRunAndGun.cs",
+        "1.5/Source/RunAndGun/Dialog_CE.cs",
+        "1.5/Source/RunAndGun/DictWeaponRecordHandler.cs",
+        "1.5/Source/RunAndGun/Extensions.cs",
+        "1.5/Source/RunAndGun/Harmony/JobDriver_Goto_SetupToils.cs",
+        "1.5/Source/RunAndGun/Harmony/MentalStateHandler_TryStartMentalState.cs",
+        "1.5/Source/RunAndGun/Harmony/Pawn_GetGizmos.cs",
+        "1.5/Source/RunAndGun/Harmony/Pawn_TicksPerMove.cs",
+        "1.5/Source/RunAndGun/Harmony/Verb_TryCastNextBurstShot.cs",
+        "1.5/Source/RunAndGun/Harmony/Verb_TryStartCastOn.cs",
+        "1.5/Source/RunAndGun/Harmony/VerbProperties_AdjustedAccuracy.cs",
+        "1.5/Source/RunAndGun/ModExtensions/DefModExtension_RunAndGun.cs",
+        "1.5/Source/RunAndGun/Stance_RunAndGun.cs",
+        "1.5/Source/RunAndGun/Stance_RunAndGun_Cooldown.cs",
+        "1.5/Source/RunAndGun/Utilities/DrawUtility.cs",
+        "1.5/Source/RunAndGun/Utilities/WeaponUtility.cs",
+        "1.5/Source/RunAndGun/WeaponRecord.cs",
+        "Source/RunAndGun/Base.cs",
+        "Source/RunAndGun/CompProperties_RunAndGun.cs",
+        "Source/RunAndGun/CompRunAndGun.cs",
+        "Source/RunAndGun/Dialog_CE.cs",
+        "Source/RunAndGun/DictWeaponRecordHandler.cs",
+        "Source/RunAndGun/Extensions.cs",
+        "Source/RunAndGun/Harmony/JobDriver_Goto_SetupToils.cs",
+        "Source/RunAndGun/Harmony/MentalStateHandler_TryStartMentalState.cs",
+        "Source/RunAndGun/Harmony/Pawn_GetGizmos.cs",
+        "Source/RunAndGun/Harmony/Pawn_TicksPerMove.cs",
+        "Source/RunAndGun/Harmony/Verb_TryCastNextBurstShot.cs",
+        "Source/RunAndGun/Harmony/Verb_TryStartCastOn.cs",
+        "Source/RunAndGun/Harmony/VerbProperties_AdjustedAccuracy.cs",
+        "Source/RunAndGun/ModExtensions/DefModExtension_RunAndGun.cs",
+        "Source/RunAndGun/Properties/AssemblyInfo.cs",
+        "Source/RunAndGun/Stance_RunAndGun.cs",
+        "Source/RunAndGun/Stance_RunAndGun_Cooldown.cs",
+        "Source/RunAndGun/Utilities/DrawUtility.cs",
+        "Source/RunAndGun/Utilities/WeaponUtility.cs",
+        "Source/RunAndGun/WeaponRecord.cs"
+      ],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Show Me Your Hands (Анимация рукоружия)",
+      "name": "Show Me Your Hands",
+      "packageId": "Mlie.ShowMeYourHands",
+      "author": "Mlie",
+      "include": true,
+      "decision": "Оставить анимации — явное решение пользователя.",
+      "supportedVersions": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "MalteSchulze.RIMMSqol"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE.md"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Simple Sidearms (Ношение двух видов оружия)",
+      "name": "Simple sidearms",
+      "packageId": "PeteTimesSix.SimpleSidearms",
+      "author": "PeteTimesSix",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "UnlimitedHugs.HugsLib"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "v1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian",
+        "v1.6/Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Smart Speed (4 скорость)",
+      "name": "Smart Speed",
+      "packageId": "sarg.smartspeed",
+      "author": "Sarg",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.6",
+        "1.5"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Smarter Construction (Умное строительство)",
+      "name": "Smarter Construction",
+      "packageId": "dhultgren.smarterconstruction",
+      "author": "dhultgren",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "v1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Snap Out! (Успокоение срывающихся колонистов)",
+      "name": "Snap Out!",
+      "packageId": "weilbyte.snapout",
+      "author": "Weilbyte",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.1",
+        "1.0",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Taste of VanillaRetexture - Flaks and Plates (Текстуры брони)",
+      "name": "Enhanced of Vanilla - Flaks and Plates",
+      "packageId": "ICC.EOV.FLAK",
+      "author": "IcyCheeseCake",
+      "include": false,
+      "decision": "Ретекстуры брони — исключено пользователем.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [],
+      "dependenciesByVersion": {},
+      "loadAfter": [],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "excluded",
+      "translationStatus": "excluded"
+    },
+    {
+      "folder": "Useful Marks (Маркеры для пешек)",
+      "name": "Useful Marks",
+      "packageId": "Andromeda.UsefulMarks",
+      "author": "Andromeda",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "Jaxe.RimHUD"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [
+        "1.5/Languages/Russian",
+        "1.6/Languages/Russian"
+      ],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Vanilla Expanded Framework (Библиотека)",
+      "name": "Vanilla Expanded Framework",
+      "packageId": "OskarPotocki.VanillaFactionsExpanded.Core",
+      "author": "Oskar Potocki, XeoNovaDan, Orion, Kikohi, Taranchuk, Sarg Bjornson, Erdelf",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "Ludeon.RimWorld",
+        "Ludeon.RimWorld.Royalty",
+        "Ludeon.RimWorld.Ideology",
+        "Ludeon.RimWorld.Odyssey",
+        "Ludeon.RimWorld.Biotech",
+        "Ludeon.RimWorld.Anomaly",
+        "brrainz.harmony"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "Vanilla Textures Expanded (HD-текстуры)",
+      "name": "Vanilla Textures Expanded",
+      "packageId": "VanillaExpanded.VTEXE",
+      "author": "Oskar Potocki, Helixien, Erin, Luizi, ISOREX, erdelf, Sarg",
+      "include": false,
+      "decision": "HD-текстуры — исключено пользователем.",
+      "supportedVersions": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "Ludeon.RimWorld",
+        "Ludeon.RimWorld.Royalty",
+        "Ludeon.RimWorld.Ideology",
+        "Ludeon.RimWorld.Biotech",
+        "OskarPotocki.VanillaFactionsExpanded.Core",
+        "OskarPotocki.VFE.Empire",
+        "AIRetexture.Plants",
+        "ReGrowth.BOTR.Core",
+        "Owlchemist.PerspectiveDoors"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        },
+        {
+          "path": "1.6/LoadFolders/PerspectiveDoors",
+          "conditions": {
+            "IfModActive": "Owlchemist.PerspectiveDoors"
+          }
+        },
+        {
+          "path": "1.6/LoadFolders/ReGrowthCore",
+          "conditions": {
+            "IfModNotActive": "ReGrowth.BOTR.Core"
+          }
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Enums/MainButtonRenderMode.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/HarmonyPatches.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonDef.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonWorker.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Properties/AssemblyInfo.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpanded.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedSettings.cs",
+        "1.1/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedUtility.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Enums/MainButtonRenderMode.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/HarmonyPatches.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonDef.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonWorker.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Properties/AssemblyInfo.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpanded.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedSettings.cs",
+        "1.2/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedUtility.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Enums/MainButtonRenderMode.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/HarmonyPatches.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonDef.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/HarmonyPatches/Patch_MainButtonWorker.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/Properties/AssemblyInfo.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpanded.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedSettings.cs",
+        "1.3/Source/VanillaTexturesExpanded/VanillaTexturesExpanded/VanillaTexturesExpandedUtility.cs"
+      ],
+      "topLevelLicenseFiles": [
+        "LICENSE"
+      ],
+      "integrationStatus": "excluded",
+      "translationStatus": "excluded"
+    },
+    {
+      "folder": "Walls Are Solid (Усиленные стены)",
+      "name": "Walls are solid",
+      "packageId": "Victor.WallsAreSolid",
+      "author": "Victor, wilki24",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony",
+        "imranfish.xmlextensions"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "brrainz.harmony",
+        "ludeon.rimworld",
+        "ludeon.rimworld.ideology",
+        "ludeon.rimworld.royalty",
+        "ludeon.rimworld.biotech",
+        "imranfish.xmlextensions"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": null,
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    },
+    {
+      "folder": "XML Extensions (Библиотека)",
+      "name": "XML Extensions",
+      "packageId": "imranfish.xmlextensions",
+      "author": "Imranfish",
+      "include": true,
+      "decision": "Включить в объединение.",
+      "supportedVersions": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "dependencies": [
+        "brrainz.harmony"
+      ],
+      "dependenciesByVersion": {},
+      "loadAfter": [
+        "ludeon.rimworld"
+      ],
+      "loadBefore": [],
+      "declaredLoadFolders16": [
+        {
+          "path": "/",
+          "conditions": {}
+        },
+        {
+          "path": "1.6",
+          "conditions": {}
+        }
+      ],
+      "russianDirectoriesAllVersions": [],
+      "sourceFilesAllVersions": [],
+      "topLevelLicenseFiles": [],
+      "integrationStatus": "pending",
+      "translationStatus": "see_LocalizationAudit"
+    }
+  ]
+}

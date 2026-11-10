@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Turbo mega mod</name>
+  <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
+  <packageId>colonyproject.integrated</packageId>
+  <supportedVersions><li>1.6</li></supportedVersions>
+  <description>Первый этап объединения: 27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge. В большом холодильнике продукты размещаются адаптивной сеткой с увеличенными изображениями при небольшой загрузке. Добавлен русский перевод хранилищ и настроек Adaptive Storage Framework; восстановлены 615 русских строк Dev In Your Language.
+
+Для этой промежуточной версии нужны Adaptive Storage Framework и Harmony. Исходные Neat Storage и [sbz] Fridge нужно отключить: их содержимое уже включено сюда. Остальные выбранные моды пока не интегрированы. Игровая проверка этой версии ещё не выполнена.</description>
+  <modDependencies>
+    <li><packageId>adaptive.storage.framework</packageId><displayName>Adaptive Storage Framework</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3033901359</steamWorkshopUrl></li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>adaptive.storage.framework</li>
+    <li>latta.devl10n</li>
+  </loadAfter>
+  <incompatibleWith>
+    <li>sbz.NeatStorage</li>
+    <li>sbz.NeatStorageFridge</li>
+  </incompatibleWith>
+</ModMetaData>

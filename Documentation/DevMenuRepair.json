@@ -1,0 +1,38 @@
+{
+  "recoveredRussianKeys": 615,
+  "englishReferenceKeys": 615,
+  "fixedClosingTags": 1,
+  "missingKeys": [],
+  "originalModChanged": false,
+  "originalSettingsChanged": false,
+  "sources": [
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Actions.xml",
+      "sha256": "36782e53135bfffc11d3747e15c3d2cd5c65030c9690c92861e6d081d0e76721"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Actions_Incidents.xml",
+      "sha256": "5c4b270072d9bf91dd1a51f8e4a42c0c3cf8d53f79a1f24a31a3dbedf7fcb728"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Menu.xml",
+      "sha256": "3ca3146f6206973315b8b07a95bc2f630774d4b02a78393ad2b010ad96bc46ea"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Mod.xml",
+      "sha256": "ee0a337ce97607d9e68b44cec88f76173a9289027378efe93577fa336bb87ac1"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Settings.xml",
+      "sha256": "0e925c166fd076b73e2ff1254e61ddd9b3175b2825dd6fc279102e8080d25771"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/TranslationOutput.xml",
+      "sha256": "58a63c63fdd132f27fd9f5678859b696c820ac44a6d750ab0a4aaf0aaefbc1bf"
+    },
+    {
+      "source": "Dev In Your Language/1.6/Languages/Russian/Keyed/Windows.xml",
+      "sha256": "48d94aa82f1b3d5d8e423452de6652177da3f18bd867860792b37969f91b4064"
+    }
+  ]
+}

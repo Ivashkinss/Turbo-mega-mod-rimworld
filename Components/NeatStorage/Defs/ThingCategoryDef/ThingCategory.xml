@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>BuildingsNeatStorage</defName>
+		<label>Storage</label>
+		<parent>Buildings</parent>
+	</ThingCategoryDef>
+
+</Defs>

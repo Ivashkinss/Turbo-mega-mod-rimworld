@@ -1,0 +1,618 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <ActivateAllBuildingDemands>Активировать все требования зданий</ActivateAllBuildingDemands>
+  <ActivateAllIdeoRoles>Активировать все роли идеологии</ActivateAllIdeoRoles>
+  <AllowUndraftedMechOrders>Разрешить приказы механоидам вне призыва</AllowUndraftedMechOrders>
+  <AlwaysDoLovin>Всегда заниматься любовью</AlwaysDoLovin>
+  <AlwaysNegativeCatches>Всегда негативный результат при рыбалке</AlwaysNegativeCatches>
+  <AlwaysRareCatches>Всегда редкая рыба при рыбалке</AlwaysRareCatches>
+  <AlwaysSocialFight>Всегда социальные драки</AlwaysSocialFight>
+  <AnomalyDarkeningFX>Эффект затемнения Аномалии</AnomalyDarkeningFX>
+  <DIYL.PseudoL10N>Подсвечивать пропущенный перевод</DIYL.PseudoL10N>
+  <DIYL.PseudoL10N.Description>Когда включен режим разработчика, RimWorld подсвечивает непереведенные ключи, отображая их необычными символами. Эта функция принудительно отключает эту подсветку. Пожалуйста, см. предварительный просмотр ниже.</DIYL.PseudoL10N.Description>
+  <DebugAction_AbandonThing>Бросить предмет</DebugAction_AbandonThing>
+  <DebugAction_ActivateHediffGiver>Активировать источник хедиффа</DebugAction_ActivateHediffGiver>
+  <DebugAction_ActivateHediffGiverWorldPawn>Активировать хедифф глобального персонажа</DebugAction_ActivateHediffGiverWorldPawn>
+  <DebugAction_AdaptionProgress10Days>Прогресс адаптации рассказчика на 10 дней</DebugAction_AdaptionProgress10Days>
+  <DebugAction_Add5DaysToObligationTimer>Добавить 5 дней к таймеру обязательств</DebugAction_Add5DaysToObligationTimer>
+  <DebugAction_AddDevelopmentPoint>Добавить очко развития</DebugAction_AddDevelopmentPoint>
+  <DebugAction_AddGameCondition>Добавить игровое условие</DebugAction_AddGameCondition>
+  <DebugAction_AddGene>Добавить ген</DebugAction_AddGene>
+  <DebugAction_AddGuest>Добавить гостя</DebugAction_AddGuest>
+  <DebugAction_AddHediff>Добавить хедифф...</DebugAction_AddHediff>
+  <DebugAction_AddInfectionPathway>Добавить путь заражения...</DebugAction_AddInfectionPathway>
+  <DebugAction_AddLearningDesire>Добавить желание учиться</DebugAction_AddLearningDesire>
+  <DebugAction_AddMutatorToCurrentMapTile>Добавить мутатор к текущей карте</DebugAction_AddMutatorToCurrentMapTile>
+  <DebugAction_AddOpinionTalksAbout>Добавить мнение/разговор...</DebugAction_AddOpinionTalksAbout>
+  <DebugAction_AddPrecept>Добавить предписание</DebugAction_AddPrecept>
+  <DebugAction_AddPrisoner>Добавить заключенного</DebugAction_AddPrisoner>
+  <DebugAction_AddRemovePawnRelation>Добавить/удалить связь персонажа...</DebugAction_AddRemovePawnRelation>
+  <DebugAction_AddSand>Добавить песок</DebugAction_AddSand>
+  <DebugAction_AddSlave>Добавить раба</DebugAction_AddSlave>
+  <DebugAction_AddSnow>Добавить снег</DebugAction_AddSnow>
+  <DebugAction_AddTechprintsForProject>Добавить чертежи к проекту (Add techprints for project...)</DebugAction_AddTechprintsForProject>
+  <DebugAction_AddTradeShipOfKind>Добавить торговый корабль определенного типа</DebugAction_AddTradeShipOfKind>
+  <DebugAction_AddTraitToUniqueWeapon>Добавить черту уникальному оружию</DebugAction_AddTraitToUniqueWeapon>
+  <DebugAction_ApplyDamage>Нанести урон...</DebugAction_ApplyDamage>
+  <DebugAction_ApplyTechprintsForProject>Применить чертежи к проекту</DebugAction_ApplyTechprintsForProject>
+  <DebugAction_AtlasRebuild>Перестроить атлас</DebugAction_AtlasRebuild>
+  <DebugAction_AttachFire>Поджечь</DebugAction_AttachFire>
+  <DebugAction_Award10RoyalFavor>Выдать 10 чести</DebugAction_Award10RoyalFavor>
+  <DebugAction_Award4RoyalFavor>Выдать 4 чести</DebugAction_Award4RoyalFavor>
+  <DebugAction_BaseGen>Использовать BaseGen</DebugAction_BaseGen>
+  <DebugAction_BattleRoyaleAllPawnKinds>Королевская битва всех видов персонажей</DebugAction_BattleRoyaleAllPawnKinds>
+  <DebugAction_BattleRoyaleByDamagetype>Королевская битва по типам урона</DebugAction_BattleRoyaleByDamagetype>
+  <DebugAction_BattleRoyaleHumanlikes>Королевская битва гуманоидов</DebugAction_BattleRoyaleHumanlikes>
+  <DebugAction_BenchmarkPerformance>Тест производительности</DebugAction_BenchmarkPerformance>
+  <DebugAction_Breach>Логовать путь пролома</DebugAction_Breach>
+  <DebugAction_BreakDown>Сломать</DebugAction_BreakDown>
+  <DebugAction_CarriedDamageToDeath>Убить переносимый объект уроном</DebugAction_CarriedDamageToDeath>
+  <DebugAction_ChangeCameraConfig>Изменить конфиг камеры</DebugAction_ChangeCameraConfig>
+  <DebugAction_ChangeCameraConfigWorld>Изменить конфиг камеры...</DebugAction_ChangeCameraConfigWorld>
+  <DebugAction_ChangeMap>Сменить карту</DebugAction_ChangeMap>
+  <DebugAction_ChangeStyle>Изменить стиль</DebugAction_ChangeStyle>
+  <DebugAction_ChangeThingStyle>Изменить стиль объекта</DebugAction_ChangeThingStyle>
+  <DebugAction_ChangeWeather>Изменить погоду</DebugAction_ChangeWeather>
+  <DebugAction_CheckForJobOverride>Проверить переопределение работы</DebugAction_CheckForJobOverride>
+  <DebugAction_CheckReachability>Проверить достижимость</DebugAction_CheckReachability>
+  <DebugAction_CheckRegionListers>Проверить списки регионов</DebugAction_CheckRegionListers>
+  <DebugAction_ClearAllFog>Очистить весь туман</DebugAction_ClearAllFog>
+  <DebugAction_ClearAllGas>Убрать весь газ</DebugAction_ClearAllGas>
+  <DebugAction_ClearAllSand>Убрать весь песок</DebugAction_ClearAllSand>
+  <DebugAction_ClearAllSnow>Убрать весь снег</DebugAction_ClearAllSnow>
+  <DebugAction_ClearArea>Очистить область</DebugAction_ClearArea>
+  <DebugAction_ClearBoundUnfinishedThings>Очистить связанные незаконченные объекты</DebugAction_ClearBoundUnfinishedThings>
+  <DebugAction_ClearCachedMaterials>Очистить кэш материалов</DebugAction_ClearCachedMaterials>
+  <DebugAction_ClearDevelopmentPoints>Очистить очки развития</DebugAction_ClearDevelopmentPoints>
+  <DebugAction_ClearLandmark>Убрать ориентир...</DebugAction_ClearLandmark>
+  <DebugAction_ClearPrisonerInteractionSchedule>Очистить график взаимодействия с заключенными</DebugAction_ClearPrisonerInteractionSchedule>
+  <DebugAction_ClearTempTerrainRect>Очистить врем. ландшафт (область)</DebugAction_ClearTempTerrainRect>
+  <DebugAction_CompareLineOfSight>Сравнить прямую видимость</DebugAction_CompareLineOfSight>
+  <DebugAction_ConvertToIdeo>Обратить в идеологию</DebugAction_ConvertToIdeo>
+  <DebugAction_CreateBabyFromParents>Создать ребенка от родителей (только люди)</DebugAction_CreateBabyFromParents>
+  <DebugAction_CreateColonistDuplicate>Создать дубликат колониста</DebugAction_CreateColonistDuplicate>
+  <DebugAction_CreateMealWithSpecifics>Создать еду с параметрами...</DebugAction_CreateMealWithSpecifics>
+  <DebugAction_CreatePrefab>Создать префаб</DebugAction_CreatePrefab>
+  <DebugAction_DamageHeldPawnToDeath>Убить удерживаемого персонажа уроном</DebugAction_DamageHeldPawnToDeath>
+  <DebugAction_DamageLegs>Повредить ноги</DebugAction_DamageLegs>
+  <DebugAction_DamageToDeath>Наносить урон до смерти</DebugAction_DamageToDeath>
+  <DebugAction_DamageUntilDown>Наносить урон до падения</DebugAction_DamageUntilDown>
+  <DebugAction_DamageUntilIncapableOfManipulation>Наносить урон до потери манипуляций</DebugAction_DamageUntilIncapableOfManipulation>
+  <DebugAction_DarklightAtPosition>Тусклый свет в позиции</DebugAction_DarklightAtPosition>
+  <DebugAction_DebugDrawBreachPath>Нарисовать путь пролома... (DebugDrawBreachPath)</DebugAction_DebugDrawBreachPath>
+  <DebugAction_DecreasePollutionLarge>Уменьшить загрязнение (сильно)</DebugAction_DecreasePollutionLarge>
+  <DebugAction_Destroy>Уничтожить</DebugAction_Destroy>
+  <DebugAction_DestroyAllCorpses>Уничтожить все трупы</DebugAction_DestroyAllCorpses>
+  <DebugAction_DestroyAllFire>Уничтожить весь огонь</DebugAction_DestroyAllFire>
+  <DebugAction_DestroyAllHats>Уничтожить все головные уборы</DebugAction_DestroyAllHats>
+  <DebugAction_DestroyAllNonColonists>Уничтожить не-колонистских животных</DebugAction_DestroyAllNonColonists>
+  <DebugAction_DestroyAllPlants>Уничтожить все растения</DebugAction_DestroyAllPlants>
+  <DebugAction_DestroyAllThings>Уничтожить все объекты</DebugAction_DestroyAllThings>
+  <DebugAction_DestroyAnimals>Уничтожить животных</DebugAction_DestroyAnimals>
+  <DebugAction_DestroyClutter>Уничтожить весь хлам</DebugAction_DestroyClutter>
+  <DebugAction_DestroyMap>Уничтожить карту</DebugAction_DestroyMap>
+  <DebugAction_DestroyPlayerAnimals>Уничтожить животных игрока</DebugAction_DestroyPlayerAnimals>
+  <DebugAction_DestroySite>Уничтожить объект</DebugAction_DestroySite>
+  <DebugAction_DisableMechs>Отключить механоидов</DebugAction_DisableMechs>
+  <DebugAction_Discard>Сбросить</DebugAction_Discard>
+  <DebugAction_DiscoverAllEntities>Открыть все сущности</DebugAction_DiscoverAllEntities>
+  <DebugAction_DiscoverHediffs>Обнаружить хедиффы</DebugAction_DiscoverHediffs>
+  <DebugAction_DisplayInteractionsInfo>Показать информацию о взаимодействиях</DebugAction_DisplayInteractionsInfo>
+  <DebugAction_DisplayRelationsInfo>Показать информацию об отношениях</DebugAction_DisplayRelationsInfo>
+  <DebugAction_Do10DamageUntilDead>Наносить по 10 урона до смерти</DebugAction_Do10DamageUntilDead>
+  <DebugAction_DoIncident>Запустить инцидент</DebugAction_DoIncident>
+  <DebugAction_DoIncidentPointed>Запустить инцидент с очками</DebugAction_DoIncidentPointed>
+  <DebugAction_DoIncidentX10>Запустить инцидент x10</DebugAction_DoIncidentX10>
+  <DebugAction_DoNextGenStep>Сделать следующий шаг генерации</DebugAction_DoNextGenStep>
+  <DebugAction_DoTradeCaravanSpecific>Спровоцировать прибытие торгового каравана</DebugAction_DoTradeCaravanSpecific>
+  <DebugAction_DoVoiceCall>Воспроизвести звук персонажа</DebugAction_DoVoiceCall>
+  <DebugAction_DrawAttachPoints>Нарисовать точки крепления</DebugAction_DrawAttachPoints>
+  <DebugAction_DumpPawnAtlases>Выгрузить атласы персонажей</DebugAction_DumpPawnAtlases>
+  <DebugAction_DumpStaticAtlases>Выгрузить статические атласы</DebugAction_DumpStaticAtlases>
+  <DebugAction_Duplicate>Дублировать</DebugAction_Duplicate>
+  <DebugAction_EditAnimation>Редактировать анимацию</DebugAction_EditAnimation>
+  <DebugAction_EditEffecter>Редактировать эффект</DebugAction_EditEffecter>
+  <DebugAction_EmergeMetalhorrors>Выпустить металлужасов</DebugAction_EmergeMetalhorrors>
+  <DebugAction_EndCurrentJobInterruptForced>Прервать текущую работу принудительно</DebugAction_EndCurrentJobInterruptForced>
+  <DebugAction_EndGameCondition>Завершить игровое условие</DebugAction_EndGameCondition>
+  <DebugAction_EndRevenantHypnosis>Завершить гипноз Ревенанта</DebugAction_EndRevenantHypnosis>
+  <DebugAction_Enslave>Поработить</DebugAction_Enslave>
+  <DebugAction_EquipPrimary_ToSelected>Выдать основное оружие выбранному... (EquipPrimary_ToSelected)</DebugAction_EquipPrimary_ToSelected>
+  <DebugAction_ExecuteDropPodRaidAtLocation>Запустить рейд на капсулах в точку</DebugAction_ExecuteDropPodRaidAtLocation>
+  <DebugAction_ExecuteRaidWithFaction>Запустить рейд с фракцией</DebugAction_ExecuteRaidWithFaction>
+  <DebugAction_ExecuteRaidWithPoints>Запустить рейд с очками</DebugAction_ExecuteRaidWithPoints>
+  <DebugAction_ExecuteRaidWithSpecifics>Запустить рейд с параметрами</DebugAction_ExecuteRaidWithSpecifics>
+  <DebugAction_Explosion>Взрыв...</DebugAction_Explosion>
+  <DebugAction_FillAllGas>Заполнить карту газом</DebugAction_FillAllGas>
+  <DebugAction_FillMapWithTrees>Заполнить текущую карту деревьями</DebugAction_FillMapWithTrees>
+  <DebugAction_FinishAllResearch>Завершить все исследования</DebugAction_FinishAllResearch>
+  <DebugAction_FlashBlockedLandingCells>Подсветить заблокированные точки посадки</DebugAction_FlashBlockedLandingCells>
+  <DebugAction_FlashClosewalkCell30>Подсветить ячейки Closewalk в радиусе 30</DebugAction_FlashClosewalkCell30>
+  <DebugAction_FlashDirectFleeDest>Подсветить прямое место бегства</DebugAction_FlashDirectFleeDest>
+  <DebugAction_FlashShuttleDropCellsNear>Подсветить близкие точки высадки шаттла</DebugAction_FlashShuttleDropCellsNear>
+  <DebugAction_FlashSkygazeCell>Подсветить ячейку наблюдения за небом</DebugAction_FlashSkygazeCell>
+  <DebugAction_FlashSpectatorsCells>Подсветить места зрителей</DebugAction_FlashSpectatorsCells>
+  <DebugAction_FlashTradeDropSpot>Подсветить место сброса торговцев</DebugAction_FlashTradeDropSpot>
+  <DebugAction_FlashTryFindRandomPawnExitCell>Подсветить случайный выход для персонажа</DebugAction_FlashTryFindRandomPawnExitCell>
+  <DebugAction_FlashWalkPath>Подсветить путь ходьбы</DebugAction_FlashWalkPath>
+  <DebugAction_FogRect>Покрыть туманом область</DebugAction_FogRect>
+  <DebugAction_ForceAgeReversalDemandNow>Принудительно запросить омоложение</DebugAction_ForceAgeReversalDemandNow>
+  <DebugAction_ForceBirthday>Принудительный день рождения</DebugAction_ForceBirthday>
+  <DebugAction_ForceEnemyAssault>Принудительная атака врагов</DebugAction_ForceEnemyAssault>
+  <DebugAction_ForceEnemyFlee>Принудительное бегство врагов</DebugAction_ForceEnemyFlee>
+  <DebugAction_ForceInteraction>Принудительное взаимодействие</DebugAction_ForceInteraction>
+  <DebugAction_ForceReformInCurrentMap>Принудительно реформировать текущую карту</DebugAction_ForceReformInCurrentMap>
+  <DebugAction_ForceShipCountdown>Принудительный отсчет корабля</DebugAction_ForceShipCountdown>
+  <DebugAction_ForceSleep>Принудительно уложить спать</DebugAction_ForceSleep>
+  <DebugAction_ForceStartShip>Принудительный запуск корабля</DebugAction_ForceStartShip>
+  <DebugAction_ForceVomit>Вызвать рвоту</DebugAction_ForceVomit>
+  <DebugAction_GarbageCollectWorldPawn>Очистить неиспользуемых глобальных персонажей</DebugAction_GarbageCollectWorldPawn>
+  <DebugAction_Generate200RitualNames>Сгенерировать 200 названий ритуалов</DebugAction_Generate200RitualNames>
+  <DebugAction_GenerateCreeperJoiner>Создать жуткого попутчика...</DebugAction_GenerateCreeperJoiner>
+  <DebugAction_GenerateLandmarkScreenshots>Создать скриншоты ориентиров</DebugAction_GenerateLandmarkScreenshots>
+  <DebugAction_GenerateMap>Сгенерировать карту</DebugAction_GenerateMap>
+  <DebugAction_GenerateMapWithCaves>Сгенерировать карту с пещерами</DebugAction_GenerateMapWithCaves>
+  <DebugAction_GeneratePawnsOfAllShapes>Сгенерировать персонажей всех типов</DebugAction_GeneratePawnsOfAllShapes>
+  <DebugAction_GeneratePocketMap>Сгенерировать карманную карту</DebugAction_GeneratePocketMap>
+  <DebugAction_GenerateQuest>Сгенерировать задание</DebugAction_GenerateQuest>
+  <DebugAction_GenerateQuests>Сгенерировать несколько заданий</DebugAction_GenerateQuests>
+  <DebugAction_GenerateQuestsSamples>Сгенерировать задания (по 1 на очки)</DebugAction_GenerateQuestsSamples>
+  <DebugAction_GiveAbility>Дать способность...</DebugAction_GiveAbility>
+  <DebugAction_GiveBadThought>Дать отрицательную мысль...</DebugAction_GiveBadThought>
+  <DebugAction_GiveBirth>Родить ребенка</DebugAction_GiveBirth>
+  <DebugAction_GiveGoodThought>Дать положительную мысль...</DebugAction_GiveGoodThought>
+  <DebugAction_GivePsylink>Дать пси-ссылку...</DebugAction_GivePsylink>
+  <DebugAction_GiveTrait>Дать черту характера...</DebugAction_GiveTrait>
+  <DebugAction_GlowAtPosition>Показать свечение в позиции</DebugAction_GlowAtPosition>
+  <DebugAction_Goto>Логовать путь движения</DebugAction_Goto>
+  <DebugAction_GrantImmunities>Дать иммунитет</DebugAction_GrantImmunities>
+  <DebugAction_Grow1Day>Вырастить на 1 день</DebugAction_Grow1Day>
+  <DebugAction_GrowPawnToMaturity>Вырастить персонажа до зрелости</DebugAction_GrowPawnToMaturity>
+  <DebugAction_GrowPlantToMaturity>Вырастить растение до зрелости</DebugAction_GrowPlantToMaturity>
+  <DebugAction_HSVAtPosition>Показать HSV в позиции</DebugAction_HSVAtPosition>
+  <DebugAction_HealRandomInjury10>Вылечить случайную травму (10)</DebugAction_HealRandomInjury10>
+  <DebugAction_HotReloadDefs>Горячая перезагрузка определений</DebugAction_HotReloadDefs>
+  <DebugAction_IncreasePollutionLarge>Увеличить загрязнение (сильно)</DebugAction_IncreasePollutionLarge>
+  <DebugAction_IncreasePollutionSmall>Увеличить загрязнение (немного)</DebugAction_IncreasePollutionSmall>
+  <DebugAction_IncrementTime>Увеличить время</DebugAction_IncrementTime>
+  <DebugAction_Inspiration>Вдохновение...</DebugAction_Inspiration>
+  <DebugAction_Kidnap>Похитить колониста</DebugAction_Kidnap>
+  <DebugAction_Kill>Убить</DebugAction_Kill>
+  <DebugAction_KillFactionLeader>Убить лидера фракции</DebugAction_KillFactionLeader>
+  <DebugAction_KillKidnappedPawn>Убить похищенного персонажа</DebugAction_KillKidnappedPawn>
+  <DebugAction_KillRandomLentColonist>Убить случайного одолженного колониста</DebugAction_KillRandomLentColonist>
+  <DebugAction_KillWorldPawn>Убить глобального персонажа</DebugAction_KillWorldPawn>
+  <DebugAction_LayerPathfinder>Поиск пути по слоям планеты</DebugAction_LayerPathfinder>
+  <DebugAction_LeakMap>Утечка карты</DebugAction_LeakMap>
+  <DebugAction_LightningStrike>Удар молнии</DebugAction_LightningStrike>
+  <DebugAction_LightningStrikeDelayed>Удар молнии (с задержкой)...</DebugAction_LightningStrikeDelayed>
+  <DebugAction_ListMeleeVerbs>Список глаголов ближнего боя</DebugAction_ListMeleeVerbs>
+  <DebugAction_LoadedFilesForMod>Список загруженных файлов мода</DebugAction_LoadedFilesForMod>
+  <DebugAction_LockRotation>Заблокировать поворот</DebugAction_LockRotation>
+  <DebugAction_LogCellGridResult>Логовать результат сетки ячеек</DebugAction_LogCellGridResult>
+  <DebugAction_LogCellMapData>Логовать данные ячеек карты</DebugAction_LogCellMapData>
+  <DebugAction_LogJobDetails>Логовать детали работы</DebugAction_LogJobDetails>
+  <DebugAction_LogLightsAffectinCell>Логовать освещение ячейки</DebugAction_LogLightsAffectinCell>
+  <DebugAction_LogMapPollution>Логовать загрязнение текущей карты</DebugAction_LogMapPollution>
+  <DebugAction_LogPathfinderState>Логовать состояние поиска пути</DebugAction_LogPathfinderState>
+  <DebugAction_Make1DayOlder>Сделать старше на 1 день</DebugAction_Make1DayOlder>
+  <DebugAction_Make1YearOlder>Сделать старше на 1 год</DebugAction_Make1YearOlder>
+  <DebugAction_MakeColonyAncientJunk>Создать колонию (древний хлам)</DebugAction_MakeColonyAncientJunk>
+  <DebugAction_MakeColonyAnimals>Создать колонию (животные)</DebugAction_MakeColonyAnimals>
+  <DebugAction_MakeColonyFull>Создать колонию (полную)</DebugAction_MakeColonyFull>
+  <DebugAction_MakeEmptyRoom>Построить пустую комнату</DebugAction_MakeEmptyRoom>
+  <DebugAction_MakeFactionLeader>Сделать лидером фракции</DebugAction_MakeFactionLeader>
+  <DebugAction_MakeFilthx100>Создать грязь x100</DebugAction_MakeFilthx100>
+  <DebugAction_MakeGuilty>Сделать виновным</DebugAction_MakeGuilty>
+  <DebugAction_MakeInjuryPermanent>Сделать травмы постоянными</DebugAction_MakeInjuryPermanent>
+  <DebugAction_MakePlantLeafless>Лишить растение листьев</DebugAction_MakePlantLeafless>
+  <DebugAction_MakeRock>Создать скалы (область)</DebugAction_MakeRock>
+  <DebugAction_MakeRoof>Редактировать крышу...</DebugAction_MakeRoof>
+  <DebugAction_MaxAllPassions>Максимум всех интересов</DebugAction_MaxAllPassions>
+  <DebugAction_MaxAllSkills>Максимум всех навыков</DebugAction_MaxAllSkills>
+  <DebugAction_MaxDevelopmentPoints>Максимум очков развития</DebugAction_MaxDevelopmentPoints>
+  <DebugAction_MaxGhoulUpgrades>Максимум улучшений упыря</DebugAction_MaxGhoulUpgrades>
+  <DebugAction_MaxPassion>Максимальный интерес...</DebugAction_MaxPassion>
+  <DebugAction_MaxSkill>Максимальный навык...</DebugAction_MaxSkill>
+  <DebugAction_MeasureDrawSize>Измерить размер прорисовки</DebugAction_MeasureDrawSize>
+  <DebugAction_MeasureWorldDistance>Измерить расстояние на карте мира</DebugAction_MeasureWorldDistance>
+  <DebugAction_MeleeAttackTarget>Атаковать цель в ближнем бою</DebugAction_MeleeAttackTarget>
+  <DebugAction_MentalBreak>Нервный срыв...</DebugAction_MentalBreak>
+  <DebugAction_MentalState>Психическое состояние...</DebugAction_MentalState>
+  <DebugAction_NameSettlement>Назвать поселение</DebugAction_NameSettlement>
+  <DebugAction_NextLesson>Следующий урок обучения</DebugAction_NextLesson>
+  <DebugAction_NuzzlePawn>Вызвать тыканье носом (NuzzlePawn)</DebugAction_NuzzlePawn>
+  <DebugAction_OffsetCertaintyNegative20>Уверенность - 20%</DebugAction_OffsetCertaintyNegative20>
+  <DebugAction_OpenCelestialDebugger>Отладчик небесных тел</DebugAction_OpenCelestialDebugger>
+  <DebugAction_OpenInfectionPathwayDebugger>Отладчик путей заражения</DebugAction_OpenInfectionPathwayDebugger>
+  <DebugAction_OpenMapNoiseDebugger>Отладчик шума карты</DebugAction_OpenMapNoiseDebugger>
+  <DebugAction_OpenMusicDebugger>Отладчик музыки</DebugAction_OpenMusicDebugger>
+  <DebugAction_OpenWorldNoiseDebugger>Отладчик глобального шума</DebugAction_OpenWorldNoiseDebugger>
+  <DebugAction_PassToWorld>Отправить в мир</DebugAction_PassToWorld>
+  <DebugAction_PawnKindAbilityCheck>Проверка способностей PawnKind</DebugAction_PawnKindAbilityCheck>
+  <DebugAction_PawnKindApparelCheck>Проверка одежды PawnKind</DebugAction_PawnKindApparelCheck>
+  <DebugAction_PickCopy>Взять и скопировать</DebugAction_PickCopy>
+  <DebugAction_PlayAnimation>Воспроизвести анимацию...</DebugAction_PlayAnimation>
+  <DebugAction_PlaySong>Воспроизвести песню</DebugAction_PlaySong>
+  <DebugAction_PlaySound>Воспроизвести звук</DebugAction_PlaySound>
+  <DebugAction_PolluteCellHundred>Увеличить загрязнение (x100 ячеек)</DebugAction_PolluteCellHundred>
+  <DebugAction_PolluteCellTen>Увеличить загрязнение (x10 ячеек)</DebugAction_PolluteCellTen>
+  <DebugAction_PolluteCellThousand>Увеличить загрязнение (x1000 ячеек)</DebugAction_PolluteCellThousand>
+  <DebugAction_PolluteRect>Загрязнить (область)</DebugAction_PolluteRect>
+  <DebugAction_PrintLeakedMap>Вывести утечку карты</DebugAction_PrintLeakedMap>
+  <DebugAction_ProgressLifeStage>Продвинуть стадию жизни</DebugAction_ProgressLifeStage>
+  <DebugAction_PushGas>Добавить газ...</DebugAction_PushGas>
+  <DebugAction_PushHeat>Добавить тепла...</DebugAction_PushHeat>
+  <DebugAction_QuestExample>Сохранить сохраненные данные сгенерированного квеста в лог</DebugAction_QuestExample>
+  <DebugAction_QueueTrainingDecay>Запланировать деградацию тренировки</DebugAction_QueueTrainingDecay>
+  <DebugAction_RaiseAsShambler>Поднять как шамблера</DebugAction_RaiseAsShambler>
+  <DebugAction_RandomSpotJustOutsideColony>Подсветить случайную точку за пределами колонии</DebugAction_RandomSpotJustOutsideColony>
+  <DebugAction_RandomSpotNearThingAvoidingHostiles>Подсветить точку у объекта, избегая врагов</DebugAction_RandomSpotNearThingAvoidingHostiles>
+  <DebugAction_RecalculateThreatPoints>Пересчитать очки угрозы</DebugAction_RecalculateThreatPoints>
+  <DebugAction_Recruit>Вербовать</DebugAction_Recruit>
+  <DebugAction_ReduceRoyalTitle>Снизить королевский титул</DebugAction_ReduceRoyalTitle>
+  <DebugAction_RefogMap>Покрыть карту туманом войны</DebugAction_RefogMap>
+  <DebugAction_RegenAllMapMeshSections>Регенерировать всю меш-сетку карты</DebugAction_RegenAllMapMeshSections>
+  <DebugAction_RegenGlowGridCells>Регенерировать ячейки свечения</DebugAction_RegenGlowGridCells>
+  <DebugAction_RegenSection>Регенерировать секцию</DebugAction_RegenSection>
+  <DebugAction_RegenerateCurrentMap>Регенерировать текущую карту</DebugAction_RegenerateCurrentMap>
+  <DebugAction_RegenerateCurrentMapStepped>Сбросить текущую карту</DebugAction_RegenerateCurrentMapStepped>
+  <DebugAction_RegenerateMapFeatures>Регенерировать особенности карты мира</DebugAction_RegenerateMapFeatures>
+  <DebugAction_RegenerateMapWithLandmark>Регенерировать карту с ориентиром</DebugAction_RegenerateMapWithLandmark>
+  <DebugAction_Remove4RoyalFavor>Убрать 4 чести</DebugAction_Remove4RoyalFavor>
+  <DebugAction_RemoveAllTraits>Удалить все черты характера</DebugAction_RemoveAllTraits>
+  <DebugAction_RemoveGameCondition>Удалить игровое условие</DebugAction_RemoveGameCondition>
+  <DebugAction_RemoveGene>Удалить ген</DebugAction_RemoveGene>
+  <DebugAction_RemoveMutatorFromCurrentMapTile>Удалить мутатор с текущей карты</DebugAction_RemoveMutatorFromCurrentMapTile>
+  <DebugAction_RemovePrecept>Удалить предписание</DebugAction_RemovePrecept>
+  <DebugAction_RemoveRitualObligation>Удалить обязательство ритуала</DebugAction_RemoveRitualObligation>
+  <DebugAction_RemoveSand>Удалить песок</DebugAction_RemoveSand>
+  <DebugAction_RemoveSnow>Удалить снег</DebugAction_RemoveSnow>
+  <DebugAction_RemoveTraitFromUniqueWeapon>Удалить черту у уникального оружия</DebugAction_RemoveTraitFromUniqueWeapon>
+  <DebugAction_RemoveWorldPawn>Удалить глобального персонажа...</DebugAction_RemoveWorldPawn>
+  <DebugAction_ReplaceAllTradeShips>Заменить все торговые корабли</DebugAction_ReplaceAllTradeShips>
+  <DebugAction_RequestStyleChange>Запросить изменение стиля</DebugAction_RequestStyleChange>
+  <DebugAction_ResetAgeReversalDemandNow>Сбросить запрос омоложения</DebugAction_ResetAgeReversalDemandNow>
+  <DebugAction_ResetBossgroupCooldown>Сбросить перезарядку группы босса</DebugAction_ResetBossgroupCooldown>
+  <DebugAction_ResetBossgroupKilledPawns>Сбросить список побежденных боссов</DebugAction_ResetBossgroupKilledPawns>
+  <DebugAction_ResetRenderCache>Сбросить кэш отрисовки персонажа</DebugAction_ResetRenderCache>
+  <DebugAction_ResetSuppresionSchedule>Очистить график подавления</DebugAction_ResetSuppresionSchedule>
+  <DebugAction_ResistanceMinus1>Сопротивление -1</DebugAction_ResistanceMinus1>
+  <DebugAction_ResistanceMinus10>Сопротивление -10</DebugAction_ResistanceMinus10>
+  <DebugAction_RestoreBodyPart>Восстановить часть тела...</DebugAction_RestoreBodyPart>
+  <DebugAction_Resurrect>Воскресить</DebugAction_Resurrect>
+  <DebugAction_RetroactivelyAddLandmarksToWorld>Регенерировать ориентиры мира</DebugAction_RetroactivelyAddLandmarksToWorld>
+  <DebugAction_RevealHiddenDefs>Показать скрытые определения</DebugAction_RevealHiddenDefs>
+  <DebugAction_RevertMutant>Обратить мутацию</DebugAction_RevertMutant>
+  <DebugAction_RitualSiegeWithSpecifics>Запустить осаду психического ритуала</DebugAction_RitualSiegeWithSpecifics>
+  <DebugAction_Rot1Day>Гниение за 1 день</DebugAction_Rot1Day>
+  <DebugAction_Rotate>Повернуть...</DebugAction_Rotate>
+  <DebugAction_RotatePrefabSpawn>Поворот спавна префаба</DebugAction_RotatePrefabSpawn>
+  <DebugAction_RunMapGenerator>Запустить генератор карт</DebugAction_RunMapGenerator>
+  <DebugAction_SaveTranslationReport>Сохранить отчет о переводе</DebugAction_SaveTranslationReport>
+  <DebugAction_Selected_SetFacing>Повернуть выбранного персонажа к ячейке</DebugAction_Selected_SetFacing>
+  <DebugAction_Selected_SetTarget>Задать цель выбранному персонажу</DebugAction_Selected_SetTarget>
+  <DebugAction_SetBackstory>Установить предысторию...</DebugAction_SetBackstory>
+  <DebugAction_SetBiome>Установить биом...</DebugAction_SetBiome>
+  <DebugAction_SetBodyType>Установить тип телосложения</DebugAction_SetBodyType>
+  <DebugAction_SetColor>Установить цвет</DebugAction_SetColor>
+  <DebugAction_SetFaction>Установить фракцию</DebugAction_SetFaction>
+  <DebugAction_SetFactionRect>Установить фракцию (область)</DebugAction_SetFactionRect>
+  <DebugAction_SetFactionRelations>Установить отношения с фракцией</DebugAction_SetFactionRelations>
+  <DebugAction_SetGraphicsDirty>Пометить графику устаревшей</DebugAction_SetGraphicsDirty>
+  <DebugAction_SetHeadType>Установить тип головы</DebugAction_SetHeadType>
+  <DebugAction_SetIdeo>Установить идеологию</DebugAction_SetIdeo>
+  <DebugAction_SetIdeoRole>Установить роль</DebugAction_SetIdeoRole>
+  <DebugAction_SetLandmark>Установить ориентир...</DebugAction_SetLandmark>
+  <DebugAction_SetMonolithLevel>Установить уровень Аномалии</DebugAction_SetMonolithLevel>
+  <DebugAction_SetMutant>Установить мутацию...</DebugAction_SetMutant>
+  <DebugAction_SetPassion>Установить интерес...</DebugAction_SetPassion>
+  <DebugAction_SetQuality>Установить качество...</DebugAction_SetQuality>
+  <DebugAction_SetSkill>Установить навык...</DebugAction_SetSkill>
+  <DebugAction_SetSourcePrecept>Установить предписание источника стиля</DebugAction_SetSourcePrecept>
+  <DebugAction_SetStuff>Установить материал...</DebugAction_SetStuff>
+  <DebugAction_SetTempTerrainRect>Уст. временный ландшафт (область)</DebugAction_SetTempTerrainRect>
+  <DebugAction_SetTerrainRect>Установить ландшафт (область)</DebugAction_SetTerrainRect>
+  <DebugAction_SetTitleForced>Установить королевский титул</DebugAction_SetTitleForced>
+  <DebugAction_SetXenotype>Установить ксенотип...</DebugAction_SetXenotype>
+  <DebugAction_SimulateSanguophageMeeting>Собрание сангвофагов</DebugAction_SimulateSanguophageMeeting>
+  <DebugAction_SketchGen>Использовать SketchGen</DebugAction_SketchGen>
+  <DebugAction_SpawnAnimalGroup>Создать группу животных...</DebugAction_SpawnAnimalGroup>
+  <DebugAction_SpawnApparel>Создать одежду...</DebugAction_SpawnApparel>
+  <DebugAction_SpawnBossgroup>Создать группу босса...</DebugAction_SpawnBossgroup>
+  <DebugAction_SpawnChild>Создать ребенка...</DebugAction_SpawnChild>
+  <DebugAction_SpawnCocoonInfestationWithPoints>Создать нашествие коконов...</DebugAction_SpawnCocoonInfestationWithPoints>
+  <DebugAction_SpawnComplex>Создать комплекс</DebugAction_SpawnComplex>
+  <DebugAction_SpawnFactionLeader>Создать лидера фракции</DebugAction_SpawnFactionLeader>
+  <DebugAction_SpawnFillArea>Заполнить область...</DebugAction_SpawnFillArea>
+  <DebugAction_SpawnFilth>Создать грязь...</DebugAction_SpawnFilth>
+  <DebugAction_SpawnFlare>Создать фальшфейер...</DebugAction_SpawnFlare>
+  <DebugAction_SpawnFleshmassHeart>Создать сердце плоти</DebugAction_SpawnFleshmassHeart>
+  <DebugAction_SpawnMechCluster>Создать скопление механоидов...</DebugAction_SpawnMechCluster>
+  <DebugAction_SpawnNewborn>Создать новорожденного...</DebugAction_SpawnNewborn>
+  <DebugAction_SpawnPawn>Создать персонажа...</DebugAction_SpawnPawn>
+  <DebugAction_SpawnPawnWithLifestage>Создать персонажа со стадией жизни...</DebugAction_SpawnPawnWithLifestage>
+  <DebugAction_SpawnPitBurrow>Создать ямную норку</DebugAction_SpawnPitBurrow>
+  <DebugAction_SpawnPitGate>Создать ямные врата</DebugAction_SpawnPitGate>
+  <DebugAction_SpawnPlayerPrefab>Создать префаб игрока</DebugAction_SpawnPlayerPrefab>
+  <DebugAction_SpawnPrefab>Создать префаб</DebugAction_SpawnPrefab>
+  <DebugAction_SpawnPrefabBlueprint>Создать чертеж префаба</DebugAction_SpawnPrefabBlueprint>
+  <DebugAction_SpawnRandomCaravan>Создать случайный караван</DebugAction_SpawnRandomCaravan>
+  <DebugAction_SpawnRandomFactionBase>Создать случайную базу фракции</DebugAction_SpawnRandomFactionBase>
+  <DebugAction_SpawnRelic>Создать реликвию</DebugAction_SpawnRelic>
+  <DebugAction_SpawnShuttle>Создать шаттл...</DebugAction_SpawnShuttle>
+  <DebugAction_SpawnSite>Создать объект...</DebugAction_SpawnSite>
+  <DebugAction_SpawnSiteWithPoints>Создать объект с очками...</DebugAction_SpawnSiteWithPoints>
+  <DebugAction_SpawnStatueCraftedBy>Создать статую авторства... (Spawn statue crafted by)</DebugAction_SpawnStatueCraftedBy>
+  <DebugAction_SpawnThingSet>Создать набор предметов...</DebugAction_SpawnThingSet>
+  <DebugAction_SpawnThingWithWipeMode>Создать объект с WipeMode...</DebugAction_SpawnThingWithWipeMode>
+  <DebugAction_SpawnWeapon>Создать оружие...</DebugAction_SpawnWeapon>
+  <DebugAction_SpawnWorldObject>Создать мировой объект...</DebugAction_SpawnWorldObject>
+  <DebugAction_SpawnWorldPawn>Создать глобального персонажа...</DebugAction_SpawnWorldPawn>
+  <DebugAction_StartGathering>Начать собрание</DebugAction_StartGathering>
+  <DebugAction_StartMarriageCeremony>Начать свадебную церемонию...</DebugAction_StartMarriageCeremony>
+  <DebugAction_StartPrisonBreak>Начать побег из тюрьмы</DebugAction_StartPrisonBreak>
+  <DebugAction_StartSlaveRebellion>Начать восстание рабов (случайно)</DebugAction_StartSlaveRebellion>
+  <DebugAction_StartSlaveRebellionAggressive>Начать восстание рабов (агрессивно)</DebugAction_StartSlaveRebellionAggressive>
+  <DebugAction_StopMentalState>Остановить психическое состояние</DebugAction_StopMentalState>
+  <DebugAction_StorywatcherTick1Day>Тик рассказчика на 1 день</DebugAction_StorywatcherTick1Day>
+  <DebugAction_SuppressionMinus10>Подавление -10%</DebugAction_SuppressionMinus10>
+  <DebugAction_SuppressionPlus10>Подавление +10%</DebugAction_SuppressionPlus10>
+  <DebugAction_SwimAt>Запустить плавание в... (Swim at)</DebugAction_SwimAt>
+  <DebugAction_Take10Damage>Урон: 10</DebugAction_Take10Damage>
+  <DebugAction_Take300Damage>Урон: 300</DebugAction_Take300Damage>
+  <DebugAction_Take5000Damage>Урон: 5000</DebugAction_Take5000Damage>
+  <DebugAction_TameAnimal>Приручить животное</DebugAction_TameAnimal>
+  <DebugAction_Teleport>Телепортировать</DebugAction_Teleport>
+  <DebugAction_TendBleedingHediffs>Перевязать кровоточащие хедиффы (Tend bleeding Hediffs)</DebugAction_TendBleedingHediffs>
+  <DebugAction_TestDeferredSpawner>Тест отложенного спавнера...</DebugAction_TestDeferredSpawner>
+  <DebugAction_TestFadeoutAndSilence>Тест затухания и тишины музыки</DebugAction_TestFadeoutAndSilence>
+  <DebugAction_TestFloodUnfog>Тест заливки тумана</DebugAction_TestFloodUnfog>
+  <DebugAction_TestForceDownedx100>Тест: сбить с ног x100</DebugAction_TestForceDownedx100>
+  <DebugAction_TestForceKillx100>Тест: принудительно убить x100</DebugAction_TestForceKillx100>
+  <DebugAction_TestGeneratePawnx1000>Тест: создать персонажа x1000</DebugAction_TestGeneratePawnx1000>
+  <DebugAction_TestQuestPart>Тестировать часть задания</DebugAction_TestQuestPart>
+  <DebugAction_TestTimeToDown>Тест времени до падения</DebugAction_TestTimeToDown>
+  <DebugAction_ToggleImmunity>Переключить иммунитет</DebugAction_ToggleImmunity>
+  <DebugAction_ToggleJobLogging>Переключить логирование работ</DebugAction_ToggleJobLogging>
+  <DebugAction_ToggleMaxMoveSpeed>Переключить макс. скорость движения</DebugAction_ToggleMaxMoveSpeed>
+  <DebugAction_ToggleMovement>Переключить движение</DebugAction_ToggleMovement>
+  <DebugAction_TogglePathDebugging>Переключить отладку путей</DebugAction_TogglePathDebugging>
+  <DebugAction_ToggleRecruitable>Переключить вербуемость</DebugAction_ToggleRecruitable>
+  <DebugAction_ToggleStanceLogging>Переключить логирование стоек</DebugAction_ToggleStanceLogging>
+  <DebugAction_TrainAnimal>Тренировать животное</DebugAction_TrainAnimal>
+  <DebugAction_Transfer>Перейти на другую карту</DebugAction_Transfer>
+  <DebugAction_TriggerDateRitual>Запустить привязанный к дате ритуал</DebugAction_TriggerDateRitual>
+  <DebugAction_TriggerEffecter>Запустить эффект...</DebugAction_TriggerEffecter>
+  <DebugAction_TriggerMaintainedEffecter>Запустить поддерживаемый эффект...</DebugAction_TriggerMaintainedEffecter>
+  <DebugAction_TriggerMaintainedEffecter12S>Запустить поддерживаемый эффект (12с)...</DebugAction_TriggerMaintainedEffecter12S>
+  <DebugAction_TriggerMaintainedEffecter5S>Запустить поддерживаемый эффект (5с)...</DebugAction_TriggerMaintainedEffecter5S>
+  <DebugAction_TriggerTransition>Запустить переход</DebugAction_TriggerTransition>
+  <DebugAction_TryDevelopBoundRelation>Попытаться развить связь</DebugAction_TryDevelopBoundRelation>
+  <DebugAction_TryFishForFood>Попробовать рыбалку животного</DebugAction_TryFishForFood>
+  <DebugAction_TryJobGiver>Попробовать JobGiver</DebugAction_TryJobGiver>
+  <DebugAction_TryJoyGiver>Попробовать JoyGiver</DebugAction_TryJoyGiver>
+  <DebugAction_TryLearningGiver>Попробовать LearningGiver</DebugAction_TryLearningGiver>
+  <DebugAction_TryPlaceDirectFullStack>Создать предмет напрямую (полная стопка)...</DebugAction_TryPlaceDirectFullStack>
+  <DebugAction_TryPlaceDirectStackOf25>Создать предмет напрямую (стопка 25)...</DebugAction_TryPlaceDirectStackOf25>
+  <DebugAction_TryPlaceDirectThing>Создать предмет напрямую...</DebugAction_TryPlaceDirectThing>
+  <DebugAction_TryPlaceMinifiedThing>Создать упакованный предмет...</DebugAction_TryPlaceMinifiedThing>
+  <DebugAction_TryPlaceNearFullStack>Создать предмет (полная стопка)...</DebugAction_TryPlaceNearFullStack>
+  <DebugAction_TryPlaceNearMarketValue>Создать предмет по рыночной стоимости...</DebugAction_TryPlaceNearMarketValue>
+  <DebugAction_TryPlaceNearStacksOf25>Создать предмет (стопка 25)...</DebugAction_TryPlaceNearStacksOf25>
+  <DebugAction_TryPlaceNearStacksOf75>Создать предмет (стопка 75)...</DebugAction_TryPlaceNearStacksOf75>
+  <DebugAction_TryPlaceNearThing>Создать предмет...</DebugAction_TryPlaceNearThing>
+  <DebugAction_TryPlaceNearThingWithStyle>Создать предмет со стилем...</DebugAction_TryPlaceNearThingWithStyle>
+  <DebugAction_UnfogRect>Открыть область от тумана</DebugAction_UnfogRect>
+  <DebugAction_UnloadUnusedAssets>Выгрузить неиспользуемые ресурсы</DebugAction_UnloadUnusedAssets>
+  <DebugAction_UnlockAllApparel>Разблокировать всю одежду</DebugAction_UnlockAllApparel>
+  <DebugAction_UnlockRotation>Разблокировать поворот</DebugAction_UnlockRotation>
+  <DebugAction_UnpolluteRect>Очистить от загрязнения (область)</DebugAction_UnpolluteRect>
+  <DebugAction_UseGenStep>Использовать GenStep</DebugAction_UseGenStep>
+  <DebugAction_UseScatterer>Использовать Scatterer</DebugAction_UseScatterer>
+  <DebugAction_ViewRenderTree>Просмотреть дерево отрисовки</DebugAction_ViewRenderTree>
+  <DebugAction_VisitorGift>Подарок от посетителей</DebugAction_VisitorGift>
+  <DebugAction_VolcanicDebris>Вулканический мусор</DebugAction_VolcanicDebris>
+  <DebugAction_VolcanicDebrisDelayed>Вулканический мусор (с задержкой)...</DebugAction_VolcanicDebrisDelayed>
+  <DebugAction_WaterEmergePawn>Вытащить персонажа из воды... (WaterEmergePawn)</DebugAction_WaterEmergePawn>
+  <DebugAction_WearApparel_ToSelected>Выдать одежду выбранному... (WearApparel_ToSelected)</DebugAction_WearApparel_ToSelected>
+  <DebugAction_WillMinus1>Воля -1</DebugAction_WillMinus1>
+  <DebugAction_WillPlus1>Воля +1</DebugAction_WillPlus1>
+  <DebugAction_WoundDebug>Включить отладку ран</DebugAction_WoundDebug>
+  <DebugAction_WoundDebugExport>Экспорт отладки ран (негуманоиды)</DebugAction_WoundDebugExport>
+  <DebugAction_WriteBackstoryTranslationFile>Записать файл перевода предыстории</DebugAction_WriteBackstoryTranslationFile>
+  <DebugAction_outputTranslationSource>Записать исходные файлы перевода</DebugAction_outputTranslationSource>
+  <DebugApparelOptimize>Отладка оптимизации одежды</DebugApparelOptimize>
+  <DebugMenu_DebugActions>Открыть меню отладочных действий (Debug actions menu).\n\nПозволяет создавать предметы и принудительно запускать различные события.</DebugMenu_DebugActions>
+  <DebugMenu_DebugLogging>Открыть меню отладочного логирования (Debug logging menu).</DebugMenu_DebugLogging>
+  <DebugMenu_DevPalette>Переключить панель разработчика (Dev palette).\n\nПозволяет настроить палитру отладочных действий для удобства использования.</DebugMenu_DevPalette>
+  <DebugMenu_GodMode>Переключить режим бога (God mode).\n\nВ режиме бога можно строить мгновенно и бесплатно, а также разбирать то, что вам не принадлежит.</DebugMenu_GodMode>
+  <DebugMenu_Inspector>Открыть инспектор (Inspector).\n\nПозволяет изучать происходящее в игре вплоть до отдельных переменных.</DebugMenu_Inspector>
+  <DebugMenu_Logs>Открыть отладочный лог</DebugMenu_Logs>
+  <DebugMenu_TweakValues>Открыть меню тонкой настройки (TweakValues menu).\n\nПозволяет изменять внутренние значения.</DebugMenu_TweakValues>
+  <DebugMenu_ViewSettings>Открыть настройки отображения (View settings).\n\nПозволяет просматривать специальную отладочную графику.</DebugMenu_ViewSettings>
+  <DetectRegionListersBugs>Обнаруживать ошибки RegionListers</DetectRegionListersBugs>
+  <DevL10N.TranslationOutput.ExtraItemsFromLanguage>(дополнительных элементов: {0})</DevL10N.TranslationOutput.ExtraItemsFromLanguage>
+  <DevL10N.TranslationOutput.RemovedItemsFromLanguage>(удалено неиспользуемых элементов: {0})</DevL10N.TranslationOutput.RemovedItemsFromLanguage>
+  <DevL10N.TranslationOutput.SavedTo>Результат перевода сохранен в {0}.</DevL10N.TranslationOutput.SavedTo>
+  <DevL10N.TranslationOutput.Writing>Запись исходных файлов перевода</DevL10N.TranslationOutput.Writing>
+  <DevPalette>Палитра разработчика</DevPalette>
+  <DisableGravshipRenderShader>Отключить шейдер гравикорабля</DisableGravshipRenderShader>
+  <DrawAttackTargetScores>Отображать оценки целей для атаки</DrawAttackTargetScores>
+  <DrawAvoidGrid>Отображать сетку избегания</DrawAvoidGrid>
+  <DrawBreachingGrid>Отображать сетку пролома</DrawBreachingGrid>
+  <DrawBreachingNoise>Отображать шум пролома</DrawBreachingNoise>
+  <DrawCastPositionSearch>Отображать поиск позиции для применения</DrawCastPositionSearch>
+  <DrawDamageRects>Отображать прямоугольники урона</DrawDamageRects>
+  <DrawDarknessOverlay>Отображать наложение темноты</DrawDarknessOverlay>
+  <DrawDeepResources>Отображать глубокие залежи ресурсов</DrawDeepResources>
+  <DrawDestReservations>Отображать резервирование точек назначения</DrawDestReservations>
+  <DrawDestSearch>Отображать поиск пункта назначения</DrawDestSearch>
+  <DrawDissolutionCells>Отображать ячейки растворения</DrawDissolutionCells>
+  <DrawDistricts>Отображать районы</DrawDistricts>
+  <DrawDoorsDebug>Отладка дверей</DrawDoorsDebug>
+  <DrawDuties>Отображать обязанности</DrawDuties>
+  <DrawFOVSymmetry>Отображать поле зрения</DrawFOVSymmetry>
+  <DrawFleshmassHeartChance>Отображать шанс появления сердца плоти</DrawFleshmassHeartChance>
+  <DrawFog>Отображать туман</DrawFog>
+  <DrawFoodSearchFromMouse>Отображать поиск еды от курсора мыши</DrawFoodSearchFromMouse>
+  <DrawGas>Отображать газ</DrawGas>
+  <DrawGlow>Отображать свечение</DrawGlow>
+  <DrawGravshipMask>Отображать маску гравикорабля</DrawGravshipMask>
+  <DrawHateChanterPositions>Отображать позиции скандирующих ненависть</DrawHateChanterPositions>
+  <DrawIndoorMask>Отображать маску помещений</DrawIndoorMask>
+  <DrawInfestationChance>Отображать шанс нашествия насекомых</DrawInfestationChance>
+  <DrawInteractionCells>Отображать ячейки взаимодействия</DrawInteractionCells>
+  <DrawLightingOverlay>Отображать наложение освещения</DrawLightingOverlay>
+  <DrawLords>Отображать лордов</DrawLords>
+  <DrawMapGraphs>Отображать графики карты</DrawMapGraphs>
+  <DrawMapRooms>Отображать комнаты карты</DrawMapRooms>
+  <DrawMeltingIce>Отображать тающий лед</DrawMeltingIce>
+  <DrawNonCombatantTimer>Отображать таймер некомбатанта</DrawNonCombatantTimer>
+  <DrawOpportunisticJobs>Отображать оппортунистические работы</DrawOpportunisticJobs>
+  <DrawOutdoorMask>Отображать уличную маску</DrawOutdoorMask>
+  <DrawPatherState>Отображать состояние поисковика путей</DrawPatherState>
+  <DrawPaths>Отображать пути</DrawPaths>
+  <DrawPawnDebug>Отладка персонажей</DrawPawnDebug>
+  <DrawPawnRotatorTarget>Отображать цель вращения персонажа</DrawPawnRotatorTarget>
+  <DrawPower>Отображать электросети</DrawPower>
+  <DrawPowerNetGrid>Отображать сетку энергосетей</DrawPowerNetGrid>
+  <DrawPreyInfo>Отображать информацию о добыче</DrawPreyInfo>
+  <DrawRecordedNoise>Отображать записанный шум</DrawRecordedNoise>
+  <DrawRegionDirties>Подсвечивать обновление регионов</DrawRegionDirties>
+  <DrawRegionLinks>Отображать связи регионов</DrawRegionLinks>
+  <DrawRegionThings>Подсвечивать объекты в регионе</DrawRegionThings>
+  <DrawRegionTraversal>Подсвечивать обход регионов</DrawRegionTraversal>
+  <DrawRegions>Отображать регионы</DrawRegions>
+  <DrawRiverDebug>Отладка рек</DrawRiverDebug>
+  <DrawRiverFlowDebug>Отладка течения рек</DrawRiverFlowDebug>
+  <DrawRoadPaths>Отображать пути дорог</DrawRoadPaths>
+  <DrawRooms>Отображать комнаты</DrawRooms>
+  <DrawSand>Отображать песок</DrawSand>
+  <DrawSectionEdges>Отображать границы секций</DrawSectionEdges>
+  <DrawShadows>Отображать тени</DrawShadows>
+  <DrawShamblerAlertMote>Отображать мот предупреждения о шамблере</DrawShamblerAlertMote>
+  <DrawShooting>Отображать стрельбу</DrawShooting>
+  <DrawSnow>Отображать снег</DrawSnow>
+  <DrawStealDebug>Отладка кражи</DrawStealDebug>
+  <DrawStyleSearch>Отображать поиск стиля</DrawStyleSearch>
+  <DrawTerrain>Отображать ландшафт</DrawTerrain>
+  <DrawTerrainCurtain>Отображать занавес ландшафта</DrawTerrainCurtain>
+  <DrawTerrainWater>Отображать воду</DrawTerrainWater>
+  <DrawThingsDynamic>Отображать динамические объекты</DrawThingsDynamic>
+  <DrawThingsPrinted>Отображать напечатанные объекты</DrawThingsPrinted>
+  <DrawTooltipEdges>Отображать границы подсказок</DrawTooltipEdges>
+  <DrawUnpollutionCells>Отображать ячейки очистки от загрязнения</DrawUnpollutionCells>
+  <DrawUsedRects>Отображать используемые прямоугольники</DrawUsedRects>
+  <DrawWaterBodies>Отображать водоемы</DrawWaterBodies>
+  <DrawWorldObjects>Отображать объекты мира</DrawWorldObjects>
+  <DrawWorldOverlays>Отображать наложения мира</DrawWorldOverlays>
+  <DrawWoundAnchorsOnHover>Отображать якоря ран при наведении</DrawWoundAnchorsOnHover>
+  <EditableGlowerColors>Изменяемые цвета свечения без исследований</EditableGlowerColors>
+  <EnableDamage>Включить урон</EnableDamage>
+  <EnablePlayerDamage>Включить урон игроку</EnablePlayerDamage>
+  <EnableRandomDiseases>Включить случайные болезни</EnableRandomDiseases>
+  <EnableRandomMentalStates>Включить случайные нервные срывы</EnableRandomMentalStates>
+  <EnableStoryteller>Включить рассказчика</EnableStoryteller>
+  <EnableTranslationWindowInEnglish>Включить окно перевода на английском</EnableTranslationWindowInEnglish>
+  <FastCaravans>Быстрые караваны</FastCaravans>
+  <FastCrafting>Быстрое создание</FastCrafting>
+  <FastEcology>Быстрая экология</FastEcology>
+  <FastEcologyRegrowRateOnly>Быстрая экология (только скорость роста)</FastEcologyRegrowRateOnly>
+  <FastLearning>Быстрое обучение</FastLearning>
+  <FastMapUnpollution>Быстрая очистка карты от загрязнения</FastMapUnpollution>
+  <FastMonolithRespawn>Быстрое возрождение монолитов</FastMonolithRespawn>
+  <FastResearch>Быстрое исследование</FastResearch>
+  <GearTab_AddToInventory>Выдать предмет...</GearTab_AddToInventory>
+  <GearTab_DamageRandomApparel>Повредить случайную одежду</GearTab_DamageRandomApparel>
+  <GearTab_SetPrimary>Установить основное снаряжение...</GearTab_SetPrimary>
+  <GearTab_Wear>Выдать одежду...</GearTab_Wear>
+  <GodMode>Режим бога</GodMode>
+  <HealthTab_AddHediff>Добавить гедифф...</HealthTab_AddHediff>
+  <HealthTab_DebugTooltip>Отладочная подсказка</HealthTab_DebugTooltip>
+  <HealthTab_DebugTooltipDesc>Наведите курсор на гедиффы в окне здоровья, чтобы получить дополнительную отладочную информацию о них.</HealthTab_DebugTooltipDesc>
+  <HealthTab_ShowHidden>Показать скрытые гедиффы</HealthTab_ShowHidden>
+  <IgnoreGravshipRange>Игнорировать дальность полета гравикорабля</IgnoreGravshipRange>
+  <InstantRecruit>Мгновенная вербовка</InstantRecruit>
+  <InstantVisitorsGift>Мгновенный подарок от посетителей</InstantVisitorsGift>
+  <LogApparelGeneration>Логовать генерацию одежды</LogApparelGeneration>
+  <LogCarriedBetweenJobs>Логовать переносимое между работами</LogCarriedBetweenJobs>
+  <LogCauseOfDeath>Логовать причину смерти</LogCauseOfDeath>
+  <LogCombatLogMouseover>Логовать наведение мыши на боевой лог</LogCombatLogMouseover>
+  <LogComplexGenPoints>Логовать очки генерации комплексов</LogComplexGenPoints>
+  <LogFilthSummary>Логовать сводку мусора</LogFilthSummary>
+  <LogGrammarResolution>Логовать разрешение грамматики</LogGrammarResolution>
+  <LogHourlyScreenshot>Логовать ежечасные скриншоты</LogHourlyScreenshot>
+  <LogIncapChance>Логовать шанс выведения из строя</LogIncapChance>
+  <LogInput>Логовать ввод</LogInput>
+  <LogLordToilTransitions>Логовать переходы обязанностей лордов</LogLordToilTransitions>
+  <LogMapLoad>Логовать загрузку карты</LogMapLoad>
+  <LogMismatchedLayoutFactions>Логовать фракции с несоответствующей планировкой</LogMismatchedLayoutFactions>
+  <LogPsychicRitualTransitions>Логовать переходы психических ритуалов</LogPsychicRitualTransitions>
+  <LogRaidInfo>Логовать информацию о рейде</LogRaidInfo>
+  <LogSignals>Логовать сигналы</LogSignals>
+  <LogTaleRecording>Логовать запись историй</LogTaleRecording>
+  <LogTranslationLookupErrors>Логовать ошибки поиска переводов</LogTranslationLookupErrors>
+  <LogTutor>Логовать обучение</LogTutor>
+  <LogWorldPawnGC>Логовать сборку мусора глобальных персонажей</LogWorldPawnGC>
+  <LoopGravshipCutscene>Зациклить кат-сцену гравикорабля</LoopGravshipCutscene>
+  <LowFPS>Низкий FPS</LowFPS>
+  <NeverForceNormalSpeed>Никогда не форсировать нормальную скорость</NeverForceNormalSpeed>
+  <NoAnimals>Без животных</NoAnimals>
+  <PathThroughWalls>Хождение сквозь стены</PathThroughWalls>
+  <PauseOnError>Пауза при ошибке</PauseOnError>
+  <PlayRitualAmbience>Воспроизводить фоновый звук ритуала</PlayRitualAmbience>
+  <PrefabCopyAllThings>Копирование всех объектов префаба</PrefabCopyAllThings>
+  <PrefabCopyTerrain>Копирование ландшафта префаба</PrefabCopyTerrain>
+  <SaveGravshipRenders>Сохранять рендеры гравикорабля</SaveGravshipRenders>
+  <SearchIgnoresRestrictions>Поиск игнорирует ограничения</SearchIgnoresRestrictions>
+  <ShowAllRoomStats>Показывать все характеристики комнат</ShowAllRoomStats>
+  <ShowArchitectMenuOrder>Показывать порядок кнопок меню архитектора</ShowArchitectMenuOrder>
+  <ShowFloatMenuWorkGivers>Показывать WorkGivers в выпадающем меню</ShowFloatMenuWorkGivers>
+  <ShowFpsCounter>Показывать FPS</ShowFpsCounter>
+  <ShowHiddenInfo>Показывать скрытую информацию</ShowHiddenInfo>
+  <ShowHiddenPawns>Показывать скрытых персонажей</ShowHiddenPawns>
+  <ShowLocomotionUrgency>Показывать срочность передвижения</ShowLocomotionUrgency>
+  <ShowMemoryInfo>Показывать использование памяти (Show memory info)</ShowMemoryInfo>
+  <ShowTpsCounter>Показывать TPS</ShowTpsCounter>
+  <SimulateUsingSteamDeck>Эмулировать Steam Deck</SimulateUsingSteamDeck>
+  <SingleThreadedDrawing>Однопоточная отрисовка</SingleThreadedDrawing>
+  <SkipGravshipTileSelection>Пропустить выбор точки назначения гравикорабля</SkipGravshipTileSelection>
+  <UnlimitedPower>Бесконечная энергия</UnlimitedPower>
+  <WriteApparelScore>Изучить оценку одежды</WriteApparelScore>
+  <WriteAttackTargets>Изучить цели для атаки</WriteAttackTargets>
+  <WriteBeauty>Изучить красоту</WriteBeauty>
+  <WriteCanReachColony>Изучить доступность колонии</WriteCanReachColony>
+  <WriteCellContents>Изучить содержимое ячеек</WriteCellContents>
+  <WriteConcepts>Изучить концепты</WriteConcepts>
+  <WriteCover>Изучить укрытия</WriteCover>
+  <WriteEcosystem>Изучить экосистему</WriteEcosystem>
+  <WriteFertility>Изучить плодородие</WriteFertility>
+  <WriteGame>Изучить игру</WriteGame>
+  <WriteLinkFlags>Изучить флаги связей</WriteLinkFlags>
+  <WriteListFilthInHomeArea>Изучить список мусора в жилой зоне</WriteListFilthInHomeArea>
+  <WriteListHaulables>Изучить список переносимых предметов</WriteListHaulables>
+  <WriteListMergeables>Изучить список объединяемых предметов</WriteListMergeables>
+  <WriteListRepairableBldgs>Изучить список ремонтируемых зданий</WriteListRepairableBldgs>
+  <WriteMapGameConditions>Изучить игровые условия карты</WriteMapGameConditions>
+  <WriteMemoryUsage>Изучить использование памяти</WriteMemoryUsage>
+  <WriteMentalStateCalcs>Изучить расчеты психических состояний</WriteMentalStateCalcs>
+  <WriteMoteSaturation>Изучить насыщенность мотов</WriteMoteSaturation>
+  <WriteMusicManagerPlay>Изучить работу MusicManager</WriteMusicManagerPlay>
+  <WritePathCosts>Изучить стоимость путей</WritePathCosts>
+  <WritePlayingSounds>Изучить воспроизводимые звуки</WritePlayingSounds>
+  <WriteRecentStrikes>Изучить недавние удары</WriteRecentStrikes>
+  <WriteReservations>Изучить резервирования</WriteReservations>
+  <WriteRoomRoles>Изучить роли комнат</WriteRoomRoles>
+  <WriteRopesAndPens>Изучить веревки и загоны</WriteRopesAndPens>
+  <WriteSandDepth>Изучить глубину песка</WriteSandDepth>
+  <WriteSkyManager>Изучить SkyManager</WriteSkyManager>
+  <WriteSnowDepth>Изучить глубину снега</WriteSnowDepth>
+  <WriteSoundEventsRecord>Изучить запись звуковых событий</WriteSoundEventsRecord>
+  <WriteSteamItems>Изучить предметы Steam</WriteSteamItems>
+  <WriteStoryteller>Изучить рассказчика</WriteStoryteller>
+  <WriteTerrain>Изучить ландшафт</WriteTerrain>
+  <WriteTotalSnowDepth>Изучить общую глубину снега</WriteTotalSnowDepth>
+  <WriteWind>Изучить ветер</WriteWind>
+  <WriteWorkSettings>Изучить настройки работы</WriteWorkSettings>
+</LanguageData>

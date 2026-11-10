@@ -1,0 +1,1588 @@
+{
+  "capacityMultiplier": 2,
+  "capacityScope": "All 27 Neat Storage buildings. Fridge capacities are unchanged.",
+  "storages": [
+    {
+      "defName": "sbz_CorpseSpot",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 12,
+      "stacksPerCell": 24,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_Crate",
+      "size": [
+        2,
+        2
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 24,
+      "totalStacks": 48
+    },
+    {
+      "defName": "sbz_DisplayCabinet",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 4,
+      "stacksPerCell": 8,
+      "originalTotalStacks": 8,
+      "totalStacks": 16
+    },
+    {
+      "defName": "sbz_DisplayShelf",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 3,
+      "stacksPerCell": 6,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_DisplayTable",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 1,
+      "stacksPerCell": 2,
+      "originalTotalStacks": 1,
+      "totalStacks": 2
+    },
+    {
+      "defName": "sbz_Drum",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_HalfPallet",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_HangerShelf",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 4,
+      "stacksPerCell": 8,
+      "originalTotalStacks": 4,
+      "totalStacks": 8
+    },
+    {
+      "defName": "sbz_HorizontalWeaponRack",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_MeatHook",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_MidCrate",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_MiniPallet",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_NarrowDisplayCabinet",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 4,
+      "stacksPerCell": 8,
+      "originalTotalStacks": 4,
+      "totalStacks": 8
+    },
+    {
+      "defName": "sbz_NarrowTallDisplayShelf",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_OpenShelf",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_Pallet",
+      "size": [
+        2,
+        2
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 24,
+      "totalStacks": 48
+    },
+    {
+      "defName": "sbz_RoundPedestal",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 1,
+      "stacksPerCell": 2,
+      "originalTotalStacks": 1,
+      "totalStacks": 2
+    },
+    {
+      "defName": "sbz_Safe",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_SmallCrate",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_SmallDisplayShelf",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 3,
+      "stacksPerCell": 6,
+      "originalTotalStacks": 3,
+      "totalStacks": 6
+    },
+    {
+      "defName": "sbz_TallCrate",
+      "size": [
+        2,
+        2
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 24,
+      "totalStacks": 48
+    },
+    {
+      "defName": "sbz_TallDisplayShelf",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_TextileRack",
+      "size": [
+        1,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_TwoTierDisplayShelf",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_VerticalWeaponRack",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 6,
+      "stacksPerCell": 12,
+      "originalTotalStacks": 12,
+      "totalStacks": 24
+    },
+    {
+      "defName": "sbz_WeaponRack",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 3,
+      "stacksPerCell": 6,
+      "originalTotalStacks": 6,
+      "totalStacks": 12
+    },
+    {
+      "defName": "sbz_WideHangerShelf",
+      "size": [
+        2,
+        1
+      ],
+      "originalStacksPerCell": 4,
+      "stacksPerCell": 8,
+      "originalTotalStacks": 8,
+      "totalStacks": 16
+    }
+  ],
+  "fridgeFix": {
+    "defName": "sbz_LargeFridge",
+    "graphicsDef": "sbz_LargeFridgeASF",
+    "capacity": 30,
+    "stacksPerCell": 15,
+    "originalNorthStackStep": 0.275,
+    "layout": "adaptive centered grid, up to 5 columns x 3 rows per cell",
+    "maxItemDrawSizeSparse": [
+      0.95,
+      0.5
+    ],
+    "maxItemDrawSizeFull": [
+      0.43,
+      0.34
+    ],
+    "inGameVerified": false,
+    "previousRevisionUserFeedback": "No overflow, but icons too small and fridge looked underfilled."
+  },
+  "sources": [
+    {
+      "source": "Neat Storage/1.6/Defs/ThingCategoryDef/ThingCategory.xml",
+      "sourceSha256": "ebcaf5a33dfc53b05c90bc6a140f6b0d3efce657804f8c0cf3435e645369dd26",
+      "projectFile": "Components/NeatStorage/Defs/ThingCategoryDef/ThingCategory.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_Corpse.xml",
+      "sourceSha256": "7cd185bd4934e5c2bc027b49cd998eddffce279a901698269240e8f429878336",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_Corpse.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_CrateAndPallet.xml",
+      "sourceSha256": "9b9f757e13a16327250b5f62ba15dc457f40f4b45dd7500ca9dea0f56bc4d582",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_CrateAndPallet.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_DisplayShelf.xml",
+      "sourceSha256": "5c31317ce6c88f534a32114da1668684f3428f44ff7c97c268909c509c6299e6",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_DisplayShelf.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_DisplayTable.xml",
+      "sourceSha256": "2eee587d4414c24b1c64014d03b3b4d48fcc2c9c8ab250076e9a7c1ba0cd1a41",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_DisplayTable.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_Others.xml",
+      "sourceSha256": "c794f102b39df8647fd77956ce5682a47d1a0dfc02448dbc0a66d97f7de5661b",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_Others.xml"
+    },
+    {
+      "source": "Neat Storage/1.6/Defs/ThingDefs_Buildings/Buildings_WeaponRack.xml",
+      "sourceSha256": "580a83de47d9672b83ac2d302d64385fca6b03dbbed253b0abd98eed8e8f6829",
+      "projectFile": "Components/NeatStorage/Defs/ThingDefs_Buildings/Buildings_WeaponRack.xml"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_Crate_east.png",
+      "sourceSha256": "1675bc80d67ef6cd20cbecfe6683b1b7dcda9e2883f67b447aa1e1da28110cd4",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_Crate_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_Crate_north.png",
+      "sourceSha256": "1675bc80d67ef6cd20cbecfe6683b1b7dcda9e2883f67b447aa1e1da28110cd4",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_Crate_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_Crate_south.png",
+      "sourceSha256": "1675bc80d67ef6cd20cbecfe6683b1b7dcda9e2883f67b447aa1e1da28110cd4",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_Crate_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_east.png",
+      "sourceSha256": "cc11c7edcf9abdb2bd1a4e21c59336f721261fadc32160d1c0dfc74c668dd7f5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_eastm.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_north.png",
+      "sourceSha256": "cc11c7edcf9abdb2bd1a4e21c59336f721261fadc32160d1c0dfc74c668dd7f5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_northm.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_south.png",
+      "sourceSha256": "cc11c7edcf9abdb2bd1a4e21c59336f721261fadc32160d1c0dfc74c668dd7f5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_southm.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_CrateLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrate_east.png",
+      "sourceSha256": "a86a10c213933eb22cd3afc5fac0f638da69a32ac42753309e6b826175c7c252",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrate_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrate_south.png",
+      "sourceSha256": "291c428201c45f4f3aa355fa7df821bb5f882ea4a6db49cd403ead0d20ac428c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrate_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_east.png",
+      "sourceSha256": "fc7548a815d82a7e5ca57c2b4a7dbb38b1d0a647a71afc9bfce82928d49e84c2",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_eastm.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_south.png",
+      "sourceSha256": "9647944699d8d2b63fe3b940da411d98ac107f9ee45f93eda1b6a8d780e2a880",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_southm.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_MidCrateLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_SmallCrate.png",
+      "sourceSha256": "3071ea1aa10c41a11cec6595acf3060c45e7aa7903d61b08c1940630cbf0a628",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_SmallCrate.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_SmallCrateLayer.png",
+      "sourceSha256": "3f6f5447009141390d579ae6b5f6120bc4bb9db890f08784f155eb88588ca015",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_SmallCrateLayer.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_SmallCrateLayer_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_SmallCrateLayer_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_TallCrate.png",
+      "sourceSha256": "0423bc2f45eaaade7e2bb93da9538958d87a33aacfe59534abf0580be7540886",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_TallCrate.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerBottom.png",
+      "sourceSha256": "6caa1d8105f137154df9d23bb6cfaf92accc5e042895bbf667a8707765b2a90c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerBottom.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerBottom_m.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerBottom_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerTop.png",
+      "sourceSha256": "934b226b2d8113b42d20fa20a8caf1f4b5b76b4f4330d6ffd2bd788155d95d2b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerTop.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerTop_m.png",
+      "sourceSha256": "b4c533a95adc368829056b397207ece965ea42da740d788754d6ec3476257328",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Crate/sbz_TallCrateLayerTop_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_east.png",
+      "sourceSha256": "a507fd46a0031f1af93291133250057b456ce65c93275da6e76c85e3eea9d120",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_north.png",
+      "sourceSha256": "ef98cd69c9904f027ff35b9cab7b5ab83806902596f350657071f913af47d7bc",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_south.png",
+      "sourceSha256": "0a0b1647bb8a014b66191e699a738547aadc4694edf055905ac7966ff0110bed",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinet_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_east.png",
+      "sourceSha256": "16910110079a3c59f20cb745ed22a8858ab0447e3ded551201b943316e129f62",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_eastm.png",
+      "sourceSha256": "0e8ca9f3c70202e81c801ada856f34142e58548ba65015875c4a14056d65e60c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_north.png",
+      "sourceSha256": "dd7bf9361dad204200c8e5c5cefa25d45e8945d910d18aafb518a5a6f398fdac",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_south.png",
+      "sourceSha256": "5e31cd7ad95eef1dae773fe84dd47a7946da88f1a1ecea8c6ff01fb664a727d1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_southm.png",
+      "sourceSha256": "a2dc310bd8d0e13c9ba7db698430dc9581820deede875fd9135b8d59f7cd1c45",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetUI.png",
+      "sourceSha256": "fe49afada4ef6791a7bd09fc5b12018566b41d293406a7b679a4fa21d3497a49",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayCabinet/sbz_DisplayCabinetUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_east.png",
+      "sourceSha256": "df0ddbbe947e469efeada7eca9e191b005825ee3faf85ae42bdfdefe2e263f9e",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_north.png",
+      "sourceSha256": "ccd52587ec9cae10009a7e3e7794016023ff695a0966ef0d776a2d210e9020a6",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_south.png",
+      "sourceSha256": "134d3a0c85465faf932dbbcfc41035146c0405c0832cc347019fdbc334d2d4cd",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_east.png",
+      "sourceSha256": "b0fd242e1d93075d037fa4de3f599a32449dfabffcfad7e2432deb5792581b6c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_north.png",
+      "sourceSha256": "17b0bfd0d9e139a55d1e9eb286fda3ae145ef5ec590e8e025fa7101bab16bb79",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_south.png",
+      "sourceSha256": "40e3af10b8a9819bc3e7c92f3292b72a4b881c6071345adc2292cdb9eaf31f51",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfUI.png",
+      "sourceSha256": "2472bf1ad05750d39872322ac233df53a58b61ce22fbeb302e04bfcf767ba644",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayShelf/sbz_DisplayShelfUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTable.png",
+      "sourceSha256": "57a505f9ac5443f0be6c8c8584df304085376b9bdfa4304d6f56a328b1b88133",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTable.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableLayer.png",
+      "sourceSha256": "a5c49d3371023cdf60983c57fc8581849b2d02b891b5ac7ebc2f2fd4afb3342f",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableLayer.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableLayerm.png",
+      "sourceSha256": "ff770d87ffb1777e5d64c4f32de8fd37247b1cc4b199b4eb8d1aaf8158f9a907",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableLayerm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableUI.png",
+      "sourceSha256": "1cf7999f8a84409591dc525e645e6d5837fc5f712599fccdafd26afd3baca15f",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayTable/sbz_DisplayTableUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/DisplayTable/sbz_RoundPedestal.png",
+      "sourceSha256": "5bd1a0d5f6b60353b8f37f66c79c81c5978905b0f4b488bba15be90ac7c54fc6",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/DisplayTable/sbz_RoundPedestal.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Drum/sbz_Drum.png",
+      "sourceSha256": "80c139dda711cf5eff462b92d4de630521232547d416f83dac2404be43a5a9bf",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Drum/sbz_Drum.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Drum/sbz_DrumLayer.png",
+      "sourceSha256": "0833e8ca22bffb51f1fc9e160518356c370b1a0a500e2a3afb87c94a1d20c9e7",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Drum/sbz_DrumLayer.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Drum/sbz_DrumLayer_m.png",
+      "sourceSha256": "8e22907c5b228f97886255061b5d137716ea0d7e5c182ed468455767ebfc2a13",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Drum/sbz_DrumLayer_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_east.png",
+      "sourceSha256": "ab66e2f5265e2681b46ed69a85a9f70450ff9e584c3a3e8bd2b5a077126a898b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_north.png",
+      "sourceSha256": "ef98cd69c9904f027ff35b9cab7b5ab83806902596f350657071f913af47d7bc",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_south.png",
+      "sourceSha256": "d857c74bbecad8fb3a3354525b0ea07e574a1d8a64a5df0f98b0fe9a96022a2d",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_east.png",
+      "sourceSha256": "bbda33e7f0d083b452960d93e6fbe07956e56cf3bbaf51e5ff4cfcf410498a56",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_north.png",
+      "sourceSha256": "dd7bf9361dad204200c8e5c5cefa25d45e8945d910d18aafb518a5a6f398fdac",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_south.png",
+      "sourceSha256": "0f28664e5cac83bcdeeca00eeb8988c5d1596556c083ec723181c47d523341e6",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_southm.png",
+      "sourceSha256": "ab49225f67a3e7ea62625e93c8cfb6929043ac512c8fb1fcd881f9578ac97478",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/HangerShelf/sbz_WideHangerShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_east.png",
+      "sourceSha256": "cbd5e49f6d58a71197f5ae3d2965286864b5138cbc96971d384256f056f55712",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_north.png",
+      "sourceSha256": "8267c245c753c862502c10e4a1b60531b641113f6d3d263f276c7a5236d1d921",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_south.png",
+      "sourceSha256": "8267c245c753c862502c10e4a1b60531b641113f6d3d263f276c7a5236d1d921",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHook_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_east.png",
+      "sourceSha256": "3c5eebd1764b5abaa562eb08e5b408676cfc181b0895dbeb99d6ca930fbbe003",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_north.png",
+      "sourceSha256": "0da716781857620b213426f40de58b51af9aaaef4fa91041ad3beb1ec0c529fe",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_south.png",
+      "sourceSha256": "0da716781857620b213426f40de58b51af9aaaef4fa91041ad3beb1ec0c529fe",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/MeatHook/sbz_MeatHookLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_east.png",
+      "sourceSha256": "a782136020212aecee9f8ae7114d4e573fe01ba6af6e9c468d19ba291344923c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_north.png",
+      "sourceSha256": "163a2159f68cce2b00ace6851aa921d35ed9323803b5bab9b807858bbf2837c9",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_south.png",
+      "sourceSha256": "414a6969e565434ccca3113a4a2a94dc2b8be73496e6cb097acc88a30b36bc34",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinet_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_east.png",
+      "sourceSha256": "99daa8ade93e955671934bd04b65781ac332881992ccd5cbd0efa00653b36544",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_eastm.png",
+      "sourceSha256": "c28675b3e30bba025dd0af23a3794e9b0ade0f38651b783626bdacb6a75789d5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_north.png",
+      "sourceSha256": "c161fd568a88e396797263f1dd9e69881b794bfdd11f47ce51bea6720b8c2069",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_south.png",
+      "sourceSha256": "7436a2d9af88d3608db531cca8151a1d082096b25d1c8ddd2c1b12c6c85aeea3",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_southm.png",
+      "sourceSha256": "c3228a735ac0d1f9cef90f4f7f9b22bd90be74a7f06fd345cbb3cea240d21c92",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetUI.png",
+      "sourceSha256": "2567c1505c0b7bd48cdcc1c51185515da559dd7d79f3be47bb00d8989f1ce195",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowDisplayCabinet/sbz_NarrowDisplayCabinetUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_east.png",
+      "sourceSha256": "a5d76ce940d47677d75e28746b16ffb16608375e124dda8ee0b22a2ad3f47dbe",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_north.png",
+      "sourceSha256": "163a2159f68cce2b00ace6851aa921d35ed9323803b5bab9b807858bbf2837c9",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_south.png",
+      "sourceSha256": "a84259eeb91a4d64a7cbd421fac7f72b4d6c105042d0d84a7a8e77dac0994d9b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_east.png",
+      "sourceSha256": "7875a7077a4698f47b15bb000fc54551c1a365308fd14d02b35804915fe9a088",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_north.png",
+      "sourceSha256": "c161fd568a88e396797263f1dd9e69881b794bfdd11f47ce51bea6720b8c2069",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_south.png",
+      "sourceSha256": "19b9856e9ca9c2ff377bce726554e9c1b40acd31f7b8fb285e9f4788636442e2",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_southm.png",
+      "sourceSha256": "81d66d7cd7928879c1d9f7be1a4650a4146fb8a90940e68e2a777c40b676bcbc",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowHangerShelf/sbz_NarrowHangerShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_east.png",
+      "sourceSha256": "a5d76ce940d47677d75e28746b16ffb16608375e124dda8ee0b22a2ad3f47dbe",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_north.png",
+      "sourceSha256": "163a2159f68cce2b00ace6851aa921d35ed9323803b5bab9b807858bbf2837c9",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_south.png",
+      "sourceSha256": "150795d8889746a11a28fa98b964da60bdf4ae0dbeac4efc00080fc1538a095a",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_east.png",
+      "sourceSha256": "7875a7077a4698f47b15bb000fc54551c1a365308fd14d02b35804915fe9a088",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_north.png",
+      "sourceSha256": "c161fd568a88e396797263f1dd9e69881b794bfdd11f47ce51bea6720b8c2069",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_south.png",
+      "sourceSha256": "e3cccdfbb2179944fdac4abaadd5beb8996d9f6c8f7e81977f63185150495847",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/NarrowTallDisplayShelf/sbz_NarrowTallDisplayShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_east.png",
+      "sourceSha256": "5dff8ea9cc051df296de3c9147c04e9b25275955e634779fac899ba77854bf4e",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_north.png",
+      "sourceSha256": "64f85461289228db7d5ad1b493b7887e6c61b2694ebff6cd12d8204cf91322ec",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_south.png",
+      "sourceSha256": "64f85461289228db7d5ad1b493b7887e6c61b2694ebff6cd12d8204cf91322ec",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_east.png",
+      "sourceSha256": "626ebc4a6efc775775237e757490e15e152d5413de59426817aeca0999ff6bf1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_north.png",
+      "sourceSha256": "e14905c3a0b4b7825826d93254d66737cfc6e1f8e37edd366239d8a5deaaf69e",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_south.png",
+      "sourceSha256": "e14905c3a0b4b7825826d93254d66737cfc6e1f8e37edd366239d8a5deaaf69e",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfUI.png",
+      "sourceSha256": "ac2a2fd0a40c6f25edfe3ebc483c3e157246b19694e0ff4ebacf1817ef9ed935",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/OpenShelf/sbz_OpenShelfUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_HalfPallet_east.png",
+      "sourceSha256": "bee0d1e68f0aa1d25b16c2250bb5728f8df88ae4d749967aa353247d60c145c9",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_HalfPallet_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_HalfPallet_south.png",
+      "sourceSha256": "9704311d9857b75f3014c5597aa59a5c69f60b4c76167f39b1959773f7e856d9",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_HalfPallet_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_MiniPallet.png",
+      "sourceSha256": "cccb8bcb2dd9f9e7abb5f298450ea272378ee974a8ad1ac7a694134c8127e441",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_MiniPallet.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_Pallet.png",
+      "sourceSha256": "bf4ae20e045836498a788f1e9850f0509ef78fcdedd1703f0b3feb11bdf11aa1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_Pallet.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_east.png",
+      "sourceSha256": "bf4ae20e045836498a788f1e9850f0509ef78fcdedd1703f0b3feb11bdf11aa1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_north.png",
+      "sourceSha256": "bf4ae20e045836498a788f1e9850f0509ef78fcdedd1703f0b3feb11bdf11aa1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_south.png",
+      "sourceSha256": "bf4ae20e045836498a788f1e9850f0509ef78fcdedd1703f0b3feb11bdf11aa1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Pallet/sbz_Pallet_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_Safe_east.png",
+      "sourceSha256": "06355422921d948e963ab7b8af65d3bf85efc53d768a00f8f9fbe51c50ee8a31",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_Safe_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_Safe_north.png",
+      "sourceSha256": "1ba5c35452dbf873782a86752cab80945efc1dff47e9f7afa464e2566bb5dcb5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_Safe_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_Safe_south.png",
+      "sourceSha256": "0057bd72441a86b6bd15ba1e40702843fb1879045eec4b2170f23f9762f4b965",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_Safe_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_east.png",
+      "sourceSha256": "d75954d5b2eb571d5ee2fa1c84748fc1b7cb4f0882a47f7b5eaf11b0b52c5a0f",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_eastm.png",
+      "sourceSha256": "96c150e18aa56284165d21da185954cdc53092ae70d3236da1c60fed1a0dab67",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_north.png",
+      "sourceSha256": "4d9ad2ca2a05a59a5429bee667765832a0176182e922ffff0062c1c509127765",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_south.png",
+      "sourceSha256": "f2af15e94669dabe335c07a0a09cc4c029cd42628d76b637366c107746065ad8",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_southm.png",
+      "sourceSha256": "b71f113764e7e1494f924d35c8166bf3fdf7c72ecc285f3910452ffc846695b4",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/Safe/sbz_SafeLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/sbz_CorpseSpot.png",
+      "sourceSha256": "3b178cdf0c68b52a1f30e70443451d428aad055d0be08d41f6d4e5c785ebcace",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/sbz_CorpseSpot.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_east.png",
+      "sourceSha256": "92603ffc5e9d21b939a03a90da3d73b9e6c414923633a74e3e1b5d0e868b716b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_north.png",
+      "sourceSha256": "38fd7e618a3d93fb00cee72044c75cddd1fe3ab3d36342a64ab68e081cbef768",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_south.png",
+      "sourceSha256": "49e8585f5708c8bdf81a4c3f9789d972a8874b8ce8df411fbce8707a313a04c1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_east.png",
+      "sourceSha256": "f85f2d0f0a844dace19823ee68fbd323f5ce4d109e61431e59f981d35c5a74d0",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_north.png",
+      "sourceSha256": "f37a8b464e3fb650b6a796b4abfdcc699a21a528fac7d70bf0dcfdc346736d89",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_south.png",
+      "sourceSha256": "aaa2e79fbd7ff428acfb4947930a918151ee8fb15c488294998f63c36449d028",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfUI.png",
+      "sourceSha256": "48817a660b1c004656b29268839a8d46aec812a99b228d70ae4aee32ebf9f4be",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/SmallDisplayShelf/sbz_SmallDisplayShelfUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_east.png",
+      "sourceSha256": "ab66e2f5265e2681b46ed69a85a9f70450ff9e584c3a3e8bd2b5a077126a898b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_north.png",
+      "sourceSha256": "ef98cd69c9904f027ff35b9cab7b5ab83806902596f350657071f913af47d7bc",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_south.png",
+      "sourceSha256": "0ab5778e1e8cfcdf62b27be95632afa173b110f5e008402b6747a486156d58e6",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_east.png",
+      "sourceSha256": "bbda33e7f0d083b452960d93e6fbe07956e56cf3bbaf51e5ff4cfcf410498a56",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_north.png",
+      "sourceSha256": "dd7bf9361dad204200c8e5c5cefa25d45e8945d910d18aafb518a5a6f398fdac",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_south.png",
+      "sourceSha256": "3df86fb47e6ee8420648eccf2eb6257f2b648082f7c3103b14c00fc9595353b7",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TallDisplayShelf/sbz_TallDisplayShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRack.png",
+      "sourceSha256": "db787d493e9f8509e77f19a971daf5c045627f716a1b6c4b34efc15b77ff4f11",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRack.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer.png",
+      "sourceSha256": "b14b42c3930ceaa08bdf300465136fe62df78fdbc96f52fcb400181e18fa8593",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1.png",
+      "sourceSha256": "e997341b8c8f41da22f6e0902c91d74d7c0b0c5561634b6c90d88cbe521d43f2",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_2.png",
+      "sourceSha256": "d1f2cac5e60bd3d1776263db901945e9af91405f9ba464e4aed026b9911fd817",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_2.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_2_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_2_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer1_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer2.png",
+      "sourceSha256": "3bb8ee30c9ec7af973fc11318986556cbe39cb64d9d17d21bf3cb2f043cc6018",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer2.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer2_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer2_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer3.png",
+      "sourceSha256": "966b9913697f1b13c503d072107a848e3c7d80aea30713978365ff38228d33b1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer3.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer3_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer3_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer4.png",
+      "sourceSha256": "60e4faf216cdf3d5db5c62e6123f7af3fdb53abfe1b2347dcb34b9a4c4282a05",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer4.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer4_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer4_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer5.png",
+      "sourceSha256": "8ccbafc336364878fe03a7a8b1fe55aa34029428022e437942cdd84d2b5dc458",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer5.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer5_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer5_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer6.png",
+      "sourceSha256": "301d9fb9c20bb65549d261d1215d9205285586829732d6accad8b111651e66fd",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer6.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer6_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer6_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer_m.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TextileRack/sbz_TextileRackLayer_m.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_east.png",
+      "sourceSha256": "ab66e2f5265e2681b46ed69a85a9f70450ff9e584c3a3e8bd2b5a077126a898b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_north.png",
+      "sourceSha256": "677c62e98a1e1a1cbb482f70391f12dadae486d808d025e246fed2d8e52b5511",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_south.png",
+      "sourceSha256": "6b3e85979f5ce5cef0c49934c977efef37a8c1eec80000a13b97e6423c2565dc",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelf_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_east.png",
+      "sourceSha256": "bbda33e7f0d083b452960d93e6fbe07956e56cf3bbaf51e5ff4cfcf410498a56",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_north.png",
+      "sourceSha256": "dd7bf9361dad204200c8e5c5cefa25d45e8945d910d18aafb518a5a6f398fdac",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_south.png",
+      "sourceSha256": "ca6e3f189499879b619e139a646a6b9bed45fb052aac3edc534f680aee789fb3",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_east.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_north.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_south.png",
+      "sourceSha256": "8aeb8570818e13ff45afa2e8fa12da68b45a81511028583f5c1673e82b84a362",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfLayerTwo_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfUI.png",
+      "sourceSha256": "75f14b5ea4f6cad99e10662d3d98542105856a4f64268939dffeff7a5ac360a7",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/TwoTierDisplayShelf/sbz_TwoTierDisplayShelfUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_HorizontalWeaponRackUI.png",
+      "sourceSha256": "99bd56bec3717960c09ce08167ee2dd25be15db5c5adc90d6a3ac3d87c132fbd",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_HorizontalWeaponRackUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_east.png",
+      "sourceSha256": "f64171feb5551c7bc3977e046b17f78e51c01f89c8c1e9c6e1f2abc7afecf599",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_north.png",
+      "sourceSha256": "5f22e7d8424e94a44dd2309582b284fff6292c742693d85c5b1ef6fee434a562",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_south.png",
+      "sourceSha256": "5f22e7d8424e94a44dd2309582b284fff6292c742693d85c5b1ef6fee434a562",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRack_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_east.png",
+      "sourceSha256": "bc154764c5549814c21f599e3e7617831d3bf04c9d1a6d13c61874f2e94482b7",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_north.png",
+      "sourceSha256": "0ccf650496ae2cebc2b0a907247b8f339664d5b5ca11a9d2b27adce92f24e0e2",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_south.png",
+      "sourceSha256": "0ccf650496ae2cebc2b0a907247b8f339664d5b5ca11a9d2b27adce92f24e0e2",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_OldWeaponRackLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_VerticalWeaponRackUI.png",
+      "sourceSha256": "5924a76d28fee349c50ff4207a290d080bcc980bba73d64029906412ffc6935c",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_VerticalWeaponRackUI.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_east.png",
+      "sourceSha256": "98da2230884f8e1a5567b405579564c6e3c560e9e98147abf224d9f184cd6fee",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_north.png",
+      "sourceSha256": "cedce491c5630b37197fea9158344f293f689c4548f53203035a8809c82fd78b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_south.png",
+      "sourceSha256": "a3f0dc3ea5a3309ecffa16ec4ad8860aeba3ac8dd210d5b2ad7219e4a68aace5",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRack_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_east.png",
+      "sourceSha256": "6467ca9f29741faed79dc4ffa1dd723cdb1d8ee7c1a25c414e5c4e80e0d53bd1",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_east.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_eastm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_eastm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_north.png",
+      "sourceSha256": "13eb27b3440f6fa5948fb87f000fc840841d95e3791575b1758055feea7f4b9b",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_north.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_northm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_northm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_south.png",
+      "sourceSha256": "82e842a1a6fddec1e155e7c39c2d0a95270139c531db6d4a39bdd029daf222ec",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_south.png"
+    },
+    {
+      "source": "Neat Storage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_southm.png",
+      "sourceSha256": "8199ccb4e9ab88521c9d4726832d6c2f43e77d0576368bfb03627ec2dc43f289",
+      "projectFile": "Components/NeatStorage/Textures/Things/Building/Storage/WeaponRack/sbz_WeaponRackLayer_southm.png"
+    },
+    {
+      "source": "Neat Storage/Textures/UI/sbz.png",
+      "sourceSha256": "1bf244eb37662a4a233da82546e7d8b4b0cce004d916eebd4589737ba0771bf2",
+      "projectFile": "Components/NeatStorage/Textures/UI/sbz.png"
+    },
+    {
+      "source": "Neat Storage/About/About.xml",
+      "sourceSha256": "48729f76c31d875f8963363ca7fdee74d365c4813516215dfa79fe7fb1632849",
+      "projectFile": "ThirdParty/NeatStorage.About.xml"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/1.6/Defs/ThingCategoryDef/ThingCategory.xml",
+      "sourceSha256": "ebcaf5a33dfc53b05c90bc6a140f6b0d3efce657804f8c0cf3435e645369dd26",
+      "action": "identical_category_deduplicated"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/1.6/Defs/ThingDefs_Buildings/Buildings_Fridge.xml",
+      "sourceSha256": "db20c8393edc2b8e16e3d3b54c3b67231d4e8454c30a59a2dd2a1ed46c393644",
+      "projectFile": "Components/Fridge/Defs/ThingDefs_Buildings/Buildings_Fridge.xml"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/1.6/Patches/Template.xml",
+      "sourceSha256": "7c015dfb9d3ad1ba20674e7bbc81d45ff0a53a6dd0db5a1e3d940d0e49b60b3c",
+      "projectFile": "Components/Fridge/Patches/Template.xml"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/1.6/Patches/VanillaNutrientPasteExpanded.xml",
+      "sourceSha256": "d603b2997cb8dd9f048ef42c6eb0260f47fefe2967eff954fc6e07150ec27e2c",
+      "projectFile": "Components/Fridge/Patches/VanillaNutrientPasteExpanded.xml"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_east.png",
+      "sourceSha256": "5a48a81b9173e666266238e94f0659ec4c77ab38640ea73c70227e4062602772",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_east.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_north.png",
+      "sourceSha256": "5a48a81b9173e666266238e94f0659ec4c77ab38640ea73c70227e4062602772",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_south.png",
+      "sourceSha256": "5a48a81b9173e666266238e94f0659ec4c77ab38640ea73c70227e4062602772",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_east.png",
+      "sourceSha256": "7d5418991d7218818347fa718624f2997bcc67f58e6281c961751bfc5a1d55fb",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_east.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_north.png",
+      "sourceSha256": "7d5418991d7218818347fa718624f2997bcc67f58e6281c961751bfc5a1d55fb",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_south.png",
+      "sourceSha256": "7d5418991d7218818347fa718624f2997bcc67f58e6281c961751bfc5a1d55fb",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_CorpseFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_north.png",
+      "sourceSha256": "a38a165cc99ba14a1c5ff7b2621c9b3d924fa697fc0150fd37088b1c04e59eda",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_south.png",
+      "sourceSha256": "6c795d22a96f0380c55826527224c539017a1551e56046991809afcdc536b002",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_west.png",
+      "sourceSha256": "d0dd43e2f2beaaa358c5a8730fd9f91d0d6866385bb814fa579f822cde0a1f10",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_north.png",
+      "sourceSha256": "f28c9488ea226cfbb3d4f36481f5da91533f50ab3585d6eb7ed9bbe46c2e74b0",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_south.png",
+      "sourceSha256": "fd64d28c0e7e205f959c1eba02cf8caa9d91cfe6ddd6fa853ce91400b27c9768",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_west.png",
+      "sourceSha256": "f6d7a98bfa58ca6c8313d763a0de5725de6c0e5fa37f9dcc0c04643e5ca57504",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleChestFridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_north.png",
+      "sourceSha256": "7cc070752e3d297752adccfdbed3d2c6f11febf2dbc5f57043ada999ad0acc18",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_south.png",
+      "sourceSha256": "2e847a51b40092a0bebde103888b53949f8c5cff9a06963f389fc262665b7c24",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_west.png",
+      "sourceSha256": "5bf1140f9ba9ffc95a53cacf72c28dee4e77599123210d62badf29ee31537f22",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_north.png",
+      "sourceSha256": "acdf7bcabf5bc2e2ac0f93dcbde55d87923075d392e224b42683fa6f7a036cf0",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_south.png",
+      "sourceSha256": "a0b1c824e87123bee323b7e71bc1a3b86a2a2b63d73d47965f3a6e4cd2dc9e69",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_west.png",
+      "sourceSha256": "9b39dfbe2d8d4dcab5c81c902a58e4b644f784e9ae25d21970309a53b6e3cdb9",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_DoubleWallFridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_Fridge_north.png",
+      "sourceSha256": "53efa70a11928362e3c5c1fcd78e05bdc88bd660a5eacfae6c0c4cac84923880",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_Fridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_Fridge_south.png",
+      "sourceSha256": "cf56611a890f978936716549048c26bd714d5ac77bcfc6824848c9a4bff14c70",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_Fridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_Fridge_west.png",
+      "sourceSha256": "8f84216f3f18a1db241a96fd72c54cb5c55b47cc50b4968e557761b88b77ec73",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_Fridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_north.png",
+      "sourceSha256": "62b86e237fca6a118230d92410de70ae49159c3a6a6e4bdf99d63c66bd65b84b",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_south.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_west.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_FridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_north.png",
+      "sourceSha256": "fbf05684c576fe91ac8b293cf99073bb83cbf265f179dbab6e5e68e90763e749",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_south.png",
+      "sourceSha256": "52068743fb58687e2a1d78470eca156930a82dc454dccaa0a6b4f513533f8845",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_west.png",
+      "sourceSha256": "d37be296d6c512444732312bfbaf2ab9c3f0f93c8acc170ec5968edcf6af2279",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_north.png",
+      "sourceSha256": "774ad1ea4da970337d51af453ba36a7f0a8066eb930e3f6d40a868c9c43bc3e4",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_south.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_west.png",
+      "sourceSha256": "193c5039a9c7e37ce89c71ea16b5e727effe523af5be094085bd34791be1480a",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_LargeFridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_north.png",
+      "sourceSha256": "93ef826e72d647320a782123352eb29a8a20e56ff0c718d5354e0cfac5a9e7c2",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_south.png",
+      "sourceSha256": "1fc65daef4c00c8303fd310933b0a6d79b5ebd3428c17b6ef2c2b6f08e9dac4f",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_west.png",
+      "sourceSha256": "c2d5919919ce7cf71d3fd88a7b9110a93b60f13d678a77384191d93ad41d9be2",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_north.png",
+      "sourceSha256": "c816d5f7e1897ec74132552b611a062f6873793e1c28d96e5693023e652d4d83",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_south.png",
+      "sourceSha256": "db638c8cfea48e9aab23fff9dd423c9354bcc08d3f1ec43d78e8320f04d973d7",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_west.png",
+      "sourceSha256": "cb34cbdb22615dc6d07be85e172f9511e107ba5beadc1173133cf9d0f06cce6c",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleChestFridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_north.png",
+      "sourceSha256": "c4b209f878946813a3cbe84457fc5aaf265e89afa4512603ddf49d4d4a5e4a6d",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_south.png",
+      "sourceSha256": "2be6d24fe34a5f98c82a6d819da0f3c6c00bc6635eb2a28114d03fffab9246c2",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_west.png",
+      "sourceSha256": "018577d0eaf77d7a56fe216dcdb9fdc2540daf92feca46cec54cc84654fc5786",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridge_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_north.png",
+      "sourceSha256": "6ea98f4c111a5d69319f9059c74537e1633b31cf8f0bc316608451e41aadac00",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_north.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_south.png",
+      "sourceSha256": "1dca29c7751fc004fc14fbad36b38affbe2dc6591c6e1a9ccb1bfb8d715ee384",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_south.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_west.png",
+      "sourceSha256": "b1876b86d6d164b0127a24a07ea42dff83830bd99622942e1afc7df0ad285ec3",
+      "projectFile": "Components/Fridge/Textures/Things/Building/Storage/Fridge/sbz_SingleWallFridgeLayer_west.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/Textures/UI/sbz.png",
+      "sourceSha256": "b265cded493ab592c6bb53eca403460f49e562f62463f43e5e1cff904535819b",
+      "projectFile": "Components/Fridge/Textures/UI/sbz.png"
+    },
+    {
+      "source": "[sbz] Fridge (Холодильники)/About/About.xml",
+      "sourceSha256": "0bb629a47ea8cc2a916ae9f7e2d052de623ae2e13ce38330688b9cc6db476935",
+      "projectFile": "ThirdParty/Fridge.About.xml"
+    }
+  ]
+}

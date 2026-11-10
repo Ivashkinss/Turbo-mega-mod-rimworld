@@ -1,0 +1,13 @@
+{
+  "xmlFilesParsed": 21,
+  "storagesWithVerifiedDoubleCapacity": 27,
+  "fridgesWithUnchangedCapacity": 7,
+  "uniqueRussianEntries": 725,
+  "originalSourceHashesVerified": 253,
+  "fridgeWorkerCasesVerified": 720,
+  "recoveredDevMenuRussianKeys": 615,
+  "duplicateDefs": 0,
+  "duplicateRussianKeys": 0,
+  "inGameVerified": false,
+  "visualLimitations": "Production grid worker tested with doubles and compiled against game assemblies; actual rendering still requires an in-game check."
+}
