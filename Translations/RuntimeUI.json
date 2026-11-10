@@ -1,0 +1,18 @@
+{
+  "literals": {
+    "Enabled: ": "Включено: ",
+    "Relative Probability: {0:F0}%": "Относительная вероятность: {0:F0}%",
+    "<i>No description</i>": "<i>Нет описания</i>",
+    "<color=grey><i>Default value: </i>": "<color=grey><i>По умолчанию: </i>",
+    "\n\nRight-click to reset to default.</color>": "\n\nПравая кнопка мыши — сбросить значение.</color>",
+    "Loading...": "Загрузка...",
+    "{0} available for trading.{1}{2} total on map.": "Доступно для торговли: {0}.{1}Всего на карте: {2}.",
+    "{0}/{1} projects researched.": "Изучено технологий: {0}/{1}.",
+    "Dynamic trade interface": "Динамическое окно торговли"
+  },
+  "corpseOffsetModes": {
+    "None": "Не смещать",
+    "InterpolateToCorrect": "Плавно возвращать на место",
+    "KeepOffset": "Сохранять смещение"
+  }
+}

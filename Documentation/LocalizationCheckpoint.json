@@ -1,0 +1,17 @@
+{
+  "MeleeAnimation": {
+    "keyed": 246,
+    "scalarFields": 109,
+    "rulePacks": 8,
+    "grammarLines": 45,
+    "errors": []
+  },
+  "DynamicTradeInterface": {
+    "keyed": 73,
+    "scalarFields": 28,
+    "rulePacks": 0,
+    "grammarLines": 0,
+    "errors": []
+  },
+  "duplicateRussianKeys": 0
+}

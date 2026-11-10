@@ -10,5 +10,7 @@ $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll',
     ForEach-Object { '/reference:' + (Join-Path $managedPath $_) }
 $references += @('AdaptiveStorageFramework.dll','1ITransformable.dll') |
     ForEach-Object { '/reference:' + (Join-Path $frameworkPath $_) }
-& $compilerPath /noconfig /nologo /target:library /optimize+ /nostdlib+ @references (('/out:') + (Join-Path $outputPath 'TurboMegaMod.dll')) (Join-Path $projectPath 'Source\FridgeItemGraphicWorker.cs')
+$references += '/reference:' + (Join-Path $gamePath 'Mods\2009463077\Current\Assemblies\0Harmony.dll')
+$sourceFiles = @(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Select-Object -ExpandProperty FullName)
+& $compilerPath /noconfig /nologo /target:library /optimize+ /nostdlib+ @references (('/out:') + (Join-Path $outputPath 'TurboMegaMod.dll')) @sourceFiles
 if ($LASTEXITCODE -ne 0) { throw "Compiler failed: $LASTEXITCODE" }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <colCategoryDef.label>категория</colCategoryDef.label>
+  <colCategoryDef.description>Основная категория предмета.</colCategoryDef.description>
+  <colDurabilityDef.label>пр.</colDurabilityDef.label>
+  <colDurabilityDef.tooltip>Прочность</colDurabilityDef.tooltip>
+  <colDurabilityDef.description>Оставшаяся прочность предмета в процентах, если она у него есть.</colDurabilityDef.description>
+  <colPricePerWeightDef.label>/кг</colPricePerWeightDef.label>
+  <colPricePerWeightDef.tooltip>Цена за килограмм</colPricePerWeightDef.tooltip>
+  <colPricePerWeightDef.description>Цена предмета, делённая на его массу.</colPricePerWeightDef.description>
+  <colQualityDef.label>качество</colQualityDef.label>
+  <colQualityDef.description>Качество предмета.</colQualityDef.description>
+  <colTradeButtonsDef.label>действия</colTradeButtonsDef.label>
+  <colTradeButtonsDef.description>Кнопки увеличения и уменьшения количества покупаемого или продаваемого товара.\nПервое нажатие двойной стрелки выбирает количество, которое может оплатить соответствующая сторона, второе — всё доступное количество. Удерживайте Shift, чтобы сразу выбрать всё.</colTradeButtonsDef.description>
+  <colTradeCaptionDef.label>название</colTradeCaptionDef.label>
+  <colTradeCaptionDef.description>Название предмета.</colTradeCaptionDef.description>
+  <colTradeCounterDef.label>к обмену</colTradeCounterDef.label>
+  <colTradeCounterDef.description>Поле с количеством покупаемого или продаваемого товара. Значение можно ввести вручную.</colTradeCounterDef.description>
+  <colTradeCounterLabelDef.label>к обмену</colTradeCounterLabelDef.label>
+  <colTradeCounterLabelDef.description>Более быстрый вариант счётчика: показывает количество покупаемого или продаваемого товара без возможности ввода.</colTradeCounterLabelDef.description>
+  <colTradeExtraIconsDef.label>значки</colTradeExtraIconsDef.label>
+  <colTradeExtraIconsDef.description>Дополнительные значки с информацией о товаре.</colTradeExtraIconsDef.description>
+  <colTradeIconDef.label>изображение</colTradeIconDef.label>
+  <colTradeIconDef.description>Маленькое изображение товара.</colTradeIconDef.description>
+  <colTradeInfoDef.tooltip>Сведения о предмете</colTradeInfoDef.tooltip>
+  <colTradeInfoDef.description>Кнопка открытия окна сведений о предмете.</colTradeInfoDef.description>
+  <colTradePriceDef.label>цена</colTradePriceDef.label>
+  <colTradePriceDef.description>Цена товара.</colTradePriceDef.description>
+  <colTradeQuantityDef.label>в наличии</colTradeQuantityDef.label>
+  <colTradeQuantityDef.description>Количество товара, доступное для покупки или продажи.</colTradeQuantityDef.description>
+</LanguageData>

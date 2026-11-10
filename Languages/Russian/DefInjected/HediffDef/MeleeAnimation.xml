@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_KnockedOut.description>Потеря сознания после удара в ближнем бою.
+Проходит со временем самостоятельно. Другой персонаж также может оказать помощь, даже без медикаментов.</AM_KnockedOut.description>
+  <AM_KnockedOut.label>нокаут</AM_KnockedOut.label>
+  <AM_KnockedOut.labelNoun>нокаут</AM_KnockedOut.labelNoun>
+</LanguageData>

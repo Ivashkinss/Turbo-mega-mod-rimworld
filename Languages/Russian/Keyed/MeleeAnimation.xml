@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AM.ModTitle>Melee Animation от Epicguru</AM.ModTitle>
+  <AM.LoadingText>Загрузка Melee Animation</AM.LoadingText>
+  <AM.Animation>Анимация</AM.Animation>
+  <AM.Error.Grapple.FloatMenu>Нельзя применить лассо: {0}</AM.Error.Grapple.FloatMenu>
+  <AM.Grapple.FloatMenu>Притянуть лассо: {0}</AM.Grapple.FloatMenu>
+  <AM.Grapple.FloatMenu.Tip>Персонаж {0} притянет цель {1} с помощью лассо.\nЭто не нанесёт цели {1} урона.</AM.Grapple.FloatMenu.Tip>
+  <AM.Grapple.FloatMenu.TipEnemy>Персонаж {0} притянет цель {1} с помощью лассо.\nЦель {1} не получит урона, но окажется в пределах досягаемости для ближнего боя или добивания.</AM.Grapple.FloatMenu.TipEnemy>
+  <AM.Exec.FloatMenu>Добить: {0}</AM.Exec.FloatMenu>
+  <AM.Exec.FloatMenu.Tip>Выполнить добивание цели {1}.\nВозможные исходы зависят от оружия, навыка ближнего боя, брони, настроек мода и других факторов:\n{2}</AM.Exec.FloatMenu.Tip>
+  <AM.Exec.FloatMenu.Walk> (подойти к цели)</AM.Exec.FloatMenu.Walk>
+  <AM.Exec.FloatMenu.Lasso> (лассо)</AM.Exec.FloatMenu.Lasso>
+  <AM.Error.Grapple.Internal>Внутренняя ошибка: {Error}</AM.Error.Grapple.Internal>
+  <AM.Error.Grapple.AlreadyAtTarget>Цель {Target} уже в пределах досягаемости ближнего боя</AM.Error.Grapple.AlreadyAtTarget>
+  <AM.ProbReport.Kill>Убийство</AM.ProbReport.Kill>
+  <AM.ProbReport.Down>Выведение из строя</AM.ProbReport.Down>
+  <AM.ProbReport.Injure>Ранение</AM.ProbReport.Injure>
+  <AM.ProbReport.Fail>Неудача</AM.ProbReport.Fail>
+  <AM.Error.Duel.Internal>Внутренняя ошибка: {Error}</AM.Error.Duel.Internal>
+  <AM.Error.Duel.Dead>Персонажа {Pawn} нет в живых</AM.Error.Duel.Dead>
+  <AM.Error.Duel.Down>Персонаж {Pawn} лежит на земле</AM.Error.Duel.Down>
+  <AM.Error.Duel.NotSpawned>Персонаж {Pawn} сейчас не может участвовать в поединке</AM.Error.Duel.NotSpawned>
+  <AM.Error.Duel.NotSpawned.Short>Персонаж {Pawn} недоступен</AM.Error.Duel.NotSpawned.Short>
+  <AM.Error.Duel.MissingWeapon>У персонажа {Pawn} нет подходящего оружия ближнего боя</AM.Error.Duel.MissingWeapon>
+  <AM.Error.Duel.NoAnim>Оружие этих персонажей не подходит для поединка.</AM.Error.Duel.NoAnim>
+  <AM.Error.Duel.NoAnim.Short>Это оружие не подходит для поединка</AM.Error.Duel.NoAnim.Short>
+  <AM.Error.Duel.NoPath>Персонаж {0} не может добраться до соперника {1} для начала поединка</AM.Error.Duel.NoPath>
+  <AM.Error.Duel.OnCooldown>Персонажу {0} нужно отдохнуть перед следующим поединком</AM.Error.Duel.OnCooldown>
+  <AM.Error.Duel.WaitedTooLong>Персонаж {0} устал ждать соперника {1} и отменил поединок.</AM.Error.Duel.WaitedTooLong>
+  <AM.Gizmos.DuelSpot.StartDuel.Label>Начать поединок</AM.Gizmos.DuelSpot.StartDuel.Label>
+  <AM.Gizmos.DuelSpot.StartDuel.Desc>Начать тренировочный поединок между двумя союзниками с подходящим оружием. Заключённые участвовать не могут.\n\nЭто дружеский поединок: никто не пострадает.</AM.Gizmos.DuelSpot.StartDuel.Desc>
+  <AM.Gizmos.DuelSpot.StartDuel.InUse>Место для поединков сейчас занято</AM.Gizmos.DuelSpot.StartDuel.InUse>
+  <AM.Gizmos.DuelSpot.StartDuel.Forbidden>Место для поединков запрещено</AM.Gizmos.DuelSpot.StartDuel.Forbidden>
+  <AM.Gizmos.DuelSpot.StartDuel.MissingWeapon>У персонажа {0} нет подходящего оружия ближнего боя: требуется длинное оружие, короткое не подходит</AM.Gizmos.DuelSpot.StartDuel.MissingWeapon>
+  <AM.Gizmos.DuelSpot.StartDuel.IncompatWeapon>Оружие персонажа {0} несовместимо с оружием соперника {1}: для поединка требуется длинное оружие</AM.Gizmos.DuelSpot.StartDuel.IncompatWeapon>
+  <AM.Gizmos.DuelSpot.StartDuel.CannotInterrupt>Текущее занятие персонажа {0} нельзя прервать</AM.Gizmos.DuelSpot.StartDuel.CannotInterrupt>
+  <AM.Gizmos.DuelSpot.StartDuel.NoPath>Персонаж {0} не может добраться до места поединка</AM.Gizmos.DuelSpot.StartDuel.NoPath>
+  <AM.Gizmos.DuelSpot.StartDuel.OnCooldown>Персонажу {0} нужно ещё {2} сек. отдыха перед дружеским поединком</AM.Gizmos.DuelSpot.StartDuel.OnCooldown>
+  <AM.Gizmos.DuelSpot.StartDuel.FloatMenuTitle>Выберите соперника для поединка</AM.Gizmos.DuelSpot.StartDuel.FloatMenuTitle>
+  <AM.Gizmos.DuelSpot.StartDuel.FailedToStart>Из-за непредвиденной ошибки поединок не начался. Отправьте журнал автору мода.</AM.Gizmos.DuelSpot.StartDuel.FailedToStart>
+  <AM.Gizmos.DuelSpot.ToggleVisibility>Показать или скрыть</AM.Gizmos.DuelSpot.ToggleVisibility>
+  <AM.Gizmos.DuelSpot.ToggleVisibility.Desc>Скрыть это место для поединков или снова показать его.\nВнимание: оно станет полностью невидимым! Запомните, где разместили его, иначе найти его снова будет непросто.</AM.Gizmos.DuelSpot.ToggleVisibility.Desc>
+  <AM.Error.Grapple.Dead>Персонажа {Grappler} нет в живых</AM.Error.Grapple.Dead>
+  <AM.Error.Grapple.Stunned>У персонажа {Grappler} оглушение</AM.Error.Grapple.Stunned>
+  <AM.Error.Grapple.DeadTarget>Цели {Target} нет в живых</AM.Error.Grapple.DeadTarget>
+  <AM.Error.Grapple.Downed>Персонаж {Grappler} лежит на земле</AM.Error.Grapple.Downed>
+  <AM.Error.Grapple.AlreadyTarget>Цель {Target} уже притягивают лассо</AM.Error.Grapple.AlreadyTarget>
+  <AM.Error.Grapple.AlreadyTarget.Short>Уже притягивают лассо</AM.Error.Grapple.AlreadyTarget.Short>
+  <AM.Error.Exec.FloatMenu>Нельзя выполнить добивание: {0}</AM.Error.Exec.FloatMenu>
+  <AM.Error.Exec.Internal>Внутренняя ошибка: {Error}</AM.Error.Exec.Internal>
+  <AM.Error.Exec.Dead>Персонажа {Exec} нет в живых</AM.Error.Exec.Dead>
+  <AM.Error.Exec.NoWalk.Short>Нельзя добраться до цели {Target}</AM.Error.Exec.NoWalk.Short>
+  <AM.Error.Exec.DeadTarget>Цели {Target} нет в живых</AM.Error.Exec.DeadTarget>
+  <AM.Error.Exec.Downed>Персонаж {Exec} лежит на земле</AM.Error.Exec.Downed>
+  <AM.Error.Exec.DownedTarget>Цель {Target} лежит на земле. Добивание таких целей недоступно.</AM.Error.Exec.DownedTarget>
+  <AM.Error.Exec.DownedTarget.Short>Цель {Target} лежит на земле</AM.Error.Exec.DownedTarget.Short>
+  <AM.Error.Exec.BadRace>Цель {Target} не подходит для добивания.</AM.Error.Exec.BadRace>
+  <AM.Error.Exec.BadRace.Short>Неподходящая цель: {Target}</AM.Error.Exec.BadRace.Short>
+  <AM.Error.Exec.CannotFist>Персонаж {Exec} без оружия и не может использовать кулаки: {Additional}</AM.Error.Exec.CannotFist>
+  <AM.Error.Exec.CannotFist.Short>Персонаж {Exec} не может использовать кулаки</AM.Error.Exec.CannotFist.Short>
+  <AM.Error.Exec.SelfInAnimation>Персонаж {Exec} сейчас не может выполнять добивания</AM.Error.Exec.SelfInAnimation>
+  <AM.Error.Exec.InAnimation>Цель {Target} сейчас нельзя добить</AM.Error.Exec.InAnimation>
+  <AM.Error.Exec.Stunned>У персонажа {Exec} оглушение</AM.Error.Exec.Stunned>
+  <AM.Error.Exec.NoWalk>Цель {Target} не рядом с персонажем {Exec}; её нельзя притянуть лассо или достичь пешком.</AM.Error.Exec.NoWalk>
+  <AM.Error.Exec.NoWeapon>У персонажа {Exec} нет подходящего оружия ближнего боя</AM.Error.Exec.NoWeapon>
+  <AM.Error.Exec.NoWeapon.Short>Нет оружия ближнего боя</AM.Error.Exec.NoWeapon.Short>
+  <AM.Error.Exec.Cooldown>Добивание персонажа {Exec} ещё восстанавливается</AM.Error.Exec.Cooldown>
+  <AM.Error.Exec.Cooldown.Short>Добивание восстанавливается</AM.Error.Exec.Cooldown.Short>
+  <AM.Error.Exec.NoAnims>Персонаж {Exec} не может выполнить ни одного добивания с оружием {Weapon}.\nВероятно, не хватает навыка ближнего боя или все анимации отключены в настройках мода.</AM.Error.Exec.NoAnims>
+  <AM.Error.Exec.NoAnims.Short>Нет доступных анимаций</AM.Error.Exec.NoAnims.Short>
+  <AM.Error.Exec.NoSpace>Здесь недостаточно места для добивания</AM.Error.Exec.NoSpace>
+  <AM.Error.Exec.NoSpace.Short>Недостаточно места</AM.Error.Exec.NoSpace.Short>
+  <AM.Error.Exec.NoPath>Персонаж {Exec} не может подойти к цели {Target}, а лассо отсутствует или недоступно.</AM.Error.Exec.NoPath>
+  <AM.Error.Exec.NoPath.Short>Нет пути к цели</AM.Error.Exec.NoPath.Short>
+  <AM.Error.Exec.BadFists>Персонаж {Exec} не может выполнять добивание кулаками: {Additional}.</AM.Error.Exec.BadFists>
+  <AM.Error.Exec.BadFists.Short>Нельзя выполнить добивание кулаками</AM.Error.Exec.BadFists.Short>
+  <AM.Error.Grapple.MissingLOS>Нет прямой видимости</AM.Error.Grapple.MissingLOS>
+  <AM.Error.Grapple.TooFar>Цель {Target} вне досягаемости лассо персонажа {Grappler}</AM.Error.Grapple.TooFar>
+  <AM.Error.Grapple.TooFar.Short>Слишком далеко</AM.Error.Grapple.TooFar.Short>
+  <AM.Error.Grapple.InAnimation>Цель {Target} сейчас нельзя притянуть лассо</AM.Error.Grapple.InAnimation>
+  <AM.Error.Grapple.SelfInAnimation>Персонаж {Grappler} сейчас не может использовать лассо</AM.Error.Grapple.SelfInAnimation>
+  <AM.Error.Grapple.Mass>Цель {Target} слишком тяжёлая для лассо персонажа {Grappler}</AM.Error.Grapple.Mass>
+  <AM.Error.Grapple.Mass.Short>Цель {Target} слишком тяжёлая</AM.Error.Grapple.Mass.Short>
+  <AM.Error.Grapple.Size>Цель {Target} слишком большая для лассо персонажа {Grappler}</AM.Error.Grapple.Size>
+  <AM.Error.Grapple.Size.Short>Цель {Target} слишком большая</AM.Error.Grapple.Size.Short>
+  <AM.Error.Grapple.Cooldown>Лассо персонажа {Grappler} ещё восстанавливается</AM.Error.Grapple.Cooldown>
+  <AM.Error.Grapple.Cooldown.Short>Лассо восстанавливается</AM.Error.Grapple.Cooldown.Short>
+  <AM.Error.Grapple.SkillIssue>Персонажу {Grappler} не хватает навыка ближнего боя ({MeleeSkill}) для использования лассо</AM.Error.Grapple.SkillIssue>
+  <AM.Error.Grapple.SkillIssue.Short>Недостаточный навык ближнего боя</AM.Error.Grapple.SkillIssue.Short>
+  <AM.Error.Grapple.Manipulation>Персонажу {Grappler} не хватает манипуляции для использования лассо</AM.Error.Grapple.Manipulation>
+  <AM.Error.Grapple.Manipulation.Short>Недостаточная манипуляция</AM.Error.Grapple.Manipulation.Short>
+  <AM.Error.Grapple.NoDest>Рядом с персонажем {Grappler} нет свободного места для цели {Target}</AM.Error.Grapple.NoDest>
+  <AM.Error.Grapple.NoDest.Short>Рядом с персонажем {Grappler} нет свободного места</AM.Error.Grapple.NoDest.Short>
+  <AM.Stats.BaseValue>Базовое значение: {0}</AM.Stats.BaseValue>
+  <AM.Stats.MeleeSkillOffset>Влияние навыка ближнего боя ({0}): {1}</AM.Stats.MeleeSkillOffset>
+  <AM.Stats.ConsciousnessOffset>Влияние сознания ({0}): {1}</AM.Stats.ConsciousnessOffset>
+  <AM.Stats.ManipulationOffset>Влияние манипуляции ({0}): {1}</AM.Stats.ManipulationOffset>
+  <AM.Stats.WeaponDamageTypeOffset>Влияние типа урона оружия ({0}): {1}</AM.Stats.WeaponDamageTypeOffset>
+  <AM.Stats.WeaponDPSCoef>Влияние урона оружия в секунду ({0}): {1}</AM.Stats.WeaponDPSCoef>
+  <AM.Stats.NoWeapon>Нет оружия ближнего боя: {0}</AM.Stats.NoWeapon>
+  <AM.Stats.GlobalCoef>Общий множитель показателя «{0}» из настроек мода: {1}</AM.Stats.GlobalCoef>
+  <AM.Stats.FriendlyCoef>Множитель для союзников из настроек мода: ×{0}</AM.Stats.FriendlyCoef>
+  <AM.Stats.SkillCoef>Множитель навыка ближнего боя: ×{0}</AM.Stats.SkillCoef>
+  <AM.Stats.EnemyCoef>Множитель для противников из настроек мода: ×{0}</AM.Stats.EnemyCoef>
+  <AM.Stats.Lethality>летальность</AM.Stats.Lethality>
+  <AM.Stats.DuelAbility>мастерство поединка</AM.Stats.DuelAbility>
+  <AM.Stats.FriendlyPawnBonus>Бонус союзников из настроек мода: {0}</AM.Stats.FriendlyPawnBonus>
+  <AM.Skill.Cast>Применить особый приём «{0}» к цели {1}</AM.Skill.Cast>
+  <AM.Skill.CantCast>Нельзя применить «{0}»: {1}</AM.Skill.CantCast>
+  <AM.Skill.CantCastGeneric>Сейчас нельзя применить «{0}» к цели {1}.</AM.Skill.CantCastGeneric>
+  <AM.Skill.BadTargetState>Неподходящее состояние цели.</AM.Skill.BadTargetState>
+  <AM.Skill.AlreadyActive>Приём уже активен.</AM.Skill.AlreadyActive>
+  <AM.Skill.OnCooldown>Восстановление: ещё {0} сек.</AM.Skill.OnCooldown>
+  <AM.Skill.OnCooldownExec>Восстановление: ещё {0} сек. после недавнего добивания.</AM.Skill.OnCooldownExec>
+  <AM.Skill.BadWeapon>Нет необходимого оружия.</AM.Skill.BadWeapon>
+  <AM.Skill.Gilgamesh.LowPsy>Уровень пси-связи {0} ниже необходимого: {1}.</AM.Skill.Gilgamesh.LowPsy>
+  <AM.Skill.Gilgamesh.LowMelee>Навык ближнего боя {0} ниже необходимого: {1}.</AM.Skill.Gilgamesh.LowMelee>
+  <AM.Patch.OptDisabled>Melee Animation отключил оптимизацию невидимости из-за ошибок отображения.</AM.Patch.OptDisabled>
+  <SimpleSettings.Preset>Набор настроек:</SimpleSettings.Preset>
+  <SimpleSettings.Preset.Custom>Свой</SimpleSettings.Preset.Custom>
+  <SimpleSettings.ClickToReset>Щёлкните правой кнопкой мыши, чтобы вернуть значение по умолчанию.</SimpleSettings.ClickToReset>
+  <AM.AMSettings.Presets.Default>Стандартный</AM.AMSettings.Presets.Default>
+  <AM.AMSettings.Presets.Default.Desc>Включены все возможности мода.</AM.AMSettings.Presets.Default.Desc>
+  <AM.AMSettings.Presets.NoLassos>Без лассо</AM.AMSettings.Presets.NoLassos>
+  <AM.AMSettings.Presets.NoLassos.Desc>Включено всё, кроме лассо. Вы по-прежнему можете изготавливать и использовать лассо вручную, но противники не будут получать и применять их.\n\n* Анимации атак ближнего боя.\n* Анимации оружия в руках.\n* Поединки.\n* Анимации добиваний.\n* Особые приёмы.</AM.AMSettings.Presets.NoLassos.Desc>
+  <AM.AMSettings.Presets.VanillaPlus>Базовая игра+</AM.AMSettings.Presets.VanillaPlus>
+  <AM.AMSettings.Presets.VanillaPlus.Desc>Бой остаётся близким к базовой игре. Ваши поселенцы используют лассо только по прямому приказу и никогда не выполняют добивания. Противники не используют ни добивания, ни лассо.\n\n* Анимации атак ближнего боя.\n* Анимации оружия в руках.\n* Союзники могут использовать лассо, но его нужно надеть и применить вручную.</AM.AMSettings.Presets.VanillaPlus.Desc>
+  <AM.AMSettings.Settings.Header.General>Общие</AM.AMSettings.Settings.Header.General>
+  <AM.AMSettings.Settings.AnimateAtIdle>Всегда анимировать оружие</AM.AMSettings.Settings.AnimateAtIdle>
+  <AM.AMSettings.Settings.AnimateAtIdle.Desc>Анимировать оружие ближнего боя всякий раз, когда персонаж держит его в руках, в том числе стоя в боевом режиме и при перемещении в бою.\nЕсли отключено, анимации используются только в поединках, особых приёмах и добиваниях.\n\n&lt;b&gt;На густонаселённых картах эта настройка может заметно снижать производительность.\nПосле изменения загрузите сохранение заново.&lt;/b&gt;</AM.AMSettings.Settings.AnimateAtIdle.Desc>
+  <AM.AMSettings.Settings.EnableUniqueSkills>Включить особые приёмы</AM.AMSettings.Settings.EnableUniqueSkills>
+  <AM.AMSettings.Settings.EnableUniqueSkills.Desc>Включить систему особых приёмов.\nЭто мощные атаки и способности, которые открываются при выполнении определённых условий.\nИспользовать их могут только ваши поселенцы, и запускать их нужно вручную. Подробности есть на странице мода в мастерской Steam.</AM.AMSettings.Settings.EnableUniqueSkills.Desc>
+  <AM.AMSettings.Settings.AllowInvisiblePawns>Не выбирать целью участников анимации</AM.AMSettings.Settings.AllowInvisiblePawns>
+  <AM.AMSettings.Settings.AllowInvisiblePawns.Desc>Во время анимации, например добивания, другие персонажи и турели считают её участников невидимыми: не выбирают их целью и не ведут по ним прицельный огонь. Это снижает риск добиваний.\nОднако участники анимации всё равно могут получить урон, например от случайных попаданий или взрывов.</AM.AMSettings.Settings.AllowInvisiblePawns.Desc>
+  <AM.AMSettings.Settings.GlobalAnimationSpeed>Общая скорость анимаций</AM.AMSettings.Settings.GlobalAnimationSpeed>
+  <AM.AMSettings.Settings.GlobalAnimationSpeed.Desc>Множитель скорости всех анимаций.\nЧем выше значение, тем быстрее анимации.</AM.AMSettings.Settings.GlobalAnimationSpeed.Desc>
+  <AM.AMSettings.Settings.animSettings>Настройки отдельных анимаций</AM.AMSettings.Settings.animSettings>
+  <AM.AMSettings.Settings.animSettings.Desc />
+  <AM.AMSettings.Settings.Header.Lasso>Лассо</AM.AMSettings.Settings.Header.Lasso>
+  <AM.AMSettings.Settings.AutoGrapple>Автоматически применять лассо</AM.AMSettings.Settings.AutoGrapple>
+  <AM.AMSettings.Settings.AutoGrapple.Desc>Ваши поселенцы будут автоматически использовать лассо против врагов.\n\nМеняет только значение &lt;b&gt;по умолчанию&lt;/b&gt;. Для каждого персонажа это можно настроить отдельно.</AM.AMSettings.Settings.AutoGrapple.Desc>
+  <AM.AMSettings.Settings.GrappleAttemptMTBSeconds>Средний интервал применения лассо союзниками</AM.AMSettings.Settings.GrappleAttemptMTBSeconds>
+  <AM.AMSettings.Settings.GrappleAttemptMTBSeconds.Desc>Среднее время в секундах между попытками союзников притянуть врага в ближний бой с помощью лассо.\nЕсли добивание готово и автоматическое добивание включено, притянутую цель сразу попытаются добить.</AM.AMSettings.Settings.GrappleAttemptMTBSeconds.Desc>
+  <AM.AMSettings.Settings.LassoSpawnChance>Распространённость лассо</AM.AMSettings.Settings.LassoSpawnChance>
+  <AM.AMSettings.Settings.LassoSpawnChance.Desc>Вероятность появления любого &lt;b&gt;бойца ближнего боя&lt;/b&gt; с надетым лассо.\nПри 0% персонажи не получают лассо при создании.</AM.AMSettings.Settings.LassoSpawnChance.Desc>
+  <AM.AMSettings.Settings.EnemiesCanGrapple>Противники могут применять лассо</AM.AMSettings.Settings.EnemiesCanGrapple>
+  <AM.AMSettings.Settings.EnemiesCanGrapple.Desc>Разрешить противникам использовать имеющиеся у них лассо, чтобы притягивать ваших поселенцев в ближний бой.</AM.AMSettings.Settings.EnemiesCanGrapple.Desc>
+  <AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy>Средний интервал применения лассо противниками</AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy>
+  <AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy.Desc>Среднее время в секундах между попытками противников притянуть цель в ближний бой с помощью лассо.\nЕсли добивание готово и настройка «Противники могут выполнять добивания» включена, притянутую цель сразу попытаются добить.</AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy.Desc>
+  <AM.AMSettings.Settings.MinMeleeSkillToLasso>Минимальный навык ближнего боя</AM.AMSettings.Settings.MinMeleeSkillToLasso>
+  <AM.AMSettings.Settings.MinMeleeSkillToLasso.Desc>Минимальный навык ближнего боя для использования лассо.\nДействует на всех персонажей.</AM.AMSettings.Settings.MinMeleeSkillToLasso.Desc>
+  <AM.AMSettings.Settings.MinManipulationToLasso>Минимальная манипуляция</AM.AMSettings.Settings.MinManipulationToLasso>
+  <AM.AMSettings.Settings.MinManipulationToLasso.Desc>Минимальный показатель манипуляции для использования лассо.\nДействует на всех персонажей.</AM.AMSettings.Settings.MinManipulationToLasso.Desc>
+  <AM.AMSettings.Settings.MaxLassoMass>Максимальная масса цели</AM.AMSettings.Settings.MaxLassoMass>
+  <AM.AMSettings.Settings.MaxLassoMass.Desc>Максимальная масса персонажа, которого можно притянуть лассо. Измеряется в килограммах и указана в сведениях о персонаже.\nПри нулевом значении ограничение массы отключается.</AM.AMSettings.Settings.MaxLassoMass.Desc>
+  <AM.AMSettings.Settings.MaxLassoBodySize>Максимальный размер цели</AM.AMSettings.Settings.MaxLassoBodySize>
+  <AM.AMSettings.Settings.MaxLassoBodySize.Desc>Максимальный размер тела персонажа, которого можно притянуть лассо.\nПримеры размеров тела:\n• Курица: 0,3\n• Человек: 1\n• Взрывопа: 2\n• Варг: 3\n• Трумбо: 4\n\n\nПри нулевом значении ограничение размера отключается.</AM.AMSettings.Settings.MaxLassoBodySize.Desc>
+  <AM.AMSettings.Settings.GrappleSpeed>Скорость движения лассо</AM.AMSettings.Settings.GrappleSpeed>
+  <AM.AMSettings.Settings.GrappleSpeed.Desc>Скорость захвата и притягивания цели лассо &lt;b&gt;(не время восстановления)&lt;/b&gt;.\nЧем выше значение, тем быстрее работает лассо.\nДействует на всех персонажей.</AM.AMSettings.Settings.GrappleSpeed.Desc>
+  <AM.AMSettings.Settings.MaxFillPctForLasso>Максимальная плотность препятствий для лассо</AM.AMSettings.Settings.MaxFillPctForLasso>
+  <AM.AMSettings.Settings.MaxFillPctForLasso.Desc>Максимальная плотность постройки, через которую можно протащить персонажа с помощью лассо.\nПри низких значениях персонажа &lt;b&gt;нельзя&lt;/b&gt; протащить через частичные укрытия, например мешки с песком или бойницы. При 100% лассо может протаскивать цели через любые препятствия, кроме сплошных стен и полностью непроходимых построек.</AM.AMSettings.Settings.MaxFillPctForLasso.Desc>
+  <AM.AMSettings.Settings.Header.Executions___Duels>Добивания и поединки</AM.AMSettings.Settings.Header.Executions___Duels>
+  <AM.AMSettings.Settings.EnableExecutions>Включить добивания</AM.AMSettings.Settings.EnableExecutions>
+  <AM.AMSettings.Settings.EnableExecutions.Desc>Включить систему добиваний. Если отключено, ни один персонаж не сможет выполнять добивания, а соответствующая команда исчезнет из интерфейса.</AM.AMSettings.Settings.EnableExecutions.Desc>
+  <AM.AMSettings.Settings.AutoExecute>Автоматически выполнять добивания</AM.AMSettings.Settings.AutoExecute>
+  <AM.AMSettings.Settings.AutoExecute.Desc>Ваши персонажи будут автоматически добивать врагов в бою без отдельного приказа.\nЕсли включено автоматическое применение лассо, они также могут притягивать подходящие цели.\n\nМеняет только значение &lt;b&gt;по умолчанию&lt;/b&gt;. Для каждого персонажа это можно настроить отдельно.</AM.AMSettings.Settings.AutoExecute.Desc>
+  <AM.AMSettings.Settings.EnemiesCanExecute>Противники могут выполнять добивания</AM.AMSettings.Settings.EnemiesCanExecute>
+  <AM.AMSettings.Settings.EnemiesCanExecute.Desc>Разрешить противникам выполнять анимации добиваний.</AM.AMSettings.Settings.EnemiesCanExecute.Desc>
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSeconds>Средний интервал добиваний союзников</AM.AMSettings.Settings.ExecuteAttemptMTBSeconds>
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSeconds.Desc>Среднее время в секундах между попытками союзника начать добивание противника, с которым он сражается.\nНапример, при значении 5 добивание в ближнем бою будет запускаться в среднем через 5 секунд.\nНе влияет на время восстановления добивания, которое задаётся характеристиками персонажа.\n\nНизкие значения могут заметно снижать производительность на густонаселённых картах.</AM.AMSettings.Settings.ExecuteAttemptMTBSeconds.Desc>
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy>Средний интервал добиваний противников</AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy>
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy.Desc>Среднее время в секундах между попытками противника начать добивание цели, с которой он сражается.\nНапример, при значении 5 добивание в ближнем бою будет запускаться в среднем через 5 секунд.\nНе влияет на время восстановления добивания, которое задаётся характеристиками персонажа.\n\nНизкие значения могут заметно снижать производительность на густонаселённых картах.</AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy.Desc>
+  <AM.AMSettings.Settings.AnimalsCanBeExecuted>Разрешить добивания животных</AM.AMSettings.Settings.AnimalsCanBeExecuted>
+  <AM.AMSettings.Settings.AnimalsCanBeExecuted.Desc>Разрешить выполнять добивания животных.\nЕсли включите — вы жестокий человек.</AM.AMSettings.Settings.AnimalsCanBeExecuted.Desc>
+  <AM.AMSettings.Settings.ExecutionLethalityModifier>Множитель летальности добиваний</AM.AMSettings.Settings.ExecutionLethalityModifier>
+  <AM.AMSettings.Settings.ExecutionLethalityModifier.Desc>Общий множитель летальности анимаций добивания. Чем выше значение, тем чаще добивания заканчиваются смертью цели. Действует на всех персонажей.</AM.AMSettings.Settings.ExecutionLethalityModifier.Desc>
+  <AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal>Несмертельные добивания союзников</AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal>
+  <AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal.Desc>Добивания союзников всегда будут несмертельными независимо от остальных настроек.\nЗаключённые и рабы считаются союзниками.\n\nПозволяет остановить психический срыв или восстание заключённых без кровавой расправы.</AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal.Desc>
+  <AM.AMSettings.Settings.ExecutionArmorCoefficient>Эффективность брони при добивании</AM.AMSettings.Settings.ExecutionArmorCoefficient>
+  <AM.AMSettings.Settings.ExecutionArmorCoefficient.Desc>Множитель влияния брони на исход добивания.\nЧем ниже значение, тем слабее защита брони; чем выше — тем сильнее.\nПри 0% броня не учитывается.</AM.AMSettings.Settings.ExecutionArmorCoefficient.Desc>
+  <AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts>Добивания могут уничтожать части тела</AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts>
+  <AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts.Desc>Добивания могут уничтожать жизненно важные части тела, например сердце или голову.\nЕсли отключено, персонаж просто погибает «магическим» образом, без урона конкретной части тела.\nПримечание: при отключении подробная запись о добивании в журнале боя не создаётся; вместо неё появляется обычное сообщение: «&lt;i&gt;имя — убит(а).&lt;/i&gt;».</AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts.Desc>
+  <AM.AMSettings.Settings.MeleeSkillExecCooldownFactor>Влияние навыка на восстановление добивания</AM.AMSettings.Settings.MeleeSkillExecCooldownFactor>
+  <AM.AMSettings.Settings.MeleeSkillExecCooldownFactor.Desc>Сила влияния навыка ближнего боя на время восстановления добивания.\nВысокий навык сокращает восстановление; эта настройка усиливает или ослабляет его влияние.\nПри 0% навык не учитывается.\n\nПримечание: действует только на союзников.</AM.AMSettings.Settings.MeleeSkillExecCooldownFactor.Desc>
+  <AM.AMSettings.Settings.FriendlyExecCooldownFactor>Множитель восстановления добивания союзников</AM.AMSettings.Settings.FriendlyExecCooldownFactor>
+  <AM.AMSettings.Settings.FriendlyExecCooldownFactor.Desc>Множитель времени восстановления добивания союзников. Низкие значения сокращают восстановление. Итоговое время указано в характеристиках персонажа.</AM.AMSettings.Settings.FriendlyExecCooldownFactor.Desc>
+  <AM.AMSettings.Settings.EnemyExecCooldownFactor>Множитель восстановления добивания противников</AM.AMSettings.Settings.EnemyExecCooldownFactor>
+  <AM.AMSettings.Settings.EnemyExecCooldownFactor.Desc>Множитель времени восстановления добивания противников. Низкие значения сокращают восстановление. Итоговое время указано в характеристиках персонажа.</AM.AMSettings.Settings.EnemyExecCooldownFactor.Desc>
+  <AM.AMSettings.Settings.MinDuelDuration>Минимальная длительность поединка</AM.AMSettings.Settings.MinDuelDuration>
+  <AM.AMSettings.Settings.MinDuelDuration.Desc>Минимальное число атак в поединке. Влияет только на длительность анимации, но не на исход поединка.</AM.AMSettings.Settings.MinDuelDuration.Desc>
+  <AM.AMSettings.Settings.MaxDuelDuration>Максимальная длительность поединка</AM.AMSettings.Settings.MaxDuelDuration>
+  <AM.AMSettings.Settings.MaxDuelDuration.Desc>Максимальное число атак в поединке. Влияет только на длительность анимации, но не на исход поединка.</AM.AMSettings.Settings.MaxDuelDuration.Desc>
+  <AM.AMSettings.Settings.FriendlyDuelCooldown>Восстановление после дружеского поединка</AM.AMSettings.Settings.FriendlyDuelCooldown>
+  <AM.AMSettings.Settings.FriendlyDuelCooldown.Desc>Время в секундах после дружеского поединка, в течение которого нельзя начать следующий.</AM.AMSettings.Settings.FriendlyDuelCooldown.Desc>
+  <AM.AMSettings.Settings.Header.Visuals>Отображение</AM.AMSettings.Settings.Header.Visuals>
+  <AM.AMSettings.Settings.ShowHands>Показывать руки</AM.AMSettings.Settings.ShowHands>
+  <AM.AMSettings.Settings.ShowHands.Desc>Показывать руки персонажей, держащих оружие ближнего боя.</AM.AMSettings.Settings.ShowHands.Desc>
+  <AM.AMSettings.Settings.Gore_DamageEffect>Эффект попадания</AM.AMSettings.Settings.Gore_DamageEffect>
+  <AM.AMSettings.Settings.Gore_DamageEffect.Desc>Включить эффект попадания в анимациях.\nОбычно это небольшой кратковременный всплеск крови.</AM.AMSettings.Settings.Gore_DamageEffect.Desc>
+  <AM.AMSettings.Settings.Gore_FloorBlood>Кровь на земле</AM.AMSettings.Settings.Gore_FloorBlood>
+  <AM.AMSettings.Settings.Gore_FloorBlood.Desc>Создавать пятна крови во время анимаций.\nЭти пятна нужно убирать. Поддерживаются нестандартная кровь из модов и кровь механоидов — масло.</AM.AMSettings.Settings.Gore_FloorBlood.Desc>
+  <AM.AMSettings.Settings.CorpseOffsetMode>Смещение тел после добивания</AM.AMSettings.Settings.CorpseOffsetMode>
+  <AM.AMSettings.Settings.CorpseOffsetMode.Desc>Для плавного перехода от анимации к обычной игре тело жертвы после добивания может оставаться в нестандартном положении и повороте.\nЭто иногда сбивает с толку: тело оказывается не по центру клетки.\n&lt;b&gt;Примечание:&lt;/b&gt; после сохранения и повторной загрузки смещение сбрасывается.</AM.AMSettings.Settings.CorpseOffsetMode.Desc>
+  <AM.AMSettings.Settings.MoveAnimSpeedCoef>Скорость анимации движения</AM.AMSettings.Settings.MoveAnimSpeedCoef>
+  <AM.AMSettings.Settings.MoveAnimSpeedCoef.Desc>Скорость анимаций перемещения.\nЧем выше значение, тем быстрее анимация. Это только визуальное изменение: скорость передвижения персонажа не меняется.</AM.AMSettings.Settings.MoveAnimSpeedCoef.Desc>
+  <AM.AMSettings.Settings.SpeedUpAttackAnims>Ускорять анимации быстрых атак</AM.AMSettings.Settings.SpeedUpAttackAnims>
+  <AM.AMSettings.Settings.SpeedUpAttackAnims.Desc>Автоматически повышать скорость анимации атаки ближнего боя в соответствии со скоростью атак персонажа.\nЕсли отключено, скорость анимации не меняется, но следующая атака может прервать предыдущую анимацию до её завершения.\nЭто только визуальное изменение, не влияющее на бой.</AM.AMSettings.Settings.SpeedUpAttackAnims.Desc>
+  <AM.AMSettings.Settings.FlavourMTB>Средний интервал анимаций ожидания</AM.AMSettings.Settings.FlavourMTB>
+  <AM.AMSettings.Settings.FlavourMTB.Desc>Персонажи с оружием в руках, например в боевом режиме, иногда размахивают им, делают эффектные движения и тому подобное.\nЭта настройка задаёт среднее время в секундах между такими анимациями.\nПри 0 анимации полностью отключаются.</AM.AMSettings.Settings.FlavourMTB.Desc>
+  <AM.AMSettings.Settings.AttackPauseDuration>Пауза в момент попадания</AM.AMSettings.Settings.AttackPauseDuration>
+  <AM.AMSettings.Settings.AttackPauseDuration.Desc>При обычной атаке ближнего боя анимация на мгновение замирает в момент соприкосновения оружия с целью.\nЭто помогает заметить попадание и визуально &lt;i&gt;усиливает&lt;/i&gt; удар.\nНастройка меняет длительность паузы или отключает её. На механику боя не влияет.</AM.AMSettings.Settings.AttackPauseDuration.Desc>
+  <AM.AMSettings.Settings.TrailColor>Цвет следа оружия</AM.AMSettings.Settings.TrailColor>
+  <AM.AMSettings.Settings.TrailColor.Desc>Основной цвет следов оружия. Если установить прозрачность в 0, следы исчезнут.</AM.AMSettings.Settings.TrailColor.Desc>
+  <AM.AMSettings.Settings.TrailLengthScale>Длина следа оружия</AM.AMSettings.Settings.TrailLengthScale>
+  <AM.AMSettings.Settings.TrailLengthScale.Desc>Множитель длины следов оружия. При 0% следы отключены.</AM.AMSettings.Settings.TrailLengthScale.Desc>
+  <AM.AMSettings.Settings.DrawNamesInAnimation>Показывать имена во время анимаций</AM.AMSettings.Settings.DrawNamesInAnimation>
+  <AM.AMSettings.Settings.DrawNamesInAnimation.Desc>Показывать имена под персонажами, как в базовой игре.\nЕсли отключено, имена скрываются для более кинематографичного вида.</AM.AMSettings.Settings.DrawNamesInAnimation.Desc>
+  <AM.AMSettings.Settings.ShowExecutionMotes>Показывать исход добивания</AM.AMSettings.Settings.ShowExecutionMotes>
+  <AM.AMSettings.Settings.ShowExecutionMotes.Desc>Показывать во время добивания всплывающий текст с его исходом: ранение, выведение из строя или убийство.</AM.AMSettings.Settings.ShowExecutionMotes.Desc>
+  <AM.AMSettings.Settings.Header.Performance>Производительность</AM.AMSettings.Settings.Header.Performance>
+  <AM.AMSettings.Settings.MaxProcessingThreads>Максимальное число потоков</AM.AMSettings.Settings.MaxProcessingThreads>
+  <AM.AMSettings.Settings.MaxProcessingThreads.Desc>Максимальное число потоков процессора для поиска возможностей автоматического добивания и применения лассо.\nПри 0 число потоков определяется автоматически по процессору, при 1 многопоточность отключается.\nЕсли из-за конфликта модов появляются многочисленные ошибки, установите 1, хотя это заметно снизит производительность.</AM.AMSettings.Settings.MaxProcessingThreads.Desc>
+  <AM.AMSettings.Settings.MultithreadedMatrixCalculations>Многопоточные вычисления матриц</AM.AMSettings.Settings.MultithreadedMatrixCalculations>
+  <AM.AMSettings.Settings.MultithreadedMatrixCalculations.Desc>Использовать несколько потоков процессора для расчёта сложных матричных преобразований анимаций.\nЧисло потоков задаётся настройкой «Максимальное число потоков».</AM.AMSettings.Settings.MultithreadedMatrixCalculations.Desc>
+  <AM.AMSettings.Settings.OffscreenCulling>Не отрисовывать анимации за экраном</AM.AMSettings.Settings.OffscreenCulling>
+  <AM.AMSettings.Settings.OffscreenCulling.Desc>Не отрисовывать невидимые на экране анимации, чтобы экономить время и повышать частоту кадров.\nНастройка предусмотрена на случай непредвиденных ошибок, связанных с этим отсечением.</AM.AMSettings.Settings.OffscreenCulling.Desc>
+  <AM.AMSettings.Settings.ScanTickInterval>Интервал проверки персонажей</AM.AMSettings.Settings.ScanTickInterval>
+  <AM.AMSettings.Settings.ScanTickInterval.Desc>Число игровых тактов между проверками всех персонажей на карте на возможность автоматического добивания, поединка или применения лассо.\nВысокие значения могут повысить частоту кадров, но снижают отзывчивость.</AM.AMSettings.Settings.ScanTickInterval.Desc>
+  <AM.AMSettings.Settings.Header.Other>Прочее</AM.AMSettings.Settings.Header.Other>
+  <AM.AMSettings.Settings.FriendlyPawnLethalityBonus>Бонус летальности союзников</AM.AMSettings.Settings.FriendlyPawnLethalityBonus>
+  <AM.AMSettings.Settings.FriendlyPawnLethalityBonus.Desc>Положительные значения повышают летальность союзников, включая рабов, при добиваниях и поединках: смертельный исход становится вероятнее.</AM.AMSettings.Settings.FriendlyPawnLethalityBonus.Desc>
+  <AM.AMSettings.Settings.FriendlyPawnDuelBonus>Бонус мастерства поединка союзников</AM.AMSettings.Settings.FriendlyPawnDuelBonus>
+  <AM.AMSettings.Settings.FriendlyPawnDuelBonus.Desc>Положительные значения повышают мастерство поединка союзников, включая рабов, увеличивая их шансы на победу.</AM.AMSettings.Settings.FriendlyPawnDuelBonus.Desc>
+  <AM.AMSettings.Settings.NormalDist>Случайность исхода поединка</AM.AMSettings.Settings.NormalDist>
+  <AM.AMSettings.Settings.NormalDist.Desc>При высоких значениях исход поединка сильнее зависит от случайности и слабее — от мастерства; при низких значениях наоборот.\n\nТехнически это стандартное отклонение нормального распределения, используемого для определения исхода поединка.</AM.AMSettings.Settings.NormalDist.Desc>
+  <AM.AMSettings.Settings.WarnOfFriendlyExecution>Подтверждать добивание союзников</AM.AMSettings.Settings.WarnOfFriendlyExecution>
+  <AM.AMSettings.Settings.WarnOfFriendlyExecution.Desc>Чтобы случайно не добить союзника, при выборе его целью нужно удерживать Shift.</AM.AMSettings.Settings.WarnOfFriendlyExecution.Desc>
+  <AM.AMSettings.Settings.SendStatistics>Отправлять анонимную статистику совместимости</AM.AMSettings.Settings.SendStatistics>
+  <AM.AMSettings.Settings.SendStatistics.Desc>Если для мода не хватает патча, позволяющего анимировать его оружие ближнего боя, автор Melee Animation получает анонимную запись о необходимости такого патча. Передаются &lt;b&gt;только&lt;/b&gt; идентификатор мода, его название и число видов оружия.\nЭту функцию можно отключить.\nПримечание: при первом запуске игры с этим модом данные не отправляются.</AM.AMSettings.Settings.SendStatistics.Desc>
+  <AM.AMSettings.Settings.ChanceToFailMinSkill>Шанс неудачного добивания при низком навыке</AM.AMSettings.Settings.ChanceToFailMinSkill>
+  <AM.AMSettings.Settings.ChanceToFailMinSkill.Desc>Вероятность неудачного добивания: атакующий получает оглушение и ненадолго остаётся уязвимым.\nЭто вероятность для персонажа с нулевым навыком ближнего боя.\nДействует на всех персонажей.</AM.AMSettings.Settings.ChanceToFailMinSkill.Desc>
+  <AM.AMSettings.Settings.ChanceToFailMaxSkill>Шанс неудачного добивания при высоком навыке</AM.AMSettings.Settings.ChanceToFailMaxSkill>
+  <AM.AMSettings.Settings.ChanceToFailMaxSkill.Desc>Вероятность неудачного добивания: атакующий получает оглушение и ненадолго остаётся уязвимым.\nЭто вероятность для персонажа с навыком ближнего боя 20.\nДействует на всех персонажей.</AM.AMSettings.Settings.ChanceToFailMaxSkill.Desc>
+  <AM.ExecutionOutcome.Injured>Ранение</AM.ExecutionOutcome.Injured>
+  <AM.ExecutionOutcome.Downed>Выведение из строя</AM.ExecutionOutcome.Downed>
+  <AM.ExecutionOutcome.Killed>Убийство</AM.ExecutionOutcome.Killed>
+  <AM.ExecutionOutcome.Failed>Неудача!</AM.ExecutionOutcome.Failed>
+</LanguageData>

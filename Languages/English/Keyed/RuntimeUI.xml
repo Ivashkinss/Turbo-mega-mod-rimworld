@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Literal.904b53c2eb35>Enabled: </TMM.Literal.904b53c2eb35>
+  <TMM.Literal.e6df483f30a8>Relative Probability: {0:F0}%</TMM.Literal.e6df483f30a8>
+  <TMM.Literal.f5ab5f2a27ad>&lt;i&gt;No description&lt;/i&gt;</TMM.Literal.f5ab5f2a27ad>
+  <TMM.Literal.89f5e3178c87>&lt;color=grey&gt;&lt;i&gt;Default value: &lt;/i&gt;</TMM.Literal.89f5e3178c87>
+  <TMM.Literal.5b51f5b36b69>
+
+Right-click to reset to default.&lt;/color&gt;</TMM.Literal.5b51f5b36b69>
+  <TMM.Literal.47d2a515ef2f>Loading...</TMM.Literal.47d2a515ef2f>
+  <TMM.Literal.0ba4719b1186>{0} available for trading.{1}{2} total on map.</TMM.Literal.0ba4719b1186>
+  <TMM.Literal.163c4d1b4cb8>{0}/{1} projects researched.</TMM.Literal.163c4d1b4cb8>
+  <TMM.Literal.8caceb0e58e8>Dynamic trade interface</TMM.Literal.8caceb0e58e8>
+  <TMM.CorpseOffset.None>None</TMM.CorpseOffset.None>
+  <TMM.CorpseOffset.InterpolateToCorrect>InterpolateToCorrect</TMM.CorpseOffset.InterpolateToCorrect>
+  <TMM.CorpseOffset.KeepOffset>KeepOffset</TMM.CorpseOffset.KeepOffset>
+</LanguageData>

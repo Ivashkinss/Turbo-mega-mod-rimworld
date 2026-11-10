@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_FriendlyDuel_Lose.stages.0.description>В дружеском поединке победа досталась сопернику {OTHERPAWN}.
+Проигрывать обидно, но это была хорошая тренировка. В следующий раз победа будет за мной!</AM_FriendlyDuel_Lose.stages.0.description>
+  <AM_FriendlyDuel_Lose.stages.0.label>поражение в дружеском поединке</AM_FriendlyDuel_Lose.stages.0.label>
+  <AM_FriendlyDuel_Win.stages.0.description>В дружеском поединке мой соперник {OTHERPAWN} проиграл!
+Это была всего лишь тренировка, но побеждать всё равно приятно.</AM_FriendlyDuel_Win.stages.0.description>
+  <AM_FriendlyDuel_Win.stages.0.label>победа в дружеском поединке</AM_FriendlyDuel_Win.stages.0.label>
+</LanguageData>

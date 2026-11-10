@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Literal.904b53c2eb35>Включено: </TMM.Literal.904b53c2eb35>
+  <TMM.Literal.e6df483f30a8>Относительная вероятность: {0:F0}%</TMM.Literal.e6df483f30a8>
+  <TMM.Literal.f5ab5f2a27ad>&lt;i&gt;Нет описания&lt;/i&gt;</TMM.Literal.f5ab5f2a27ad>
+  <TMM.Literal.89f5e3178c87>&lt;color=grey&gt;&lt;i&gt;По умолчанию: &lt;/i&gt;</TMM.Literal.89f5e3178c87>
+  <TMM.Literal.5b51f5b36b69>
+
+Правая кнопка мыши — сбросить значение.&lt;/color&gt;</TMM.Literal.5b51f5b36b69>
+  <TMM.Literal.47d2a515ef2f>Загрузка...</TMM.Literal.47d2a515ef2f>
+  <TMM.Literal.0ba4719b1186>Доступно для торговли: {0}.{1}Всего на карте: {2}.</TMM.Literal.0ba4719b1186>
+  <TMM.Literal.163c4d1b4cb8>Изучено технологий: {0}/{1}.</TMM.Literal.163c4d1b4cb8>
+  <TMM.Literal.8caceb0e58e8>Динамическое окно торговли</TMM.Literal.8caceb0e58e8>
+  <TMM.CorpseOffset.None>Не смещать</TMM.CorpseOffset.None>
+  <TMM.CorpseOffset.InterpolateToCorrect>Плавно возвращать на место</TMM.CorpseOffset.InterpolateToCorrect>
+  <TMM.CorpseOffset.KeepOffset>Сохранять смещение</TMM.CorpseOffset.KeepOffset>
+</LanguageData>

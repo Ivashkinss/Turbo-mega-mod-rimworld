@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_Execution_Blunt.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [beat] цель [RECIPIENT_definite] до смерти!</li>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [beat] цель [RECIPIENT_definite] с помощью [INITIATOR_possessive] оружия «[TOOL_label]».</li>
+  </AM_Execution_Blunt.rulePack.rulesStrings>
+  <AM_Execution_Generic.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Цель [RECIPIENT_definite] погибает: [INITIATOR_definite] проводит [exec_desc] добивание.</li>
+  </AM_Execution_Generic.rulePack.rulesStrings>
+  <AM_Execution_Gilgamesh.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Демонстрируя впечатляющее владение пси-силами, [INITIATOR_definite] призывает десятки клинков, пронзающих цель [RECIPIENT_definite].</li>
+  </AM_Execution_Gilgamesh.rulePack.rulesStrings>
+  <AM_Execution_Includes.rulePack.rulesStrings>
+    <li>exec_desc-&gt;искусное</li>
+    <li>exec_desc-&gt;стремительное</li>
+    <li>exec_desc-&gt;милосердное</li>
+    <li>exec_desc-&gt;жестокое</li>
+    <li>exec_desc-&gt;мстительное</li>
+    <li>exec_desc-&gt;грубое</li>
+    <li>exec_desc-&gt;эффективное</li>
+    <li>exec_desc-&gt;аккуратное</li>
+    <li>exec_desc-&gt;шокирующее</li>
+    <li>exec_desc-&gt;зрелищное</li>
+    <li>impaled-&gt;пронзает</li>
+    <li>impaled-&gt;протыкает</li>
+    <li>stabbed-&gt;наносит колющий удар</li>
+    <li>stabbed-&gt;протыкает</li>
+    <li>slashed-&gt;рубит</li>
+    <li>slashed-&gt;рассекает</li>
+    <li>slashed-&gt;наносит рубящий удар</li>
+    <li>slashed-&gt;разрубает</li>
+    <li>beat-&gt;бьёт</li>
+    <li>beat-&gt;избивает</li>
+    <li>beat-&gt;наносит сокрушительный удар</li>
+    <li>skillfully-&gt;искусно</li>
+    <li>skillfully-&gt;мастерски</li>
+    <li>skillfully-&gt;ловко</li>
+    <li>weeb_legend-&gt;Демонический дух</li>
+    <li>weeb_legend(p=6)-&gt;[INITIATOR_definite], истребитель существ «[RECIPIENT_labelPlural]»</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite] Бессмертный</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite], покоритель звёзд</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite] Восставший из мёртвых</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite] Мрачный</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite], верховный владыка мрачности</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite], собиратель фотографий ступней</li>
+    <li>weeb_legend-&gt;[INITIATOR_definite] Пронзатель</li>
+  </AM_Execution_Includes.rulePack.rulesStrings>
+  <AM_Execution_Passover.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [impaled] цель [RECIPIENT_definite] с помощью [INITIATOR_possessive] оружия «[TOOL_label]». Затем цель [RECIPIENT_definite] летит через спину нападающего! Жестокость — [INITIATOR_possessive] сильная сторона!</li>
+  </AM_Execution_Passover.rulePack.rulesStrings>
+  <AM_Execution_Slashed.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [slashed] цель [RECIPIENT_definite] в область «[recipient_part0_label]».</li>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [slashed] цель [RECIPIENT_definite] с помощью [INITIATOR_possessive] оружия «[TOOL_label]».</li>
+  </AM_Execution_Slashed.rulePack.rulesStrings>
+  <AM_Execution_Stab.rulePack.rulesStrings>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [stabbed] цель [RECIPIENT_definite] в область «[recipient_part0_label]».</li>
+    <li>r_logentry-&gt;Добивание — [exec_desc]: [INITIATOR_definite] [impaled] цель [RECIPIENT_definite] с помощью [INITIATOR_possessive] оружия «[TOOL_label]».</li>
+  </AM_Execution_Stab.rulePack.rulesStrings>
+  <AM_Execution_Weebstick.rulePack.rulesStrings>
+    <li>r_logentry-&gt;В руках нападающего — [INITIATOR_possessive] оружие «[TOOL_label]», якобы убившее самого бога. [INITIATOR_definite] встречает цель [RECIPIENT_definite]. С неуловимой скоростью [INITIATOR_pronoun] [slashed] цель [RECIPIENT_definite].
+Все зааплодировали.</li>
+    <li>r_logentry(p=5)-&gt;В руках нападающего — [INITIATOR_possessive] оружие «[TOOL_label]», якобы убившее самого бога. [INITIATOR_definite] встречает цель [RECIPIENT_definite]. С неуловимой скоростью [INITIATOR_pronoun] [slashed] цель [RECIPIENT_definite].
+Так родилась легенда: [weeb_legend].</li>
+    <li>r_logentry-&gt;В руках нападающего — [INITIATOR_possessive] оружие «[TOOL_label]», якобы убившее самого бога. [INITIATOR_definite] встречает цель [RECIPIENT_definite]. С неуловимой скоростью [INITIATOR_pronoun] [slashed] цель [RECIPIENT_definite].
+Неясно, что нанесло смертельный удар: сам клинок или [INITIATOR_definite] — столь мрачная личность, что [INITIATOR_possessive] могучая аура полностью лишила цель [RECIPIENT_definite] воли к жизни.</li>
+  </AM_Execution_Weebstick.rulePack.rulesStrings>
+</LanguageData>

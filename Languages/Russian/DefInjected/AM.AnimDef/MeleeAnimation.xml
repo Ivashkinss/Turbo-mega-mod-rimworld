@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_DuelBow_Colossal.jobString>кланяется перед поединком.</AM_DuelBow_Colossal.jobString>
+  <AM_DuelBow_Colossal.label>Поклон перед поединком</AM_DuelBow_Colossal.label>
+  <AM_DuelBow_Medium.jobString>кланяется перед поединком.</AM_DuelBow_Medium.jobString>
+  <AM_DuelBow_Medium.label>Поклон перед поединком</AM_DuelBow_Medium.label>
+  <AM_Duel_Swords.jobString>сражается в поединке: [OTHER].</AM_Duel_Swords.jobString>
+  <AM_Duel_Swords.label>Поединок</AM_Duel_Swords.label>
+  <AM_Duel_WinFriendlyDuel.jobString>побеждает в поединке: [OTHER]!</AM_Duel_WinFriendlyDuel.jobString>
+  <AM_Duel_WinFriendlyDuel.label>Победа в дружеском поединке</AM_Duel_WinFriendlyDuel.label>
+  <AM_Duel_WinFriendlyDuel_Reject.jobString>побеждает в поединке: [OTHER]!</AM_Duel_WinFriendlyDuel_Reject.jobString>
+  <AM_Duel_WinFriendlyDuel_Reject.label>Победа в дружеском поединке</AM_Duel_WinFriendlyDuel_Reject.label>
+  <AM_Execution_Bash.jobString>выполняет добивание: [OTHER].</AM_Execution_Bash.jobString>
+  <AM_Execution_Bash.label>Добивание: удар</AM_Execution_Bash.label>
+  <AM_Execution_BashLarge.jobString>выполняет добивание: [OTHER].</AM_Execution_BashLarge.jobString>
+  <AM_Execution_BashLarge.label>Добивание: мощный удар</AM_Execution_BashLarge.label>
+  <AM_Execution_Behead.jobString>выполняет добивание: [OTHER].</AM_Execution_Behead.jobString>
+  <AM_Execution_Behead.label>Добивание: обезглавливание</AM_Execution_Behead.label>
+  <AM_Execution_BeheadHigh.jobString>выполняет добивание: [OTHER].</AM_Execution_BeheadHigh.jobString>
+  <AM_Execution_BeheadHigh.label>Добивание: обезглавливание в прыжке</AM_Execution_BeheadHigh.label>
+  <AM_Execution_Fail.jobString>выполняет добивание: [OTHER].</AM_Execution_Fail.jobString>
+  <AM_Execution_Fail.label>Добивание: неудача</AM_Execution_Fail.label>
+  <AM_Execution_GaeBulg.jobString>выполняет добивание: [OTHER].</AM_Execution_GaeBulg.jobString>
+  <AM_Execution_GaeBulg.label>Добивание: Гаэ Болг</AM_Execution_GaeBulg.label>
+  <AM_Execution_HeadRemoval.jobString>выполняет добивание: [OTHER].</AM_Execution_HeadRemoval.jobString>
+  <AM_Execution_HeadRemoval.label>Добивание: голова с плеч</AM_Execution_HeadRemoval.label>
+  <AM_Execution_HeadStab.jobString>выполняет добивание: [OTHER].</AM_Execution_HeadStab.jobString>
+  <AM_Execution_HeadStab.label>Добивание: удар в голову</AM_Execution_HeadStab.label>
+  <AM_Execution_JumpThrow.jobString>выполняет добивание: [OTHER].</AM_Execution_JumpThrow.jobString>
+  <AM_Execution_JumpThrow.label>Добивание: бросок в прыжке</AM_Execution_JumpThrow.label>
+  <AM_Execution_KnockdownStab.jobString>выполняет добивание: [OTHER].</AM_Execution_KnockdownStab.jobString>
+  <AM_Execution_KnockdownStab.label>Добивание: опрокидывание и удар</AM_Execution_KnockdownStab.label>
+  <AM_Execution_Passover.jobString>выполняет добивание: [OTHER].</AM_Execution_Passover.jobString>
+  <AM_Execution_Passover.label>Добивание: бросок через спину</AM_Execution_Passover.label>
+  <AM_Execution_PocketSand.jobString>выполняет добивание: [OTHER].</AM_Execution_PocketSand.jobString>
+  <AM_Execution_PocketSand.label>Добивание: песок в глаза!</AM_Execution_PocketSand.label>
+  <AM_Execution_Punt.jobString>выполняет добивание: [OTHER].</AM_Execution_Punt.jobString>
+  <AM_Execution_Punt.label>Добивание: удар ногой</AM_Execution_Punt.label>
+  <AM_Execution_SekiroBS.jobString>выполняет добивание: [OTHER].</AM_Execution_SekiroBS.jobString>
+  <AM_Execution_SekiroBS.label>Добивание: акробатический удар в спину</AM_Execution_SekiroBS.label>
+  <AM_Execution_Shank.jobString>выполняет добивание: [OTHER].</AM_Execution_Shank.jobString>
+  <AM_Execution_Shank.label>Добивание: короткий укол</AM_Execution_Shank.label>
+  <AM_Execution_SpearLift.jobString>выполняет добивание: [OTHER].</AM_Execution_SpearLift.jobString>
+  <AM_Execution_SpearLift.label>Добивание: пронзание копьём</AM_Execution_SpearLift.label>
+  <AM_Execution_Stab.jobString>выполняет добивание: [OTHER].</AM_Execution_Stab.jobString>
+  <AM_Execution_Stab.label>Добивание: колющий удар</AM_Execution_Stab.label>
+  <AM_Execution_ThrowSharp.jobString>выполняет добивание: [OTHER].</AM_Execution_ThrowSharp.jobString>
+  <AM_Execution_ThrowSharp.label>Добивание: бросок клинка</AM_Execution_ThrowSharp.label>
+  <AM_Execution_UpDownSlash.jobString>выполняет добивание: [OTHER].</AM_Execution_UpDownSlash.jobString>
+  <AM_Execution_UpDownSlash.label>Добивание: удар снизу и сверху</AM_Execution_UpDownSlash.label>
+  <AM_Execution_UpSlash.jobString>выполняет добивание: [OTHER].</AM_Execution_UpSlash.jobString>
+  <AM_Execution_UpSlash.label>Добивание: восходящий удар</AM_Execution_UpSlash.label>
+  <AM_Execution_UpSlash_Doubletap.jobString>выполняет добивание: [OTHER].</AM_Execution_UpSlash_Doubletap.jobString>
+  <AM_Execution_UpSlash_Doubletap.label>Добивание: двойной восходящий удар</AM_Execution_UpSlash_Doubletap.label>
+  <AM_Execution_Weebstick.jobString>выполняет добивание: [OTHER].</AM_Execution_Weebstick.jobString>
+  <AM_Execution_Weebstick.label>Добивание: вы оскорбили мою даму</AM_Execution_Weebstick.label>
+  <AM_Execution_Whirlwind.jobString>выполняет добивание: [OTHER].</AM_Execution_Whirlwind.jobString>
+  <AM_Execution_Whirlwind.label>Добивание: вихрь</AM_Execution_Whirlwind.label>
+  <AM_GilgameshVictim.description>применяет особый приём: призыв мистического оружия</AM_GilgameshVictim.description>
+  <AM_GilgameshVictim.jobString>кажется, дело плохо...</AM_GilgameshVictim.jobString>
+  <AM_GilgameshVictim.label>Добивание: призыв мистического оружия</AM_GilgameshVictim.label>
+</LanguageData>
