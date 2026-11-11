@@ -275,5 +275,90 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "CommonSense": {
+    "packageId": "avilmask.commonsense",
+    "files": [
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Assemblies/CommonSense.dll",
+        "projectFile": "Components/CommonSense/Assemblies/CommonSense.dll",
+        "sourceRawSha256": "a0c23b9ab5a51b39ec74e7ad265af880a73ccac1c4acb62205df3066816b059b",
+        "sha256": "a0c23b9ab5a51b39ec74e7ad265af880a73ccac1c4acb62205df3066816b059b"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/Languages/English/Keyed/strings.xml",
+        "projectFile": "Components/CommonSense/Languages/English/Keyed/strings.xml",
+        "sourceRawSha256": "5511862ffc780f8a2c0e9d763645adb3208ec662367a43210b1746bbf80aa15d",
+        "sha256": "c1a41c96a300d219a94a743b841bcabbe32aef70557e0a5c9d12a39ad2297b76"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Defs/RoomRoles.xml",
+        "projectFile": "Components/CommonSense/Defs/RoomRoles.xml",
+        "sourceRawSha256": "3cb58d51a591fd8a5e856e769ea7154434db9f54f588f9aeb5417d839f1390c0",
+        "sha256": "bff95d4b789af9fc338d88009a8738c4dc92aa7332078dc8c440e482dceedbef"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Defs/Recipes_Meals.xml",
+        "projectFile": "Components/CommonSense/Defs/Recipes_Meals.xml",
+        "sourceRawSha256": "d0147908b94321f39bc333ce415fad989db8a1ba216316ae9b37b040896ba52d",
+        "sha256": "f4c5def910661b4e60ff684f938def29fdaf5c226a4496cffe0297473b659597"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Defs/JoyGivers.xml",
+        "projectFile": "Components/CommonSense/Defs/JoyGivers.xml",
+        "sourceRawSha256": "985a82c45a428c86110cab3d90b0d7039a793085086cc6235c63317a221b4a5e",
+        "sha256": "830ee7c398b3714e1885e543631f129b9b5632e37f753d8036e7308733f284ac"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Defs/Jobs_Misc.xml",
+        "projectFile": "Components/CommonSense/Defs/Jobs_Misc.xml",
+        "sourceRawSha256": "eeedf5c9e99d276bd44af3cf5a585dd1e7288b111cd17afe4184bf6494eb071b",
+        "sha256": "590b4a5ee7e5b31dca374557a32275bc5fd0efcfc50e020432b103b4d2e85d7c"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Patches/PackMeal.xml",
+        "projectFile": "Components/CommonSense/Patches/PackMeal.xml",
+        "sourceRawSha256": "440c1f17df7b3dfd0bbf207e40640bd0dff13be1c37b2074625706e42cfc2f5b",
+        "sha256": "979b807adfa419a3669305751a5c1b86a13c647ce3f7fe6172a518f2b0ded501"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Patches/FunPolice.xml",
+        "projectFile": "Components/CommonSense/Patches/FunPolice.xml",
+        "sourceRawSha256": "2f9772fc30c8f3be187cb00fa155e58f836fdfc19af80135013b4fcde79d3e28",
+        "sha256": "673588a1ebd2bf226e2b363289f51094840230a65145afb2a8b3444fda5ec71a"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Patches/FoodOptimality.xml",
+        "projectFile": "Components/CommonSense/Patches/FoodOptimality.xml",
+        "sourceRawSha256": "440c1f17df7b3dfd0bbf207e40640bd0dff13be1c37b2074625706e42cfc2f5b",
+        "sha256": "979b807adfa419a3669305751a5c1b86a13c647ce3f7fe6172a518f2b0ded501"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Patches/CleanOnOpportunity.xml",
+        "projectFile": "Components/CommonSense/Patches/CleanOnOpportunity.xml",
+        "sourceRawSha256": "0b5b5c95f937829149955a8c0ccee903860536348278f52251a0ed9663cd4d36",
+        "sha256": "e2b6be5d6781345fdd63e2747d4867d65a6bd842584ccb4e10911b711ccbecec"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/1.6/Patches/CleanGizmo.xml",
+        "projectFile": "Components/CommonSense/Patches/CleanGizmo.xml",
+        "sourceRawSha256": "5dccf644ee88b1973326d76853995a182386ff3f5ee246e822c1bacc909fda56",
+        "sha256": "e4f631e8ed203cb83eaffec02da5ad41128b9c3940273e6720b112ae22855aef"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/Textures/UI/Icons/Unload_Thing.png",
+        "projectFile": "Components/CommonSense/Textures/UI/Icons/Unload_Thing.png",
+        "sourceRawSha256": "c64c232b5b932c60d4e1adb01fe3f4b79d8dacede1ad1716f7001f8deb2f4b8c",
+        "sha256": "c64c232b5b932c60d4e1adb01fe3f4b79d8dacede1ad1716f7001f8deb2f4b8c"
+      },
+      {
+        "source": "Common Sense (Умные действия колонистов)/Textures/UI/Icons/Unload_Thing_Cancel.png",
+        "projectFile": "Components/CommonSense/Textures/UI/Icons/Unload_Thing_Cancel.png",
+        "sourceRawSha256": "e8c949f354a0ea3367056d5dc2c43ff93d15a928f63b15a6827284022f974fb3",
+        "sha256": "e8c949f354a0ea3367056d5dc2c43ff93d15a928f63b15a6827284022f974fb3"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

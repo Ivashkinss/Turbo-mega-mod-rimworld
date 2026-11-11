@@ -9,6 +9,13 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "CommonSense": ("Common Sense (Умные действия колонистов)", "avilmask.commonsense", {
+        "1.6/Assemblies/CommonSense.dll": "Assemblies/CommonSense.dll",
+        "Languages/English/Keyed/strings.xml": "Languages/English/Keyed/strings.xml",
+        **{f"1.6/Defs/{name}.xml": f"Defs/{name}.xml" for name in ("RoomRoles", "Recipes_Meals", "JoyGivers", "Jobs_Misc")},
+        **{f"1.6/Patches/{name}.xml": f"Patches/{name}.xml" for name in ("PackMeal", "FunPolice", "FoodOptimality", "CleanOnOpportunity", "CleanGizmo")},
+        **{f"Textures/UI/Icons/{name}.png": f"Textures/UI/Icons/{name}.png" for name in ("Unload_Thing", "Unload_Thing_Cancel")},
+    }),
     "SnapOut": ("Snap Out! (Успокоение срывающихся колонистов)", "weilbyte.snapout", {
         "1.6/Assemblies/SnapOut.dll": "Assemblies/SnapOut.dll",
         "Languages/English/Keyed/CalmDown.xml": "Languages/English/Keyed/CalmDown.xml",

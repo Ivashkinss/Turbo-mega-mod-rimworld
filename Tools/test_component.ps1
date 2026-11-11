@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'CommonSense' { @{ folder='Common Sense (Умные действия колонистов)'; id='avilmask.commonsense'; dll='Components\CommonSense\Assemblies\CommonSense.dll'; source='InGameCommonSenseProbe.cs'; flag='-tmm-commonsense-probe'; report='CommonSenseProbe.json'; ui='CommonSenseUiProbe.json'; key='commonSense'; prefix='CommonSense' } }
     'SnapOut' { @{ folder='Snap Out! (Успокоение срывающихся колонистов)'; id='weilbyte.snapout'; dll='Components\SnapOut\Assemblies\SnapOut.dll'; source='InGameSnapOutProbe.cs'; flag='-tmm-snapout-probe'; report='SnapOutProbe.json'; ui='SnapOutUiProbe.json'; key='snapOut'; prefix='SnapOut' } }
     'DevInYourLanguage' { @{ folder='Dev In Your Language'; id='latta.devl10n'; dll='Components\DevInYourLanguage\Assemblies\DevInYourLanguage.dll'; source='InGameDevMenuProbe.cs'; flag='-tmm-devmenu-probe'; report='DevMenuProbe.json'; ui='DevMenuUiProbe.json'; key='devMenu'; prefix='DevMenu' } }
     'RealisticRooms' { @{ folder='Realistic Rooms Rewritten (Снижение требований к комнатам)'; id='lucifer.realisticrooms'; dll='Components\RealisticRooms\Assemblies\RealisticRoomsRewritten.dll'; source='InGameRoomsProbe.cs'; flag='-tmm-rooms-probe'; report='RoomsProbe.json'; ui='RoomsUiProbe.json'; key='rooms'; prefix='Rooms' } }

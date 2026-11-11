@@ -13,6 +13,7 @@
     <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
     <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
+    <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -27,5 +28,6 @@
     <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
     <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
+    <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
   </v1.7>
 </loadFolders>
