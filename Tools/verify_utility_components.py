@@ -27,15 +27,23 @@ def main():
                 data = data.replace(b"\r\n", b"\n")
             assert hashlib.sha256(data).hexdigest() == item["sha256"], path
             count += 1
-        dlls = list((PROJECT / "Components" / name / "Assemblies").glob("*.dll"))
-        expected_dlls = sorted(Path(item["projectFile"]).name for item in manifest[name]["files"]
+        dlls = sorted(path.relative_to(PROJECT).as_posix() for path in (PROJECT / "Components" / name).rglob("*.dll"))
+        expected_dlls = sorted(item["projectFile"] for item in manifest[name]["files"]
                                if item["projectFile"].endswith(".dll"))
-        assert sorted(dll.name for dll in dlls) == expected_dlls, dlls
+        assert dlls == expected_dlls, dlls
         for version in ("v1.6", "v1.7"):
             selected = folders.xpath(f"/loadFolders/{version}/li[text()='Components/{name}']")
             assert len(selected) == 1
             assert enabled(selected[0].attrib, set()), (name, "missing when standalone")
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
+    for version in ("v1.6", "v1.7"):
+        for original in (False, True):
+            for vehicles in (False, True):
+                ids = ({"duz.almosttherefork"} if original else set()) | ({"smashphil.vehicleframework"} if vehicles else set())
+                selected = [node.text for node in folders.find(version)
+                            if node.text.startswith("Components/AlmostThere") and enabled(node.attrib, ids)]
+                expected = [] if original else ["Components/AlmostThere", "Components/AlmostThere/" + ("Vehicles" if vehicles else "Standard")]
+                assert selected == expected, (version, ids, selected)
     russian, duplicates = entries([PROJECT / "Languages/Russian"])
     assert not duplicates, duplicates
     for name in COMPONENTS:
@@ -49,6 +57,8 @@ def main():
     report = {"components": list(COMPONENTS), "resourceHashesVerified": count,
               "russianKeysByComponent": translated, "separateHarmonyCopies": 0,
               "standaloneAndOriginalActiveLoadGuardsVerified": True, "passed": True}
+    report["almostThereBranchCombinationsChecked"] = 8
+    report["vehicleFrameworkRuntimeVerified"] = False
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

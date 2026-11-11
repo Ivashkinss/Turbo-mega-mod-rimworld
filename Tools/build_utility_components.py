@@ -31,6 +31,17 @@ COMPONENTS = {
         "Patches/Rooms/RoomStats.xml": "Patches/Rooms/RoomStats.xml",
         "Patches/ThingDefs_Misc/Filth_Various.xml": "Patches/ThingDefs_Misc/Filth_Various.xml",
     }),
+    "AlmostThere": ("Almost There! (Караваны не спят)", "duz.almosttherefork", {
+        "1.6/Assemblies/CaravanDontRest.dll": "Standard/Assemblies/CaravanDontRest.dll",
+        "VF/1.6/Assemblies/CaravanDontRest.dll": "Vehicles/Assemblies/CaravanDontRest.dll",
+        "Patches/CaravanDontRestPatch.xml": "Patches/CaravanDontRestPatch.xml",
+        "VF/Patches/CaravanDontRestPatchVF.xml": "Vehicles/Patches/CaravanDontRestPatchVF.xml",
+        "Languages/English/Keyed/GameplayCommands.xml": "Languages/English/Keyed/GameplayCommands.xml",
+        "Languages/English/Keyed/AlmostThere_keys.xml": "Languages/English/Keyed/AlmostThere_keys.xml",
+        "Textures/UI/ForceRest.png": "Textures/UI/ForceRest.png",
+        "Textures/UI/DontRest.png": "Textures/UI/DontRest.png",
+        "Textures/UI/AlmostThere.png": "Textures/UI/AlmostThere.png",
+    }),
 }
 
 
@@ -82,6 +93,13 @@ def main():
         for name, (_, package_id, _) in COMPONENTS.items():
             if not tree.xpath(f"/{tree.getroot().tag}/{version}/li[text()='Components/{name}']"):
                 ET.SubElement(tree.find(version), "li", IfModNotActive=package_id).text = f"Components/{name}"
+        for branch, attributes in {
+            "Standard": {"IfModNotActive": "duz.almosttherefork,smashphil.vehicleframework"},
+            "Vehicles": {"IfModNotActive": "duz.almosttherefork", "IfModActive": "smashphil.vehicleframework"},
+        }.items():
+            folder = "Components/AlmostThere/" + branch
+            if "AlmostThere" in report and not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
+                ET.SubElement(tree.find(version), "li", **attributes).text = folder
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
     manifest.write_text(

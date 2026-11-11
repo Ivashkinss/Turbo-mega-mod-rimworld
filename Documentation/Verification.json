@@ -1,8 +1,8 @@
 {
-  "xmlFilesParsed": 51,
+  "xmlFilesParsed": 57,
   "storagesWithVerifiedDoubleCapacity": 27,
   "fridgesWithUnchangedCapacity": 7,
-  "uniqueRussianEntries": 1284,
+  "uniqueRussianEntries": 1301,
   "originalSourceHashesVerified": 0,
   "packagedXmlBaselineHashesVerified": 10,
   "packagedAssetHashesVerified": 240,

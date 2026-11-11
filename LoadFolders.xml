@@ -8,6 +8,9 @@
     <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
     <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
     <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
+    <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
+    <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
+    <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -17,5 +20,8 @@
     <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
     <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
     <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
+    <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
+    <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
+    <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
   </v1.7>
 </loadFolders>

@@ -125,6 +125,14 @@ namespace Bubbles
         public static string SettingsCategory() { return "Interaction Bubbles"; }
     }
 }
+namespace CaravanDontRest
+{
+    public static class AlmostThereMod
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string SettingsCategory() { return "Almost There!"; }
+    }
+}
 namespace Bubbles.Configuration
 {
     public static class SettingsEditor
@@ -193,7 +201,8 @@ public static class RuntimeLocalizationTests
         Check(Bubbles.Configuration.SettingsEditor.DrawSettings() == " (экспериментально)", "Bubbles suffix not translated");
         Check(new Bubbles.Configuration.SettingsEditor.Dialog().Title == "<b>Речевые пузыри</b>", "Dialog title lost its markup");
         Check(UnrelatedMod.Display.BubbleTitle() == "Interaction Bubbles", "Bubbles title patch leaked into unrelated mod");
-        Console.WriteLine("{\"runtimeChecks\":22,\"realHarmony\":true,\"passed\":true}");
+        Check(CaravanDontRest.AlmostThereMod.SettingsCategory() == "Отдых караванов", "Caravan settings title not translated");
+        Console.WriteLine("{\"runtimeChecks\":23,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

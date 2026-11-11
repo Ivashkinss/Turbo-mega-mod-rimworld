@@ -16,7 +16,9 @@ def main():
     for path in (TARGETS["MeleeAnimation"] / "1.6/Assemblies/zAnimationMod.dll",
                  TARGETS["DynamicTradeInterface"] / "1.6/Assemblies/DynamicTradeInterface.dll",
                  PROJECT / "Components/SmartSpeed/Assemblies/SmartSpeed.dll",
-                 PROJECT / "Components/InteractionBubbles/Assemblies/Bubbles.dll"):
+                 PROJECT / "Components/InteractionBubbles/Assemblies/Bubbles.dll",
+                 PROJECT / "Components/AlmostThere/Standard/Assemblies/CaravanDontRest.dll",
+                 PROJECT / "Components/AlmostThere/Vehicles/Assemblies/CaravanDontRest.dll"):
         actual.update(user_strings(path))
     missing = set(data["literals"]) - actual
     if missing:

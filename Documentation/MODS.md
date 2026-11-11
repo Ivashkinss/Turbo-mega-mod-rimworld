@@ -39,8 +39,10 @@
 
 Перечень папок перевода — предварительная инвентаризация, не проверка полноты.
 
-На текущем этапе встроены 6 компонентов: Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles и Realistic Rooms. Для Interaction Bubbles переведены все 31 исходный ключ и три надписи DLL. Для Realistic Rooms переведены 11 ключей и исправлено применение порогов к локализованным категориям; игровые отчёты — RealisticRooms-Integrated.json, RealisticRooms-OriginalActive.json и RealisticRooms-FullSet.json. Остальные строки таблицы описывают первоначальную инвентаризацию.
+На текущем этапе встроены 7 компонентов: Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms и Almost There! Fork. Для Interaction Bubbles переведены все 31 исходный ключ и три надписи DLL. Для Realistic Rooms переведены 11 ключей и исправлено применение порогов к локализованным категориям; игровые отчёты — RealisticRooms-Integrated.json, RealisticRooms-OriginalActive.json и RealisticRooms-FullSet.json. Остальные строки таблицы описывают первоначальную инвентаризацию.
 
 Включено в план: 28. Исключено: 4.
 Отсутствующих обязательных зависимостей по метаданным: 0.
 Историческая инвентаризация не подтверждает совместимость всего списка. Актуальное покрытие проверок отдельных этапов описано в README.md и CONTINUE.md.
+
+Almost There!: обычная и Vehicle Framework DLL сохранены раздельно, выбирается только одна; при активном оригинале все встроенные папки компонента пропускаются. Восемь сочетаний выбора проверены статически, четыре — через Verse.LoadFolder в 1.7. Vehicle Framework не установлен, его игровой сценарий не проверен.

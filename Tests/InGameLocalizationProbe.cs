@@ -93,7 +93,8 @@ public static class InGameLocalizationProbe
             "DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable+<GetIcons>d__1|MoveNext",
             "SmartSpeed.SmartSpeed_Mod|SettingsCategory",
             "Bubbles.Mod|SettingsCategory",
-            "Bubbles.Configuration.SettingsEditor|DrawSettings"
+            "Bubbles.Configuration.SettingsEditor|DrawSettings",
+            "CaravanDontRest.AlmostThereMod|SettingsCategory"
         };
         foreach (string target in targets)
         {

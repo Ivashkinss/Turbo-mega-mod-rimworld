@@ -110,5 +110,66 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "AlmostThere": {
+    "packageId": "duz.almosttherefork",
+    "files": [
+      {
+        "source": "Almost There! (Караваны не спят)/1.6/Assemblies/CaravanDontRest.dll",
+        "projectFile": "Components/AlmostThere/Standard/Assemblies/CaravanDontRest.dll",
+        "sourceRawSha256": "6b3b54dc74294a60c80fce832b03ba9d9da3e140ec372b9c078f49bf49516ea8",
+        "sha256": "6b3b54dc74294a60c80fce832b03ba9d9da3e140ec372b9c078f49bf49516ea8"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/VF/1.6/Assemblies/CaravanDontRest.dll",
+        "projectFile": "Components/AlmostThere/Vehicles/Assemblies/CaravanDontRest.dll",
+        "sourceRawSha256": "b2bf668e6c7185ac28f0713e4fa4eae4fa56289a640443ed3a9f7da76e89272b",
+        "sha256": "b2bf668e6c7185ac28f0713e4fa4eae4fa56289a640443ed3a9f7da76e89272b"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Patches/CaravanDontRestPatch.xml",
+        "projectFile": "Components/AlmostThere/Patches/CaravanDontRestPatch.xml",
+        "sourceRawSha256": "925868389de82cfd265f13cc44fdca77568d0747791bb82faa3c0287c1e0f7b3",
+        "sha256": "286b54dbb7696ec8678e86815c07b5f70bf08f18f396106b36e53d13e50a73e9"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/VF/Patches/CaravanDontRestPatchVF.xml",
+        "projectFile": "Components/AlmostThere/Vehicles/Patches/CaravanDontRestPatchVF.xml",
+        "sourceRawSha256": "e06ed966146bd2a1cccfae93f32718b062629c8211617633fd4278cff19bcd76",
+        "sha256": "68fd1e3dbac5911c75d809bfa5c6cc5cc4cfb1e5c071d89f9d9ab00860ea8313"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Languages/English/Keyed/GameplayCommands.xml",
+        "projectFile": "Components/AlmostThere/Languages/English/Keyed/GameplayCommands.xml",
+        "sourceRawSha256": "633d18f4d7a0d2593ac9521efe37e6d0c65cf2d7e2df88cd61a60efd57e8ab34",
+        "sha256": "b10537a236f039bd1dceb67f88f02fac70c76cdcb6bd195c73bc3a2187d95736"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Languages/English/Keyed/AlmostThere_keys.xml",
+        "projectFile": "Components/AlmostThere/Languages/English/Keyed/AlmostThere_keys.xml",
+        "sourceRawSha256": "9899d5d80c21d1472c198d1ebb430846ffe4a2dc41d00c7e57ea8658ec99b624",
+        "sha256": "27c58c1f857b7b24faa49dd416f4a29731919d944c49a0fd99ce27587904074d"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Textures/UI/ForceRest.png",
+        "projectFile": "Components/AlmostThere/Textures/UI/ForceRest.png",
+        "sourceRawSha256": "56814ba15793f060fb5f37ac8ddd1cd17b46cca5388a645d2585a4374374b94f",
+        "sha256": "56814ba15793f060fb5f37ac8ddd1cd17b46cca5388a645d2585a4374374b94f"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Textures/UI/DontRest.png",
+        "projectFile": "Components/AlmostThere/Textures/UI/DontRest.png",
+        "sourceRawSha256": "376d603bca5b9593e5811c6ea16e10034480708aa653dbac9bb4aed83c035b06",
+        "sha256": "376d603bca5b9593e5811c6ea16e10034480708aa653dbac9bb4aed83c035b06"
+      },
+      {
+        "source": "Almost There! (Караваны не спят)/Textures/UI/AlmostThere.png",
+        "projectFile": "Components/AlmostThere/Textures/UI/AlmostThere.png",
+        "sourceRawSha256": "cf6de1bb7d892aff3795a820a100ca0e84bacc67e17252f5ba8e29b477e83993",
+        "sha256": "cf6de1bb7d892aff3795a820a100ca0e84bacc67e17252f5ba8e29b477e83993"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

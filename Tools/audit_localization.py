@@ -40,10 +40,12 @@ def relative(path):
 
 
 def enabled(attributes, ids):
-    for attr, positive in (("IfModActive", True), ("IfModNotActive", False), ("MayRequire", True)):
+    # Matches Verse.LoadFolder.ShouldLoad: positive-any, positive-all,
+    # and negative-any. MayRequire is the XML def requirement (all).
+    for attr, operation in (("IfModActive", any), ("IfModActiveAll", all),
+                            ("IfModNotActive", lambda values: not any(values)), ("MayRequire", all)):
         if attr in attributes:
-            present = all(x.strip().lower() in ids for x in attributes[attr].split(","))
-            if present != positive:
+            if not operation(x.strip().lower() in ids for x in attributes[attr].split(",")):
                 return False
     return True
 

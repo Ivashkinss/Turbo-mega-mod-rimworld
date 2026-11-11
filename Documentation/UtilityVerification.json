@@ -3,16 +3,20 @@
     "SmartSpeed",
     "SmarterConstruction",
     "InteractionBubbles",
-    "RealisticRooms"
+    "RealisticRooms",
+    "AlmostThere"
   ],
-  "resourceHashesVerified": 14,
+  "resourceHashesVerified": 23,
   "russianKeysByComponent": {
     "SmartSpeed": 16,
     "SmarterConstruction": 0,
     "InteractionBubbles": 31,
-    "RealisticRooms": 11
+    "RealisticRooms": 11,
+    "AlmostThere": 16
   },
   "separateHarmonyCopies": 0,
   "standaloneAndOriginalActiveLoadGuardsVerified": true,
-  "passed": true
+  "passed": true,
+  "almostThereBranchCombinationsChecked": 8,
+  "vehicleFrameworkRuntimeVerified": false
 }
