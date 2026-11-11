@@ -416,5 +416,270 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "SimpleSidearms": {
+    "packageId": "petetimessix.simplesidearms",
+    "files": [
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Assemblies/SimpleSidearms.dll",
+        "projectFile": "Components/SimpleSidearms/Assemblies/SimpleSidearms.dll",
+        "sourceRawSha256": "9eda88d664e48ddb71fc910db5527aa42992e9d53b16a66bb7b20b5a8e7abecc",
+        "sha256": "9eda88d664e48ddb71fc910db5527aa42992e9d53b16a66bb7b20b5a8e7abecc"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Defs/JobDefs/Jobs_Misc.xml",
+        "projectFile": "Components/SimpleSidearms/Defs/JobDefs/Jobs_Misc.xml",
+        "sourceRawSha256": "733a40eb338b0ebc62ab3641fe891b1103f2e3566ae74633d7fe5be8b42e5cdb",
+        "sha256": "1943006723c22bc169782b084e27ec09d6c19a98b7ff083aba66839521fabe71"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Defs/ThinkTreeDefs/SubTrees_Misc.xml",
+        "projectFile": "Components/SimpleSidearms/Defs/ThinkTreeDefs/SubTrees_Misc.xml",
+        "sourceRawSha256": "a51ae16f98305170ac8377e009fc5c84b5101c10293109246bee32203ba6d5ab",
+        "sha256": "7e9837a828897e85e12b7b5dbb3c002e6aba4dab4815c73141fb20d84a7234f0"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Defs/TutorDefs/Concepts.xml",
+        "projectFile": "Components/SimpleSidearms/Defs/TutorDefs/Concepts.xml",
+        "sourceRawSha256": "ccd072dc3efbf1b2008a765cf8b37da665ae4afb1f299c9a216adca3336d46ee",
+        "sha256": "0fba29e53fdbd5d6e32a7c7a0f00dd08e445e72483eb45187f161ab56ac74b55"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Defs/WeaponTagMapDefs/SidearmWeaponTagMaps.xml",
+        "projectFile": "Components/SimpleSidearms/Defs/WeaponTagMapDefs/SidearmWeaponTagMaps.xml",
+        "sourceRawSha256": "242e043f843d85686daada37060d15ab472373a80ef665f16cbd272ccb877eff",
+        "sha256": "6695a85e99a03518ef4987949acfa521ad4730b3a32dc4accbd60b3d6f54c67e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Languages/English/Keyed/English.xml",
+        "projectFile": "Components/SimpleSidearms/Languages/English/Keyed/English.xml",
+        "sourceRawSha256": "ecd52052ba717a3dcfbeda78f8a2eabe8b3e5fded12aab44ce6836e0e1fd8909",
+        "sha256": "4f75982a8d895fc54ecc3c3f7709b57b70e62b8645f143aaad77a41eefddcc9c"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Patches/pawnPatches.xml",
+        "projectFile": "Components/SimpleSidearms/Patches/pawnPatches.xml",
+        "sourceRawSha256": "8a66678fc54f40e6bdd9d59829b24056b3f36700801cf94c3509154da2c41864",
+        "sha256": "38d69f1c5184aba9749defd1126a7572d7751ce8d003eb1023cb071c9e2decde"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Patches/thinkTreePatches.xml",
+        "projectFile": "Components/SimpleSidearms/Patches/thinkTreePatches.xml",
+        "sourceRawSha256": "d1a66229e819557ed717f02aa7a220adeac6e020afe76d5ac35f3359c99fc300",
+        "sha256": "c98fc8ace41ca3b20fde90c7ac800e23b2ad2da5c8ccb0fded50ba44d6b24c1c"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Patches/weaponTagPatches.xml",
+        "projectFile": "Components/SimpleSidearms/Patches/weaponTagPatches.xml",
+        "sourceRawSha256": "a36b15c299dcce4ec5de82e40cc022fe71f4aa5a15f326557a0a58e24da86578",
+        "sha256": "f0fb194a6d00abe8cff428e29bfaef41d28739aa024092bf7f90b9071da94395"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/blocked_weapon.png",
+        "projectFile": "Components/SimpleSidearms/Textures/blocked_weapon.png",
+        "sourceRawSha256": "5151047a3cf01ad0452caa10847c66ca308f6a9a1bf0248a9e0ddf72a3ed0d6a",
+        "sha256": "5151047a3cf01ad0452caa10847c66ca308f6a9a1bf0248a9e0ddf72a3ed0d6a"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/drawPocket.png",
+        "projectFile": "Components/SimpleSidearms/Textures/drawPocket.png",
+        "sourceRawSha256": "b73d0fcfd8dc7651024910ff5ea01e911e8ba9af294da28da8f52540ccfbc30e",
+        "sha256": "b73d0fcfd8dc7651024910ff5ea01e911e8ba9af294da28da8f52540ccfbc30e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/drawPocketMemory.png",
+        "projectFile": "Components/SimpleSidearms/Textures/drawPocketMemory.png",
+        "sourceRawSha256": "92d93f45e9a28f1503c11a4561e34caed3d3500eaa5a9bb030ea840075cd0305",
+        "sha256": "92d93f45e9a28f1503c11a4561e34caed3d3500eaa5a9bb030ea840075cd0305"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/drawPocketMemoryPrimary.png",
+        "projectFile": "Components/SimpleSidearms/Textures/drawPocketMemoryPrimary.png",
+        "sourceRawSha256": "31a1b58ee64a29123a48bb892471eaf0c7713571812120c820aca51cfa618e28",
+        "sha256": "31a1b58ee64a29123a48bb892471eaf0c7713571812120c820aca51cfa618e28"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/drawPocketPrimary.png",
+        "projectFile": "Components/SimpleSidearms/Textures/drawPocketPrimary.png",
+        "sourceRawSha256": "3630eb8a701e6820030f0496112c19ac59da1fc493a857870170e6cc60a7032e",
+        "sha256": "3630eb8a701e6820030f0496112c19ac59da1fc493a857870170e6cc60a7032e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/drawPocketTemp.png",
+        "projectFile": "Components/SimpleSidearms/Textures/drawPocketTemp.png",
+        "sourceRawSha256": "3b627e10362a6f006d4817b20abe0e0f5e49bf40049b831f01d3b38455b6fd4f",
+        "sha256": "3b627e10362a6f006d4817b20abe0e0f5e49bf40049b831f01d3b38455b6fd4f"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/lockClosed.png",
+        "projectFile": "Components/SimpleSidearms/Textures/lockClosed.png",
+        "sourceRawSha256": "1ca8affa2f080f138000343558d61110f5c604f7a4ddb08d7c50cf308aee6ad7",
+        "sha256": "1ca8affa2f080f138000343558d61110f5c604f7a4ddb08d7c50cf308aee6ad7"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/lockOpen.png",
+        "projectFile": "Components/SimpleSidearms/Textures/lockOpen.png",
+        "sourceRawSha256": "7012c6cf8cf9be817f647f1a5de38a355d70360cf58db253869c4398cc81de82",
+        "sha256": "7012c6cf8cf9be817f647f1a5de38a355d70360cf58db253869c4398cc81de82"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/locklockOff.png",
+        "projectFile": "Components/SimpleSidearms/Textures/locklockOff.png",
+        "sourceRawSha256": "25ef61bea5a3e1c52ceb6491fc176e4a6f62aaeafae2275a216080a2bee978c3",
+        "sha256": "25ef61bea5a3e1c52ceb6491fc176e4a6f62aaeafae2275a216080a2bee978c3"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/locklockOn.png",
+        "projectFile": "Components/SimpleSidearms/Textures/locklockOn.png",
+        "sourceRawSha256": "3e288858fe31c890501e38fdc0d6fa70b6b47f6ff0df4c861928b6f8c2aa0263",
+        "sha256": "3e288858fe31c890501e38fdc0d6fa70b6b47f6ff0df4c861928b6f8c2aa0263"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/missingIcon.png",
+        "projectFile": "Components/SimpleSidearms/Textures/missingIcon.png",
+        "sourceRawSha256": "08ce147fd788e98502f6f8d04f4954ff2564bc5f7aeaecb2d87d9ca350d94822",
+        "sha256": "08ce147fd788e98502f6f8d04f4954ff2564bc5f7aeaecb2d87d9ca350d94822"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/preferMelee.png",
+        "projectFile": "Components/SimpleSidearms/Textures/preferMelee.png",
+        "sourceRawSha256": "fc263979385b8ada12974428e48a7548d82ee492a9797890123b05ddbc3bd777",
+        "sha256": "fc263979385b8ada12974428e48a7548d82ee492a9797890123b05ddbc3bd777"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/preferRanged.png",
+        "projectFile": "Components/SimpleSidearms/Textures/preferRanged.png",
+        "sourceRawSha256": "d51ef326d877ad2dfb07cc1bf4c72db330a8ac54e5c842dc774c37ee5824f5ac",
+        "sha256": "d51ef326d877ad2dfb07cc1bf4c72db330a8ac54e5c842dc774c37ee5824f5ac"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/preferSkilled.png",
+        "projectFile": "Components/SimpleSidearms/Textures/preferSkilled.png",
+        "sourceRawSha256": "93c4dabc86717fdda110aa9887cd80d9129793807379ef15f14d11ca27abb005",
+        "sha256": "93c4dabc86717fdda110aa9887cd80d9129793807379ef15f14d11ca27abb005"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/settingsWarningIcon.png",
+        "projectFile": "Components/SimpleSidearms/Textures/settingsWarningIcon.png",
+        "sourceRawSha256": "b4214573a97130244ce976ae0a2f765c3418d89ac8af1b44d334bb269c53ed87",
+        "sha256": "b4214573a97130244ce976ae0a2f765c3418d89ac8af1b44d334bb269c53ed87"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/sidearm_default_ranged.png",
+        "projectFile": "Components/SimpleSidearms/Textures/sidearm_default_ranged.png",
+        "sourceRawSha256": "161096c918584c98185f20e6483810e6fb3134ccc79780600160bc28191be732",
+        "sha256": "161096c918584c98185f20e6483810e6fb3134ccc79780600160bc28191be732"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/sidearm_forced_always.png",
+        "projectFile": "Components/SimpleSidearms/Textures/sidearm_forced_always.png",
+        "sourceRawSha256": "77620e9bd67ab84fbcc282ce31f4cc0906c7d2680013c09f50533ccadae75d4a",
+        "sha256": "77620e9bd67ab84fbcc282ce31f4cc0906c7d2680013c09f50533ccadae75d4a"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/sidearm_forced_drafted.png",
+        "projectFile": "Components/SimpleSidearms/Textures/sidearm_forced_drafted.png",
+        "sourceRawSha256": "5b5a913d261376bb84311a5d1b28066db08481c59442903fcf9e3d7ad6afe8fe",
+        "sha256": "5b5a913d261376bb84311a5d1b28066db08481c59442903fcf9e3d7ad6afe8fe"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/sidearm_preferred_melee.png",
+        "projectFile": "Components/SimpleSidearms/Textures/sidearm_preferred_melee.png",
+        "sourceRawSha256": "b51e37292393085828d0e48e6f98bb88a4a1af3816ec6eef24e4150a93c4ea1e",
+        "sha256": "b51e37292393085828d0e48e6f98bb88a4a1af3816ec6eef24e4150a93c4ea1e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/speedBiasSliderNegative.png",
+        "projectFile": "Components/SimpleSidearms/Textures/speedBiasSliderNegative.png",
+        "sourceRawSha256": "b6c3b77da369918f85e4472aea6747182f7431c5680260cd4c7b515e8a2b5f3e",
+        "sha256": "b6c3b77da369918f85e4472aea6747182f7431c5680260cd4c7b515e8a2b5f3e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/speedBiasSliderPositive.png",
+        "projectFile": "Components/SimpleSidearms/Textures/speedBiasSliderPositive.png",
+        "sourceRawSha256": "5f162116f1cf2829401fe43e6b0eedfb2567fe1cd34bda0b657256902c4abb37",
+        "sha256": "5f162116f1cf2829401fe43e6b0eedfb2567fe1cd34bda0b657256902c4abb37"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/tuts/autopickup.png",
+        "projectFile": "Components/SimpleSidearms/Textures/tuts/autopickup.png",
+        "sourceRawSha256": "98a3c2eb74f11c146bb6d52a23bc6ff17a8584aa799e50729d932b97d2c5486a",
+        "sha256": "98a3c2eb74f11c146bb6d52a23bc6ff17a8584aa799e50729d932b97d2c5486a"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/tuts/havePunch.png",
+        "projectFile": "Components/SimpleSidearms/Textures/tuts/havePunch.png",
+        "sourceRawSha256": "9a734539afc5354faa94903dcb79790ae410b9258abd865977806a6eb00e182f",
+        "sha256": "9a734539afc5354faa94903dcb79790ae410b9258abd865977806a6eb00e182f"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/tuts/rememberDropped.png",
+        "projectFile": "Components/SimpleSidearms/Textures/tuts/rememberDropped.png",
+        "sourceRawSha256": "3b0713e2e96e53c4df40fd35d9e492468e9613d6f60d76a786542618e2a2db23",
+        "sha256": "3b0713e2e96e53c4df40fd35d9e492468e9613d6f60d76a786542618e2a2db23"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/tuts/rememberPrimary.png",
+        "projectFile": "Components/SimpleSidearms/Textures/tuts/rememberPrimary.png",
+        "sourceRawSha256": "6275dd31903f8bcbc1265a464b3d15b9f69e13c2bc83929cd44bed1f5b3c3c2e",
+        "sha256": "6275dd31903f8bcbc1265a464b3d15b9f69e13c2bc83929cd44bed1f5b3c3c2e"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/unarmedIcon.png",
+        "projectFile": "Components/SimpleSidearms/Textures/unarmedIcon.png",
+        "sourceRawSha256": "c327b9f1d5b9adba5569d56d3959fa15c07a30d558f822e213c6d6a196ff1c58",
+        "sha256": "c327b9f1d5b9adba5569d56d3959fa15c07a30d558f822e213c6d6a196ff1c58"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weaponType_dangerous.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weaponType_dangerous.png",
+        "sourceRawSha256": "b44ff30e43508da0ab9cd737369870ee29f1f8c7e6e9fa9ffb5bcc8650989561",
+        "sha256": "b44ff30e43508da0ab9cd737369870ee29f1f8c7e6e9fa9ffb5bcc8650989561"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weaponType_emp.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weaponType_emp.png",
+        "sourceRawSha256": "33c3b4689f9c40981bcbd4304d2f58b0723dd2a0734ff404c863b7ae4913e432",
+        "sha256": "33c3b4689f9c40981bcbd4304d2f58b0723dd2a0734ff404c863b7ae4913e432"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weaponType_manual.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weaponType_manual.png",
+        "sourceRawSha256": "8d2e50403982ece23a9dcb4374f807685a7f61334e4bc979ef5c505724b896da",
+        "sha256": "8d2e50403982ece23a9dcb4374f807685a7f61334e4bc979ef5c505724b896da"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weaponType_offhandcompat.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weaponType_offhandcompat.png",
+        "sourceRawSha256": "a53fb4ccac6d79b68b9d40686e47b11d678a13dae915914909b18fede3ada164",
+        "sha256": "a53fb4ccac6d79b68b9d40686e47b11d678a13dae915914909b18fede3ada164"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weaponType_shieldcompat.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weaponType_shieldcompat.png",
+        "sourceRawSha256": "75b87dbb98b3e20f9211105f640d72b78dc3415f145a5ed361defa6c0ba7fa31",
+        "sha256": "75b87dbb98b3e20f9211105f640d72b78dc3415f145a5ed361defa6c0ba7fa31"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weapon_held_mainhand.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weapon_held_mainhand.png",
+        "sourceRawSha256": "4138042edce0f9531ae4fe701fa6fc8b4e3514305e6f79f6ffb0a7474d6b4ab4",
+        "sha256": "4138042edce0f9531ae4fe701fa6fc8b4e3514305e6f79f6ffb0a7474d6b4ab4"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weapon_held_offhand.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weapon_held_offhand.png",
+        "sourceRawSha256": "8da17d832d77ed0d7f92cce46a78a2e4b0d2978273d589a589366759f944362c",
+        "sha256": "8da17d832d77ed0d7f92cce46a78a2e4b0d2978273d589a589366759f944362c"
+      },
+      {
+        "source": "Simple Sidearms (Ношение двух видов оружия)/v1.6/Textures/weapon_held_twohand.png",
+        "projectFile": "Components/SimpleSidearms/Textures/weapon_held_twohand.png",
+        "sourceRawSha256": "4b3522dbe96df1a570187d77237c24c95e9777215b9b173886523d0b6ae6ec12",
+        "sha256": "4b3522dbe96df1a570187d77237c24c95e9777215b9b173886523d0b6ae6ec12"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

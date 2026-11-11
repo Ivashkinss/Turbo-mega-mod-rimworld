@@ -1,5 +1,6 @@
 {
   "components": [
+    "SimpleSidearms",
     "RunAndGun",
     "CommonSense",
     "SnapOut",
@@ -10,8 +11,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 59,
+  "resourceHashesVerified": 102,
   "russianKeysByComponent": {
+    "SimpleSidearms": 222,
     "RunAndGun": 32,
     "CommonSense": 83,
     "SnapOut": 43,
@@ -26,5 +28,6 @@
   "standaloneAndOriginalActiveLoadGuardsVerified": true,
   "passed": true,
   "almostThereBranchCombinationsChecked": 8,
-  "vehicleFrameworkRuntimeVerified": false
+  "vehicleFrameworkRuntimeVerified": false,
+  "sidearmsDefinitionFieldsVerified": 21
 }

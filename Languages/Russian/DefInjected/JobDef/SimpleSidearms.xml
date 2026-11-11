@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <EquipSecondary.reportString>экипирует TargetA как вспомогательное оружие.</EquipSecondary.reportString>
+  <ReequipSecondary.reportString>снова экипирует TargetA как вспомогательное оружие.</ReequipSecondary.reportString>
+  <ReequipSecondaryCombat.reportString>снова экипирует TargetA как вспомогательное оружие.</ReequipSecondaryCombat.reportString>
+</LanguageData>

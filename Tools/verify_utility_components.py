@@ -54,11 +54,31 @@ def main():
             if key == ("Keyed", "Bubbles.OffsetDirections"):
                 assert len(source["text"].split("|")) == len(russian[key]["text"].split("|")) == 4
         translated[name] = len(english)
+    # The source Russian tutorials/jobs used obsolete defNames. Verify against
+    # the definitions that are actually shipped, including all current fields.
+    sidearm_fields = 0
+    for kind, file, fields in (
+        ('ConceptDef', 'TutorDefs/Concepts.xml', ('label', 'helpText')),
+        ('JobDef', 'JobDefs/Jobs_Misc.xml', ('reportString',)),
+    ):
+        expected_keys = set()
+        for definition in ET.parse(str(PROJECT / 'Components/SimpleSidearms/Defs' / file)).getroot():
+            for field in fields:
+                key = definition.findtext('defName') + '.' + field
+                expected_keys.add(key)
+                source = definition.findtext(field).replace('\\n', '\n').strip()
+                value = russian[('DefInjected/' + kind, key)]['text'].replace('\\n', '\n').strip()
+                check_text(source, value, key)
+                assert source.count('TargetA') == value.count('TargetA'), (key, 'job target token')
+                sidearm_fields += 1
+        actual_keys = {node.tag for node in ET.parse(str(PROJECT / 'Languages/Russian/DefInjected' / kind / 'SimpleSidearms.xml')).getroot()}
+        assert actual_keys == expected_keys, (kind, 'stale or missing Sidearms def fields')
     report = {"components": list(COMPONENTS), "resourceHashesVerified": count,
               "russianKeysByComponent": translated, "separateHarmonyCopies": 0,
               "standaloneAndOriginalActiveLoadGuardsVerified": True, "passed": True}
     report["almostThereBranchCombinationsChecked"] = 8
     report["vehicleFrameworkRuntimeVerified"] = False
+    report["sidearmsDefinitionFieldsVerified"] = sidearm_fields
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

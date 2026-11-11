@@ -15,6 +15,7 @@
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
     <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
+    <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -31,5 +32,6 @@
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
     <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
+    <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
   </v1.7>
 </loadFolders>

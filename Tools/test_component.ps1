@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'SimpleSidearms' { @{ folder='Simple Sidearms (Ношение двух видов оружия)'; id='petetimessix.simplesidearms'; dll='Components\SimpleSidearms\Assemblies\SimpleSidearms.dll'; source='InGameSimpleSidearmsProbe.cs'; flag='-tmm-sidearms-probe'; report='SimpleSidearmsProbe.json'; ui='SimpleSidearmsUiProbe.json'; key='sidearms'; prefix='SimpleSidearms' } }
     'RunAndGun' { @{ folder='RunAndGun (Стрельба на ходу)'; id='roolo.runandgun.kotobike'; dll='Components\RunAndGun\Assemblies\RunAndGun.dll'; source='InGameRunAndGunProbe.cs'; flag='-tmm-runandgun-probe'; report='RunAndGunProbe.json'; ui='RunAndGunUiProbe.json'; key='runAndGun'; prefix='RunAndGun' } }
     'CommonSense' { @{ folder='Common Sense (Умные действия колонистов)'; id='avilmask.commonsense'; dll='Components\CommonSense\Assemblies\CommonSense.dll'; source='InGameCommonSenseProbe.cs'; flag='-tmm-commonsense-probe'; report='CommonSenseProbe.json'; ui='CommonSenseUiProbe.json'; key='commonSense'; prefix='CommonSense' } }
     'SnapOut' { @{ folder='Snap Out! (Успокоение срывающихся колонистов)'; id='weilbyte.snapout'; dll='Components\SnapOut\Assemblies\SnapOut.dll'; source='InGameSnapOutProbe.cs'; flag='-tmm-snapout-probe'; report='SnapOutProbe.json'; ui='SnapOutUiProbe.json'; key='snapOut'; prefix='SnapOut' } }
