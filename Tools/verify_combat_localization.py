@@ -60,7 +60,7 @@ def main():
         assert source.count("\n") == translated.count("\n"), source
     report["runtimeLiteralStrings"] = len(runtime["literals"])
     report["runtimeEnumLabels"] = len(runtime["corpseOffsetModes"])
-    vef_source = ET.parse(str(PROJECT.parent / "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Keys.xml")).getroot()
+    vef_source = ET.parse(str(PROJECT / "Components/VanillaExpandedFramework/Languages/English/Keyed/Keys.xml")).getroot()
     vef_overlay = ET.parse(str(PROJECT / "Languages/Russian/Keyed/VEF_FactionDiscovery.xml")).getroot()
     for node in vef_overlay:
         source = vef_source.find(node.tag)

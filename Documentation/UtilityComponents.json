@@ -293,26 +293,26 @@
       },
       {
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/RoomRoles.xml",
-        "projectFile": "Components/CommonSense/Defs/RoomRoles.xml",
+        "projectFile": "Components/CommonSense/Defs/CommonSense/RoomRoles.xml",
         "sourceRawSha256": "3cb58d51a591fd8a5e856e769ea7154434db9f54f588f9aeb5417d839f1390c0",
         "sha256": "bff95d4b789af9fc338d88009a8738c4dc92aa7332078dc8c440e482dceedbef"
       },
       {
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/Recipes_Meals.xml",
-        "projectFile": "Components/CommonSense/Defs/Recipes_Meals.xml",
+        "projectFile": "Components/CommonSense/Defs/CommonSense/Recipes_Meals.xml",
         "sourceRawSha256": "d0147908b94321f39bc333ce415fad989db8a1ba216316ae9b37b040896ba52d",
         "sha256": "7964237bfb0ab34b7e22dbb62657b8201b9145a926204e10c2c31231921b5078",
         "normalizationNote": "Removed one space before tab indentation; parsed XML unchanged."
       },
       {
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/JoyGivers.xml",
-        "projectFile": "Components/CommonSense/Defs/JoyGivers.xml",
+        "projectFile": "Components/CommonSense/Defs/CommonSense/JoyGivers.xml",
         "sourceRawSha256": "985a82c45a428c86110cab3d90b0d7039a793085086cc6235c63317a221b4a5e",
         "sha256": "830ee7c398b3714e1885e543631f129b9b5632e37f753d8036e7308733f284ac"
       },
       {
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/Jobs_Misc.xml",
-        "projectFile": "Components/CommonSense/Defs/Jobs_Misc.xml",
+        "projectFile": "Components/CommonSense/Defs/CommonSense/Jobs_Misc.xml",
         "sourceRawSha256": "eeedf5c9e99d276bd44af3cf5a585dd1e7288b111cd17afe4184bf6494eb071b",
         "sha256": "590b4a5ee7e5b31dca374557a32275bc5fd0efcfc50e020432b103b4d2e85d7c"
       },
@@ -23417,5 +23417,1141 @@
     "textNormalization": "None: preserve Lunar .lfc integrity checks and every original byte",
     "byteExactResources": true,
     "bundledHarmonyFallback": "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
+  },
+  "VanillaExpandedFramework": {
+    "packageId": "oskarpotocki.vanillafactionsexpanded.core",
+    "files": [
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Motes/Mote_DustPuff.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Motes/Mote_DustPuff.png",
+        "sourceRawSha256": "152c49a0488b2e0a7fa4445d013b9c0e6f052fc4247720de156582757f21ad2b",
+        "sha256": "152c49a0488b2e0a7fa4445d013b9c0e6f052fc4247720de156582757f21ad2b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Motes/Mote_FireSmoked.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Motes/Mote_FireSmoked.png",
+        "sourceRawSha256": "94b95c93886ce9bb06d143f6dd26314ba17df26c38966f66c07412a423cc563b",
+        "sha256": "94b95c93886ce9bb06d143f6dd26314ba17df26c38966f66c07412a423cc563b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Motes/Mote_Smoke.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Motes/Mote_Smoke.png",
+        "sourceRawSha256": "a78235a8ce6f763afa1ec4ee8dabf11f192c410099d8aeee9ba4b0d57ab49064",
+        "sha256": "a78235a8ce6f763afa1ec4ee8dabf11f192c410099d8aeee9ba4b0d57ab49064"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Motes/Mote_SmokeGreen.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Motes/Mote_SmokeGreen.png",
+        "sourceRawSha256": "2c015176644e4fdf1a40e86adea9da66e51206a6d342ef82ef3ddbfb84914623",
+        "sha256": "2c015176644e4fdf1a40e86adea9da66e51206a6d342ef82ef3ddbfb84914623"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Special/PSTransmitterAtlas.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Special/PSTransmitterAtlas.png",
+        "sourceRawSha256": "a5ae82d7de3ad01c9960291cde30396b423b30d98c689bb024c3b1465248ebe4",
+        "sha256": "a5ae82d7de3ad01c9960291cde30396b423b30d98c689bb024c3b1465248ebe4"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Things/OutpostDropOffSpot.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Things/OutpostDropOffSpot.png",
+        "sourceRawSha256": "5b1864b192d0207b820aa1a51c6e2437c21bc755969bd99a7e99ef9e2853a633",
+        "sha256": "5b1864b192d0207b820aa1a51c6e2437c21bc755969bd99a7e99ef9e2853a633"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/AttachTurret.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/AttachTurret.png",
+        "sourceRawSha256": "b8d9943892d1507bbac085475e0ac80b8637f80f47b0e1a22d53d9ebf4a79168",
+        "sha256": "b8d9943892d1507bbac085475e0ac80b8637f80f47b0e1a22d53d9ebf4a79168"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/CheckAuto.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/CheckAuto.png",
+        "sourceRawSha256": "440e0ae726066d3d3755de875fdf23bb289814803541b6738db668fdf11607bf",
+        "sha256": "440e0ae726066d3d3755de875fdf23bb289814803541b6738db668fdf11607bf"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/EmptyImage.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/EmptyImage.png",
+        "sourceRawSha256": "d1fd17e13a11452a7ac5582ef3a35d6c517e404628ea339882f26aa0aec3b723",
+        "sha256": "d1fd17e13a11452a7ac5582ef3a35d6c517e404628ea339882f26aa0aec3b723"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/EmptyImage_east.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/EmptyImage_east.png",
+        "sourceRawSha256": "d1fd17e13a11452a7ac5582ef3a35d6c517e404628ea339882f26aa0aec3b723",
+        "sha256": "d1fd17e13a11452a7ac5582ef3a35d6c517e404628ea339882f26aa0aec3b723"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/ForceRecharge.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/ForceRecharge.png",
+        "sourceRawSha256": "73a243f88307bf228fc87de2ec9dc4f9b356143120da4a76e6f6559696ab0b14",
+        "sha256": "73a243f88307bf228fc87de2ec9dc4f9b356143120da4a76e6f6559696ab0b14"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_Begin.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_Begin.png",
+        "sourceRawSha256": "03e27b888609e38087dd8e3fe82852bdb1effc76f8b813beb43f46fb7f9132a8",
+        "sha256": "03e27b888609e38087dd8e3fe82852bdb1effc76f8b813beb43f46fb7f9132a8"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_CancelIngredients.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_CancelIngredients.png",
+        "sourceRawSha256": "894837c9f713d79cce9d86a625ab7a0ca70508229da7d02e37aa9c3620452b05",
+        "sha256": "894837c9f713d79cce9d86a625ab7a0ca70508229da7d02e37aa9c3620452b05"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_ExtractProduct.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_ExtractProduct.png",
+        "sourceRawSha256": "af7b2a9292aa3458114573472e12e37199bf5326ead7307dbde4a762e7a08305",
+        "sha256": "af7b2a9292aa3458114573472e12e37199bf5326ead7307dbde4a762e7a08305"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_IngredientAuto.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_IngredientAuto.png",
+        "sourceRawSha256": "17ef2ec04d24c1ea538a924005830369a5114cb99b3753fd1fdbd5840ef111b3",
+        "sha256": "17ef2ec04d24c1ea538a924005830369a5114cb99b3753fd1fdbd5840ef111b3"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_InsertIngredients.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_InsertIngredients.png",
+        "sourceRawSha256": "2ef2cff6b029418df9d46de45de57fe833ff20c9a21836a1868d2a50bed53aed",
+        "sha256": "2ef2cff6b029418df9d46de45de57fe833ff20c9a21836a1868d2a50bed53aed"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_MachineOff.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_MachineOff.png",
+        "sourceRawSha256": "044158141085d8097b202d48d6b8eddcfdf2c529bd7fa789822f4ce69b9f570d",
+        "sha256": "044158141085d8097b202d48d6b8eddcfdf2c529bd7fa789822f4ce69b9f570d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_MachineOn.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_MachineOn.png",
+        "sourceRawSha256": "cb7cd85439f08e000c1ef9771c12836c195d51ca2cd2126f00cbeabbd574b4ed",
+        "sha256": "cb7cd85439f08e000c1ef9771c12836c195d51ca2cd2126f00cbeabbd574b4ed"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_NoIngredient.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_NoIngredient.png",
+        "sourceRawSha256": "bd506da71f9f5043e6240be05fd4c283853196b497a39967861cc0649b3149fb",
+        "sha256": "bd506da71f9f5043e6240be05fd4c283853196b497a39967861cc0649b3149fb"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_SemiautomaticReset.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_SemiautomaticReset.png",
+        "sourceRawSha256": "08df6f7c366bac87394e5cb7c6858b790cbb227bd69e4e3591429900570ddb47",
+        "sha256": "08df6f7c366bac87394e5cb7c6858b790cbb227bd69e4e3591429900570ddb47"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/IP_SetOutput.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/IP_SetOutput.png",
+        "sourceRawSha256": "bcf1d674009d8895c094e33028af0fc3b1917afcc16d6d3d5b0e9473c92f91f9",
+        "sha256": "bcf1d674009d8895c094e33028af0fc3b1917afcc16d6d3d5b0e9473c92f91f9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/PS_ExtractNow.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/PS_ExtractNow.png",
+        "sourceRawSha256": "44a3f491d0bfd77b591f2f91b425cf80088c9af8ec9139d24f3a43477cf0b939",
+        "sha256": "44a3f491d0bfd77b591f2f91b425cf80088c9af8ec9139d24f3a43477cf0b939"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/PS_Less.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/PS_Less.png",
+        "sourceRawSha256": "529197b922f9c6b349fdb0aad46aeea79316cb2b98355aba1e5a0deb57cf7889",
+        "sha256": "529197b922f9c6b349fdb0aad46aeea79316cb2b98355aba1e5a0deb57cf7889"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/PS_Plus.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/PS_Plus.png",
+        "sourceRawSha256": "d0009fdc5e9e6f51d96c5761f86cacca30b1048b32a529271b895e075d3f60d3",
+        "sha256": "d0009fdc5e9e6f51d96c5761f86cacca30b1048b32a529271b895e075d3f60d3"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QuestChainIcon.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QuestChainIcon.png",
+        "sourceRawSha256": "d48272660f02ae748d65f7c1aa8b968c78c012db4024d73ea440138913c2007f",
+        "sha256": "d48272660f02ae748d65f7c1aa8b968c78c012db4024d73ea440138913c2007f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/SelectZone.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/SelectZone.png",
+        "sourceRawSha256": "2549f78e55f713ab1e2213374ba32f9b4388367e33447e67ca342d591e146569",
+        "sha256": "2549f78e55f713ab1e2213374ba32f9b4388367e33447e67ca342d591e146569"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/ToggleIcon.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/ToggleIcon.png",
+        "sourceRawSha256": "d650dca0caba2200258d3cf570063734191137f44cf562fd489b3505e9cafd0d",
+        "sha256": "d650dca0caba2200258d3cf570063734191137f44cf562fd489b3505e9cafd0d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/TransferStorageContent.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/TransferStorageContent.png",
+        "sourceRawSha256": "ce6d2b2df4d5b0f50691e8b141d43346a88f5bd3d3505ba5fe70c99f974d78ea",
+        "sha256": "ce6d2b2df4d5b0f50691e8b141d43346a88f5bd3d3505ba5fe70c99f974d78ea"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/VEF_ChangeGraphic.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/VEF_ChangeGraphic.png",
+        "sourceRawSha256": "8577286294ec4a34449f76c302730ab9fea01d816a195029f1c95c66ba9c87c7",
+        "sha256": "8577286294ec4a34449f76c302730ab9fea01d816a195029f1c95c66ba9c87c7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/VEF_ChooseGraphic.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/VEF_ChooseGraphic.png",
+        "sourceRawSha256": "1547819e65c5053a7d8bd1a81c469f17900bf4d40190bae8259a4d1376bf2ed9",
+        "sha256": "1547819e65c5053a7d8bd1a81c469f17900bf4d40190bae8259a4d1376bf2ed9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/VELogo.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/VELogo.png",
+        "sourceRawSha256": "1de032a3cdb58daaba3654c9188680d41c3e69992bf6f50250be2cd31b155ed6",
+        "sha256": "1de032a3cdb58daaba3654c9188680d41c3e69992bf6f50250be2cd31b155ed6"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Projectile/Lightning/LightningA.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Projectile/Lightning/LightningA.png",
+        "sourceRawSha256": "7d00aa02a2605ead55934061f17fa43e34ee7980c176df131a01808f7de9980d",
+        "sha256": "7d00aa02a2605ead55934061f17fa43e34ee7980c176df131a01808f7de9980d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Projectile/Lightning/LightningB.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Projectile/Lightning/LightningB.png",
+        "sourceRawSha256": "09101e649713b156608726683109d4d697c5b3a1376dbda6544dbafadf5b394f",
+        "sha256": "09101e649713b156608726683109d4d697c5b3a1376dbda6544dbafadf5b394f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Projectile/Lightning/LightningC.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Projectile/Lightning/LightningC.png",
+        "sourceRawSha256": "d7237513117871b73bd1b83042f03de64932e9e9cd0e8e7ab5c8c87592d798f2",
+        "sha256": "d7237513117871b73bd1b83042f03de64932e9e9cd0e8e7ab5c8c87592d798f2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Projectile/Lightning/LightningD.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Projectile/Lightning/LightningD.png",
+        "sourceRawSha256": "06d6131b4705a5b015245d8b8e6925224155e21f1cb7dd102cbc0d11ee47fd7f",
+        "sha256": "06d6131b4705a5b015245d8b8e6925224155e21f1cb7dd102cbc0d11ee47fd7f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Projectile/Lightning/LightningE.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Projectile/Lightning/LightningE.png",
+        "sourceRawSha256": "a5d2b381c6011b1f8a22aee085e096d84cf3f081c26bc345d9cf7d0893c0d52e",
+        "sha256": "a5d2b381c6011b1f8a22aee085e096d84cf3f081c26bc345d9cf7d0893c0d52e"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Terrain/Surfaces/Lava.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Terrain/Surfaces/Lava.png",
+        "sourceRawSha256": "c701ad1588fcbe4ccd04cba85f939cdec77b3dcf770facd6505f05678aba3dee",
+        "sha256": "c701ad1588fcbe4ccd04cba85f939cdec77b3dcf770facd6505f05678aba3dee"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Terrain/Surfaces/LavaRock.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Terrain/Surfaces/LavaRock.png",
+        "sourceRawSha256": "49a42a757ac3826d0e99de46815a014490a1fee557620e22426d56ad01cac6c0",
+        "sha256": "49a42a757ac3826d0e99de46815a014490a1fee557620e22426d56ad01cac6c0"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/Things/Gas/ThickSmoke.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/Things/Gas/ThickSmoke.png",
+        "sourceRawSha256": "6b736fd283fa0d1a0fe085f467ebefa364fa0bba10207d06e47ae63567a562e2",
+        "sha256": "6b736fd283fa0d1a0fe085f467ebefa364fa0bba10207d06e47ae63567a562e2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_ControlledBlinking.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_ControlledBlinking.png",
+        "sourceRawSha256": "14beb985a2691a142112201fcac7c31045df563d009dd463f487aa3a240ad093",
+        "sha256": "14beb985a2691a142112201fcac7c31045df563d009dd463f487aa3a240ad093"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_ControlledDetonation.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_ControlledDetonation.png",
+        "sourceRawSha256": "f0e750e37fb9641da577f20e46ef2372cc68485a29fe6676d6f2b5b6276a6d5f",
+        "sha256": "f0e750e37fb9641da577f20e46ef2372cc68485a29fe6676d6f2b5b6276a6d5f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_ControlledInvisibility.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_ControlledInvisibility.png",
+        "sourceRawSha256": "60148563a90c6f911a5b087804b38269d1f0977447c0b02f114c09b118e75765",
+        "sha256": "60148563a90c6f911a5b087804b38269d1f0977447c0b02f114c09b118e75765"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_CorpseDecay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_CorpseDecay.png",
+        "sourceRawSha256": "8f57be5a519e74ed1872d71ddc53f269110d64d0e5c2eda58ca50ca5706d3c12",
+        "sha256": "8f57be5a519e74ed1872d71ddc53f269110d64d0e5c2eda58ca50ca5706d3c12"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_DiggingDiscipline.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_DiggingDiscipline.png",
+        "sourceRawSha256": "68e91b727db2147daf75de9d317326f57cf1896225e8de2dfecb5c36b810f08c",
+        "sha256": "68e91b727db2147daf75de9d317326f57cf1896225e8de2dfecb5c36b810f08c"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Abilities/VEF_FumeRegulation.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Abilities/VEF_FumeRegulation.png",
+        "sourceRawSha256": "88d346dfd0a02f003e98af576dac3abcb179400595775674463cd6e6cc5fdc25",
+        "sha256": "88d346dfd0a02f003e98af576dac3abcb179400595775674463cd6e6cc5fdc25"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Commands/VEF_Hunt.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Commands/VEF_Hunt.png",
+        "sourceRawSha256": "9c3a7378473049f4f1fd75dca40679e2ece8e390c1ea350e47457855671d3007",
+        "sha256": "9c3a7378473049f4f1fd75dca40679e2ece8e390c1ea350e47457855671d3007"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Commands/VFE_RandomChunks.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Commands/VFE_RandomChunks.png",
+        "sourceRawSha256": "aad1833592bac7c6d2e1993728f644dc51fb67a9603493a8811acd91d8be583b",
+        "sha256": "aad1833592bac7c6d2e1993728f644dc51fb67a9603493a8811acd91d8be583b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/CSG/help.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/CSG/help.png",
+        "sourceRawSha256": "09ebf32c02eaecc2cbae6897f0e3d7915d1cc3fea0f2c05bb9cf135c1b012314",
+        "sha256": "09ebf32c02eaecc2cbae6897f0e3d7915d1cc3fea0f2c05bb9cf135c1b012314"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/CSG/IConduit.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/CSG/IConduit.png",
+        "sourceRawSha256": "b546439ddd071ed2e0e7364a5e37a7b58d1e705204a168fa631f92bf9afd077f",
+        "sha256": "b546439ddd071ed2e0e7364a5e37a7b58d1e705204a168fa631f92bf9afd077f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Designators/export.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Designators/export.png",
+        "sourceRawSha256": "b4fa6d18c5a5c51b13c4fe5e8c18b63878dabd5755fc20b208f1e5748c280ce1",
+        "sha256": "b4fa6d18c5a5c51b13c4fe5e8c18b63878dabd5755fc20b208f1e5748c280ce1"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Designators/exportFA.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Designators/exportFA.png",
+        "sourceRawSha256": "99120820aa189b920d6d7dc0aa23f6480e6f09d564bf8db191d79d1124c50e33",
+        "sha256": "99120820aa189b920d6d7dc0aa23f6480e6f09d564bf8db191d79d1124c50e33"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/EnableWarmup/EnableWarmup.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/EnableWarmup/EnableWarmup.png",
+        "sourceRawSha256": "0d23e13c205d79c26574422b3103238de48979605d3141cee1e1f53bd52bb112",
+        "sha256": "0d23e13c205d79c26574422b3103238de48979605d3141cee1e1f53bd52bb112"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/AbandonOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/AbandonOutpost.png",
+        "sourceRawSha256": "4602a843d5ffee808bffc0d056d9613d671aac86c7ed6656e8424e715c15cc25",
+        "sha256": "4602a843d5ffee808bffc0d056d9613d671aac86c7ed6656e8424e715c15cc25"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/AddToOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/AddToOutpost.png",
+        "sourceRawSha256": "a23c724cdc5eb101012e76ba411d3d15b88b0bbcaab79def7a88ed5bbdb60c61",
+        "sha256": "a23c724cdc5eb101012e76ba411d3d15b88b0bbcaab79def7a88ed5bbdb60c61"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/CancelAbandonOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/CancelAbandonOutpost.png",
+        "sourceRawSha256": "4c43b0d2f76f5df0b8cb823389b1ea29e005ab80583244a3cd44ace774066d9a",
+        "sha256": "4c43b0d2f76f5df0b8cb823389b1ea29e005ab80583244a3cd44ace774066d9a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/LampColourSwitch.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/LampColourSwitch.png",
+        "sourceRawSha256": "459e37b8a36cc808439480830b2bf59284767b45bc5969b3dc5dcffb5659c260",
+        "sha256": "459e37b8a36cc808439480830b2bf59284767b45bc5969b3dc5dcffb5659c260"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/RemoveItemsFromOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/RemoveItemsFromOutpost.png",
+        "sourceRawSha256": "36dffa9a624364d8c0cb350605d31341174dd8e2964f2c9d2f710161d9e4359d",
+        "sha256": "36dffa9a624364d8c0cb350605d31341174dd8e2964f2c9d2f710161d9e4359d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/RemovePawnFromOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/RemovePawnFromOutpost.png",
+        "sourceRawSha256": "be82cd6ade8cf4d95b9252643098cfe0a10bbf13141a69cdf134d08e7da23b5c",
+        "sha256": "be82cd6ade8cf4d95b9252643098cfe0a10bbf13141a69cdf134d08e7da23b5c"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/SetUpOutpost.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/SetUpOutpost.png",
+        "sourceRawSha256": "485ccd15ea855f49728c46b914e2c8f5f5d04ae7c1943e7815bc7d5c50731531",
+        "sha256": "485ccd15ea855f49728c46b914e2c8f5f5d04ae7c1943e7815bc7d5c50731531"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Gizmo/Switch.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Gizmo/Switch.png",
+        "sourceRawSha256": "9278d73221fb3f6b8f4d3699a632c4a8874b1d2817338718aecfc05441ebdb1d",
+        "sha256": "9278d73221fb3f6b8f4d3699a632c4a8874b1d2817338718aecfc05441ebdb1d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/DoorStateButton.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/DoorStateButton.png",
+        "sourceRawSha256": "534165ba44778289ecdb73eb2d16426d25b0223a7f1ea5565c21802f0b8ab579",
+        "sha256": "534165ba44778289ecdb73eb2d16426d25b0223a7f1ea5565c21802f0b8ab579"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/DoorStateOverlay_Blue.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/DoorStateOverlay_Blue.png",
+        "sourceRawSha256": "839927e62cf5b913e5590e0c2e9440f253ccaeaf264d505a1012657e1b2c0473",
+        "sha256": "839927e62cf5b913e5590e0c2e9440f253ccaeaf264d505a1012657e1b2c0473"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/DoorStateOverlay_Green.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/DoorStateOverlay_Green.png",
+        "sourceRawSha256": "b7817aa79819c66835998e3d29cac728da2848a2cd3c6e06206172e54eae7f2d",
+        "sha256": "b7817aa79819c66835998e3d29cac728da2848a2cd3c6e06206172e54eae7f2d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/DoorStateOverlay_Orange.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/DoorStateOverlay_Orange.png",
+        "sourceRawSha256": "c86762da4c6cfcaeb1ce7d790d81bf3cb77295143d8d920d36f1e0f89d94b48f",
+        "sha256": "c86762da4c6cfcaeb1ce7d790d81bf3cb77295143d8d920d36f1e0f89d94b48f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/DoorStateOverlay_Red.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/DoorStateOverlay_Red.png",
+        "sourceRawSha256": "534165ba44778289ecdb73eb2d16426d25b0223a7f1ea5565c21802f0b8ab579",
+        "sha256": "534165ba44778289ecdb73eb2d16426d25b0223a7f1ea5565c21802f0b8ab579"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/Drain.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/Drain.png",
+        "sourceRawSha256": "942a5025e6270539092b0bd73d3f753492e011b09cbc42754ef0928785eaa8b8",
+        "sha256": "942a5025e6270539092b0bd73d3f753492e011b09cbc42754ef0928785eaa8b8"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/Enable_Overlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/Enable_Overlay.png",
+        "sourceRawSha256": "03e2a8f9ed0e888d7d234f2cb73e2ade762d166aa4e2fb19dd52bff3997cae06",
+        "sha256": "03e2a8f9ed0e888d7d234f2cb73e2ade762d166aa4e2fb19dd52bff3997cae06"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/FixingWrench.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/FixingWrench.png",
+        "sourceRawSha256": "18b1c813e09230c7f6508c30248e87c6200fab7f0f6528fa2aafd977b70e16cb",
+        "sha256": "18b1c813e09230c7f6508c30248e87c6200fab7f0f6528fa2aafd977b70e16cb"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/ForceOpen_Overlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/ForceOpen_Overlay.png",
+        "sourceRawSha256": "06b0708418d834922a597f8ddc896f96ca0f780cefa3e4eaa27e84f6006da408",
+        "sha256": "06b0708418d834922a597f8ddc896f96ca0f780cefa3e4eaa27e84f6006da408"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/IP_InputSlotOverlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/IP_InputSlotOverlay.png",
+        "sourceRawSha256": "153a783a61d15a8ca3518d1339e8a22b93d8c0135c1b7716f39dd54150e213b3",
+        "sha256": "153a783a61d15a8ca3518d1339e8a22b93d8c0135c1b7716f39dd54150e213b3"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/IP_OutputSlotOverlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/IP_OutputSlotOverlay.png",
+        "sourceRawSha256": "8016955a4a3e1fdc98ba7e1fb99a252abaa8468a488ef1f320eec01ccc823304",
+        "sha256": "8016955a4a3e1fdc98ba7e1fb99a252abaa8468a488ef1f320eec01ccc823304"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/RechargingZ.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/RechargingZ.png",
+        "sourceRawSha256": "ae61d28d21b37d190e1ed4f814bbc341c22ff35617831c070341c65e941d0242",
+        "sha256": "ae61d28d21b37d190e1ed4f814bbc341c22ff35617831c070341c65e941d0242"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/Scavenge_Overlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/Scavenge_Overlay.png",
+        "sourceRawSha256": "87f1783ed5876f2be5e39f0da2e42911507a3c278ca5c87437e805967568f4f9",
+        "sha256": "87f1783ed5876f2be5e39f0da2e42911507a3c278ca5c87437e805967568f4f9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Overlays/Study_Overlay.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Overlays/Study_Overlay.png",
+        "sourceRawSha256": "c92f955303dea02c43ae5956bbac7af889f7a4deb4cd0e1a637f015358ad49dd",
+        "sha256": "c92f955303dea02c43ae5956bbac7af889f7a4deb4cd0e1a637f015358ad49dd"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityAuto.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityAuto.png",
+        "sourceRawSha256": "5e46fa752fc77c844502d40329fbd9263e40944c09e7e35dddb24b8f33273d12",
+        "sha256": "5e46fa752fc77c844502d40329fbd9263e40944c09e7e35dddb24b8f33273d12"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityAwful.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityAwful.png",
+        "sourceRawSha256": "1361692e56b9b5affea6cc29778dbdc83dcb693d3dff65d458887aff4f0101ce",
+        "sha256": "1361692e56b9b5affea6cc29778dbdc83dcb693d3dff65d458887aff4f0101ce"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityCancel.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityCancel.png",
+        "sourceRawSha256": "8436c3e3700ade6552a54e01a01ce00eb1e42e73b3722a497331fcb4e9076c11",
+        "sha256": "8436c3e3700ade6552a54e01a01ce00eb1e42e73b3722a497331fcb4e9076c11"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityExcellent.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityExcellent.png",
+        "sourceRawSha256": "d60cedb3a181cb6347095462d43a4bdbf7472d5746a40a0e5e869eebb0cce732",
+        "sha256": "d60cedb3a181cb6347095462d43a4bdbf7472d5746a40a0e5e869eebb0cce732"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityGood.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityGood.png",
+        "sourceRawSha256": "b9cfef3882264e4c6de1e0d1b4af997d5c20e9374e85990bfbc5ec11a9b2cedf",
+        "sha256": "b9cfef3882264e4c6de1e0d1b4af997d5c20e9374e85990bfbc5ec11a9b2cedf"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityLegendary.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityLegendary.png",
+        "sourceRawSha256": "07b4197f4ea8d19fe915b865bed10f3a3af324360f28eb9f8d0e1e8bfedfa952",
+        "sha256": "07b4197f4ea8d19fe915b865bed10f3a3af324360f28eb9f8d0e1e8bfedfa952"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityMasterwork.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityMasterwork.png",
+        "sourceRawSha256": "a58c7b1d7e90331bad0428961b4c7626ef800e10e1b8fd0202918f1109ff4876",
+        "sha256": "a58c7b1d7e90331bad0428961b4c7626ef800e10e1b8fd0202918f1109ff4876"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityNormal.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityNormal.png",
+        "sourceRawSha256": "70dbbbda74faa2e86a883d397a99daaf42eff86a4c76c361a1587160c1749747",
+        "sha256": "70dbbbda74faa2e86a883d397a99daaf42eff86a4c76c361a1587160c1749747"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/IP_QualityPoor.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/IP_QualityPoor.png",
+        "sourceRawSha256": "2f1f4f1069d3ddadde142d2108e4c06e6533e7d3949897015994e23c7116fe05",
+        "sha256": "2f1f4f1069d3ddadde142d2108e4c06e6533e7d3949897015994e23c7116fe05"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/QualitySelectors/PS_QualitySelect.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/QualitySelectors/PS_QualitySelect.png",
+        "sourceRawSha256": "13e1d8022b2216296112b018bd3962223b8f4818f0ef8dd8d6e1e770f06e56b2",
+        "sha256": "13e1d8022b2216296112b018bd3962223b8f4818f0ef8dd8d6e1e770f06e56b2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Widgets/Note.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Widgets/Note.png",
+        "sourceRawSha256": "05a86c7802e0ffc32ce46cb4351d5a1086cb2106c7f5fe3cdbd9af0a3fa36b30",
+        "sha256": "05a86c7802e0ffc32ce46cb4351d5a1086cb2106c7f5fe3cdbd9af0a3fa36b30"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Widgets/RandomizeIcon.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Widgets/RandomizeIcon.png",
+        "sourceRawSha256": "1e43deec43ad53a7e5d5caa8b7f4b33995467da64ff94eb64e21373e29316174",
+        "sha256": "1e43deec43ad53a7e5d5caa8b7f4b33995467da64ff94eb64e21373e29316174"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Textures/UI/Widgets/VFELogo.png",
+        "projectFile": "Components/VanillaExpandedFramework/Textures/UI/Widgets/VFELogo.png",
+        "sourceRawSha256": "ba32c8fc1d37917ffaca0a9d128536e7b394bab3d1ef749840ae7a4fd587b2f5",
+        "sha256": "ba32c8fc1d37917ffaca0a9d128536e7b394bab3d1ef749840ae7a4fd587b2f5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Abilities.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Abilities.xml",
+        "sourceRawSha256": "41d02a037d4725726227dfef3a4b86dc439b2dff797d80cb25189f50a8be90f7",
+        "sha256": "35b803ee8c5aa87741bbed4bb94bb9ffc2bfb3a36ab30833a2e15aeb2d7d6315"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/AnimalBehaviours.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/AnimalBehaviours.xml",
+        "sourceRawSha256": "3eac10e9c2240b08545312a549ac28382c370c7ff25eac4e30d99341509dbf42",
+        "sha256": "b9640761e0f35249a90898ca90de8d6ff266f299341d2f5fb86ca226a24d9dd9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/HeavyWeapons.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/HeavyWeapons.xml",
+        "sourceRawSha256": "6218da1d9c35cb00e42501cb39db88f5cf4bde61ba7b6a3f680835f69cff1124",
+        "sha256": "a4b8a81bd2d669c89705afa2fa82b135d889d3c3a1fffa24da9b2a838cc5d7b9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/ItemProcessorBase.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/ItemProcessorBase.xml",
+        "sourceRawSha256": "fbc9281cb977bc082538fec11f86eccdb6f7e66b2d89a6bfe309e9566387c8b7",
+        "sha256": "547893fad1d453ed8b4bcba43df532553452ca924f0174d2a64c65b0de113cb8"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/KCSG.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/KCSG.xml",
+        "sourceRawSha256": "fb0a2f414249549a91d099b00bea2b3dbacd0c5a042dfa23f04729eb5426ae08",
+        "sha256": "b82a0994caacf38539f61b978fb7992dbc4e53130852211d2eb7c6e425321feb"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Keys.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Keys.xml",
+        "sourceRawSha256": "ff7879a394e050fb3a7869e6d34ff9dba7fb8a7cd94ea2b05818b13cbc4ea22e",
+        "sha256": "5dc12f32aa79d610f83ecd79b8fafe5457e87aff3a4deefb18d424cb517dd295"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Machines.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Machines.xml",
+        "sourceRawSha256": "48215934448e58ff659d4c716ba2f1d93abaa31c315f772a17644d4877355aea",
+        "sha256": "973989a145255af98c40ff04064a69615cfc8156bdaa2b24ad2691fd7ce35880"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/MVCF.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/MVCF.xml",
+        "sourceRawSha256": "5258a1236328d586766d6aca7bec59371c97268d1f42692d19fa1c39b7c1cd7c",
+        "sha256": "90f901389ae818bb45c68acfe68597b945c6b5244fe81c105e5f5000d80e182b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Outposts.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Outposts.xml",
+        "sourceRawSha256": "04ca9823dd98bf8f7405172ccd408478ce9fecae4a0b29d599dc829e0c472919",
+        "sha256": "ab7f2e4db41623bebbad7e92481c8dd919d3b1435d8725ca29f16a1ef0ea42e4"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/PipeSystem.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/PipeSystem.xml",
+        "sourceRawSha256": "12b3964f85546d601e0dc4a4bf4b483296c51a0d27952ada3212f04a25ab8517",
+        "sha256": "3d1bd2191cf554e2a54d2c24c1c12fdbc4604b9f1af03634e89a137862aa53f5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Reloading.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Reloading.xml",
+        "sourceRawSha256": "2937d27e482667ed97be1c2fa9d1bc342774a05e448823a0981d4e71b1ff3766",
+        "sha256": "197226ce7d6ef3dc0e6c0c50b0327fb76c16a31c672a4336f7d49747149408a6"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Settings.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Settings.xml",
+        "sourceRawSha256": "a2f9afd75bcb9827d4693856f42ed7afd2926f92c2e01c2772c592cbe766de0b",
+        "sha256": "455dc71031e4cb080cb9b8f73d79ae4fe5b5726b023fa13fc7ac4ca6f727c0f7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/Stats.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/Stats.xml",
+        "sourceRawSha256": "c9e99d6edd8bfd146f48b1c095fd6f78ff2cad8b770ba2a7bc6411edb60a466f",
+        "sha256": "71e44664476aebb41a48aceac0ba32ef7baee21efbec1f7cb687561917f71221"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/TerrainTags.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/TerrainTags.xml",
+        "sourceRawSha256": "2c5efd074594eb963cb50cb389050b4fa47d09179956e1e891e0e81aec86318d",
+        "sha256": "1705ffec48be4e8602033e75a45155ec0566f8ad00a87d346f395b943f261b87"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/UI.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/UI.xml",
+        "sourceRawSha256": "fcc91168581173f46a5f149f98a600791ecda714a0f00b3d5537570a55dd464c",
+        "sha256": "0c79c9615a468b00f26f19c195ad7cdd81e92c6ec0353f6f6f4017298ddd4fdd"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/VanillaCookingExpanded.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/VanillaCookingExpanded.xml",
+        "sourceRawSha256": "958580208b41104b9c35df831e8667ef8f5093413725ce6ae505a1f1d9b323ff",
+        "sha256": "bb828171cc413bb744c6e3c73621db0629778c3689ea4f11dc2e31b87c56fba5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/VanillaFurniture.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/VanillaFurniture.xml",
+        "sourceRawSha256": "a110cd94e190783e69c20d783870e9ab838ccbc2a68cacca68106a3071ab0301",
+        "sha256": "68737d5addd517bbe6a9dfd66c1a0a03ec6cd6e1339bcbe537eac73978d1c4d8"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/VanillaGenesExpanded.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/VanillaGenesExpanded.xml",
+        "sourceRawSha256": "f79f8dbe7a85a42d6ce6961e25fb1c09ba6507b40b7256bb2185f5324ee66bd7",
+        "sha256": "78e2b144e6ca855635a75e45d8952a451ae32f9e97f470b308041da21548be73"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/Languages/English/Keyed/VanillaMemesExpanded.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Languages/English/Keyed/VanillaMemesExpanded.xml",
+        "sourceRawSha256": "cd958c7a8c39ed033a8a518b1f2145bdf2b1a5e965e28716cf551f46aa3c8c97",
+        "sha256": "a8a6c205d389217b8a4fbb78fc97a082927325b71667a4577dfdc4572106ba22"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Abilities/Abilities_Trainables.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Abilities/Abilities_Trainables.xml",
+        "sourceRawSha256": "e22d4aa1f7ba97ccc525f128c3169138bf66e9bd9558bde6dca1cd1d08865c72",
+        "sha256": "63f284c0e071f5744e434874af8df0b1f47ca36c497fae719f355c9e654fdb68"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Abilities/GeneralAbilityDefs.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Abilities/GeneralAbilityDefs.xml",
+        "sourceRawSha256": "7b918195945d30de3387718ca6659b3a4b0e12aa22607e138c5f896ac52cb0c2",
+        "sha256": "68a9306263f529ab1d44737b40d76fc3c3ea9e76e6db02732037eb4891408576"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ApparelLayerDefs/ApparelLayerDefs.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ApparelLayerDefs/ApparelLayerDefs.xml",
+        "sourceRawSha256": "8ac345d406ba25a5913cbcf8d169f4859d9854a5b73fc5e135fcf44c4a40016f",
+        "sha256": "f93f6b62ba6c6a25fc37676fdd2a5706b44b30a36abbdf432ae9d78b3bda9c6a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/CustomStructureGeneration/ConduitDef.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/CustomStructureGeneration/ConduitDef.xml",
+        "sourceRawSha256": "22071caceaa090d0d0afe3d178a62415b31eb3abb14a8e26bf6fb12020997146",
+        "sha256": "a2a4c8f689f777fa21aba1924c048fc0ec62331956c9123abb957bb55bc81a04"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/CustomStructureGeneration/WorldObject.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/CustomStructureGeneration/WorldObject.xml",
+        "sourceRawSha256": "0e8415ab1b2a2e5f8a0141b9f479de0aa7edc8bcfb490e304d49bbfd033c02d3",
+        "sha256": "3cc80e87188652b6eddfbead711cf88b1dac96c0068b5908269dc2b8d260e45f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/DamageDefs/DamageDefs.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/DamageDefs/DamageDefs.xml",
+        "sourceRawSha256": "34d3f40c41b767c9b2fea89c18901ac9be8dc9bd04f164f769e753d874f829b9",
+        "sha256": "0fdc7309afc9fa2d9396b93424f0501cdf1cc42c52a449460e9b01b4f2970031"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/DutyDefs/Duties.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/DutyDefs/Duties.xml",
+        "sourceRawSha256": "6e01412c2f225b385ff3931de0d02fc8145a1e318a5708421fa99478f298c433",
+        "sha256": "ccc27e18bf7107f15845af5df0c2da2d56401122f2c4e8f6af6b1c469aeb1d6a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Effects/Mote_Machine.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Effects/Mote_Machine.xml",
+        "sourceRawSha256": "cb4449d6471f0b74ee38bd3714420c9090d6ebc82d235587d1835d6c2f0cfad4",
+        "sha256": "69f936e5e99fb012ea6d9e2a050e0367145e5da517f1d524fbccca7be6a1dbc7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/HediffDefs/Hediffs_Global_Misc.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/HediffDefs/Hediffs_Global_Misc.xml",
+        "sourceRawSha256": "39766cffad1fbbdfaee03d667e6b76e6a5c43f524afb0164b970646d99b1805b",
+        "sha256": "1b8b299ec8f4b52c0627f3275d4db3f9dd6801665116b535b3dc951e3b98e94d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/JobDefs/Jobs_AnimalBehaviours.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/JobDefs/Jobs_AnimalBehaviours.xml",
+        "sourceRawSha256": "663013f0572c584dc06dcdc5fccaabff247fa297908cdfbe236a62165cf74f3a",
+        "sha256": "d67d94b097908f8805f48caf72d5279ad159d628a45cdd20685a19487607bee4"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/JobDefs/Jobs_Misc.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/JobDefs/Jobs_Misc.xml",
+        "sourceRawSha256": "388cc631a94d93ffcbab50f43680c040c8187923164ed60b69042f6b8b940028",
+        "sha256": "edd5882d78f630f8e680ccb34e1d3d76ebb256ffa461885e913f4dcb68d37206"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/JobDefs/Jobs_PipeSystem.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/JobDefs/Jobs_PipeSystem.xml",
+        "sourceRawSha256": "6467399916d64ba882b65084fb5155cc0c28c7486e8ab7540c563ebd2b946ad1",
+        "sha256": "4aaeadfc3bf4b447fb4ed20563c807e45dc5e64030217c6856b6f639b284f721"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/JobDefs/Jobs_Reloading.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/JobDefs/Jobs_Reloading.xml",
+        "sourceRawSha256": "bb47210f27e7ea6a62a8329e546c601afc816a85ee4672576bc7b2c13d58869d",
+        "sha256": "30eb9186be043f627d034260d412d01390ac9234f18af4b2b80cced90079daa0"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/MentalStateDefs/MentalStates_Mood.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/MentalStateDefs/MentalStates_Mood.xml",
+        "sourceRawSha256": "d3118ad431ba7e3024398e538dee6e4b1755faae29efde8eaf203194a8a25812",
+        "sha256": "720c8b377183491a1746bcf58dc79234cfcb0d6ba2a7d19e7f750c06e94ce521"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Motes/Motes.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Motes/Motes.xml",
+        "sourceRawSha256": "908c4052d6339d8dab0a2724631b30788ff9d05ef789aa4c97eb7ae02ee5d241",
+        "sha256": "553d10c8f0ce75ff28d2af5b47a2efbcf46f8fbed8e69e3069cfc531ac7d525f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/OptionalFeaturesDefs/OptionalFeaturesDefs.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/OptionalFeaturesDefs/OptionalFeaturesDefs.xml",
+        "sourceRawSha256": "1f56f30bb58c8327c85e9ea745dcf21d7ad6191e864662094cac3cb1ade1bb71",
+        "sha256": "8c096f12e0121ccf711a80dfc2370e6368bb627964547d0d164a2725763b9cd6"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/PawnRenderTreeDefs/PawnRenderTreeDefs.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/PawnRenderTreeDefs/PawnRenderTreeDefs.xml",
+        "sourceRawSha256": "e961d31a9696b7cdbfeea18e884f51f7ce1b00a72410381ef0495bd0403ecec0",
+        "sha256": "479a829b42c85e9879e25885e12d6ff6236d6574cfb714d1cd5da3f8f3fd2d06"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/RulePackDefs/RulePacks_Book_Defaults.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/RulePackDefs/RulePacks_Book_Defaults.xml",
+        "sourceRawSha256": "c3459c5f9557c0500fd9e47eb3bd080f2f11fbdf46471dc76765df6b131952c5",
+        "sha256": "8377f522b6138f3ae07bf6534f359df49131ddc7742e29021105dcb88c93f4ce"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Scenarios/ScenParts_Various.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Scenarios/ScenParts_Various.xml",
+        "sourceRawSha256": "8b69ad9573c8fab645a0e65ab704a4eaf086fd5d073f1393f54c155998f1f51e",
+        "sha256": "795f17096a6558af0a88c741882193b6355a95024b8e6893c299b6c65daa3393"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Sites/DefaultEnnemyPresence.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Sites/DefaultEnnemyPresence.xml",
+        "sourceRawSha256": "51814cbf2459becce9aa05cb0da9b60f1c74b001a81d05d854cb89d30d58eae8",
+        "sha256": "cefdd659a05778fbb25d17a319be12d146a315095b1474e54c4ee777afac3131"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/StatDefs/Stats.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/StatDefs/Stats.xml",
+        "sourceRawSha256": "06bbb5c4381aee3750e412f101776de90e3153f647eb4fa8bc9013b79eab0789",
+        "sha256": "37dc0549ac7e6e69998584c6e55bfab9aa9a6ba66106f6c3907c97bcc0cd2b1b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/StorytellerDefs/Incidents_Map_Threats.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/StorytellerDefs/Incidents_Map_Threats.xml",
+        "sourceRawSha256": "b1f35ae8827bee0fedb7790dce5792e7d2eae2649fd13bfbb6287ba8f69aa7e4",
+        "sha256": "806f7a5b2d55521c8938469b018373bfa6d5a281e33d297dfdef43596624f5a2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThingCategoryDefs/ThingCategories.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThingCategoryDefs/ThingCategories.xml",
+        "sourceRawSha256": "61174187d2a57635221a92300f7128765eeafd8aea8ff7518a214bbb976aa63f",
+        "sha256": "9948076a51c1e3d1f267792dafeb5b16da43ea3638af108ffe5aa837337c351a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThingDefs_Buildings/Buildings_Misc.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThingDefs_Buildings/Buildings_Misc.xml",
+        "sourceRawSha256": "e03d8e3121cd6672db5f06943b50bc9f91bb7b521fd04e919b71e006e1434ac3",
+        "sha256": "23ceabc55c6d4989d6dbd48fc8d6c96f851cca883866a18285570e809f49cc62"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThinkTreeDefs/Animal_Harvester.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThinkTreeDefs/Animal_Harvester.xml",
+        "sourceRawSha256": "86e9418a718511333afa81d67fe34aa86fd6a2ea0d44a51a3343f2085eb84053",
+        "sha256": "3c2f3fce50530bbd837caee5d8bd6dfdfaf52e3d5f16636bcb5ebd34d92793ba"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThinkTreeDefs/Animal_WeirdEater.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThinkTreeDefs/Animal_WeirdEater.xml",
+        "sourceRawSha256": "d220eeb446122f690ee53c99150beed0822037e4b066a6a9be2e303edf04781d",
+        "sha256": "35fceecc05883cb3330f3f416f49596b3d8131a7d844b6e24d3cf9d57877d66a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThinkTreeDefs/Draftable_Hook.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThinkTreeDefs/Draftable_Hook.xml",
+        "sourceRawSha256": "1dec90783f362ff49ed407b18471034c543f4a258cd84172c3443fdd896997ae",
+        "sha256": "d8e03202cb7bf18bf1d3cba14fc25ad3bc80e9abc43e395be3fd5902548592a9"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThinkTreeDefs/Reloading.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThinkTreeDefs/Reloading.xml",
+        "sourceRawSha256": "e073fa863739381ab50ba498129e48ac4f52443ef7a084a7b0eac09db2747f35",
+        "sha256": "1e1728850923aeb80ae758cc3bda871550a67d914daa613472e34e39720987fb"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/ThinkTreeDefs/SubTrees_Misc.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/ThinkTreeDefs/SubTrees_Misc.xml",
+        "sourceRawSha256": "e333cd87023aa1f2c03bfa493573b8c6587b7389895dff287704cf0f8159a339",
+        "sha256": "76f089c2cfe1b1783ad1dcd791f550b56d798bbc97bab0b474330aca51f88204"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/TrainableDefs/Trainables.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/TrainableDefs/Trainables.xml",
+        "sourceRawSha256": "8b0bac68e584533414f61b236d9c145a9989a8cad59aaf95fe4264696dc7f7b5",
+        "sha256": "cc693d030ef7f094251cfb974c3c668b3c725847cbe9858d7c8f510890f40860"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/WorkGiverDefs/WorkGivers_AnimalBehaviours.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/WorkGiverDefs/WorkGivers_AnimalBehaviours.xml",
+        "sourceRawSha256": "ab4eb143aee2ab559f32d259a9372b68bd0f98f0a3e2e462b88f19ae9ee787eb",
+        "sha256": "72f143cda671a82c24e054a28d2c634d0d5d5025b5f42e0eeb06dbafa6abc14d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/WorkGiverDefs/WorkGivers_ConstructionSkill.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/WorkGiverDefs/WorkGivers_ConstructionSkill.xml",
+        "sourceRawSha256": "c471e593739c316b3212d2b545769e4bbbfffe8e663a1e810402ee5f4fe92c73",
+        "sha256": "d258aaaf490b4ce73c3e536be06f77421c67921ae920efdb92c005073e82a827"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/WorkGiverDefs/WorkGivers_Misc.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/WorkGiverDefs/WorkGivers_Misc.xml",
+        "sourceRawSha256": "31369910a700f253d297e09b7372fc1c092ffb54c1cf93c8d79c5c721dd61338",
+        "sha256": "f01a02c80fbb63288b338cfbdaca009e01963ec1e8f9ef5a8051cbcdbd1868e0"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/WorkGiverDefs/WorkGivers_PipeSystem.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/WorkGiverDefs/WorkGivers_PipeSystem.xml",
+        "sourceRawSha256": "e2b33df8cea6a1d6255d34356592ff72dabec784761609d127321921bd5baa5b",
+        "sha256": "32802d9f5e99f46b2c093dc7cb1c9c7389455ac54b26945d14d3420208587216"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/WorldObjectDefs/Base.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/WorldObjectDefs/Base.xml",
+        "sourceRawSha256": "78457a1c10bfec7405e5ba1e1d8a8f1246c739a936a0a131c8b5ce7f13dc1f43",
+        "sha256": "7480cd3e933cfa4933bc73cdd88760c0b5a668b42693bcd276e5a8eadc89f823"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/CustomStructureGeneration/MapGeneration/MapGenerators.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/CustomStructureGeneration/MapGeneration/MapGenerators.xml",
+        "sourceRawSha256": "9f891f8cb0ff9ad2fce98e210e53a9c9e7ded9b8d2dc9e2f4d8c20a260fd9615",
+        "sha256": "805cd9a809a3bac2e7e26e4a957eed3c9eb39a74bab5a2d91f0d0ec3b8c73c4b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/CustomStructureGeneration/RulesDefs/Rules_Complex_CSG.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/CustomStructureGeneration/RulesDefs/Rules_Complex_CSG.xml",
+        "sourceRawSha256": "1d0e35ac79e5735a106d9c26b901aef5c5917856ef7e7af569d7842dc8bb35a4",
+        "sha256": "4df7f1cc51e0089989ebd55b27926956b5dde6b5751a7a83b8f01e40a1c62860"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/CustomStructureGeneration/WorldGeneration/WorldGenStep.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/CustomStructureGeneration/WorldGeneration/WorldGenStep.xml",
+        "sourceRawSha256": "771523e18362e5d080b084a70f8129a065aa40ed2500828e5b8a846937dcc06a",
+        "sha256": "b430223561b1e1e22c65d0c41e0940309fcf4ef6a1acf61f64759153b68abcf7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Misc/Designations/Designation_PipeSystem.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Misc/Designations/Designation_PipeSystem.xml",
+        "sourceRawSha256": "5b70fcc0d3460168d098abfaf197c2530e7ce4e6482cea582e3e45b6702afec4",
+        "sha256": "ca0370a8622411c99ac1942be49a0f2ce81ff38a184476635633eac226b84fff"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Defs/Misc/KeyBindings/Restart.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Defs/VanillaExpandedFramework/Misc/KeyBindings/Restart.xml",
+        "sourceRawSha256": "769e3909f75d816b453fc0ef21e56774452c04b421faa9d7e0c3b23685f4ab29",
+        "sha256": "d81d85972215df212d7369548e384c5f364c95dc9032bce4c0640be3020e6346"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/AnimalBehaviours/MentalStates.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/AnimalBehaviours/MentalStates.xml",
+        "sourceRawSha256": "c0a2648710f438bd49f3cc16032e14e7bc3792536f5eb78a9c4ad06168983451",
+        "sha256": "b1333c7bfb394568210a98e4fafeb1e4dcc691cb2b7532bdfcec3bff315ff627"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Biotech/LearningBonusPatches.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Biotech/LearningBonusPatches.xml",
+        "sourceRawSha256": "e529cd709be2d9387ff5dcf8fbf2fbcca651215cdd805e4d653656e8bd166302",
+        "sha256": "b6178bf07c17fad8d108932c73c30872fe6619ddf974f1482104dbbab0dfd3d6"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/CustomSettlementGeneration/Core.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/CustomSettlementGeneration/Core.xml",
+        "sourceRawSha256": "c57738a5593b51ed08dc5c5e675161448cbd0582596868f026baba884ffa72f9",
+        "sha256": "355cbf0613c9718ba10fffa8f8e5e49cba4fc2c53d4bdfaf1fc1da4d7b0d001b"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Ideology/Ideology_PrePatches.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Ideology/Ideology_PrePatches.xml",
+        "sourceRawSha256": "40dc34fd92b3ca1b0797016b96b70ab4e8cd2fe841a24f389ec6d0185cbd5679",
+        "sha256": "660f5bd530a50cc14f62798c9b2941396425b216c14a2c878501ab77a472b1b5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Misc/DraftedJobsPatch.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Misc/DraftedJobsPatch.xml",
+        "sourceRawSha256": "e59eff7fa136b2d714e0e659338614573e33e8c151f728eeaeb0727534bc294e",
+        "sha256": "3a5a59f555a8cf5d468acf147f8547bad74878c4eceaef2ce6b2d2eda03fb204"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Misc/MaxNumToIngest.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Misc/MaxNumToIngest.xml",
+        "sourceRawSha256": "db64bd0e2386b64a57dfcb71fb094cc261147f8adaff3d8a77ce1cb6f3181149",
+        "sha256": "a1b6cb69535d296c6c1234679b65634c410c1548c67ffa31269809b0e43e81e2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Misc/Reloading.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Misc/Reloading.xml",
+        "sourceRawSha256": "511c2847d8bea7821b38032255feb102a2f95ded7a81765792b3821fd03f5cc4",
+        "sha256": "a7dda1ee8905be783b4c09fa25c50ad7c10105641205e87141b334f6ac16e5ed"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Misc/StatPatches.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Misc/StatPatches.xml",
+        "sourceRawSha256": "ad6ab94972c2008d866c7a190e25e5bf8fb0cff83266104e81f43f130c29e5bd",
+        "sha256": "ef53fa2ff8de5321fcf3f794aebbfcceb810480dbf7118b464fd6ac6e7e36601"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/MVCF/ManhunterRanged.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/MVCF/ManhunterRanged.xml",
+        "sourceRawSha256": "2e1b5ed5b123a40e480d6c94ebc6e9cad7979cd3f3e2f68ceb7ed9e23c4578ac",
+        "sha256": "344279e4955973a0314ddfd26cedfb95bd7cc1802f9240642e692eb7f76c4b20"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Royalty/Royalty_PrePatches.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Royalty/Royalty_PrePatches.xml",
+        "sourceRawSha256": "98a3591ca87057fe3d2b35aa68014f8a275201f318804d82cffda2818156336b",
+        "sha256": "86b6018fcc5b2d3597f5000e7ed1a617de879954e297ca2812fe6b89c506ceba"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/StatDefs/Stats.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/StatDefs/Stats.xml",
+        "sourceRawSha256": "6c190113c29479e3a2c8bade931593ecdcd3c38b8a58f31d62586280eb2b3fd9",
+        "sha256": "34b97dff708602d235eb70879b78ec55f5fdce9aab5018cf4bd433a592016f2c"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Ethereal_Skyfallers.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Ethereal_Skyfallers.xml",
+        "sourceRawSha256": "b8d8fdd83e2007c7c917e34a688ccdbbd085a2980d7871b314c05a111bf91c4b",
+        "sha256": "04c58f5019b2c9d1935525807b5dceb87e0409515edb7ccdacf0c2a4b77031c8"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Production/DeepDrill.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Production/DeepDrill.xml",
+        "sourceRawSha256": "b2eedb4389b185dee9e13926cd78dd2d35e651ad066a040e381362dff17ab0c0",
+        "sha256": "835361a40d88b044974b7eca472593803aabb390f750e3201f90f2725cd76d28"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+        "sourceRawSha256": "8cdacf508de478eefa7c72af1e97c5456de35e5eefd5fb67fadd7e646e483725",
+        "sha256": "6cf1cbc6eab814c8b9b3e84c965da3774b027b42dfae6947d545a24fc0aa3b2f"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+        "sourceRawSha256": "5c4befe409b84a047a7dc9ff027c6c6d70ddd70df9742f31cfedb8520c76b234",
+        "sha256": "d0bc3625e47cca71f2d144e6d050255ec3c8e653964aae6a9f7962b2c64ebcb1"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+        "sourceRawSha256": "6ebde02da761ec3d5d3b56670b01ea4a898dc80d17d9092f42f3e59ec5bb2bef",
+        "sha256": "d924649c2247d690d940d1f50d6506fb25b48f8e3053394e1aa6fd4d59179084"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+        "sourceRawSha256": "85ebb62a51a05a50e27ca254254a189e4432c2602580ee93842ca10ed78494c6",
+        "sha256": "70b6e388a6d9ccac92dfc9562efb157d1b4b8087863390eb2b2f23ccdffc660e"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+        "sourceRawSha256": "ce743cb4a0eb7a31777eb0da9ec50ce879c9cb67661dafb2fa3fe75e96289e74",
+        "sha256": "77439517f54103e9723d6e1329c6dc5eed6de2a125e7f265b2da2f529d6744c2"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/Core/ThingDefs_Misc/Weapons/RangedSpecial.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/Core/ThingDefs_Misc/Weapons/RangedSpecial.xml",
+        "sourceRawSha256": "08b84dc9a08570ae96be747fa43379dd5b65ac51da202b5b383ee7e642e8ce54",
+        "sha256": "c33b81a65cc69114b81aa36debcf2a9469381cf29d1a6be4cad4a6a343e3061e"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeIndustrial.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeIndustrial.xml",
+        "sourceRawSha256": "2709b9717e010176858c9424d4a50b05a37ca7fc4a69731bfd85b740d64b571f",
+        "sha256": "6bfbe88cc4f8969f58f6ef7e9e9bdd5d6395292c32c735ac4835168a7b2fcea5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+        "sourceRawSha256": "8199d2ae2e3b87a98d35d97c5f41da065babea1071a2bca42d418909b1fe9225",
+        "sha256": "cfda6acb213280317fc967040cbe5b23a039727193297763672f68c2ac2c1ac0"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+        "sourceRawSha256": "aa93114b59ce5f405457d97e80b045d6f079038f4e454831ac313ee79bc72098",
+        "sha256": "2b71b1756b761bbbb801f8c55b80ce57f5199c285841d5fad887e2716481d072"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedIndustrialExpanded.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedIndustrialExpanded.xml",
+        "sourceRawSha256": "d6c78493ecdc9b7772018012b6e1c1028b030c1497bf6cf6037cc8d724c61861",
+        "sha256": "cd4a8abffad1c5a94e569682856acec713cfe01b73a05e7d1bcc926601a391b1"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedMedieval.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedMedieval.xml",
+        "sourceRawSha256": "f3965f45add3168b7bf88992350c5eb0c0fa76d306083b7d077fe07514ae8c89",
+        "sha256": "87ae69cf2f09649c4db0245cdcab335d57c644df588dc0ae50a11a025da7eae5"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+        "sourceRawSha256": "5bed82ad1fb0a70ba69ebfee22bd6d05e9c54f629cd54415eba2244f5ecfccbc",
+        "sha256": "7b2ed71383f6973012549581567731a4b09625fcefa86788d0f473262ae59fcd"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Patches/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+        "projectFile": "Components/VanillaExpandedFramework/Patches/VanillaExpandedFramework/VanillaWeaponsExpanded/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+        "sourceRawSha256": "007ff6a824725439cba7eb821968311ca4c070ab0b472eaa5fbf307063742741",
+        "sha256": "3ec4bd08697684de20e63f064ca9ef73c343e1fd33158e372e994a891da56359"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/0ModSettingsFramework.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/0ModSettingsFramework.dll",
+        "sourceRawSha256": "6c2e02215495ae2c9a37121ae5ef985a420c4797ddfca0fdbc466d9b3ba7e94d",
+        "sha256": "6c2e02215495ae2c9a37121ae5ef985a420c4797ddfca0fdbc466d9b3ba7e94d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/0ModSettingsFramework.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/0ModSettingsFramework.dll",
+        "sourceRawSha256": "6c2e02215495ae2c9a37121ae5ef985a420c4797ddfca0fdbc466d9b3ba7e94d",
+        "sha256": "6c2e02215495ae2c9a37121ae5ef985a420c4797ddfca0fdbc466d9b3ba7e94d"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/0PrepatcherAPI.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/0PrepatcherAPI.dll",
+        "sourceRawSha256": "9a1561097a9fc7ffac73d83132f298c501972ea5639df03b8cdc1fedd7ee09cd",
+        "sha256": "9a1561097a9fc7ffac73d83132f298c501972ea5639df03b8cdc1fedd7ee09cd"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/0PrepatcherAPI.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/0PrepatcherAPI.dll",
+        "sourceRawSha256": "9a1561097a9fc7ffac73d83132f298c501972ea5639df03b8cdc1fedd7ee09cd",
+        "sha256": "9a1561097a9fc7ffac73d83132f298c501972ea5639df03b8cdc1fedd7ee09cd"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/KCSG.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/KCSG.dll",
+        "sourceRawSha256": "704890570d0a54229ae79f21bd016e95d250c14cee22fd52ea98cdf39e6b319a",
+        "sha256": "704890570d0a54229ae79f21bd016e95d250c14cee22fd52ea98cdf39e6b319a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/KCSG.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/KCSG.dll",
+        "sourceRawSha256": "704890570d0a54229ae79f21bd016e95d250c14cee22fd52ea98cdf39e6b319a",
+        "sha256": "704890570d0a54229ae79f21bd016e95d250c14cee22fd52ea98cdf39e6b319a"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/MVCF.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/MVCF.dll",
+        "sourceRawSha256": "e114c3fa53d239d0830a238e218d65958298fadfe46204bd0fc107241ddac665",
+        "sha256": "e114c3fa53d239d0830a238e218d65958298fadfe46204bd0fc107241ddac665"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/MVCF.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/MVCF.dll",
+        "sourceRawSha256": "e114c3fa53d239d0830a238e218d65958298fadfe46204bd0fc107241ddac665",
+        "sha256": "e114c3fa53d239d0830a238e218d65958298fadfe46204bd0fc107241ddac665"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/Outposts.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/Outposts.dll",
+        "sourceRawSha256": "8324ec9d51706e2d2b1fd75a5862ba8b8c3ed17f0420f6dd39786d4790cb87cf",
+        "sha256": "8324ec9d51706e2d2b1fd75a5862ba8b8c3ed17f0420f6dd39786d4790cb87cf"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/Outposts.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/Outposts.dll",
+        "sourceRawSha256": "8324ec9d51706e2d2b1fd75a5862ba8b8c3ed17f0420f6dd39786d4790cb87cf",
+        "sha256": "8324ec9d51706e2d2b1fd75a5862ba8b8c3ed17f0420f6dd39786d4790cb87cf"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/PipeSystem.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/PipeSystem.dll",
+        "sourceRawSha256": "8c5c9cf4faed59d4d5b0ac023c4d7d28be4405cbaba74412fe177553fb974ce7",
+        "sha256": "8c5c9cf4faed59d4d5b0ac023c4d7d28be4405cbaba74412fe177553fb974ce7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/PipeSystem.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/PipeSystem.dll",
+        "sourceRawSha256": "8c5c9cf4faed59d4d5b0ac023c4d7d28be4405cbaba74412fe177553fb974ce7",
+        "sha256": "8c5c9cf4faed59d4d5b0ac023c4d7d28be4405cbaba74412fe177553fb974ce7"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/VEF.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.6/Assemblies/VEF.dll",
+        "sourceRawSha256": "4c41a08bdb07d4407765d8afe01a7093ff5d6fa442a82ad15837794aacdd2f13",
+        "sha256": "4c41a08bdb07d4407765d8afe01a7093ff5d6fa442a82ad15837794aacdd2f13"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/1.6/Assemblies/VEF.dll",
+        "projectFile": "Components/VanillaExpandedFramework/1.7/Assemblies/VEF.dll",
+        "sourceRawSha256": "4c41a08bdb07d4407765d8afe01a7093ff5d6fa442a82ad15837794aacdd2f13",
+        "sha256": "11e08b63c88977d198baf02dbc1762ce2001b34e75bd02970706d8a18baec848",
+        "binaryTransform": "Add static GetDefaultCache(Pawn) returning the original CachedPawnData.defaultCache sentinel before Pawn initialization; retain the native per-pawn refresh path; deterministic MVID and timestamp zero"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/LICENSE",
+        "projectFile": "Components/VanillaExpandedFramework/LICENSE",
+        "sourceRawSha256": "95bd6cd3813f36a2ce36d8dc925be7b18d1bde014efa9f79734e0999e094bf2c",
+        "sha256": "0b05269da726beda9de667a0d84f19e4ea8a68e8e274eb06fd582fdb9d933e00"
+      },
+      {
+        "source": "Vanilla Expanded Framework (Библиотека)/README.md",
+        "projectFile": "Components/VanillaExpandedFramework/README.md",
+        "sourceRawSha256": "0f92652f76c06365a24c8d00c6e4b3dcfa3125079dc3414a50f2b9672d1a67d1",
+        "sha256": "0f92652f76c06365a24c8d00c6e4b3dcfa3125079dc3414a50f2b9672d1a67d1"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

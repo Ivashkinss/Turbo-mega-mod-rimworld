@@ -39,6 +39,18 @@ def main():
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
     for version in ("v1.6", "v1.7"):
         order = [node.text for node in folders.find(version)]
+        # Verse merges XML by relative file path within one content pack.
+        # A later component must not silently replace another component's defs.
+        xml_paths = {}
+        for node in folders.find(version):
+            if not enabled(node.attrib, set()):
+                continue
+            base = PROJECT if node.text == '/' else PROJECT / node.text
+            for kind in ('Defs', 'Patches'):
+                for path in (base / kind).rglob('*.xml'):
+                    relative = path.relative_to(base).as_posix().lower()
+                    assert relative not in xml_paths, (version, 'XML override', xml_paths.get(relative), str(path))
+                    xml_paths[relative] = str(path)
         assert order.index('Components/HugsLib') < order.index('Components/AdaptiveStorage'), 'Load the library before its consumers'
         assert order.index('Components/AdaptiveStorage') < order.index('/'), 'Storage types must load before TurboMegaMod.dll'
         for original in (False, True):
@@ -50,6 +62,10 @@ def main():
                 assert selected == expected, (version, ids, selected)
     russian, duplicates = entries([PROJECT / "Languages/Russian"])
     assert not duplicates, duplicates
+    from build_vef_localization import definition_fields
+    vef_fields = definition_fields()
+    for (kind, key), source in vef_fields.items():
+        check_text(source, russian[('DefInjected/' + kind, key)]['text'], key)
     for name in COMPONENTS:
         english, _ = entries([PROJECT / "Components" / name / "Languages/English"])
         for key, source in english.items():
@@ -82,6 +98,14 @@ def main():
               "standaloneAndOriginalActiveLoadGuardsVerified": True, "passed": True}
     report["almostThereBranchCombinationsChecked"] = 8
     report["vehicleFrameworkRuntimeVerified"] = False
+    report['mergedXmlRelativePathsUnique'] = True
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            ids = {'oskarpotocki.vanillafactionsexpanded.core'} if original else set()
+            selected = [n.text for n in folders.find(version) if n.text.startswith('Components/VanillaExpandedFramework') and enabled(n.attrib, ids)]
+            assert selected == ([] if original else ['Components/VanillaExpandedFramework', 'Components/VanillaExpandedFramework/' + version[1:]])
+    report['vefVersionAndOriginalBranchesChecked'] = 4
+    report['vefDefinitionFieldsTranslated'] = len(vef_fields)
     report["sidearmsDefinitionFieldsVerified"] = sidearm_fields
     menus = list((PROJECT / 'Components').rglob('FloatSubMenu.dll'))
     assert menus == [PROJECT / 'Components/UsefulMarks/Assemblies/FloatSubMenu.dll'], menus

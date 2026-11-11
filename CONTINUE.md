@@ -1,3 +1,23 @@
+# Продолжаем — VEF, 27 из 28, 12 ноября 2026
+
+Пользователь подтвердил отправку каждого проверенного этапа. Character Editor 236e4df, Map Preview 8b1a5a3 и запись разрешения 6af80e9 уже отправлены. Продолжать до всех 28; осталось встроить Harmony последним. Camera+ и прочие исключения не возвращать.
+
+VEF встроен: 188 ресурсов, включая семь DLL в отдельных ветках 1.6 и 1.7, Defs/Patches/Textures, английские ключи, LGPL LICENSE и README. Своя старая 0Harmony не копировалась. Только VEF.dll 1.7 получает GetDefaultCache(Pawn), возвращающий существующий CachedPawnData.defaultCache. Field injection вызывается в Pawn..ctor до health/needs/def; обращение к обычному fallback там приводило к NRE и отвергнуто в тесте. Нейтральный sentinel безопасен; штатный GetPawnDataCache затем заменяет ссылку на отдельный кэш пешки. 6244 исходных метода имеют неизменённый IL, добавлен один метод. Детерминированная сборка воспроизводит SHA256. VEF 1.6 неизменён.
+
+Слияние XML по относительному пути перекрывало Simple Sidearms Jobs_Misc.xml/Subtrees_Misc.xml. VEF Defs/Patches размещены под своим подкаталогом. Аналогично устранено ранее незамеченное перекрытие Common Sense JoyGivers.xml анимациями Melee: все четыре Common Sense Defs перенесены в подкаталог без изменения содержимого. Статическая проверка теперь запрещает совпадения путей XML в выбранных папках загрузки.
+
+Source/VefCompatibility.cs исправляет два потребителя старого packageId: только поиск VEF в Nice Bill Tab TryGetExternalAssembly и только константу владельца в Sidearms VFECore..cctor. Проверяется настоящий VEF внутри нашего пакета. При активном оригинале поправки не ставятся; глобальных алиасов ModLister нет. ASF объявляет флаги Harmony/VEF, но их потребителей в поставляемых DLL не найдено.
+
+Все 497 английских ключей VEF переведены (21 прежний +476 новых), 192 поля Def включая Odyssey TrainableDef и Biotech stat, плюс два заголовка Animal Behaviours/Toggles. Всего 2997 русских записей. Генератор учитывает DLC отдельно от инвентаризации исходных модов.
+
+Integrated прошёл 47 проверок; OriginalActive —39: шесть runtime модулей, владельцы/версии, neutral initializer на new Pawn, три настоящих кэша, 309 hooks, Scribe и Repaint настроек, native shield API через Sidearms и Nice Bill Tab, наличие ранее перекрытых заданий/joy giver. 0PrepatcherAPI в 1.7 потребляется движком и заменён RimWorldWaylith.PrepatcherCompat; файл сохранён и проверен по хешу. OriginalActive воспроизводит старое предупреждение Field injection; встроенный вариант его не имеет. Осталась точная пара известных ошибок русского правила Odyssey, учтённая отдельно. Визуальная раскладка, все механики внешних VE модов и пользовательское сохранение не тестировались.
+
+Оригинал удалён после Integrated/OriginalActive/FullSet. Локальный ZIP Tools/Build/RemovedVanillaExpandedFramework-20261112-003001-658.zip, 188 исходных хешей проверены. Список до удаления TestRuns/VanillaExpandedFrameworkRemoval-20261112-003001-658/ModsConfig.before.xml. Осталось восемь активных записей: внешняя Harmony, Core, пять DLC и наш мод. После удаления выполнен повтор FullSet с дополненными DLC переводами; смотреть актуальный отчёт VanillaExpandedFramework-FullSet.json.
+
+Далее Harmony: сохранить исходные 1.6 и 1.7 отдельно; в 1.7 также HarmonyMod.RuntimeIL.dll. Загружать первой внутри пакета до HugsLib/AdaptiveStorage/корневой DLL. Обновить build/test пути на встроенную Harmony 1.6 для .NET Framework компиляции. Удалить внешнюю зависимость из About и профилей, проверить реальный patch/unpatch, единственную Harmony, RuntimeIL и весь набор. Оригинал удалить только после Integrated/OriginalActive/FullSet с архивом, затем финальный прогон без исходных папок. Не заявлять живую проверку 1.6: установлена только 1.7.5000.
+
+---
+
 # Продолжаем — Map Preview, 26 из 28
 
 Пользователь требует продолжать до всех 28. Map Preview завершён: 22 ресурса 1.6 сохранены побайтно с Manifest/.lfc и MIT LICENSE. Вложенная HarmonyLib — резервный файл Lunar, который не загружается при подходящей активной 0Harmony. Это подтверждено игровыми тестами: одна 0Harmony, ноль HarmonyLib. Для компонента запрещена Git-конверсия строк и нормализация XML/JSON; byteExactResources=true в манифесте.

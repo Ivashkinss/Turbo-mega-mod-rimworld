@@ -8,7 +8,9 @@ using System.Xml;
 
 namespace Verse
 {
-    public class ModContentPack { public string PackageId, RootDir; public string Name { get; set; } }
+    public static class ModsConfig { public static bool IsActive(string id) { return false; } }
+    public class ModAssemblyHandler { public List<Assembly> loadedAssemblies = new List<Assembly>(); }
+    public class ModContentPack { public string PackageId, RootDir; public string Name { get; set; } public ModAssemblyHandler assemblies = new ModAssemblyHandler(); }
     public static class LoadedModManager { public static readonly List<ModContentPack> RunningModsListForReading = new List<ModContentPack>(); }
     public class Pawn { }
     public struct PawnDrawParms { public Pawn pawn; public int flags; }

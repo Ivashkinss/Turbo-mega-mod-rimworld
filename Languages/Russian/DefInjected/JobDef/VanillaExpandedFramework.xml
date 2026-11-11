@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <BetterReload.reportString>перезаряжает TargetA.</BetterReload.reportString>
+  <KCSG_GoToPassage.reportString>входит в TargetA.</KCSG_GoToPassage.reportString>
+  <PS_BringToProcessor.reportString>переносит TargetB к TargetA.</PS_BringToProcessor.reportString>
+  <PS_DrainFromMarkedStorage.reportString>опорожняет TargetA.</PS_DrainFromMarkedStorage.reportString>
+  <PS_FillStorage.reportString>заполняет TargetA.</PS_FillStorage.reportString>
+  <PS_PickUpProcessor.reportString>забирает результат из TargetA.</PS_PickUpProcessor.reportString>
+  <ReloadFromInventory.reportString>перезаряжает TargetA.</ReloadFromInventory.reportString>
+  <Unload.reportString>разряжает TargetA.</Unload.reportString>
+  <VEF_AnimalResource.reportString>собирает ресурс животного: TargetA.</VEF_AnimalResource.reportString>
+  <VEF_AutoNutrition.reportString>ест.</VEF_AutoNutrition.reportString>
+  <VEF_CustomizeItem.reportString>изменяет внешний вид TargetA.</VEF_CustomizeItem.reportString>
+  <VEF_DestroyItem.reportString>уничтожает предмет.</VEF_DestroyItem.reportString>
+  <VEF_FleeAndCowerShort.reportString>убегает.</VEF_FleeAndCowerShort.reportString>
+  <VEF_IngestWeird.reportString>потребляет TargetA.</VEF_IngestWeird.reportString>
+  <VEF_LayExplodingEgg.reportString>откладывает яйцо.</VEF_LayExplodingEgg.reportString>
+  <VEF_UseDoorTeleporter.reportString>использует TargetA для телепортации к TargetB</VEF_UseDoorTeleporter.reportString>
+  <VFEA_StandAndFaceTarget.reportString>стоит.</VFEA_StandAndFaceTarget.reportString>
+  <VFEC_EquipShield.reportString>экипирует TargetA.</VFEC_EquipShield.reportString>
+  <VFEC_LeaveMap.reportString>уходит.</VFEC_LeaveMap.reportString>
+  <VFE_Loot.reportString>собирает добычу из TargetA.</VFE_Loot.reportString>
+  <VFE_StudyBuilding.reportString>изучает TargetA.</VFE_StudyBuilding.reportString>
+</LanguageData>

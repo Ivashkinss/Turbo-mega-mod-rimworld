@@ -15,6 +15,7 @@ namespace TurboMegaMod
             MeleeResourceCompatibility.Apply();
             CharacterEditorCompatibility.Apply();
             MapPreviewCompatibility.Apply();
+            VefCompatibility.Apply();
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
             HugsLibCompatibility.Apply();
@@ -51,7 +52,9 @@ namespace TurboMegaMod
                 || name == "SnapOut.SOMod"
                 || name == "PickUpAndHaul.Modbase"
                 || name == "NiceBillTab.NiceBillTabMod"
-                || name == "ShowMeYourHands.ShowMeYourHandsMod";
+                || name == "ShowMeYourHands.ShowMeYourHandsMod"
+                || name == "VEF.AnimalBehaviours.AnimalBehaviours_Mod"
+                || name == "VEF.AnimalBehaviours.VanillaAnimalsExpanded_Mod";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -100,7 +103,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab" && name != "ShowMeYourHands") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab" && name != "ShowMeYourHands" && name != "VEF") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

@@ -3,12 +3,15 @@ import hashlib
 import json
 import shutil
 import argparse
+import subprocess
 from pathlib import Path
 
 from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "VanillaExpandedFramework": ("Vanilla Expanded Framework (Библиотека)", "oskarpotocki.vanillafactionsexpanded.core",
+                      json.loads((PROJECT / "Tools/ComponentFiles/VanillaExpandedFramework.json").read_text(encoding="utf-8"))),
     "MapPreview": ("Map Preview (Предпросмотр карты)", "m00nl1ght.mappreview",
                       json.loads((PROJECT / "Tools/ComponentFiles/MapPreview.json").read_text(encoding="utf-8"))),
     "CharacterEditor": ("CharacterEditor", "void.charactereditor",
@@ -525,7 +528,7 @@ COMPONENTS = {
     "CommonSense": ("Common Sense (Умные действия колонистов)", "avilmask.commonsense", {
         "1.6/Assemblies/CommonSense.dll": "Assemblies/CommonSense.dll",
         "Languages/English/Keyed/strings.xml": "Languages/English/Keyed/strings.xml",
-        **{f"1.6/Defs/{name}.xml": f"Defs/{name}.xml" for name in ("RoomRoles", "Recipes_Meals", "JoyGivers", "Jobs_Misc")},
+        **{f"1.6/Defs/{name}.xml": f"Defs/CommonSense/{name}.xml" for name in ("RoomRoles", "Recipes_Meals", "JoyGivers", "Jobs_Misc")},
         **{f"1.6/Patches/{name}.xml": f"Patches/{name}.xml" for name in ("PackMeal", "FunPolice", "FoodOptimality", "CleanOnOpportunity", "CleanGizmo")},
         **{f"Textures/UI/Icons/{name}.png": f"Textures/UI/Icons/{name}.png" for name in ("Unload_Thing", "Unload_Thing_Cancel")},
     }),
@@ -583,6 +586,12 @@ def clean_text(path):
     path.write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n", encoding="utf-8")
 
 
+def output_pairs(files):
+    for source, destinations in files.items():
+        for destination in destinations if isinstance(destinations, list) else [destinations]:
+            yield source, destination
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--component", action="append", choices=COMPONENTS,
@@ -601,7 +610,7 @@ def main():
         source = PROJECT.parent / folder
         byte_exact = name == "MapPreview"
         items = []
-        for relative, destination in files.items():
+        for relative, destination in output_pairs(files):
             original = source / relative
             target = PROJECT / "Components" / name / destination
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -616,6 +625,16 @@ def main():
                           "projectFile": target.relative_to(PROJECT).as_posix(),
                           "sourceRawSha256": source_hash,
                           "sha256": hashlib.sha256(data).hexdigest()})
+        if name == 'VanillaExpandedFramework':
+            powershell = shutil.which('pwsh') or shutil.which('powershell')
+            if not powershell:
+                raise RuntimeError('PowerShell is required for the VEF 1.7 compatibility build')
+            subprocess.run([powershell, '-NoProfile', '-File', str(PROJECT / 'Tools/build_vef_initializer.ps1'),
+                            '-InputDll', str(PROJECT / 'Components' / name / '1.6/Assemblies/VEF.dll'),
+                            '-OutputDll', str(PROJECT / 'Components' / name / '1.7/Assemblies/VEF.dll')], check=True)
+            item = next(item for item in items if item['projectFile'].endswith('/1.7/Assemblies/VEF.dll'))
+            item['sha256'] = hashlib.sha256((PROJECT / item['projectFile']).read_bytes()).hexdigest()
+            item['binaryTransform'] = 'Add static GetDefaultCache(Pawn) returning the original CachedPawnData.defaultCache sentinel before Pawn initialization; retain the native per-pawn refresh path; deterministic MVID and timestamp zero'
         about = PROJECT / "ThirdParty" / f"{name}.About.xml"
         shutil.copyfile(source / "About/About.xml", about)
         clean_text(about)
@@ -669,6 +688,10 @@ def main():
             folder = "Components/CharacterEditor/Gradients"
             if not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
                 ET.SubElement(tree.find(version), "li", IfModNotActive="void.charactereditor", IfModActive="automatic.gradienthair").text = folder
+        if 'VanillaExpandedFramework' in report:
+            folder = 'Components/VanillaExpandedFramework/' + version[1:]
+            if not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
+                ET.SubElement(tree.find(version), 'li', IfModNotActive='oskarpotocki.vanillafactionsexpanded.core').text = folder
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
     manifest.write_text(

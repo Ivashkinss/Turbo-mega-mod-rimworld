@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <PS_BringToProcessor.gerund>подносит ингредиенты к</PS_BringToProcessor.gerund>
+  <PS_BringToProcessor.label>подносить ингредиент к переработчику</PS_BringToProcessor.label>
+  <PS_BringToProcessor.verb>подносить ингредиенты к</PS_BringToProcessor.verb>
+  <PS_DrainOutOfStorage.gerund>опорожняет хранилище</PS_DrainOutOfStorage.gerund>
+  <PS_DrainOutOfStorage.label>опорожнять хранилище</PS_DrainOutOfStorage.label>
+  <PS_DrainOutOfStorage.verb>опорожнять хранилище</PS_DrainOutOfStorage.verb>
+  <PS_FillStorage.gerund>заполняет хранилище</PS_FillStorage.gerund>
+  <PS_FillStorage.label>заполнять хранилище</PS_FillStorage.label>
+  <PS_FillStorage.verb>заполнять хранилище</PS_FillStorage.verb>
+  <PS_PickUpProcessor.gerund>забирает результат из</PS_PickUpProcessor.gerund>
+  <PS_PickUpProcessor.label>забирать результат из переработчика</PS_PickUpProcessor.label>
+  <PS_PickUpProcessor.verb>забирать результат из</PS_PickUpProcessor.verb>
+  <VEF_AnimalResource.gerund>собирает ресурс животного</VEF_AnimalResource.gerund>
+  <VEF_AnimalResource.label>собирать ресурсы животных</VEF_AnimalResource.label>
+  <VEF_AnimalResource.verb>собирать ресурс животного</VEF_AnimalResource.verb>
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.gerund>работает над</VEF_Art_ConstructDeliverResourcesToBlueprints.gerund>
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.label>подносить ресурсы к чертежам</VEF_Art_ConstructDeliverResourcesToBlueprints.label>
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.verb>работать над</VEF_Art_ConstructDeliverResourcesToBlueprints.verb>
+  <VEF_Art_ConstructDeliverResourcesToFrames.gerund>работает над</VEF_Art_ConstructDeliverResourcesToFrames.gerund>
+  <VEF_Art_ConstructDeliverResourcesToFrames.label>подносить ресурсы к каркасам</VEF_Art_ConstructDeliverResourcesToFrames.label>
+  <VEF_Art_ConstructDeliverResourcesToFrames.verb>работать над</VEF_Art_ConstructDeliverResourcesToFrames.verb>
+  <VEF_Art_ConstructFinishFrames.gerund>работает над</VEF_Art_ConstructFinishFrames.gerund>
+  <VEF_Art_ConstructFinishFrames.label>завершать строительство каркасов</VEF_Art_ConstructFinishFrames.label>
+  <VEF_Art_ConstructFinishFrames.verb>работать над</VEF_Art_ConstructFinishFrames.verb>
+  <VEF_DestroyItems.gerund>уничтожает предметы</VEF_DestroyItems.gerund>
+  <VEF_DestroyItems.label>уничтожать предметы</VEF_DestroyItems.label>
+  <VEF_DestroyItems.verb>уничтожать предметы</VEF_DestroyItems.verb>
+  <VFE_Loot.gerund>собирает добычу из</VFE_Loot.gerund>
+  <VFE_Loot.label>собирать добычу</VFE_Loot.label>
+  <VFE_Loot.verb>собирать добычу из</VFE_Loot.verb>
+  <VFE_StudyBuilding.gerund>изучает</VFE_StudyBuilding.gerund>
+  <VFE_StudyBuilding.label>изучать постройку</VFE_StudyBuilding.label>
+  <VFE_StudyBuilding.verb>изучать</VFE_StudyBuilding.verb>
+</LanguageData>

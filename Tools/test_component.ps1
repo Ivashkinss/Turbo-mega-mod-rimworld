@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands)
+param([Parameter(Mandatory=$true)][ValidateSet('VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'VanillaExpandedFramework' { @{ folder='Vanilla Expanded Framework (Библиотека)'; id='oskarpotocki.vanillafactionsexpanded.core'; dll='Components\VanillaExpandedFramework\1.7\Assemblies\VEF.dll'; source='InGameVefProbe.cs'; flag='-tmm-vef-probe'; report='VefProbe.json'; ui='VefUiProbe.json'; key='vef'; prefix='Vef' } }
     'MapPreview' { @{ folder='Map Preview (Предпросмотр карты)'; id='m00nl1ght.mappreview'; dll='Components\MapPreview\Assemblies\LunarLoader.dll'; source='InGameMapPreviewProbe.cs'; flag='-tmm-preview-probe'; report='PreviewProbe.json'; ui='PreviewUiProbe.json'; key='preview'; prefix='Preview' } }
     'CharacterEditor' { @{ folder='CharacterEditor'; id='void.charactereditor'; dll='Components\CharacterEditor\Assemblies\CharacterEditor.dll'; source='InGameCharacterEditorProbe.cs'; flag='-tmm-editor-probe'; report='EditorProbe.json'; ui='EditorUiProbe.json'; key='editor'; prefix='Editor' } }
     'MeleeAnimation' { @{ folder='Melee Animation (Анимация ближнего боя)'; id='co.uk.epicguru.meleeanimation'; dll='Components\MeleeAnimation\Assemblies\zAnimationMod.dll'; source='InGameMeleeProbe.cs'; flag='-tmm-melee-probe'; report='MeleeProbe.json'; ui='MeleeUiProbe.json'; key='melee'; prefix='Melee' } }
@@ -140,7 +141,9 @@ try {
     $knownExternal = 0
     $vefIssue = 'Field injection: VEF: VEF.AestheticScaling.CachedPawnDataExtensions.GetCachePrePatched: initializer GetDefaultCache must be exactly one static method on VEF.AestheticScaling.CachedPawnDataExtensions returning VEF.AestheticScaling.CachedPawnData and taking the target or nothing (0 found).'
     $odysseyErrors = $errors
-    if ($FullSet) {
+    [xml]$runtimeMods = $modsXml
+    $legacyVefActive = 'oskarpotocki.vanillafactionsexpanded.core' -in @($runtimeMods.ModsConfigData.activeMods.li)
+    if ($legacyVefActive) {
         $vefErrors = @($errors | Where-Object { ($_.Line -replace '^\d+:\d+:\d+\s+ERROR ', '') -ceq $vefIssue })
         if ($vefErrors.Count -eq 1) {
             $knownExternal = 1
@@ -150,7 +153,7 @@ try {
     if ($odysseyErrors.Count -eq 2 -and $odysseyErrors[0].Line -match 'ERROR Bad string pass when reading rule \[tradeAdj_fem\] \[tradeNoun_fem\]$' -and
         $odysseyErrors[1].Line -match 'ERROR Failed to resolve text\. Trying again with English\. Exception: System.ArgumentNullException:' -and
         (Select-String -LiteralPath (Join-Path $testRoot 'stdout.log') -SimpleMatch 'RimWorld.FactionGenerator.NewGeneratedFaction')) { $knownExternal = 2 }
-    if ($FullSet -and $vefErrors.Count -eq 1 -and $knownExternal -eq 2) { $knownExternal = 3 }
+    if ($legacyVefActive -and $vefErrors.Count -eq 1 -and $knownExternal -eq 2) { $knownExternal = 3 }
     $result = [ordered]@{
         component = $Component; originalComponentActive = [bool]$OriginalActive; fullUserModSet = [bool]$FullSet
         gameVersion = [IO.File]::ReadAllText((Join-Path $gamePath 'Version.txt')).Trim()

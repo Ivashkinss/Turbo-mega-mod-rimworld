@@ -40,6 +40,8 @@
     <li IfModNotActive="void.charactereditor">Components/CharacterEditor</li>
     <li IfModNotActive="void.charactereditor" IfModActive="automatic.gradienthair">Components/CharacterEditor/Gradients</li>
     <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.6</li>
   </v1.6>
   <v1.7>
     <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
@@ -81,5 +83,7 @@
     <li IfModNotActive="void.charactereditor">Components/CharacterEditor</li>
     <li IfModNotActive="void.charactereditor" IfModActive="automatic.gradienthair">Components/CharacterEditor/Gradients</li>
     <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.7</li>
   </v1.7>
 </loadFolders>

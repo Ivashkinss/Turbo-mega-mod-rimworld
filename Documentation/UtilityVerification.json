@@ -1,5 +1,6 @@
 {
   "components": [
+    "VanillaExpandedFramework",
     "MapPreview",
     "CharacterEditor",
     "MeleeAnimation",
@@ -25,8 +26,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 3873,
+  "resourceHashesVerified": 4061,
   "russianKeysByComponent": {
+    "VanillaExpandedFramework": 497,
     "MapPreview": 76,
     "CharacterEditor": 0,
     "MeleeAnimation": 246,
@@ -57,6 +59,9 @@
   "passed": true,
   "almostThereBranchCombinationsChecked": 8,
   "vehicleFrameworkRuntimeVerified": false,
+  "mergedXmlRelativePathsUnique": true,
+  "vefVersionAndOriginalBranchesChecked": 4,
+  "vefDefinitionFieldsTranslated": 192,
   "sidearmsDefinitionFieldsVerified": 21,
   "singleSharedFloatSubMenuVerified": true,
   "tradePsycastsBranchCombinationsChecked": 8,

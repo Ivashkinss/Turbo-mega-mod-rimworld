@@ -17,7 +17,9 @@
     "{0}: {1:F1}h": "{0}: {1:F1} ч",
     "Pick Up And Haul": "Переноска нескольких предметов",
     "Nice Bill Tab": "Удобные производственные задания",
-    "Show Me Your Hands": "Анимация рук с оружием"
+    "Show Me Your Hands": "Анимация рук с оружием",
+    "Animal Behaviours": "Поведение животных",
+    "Animal Toggles": "Включение животных"
   },
   "corpseOffsetModes": {
     "None": "Не смещать",

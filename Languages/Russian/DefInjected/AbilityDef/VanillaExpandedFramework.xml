@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VEF_ControlledBlinking.description>Позволяет управлять обычно непредсказуемой телепортацией существа и перемещать его в выбранную точку в пределах дальности.</VEF_ControlledBlinking.description>
+  <VEF_ControlledBlinking.label>управляемая телепортация</VEF_ControlledBlinking.label>
+  <VEF_ControlledDetonation.description>Животное по команде жертвует собой, высвобождая все накопленные взрывчатые вещества в мощном разрушительном взрыве.</VEF_ControlledDetonation.description>
+  <VEF_ControlledDetonation.label>управляемый подрыв</VEF_ControlledDetonation.label>
+  <VEF_ControlledInvisibility.description>Позволяет животному стать невидимым, сохраняя полную осознанность и точность действий.</VEF_ControlledInvisibility.description>
+  <VEF_ControlledInvisibility.label>управляемая невидимость</VEF_ControlledInvisibility.label>
+</LanguageData>
