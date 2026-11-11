@@ -747,12 +747,6 @@
         "sha256": "7f12e97f3130f960876c26a2c83aa2be356046d5def9d43dcf59d26854bbf424"
       },
       {
-        "source": "Nice Bill Tab (Фильтр рецептов)/1.6/Assemblies/FloatSubMenu.dll",
-        "projectFile": "Components/NiceBillTab/Assemblies/FloatSubMenu.dll",
-        "sourceRawSha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff",
-        "sha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff"
-      },
-      {
         "source": "Nice Bill Tab (Фильтр рецептов)/Languages/English/Keyed/Common.xml",
         "projectFile": "Components/NiceBillTab/Languages/English/Keyed/Common.xml",
         "sourceRawSha256": "482fdc1348c279666a7498e365fc9e46d09fc0fa4d6f06a8dd3ea0e3d009305c",
@@ -1072,7 +1066,17 @@
       }
     ],
     "bundledHarmonyCopied": false,
-    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged",
+    "sharedMenuProvider": "UsefulMarks: newer FloatSubMenu; old Nice Bill Tab DLL preserved in original backup",
+    "replacedResources": [
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/1.6/Assemblies/FloatSubMenu.dll",
+        "projectFile": "Components/NiceBillTab/Assemblies/FloatSubMenu.dll",
+        "sourceRawSha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff",
+        "sha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff",
+        "providedBy": "UsefulMarks"
+      }
+    ]
   },
   "MorePlanning": {
     "packageId": "mlie.moreplanning",
@@ -2493,6 +2497,499 @@
         "projectFile": "Components/ShowMeYourHands/Textures/OffHandClean.png",
         "sourceRawSha256": "716b694d7c8aca6ea2434146046f232167e8ded7aa44b5b66d800c199dc29119",
         "sha256": "716b694d7c8aca6ea2434146046f232167e8ded7aa44b5b66d800c199dc29119"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "UsefulMarks": {
+    "packageId": "andromeda.usefulmarks",
+    "files": [
+      {
+        "source": "Useful Marks (Маркеры для пешек)/1.6/Assemblies/UsefulColonistBar.dll",
+        "projectFile": "Components/UsefulMarks/Assemblies/UsefulColonistBar.dll",
+        "sourceRawSha256": "75194b44016ed6c8b57e06c6adbd050a83c0b86d931e51fcd1cb511c46633414",
+        "sha256": "75194b44016ed6c8b57e06c6adbd050a83c0b86d931e51fcd1cb511c46633414"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/1.6/Assemblies/FloatSubMenu.dll",
+        "projectFile": "Components/UsefulMarks/Assemblies/FloatSubMenu.dll",
+        "sourceRawSha256": "949b758a15f643d2dcbd270dc1e5d8e9d8b212edf282e190bfe15cc677548bd7",
+        "sha256": "949b758a15f643d2dcbd270dc1e5d8e9d8b212edf282e190bfe15cc677548bd7"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/1.6/Languages/English/Keyed/common.xml",
+        "projectFile": "Components/UsefulMarks/Languages/English/Keyed/common.xml",
+        "sourceRawSha256": "a8a8ba9a37e6636947ef0fb9ade54160febfcabaa4146b4ff7d27fe37d3ade28",
+        "sha256": "21fa0eb2df55fa5a4798f2d480f23cd006f5f3d6a56316579bb1c58a58650bee"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/1.6/Languages/English/Keyed/icons.xml",
+        "projectFile": "Components/UsefulMarks/Languages/English/Keyed/icons.xml",
+        "sourceRawSha256": "31a30c9f52ebeb88bd4906522d0902636d63b1a34d1ef7c53d2209f43c3e11e0",
+        "sha256": "e2e3a7eac9d421c708485a797d7af23271948daaa33ac1092fc8b86b0b75b323"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/AddMarker.png",
+        "projectFile": "Components/UsefulMarks/Textures/AddMarker.png",
+        "sourceRawSha256": "e9bdf0a552aa57d3b2f8f06b23c75001f11c0146d1f11784354536ac52180c1c",
+        "sha256": "e9bdf0a552aa57d3b2f8f06b23c75001f11c0146d1f11784354536ac52180c1c"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/MarkerAdaptiveColor.png",
+        "projectFile": "Components/UsefulMarks/Textures/MarkerAdaptiveColor.png",
+        "sourceRawSha256": "ae343eec35d6c632d0d4dcb4e6a23380bfaa4dc506efbf6f1f2038ac77c30e7a",
+        "sha256": "ae343eec35d6c632d0d4dcb4e6a23380bfaa4dc506efbf6f1f2038ac77c30e7a"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Animal.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Animal.png",
+        "sourceRawSha256": "0615b030238d9f45db1e5751fb8623df81ef866b4f2e8990d2eb3e687125c259",
+        "sha256": "0615b030238d9f45db1e5751fb8623df81ef866b4f2e8990d2eb3e687125c259"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Arm.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Arm.png",
+        "sourceRawSha256": "f7914fe1902f6ff0fb1fc98adfdc6b5cc543a5f05546d99a7f381f14eb74fc2f",
+        "sha256": "f7914fe1902f6ff0fb1fc98adfdc6b5cc543a5f05546d99a7f381f14eb74fc2f"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/ArmPlus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/ArmPlus.png",
+        "sourceRawSha256": "5a63dbaec2722b187e4a658a97e8c34d3d7e443c72d67d6431de34f7fa3e48e0",
+        "sha256": "5a63dbaec2722b187e4a658a97e8c34d3d7e443c72d67d6431de34f7fa3e48e0"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Armor.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Armor.png",
+        "sourceRawSha256": "b863ff4da04bfa82f3d7eb7eaff43a449a8671bbafc1f88a9118507804578ff3",
+        "sha256": "b863ff4da04bfa82f3d7eb7eaff43a449a8671bbafc1f88a9118507804578ff3"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Art.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Art.png",
+        "sourceRawSha256": "1eff130da72a9942adb3f5e842a2d132f811379bacab77e76be1a2c0a0eeeff8",
+        "sha256": "1eff130da72a9942adb3f5e842a2d132f811379bacab77e76be1a2c0a0eeeff8"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Augmented.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Augmented.png",
+        "sourceRawSha256": "592cc9605fd30ca9e86ffea55104a55e4ae0659020810d9debedb647a7fe3567",
+        "sha256": "592cc9605fd30ca9e86ffea55104a55e4ae0659020810d9debedb647a7fe3567"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Axe.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Axe.png",
+        "sourceRawSha256": "d0eadd847c87abc24c38067952e5880ce63c6777a9bd96afd2a3a90b799aa676",
+        "sha256": "d0eadd847c87abc24c38067952e5880ce63c6777a9bd96afd2a3a90b799aa676"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Bomb.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Bomb.png",
+        "sourceRawSha256": "bce9cc213f4276b8d89eaba854109a723416d036e72cd8a0029b01f82386b661",
+        "sha256": "bce9cc213f4276b8d89eaba854109a723416d036e72cd8a0029b01f82386b661"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Bomb2.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Bomb2.png",
+        "sourceRawSha256": "2af32500952d5983cabcc73a35c004ec9650bba461f32abd9157f77b79351741",
+        "sha256": "2af32500952d5983cabcc73a35c004ec9650bba461f32abd9157f77b79351741"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Boost.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Boost.png",
+        "sourceRawSha256": "9fa1d21b92b344eaf9e647f0be05c8eb58846b8a72b97d5897511c19b824a28a",
+        "sha256": "9fa1d21b92b344eaf9e647f0be05c8eb58846b8a72b97d5897511c19b824a28a"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Bow.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Bow.png",
+        "sourceRawSha256": "2cb8aff242d37b682633e4f4b1720c6d51b86e18d7ed13ce592712fa82e98c28",
+        "sha256": "2cb8aff242d37b682633e4f4b1720c6d51b86e18d7ed13ce592712fa82e98c28"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Chef.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Chef.png",
+        "sourceRawSha256": "33d0997f968d4bbc3754147d949ac3c048be78c44d0b20637c2760a972c16e9c",
+        "sha256": "33d0997f968d4bbc3754147d949ac3c048be78c44d0b20637c2760a972c16e9c"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Chill.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Chill.png",
+        "sourceRawSha256": "65fbe36a0b58d17d91ce48f7f5b29da577ed4ac115fefbb9c1e1934a3d692e7c",
+        "sha256": "65fbe36a0b58d17d91ce48f7f5b29da577ed4ac115fefbb9c1e1934a3d692e7c"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Chip.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Chip.png",
+        "sourceRawSha256": "f6d02dc6a8f85cf9c12f045a513d37b15a42c0768b353e9d4d4d8cc3341f665c",
+        "sha256": "f6d02dc6a8f85cf9c12f045a513d37b15a42c0768b353e9d4d4d8cc3341f665c"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Clean.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Clean.png",
+        "sourceRawSha256": "6b7e262583abf5acdcef2b942ef851a2e776a8646972fe4fb95940e82b831b0c",
+        "sha256": "6b7e262583abf5acdcef2b942ef851a2e776a8646972fe4fb95940e82b831b0c"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Cold.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Cold.png",
+        "sourceRawSha256": "61dccbabb5ce230f41bccfd1397052ba86e7a09e119c8757c54b190134731dfa",
+        "sha256": "61dccbabb5ce230f41bccfd1397052ba86e7a09e119c8757c54b190134731dfa"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Craft.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Craft.png",
+        "sourceRawSha256": "c41b3da79e7e040a914293ef45b63a4ba4cfa5ddd0b92d3c481f63672f2763ae",
+        "sha256": "c41b3da79e7e040a914293ef45b63a4ba4cfa5ddd0b92d3c481f63672f2763ae"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/DNA.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/DNA.png",
+        "sourceRawSha256": "b435ffe3373a0004ace1853b8d43e41ad63ea08715c9b83a49568137d890e7e4",
+        "sha256": "b435ffe3373a0004ace1853b8d43e41ad63ea08715c9b83a49568137d890e7e4"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Dead.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Dead.png",
+        "sourceRawSha256": "25f63e3f206c3e4cd4ffa2e76bd95c26a05a534d4cabc4c977dd20054c0fa2ff",
+        "sha256": "25f63e3f206c3e4cd4ffa2e76bd95c26a05a534d4cabc4c977dd20054c0fa2ff"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Disease.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Disease.png",
+        "sourceRawSha256": "22c3076bc215456c1854da1f836d2e74b0363dd487797a39f0c101ef19413143",
+        "sha256": "22c3076bc215456c1854da1f836d2e74b0363dd487797a39f0c101ef19413143"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Drop.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Drop.png",
+        "sourceRawSha256": "7393e1b58e28effd39f0ab149e5e3f8d6e235b4544da11b2b2de417cb0ac9d2b",
+        "sha256": "7393e1b58e28effd39f0ab149e5e3f8d6e235b4544da11b2b2de417cb0ac9d2b"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Energy.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Energy.png",
+        "sourceRawSha256": "4c450d0c2e645467a3d676232f4fc6878bc53fa731239754dfbe6bb6987e2ae2",
+        "sha256": "4c450d0c2e645467a3d676232f4fc6878bc53fa731239754dfbe6bb6987e2ae2"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Fight.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Fight.png",
+        "sourceRawSha256": "196105ca59908298c117bbea1c65d83bb1235922eb2d7d074673de58c58c10a4",
+        "sha256": "196105ca59908298c117bbea1c65d83bb1235922eb2d7d074673de58c58c10a4"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Fight_plus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Fight_plus.png",
+        "sourceRawSha256": "04b37b4728fb057e948247591b7977ae70b701d1611f4b658f9decc3fea15532",
+        "sha256": "04b37b4728fb057e948247591b7977ae70b701d1611f4b658f9decc3fea15532"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Flame.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Flame.png",
+        "sourceRawSha256": "7540969dfea034eda5d59aa663370cf7adbcc79337357311d1189b2361fb7d97",
+        "sha256": "7540969dfea034eda5d59aa663370cf7adbcc79337357311d1189b2361fb7d97"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Focus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Focus.png",
+        "sourceRawSha256": "cebb9f01e0d4b3d7a58e14f0afc1f862b293b872b16c4aee6d2c0d51005a51c3",
+        "sha256": "cebb9f01e0d4b3d7a58e14f0afc1f862b293b872b16c4aee6d2c0d51005a51c3"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Food.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Food.png",
+        "sourceRawSha256": "a7cc88551bcd617e1619c6c376d441d8ccfdc8c7dbbb3bc0d5629faa223bf6d5",
+        "sha256": "a7cc88551bcd617e1619c6c376d441d8ccfdc8c7dbbb3bc0d5629faa223bf6d5"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Gear.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Gear.png",
+        "sourceRawSha256": "ae0df235a85bcd11b8b30f1efbab74d6e722d73c65dd088adf58a2ca5239fa3e",
+        "sha256": "ae0df235a85bcd11b8b30f1efbab74d6e722d73c65dd088adf58a2ca5239fa3e"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/GoJuice.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/GoJuice.png",
+        "sourceRawSha256": "2268e7731c4fe43ec7ffa653f12feaa28bd10b4f10d92486ba5b1596477dab2d",
+        "sha256": "2268e7731c4fe43ec7ffa653f12feaa28bd10b4f10d92486ba5b1596477dab2d"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Hammer.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Hammer.png",
+        "sourceRawSha256": "02694a851b3f90f7e36a6f75160afffb7a3d15b08a9f04382a8fd27190225a07",
+        "sha256": "02694a851b3f90f7e36a6f75160afffb7a3d15b08a9f04382a8fd27190225a07"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Haul.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Haul.png",
+        "sourceRawSha256": "1d0dcabbd54c176fac4bf466743e154b89cc18b38da631e564e4d52107829847",
+        "sha256": "1d0dcabbd54c176fac4bf466743e154b89cc18b38da631e564e4d52107829847"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Hided.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Hided.png",
+        "sourceRawSha256": "fc7e9dd5508e5ad10da90255fadcc8151e215b099dd55eb30815db2a4e7aa972",
+        "sha256": "fc7e9dd5508e5ad10da90255fadcc8151e215b099dd55eb30815db2a4e7aa972"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Hot.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Hot.png",
+        "sourceRawSha256": "838fcb36e39d66632732d797bb3fdf7abb7e05ffcd26b9cdb9352ae5793a6e00",
+        "sha256": "838fcb36e39d66632732d797bb3fdf7abb7e05ffcd26b9cdb9352ae5793a6e00"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Kill.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Kill.png",
+        "sourceRawSha256": "6bf1ddadfb9d177da104e933b7df309be82f8a3e52e2b777fba81f20cb5e51c1",
+        "sha256": "6bf1ddadfb9d177da104e933b7df309be82f8a3e52e2b777fba81f20cb5e51c1"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/King.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/King.png",
+        "sourceRawSha256": "f93900663b3bec6c3bb9b191176eb1c43baf9067be4927a7d64e2d319144717b",
+        "sha256": "f93900663b3bec6c3bb9b191176eb1c43baf9067be4927a7d64e2d319144717b"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Lamp.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Lamp.png",
+        "sourceRawSha256": "07fb3e9713d5402542ebdcc919536a727dcb8c5cb688b6580cc920401ce87cbf",
+        "sha256": "07fb3e9713d5402542ebdcc919536a727dcb8c5cb688b6580cc920401ce87cbf"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Lead.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Lead.png",
+        "sourceRawSha256": "c5e8e75257b20841edb90372a4a96cede2af752190537282b55f0f2db9ff575d",
+        "sha256": "c5e8e75257b20841edb90372a4a96cede2af752190537282b55f0f2db9ff575d"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Leaf.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Leaf.png",
+        "sourceRawSha256": "7cf1fd45b7118e29ab8948f0befb810cd5c096d5ddd2864172227e46c57ea1a8",
+        "sha256": "7cf1fd45b7118e29ab8948f0befb810cd5c096d5ddd2864172227e46c57ea1a8"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Like.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Like.png",
+        "sourceRawSha256": "796ba9d5b1f9ea9ba81c8c7ea2fc005af5fc4589242412f09ef2e2d3fdff07ff",
+        "sha256": "796ba9d5b1f9ea9ba81c8c7ea2fc005af5fc4589242412f09ef2e2d3fdff07ff"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Machinegun.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Machinegun.png",
+        "sourceRawSha256": "7f51e8930f01ff4ff3cab9359d7a79aaef6551886ed2c5a693ccb52427a88505",
+        "sha256": "7f51e8930f01ff4ff3cab9359d7a79aaef6551886ed2c5a693ccb52427a88505"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Meat.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Meat.png",
+        "sourceRawSha256": "c2c19d141c6d347fb57e8aae97c1b1c8118d4fdd692433f673ee23cacfb65594",
+        "sha256": "c2c19d141c6d347fb57e8aae97c1b1c8118d4fdd692433f673ee23cacfb65594"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Meat_plus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Meat_plus.png",
+        "sourceRawSha256": "f631c48fefdfd1a57ea43e6a0740a55fbbfb10eb851c2ee8e8fbbb5efbe9da2b",
+        "sha256": "f631c48fefdfd1a57ea43e6a0740a55fbbfb10eb851c2ee8e8fbbb5efbe9da2b"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Med.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Med.png",
+        "sourceRawSha256": "9a7c9dc34ff730a8ee3e76ce7b299c2bda5d8306aac16558715e1e330832d34e",
+        "sha256": "9a7c9dc34ff730a8ee3e76ce7b299c2bda5d8306aac16558715e1e330832d34e"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Meditation.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Meditation.png",
+        "sourceRawSha256": "4faf40735cbea18ec8473047cd486bb6852fabab7559cafcd4326d6d9e076a92",
+        "sha256": "4faf40735cbea18ec8473047cd486bb6852fabab7559cafcd4326d6d9e076a92"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Melee.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Melee.png",
+        "sourceRawSha256": "b966b62dfa5ee3285ad4620aa5cf5a731499368e047a96c09c6fe38a41ab78f5",
+        "sha256": "b966b62dfa5ee3285ad4620aa5cf5a731499368e047a96c09c6fe38a41ab78f5"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Miner.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Miner.png",
+        "sourceRawSha256": "57ba9d8dd8200ed4ddd6ca96ad10771170a241beb7d3de27c459556534b6fa7b",
+        "sha256": "57ba9d8dd8200ed4ddd6ca96ad10771170a241beb7d3de27c459556534b6fa7b"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Night.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Night.png",
+        "sourceRawSha256": "7d5133f6314bd3c9872274adcbe329fc037a64be71cccf7a360c542b7c58d952",
+        "sha256": "7d5133f6314bd3c9872274adcbe329fc037a64be71cccf7a360c542b7c58d952"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/No.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/No.png",
+        "sourceRawSha256": "0cdddc04bed68a824b9606de3df23802b1da35483145f3b9e4458f42b42aef53",
+        "sha256": "0cdddc04bed68a824b9606de3df23802b1da35483145f3b9e4458f42b42aef53"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Person.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Person.png",
+        "sourceRawSha256": "5e7f152757b10d776ff690078af86f618964412110d3245fc28ae786fdb5ad02",
+        "sha256": "5e7f152757b10d776ff690078af86f618964412110d3245fc28ae786fdb5ad02"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Pickaxe.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Pickaxe.png",
+        "sourceRawSha256": "22b5427299a815e285a35454be9e63a171a415e4e000ed71b155e4e012e1fee2",
+        "sha256": "22b5427299a815e285a35454be9e63a171a415e4e000ed71b155e4e012e1fee2"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Pill.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Pill.png",
+        "sourceRawSha256": "37f108ee866c1d067a5db16730cbcf8fc6b5620cb7b33e000f96e762c7937191",
+        "sha256": "37f108ee866c1d067a5db16730cbcf8fc6b5620cb7b33e000f96e762c7937191"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Pill_plus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Pill_plus.png",
+        "sourceRawSha256": "7ff53c8b45b77e67392e30db4cfc519956b50e1b9f33e40fd4607250d59ef4a7",
+        "sha256": "7ff53c8b45b77e67392e30db4cfc519956b50e1b9f33e40fd4607250d59ef4a7"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Pistol.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Pistol.png",
+        "sourceRawSha256": "dc1f70c817e64974d70deed114fa0f803782dacfd7c741c3767f9021a82b57d3",
+        "sha256": "dc1f70c817e64974d70deed114fa0f803782dacfd7c741c3767f9021a82b57d3"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Potion.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Potion.png",
+        "sourceRawSha256": "5d40001fbdc9042f1953da156af920b2863b861ac392aa40964e64c0e870942a",
+        "sha256": "5d40001fbdc9042f1953da156af920b2863b861ac392aa40964e64c0e870942a"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Potion_plus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Potion_plus.png",
+        "sourceRawSha256": "070330fa1d113031e8df3828527b4e19100c7041fb527c4c720eb8c08d61d7f6",
+        "sha256": "070330fa1d113031e8df3828527b4e19100c7041fb527c4c720eb8c08d61d7f6"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Prisoner.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Prisoner.png",
+        "sourceRawSha256": "4fcd2f40eaa999e1de68cd407f96748db47ad2f1049604037b711cc57105522a",
+        "sha256": "4fcd2f40eaa999e1de68cd407f96748db47ad2f1049604037b711cc57105522a"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Psy.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Psy.png",
+        "sourceRawSha256": "9c3c94a675aa70dcfbe547ceb910c38453b084214e505582fb28d6285620f71f",
+        "sha256": "9c3c94a675aa70dcfbe547ceb910c38453b084214e505582fb28d6285620f71f"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Range.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Range.png",
+        "sourceRawSha256": "2d028941f2790b6183787d565547911332e3309fe96b642cc2794044945d5a28",
+        "sha256": "2d028941f2790b6183787d565547911332e3309fe96b642cc2794044945d5a28"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Science.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Science.png",
+        "sourceRawSha256": "33c9d4b0f1f666d19a729b5c7958fea83a8cc6134ad90e12ae7d4a79d13911e1",
+        "sha256": "33c9d4b0f1f666d19a729b5c7958fea83a8cc6134ad90e12ae7d4a79d13911e1"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Science_plus.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Science_plus.png",
+        "sourceRawSha256": "19e93c8f26020ccae00ee31ecb12bf430bd156f1a09400a59a2eea55f8030611",
+        "sha256": "19e93c8f26020ccae00ee31ecb12bf430bd156f1a09400a59a2eea55f8030611"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Smoke.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Smoke.png",
+        "sourceRawSha256": "8880874ee8cd1516466a13635aad533add32e18a5ead3e7c8218c1e578b98658",
+        "sha256": "8880874ee8cd1516466a13635aad533add32e18a5ead3e7c8218c1e578b98658"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Social.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Social.png",
+        "sourceRawSha256": "df41d5dfb7652a48e7382ea10dd46888609e12db7aea96f91e9cb495f94e152f",
+        "sha256": "df41d5dfb7652a48e7382ea10dd46888609e12db7aea96f91e9cb495f94e152f"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Star.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Star.png",
+        "sourceRawSha256": "bf4fe7ace632554a04e112db382f7ccc333c2e6657d66b0c5e675cf0dc562f43",
+        "sha256": "bf4fe7ace632554a04e112db382f7ccc333c2e6657d66b0c5e675cf0dc562f43"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Stun.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Stun.png",
+        "sourceRawSha256": "2371757046702023cfacd1584a33a1d0b85e91e65f2c6a21915f3648ae841888",
+        "sha256": "2371757046702023cfacd1584a33a1d0b85e91e65f2c6a21915f3648ae841888"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Sun.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Sun.png",
+        "sourceRawSha256": "365bf9cbb47950d70ccd26443be0a64a71fa6dc30d859d071204adb54c5c5f05",
+        "sha256": "365bf9cbb47950d70ccd26443be0a64a71fa6dc30d859d071204adb54c5c5f05"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Syringe.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Syringe.png",
+        "sourceRawSha256": "fe4c9506eecc917d2c13c871a455b2aa9b3ef956f96514cf7e12ce21a66125b5",
+        "sha256": "fe4c9506eecc917d2c13c871a455b2aa9b3ef956f96514cf7e12ce21a66125b5"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Trade.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Trade.png",
+        "sourceRawSha256": "51d00022cd9f3a7344c570630a2b38b838eade368a907f387b74f77daa66ac4e",
+        "sha256": "51d00022cd9f3a7344c570630a2b38b838eade368a907f387b74f77daa66ac4e"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Unknown.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Unknown.png",
+        "sourceRawSha256": "a66b5974e40b9b2d824b557ecf03c5ff5efa2d5bd5b183b9f10f17766e846ad0",
+        "sha256": "a66b5974e40b9b2d824b557ecf03c5ff5efa2d5bd5b183b9f10f17766e846ad0"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Vase.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Vase.png",
+        "sourceRawSha256": "9c601c4972b419a98066c09a895aeab1a0bb87b1b617f955d6df68e14e627bf2",
+        "sha256": "9c601c4972b419a98066c09a895aeab1a0bb87b1b617f955d6df68e14e627bf2"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Wait.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Wait.png",
+        "sourceRawSha256": "2c09fb3f5d5cc7bd71661ee3e44f7da45464c86dda4b762dc809031a5194fac0",
+        "sha256": "2c09fb3f5d5cc7bd71661ee3e44f7da45464c86dda4b762dc809031a5194fac0"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Warning.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Warning.png",
+        "sourceRawSha256": "3631706efe0a3b854f2c45a07337969e60a5348d42ffc245e9eeb28af889047b",
+        "sha256": "3631706efe0a3b854f2c45a07337969e60a5348d42ffc245e9eeb28af889047b"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Weak.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Weak.png",
+        "sourceRawSha256": "cc24cd010c99fe81a9d51346a690c846a44483d38068299f55d94419545c13ee",
+        "sha256": "cc24cd010c99fe81a9d51346a690c846a44483d38068299f55d94419545c13ee"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/Marks/Worker.png",
+        "projectFile": "Components/UsefulMarks/Textures/Marks/Worker.png",
+        "sourceRawSha256": "c83ca5a3a6c9e3212774d43b2df1ff38e7e3e9a9fc26beceb1faa7ac61f4d592",
+        "sha256": "c83ca5a3a6c9e3212774d43b2df1ff38e7e3e9a9fc26beceb1faa7ac61f4d592"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/NewMarker.png",
+        "projectFile": "Components/UsefulMarks/Textures/NewMarker.png",
+        "sourceRawSha256": "e40d5838770a52bcfb0ca5bc365bd24756b08ed0ad5a1525493bac1019172061",
+        "sha256": "e40d5838770a52bcfb0ca5bc365bd24756b08ed0ad5a1525493bac1019172061"
+      },
+      {
+        "source": "Useful Marks (Маркеры для пешек)/Textures/NoColor.png",
+        "projectFile": "Components/UsefulMarks/Textures/NoColor.png",
+        "sourceRawSha256": "d5351961555c543252787303e32e71475a75e0e39ae43731af6e8625f4df1b03",
+        "sha256": "d5351961555c543252787303e32e71475a75e0e39ae43731af6e8625f4df1b03"
       }
     ],
     "bundledHarmonyCopied": false,

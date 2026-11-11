@@ -20,6 +20,7 @@
     <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
     <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
+    <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -41,5 +42,6 @@
     <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
     <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
+    <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
   </v1.7>
 </loadFolders>

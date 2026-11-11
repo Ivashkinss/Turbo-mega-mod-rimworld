@@ -1,4 +1,22 @@
-# Текущий этап — 11 ноября 2026, Show Me Your Hands
+# Текущий этап — 11 ноября 2026, Useful Marks
+
+Встроен семнадцатый из 28 компонентов — Useful Marks (Andromeda; andromeda.usefulmarks). Сохранены About и SHA-256 81 ресурса: неизменённые DLL 1.6 UsefulColonistBar/FloatSubMenu, два английских XML и 77 изображений. Bundled Multiplayer API не копируется, используется существующая общая API. Импортированы 172 русских ключа и локализовано название настроек; теперь 2075 русских записей. Новых строк DLL не добавлено, их осталось 18. При активном оригинале встроенная папка пропускается, loadAfter RimHUD сохранён.
+
+Более новая FloatSubMenu из Useful Marks стала общей для двух модов. Из Components/NiceBillTab удалена старая DLL; её исходные хеши сохранены в replacedResources UtilityComponents.json и бинарник доступен в истории Git/архиве исходника. В NiceBillTab осталось 54 текущих ресурса; sharedMenuProvider указывает UsefulMarks. Проверка статически требует ровно одну FloatSubMenu в Components. Во всех игровых профилях CLR также содержит один экземпляр; наличие нужного нового типа BoolIndexedSet проверено.
+
+Useful Marks прошёл 20 проверок в Integrated, OriginalActive и FullSet: единственный UsefulColonistBar, владелец/путь, общий menu API, семь игровых перехватов, русский заголовок, Scribe настройки, один компонент мира, создание маркера, описание/иконка, назначение и снятие у настоящего колониста, условия ближнего/дальнего оружия при реальной смене экипировки, Scribe параметров маркера и вложенного класса условия, четыре текстуры. Проверялись данные отдельного маркера/условия, а не загрузка всего пользовательского мира с привязками к пешкам. Все остальные условия, сетевая игра, совместимость с отсутствующими RimHUD/ColoredMoodBar и пользовательские сохранения не проверялись.
+
+В OriginalActive и FullSet параллельно выполнены 20 прежних проверок Nice Bill Tab, дополнен вызов/отрисовка настоящего меню ингредиента в Repaint. Настройки и редактор Useful Marks также вызваны в Repaint. Точное расположение UI визуально не оценивалось. Tools/test_component.ps1 -Component UsefulMarks -WithNiceBillTab [-OriginalActive | -FullSet] компилирует оба probe и требует успеха обоих; результат relatedNiceBillTab вложен в отчёты UsefulMarks. Старые NiceBillTab-*.json остаются историческими, новое совместное покрытие — UsefulMarks-OriginalActive/FullSet.json.
+
+Финальный полный набор: 1796 Keyed, 271 поле, 45 строк правил, 12 прежних перехватов отображения. За 30 секунд — 2936 кадров и 1771 тик; тест закрыл одно штатное окно новостей HugsLib. Новых ERROR/CRIT и GPU-сбоя нет; прежние VEF/Odyssey отмечены отдельно. Пройдены 321 XML, 480 ресурсов утилит и 240 ресурсов хранилищ. Отчёты Documentation/UsefulMarks-{Integrated,OriginalActive,FullSet}.json.
+
+Оригинал удалён через Tools/retire_component.ps1 после первых двух успешных профилей; 81 хеш архива сверены. Копии Tools/Build/RemovedUsefulMarks-20261111.zip и TestRuns/UsefulMarksRemoval-20261111/ModsConfig.before.xml локальные/игнорируемые. Убрана только andromeda.usefulmarks, порядок остальных 18 записей сохранён. Сохранения и отдельные настройки пользователя не редактировались; настройки оригинального ModContentPack автоматически не мигрируют. Тестовые процессы закрыты, DLL удалена.
+
+Пользователь просит работать непрерывно до полной интеграции или лимита. Осталось 11 компонентов: Harmony, Adaptive Storage Framework, Character Editor, Dynamic Trade Interface, FSharp.Core, HugsLib, Map Preview, Melee Animation, Vanilla Expanded Framework, Walls Are Solid, XML Extensions. Переносить с проверкой зависимостей; не удалять библиотеку, пока внешние оригиналы ещё требуют её packageId. Camera+ исключена. После всех этапов проверить полный набор и, при возможности, изолированную копию сохранения. Не объявлять визуальную оценку и сетевую игру выполненными.
+
+---
+
+# Предыдущий этап — 11 ноября 2026, Show Me Your Hands
 
 Встроен шестнадцатый из 28 компонентов — Show Me Your Hands (Mlie; mlie.showmeyourhands). Сохранены About, MIT LICENSE.md и SHA-256 197 ресурсов: три DLL 1.6 ShowMeYourHands/ColorMine/VersionFromManifest, 183 файла Def позиций рук (включая условные определения других модов), English Keyed, News и восемь изображений. Старые адаптеры Yayo/DualWield 1.3 не входят в исходную ветку загрузки 1.6 и не импортированы. При активном оригинале встроенная папка пропускается; сохранены loadAfter RIMMSqol и несовместимость с Mlie.ClutterWeaponHands. Других ссылок на его packageId в XML/строках оставшихся DLL не найдено, кроме собственного Harmony ID.
 

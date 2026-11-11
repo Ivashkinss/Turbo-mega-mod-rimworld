@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Useful Marks — Andromeda; packageId andromeda.usefulmarks. Сохранены About и хеши 81 ресурса: DLL UsefulColonistBar/FloatSubMenu 1.6, два English Keyed и 77 изображений. Все 172 русских ключа импортированы, название настроек локализовано. Bundled Multiplayer API не добавляется второй копией: используется API существующего набора. Более новая FloatSubMenu также обслуживает Nice Bill Tab; его прежний ресурс перенесён в replacedResources манифеста с исходными хешами, старый бинарник остаётся в истории Git/архиве оригинала.
+
 - Show Me Your Hands — Mlie, исходные Clutter Weapon Hands; packageId mlie.showmeyourhands. Сохранены About и хеши 197 ресурсов 1.6/общих папок: 183 файла Def, английский Keyed, News, восемь изображений, три DLL (ShowMeYourHands, ColorMine, VersionFromManifest) и MIT LICENSE.md. Старые адаптеры 1.3 Yayo/DualWield не относятся к ветке 1.6 и не импортированы. Механика DLL и определения смещений не менялись; дополнены два русских ключа стилей и переведён заголовок настроек.
 
 - More Planning (Continued) — Alan Dariva, Usagirei, Mlie; packageId mlie.moreplanning. Сохранены About, MIT LICENSE.md и хеши 38 ресурсов: DLL MorePlanning, VersionFromManifest, оригинальная Multiplayer API 0.6, три файла Def, английский Keyed, News и 29 текстур. В проверенных профилях движок выбирает общую API 0.5 из Adaptive Storage, как при активном оригинале; регистрация обработчиков проходит, реальная сетевая игра не проверялась. Старые новости оставлены на языке оригинала. Переведены 34 ключа и два поля категории.

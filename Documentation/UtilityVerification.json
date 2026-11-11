@@ -1,5 +1,6 @@
 {
   "components": [
+    "UsefulMarks",
     "ShowMeYourHands",
     "MorePlanning",
     "NiceBillTab",
@@ -15,8 +16,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 400,
+  "resourceHashesVerified": 480,
   "russianKeysByComponent": {
+    "UsefulMarks": 172,
     "ShowMeYourHands": 67,
     "MorePlanning": 34,
     "NiceBillTab": 63,
@@ -37,5 +39,6 @@
   "passed": true,
   "almostThereBranchCombinationsChecked": 8,
   "vehicleFrameworkRuntimeVerified": false,
-  "sidearmsDefinitionFieldsVerified": 21
+  "sidearmsDefinitionFieldsVerified": 21,
+  "singleSharedFloatSubMenuVerified": true
 }

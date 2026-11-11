@@ -79,6 +79,10 @@ def main():
     report["almostThereBranchCombinationsChecked"] = 8
     report["vehicleFrameworkRuntimeVerified"] = False
     report["sidearmsDefinitionFieldsVerified"] = sidearm_fields
+    menus = list((PROJECT / 'Components').rglob('FloatSubMenu.dll'))
+    assert menus == [PROJECT / 'Components/UsefulMarks/Assemblies/FloatSubMenu.dll'], menus
+    assert manifest['NiceBillTab']['sharedMenuProvider'].startswith('UsefulMarks:')
+    report['singleSharedFloatSubMenuVerified'] = True
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

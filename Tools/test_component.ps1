@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'UsefulMarks' { @{ folder='Useful Marks (Маркеры для пешек)'; id='andromeda.usefulmarks'; dll='Components\UsefulMarks\Assemblies\UsefulColonistBar.dll'; source='InGameMarksProbe.cs'; flag='-tmm-marks-probe'; report='MarksProbe.json'; ui='MarksUiProbe.json'; key='marks'; prefix='UsefulMarks' } }
     'ShowMeYourHands' { @{ folder='Show Me Your Hands (Анимация рукоружия)'; id='mlie.showmeyourhands'; dll='Components\ShowMeYourHands\Assemblies\ShowMeYourHands.dll'; source='InGameHandsProbe.cs'; flag='-tmm-hands-probe'; report='HandsProbe.json'; ui='HandsUiProbe.json'; key='hands'; prefix='ShowMeYourHands' } }
     'MorePlanning' { @{ folder='More Planning'; id='mlie.moreplanning'; dll='Components\MorePlanning\Assemblies\MorePlanning.dll'; source='InGamePlanningProbe.cs'; flag='-tmm-planning-probe'; report='PlanningProbe.json'; ui='PlanningUiProbe.json'; key='planning'; prefix='MorePlanning' } }
     'NiceBillTab' { @{ folder='Nice Bill Tab (Фильтр рецептов)'; id='andromeda.nicebilltab'; dll='Components\NiceBillTab\Assemblies\NiceBillTab.dll'; source='InGameNiceBillProbe.cs'; flag='-tmm-nicebill-probe'; report='NiceBillProbe.json'; ui='NiceBillUiProbe.json'; key='bills'; prefix='NiceBillTab' } }
@@ -17,6 +18,7 @@ $definition = switch ($Component) {
 }
 if (Get-Process RimWorld -ErrorAction SilentlyContinue) { throw 'Close RimWorld before starting the isolated test.' }
 if ($OriginalActive -and $FullSet) { throw 'Use -OriginalActive and -FullSet separately.' }
+if ($WithNiceBillTab -and $Component -ne 'UsefulMarks') { throw 'Combined menu regression is currently defined for UsefulMarks.' }
 if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath ('Mods\' + $definition.folder + '\About\About.xml')))) {
     throw ('Restore original ' + $Component + ' before testing -OriginalActive.')
 }
@@ -29,6 +31,7 @@ $references += '/reference:' + (Join-Path $projectPath $definition.dll)
 $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs',$definition.source) |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
+if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
 & (Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe') /noconfig /nologo /nostdlib+ /target:library (('/out:') + $builtProbe) @references @sources
 if ($LASTEXITCODE -ne 0) { throw ($Component + ' probe compile failed') }
 $label = if ($FullSet) { 'FullSet' } elseif ($OriginalActive) { 'OriginalActive' } else { 'Integrated' }
@@ -75,12 +78,15 @@ try {
     if (Test-Path -LiteralPath $installedProbe) { throw 'A test probe is already installed.' }
     Copy-Item -LiteralPath $builtProbe -Destination $installedProbe
     $probeInstalled = $true
-    $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList @(
+    $arguments = @(
         ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe',$definition.flag
-    ) -WindowStyle Hidden -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
+    )
+    if ($WithNiceBillTab) { $arguments += '-tmm-nicebill-probe' }
+    $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList $arguments -WindowStyle Hidden -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
     Write-Output ('TestRoot: ' + $testRoot)
     $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
     $reports = @('LocalizationProbe.json',$definition.report,'GpuMapProbe.json',$definition.ui)
+    if ($WithNiceBillTab) { $reports += @('NiceBillProbe.json','NiceBillUiProbe.json') }
     while (@($reports | Where-Object { !(Test-Path -LiteralPath (Join-Path $testRoot $_)) }).Count) {
         if ($process.WaitForExit(1000)) { throw ('Game exited before completing the probes: ' + $testRoot) }
         if ([DateTime]::UtcNow -gt $deadline) { throw ('Timed out waiting for probes: ' + $testRoot) }
@@ -117,6 +123,12 @@ try {
     $result[$definition.key] = $componentResult
     $result.passed = $localization.passed -and $componentResult.passed -and $ui.passed -and $activity.framesAdvanced -gt 0 -and
         $activity.ticksAdvanced -gt 0 -and $errors.Count -eq $knownExternal -and !$result.gpuLost
+    if ($WithNiceBillTab) {
+        $billProbe = Get-Content -LiteralPath (Join-Path $testRoot 'NiceBillProbe.json') -Raw | ConvertFrom-Json
+        $billUi = Get-Content -LiteralPath (Join-Path $testRoot 'NiceBillUiProbe.json') -Raw | ConvertFrom-Json
+        $result.relatedNiceBillTab = @{ runtime=$billProbe; ui=$billUi; passed=($billProbe.passed -and $billUi.passed) }
+        $result.passed = $result.passed -and $result.relatedNiceBillTab.passed
+    }
     $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $testRoot 'Result.json') -Encoding utf8
     $result | ConvertTo-Json -Depth 8
     if (!$result.passed) { throw ($Component + ' checks failed; inspect ' + $testRoot) }

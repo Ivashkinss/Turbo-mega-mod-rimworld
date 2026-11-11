@@ -15,6 +15,7 @@ public sealed class NiceBillProbe : MapComponent
     private bool reported, uiReported;
     private Building_WorkTable bench;
     private RecipeDef recipe;
+    private object selectedRecipe;
     public NiceBillProbe(Map map) : base(map) { }
     private static string Escape(string s) { return "\"" + s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\r", "\\r").Replace("\n", "\\n") + "\""; }
     private static Verse.Mod Mod() { return LoadedModManager.ModHandles.Single(m => m.GetType().FullName == "NiceBillTab.NiceBillTabMod"); }
@@ -69,6 +70,7 @@ public sealed class NiceBillProbe : MapComponent
             Check(saved != null && saved.recipe == recipe && saved.suspended && ((Bill_Production)saved).repeatCount == 3, "Bill Scribe failed"); checks++;
             AccessTools.Field(drawer, "LastSelTable").SetValue(null, bench);
             var selection = AccessTools.Method(drawer, "SelectRecipe").Invoke(null, new object[] { recipe, null, false, null, null }); Check(selection != null, "Recipe preview selection failed"); checks++;
+            selectedRecipe = selection;
             foreach (string name in new[] { "Settings", "NoIconRecipe", "Pause", "Play", "Medicine", "Nutrition" }) { Check(ContentFinder<Texture2D>.Get("NiceBillTab/" + name, false) != null, "Missing icon " + name); checks++; }
         }
         catch (Exception e) { errors.Add(e.ToString()); }
@@ -77,15 +79,19 @@ public sealed class NiceBillProbe : MapComponent
     public override void MapComponentOnGUI()
     {
         if (uiReported || !reported || bench == null || Find.CurrentMap != map || !Environment.GetCommandLineArgs().Contains("-tmm-nicebill-probe") || Event.current.type != EventType.Repaint) return;
-        uiReported = true; string error = null; bool tabDrawn = false; GUI.BeginGroup(new Rect(25, 25, 1200, 750));
+        uiReported = true; string error = null; bool tabDrawn = false, menuDrawn = false; GUI.BeginGroup(new Rect(25, 25, 1200, 750));
+        var oldWindows = Find.WindowStack.Windows.ToList();
         try
         {
             Mod().DoSettingsWindowContents(new Rect(0, 0, 1100, 650));
             Find.Selector.ClearSelection(); Find.Selector.Select(bench);
             var tab = new ITab_Bills(); AccessTools.Method(typeof(ITab_Bills), "FillTab").Invoke(tab, null); tabDrawn = true;
+            AccessTools.Method(selectedRecipe.GetType(), "OpenIngredientMenu").Invoke(selectedRecipe, new object[] { DefDatabase<ThingDef>.GetNamed("RawRice"), 10 });
+            foreach (var menu in Find.WindowStack.Windows.Where(w => !oldWindows.Contains(w) && w.GetType().FullName.Contains("FloatMenu")).ToList()) { menu.DoWindowContents(new Rect(0, 0, menu.windowRect.width, menu.windowRect.height)); menuDrawn = true; }
+            Check(menuDrawn, "Ingredient menu did not open");
         }
         catch (Exception e) { error = e.ToString(); }
-        finally { GUI.EndGroup(); }
-        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath, "NiceBillUiProbe.json"), "{\"passed\":" + (error == null && tabDrawn ? "true" : "false") + ",\"settingsAndPatchedBillTabDrawInvokedInRepaint\":" + (tabDrawn ? "true" : "false") + ",\"visualLayoutInspected\":false,\"error\":" + (error == null ? "null" : Escape(error)) + "}");
+        finally { foreach (var window in Find.WindowStack.Windows.Where(w => !oldWindows.Contains(w)).ToList()) window.Close(false); GUI.EndGroup(); }
+        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath, "NiceBillUiProbe.json"), "{\"passed\":" + (error == null && tabDrawn && menuDrawn ? "true" : "false") + ",\"settingsAndPatchedBillTabDrawInvokedInRepaint\":" + (tabDrawn ? "true" : "false") + ",\"ingredientMenuDrawInvokedInRepaint\":" + (menuDrawn ? "true" : "false") + ",\"visualLayoutInspected\":false,\"error\":" + (error == null ? "null" : Escape(error)) + "}");
     }
 }
