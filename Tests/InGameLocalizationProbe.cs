@@ -94,7 +94,8 @@ public static class InGameLocalizationProbe
             "SmartSpeed.SmartSpeed_Mod|SettingsCategory",
             "Bubbles.Mod|SettingsCategory",
             "Bubbles.Configuration.SettingsEditor|DrawSettings",
-            "CaravanDontRest.AlmostThereMod|SettingsCategory"
+            "CaravanDontRest.AlmostThereMod|SettingsCategory",
+            "SnapOut.SOMod|DoSettingsWindowContents"
         };
         foreach (string target in targets)
         {

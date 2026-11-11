@@ -1,0 +1,44 @@
+{
+  "component": "SnapOut",
+  "originalComponentActive": true,
+  "fullUserModSet": false,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 1112,
+    "scalarFields": 237,
+    "grammarLines": 45,
+    "displayPatches": 12,
+    "passed": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2955,
+    "ticksAdvanced": 1781
+  },
+  "settingsUi": {
+    "passed": true,
+    "settingsDrawInvokedInRepaint": true,
+    "visualLayoutInspected": false,
+    "error": null
+  },
+  "runtimeErrors": 2,
+  "knownExternalRuntimeErrors": 2,
+  "unexpectedRuntimeErrors": 0,
+  "knownExternalMessages": [
+    "Bad string pass when reading rule [tradeAdj_fem] [tradeNoun_fem]",
+    "Failed to resolve text. Trying again with English. Exception: System.ArgumentNullException: Value cannot be null. (Parameter 'key')"
+  ],
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "snapOut": {
+    "passed": true,
+    "checks": 21,
+    "successForcedForTest": true,
+    "jobTemplatesHaveNoPawnReferences": true,
+    "errors": []
+  },
+  "passed": true
+}

@@ -1,5 +1,6 @@
 {
   "components": [
+    "SnapOut",
     "DevInYourLanguage",
     "SmartSpeed",
     "SmarterConstruction",
@@ -7,8 +8,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 31,
+  "resourceHashesVerified": 38,
   "russianKeysByComponent": {
+    "SnapOut": 43,
     "DevInYourLanguage": 615,
     "SmartSpeed": 16,
     "SmarterConstruction": 0,

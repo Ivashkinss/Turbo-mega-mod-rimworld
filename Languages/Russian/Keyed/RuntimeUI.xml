@@ -16,6 +16,7 @@
   <TMM.Literal.b149831f04ee>&lt;b&gt;Речевые пузыри&lt;/b&gt;</TMM.Literal.b149831f04ee>
   <TMM.Literal.b4ead0a744a9> (экспериментально)</TMM.Literal.b4ead0a744a9>
   <TMM.Literal.3910b09b3783>Отдых караванов</TMM.Literal.3910b09b3783>
+  <TMM.Literal.457bb31496b0>{0}: {1:F1} ч</TMM.Literal.457bb31496b0>
   <TMM.CorpseOffset.None>Не смещать</TMM.CorpseOffset.None>
   <TMM.CorpseOffset.InterpolateToCorrect>Плавно возвращать на место</TMM.CorpseOffset.InterpolateToCorrect>
   <TMM.CorpseOffset.KeepOffset>Сохранять смещение</TMM.CorpseOffset.KeepOffset>

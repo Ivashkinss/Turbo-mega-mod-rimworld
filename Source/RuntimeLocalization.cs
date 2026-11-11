@@ -43,7 +43,8 @@ namespace TurboMegaMod
                 || name == "Bubbles.Mod"
                 || name == "Bubbles.Configuration.SettingsEditor"
                 || name == "Bubbles.Configuration.SettingsEditor+Dialog"
-                || name == "CaravanDontRest.AlmostThereMod";
+                || name == "CaravanDontRest.AlmostThereMod"
+                || name == "SnapOut.SOMod";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -92,7 +93,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

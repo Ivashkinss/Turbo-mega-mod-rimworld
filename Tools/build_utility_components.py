@@ -9,6 +9,14 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "SnapOut": ("Snap Out! (Успокоение срывающихся колонистов)", "weilbyte.snapout", {
+        "1.6/Assemblies/SnapOut.dll": "Assemblies/SnapOut.dll",
+        "Languages/English/Keyed/CalmDown.xml": "Languages/English/Keyed/CalmDown.xml",
+        "1.6/Patches/CalmDownPatches.xml": "Patches/CalmDownPatches.xml",
+        **{f"1.6/Defs/{folder}/{name}.xml": f"Defs/{folder}/{name}.xml" for folder, name in (
+            ("JobDefs", "Jobs_SnapOut"), ("ThoughtDefs", "Thoughts_SnapOut"),
+            ("InteractionDefs", "Interactions_SnapOut"), ("WorkGiverDefs", "WorkGivers_SnapOut"))},
+    }),
     "DevInYourLanguage": ("Dev In Your Language", "latta.devl10n", {
         "1.6/Assemblies/DevInYourLanguage.dll": "Assemblies/DevInYourLanguage.dll",
         **{f"1.6/Languages/English/Keyed/{name}.xml": f"Languages/English/Keyed/{name}.xml"

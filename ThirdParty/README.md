@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Snap Out! — Weilbyte, packageId weilbyte.snapout. Сохранены SnapOut.About.xml, неизменённая DLL 1.6, четыре Def XML, патч Wander_Sad и английские строки. SHA-256 семи файлов — UtilityComponents.json. Русские строки перенесены с дополнением четырёх ключей, исправлением двух реплик и отчёта задания восстановления. Единицы часов в настройках переводятся нашим отдельным перехватом. Копия 0MultiplayerAPI.dll не добавлена: исходник побайтно совпадает с уже загружаемой DLL обязательного Adaptive Storage (SHA-256 4689e799c50db79411b00ad8855d7df86721bf3cfe1e390b68038b6abcd852ec). При последующей интеграции Adaptive Storage сохранить предоставление этой API. Сетевой режим не проверялся.
+
 - Dev In Your Language — latta, packageId latta.devl10n, проект https://github.com/alattalatta/Monoworld. Перенесены неизменённая DLL 1.6 и семь английских Keyed XML (615 строк); метаданные — DevInYourLanguage.About.xml, SHA-256 — UtilityComponents.json. Ранее исправленный русский перевод остаётся в Languages/Russian/Keyed/DevMenu.xml; повреждённый русский Actions.xml не копируется. Старые DLL 1.1–1.5 не включаются.
 
 - Neat Storage — автор seobongzu, исходный packageId sbz.NeatStorage.

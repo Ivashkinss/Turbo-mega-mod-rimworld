@@ -13,7 +13,8 @@
     "Interaction Bubbles": "Речевые пузыри",
     "<b>Interaction Bubbles</b>": "<b>Речевые пузыри</b>",
     " (Experimental)": " (экспериментально)",
-    "Almost There!": "Отдых караванов"
+    "Almost There!": "Отдых караванов",
+    "{0}: {1:F1}h": "{0}: {1:F1} ч"
   },
   "corpseOffsetModes": {
     "None": "Не смещать",

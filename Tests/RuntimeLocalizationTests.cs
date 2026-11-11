@@ -117,6 +117,14 @@ namespace UnrelatedMod
         public static string BubbleTitle() { return "Interaction Bubbles"; }
     }
 }
+namespace SnapOut
+{
+    public static class SOMod
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string Duration() { return "{0}: {1:F1}h"; }
+    }
+}
 namespace Bubbles
 {
     public static class Mod
@@ -202,7 +210,8 @@ public static class RuntimeLocalizationTests
         Check(new Bubbles.Configuration.SettingsEditor.Dialog().Title == "<b>Речевые пузыри</b>", "Dialog title lost its markup");
         Check(UnrelatedMod.Display.BubbleTitle() == "Interaction Bubbles", "Bubbles title patch leaked into unrelated mod");
         Check(CaravanDontRest.AlmostThereMod.SettingsCategory() == "Отдых караванов", "Caravan settings title not translated");
-        Console.WriteLine("{\"runtimeChecks\":23,\"realHarmony\":true,\"passed\":true}");
+        Check(SnapOut.SOMod.Duration() == "{0}: {1:F1} ч", "Snap Out duration label lost formatting or translation");
+        Console.WriteLine("{\"runtimeChecks\":24,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

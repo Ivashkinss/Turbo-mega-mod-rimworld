@@ -226,5 +226,54 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "SnapOut": {
+    "packageId": "weilbyte.snapout",
+    "files": [
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Assemblies/SnapOut.dll",
+        "projectFile": "Components/SnapOut/Assemblies/SnapOut.dll",
+        "sourceRawSha256": "0f69c0081171f1a38e9c6a2f3d8d95342eb8c9ee06dab883a8574c9254a106bc",
+        "sha256": "0f69c0081171f1a38e9c6a2f3d8d95342eb8c9ee06dab883a8574c9254a106bc"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/Languages/English/Keyed/CalmDown.xml",
+        "projectFile": "Components/SnapOut/Languages/English/Keyed/CalmDown.xml",
+        "sourceRawSha256": "bcc35189ea82f9777be34d3dd6c6a7340ad50ef71fcc41030d2bfb1a08a8e779",
+        "sha256": "61d0360e5790045525791ad8bedc74e348e1a6e070995c887925bc682783fe76"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Patches/CalmDownPatches.xml",
+        "projectFile": "Components/SnapOut/Patches/CalmDownPatches.xml",
+        "sourceRawSha256": "c75694ded1b298e16e40c37f9cb7cac17b3c83f165973c83109f1cd9e37fb5a6",
+        "sha256": "6dd9963ada0da22e0e3ca6f4733ce2e3b4c87c24ef30cad4aa6f4aed2075308f"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Defs/JobDefs/Jobs_SnapOut.xml",
+        "projectFile": "Components/SnapOut/Defs/JobDefs/Jobs_SnapOut.xml",
+        "sourceRawSha256": "c1115c2ccc577b658e83408d126fa7337f469c2d81d1d8e807ac3cb691b9aa1f",
+        "sha256": "bd3467a14f29da4bb3767b67a377175f49a4c26831910cc1a2b7a5a73c04edea"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Defs/ThoughtDefs/Thoughts_SnapOut.xml",
+        "projectFile": "Components/SnapOut/Defs/ThoughtDefs/Thoughts_SnapOut.xml",
+        "sourceRawSha256": "e28ff4955fda3d884c887a369f3000d9333a469833856bb6d1bbafb47346feec",
+        "sha256": "c39814020e1ce896130c9ded5d71f1a99b064d23982ef465084ea20c8a6db9ed"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Defs/InteractionDefs/Interactions_SnapOut.xml",
+        "projectFile": "Components/SnapOut/Defs/InteractionDefs/Interactions_SnapOut.xml",
+        "sourceRawSha256": "c864c3675d4e63cd464e54adf873ffa0bea0cf0643c536a1c13f9249a89b6ddc",
+        "sha256": "f9738cb0d18fa259602aa58aac1e3bdd7e59a1c2ae5a98518c598f7854c1b0d9"
+      },
+      {
+        "source": "Snap Out! (Успокоение срывающихся колонистов)/1.6/Defs/WorkGiverDefs/WorkGivers_SnapOut.xml",
+        "projectFile": "Components/SnapOut/Defs/WorkGiverDefs/WorkGivers_SnapOut.xml",
+        "sourceRawSha256": "c16f3b6b63600f22e1b74b3c267d40ba49288552a060d8bd003061344378e197",
+        "sha256": "9ccfccc3a2fb57628dc34f1094c943e398d4d3ef57dc51f208fd1ee6491e40c6"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

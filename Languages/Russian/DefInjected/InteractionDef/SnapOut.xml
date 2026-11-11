@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <SnapOut_CalmDownInteraction.label>успокоить</SnapOut_CalmDownInteraction.label>
+  <SnapOut_CalmDownInteraction.logRulesInitiator.rulesStrings.0>r_logentry-&gt;Пытается успокоить [RECIPIENT_nameDef].</SnapOut_CalmDownInteraction.logRulesInitiator.rulesStrings.0>
+  <SnapOut_CalmDownInteraction.logRulesRecipient.rulesStrings.0>r_logentry-&gt;[INITIATOR_nameDef] пытается меня успокоить.</SnapOut_CalmDownInteraction.logRulesRecipient.rulesStrings.0>
+</LanguageData>
