@@ -24,6 +24,7 @@
     <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
     <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
+    <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -49,5 +50,6 @@
     <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
     <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
+    <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
   </v1.7>
 </loadFolders>

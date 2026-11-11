@@ -1,5 +1,6 @@
 {
   "components": [
+    "WallsAreSolid",
     "FSharpCore",
     "DynamicTradeInterface",
     "UsefulMarks",
@@ -18,8 +19,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 502,
+  "resourceHashesVerified": 511,
   "russianKeysByComponent": {
+    "WallsAreSolid": 0,
     "FSharpCore": 0,
     "DynamicTradeInterface": 73,
     "UsefulMarks": 172,
@@ -46,5 +48,6 @@
   "sidearmsDefinitionFieldsVerified": 21,
   "singleSharedFloatSubMenuVerified": true,
   "tradePsycastsBranchCombinationsChecked": 8,
-  "tradePsycastsRuntimeVerified": false
+  "tradePsycastsRuntimeVerified": false,
+  "wallSettingsTranslationKeysVerified": 21
 }

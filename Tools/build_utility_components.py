@@ -9,6 +9,17 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "WallsAreSolid": ("Walls Are Solid (Усиленные стены)", "victor.wallsaresolid", {
+        "Assemblies/WallsAreSolid.dll": "Assemblies/WallsAreSolid.dll",
+        "1.6/Defs/DamageDefs.xml": "Defs/DamageDefs.xml",
+        "1.6/Defs/ManeuverDefs.xml": "Defs/ManeuverDefs.xml",
+        "1.6/Defs/ToolCapacityDefs.xml": "Defs/ToolCapacityDefs.xml",
+        "1.6/Defs/WallsAreSolid_Settings.xml": "Defs/WallsAreSolid_Settings.xml",
+        "1.6/Patches/BaseWeapons_Patch.xml": "Patches/BaseWeapons_Patch.xml",
+        "1.6/Patches/Buildings_Patch.xml": "Patches/Buildings_Patch.xml",
+        "1.6/Patches/DamagesModded_Patch.xml": "Patches/DamagesModded_Patch.xml",
+        "1.6/Patches/Damages_Patch.xml": "Patches/Damages_Patch.xml",
+    }),
     "FSharpCore": ("FSharp.Core", "latta.fsharp.core", {
         "Assemblies/FSharp.Core.dll": "Assemblies/FSharp.Core.dll",
         "Assemblies/Poet.dll": "Assemblies/Poet.dll",

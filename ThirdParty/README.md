@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Walls Are Solid — Victor, wilki24; packageId victor.wallsaresolid. Сохранены About и SHA-256 девяти неизменённых ресурсов: DLL, четыре Def и четыре патча 1.6. XML Extensions остаётся внешней зависимостью. Перевод выполнен отдельным Patches/WallsLocalization.xml через штатные tKey/tKeyTip, сохранив исходные английские подписи, modId и числовые параметры. Переведены 21 строка и два поля определений. Несовместимость aelanna.fistnerf перенесена.
+
 - FSharp.Core — пакет latta, packageId latta.fsharp.core. Сохранены About и хеши двух неизменённых DLL: FSharp.Core 4.7.0.0 и Poet 5.4.1.0. Собственных Def, переводов и окна настроек у пакета нет. Обе библиотеки загружаются из Components/FSharpCore при выключенном оригинале.
 
 - Dynamic Trade Interface — Zeracronius; packageId zeracronius.dynamictradeinterface. Сохранены About и хеши 20 ресурсов: исходная DLL 1.6, четыре общих Def, условный VPE Def, два английских XML и 12 текстур. Существующий русский перевод (73 Keyed, 28 полей) сохранён. Исходные PDB, старые DLL и SDK-схемы не входят в исполняемый пакет. При активном оригинале обе встроенные ветки пропускаются; VPE требует его отдельный packageId.

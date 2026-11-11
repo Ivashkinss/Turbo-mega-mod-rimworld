@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="XmlExtensions.UseSettings">
+		<modId>Victor.WallsAreSolid</modId>
+		<keys>
+			<li>SharpMeleePassable</li>
+			<li>SharpMeleeImpassable</li>
+			<li>BluntPassable</li>
+			<li>BluntImpassable</li>
+			<li>SharpRangedPassable</li>
+			<li>SharpRangedImpassable</li>
+			<li>BombPassable</li>
+			<li>BombImpassable</li>
+		</keys>
+		<defaultValues>
+			<li>0.4</li>
+			<li>0.1</li>
+			<li>0.5</li>
+			<li>0.3</li>
+			<li>0.2</li>
+			<li>0.2</li>
+			<li>0.8</li>
+			<li>1</li>
+		</defaultValues>
+		<apply>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Alpha Animals</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="AA_ToxicSting" or defName="AA_ToxicBite" or defName="AA_ToxicBolt" or defName="AA_Electric"
+										or defName="AA_VeryToxicSting" or defName="AA_FrostClaws"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Genetics Expanded</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="GR_GoForTheHead" or defName="GR_GoForTheEyes" or defName="GR_RabidSlash" or defName="GR_DoubleSlash"
+										or defName="GR_Acid" or defName="GR_BloodFrenzy" or defName="GR_VeryToxicBite" or defName="GR_LightToxicBite" or defName="GR_HairballProjectileDamage"
+										or defName="GR_GreatHairballProjectileDamage" or defName="GR_ToxicGas" or defName="GR_PlagueBite"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Oddities: Core Module</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[@Name="OCBulletBase"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpRangedImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpRangedPassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Oddities: Weapons Module</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="OW_StabDevil"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Integrated Implants</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="HemoBite" or defName="StabToxic"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>JecsTools</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="Laser"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>0.2</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>0.4</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Factions Expanded - Vikings</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="VFEV_Cut" or defName="VFEV_CryptoDamageBullet" or defName="VFEV_CryptoDamageBolt"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpRangedImpassable}</buildingDamageFactorImpassable>
+						</value>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Alpha Mythology</li>
+				</mods>
+				<match Class="XmlExtensions.PatchOperationSafeAdd">
+					<xpath>Defs/DamageDef[defName="MM_ToxicBite" or defName="MM_VeryToxicBite" or defName="MM_ToxicSting" or defName="MM_Grapple"
+										or defName="MM_BleedingWound" or defName="MM_UncontrollableBleeding" or defName="MM_PetrifyingGaze"
+										or defName="MM_ExtraDamageToPiratesHorn"]</xpath>
+						<value>
+							<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+							<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+						</value>
+				</match>
+			</Operation>
+			<!-- <Operation Class="PatchOperationFindMod"> <mods><li>Ancient amorphous threat</li></mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationSafeAdd">
+							<xpath>Defs/DamageDef[defName="BreadMo_AAT_Cut" or defName="BreadMo_AAT_Stab]</xpath>
+								<value>
+									<buildingDamageFactorImpassable>{SharpMeleeImpassable}</buildingDamageFactorImpassable>
+									<buildingDamageFactorPassable>{SharpMeleePassable}</buildingDamageFactorPassable>
+								</value>
+						</li>
+					</operations>
+				</match>
+
+			</Operation> -->
+		</apply>
+	</Operation>
+
+</Patch>

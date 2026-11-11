@@ -3140,5 +3140,66 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "WallsAreSolid": {
+    "packageId": "victor.wallsaresolid",
+    "files": [
+      {
+        "source": "Walls Are Solid (Усиленные стены)/Assemblies/WallsAreSolid.dll",
+        "projectFile": "Components/WallsAreSolid/Assemblies/WallsAreSolid.dll",
+        "sourceRawSha256": "812c92d59531d86c6d553a8ebeb98ac8ea1f48a811c78530c5a734d7db8aa426",
+        "sha256": "812c92d59531d86c6d553a8ebeb98ac8ea1f48a811c78530c5a734d7db8aa426"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Defs/DamageDefs.xml",
+        "projectFile": "Components/WallsAreSolid/Defs/DamageDefs.xml",
+        "sourceRawSha256": "d2660a1a6f9b2cc7c948505190bc4856b770f47b0b0714230a1b7b74531927dd",
+        "sha256": "f38fabb0315bc480b6a8e7eaf283a2063c489542c20c29be55afe8f72c7fecdc"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Defs/ManeuverDefs.xml",
+        "projectFile": "Components/WallsAreSolid/Defs/ManeuverDefs.xml",
+        "sourceRawSha256": "6bc9e8e35cf4317bed490c0d92117fc851861c938cdf0ed2c0a523befea89c41",
+        "sha256": "51930f9e0a1fab9dc038e996a95efc01479518a4f1abd1c1efdb11e4175f751f"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Defs/ToolCapacityDefs.xml",
+        "projectFile": "Components/WallsAreSolid/Defs/ToolCapacityDefs.xml",
+        "sourceRawSha256": "afceb306b1abda6c625e2194b8d38683ffb1f8abf1bedb9fd4f1047d15e0d7e0",
+        "sha256": "5ddbbd35806a45db9de55465138bae56ce2d262cf9e624fe40d4a80076236f7d"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Defs/WallsAreSolid_Settings.xml",
+        "projectFile": "Components/WallsAreSolid/Defs/WallsAreSolid_Settings.xml",
+        "sourceRawSha256": "7256bf6be7562f5184511a62394795de2e754436e5101a45dd06d1fe2462f082",
+        "sha256": "fef9ed0a740f26da030543471ee0357b3523e3b3817913ad8ea69f0a2894f5ff"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Patches/BaseWeapons_Patch.xml",
+        "projectFile": "Components/WallsAreSolid/Patches/BaseWeapons_Patch.xml",
+        "sourceRawSha256": "9352098de0043e7b7c69eb4d7e48dfd98c737592d360436bf760894ea91bf3b2",
+        "sha256": "cbf9a04cdb2fc9a35cf0b803e81e1f9d0ab56ffc721d656c4aeb68807b17e536"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Patches/Buildings_Patch.xml",
+        "projectFile": "Components/WallsAreSolid/Patches/Buildings_Patch.xml",
+        "sourceRawSha256": "5422e9c9329b21d5d82a23054e0e6d1c5e96dad2065c9de6f82a855f7264974e",
+        "sha256": "5b3b2994d1e2c2d7d31ca14994924a97c168d3f2afc0dfa868c3a657db757bf2"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Patches/DamagesModded_Patch.xml",
+        "projectFile": "Components/WallsAreSolid/Patches/DamagesModded_Patch.xml",
+        "sourceRawSha256": "2112d808115ae91f11e63a6f5b1f7161b01fbc2b4620cee06ede6f586b4714a1",
+        "sha256": "af6c76cf382d92fdf22319c5e1ac277a35b5aa4d57d98af5398e671e70b3e942"
+      },
+      {
+        "source": "Walls Are Solid (Усиленные стены)/1.6/Patches/Damages_Patch.xml",
+        "projectFile": "Components/WallsAreSolid/Patches/Damages_Patch.xml",
+        "sourceRawSha256": "796bb13d2109b151b602e69b2286126268f1621d9cb0a7457e19b1894352e5c6",
+        "sha256": "6f1c725ddfc165b99a27cdbe5078b09ccd21c9466648f0b16f9d49f28d536528"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

@@ -1,6 +1,7 @@
 """Verify provenance, mutually exclusive loading and utility translations."""
 import hashlib
 import json
+import re
 from pathlib import Path
 
 from lxml import etree as ET
@@ -92,6 +93,12 @@ def main():
                 assert actual == expected, (version, ids, actual)
     report['tradePsycastsBranchCombinationsChecked'] = 8
     report['tradePsycastsRuntimeVerified'] = False
+    wall_keys = ET.parse(str(PROJECT / 'Languages/English/Keyed/WallsAreSolid.xml')).getroot()
+    for node in wall_keys:
+        translated_text = russian[('Keyed', node.tag)]['text']
+        check_text(node.text.replace('\\n', '\n'), translated_text.replace('\\n', '\n'), node.tag)
+        assert re.findall(r'\{[^}]+\}', node.text) == re.findall(r'\{[^}]+\}', translated_text), node.tag
+    report['wallSettingsTranslationKeysVerified'] = len(wall_keys)
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

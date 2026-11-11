@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="XmlExtensions.ForEachDescendant">
+		<xpathParent>Defs/ThingDef[@Name="BaseWeapon"]</xpathParent>
+		<concreteOnly>true</concreteOnly>
+		<storeIn>DEF</storeIn>
+		<apply>
+			<Operation Class="PatchOperationConditional">
+				<xpath>{DEF}/tools/li[label="head"]/capacities/li[text()="Blunt"]</xpath>
+				<match Class="PatchOperationReplace">
+					<xpath>{DEF}/tools/li[label="head"]/capacities/li[text()="Blunt"]</xpath>
+					<value>
+					  <li>BluntCrushing</li>
+					</value>
+				</match>
+			</Operation>
+		</apply>
+	</Operation>
+</Patch>

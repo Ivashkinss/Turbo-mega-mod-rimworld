@@ -4,10 +4,11 @@
   <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
   <packageId>colonyproject.integrated</packageId>
   <supportedVersions><li>1.6</li><li>1.7</li></supportedVersions>
-  <description>27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge с исходной вместимостью. Встроены Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks и Dynamic Trade Interface; если оригиналы включены, встроенные копии не загружаются. Большой холодильник использует адаптивную сетку предметов. Добавлены русские переводы хранилищ, Adaptive Storage, Melee Animation, Dynamic Trade Interface, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands и Useful Marks; восстановлены 615 русских строк Dev In Your Language. Всего 2075 русских записей, включая 45 строк боевого журнала. Переведены настройки и три режима отдыха караванов. Исправлено применение изменённых порогов размеров комнат на русском языке. Переведено окно VEF, предлагающее добавить отсутствующую фракцию. Camera+ исключена по просьбе пользователя.
+  <description>27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge с исходной вместимостью. Встроены Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface и Walls Are Solid; если оригиналы включены, встроенные копии не загружаются. Большой холодильник использует адаптивную сетку предметов. Добавлены русские переводы хранилищ, Adaptive Storage, Melee Animation, Dynamic Trade Interface, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands и Useful Marks; восстановлены 615 русских строк Dev In Your Language. Всего 2098 русских записей, включая 45 строк боевого журнала. Переведены настройки и три режима отдыха караванов. Исправлено применение изменённых порогов размеров комнат на русском языке. Переведено окно VEF, предлагающее добавить отсутствующую фракцию. Camera+ исключена по просьбе пользователя.
 
-Библиотеки FSharp.Core и Poet встроены. Нужны Adaptive Storage Framework, Harmony и HugsLib. Для RimWorld 1.7 используйте обновлённую Harmony с поддержкой .NET 10 (проверена версия мода Harmony 3.0.2.0). Для русификации анимаций оставьте Melee Animation включённым и загрузите Turbo mega mod после него. Dynamic Trade Interface уже встроен. Исходные Neat Storage и [sbz] Fridge уже встроены; не включайте их отдельно. На 1.7 исправлено чтение списка участников дружеских поединков из фонового потока. Остальные выбранные моды пока не объединены. Загрузка и переводы проверены внутри RimWorld 1.7.5000; визуальная проверка всех окон ещё требуется.</description>
+Библиотеки FSharp.Core и Poet встроены. Нужны Adaptive Storage Framework, Harmony, HugsLib и XML Extensions. Для RimWorld 1.7 используйте обновлённую Harmony с поддержкой .NET 10 (проверена версия мода Harmony 3.0.2.0). Для русификации анимаций оставьте Melee Animation включённым и загрузите Turbo mega mod после него. Dynamic Trade Interface уже встроен. Исходные Neat Storage и [sbz] Fridge уже встроены; не включайте их отдельно. На 1.7 исправлено чтение списка участников дружеских поединков из фонового потока. Остальные выбранные моды пока не объединены. Загрузка и переводы проверены внутри RimWorld 1.7.5000; визуальная проверка всех окон ещё требуется.</description>
   <modDependencies>
+    <li><packageId>imranfish.xmlextensions</packageId><displayName>XML Extensions</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2574315206</steamWorkshopUrl></li>
     <li><packageId>unlimitedhugs.hugslib</packageId><displayName>HugsLib</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=818773962</steamWorkshopUrl></li>
     <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl></li>
     <li><packageId>adaptive.storage.framework</packageId><displayName>Adaptive Storage Framework</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3033901359</steamWorkshopUrl></li>
@@ -38,6 +39,8 @@
     <li>mlie.showmeyourhands</li>
     <li>andromeda.usefulmarks</li>
     <li>jaxe.rimhud</li>
+    <li>imranfish.xmlextensions</li>
+    <li>victor.wallsaresolid</li>
     <li>malteschulze.rimmsqol</li>
     <li>ceteam.combatextended</li>
     <li>ceteam.combatextendedguns</li>
@@ -50,5 +53,6 @@
     <li>sbz.NeatStorage</li>
     <li>sbz.NeatStorageFridge</li>
     <li>mlie.clutterweaponhands</li>
+    <li>aelanna.fistnerf</li>
   </incompatibleWith>
 </ModMetaData>

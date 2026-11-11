@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'WallsAreSolid' { @{ folder='Walls Are Solid (Усиленные стены)'; id='victor.wallsaresolid'; dll='Components\WallsAreSolid\Assemblies\WallsAreSolid.dll'; source='InGameWallsProbe.cs'; flag='-tmm-walls-probe'; report='WallsProbe.json'; ui='WallsUiProbe.json'; key='walls'; prefix='WallsAreSolid' } }
     'FSharpCore' { @{ folder='FSharp.Core'; id='latta.fsharp.core'; dll='Components\FSharpCore\Assemblies\FSharp.Core.dll'; source='InGameFSharpProbe.cs'; flag='-tmm-fsharp-probe'; report='FSharpProbe.json'; ui='FSharpUiProbe.json'; key='fsharp'; prefix='FSharpCore' } }
     'DynamicTradeInterface' { @{ folder='Dynamic Trade Interface'; id='zeracronius.dynamictradeinterface'; dll='Components\DynamicTradeInterface\Assemblies\DynamicTradeInterface.dll'; source='InGameTradeProbe.cs'; flag='-tmm-trade-probe'; report='TradeProbe.json'; ui='TradeUiProbe.json'; key='trade'; prefix='DynamicTradeInterface' } }
     'UsefulMarks' { @{ folder='Useful Marks (Маркеры для пешек)'; id='andromeda.usefulmarks'; dll='Components\UsefulMarks\Assemblies\UsefulColonistBar.dll'; source='InGameMarksProbe.cs'; flag='-tmm-marks-probe'; report='MarksProbe.json'; ui='MarksUiProbe.json'; key='marks'; prefix='UsefulMarks' } }
@@ -44,6 +45,7 @@ foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) { $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant() }
 }
 $ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation')
+$ids += 'imranfish.xmlextensions'
 if (!$OriginalActive) { $ids = @($ids | Where-Object { $_ -ne $definition.id }) }
 if ($OriginalActive) { $ids += $definition.id }
 $ids += 'colonyproject.integrated'
@@ -91,6 +93,16 @@ try {
     if ($WithNiceBillTab) { $reports += @('NiceBillProbe.json','NiceBillUiProbe.json') }
     while (@($reports | Where-Object { !(Test-Path -LiteralPath (Join-Path $testRoot $_)) }).Count) {
         if ($process.WaitForExit(1000)) { throw ('Game exited before completing the probes: ' + $testRoot) }
+        foreach ($name in $reports) {
+            $partialPath = Join-Path $testRoot $name
+            if (!(Test-Path -LiteralPath $partialPath)) { continue }
+            # A report may be observed while WriteAllText is still completing.
+            $partial = $null
+            try { $partial = Get-Content -LiteralPath $partialPath -Raw | ConvertFrom-Json } catch { continue }
+            if ($null -ne $partial -and 'passed' -in $partial.PSObject.Properties.Name -and $partial.passed -eq $false) {
+                throw ('Probe failed: ' + $partialPath + ' ' + (($partial.errors + @($partial.error)) | Where-Object { $_ }) -join ' ')
+            }
+        }
         if ([DateTime]::UtcNow -gt $deadline) { throw ('Timed out waiting for probes: ' + $testRoot) }
     }
     $localization = Get-Content -LiteralPath (Join-Path $testRoot $reports[0]) -Raw | ConvertFrom-Json

@@ -1,4 +1,22 @@
-# Текущий этап — 11 ноября 2026, FSharp.Core / Poet
+# Текущий этап — 11 ноября 2026, Walls Are Solid
+
+Встроен двадцатый из 28 компонентов — Walls Are Solid (Victor/wilki24; victor.wallsaresolid). Сохранены About и SHA-256 девяти неизменённых ресурсов: DLL, четыре Def и четыре патча 1.6. XML Extensions добавлен как обязательная внешняя зависимость и в базовые тестовые профили. Сохранены loadAfter XML Extensions и несовместимость aelanna.fistnerf. При активном оригинале встроенная папка пропускается.
+
+21 строка меню локализована отдельным Patches/WallsLocalization.xml через штатные tKey/tKeyTip XML Extensions: английские значения остались запасными. Механические параметры, ключи и modId Victor.WallsAreSolid не менялись. Переведены ToolCapacityDef/DamageDef BluntCrushing.label. Теперь 2098 русских записей, число строк DLL осталось 18. Tools/build_walls_localization.py воспроизводит оверлей по встроенному XML; проверка сверяет переносы и именованные переменные в фигурных скобках.
+
+По 14 проверок прошли Integrated, OriginalActive и FullSet: один WallsAreSolid и правильный путь, один перехват заданий выхода, меню в собственном реестре XmlMod.settingsPerMod (оно не остаётся обычным DefDatabase), прежний modId, чтение/запись настройки с восстановлением, перевод заголовка и 18 контролов, применение числовой настройки в DamageDef, параметры BluntCrushing, связка Maneuver/ToolCapacity, реальные повреждения двух одинаковых гранитных стен. Потеря HP — 45 от Blunt и 225 от BluntCrushing при одинаковом входном уроне; проверяется соотношение факторов с учётом общих множителей материала/игры. Это не сравнение с непатченной vanilla. Настоящий побег заключённого, все вооружения/типы построек, все переключатели и пользовательские сохранения не проверены.
+
+Меню XML Extensions вызвано в Repaint без исключений, визуальная оценка не выполнена. Полный набор: 1817 Keyed, 273 поля, 45 строк правил, 12 прежних перехватов отображения, 2952 кадра и 1778 тиков за 30 секунд. Закрыто одно штатное окно новостей HugsLib в тестовом профиле. Новых ERROR/CRIT и GPU-сбоя нет; прежние VEF/Odyssey отмечены отдельно. Отчёты Documentation/WallsAreSolid-{Integrated,OriginalActive,FullSet}.json. 343 XML, 511 ресурсов утилит и 240 ресурсов хранилищ проходят проверки.
+
+Tools/test_component.ps1 теперь останавливает тест при уже записанном отрицательном отчёте, не дожидаясь отсутствующего UI-отчёта/тайм-аута. Частично записанный JSON читается повторно. Функция finally по-прежнему закрывает только собственный процесс и удаляет тестовую DLL.
+
+Оригинал удалён через Tools/retire_component.ps1 после двух успешных профилей, девять исходных хешей архива сверены. Копии Tools/Build/RemovedWallsAreSolid-20261111.zip и TestRuns/WallsAreSolidRemoval-20261111/ModsConfig.before.xml локальные/игнорируемые. Убрана только victor.wallsaresolid, порядок остальных 15 записей сохранён. Сохранения и отдельные настройки пользователя не редактировались. Тестовые процессы закрыты, DLL удалена.
+
+Пользователь просит непрерывную работу до всех 28 или лимита. Осталось восемь: XML Extensions, HugsLib, Adaptive Storage Framework, VEF, Melee Animation, Character Editor, Map Preview, Harmony. Далее XML Extensions, сохранив старые settings namespaces (включая Victor.WallsAreSolid) и повторно проверив стены. У XML Extensions XmlModBaseSettings.dataDict хранит значения, XmlMod.settingsPerMod — реестр; SettingsMenuDef имеет tKey, Text/Checkbox tKey/tKeyTip, Slider tKey. Metadata-аудиты XmlSettingsMethods.json/WallsMethods.json лежат в игнорируемом Tools/Build. При переносе XML убрать его внешний dependency из About и минимальных профилей, сохранив OriginalActive. Camera+ исключена. Не считать визуальную оценку и пользовательские сохранения проверенными.
+
+---
+
+# Предыдущий этап — 11 ноября 2026, FSharp.Core / Poet
 
 Встроен девятнадцатый из 28 компонентов — FSharp.Core (пакет latta; latta.fsharp.core). Сохранены About и SHA-256 двух исходных DLL FSharp.Core 4.7.0.0 (strong name b03f5f7f11d50a3a) и Poet 5.4.1.0. При активном оригинале встроенная папка пропускается. Def, переводов и собственного окна настроек у пакета нет; общее число русских записей осталось 2075.
 

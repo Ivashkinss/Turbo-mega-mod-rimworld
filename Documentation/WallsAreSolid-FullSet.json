@@ -1,0 +1,47 @@
+{
+  "component": "WallsAreSolid",
+  "originalComponentActive": false,
+  "fullUserModSet": true,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 1817,
+    "scalarFields": 273,
+    "grammarLines": 45,
+    "displayPatches": 12,
+    "passed": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2952,
+    "ticksAdvanced": 1778,
+    "newsWindowsDismissedInTest": 1
+  },
+  "settingsUi": {
+    "passed": true,
+    "xmlExtensionsMenuDrawInvokedInRepaint": true,
+    "visualLayoutInspected": false,
+    "error": null
+  },
+  "runtimeErrors": 3,
+  "knownExternalRuntimeErrors": 3,
+  "unexpectedRuntimeErrors": 0,
+  "knownExternalMessages": [
+    "Field injection: VEF: VEF.AestheticScaling.CachedPawnDataExtensions.GetCachePrePatched: initializer GetDefaultCache must be exactly one static method on VEF.AestheticScaling.CachedPawnDataExtensions returning VEF.AestheticScaling.CachedPawnData and taking the target or nothing (0 found).",
+    "Bad string pass when reading rule [tradeAdj_fem] [tradeNoun_fem]",
+    "Failed to resolve text. Trying again with English. Exception: System.ArgumentNullException: Value cannot be null. (Parameter 'key')"
+  ],
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "walls": {
+    "passed": true,
+    "checks": 14,
+    "patchedMethods": 1,
+    "bluntWallHitPointsLost": 45,
+    "crushingWallHitPointsLost": 225,
+    "errors": []
+  },
+  "passed": true
+}

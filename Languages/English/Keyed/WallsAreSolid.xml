@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Walls.Menu>Walls Are Solid</TMM.Walls.Menu>
+  <TMM.Walls.0.text>CHANGES REQUIRE RESTART</TMM.Walls.0.text>
+  <TMM.Walls.2.text>Damage values against buildings will be multiplied by these factors: \nSolid means impassable structures, typically walls.</TMM.Walls.2.text>
+  <TMM.Walls.3.label>Melee Sharp {SharpMeleePassable} [Default: 0.4]</TMM.Walls.3.label>
+  <TMM.Walls.4.label>Melee Sharp vs Solid {SharpMeleeImpassable} [Default: 0.1]</TMM.Walls.4.label>
+  <TMM.Walls.5.label>Blunt {BluntPassable} [Default: 0.5]</TMM.Walls.5.label>
+  <TMM.Walls.6.label>Blunt vs Solid {BluntImpassable} [Default: 0.3]</TMM.Walls.6.label>
+  <TMM.Walls.7.label>Ranged Sharp {SharpRangedPassable} [Default: 0.2]</TMM.Walls.7.label>
+  <TMM.Walls.8.label>Ranged Sharp vs Solid {SharpRangedImpassable} [Default: 0.2]</TMM.Walls.8.label>
+  <TMM.Walls.9.label>Explosion {BombPassable} [Default: 0.8]</TMM.Walls.9.label>
+  <TMM.Walls.10.label>Explosion vs Solid {BombImpassable} [Default: 1]</TMM.Walls.10.label>
+  <TMM.Walls.11.text>Actual defnames for each category:</TMM.Walls.11.text>
+  <TMM.Walls.12.text>Melee Sharp: Cut, Poke, Stab, Scratch, Bite</TMM.Walls.12.text>
+  <TMM.Walls.13.text>Blunt: Blunt, Crush</TMM.Walls.13.text>
+  <TMM.Walls.14.text>Ranged Sharp: RangedStab, Bullet, Arrow</TMM.Walls.14.text>
+  <TMM.Walls.15.text>Explosion: Bomb</TMM.Walls.15.text>
+  <TMM.Walls.16.text>"Bomb" is the only one of these which already had both factors, being 2 and 4, respectively</TMM.Walls.16.text>
+  <TMM.Walls.18.label>Revert Changes on Turrets/Hives/Chunks/Mech Cluster buildings?</TMM.Walls.18.label>
+  <TMM.Walls.18.tooltip>Disabling this will make the game harder, as you will have to constantly carry a breaching axe to break stuff, but your turrets will be stronger.</TMM.Walls.18.tooltip>
+  <TMM.Walls.19.label>Natural stone resists ranged damage.</TMM.Walls.19.label>
+  <TMM.Walls.19.tooltip>Multiply ranged damage types against natural walls by zero.</TMM.Walls.19.tooltip>
+</LanguageData>
