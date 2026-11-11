@@ -1,5 +1,6 @@
 {
   "components": [
+    "PickUpAndHaul",
     "SimpleSidearms",
     "RunAndGun",
     "CommonSense",
@@ -11,8 +12,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 102,
+  "resourceHashesVerified": 110,
   "russianKeysByComponent": {
+    "PickUpAndHaul": 13,
     "SimpleSidearms": 222,
     "RunAndGun": 32,
     "CommonSense": 83,

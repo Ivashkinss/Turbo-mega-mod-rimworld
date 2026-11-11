@@ -681,5 +681,60 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "PickUpAndHaul": {
+    "packageId": "mehni.pickupandhaul",
+    "files": [
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/1.6/Assemblies/PickUpAndHaul.dll",
+        "projectFile": "Components/PickUpAndHaul/Assemblies/PickUpAndHaul.dll",
+        "sourceRawSha256": "7516605f7da6e373f20a8053b2e87dba514f22293b5f91a706cde89a1d9ed343",
+        "sha256": "7516605f7da6e373f20a8053b2e87dba514f22293b5f91a706cde89a1d9ed343"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/1.6/Assemblies/IHoldMultipleThings.dll",
+        "projectFile": "Components/PickUpAndHaul/Assemblies/IHoldMultipleThings.dll",
+        "sourceRawSha256": "8ceb58a716e050170b881aa95e53b049056f270fc5492878a0da9d371b1db7ff",
+        "sha256": "8ceb58a716e050170b881aa95e53b049056f270fc5492878a0da9d371b1db7ff"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/Defs/JobDefs/WorkGiver.xml",
+        "projectFile": "Components/PickUpAndHaul/Defs/JobDefs/WorkGiver.xml",
+        "sourceRawSha256": "52c8e65d911aa757e63d2f1d5fc2b420fc34d105fcb93c15a6d346ca2bdeddb6",
+        "sha256": "9fb7ffba9d91c5b82a6c5bacff92056d5173381818dfc58d085f58875f35ef00"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/Patches/PickUpAndHaul.xml",
+        "projectFile": "Components/PickUpAndHaul/Patches/PickUpAndHaul.xml",
+        "sourceRawSha256": "ac556afb2a2bb122f20170a8078e4a4a9f43fb4dbedbc5ad6e0fda0cc3913a4e",
+        "sha256": "45fb1d05d77ba822cbef21d3d984fba85590866d796f09931bd113c8667782aa"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/Languages/English/Keyed/Translations.xml",
+        "projectFile": "Components/PickUpAndHaul/Languages/English/Keyed/Translations.xml",
+        "sourceRawSha256": "a3957c90950d4569805da225eea9efce667a203c400f812e88b8c8c5d577fe42",
+        "sha256": "58010c7d96cc9e6efb67106e183fa76087604ff2e503074b90f6c943f64aa2c3"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/Languages/English/DefInjected/JobDef/WorkGiver.xml",
+        "projectFile": "Components/PickUpAndHaul/Languages/English/DefInjected/JobDef/WorkGiver.xml",
+        "sourceRawSha256": "083fa7dec09d24d769427fa485a819899537ce4da7192e287d627766901d8c57",
+        "sha256": "64d0c4b4766d3d824ebec38ffd71d824b37e849a8cf477ddb007b9a183680cfb"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/Languages/English/DefInjected/WorkGiverDef/WorkGiver.xml",
+        "projectFile": "Components/PickUpAndHaul/Languages/English/DefInjected/WorkGiverDef/WorkGiver.xml",
+        "sourceRawSha256": "84c329a32e10122c9df98bad6c9a47003b84598f1429729dd2653b69638e2415",
+        "sha256": "cf77fc80cf7ef7e6395a074dbc3830713342cea0f6256e84411f1e21204e5453"
+      },
+      {
+        "source": "Pick Up And Haul (Переноска нескольких предметов)/LICENSE",
+        "projectFile": "Components/PickUpAndHaul/LICENSE",
+        "sourceRawSha256": "48a39caa7b9d66f0fd76e009c8d2d7e9be855a846a030275d110a6ba59b85760",
+        "sha256": "7c41fae9096dd9a416e62c044dcd2256132fbd9259c842d4bed80f0e287af505"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

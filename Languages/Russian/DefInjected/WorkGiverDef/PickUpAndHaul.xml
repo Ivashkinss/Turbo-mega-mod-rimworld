@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <HaulToInventory.label>собирать вещи в инвентарь и переносить</HaulToInventory.label>
+  <HaulToInventory.verb>перенести</HaulToInventory.verb>
+  <HaulToInventory.gerund>переносит</HaulToInventory.gerund>
+</LanguageData>

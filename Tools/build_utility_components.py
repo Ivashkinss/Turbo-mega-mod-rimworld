@@ -9,6 +9,16 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "PickUpAndHaul": ("Pick Up And Haul (Переноска нескольких предметов)", "mehni.pickupandhaul", {
+        "1.6/Assemblies/PickUpAndHaul.dll": "Assemblies/PickUpAndHaul.dll",
+        "1.6/Assemblies/IHoldMultipleThings.dll": "Assemblies/IHoldMultipleThings.dll",
+        "Defs/JobDefs/WorkGiver.xml": "Defs/JobDefs/WorkGiver.xml",
+        "Patches/PickUpAndHaul.xml": "Patches/PickUpAndHaul.xml",
+        "Languages/English/Keyed/Translations.xml": "Languages/English/Keyed/Translations.xml",
+        "Languages/English/DefInjected/JobDef/WorkGiver.xml": "Languages/English/DefInjected/JobDef/WorkGiver.xml",
+        "Languages/English/DefInjected/WorkGiverDef/WorkGiver.xml": "Languages/English/DefInjected/WorkGiverDef/WorkGiver.xml",
+        "LICENSE": "LICENSE",
+    }),
     "SimpleSidearms": ("Simple Sidearms (Ношение двух видов оружия)", "petetimessix.simplesidearms", {
         "v1.6/Assemblies/SimpleSidearms.dll": "Assemblies/SimpleSidearms.dll",
         "v1.6/Defs/JobDefs/Jobs_Misc.xml": "Defs/JobDefs/Jobs_Misc.xml",
@@ -118,7 +128,7 @@ COMPONENTS = {
 }
 
 
-def clean_xml(path):
+def clean_text(path):
     text = path.read_text(encoding="utf-8-sig")
     path.write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n", encoding="utf-8")
 
@@ -146,10 +156,10 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(original, target)
             source_hash = hashlib.sha256(original.read_bytes()).hexdigest()
-            if target.suffix.lower() == ".xml":
-                clean_xml(target)
+            if target.suffix.lower() == ".xml" or target.name == "LICENSE":
+                clean_text(target)
             data = target.read_bytes()
-            if target.suffix.lower() == ".xml":
+            if target.suffix.lower() == ".xml" or target.name == "LICENSE":
                 data = data.replace(b"\r\n", b"\n")
             items.append({"source": original.relative_to(PROJECT.parent).as_posix(),
                           "projectFile": target.relative_to(PROJECT).as_posix(),
@@ -157,9 +167,9 @@ def main():
                           "sha256": hashlib.sha256(data).hexdigest()})
         about = PROJECT / "ThirdParty" / f"{name}.About.xml"
         shutil.copyfile(source / "About/About.xml", about)
-        clean_xml(about)
+        clean_text(about)
         report[name] = {"packageId": package_id, "files": items, "bundledHarmonyCopied": False,
-                        "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"}
+                        "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"}
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):

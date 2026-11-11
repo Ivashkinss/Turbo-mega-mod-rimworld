@@ -18,6 +18,7 @@ internal static readonly Dictionary<string, string> Literals = new Dictionary<st
 {" (Experimental)","TMM.Literal.b4ead0a744a9"},
 {"Almost There!","TMM.Literal.3910b09b3783"},
 {"{0}: {1:F1}h","TMM.Literal.457bb31496b0"},
+{"Pick Up And Haul","TMM.Literal.310691d88b37"},
 };
 internal static readonly Dictionary<string, string> CorpseOffset = new Dictionary<string, string> {
 {"None","TMM.CorpseOffset.None"},

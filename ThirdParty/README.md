@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Pick Up And Haul — Mehni; packageId mehni.pickupandhaul. Сохранены PickUpAndHaul.About.xml, MIT LICENSE и SHA-256 восьми ресурсов: две DLL 1.6 (PickUpAndHaul и IHoldMultipleThings), Def, патч и три английских XML. Старая Harmony не включена. Переведены восемь настроек, пять актуальных полей Def и заголовок настроек. DLL и исходные игровые ключи сохранены без изменений.
+
 - Simple Sidearms — PeteTimesSix; packageId petetimessix.simplesidearms. Сохранены SimpleSidearms.About.xml и SHA-256 43 ресурсов v1.6: неизменённая DLL, три патча, четыре файла Def, английский Keyed и 34 текстуры. Русские Keyed импортированы из исходника; девять актуальных подсказок и три задания переведены по текущим Def. Устаревшие имена исходного русского DefInjected не перенесены. При активном оригинале встроенный компонент пропускается. Код интеграции Melee Animation находится отдельно в Source/SidearmsCompatibility.cs.
 
 - RunAndGun — Roolo, Ogliss, kotobike; исходный packageId roolo.runandgun.kotobike. Сохранены RunAndGun.About.xml и восемь ресурсов: неизменённая DLL из 1.6, английский Keyed, патч, Def/News истории версий и три текстуры. Bundled 0Harmony.dll не переносится. Старый исходный LoadFolders выбирал 1.5; встроенный компонент явно выбирает 1.6. HugsLib остаётся внешней обязательной зависимостью; ModIdentifier и настройки RunAndGun сохранены. Дополнены четыре русских ключа окна CE. Combat Extended не установлен, диалог переведён статически, интеграция с CE не проверялась. Исторические новости сохранены на языке оригинала.

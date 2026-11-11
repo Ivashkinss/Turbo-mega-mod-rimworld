@@ -16,6 +16,7 @@
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
     <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
     <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
+    <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -33,5 +34,6 @@
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
     <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
     <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
+    <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
   </v1.7>
 </loadFolders>
