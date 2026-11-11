@@ -1,5 +1,6 @@
 {
   "components": [
+    "RunAndGun",
     "CommonSense",
     "SnapOut",
     "DevInYourLanguage",
@@ -9,8 +10,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 51,
+  "resourceHashesVerified": 59,
   "russianKeysByComponent": {
+    "RunAndGun": 32,
     "CommonSense": 83,
     "SnapOut": 43,
     "DevInYourLanguage": 615,

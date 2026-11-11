@@ -361,5 +361,60 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "RunAndGun": {
+    "packageId": "roolo.runandgun.kotobike",
+    "files": [
+      {
+        "source": "RunAndGun (Стрельба на ходу)/1.6/Assemblies/RunAndGun.dll",
+        "projectFile": "Components/RunAndGun/Assemblies/RunAndGun.dll",
+        "sourceRawSha256": "b28063f9de68896d47cdc7841e2f0cddf25e6d49c03d0a7b737d7122e2a68678",
+        "sha256": "b28063f9de68896d47cdc7841e2f0cddf25e6d49c03d0a7b737d7122e2a68678"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Languages/English/Keyed/RunAndGun_Keys.xml",
+        "projectFile": "Components/RunAndGun/Languages/English/Keyed/RunAndGun_Keys.xml",
+        "sourceRawSha256": "2d3b012e9962a374be6eec321df35783c1311494ad04a04c7134cc3ff22cf0ca",
+        "sha256": "56295d5da49feb785e44f71a857b4eed12f3b7afb07906eb3a34b4a49dcb17ff"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Patches/RunAndGun.xml",
+        "projectFile": "Components/RunAndGun/Patches/RunAndGun.xml",
+        "sourceRawSha256": "c806966647e26554cb9bad8c5c93b1e9e1d267508f8d47b36b4aee14362d7f5e",
+        "sha256": "d301dd78df27ff84ceb7d30050651c6ddb2032124d9cb156c85a8ac752e230a4"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Defs/UpdateFeatureDefs/UpdateFeatures.xml",
+        "projectFile": "Components/RunAndGun/Defs/UpdateFeatureDefs/UpdateFeatures.xml",
+        "sourceRawSha256": "af47bce86f1acab059dceb0403a50677898985e465f5f088c12a7f9705c3d6a5",
+        "sha256": "668a3fdac456e7c966617531fa0edb43864ab62575353a515b1f93e6704d47dc"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/News/UpdateFeatures.xml",
+        "projectFile": "Components/RunAndGun/News/UpdateFeatures.xml",
+        "sourceRawSha256": "9c68a23f59eb16bea0a10856273d7e1e2b14f9c3183b10090d96a79a022e58fc",
+        "sha256": "e9e4862b844098c0615018b0d031539e77a3fba44bb9e90cebfaff9cf92ff9e5"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Textures/square.png",
+        "projectFile": "Components/RunAndGun/Textures/square.png",
+        "sourceRawSha256": "b73d0fcfd8dc7651024910ff5ea01e911e8ba9af294da28da8f52540ccfbc30e",
+        "sha256": "b73d0fcfd8dc7651024910ff5ea01e911e8ba9af294da28da8f52540ccfbc30e"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Textures/UI/Buttons/enable_RG.png",
+        "projectFile": "Components/RunAndGun/Textures/UI/Buttons/enable_RG.png",
+        "sourceRawSha256": "4dbc0b92b5fa9b502eed6d2cc7d03d5f4c5252b41ca8d5cd7edf3430c9c72b3b",
+        "sha256": "4dbc0b92b5fa9b502eed6d2cc7d03d5f4c5252b41ca8d5cd7edf3430c9c72b3b"
+      },
+      {
+        "source": "RunAndGun (Стрельба на ходу)/Textures/UI/Buttons/disable_RG.png",
+        "projectFile": "Components/RunAndGun/Textures/UI/Buttons/disable_RG.png",
+        "sourceRawSha256": "97700d608f96120c462e3b61113ead9803663531494098cb619fe0b21649b23d",
+        "sha256": "97700d608f96120c462e3b61113ead9803663531494098cb619fe0b21649b23d"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

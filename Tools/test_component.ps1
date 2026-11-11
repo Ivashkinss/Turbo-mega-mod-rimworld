@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'RunAndGun' { @{ folder='RunAndGun (Стрельба на ходу)'; id='roolo.runandgun.kotobike'; dll='Components\RunAndGun\Assemblies\RunAndGun.dll'; source='InGameRunAndGunProbe.cs'; flag='-tmm-runandgun-probe'; report='RunAndGunProbe.json'; ui='RunAndGunUiProbe.json'; key='runAndGun'; prefix='RunAndGun' } }
     'CommonSense' { @{ folder='Common Sense (Умные действия колонистов)'; id='avilmask.commonsense'; dll='Components\CommonSense\Assemblies\CommonSense.dll'; source='InGameCommonSenseProbe.cs'; flag='-tmm-commonsense-probe'; report='CommonSenseProbe.json'; ui='CommonSenseUiProbe.json'; key='commonSense'; prefix='CommonSense' } }
     'SnapOut' { @{ folder='Snap Out! (Успокоение срывающихся колонистов)'; id='weilbyte.snapout'; dll='Components\SnapOut\Assemblies\SnapOut.dll'; source='InGameSnapOutProbe.cs'; flag='-tmm-snapout-probe'; report='SnapOutProbe.json'; ui='SnapOutUiProbe.json'; key='snapOut'; prefix='SnapOut' } }
     'DevInYourLanguage' { @{ folder='Dev In Your Language'; id='latta.devl10n'; dll='Components\DevInYourLanguage\Assemblies\DevInYourLanguage.dll'; source='InGameDevMenuProbe.cs'; flag='-tmm-devmenu-probe'; report='DevMenuProbe.json'; ui='DevMenuUiProbe.json'; key='devMenu'; prefix='DevMenu' } }
@@ -16,7 +17,7 @@ if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath ('Mods\' 
 }
 & (Join-Path $PSScriptRoot 'build_assembly.ps1')
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
-$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','Unity.Mathematics.dll') |
+$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','Unity.Mathematics.dll') |
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
 $references += '/reference:' + (Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll')
 $references += '/reference:' + (Join-Path $projectPath $definition.dll)
@@ -32,7 +33,7 @@ $ids = @('brrainz.harmony','ludeon.rimworld')
 foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) { $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant() }
 }
-$ids += @('adaptive.storage.framework','co.uk.epicguru.meleeanimation','zeracronius.dynamictradeinterface')
+$ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation','zeracronius.dynamictradeinterface')
 if (!$OriginalActive) { $ids = @($ids | Where-Object { $_ -ne $definition.id }) }
 if ($OriginalActive) { $ids += $definition.id }
 $ids += 'colonyproject.integrated'
@@ -50,6 +51,15 @@ if ($FullSet) {
     }
     $cache = Join-Path $userConfig 'TrueTerrainColorsCache.xml'
     if (Test-Path -LiteralPath $cache) { Copy-Item -LiteralPath $cache -Destination (Join-Path $testRoot 'Config\TrueTerrainColorsCache.xml') }
+    $userHugs = Join-Path (Split-Path -Parent $userConfig) 'HugsLib'
+    if (Test-Path -LiteralPath $userHugs) {
+        $testHugs = Join-Path $testRoot 'HugsLib'
+        New-Item -ItemType Directory -Path $testHugs -Force | Out-Null
+        foreach ($name in @('ModSettings.xml','LastSeenNews.xml','SpottedMods.xml')) {
+            $source = Join-Path $userHugs $name
+            if (Test-Path -LiteralPath $source) { Copy-Item -LiteralPath $source -Destination (Join-Path $testHugs $name) }
+        }
+    }
 }
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\ModsConfig.xml'), $modsXml)
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\Prefs.xml'), '<PrefsData><langFolderName>Russian (Русский)</langFolderName><devMode>True</devMode><screenWidth>1280</screenWidth><screenHeight>800</screenHeight><fullscreen>False</fullscreen><runInBackground>True</runInBackground><volumeMaster>0</volumeMaster></PrefsData>')

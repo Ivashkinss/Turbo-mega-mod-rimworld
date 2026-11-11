@@ -14,6 +14,7 @@
     <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
+    <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -29,5 +30,6 @@
     <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
     <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
     <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
+    <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
   </v1.7>
 </loadFolders>

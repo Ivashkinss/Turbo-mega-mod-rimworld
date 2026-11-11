@@ -1,0 +1,45 @@
+{
+  "component": "RunAndGun",
+  "originalComponentActive": false,
+  "fullUserModSet": true,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 1227,
+    "scalarFields": 243,
+    "grammarLines": 45,
+    "displayPatches": 12,
+    "passed": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2955,
+    "ticksAdvanced": 1780
+  },
+  "settingsUi": {
+    "passed": true,
+    "customControlsDrawnInRepaint": true,
+    "visualLayoutInspected": false,
+    "error": null
+  },
+  "runtimeErrors": 3,
+  "knownExternalRuntimeErrors": 3,
+  "unexpectedRuntimeErrors": 0,
+  "knownExternalMessages": [
+    "Field injection: VEF: VEF.AestheticScaling.CachedPawnDataExtensions.GetCachePrePatched: initializer GetDefaultCache must be exactly one static method on VEF.AestheticScaling.CachedPawnDataExtensions returning VEF.AestheticScaling.CachedPawnData and taking the target or nothing (0 found).",
+    "Bad string pass when reading rule [tradeAdj_fem] [tradeNoun_fem]",
+    "Failed to resolve text. Trying again with English. Exception: System.ArgumentNullException: Value cannot be null. (Parameter 'key')"
+  ],
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "runAndGun": {
+    "passed": true,
+    "checks": 15,
+    "successfulShotsWhileMoving": 1,
+    "attackRequestedByTest": true,
+    "errors": []
+  },
+  "passed": true
+}

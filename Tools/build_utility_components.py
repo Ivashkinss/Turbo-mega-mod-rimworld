@@ -9,6 +9,14 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "RunAndGun": ("RunAndGun (Стрельба на ходу)", "roolo.runandgun.kotobike", {
+        "1.6/Assemblies/RunAndGun.dll": "Assemblies/RunAndGun.dll",
+        "Languages/English/Keyed/RunAndGun_Keys.xml": "Languages/English/Keyed/RunAndGun_Keys.xml",
+        "Patches/RunAndGun.xml": "Patches/RunAndGun.xml",
+        "Defs/UpdateFeatureDefs/UpdateFeatures.xml": "Defs/UpdateFeatureDefs/UpdateFeatures.xml",
+        "News/UpdateFeatures.xml": "News/UpdateFeatures.xml",
+        **{f"Textures/{name}.png": f"Textures/{name}.png" for name in ("square", "UI/Buttons/enable_RG", "UI/Buttons/disable_RG")},
+    }),
     "CommonSense": ("Common Sense (Умные действия колонистов)", "avilmask.commonsense", {
         "1.6/Assemblies/CommonSense.dll": "Assemblies/CommonSense.dll",
         "Languages/English/Keyed/strings.xml": "Languages/English/Keyed/strings.xml",
