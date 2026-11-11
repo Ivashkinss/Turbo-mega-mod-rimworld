@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Nice Bill Tab — Andromeda; packageId andromeda.nicebilltab. Сохранены NiceBillTab.About.xml и хеши 55 ресурсов: две DLL 1.6, английский Keyed и 52 текстуры. Импортированы 63 русских ключа; заголовок настроек переведён отдельным allowlist-перехватом. FloatSubMenu из Useful Marks имеет ту же assembly identity, но другой хеш и более широкий публичный интерфейс; при его будущем переносе нужно выбрать одну совместимую общую копию и проверить оба компонента.
+
 - Pick Up And Haul — Mehni; packageId mehni.pickupandhaul. Сохранены PickUpAndHaul.About.xml, MIT LICENSE и SHA-256 восьми ресурсов: две DLL 1.6 (PickUpAndHaul и IHoldMultipleThings), Def, патч и три английских XML. Старая Harmony не включена. Переведены восемь настроек, пять актуальных полей Def и заголовок настроек. DLL и исходные игровые ключи сохранены без изменений.
 
 - Simple Sidearms — PeteTimesSix; packageId petetimessix.simplesidearms. Сохранены SimpleSidearms.About.xml и SHA-256 43 ресурсов v1.6: неизменённая DLL, три патча, четыре файла Def, английский Keyed и 34 текстуры. Русские Keyed импортированы из исходника; девять актуальных подсказок и три задания переведены по текущим Def. Устаревшие имена исходного русского DefInjected не перенесены. При активном оригинале встроенный компонент пропускается. Код интеграции Melee Animation находится отдельно в Source/SidearmsCompatibility.cs.

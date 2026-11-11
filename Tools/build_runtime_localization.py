@@ -20,7 +20,8 @@ def main():
                  PROJECT / "Components/AlmostThere/Standard/Assemblies/CaravanDontRest.dll",
                  PROJECT / "Components/AlmostThere/Vehicles/Assemblies/CaravanDontRest.dll",
                  PROJECT / "Components/SnapOut/Assemblies/SnapOut.dll",
-                 PROJECT / "Components/PickUpAndHaul/Assemblies/PickUpAndHaul.dll"):
+                 PROJECT / "Components/PickUpAndHaul/Assemblies/PickUpAndHaul.dll",
+                 PROJECT / "Components/NiceBillTab/Assemblies/NiceBillTab.dll"):
         actual.update(user_strings(path))
     missing = set(data["literals"]) - actual
     if missing:

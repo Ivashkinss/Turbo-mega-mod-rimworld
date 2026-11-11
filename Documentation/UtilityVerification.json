@@ -1,5 +1,6 @@
 {
   "components": [
+    "NiceBillTab",
     "PickUpAndHaul",
     "SimpleSidearms",
     "RunAndGun",
@@ -12,8 +13,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 110,
+  "resourceHashesVerified": 165,
   "russianKeysByComponent": {
+    "NiceBillTab": 63,
     "PickUpAndHaul": 13,
     "SimpleSidearms": 222,
     "RunAndGun": 32,

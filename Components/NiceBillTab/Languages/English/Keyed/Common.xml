@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NiceBillTabEnabledMod>Mod enabled</NiceBillTabEnabledMod>
+  <FlatDamage>Damage</FlatDamage>
+  <FlatDamageTooltip>Damage of one shot or attack</FlatDamageTooltip>
+  <DamageDPS>Damage (DPS)</DamageDPS>
+  <DamageDPSTooltip>Damage per second (DPS) is a measure that represents the average amount of damage a weapon deals per second of combat. It takes into account the attack preparation time, damage dealt, and attack/shooting speed.</DamageDPSTooltip>
+  <WeaponFireRate>Fire rate</WeaponFireRate>
+  <WeaponFireRateTooltip>Fire rate shows the number of shots per second. It includes cooldown and delays between shots in the burst.\n\n{0} / ({1} + {2}) = {3}</WeaponFireRateTooltip>
+  <WeaponTotalBurstTime>Total burst time</WeaponTotalBurstTime>
+  <ShotPerSecondShort>shot/sec</ShotPerSecondShort>
+  <CooldownReload>Cooldown</CooldownReload>
+  <SecondShort>sec</SecondShort>
+  <WeaponAttackSpeed>Attack speed</WeaponAttackSpeed>
+  <WeaponAttackSpeedTooltip>Attack speed is the time it takes to complete one attack.</WeaponAttackSpeedTooltip>
+
+  <WeaponAccuracy>Accuracy</WeaponAccuracy>
+  <WeaponAccuracyTouch>close</WeaponAccuracyTouch>
+  <WeaponAccuracyShort>short</WeaponAccuracyShort>
+  <WeaponAccuracyMedium>medium</WeaponAccuracyMedium>
+  <WeaponAccuracyLong>long</WeaponAccuracyLong>
+
+  <NotCovers>Does not cover</NotCovers>
+
+  <PasteBillHere>Paste bill here</PasteBillHere>
+
+  <BillButton_Make>Make</BillButton_Make>
+  <BillButton_Cook>Cook</BillButton_Cook>
+  <BillButton_Gestate>Gestate</BillButton_Gestate>
+
+  <NoOneCanDoThisWork>None can do this work</NoOneCanDoThisWork>
+
+  <BillFilterTip>Filter bills by name. You can also filter by category. To do this, print {0} followed by the category name (or part of the word).</BillFilterTip>
+  <ApparelLayerFilterTip>Use {0} to filter by apparel layer.</ApparelLayerFilterTip>
+  <ModFilterTip>Use {0} to filter by mod or DLC.</ModFilterTip>
+  <BillAvailableCategories>Available categories</BillAvailableCategories>
+
+  <DefaultRecipeList>Wide recipe list</DefaultRecipeList>
+  <CompactRecipeList>Compact recipe list</CompactRecipeList>
+  <CategorizedRecipeList>Categorized recipe list</CategorizedRecipeList>
+
+  <CompareBarsWithColors>Compare bars with colors</CompareBarsWithColors>
+  <CompareRecipesFail>Cannot compare recipes</CompareRecipesFail>
+
+  <SelectMaterial>Select material</SelectMaterial>
+  <StatMaximize>Maximize {0}</StatMaximize>
+  <MaximizeFromColonyMaterials>From materials in settlement</MaximizeFromColonyMaterials>
+  <MaximizeFromAnyMaterial>From any material</MaximizeFromAnyMaterial>
+  <CompareWhenSelectMaterial>Compare when selecting material</CompareWhenSelectMaterial>
+  <SearchBetterMaterialFail>Cannot find better material</SearchBetterMaterialFail>
+
+  <GlowingYellowHintEnabled>Glowing yellow hint enabled</GlowingYellowHintEnabled>
+  <UseSpecialSymbolToFilterByCategory>Use special symbol {0} to filter by category</UseSpecialSymbolToFilterByCategory>
+  <CEmmShort>mm</CEmmShort>
+
+  <OpenInfoDialog>Open info</OpenInfoDialog>
+  <FindOnMap>Find on map</FindOnMap>
+  <CreateTaskOnAvailableWorkbench>Queue task on available workbench</CreateTaskOnAvailableWorkbench>
+  <NoExistOnCurrentMap>The requested object does not exist on map</NoExistOnCurrentMap>
+  <SelectThisAmmo>Calculate with this ammo</SelectThisAmmo>
+  <UseNonLinearBars>Use non-linear bars</UseNonLinearBars>
+  <ShowFlatDamageForRanged>Show damage of single shot for ranged weapons</ShowFlatDamageForRanged>
+  <ShowFlatDamageForMelee>Show damage of single hit for melee weapons</ShowFlatDamageForMelee>
+
+  <ArmorRatingSharpSimple>Armor - Sharp</ArmorRatingSharpSimple>
+  <ArmorRatingBluntSimple>Armor - Blunt</ArmorRatingBluntSimple>
+
+  <BillTabHeight>Tab height ({0})</BillTabHeight>
+  <BillTabListingExtraWidth>Tab listing extra width ({0})</BillTabListingExtraWidth>
+  <AddDetailsButtonToBillQueue>Add 'Details...' button to bill queue</AddDetailsButtonToBillQueue>
+
+  <StoppingPowerShort>Stopping power</StoppingPowerShort>
+  <ShowStatInfoUniversal>Show '{0}'</ShowStatInfoUniversal>
+
+  <SettingsCommonTab>Common</SettingsCommonTab>
+  <SettingsItemTab>Items</SettingsItemTab>
+  <SettingsExperimentalTab>Experimental</SettingsExperimentalTab>
+
+  <EnableScrollUpWhenBillAdded>Enable scroll up when bill added</EnableScrollUpWhenBillAdded>
+  <EnableClassicSuspendButton>Enable classic suspend button</EnableClassicSuspendButton>
+
+  <ShowBarTicks>Show bar ticks</ShowBarTicks>
+</LanguageData>

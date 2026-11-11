@@ -736,5 +736,342 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "NiceBillTab": {
+    "packageId": "andromeda.nicebilltab",
+    "files": [
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/1.6/Assemblies/NiceBillTab.dll",
+        "projectFile": "Components/NiceBillTab/Assemblies/NiceBillTab.dll",
+        "sourceRawSha256": "7f12e97f3130f960876c26a2c83aa2be356046d5def9d43dcf59d26854bbf424",
+        "sha256": "7f12e97f3130f960876c26a2c83aa2be356046d5def9d43dcf59d26854bbf424"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/1.6/Assemblies/FloatSubMenu.dll",
+        "projectFile": "Components/NiceBillTab/Assemblies/FloatSubMenu.dll",
+        "sourceRawSha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff",
+        "sha256": "fff0a03f0a7b0b34373f8e8228aed758372740a997beb4487c98e0b8064fe3ff"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Languages/English/Keyed/Common.xml",
+        "projectFile": "Components/NiceBillTab/Languages/English/Keyed/Common.xml",
+        "sourceRawSha256": "482fdc1348c279666a7498e365fc9e46d09fc0fa4d6f06a8dd3ea0e3d009305c",
+        "sha256": "443f06c3795532deaae115fd99e1c6d826fcdbc045efb6ab3bbfa3474de89a5e"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Ammo1.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Ammo1.png",
+        "sourceRawSha256": "3cbcf167cb1fbbb7155cd88ae0983a3596632afdaaa6ad28ea700821f3b51397",
+        "sha256": "3cbcf167cb1fbbb7155cd88ae0983a3596632afdaaa6ad28ea700821f3b51397"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ApparelSlots.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ApparelSlots.png",
+        "sourceRawSha256": "767425a699194c24342f799c429b859da9085f96049102f18c08f48ce257b1dc",
+        "sha256": "767425a699194c24342f799c429b859da9085f96049102f18c08f48ce257b1dc"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ArmorBlunt.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ArmorBlunt.png",
+        "sourceRawSha256": "0cdc16769215955f888f2df73b932d44353e30307737296cd7f00390cfe5a6bb",
+        "sha256": "0cdc16769215955f888f2df73b932d44353e30307737296cd7f00390cfe5a6bb"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ArmorHeat.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ArmorHeat.png",
+        "sourceRawSha256": "dcfab434e878b56cbfd2e7e2197d04ddfcac358039a54f1a3873d0ebeb35a92e",
+        "sha256": "dcfab434e878b56cbfd2e7e2197d04ddfcac358039a54f1a3873d0ebeb35a92e"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ArmorPen.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ArmorPen.png",
+        "sourceRawSha256": "f8dd04a29274b9214d0db4b1ac698c5d3e36780f07389b4d3dc992dd7356752f",
+        "sha256": "f8dd04a29274b9214d0db4b1ac698c5d3e36780f07389b4d3dc992dd7356752f"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ArmorSharp.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ArmorSharp.png",
+        "sourceRawSha256": "7230fd4da1e89ad6b9d4f13ade66747380429e4aade52326c573b6a5886a127b",
+        "sha256": "7230fd4da1e89ad6b9d4f13ade66747380429e4aade52326c573b6a5886a127b"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ArrowEdge.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ArrowEdge.png",
+        "sourceRawSha256": "20194e5e197abd5595e5d8959554002e3553fb249a8f9c3ca68d89002a56e8cb",
+        "sha256": "20194e5e197abd5595e5d8959554002e3553fb249a8f9c3ca68d89002a56e8cb"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/AtkSpeed.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/AtkSpeed.png",
+        "sourceRawSha256": "9b75a667ac475d82fe1a9d4e9f17aca009600b0fc31e6fa8cfb89867a670fdc2",
+        "sha256": "9b75a667ac475d82fe1a9d4e9f17aca009600b0fc31e6fa8cfb89867a670fdc2"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Beauty.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Beauty.png",
+        "sourceRawSha256": "1841658ee25be4507b5a35e360f13635bceddb3c91474467501dd6083afb1d81",
+        "sha256": "1841658ee25be4507b5a35e360f13635bceddb3c91474467501dd6083afb1d81"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/BurnTile.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/BurnTile.png",
+        "sourceRawSha256": "5155c3ae7bb7d3cd4b8d7a04ec19da6a417ac31dc74f3bf36e36e91f5f4505d0",
+        "sha256": "5155c3ae7bb7d3cd4b8d7a04ec19da6a417ac31dc74f3bf36e36e91f5f4505d0"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Checkbox_Checked.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Checkbox_Checked.png",
+        "sourceRawSha256": "834acc0c9ac52235e15d8591ffe917e3aef6b59b4be3c10bb5c4fe80a43a2bf9",
+        "sha256": "834acc0c9ac52235e15d8591ffe917e3aef6b59b4be3c10bb5c4fe80a43a2bf9"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Checkbox_Empty.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Checkbox_Empty.png",
+        "sourceRawSha256": "0174da1f62ef3e5758e591b2d35194680c903eb9540bbcf378ce946133be292e",
+        "sha256": "0174da1f62ef3e5758e591b2d35194680c903eb9540bbcf378ce946133be292e"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Cold.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Cold.png",
+        "sourceRawSha256": "23efc9a7f55fbea468bb832b86578a7ce96cc816ae02a7837bb78dc468beba4a",
+        "sha256": "23efc9a7f55fbea468bb832b86578a7ce96cc816ae02a7837bb78dc468beba4a"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/CoverArms.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/CoverArms.png",
+        "sourceRawSha256": "e64f36a98434b5d1b5436ac451885cf7cf1e74fd2aa49197ae0ce2e7aeba9349",
+        "sha256": "e64f36a98434b5d1b5436ac451885cf7cf1e74fd2aa49197ae0ce2e7aeba9349"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/CoverBody.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/CoverBody.png",
+        "sourceRawSha256": "fb13dba74b085e323e3c18924f70158f32ace1907b8f188f68dc183493cc59d8",
+        "sha256": "fb13dba74b085e323e3c18924f70158f32ace1907b8f188f68dc183493cc59d8"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/CoverHead.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/CoverHead.png",
+        "sourceRawSha256": "b93502061b957cc24ec86469017779bb3ad3d0031df00e7a9de2b459505a9fd0",
+        "sha256": "b93502061b957cc24ec86469017779bb3ad3d0031df00e7a9de2b459505a9fd0"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/CoverLegs.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/CoverLegs.png",
+        "sourceRawSha256": "99c09721d3cf08382c09db8ac6c99d67ece0c79e0a373771a52562f7054b519c",
+        "sha256": "99c09721d3cf08382c09db8ac6c99d67ece0c79e0a373771a52562f7054b519c"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Damage.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Damage.png",
+        "sourceRawSha256": "45e69893eef2a7a7a8209997b256b25086e801813f7db23ee267bed163446fcc",
+        "sha256": "45e69893eef2a7a7a8209997b256b25086e801813f7db23ee267bed163446fcc"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Efficiency.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Efficiency.png",
+        "sourceRawSha256": "083b1d2d8638bc984a116084e18c18b821a6be2604e30ca6e22fc0a6276540f1",
+        "sha256": "083b1d2d8638bc984a116084e18c18b821a6be2604e30ca6e22fc0a6276540f1"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/EnergyBarrier.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/EnergyBarrier.png",
+        "sourceRawSha256": "cd7e99846a033aa8d1be80e930ce3eb6f351f030b8fd6297afd7fd1f1a88fb56",
+        "sha256": "cd7e99846a033aa8d1be80e930ce3eb6f351f030b8fd6297afd7fd1f1a88fb56"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/EnergyShield.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/EnergyShield.png",
+        "sourceRawSha256": "b397b0c4a02190247e2832ce8c9552fa7ccdf2007a66017358bc132472df4b35",
+        "sha256": "b397b0c4a02190247e2832ce8c9552fa7ccdf2007a66017358bc132472df4b35"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/EnergyShieldRecharge.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/EnergyShieldRecharge.png",
+        "sourceRawSha256": "dbd7b90be41281e895a9d0c48f7bd9b2ff5a78fd5e4e6a63950762a013ace1a3",
+        "sha256": "dbd7b90be41281e895a9d0c48f7bd9b2ff5a78fd5e4e6a63950762a013ace1a3"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/FadeGradient.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/FadeGradient.png",
+        "sourceRawSha256": "dfce02cd56dce1a196da05c77998488bd9c659798dc5b3920589ed42fb6da734",
+        "sha256": "dfce02cd56dce1a196da05c77998488bd9c659798dc5b3920589ed42fb6da734"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Feature.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Feature.png",
+        "sourceRawSha256": "30c96f79b10b2a0a85c9e952fb8fe12230be5e63ba2ce52e5d2b9ee3d4b38f58",
+        "sha256": "30c96f79b10b2a0a85c9e952fb8fe12230be5e63ba2ce52e5d2b9ee3d4b38f58"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Glow.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Glow.png",
+        "sourceRawSha256": "4328f60ffd71fb453c9c8a9a3993fd471b2dcf613590f720cc421df6e6478033",
+        "sha256": "4328f60ffd71fb453c9c8a9a3993fd471b2dcf613590f720cc421df6e6478033"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/HGradient.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/HGradient.png",
+        "sourceRawSha256": "d1471a57416f9bbb3657d99672273f46f42f3339726f78927fc4a5325fd31477",
+        "sha256": "d1471a57416f9bbb3657d99672273f46f42f3339726f78927fc4a5325fd31477"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Hourglass.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Hourglass.png",
+        "sourceRawSha256": "3596e399d3bb57d425e142e478b056ad75373c2e22e8fdea71cae5355a817af1",
+        "sha256": "3596e399d3bb57d425e142e478b056ad75373c2e22e8fdea71cae5355a817af1"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Idea.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Idea.png",
+        "sourceRawSha256": "dd1778583472e443e3a9390beb98bf271401235d90d07cefefef9ec1004d3520",
+        "sha256": "dd1778583472e443e3a9390beb98bf271401235d90d07cefefef9ec1004d3520"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Ingot.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Ingot.png",
+        "sourceRawSha256": "ce4ed6b823e69c08f4d520f34a78ee73cb990e6a484f3d74314a0875829bdc46",
+        "sha256": "ce4ed6b823e69c08f4d520f34a78ee73cb990e6a484f3d74314a0875829bdc46"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Ingot2.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Ingot2.png",
+        "sourceRawSha256": "282a27d0f164e8b1edbf145aca649476db7de584a9b7c199f1b2b8d104b995e8",
+        "sha256": "282a27d0f164e8b1edbf145aca649476db7de584a9b7c199f1b2b8d104b995e8"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Mag.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Mag.png",
+        "sourceRawSha256": "3fb3e33b5b1fa0d19c8ce396ff5e92e4418670ea204baa436b2be92b491ba0e0",
+        "sha256": "3fb3e33b5b1fa0d19c8ce396ff5e92e4418670ea204baa436b2be92b491ba0e0"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Mass.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Mass.png",
+        "sourceRawSha256": "b5d9455cf4410b9fce30a20c2d082dfd754063d6f72d4a3706650676b0aed415",
+        "sha256": "b5d9455cf4410b9fce30a20c2d082dfd754063d6f72d4a3706650676b0aed415"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/MechPower.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/MechPower.png",
+        "sourceRawSha256": "c5701cc66ec2ca72f8ffe6a35940957db8ee4b655acea2072c0c84a3401a2eec",
+        "sha256": "c5701cc66ec2ca72f8ffe6a35940957db8ee4b655acea2072c0c84a3401a2eec"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Medical.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Medical.png",
+        "sourceRawSha256": "755e9501e34601c9995c8bcbb06efe3d101809d5436dc2c7bb3009353bfae6d4",
+        "sha256": "755e9501e34601c9995c8bcbb06efe3d101809d5436dc2c7bb3009353bfae6d4"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Medicine.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Medicine.png",
+        "sourceRawSha256": "a47d87ba5c38bb3a5bcff97fc46d7dc5b1cc7ad0dc03c1970d07f6a320f28800",
+        "sha256": "a47d87ba5c38bb3a5bcff97fc46d7dc5b1cc7ad0dc03c1970d07f6a320f28800"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Move.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Move.png",
+        "sourceRawSha256": "2bbc706d9fe093b5dbffaedb2743fc010376094d96c94b0597a9dfa6127d26e0",
+        "sha256": "2bbc706d9fe093b5dbffaedb2743fc010376094d96c94b0597a9dfa6127d26e0"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/NoIconRecipe.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/NoIconRecipe.png",
+        "sourceRawSha256": "0d5c63d989685bc716b3bef5af6dca1f43edd7d74630ff53611dedcafcde3d65",
+        "sha256": "0d5c63d989685bc716b3bef5af6dca1f43edd7d74630ff53611dedcafcde3d65"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Nutrition.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Nutrition.png",
+        "sourceRawSha256": "375341bf61d3a4867d4bec30343b0ec8750f569e8e3890dd024889db901138b8",
+        "sha256": "375341bf61d3a4867d4bec30343b0ec8750f569e8e3890dd024889db901138b8"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Pause.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Pause.png",
+        "sourceRawSha256": "4ec31c00541093328a684d2a243ac882296d12ee4dd145d49fab27117e43cdef",
+        "sha256": "4ec31c00541093328a684d2a243ac882296d12ee4dd145d49fab27117e43cdef"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Play.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Play.png",
+        "sourceRawSha256": "91def4335261a9e0ee2579398e2d98f6c08e2ece775c4e799440d66786b193e2",
+        "sha256": "91def4335261a9e0ee2579398e2d98f6c08e2ece775c4e799440d66786b193e2"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Process.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Process.png",
+        "sourceRawSha256": "71b67dc6b6072ac189dde0287d106bb0a5d9030a006c703b503b3aa60dba591c",
+        "sha256": "71b67dc6b6072ac189dde0287d106bb0a5d9030a006c703b503b3aa60dba591c"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ProcessMask.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ProcessMask.png",
+        "sourceRawSha256": "0af76c2145ba75e340465ee5eca5e7b40ac50d298a23a1c1ed5415448c57f8f6",
+        "sha256": "0af76c2145ba75e340465ee5eca5e7b40ac50d298a23a1c1ed5415448c57f8f6"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Range.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Range.png",
+        "sourceRawSha256": "310798628e36b5df6c00f22627c4c9ecf4603ed49e8123148b63e501ae4becef",
+        "sha256": "310798628e36b5df6c00f22627c4c9ecf4603ed49e8123148b63e501ae4becef"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Reload.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Reload.png",
+        "sourceRawSha256": "50793c9a5ea8b964300a6bf39773fae794eb940aedf318ea827a649e29c52f0e",
+        "sha256": "50793c9a5ea8b964300a6bf39773fae794eb940aedf318ea827a649e29c52f0e"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Royal.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Royal.png",
+        "sourceRawSha256": "bd9162dc67476a90a6f2d84db0bd4ca6bad628d882f362245a08835963121330",
+        "sha256": "bd9162dc67476a90a6f2d84db0bd4ca6bad628d882f362245a08835963121330"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Settings.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Settings.png",
+        "sourceRawSha256": "564e4b95a32951153ec96e39311be6fdb8a6889fd83d2afc1bac073cdd62583c",
+        "sha256": "564e4b95a32951153ec96e39311be6fdb8a6889fd83d2afc1bac073cdd62583c"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/ShieldFull.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/ShieldFull.png",
+        "sourceRawSha256": "850c40c3f2b2b72b669c5fd5b2e882b92cdda2d366e794f7bcbd72d3420daf0a",
+        "sha256": "850c40c3f2b2b72b669c5fd5b2e882b92cdda2d366e794f7bcbd72d3420daf0a"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/StoppingPower.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/StoppingPower.png",
+        "sourceRawSha256": "1bc75992aa4db55aec03a8f42ed283fefe5b38332223720b39fe381e25462e4a",
+        "sha256": "1bc75992aa4db55aec03a8f42ed283fefe5b38332223720b39fe381e25462e4a"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Surgery.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Surgery.png",
+        "sourceRawSha256": "ca212409638cfc18e08b6f36e250feea3769b6f1b40728557c85a43d01fb480a",
+        "sha256": "ca212409638cfc18e08b6f36e250feea3769b6f1b40728557c85a43d01fb480a"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Surgery2.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Surgery2.png",
+        "sourceRawSha256": "8ff753800aa973270aceecadf870df0f9e31ef66f6ed104e28678be143e09e35",
+        "sha256": "8ff753800aa973270aceecadf870df0f9e31ef66f6ed104e28678be143e09e35"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/VGradient.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/VGradient.png",
+        "sourceRawSha256": "d1b5b4aecc6798ef67644b11c60b6891a985962e58f213f35562abb5c6f88b2e",
+        "sha256": "d1b5b4aecc6798ef67644b11c60b6891a985962e58f213f35562abb5c6f88b2e"
+      },
+      {
+        "source": "Nice Bill Tab (Фильтр рецептов)/Textures/NiceBillTab/Warm.png",
+        "projectFile": "Components/NiceBillTab/Textures/NiceBillTab/Warm.png",
+        "sourceRawSha256": "6929781a42cb98d4f757f57e2a64e954a62c6ea44cbe965aee678e0902ed291a",
+        "sha256": "6929781a42cb98d4f757f57e2a64e954a62c6ea44cbe965aee678e0902ed291a"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }
