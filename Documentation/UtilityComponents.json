@@ -301,7 +301,8 @@
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/Recipes_Meals.xml",
         "projectFile": "Components/CommonSense/Defs/Recipes_Meals.xml",
         "sourceRawSha256": "d0147908b94321f39bc333ce415fad989db8a1ba216316ae9b37b040896ba52d",
-        "sha256": "f4c5def910661b4e60ff684f938def29fdaf5c226a4496cffe0297473b659597"
+        "sha256": "7964237bfb0ab34b7e22dbb62657b8201b9145a926204e10c2c31231921b5078",
+        "normalizationNote": "Removed one space before tab indentation; parsed XML unchanged."
       },
       {
         "source": "Common Sense (Умные действия колонистов)/1.6/Defs/JoyGivers.xml",
