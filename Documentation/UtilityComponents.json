@@ -79,5 +79,36 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "RealisticRooms": {
+    "packageId": "lucifer.realisticrooms",
+    "files": [
+      {
+        "source": "Realistic Rooms Rewritten (Снижение требований к комнатам)/1.4/Assemblies/RealisticRoomsRewritten.dll",
+        "projectFile": "Components/RealisticRooms/Assemblies/RealisticRoomsRewritten.dll",
+        "sourceRawSha256": "2fd27d7082772ad4d49bae1b03f6b40a1b6e0e3cb133ab378e33ada5ea46fd38",
+        "sha256": "2fd27d7082772ad4d49bae1b03f6b40a1b6e0e3cb133ab378e33ada5ea46fd38"
+      },
+      {
+        "source": "Realistic Rooms Rewritten (Снижение требований к комнатам)/Languages/English/Keyed/settings.xml",
+        "projectFile": "Components/RealisticRooms/Languages/English/Keyed/settings.xml",
+        "sourceRawSha256": "0584bafe693256048b49120aa96f5e45ce720dfad10483a223fe73f1849bf1b6",
+        "sha256": "fc09df77644a240c8eb995142d69c799f512b1e2b4df64b343263a6e458a3172"
+      },
+      {
+        "source": "Realistic Rooms Rewritten (Снижение требований к комнатам)/Patches/Rooms/RoomStats.xml",
+        "projectFile": "Components/RealisticRooms/Patches/Rooms/RoomStats.xml",
+        "sourceRawSha256": "44d907444823f8d63f9343530a6110f3566c77be0221b440211b34fa31d50f65",
+        "sha256": "da9081b227f66933e4b9aae43c0d19bba80a297cdeb2023b3e345545a01d663f"
+      },
+      {
+        "source": "Realistic Rooms Rewritten (Снижение требований к комнатам)/Patches/ThingDefs_Misc/Filth_Various.xml",
+        "projectFile": "Components/RealisticRooms/Patches/ThingDefs_Misc/Filth_Various.xml",
+        "sourceRawSha256": "c0450a5b261cd4e7dcfac5cf9e1c26ab2d7b379b29919c5f0e7a13f648ccc9ee",
+        "sha256": "da371b3bfa4dde79e5253c951c379c0ab4451f1e0fff28ff07a408ad809d2830"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

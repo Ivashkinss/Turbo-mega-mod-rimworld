@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RealisticRoomsSettingsCategoryLabel>Размеры комнат</RealisticRoomsSettingsCategoryLabel>
+  <SettingsLabelTip>Пороги должны идти по возрастанию. Из-за округления в игре рекомендуются значения с дробной частью 0,5.</SettingsLabelTip>
+  <SettingsRTLabel>Тесновато: минимум</SettingsRTLabel>
+  <SettingsASLabel>Средний размер: минимум</SettingsASLabel>
+  <SettingsSSLabel>Просторно: минимум</SettingsSSLabel>
+  <SettingsQSLabel>Очень просторно: минимум</SettingsQSLabel>
+  <SettingsVSLabel>Огромная: минимум</SettingsVSLabel>
+  <SettingsESLabel>Колоссальная: минимум</SettingsESLabel>
+  <SettingsResetButton>Сбросить пороги</SettingsResetButton>
+  <SettingsExtraTweaksLabel>Дополнительные настройки</SettingsExtraTweaksLabel>
+  <SettingsFilthLabel>Снизить штраф к красоте от земли и песка в помещении с −12 до −4</SettingsFilthLabel>
+</LanguageData>

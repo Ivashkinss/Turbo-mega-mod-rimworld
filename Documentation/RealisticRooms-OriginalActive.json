@@ -1,0 +1,32 @@
+{
+  "originalRoomsActive": true,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 1051,
+    "scalarFields": 225,
+    "grammarLines": 45,
+    "displayPatches": 10,
+    "passed": true,
+    "errors": []
+  },
+  "rooms": {
+    "passed": true,
+    "actualDllRegressionReproduced": true,
+    "settingsScribeRoundtrip": true,
+    "sixThresholdsAndBothFilthStatesChecked": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2966,
+    "ticksAdvanced": 1786
+  },
+  "runtimeErrors": 2,
+  "knownExternalRuntimeErrors": 2,
+  "unexpectedRuntimeErrors": 0,
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "passed": true
+}

@@ -2,6 +2,7 @@
 import hashlib
 import json
 import shutil
+import argparse
 from pathlib import Path
 
 from lxml import etree as ET
@@ -24,6 +25,12 @@ COMPONENTS = {
         "Textures/Bubbles/Inner.png": "Textures/Bubbles/Inner.png",
         "Textures/Bubbles/Outer.png": "Textures/Bubbles/Outer.png",
     }),
+    "RealisticRooms": ("Realistic Rooms Rewritten (Снижение требований к комнатам)", "lucifer.realisticrooms", {
+        "1.4/Assemblies/RealisticRoomsRewritten.dll": "Assemblies/RealisticRoomsRewritten.dll",
+        "Languages/English/Keyed/settings.xml": "Languages/English/Keyed/settings.xml",
+        "Patches/Rooms/RoomStats.xml": "Patches/Rooms/RoomStats.xml",
+        "Patches/ThingDefs_Misc/Filth_Various.xml": "Patches/ThingDefs_Misc/Filth_Various.xml",
+    }),
 }
 
 
@@ -33,8 +40,20 @@ def clean_xml(path):
 
 
 def main():
-    report = {}
-    for name, (folder, package_id, files) in COMPONENTS.items():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--component", action="append", choices=COMPONENTS,
+                        help="Import only this component and preserve other manifest entries; repeat as needed.")
+    selected = parser.parse_args().component or list(COMPONENTS)
+    for name in selected:
+        folder, _, files = COMPONENTS[name]
+        for relative in [*files, "About/About.xml"]:
+            original = PROJECT.parent / folder / relative
+            if not original.is_file():
+                raise FileNotFoundError(f"Restore original resources before importing: {original}")
+    manifest = PROJECT / "Documentation/UtilityComponents.json"
+    report = json.loads(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
+    for name in selected:
+        folder, package_id, files = COMPONENTS[name]
         source = PROJECT.parent / folder
         items = []
         for relative, destination in files.items():
@@ -65,7 +84,7 @@ def main():
                 ET.SubElement(tree.find(version), "li", IfModNotActive=package_id).text = f"Components/{name}"
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
-    (PROJECT / "Documentation/UtilityComponents.json").write_text(
+    manifest.write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({name: len(item["files"]) for name, item in report.items()}))
 

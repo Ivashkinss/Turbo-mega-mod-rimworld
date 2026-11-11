@@ -2,13 +2,15 @@
   "components": [
     "SmartSpeed",
     "SmarterConstruction",
-    "InteractionBubbles"
+    "InteractionBubbles",
+    "RealisticRooms"
   ],
-  "resourceHashesVerified": 10,
+  "resourceHashesVerified": 14,
   "russianKeysByComponent": {
     "SmartSpeed": 16,
     "SmarterConstruction": 0,
-    "InteractionBubbles": 31
+    "InteractionBubbles": 31,
+    "RealisticRooms": 11
   },
   "separateHarmonyCopies": 0,
   "standaloneAndOriginalActiveLoadGuardsVerified": true,

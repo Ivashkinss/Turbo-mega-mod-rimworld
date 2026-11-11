@@ -7,6 +7,7 @@
     <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
     <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
     <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
+    <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -15,5 +16,6 @@
     <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
     <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
     <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
+    <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
   </v1.7>
 </loadFolders>
