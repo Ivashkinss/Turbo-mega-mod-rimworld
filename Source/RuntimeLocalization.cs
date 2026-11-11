@@ -46,7 +46,8 @@ namespace TurboMegaMod
                 || name == "CaravanDontRest.AlmostThereMod"
                 || name == "SnapOut.SOMod"
                 || name == "PickUpAndHaul.Modbase"
-                || name == "NiceBillTab.NiceBillTabMod";
+                || name == "NiceBillTab.NiceBillTabMod"
+                || name == "ShowMeYourHands.ShowMeYourHandsMod";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -95,7 +96,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab" && name != "ShowMeYourHands") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

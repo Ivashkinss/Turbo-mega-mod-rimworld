@@ -21,6 +21,7 @@ public static class GpuLoadSaveProbe {
     }
 }
 public sealed class GpuMapProbe : MapComponent {
+    private int dismissedNews;
     private Stopwatch watch;
     private int firstFrame;
     private int firstTick;
@@ -28,13 +29,18 @@ public sealed class GpuMapProbe : MapComponent {
     public GpuMapProbe(Map map) : base(map) { }
     public override void MapComponentUpdate() {
         if (!Environment.GetCommandLineArgs().Contains("-tmm-render-probe") || Find.CurrentMap != map) return;
+        // New embedded historical News entries can pause an isolated quicktest.
+        // Dismiss only the known HugsLib news window, keeping other dialogs visible.
+        foreach (var window in Find.WindowStack.Windows.Where(w => w.GetType().FullName == "HugsLib.News.Dialog_UpdateFeatures").ToList()) {
+            window.Close(false); dismissedNews++;
+        }
         if (watch == null) {
             watch = Stopwatch.StartNew(); firstFrame = Time.frameCount; firstTick = Find.TickManager.TicksGame;
             Log.Message("[TMM GPU repro] Map active: " + map.Size + "; frame " + firstFrame + "; tick " + firstTick);
         }
         if (!reported && watch.Elapsed.TotalSeconds >= 30) {
             reported = true;
-            string report = "{\"mapLoaded\":true,\"observedActiveSeconds\":30,\"framesAdvanced\":" + (Time.frameCount-firstFrame) + ",\"ticksAdvanced\":" + (Find.TickManager.TicksGame-firstTick) + "}";
+            string report = "{\"mapLoaded\":true,\"observedActiveSeconds\":30,\"framesAdvanced\":" + (Time.frameCount-firstFrame) + ",\"ticksAdvanced\":" + (Find.TickManager.TicksGame-firstTick) + ",\"newsWindowsDismissedInTest\":" + dismissedNews + "}";
             File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"GpuMapProbe.json"),report);
             Log.Message("[TMM GPU repro] " + report);
         }

@@ -1308,5 +1308,1194 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "ShowMeYourHands": {
+    "packageId": "mlie.showmeyourhands",
+    "files": [
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Assemblies/ColorMine.dll",
+        "projectFile": "Components/ShowMeYourHands/Assemblies/ColorMine.dll",
+        "sourceRawSha256": "fe56b4bf7cda9f5cdca742e6a005b4c0788b0983b8736229b41ce335e638a905",
+        "sha256": "fe56b4bf7cda9f5cdca742e6a005b4c0788b0983b8736229b41ce335e638a905"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Assemblies/ShowMeYourHands.dll",
+        "projectFile": "Components/ShowMeYourHands/Assemblies/ShowMeYourHands.dll",
+        "sourceRawSha256": "6fac80b6bfab323b9806ed4d96eb4f2abe450caf73e624d726ef16fe326b863b",
+        "sha256": "6fac80b6bfab323b9806ed4d96eb4f2abe450caf73e624d726ef16fe326b863b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Assemblies/VersionFromManifest.dll",
+        "projectFile": "Components/ShowMeYourHands/Assemblies/VersionFromManifest.dll",
+        "sourceRawSha256": "385d0b6d9fc9fe232edd5fc339b05b77df5a7f92fe4ff9c1192bcb094789a4e8",
+        "sha256": "385d0b6d9fc9fe232edd5fc339b05b77df5a7f92fe4ff9c1192bcb094789a4e8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/Anomaly.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/Anomaly.xml",
+        "sourceRawSha256": "94493e28762ab55e74b4f50351909dfb5021b08b8f10919f833b3ee4d5d78246",
+        "sha256": "2aa7ee95af1ed07484d3e029eb1b7781ea4fcdba1244201d813479a633d98098"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/Biotech.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/Biotech.xml",
+        "sourceRawSha256": "960dfa22f74ed8472849c61fc01d714380262fb2385901307f917b28e185acf6",
+        "sha256": "b0bdd752e516420fd2a2cb0d59b172715185f4bf98a82277e894523615533a9d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/Core.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/Core.xml",
+        "sourceRawSha256": "856ca9084a40b53968c3237fcdae8ca7fc4e31ba72e9f2509de3ad93135c0a7e",
+        "sha256": "cf4051de53e7ba544061ceca106893d9c5ce6980d71dbf1d332d33a32d9f2795"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/Odyssey.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/Odyssey.xml",
+        "sourceRawSha256": "90f47f34ff071c483ac7d2e51abe68ac7c04a0a263dea32440a12d841a7b2f96",
+        "sha256": "da16b74d8330aac1496ff904d94a2f4f1140468542feea9bc172db0f394818c0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/OneOff.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/OneOff.xml",
+        "sourceRawSha256": "cce411e068ee98848fc4baf2e08f935346dbe2e780cd5e3d09a80ed35049fccd",
+        "sha256": "0c9419633c385d709db17f2ce6053b2088a8b263912198e6b9ee274241ef0f4b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/HandPositions/Royalty.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/HandPositions/Royalty.xml",
+        "sourceRawSha256": "ff422fa7add92af0efa92fad8464ba4064c320067b01911290d5b22b7b2f073a",
+        "sha256": "a4f4ad9a538b84192e148fc0345b8bfb9a7a0699ffbc93672ba06d44bdf7d4f6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/4ydra.arsenalofreaction.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/4ydra.arsenalofreaction.xml",
+        "sourceRawSha256": "3508cf06b71467fc4f7bf9c7487952adcb65ccf60e1667a9ded1c15ccb46fe87",
+        "sha256": "4f08957d3f284626a00d287440554cab308c2a0430e7df75c1bb2d27d90d0778"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Aoba.Musket.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Aoba.Musket.xml",
+        "sourceRawSha256": "12403bded0212fd62c75426583e989dffd23de891fc85c5abb234667e58027ec",
+        "sha256": "0009f1fdc06d3c94c922aa3706a1a43e2325b4b25df9f925e84a9161b640f822"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Atlas.AndroidTiers.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Atlas.AndroidTiers.xml",
+        "sourceRawSha256": "c34a429fddcef0488f89371504ae9eda87e8521efc1e157129580faf9b2767f2",
+        "sha256": "b7dacd8ffc0b076aa9cf4b34cf3f33bfb6c0e6d3296cef7098ef35a1e384f7c0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/CEGuns.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/CEGuns.xml",
+        "sourceRawSha256": "76de57efcc354a5fdffe558215b9f4ceb0949e3adf5305fb05d6b26295f04224",
+        "sha256": "f65b2e42c2e0af1131d0c4776e80488127732842c4fbd3db02df3d5932ced8a4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/CETeam.CombatExtended.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/CETeam.CombatExtended.xml",
+        "sourceRawSha256": "4b5e0a80b11bf50a926d33bead7179c96f434d60eb0b1ab787960852f97d6037",
+        "sha256": "493a69abad5afe9671b08276a06eca39389214d8b301a94916a5943f27093aa8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/CP.Military.Furniture.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/CP.Military.Furniture.xml",
+        "sourceRawSha256": "cc150f71a188115c5ab6011c820f387dfbad6254fc8276b10a7a5d8833cfa094",
+        "sha256": "53125ddf6c539a5c1eba759de489b1616a05238a9ded874453b879b7387e2c1b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/CP.RimmuNation.Weapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/CP.RimmuNation.Weapons.xml",
+        "sourceRawSha256": "03780e423905ce19d6c82f20690fb6c3b2968f27422a7c0b114e6f132e1fdb3d",
+        "sha256": "9c4b97e54a0b2a8911990767433f113a236800372bfe2b2431a19719221f9c66"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/DankPyon.Medieval.Overhaul.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/DankPyon.Medieval.Overhaul.xml",
+        "sourceRawSha256": "c5ba24fde956c7a3f61c37015094d72c9eef4fba55f6a1a362811a1164d79287",
+        "sha256": "3e000832271a671b5b996262c99c78c39d42611061bfb78a4b5d67a6ab305258"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Eastern.Armory.Geminingen.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Eastern.Armory.Geminingen.xml",
+        "sourceRawSha256": "e4fab78e1a280fce35f30f2b1c9be6ae041d14f5b7ba73bd016d0b34eda1cbc8",
+        "sha256": "ae0899c0134b59fca2e47459204a11942872ed103ea78e28325f5883458cf217"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.DF.Dusk.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.DF.Dusk.xml",
+        "sourceRawSha256": "f64da0718cee51a8722969d37b5a63186f08fa9d522a2a211744b02569e324c3",
+        "sha256": "a5e9d302ebb322d1068371c0b929a3af8bf44540b0fbd8bf75503a820347dbc6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.Chapter1.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.Chapter1.xml",
+        "sourceRawSha256": "ca81279dae0e241a53f5d15769fcad691a7622e1ed90d8dc83f6fd9ee2868981",
+        "sha256": "9dda8f119e9ee2b016a9acacf19d557601bf3fdfb4cb10492dc633f17b3d8f34"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.Chapter2.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.Chapter2.xml",
+        "sourceRawSha256": "63d3aa5455d3ea2403e3be5bf38acc3cadbae8c884ba2844fcda3be7ef5949fe",
+        "sha256": "7a09aa731e4f52ef784a03a0b6f935f3a5740df8b830e1a46c90463f9818e163"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.ColtAnaconda.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.ColtAnaconda.xml",
+        "sourceRawSha256": "f1719c054f84a143740886aba47840380f8a6de646ca78da39db34710135db3f",
+        "sha256": "90163a3c2d401a1c2c715a18caa243db78a7c90cda279a4699fe011bc36037c4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.Community.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.Community.xml",
+        "sourceRawSha256": "58afcae90f86c9d818e491cf9b53b49daabee74064c73500cccd2e1637b84469",
+        "sha256": "bb578fe348fad8d6add3a19d8ebad040c7f643f9cdf5c75c45bc9a15f1c882fb"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.KSGShotgun.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.KSGShotgun.xml",
+        "sourceRawSha256": "4edb601330e6ac6a40d2144c7453c7a1be8a829edd0bf3dbc55f8c6e05fb903a",
+        "sha256": "fa4e4174bbb1ac5fa4c9ee6b8124fdbe28c6a8ae9d77a325b5965b5bc19e9c2e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Harkon.GunNut.M97TrenchGun.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Harkon.GunNut.M97TrenchGun.xml",
+        "sourceRawSha256": "00499df093e87abd8a9b0dd10b5e06428887dec0dbf2c846808b918371f2cc31",
+        "sha256": "7a6506e4b50ca1ba56fb4b2926820377c9de4f5a8d610bbc933d76ff9fd57031"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/JGH.MechanoidBench2.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/JGH.MechanoidBench2.xml",
+        "sourceRawSha256": "e1aa9784fa05921f83d7d28b79fa65ed11a77cffed6664694035705a294fd11c",
+        "sha256": "04d78cd06ad02eea9ead7b93b9441720710abf03cf7194a5b392bdc3094b9a83"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/JangoDsoul.HiggsA.DS.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/JangoDsoul.HiggsA.DS.xml",
+        "sourceRawSha256": "aca657b173753d819b84474b90b0ce0eada411c55df361e19029d4162c7c6ac6",
+        "sha256": "0a828fa7913dea001d076c063737560dd51dff4d954f78f94c59b5ace518a32f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/JangoDsoul.Mechanized.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/JangoDsoul.Mechanized.xml",
+        "sourceRawSha256": "59ca5af81e24a1cae8cb96e87b853a1db9717cda527d690fc66cc7602a9f19c1",
+        "sha256": "e0ac62f0f23b33a5f331f123bb3dffe08b679b17842cfd09ab1d08e4b33c2771"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/JangoDsoul.TierArmor.Civil.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/JangoDsoul.TierArmor.Civil.xml",
+        "sourceRawSha256": "18f78668a15f7c3b4d840808b09f0c66b31d2969a2d28e5d446b5a7c21738883",
+        "sha256": "cc708f72f041704b50870b8c224528d776457b8ca366bd7c2965185b110f6779"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/KIT.VFEWeapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/KIT.VFEWeapons.xml",
+        "sourceRawSha256": "ee0891db8f595914a928f59924b79410a60bc4ba15d3b8124a7a991899c6198c",
+        "sha256": "ce26dce325e6688243d36d3fb88d05656c3cf75b90d03af6724e13219e8fc512"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Kenshi.Armory.Geminingen.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Kenshi.Armory.Geminingen.xml",
+        "sourceRawSha256": "0223b5348fc7bedc56e692658af6d1d3e7b51b1358a3c7f6beacaf2b7c950193",
+        "sha256": "e71e44860e61d77d5eb50ed6b194874ec8bf9a5471a80c5d1b9ae53f1517a601"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/KurtusMob.BosCompendium.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/KurtusMob.BosCompendium.xml",
+        "sourceRawSha256": "45c6b21295a1776105564282c6f4c752d584b3821e14b7f3ed94542b0240cbff",
+        "sha256": "fa5ff21373ed9111535df9fe175cf935a3dcafb8aea9a111048c1218dab7d788"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/LordOfTheRims.Dwarves.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/LordOfTheRims.Dwarves.xml",
+        "sourceRawSha256": "a754869452a30269524a0460cc2e758b9dfc1122ee216ea878465e5526df82a5",
+        "sha256": "a363d5c1c884dbc25d3dace07fbbb3d3a7386212e3b4126536e61a3c60dcbe7e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/LordOfTheRims.Elves.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/LordOfTheRims.Elves.xml",
+        "sourceRawSha256": "d7fabe2eb13412909731624f0894092dc3cd11d49b25bca54ef429c91c0deb6c",
+        "sha256": "f9cef5e4b5105e5022f600efc1d7aa7bd18519d0e17a7f56923f4b1a743cc1bf"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/LordOfTheRims.Hobbits.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/LordOfTheRims.Hobbits.xml",
+        "sourceRawSha256": "a1714060617da400d351ade3f38df5e819ab3abff45cb0985f67a5d18717c122",
+        "sha256": "3d3e0f931a6c6891d295c77883e8bee4c0639472e8a8b02f56d77e9c19acbc8b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.21stCenturyArsenal.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.21stCenturyArsenal.xml",
+        "sourceRawSha256": "706f6570e4099a81016aced03508bbfd22f7e5f46dc8323895606b1469be2e22",
+        "sha256": "b57f2147623f46e302a92b64d8da3be5ba6446dfb66dd845ce37fd899e2a76f5"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.AdaptationRefusal.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.AdaptationRefusal.xml",
+        "sourceRawSha256": "3bfb29116828917baeb1953596660995db0d8ee92cd5fd43ceddb1127ed55b62",
+        "sha256": "c32ee3d051e93c9931529fd523297f58daa7cead84a3c182562bf29be7ee35fd"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.AncientAsianWeapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.AncientAsianWeapons.xml",
+        "sourceRawSha256": "953ba6d8fc87457570ea069519fa00688832e13b001d53f16980fb42f4cc1029",
+        "sha256": "087f7ee4eb75dccaba0f2de9574110aed7c5caed5591f717ff9b40698e345b73"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.AncientRim.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.AncientRim.xml",
+        "sourceRawSha256": "d107e99558def61fad699a68fe16012a7dfdbd14e107c25ab32ca56b1ec5e905",
+        "sha256": "fb5d9c54437d1dfdcc13f22a542ad572f3a423f561fe7aaabfa1046a120951e1"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.ApexRimworldLegends.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.ApexRimworldLegends.xml",
+        "sourceRawSha256": "36c67dbc45443094ff4f240f666558ca709812615479cfcd43032de1dea761dd",
+        "sha256": "3e8d9ffb3d211f9344d5708a1265af8d97cb953e6b76bce2959fdc6ef81d1244"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.ArrowPlease.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.ArrowPlease.xml",
+        "sourceRawSha256": "4de3910148d7ab0c47c47e67ea881525458fbeb99fe1001bcd3c3818c71ac158",
+        "sha256": "30a68fb1083131b86c71c3d2ae86255c09c0db2ebc945bb45555b8e1d422e940"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.AvaliRaceMod.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.AvaliRaceMod.xml",
+        "sourceRawSha256": "457567ed230dec066e92d499a09e17eb49a4e226781beb588927a34da0684129",
+        "sha256": "c3e6acbe6b87b50768e4da13344b7a236f6e138b8fb069d5ad4463e191bc0be4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Blowguns.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Blowguns.xml",
+        "sourceRawSha256": "3317f0199e4a72393eb8fd9d02922bff2798025932c5c7f9ce74a07eaf3afcd1",
+        "sha256": "ab98a5a28878938c592d8cefba7be1d816182fc4a430519fbc999581d6385d39"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Cactaceae.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Cactaceae.xml",
+        "sourceRawSha256": "0217a8509533467592c3b10cde32cbdf1a0ef1ac0adf6a6417bf8781cbf48b85",
+        "sha256": "7e5f6637d58ec523df6458abb621af7c8407b2f15d6f3e486eeb3fefed950e4a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.CallofCthulhuFactionsItemsOnly.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.CallofCthulhuFactionsItemsOnly.xml",
+        "sourceRawSha256": "efd9c1c221f2ab309ddd8a6ffb01fa3d933f458028f67438ff451e62d159ddf5",
+        "sha256": "ed2c7f8fee80b5c839c6ccda364df0fa37c2ec3305ead6920e1041c130cccbc4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.CaridionArsenal.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.CaridionArsenal.xml",
+        "sourceRawSha256": "46aa4825d920ba852165d238df21cd8037f2a9174f6121e459103702498e6067",
+        "sha256": "5074bf7c18d05eae7dc5bfbb451931d30f8f5c4700de170edb43601ad671f61f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.CrusadersFaction.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.CrusadersFaction.xml",
+        "sourceRawSha256": "ed38366cf8a2e17878c07c20127596f3ad7d151627424e1e77acff1d38795dc4",
+        "sha256": "5b74825bd9a88ea23572481ec967bc51fe86ff030542728e85a4371fb3f5ffdc"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.CyberneticWarfare.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.CyberneticWarfare.xml",
+        "sourceRawSha256": "166f4d8b9542316f2ace7fa0c49362d8dfc16389871a7b279d36b55e7fb07916",
+        "sha256": "9ba28f82b449c9a3d5860daee6cf812ffc07622ce4a811909e5e5d8410ee2e8f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.DoomFactions.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.DoomFactions.xml",
+        "sourceRawSha256": "d35824cbb2ee310be96f0148d4608e05c3a1833ece9c69908456153db7c0b444",
+        "sha256": "1aeea924bd7517b9daa3f74c161fc52e667ad01c87e416feab1dbd5bd1dcc97c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Dune.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Dune.xml",
+        "sourceRawSha256": "27e3dfe220d9f07cd68012ad1f38e018f862c6300392fd0cfce108ea3847556c",
+        "sha256": "e66726f541136cd700c746bcf5b8f1bdfd4d6ec811d4b9b6832ccfd89cb913a4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.EMAncientTechnology.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.EMAncientTechnology.xml",
+        "sourceRawSha256": "7a79ffe4740a6a952f5d83adc32298d7f1665c3d66c466bdf5c5c1995ff71d33",
+        "sha256": "3109628c4b66634500f152e6ff31b0ab3106a6eed6b8d5dc7f314aebe869f957"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.FerrexRace.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.FerrexRace.xml",
+        "sourceRawSha256": "675fdc9b0664ca4c896c50eb650649c9178dda8a52df54e456e4810e376f80cb",
+        "sha256": "d4a2a3a36f70a52baa56deb23ffef2bc9b55cafc7cc0e60774685f93ef83fee8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.FilthyOrcInvasion.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.FilthyOrcInvasion.xml",
+        "sourceRawSha256": "0ad6c6692a1587dc53d2a28f40004e77e3174730152fb70bbd180bb00c6a8972",
+        "sha256": "7474bdc7c430994ed4a3fac37c614ba4b04f47cb09c633362dd3f71e3c64da6e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.GerrymonsSombrero.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.GerrymonsSombrero.xml",
+        "sourceRawSha256": "f183d1b5339cb49351d780d936d35e6aa6ea316e69d4cd9a7ea4c6985f853eb1",
+        "sha256": "e022019bbdd23cc2070fc43170b02417524730cf46710916743c5b29d7ed2cac"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.GhostGear.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.GhostGear.xml",
+        "sourceRawSha256": "229b22f2f6c33d38e5e9835c5bcb5ec6d65b100d7b977d80b67629b848a1bc56",
+        "sha256": "3972238dd550f2513fa4c99913d7e6463232e17348b9ee7df5a4501fd6de6815"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Gimmicks.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Gimmicks.xml",
+        "sourceRawSha256": "565d88a96af50be1ef2593dcb8bdfd999ac712b8164fba2240fd4311b9e18c86",
+        "sha256": "8dc29d38fba7956999274f1efd91f99dfcb9e40036dbf4d261490c6a4720d944"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.GonewiththeRimwave.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.GonewiththeRimwave.xml",
+        "sourceRawSha256": "b50404fa4baf7f4dd55aa76ac61be07d52d32bbe856a482f31090752f2bc61c1",
+        "sha256": "027d0a8f1fe167903be8af2f262ab88aaef968c75c5c86a5de03f020065f2c1c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.HaloRimworldPsychicPulseArmory.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.HaloRimworldPsychicPulseArmory.xml",
+        "sourceRawSha256": "608141785df7cc17429ae30733a7cca8938dec11a9f1e48f6a9633291893e268",
+        "sha256": "5f314b3f37b599c8ab062a05741a010029f6ec2863249e4b20a2d2b5d486d6d6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.HarrowedLight.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.HarrowedLight.xml",
+        "sourceRawSha256": "4aed1597b48ed5176a741b234f636df30150427bac60e1cd1c24a836236995c2",
+        "sha256": "82ae6f75d882844c24b87a91641ce3a57e2ff380df3ba3c2f0ebba570f4ad065"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.HumanoidProject.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.HumanoidProject.xml",
+        "sourceRawSha256": "2440d312371944a60f0ee030ba1921338678274132bbb79e210c50d329fd6b39",
+        "sha256": "2297a01917b98874876738fb64bdbe7ae0be4bbef56e97c9e758986607e8cf72"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.InfinityRimAriadna.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.InfinityRimAriadna.xml",
+        "sourceRawSha256": "3e38b66299b57c26df5cd94eaba5981f7226d2fc5258cc9252e2a1d9de9af11c",
+        "sha256": "85bc22f9c86f515479a6153907cac6399fddb86e10fd65c3f66b67f2be25ac6c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.LogannRace.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.LogannRace.xml",
+        "sourceRawSha256": "82b51e8e06d0171d469c2f271224590375180001f08263c6514c1d15ca6169ad",
+        "sha256": "f68b78311409053c6703cfda8312cfffb5d98885a09e38f3bfd3739e09eb6c3d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.LordoftheRimsMenAndBeasts.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.LordoftheRimsMenAndBeasts.xml",
+        "sourceRawSha256": "122618e4bf4d71bf65e180a3335393ed5b876d7f323330decb76a2ca5c79ebce",
+        "sha256": "bcf09fbf7caf9c5e4adcd76158922adebc08acf4c42c15c3ae8a759388e4b6e6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Lysitheans.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Lysitheans.xml",
+        "sourceRawSha256": "0df1fa0488a0f3651c6763a6081bbca1c3c8caf9863cc3acf7d7627cd50102f3",
+        "sha256": "3248b6d76e7466dd3367cb78c45702ba2430f74449fa083e6aed6f7d8fd6ef21"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.MeleePlease.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.MeleePlease.xml",
+        "sourceRawSha256": "397df63dd2a84086d41432c6bf4230591055a3cbaadd40b837d17a5675f45b54",
+        "sha256": "756c744028ca6f21a7b21c380d66c7d9b5c3987c6fd1ef12e7c559211be59189"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.NanotrasenArmory.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.NanotrasenArmory.xml",
+        "sourceRawSha256": "5adec23c6de630bfa4490101d8a77d72a15dc9b1b86fe6928a9a5165a514b5e7",
+        "sha256": "8baf067dcb236a14edee1e7b970092eadc705664b822f02a738c417f7faea76e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Norbals.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Norbals.xml",
+        "sourceRawSha256": "efc48f7e650bbd14f26d244729d6a069d99694646c65981fbec92421de2cf6ab",
+        "sha256": "986c10c55e78635bfaac0bbf7b3aea306da1a97eb5ada2ae480a24ca694f597d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.O21Rimhammer40K.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.O21Rimhammer40K.xml",
+        "sourceRawSha256": "524e4d52d4931d5836f65ab000792c7b24036f898125901882f4a8d0baabf9c5",
+        "sha256": "aa4aac3caae2462df91b86457c12234222b4c71ba5c4c0a7903d557dd386c857"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.OuterRimTatooine.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.OuterRimTatooine.xml",
+        "sourceRawSha256": "40e0e0332cdce95c24cbcd056470516a5713aec8616891c17637b825f436d10b",
+        "sha256": "6967e0413a16fe5fe962b6f73462a48c8491e3f5810e308a1e6c36c178d233e2"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Pirates.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Pirates.xml",
+        "sourceRawSha256": "0a7dbc5555184314cc9d7525126c4c996cf1fc34b04c2ee4193ee2f2a25c8f61",
+        "sha256": "e13928c7ec59596c998737fc6b6a90e1c0473eb74a9e25a7577f5844553c1e68"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.PreTranscended.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.PreTranscended.xml",
+        "sourceRawSha256": "f7c85ac1c706664ff58faacd01e7e20f8dc274c5e21aff58b3f6079f9ee41a1e",
+        "sha256": "52915b6f1984000d588f787009f8a4e67a86227068750cd0e52f34200675b4fa"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.RaccRace.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.RaccRace.xml",
+        "sourceRawSha256": "d310080736925f1d97ea9e52ec4386fc5f395b2782b5d943b2b8b2fa3c7a3993",
+        "sha256": "5960db158804fbf26c7d1bf140dcdb051c0a0f911fc4602a2575b9bd58a458cf"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.RamboWeaponsPack.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.RamboWeaponsPack.xml",
+        "sourceRawSha256": "39193865e6c5fa11248df4113beb7b4a9c4c8f346c33d3e7653543878f9a0119",
+        "sha256": "8379b5497152f95e931cea129884d6c67cfb21ba936bbf4c36451a8d18ae1054"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.RedArmy.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.RedArmy.xml",
+        "sourceRawSha256": "ffe0abdca057dcc049328354ebe980803414058ef3545b251183bb80729d652b",
+        "sha256": "b216fdfa472f261f9cf4099ebd5eac61b309160e9b2d7773cb3057aafa34b44a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.RimGateJaffaKree.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.RimGateJaffaKree.xml",
+        "sourceRawSha256": "6394b60648651cc4d8b4ee91a5565161d7e34d8ac7861fea860a0b90b8273f4c",
+        "sha256": "23de47a8abb959f7b15808db36138887733ad5262efa305999a0aed1e98fb550"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.RimworldWesternizationProject.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.RimworldWesternizationProject.xml",
+        "sourceRawSha256": "0081fe9f214cf1b2847ee28b51f8e8ebb25dd6f9df44de5787ff934335eb31dc",
+        "sha256": "4b072952fada4d653d3530b1b23e4af91499af668390ce08534908254b693b03"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.SOS2SpaceGear.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.SOS2SpaceGear.xml",
+        "sourceRawSha256": "21ceb05b3ede8edc8d4e954b84ae66e9eada7ddcbf5d70522feb3298883d05f8",
+        "sha256": "70dcb1fc011930cc443af64280c7e1fedc2d82465c25fde9cbe2f1b697cdbc02"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.SimpleSlingshot.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.SimpleSlingshot.xml",
+        "sourceRawSha256": "8ac76a233b98c496b8b185d55672853653d9e96af34f8d0b82142f83b92d1dc0",
+        "sha256": "0b5ff0c257193819e7cfab6cf39937fbf868fb63ad8823980e6255d90e217c8d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.SkavenUpgraded.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.SkavenUpgraded.xml",
+        "sourceRawSha256": "640949f9a07c13c611bc3e559cbd996939258297f9d4e0fc7d65de4d28d03b02",
+        "sha256": "304a5e365c9f176ce420b83f93b83f8f1a49e4850f6d984aadb5195f6b7bdd62"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.StarTrekFederation.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.StarTrekFederation.xml",
+        "sourceRawSha256": "75cabb4b34656dddf58ee6127fd8e11d163e676c3cfa4fecd041f324ed98fe6c",
+        "sha256": "74639bcdbe704c3f7cdcbc9c7b00b1621e4b4a83ddbc3da9ad75b454d3d9b78a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.StarshipTroopersWeapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.StarshipTroopersWeapons.xml",
+        "sourceRawSha256": "c8c8260aeebbada67bf89b873834b36e8fa065fff3055000828620425af03280",
+        "sha256": "32635015e9efa6039c8d990e9e77ff7a59e21dc6afe33622cbf5df41114f0e0c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Swords.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Swords.xml",
+        "sourceRawSha256": "5e110ad52a08c9099e26ea532677eb80d6e8ad71c75716a77463239fdcdecb74",
+        "sha256": "0ff51d7cb6ccdc00a4e3448ac0279f93186bb6c57f9329d110178ccd3d4a6337"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.SyndicateClassic.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.SyndicateClassic.xml",
+        "sourceRawSha256": "65dffafa36765d3f2043e005558ed84359726f8d229d28816ce802b935b8679e",
+        "sha256": "d57a5836f7bae548faac25019864c8f3efbd55092392821e324d666a55206aee"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.TacticalChargedGear.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.TacticalChargedGear.xml",
+        "sourceRawSha256": "8786fcff1e25d20de8f86a6a93e54cd089e48d8a1922ae0ba9da93c75ac15db0",
+        "sha256": "a8121ad23aca3778fe40142984989e2423698ee1c4b28c92ef27a1d525b05e98"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.TakisRandomStuff.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.TakisRandomStuff.xml",
+        "sourceRawSha256": "6340316b5371be80485e3074eca0dbdf13419526197c35ddff15d554cae627d0",
+        "sha256": "dcebdc4b79b6fcb829c92be8ae8f4f55ed5accccbcf28dcc5333895df0eb8281"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.TheWitcherTrials.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.TheWitcherTrials.xml",
+        "sourceRawSha256": "e7c3a97154c980dc23c205f1c5c47fd30964de6f0822e5f21fb566e2b2fe61cd",
+        "sha256": "659c23d607533c5dd69c1d916fb9c46d9a6fb90c64ebc5e1e73fec12ea8f4861"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Thingamajigs.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Thingamajigs.xml",
+        "sourceRawSha256": "6f8f723fe4457641a88edde2e21b82d9662c8d5806b40cad09c71b0b1d1f154f",
+        "sha256": "a4536eef20c12df24e97fd1fdd50d3db48c4005f022fc892c7d851826f8a98d0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.ThoriumMod.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.ThoriumMod.xml",
+        "sourceRawSha256": "e498c4fad8a25b28c5312baf4f23970f4d143cb385681defa95825d59a74ae05",
+        "sha256": "b873c0de20d5b968476d32910664d8a5af41593656643e325326d1b0ff60dbc8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.TuskenGearMod.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.TuskenGearMod.xml",
+        "sourceRawSha256": "153f51c66c7c81d54998c6106554651b5f4267c9e40eb3fa0742356697a5bcaf",
+        "sha256": "78ebf80f8fbcfa0fd80d6dd25141b4524a6bc1943cafccd504b8aac215a00b17"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.Westerado.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.Westerado.xml",
+        "sourceRawSha256": "6027cffd584626e1cc6bc4c09e7f7098b8e0fb37cbfe56617008c2ee4f9468cb",
+        "sha256": "35831bd95c772fcd55f4293d91a156c553060c47e5bc799242f96ec12be7e253"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Mlie.XennRace.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Mlie.XennRace.xml",
+        "sourceRawSha256": "870333fc4858db80b11ca1bdf8b993a644516f52c95addc8821226657068a0d5",
+        "sha256": "a6492379a6f90484b1a50620b932f16671fab0f3c0754143d067869236e99c09"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Ogliss.AlienVsPredator.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Ogliss.AlienVsPredator.xml",
+        "sourceRawSha256": "19be56a1a10a21ef3f4f4c9c92b243a7ff9731c3838df1f8c0fc4a51a7956cf8",
+        "sha256": "840fb39993f72329a32da3fce1643aa867cc6010f7b0e0f5c8441c8d6848b630"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/OskarPotocki.VFE.Insectoid.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/OskarPotocki.VFE.Insectoid.xml",
+        "sourceRawSha256": "ed256130c2b176cc43717b79e792b2bd52235fb8658410be731a9b86654decde",
+        "sha256": "c63c5621faef700769d0d402d5b28d6d814b489505b9a67e086bfd54f7fc54da"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/OskarPotocki.VFE.Vikings.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/OskarPotocki.VFE.Vikings.xml",
+        "sourceRawSha256": "d5178ed57733cd2d7ccfad71ebb58e9ec187e76bf21a809580f713227a944fab",
+        "sha256": "9265bc4eb0db916768a8f968bb45ced675f3b5c48ec7b70f6dca2bb06d3cad71"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/OskarPotocki.VanillaFactionsExpanded.MedievalModule.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/OskarPotocki.VanillaFactionsExpanded.MedievalModule.xml",
+        "sourceRawSha256": "52f1dbc3b81c141a545037c5307a9c56bc0dce9c2bceb3d85493d932c09cf903",
+        "sha256": "fb77ec0dbe21bda0064766767a7cd5fbef231b74415642249aaf931f0942c2ef"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/PitchStone.HeavyMeleeWeapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/PitchStone.HeavyMeleeWeapons.xml",
+        "sourceRawSha256": "ff9a2efe21e48a099148cc1640800bb338a067421c383176ea0abaab962719c9",
+        "sha256": "2d627b3bdd59fb2532b9326517f7d5962398a1b675ba8abebe76b54f552eb97c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/PrimitiveProduction.velcroboy333.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/PrimitiveProduction.velcroboy333.xml",
+        "sourceRawSha256": "7763961dbdb2b5be81f071a2b8722df985301c47a12b1d901603fe4dac5b3996",
+        "sha256": "35488ceca70cf8b011c308232ca2e0a1b850f3e7e0e0ea1485428c32c6de2a65"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/PrimitiveTools.velcroboy333.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/PrimitiveTools.velcroboy333.xml",
+        "sourceRawSha256": "c5ed359d49b340ac500e73c419004731ecb21e732504f65629bc92561c7ea14f",
+        "sha256": "ab7b243c8a1bcb9bf26a527ca7b6156607c1b6288078476ccab2187fd57e689d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/ReinforcedMechanoids2.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/ReinforcedMechanoids2.xml",
+        "sourceRawSha256": "40525a449ce027bde0f942af328a768f3ccb482e9b239be8beed0359b6bb227b",
+        "sha256": "1b85e90ceb85387920a07340e33e7fde6b46c5f60d6479b5c15792c4ddfa1e99"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/RimEffect.Core.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/RimEffect.Core.xml",
+        "sourceRawSha256": "a32eb5cae43033d8716334b09674cc2ae096755471b608c94b6290bcc9a3475c",
+        "sha256": "6d97ebee64af62d5a91ea51542e20b6f1ff3a84ca09d2c1387af050f8ad6588f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/RimEffect.ExtendedCut.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/RimEffect.ExtendedCut.xml",
+        "sourceRawSha256": "696f1be4bf5546581ce21a31ba4d582238d04122de96f639906736c5bdf3b48b",
+        "sha256": "fbdee4ebe4da1f1508263551f72a3a5942a909a099abeb8eac5b352b2b57d36c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/RimEffect.N7.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/RimEffect.N7.xml",
+        "sourceRawSha256": "537b101d4909f7e094d044e0ad60317edd180749a17fb984c4e1e7efdd7ca236",
+        "sha256": "b87b5005f09c2cf3421e7f8ceaaf45d3ef23a45d895b7006a76876cc1e1bc362"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Si.ThrumboHornWeapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Si.ThrumboHornWeapons.xml",
+        "sourceRawSha256": "44b6bb5c4e2d814bd1553f01d87916da3b4daaf0ae7395a6b2134de4bf8dffc5",
+        "sha256": "4e12f5531e86da498af7a23320f485f72311e29eb62f005bb4bbe6ef25d02518"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/Simmin.PowerTools.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/Simmin.PowerTools.xml",
+        "sourceRawSha256": "4f2dd51a30d1fbaaf3c3b24f464fe15241d649021096044f3ad132b1a7b027fa",
+        "sha256": "bf9f3440c4ea0b6ff74fda0ddd1b5d21ad786da9167fc5ce34fe5ca7201f12d3"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/SparklingWorldsFullMod.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/SparklingWorldsFullMod.xml",
+        "sourceRawSha256": "028b67da2837276ebe21aac2f0d14e1a1ebccca5cfb93632371222f7255d6177",
+        "sha256": "9d0a9ce462b25e1e3405ff4d279488368f84c82d9d97ef5fe77ca39bb1e27f9a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/TurretCollection.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/TurretCollection.xml",
+        "sourceRawSha256": "89ea725e7ff03327c2265dc842d1128f18b4e703e9f01be3be31b96e93d28a29",
+        "sha256": "7ce5900b237749c742af08c40b26811f2d2cb7cb45721c8c033bfbc5cc5dac43"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/UltratechAlteredCarbon.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/UltratechAlteredCarbon.xml",
+        "sourceRawSha256": "04edf1a20b685e5611209d9ceb420e5619b2dd87c42843f9bec5027b754abbd2",
+        "sha256": "b1a98271a3e8cf8b7cfc6915497a6ac42839b304df7f2d7390891a6099bfc12e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VFEC.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VFEC.xml",
+        "sourceRawSha256": "b36a85dd357d95c2b8817eb25f0baa5cb0dc42880fefeb17d47f89ced9bdd462",
+        "sha256": "bca22f754ddc5929eb2d917c73a526c43dbb75e8bac56a1ea23e8f2da79d1e89"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VFEE.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VFEE.xml",
+        "sourceRawSha256": "3b4124a537159dc18ac2f600c2e60f8213f9326bae5b21b7d8e1df477857e335",
+        "sha256": "4570b023f7ccb3a76b349687ab85bfed99f2873471647b4255c352aed57adeb0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VFEP.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VFEP.xml",
+        "sourceRawSha256": "5f4678ec7d9f06cedf05ab83c68dee96323250e714c15aa701c0f0f9044a3a55",
+        "sha256": "d735e5dbb019f4434ada242ef6c016c1384eaddf1fcf0dde532e09eff425b354"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VFES.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VFES.xml",
+        "sourceRawSha256": "a840cfb06726e642a9ebac6729a9c8e8c4d4578a00792aaee9247d9bcc4ded15",
+        "sha256": "37f0047023414ff021a26faf19f290e2752764e1e0da51e0faf6091b1be4b2b3"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VPE.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VPE.xml",
+        "sourceRawSha256": "03e73987af9e8d0ce9e4e3d070bc929fbb3c142a3f1f562c845263b2d604df0c",
+        "sha256": "0b3b6810439f519d0b37cead3ab6149f94e3471c4c6b653945db5e40a2648e25"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VTE.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VTE.xml",
+        "sourceRawSha256": "b5bca1496d6c31b79b13e37c2a4b8f1e3d0152150816d242a74bf6e59a0cb2ff",
+        "sha256": "ec19a855d8c2cdbfe9b4864c43555c8135b1c06e2f6a972e32d5710670ba6807"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VWEFT.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VWEFT.xml",
+        "sourceRawSha256": "049e7bac4516b4e3be49befd0e5e1a0852bc55ba01301c82a27918c4283b8db0",
+        "sha256": "d1c0fe734e4b02bc16dd3d4ed4fa3443590a230526babb94d367f28c4f44450f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWE.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWE.xml",
+        "sourceRawSha256": "c35d5e11c59014c2b63b54ca0f74dbf9f02b9e6cfc55d1bf5d89f937aaa88d92",
+        "sha256": "67721bacadc60a6447eb3f97602dd3417ff37228880d540cb2a5b47aa2352852"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWEC.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWEC.xml",
+        "sourceRawSha256": "cff65acad5109e915016a72555712d1b3933e0e11e095c26d03b292d8e565972",
+        "sha256": "776b0b66384a50844f68aaa5dc11873aa7541fdebbb8762570fc488f8b89d70f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWEHW.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWEHW.xml",
+        "sourceRawSha256": "bf3f5d15cea46b85dd9ca9fd2d91e401ab0bd79e65aee91a2590b6fd735156b7",
+        "sha256": "18c3685cd4e786eb9e17851ed7cef20bc625f0f924d94b87351ca13c286ebee6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWEL.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWEL.xml",
+        "sourceRawSha256": "cbabeb60e9f545a681fe28dd233e5378ac0d1211500d178d534f989408450996",
+        "sha256": "dba528269eade154e524754a065288fc8d27e35fbc22efd21ae8faf8b731f062"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWEMS.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWEMS.xml",
+        "sourceRawSha256": "cebc74b18d379d364c0afb2be492ee34f27be614efeb19bcdf9363cf821ffde0",
+        "sha256": "36a320cf664cc91d7451b8690a1d57ae3619445e2227d2b481f2c2ab74932235"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWENL.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWENL.xml",
+        "sourceRawSha256": "8f8c7030774727ec6b707fddea53030c29b2e4a32ebfe26521ad9000eb85fc07",
+        "sha256": "fc68e3b1af4b6f4b91280436f7fd80b796916197a40a833e08cfe210ccb24478"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWEQ.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWEQ.xml",
+        "sourceRawSha256": "7bdadf389f65aeaf831d7841d82394c516e1223b9661914412b326b2b79e4ed1",
+        "sha256": "c4ad4a83216ec2bc16e76527b2eb4b84816542dcd024b81d0f85cf48109bd859"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/VanillaExpanded.VWETB.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/VanillaExpanded.VWETB.xml",
+        "sourceRawSha256": "9fa00cc618bd8d796d88e9a923f3f8689be712ac77960da0b047ea6ade602470",
+        "sha256": "852b39a87df85310b409b18c35a9d6ab0ee0acfd8a91decb2026efa5d0569faa"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/XCOMWeapons.velcroboy333.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/XCOMWeapons.velcroboy333.xml",
+        "sourceRawSha256": "c73ead84936cff80082c62f7b51a197f4aed224da1c1f0456f0e5264e0db8101",
+        "sha256": "fc78e6b5df0698598fe860bd46b6ca2287c57744100489f354ec11c15c0c7a77"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/alien.arasakacorporation.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/alien.arasakacorporation.xml",
+        "sourceRawSha256": "77d5eb42aedf02da0487f1cd12c759c386effbad7655730e81f857cc2b01e302",
+        "sha256": "3acc5906e9baf579b3e495aee5ef8e4ea1a02eae843a6ac40fc4143b7c0ca96c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/andery233xj.mod.BattlefieldSupply.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/andery233xj.mod.BattlefieldSupply.xml",
+        "sourceRawSha256": "e39fe7b9557d14212be9d60b3420cec53c2a8f2c7025570213805fc5b46cae04",
+        "sha256": "20a2b30481655733f0d72403db04b6865efff8b7b50fdfa60ef9e4efa64ec9ed"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/atomicravioli.crystalloid.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/atomicravioli.crystalloid.xml",
+        "sourceRawSha256": "47dba361e83d9abed982d620ecc0fc376ec22298f1ef165017b7d97b3a11111d",
+        "sha256": "330c345d67e08806459b0fc381da709723ac2240c60b6338252e5c287defaa10"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/automatic.rimlaser.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/automatic.rimlaser.xml",
+        "sourceRawSha256": "e352aa40f9644bc1de4c813e2d71d8e641c1312c710a2d52931240e254ac3540",
+        "sha256": "4c992d083dfcf9c553f84a62b773791e8cc4561782be1f9fce3e27cd1499bb9f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/baskerville.hellsingarmsultimate.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/baskerville.hellsingarmsultimate.xml",
+        "sourceRawSha256": "7461e2c929ac1530d0224f37eb016eff19f5d191aacaa44422726c6d96c0aa39",
+        "sha256": "56c3b80b4728429515c4579e7078e1592107cd70d0ef3f38a0023fe9c3a4d460"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.americancivilwar.i.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.americancivilwar.i.xml",
+        "sourceRawSha256": "354546a8b005e2909542fe3978329c05f908f20d2d4a70f707418c33c240f9ef",
+        "sha256": "63d1f2e3bbbc6c1348fa308b6ff1e05b1d811f390bf0fdbf22296b7e9c4802b4"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.coldwar.chinavietnam.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.coldwar.chinavietnam.xml",
+        "sourceRawSha256": "716cea1b899d1c7bff1dfc47e88a506cfc2930dae74ee8959abf0fc098502d4b",
+        "sha256": "7ea84754b05a452eddeee1a656862ef9d95ec3ce4506308d0be06e2d09af1473"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.coldwar.germanyaustria.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.coldwar.germanyaustria.xml",
+        "sourceRawSha256": "b0607829f287a8f834cb58a803793ad79dc7d580721d4463ca6ac3e4874e43e0",
+        "sha256": "ce51801d701517eecc97f42b7b21b28f67109ff9edd8f45bcff1b123bc0f62a0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.coldwar.uk.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.coldwar.uk.xml",
+        "sourceRawSha256": "b3de7a48121ab41dbe04445cda4934b0794c21d7f330b54aeb921841534a17f4",
+        "sha256": "78c943cbfd730bb93c75b8bd439c3414c136cbd5fc85554289055489afa92ce1"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.coldwar.usa.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.coldwar.usa.xml",
+        "sourceRawSha256": "c698a1836ec7ce6db8d4dbb81fcf64df46ff665e43ffc6b881ed772cc8df1cd0",
+        "sha256": "1880714d3c937934eaf8582b6d720a8ca69431b4387242354ae351daff85a0fd"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.copsandrobbers.coldwar.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.copsandrobbers.coldwar.xml",
+        "sourceRawSha256": "3fbddc3377786a7ff8ac0fecc560363c917ee683b5f4eb108fff2bb94c860b1a",
+        "sha256": "4a73d43732c872b5b781c4b1547d51db08ea49c1ecae0833fe79f1394d04b994"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.greatwar.centralpowers.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.greatwar.centralpowers.xml",
+        "sourceRawSha256": "18946d87085d865e64e5138f41210a737240e76eedcb280c1c1c29e3a044b2fb",
+        "sha256": "ac928272e8b1bda10bfa180231be40d96f7ce048fc7a14ee3032b98c7d4618a5"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.industrialage.i.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.industrialage.i.xml",
+        "sourceRawSha256": "ffdd974985d76d67fdd89a02d30e988188251203c93df0110c32d3f7e69d36a4",
+        "sha256": "405504bd4546874f4dc3707e474195da1a5a888d3413793c171f2debe4caa1db"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.magnum.i.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.magnum.i.xml",
+        "sourceRawSha256": "993b2013564f48891e476ce1230130005da0748df8e99f3406e3d23ab29e6ca1",
+        "sha256": "0eac06f2a9488965a7c988f84e62cb202e5ce366268b322fc1a0f5e4626d46c5"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.modern.northkorea.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.modern.northkorea.xml",
+        "sourceRawSha256": "de8453ffd657bdf1523d6389ddc66f8dda756e9c2c23b86b3afcecffbf261567",
+        "sha256": "8ce97339ae6b4d53cb6a04934dddf6cc618b93fe046d1ecd368572ad3abeb05e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.x.hexagontactical.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.x.hexagontactical.xml",
+        "sourceRawSha256": "95b8ce51af18a5abf1c41f60d9f77e857af543e447165e7b1198d219dbaa7f9f",
+        "sha256": "5a34e978705c6126020fc72f261122c1dc194709a0b1bb608ff54a3a2fb43efe"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.gunsgalore.x.runningunners.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.gunsgalore.x.runningunners.xml",
+        "sourceRawSha256": "3a1ba2968e61f2d4b6bcc1f384fcac4788f1b13f5e03a260689395eb69e156f5",
+        "sha256": "134ccac3f5c408180438360afda14ea00ed8553d1a2c938ce47d926d1ce6f79d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/cgf1.meleegalore.medieval.i.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/cgf1.meleegalore.medieval.i.xml",
+        "sourceRawSha256": "7774302e399821be8f9c59265120dd1003602a0ba253df2f127a27c1bf0b7c71",
+        "sha256": "bef93c060545e53e32750d32855a0998485974688b9f5791b4fcf24005170cb0"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/dkpepper.chargeloadingleeenfield.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/dkpepper.chargeloadingleeenfield.xml",
+        "sourceRawSha256": "58dcba723dea574aae457570aa768c74b5bf36a98cc5d79b404b1e6c241838ef",
+        "sha256": "9088b22871c87f70f9e750be8ade5d2565124de707c8b5692205645a1ce89f3f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/eccentriceech.foxysarmory2.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/eccentriceech.foxysarmory2.xml",
+        "sourceRawSha256": "410bcfed87ab0625b4e5a5e2c68bb399ffedb8b1541d80d2dc9fcb1763b6c423",
+        "sha256": "9de5d3b4e39688dc87038f76ed9d99dfa6661fbf5bbd7ac178fb46cf2e2eac26"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/eccentricextras.signatureweapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/eccentricextras.signatureweapons.xml",
+        "sourceRawSha256": "b0c8e8406fc834032786a74c5485af6385aee89da9ea332fc8bfb1f4316ceb1d",
+        "sha256": "45e773f9058beb557c515fdf763fca01c820634aa2469f6239e45d51fd20712e"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/eccentrictech.flares2.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/eccentrictech.flares2.xml",
+        "sourceRawSha256": "563dadb742995c941e171b34edd9d5018083cc46ca508d5fc601428c75cfaf77",
+        "sha256": "2795a25dd153d813e767e8c31aa2e93521441145865c0dcb1a7aa24e90d29037"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/hamster.personacryptech.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/hamster.personacryptech.xml",
+        "sourceRawSha256": "86458544f76a98ea1d1393dfebb6497f8bb432fcdfb4cd15c6557721ee530571",
+        "sha256": "b6e1c4966550dc40ab5c3b91c0cb83a2baea749b77cc8b9ef988956936bc957f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/harkon.rimatwar.ww2japaneseweapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/harkon.rimatwar.ww2japaneseweapons.xml",
+        "sourceRawSha256": "65bc44cdeee947c487d4e53452d7141284de1e03a3f3dc4d0172631394b9cfbe",
+        "sha256": "ee061e49c402804276dd33b83c3b2c0b3c356985e9f7cd46ef819247f4a155fd"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/iluvsilicon.dishonoredarmorandweapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/iluvsilicon.dishonoredarmorandweapons.xml",
+        "sourceRawSha256": "91f0d9f28de59b0c49eeca7c44d618c0c913ecd98d588241cd546dede7c2d879",
+        "sha256": "a0fc66fdf523351a14c6a9b79abb51da1a95872b7374cb0122adb143230e7cc3"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/jangodsoul.bot.soldier.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/jangodsoul.bot.soldier.xml",
+        "sourceRawSha256": "f8ef0a83a45d575d3d8b74b6da26c38e953c7a45e711b9d766cc359aea9652b4",
+        "sha256": "2526869e8bbb42c452885cc1ac75a0290bf76625378f813c7c77752177202958"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/jangodsoul.exileddawn.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/jangodsoul.exileddawn.xml",
+        "sourceRawSha256": "0617a9102fe534a262a194e81222fe7b39b4c2db69bea7560560dae072e0b1d6",
+        "sha256": "d6e5d1c8a497f9ccabdaec891befe9ba9aeaa2772639f2598ef9c1c624d47237"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/jangodsoul.theforge.caesarlegionarmory.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/jangodsoul.theforge.caesarlegionarmory.xml",
+        "sourceRawSha256": "5b24d1088a03af23c7137582d9023cbba04a1a6787ab42a2a843d98ddabdf5d7",
+        "sha256": "5e1e52b73afaa2a0e4091eb75e5536254452419da23beb00fc3459ccfc100dee"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/jangodsoul.theforge.ncrarmory.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/jangodsoul.theforge.ncrarmory.xml",
+        "sourceRawSha256": "0dcbb49acc43d1e6c92458beb3a00f69e6d30c480569d013fcfa4751f2989a9b",
+        "sha256": "395b6c7bdf12e15f7007a919d584772a2192216b6c162b29a1f7bb25d43742eb"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/kompadt.warhammer.skaven.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/kompadt.warhammer.skaven.xml",
+        "sourceRawSha256": "6262729f2e41d83dd779bccf4aaa9e436dc0c9cec1146b11da68351e017db8f3",
+        "sha256": "cd6f3937f00da7aca89f07c5336931c48f83982c08f8f52c27b6c62b8cc0e4ad"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/morgante.lotrurukhairacemod.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/morgante.lotrurukhairacemod.xml",
+        "sourceRawSha256": "367f7bc3d1270957a32b0930597ebf2f552c412341d7fd4afe1821bfa1153e65",
+        "sha256": "a15240ebabf5c67cc73891076173c2f03fcff10c6238f2dea83dbb293451849a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/morgante.morgantepostapocalypticweaponspack.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/morgante.morgantepostapocalypticweaponspack.xml",
+        "sourceRawSha256": "e8997ffef80f34985b275798d3183b21a91ea681685d6f3dd692a7a48dd73958",
+        "sha256": "6d765827c1f2ba5f539f31e975cb6d6deee64087b90a4400ae4211e0c2990029"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/nazgul.eisenhanspowerarmor.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/nazgul.eisenhanspowerarmor.xml",
+        "sourceRawSha256": "3ace818894e58cb9aa528328a7dd5590f036991becccd177ca84c644dad610d6",
+        "sha256": "db06a63065a3c0ff76acf68a0ed2e679f9e9817ac03d6cd8c3cbeacc71683f8d"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/ogliss.gearsofwar.lancer.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/ogliss.gearsofwar.lancer.xml",
+        "sourceRawSha256": "c16e18f8acaaed866969453a716063623a2af39519f2993fa2d6392a4d879e11",
+        "sha256": "5b681905dfc9d032fba96b1594daef8437039b6480a2a3bddbac75880b8b8228"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/oskarpotocki.vfe.mechanoid.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/oskarpotocki.vfe.mechanoid.xml",
+        "sourceRawSha256": "c7605580c3b0fcadd8865d4dea2363190e3ae71480831259fc256c4fbfb677d2",
+        "sha256": "10d48169c80837ca3232fbfd3a3a235eaf91ad5457c03c13cadab1d00ae71768"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/projectjedi.factions.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/projectjedi.factions.xml",
+        "sourceRawSha256": "6893b7c69cc9da749bea31d94e9bca03f57c7ed2dab92146033e523d95751dc1",
+        "sha256": "9f12f55886595715fb3a3752ef527d1f8aefcd7807076575349cfcf5489851da"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/projectjedi.lightsabers.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/projectjedi.lightsabers.xml",
+        "sourceRawSha256": "287447346aac363b668e884f41d59ded2841bb64b5439d3cc972634f6f3aa3ff",
+        "sha256": "a7bdc6c9181bdcf740fa18b5527235327b8472329261596a3e5f9b66467899b8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpccrp.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpccrp.xml",
+        "sourceRawSha256": "5b383cc6352eb74d88932a1c1d80b91b5b64bc6572bf6c59c612bde1ef93d23b",
+        "sha256": "acc120f23d969b0758a0f20947aab59dbc22a137054a6e493775d78badec56a9"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpcoa.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpcoa.xml",
+        "sourceRawSha256": "49451862c964f4c217404880cd4ca993453c1c161ec17eafd0390775cfd971bd",
+        "sha256": "cebe42a031d2b7b88f9c9926415a87a37e8cf723ad926cbd85ce766b0b29893b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpcre.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpcre.xml",
+        "sourceRawSha256": "4118ca9963133c44fdef50a575d635f0110a40bd3994caa71d04edfc72da86de",
+        "sha256": "dba06e9f7f89c6545a13bd68a74356358ab96efe4415ec7404e7646d7a39c965"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpdr.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpdr.xml",
+        "sourceRawSha256": "3282b92acb5eb133007c6cfc8e80d5fe2fb027f5b3fdb649ba82330f5a30cbf2",
+        "sha256": "caa479c3ddf347d98069511343cd5bfdff4e6b77b5403f1cbabd3e13fe643573"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvarlmg.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvarlmg.xml",
+        "sourceRawSha256": "a76065d786c3a86802a577e9300cf9fb14d8710e54957ebdf14b0b2e702e4545",
+        "sha256": "24fe926abad0022abde50e5242a0a87a63c25491f596628bca48a4d436176d08"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvheavyweapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvheavyweapons.xml",
+        "sourceRawSha256": "85895657a0ed62bf0ad39f6bf0429b9f4696bc4d92d579d076bf8960a60dc5d8",
+        "sha256": "5cab1fd3b29a84d96607f8d746077d7a7e5bbab263adf2912469cb5a79732f82"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvpsitols.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvpsitols.xml",
+        "sourceRawSha256": "f2b5f16f7ccbf7ca959e643d332d188b49619dd3bec3a590c012420e75324365",
+        "sha256": "945b7ea2662fbf76169838a3028f355591011d58c5ff42ffb8da432d54eeebea"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvrevolvers.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvrevolvers.xml",
+        "sourceRawSha256": "7ef52fa69ce13c3191ea3735fe4e9f4c61254ffe425669e3679438435ec4bf9e",
+        "sha256": "1e3b789264091eb53133914c1d265f9ee7ae94d60f172d38f6da0624d15abc92"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvshotguns.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvshotguns.xml",
+        "sourceRawSha256": "29fa6713c73b33f1ba4d52526085e6dc3bea75100d104607da56d23c49ad07bc",
+        "sha256": "6df22da319f925212c7e6ccc5dd678f00d61fe5bf0ddfa5c68eb65b398c621db"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpfnvsmg.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpfnvsmg.xml",
+        "sourceRawSha256": "9c506d35b68143b30de5bec87161fb56f75f227684c97ce40e1a0552b05413f8",
+        "sha256": "b460104d35f5064e59bc47f0ef8abbada29bccf6d7507cfd0ca685fd3611d50c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpir.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpir.xml",
+        "sourceRawSha256": "c088680c43f582523cb2366dc059b3ce07f376acac88a193c3eefe0ea292ab0a",
+        "sha256": "85d790377e6d01d9e90c7aa08edb29e8fc46b698fcb17df2b59532016e8768fa"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.fcpmmet.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.fcpmmet.xml",
+        "sourceRawSha256": "636d3cb68780851b444ddd2685435234e59954c646d1918805e98e74a6fca2b2",
+        "sha256": "60823433e923cac29793e48d00e46098b9408758ecfd356a8eaf9d1930b9179f"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rick.lunz.fcpmks.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rick.lunz.fcpmks.xml",
+        "sourceRawSha256": "ace98befac687a1b8ae69bc7114c9cb51187bee2a3ab24b110dfc4482682d5a5",
+        "sha256": "fef2fcff407fae823dd3f1137643bc94ed6b711bb83e6868df0b9057c3892331"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rimofmadness.CallofCthulhuCults.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rimofmadness.CallofCthulhuCults.xml",
+        "sourceRawSha256": "08b8880a3aba308845f50697befbe5554da259a28a0527e7bea1e3fd2c7c8fe3",
+        "sha256": "04272422a0394463757666eed0a0d42f1b1be560370ba0cf989a1a74910e4636"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rimofmadness.callofcthulhu.factions.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rimofmadness.callofcthulhu.factions.xml",
+        "sourceRawSha256": "27e7292e9790513df3aa4f8b3d7b63706148ce6c13673b1482b709a06599d4ee",
+        "sha256": "f0c4a8456acc91239a0b01a0adf63077b064cb6d0aa8b771b54203d58fa05942"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rimsenal.EVP.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rimsenal.EVP.xml",
+        "sourceRawSha256": "a31b0e4b3c17aad9f3ac15d23c966f0e0f4bd3d7581024019188a959ce7afe7f",
+        "sha256": "43c9cb0774390f85cd7a4feb38e1db150c5780c4cc358c9b3982eff5ad67ecfe"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rimsenal.feral.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rimsenal.feral.xml",
+        "sourceRawSha256": "3d9ef3f36f5a0416e06d405dc96ff5088614968ce027605f35de79fea83513f3",
+        "sha256": "12579314a91cd2f0b6ab5540f927702f91369ea79016f752d4a07687a2de5c64"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/rust.handmade.weapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/rust.handmade.weapons.xml",
+        "sourceRawSha256": "c38c473351f0723f26a064bb5299aee40a5875127ef5b2afd7bd8052705b8ccd",
+        "sha256": "31ccb5eb3787172409985934a523ddf5e05eee1f81d8a045632424b68f03f066"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/s16.ddm.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/s16.ddm.xml",
+        "sourceRawSha256": "017228bc7501af4555d3ad8e4ae8d66f936dfb889ac40168752a284dc6a895b4",
+        "sha256": "b3ce2d4e09ab7ad7fc04b257483cb86b049dab1874b3ec77f9a0e8a0e8f74936"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/sarg.geneticrim.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/sarg.geneticrim.xml",
+        "sourceRawSha256": "f22b042c00cb430a6269e4d030913c293ff5467cb2847c3fb07daecbeb41d930",
+        "sha256": "b85a2e975d1b521d3c22f69bb865627f4b3d995dcea9e05e4ae00936a13baa19"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/shakesthespeare.RimsecSecurity.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/shakesthespeare.RimsecSecurity.xml",
+        "sourceRawSha256": "23d6bd41b0b554242758b5ded1ef10d6221cc2651063863e17dfff0f9998100a",
+        "sha256": "963fc4414a32029406446f04404fd1d9c369da2bf9642c5a0b76c9e81aed2010"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/spino.megafauna.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/spino.megafauna.xml",
+        "sourceRawSha256": "4b312efcff12eeb25fd5d8c675f5080061f7731e5035541c30626cf90bb7788a",
+        "sha256": "adae4578354249a089457f3ace98f2b490fa0ef4fdeffa4a94b9d9feeaf35432"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/trahspanda.botw.ancientweapons.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/trahspanda.botw.ancientweapons.xml",
+        "sourceRawSha256": "22e28eb4de2257919be5a9c84f8fc9b87f1c12938ccbef0a483886985c7a5e2b",
+        "sha256": "fc5c14534ae78d37101ba95b8bc491a785dfc3752f7297e42b2c01cec00998e2"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/vanillaexpanded.vbrewecandt.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/vanillaexpanded.vbrewecandt.xml",
+        "sourceRawSha256": "39703883eda61dd0eaa5f539826b97fde0728e26d471c5442aad5ae3669391c0",
+        "sha256": "16324ffe1c284812d7cfa5d7ee412e718971fae478adfb6bf69eebad79cee803"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/warbanner.warbanner.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/warbanner.warbanner.xml",
+        "sourceRawSha256": "db2bcce5d2db9d8791c7a23a92f2709cdcf70a659dfada692ac73681a0deb714",
+        "sha256": "69907c5eca30bd70ad983d17e49bd12ea1c275b6259f7c5924183a0c5f12a6be"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/1.6/Defs/Mods/xrushha.animagear.xml",
+        "projectFile": "Components/ShowMeYourHands/Defs/Mods/xrushha.animagear.xml",
+        "sourceRawSha256": "37cccf933d8ece10ec957bae10dff7aa00e1b10bdbf44d9d1ec7e24653d17d76",
+        "sha256": "a14a941c72d77994ed3f6f1c87e7ed53041501871ee7919aaf19b51bccd170e9"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/LICENSE.md",
+        "projectFile": "Components/ShowMeYourHands/LICENSE.md",
+        "sourceRawSha256": "0c853dc417f477e3ce493d3dee8a8f5e482968a3e87c2cdb2977a302bf5f1d1f",
+        "sha256": "e80e4fecbb866e04496b50aa2d526bf2396459d82c10241ba264596afd24e538"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Languages/English/Keyed/Mod_Settings.xml",
+        "projectFile": "Components/ShowMeYourHands/Languages/English/Keyed/Mod_Settings.xml",
+        "sourceRawSha256": "af688f28e25650897246ee24217d4d20c5d7214f5109f579471314bd34ea7c62",
+        "sha256": "9a1fb2d2902e205f41b21a686edafe4f1f059dfaab98535654e795884193047b"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/News/UpdateFeatures.xml",
+        "projectFile": "Components/ShowMeYourHands/News/UpdateFeatures.xml",
+        "sourceRawSha256": "18687a976cd33a6f0b45ec32327a533893a447fd805cb4f26bfb8eda96bd34ab",
+        "sha256": "17fd4606e68db085f5538074967c058290600b80947a8a55d984c8cc6ccea28c"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/News/resize.png",
+        "projectFile": "Components/ShowMeYourHands/News/resize.png",
+        "sourceRawSha256": "b142cf3fbbf9796264067e05f4907469b878deee2ca7df110b6f9255ab3ff3e9",
+        "sha256": "b142cf3fbbf9796264067e05f4907469b878deee2ca7df110b6f9255ab3ff3e9"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/Hand.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/Hand.png",
+        "sourceRawSha256": "510294349511fef84f98b77a9f26868a4bbd2005448de611f9c0715af283f1fd",
+        "sha256": "510294349511fef84f98b77a9f26868a4bbd2005448de611f9c0715af283f1fd"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/HandClean.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/HandClean.png",
+        "sourceRawSha256": "5acbac3aa8dbf7bcf4e58d7e802b4b4c013cffaf566e740ac6c929daf07e7b4a",
+        "sha256": "5acbac3aa8dbf7bcf4e58d7e802b4b4c013cffaf566e740ac6c929daf07e7b4a"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/HandIcon_east.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/HandIcon_east.png",
+        "sourceRawSha256": "b1f3a3053f6a45a6aca90f45e1b80fc22d50a67e16ad1bfdac12688ea8bec7dd",
+        "sha256": "b1f3a3053f6a45a6aca90f45e1b80fc22d50a67e16ad1bfdac12688ea8bec7dd"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/HandIcon_north.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/HandIcon_north.png",
+        "sourceRawSha256": "fcdf922173679cb9226eed46157e770e4f68d6c453ecf27f133f613cf62a25f8",
+        "sha256": "fcdf922173679cb9226eed46157e770e4f68d6c453ecf27f133f613cf62a25f8"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/HandIcon_south.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/HandIcon_south.png",
+        "sourceRawSha256": "368ae4c0fcd0fd56dde6022da9cfe09c0e689a580db5b3042c894a3d4fc1df26",
+        "sha256": "368ae4c0fcd0fd56dde6022da9cfe09c0e689a580db5b3042c894a3d4fc1df26"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/OffHand.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/OffHand.png",
+        "sourceRawSha256": "24bc1acae6cdad32de4bda4b502d290be9bab8f245da4da40ec35f156a257ae6",
+        "sha256": "24bc1acae6cdad32de4bda4b502d290be9bab8f245da4da40ec35f156a257ae6"
+      },
+      {
+        "source": "Show Me Your Hands (Анимация рукоружия)/Textures/OffHandClean.png",
+        "projectFile": "Components/ShowMeYourHands/Textures/OffHandClean.png",
+        "sourceRawSha256": "716b694d7c8aca6ea2434146046f232167e8ded7aa44b5b66d800c199dc29119",
+        "sha256": "716b694d7c8aca6ea2434146046f232167e8ded7aa44b5b66d800c199dc29119"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

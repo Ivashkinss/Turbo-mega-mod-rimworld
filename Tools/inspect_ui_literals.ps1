@@ -19,6 +19,10 @@ function Get-TypeName($handle) {
 function Get-CallName([int]$token) {
     $row = $token -band 16777215
     switch ($token -shr 24) {
+        4 {
+            $definition = $reader.GetFieldDefinition([Reflection.Metadata.Ecma335.MetadataTokens]::FieldDefinitionHandle($row))
+            return (Get-TypeName $definition.GetDeclaringType()) + '::' + $reader.GetString($definition.Name)
+        }
         43 {
             $spec = $reader.GetMethodSpecification([Reflection.Metadata.Ecma335.MetadataTokens]::MethodSpecificationHandle($row))
             return Get-CallName ([Reflection.Metadata.Ecma335.MetadataTokens]::GetToken($spec.Method))
@@ -80,6 +84,8 @@ try {
                 }
                 if ($IncludeInstructions) {
                     $operand = if ($length -eq 4) { [BitConverter]::ToInt32($bytes,$cursor).ToString('X8') } else { '' }
+                    if ($opcode.OperandType -in @('InlineMethod','InlineField')) { $operand = Get-CallName ([BitConverter]::ToInt32($bytes,$cursor)) }
+                    elseif ($opcode.OperandType -eq 'ShortInlineI') { $operand = [string]([int]$bytes[$cursor] - $(if ($bytes[$cursor] -gt 127) {256} else {0})) }
                     $instructions += ($opcode.Name + ' ' + $operand).Trim()
                 }
                 $cursor += $length

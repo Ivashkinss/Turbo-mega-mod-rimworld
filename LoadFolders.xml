@@ -19,6 +19,7 @@
     <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
     <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
+    <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -39,5 +40,6 @@
     <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
     <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
+    <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
   </v1.7>
 </loadFolders>
