@@ -38,6 +38,8 @@ def main():
             assert enabled(selected[0].attrib, set()), (name, "missing when standalone")
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
     for version in ("v1.6", "v1.7"):
+        order = [node.text for node in folders.find(version)]
+        assert order.index('Components/AdaptiveStorage') < order.index('/'), 'Storage types must load before TurboMegaMod.dll'
         for original in (False, True):
             for vehicles in (False, True):
                 ids = ({"duz.almosttherefork"} if original else set()) | ({"smashphil.vehicleframework"} if vehicles else set())

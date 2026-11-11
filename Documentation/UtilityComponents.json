@@ -3238,5 +3238,144 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "AdaptiveStorage": {
+    "packageId": "adaptive.storage.framework",
+    "files": [
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/0MultiplayerAPI.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/0MultiplayerAPI.dll",
+        "sourceRawSha256": "4689e799c50db79411b00ad8855d7df86721bf3cfe1e390b68038b6abcd852ec",
+        "sha256": "4689e799c50db79411b00ad8855d7df86721bf3cfe1e390b68038b6abcd852ec"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/1ITransformable.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/1ITransformable.dll",
+        "sourceRawSha256": "598e25338d988c0e404a1f7afd405542956d3e97b4adcea0c8ba45b102b8573e",
+        "sha256": "598e25338d988c0e404a1f7afd405542956d3e97b4adcea0c8ba45b102b8573e"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/AdaptiveStorageFramework.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/AdaptiveStorageFramework.dll",
+        "sourceRawSha256": "28daa37ade4144cad2b7669edfda2201f9c0e8e99d4639853131e066026935b9",
+        "sha256": "28daa37ade4144cad2b7669edfda2201f9c0e8e99d4639853131e066026935b9"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/CopyOperation.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/CopyOperation.dll",
+        "sourceRawSha256": "d69c3d67eeda7b3e49092491201cefdef5b6f649350171f2553c4ab38a98a620",
+        "sha256": "d69c3d67eeda7b3e49092491201cefdef5b6f649350171f2553c4ab38a98a620"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/DefNameLink.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/DefNameLink.dll",
+        "sourceRawSha256": "50f8fcb40b76a390cea7dcc0e5b207af50029034dffe7458b3e650c90609a6da",
+        "sha256": "50f8fcb40b76a390cea7dcc0e5b207af50029034dffe7458b3e650c90609a6da"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/GeneratorOperation.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/GeneratorOperation.dll",
+        "sourceRawSha256": "206b7907298291b06c12ec685e9c925ff25d13c3e986ab2a6f12efc51de1c379",
+        "sha256": "206b7907298291b06c12ec685e9c925ff25d13c3e986ab2a6f12efc51de1c379"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/GeneratorOperationV2.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/GeneratorOperationV2.dll",
+        "sourceRawSha256": "e35787d0ebd3b2c11289cdd23160a9a9212d6beeef5771293485fab704e33afa",
+        "sha256": "e35787d0ebd3b2c11289cdd23160a9a9212d6beeef5771293485fab704e33afa"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/PatchOperationSet.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/PatchOperationSet.dll",
+        "sourceRawSha256": "5d49be458370c728c8b522306812971289ae7dce643dc4da54d6811862de2401",
+        "sha256": "5d49be458370c728c8b522306812971289ae7dce643dc4da54d6811862de2401"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/PatchOperationTryAdd.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/PatchOperationTryAdd.dll",
+        "sourceRawSha256": "ffda75ce50c939586f6853279ce4e54b359a3778558bbd26dae5cded443fa79c",
+        "sha256": "ffda75ce50c939586f6853279ce4e54b359a3778558bbd26dae5cded443fa79c"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/PostInheritanceOperation.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/PostInheritanceOperation.dll",
+        "sourceRawSha256": "6bafe852ef4987fbc8899d525dc64fca98d2b385eb215da816e31d310b9a04cd",
+        "sha256": "6bafe852ef4987fbc8899d525dc64fca98d2b385eb215da816e31d310b9a04cd"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/1.6/Assemblies/SaveGameCompatibility.dll",
+        "projectFile": "Components/AdaptiveStorage/Assemblies/SaveGameCompatibility.dll",
+        "sourceRawSha256": "eb9dcda01d8a17d5aed3a389bb50b069783f2f6ebe916799bfd28a245c813a98",
+        "sha256": "eb9dcda01d8a17d5aed3a389bb50b069783f2f6ebe916799bfd28a245c813a98"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Defs/ContentLabelStyles.xml",
+        "projectFile": "Components/AdaptiveStorage/Defs/ContentLabelStyles.xml",
+        "sourceRawSha256": "47527191b8d4e97256d7f0f2e813b2d20aed1772bd3908dbcfa1ad51d377f362",
+        "sha256": "61a8990fb2dd22ec77981cbf6858a6dd9b9c981e7ba1865b87ff37518660431f"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Defs/Minified.xml",
+        "projectFile": "Components/AdaptiveStorage/Defs/Minified.xml",
+        "sourceRawSha256": "ca0b977ad4ce7e4b3c5547975bd3106f8e05ac38848b2d587c71febb9e021876",
+        "sha256": "9c879c0c161c63bf5b0dfa1faaeac68b0cca80b60d30697a0e6a3d6108ff6825"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Defs/ThingDefBase.xml",
+        "projectFile": "Components/AdaptiveStorage/Defs/ThingDefBase.xml",
+        "sourceRawSha256": "dece4a55d724f4d1ee23b6f21c531bb4f5ef627ec93e4a4d02c7565fe73a242b",
+        "sha256": "24a2d430d9a4b38dbfe78d73bedaa26b11c10655af1302f2a9a31bab14295035"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Patches/EnhanceFixedStorageSettings.xml",
+        "projectFile": "Components/AdaptiveStorage/Patches/EnhanceFixedStorageSettings.xml",
+        "sourceRawSha256": "c64903c8614f8761989ba0a7865276d189ba565bd4ac473d451b4562a1ddcf2b",
+        "sha256": "677baedb11881b1504273eda36a130ba31c484e6afdc7514c70ed6e1eba7c254"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Patches/DesignationCategoryDef.xml",
+        "projectFile": "Components/AdaptiveStorage/Patches/DesignationCategoryDef.xml",
+        "sourceRawSha256": "987c2cc0ef2f81f01788c28dea7a84f9289cafc0db203bda3bde3faae2b198c0",
+        "sha256": "14309b8b012d94a654445b70c3a383a7d62548997d4bec7568ef747d4a8b0d57"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Patches/AdjustStoredWeaponRotation.xml",
+        "projectFile": "Components/AdaptiveStorage/Patches/AdjustStoredWeaponRotation.xml",
+        "sourceRawSha256": "c6b1e5c17621febd4f017d7ada7ffa4f22782679ecfece42fc98c14a9ef698b3",
+        "sha256": "62c5cb970f498f8d6fc1dd43749f0d170bc4cc12f5e2ddce2864a976411bbf2e"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Patches/AddStuffPropsToChunks.xml",
+        "projectFile": "Components/AdaptiveStorage/Patches/AddStuffPropsToChunks.xml",
+        "sourceRawSha256": "5f7776d029ab9c326fc945a1a283f5b8530f883e13e02e600602e65a6a7b41ce",
+        "sha256": "445a17610b808289d91b7b460355e3d16a6813677621b46ca21f656c9cd828bf"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Languages/English/Keyed/Keys.xml",
+        "projectFile": "Components/AdaptiveStorage/Languages/English/Keyed/Keys.xml",
+        "sourceRawSha256": "dc7f85bca2d8c67902434e17b372513ca82e8eec6d0d9367cf9f7ff7c6170439",
+        "sha256": "9e32f2d86c8800a370727de16a84eeb31783ef770d4da047cedb024f5b36b12f"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Textures/AdaptiveStorageFramework/ModIcon.png",
+        "projectFile": "Components/AdaptiveStorage/Textures/AdaptiveStorageFramework/ModIcon.png",
+        "sourceRawSha256": "486a54b3231bbdfb060e7662557222efe9418e88d1370ee0830881d1fdca3c77",
+        "sha256": "486a54b3231bbdfb060e7662557222efe9418e88d1370ee0830881d1fdca3c77"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/Textures/AdaptiveStorageFramework/ModIcon.dds",
+        "projectFile": "Components/AdaptiveStorage/Textures/AdaptiveStorageFramework/ModIcon.dds",
+        "sourceRawSha256": "732fad61e2fd774e909b4e3050a372069dca8914d82b9ce90beb763aabd0a962",
+        "sha256": "732fad61e2fd774e909b4e3050a372069dca8914d82b9ce90beb763aabd0a962"
+      },
+      {
+        "source": "Adaptive Storage Framework (Библиотека)/LICENSE",
+        "projectFile": "Components/AdaptiveStorage/LICENSE",
+        "sourceRawSha256": "c2f35bfff8d6afe40c93119455bcb6eb3b15f77e71cb31952984157076ec42b2",
+        "sha256": "c2f35bfff8d6afe40c93119455bcb6eb3b15f77e71cb31952984157076ec42b2"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

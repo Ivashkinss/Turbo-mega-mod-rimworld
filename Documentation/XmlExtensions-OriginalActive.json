@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 2960,
-    "ticksAdvanced": 1781,
+    "framesAdvanced": 3959,
+    "ticksAdvanced": 1691,
     "newsWindowsDismissedInTest": 0
   },
   "settingsUi": {
@@ -42,6 +42,7 @@
   },
   "passed": true,
   "relatedWallsAreSolid": {
+    "passed": true,
     "runtime": {
       "passed": true,
       "checks": 14,
@@ -55,7 +56,6 @@
       "xmlExtensionsMenuDrawInvokedInRepaint": true,
       "visualLayoutInspected": false,
       "error": null
-    },
-    "passed": true
+    }
   }
 }

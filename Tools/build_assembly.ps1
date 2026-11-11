@@ -14,7 +14,10 @@ if (!$ManagedPath) {
 if (!(Test-Path -LiteralPath (Join-Path $ManagedPath 'Assembly-CSharp.dll'))) {
     throw 'Supply -ManagedPath with RimWorld 1.6 managed/reference assemblies; see README.md.'
 }
-$frameworkPath = Join-Path $gamePath 'Mods\Adaptive Storage Framework (Библиотека)\1.6\Assemblies'
+$frameworkPath = Join-Path $projectPath 'Components\AdaptiveStorage\Assemblies'
+if (!(Test-Path -LiteralPath (Join-Path $frameworkPath 'AdaptiveStorageFramework.dll'))) {
+    $frameworkPath = Join-Path $gamePath 'Mods\Adaptive Storage Framework (Библиотека)\1.6\Assemblies'
+}
 $compilerPath = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
 $outputPath = Join-Path $projectPath 'Assemblies'
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null

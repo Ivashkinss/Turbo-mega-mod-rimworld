@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Adaptive Storage Framework — Soul, Phaneron, Bradson; packageId adaptive.storage.framework. Сохранены About, MIT LICENSE и SHA-256 22 ресурсов: 11 исходных DLL 1.6 (включая Multiplayer API), три Def, четыре патча, 22 английских ключа и две текстуры. Типы, ключи Scribe и существующий русский перевод сохранены. Компонент загружается до корневой DLL, использующей ItemGraphicWorker, и пропускается при активном оригинале.
+
 - XML Extensions — Imranfish; packageId imranfish.xmlextensions. Сохранены XmlExtensions.About.xml и SHA-256 пяти ресурсов: неизменённая DLL 1.6, MainButtonDefs.xml, English Keyed и две иконки. Переведены 25 ключей и два поля кнопки. Исходные API, XML-операции и пространства настроек не менялись; при активном оригинале встроенная папка пропускается.
 
 - Walls Are Solid — Victor, wilki24; packageId victor.wallsaresolid. Сохранены About и SHA-256 девяти неизменённых ресурсов: DLL, четыре Def и четыре патча 1.6. XML Extensions также встроен. Перевод выполнен отдельным Patches/WallsLocalization.xml через штатные tKey/tKeyTip, сохранив исходные английские подписи, modId и числовые параметры. Переведены 21 строка и два поля определений. Несовместимость aelanna.fistnerf перенесена.

@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid)
+param([Parameter(Mandatory=$true)][ValidateSet('AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'AdaptiveStorage' { @{ folder='Adaptive Storage Framework (Библиотека)'; id='adaptive.storage.framework'; dll='Components\AdaptiveStorage\Assemblies\AdaptiveStorageFramework.dll'; source='InGameAdaptiveStorageProbe.cs'; flag='-tmm-storage-probe'; report='StorageProbe.json'; ui='StorageUiProbe.json'; key='adaptiveStorage'; prefix='Storage' } }
     'XmlExtensions' { @{ folder='XML Extensions (Библиотека)'; id='imranfish.xmlextensions'; dll='Components\XmlExtensions\Assemblies\XmlExtensions.dll'; source='InGameXmlProbe.cs'; flag='-tmm-xml-probe'; report='XmlProbe.json'; ui='XmlUiProbe.json'; key='xmlExtensions'; prefix='XmlExtensions' } }
     'WallsAreSolid' { @{ folder='Walls Are Solid (Усиленные стены)'; id='victor.wallsaresolid'; dll='Components\WallsAreSolid\Assemblies\WallsAreSolid.dll'; source='InGameWallsProbe.cs'; flag='-tmm-walls-probe'; report='WallsProbe.json'; ui='WallsUiProbe.json'; key='walls'; prefix='WallsAreSolid' } }
     'FSharpCore' { @{ folder='FSharp.Core'; id='latta.fsharp.core'; dll='Components\FSharpCore\Assemblies\FSharp.Core.dll'; source='InGameFSharpProbe.cs'; flag='-tmm-fsharp-probe'; report='FSharpProbe.json'; ui='FSharpUiProbe.json'; key='fsharp'; prefix='FSharpCore' } }
@@ -47,7 +48,7 @@ $ids = @('brrainz.harmony','ludeon.rimworld')
 foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) { $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant() }
 }
-$ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation')
+$ids += @('unlimitedhugs.hugslib','co.uk.epicguru.meleeanimation')
 if (!$OriginalActive) { $ids = @($ids | Where-Object { $_ -ne $definition.id }) }
 if ($OriginalActive) { $ids += $definition.id }
 $ids += 'colonyproject.integrated'
@@ -55,10 +56,16 @@ $modsXml = '<ModsConfigData><version>1.7.5000 rev1275</version><activeMods>' + (
 if ($FullSet) {
     $userConfig = Join-Path $env:USERPROFILE 'AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Config'
     [xml]$fullConfig = [IO.File]::ReadAllText((Join-Path $userConfig 'ModsConfig.xml'))
+    # A second PC may still have all retired originals enabled. Test the
+    # integrated configuration before removing anything from its real profile.
+    $integratedManifest = Get-Content -LiteralPath (Join-Path $projectPath 'Documentation\UtilityComponents.json') -Raw | ConvertFrom-Json
+    $integratedIds = @($integratedManifest.PSObject.Properties | ForEach-Object { $_.Value.packageId.ToLowerInvariant() })
     foreach ($node in @($fullConfig.SelectNodes('/ModsConfigData/activeMods/li'))) {
-        if ($node.InnerText.ToLowerInvariant() -eq $definition.id) { $null = $node.ParentNode.RemoveChild($node) }
+        if ($node.InnerText.ToLowerInvariant() -in $integratedIds) { $null = $node.ParentNode.RemoveChild($node) }
     }
     if ('colonyproject.integrated' -notin @($fullConfig.ModsConfigData.activeMods.li)) { throw 'Turbo mega mod must be active in the full-set profile.' }
+    $integratedNode = $fullConfig.SelectSingleNode('/ModsConfigData/activeMods/li[text()="colonyproject.integrated"]')
+    $null = $integratedNode.ParentNode.AppendChild($integratedNode)
     $modsXml = $fullConfig.OuterXml
     foreach ($file in @(Get-ChildItem -LiteralPath $userConfig -File -Filter 'Mod_*.xml')) {
         Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $testRoot ('Config\' + $file.Name))

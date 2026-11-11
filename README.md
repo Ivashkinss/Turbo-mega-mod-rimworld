@@ -4,6 +4,13 @@
 
 ## Что уже включено
 
+Актуально на домашнем ПК: 22 из 28 компонентов. Adaptive Storage Framework теперь встроен: исходные 11 DLL, определения, патчи, текстуры, MIT LICENSE и 22 английских ключа; прежний русский перевод сохранён. Из внешних обязательных библиотек остаются Harmony и HugsLib. Melee Animation пока внешний.
+
+После сверки исходных хешей удалены 20 исходных папок уже встроенных компонентов. Архивы находятся в игнорируемой Tools/Build/Removed*.zip. Отдельный шаг исправил позицию Turbo mega mod после зависимостей; взаимный порядок остальных модов сохранён. Tools/retire_component.ps1 при удалении копирует существующие Mod_<папка оригинала>_<класс>.xml под имя папки проекта только при отсутствии целевого файла, сохраняя исходник. Ранее записанные ниже ограничения миграции описывают старые этапы; другие системы настроек этим копированием не мигрируются.
+
+Adaptive Storage прошёл 78 проверок в Integrated, OriginalActive и FullSet: единственная DLL, правильное происхождение, 26 методов с перехватами, создание всех 34 зданий и их вместимости, регистрация/удаление предметов, Scribe настройки, текстура и перевод. Окно настроек вызвано в Repaint без исключений; визуальная раскладка и пользовательские сохранения не проверялись. Отчёты AdaptiveStorage-*.json.
+
+
 - XML Extensions: исходная DLL 1.6, определения кнопки и две иконки. Переведены 25 ключей и два поля кнопки; сохранены прежние пространства настроек, включая Victor.WallsAreSolid. Оригинальная папка больше не требуется.
 
 - Walls Are Solid: исходные изменения урона сооружениям и разрушительные удары. Сохранены DLL, четыре Def и четыре XML-патча; настройки используют прежний Victor.WallsAreSolid. Добавлены 21 штатный ключ перевода XML Extensions и два поля определений, исходные числовые настройки не менялись. XML Extensions также встроен.
@@ -44,15 +51,15 @@
 - Для анимаций и торговли: 319 исходных ключей Keyed, 137 полей определений, 8 пакетов с 45 строками боевого журнала. Дополнительно переведены 18 строк интерфейса внутри DLL (включая Smart Speed и Interaction Bubbles) и 3 названия режимов смещения тел.
 - На RimWorld 1.7 список участников дружеских поединков Melee Animation собирается в основном потоке перед параллельной обработкой. Это устраняет воспроизведённую ошибку `MapPawns.AssertMainThread`, сохраняя исходные условия участия.
 
-Melee Animation пока остаётся внешним модом с переводом и исправлением совместимости. Dynamic Trade Interface полностью встроен. Сейчас объединены Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface, FSharp.Core, Walls Are Solid и XML Extensions — 21 из 28 запланированных компонентов. Camera+ исключён по просьбе пользователя.
+Melee Animation пока остаётся внешним модом с переводом и исправлением совместимости. Dynamic Trade Interface полностью встроен. Сейчас объединены Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface, FSharp.Core, Walls Are Solid, XML Extensions и Adaptive Storage Framework — 22 из 28 запланированных компонентов. Camera+ исключён по просьбе пользователя.
 
 Дополнительно переведены 16 ключей Smart Speed и 21 строка окна добавления фракций VEF. Код VEF пока остаётся внешним.
 
 ## Установка и порядок
 
-Папка с About/About.xml должна лежать непосредственно в Mods. Для работы нужны Harmony, Adaptive Storage Framework и HugsLib. На 1.7 нужна Harmony с поддержкой .NET 10: проверена версия мода Harmony 3.0.2.0 с библиотекой Harmony 3.0.0-rc.5. Устаревшая Harmony 2.3.6 выдавала `CoreCLR version 10.0.15 is not supported`.
+Папка с About/About.xml должна лежать непосредственно в Mods. Для работы нужны Harmony и HugsLib. Adaptive Storage Framework встроен. На 1.7 нужна Harmony с поддержкой .NET 10: проверена версия мода Harmony 3.0.2.0 с библиотекой Harmony 3.0.0-rc.5. Устаревшая Harmony 2.3.6 выдавала `CoreCLR version 10.0.15 is not supported`.
 
-Оставьте Melee Animation и Dynamic Trade Interface включёнными, чтобы пользоваться их механиками и переводом. Поставьте Turbo mega mod ниже этих компонентов и Adaptive Storage. Dev In Your Language теперь встроен. Исходные Neat Storage и [sbz] Fridge не нужны: их содержимое уже включено. Не включайте их одновременно с Turbo mega mod.
+Оставьте Melee Animation включённым. Поставьте Turbo mega mod после Harmony, HugsLib и Melee Animation. Остальные ещё не встроенные компоненты сохраняйте. Исходные папки 22 встроенных компонентов для запуска не нужны; Neat Storage и Fridge нельзя включать одновременно с Turbo mega mod.
 
 После обновления DLL перезапустите игру. Существующие вручную заданные лимиты отдельных хранилищ сохраняются в сохранении; повышайте их через настройки самой постройки при необходимости.
 

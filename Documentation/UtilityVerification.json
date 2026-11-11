@@ -1,5 +1,6 @@
 {
   "components": [
+    "AdaptiveStorage",
     "XmlExtensions",
     "WallsAreSolid",
     "FSharpCore",
@@ -20,8 +21,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 516,
+  "resourceHashesVerified": 538,
   "russianKeysByComponent": {
+    "AdaptiveStorage": 22,
     "XmlExtensions": 25,
     "WallsAreSolid": 0,
     "FSharpCore": 0,

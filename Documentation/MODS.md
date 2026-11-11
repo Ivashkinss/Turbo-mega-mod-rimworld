@@ -39,7 +39,7 @@
 
 Перечень папок перевода — предварительная инвентаризация, не проверка полноты.
 
-На текущем этапе встроен 21 компонент: Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There! Fork, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface, FSharp.Core, Walls Are Solid и XML Extensions. Для Interaction Bubbles переведены все 31 исходный ключ и три надписи DLL. Для Realistic Rooms переведены 11 ключей и исправлено применение порогов к локализованным категориям; игровые отчёты — RealisticRooms-Integrated.json, RealisticRooms-OriginalActive.json и RealisticRooms-FullSet.json. Остальные строки таблицы описывают первоначальную инвентаризацию.
+На текущем этапе встроены 22 компонента: Adaptive Storage Framework, Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There! Fork, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface, FSharp.Core, Walls Are Solid и XML Extensions. Для Interaction Bubbles переведены все 31 исходный ключ и три надписи DLL. Для Realistic Rooms переведены 11 ключей и исправлено применение порогов к локализованным категориям; игровые отчёты — RealisticRooms-Integrated.json, RealisticRooms-OriginalActive.json и RealisticRooms-FullSet.json. Остальные строки таблицы описывают первоначальную инвентаризацию.
 
 Включено в план: 28. Исключено: 4.
 Отсутствующих обязательных зависимостей по метаданным: 0.

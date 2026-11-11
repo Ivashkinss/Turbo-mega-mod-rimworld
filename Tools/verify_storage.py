@@ -87,14 +87,12 @@ def main():
             match = re.search(r"up to (\d+)", description)
             assert match and int(match[1]) == new[node.findtext("defName")][1], description
 
-    inventory = json.loads((PROJECT / "Documentation/inventory.json").read_text(encoding="utf-8"))
-    asf = next(mod for mod in inventory["mods"] if mod["packageId"] == "adaptive.storage.framework")
-    roots, _ = load_roots(MODS / asf["folder"], {"ludeon.rimworld", "adaptive.storage.framework", "brrainz.harmony"})
+    roots = [PROJECT / "Components/AdaptiveStorage"]
     english, _ = entries([root / "Languages/English" for root in roots if (root / "Languages/English").is_dir()])
     for key, original in english.items():
         assert key in languages, key
         assert Counter(TOKEN.findall(original["text"])) == Counter(TOKEN.findall(languages[key]["text"])), key
-    style_path = MODS / asf["folder"] / "Defs/ContentLabelStyles.xml"
+    style_path = roots[0] / "Defs/ContentLabelStyles.xml"
     for node in ET.parse(str(style_path)).getroot():
         for field in ("label", "description"):
             assert ("DefInjected/AdaptiveStorage.ContentLabelStyleDef", f"{node.findtext('defName')}.{field}") in languages

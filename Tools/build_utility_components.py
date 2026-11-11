@@ -9,6 +9,19 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "AdaptiveStorage": ("Adaptive Storage Framework (Библиотека)", "adaptive.storage.framework", {
+        **{f"1.6/Assemblies/{name}.dll": f"Assemblies/{name}.dll" for name in (
+            "0MultiplayerAPI", "1ITransformable", "AdaptiveStorageFramework", "CopyOperation",
+            "DefNameLink", "GeneratorOperation", "GeneratorOperationV2", "PatchOperationSet",
+            "PatchOperationTryAdd", "PostInheritanceOperation", "SaveGameCompatibility")},
+        **{f"Defs/{name}.xml": f"Defs/{name}.xml" for name in ("ContentLabelStyles", "Minified", "ThingDefBase")},
+        **{f"Patches/{name}.xml": f"Patches/{name}.xml" for name in (
+            "EnhanceFixedStorageSettings", "DesignationCategoryDef", "AdjustStoredWeaponRotation", "AddStuffPropsToChunks")},
+        "Languages/English/Keyed/Keys.xml": "Languages/English/Keyed/Keys.xml",
+        "Textures/AdaptiveStorageFramework/ModIcon.png": "Textures/AdaptiveStorageFramework/ModIcon.png",
+        "Textures/AdaptiveStorageFramework/ModIcon.dds": "Textures/AdaptiveStorageFramework/ModIcon.dds",
+        "LICENSE": "LICENSE",
+    }),
     "XmlExtensions": ("XML Extensions (Библиотека)", "imranfish.xmlextensions", {
         "1.6/Assemblies/XmlExtensions.dll": "Assemblies/XmlExtensions.dll",
         "1.6/Defs/MainButtonDefs.xml": "Defs/MainButtonDefs.xml",
@@ -596,8 +609,17 @@ def main():
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):
         for name, (_, package_id, _) in COMPONENTS.items():
+            if name not in report:
+                continue
             if not tree.xpath(f"/{tree.getroot().tag}/{version}/li[text()='Components/{name}']"):
                 ET.SubElement(tree.find(version), "li", IfModNotActive=package_id).text = f"Components/{name}"
+        # Root TurboMegaMod.dll derives from the framework's ItemGraphicWorker.
+        # Verse validates types as it loads each folder, so this dependency must
+        # precede the root assembly, not merely be present in the same package.
+        if "AdaptiveStorage" in report:
+            node = tree.find(version).find("li[.='Components/AdaptiveStorage']")
+            tree.find(version).remove(node)
+            tree.find(version).insert(0, node)
         for branch, attributes in {
             "Standard": {"IfModNotActive": "duz.almosttherefork,smashphil.vehicleframework"},
             "Vehicles": {"IfModNotActive": "duz.almosttherefork", "IfModActive": "smashphil.vehicleframework"},

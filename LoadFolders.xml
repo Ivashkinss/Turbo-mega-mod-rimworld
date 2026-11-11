@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <loadFolders>
   <v1.6>
+    <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
     <li>/</li>
     <li>Components/NeatStorage</li>
     <li>Components/Fridge</li>
@@ -28,6 +29,7 @@
     <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
   </v1.6>
   <v1.7>
+    <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
     <li>/</li>
     <li>Components/NeatStorage</li>
     <li>Components/Fridge</li>
