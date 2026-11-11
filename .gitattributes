@@ -1,5 +1,3 @@
-* text=auto
-*.png binary
-*.jpg binary
-*.dll binary
-*.exe binary
+# Runtime resources include Unity manifests and framework integrity files.
+# Keep their recorded bytes stable across checkouts on different computers.
+Components/MeleeAnimation/** -text

@@ -28,6 +28,15 @@
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
     <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
     <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation">Components/MeleeAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="nals.facialanimation">Components/MeleeAnimation/Optional/Patch_FacialAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="projectjedi.lightsabers">Components/MeleeAnimation/Optional/Patch_Lightsabers</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="erdelf.humanoidalienraces">Components/MeleeAnimation/Optional/Patch_AlienRaces</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="krkr.rule56">Components/MeleeAnimation/Optional/Patch_CAI5000</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="ceteam.combatextended">Components/MeleeAnimation/Optional/Patch_CombatExtended</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="taranchuk.performanceoptimizer">Components/MeleeAnimation/Optional/Patch_PerformanceOptimizer</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="owlchemist.tacticowl">Components/MeleeAnimation/Optional/Patch_Tacticowl</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="smashphil.vehicleframework">Components/MeleeAnimation/Optional/Patch_Vehicles</li>
   </v1.6>
   <v1.7>
     <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
@@ -57,5 +66,14 @@
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
     <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
     <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation">Components/MeleeAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="nals.facialanimation">Components/MeleeAnimation/Optional/Patch_FacialAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="projectjedi.lightsabers">Components/MeleeAnimation/Optional/Patch_Lightsabers</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="erdelf.humanoidalienraces">Components/MeleeAnimation/Optional/Patch_AlienRaces</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="krkr.rule56">Components/MeleeAnimation/Optional/Patch_CAI5000</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="ceteam.combatextended">Components/MeleeAnimation/Optional/Patch_CombatExtended</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="taranchuk.performanceoptimizer">Components/MeleeAnimation/Optional/Patch_PerformanceOptimizer</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="owlchemist.tacticowl">Components/MeleeAnimation/Optional/Patch_Tacticowl</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="smashphil.vehicleframework">Components/MeleeAnimation/Optional/Patch_Vehicles</li>
   </v1.7>
 </loadFolders>

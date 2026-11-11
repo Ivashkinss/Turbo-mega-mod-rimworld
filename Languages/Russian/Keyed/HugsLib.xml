@@ -42,7 +42,7 @@
   <HugsLib_logs_copy>Скопировать</HugsLib_logs_copy>
   <HugsLib_logs_shareBtn>Опубликовать журнал</HugsLib_logs_shareBtn>
   <HugsLib_logs_shareConfirmTitle>Подтвердить</HugsLib_logs_shareConfirmTitle>
-  <HugsLib_logs_shareConfirmMessage>Опубликовать журнал событий?\n\nЭта операция загрузит журнал событий игры на общедоступный сервер. Это полезно когда нужно решить проблему с игрой с помощью окружающих или сообщить автору мода о неисправности.</HugsLib_logs_shareConfirmMessage>
+  <HugsLib_logs_shareConfirmMessage>Опубликовать журнал событий?\n\nЭта операция загрузит журнал событий игры на общедоступный сервер. Это полезно когда нужно решить проблему с игрой с помощью окружающих или сообщить автору мода о неисправности.\n\nЛичные сведения не передаются.</HugsLib_logs_shareConfirmMessage>
   <HugsLib_logs_publisherTitle>Публикация журнала</HugsLib_logs_publisherTitle>
   <HugsLib_logs_uploading>Загрузка {0}</HugsLib_logs_uploading>
   <HugsLib_logs_shortening>Получение адреса {0}</HugsLib_logs_shortening>

@@ -11,6 +11,7 @@ namespace Verse
     public class ModContentPack { public string PackageId, RootDir; public string Name { get; set; } }
     public static class LoadedModManager { public static readonly List<ModContentPack> RunningModsListForReading = new List<ModContentPack>(); }
     public class Pawn { }
+    public struct PawnDrawParms { public Pawn pawn; public int flags; }
     public class Mod { public Mod(ModContentPack content) { } }
     public static class Log { public static void Message(string message) { } }
     public static class Translator
@@ -70,6 +71,14 @@ namespace AM.AutoDuel
                 foreach (var pawn in EnumeratePossiblePawns()) Count++;
             }
         }
+    }
+}
+namespace AM.Patches
+{
+    public static class Patch_PawnRenderer_RenderPawnAt
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void MakeDrawArgs(object renderer, Verse.Pawn pawn, ref Verse.PawnDrawParms parms) { }
     }
 }
 namespace DynamicTradeInterface.UserInterface.Columns
@@ -205,6 +214,14 @@ public static class RuntimeLocalizationTests
         var serial = new AM.AutoDuel.AutoFriendlyDuelMapComp();
         serial.UpdatePawnsThatCanDuel(false);
         Check(serial.Count == 2, "Serial processing changed");
+        var drawingPawn = new Verse.Pawn();
+        var parms = new Verse.PawnDrawParms { flags = 42 };
+        AM.Patches.Patch_PawnRenderer_RenderPawnAt.MakeDrawArgs(null, drawingPawn, ref parms);
+        Check(parms.pawn == null, "Missing render pawn was not reproduced before patching");
+        TurboMegaMod.MeleeCompatibility.ApplyRenderPatch();
+        AM.Patches.Patch_PawnRenderer_RenderPawnAt.MakeDrawArgs(null, drawingPawn, ref parms);
+        Check(parms.pawn == drawingPawn, "Render pawn identity was not filled");
+        Check(parms.flags == 42, "Other render arguments changed");
         Check(SmartSpeed.SmartSpeed_Mod.SettingsCategory() == "Smart Speed — скорость игры", "Smart Speed title not translated");
         Check(Bubbles.Mod.SettingsCategory() == "Речевые пузыри", "Bubbles settings title not translated");
         Check(Bubbles.Configuration.SettingsEditor.DrawSettings() == " (экспериментально)", "Bubbles suffix not translated");
@@ -212,7 +229,7 @@ public static class RuntimeLocalizationTests
         Check(UnrelatedMod.Display.BubbleTitle() == "Interaction Bubbles", "Bubbles title patch leaked into unrelated mod");
         Check(CaravanDontRest.AlmostThereMod.SettingsCategory() == "Отдых караванов", "Caravan settings title not translated");
         Check(SnapOut.SOMod.Duration() == "{0}: {1:F1} ч", "Snap Out duration label lost formatting or translation");
-        Console.WriteLine("{\"runtimeChecks\":24,\"realHarmony\":true,\"passed\":true}");
+        Console.WriteLine("{\"runtimeChecks\":27,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

@@ -47,10 +47,15 @@ if ($nodes.Count -gt 1) { throw 'Duplicate original packageId in active mods.' }
 Compress-Archive -LiteralPath $originalPath -DestinationPath $archive
 $zip = [IO.Compression.ZipFile]::OpenRead($archive)
 try {
+    $packedFiles = [Collections.Generic.Dictionary[string,object]]::new([StringComparer]::Ordinal)
+    foreach ($packedFile in $zip.Entries) {
+        $key = $packedFile.FullName.Replace('\','/')
+        if ($packedFiles.ContainsKey($key)) { throw ('Duplicate backup path: ' + $key) }
+        $packedFiles.Add($key, $packedFile)
+    }
     foreach ($file in $entry.files) {
-        $packed = @($zip.Entries | Where-Object { $_.FullName.Replace('\','/') -ceq $file.source })
-        if ($packed.Count -ne 1) { throw ('Backup is missing ' + $file.source) }
-        $stream = $packed[0].Open()
+        if (!$packedFiles.ContainsKey($file.source)) { throw ('Backup is missing ' + $file.source) }
+        $stream = $packedFiles[$file.source].Open()
         $sha = [Security.Cryptography.SHA256]::Create()
         try { $hash = [BitConverter]::ToString($sha.ComputeHash($stream)).Replace('-','').ToLowerInvariant() }
         finally { $sha.Dispose(); $stream.Dispose() }

@@ -9,7 +9,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 MODS = PROJECT.parent
 STRING_FIELDS = {"label", "description", "labelNoun", "jobString", "reportString", "headerTip", "tooltip"}
 TARGETS = {
-    "MeleeAnimation": MODS / "Melee Animation (Анимация ближнего боя)",
+    "MeleeAnimation": (PROJECT / "Components/MeleeAnimation" if (PROJECT / "Components/MeleeAnimation").is_dir() else MODS / "Melee Animation (Анимация ближнего боя)"),
     "DynamicTradeInterface": (PROJECT / "Components/DynamicTradeInterface" if (PROJECT / "Components/DynamicTradeInterface").is_dir() else MODS / "Dynamic Trade Interface"),
 }
 INCLUDED_IDS = {mod["packageId"].lower() for mod in json.loads(

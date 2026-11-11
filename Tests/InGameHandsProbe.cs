@@ -67,7 +67,10 @@ public sealed class HandsProbe : MapComponent
             var props = gun.def.comps.Single(c => c.GetType().FullName == "ShowMeYourHands.WhandCompProps");
             Check((Vector3)AccessTools.Field(props.GetType(), "MainHand").GetValue(props) != Vector3.zero && (Vector3)AccessTools.Field(props.GetType(), "SecHand").GetValue(props) != Vector3.zero, "Rifle hand definitions missing"); checks++;
             Type main = AccessTools.TypeByName("ShowMeYourHands.ShowMeYourHandsMain");
-            Check((bool)AccessTools.Field(main, "MeleeAnimationsLoaded").GetValue(null), "Melee Animation integration not detected"); checks++;
+            var effectiveRender = drawer.GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Single(m => m.Name == "DrawHandsOnWeapon" && m.GetParameters().Length == 6);
+            var animationHooks = Harmony.GetPatchInfo(effectiveRender);
+            bool embeddedAnimations = animationHooks != null && animationHooks.Owners.Contains("turbomegamod.melee.resources");
+            Check((bool)AccessTools.Field(main, "MeleeAnimationsLoaded").GetValue(null) || embeddedAnimations, "Melee Animation integration not detected"); checks++;
             var positions = (IDictionary)AccessTools.Field(main, "weaponLocations").GetValue(null);
             Type positionType = positions.GetType().GetGenericArguments()[1]; positions[gun] = Activator.CreateInstance(positionType, new object[] { pawn.DrawPos, 45f });
             render = drawer.GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Single(m => m.Name == "DrawHandsOnWeapon" && m.GetParameters().Length == 6);

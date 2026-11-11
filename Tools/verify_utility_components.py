@@ -24,7 +24,7 @@ def main():
         for item in manifest[name]["files"]:
             path = PROJECT / item["projectFile"]
             data = path.read_bytes()
-            if path.suffix.lower() == ".xml" or path.name in ("LICENSE", "LICENSE.md"):
+            if path.suffix.lower() in (".xml", ".json") or path.name in ("LICENSE", "LICENSE.md"):
                 data = data.replace(b"\r\n", b"\n")
             assert hashlib.sha256(data).hexdigest() == item["sha256"], path
             count += 1
@@ -54,7 +54,7 @@ def main():
         english, _ = entries([PROJECT / "Components" / name / "Languages/English"])
         for key, source in english.items():
             assert key in russian, key
-            check_text(source["text"], russian[key]["text"], str(key))
+            check_text(source["text"].replace("\\n", "\n").strip(), russian[key]["text"].replace("\\n", "\n").strip(), str(key))
             if key == ("Keyed", "Bubbles.OffsetDirections"):
                 assert len(source["text"].split("|")) == len(russian[key]["text"].split("|")) == 4
         translated[name] = len(english)
@@ -102,6 +102,24 @@ def main():
         check_text(node.text.replace('\\n', '\n'), translated_text.replace('\\n', '\n'), node.tag)
         assert re.findall(r'\{[^}]+\}', node.text) == re.findall(r'\{[^}]+\}', translated_text), node.tag
     report['wallSettingsTranslationKeysVerified'] = len(wall_keys)
+    melee_branches = {
+        'Patch_FacialAnimation': 'nals.facialanimation', 'Patch_Lightsabers': 'projectjedi.lightsabers',
+        'Patch_AlienRaces': 'erdelf.humanoidalienraces', 'Patch_CAI5000': 'krkr.rule56',
+        'Patch_CombatExtended': 'ceteam.combatextended', 'Patch_PerformanceOptimizer': 'taranchuk.performanceoptimizer',
+        'Patch_Tacticowl': 'owlchemist.tacticowl', 'Patch_Vehicles': 'smashphil.vehicleframework',
+    }
+    combinations = 0
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            for branch, companion in melee_branches.items():
+                for active in (False, True):
+                    ids = ({'co.uk.epicguru.meleeanimation'} if original else set()) | ({companion} if active else set())
+                    path = 'Components/MeleeAnimation/Optional/' + branch
+                    nodes = folders.xpath(f'/loadFolders/{version}/li[text()="{path}"]')
+                    assert len(nodes) == 1 and enabled(nodes[0].attrib, ids) == (active and not original), (version, branch, ids)
+                    combinations += 1
+    report['meleeOptionalBranchCombinationsChecked'] = combinations
+    report['meleeOptionalCompanionsRuntimeVerified'] = False
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

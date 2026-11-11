@@ -18,7 +18,22 @@ namespace TurboMegaMod
             // that iterator on the calling (map tick) thread.
             if (!typeof(Pawn).Assembly.GetReferencedAssemblies().Any(a => a.Name == "UnityStubs")) return;
             ApplySnapshotPatch();
+            ApplyRenderPatch();
         }
+
+        internal static void ApplyRenderPatch()
+        {
+            var type = AccessTools.TypeByName("AM.Patches.Patch_PawnRenderer_RenderPawnAt");
+            if (type == null) return;
+            var method = AccessTools.Method(type, "MakeDrawArgs");
+            new Harmony("turbomegamod.melee.waylith").Patch(method,
+                prefix: new HarmonyMethod(typeof(MeleeCompatibility), "EnsureDrawPawn"));
+        }
+
+        // The 1.6 renderer sets pawn only for standalone heads. In 1.7 the
+        // body-tattoo worker also reads parms.pawn, including full-body draws.
+        // Fill the identity at the mod's own argument-construction boundary.
+        private static void EnsureDrawPawn(Pawn __1, ref PawnDrawParms __2) { __2.pawn = __1; }
 
         internal static void ApplySnapshotPatch()
         {

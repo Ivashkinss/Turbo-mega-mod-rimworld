@@ -9,6 +9,8 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "MeleeAnimation": ("Melee Animation (Анимация ближнего боя)", "co.uk.epicguru.meleeanimation",
+                      json.loads((PROJECT / "Tools/ComponentFiles/MeleeAnimation.json").read_text(encoding="utf-8"))),
     "HugsLib": ("HugsLib (Библиотека)", "unlimitedhugs.hugslib", {
         "v1.6/Assemblies/HugsLib.dll": "Assemblies/HugsLib.dll",
         "Defs/KeyBindingDefs/KeyBindings.xml": "Defs/KeyBindingDefs/KeyBindings.xml",
@@ -600,10 +602,10 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(original, target)
             source_hash = hashlib.sha256(original.read_bytes()).hexdigest()
-            if target.suffix.lower() == ".xml" or target.name in ("LICENSE", "LICENSE.md"):
+            if target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md"):
                 clean_text(target)
             data = target.read_bytes()
-            if target.suffix.lower() == ".xml" or target.name in ("LICENSE", "LICENSE.md"):
+            if target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md"):
                 data = data.replace(b"\r\n", b"\n")
             items.append({"source": original.relative_to(PROJECT.parent).as_posix(),
                           "projectFile": target.relative_to(PROJECT).as_posix(),
@@ -613,7 +615,7 @@ def main():
         shutil.copyfile(source / "About/About.xml", about)
         clean_text(about)
         report[name] = {"packageId": package_id, "files": items, "bundledHarmonyCopied": False,
-                        "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"}
+                        "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"}
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):
@@ -643,6 +645,16 @@ def main():
         optional = "Components/DynamicTradeInterface/VPE"
         if "DynamicTradeInterface" in report and not tree.xpath(f"/loadFolders/{version}/li[text()='{optional}']"):
             ET.SubElement(tree.find(version), "li", IfModNotActive="zeracronius.dynamictradeinterface", IfModActive="vanillaexpanded.vpsycastse").text = optional
+        if "MeleeAnimation" in report:
+            for branch, package_id in {
+                "Patch_FacialAnimation": "nals.facialanimation", "Patch_Lightsabers": "projectjedi.lightsabers",
+                "Patch_AlienRaces": "erdelf.humanoidalienraces", "Patch_CAI5000": "krkr.rule56",
+                "Patch_CombatExtended": "ceteam.combatextended", "Patch_PerformanceOptimizer": "taranchuk.performanceoptimizer",
+                "Patch_Tacticowl": "owlchemist.tacticowl", "Patch_Vehicles": "smashphil.vehicleframework",
+            }.items():
+                folder = "Components/MeleeAnimation/Optional/" + branch
+                if not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
+                    ET.SubElement(tree.find(version), "li", IfModNotActive="co.uk.epicguru.meleeanimation", IfModActive=package_id).text = folder
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
     manifest.write_text(
