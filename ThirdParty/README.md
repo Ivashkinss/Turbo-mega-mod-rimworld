@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Dev In Your Language — latta, packageId latta.devl10n, проект https://github.com/alattalatta/Monoworld. Перенесены неизменённая DLL 1.6 и семь английских Keyed XML (615 строк); метаданные — DevInYourLanguage.About.xml, SHA-256 — UtilityComponents.json. Ранее исправленный русский перевод остаётся в Languages/Russian/Keyed/DevMenu.xml; повреждённый русский Actions.xml не копируется. Старые DLL 1.1–1.5 не включаются.
+
 - Neat Storage — автор seobongzu, исходный packageId sbz.NeatStorage.
 - [sbz] Fridge — автор seobongzu, исходный packageId sbz.NeatStorageFridge.
 - Smart Speed — автор Sarg, первоначальные авторы AlcoholV и Kartel'; исходный packageId sarg.smartspeed. MIT указан в сохранённых исходных метаданных SmartSpeed.About.xml.

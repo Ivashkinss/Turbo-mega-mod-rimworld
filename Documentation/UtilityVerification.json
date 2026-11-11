@@ -1,13 +1,15 @@
 {
   "components": [
+    "DevInYourLanguage",
     "SmartSpeed",
     "SmarterConstruction",
     "InteractionBubbles",
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 23,
+  "resourceHashesVerified": 31,
   "russianKeysByComponent": {
+    "DevInYourLanguage": 615,
     "SmartSpeed": 16,
     "SmarterConstruction": 0,
     "InteractionBubbles": 31,

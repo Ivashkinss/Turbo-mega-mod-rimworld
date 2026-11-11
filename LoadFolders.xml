@@ -11,6 +11,7 @@
     <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
     <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
     <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
+    <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -23,5 +24,6 @@
     <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
     <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
     <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
+    <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
   </v1.7>
 </loadFolders>

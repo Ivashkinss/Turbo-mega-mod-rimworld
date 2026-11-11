@@ -9,6 +9,11 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "DevInYourLanguage": ("Dev In Your Language", "latta.devl10n", {
+        "1.6/Assemblies/DevInYourLanguage.dll": "Assemblies/DevInYourLanguage.dll",
+        **{f"1.6/Languages/English/Keyed/{name}.xml": f"Languages/English/Keyed/{name}.xml"
+           for name in ("Actions", "Actions_Incidents", "Menu", "Mod", "Settings", "TranslationOutput", "Windows")},
+    }),
     "SmartSpeed": ("Smart Speed (4 скорость)", "sarg.smartspeed", {
         "1.6/Assemblies/SmartSpeed.dll": "Assemblies/SmartSpeed.dll",
         "Languages/English/Keyed/ACSmartSpeedStrings.xml": "Languages/English/Keyed/ACSmartSpeedStrings.xml",

@@ -171,5 +171,60 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "DevInYourLanguage": {
+    "packageId": "latta.devl10n",
+    "files": [
+      {
+        "source": "Dev In Your Language/1.6/Assemblies/DevInYourLanguage.dll",
+        "projectFile": "Components/DevInYourLanguage/Assemblies/DevInYourLanguage.dll",
+        "sourceRawSha256": "c7fd7050ed752eea08cce25b530aaafad2c41dd8fdcadc4a98430aeb6e1c9dc6",
+        "sha256": "c7fd7050ed752eea08cce25b530aaafad2c41dd8fdcadc4a98430aeb6e1c9dc6"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Actions.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Actions.xml",
+        "sourceRawSha256": "5f73a75f0ffec86176b38015af145bc3bd55ed3d56a06ade095d89fdbff8d9a6",
+        "sha256": "7f3cef8449718daf30dd5bdf0ab890391eea7488f4efe5e29f19fed97105d7a9"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Actions_Incidents.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Actions_Incidents.xml",
+        "sourceRawSha256": "00f5e8c699800eb2f07c35682556b17255d0d191a8f346332573ba76b5970fba",
+        "sha256": "38f44d0ee58a16c95c9408d5eb09e67b918a4d27601973ca15d3aa2d2bc0d14a"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Menu.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Menu.xml",
+        "sourceRawSha256": "7dc9bb96c006419cdd01adb71c97a4f9a563e489c7db7e996fbc43bc8e92aa73",
+        "sha256": "f5d4d8cdd33c2d2d89a18bde64e49c6a6d432e7abd2ac4a7d32ef668fed4d970"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Mod.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Mod.xml",
+        "sourceRawSha256": "a8a445ad5d3d99cdea6031ef4ff0ed46bb06cc7a49433c310f368a804466fb72",
+        "sha256": "d73c664af3db7d760846c5f30a63f473a192486141988e02e0af68775d80d99c"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Settings.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Settings.xml",
+        "sourceRawSha256": "9fde66ee3fbe92bd508a95b33da3873694837d144873bb0a4c934dc49085675a",
+        "sha256": "85dde61c5939313a00648e98f3a71d7f29992d01adcb8940b58b3e4e8fbbed60"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/TranslationOutput.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/TranslationOutput.xml",
+        "sourceRawSha256": "590b41ea061cc5becdf8e2c247ea95e8ccb430245440970e0c02b759bf88fea7",
+        "sha256": "72cad087f705cd30292eabcc47c5bc2c2dc5886aae10d3fe048110390e85b627"
+      },
+      {
+        "source": "Dev In Your Language/1.6/Languages/English/Keyed/Windows.xml",
+        "projectFile": "Components/DevInYourLanguage/Languages/English/Keyed/Windows.xml",
+        "sourceRawSha256": "60d7228b93243996d4da07a5a7b948c7d6bc7aadbb173656562f91c510b5d62b",
+        "sha256": "e7480cbac3e9ba672c243f860f354eccdcd56922cecd26f24f0290459c3667af"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

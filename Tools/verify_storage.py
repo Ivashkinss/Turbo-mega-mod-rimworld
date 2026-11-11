@@ -136,7 +136,7 @@ def main():
     assert layout["passed"] and layout["cases"] == 720
     assert layout["sourceSha256"] == hashlib.sha256(
         (PROJECT / "Source/FridgeItemGraphicWorker.cs").read_bytes().replace(b"\r\n", b"\n")).hexdigest()
-    english_dev, _ = entries([MODS / "Dev In Your Language/1.6/Languages/English"])
+    english_dev, _ = entries([PROJECT / "Components/DevInYourLanguage/Languages/English"])
     assert len(english_dev) == 615
     for key, original in english_dev.items():
         assert key in languages, key
@@ -145,7 +145,9 @@ def main():
         assert "[cite:" not in translated, key
     dev_repair = json.loads((PROJECT / "Documentation/DevMenuRepair.json").read_text(encoding="utf-8"))
     for source in dev_repair["sources"]:
-        assert hashlib.sha256((MODS / source["source"]).read_bytes()).hexdigest() == source["sha256"]
+        original = MODS / source["source"]
+        if original.is_file():
+            assert hashlib.sha256(original.read_bytes()).hexdigest() == source["sha256"]
 
     verified_originals = 0
     verified_assets = 0
