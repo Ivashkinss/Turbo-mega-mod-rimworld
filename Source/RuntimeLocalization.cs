@@ -13,6 +13,7 @@ namespace TurboMegaMod
         public TurboMegaMod(ModContentPack content) : base(content)
         {
             MeleeResourceCompatibility.Apply();
+            CharacterEditorCompatibility.Apply();
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
             HugsLibCompatibility.Apply();

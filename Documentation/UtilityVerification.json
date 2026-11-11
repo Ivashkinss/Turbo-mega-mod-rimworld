@@ -1,5 +1,6 @@
 {
   "components": [
+    "CharacterEditor",
     "MeleeAnimation",
     "HugsLib",
     "AdaptiveStorage",
@@ -23,8 +24,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 3770,
+  "resourceHashesVerified": 3851,
   "russianKeysByComponent": {
+    "CharacterEditor": 0,
     "MeleeAnimation": 246,
     "HugsLib": 75,
     "AdaptiveStorage": 22,
@@ -59,5 +61,7 @@
   "tradePsycastsRuntimeVerified": false,
   "wallSettingsTranslationKeysVerified": 21,
   "meleeOptionalBranchCombinationsChecked": 64,
-  "meleeOptionalCompanionsRuntimeVerified": false
+  "meleeOptionalCompanionsRuntimeVerified": false,
+  "characterEditorGradientBranchCombinationsChecked": 8,
+  "characterEditorGradientRuntimeVerified": false
 }

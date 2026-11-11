@@ -120,6 +120,16 @@ def main():
                     combinations += 1
     report['meleeOptionalBranchCombinationsChecked'] = combinations
     report['meleeOptionalCompanionsRuntimeVerified'] = False
+    gradient_combinations = 0
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            for gradients in (False, True):
+                ids = ({'void.charactereditor'} if original else set()) | ({'automatic.gradienthair'} if gradients else set())
+                nodes = folders.xpath(f'/loadFolders/{version}/li[text()="Components/CharacterEditor/Gradients"]')
+                assert len(nodes) == 1 and enabled(nodes[0].attrib, ids) == (gradients and not original)
+                gradient_combinations += 1
+    report['characterEditorGradientBranchCombinationsChecked'] = gradient_combinations
+    report['characterEditorGradientRuntimeVerified'] = False
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

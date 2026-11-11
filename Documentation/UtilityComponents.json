@@ -22783,5 +22783,498 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "CharacterEditor": {
+    "packageId": "void.charactereditor",
+    "files": [
+      {
+        "source": "CharacterEditor/Defs/CharEditor.xml",
+        "projectFile": "Components/CharacterEditor/Defs/CharEditor.xml",
+        "sourceRawSha256": "fa4c9d5bd272c150ee9d4da47cf965b3398537d5cee89f5a985f7e3d327cde59",
+        "sha256": "5cbb670f43fddc772cea7a73a10e3b7a7d869fe6596a468b9b3e903d133239dd"
+      },
+      {
+        "source": "CharacterEditor/Defs/FemaleNames.txt",
+        "projectFile": "Components/CharacterEditor/Defs/FemaleNames.txt",
+        "sourceRawSha256": "a9320ffcbaac1a80f056d6cab87eecf09b9fa913cd6dc0801bc444e7bd95a1fb",
+        "sha256": "a9320ffcbaac1a80f056d6cab87eecf09b9fa913cd6dc0801bc444e7bd95a1fb"
+      },
+      {
+        "source": "CharacterEditor/Defs/MaleNames.txt",
+        "projectFile": "Components/CharacterEditor/Defs/MaleNames.txt",
+        "sourceRawSha256": "6df802ee24b9035b3f63558175a1ecf7c0bda88a6543db28eb9f166e06ddeaba",
+        "sha256": "6df802ee24b9035b3f63558175a1ecf7c0bda88a6543db28eb9f166e06ddeaba"
+      },
+      {
+        "source": "CharacterEditor/Defs/SampleLabelNames.txt",
+        "projectFile": "Components/CharacterEditor/Defs/SampleLabelNames.txt",
+        "sourceRawSha256": "4dfa3f1bd2687a19922b401ca63a14e378e608ea78ec738b97fb0f9164cb3cdb",
+        "sha256": "4dfa3f1bd2687a19922b401ca63a14e378e608ea78ec738b97fb0f9164cb3cdb"
+      },
+      {
+        "source": "CharacterEditor/Textures/balien.png",
+        "projectFile": "Components/CharacterEditor/Textures/balien.png",
+        "sourceRawSha256": "3888c1500fbe6b8f3ac78bfc51714a38b15db59b366ff68a322c1859eeb9a00c",
+        "sha256": "3888c1500fbe6b8f3ac78bfc51714a38b15db59b366ff68a322c1859eeb9a00c"
+      },
+      {
+        "source": "CharacterEditor/Textures/barmory.png",
+        "projectFile": "Components/CharacterEditor/Textures/barmory.png",
+        "sourceRawSha256": "96b066d45f22ef191310c68a34592bc7c62d9aa079573af63c7ba6b23e956b3d",
+        "sha256": "96b066d45f22ef191310c68a34592bc7c62d9aa079573af63c7ba6b23e956b3d"
+      },
+      {
+        "source": "CharacterEditor/Textures/bastronaut1.png",
+        "projectFile": "Components/CharacterEditor/Textures/bastronaut1.png",
+        "sourceRawSha256": "4240e8e1abe428bd5e8b5c733d102060c8e52b2be7067e15101e1ee46e1b40ed",
+        "sha256": "4240e8e1abe428bd5e8b5c733d102060c8e52b2be7067e15101e1ee46e1b40ed"
+      },
+      {
+        "source": "CharacterEditor/Textures/bastronaut1a.png",
+        "projectFile": "Components/CharacterEditor/Textures/bastronaut1a.png",
+        "sourceRawSha256": "38c774e4a288297711b2f11f26fedf2043c31c5a492095fd421f39568fe0ddc0",
+        "sha256": "38c774e4a288297711b2f11f26fedf2043c31c5a492095fd421f39568fe0ddc0"
+      },
+      {
+        "source": "CharacterEditor/Textures/bastronaut2.png",
+        "projectFile": "Components/CharacterEditor/Textures/bastronaut2.png",
+        "sourceRawSha256": "17e264c05b4961fdb94b30e99e1c6afd9f9b727ecf9a48f57bc0920b32823edd",
+        "sha256": "17e264c05b4961fdb94b30e99e1c6afd9f9b727ecf9a48f57bc0920b32823edd"
+      },
+      {
+        "source": "CharacterEditor/Textures/bbackward.png",
+        "projectFile": "Components/CharacterEditor/Textures/bbackward.png",
+        "sourceRawSha256": "cb1348477801519143e7c2b8ddcfdb845576550254976130977268483fda0b84",
+        "sha256": "cb1348477801519143e7c2b8ddcfdb845576550254976130977268483fda0b84"
+      },
+      {
+        "source": "CharacterEditor/Textures/bbodyhelix.png",
+        "projectFile": "Components/CharacterEditor/Textures/bbodyhelix.png",
+        "sourceRawSha256": "2adf9ad70f690d84e18884f9cb3c2aa4137cf63509e99d0e09d22a3fec64129c",
+        "sha256": "2adf9ad70f690d84e18884f9cb3c2aa4137cf63509e99d0e09d22a3fec64129c"
+      },
+      {
+        "source": "CharacterEditor/Textures/bcapsule.png",
+        "projectFile": "Components/CharacterEditor/Textures/bcapsule.png",
+        "sourceRawSha256": "08ec02b67d25dedecf1cd09afa7b0a1c3801891dfb9a46fca3912fa10e75970f",
+        "sha256": "08ec02b67d25dedecf1cd09afa7b0a1c3801891dfb9a46fca3912fa10e75970f"
+      },
+      {
+        "source": "CharacterEditor/Textures/bcapsule_back.png",
+        "projectFile": "Components/CharacterEditor/Textures/bcapsule_back.png",
+        "sourceRawSha256": "d4772b8b738f850e5e84d77553eaf309b9cf7f7b716e99d52c0e79f246f49923",
+        "sha256": "d4772b8b738f850e5e84d77553eaf309b9cf7f7b716e99d52c0e79f246f49923"
+      },
+      {
+        "source": "CharacterEditor/Textures/bclear.png",
+        "projectFile": "Components/CharacterEditor/Textures/bclear.png",
+        "sourceRawSha256": "1ca2b9dd57a9fa1b32911438b4543ab1bd75a23264a4885fe8ee184172e1859d",
+        "sha256": "1ca2b9dd57a9fa1b32911438b4543ab1bd75a23264a4885fe8ee184172e1859d"
+      },
+      {
+        "source": "CharacterEditor/Textures/bclone.png",
+        "projectFile": "Components/CharacterEditor/Textures/bclone.png",
+        "sourceRawSha256": "80e6514851b3b4fee1826b10ede3efd7900b8b8bdbf1ef54f94a915287322fab",
+        "sha256": "80e6514851b3b4fee1826b10ede3efd7900b8b8bdbf1ef54f94a915287322fab"
+      },
+      {
+        "source": "CharacterEditor/Textures/bconfig.png",
+        "projectFile": "Components/CharacterEditor/Textures/bconfig.png",
+        "sourceRawSha256": "ed6d5bd64eb5cd5b6bc5686ff8e5cc95cd1e814e7b30de9b265d72e48d7562c6",
+        "sha256": "ed6d5bd64eb5cd5b6bc5686ff8e5cc95cd1e814e7b30de9b265d72e48d7562c6"
+      },
+      {
+        "source": "CharacterEditor/Textures/bdead.png",
+        "projectFile": "Components/CharacterEditor/Textures/bdead.png",
+        "sourceRawSha256": "d2c1e54b355c0dbbbc3d210536802add2590fe893190d884ff3e06a9a5e862b4",
+        "sha256": "d2c1e54b355c0dbbbc3d210536802add2590fe893190d884ff3e06a9a5e862b4"
+      },
+      {
+        "source": "CharacterEditor/Textures/bdefault.png",
+        "projectFile": "Components/CharacterEditor/Textures/bdefault.png",
+        "sourceRawSha256": "febcb20bc6902e6833945c386de924a7f50ef955e7a56eae34ddf30a7a9af310",
+        "sha256": "febcb20bc6902e6833945c386de924a7f50ef955e7a56eae34ddf30a7a9af310"
+      },
+      {
+        "source": "CharacterEditor/Textures/bdnae.png",
+        "projectFile": "Components/CharacterEditor/Textures/bdnae.png",
+        "sourceRawSha256": "641713b7e11fde243bd66fd5a00f839f562970f708d31f6c8292a2b027109dba",
+        "sha256": "641713b7e11fde243bd66fd5a00f839f562970f708d31f6c8292a2b027109dba"
+      },
+      {
+        "source": "CharacterEditor/Textures/bdnax.png",
+        "projectFile": "Components/CharacterEditor/Textures/bdnax.png",
+        "sourceRawSha256": "02bb2a39b683d78b34b2584f7dec3ca63a8450e67378ce9d13edfaef01b9eb42",
+        "sha256": "02bb2a39b683d78b34b2584f7dec3ca63a8450e67378ce9d13edfaef01b9eb42"
+      },
+      {
+        "source": "CharacterEditor/Textures/beditoricon.png",
+        "projectFile": "Components/CharacterEditor/Textures/beditoricon.png",
+        "sourceRawSha256": "6c5ad2f87270e2011424d0afc59402e88194b6938a0f18bffbbbdbf413bebd41",
+        "sha256": "6c5ad2f87270e2011424d0afc59402e88194b6938a0f18bffbbbdbf413bebd41"
+      },
+      {
+        "source": "CharacterEditor/Textures/bfacial.png",
+        "projectFile": "Components/CharacterEditor/Textures/bfacial.png",
+        "sourceRawSha256": "432ad2e4a14504653b3ba1a27b554571e510fd5ea5b8db4dee2200c6fd342052",
+        "sha256": "432ad2e4a14504653b3ba1a27b554571e510fd5ea5b8db4dee2200c6fd342052"
+      },
+      {
+        "source": "CharacterEditor/Textures/bfavcolor.png",
+        "projectFile": "Components/CharacterEditor/Textures/bfavcolor.png",
+        "sourceRawSha256": "c92cde30808dc8feb5c5025d52d8ecd8e5eec0cb7d0e9ea8abe03afe8f5ebe0a",
+        "sha256": "c92cde30808dc8feb5c5025d52d8ecd8e5eec0cb7d0e9ea8abe03afe8f5ebe0a"
+      },
+      {
+        "source": "CharacterEditor/Textures/bfemale.png",
+        "projectFile": "Components/CharacterEditor/Textures/bfemale.png",
+        "sourceRawSha256": "86e66edcad8f9b8b049d2776b3872c880440785a1e3f46ac5ad70367fb98eb30",
+        "sha256": "86e66edcad8f9b8b049d2776b3872c880440785a1e3f46ac5ad70367fb98eb30"
+      },
+      {
+        "source": "CharacterEditor/Textures/bforward.png",
+        "projectFile": "Components/CharacterEditor/Textures/bforward.png",
+        "sourceRawSha256": "7a0cd98233ba45f2f3a8ce9cf3a6ab8e43ae39e764c733424d3cacf938daa5a8",
+        "sha256": "7a0cd98233ba45f2f3a8ce9cf3a6ab8e43ae39e764c733424d3cacf938daa5a8"
+      },
+      {
+        "source": "CharacterEditor/Textures/bgender.png",
+        "projectFile": "Components/CharacterEditor/Textures/bgender.png",
+        "sourceRawSha256": "1c0585f757746de827b00f3eab41d044047ba1a0d5a3195fc300dd30b75cd011",
+        "sha256": "1c0585f757746de827b00f3eab41d044047ba1a0d5a3195fc300dd30b75cd011"
+      },
+      {
+        "source": "CharacterEditor/Textures/bheadaddon.png",
+        "projectFile": "Components/CharacterEditor/Textures/bheadaddon.png",
+        "sourceRawSha256": "f2087f5f7c86e8847aac0481d55d81887c4ab2ae9ef5f6918da57ec544dc6526",
+        "sha256": "f2087f5f7c86e8847aac0481d55d81887c4ab2ae9ef5f6918da57ec544dc6526"
+      },
+      {
+        "source": "CharacterEditor/Textures/binspire.png",
+        "projectFile": "Components/CharacterEditor/Textures/binspire.png",
+        "sourceRawSha256": "8be2cdd2dbc524922b23f7b85dc1c2e8d507420934a963b7aec6e6e768497930",
+        "sha256": "8be2cdd2dbc524922b23f7b85dc1c2e8d507420934a963b7aec6e6e768497930"
+      },
+      {
+        "source": "CharacterEditor/Textures/bload.png",
+        "projectFile": "Components/CharacterEditor/Textures/bload.png",
+        "sourceRawSha256": "74ab79c087c68a23912466ee1ad2f7e5c91fd09634c3267507d5f5bc47ecbe50",
+        "sha256": "74ab79c087c68a23912466ee1ad2f7e5c91fd09634c3267507d5f5bc47ecbe50"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmale.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmale.png",
+        "sourceRawSha256": "0273f0688fdfe89942c7e6451a237297f1c6a3f9e72206dad9b8b550bf465d79",
+        "sha256": "0273f0688fdfe89942c7e6451a237297f1c6a3f9e72206dad9b8b550bf465d79"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmemory.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmemory.png",
+        "sourceRawSha256": "bdff9ef1ce18cdee695c788c43c220c42804cbb4491eb40874a9e381486c5301",
+        "sha256": "bdff9ef1ce18cdee695c788c43c220c42804cbb4491eb40874a9e381486c5301"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmental.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmental.png",
+        "sourceRawSha256": "2e42448e9f5c28525706ec0e2e4780a2c424f9ecbc01d90253470dabbb0be140",
+        "sha256": "2e42448e9f5c28525706ec0e2e4780a2c424f9ecbc01d90253470dabbb0be140"
+      },
+      {
+        "source": "CharacterEditor/Textures/bminus.png",
+        "projectFile": "Components/CharacterEditor/Textures/bminus.png",
+        "sourceRawSha256": "bef6851f67657ece9420fa7ad642b96e8cd016972fbb1877064daeb564335459",
+        "sha256": "bef6851f67657ece9420fa7ad642b96e8cd016972fbb1877064daeb564335459"
+      },
+      {
+        "source": "CharacterEditor/Textures/bminus2.png",
+        "projectFile": "Components/CharacterEditor/Textures/bminus2.png",
+        "sourceRawSha256": "5a17f9dc1207fc792ebdaefc4f4d9a3a96039c33b73993bb038d3de5b5a68f82",
+        "sha256": "5a17f9dc1207fc792ebdaefc4f4d9a3a96039c33b73993bb038d3de5b5a68f82"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmovedown.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmovedown.png",
+        "sourceRawSha256": "a4da5cf2460e7087b15205b16779fee448cc86b642acf834d5b43e77e5a9d2d4",
+        "sha256": "a4da5cf2460e7087b15205b16779fee448cc86b642acf834d5b43e77e5a9d2d4"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmoveleft.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmoveleft.png",
+        "sourceRawSha256": "d6e209a0c8bdc6efee6ad9197e921a068707d7be0421c0fe165d22c86c06c0b5",
+        "sha256": "d6e209a0c8bdc6efee6ad9197e921a068707d7be0421c0fe165d22c86c06c0b5"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmoveright.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmoveright.png",
+        "sourceRawSha256": "3be04621981cf62bb535ea455deb68c1a0c11f307af100c14a33bff1d17bd1d4",
+        "sha256": "3be04621981cf62bb535ea455deb68c1a0c11f307af100c14a33bff1d17bd1d4"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmoveup.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmoveup.png",
+        "sourceRawSha256": "012666148c8ced5fbe09cfef52dcbc6583d00737f8997d0197837248e7a35bd9",
+        "sha256": "012666148c8ced5fbe09cfef52dcbc6583d00737f8997d0197837248e7a35bd9"
+      },
+      {
+        "source": "CharacterEditor/Textures/bmutant.png",
+        "projectFile": "Components/CharacterEditor/Textures/bmutant.png",
+        "sourceRawSha256": "c480b585321f65d7164b147040c3f5c12b18e9d012e3468f26afd5f65fcc72f2",
+        "sha256": "c480b585321f65d7164b147040c3f5c12b18e9d012e3468f26afd5f65fcc72f2"
+      },
+      {
+        "source": "CharacterEditor/Textures/bnoclothes.png",
+        "projectFile": "Components/CharacterEditor/Textures/bnoclothes.png",
+        "sourceRawSha256": "25676c463b111b86cc7a1711e6b030e5701cc210cbec54ab2c72c26af1d3cf2f",
+        "sha256": "25676c463b111b86cc7a1711e6b030e5701cc210cbec54ab2c72c26af1d3cf2f"
+      },
+      {
+        "source": "CharacterEditor/Textures/bnohats.png",
+        "projectFile": "Components/CharacterEditor/Textures/bnohats.png",
+        "sourceRawSha256": "55d368132b85b5a6636def9ba2d548b233513c289b8825dd11723d6fdd94d2aa",
+        "sha256": "55d368132b85b5a6636def9ba2d548b233513c289b8825dd11723d6fdd94d2aa"
+      },
+      {
+        "source": "CharacterEditor/Textures/bnone.png",
+        "projectFile": "Components/CharacterEditor/Textures/bnone.png",
+        "sourceRawSha256": "d52e86f17f1c6d4f323cfba8defb96e0bac6bdf5d467a2ee543fa725aa26b598",
+        "sha256": "d52e86f17f1c6d4f323cfba8defb96e0bac6bdf5d467a2ee543fa725aa26b598"
+      },
+      {
+        "source": "CharacterEditor/Textures/bpfeil.png",
+        "projectFile": "Components/CharacterEditor/Textures/bpfeil.png",
+        "sourceRawSha256": "0e3ffbf2e36f768c2f178aa5bd20a40783c65ef7540034a14d399ffbebdc6359",
+        "sha256": "0e3ffbf2e36f768c2f178aa5bd20a40783c65ef7540034a14d399ffbebdc6359"
+      },
+      {
+        "source": "CharacterEditor/Textures/bplus2.png",
+        "projectFile": "Components/CharacterEditor/Textures/bplus2.png",
+        "sourceRawSha256": "1b539ecb2a965a6378532206290a08451610c474a3050439e87f331f6cb8135c",
+        "sha256": "1b539ecb2a965a6378532206290a08451610c474a3050439e87f331f6cb8135c"
+      },
+      {
+        "source": "CharacterEditor/Textures/bpsychology.png",
+        "projectFile": "Components/CharacterEditor/Textures/bpsychology.png",
+        "sourceRawSha256": "9fd069737a0513c29d6cea1bc9b8ed62b7b2110d533084043d435c0c56b7c0f4",
+        "sha256": "9fd069737a0513c29d6cea1bc9b8ed62b7b2110d533084043d435c0c56b7c0f4"
+      },
+      {
+        "source": "CharacterEditor/Textures/bractive.png",
+        "projectFile": "Components/CharacterEditor/Textures/bractive.png",
+        "sourceRawSha256": "62207d1f3ab4117bee85e198c573f088b04d9f9944a4a06f76acf57e728a0439",
+        "sha256": "62207d1f3ab4117bee85e198c573f088b04d9f9944a4a06f76acf57e728a0439"
+      },
+      {
+        "source": "CharacterEditor/Textures/brandom.png",
+        "projectFile": "Components/CharacterEditor/Textures/brandom.png",
+        "sourceRawSha256": "3177bcb19ba8926394d39c0e22c5d3852d714b9f23f61d94c3d35f2c55266470",
+        "sha256": "3177bcb19ba8926394d39c0e22c5d3852d714b9f23f61d94c3d35f2c55266470"
+      },
+      {
+        "source": "CharacterEditor/Textures/breplace.png",
+        "projectFile": "Components/CharacterEditor/Textures/breplace.png",
+        "sourceRawSha256": "7edce1b4d83ad81a0fd4ac0fa4218b55ad1ea264000d683b4ac8c31ddbcdae4c",
+        "sha256": "7edce1b4d83ad81a0fd4ac0fa4218b55ad1ea264000d683b4ac8c31ddbcdae4c"
+      },
+      {
+        "source": "CharacterEditor/Textures/breset.png",
+        "projectFile": "Components/CharacterEditor/Textures/breset.png",
+        "sourceRawSha256": "c95a44cca0bc47cd2d57ab60ee8eb88d90380c57b639f96a34b8b8c3094ace93",
+        "sha256": "c95a44cca0bc47cd2d57ab60ee8eb88d90380c57b639f96a34b8b8c3094ace93"
+      },
+      {
+        "source": "CharacterEditor/Textures/breset2.png",
+        "projectFile": "Components/CharacterEditor/Textures/breset2.png",
+        "sourceRawSha256": "636363da8b0fb40e708bc3c3327a6ccef82f652bc55b35108ad17feff24777e2",
+        "sha256": "636363da8b0fb40e708bc3c3327a6ccef82f652bc55b35108ad17feff24777e2"
+      },
+      {
+        "source": "CharacterEditor/Textures/bresurrect.png",
+        "projectFile": "Components/CharacterEditor/Textures/bresurrect.png",
+        "sourceRawSha256": "8bfdc72658f291ae47a04aa4705b6394fe6314cc577826fcd8513c763673256e",
+        "sha256": "8bfdc72658f291ae47a04aa4705b6394fe6314cc577826fcd8513c763673256e"
+      },
+      {
+        "source": "CharacterEditor/Textures/brinactive.png",
+        "projectFile": "Components/CharacterEditor/Textures/brinactive.png",
+        "sourceRawSha256": "69157a26c82ec75e413329d46a005ba6d28a3f7244f10b39898d99d88cbe640f",
+        "sha256": "69157a26c82ec75e413329d46a005ba6d28a3f7244f10b39898d99d88cbe640f"
+      },
+      {
+        "source": "CharacterEditor/Textures/brotate.png",
+        "projectFile": "Components/CharacterEditor/Textures/brotate.png",
+        "sourceRawSha256": "2340a57c36e3d87a226db18192bfac3e363369fd6c97071f6477fabab36d89cf",
+        "sha256": "2340a57c36e3d87a226db18192bfac3e363369fd6c97071f6477fabab36d89cf"
+      },
+      {
+        "source": "CharacterEditor/Textures/bsave.png",
+        "projectFile": "Components/CharacterEditor/Textures/bsave.png",
+        "sourceRawSha256": "ac5b8a6bef6168a6a15a912a4e4374d8e4c1ab0c33f57877146db603ee767567",
+        "sha256": "ac5b8a6bef6168a6a15a912a4e4374d8e4c1ab0c33f57877146db603ee767567"
+      },
+      {
+        "source": "CharacterEditor/Textures/bskills.png",
+        "projectFile": "Components/CharacterEditor/Textures/bskills.png",
+        "sourceRawSha256": "cb7fff22704ecc88f039b2ac185ee3e096d1dbcfab5e9606d0bb9c2111ac20e8",
+        "sha256": "cb7fff22704ecc88f039b2ac185ee3e096d1dbcfab5e9606d0bb9c2111ac20e8"
+      },
+      {
+        "source": "CharacterEditor/Textures/bsocial.png",
+        "projectFile": "Components/CharacterEditor/Textures/bsocial.png",
+        "sourceRawSha256": "7c37bad3d3bd5beb17e5d99ec1e751568bd082cef2b2523eda2fb234b4aa02dd",
+        "sha256": "7c37bad3d3bd5beb17e5d99ec1e751568bd082cef2b2523eda2fb234b4aa02dd"
+      },
+      {
+        "source": "CharacterEditor/Textures/bsound.png",
+        "projectFile": "Components/CharacterEditor/Textures/bsound.png",
+        "sourceRawSha256": "70fa86ff6b28475e3800fc87f5e0799348c17ac62d2759ef272ac51198470e64",
+        "sha256": "70fa86ff6b28475e3800fc87f5e0799348c17ac62d2759ef272ac51198470e64"
+      },
+      {
+        "source": "CharacterEditor/Textures/bstar.png",
+        "projectFile": "Components/CharacterEditor/Textures/bstar.png",
+        "sourceRawSha256": "79ebac48b5ad2b4c93e46decf78160585b2a7b0608769858acfaa3d7777fa539",
+        "sha256": "79ebac48b5ad2b4c93e46decf78160585b2a7b0608769858acfaa3d7777fa539"
+      },
+      {
+        "source": "CharacterEditor/Textures/bteleport.png",
+        "projectFile": "Components/CharacterEditor/Textures/bteleport.png",
+        "sourceRawSha256": "a398e757f3eb8098202d5e5c46ba1cbcfed5ee15353e786e60ebccb4bfa090fe",
+        "sha256": "a398e757f3eb8098202d5e5c46ba1cbcfed5ee15353e786e60ebccb4bfa090fe"
+      },
+      {
+        "source": "CharacterEditor/Textures/btoggleleft.png",
+        "projectFile": "Components/CharacterEditor/Textures/btoggleleft.png",
+        "sourceRawSha256": "9413689ac75392d673f4b453a687b5f42e58c73ee96934ce633874f099039acc",
+        "sha256": "9413689ac75392d673f4b453a687b5f42e58c73ee96934ce633874f099039acc"
+      },
+      {
+        "source": "CharacterEditor/Textures/btoggleright.png",
+        "projectFile": "Components/CharacterEditor/Textures/btoggleright.png",
+        "sourceRawSha256": "ad39e2f1f500d1a84f1103717bc5cc8d4a7bc55f8bad167d164dffe7e5615671",
+        "sha256": "ad39e2f1f500d1a84f1103717bc5cc8d4a7bc55f8bad167d164dffe7e5615671"
+      },
+      {
+        "source": "CharacterEditor/Textures/bundercon.png",
+        "projectFile": "Components/CharacterEditor/Textures/bundercon.png",
+        "sourceRawSha256": "32538bbcc55502480d64fb75c65687fe8f44771579ac3574df19c15d55570f2e",
+        "sha256": "32538bbcc55502480d64fb75c65687fe8f44771579ac3574df19c15d55570f2e"
+      },
+      {
+        "source": "CharacterEditor/Textures/bwhite.png",
+        "projectFile": "Components/CharacterEditor/Textures/bwhite.png",
+        "sourceRawSha256": "7890ff064a8e801edfb6fd1041bd5370755c1749b7c9d7147fde19a1f6318978",
+        "sha256": "7890ff064a8e801edfb6fd1041bd5370755c1749b7c9d7147fde19a1f6318978"
+      },
+      {
+        "source": "CharacterEditor/Textures/bworld.png",
+        "projectFile": "Components/CharacterEditor/Textures/bworld.png",
+        "sourceRawSha256": "99156a60fb6844e1ce10a2bee39f36574aa8061303b36ceb161e42a835c35253",
+        "sha256": "99156a60fb6844e1ce10a2bee39f36574aa8061303b36ceb161e42a835c35253"
+      },
+      {
+        "source": "CharacterEditor/Textures/_brandom.png",
+        "projectFile": "Components/CharacterEditor/Textures/_brandom.png",
+        "sourceRawSha256": "350e44e1a8178bd2a3fd1925f5729bbd7eecfc6e4c91355eb28e2cb9a12a94ad",
+        "sha256": "350e44e1a8178bd2a3fd1925f5729bbd7eecfc6e4c91355eb28e2cb9a12a94ad"
+      },
+      {
+        "source": "CharacterEditor/Textures/__brandom.png",
+        "projectFile": "Components/CharacterEditor/Textures/__brandom.png",
+        "sourceRawSha256": "6b4e6364aacae8d9de0ea8e780bf6f6d4cd21b7838fbf023e59de64cb9722fa9",
+        "sha256": "6b4e6364aacae8d9de0ea8e780bf6f6d4cd21b7838fbf023e59de64cb9722fa9"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G01.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G01.png",
+        "sourceRawSha256": "8350282ae0cdb47c9e8e2f762fbf193dd2a93912c0c6e4b9da6e16be63627c43",
+        "sha256": "8350282ae0cdb47c9e8e2f762fbf193dd2a93912c0c6e4b9da6e16be63627c43"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G02.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G02.png",
+        "sourceRawSha256": "a71724766a3a8721577c4e965e5df692eb1647c39e43a5be971f36bb8447d472",
+        "sha256": "a71724766a3a8721577c4e965e5df692eb1647c39e43a5be971f36bb8447d472"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G03.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G03.png",
+        "sourceRawSha256": "3e6ed23dd42166cd90046b3f1461bdb5d3b22a2decfc20b251558e6870ae8856",
+        "sha256": "3e6ed23dd42166cd90046b3f1461bdb5d3b22a2decfc20b251558e6870ae8856"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G04.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G04.png",
+        "sourceRawSha256": "797c67f381cc7eb243573bd062c36600e2099cd474b9296690f839274f24f013",
+        "sha256": "797c67f381cc7eb243573bd062c36600e2099cd474b9296690f839274f24f013"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G05.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G05.png",
+        "sourceRawSha256": "d1b35d58758c933faeff6004f1dfb53434b6b1a292976f16afcc3f86cafae81e",
+        "sha256": "d1b35d58758c933faeff6004f1dfb53434b6b1a292976f16afcc3f86cafae81e"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G06.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G06.png",
+        "sourceRawSha256": "0a61a8fc4654a43fdf5878020e9f5955afd8eb4bf7b360c177789ea5fbcdaa78",
+        "sha256": "0a61a8fc4654a43fdf5878020e9f5955afd8eb4bf7b360c177789ea5fbcdaa78"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G07.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G07.png",
+        "sourceRawSha256": "9a010d0f8e47b5b6ec7c0d67eea73663965f349f0fbb8c067c059928f820ac88",
+        "sha256": "9a010d0f8e47b5b6ec7c0d67eea73663965f349f0fbb8c067c059928f820ac88"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G08.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G08.png",
+        "sourceRawSha256": "e1e5c4212841f955d24a319d18b3e17e77aa0ef2a7ed6c468c9ac7fe8e778c8c",
+        "sha256": "e1e5c4212841f955d24a319d18b3e17e77aa0ef2a7ed6c468c9ac7fe8e778c8c"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G09.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G09.png",
+        "sourceRawSha256": "615ddcbe0f17575b309d7eb04902be14f04b1fbfbaa2791cc703916b900d369d",
+        "sha256": "615ddcbe0f17575b309d7eb04902be14f04b1fbfbaa2791cc703916b900d369d"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G10.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G10.png",
+        "sourceRawSha256": "79819edf2c68959a3528cf5cf7e82677cd2983f665f970b6c3cf2c648f5a9435",
+        "sha256": "79819edf2c68959a3528cf5cf7e82677cd2983f665f970b6c3cf2c648f5a9435"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G11.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G11.png",
+        "sourceRawSha256": "e33f1e92faf81a9bf915117a444dd89ca3e4278eccc9e9d9b90eaf0a67a7ebca",
+        "sha256": "e33f1e92faf81a9bf915117a444dd89ca3e4278eccc9e9d9b90eaf0a67a7ebca"
+      },
+      {
+        "source": "CharacterEditor/Textures/GradientHair/G12.png",
+        "projectFile": "Components/CharacterEditor/Textures/GradientHair/G12.png",
+        "sourceRawSha256": "aa086414bd22b4f316ecb3726cd9c74008d624188753fea24b492cea81d500f5",
+        "sha256": "aa086414bd22b4f316ecb3726cd9c74008d624188753fea24b492cea81d500f5"
+      },
+      {
+        "source": "CharacterEditor/v1.6/Assemblies/CharacterEditor.dll",
+        "projectFile": "Components/CharacterEditor/Assemblies/CharacterEditor.dll",
+        "sourceRawSha256": "2621fc17c6c4b13b9bda0c88a966eb9b20189ed2ac6faeeeeb82651224a0c631",
+        "sha256": "2621fc17c6c4b13b9bda0c88a966eb9b20189ed2ac6faeeeeb82651224a0c631"
+      },
+      {
+        "source": "CharacterEditor/v1.6/Defs/LifeStageGiant.xml",
+        "projectFile": "Components/CharacterEditor/Defs/LifeStageGiant.xml",
+        "sourceRawSha256": "9943ef0d3fb2031e97055abbc744e834f1e9c0c77f03480282f894ac1f58d5a8",
+        "sha256": "edea86de2af961efbbe26ddfbd9c5b66aceefbf379200d24cb2e20ce678d21c0"
+      },
+      {
+        "source": "CharacterEditor/v1.6/Gradients/GradientHairMasks.xml",
+        "projectFile": "Components/CharacterEditor/Gradients/GradientHairMasks.xml",
+        "sourceRawSha256": "0e05286ed81c987be6e4f239b5049b9411839b7f67b1755165313e6778f0ba6a",
+        "sha256": "cd706700e05fb5ee481f7b740a1c3a4a4b1f9cbb345ff687c7aa494e3de9dd31"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

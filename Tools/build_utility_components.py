@@ -9,6 +9,8 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "CharacterEditor": ("CharacterEditor", "void.charactereditor",
+                      json.loads((PROJECT / "Tools/ComponentFiles/CharacterEditor.json").read_text(encoding="utf-8"))),
     "MeleeAnimation": ("Melee Animation (Анимация ближнего боя)", "co.uk.epicguru.meleeanimation",
                       json.loads((PROJECT / "Tools/ComponentFiles/MeleeAnimation.json").read_text(encoding="utf-8"))),
     "HugsLib": ("HugsLib (Библиотека)", "unlimitedhugs.hugslib", {
@@ -655,6 +657,10 @@ def main():
                 folder = "Components/MeleeAnimation/Optional/" + branch
                 if not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
                     ET.SubElement(tree.find(version), "li", IfModNotActive="co.uk.epicguru.meleeanimation", IfModActive=package_id).text = folder
+        if "CharacterEditor" in report:
+            folder = "Components/CharacterEditor/Gradients"
+            if not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
+                ET.SubElement(tree.find(version), "li", IfModNotActive="void.charactereditor", IfModActive="automatic.gradienthair").text = folder
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
     manifest.write_text(
