@@ -83,6 +83,15 @@ def main():
     assert menus == [PROJECT / 'Components/UsefulMarks/Assemblies/FloatSubMenu.dll'], menus
     assert manifest['NiceBillTab']['sharedMenuProvider'].startswith('UsefulMarks:')
     report['singleSharedFloatSubMenuVerified'] = True
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            for psycasts in (False, True):
+                ids = ({'zeracronius.dynamictradeinterface'} if original else set()) | ({'vanillaexpanded.vpsycastse'} if psycasts else set())
+                actual = [n.text for n in folders.find(version) if n.text.startswith('Components/DynamicTradeInterface') and enabled(n.attrib, ids)]
+                expected = [] if original else ['Components/DynamicTradeInterface'] + (['Components/DynamicTradeInterface/VPE'] if psycasts else [])
+                assert actual == expected, (version, ids, actual)
+    report['tradePsycastsBranchCombinationsChecked'] = 8
+    report['tradePsycastsRuntimeVerified'] = False
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))

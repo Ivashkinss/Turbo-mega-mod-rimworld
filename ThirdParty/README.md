@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- Dynamic Trade Interface — Zeracronius; packageId zeracronius.dynamictradeinterface. Сохранены About и хеши 20 ресурсов: исходная DLL 1.6, четыре общих Def, условный VPE Def, два английских XML и 12 текстур. Существующий русский перевод (73 Keyed, 28 полей) сохранён. Исходные PDB, старые DLL и SDK-схемы не входят в исполняемый пакет. При активном оригинале обе встроенные ветки пропускаются; VPE требует его отдельный packageId.
+
 - Useful Marks — Andromeda; packageId andromeda.usefulmarks. Сохранены About и хеши 81 ресурса: DLL UsefulColonistBar/FloatSubMenu 1.6, два English Keyed и 77 изображений. Все 172 русских ключа импортированы, название настроек локализовано. Bundled Multiplayer API не добавляется второй копией: используется API существующего набора. Более новая FloatSubMenu также обслуживает Nice Bill Tab; его прежний ресурс перенесён в replacedResources манифеста с исходными хешами, старый бинарник остаётся в истории Git/архиве оригинала.
 
 - Show Me Your Hands — Mlie, исходные Clutter Weapon Hands; packageId mlie.showmeyourhands. Сохранены About и хеши 197 ресурсов 1.6/общих папок: 183 файла Def, английский Keyed, News, восемь изображений, три DLL (ShowMeYourHands, ColorMine, VersionFromManifest) и MIT LICENSE.md. Старые адаптеры 1.3 Yayo/DualWield не относятся к ветке 1.6 и не импортированы. Механика DLL и определения смещений не менялись; дополнены два русских ключа стилей и переведён заголовок настроек.

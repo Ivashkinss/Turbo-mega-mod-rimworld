@@ -9,6 +9,28 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "DynamicTradeInterface": ("Dynamic Trade Interface", "zeracronius.dynamictradeinterface", {
+        "1.6/Assemblies/DynamicTradeInterface.dll": "Assemblies/DynamicTradeInterface.dll",
+        "1.6/Defs/ColumnDefs.xml": "Defs/ColumnDefs.xml",
+        "1.6/Defs/MoreIconDefs.xml": "Defs/MoreIconDefs.xml",
+        "1.6/Defs/OptionalColumns.xml": "Defs/OptionalColumns.xml",
+        "1.6/Defs/TradeValidationDefs.xml": "Defs/TradeValidationDefs.xml",
+        "Languages/English/Keyed/ConfigurationWindow.xml": "Languages/English/Keyed/ConfigurationWindow.xml",
+        "Languages/English/Keyed/TradeWindow.xml": "Languages/English/Keyed/TradeWindow.xml",
+        "Textures/Icons/Checkbox_off.png": "Textures/Icons/Checkbox_off.png",
+        "Textures/Icons/Checkbox_on.png": "Textures/Icons/Checkbox_on.png",
+        "Textures/Icons/Filter_presets.png": "Textures/Icons/Filter_presets.png",
+        "Textures/Icons/Locked.png": "Textures/Icons/Locked.png",
+        "Textures/Icons/Notification_empty.png": "Textures/Icons/Notification_empty.png",
+        "Textures/Icons/Notification_present.png": "Textures/Icons/Notification_present.png",
+        "Textures/Icons/Remove.png": "Textures/Icons/Remove.png",
+        "Textures/Icons/Reset.png": "Textures/Icons/Reset.png",
+        "Textures/Icons/Save.png": "Textures/Icons/Save.png",
+        "Textures/Icons/Settings.png": "Textures/Icons/Settings.png",
+        "Textures/Icons/Show_summary.png": "Textures/Icons/Show_summary.png",
+        "Textures/Icons/Unlocked.png": "Textures/Icons/Unlocked.png",
+        "1.6/Mods/VPE/Defs/VPE_EltexValidation.xml": "VPE/Defs/VPE_EltexValidation.xml",
+    }),
     "UsefulMarks": ("Useful Marks (Маркеры для пешек)", "andromeda.usefulmarks", {
         "1.6/Assemblies/UsefulColonistBar.dll": "Assemblies/UsefulColonistBar.dll",
         "1.6/Assemblies/FloatSubMenu.dll": "Assemblies/FloatSubMenu.dll",
@@ -561,6 +583,9 @@ def main():
             folder = "Components/AlmostThere/" + branch
             if "AlmostThere" in report and not tree.xpath(f"/loadFolders/{version}/li[text()='{folder}']"):
                 ET.SubElement(tree.find(version), "li", **attributes).text = folder
+        optional = "Components/DynamicTradeInterface/VPE"
+        if "DynamicTradeInterface" in report and not tree.xpath(f"/loadFolders/{version}/li[text()='{optional}']"):
+            ET.SubElement(tree.find(version), "li", IfModNotActive="zeracronius.dynamictradeinterface", IfModActive="vanillaexpanded.vpsycastse").text = optional
     ET.indent(tree, space="  ")
     tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
     manifest.write_text(

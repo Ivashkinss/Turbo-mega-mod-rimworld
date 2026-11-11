@@ -10,7 +10,7 @@ MODS = PROJECT.parent
 STRING_FIELDS = {"label", "description", "labelNoun", "jobString", "reportString", "headerTip", "tooltip"}
 TARGETS = {
     "MeleeAnimation": MODS / "Melee Animation (Анимация ближнего боя)",
-    "DynamicTradeInterface": MODS / "Dynamic Trade Interface",
+    "DynamicTradeInterface": (PROJECT / "Components/DynamicTradeInterface" if (PROJECT / "Components/DynamicTradeInterface").is_dir() else MODS / "Dynamic Trade Interface"),
 }
 INCLUDED_IDS = {mod["packageId"].lower() for mod in json.loads(
     (PROJECT / "Documentation/inventory.json").read_text(encoding="utf-8"))["mods"] if mod["include"]}

@@ -2994,5 +2994,132 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "DynamicTradeInterface": {
+    "packageId": "zeracronius.dynamictradeinterface",
+    "files": [
+      {
+        "source": "Dynamic Trade Interface/1.6/Assemblies/DynamicTradeInterface.dll",
+        "projectFile": "Components/DynamicTradeInterface/Assemblies/DynamicTradeInterface.dll",
+        "sourceRawSha256": "078f7268637c759206fcdd7915fbd7b04f1e279906f201400783237e496c16a1",
+        "sha256": "078f7268637c759206fcdd7915fbd7b04f1e279906f201400783237e496c16a1"
+      },
+      {
+        "source": "Dynamic Trade Interface/1.6/Defs/ColumnDefs.xml",
+        "projectFile": "Components/DynamicTradeInterface/Defs/ColumnDefs.xml",
+        "sourceRawSha256": "5626ca4810d6eebe2fd7233cd894983c0e888c0496a2b94f2af68ec9c55afae0",
+        "sha256": "27591749226eaea5e15b6340a34c91332af323317070868f45fd8b68d76820b9"
+      },
+      {
+        "source": "Dynamic Trade Interface/1.6/Defs/MoreIconDefs.xml",
+        "projectFile": "Components/DynamicTradeInterface/Defs/MoreIconDefs.xml",
+        "sourceRawSha256": "0fee8f5e66166171343d12b92b1b521207bf130f94fc7d1c5864125b19dadda0",
+        "sha256": "c333c435e4b7a72a3262d8d7c52ca6c4588d8c7bf529de0bbaa220b39110abbe"
+      },
+      {
+        "source": "Dynamic Trade Interface/1.6/Defs/OptionalColumns.xml",
+        "projectFile": "Components/DynamicTradeInterface/Defs/OptionalColumns.xml",
+        "sourceRawSha256": "f68481f7ec3f7503a3c03a9540bc94abdb02ac915fc35d4effeef479f4475224",
+        "sha256": "e283ff0e75e48e9e574d9f24445efc58c3137a029043becf6bd34bf150204267"
+      },
+      {
+        "source": "Dynamic Trade Interface/1.6/Defs/TradeValidationDefs.xml",
+        "projectFile": "Components/DynamicTradeInterface/Defs/TradeValidationDefs.xml",
+        "sourceRawSha256": "9110d621136ec49236a2c8fb3e0278323349116d5c50fe366027a489cb592947",
+        "sha256": "b7438197a9d0bc2029702cd1679f866de7d9ea25133bce5d739551f8c1b344c0"
+      },
+      {
+        "source": "Dynamic Trade Interface/Languages/English/Keyed/ConfigurationWindow.xml",
+        "projectFile": "Components/DynamicTradeInterface/Languages/English/Keyed/ConfigurationWindow.xml",
+        "sourceRawSha256": "2a049a407d60e4d6343385a5ddf2d10d0782bf1b6a90fec1c3fe3c315bbbfbca",
+        "sha256": "607e7836125a8e68ddf58d475f3b39ed88d6579dc69c27089205c53352ae0992"
+      },
+      {
+        "source": "Dynamic Trade Interface/Languages/English/Keyed/TradeWindow.xml",
+        "projectFile": "Components/DynamicTradeInterface/Languages/English/Keyed/TradeWindow.xml",
+        "sourceRawSha256": "865bc665560bb2a6dc1450a4f80b6231c361e731225f0c691d1f7d91c01178ec",
+        "sha256": "be1b0951a0231885d1775fdb89fbb040d2bb030f3e892511128166f421a76648"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Checkbox_off.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Checkbox_off.png",
+        "sourceRawSha256": "3c9033ee35b259c5aa9581385255553ecc22dc046d8688163a0241bdd196e131",
+        "sha256": "3c9033ee35b259c5aa9581385255553ecc22dc046d8688163a0241bdd196e131"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Checkbox_on.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Checkbox_on.png",
+        "sourceRawSha256": "8f8724102711e4dfc5c88595163ae6f06e078f8df994d649a3ee2a320372820c",
+        "sha256": "8f8724102711e4dfc5c88595163ae6f06e078f8df994d649a3ee2a320372820c"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Filter_presets.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Filter_presets.png",
+        "sourceRawSha256": "7d4f22a14c375bb0622dadce64bb93c7c2b08a027805ddea175a49c10231ffe1",
+        "sha256": "7d4f22a14c375bb0622dadce64bb93c7c2b08a027805ddea175a49c10231ffe1"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Locked.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Locked.png",
+        "sourceRawSha256": "cf5bafbf54d364db036e715701b94db60a114d3c9f496f0d48a58c4886127750",
+        "sha256": "cf5bafbf54d364db036e715701b94db60a114d3c9f496f0d48a58c4886127750"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Notification_empty.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Notification_empty.png",
+        "sourceRawSha256": "0286a126735aa1a297ef590e50c0677dc75628811b535eb7d44b1a19a44b84f2",
+        "sha256": "0286a126735aa1a297ef590e50c0677dc75628811b535eb7d44b1a19a44b84f2"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Notification_present.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Notification_present.png",
+        "sourceRawSha256": "67340a367ae20d2294a15e2947fd9cadbdcb481df77dad6c7409da8f61cbe572",
+        "sha256": "67340a367ae20d2294a15e2947fd9cadbdcb481df77dad6c7409da8f61cbe572"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Remove.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Remove.png",
+        "sourceRawSha256": "b639b1576b6056ed656da2727237dd68c195cd8b9a105baa46775406cf40df02",
+        "sha256": "b639b1576b6056ed656da2727237dd68c195cd8b9a105baa46775406cf40df02"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Reset.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Reset.png",
+        "sourceRawSha256": "2efdf61d15bb97ab036266f24003b537e49c407de907d7ffb4fb313ecaf9f9a4",
+        "sha256": "2efdf61d15bb97ab036266f24003b537e49c407de907d7ffb4fb313ecaf9f9a4"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Save.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Save.png",
+        "sourceRawSha256": "8bb41ffdd31ce924ad5431468963c913cb774e9a288fd9dddeaf91940f0ae7ec",
+        "sha256": "8bb41ffdd31ce924ad5431468963c913cb774e9a288fd9dddeaf91940f0ae7ec"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Settings.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Settings.png",
+        "sourceRawSha256": "8faa324029fb1670ad0f51b1df99ff8839a0adf07b2383ec4e79391282b46417",
+        "sha256": "8faa324029fb1670ad0f51b1df99ff8839a0adf07b2383ec4e79391282b46417"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Show_summary.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Show_summary.png",
+        "sourceRawSha256": "190c1ddb8a9fe04a198450c3468cd17605b20bb478dd40c7770c7b72c04d8546",
+        "sha256": "190c1ddb8a9fe04a198450c3468cd17605b20bb478dd40c7770c7b72c04d8546"
+      },
+      {
+        "source": "Dynamic Trade Interface/Textures/Icons/Unlocked.png",
+        "projectFile": "Components/DynamicTradeInterface/Textures/Icons/Unlocked.png",
+        "sourceRawSha256": "4223a317a54697782653a855450d19e8a1eb80d1b006816e13e8a8b6ec21b1fa",
+        "sha256": "4223a317a54697782653a855450d19e8a1eb80d1b006816e13e8a8b6ec21b1fa"
+      },
+      {
+        "source": "Dynamic Trade Interface/1.6/Mods/VPE/Defs/VPE_EltexValidation.xml",
+        "projectFile": "Components/DynamicTradeInterface/VPE/Defs/VPE_EltexValidation.xml",
+        "sourceRawSha256": "56581f591346581a7b29518e4c716a58889d703832d13119476040f54d0272b5",
+        "sha256": "1609d48744a0388ed38a5efd7ea60349d95801c96eba6434f592f4dc19f788af"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

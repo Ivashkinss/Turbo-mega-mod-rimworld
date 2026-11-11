@@ -21,6 +21,8 @@
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
     <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
     <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -43,5 +45,7 @@
     <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
     <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
     <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
   </v1.7>
 </loadFolders>

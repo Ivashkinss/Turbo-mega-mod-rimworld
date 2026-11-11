@@ -1,5 +1,6 @@
 {
   "components": [
+    "DynamicTradeInterface",
     "UsefulMarks",
     "ShowMeYourHands",
     "MorePlanning",
@@ -16,8 +17,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 480,
+  "resourceHashesVerified": 500,
   "russianKeysByComponent": {
+    "DynamicTradeInterface": 73,
     "UsefulMarks": 172,
     "ShowMeYourHands": 67,
     "MorePlanning": 34,
@@ -40,5 +42,7 @@
   "almostThereBranchCombinationsChecked": 8,
   "vehicleFrameworkRuntimeVerified": false,
   "sidearmsDefinitionFieldsVerified": 21,
-  "singleSharedFloatSubMenuVerified": true
+  "singleSharedFloatSubMenuVerified": true,
+  "tradePsycastsBranchCombinationsChecked": 8,
+  "tradePsycastsRuntimeVerified": false
 }

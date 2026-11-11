@@ -22,7 +22,7 @@ foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
         $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant()
     }
 }
-$ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation','zeracronius.dynamictradeinterface','colonyproject.integrated')
+$ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation','colonyproject.integrated')
 $modsXml = '<ModsConfigData><version>1.7.5000 rev1275</version><activeMods>' + (($ids | ForEach-Object { '<li>' + $_ + '</li>' }) -join '') + '</activeMods></ModsConfigData>'
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\ModsConfig.xml'), $modsXml)
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\Prefs.xml'), '<PrefsData><langFolderName>Russian (Русский)</langFolderName><devMode>True</devMode><screenWidth>1280</screenWidth><screenHeight>800</screenHeight><fullscreen>False</fullscreen><runInBackground>True</runInBackground></PrefsData>')
