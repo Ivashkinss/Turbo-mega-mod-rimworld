@@ -9,6 +9,10 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "FSharpCore": ("FSharp.Core", "latta.fsharp.core", {
+        "Assemblies/FSharp.Core.dll": "Assemblies/FSharp.Core.dll",
+        "Assemblies/Poet.dll": "Assemblies/Poet.dll",
+    }),
     "DynamicTradeInterface": ("Dynamic Trade Interface", "zeracronius.dynamictradeinterface", {
         "1.6/Assemblies/DynamicTradeInterface.dll": "Assemblies/DynamicTradeInterface.dll",
         "1.6/Defs/ColumnDefs.xml": "Defs/ColumnDefs.xml",

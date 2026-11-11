@@ -3121,5 +3121,24 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "FSharpCore": {
+    "packageId": "latta.fsharp.core",
+    "files": [
+      {
+        "source": "FSharp.Core/Assemblies/FSharp.Core.dll",
+        "projectFile": "Components/FSharpCore/Assemblies/FSharp.Core.dll",
+        "sourceRawSha256": "8018e730e5a1e4c338ea174f5074c6541a3043445af5be867b8c1777bf83b901",
+        "sha256": "8018e730e5a1e4c338ea174f5074c6541a3043445af5be867b8c1777bf83b901"
+      },
+      {
+        "source": "FSharp.Core/Assemblies/Poet.dll",
+        "projectFile": "Components/FSharpCore/Assemblies/Poet.dll",
+        "sourceRawSha256": "b571bdda09067bd46e0979cbc777b295943bf57971b25ed8e7d833aa1959f84a",
+        "sha256": "b571bdda09067bd46e0979cbc777b295943bf57971b25ed8e7d833aa1959f84a"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

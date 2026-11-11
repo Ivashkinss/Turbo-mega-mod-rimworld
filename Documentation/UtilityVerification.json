@@ -1,5 +1,6 @@
 {
   "components": [
+    "FSharpCore",
     "DynamicTradeInterface",
     "UsefulMarks",
     "ShowMeYourHands",
@@ -17,8 +18,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 500,
+  "resourceHashesVerified": 502,
   "russianKeysByComponent": {
+    "FSharpCore": 0,
     "DynamicTradeInterface": 73,
     "UsefulMarks": 172,
     "ShowMeYourHands": 67,

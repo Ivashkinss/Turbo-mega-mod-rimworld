@@ -1,4 +1,18 @@
-# Текущий этап — 11 ноября 2026, Dynamic Trade Interface
+# Текущий этап — 11 ноября 2026, FSharp.Core / Poet
+
+Встроен девятнадцатый из 28 компонентов — FSharp.Core (пакет latta; latta.fsharp.core). Сохранены About и SHA-256 двух исходных DLL FSharp.Core 4.7.0.0 (strong name b03f5f7f11d50a3a) и Poet 5.4.1.0. При активном оригинале встроенная папка пропускается. Def, переводов и собственного окна настроек у пакета нет; общее число русских записей осталось 2075.
+
+По 13 проверок прошли Integrated, OriginalActive и FullSet: единственные DLL и правильное происхождение обеих, разрешение типов обеих библиотек, версия FSharp, Option Some/None, список, вызов FSharpFunc, настоящий мост Poet к переводу AcceptButton, чтение экипировки пешки через Poet и сохранение/чтение целого через Poet.Lyric.Scribe.value. Все API библиотек и все возможные потребители не проверялись; пользовательские сохранения не загружались. В отчёте settingsUiApplicable=false означает отсутствие окна, а не выполненную визуальную проверку.
+
+Финальный полный набор: 1796 Keyed, 271 поле, 45 строк правил, 12 прежних перехватов отображения; 2962 кадра и 1780 тиков за 30 секунд. Закрыто одно штатное окно новостей HugsLib в тестовом профиле. Новых ERROR/CRIT и GPU-сбоя нет; прежние VEF/Odyssey отмечены отдельно. Отчёты Documentation/FSharpCore-{Integrated,OriginalActive,FullSet}.json.
+
+Оригинал удалён после первых двух профилей через Tools/retire_component.ps1, обе DLL в архиве сверены по исходным SHA-256. Локальные игнорируемые копии Tools/Build/RemovedFSharpCore-20261111.zip и TestRuns/FSharpCoreRemoval-20261111/ModsConfig.before.xml. Убрана только latta.fsharp.core, порядок остальных 16 записей сохранён. Сохранения и отдельные настройки пользователя не редактировались, временная DLL удалена и процессы теста закрыты.
+
+Пользователь требует продолжать до полной интеграции или лимита. Осталось девять: Walls Are Solid, XML Extensions, HugsLib, Adaptive Storage Framework, VEF, Melee Animation, Character Editor, Map Preview, Harmony. Далее Walls Are Solid, сохранив XML Extensions внешней до его проверки. Уже подготовлен metadata-аудит Tools/Build/WallsMethods.json и XmlSettingsMethods.json. У XML Extensions есть штатный Helpers.TryTranslate(defaultText, key), поэтому поля настроек Walls следует локализовать через предусмотренные translation-key поля, сохранив modId Victor.WallsAreSolid и ключи числовых настроек. Root XML Extensions пока не переносился. Для теста Walls добавить imranfish.xmlextensions в отдельный минимальный профиль. Не считать визуальную оценку и пользовательские сохранения проверенными. Camera+ исключена. Команда FSharp: Tools/test_component.ps1 -Component FSharpCore [-OriginalActive | -FullSet].
+
+---
+
+# Предыдущий этап — 11 ноября 2026, Dynamic Trade Interface
 
 Встроен восемнадцатый из 28 компонентов — Dynamic Trade Interface (Zeracronius; zeracronius.dynamictradeinterface). Сохранены About и SHA-256 20 ресурсов: исходная DLL 1.6, четыре общих Def, VPE Def в отдельной условной папке, два English Keyed и 12 текстур. PDB, старые DLL и SDK-схемы в исполняемый пакет не включены. В LoadFolders обе ветки пропускаются при активном оригинале; VPE дополнительно требует vanillaexpanded.vpsycastse. Проверены восемь сочетаний 1.6/1.7 × оригинал × VPE, настоящая игра с VPE не проверена.
 

@@ -4,6 +4,8 @@
 
 ## Что уже включено
 
+- FSharp.Core/Poet: исходные библиотеки FSharp.Core 4.7.0.0 и Poet 5.4.1.0. Сохранены типы и мосты к данным игры; интерфейса настроек у пакета нет. Оригинальная папка больше не требуется.
+
 - Dynamic Trade Interface: заменяет стандартное окно торговли динамическими таблицами. Сохранены DLL 1.6, определения колонок/значков/проверок, 12 текстур и английские строки; 73 русских ключа и 28 полей уже были в проекте. Условная ветка Vanilla Psycasts Expanded сохранена, её игровой сценарий не проверен. Настройки отдельного оригинала автоматически не мигрируют.
 
 - Useful Marks: ручные и автоматические маркеры колонистов, редактор условий и цветов. Перенесены исходная DLL 1.6, 77 изображений, два английских XML и 172 русских ключа. Nice Bill Tab и Useful Marks используют одну более новую FloatSubMenu из Useful Marks; старая копия Nice Bill Tab исключена из загрузки. Сетевой режим не проверялся, отдельные настройки автоматически не мигрируют.
@@ -38,7 +40,7 @@
 - Для анимаций и торговли: 319 исходных ключей Keyed, 137 полей определений, 8 пакетов с 45 строками боевого журнала. Дополнительно переведены 18 строк интерфейса внутри DLL (включая Smart Speed и Interaction Bubbles) и 3 названия режимов смещения тел.
 - На RimWorld 1.7 список участников дружеских поединков Melee Animation собирается в основном потоке перед параллельной обработкой. Это устраняет воспроизведённую ошибку `MapPawns.AssertMainThread`, сохраняя исходные условия участия.
 
-Melee Animation пока остаётся внешним модом с переводом и исправлением совместимости. Dynamic Trade Interface полностью встроен. Сейчас объединены Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks и Dynamic Trade Interface — 18 из 28 запланированных компонентов. Camera+ исключён по просьбе пользователя.
+Melee Animation пока остаётся внешним модом с переводом и исправлением совместимости. Dynamic Trade Interface полностью встроен. Сейчас объединены Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface и FSharp.Core — 19 из 28 запланированных компонентов. Camera+ исключён по просьбе пользователя.
 
 Дополнительно переведены 16 ключей Smart Speed и 21 строка окна добавления фракций VEF. Код VEF пока остаётся внешним.
 
@@ -159,3 +161,5 @@ Show Me Your Hands прошёл 17 проверок в трёх профилях
 Useful Marks прошёл 20 проверок в трёх профилях: маркеры, назначение/снятие, условия оружия, Scribe настроек/маркера/условия и редактор. OriginalActive/FullSet одновременно прошли 20 проверок Nice Bill Tab и отрисовку меню ингредиента на единственной общей FloatSubMenu. Новый результат Nice Bill Tab находится в relatedNiceBillTab отчётов UsefulMarks, старые отдельные отчёты исторические. Полный набор: 2936 кадров и 1771 тик за 30 секунд без новых ошибок/GPU-сбоя; прежние VEF/Odyssey отмечены отдельно. Пользовательские сохранения, сетевой режим и все прочие условия не проверялись. Копии Tools/Build/RemovedUsefulMarks-20261111.zip и TestRuns/UsefulMarksRemoval-20261111/ModsConfig.before.xml. Повтор: `./Tools/test_component.ps1 -Component UsefulMarks -FullSet -WithNiceBillTab`.
 
 Dynamic Trade Interface прошёл 20 проверок в трёх профилях: колонки, настройки/Scribe, иконки, настоящий торговый корабль и замена Dialog_Trade динамическим окном с товарами в Repaint. В финальном полном наборе 51 строка товаров, 2918 кадров и 1760 тиков за 30 секунд; новых ошибок/GPU-сбоя нет, прежние VEF/Odyssey отмечены отдельно. Покупка/продажа, все фильтры/сортировки и пользовательские сохранения не проверены. Отчёты Documentation/DynamicTradeInterface-*.json; копии Tools/Build/RemovedDynamicTradeInterface-20261111.zip и TestRuns/DynamicTradeInterfaceRemoval-20261111/ModsConfig.before.xml. Повтор: `./Tools/test_component.ps1 -Component DynamicTradeInterface -FullSet`.
+
+FSharp.Core/Poet прошли 13 проверок в трёх профилях: загрузка/происхождение/разрешение типов, Option, списки, функции, мосты Poet к переводу, экипировке и Scribe. Окна настроек у библиотек нет. Полный набор: 2962 кадра и 1780 тиков за 30 секунд без новых ошибок/GPU-сбоя; прежние VEF/Odyssey отмечены отдельно. Отчёты Documentation/FSharpCore-*.json, копии Tools/Build/RemovedFSharpCore-20261111.zip и TestRuns/FSharpCoreRemoval-20261111/ModsConfig.before.xml. Повтор: `./Tools/test_component.ps1 -Component FSharpCore -FullSet`.

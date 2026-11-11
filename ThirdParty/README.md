@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- FSharp.Core — пакет latta, packageId latta.fsharp.core. Сохранены About и хеши двух неизменённых DLL: FSharp.Core 4.7.0.0 и Poet 5.4.1.0. Собственных Def, переводов и окна настроек у пакета нет. Обе библиотеки загружаются из Components/FSharpCore при выключенном оригинале.
+
 - Dynamic Trade Interface — Zeracronius; packageId zeracronius.dynamictradeinterface. Сохранены About и хеши 20 ресурсов: исходная DLL 1.6, четыре общих Def, условный VPE Def, два английских XML и 12 текстур. Существующий русский перевод (73 Keyed, 28 полей) сохранён. Исходные PDB, старые DLL и SDK-схемы не входят в исполняемый пакет. При активном оригинале обе встроенные ветки пропускаются; VPE требует его отдельный packageId.
 
 - Useful Marks — Andromeda; packageId andromeda.usefulmarks. Сохранены About и хеши 81 ресурса: DLL UsefulColonistBar/FloatSubMenu 1.6, два English Keyed и 77 изображений. Все 172 русских ключа импортированы, название настроек локализовано. Bundled Multiplayer API не добавляется второй копией: используется API существующего набора. Более новая FloatSubMenu также обслуживает Nice Bill Tab; его прежний ресурс перенесён в replacedResources манифеста с исходными хешами, старый бинарник остаётся в истории Git/архиве оригинала.

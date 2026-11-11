@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'FSharpCore' { @{ folder='FSharp.Core'; id='latta.fsharp.core'; dll='Components\FSharpCore\Assemblies\FSharp.Core.dll'; source='InGameFSharpProbe.cs'; flag='-tmm-fsharp-probe'; report='FSharpProbe.json'; ui='FSharpUiProbe.json'; key='fsharp'; prefix='FSharpCore' } }
     'DynamicTradeInterface' { @{ folder='Dynamic Trade Interface'; id='zeracronius.dynamictradeinterface'; dll='Components\DynamicTradeInterface\Assemblies\DynamicTradeInterface.dll'; source='InGameTradeProbe.cs'; flag='-tmm-trade-probe'; report='TradeProbe.json'; ui='TradeUiProbe.json'; key='trade'; prefix='DynamicTradeInterface' } }
     'UsefulMarks' { @{ folder='Useful Marks (Маркеры для пешек)'; id='andromeda.usefulmarks'; dll='Components\UsefulMarks\Assemblies\UsefulColonistBar.dll'; source='InGameMarksProbe.cs'; flag='-tmm-marks-probe'; report='MarksProbe.json'; ui='MarksUiProbe.json'; key='marks'; prefix='UsefulMarks' } }
     'ShowMeYourHands' { @{ folder='Show Me Your Hands (Анимация рукоружия)'; id='mlie.showmeyourhands'; dll='Components\ShowMeYourHands\Assemblies\ShowMeYourHands.dll'; source='InGameHandsProbe.cs'; flag='-tmm-hands-probe'; report='HandsProbe.json'; ui='HandsUiProbe.json'; key='hands'; prefix='ShowMeYourHands' } }
