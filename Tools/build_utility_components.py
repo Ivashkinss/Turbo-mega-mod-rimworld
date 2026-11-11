@@ -17,6 +17,13 @@ COMPONENTS = {
     "SmarterConstruction": ("Smarter Construction (Умное строительство)", "dhultgren.smarterconstruction", {
         "v1.6/Assemblies/SmarterConstruction.dll": "Assemblies/SmarterConstruction.dll",
     }),
+    "InteractionBubbles": ("Interaction Bubbles (Речевые пузыри)", "jaxe.bubbles", {
+        "Assemblies/Bubbles.dll": "Assemblies/Bubbles.dll",
+        "Languages/English/Keyed/Bubbles.xml": "Languages/English/Keyed/Bubbles.xml",
+        "Textures/Bubbles/Icon.png": "Textures/Bubbles/Icon.png",
+        "Textures/Bubbles/Inner.png": "Textures/Bubbles/Inner.png",
+        "Textures/Bubbles/Outer.png": "Textures/Bubbles/Outer.png",
+    }),
 }
 
 

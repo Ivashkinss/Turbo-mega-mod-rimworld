@@ -1,0 +1,62 @@
+{
+  "gameVersion": "1.7.5000 rev1275",
+  "profile": "full user mod list after removing the three integrated originals",
+  "allThreeOriginalFoldersAbsent": true,
+  "activeMods": [
+    "brrainz.harmony",
+    "ludeon.rimworld",
+    "ludeon.rimworld.royalty",
+    "ludeon.rimworld.ideology",
+    "ludeon.rimworld.biotech",
+    "ludeon.rimworld.anomaly",
+    "ludeon.rimworld.odyssey",
+    "adaptive.storage.framework",
+    "duz.almosttherefork",
+    "unlimitedhugs.hugslib",
+    "void.charactereditor",
+    "avilmask.commonsense",
+    "latta.devl10n",
+    "zeracronius.dynamictradeinterface",
+    "latta.fsharp.core",
+    "m00nl1ght.mappreview",
+    "co.uk.epicguru.meleeanimation",
+    "mlie.moreplanning",
+    "andromeda.nicebilltab",
+    "mehni.pickupandhaul",
+    "lucifer.realisticrooms",
+    "roolo.runandgun.kotobike",
+    "mlie.showmeyourhands",
+    "petetimessix.simplesidearms",
+    "weilbyte.snapout",
+    "colonyproject.integrated",
+    "andromeda.usefulmarks",
+    "oskarpotocki.vanillafactionsexpanded.core",
+    "imranfish.xmlextensions",
+    "victor.wallsaresolid"
+  ],
+  "observedProcessSeconds": 120,
+  "stoppedByTestTimer": true,
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2960,
+    "ticksAdvanced": 1789
+  },
+  "localization": {
+    "keyed": 1040,
+    "scalarFields": 225,
+    "grammarLines": 45,
+    "displayPatches": 10,
+    "passed": true,
+    "errors": []
+  },
+  "gpuLost": false,
+  "knownExternalRuntimeErrors": [
+    "Field injection: VEF: VEF.AestheticScaling.CachedPawnDataExtensions.GetCachePrePatched: initializer GetDefaultCache must be exactly one static method on VEF.AestheticScaling.CachedPawnDataExtensions returning VEF.AestheticScaling.CachedPawnData and taking the target or nothing (0 found).",
+    "Bad string pass when reading rule [tradeAdj_fem] [tradeNoun_fem]",
+    "Failed to resolve text. Trying again with English. Exception: System.ArgumentNullException: Value cannot be null. (Parameter 'key')"
+  ],
+  "unexpectedRuntimeErrors": 0,
+  "visualUiVerified": false,
+  "passedWithKnownExternalIssues": true
+}

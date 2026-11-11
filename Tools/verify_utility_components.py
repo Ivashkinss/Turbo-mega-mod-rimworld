@@ -1,4 +1,4 @@
-"""Verify provenance, mutually exclusive loading and complete Smart Speed RU."""
+"""Verify provenance, mutually exclusive loading and utility translations."""
 import hashlib
 import json
 from pathlib import Path
@@ -14,7 +14,12 @@ def main():
     manifest = json.loads((PROJECT / "Documentation/UtilityComponents.json").read_text(encoding="utf-8"))
     folders = ET.parse(str(PROJECT / "LoadFolders.xml"))
     count = 0
+    translated = {}
     for name, (_, package_id, _) in COMPONENTS.items():
+        expected_files = {item["projectFile"] for item in manifest[name]["files"]}
+        actual_files = {path.relative_to(PROJECT).as_posix()
+                        for path in (PROJECT / "Components" / name).rglob("*") if path.is_file()}
+        assert actual_files == expected_files, (name, "untracked or missing component resources")
         for item in manifest[name]["files"]:
             path = PROJECT / item["projectFile"]
             data = path.read_bytes()
@@ -23,20 +28,26 @@ def main():
             assert hashlib.sha256(data).hexdigest() == item["sha256"], path
             count += 1
         dlls = list((PROJECT / "Components" / name / "Assemblies").glob("*.dll"))
-        assert [dll.name for dll in dlls] == [name + ".dll"], dlls
+        expected_dlls = sorted(Path(item["projectFile"]).name for item in manifest[name]["files"]
+                               if item["projectFile"].endswith(".dll"))
+        assert sorted(dll.name for dll in dlls) == expected_dlls, dlls
         for version in ("v1.6", "v1.7"):
             selected = folders.xpath(f"/loadFolders/{version}/li[text()='Components/{name}']")
             assert len(selected) == 1
             assert enabled(selected[0].attrib, set()), (name, "missing when standalone")
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
-    english, _ = entries([PROJECT / "Components/SmartSpeed/Languages/English"])
     russian, duplicates = entries([PROJECT / "Languages/Russian"])
     assert not duplicates, duplicates
-    for key, source in english.items():
-        assert key in russian, key
-        check_text(source["text"], russian[key]["text"], str(key))
+    for name in COMPONENTS:
+        english, _ = entries([PROJECT / "Components" / name / "Languages/English"])
+        for key, source in english.items():
+            assert key in russian, key
+            check_text(source["text"], russian[key]["text"], str(key))
+            if key == ("Keyed", "Bubbles.OffsetDirections"):
+                assert len(source["text"].split("|")) == len(russian[key]["text"].split("|")) == 4
+        translated[name] = len(english)
     report = {"components": list(COMPONENTS), "resourceHashesVerified": count,
-              "smartSpeedRussianKeys": len(english), "separateHarmonyCopies": 0,
+              "russianKeysByComponent": translated, "separateHarmonyCopies": 0,
               "standaloneAndOriginalActiveLoadGuardsVerified": True, "passed": True}
     (PROJECT / "Documentation/UtilityVerification.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

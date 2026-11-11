@@ -113,6 +113,30 @@ namespace UnrelatedMod
     {
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static string Draw() { return "Loading..."; }
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string BubbleTitle() { return "Interaction Bubbles"; }
+    }
+}
+namespace Bubbles
+{
+    public static class Mod
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string SettingsCategory() { return "Interaction Bubbles"; }
+    }
+}
+namespace Bubbles.Configuration
+{
+    public static class SettingsEditor
+    {
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static string DrawSettings() { return " (Experimental)"; }
+        public sealed class Dialog
+        {
+            public readonly string Title;
+            [MethodImpl(MethodImplOptions.NoInlining)]
+            public Dialog() { Title = "<b>Interaction Bubbles</b>"; }
+        }
     }
 }
 public static class RuntimeLocalizationTests
@@ -165,7 +189,11 @@ public static class RuntimeLocalizationTests
         serial.UpdatePawnsThatCanDuel(false);
         Check(serial.Count == 2, "Serial processing changed");
         Check(SmartSpeed.SmartSpeed_Mod.SettingsCategory() == "Smart Speed — скорость игры", "Smart Speed title not translated");
-        Console.WriteLine("{\"runtimeChecks\":18,\"realHarmony\":true,\"passed\":true}");
+        Check(Bubbles.Mod.SettingsCategory() == "Речевые пузыри", "Bubbles settings title not translated");
+        Check(Bubbles.Configuration.SettingsEditor.DrawSettings() == " (экспериментально)", "Bubbles suffix not translated");
+        Check(new Bubbles.Configuration.SettingsEditor.Dialog().Title == "<b>Речевые пузыри</b>", "Dialog title lost its markup");
+        Check(UnrelatedMod.Display.BubbleTitle() == "Interaction Bubbles", "Bubbles title patch leaked into unrelated mod");
+        Console.WriteLine("{\"runtimeChecks\":22,\"realHarmony\":true,\"passed\":true}");
     }
 
     private static void Check(bool condition, string message)

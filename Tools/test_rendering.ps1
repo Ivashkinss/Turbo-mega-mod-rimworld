@@ -1,4 +1,4 @@
-param([string]$Label = 'FullMods-Fullscreen', [switch]$Windowed, [string[]]$Exclude = @('sarg.smartspeed','dhultgren.smarterconstruction','brrainz.cameraplus'), [int]$ObserveSeconds = 100, [string]$ReuseFrom, [switch]$UseSavedCopy, [string]$SaveFile, [string]$UserDataPath)
+param([string]$Label = 'FullMods-Fullscreen', [switch]$Windowed, [switch]$Hidden, [string[]]$Exclude = @('sarg.smartspeed','dhultgren.smarterconstruction','brrainz.cameraplus'), [int]$ObserveSeconds = 100, [string]$ReuseFrom, [switch]$UseSavedCopy, [string]$SaveFile, [string]$UserDataPath)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
@@ -46,7 +46,8 @@ foreach ($source in @(Get-ChildItem -LiteralPath (Join-Path $userData 'Config') 
 }
 $colors = Join-Path $userData 'Config\TrueTerrainColorsCache.xml'
 if (Test-Path -LiteralPath $colors) { Copy-Item -LiteralPath $colors -Destination (Join-Path $testRoot 'Config\TrueTerrainColorsCache.xml') -Force }
-    $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList $arguments -WindowStyle Normal -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
+    $windowStyle = if ($Hidden) { 'Hidden' } else { 'Normal' }
+    $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList $arguments -WindowStyle $windowStyle -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
     Write-Output ('TestRoot: ' + $testRoot)
     Write-Output ('PID: ' + $process.Id)
     $exited = $process.WaitForExit($ObserveSeconds * 1000)

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Bubbles.Toggle>Показывать речевые пузыри</Bubbles.Toggle>
+  <Bubbles.ResetToDefault>Восстановить значения по умолчанию</Bubbles.ResetToDefault>
+  <Bubbles.NonWindow>Чтобы открыть эти настройки во время игры, нажмите на значок речевых пузырей, удерживая Shift.</Bubbles.NonWindow>
+  <Bubbles.DoNonPlayer>Показывать для других фракций</Bubbles.DoNonPlayer>
+  <Bubbles.DoAnimals>Показывать взаимодействия животных</Bubbles.DoAnimals>
+  <Bubbles.DoDrafted>Показывать у призванных персонажей</Bubbles.DoDrafted>
+  <Bubbles.DoTextColors>Использовать цветной текст</Bubbles.DoTextColors>
+  <Bubbles.HearingCheck>Только в пределах слышимости подконтрольных персонажей</Bubbles.HearingCheck>
+  <Bubbles.HearingRange>Дальность слышимости</Bubbles.HearingRange>
+  <Bubbles.AutoHideSpeed>Скрывать на скорости</Bubbles.AutoHideSpeed>
+  <Bubbles.AutoHideSpeedOff>Не скрывать</Bubbles.AutoHideSpeedOff>
+  <Bubbles.AltitudeBase>Базовая высота камеры</Bubbles.AltitudeBase>
+  <Bubbles.AltitudeMax>Предельная высота камеры</Bubbles.AltitudeMax>
+  <Bubbles.ScaleMax>Максимальный масштаб</Bubbles.ScaleMax>
+  <Bubbles.PawnMax>Максимум пузырей на персонажа</Bubbles.PawnMax>
+  <Bubbles.OffsetSpacing>Расстояние между пузырями</Bubbles.OffsetSpacing>
+  <Bubbles.OffsetStart>Отступ от имени персонажа</Bubbles.OffsetStart>
+  <Bubbles.OffsetDirection>Направление смещения</Bubbles.OffsetDirection>
+  <Bubbles.OffsetDirections>Вниз|Влево|Вверх|Вправо</Bubbles.OffsetDirections>
+  <Bubbles.OpacityStart>Начальная непрозрачность</Bubbles.OpacityStart>
+  <Bubbles.OpacityHover>Непрозрачность при наведении</Bubbles.OpacityHover>
+  <Bubbles.FadeStart>Тиков до начала исчезновения</Bubbles.FadeStart>
+  <Bubbles.FadeLength>Длительность исчезновения в тиках</Bubbles.FadeLength>
+  <Bubbles.FontSize>Размер шрифта</Bubbles.FontSize>
+  <Bubbles.PaddingX>Отступ текста по горизонтали</Bubbles.PaddingX>
+  <Bubbles.PaddingY>Отступ текста по вертикали</Bubbles.PaddingY>
+  <Bubbles.WidthMax>Максимальная ширина</Bubbles.WidthMax>
+  <Bubbles.Background>Цвет фона</Bubbles.Background>
+  <Bubbles.Foreground>Цвет текста</Bubbles.Foreground>
+  <Bubbles.BackgroundSelected>Цвет фона при выделении</Bubbles.BackgroundSelected>
+  <Bubbles.ForegroundSelected>Цвет текста при выделении</Bubbles.ForegroundSelected>
+</LanguageData>

@@ -39,7 +39,10 @@ namespace TurboMegaMod
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnQuantity", StringComparison.Ordinal)
                 || name.StartsWith("DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable", StringComparison.Ordinal)
                 || name == "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod"
-                || name == "SmartSpeed.SmartSpeed_Mod";
+                || name == "SmartSpeed.SmartSpeed_Mod"
+                || name == "Bubbles.Mod"
+                || name == "Bubbles.Configuration.SettingsEditor"
+                || name == "Bubbles.Configuration.SettingsEditor+Dialog";
         }
 
         private static bool ContainsLiteral(MethodBase method)
@@ -88,7 +91,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

@@ -42,5 +42,42 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
+  },
+  "InteractionBubbles": {
+    "packageId": "jaxe.bubbles",
+    "files": [
+      {
+        "source": "Interaction Bubbles (Речевые пузыри)/Assemblies/Bubbles.dll",
+        "projectFile": "Components/InteractionBubbles/Assemblies/Bubbles.dll",
+        "sourceRawSha256": "d2091083a82969578dcda08e0a6d58f13b032ea6cfa544a1804b7d298c66ca65",
+        "sha256": "d2091083a82969578dcda08e0a6d58f13b032ea6cfa544a1804b7d298c66ca65"
+      },
+      {
+        "source": "Interaction Bubbles (Речевые пузыри)/Languages/English/Keyed/Bubbles.xml",
+        "projectFile": "Components/InteractionBubbles/Languages/English/Keyed/Bubbles.xml",
+        "sourceRawSha256": "b6615186d6bdfa6176a09e80c2f231016f62b667d96930425c63ed97d0a6362e",
+        "sha256": "8bf6a2739ec4c3c4d0c2a0560795eda14cdc0b9f9694f6c64a24c019242d0687"
+      },
+      {
+        "source": "Interaction Bubbles (Речевые пузыри)/Textures/Bubbles/Icon.png",
+        "projectFile": "Components/InteractionBubbles/Textures/Bubbles/Icon.png",
+        "sourceRawSha256": "26cee0249e98df801f0ab7987f569f1afa38b6c4205498116987f16f492e1ad5",
+        "sha256": "26cee0249e98df801f0ab7987f569f1afa38b6c4205498116987f16f492e1ad5"
+      },
+      {
+        "source": "Interaction Bubbles (Речевые пузыри)/Textures/Bubbles/Inner.png",
+        "projectFile": "Components/InteractionBubbles/Textures/Bubbles/Inner.png",
+        "sourceRawSha256": "7cb660aedb473b0816514ab6082ff22455f961b9f623cea589073db979a54383",
+        "sha256": "7cb660aedb473b0816514ab6082ff22455f961b9f623cea589073db979a54383"
+      },
+      {
+        "source": "Interaction Bubbles (Речевые пузыри)/Textures/Bubbles/Outer.png",
+        "projectFile": "Components/InteractionBubbles/Textures/Bubbles/Outer.png",
+        "sourceRawSha256": "7014e87b99a55de2a8b9b1434693d619b314ad4538e1ee00f46c72f866a29261",
+        "sha256": "7014e87b99a55de2a8b9b1434693d619b314ad4538e1ee00f46c72f866a29261"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "LF line endings and trailing line whitespace removed; XML values otherwise unchanged"
   }
 }

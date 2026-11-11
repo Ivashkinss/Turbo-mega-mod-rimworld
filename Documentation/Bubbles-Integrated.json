@@ -1,0 +1,31 @@
+{
+  "originalBubblesActive": false,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 1040,
+    "scalarFields": 225,
+    "grammarLines": 45,
+    "displayPatches": 10,
+    "passed": true,
+    "errors": []
+  },
+  "bubbles": {
+    "passed": true,
+    "bubbleDrawCalls": 930,
+    "simulationTicksAdvanced": 283,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2963,
+    "ticksAdvanced": 1783
+  },
+  "runtimeErrors": 2,
+  "knownExternalRuntimeErrors": 2,
+  "unexpectedRuntimeErrors": 0,
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "passed": true
+}

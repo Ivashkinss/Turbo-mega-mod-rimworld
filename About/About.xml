@@ -4,7 +4,7 @@
   <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
   <packageId>colonyproject.integrated</packageId>
   <supportedVersions><li>1.6</li><li>1.7</li></supportedVersions>
-  <description>27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge с исходной вместимостью. Встроены Smart Speed и Smarter Construction; если оригиналы включены, встроенные копии не загружаются. Большой холодильник использует адаптивную сетку предметов. Добавлены русские переводы хранилищ, Adaptive Storage, Melee Animation и Dynamic Trade Interface; восстановлены 615 русских строк Dev In Your Language. Всего 1239 русских записей, включая 45 строк боевого журнала. Переведено окно VEF, предлагающее добавить отсутствующую фракцию. Camera+ исключена по просьбе пользователя.
+  <description>27 хранилищ Neat Storage с удвоенной вместимостью и 7 холодильников [sbz] Fridge с исходной вместимостью. Встроены Smart Speed, Smarter Construction и Interaction Bubbles; если оригиналы включены, встроенные копии не загружаются. Большой холодильник использует адаптивную сетку предметов. Добавлены русские переводы хранилищ, Adaptive Storage, Melee Animation, Dynamic Trade Interface и Interaction Bubbles; восстановлены 615 русских строк Dev In Your Language. Всего 1273 русские записи, включая 45 строк боевого журнала. Переведено окно VEF, предлагающее добавить отсутствующую фракцию. Camera+ исключена по просьбе пользователя.
 
 Нужны Adaptive Storage Framework и Harmony. Для RimWorld 1.7 используйте обновлённую Harmony с поддержкой .NET 10 (проверена версия мода Harmony 3.0.2.0). Для русификации анимаций и торговли оставьте Melee Animation и Dynamic Trade Interface включёнными и загрузите Turbo mega mod после них. Исходные Neat Storage и [sbz] Fridge уже встроены; не включайте их отдельно. На 1.7 исправлено чтение списка участников дружеских поединков из фонового потока. Остальные выбранные моды пока не объединены. Загрузка и переводы проверены внутри RimWorld 1.7.5000; визуальная проверка всех окон ещё требуется.</description>
   <modDependencies>
@@ -17,6 +17,7 @@
     <li>latta.devl10n</li>
     <li>co.uk.epicguru.meleeanimation</li>
     <li>zeracronius.dynamictradeinterface</li>
+    <li>jaxe.bubbles</li>
   </loadAfter>
   <incompatibleWith>
     <li>sbz.NeatStorage</li>

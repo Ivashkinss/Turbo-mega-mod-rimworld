@@ -91,7 +91,9 @@ public static class InGameLocalizationProbe
             "DynamicTradeInterface.UserInterface.Columns.ColumnQuantity|PostOpen",
             "DynamicTradeInterface.Mod.DynamicTradeInterfaceMod|SettingsCategory",
             "DynamicTradeInterface.UserInterface.Columns.ColumnExtraIconTypes.BookDrawable+<GetIcons>d__1|MoveNext",
-            "SmartSpeed.SmartSpeed_Mod|SettingsCategory"
+            "SmartSpeed.SmartSpeed_Mod|SettingsCategory",
+            "Bubbles.Mod|SettingsCategory",
+            "Bubbles.Configuration.SettingsEditor|DrawSettings"
         };
         foreach (string target in targets)
         {
@@ -102,6 +104,12 @@ public static class InGameLocalizationProbe
             if (info == null || !info.Owners.Contains("turbomegamod.runtime.localization")) errors.Add("Missing display patch: " + target);
             else patches++;
         }
+        var bubbleDialog = AccessTools.TypeByName("Bubbles.Configuration.SettingsEditor+Dialog");
+        var dialogConstructor = bubbleDialog == null ? null : AccessTools.Constructor(bubbleDialog);
+        var dialogPatch = dialogConstructor == null ? null : Harmony.GetPatchInfo(dialogConstructor);
+        if (dialogPatch == null || !dialogPatch.Owners.Contains("turbomegamod.runtime.localization"))
+            errors.Add("Missing Bubbles dialog title patch");
+        else patches++;
         var tradeType = AccessTools.TypeByName("DynamicTradeInterface.Mod.DynamicTradeInterfaceMod");
         object tradeMod = LoadedModManager.ModHandles.FirstOrDefault(m => m.GetType() == tradeType);
         if (tradeMod == null || (string)AccessTools.Method(tradeType, "SettingsCategory").Invoke(tradeMod, null) != "Динамическое окно торговли")
@@ -118,12 +126,18 @@ public static class InGameLocalizationProbe
         var duelMethod = AccessTools.Method(AccessTools.TypeByName("AM.AutoDuel.AutoFriendlyDuelMapComp"), "UpdatePawnsThatCanDuel");
         var duelPatch = Harmony.GetPatchInfo(duelMethod);
         if (duelPatch == null || !duelPatch.Owners.Contains("turbomegamod.melee.waylith")) errors.Add("Missing main-thread snapshot patch");
-        foreach (string component in new[] { "SmartSpeed", "SmarterConstruction" })
+        foreach (string component in new[] { "SmartSpeed", "SmarterConstruction", "InteractionBubbles" })
         {
-            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == component);
-            string expectedPath = Path.Combine(root, "Components", component, "Assemblies", component + ".dll");
+            string assemblyName = component == "InteractionBubbles" ? "Bubbles" : component;
+            Assembly[] matching = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == assemblyName).ToArray();
+            if (matching.Length != 1) errors.Add("Expected exactly one utility assembly: " + component + "; found " + matching.Length);
+            Assembly assembly = matching.FirstOrDefault();
+            bool originalActive = component == "InteractionBubbles" && ModsConfig.IsActive("jaxe.bubbles");
+            string expectedPath = originalActive
+                ? Path.Combine(LoadedModManager.RunningModsListForReading.First(m => m.PackageId == "jaxe.bubbles").RootDir, "Assemblies/Bubbles.dll")
+                : Path.Combine(root, "Components", component, "Assemblies", assemblyName + ".dll");
             if (assembly == null || !string.Equals(Path.GetFullPath(assembly.Location), Path.GetFullPath(expectedPath), StringComparison.OrdinalIgnoreCase))
-                errors.Add("Utility assembly was not loaded from integrated component: " + component);
+                errors.Add("Utility assembly loaded from an unexpected location: " + component);
             else
             {
                 bool patched = Harmony.GetAllPatchedMethods().Any(method => {
@@ -131,6 +145,23 @@ public static class InGameLocalizationProbe
                     return info.Prefixes.Concat(info.Postfixes).Concat(info.Transpilers).Any(patch => patch.PatchMethod.Module.Assembly == assembly);
                 });
                 if (!patched) errors.Add("Utility installed no game patches: " + component);
+                if (component == "InteractionBubbles")
+                {
+                    foreach (string route in new[] {
+                        "RimWorld.PlaySettings|DoPlaySettingsGlobalControls",
+                        "RimWorld.MapInterface|MapInterfaceOnGUI_BeforeMainTabs",
+                        "Verse.PlayLog|Add",
+                        "Verse.Profile.MemoryUtility|ClearAllMapsAndWorld"
+                    })
+                    {
+                        string[] parts = route.Split('|');
+                        var method = AccessTools.Method(AccessTools.TypeByName(parts[0]), parts[1]);
+                        var info = method == null ? null : Harmony.GetPatchInfo(method);
+                        if (info == null || !info.Prefixes.Concat(info.Postfixes).Concat(info.Transpilers)
+                            .Any(patch => patch.PatchMethod.Module.Assembly == assembly))
+                            errors.Add("Missing Bubbles gameplay patch: " + route);
+                    }
+                }
             }
         }
         string report = "{\"keyed\":" + keyed + ",\"scalarFields\":" + fields + ",\"grammarLines\":" + rules

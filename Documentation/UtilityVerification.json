@@ -1,10 +1,15 @@
 {
   "components": [
     "SmartSpeed",
-    "SmarterConstruction"
+    "SmarterConstruction",
+    "InteractionBubbles"
   ],
-  "resourceHashesVerified": 5,
-  "smartSpeedRussianKeys": 16,
+  "resourceHashesVerified": 10,
+  "russianKeysByComponent": {
+    "SmartSpeed": 16,
+    "SmarterConstruction": 0,
+    "InteractionBubbles": 31
+  },
   "separateHarmonyCopies": 0,
   "standaloneAndOriginalActiveLoadGuardsVerified": true,
   "passed": true
