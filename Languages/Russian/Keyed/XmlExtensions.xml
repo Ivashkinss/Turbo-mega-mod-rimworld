@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <XmlExtensions_Label>XML Extensions — настройки модов</XmlExtensions_Label>
+  <XmlExtensions_Confirmation>Вы уверены?</XmlExtensions_Confirmation>
+  <XmlExtensions_ResetSettings>Сбросить настройки</XmlExtensions_ResetSettings>
+  <XmlExtensions_ShowSettingsButton>Добавить кнопку «+» для открытия настроек XML Extensions?</XmlExtensions_ShowSettingsButton>
+  <XmlExtensions_ShowSettingsButtonTip>Рядом с обычной кнопкой настроек модов появится кнопка «+» для быстрого открытия этого меню.</XmlExtensions_ShowSettingsButtonTip>
+  <XmlExtensions_ViewUnusedSettings>Неиспользуемые настройки</XmlExtensions_ViewUnusedSettings>
+  <XmlExtensions_InactiveMods>Неактивные моды:</XmlExtensions_InactiveMods>
+  <XmlExtensions_NoExtraSettings>Дополнительных настроек пока нет</XmlExtensions_NoExtraSettings>
+  <XmlExtensions_SelectedModUnusedKeys>Неиспользуемые ключи выбранного мода:</XmlExtensions_SelectedModUnusedKeys>
+  <XmlExtensions_Delete>Удалить</XmlExtensions_Delete>
+  <XmlExtensions_DeleteKeys>Удалить ключи: {0}</XmlExtensions_DeleteKeys>
+  <XmlExtensions_ConfirmationResetMod>Удалить все неиспользуемые ключи выбранного мода?</XmlExtensions_ConfirmationResetMod>
+  <XmlExtensions_DeleteAllUnusedKeys>Удалить все неиспользуемые ключи: {0}</XmlExtensions_DeleteAllUnusedKeys>
+  <XmlExtensions_ConfirmResetAll>Удалить неиспользуемые ключи всех модов?</XmlExtensions_ConfirmResetAll>
+  <XmlExtensions_Open>Открыть</XmlExtensions_Open>
+  <XmlExtensions_Apply>Применить</XmlExtensions_Apply>
+  <XmlExtensions_ModSettingsFor>Настройки мода: </XmlExtensions_ModSettingsFor>
+  <XmlExtensions_Unpin>Открепить мод</XmlExtensions_Unpin>
+  <XmlExtensions_Pin>Закрепить мод</XmlExtensions_Pin>
+  <XmlExtensions_HowToPin>Нажмите правой кнопкой мыши, чтобы закрепить мод</XmlExtensions_HowToPin>
+  <XmlExtensions_AddMainButton>Добавить в нижнюю панель кнопку настроек XML Extensions?</XmlExtensions_AddMainButton>
+  <XmlExtensions_AddMainButtonTip>Добавляет кнопку для открытия этого меню настроек модов.</XmlExtensions_AddMainButtonTip>
+  <XmlExtensions_R>R</XmlExtensions_R>
+  <XmlExtensions_G>G</XmlExtensions_G>
+  <XmlExtensions_B>B</XmlExtensions_B>
+</LanguageData>

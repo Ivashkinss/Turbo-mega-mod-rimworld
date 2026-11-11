@@ -3201,5 +3201,42 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "XmlExtensions": {
+    "packageId": "imranfish.xmlextensions",
+    "files": [
+      {
+        "source": "XML Extensions (Библиотека)/1.6/Assemblies/XmlExtensions.dll",
+        "projectFile": "Components/XmlExtensions/Assemblies/XmlExtensions.dll",
+        "sourceRawSha256": "dc9e7cfc29096c07052dc2c1ac9270d074c52efca5f381964ddb6ef20e34279d",
+        "sha256": "dc9e7cfc29096c07052dc2c1ac9270d074c52efca5f381964ddb6ef20e34279d"
+      },
+      {
+        "source": "XML Extensions (Библиотека)/1.6/Defs/MainButtonDefs.xml",
+        "projectFile": "Components/XmlExtensions/Defs/MainButtonDefs.xml",
+        "sourceRawSha256": "caa0ceee33255f8d87f0177df8799b6164f4c46cf60d5262c64754e1baad417b",
+        "sha256": "712810cf7abe4224247101c9b08d16dd33bc2a26e926c7465d6de5009820c5db"
+      },
+      {
+        "source": "XML Extensions (Библиотека)/1.6/Languages/English/Keyed/XMLExtensions_Keyed_EN.xml",
+        "projectFile": "Components/XmlExtensions/Languages/English/Keyed/XMLExtensions_Keyed_EN.xml",
+        "sourceRawSha256": "1fffde8b84736bb66abf57bba46a343a4acac37f7d6a6ec685556784b4eb1eb9",
+        "sha256": "ee9ddd3c49cd306b2930f89094e0f6f42fb2c8282d89bf0d1aeabb83e6bf836b"
+      },
+      {
+        "source": "XML Extensions (Библиотека)/Textures/UI/Icons/XMLEIcon.png",
+        "projectFile": "Components/XmlExtensions/Textures/UI/Icons/XMLEIcon.png",
+        "sourceRawSha256": "cf9b846f5c7b78ad240c8fa771f8b1e1496d7daf3e3b96c71d1369bc8910e67e",
+        "sha256": "cf9b846f5c7b78ad240c8fa771f8b1e1496d7daf3e3b96c71d1369bc8910e67e"
+      },
+      {
+        "source": "XML Extensions (Библиотека)/Textures/UI/Buttons/MainButtons/MainButton_ModSettings.png",
+        "projectFile": "Components/XmlExtensions/Textures/UI/Buttons/MainButtons/MainButton_ModSettings.png",
+        "sourceRawSha256": "b9a4e55b3deb954218411edce3591613c0377d1cd7a3ad3f0527f09be82384a7",
+        "sha256": "b9a4e55b3deb954218411edce3591613c0377d1cd7a3ad3f0527f09be82384a7"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

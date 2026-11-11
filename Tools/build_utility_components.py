@@ -9,6 +9,13 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "XmlExtensions": ("XML Extensions (Библиотека)", "imranfish.xmlextensions", {
+        "1.6/Assemblies/XmlExtensions.dll": "Assemblies/XmlExtensions.dll",
+        "1.6/Defs/MainButtonDefs.xml": "Defs/MainButtonDefs.xml",
+        "1.6/Languages/English/Keyed/XMLExtensions_Keyed_EN.xml": "Languages/English/Keyed/XMLExtensions_Keyed_EN.xml",
+        "Textures/UI/Icons/XMLEIcon.png": "Textures/UI/Icons/XMLEIcon.png",
+        "Textures/UI/Buttons/MainButtons/MainButton_ModSettings.png": "Textures/UI/Buttons/MainButtons/MainButton_ModSettings.png",
+    }),
     "WallsAreSolid": ("Walls Are Solid (Усиленные стены)", "victor.wallsaresolid", {
         "Assemblies/WallsAreSolid.dll": "Assemblies/WallsAreSolid.dll",
         "1.6/Defs/DamageDefs.xml": "Defs/DamageDefs.xml",

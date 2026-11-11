@@ -1,6 +1,8 @@
 # Источники включённых ресурсов
 
-- Walls Are Solid — Victor, wilki24; packageId victor.wallsaresolid. Сохранены About и SHA-256 девяти неизменённых ресурсов: DLL, четыре Def и четыре патча 1.6. XML Extensions остаётся внешней зависимостью. Перевод выполнен отдельным Patches/WallsLocalization.xml через штатные tKey/tKeyTip, сохранив исходные английские подписи, modId и числовые параметры. Переведены 21 строка и два поля определений. Несовместимость aelanna.fistnerf перенесена.
+- XML Extensions — Imranfish; packageId imranfish.xmlextensions. Сохранены XmlExtensions.About.xml и SHA-256 пяти ресурсов: неизменённая DLL 1.6, MainButtonDefs.xml, English Keyed и две иконки. Переведены 25 ключей и два поля кнопки. Исходные API, XML-операции и пространства настроек не менялись; при активном оригинале встроенная папка пропускается.
+
+- Walls Are Solid — Victor, wilki24; packageId victor.wallsaresolid. Сохранены About и SHA-256 девяти неизменённых ресурсов: DLL, четыре Def и четыре патча 1.6. XML Extensions также встроен. Перевод выполнен отдельным Patches/WallsLocalization.xml через штатные tKey/tKeyTip, сохранив исходные английские подписи, modId и числовые параметры. Переведены 21 строка и два поля определений. Несовместимость aelanna.fistnerf перенесена.
 
 - FSharp.Core — пакет latta, packageId latta.fsharp.core. Сохранены About и хеши двух неизменённых DLL: FSharp.Core 4.7.0.0 и Poet 5.4.1.0. Собственных Def, переводов и окна настроек у пакета нет. Обе библиотеки загружаются из Components/FSharpCore при выключенном оригинале.
 

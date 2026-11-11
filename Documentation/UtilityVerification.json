@@ -1,5 +1,6 @@
 {
   "components": [
+    "XmlExtensions",
     "WallsAreSolid",
     "FSharpCore",
     "DynamicTradeInterface",
@@ -19,8 +20,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 511,
+  "resourceHashesVerified": 516,
   "russianKeysByComponent": {
+    "XmlExtensions": 25,
     "WallsAreSolid": 0,
     "FSharpCore": 0,
     "DynamicTradeInterface": 73,

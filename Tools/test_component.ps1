@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'XmlExtensions' { @{ folder='XML Extensions (Библиотека)'; id='imranfish.xmlextensions'; dll='Components\XmlExtensions\Assemblies\XmlExtensions.dll'; source='InGameXmlProbe.cs'; flag='-tmm-xml-probe'; report='XmlProbe.json'; ui='XmlUiProbe.json'; key='xmlExtensions'; prefix='XmlExtensions' } }
     'WallsAreSolid' { @{ folder='Walls Are Solid (Усиленные стены)'; id='victor.wallsaresolid'; dll='Components\WallsAreSolid\Assemblies\WallsAreSolid.dll'; source='InGameWallsProbe.cs'; flag='-tmm-walls-probe'; report='WallsProbe.json'; ui='WallsUiProbe.json'; key='walls'; prefix='WallsAreSolid' } }
     'FSharpCore' { @{ folder='FSharp.Core'; id='latta.fsharp.core'; dll='Components\FSharpCore\Assemblies\FSharp.Core.dll'; source='InGameFSharpProbe.cs'; flag='-tmm-fsharp-probe'; report='FSharpProbe.json'; ui='FSharpUiProbe.json'; key='fsharp'; prefix='FSharpCore' } }
     'DynamicTradeInterface' { @{ folder='Dynamic Trade Interface'; id='zeracronius.dynamictradeinterface'; dll='Components\DynamicTradeInterface\Assemblies\DynamicTradeInterface.dll'; source='InGameTradeProbe.cs'; flag='-tmm-trade-probe'; report='TradeProbe.json'; ui='TradeUiProbe.json'; key='trade'; prefix='DynamicTradeInterface' } }
@@ -21,6 +22,7 @@ $definition = switch ($Component) {
 }
 if (Get-Process RimWorld -ErrorAction SilentlyContinue) { throw 'Close RimWorld before starting the isolated test.' }
 if ($OriginalActive -and $FullSet) { throw 'Use -OriginalActive and -FullSet separately.' }
+if ($WithWallsAreSolid -and $Component -ne 'XmlExtensions') { throw 'Paired walls regression is defined for XmlExtensions.' }
 if ($WithNiceBillTab -and $Component -ne 'UsefulMarks') { throw 'Combined menu regression is currently defined for UsefulMarks.' }
 if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath ('Mods\' + $definition.folder + '\About\About.xml')))) {
     throw ('Restore original ' + $Component + ' before testing -OriginalActive.')
@@ -35,6 +37,7 @@ $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs',$definition.source) |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
+if ($WithWallsAreSolid) { $sources += Join-Path $projectPath 'Tests\InGameWallsProbe.cs' }
 & (Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe') /noconfig /nologo /nostdlib+ /target:library (('/out:') + $builtProbe) @references @sources
 if ($LASTEXITCODE -ne 0) { throw ($Component + ' probe compile failed') }
 $label = if ($FullSet) { 'FullSet' } elseif ($OriginalActive) { 'OriginalActive' } else { 'Integrated' }
@@ -45,7 +48,6 @@ foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) { $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant() }
 }
 $ids += @('unlimitedhugs.hugslib','adaptive.storage.framework','co.uk.epicguru.meleeanimation')
-$ids += 'imranfish.xmlextensions'
 if (!$OriginalActive) { $ids = @($ids | Where-Object { $_ -ne $definition.id }) }
 if ($OriginalActive) { $ids += $definition.id }
 $ids += 'colonyproject.integrated'
@@ -86,11 +88,13 @@ try {
         ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe',$definition.flag
     )
     if ($WithNiceBillTab) { $arguments += '-tmm-nicebill-probe' }
+    if ($WithWallsAreSolid) { $arguments += '-tmm-walls-probe' }
     $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList $arguments -WindowStyle Hidden -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
     Write-Output ('TestRoot: ' + $testRoot)
     $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
     $reports = @('LocalizationProbe.json',$definition.report,'GpuMapProbe.json',$definition.ui)
     if ($WithNiceBillTab) { $reports += @('NiceBillProbe.json','NiceBillUiProbe.json') }
+    if ($WithWallsAreSolid) { $reports += @('WallsProbe.json','WallsUiProbe.json') }
     while (@($reports | Where-Object { !(Test-Path -LiteralPath (Join-Path $testRoot $_)) }).Count) {
         if ($process.WaitForExit(1000)) { throw ('Game exited before completing the probes: ' + $testRoot) }
         foreach ($name in $reports) {
@@ -142,6 +146,12 @@ try {
         $billUi = Get-Content -LiteralPath (Join-Path $testRoot 'NiceBillUiProbe.json') -Raw | ConvertFrom-Json
         $result.relatedNiceBillTab = @{ runtime=$billProbe; ui=$billUi; passed=($billProbe.passed -and $billUi.passed) }
         $result.passed = $result.passed -and $result.relatedNiceBillTab.passed
+    }
+    if ($WithWallsAreSolid) {
+        $wallProbe = Get-Content -LiteralPath (Join-Path $testRoot 'WallsProbe.json') -Raw | ConvertFrom-Json
+        $wallUi = Get-Content -LiteralPath (Join-Path $testRoot 'WallsUiProbe.json') -Raw | ConvertFrom-Json
+        $result.relatedWallsAreSolid = @{ runtime=$wallProbe; ui=$wallUi; passed=($wallProbe.passed -and $wallUi.passed) }
+        $result.passed = $result.passed -and $result.relatedWallsAreSolid.passed
     }
     $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $testRoot 'Result.json') -Encoding utf8
     $result | ConvertTo-Json -Depth 8

@@ -25,6 +25,7 @@
     <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
     <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
+    <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
   </v1.6>
   <v1.7>
     <li>/</li>
@@ -51,5 +52,6 @@
     <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
     <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
     <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
+    <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
   </v1.7>
 </loadFolders>
