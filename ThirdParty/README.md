@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- More Planning (Continued) — Alan Dariva, Usagirei, Mlie; packageId mlie.moreplanning. Сохранены About, MIT LICENSE.md и хеши 38 ресурсов: DLL MorePlanning, VersionFromManifest, оригинальная Multiplayer API 0.6, три файла Def, английский Keyed, News и 29 текстур. В проверенных профилях движок выбирает общую API 0.5 из Adaptive Storage, как при активном оригинале; регистрация обработчиков проходит, реальная сетевая игра не проверялась. Старые новости оставлены на языке оригинала. Переведены 34 ключа и два поля категории.
+
 - Nice Bill Tab — Andromeda; packageId andromeda.nicebilltab. Сохранены NiceBillTab.About.xml и хеши 55 ресурсов: две DLL 1.6, английский Keyed и 52 текстуры. Импортированы 63 русских ключа; заголовок настроек переведён отдельным allowlist-перехватом. FloatSubMenu из Useful Marks имеет ту же assembly identity, но другой хеш и более широкий публичный интерфейс; при его будущем переносе нужно выбрать одну совместимую общую копию и проверить оба компонента.
 
 - Pick Up And Haul — Mehni; packageId mehni.pickupandhaul. Сохранены PickUpAndHaul.About.xml, MIT LICENSE и SHA-256 восьми ресурсов: две DLL 1.6 (PickUpAndHaul и IHoldMultipleThings), Def, патч и три английских XML. Старая Harmony не включена. Переведены восемь настроек, пять актуальных полей Def и заголовок настроек. DLL и исходные игровые ключи сохранены без изменений.

@@ -9,6 +9,46 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "MorePlanning": ("More Planning", "mlie.moreplanning", {
+        "1.6/Assemblies/0MultiplayerAPI.dll": "Assemblies/0MultiplayerAPI.dll",
+        "1.6/Assemblies/MorePlanning.dll": "Assemblies/MorePlanning.dll",
+        "1.6/Assemblies/VersionFromManifest.dll": "Assemblies/VersionFromManifest.dll",
+        "1.6/Defs/Designations/DesignationCategories.xml": "Defs/Designations/DesignationCategories.xml",
+        "1.6/Defs/PlanningDesignationDef/Designators.xml": "Defs/PlanningDesignationDef/Designators.xml",
+        "1.6/Defs/UpdateInfo.xml": "Defs/UpdateInfo.xml",
+        "LICENSE.md": "LICENSE.md",
+        "Languages/English/Keyed/Translations.xml": "Languages/English/Keyed/Translations.xml",
+        "News/UpdateFeatures.xml": "News/UpdateFeatures.xml",
+        "Textures/UI/ColorPickerOverlay.png": "Textures/UI/ColorPickerOverlay.png",
+        "Textures/UI/ColorPickerSelect.png": "Textures/UI/ColorPickerSelect.png",
+        "Textures/UI/HsvSlider.png": "Textures/UI/HsvSlider.png",
+        "Textures/UI/Opacity.png": "Textures/UI/Opacity.png",
+        "Textures/UI/Plan.png": "Textures/UI/Plan.png",
+        "Textures/UI/PlanBase.png": "Textures/UI/PlanBase.png",
+        "Textures/UI/PlanBase0.png": "Textures/UI/PlanBase0.png",
+        "Textures/UI/PlanBase1.png": "Textures/UI/PlanBase1.png",
+        "Textures/UI/PlanBase2.png": "Textures/UI/PlanBase2.png",
+        "Textures/UI/PlanBase3.png": "Textures/UI/PlanBase3.png",
+        "Textures/UI/PlanBase4.png": "Textures/UI/PlanBase4.png",
+        "Textures/UI/PlanBase5.png": "Textures/UI/PlanBase5.png",
+        "Textures/UI/PlanBase6.png": "Textures/UI/PlanBase6.png",
+        "Textures/UI/PlanBase7.png": "Textures/UI/PlanBase7.png",
+        "Textures/UI/PlanBase8.png": "Textures/UI/PlanBase8.png",
+        "Textures/UI/PlanBase9.png": "Textures/UI/PlanBase9.png",
+        "Textures/UI/PlanCopy.png": "Textures/UI/PlanCopy.png",
+        "Textures/UI/PlanCut.png": "Textures/UI/PlanCut.png",
+        "Textures/UI/PlanExport.png": "Textures/UI/PlanExport.png",
+        "Textures/UI/PlanImport.png": "Textures/UI/PlanImport.png",
+        "Textures/UI/PlanInvisible.png": "Textures/UI/PlanInvisible.png",
+        "Textures/UI/PlanPaste.png": "Textures/UI/PlanPaste.png",
+        "Textures/UI/PlanToolRemoveAll.png": "Textures/UI/PlanToolRemoveAll.png",
+        "Textures/UI/PlanVisible.png": "Textures/UI/PlanVisible.png",
+        "Textures/UI/RemoveIcon.png": "Textures/UI/RemoveIcon.png",
+        "Textures/UI/ShowPlanning.png": "Textures/UI/ShowPlanning.png",
+        "Textures/UI/ToolBoxColor.png": "Textures/UI/ToolBoxColor.png",
+        "Textures/UI/ToolBoxColorSelected.png": "Textures/UI/ToolBoxColorSelected.png",
+        "Textures/UpdateInfo/MorePlanning.png": "Textures/UpdateInfo/MorePlanning.png",
+    }),
     "NiceBillTab": ("Nice Bill Tab (Фильтр рецептов)", "andromeda.nicebilltab", {
         "1.6/Assemblies/NiceBillTab.dll": "Assemblies/NiceBillTab.dll",
         "1.6/Assemblies/FloatSubMenu.dll": "Assemblies/FloatSubMenu.dll",
@@ -213,10 +253,10 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(original, target)
             source_hash = hashlib.sha256(original.read_bytes()).hexdigest()
-            if target.suffix.lower() == ".xml" or target.name == "LICENSE":
+            if target.suffix.lower() == ".xml" or target.name in ("LICENSE", "LICENSE.md"):
                 clean_text(target)
             data = target.read_bytes()
-            if target.suffix.lower() == ".xml" or target.name == "LICENSE":
+            if target.suffix.lower() == ".xml" or target.name in ("LICENSE", "LICENSE.md"):
                 data = data.replace(b"\r\n", b"\n")
             items.append({"source": original.relative_to(PROJECT.parent).as_posix(),
                           "projectFile": target.relative_to(PROJECT).as_posix(),

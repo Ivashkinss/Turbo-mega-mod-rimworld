@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <MorePlanning_ModName>Цветная планировка</MorePlanning_ModName>
+  <MorePlanning.Reset>Сброс настроек по умолчанию</MorePlanning.Reset>
+  <MorePlanning.CurrentModVersion>Установленная версия мода: {0}</MorePlanning.CurrentModVersion>
+  <MorePlanning.SettingPlanOpacity.label>Непрозрачность плана</MorePlanning.SettingPlanOpacity.label>
+  <MorePlanning.SettingRemoveIfBuildingDespawned.label>Удалять планировку после постройки</MorePlanning.SettingRemoveIfBuildingDespawned.label>
+  <MorePlanning.SettingRemoveIfBuildingDespawned.desc>Удалять планировку с клетки, когда на ней будет что-то построено или разрушено.</MorePlanning.SettingRemoveIfBuildingDespawned.desc>
+  <MorePlanning.SettingShiftKeyForOverride.label>Нажатие Shift заменяет цвета</MorePlanning.SettingShiftKeyForOverride.label>
+  <MorePlanning.SettingShiftKeyForOverride.desc>По умолчанию добавление или удаление планировки приведет к замене всех цветов. Удерживайте [shift] при нанесении планировки, чтобы игнорировать другие цвета. Выберите эту опцию, чтобы изменить это поведение.</MorePlanning.SettingShiftKeyForOverride.desc>
+  <MorePlanning.PlanDesc>Размещение планировки. Это просто разметка, которая ни на что не влияет, но помогает планировать изменения. Удерживайте [shift], чтобы изменить метод наложения планировки.</MorePlanning.PlanDesc>
+  <MorePlanning.PlanVisibility>Видимость планировки</MorePlanning.PlanVisibility>
+  <MorePlanning.PlanVisibilityDesc>Спрятать или отобразить планировку.</MorePlanning.PlanVisibilityDesc>
+  <Planning.label>Планировка</Planning.label>
+  <MorePlanning.Opacity.label>Видимость: {0}%</MorePlanning.Opacity.label>
+  <MorePlanning.Opacity.desc>Изменить непрозрачность планировки.</MorePlanning.Opacity.desc>
+  <MorePlanning.DefaultOpacity>(По умолчанию)</MorePlanning.DefaultOpacity>
+  <MorePlanning.PlanCopy>Копировать планировку</MorePlanning.PlanCopy>
+  <MorePlanning.PlanCopyDesc>Скопировать планировку выбранной области.</MorePlanning.PlanCopyDesc>
+  <MorePlanning.PlanCut>Вырезать планировку</MorePlanning.PlanCut>
+  <MorePlanning.PlanCutDesc>Вырезать планировку выбранной области.</MorePlanning.PlanCutDesc>
+  <MorePlanning.PlanPaste>Вставить планировку</MorePlanning.PlanPaste>
+  <MorePlanning.PlanPasteDesc>Вставить скопированную или вырезанную планировку. Клавиша Misc1 ({0}) отражает её по горизонтали, Misc2 ({1}) — по вертикали.</MorePlanning.PlanPasteDesc>
+  <MorePlanning.NoCutCopiedPlan>Вы ещё не вырезали и не скопировали планировку.</MorePlanning.NoCutCopiedPlan>
+  <MorePlanning.MissingPlanningDesignations>В выбранной области нет планировки.</MorePlanning.MissingPlanningDesignations>
+  <MorePlanning.DefaultColor>Цвет по умолчанию</MorePlanning.DefaultColor>
+  <MorePlanning.Ok>Ок</MorePlanning.Ok>
+  <MorePlanning.ChangeColor>Изменить цвет</MorePlanning.ChangeColor>
+  <MorePlanning.PlanImport>Импортировать планы</MorePlanning.PlanImport>
+  <MorePlanning.PlanImportDesc>Импорт планов из системного буфера обмена</MorePlanning.PlanImportDesc>
+  <MorePlanning.PlanImportError>Не удалось импортировать планировку.</MorePlanning.PlanImportError>
+  <MorePlanning.PlanImportOK>Планировка импортирована из системного буфера обмена.</MorePlanning.PlanImportOK>
+  <MorePlanning.PlanExport>Экспорт планов</MorePlanning.PlanExport>
+  <MorePlanning.PlanExportDesc>Экспорт планов в системный буфер обмена</MorePlanning.PlanExportDesc>
+  <MorePlanning.PlanExportError>Не удалось экспортировать планировку.</MorePlanning.PlanExportError>
+  <MorePlanning.PlanExportOK>Планировка скопирована в системный буфер обмена.</MorePlanning.PlanExportOK>
+</LanguageData>

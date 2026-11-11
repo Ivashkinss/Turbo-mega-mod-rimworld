@@ -1073,5 +1073,240 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "MorePlanning": {
+    "packageId": "mlie.moreplanning",
+    "files": [
+      {
+        "source": "More Planning/1.6/Assemblies/0MultiplayerAPI.dll",
+        "projectFile": "Components/MorePlanning/Assemblies/0MultiplayerAPI.dll",
+        "sourceRawSha256": "863766df5fd24a31eda1e59947f026abd5b8dc99cb0d7bca6a8a3d356b65ad8d",
+        "sha256": "863766df5fd24a31eda1e59947f026abd5b8dc99cb0d7bca6a8a3d356b65ad8d"
+      },
+      {
+        "source": "More Planning/1.6/Assemblies/MorePlanning.dll",
+        "projectFile": "Components/MorePlanning/Assemblies/MorePlanning.dll",
+        "sourceRawSha256": "0b932e477e8fd52d2a680a6f149de45e467ed397baac8e9ebd620d319c4e14f2",
+        "sha256": "0b932e477e8fd52d2a680a6f149de45e467ed397baac8e9ebd620d319c4e14f2"
+      },
+      {
+        "source": "More Planning/1.6/Assemblies/VersionFromManifest.dll",
+        "projectFile": "Components/MorePlanning/Assemblies/VersionFromManifest.dll",
+        "sourceRawSha256": "385d0b6d9fc9fe232edd5fc339b05b77df5a7f92fe4ff9c1192bcb094789a4e8",
+        "sha256": "385d0b6d9fc9fe232edd5fc339b05b77df5a7f92fe4ff9c1192bcb094789a4e8"
+      },
+      {
+        "source": "More Planning/1.6/Defs/Designations/DesignationCategories.xml",
+        "projectFile": "Components/MorePlanning/Defs/Designations/DesignationCategories.xml",
+        "sourceRawSha256": "0feb22705c3111959acd3f9a0365da7b376eed7d673e620f4ef1d16ef1a0bd65",
+        "sha256": "4dd33f0f3c81ff5219e5317a35c42c056b3e39cf5fe1ae908b8fb76968566b87"
+      },
+      {
+        "source": "More Planning/1.6/Defs/PlanningDesignationDef/Designators.xml",
+        "projectFile": "Components/MorePlanning/Defs/PlanningDesignationDef/Designators.xml",
+        "sourceRawSha256": "f8cfdd5e395e4a3d09cf6e9e56705414fea677d7d3f655399f8d0624af132b6d",
+        "sha256": "ddf34e50815b3f7235956afa59693c85bb5be75d9cc1b93bfb5e0f0d289ddb9f"
+      },
+      {
+        "source": "More Planning/1.6/Defs/UpdateInfo.xml",
+        "projectFile": "Components/MorePlanning/Defs/UpdateInfo.xml",
+        "sourceRawSha256": "f52f28cb8cb3d08337c865ce55e702ffbfad53ff2ac6bd766033778e87a24c47",
+        "sha256": "f26377608937051a0462f9d85de8e0a8253f1927d3886a5f1f48e5a11839735a"
+      },
+      {
+        "source": "More Planning/LICENSE.md",
+        "projectFile": "Components/MorePlanning/LICENSE.md",
+        "sourceRawSha256": "1288f917436560c0ae3718675d701dfa2f31d93acfc5e801f13492faa31353ad",
+        "sha256": "ccef257eaedb451dad35743e9d45485e9fb7373fd0643599fe95c33caffe3419"
+      },
+      {
+        "source": "More Planning/Languages/English/Keyed/Translations.xml",
+        "projectFile": "Components/MorePlanning/Languages/English/Keyed/Translations.xml",
+        "sourceRawSha256": "376468f654d62880e4ce74047cd1ac25759847e44ce0895f596df1661f36ca5c",
+        "sha256": "b2a02bdca948d56014a0d7505118f37f7398ef39c21ca6263f852b64de0070b5"
+      },
+      {
+        "source": "More Planning/News/UpdateFeatures.xml",
+        "projectFile": "Components/MorePlanning/News/UpdateFeatures.xml",
+        "sourceRawSha256": "1b315fd9ce1083f7c753e49099f7d7b455367645219ee32eead6be8e333a6cc6",
+        "sha256": "73464c97c65d2222f2024914276452d09eafdacf5c3c8f0687bbbae9aa755e98"
+      },
+      {
+        "source": "More Planning/Textures/UI/ColorPickerOverlay.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/ColorPickerOverlay.png",
+        "sourceRawSha256": "473c39babc14bd0fb24ff7d7a9568b6d953b520f24f3717dcbdbf2efa24e142a",
+        "sha256": "473c39babc14bd0fb24ff7d7a9568b6d953b520f24f3717dcbdbf2efa24e142a"
+      },
+      {
+        "source": "More Planning/Textures/UI/ColorPickerSelect.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/ColorPickerSelect.png",
+        "sourceRawSha256": "38bbaf65505fb1a948519f64f8eba773eef78b2dae124787b8afdc8f87dccca4",
+        "sha256": "38bbaf65505fb1a948519f64f8eba773eef78b2dae124787b8afdc8f87dccca4"
+      },
+      {
+        "source": "More Planning/Textures/UI/HsvSlider.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/HsvSlider.png",
+        "sourceRawSha256": "4dad8428199228e464d3cb7ccb9fc0232a33aec63e5133aedf0c5b6626f53d90",
+        "sha256": "4dad8428199228e464d3cb7ccb9fc0232a33aec63e5133aedf0c5b6626f53d90"
+      },
+      {
+        "source": "More Planning/Textures/UI/Opacity.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/Opacity.png",
+        "sourceRawSha256": "7e3722628ef3cf0e1e112651742d8273097fb7363ded9ab19164299233419f98",
+        "sha256": "7e3722628ef3cf0e1e112651742d8273097fb7363ded9ab19164299233419f98"
+      },
+      {
+        "source": "More Planning/Textures/UI/Plan.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/Plan.png",
+        "sourceRawSha256": "d636a7b9ae58d23e9408d961b452908ae060d23479b9ac60482815537650b7d2",
+        "sha256": "d636a7b9ae58d23e9408d961b452908ae060d23479b9ac60482815537650b7d2"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase0.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase0.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase1.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase1.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase2.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase2.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase3.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase3.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase4.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase4.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase5.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase5.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase6.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase6.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase7.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase7.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase8.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase8.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanBase9.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanBase9.png",
+        "sourceRawSha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42",
+        "sha256": "c284b93f683baac3e0b0e2967b49a0689953fe588225d9a04d50603c70775d42"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanCopy.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanCopy.png",
+        "sourceRawSha256": "1b97addadbb3a269baac4b3656f3defc7c4b8fdd1591128731dfe573b013ac9a",
+        "sha256": "1b97addadbb3a269baac4b3656f3defc7c4b8fdd1591128731dfe573b013ac9a"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanCut.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanCut.png",
+        "sourceRawSha256": "edc9162182e8446c19d1291e9aaaa7f533f4dacf4a1babd075447bad166be500",
+        "sha256": "edc9162182e8446c19d1291e9aaaa7f533f4dacf4a1babd075447bad166be500"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanExport.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanExport.png",
+        "sourceRawSha256": "1fad88afb954fb26ebf66e5ea0e6a89defbb2803012e88554f2bb8f0e9994dc7",
+        "sha256": "1fad88afb954fb26ebf66e5ea0e6a89defbb2803012e88554f2bb8f0e9994dc7"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanImport.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanImport.png",
+        "sourceRawSha256": "98bf5ad2b51ed7380fffffc07fca5c27670f42d9185e7c189027c8e1a1ce56f3",
+        "sha256": "98bf5ad2b51ed7380fffffc07fca5c27670f42d9185e7c189027c8e1a1ce56f3"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanInvisible.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanInvisible.png",
+        "sourceRawSha256": "c5724290c1dff6afc4d09073d654aff6d7b6f9fbbb08a00c5d132cfd82a0d0d0",
+        "sha256": "c5724290c1dff6afc4d09073d654aff6d7b6f9fbbb08a00c5d132cfd82a0d0d0"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanPaste.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanPaste.png",
+        "sourceRawSha256": "2b71291d2e1154229ffccf7339e4b9494e657e64ae8e021b28dd01d8c535de91",
+        "sha256": "2b71291d2e1154229ffccf7339e4b9494e657e64ae8e021b28dd01d8c535de91"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanToolRemoveAll.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanToolRemoveAll.png",
+        "sourceRawSha256": "6c63f5aef7f4b945bb3cda383488004f0acf040d79f363d731fd2fd9676c9959",
+        "sha256": "6c63f5aef7f4b945bb3cda383488004f0acf040d79f363d731fd2fd9676c9959"
+      },
+      {
+        "source": "More Planning/Textures/UI/PlanVisible.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/PlanVisible.png",
+        "sourceRawSha256": "fe901aa0ccaab040de6db53981361cccfa28b9947192069d51aafc0f49adcb4b",
+        "sha256": "fe901aa0ccaab040de6db53981361cccfa28b9947192069d51aafc0f49adcb4b"
+      },
+      {
+        "source": "More Planning/Textures/UI/RemoveIcon.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/RemoveIcon.png",
+        "sourceRawSha256": "0a24e58c6e37019423f84129823e31f46b40d78c7db11fee74d2a9bae7be388d",
+        "sha256": "0a24e58c6e37019423f84129823e31f46b40d78c7db11fee74d2a9bae7be388d"
+      },
+      {
+        "source": "More Planning/Textures/UI/ShowPlanning.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/ShowPlanning.png",
+        "sourceRawSha256": "d1a5f2c3f04e8d2c685933cd12225fea4fddd7318ec0f510c34205b9b101a290",
+        "sha256": "d1a5f2c3f04e8d2c685933cd12225fea4fddd7318ec0f510c34205b9b101a290"
+      },
+      {
+        "source": "More Planning/Textures/UI/ToolBoxColor.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/ToolBoxColor.png",
+        "sourceRawSha256": "3dc578c4bb0d694054c15b4f8f1ec71109e212d9b586b5e849aa803d3e960b5e",
+        "sha256": "3dc578c4bb0d694054c15b4f8f1ec71109e212d9b586b5e849aa803d3e960b5e"
+      },
+      {
+        "source": "More Planning/Textures/UI/ToolBoxColorSelected.png",
+        "projectFile": "Components/MorePlanning/Textures/UI/ToolBoxColorSelected.png",
+        "sourceRawSha256": "8801430ed4cee131aab4a258fc36a7eab1a6f59e36ef6c12f4026114c5980577",
+        "sha256": "8801430ed4cee131aab4a258fc36a7eab1a6f59e36ef6c12f4026114c5980577"
+      },
+      {
+        "source": "More Planning/Textures/UpdateInfo/MorePlanning.png",
+        "projectFile": "Components/MorePlanning/Textures/UpdateInfo/MorePlanning.png",
+        "sourceRawSha256": "8a59c69a5418376a98efbd89837dbba8edec90e6db0a65962aa0e8f4653d3d14",
+        "sha256": "8a59c69a5418376a98efbd89837dbba8edec90e6db0a65962aa0e8f4653d3d14"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

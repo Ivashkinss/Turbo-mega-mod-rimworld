@@ -1,5 +1,6 @@
 {
   "components": [
+    "MorePlanning",
     "NiceBillTab",
     "PickUpAndHaul",
     "SimpleSidearms",
@@ -13,8 +14,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 165,
+  "resourceHashesVerified": 203,
   "russianKeysByComponent": {
+    "MorePlanning": 34,
     "NiceBillTab": 63,
     "PickUpAndHaul": 13,
     "SimpleSidearms": 222,

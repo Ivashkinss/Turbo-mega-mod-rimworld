@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
+param([Parameter(Mandatory=$true)][ValidateSet('RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'MorePlanning' { @{ folder='More Planning'; id='mlie.moreplanning'; dll='Components\MorePlanning\Assemblies\MorePlanning.dll'; source='InGamePlanningProbe.cs'; flag='-tmm-planning-probe'; report='PlanningProbe.json'; ui='PlanningUiProbe.json'; key='planning'; prefix='MorePlanning' } }
     'NiceBillTab' { @{ folder='Nice Bill Tab (Фильтр рецептов)'; id='andromeda.nicebilltab'; dll='Components\NiceBillTab\Assemblies\NiceBillTab.dll'; source='InGameNiceBillProbe.cs'; flag='-tmm-nicebill-probe'; report='NiceBillProbe.json'; ui='NiceBillUiProbe.json'; key='bills'; prefix='NiceBillTab' } }
     'PickUpAndHaul' { @{ folder='Pick Up And Haul (Переноска нескольких предметов)'; id='mehni.pickupandhaul'; dll='Components\PickUpAndHaul\Assemblies\PickUpAndHaul.dll'; source='InGamePickUpAndHaulProbe.cs'; flag='-tmm-hauling-probe'; report='PickUpAndHaulProbe.json'; ui='PickUpAndHaulUiProbe.json'; key='hauling'; prefix='PickUpAndHaul' } }
     'SimpleSidearms' { @{ folder='Simple Sidearms (Ношение двух видов оружия)'; id='petetimessix.simplesidearms'; dll='Components\SimpleSidearms\Assemblies\SimpleSidearms.dll'; source='InGameSimpleSidearmsProbe.cs'; flag='-tmm-sidearms-probe'; report='SimpleSidearmsProbe.json'; ui='SimpleSidearmsUiProbe.json'; key='sidearms'; prefix='SimpleSidearms' } }
