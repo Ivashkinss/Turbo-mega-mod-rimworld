@@ -9,6 +9,15 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "HugsLib": ("HugsLib (Библиотека)", "unlimitedhugs.hugslib", {
+        "v1.6/Assemblies/HugsLib.dll": "Assemblies/HugsLib.dll",
+        "Defs/KeyBindingDefs/KeyBindings.xml": "Defs/KeyBindingDefs/KeyBindings.xml",
+        "Defs/KeyBindingCategoryDefs/KeyBindingCategories.xml": "Defs/KeyBindingCategoryDefs/KeyBindingCategories.xml",
+        "Languages/English/Keyed/English.xml": "Languages/English/Keyed/English.xml",
+        "About/Version.xml": "About/Version.xml",
+        **{f"Textures/{name}.png": f"Textures/{name}.png" for name in (
+            "quickstartIcon", "HLModIcon", "HLMenuIconPlus", "HLMenuIcon", "HLInfoIcon")},
+    }),
     "AdaptiveStorage": ("Adaptive Storage Framework (Библиотека)", "adaptive.storage.framework", {
         **{f"1.6/Assemblies/{name}.dll": f"Assemblies/{name}.dll" for name in (
             "0MultiplayerAPI", "1ITransformable", "AdaptiveStorageFramework", "CopyOperation",
@@ -618,6 +627,10 @@ def main():
         # precede the root assembly, not merely be present in the same package.
         if "AdaptiveStorage" in report:
             node = tree.find(version).find("li[.='Components/AdaptiveStorage']")
+            tree.find(version).remove(node)
+            tree.find(version).insert(0, node)
+        if "HugsLib" in report:
+            node = tree.find(version).find("li[.='Components/HugsLib']")
             tree.find(version).remove(node)
             tree.find(version).insert(0, node)
         for branch, attributes in {

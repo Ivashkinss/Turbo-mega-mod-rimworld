@@ -1,5 +1,6 @@
 {
   "components": [
+    "HugsLib",
     "AdaptiveStorage",
     "XmlExtensions",
     "WallsAreSolid",
@@ -21,8 +22,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 538,
+  "resourceHashesVerified": 548,
   "russianKeysByComponent": {
+    "HugsLib": 75,
     "AdaptiveStorage": 22,
     "XmlExtensions": 25,
     "WallsAreSolid": 0,

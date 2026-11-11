@@ -14,6 +14,7 @@ namespace TurboMegaMod
         {
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
+            HugsLibCompatibility.Apply();
         }
     }
 

@@ -8,7 +8,8 @@ using System.Xml;
 
 namespace Verse
 {
-    public class ModContentPack { }
+    public class ModContentPack { public string PackageId, RootDir; public string Name { get; set; } }
+    public static class LoadedModManager { public static readonly List<ModContentPack> RunningModsListForReading = new List<ModContentPack>(); }
     public class Pawn { }
     public class Mod { public Mod(ModContentPack content) { } }
     public static class Log { public static void Message(string message) { } }

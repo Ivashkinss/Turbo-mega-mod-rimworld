@@ -3377,5 +3377,72 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "HugsLib": {
+    "packageId": "unlimitedhugs.hugslib",
+    "files": [
+      {
+        "source": "HugsLib (Библиотека)/v1.6/Assemblies/HugsLib.dll",
+        "projectFile": "Components/HugsLib/Assemblies/HugsLib.dll",
+        "sourceRawSha256": "8bad9c2eb1cb7d2735aef9ddfb209f422c257da14a4740a0f99f9ef7363386d7",
+        "sha256": "8bad9c2eb1cb7d2735aef9ddfb209f422c257da14a4740a0f99f9ef7363386d7"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Defs/KeyBindingDefs/KeyBindings.xml",
+        "projectFile": "Components/HugsLib/Defs/KeyBindingDefs/KeyBindings.xml",
+        "sourceRawSha256": "02df387af671d6c9b31f4c0a3a4fc93d9bdf8220f642d720724b28706a8da15b",
+        "sha256": "e80e63f229c65d3a621b8edfc626a2b8b1db9df9c1ac79cdecc56b64f46f4631"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Defs/KeyBindingCategoryDefs/KeyBindingCategories.xml",
+        "projectFile": "Components/HugsLib/Defs/KeyBindingCategoryDefs/KeyBindingCategories.xml",
+        "sourceRawSha256": "8285b42b1b8f7362e5d6ec77acf00d024ae07b4aba637ccfc21585ce10426b32",
+        "sha256": "123d75b902410f7bdabd9ba0243a0df3f9fd63ef874688ad905de384f5cb7fe4"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Languages/English/Keyed/English.xml",
+        "projectFile": "Components/HugsLib/Languages/English/Keyed/English.xml",
+        "sourceRawSha256": "84c23bfc5e2bb85312b9dc873f25a064ec172b86a828b51fa0daacda2bccf02f",
+        "sha256": "e8044d562bed58f72554edd254c5d63c09edb451a5db2a8a8ac779687154801c"
+      },
+      {
+        "source": "HugsLib (Библиотека)/About/Version.xml",
+        "projectFile": "Components/HugsLib/About/Version.xml",
+        "sourceRawSha256": "aedc7ed2e04bcf28225014dbd54fe01a77c51a2089f15869c82f526e217e2a5a",
+        "sha256": "9c040248fa628d9cf6b951e59612dae9930db5caf31e1e56c584abd79de9184e"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Textures/quickstartIcon.png",
+        "projectFile": "Components/HugsLib/Textures/quickstartIcon.png",
+        "sourceRawSha256": "1472ef825753ac76f90b6c1f1f5da2bb13cf7f6fff3fa537576044e8578c7b74",
+        "sha256": "1472ef825753ac76f90b6c1f1f5da2bb13cf7f6fff3fa537576044e8578c7b74"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Textures/HLModIcon.png",
+        "projectFile": "Components/HugsLib/Textures/HLModIcon.png",
+        "sourceRawSha256": "ceeb155daa55a06507c8b5eac30ea6a6cb0ddf6cde459eb6f30fd132b92a8216",
+        "sha256": "ceeb155daa55a06507c8b5eac30ea6a6cb0ddf6cde459eb6f30fd132b92a8216"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Textures/HLMenuIconPlus.png",
+        "projectFile": "Components/HugsLib/Textures/HLMenuIconPlus.png",
+        "sourceRawSha256": "659edb0042f7df52fca23d4b5d09a39840d34b1859d474c443118f9e31438033",
+        "sha256": "659edb0042f7df52fca23d4b5d09a39840d34b1859d474c443118f9e31438033"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Textures/HLMenuIcon.png",
+        "projectFile": "Components/HugsLib/Textures/HLMenuIcon.png",
+        "sourceRawSha256": "d1ec49698b193f66d30148830b85c6337bde3ef486c78bc306e1ea3f160b56c1",
+        "sha256": "d1ec49698b193f66d30148830b85c6337bde3ef486c78bc306e1ea3f160b56c1"
+      },
+      {
+        "source": "HugsLib (Библиотека)/Textures/HLInfoIcon.png",
+        "projectFile": "Components/HugsLib/Textures/HLInfoIcon.png",
+        "sourceRawSha256": "cb9c765b5596a9633f446dbc28c23c84fec09fac813030ad3968a3c6f7c19afd",
+        "sha256": "cb9c765b5596a9633f446dbc28c23c84fec09fac813030ad3968a3c6f7c19afd"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "XML and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
   }
 }

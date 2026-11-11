@@ -1,5 +1,7 @@
 # Источники включённых ресурсов
 
+- HugsLib — UnlimitedHugs; packageId unlimitedhugs.hugslib. Сохранены About и хеши десяти ресурсов: DLL v1.6, два Def клавиш, английский Keyed, Version.xml и пять иконок. DLL AssemblyVersion 1.0.0.0, публичная LibraryVersion 12.0.0 определяется версией файла; тест проверяет именно LibraryVersion. Исходный русский перевод 73 ключей дополнен двумя ключами токена GitHub; семь полей клавиш/категории также сохранены. Source/HugsLibCompatibility.cs корректирует только определение владельца точной встроенной DLL во внутреннем аудите, не отключая проверку других пакетов. Исходный каталог общих настроек HugsLib и идентификатор RunAndGun не изменены.
+
 - Adaptive Storage Framework — Soul, Phaneron, Bradson; packageId adaptive.storage.framework. Сохранены About, MIT LICENSE и SHA-256 22 ресурсов: 11 исходных DLL 1.6 (включая Multiplayer API), три Def, четыре патча, 22 английских ключа и две текстуры. Типы, ключи Scribe и существующий русский перевод сохранены. Компонент загружается до корневой DLL, использующей ItemGraphicWorker, и пропускается при активном оригинале.
 
 - XML Extensions — Imranfish; packageId imranfish.xmlextensions. Сохранены XmlExtensions.About.xml и SHA-256 пяти ресурсов: неизменённая DLL 1.6, MainButtonDefs.xml, English Keyed и две иконки. Переведены 25 ключей и два поля кнопки. Исходные API, XML-операции и пространства настроек не менялись; при активном оригинале встроенная папка пропускается.

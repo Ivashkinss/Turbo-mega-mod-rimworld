@@ -39,6 +39,7 @@ def main():
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
     for version in ("v1.6", "v1.7"):
         order = [node.text for node in folders.find(version)]
+        assert order.index('Components/HugsLib') < order.index('Components/AdaptiveStorage'), 'Load the library before its consumers'
         assert order.index('Components/AdaptiveStorage') < order.index('/'), 'Storage types must load before TurboMegaMod.dll'
         for original in (False, True):
             for vehicles in (False, True):
