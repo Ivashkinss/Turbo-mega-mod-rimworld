@@ -9,6 +9,8 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "MapPreview": ("Map Preview (Предпросмотр карты)", "m00nl1ght.mappreview",
+                      json.loads((PROJECT / "Tools/ComponentFiles/MapPreview.json").read_text(encoding="utf-8"))),
     "CharacterEditor": ("CharacterEditor", "void.charactereditor",
                       json.loads((PROJECT / "Tools/ComponentFiles/CharacterEditor.json").read_text(encoding="utf-8"))),
     "MeleeAnimation": ("Melee Animation (Анимация ближнего боя)", "co.uk.epicguru.meleeanimation",
@@ -597,6 +599,7 @@ def main():
     for name in selected:
         folder, package_id, files = COMPONENTS[name]
         source = PROJECT.parent / folder
+        byte_exact = name == "MapPreview"
         items = []
         for relative, destination in files.items():
             original = source / relative
@@ -604,10 +607,10 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(original, target)
             source_hash = hashlib.sha256(original.read_bytes()).hexdigest()
-            if target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md"):
+            if not byte_exact and (target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md")):
                 clean_text(target)
             data = target.read_bytes()
-            if target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md"):
+            if not byte_exact and (target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md")):
                 data = data.replace(b"\r\n", b"\n")
             items.append({"source": original.relative_to(PROJECT.parent).as_posix(),
                           "projectFile": target.relative_to(PROJECT).as_posix(),
@@ -618,6 +621,11 @@ def main():
         clean_text(about)
         report[name] = {"packageId": package_id, "files": items, "bundledHarmonyCopied": False,
                         "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"}
+        if byte_exact:
+            report[name]["byteExactResources"] = True
+            report[name]["bundledHarmonyCopied"] = True
+            report[name]["textNormalization"] = "None: preserve Lunar .lfc integrity checks and every original byte"
+            report[name]["bundledHarmonyFallback"] = "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):

@@ -2,3 +2,4 @@
 # Keep their recorded bytes stable across checkouts on different computers.
 Components/MeleeAnimation/** -text
 Components/CharacterEditor/** -text
+Components/MapPreview/** -text

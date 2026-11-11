@@ -1,5 +1,6 @@
 {
   "components": [
+    "MapPreview",
     "CharacterEditor",
     "MeleeAnimation",
     "HugsLib",
@@ -24,8 +25,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 3851,
+  "resourceHashesVerified": 3873,
   "russianKeysByComponent": {
+    "MapPreview": 76,
     "CharacterEditor": 0,
     "MeleeAnimation": 246,
     "HugsLib": 75,

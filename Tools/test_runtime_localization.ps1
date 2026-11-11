@@ -13,7 +13,7 @@ $runnerPath = Join-Path $testBuildPath 'DynamicTradeInterface.exe'
 $testHarmonyPath = Join-Path $testBuildPath '0Harmony.dll'
 # A fresh test copy avoids the downloaded file's zone marker without modifying it.
 [IO.File]::WriteAllBytes($testHarmonyPath, [IO.File]::ReadAllBytes($harmonyPath))
-& $compilerPath /nologo /target:exe /optimize+ (('/reference:') + $harmonyPath) (('/out:') + $runnerPath) (Join-Path $projectPath 'Source\RuntimeLocalization.cs') (Join-Path $projectPath 'Source\RuntimeTranslationKeys.Generated.cs') (Join-Path $projectPath 'Source\MeleeCompatibility.cs') (Join-Path $projectPath 'Source\HugsLibCompatibility.cs') (Join-Path $projectPath 'Source\MeleeResourceCompatibility.cs') (Join-Path $projectPath 'Source\CharacterEditorCompatibility.cs') (Join-Path $projectPath 'Tests\RuntimeLocalizationTests.cs')
+& $compilerPath /nologo /target:exe /optimize+ (('/reference:') + $harmonyPath) (('/out:') + $runnerPath) (Join-Path $projectPath 'Source\RuntimeLocalization.cs') (Join-Path $projectPath 'Source\RuntimeTranslationKeys.Generated.cs') (Join-Path $projectPath 'Source\MeleeCompatibility.cs') (Join-Path $projectPath 'Source\HugsLibCompatibility.cs') (Join-Path $projectPath 'Source\MeleeResourceCompatibility.cs') (Join-Path $projectPath 'Source\CharacterEditorCompatibility.cs') (Join-Path $projectPath 'Source\MapPreviewCompatibility.cs') (Join-Path $projectPath 'Tests\RuntimeLocalizationTests.cs')
 if ($LASTEXITCODE -ne 0) { throw "Runtime test compile failed: $LASTEXITCODE" }
 $result = & $runnerPath $testHarmonyPath (Join-Path $projectPath 'Languages\Russian\Keyed\RuntimeUI.xml')
 if ($LASTEXITCODE -ne 0) { throw "Runtime localization tests failed: $LASTEXITCODE" }

@@ -23276,5 +23276,146 @@
     ],
     "bundledHarmonyCopied": false,
     "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"
+  },
+  "MapPreview": {
+    "packageId": "m00nl1ght.mappreview",
+    "files": [
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Assemblies/LunarLoader.dll",
+        "projectFile": "Components/MapPreview/Assemblies/LunarLoader.dll",
+        "sourceRawSha256": "028e27c258e74ee1cfee7045bb39b7bac4d85bcadc6eb8e523fbd3bd0b2fac53",
+        "sha256": "028e27c258e74ee1cfee7045bb39b7bac4d85bcadc6eb8e523fbd3bd0b2fac53"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Manifest.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Manifest.lfc",
+        "sourceRawSha256": "f2946213ae4b538ecac8dc38f51a90661551063fb27819718f58745ac4bde84b",
+        "sha256": "f2946213ae4b538ecac8dc38f51a90661551063fb27819718f58745ac4bde84b"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Manifest.xml",
+        "projectFile": "Components/MapPreview/Lunar/Manifest.xml",
+        "sourceRawSha256": "8b3a40a743cae0e663e5ae966265544ca1747b4016b6ba7cf33d4b8137460e59",
+        "sha256": "8b3a40a743cae0e663e5ae966265544ca1747b4016b6ba7cf33d4b8137460e59"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/README.md",
+        "projectFile": "Components/MapPreview/Lunar/README.md",
+        "sourceRawSha256": "2d0dffb3d7de42cc0be04a4b5f698b04ab0634537c2ce55b94a94e39e778791e",
+        "sha256": "2d0dffb3d7de42cc0be04a4b5f698b04ab0634537c2ce55b94a94e39e778791e"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/HarmonyLib.dll",
+        "projectFile": "Components/MapPreview/Lunar/Components/HarmonyLib.dll",
+        "sourceRawSha256": "d04ec5b2590dd1bbb57f0f11dc417b1a5bebbb36b1f97006d35f2d87c3a2a69f",
+        "sha256": "d04ec5b2590dd1bbb57f0f11dc417b1a5bebbb36b1f97006d35f2d87c3a2a69f"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/HarmonyLib.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Components/HarmonyLib.lfc",
+        "sourceRawSha256": "ac512b99d595ac58d000f04ee4a6be76619451480207e716c04db3ed0a38e398",
+        "sha256": "ac512b99d595ac58d000f04ee4a6be76619451480207e716c04db3ed0a38e398"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/HugsLogPublisher.dll",
+        "projectFile": "Components/MapPreview/Lunar/Components/HugsLogPublisher.dll",
+        "sourceRawSha256": "f1dba03cd68dd5e0d8d59839f387752f712e7e2d2c7bed4888ac0cf1d142062a",
+        "sha256": "f1dba03cd68dd5e0d8d59839f387752f712e7e2d2c7bed4888ac0cf1d142062a"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/HugsLogPublisher.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Components/HugsLogPublisher.lfc",
+        "sourceRawSha256": "6ac5300091992f457f59f4d66d33a8b233163e78c7db3a2300d72c89c5b7845e",
+        "sha256": "6ac5300091992f457f59f4d66d33a8b233163e78c7db3a2300d72c89c5b7845e"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/LunarFramework.dll",
+        "projectFile": "Components/MapPreview/Lunar/Components/LunarFramework.dll",
+        "sourceRawSha256": "50f4cc37b779cabfa5cacf5124003752008385e56fe41eb061c7e2fb9ec95bd6",
+        "sha256": "50f4cc37b779cabfa5cacf5124003752008385e56fe41eb061c7e2fb9ec95bd6"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/LunarFramework.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Components/LunarFramework.lfc",
+        "sourceRawSha256": "086657a13498fb667b4b033f90b212a5c72aaa88d2a329ad074cc0e8e229a5d0",
+        "sha256": "086657a13498fb667b4b033f90b212a5c72aaa88d2a329ad074cc0e8e229a5d0"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/MapPreview.dll",
+        "projectFile": "Components/MapPreview/Lunar/Components/MapPreview.dll",
+        "sourceRawSha256": "fa13a18af2946e2b4c1cf00db3fb57b7c3ba829f56f9b981177a2e823a2a4c19",
+        "sha256": "fa13a18af2946e2b4c1cf00db3fb57b7c3ba829f56f9b981177a2e823a2a4c19"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/MapPreview.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Components/MapPreview.lfc",
+        "sourceRawSha256": "be9a73d91e8b8a679cb95b0956fc0a95e79b790e8550e3f8fa756a6027140ccb",
+        "sha256": "be9a73d91e8b8a679cb95b0956fc0a95e79b790e8550e3f8fa756a6027140ccb"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/MapPreviewMod.dll",
+        "projectFile": "Components/MapPreview/Lunar/Components/MapPreviewMod.dll",
+        "sourceRawSha256": "3e4f2f2c46e727ee0f1f27b64f0686e2571cfdce17078a8304b9a4958513d993",
+        "sha256": "3e4f2f2c46e727ee0f1f27b64f0686e2571cfdce17078a8304b9a4958513d993"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Lunar/Components/MapPreviewMod.lfc",
+        "projectFile": "Components/MapPreview/Lunar/Components/MapPreviewMod.lfc",
+        "sourceRawSha256": "b6887b0795fbd536b04d8b10ab4bf18ad4fc13cbd7cf34b5e4627746ff2c49a7",
+        "sha256": "b6887b0795fbd536b04d8b10ab4bf18ad4fc13cbd7cf34b5e4627746ff2c49a7"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Textures/ConfirmMP.png",
+        "projectFile": "Components/MapPreview/Textures/ConfirmMP.png",
+        "sourceRawSha256": "a9eaeb4a51a01af8fad7d6403c57aab33bd6472b5ffffd2b7267e469cb0e5709",
+        "sha256": "a9eaeb4a51a01af8fad7d6403c57aab33bd6472b5ffffd2b7267e469cb0e5709"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Textures/RerollWorldSeedMP.png",
+        "projectFile": "Components/MapPreview/Textures/RerollWorldSeedMP.png",
+        "sourceRawSha256": "a9d392bb033044ea0a59117b62a7237ef760f8d2087162cd7a34de7612de31bf",
+        "sha256": "a9d392bb033044ea0a59117b62a7237ef760f8d2087162cd7a34de7612de31bf"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Textures/UIPreviewLoadingMP.png",
+        "projectFile": "Components/MapPreview/Textures/UIPreviewLoadingMP.png",
+        "sourceRawSha256": "5533b794bc645d93bbeb0dd5d264ebcab545d094afb880818c0e5a53cb2610af",
+        "sha256": "5533b794bc645d93bbeb0dd5d264ebcab545d094afb880818c0e5a53cb2610af"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Textures/UIPreviewResetMP.png",
+        "projectFile": "Components/MapPreview/Textures/UIPreviewResetMP.png",
+        "sourceRawSha256": "fabe22832e5c3e10e4147a725f8d8a206ae67f84639549b85e5777767a1a9201",
+        "sha256": "fabe22832e5c3e10e4147a725f8d8a206ae67f84639549b85e5777767a1a9201"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Languages/English/Keyed/HugsLogPublisher.xml",
+        "projectFile": "Components/MapPreview/Languages/English/Keyed/HugsLogPublisher.xml",
+        "sourceRawSha256": "dffea5f8bc6d8d96d149fc47cd3634fdbddf67a4c1607fd0cc55d4ff788a2369",
+        "sha256": "dffea5f8bc6d8d96d149fc47cd3634fdbddf67a4c1607fd0cc55d4ff788a2369"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/1.6/Languages/English/Keyed/Keys.xml",
+        "projectFile": "Components/MapPreview/Languages/English/Keyed/Keys.xml",
+        "sourceRawSha256": "efd8ebced718c27edbeed23747caaa9916b5e6576b8a40c25718acc7cb0cc4b9",
+        "sha256": "efd8ebced718c27edbeed23747caaa9916b5e6576b8a40c25718acc7cb0cc4b9"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/About/Version.txt",
+        "projectFile": "Components/MapPreview/About/Version.txt",
+        "sourceRawSha256": "db58d19fd8a847f26c24acfb523493efd13ba381edb9a1fcec4584679c338c47",
+        "sha256": "db58d19fd8a847f26c24acfb523493efd13ba381edb9a1fcec4584679c338c47"
+      },
+      {
+        "source": "Map Preview (Предпросмотр карты)/LICENSE",
+        "projectFile": "Components/MapPreview/LICENSE",
+        "sourceRawSha256": "27513b53e6d3d05429ed948ee461777fd2d097cf340bead3a18f417e7c87955d",
+        "sha256": "27513b53e6d3d05429ed948ee461777fd2d097cf340bead3a18f417e7c87955d"
+      }
+    ],
+    "bundledHarmonyCopied": true,
+    "textNormalization": "None: preserve Lunar .lfc integrity checks and every original byte",
+    "byteExactResources": true,
+    "bundledHarmonyFallback": "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
   }
 }

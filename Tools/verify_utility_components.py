@@ -24,7 +24,7 @@ def main():
         for item in manifest[name]["files"]:
             path = PROJECT / item["projectFile"]
             data = path.read_bytes()
-            if path.suffix.lower() in (".xml", ".json") or path.name in ("LICENSE", "LICENSE.md"):
+            if not manifest[name].get('byteExactResources') and (path.suffix.lower() in (".xml", ".json") or path.name in ("LICENSE", "LICENSE.md")):
                 data = data.replace(b"\r\n", b"\n")
             assert hashlib.sha256(data).hexdigest() == item["sha256"], path
             count += 1

@@ -12,7 +12,7 @@ namespace Verse
     public static class LoadedModManager { public static readonly List<ModContentPack> RunningModsListForReading = new List<ModContentPack>(); }
     public class Pawn { }
     public struct PawnDrawParms { public Pawn pawn; public int flags; }
-    public class Mod { public Mod(ModContentPack content) { } }
+    public class Mod { public ModContentPack Content { get; private set; } public Mod(ModContentPack content) { Content = content; } }
     public static class Log { public static void Message(string message) { } }
     public static class Translator
     {

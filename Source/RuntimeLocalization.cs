@@ -14,6 +14,7 @@ namespace TurboMegaMod
         {
             MeleeResourceCompatibility.Apply();
             CharacterEditorCompatibility.Apply();
+            MapPreviewCompatibility.Apply();
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
             HugsLibCompatibility.Apply();

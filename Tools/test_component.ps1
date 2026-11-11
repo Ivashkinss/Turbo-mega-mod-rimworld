@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands)
+param([Parameter(Mandatory=$true)][ValidateSet('MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'MapPreview' { @{ folder='Map Preview (Предпросмотр карты)'; id='m00nl1ght.mappreview'; dll='Components\MapPreview\Assemblies\LunarLoader.dll'; source='InGameMapPreviewProbe.cs'; flag='-tmm-preview-probe'; report='PreviewProbe.json'; ui='PreviewUiProbe.json'; key='preview'; prefix='Preview' } }
     'CharacterEditor' { @{ folder='CharacterEditor'; id='void.charactereditor'; dll='Components\CharacterEditor\Assemblies\CharacterEditor.dll'; source='InGameCharacterEditorProbe.cs'; flag='-tmm-editor-probe'; report='EditorProbe.json'; ui='EditorUiProbe.json'; key='editor'; prefix='Editor' } }
     'MeleeAnimation' { @{ folder='Melee Animation (Анимация ближнего боя)'; id='co.uk.epicguru.meleeanimation'; dll='Components\MeleeAnimation\Assemblies\zAnimationMod.dll'; source='InGameMeleeProbe.cs'; flag='-tmm-melee-probe'; report='MeleeProbe.json'; ui='MeleeUiProbe.json'; key='melee'; prefix='Melee' } }
     'HugsLib' { @{ folder='HugsLib (Библиотека)'; id='unlimitedhugs.hugslib'; dll='Components\HugsLib\Assemblies\HugsLib.dll'; source='InGameHugsLibProbe.cs'; flag='-tmm-hugs-probe'; report='HugsProbe.json'; ui='HugsUiProbe.json'; key='hugsLib'; prefix='Hugs' } }
@@ -89,6 +90,10 @@ if ($FullSet) {
         }
     }
 }
+# Reuse the same terrain-color cache on every isolated profile. This avoids
+# measuring a fresh cache rebuild as part of each unrelated component test.
+$existingColors = Join-Path $env:USERPROFILE 'AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Config\TrueTerrainColorsCache.xml'
+if (Test-Path -LiteralPath $existingColors) { Copy-Item -LiteralPath $existingColors -Destination (Join-Path $testRoot 'Config\TrueTerrainColorsCache.xml') -Force }
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\ModsConfig.xml'), $modsXml)
 [IO.File]::WriteAllText((Join-Path $testRoot 'Config\Prefs.xml'), '<PrefsData><langFolderName>Russian (Русский)</langFolderName><devMode>True</devMode><screenWidth>1280</screenWidth><screenHeight>800</screenHeight><fullscreen>False</fullscreen><runInBackground>True</runInBackground><volumeMaster>0</volumeMaster></PrefsData>')
 $installedProbe = Join-Path $projectPath 'Assemblies\TurboMegaMod.TestProbe.dll'
