@@ -1,0 +1,72 @@
+"""Verify the final installed state and collect the integration evidence."""
+import json
+import hashlib
+import os
+from pathlib import Path
+from lxml import etree as ET
+from audit_localization import entries
+
+PROJECT = Path(__file__).resolve().parents[1]
+DOCS = PROJECT / 'Documentation'
+
+
+def read(name):
+    return json.loads((DOCS / name).read_text(encoding='utf-8-sig'))
+
+
+def main():
+    inventory = read('inventory.json')
+    planned = [m for m in inventory['mods'] if m['include']]
+    manifest = read('UtilityComponents.json')
+    expected = {m['packageId'].lower() for m in planned}
+    actual = {m['packageId'].lower() for m in manifest.values()} | {'sbz.neatstorage', 'sbz.neatstoragefridge'}
+    assert actual == expected and len(actual) == 28, (actual ^ expected)
+    for mod in planned:
+        assert not (PROJECT.parent / mod['folder']).exists(), ('Original still installed', mod['folder'])
+    assert not (PROJECT / 'Assemblies/TurboMegaMod.TestProbe.dll').exists(), 'Test DLL left installed'
+    assert not ET.parse(str(PROJECT / 'About/About.xml')).xpath('/ModMetaData/modDependencies/li')
+    config_path = Path(os.environ['USERPROFILE']) / 'AppData/LocalLow/Ludeon Studios/RimWorld by Ludeon Studios/Config/ModsConfig.xml'
+    active = ET.parse(str(config_path)).xpath('/ModsConfigData/activeMods/li/text()')
+    assert active.count('colonyproject.integrated') == 1
+    assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib')}
+    for name, report in reports.items():
+        assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
+        assert report['mapActivity']['ticksAdvanced'] > 0, name
+        assert report['fullUserModSet'] and not report['originalComponentActive'], name
+        assert report['localization']['keyed'] == 2477 and report['localization']['scalarFields'] == 512, name
+        assert report['knownExternalRuntimeErrors'] in (0, 2), name
+        assert not any('Field injection' in message for message in report['knownExternalMessages']), name
+    related = reports['Harmony']['relatedRegressions']
+    assert set(related) == {'VEF', 'MapPreview', 'AdaptiveStorage', 'CommonSense', 'HugsLib'}
+    assert all(result['passed'] for result in related.values())
+    assert reports['MeleeAnimation']['relatedHands']['passed']
+    assert reports['HugsLib']['relatedRunAndGun']['passed']
+    checks = reports['Harmony']['harmony']['checks'] + sum(value['runtime']['checks'] for value in related.values())
+    checks += reports['MeleeAnimation']['melee']['checks'] + reports['MeleeAnimation']['relatedHands']['runtime']['checks']
+    checks += reports['HugsLib']['hugsLib']['checks'] + reports['HugsLib']['relatedRunAndGun']['runtime']['checks']
+    utility = read('UtilityVerification.json')
+    assert utility['passed'] and utility['externalRequiredDependencies'] == 0
+    storage = read('Verification.json')
+    assert storage['storagesWithVerifiedDoubleCapacity'] == 27 and storage['fridgesWithUnchangedCapacity'] == 7
+    assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
+    assert read('VefInitializerTests.json')['passed']
+    russian, duplicates = entries([PROJECT / 'Languages/Russian'])
+    assert not duplicates and len(russian) == 2997
+    result = dict(plannedComponents=28, integratedComponents=28, originalFoldersRemaining=0,
+                  externalRequiredDependencies=0, activeMods=active, russianEntries=len(russian),
+                  componentResourceHashesVerified=utility['resourceHashesVerified'],
+                  finalRuntimeChecks=checks,
+                  productionAssemblySha256=hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest(),
+                  fullSetReports={name: name + '-FullSet.json' for name in reports},
+                  libraryRegressions={name: value['runtime'].get('checks') for name, value in related.items()},
+                  gameVersion=reports['Harmony']['gameVersion'], liveGame16Verified=False,
+                  userSaveTested=False, visualLayoutInspected=False,
+                  knownRemainingIssue='Installed Odyssey Russian faction-name grammar; exact error pair recorded in runtime reports',
+                  passed=True)
+    (DOCS / 'IntegrationCompletion.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(result, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

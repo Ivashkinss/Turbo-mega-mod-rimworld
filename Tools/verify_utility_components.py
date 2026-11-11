@@ -39,6 +39,7 @@ def main():
             assert not enabled(selected[0].attrib, {package_id}), (name, "duplicate when original active")
     for version in ("v1.6", "v1.7"):
         order = [node.text for node in folders.find(version)]
+        assert order.index('Components/Harmony/' + version[1:]) < order.index('Components/HugsLib'), 'Harmony must load before every consumer'
         # Verse merges XML by relative file path within one content pack.
         # A later component must not silently replace another component's defs.
         xml_paths = {}
@@ -106,6 +107,15 @@ def main():
             assert selected == ([] if original else ['Components/VanillaExpandedFramework', 'Components/VanillaExpandedFramework/' + version[1:]])
     report['vefVersionAndOriginalBranchesChecked'] = 4
     report['vefDefinitionFieldsTranslated'] = len(vef_fields)
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            ids = {'brrainz.harmony'} if original else set()
+            selected = [n.text for n in folders.find(version) if n.text.startswith('Components/Harmony') and enabled(n.attrib, ids)]
+            assert selected == ([] if original else ['Components/Harmony', 'Components/Harmony/' + version[1:]])
+    assert {p.relative_to(PROJECT).as_posix() for p in (PROJECT / 'Components').rglob('0Harmony.dll')} == {'Components/Harmony/1.6/Assemblies/0Harmony.dll', 'Components/Harmony/1.7/Assemblies/0Harmony.dll'}
+    assert not ET.parse(str(PROJECT / 'About/About.xml')).xpath('/ModMetaData/modDependencies/li'), 'Unexpected external required dependency'
+    report['harmonyVersionAndOriginalBranchesChecked'] = 4
+    report['externalRequiredDependencies'] = 0
     report["sidearmsDefinitionFieldsVerified"] = sidearm_fields
     menus = list((PROJECT / 'Components').rglob('FloatSubMenu.dll'))
     assert menus == [PROJECT / 'Components/UsefulMarks/Assemblies/FloatSubMenu.dll'], menus

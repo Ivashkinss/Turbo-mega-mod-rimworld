@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $modsPath = Split-Path -Parent $projectPath
-$harmonyPath = Join-Path $modsPath '2009463077\1.6\Assemblies\0Harmony.dll'
+$harmonyPath = & (Join-Path $PSScriptRoot 'get_harmony_reference.ps1')
 $buildPath = Join-Path $PSScriptRoot 'Build'
 New-Item -ItemType Directory -Path $buildPath -Force | Out-Null
 $copyPath = Join-Path $buildPath '0Harmony.dll'

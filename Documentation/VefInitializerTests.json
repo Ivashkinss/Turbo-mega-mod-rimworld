@@ -1,6 +1,6 @@
 {
-  "passed": true,
-  "constructorSafeNeutralSentinel": true,
+  "addedMethods": 1,
   "originalMethodsUnchanged": 6244,
-  "addedMethods": 1
+  "passed": true,
+  "constructorSafeNeutralSentinel": true
 }

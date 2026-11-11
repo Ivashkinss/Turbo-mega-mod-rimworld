@@ -2,44 +2,44 @@
 
 Цель: один самостоятельный мод для RimWorld 1.6/1.7 с русской локализацией. Camera+ исключён по новой просьбе пользователя 11 ноября 2026.
 
-| Исходный мод | Решение | Русские папки во всех версиях |
+| Исходный мод | Текущий статус | Русские папки во всех версиях |
 | --- | --- | --- |
-| Harmony | Включить | 0 |
-| [sbz] Fridge | Включить | 0 |
-| Adaptive Storage Framework | Включить | 0 |
-| Almost There! Fork | Включить | 0 |
+| Harmony | Встроен | 0 |
+| [sbz] Fridge | Встроен | 0 |
+| Adaptive Storage Framework | Встроен | 0 |
+| Almost There! Fork | Встроен | 0 |
 | Camera+ | Исключить по просьбе пользователя; удалён | 1 |
-| Character Editor | Включить | 0 |
-| Common Sense | Включить | 1 |
-| Dev In Your Language | Включить | 1 |
-| Dynamic Trade Interface | Включить | 0 |
-| FSharp.Core | Включить | 0 |
-| HugsLib | Включить | 1 |
-| Interaction Bubbles | Включить | 0 |
-| Map Preview | Включить | 4 |
-| Melee Animation | Включить | 0 |
-| More Planning (Continued) | Включить | 1 |
-| [sbz] Neat Storage | Включить | 1 |
-| Nice Bill Tab | Включить | 1 |
-| Pick Up And Haul | Включить | 1 |
+| Character Editor | Встроен | 0 |
+| Common Sense | Встроен | 1 |
+| Dev In Your Language | Встроен | 1 |
+| Dynamic Trade Interface | Встроен | 0 |
+| FSharp.Core | Встроен | 0 |
+| HugsLib | Встроен | 1 |
+| Interaction Bubbles | Встроен | 0 |
+| Map Preview | Встроен | 4 |
+| Melee Animation | Встроен | 0 |
+| More Planning (Continued) | Встроен | 1 |
+| [sbz] Neat Storage | Встроен | 1 |
+| Nice Bill Tab | Встроен | 1 |
+| Pick Up And Haul | Встроен | 1 |
 | Realistic Lighting and Shadows | Исключить | 0 |
-| Realistic Rooms Rewritten | Включить | 0 |
-| RunAndGun | Включить | 1 |
-| Show Me Your Hands | Включить | 1 |
-| Simple sidearms | Включить | 2 |
-| Smart Speed | Включить | 0 |
-| Smarter Construction | Включить | 0 |
-| Snap Out! | Включить | 1 |
+| Realistic Rooms Rewritten | Встроен | 0 |
+| RunAndGun | Встроен | 1 |
+| Show Me Your Hands | Встроен | 1 |
+| Simple sidearms | Встроен | 2 |
+| Smart Speed | Встроен | 0 |
+| Smarter Construction | Встроен | 0 |
+| Snap Out! | Встроен | 1 |
 | Enhanced of Vanilla - Flaks and Plates | Исключить | 0 |
-| Useful Marks | Включить | 2 |
-| Vanilla Expanded Framework | Включить | 0 |
+| Useful Marks | Встроен | 2 |
+| Vanilla Expanded Framework | Встроен | 0 |
 | Vanilla Textures Expanded | Исключить | 0 |
-| Walls are solid | Включить | 0 |
-| XML Extensions | Включить | 0 |
+| Walls are solid | Встроен | 0 |
+| XML Extensions | Встроен | 0 |
 
 Перечень папок перевода — предварительная инвентаризация, не проверка полноты.
 
-На текущем этапе встроены 27 компонентов: Vanilla Expanded Framework, Map Preview, Character Editor, Melee Animation, HugsLib, Adaptive Storage Framework, Neat Storage, Fridge, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There! Fork, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface, FSharp.Core, Walls Are Solid и XML Extensions. Для Interaction Bubbles переведены все 31 исходный ключ и три надписи DLL. Для Realistic Rooms переведены 11 ключей и исправлено применение порогов к локализованным категориям; игровые отчёты — RealisticRooms-Integrated.json, RealisticRooms-OriginalActive.json и RealisticRooms-FullSet.json. Остальные строки таблицы описывают первоначальную инвентаризацию.
+Завершены все 28 выбранных компонентов, включая Harmony и Vanilla Expanded Framework. Обязательных внешних библиотек нет. Оригинальные папки удалены после проверок и сохранения локальных архивов. Итоговая сверка состава и активного профиля — IntegrationCompletion.json; игровые результаты — Harmony-FullSet.json и отчёты отдельных компонентов.
 
 Включено в план: 28. Исключено: 4.
 Отсутствующих обязательных зависимостей по метаданным: 0.

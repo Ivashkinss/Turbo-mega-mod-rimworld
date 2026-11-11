@@ -1,5 +1,6 @@
 {
   "components": [
+    "Harmony",
     "VanillaExpandedFramework",
     "MapPreview",
     "CharacterEditor",
@@ -26,8 +27,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 4061,
+  "resourceHashesVerified": 4069,
   "russianKeysByComponent": {
+    "Harmony": 0,
     "VanillaExpandedFramework": 497,
     "MapPreview": 76,
     "CharacterEditor": 0,
@@ -62,6 +64,8 @@
   "mergedXmlRelativePathsUnique": true,
   "vefVersionAndOriginalBranchesChecked": 4,
   "vefDefinitionFieldsTranslated": 192,
+  "harmonyVersionAndOriginalBranchesChecked": 4,
+  "externalRequiredDependencies": 0,
   "sidearmsDefinitionFieldsVerified": 21,
   "singleSharedFloatSubMenuVerified": true,
   "tradePsycastsBranchCombinationsChecked": 8,

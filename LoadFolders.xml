@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <loadFolders>
   <v1.6>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony/1.6</li>
     <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
     <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
     <li>/</li>
@@ -44,6 +46,8 @@
     <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.6</li>
   </v1.6>
   <v1.7>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony/1.7</li>
     <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
     <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
     <li>/</li>

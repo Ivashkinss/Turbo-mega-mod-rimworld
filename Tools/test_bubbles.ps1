@@ -10,7 +10,7 @@ if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath 'Mods\Int
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','Unity.Mathematics.dll') |
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
-$references += '/reference:' + (Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll')
+$references += '/reference:' + (& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))
 $builtProbe = Join-Path $PSScriptRoot 'Build\BubblesProbe.dll'
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs','InGameBubblesProbe.cs') |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
@@ -19,7 +19,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Bubbles probe compile failed' }
 $label = if ($OriginalActive) { 'OriginalActive' } else { 'Integrated' }
 $testRoot = Join-Path $projectPath ('TestRuns\Bubbles-' + $label + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path (Join-Path $testRoot 'Config') -Force | Out-Null
-$ids = @('brrainz.harmony','ludeon.rimworld')
+$ids = @('ludeon.rimworld')
 foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) {
         $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant()

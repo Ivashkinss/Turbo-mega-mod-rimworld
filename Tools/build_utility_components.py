@@ -1,4 +1,4 @@
-"""Import selected utility binaries/resources; never copy bundled Harmony."""
+"""Import selected components; retain one version-selected Harmony provider."""
 import hashlib
 import json
 import shutil
@@ -10,6 +10,11 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "Harmony": ("2009463077", "brrainz.harmony", {
+        "LICENSE": "LICENSE", "README.md": "README.md", "About/Manifest.xml": "About/Manifest.xml",
+        **{f"{version}/Assemblies/{name}.dll": f"{version}/Assemblies/{name}.dll"
+           for version, names in (("1.6", ("0Harmony", "HarmonyMod")), ("1.7", ("0Harmony", "HarmonyMod", "HarmonyMod.RuntimeIL"))) for name in names},
+    }),
     "VanillaExpandedFramework": ("Vanilla Expanded Framework (Библиотека)", "oskarpotocki.vanillafactionsexpanded.core",
                       json.loads((PROJECT / "Tools/ComponentFiles/VanillaExpandedFramework.json").read_text(encoding="utf-8"))),
     "MapPreview": ("Map Preview (Предпросмотр карты)", "m00nl1ght.mappreview",
@@ -608,7 +613,7 @@ def main():
     for name in selected:
         folder, package_id, files = COMPONENTS[name]
         source = PROJECT.parent / folder
-        byte_exact = name == "MapPreview"
+        byte_exact = name in ("MapPreview", "Harmony")
         items = []
         for relative, destination in output_pairs(files):
             original = source / relative
@@ -643,8 +648,11 @@ def main():
         if byte_exact:
             report[name]["byteExactResources"] = True
             report[name]["bundledHarmonyCopied"] = True
-            report[name]["textNormalization"] = "None: preserve Lunar .lfc integrity checks and every original byte"
-            report[name]["bundledHarmonyFallback"] = "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
+            report[name]["textNormalization"] = "None: preserve every original byte"
+            if name == 'MapPreview':
+                report[name]["bundledHarmonyFallback"] = "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
+            if name == 'Harmony':
+                report[name]['runtimeProvider'] = 'One selected 0Harmony/HarmonyMod pair: 1.6 or 1.7; RuntimeIL only on 1.7'
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):
@@ -664,6 +672,18 @@ def main():
             node = tree.find(version).find("li[.='Components/HugsLib']")
             tree.find(version).remove(node)
             tree.find(version).insert(0, node)
+        if 'Harmony' in report:
+            base = tree.find(version).find("li[.='Components/Harmony']")
+            tree.find(version).remove(base)
+            variant_path = 'Components/Harmony/' + version[1:]
+            variant = tree.find(version).find("li[.='" + variant_path + "']")
+            if variant is None:
+                variant = ET.Element('li', IfModNotActive='brrainz.harmony')
+                variant.text = variant_path
+            else:
+                tree.find(version).remove(variant)
+            tree.find(version).insert(0, variant)
+            tree.find(version).insert(0, base)
         for branch, attributes in {
             "Standard": {"IfModNotActive": "duz.almosttherefork,smashphil.vehicleframework"},
             "Vehicles": {"IfModNotActive": "duz.almosttherefork", "IfModActive": "smashphil.vehicleframework"},

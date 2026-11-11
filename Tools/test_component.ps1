@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands)
+param([Parameter(Mandatory=$true)][ValidateSet('Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Harmony' { @{ folder='2009463077'; id='brrainz.harmony'; dll='Components\Harmony\1.6\Assemblies\HarmonyMod.dll'; source='InGameHarmonyProbe.cs'; flag='-tmm-harmony-probe'; report='HarmonyProbe.json'; ui='HarmonyUiProbe.json'; key='harmony'; prefix='Harmony' } }
     'VanillaExpandedFramework' { @{ folder='Vanilla Expanded Framework (Библиотека)'; id='oskarpotocki.vanillafactionsexpanded.core'; dll='Components\VanillaExpandedFramework\1.7\Assemblies\VEF.dll'; source='InGameVefProbe.cs'; flag='-tmm-vef-probe'; report='VefProbe.json'; ui='VefUiProbe.json'; key='vef'; prefix='Vef' } }
     'MapPreview' { @{ folder='Map Preview (Предпросмотр карты)'; id='m00nl1ght.mappreview'; dll='Components\MapPreview\Assemblies\LunarLoader.dll'; source='InGameMapPreviewProbe.cs'; flag='-tmm-preview-probe'; report='PreviewProbe.json'; ui='PreviewUiProbe.json'; key='preview'; prefix='Preview' } }
     'CharacterEditor' { @{ folder='CharacterEditor'; id='void.charactereditor'; dll='Components\CharacterEditor\Assemblies\CharacterEditor.dll'; source='InGameCharacterEditorProbe.cs'; flag='-tmm-editor-probe'; report='EditorProbe.json'; ui='EditorUiProbe.json'; key='editor'; prefix='Editor' } }
@@ -26,6 +27,17 @@ $definition = switch ($Component) {
     'RealisticRooms' { @{ folder='Realistic Rooms Rewritten (Снижение требований к комнатам)'; id='lucifer.realisticrooms'; dll='Components\RealisticRooms\Assemblies\RealisticRoomsRewritten.dll'; source='InGameRoomsProbe.cs'; flag='-tmm-rooms-probe'; report='RoomsProbe.json'; ui='RoomsUiProbe.json'; key='rooms'; prefix='Rooms' } }
     'AlmostThere' { @{ folder='Almost There! (Караваны не спят)'; id='duz.almosttherefork'; dll='Components\AlmostThere\Standard\Assemblies\CaravanDontRest.dll'; source='InGameAlmostThereProbe.cs'; flag='-tmm-almostthere-probe'; report='AlmostThereProbe.json'; ui='AlmostThereUiProbe.json'; key='caravan'; prefix='AlmostThere' } }
 }
+$regressions = @()
+if ($WithCoreRegression) {
+    if ($Component -ne 'Harmony') { throw 'Core library regression is defined for Harmony.' }
+    $regressions = @(
+        @{ name='VEF'; source='InGameVefProbe.cs'; flag='-tmm-vef-probe'; report='VefProbe.json'; ui='VefUiProbe.json' },
+        @{ name='MapPreview'; source='InGameMapPreviewProbe.cs'; flag='-tmm-preview-probe'; report='PreviewProbe.json'; ui='PreviewUiProbe.json' },
+        @{ name='AdaptiveStorage'; source='InGameAdaptiveStorageProbe.cs'; flag='-tmm-storage-probe'; report='StorageProbe.json'; ui='StorageUiProbe.json' },
+        @{ name='CommonSense'; source='InGameCommonSenseProbe.cs'; flag='-tmm-commonsense-probe'; report='CommonSenseProbe.json'; ui='CommonSenseUiProbe.json' },
+        @{ name='HugsLib'; source='InGameHugsLibProbe.cs'; flag='-tmm-hugs-probe'; report='HugsProbe.json'; ui='HugsUiProbe.json' }
+    )
+}
 if (Get-Process RimWorld -ErrorAction SilentlyContinue) { throw 'Close RimWorld before starting the isolated test.' }
 if ($OriginalActive -and $FullSet) { throw 'Use -OriginalActive and -FullSet separately.' }
 if ($WithHands -and $Component -ne 'MeleeAnimation') { throw 'Paired hands regression is defined for MeleeAnimation.' }
@@ -39,11 +51,13 @@ if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath ('Mods\' 
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','Unity.Mathematics.dll') |
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
-$references += '/reference:' + (Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll')
+$references += '/reference:' + (& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))
 $references += '/reference:' + (Join-Path $projectPath $definition.dll)
+if ($WithCoreRegression) { $references += '/reference:' + (Join-Path $projectPath 'Components\HugsLib\Assemblies\HugsLib.dll') }
 $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs',$definition.source) |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
+foreach ($regression in $regressions) { $sources += Join-Path $projectPath ('Tests\' + $regression.source) }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
 if ($WithHands) { $sources += Join-Path $projectPath 'Tests\InGameHandsProbe.cs' }
 if ($WithRunAndGun) { $sources += Join-Path $projectPath 'Tests\InGameRunAndGunProbe.cs' }
@@ -53,13 +67,13 @@ if ($LASTEXITCODE -ne 0) { throw ($Component + ' probe compile failed') }
 $label = if ($FullSet) { 'FullSet' } elseif ($OriginalActive) { 'OriginalActive' } else { 'Integrated' }
 $testRoot = Join-Path $projectPath ('TestRuns\' + $definition.prefix + '-' + $label + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path (Join-Path $testRoot 'Config') -Force | Out-Null
-$ids = @('brrainz.harmony','ludeon.rimworld')
+$ids = @('ludeon.rimworld')
 foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) { $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant() }
 }
 
 if (!$OriginalActive) { $ids = @($ids | Where-Object { $_ -ne $definition.id }) }
-if ($OriginalActive) { $ids += $definition.id }
+if ($OriginalActive) { if ($Component -eq 'Harmony') { $ids = @($definition.id) + $ids } else { $ids += $definition.id } }
 $ids += 'colonyproject.integrated'
 $modsXml = '<ModsConfigData><version>1.7.5000 rev1275</version><activeMods>' + (($ids | ForEach-Object { '<li>' + $_ + '</li>' }) -join '') + '</activeMods></ModsConfigData>'
 if ($FullSet) {
@@ -107,6 +121,7 @@ try {
     $arguments = @(
         ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe',$definition.flag
     )
+    foreach ($regression in $regressions) { $arguments += $regression.flag }
     if ($WithNiceBillTab) { $arguments += '-tmm-nicebill-probe' }
     if ($WithHands) { $arguments += '-tmm-hands-probe' }
     if ($WithRunAndGun) { $arguments += '-tmm-runandgun-probe' }
@@ -115,6 +130,7 @@ try {
     Write-Output ('TestRoot: ' + $testRoot)
     $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
     $reports = @('LocalizationProbe.json',$definition.report,'GpuMapProbe.json',$definition.ui)
+    foreach ($regression in $regressions) { $reports += @($regression.report, $regression.ui) }
     if ($WithNiceBillTab) { $reports += @('NiceBillProbe.json','NiceBillUiProbe.json') }
     if ($WithHands) { $reports += @('HandsProbe.json','HandsUiProbe.json') }
     if ($WithRunAndGun) { $reports += @('RunAndGunProbe.json','RunAndGunUiProbe.json') }
@@ -167,6 +183,15 @@ try {
     $result[$definition.key] = $componentResult
     $result.passed = $localization.passed -and $componentResult.passed -and $ui.passed -and $activity.framesAdvanced -gt 0 -and
         $activity.ticksAdvanced -gt 0 -and $errors.Count -eq $knownExternal -and !$result.gpuLost
+    if ($WithCoreRegression) {
+        $result.relatedRegressions = [ordered]@{}
+        foreach ($regression in $regressions) {
+            $runtime = Get-Content -LiteralPath (Join-Path $testRoot $regression.report) -Raw | ConvertFrom-Json
+            $relatedUi = Get-Content -LiteralPath (Join-Path $testRoot $regression.ui) -Raw | ConvertFrom-Json
+            $result.relatedRegressions[$regression.name] = @{ runtime=$runtime; ui=$relatedUi; passed=($runtime.passed -and $relatedUi.passed) }
+            $result.passed = $result.passed -and $result.relatedRegressions[$regression.name].passed
+        }
+    }
     if ($WithNiceBillTab) {
         $billProbe = Get-Content -LiteralPath (Join-Path $testRoot 'NiceBillProbe.json') -Raw | ConvertFrom-Json
         $billUi = Get-Content -LiteralPath (Join-Path $testRoot 'NiceBillUiProbe.json') -Raw | ConvertFrom-Json

@@ -6,11 +6,10 @@
   "excludedCount": 4,
   "missingRequiredPackagesFromIncludedSet": [],
   "notes": [
-    "Это состав проекта, не готовый объединённый мод.",
     "Наличие папки Russian не доказывает полноту перевода для 1.6.",
     "Наличие исходников старых версий не доказывает наличие исходников 1.6.",
-    "Оригинальные моды и настройки игры не изменены.",
-    "11 ноября: Camera+ исключена и удалена по просьбе пользователя; Smart Speed и Smarter Construction встроены и проверены с отключёнными оригиналами. gameVersion выше — историческая версия исходной инвентаризации."
+    "11 ноября: Camera+ исключена и удалена по просьбе пользователя; Smart Speed и Smarter Construction встроены и проверены с отключёнными оригиналами. gameVersion выше — историческая версия исходной инвентаризации.",
+    "12 ноября 2026: интегрированы и проверены все 28 выбранных компонентов, включая Harmony/VEF. Исходные папки удалены с локальными архивами; из ModsConfig удалены только выведенные оригиналы. gameVersion/targetVersion/installedCount и прежние метаданные модов описывают историческую инвентаризацию; текущий результат — IntegrationCompletion.json."
   ],
   "mods": [
     {
@@ -48,8 +47,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "[sbz] Fridge (Холодильники)",
@@ -74,8 +74,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "integrated_not_game_tested",
-      "translationStatus": "project_xml_translated_not_game_tested"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Adaptive Storage Framework (Библиотека)",
@@ -276,8 +277,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "project_xml_translated_not_game_tested"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Almost There! (Караваны не спят)",
@@ -340,8 +342,9 @@
         "1.4/Source/AlmostThere/Storage/ExtendedDataStorage.cs"
       ],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Camera+ (Управление камерой)",
@@ -434,8 +437,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Common Sense (Умные действия колонистов)",
@@ -472,8 +476,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Dev In Your Language",
@@ -509,8 +514,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Dynamic Trade Interface",
@@ -549,8 +555,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "FSharp.Core",
@@ -575,8 +582,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "HugsLib (Библиотека)",
@@ -622,8 +630,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Interaction Bubbles (Речевые пузыри)",
@@ -655,8 +664,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Map Preview (Предпросмотр карты)",
@@ -707,8 +717,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Melee Animation (Анимация ближнего боя)",
@@ -799,8 +810,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "More Planning",
@@ -846,8 +858,9 @@
       "topLevelLicenseFiles": [
         "LICENSE.md"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Neat Storage",
@@ -874,8 +887,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "integrated_not_game_tested",
-      "translationStatus": "project_xml_translated_not_game_tested"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Nice Bill Tab (Фильтр рецептов)",
@@ -907,8 +921,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Pick Up And Haul (Переноска нескольких предметов)",
@@ -987,8 +1002,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Realistic Lighting and Shadows (Свет и тени)",
@@ -1037,8 +1053,9 @@
         "Source/RealisticRoomsSettings.cs"
       ],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "RunAndGun (Стрельба на ходу)",
@@ -1162,8 +1179,9 @@
         "Source/RunAndGun/WeaponRecord.cs"
       ],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Show Me Your Hands (Анимация рукоружия)",
@@ -1206,8 +1224,9 @@
       "topLevelLicenseFiles": [
         "LICENSE.md"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Simple Sidearms (Ношение двух видов оружия)",
@@ -1246,8 +1265,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Smart Speed (4 скорость)",
@@ -1270,8 +1290,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "integrated_game_loaded_and_patched",
-      "translationStatus": "project_russian_keys_verified"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Smarter Construction (Умное строительство)",
@@ -1307,8 +1328,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "integrated_game_loaded_and_patched",
-      "translationStatus": "no_user_text_found"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Snap Out! (Успокоение срывающихся колонистов)",
@@ -1336,8 +1358,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Taste of VanillaRetexture - Flaks and Plates (Текстуры брони)",
@@ -1387,8 +1410,9 @@
       ],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Vanilla Expanded Framework (Библиотека)",
@@ -1426,8 +1450,9 @@
       "topLevelLicenseFiles": [
         "LICENSE"
       ],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "Vanilla Textures Expanded (HD-текстуры)",
@@ -1543,8 +1568,9 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     },
     {
       "folder": "XML Extensions (Библиотека)",
@@ -1581,9 +1607,16 @@
       "russianDirectoriesAllVersions": [],
       "sourceFilesAllVersions": [],
       "topLevelLicenseFiles": [],
-      "integrationStatus": "pending",
-      "translationStatus": "see_LocalizationAudit"
+      "integrationStatus": "integrated-and-tested",
+      "translationStatus": "see_README_and_IntegrationCompletion",
+      "originalFolderRemoved": true
     }
   ],
-  "currentGameVersion": "1.7.5000 rev1275"
+  "currentGameVersion": "1.7.5000 rev1275",
+  "integratedCount": 28,
+  "currentTargetVersions": [
+    "1.6",
+    "1.7"
+  ],
+  "runtimeVerifiedGameVersion": "1.7.5000 rev1275"
 }

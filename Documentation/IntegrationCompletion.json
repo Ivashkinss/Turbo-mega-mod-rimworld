@@ -1,0 +1,37 @@
+{
+  "plannedComponents": 28,
+  "integratedComponents": 28,
+  "originalFoldersRemaining": 0,
+  "externalRequiredDependencies": 0,
+  "activeMods": [
+    "ludeon.rimworld",
+    "ludeon.rimworld.royalty",
+    "ludeon.rimworld.ideology",
+    "ludeon.rimworld.biotech",
+    "ludeon.rimworld.anomaly",
+    "ludeon.rimworld.odyssey",
+    "colonyproject.integrated"
+  ],
+  "russianEntries": 2997,
+  "componentResourceHashesVerified": 4069,
+  "finalRuntimeChecks": 407,
+  "productionAssemblySha256": "d23b609e81d6e0e1503359924eac9fd4df78a9c9beefe44b9ebf84ab5325d784",
+  "fullSetReports": {
+    "Harmony": "Harmony-FullSet.json",
+    "MeleeAnimation": "MeleeAnimation-FullSet.json",
+    "HugsLib": "HugsLib-FullSet.json"
+  },
+  "libraryRegressions": {
+    "VEF": 47,
+    "MapPreview": 23,
+    "AdaptiveStorage": 78,
+    "CommonSense": 21,
+    "HugsLib": 18
+  },
+  "gameVersion": "1.7.5000 rev1275",
+  "liveGame16Verified": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "knownRemainingIssue": "Installed Odyssey Russian faction-name grammar; exact error pair recorded in runtime reports",
+  "passed": true
+}

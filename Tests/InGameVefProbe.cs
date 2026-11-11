@@ -82,7 +82,7 @@ public sealed class VefProbe : MapComponent
             var bills = AccessTools.TypeByName("NiceBillTab.ModIntegration");
             Check((bool)AccessTools.Field(bills, "VEFActive").GetValue(null), "Nice Bill Tab did not recognize VEF");
             var billVef = AccessTools.TypeByName("NiceBillTab.VanillaExpandedFrameworkIntegration");
-            Check(AccessTools.Field(billVef, "VEFAss").GetValue(null) == mod.GetType().Assembly, "Nice Bill Tab VEF assembly missing");
+            Check(ReferenceEquals(AccessTools.Field(billVef, "VEFAss").GetValue(null), mod.GetType().Assembly), "Nice Bill Tab VEF assembly missing");
             Check(Equals(AccessTools.Method(billVef, "UsableWithShields").Invoke(null, new object[] { pistol }), expectedShield), "Nice Bill Tab shield integration differs");
             Check(DefDatabase<RimWorld.JoyGiverDef>.GetNamedSilentFail("TakeDrugPatient") != null, "Common Sense joy giver overwritten");
             Check(DefDatabase<JobDef>.GetNamedSilentFail("EquipSecondary") != null, "Sidearms jobs overwritten");

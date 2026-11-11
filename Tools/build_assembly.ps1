@@ -25,10 +25,7 @@ $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll',
     ForEach-Object { '/reference:' + (Join-Path $ManagedPath $_) }
 $references += @('AdaptiveStorageFramework.dll','1ITransformable.dll') |
     ForEach-Object { '/reference:' + (Join-Path $frameworkPath $_) }
-$harmonyPath = Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll'
-if (!(Test-Path -LiteralPath $harmonyPath)) {
-    $harmonyPath = Join-Path $gamePath 'Mods\2009463077\Current\Assemblies\0Harmony.dll'
-}
+$harmonyPath = & (Join-Path $PSScriptRoot 'get_harmony_reference.ps1')
 $references += '/reference:' + $harmonyPath
 $sourceFiles = @(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Select-Object -ExpandProperty FullName)
 $buildPath = Join-Path $PSScriptRoot 'Build'

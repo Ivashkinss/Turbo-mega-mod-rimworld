@@ -8,15 +8,14 @@ $refPath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 if (!(Test-Path -LiteralPath $refPath)) { $refPath = Join-Path $gamePath 'RimWorldWin64_Data\Managed' }
 $refs = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll') |
     ForEach-Object { '/reference:' + (Join-Path $refPath $_) }
-$harmony = Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll'
-if (!(Test-Path -LiteralPath $harmony)) { $harmony = Join-Path $gamePath 'Mods\2009463077\Current\Assemblies\0Harmony.dll' }
+$harmony = & (Join-Path $PSScriptRoot 'get_harmony_reference.ps1')
 $refs += '/reference:' + $harmony
 $builtProbe = Join-Path $PSScriptRoot 'Build\TurboMegaMod.TestProbe.dll'
 & (Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe') /noconfig /nologo /target:library /nostdlib+ (('/out:') + $builtProbe) @refs (Join-Path $projectPath 'Tests\InGameLocalizationProbe.cs')
 if ($LASTEXITCODE -ne 0) { throw 'Could not compile the in-game probe.' }
 $testRoot = Join-Path $projectPath ('TestRuns\Localization-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path (Join-Path $testRoot 'Config') -Force | Out-Null
-$ids = @('brrainz.harmony','ludeon.rimworld')
+$ids = @('ludeon.rimworld')
 foreach ($expansion in @('Royalty','Ideology','Biotech','Anomaly','Odyssey')) {
     if (Test-Path -LiteralPath (Join-Path $gamePath ('Data\' + $expansion + '\About\About.xml'))) {
         $ids += 'ludeon.rimworld.' + $expansion.ToLowerInvariant()

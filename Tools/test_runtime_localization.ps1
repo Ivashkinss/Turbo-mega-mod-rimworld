@@ -2,10 +2,7 @@ $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $compilerPath = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
-$harmonyPath = Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll'
-if (!(Test-Path -LiteralPath $harmonyPath)) {
-    $harmonyPath = Join-Path $gamePath 'Mods\2009463077\Current\Assemblies\0Harmony.dll'
-}
+$harmonyPath = & (Join-Path $PSScriptRoot 'get_harmony_reference.ps1')
 $testBuildPath = Join-Path $PSScriptRoot 'Build'
 New-Item -ItemType Directory -Path $testBuildPath -Force | Out-Null
 # The assembly name matches a target so production assembly filtering is exercised.

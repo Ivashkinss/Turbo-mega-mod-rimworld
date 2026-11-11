@@ -7,7 +7,7 @@ if (Get-Process RimWorld -ErrorAction SilentlyContinue) { throw 'RimWorld is alr
 & (Join-Path $PSScriptRoot 'build_assembly.ps1')
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','Unity.Mathematics.dll') | ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
-$references += '/reference:' + (Join-Path $gamePath 'Mods\2009463077\1.6\Assemblies\0Harmony.dll')
+$references += '/reference:' + (& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))
 & (Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe') /noconfig /nologo /nostdlib+ /target:library (('/out:') + (Join-Path $PSScriptRoot 'Build\RenderingProbe.dll')) @references (Join-Path $projectPath 'Tests\InGameRenderingProbe.cs') (Join-Path $projectPath 'Tests\InGameLocalizationProbe.cs')
 if ($LASTEXITCODE -ne 0) { throw 'Rendering probe compile failed' }
 if ($UseSavedCopy -and !$SaveFile) { throw 'Specify -SaveFile for a copied-save test.' }
