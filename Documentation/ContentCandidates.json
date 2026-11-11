@@ -1,0 +1,78 @@
+{
+  "checkedDate": "2026-11-12",
+  "status": "research-only; not installed, integrated or runtime-tested",
+  "workingGameVersion": "1.7.5000 rev1275",
+  "candidates": [
+    {
+      "name": "Hospitality (Continued)",
+      "purpose": "hotel and visitors",
+      "source": "https://github.com/Zaljerem/Hospitality",
+      "versionEvidence": "Repository lists a 1.7 directory",
+      "reuseEvidence": "README: GPL-3.0 code, CC-BY-SA artwork; audit exact imported files",
+      "requiredChecks": ["guest arrival and departure", "bed payment once", "save/load", "access restrictions", "embedded Harmony and HugsLib ownership"]
+    },
+    {
+      "name": "Gastronomy (Continued)",
+      "purpose": "restaurant",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3509488152",
+      "repository": "https://github.com/Zaljerem/Gastronomy",
+      "versionEvidence": "Author changelog: updated to 1.7 on 2026-10-12",
+      "reuseEvidence": "Unresolved: Workshop says GPL, repository README says CC-BY-NC-ND; do not assume public merge permission",
+      "requiredChecks": ["source/build version parity", "cash register dependency", "customer orders and real payment", "fridge inventory access", "waiter pathing", "idle and active performance", "save/load"]
+    },
+    {
+      "name": "Cash Register (Continued)",
+      "purpose": "restaurant dependency",
+      "source": "https://steamcommunity.com/workshop/filedetails/?id=3509487668",
+      "repository": "https://github.com/Zaljerem/CashRegister",
+      "versionEvidence": "Author page lists 1.7",
+      "knownConstraint": "Author says not fully Odyssey-compatible: do not build on gravships",
+      "requiredChecks": ["register persistence", "shifts and wages/prices", "payment duplication", "stationary colony first", "gravship-specific test before enabling that use"]
+    },
+    {
+      "name": "Hospital",
+      "purpose": "paid healthcare",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=2992224079",
+      "repository": "https://github.com/tomvd/Hospital",
+      "versionEvidence": "Author changelog: update for 1.7 on 2026-10-14",
+      "knownConstraint": "Author page reports incompatibilities with Combat Extended and VRE Androids",
+      "requiredChecks": ["arrival, treatment, invoice and departure", "consumable cost", "no duplicate payment after reload", "patient capacity", "captured/recruited patient cleanup", "synth handling separately"]
+    },
+    {
+      "name": "Tilled Soil",
+      "purpose": "high-fertility cultivated ground",
+      "source": "https://steamcommunity.com/workshop/filedetails/?id=725747149",
+      "versionEvidence": "Author page lists versions through 1.6; 1.7 unverified",
+      "declaredBehavior": "Constructible soil with 200% fertility",
+      "alternative": "Implement an original simple tilling mechanic if importing brings no advantage",
+      "requiredChecks": ["reuse terms", "terrain restrictions", "fertility-sensitive crop behavior", "construction cost", "remove/rebuild behavior", "save/load"]
+    },
+    {
+      "name": "Dubs Skylights",
+      "purpose": "sunlit greenhouses",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=833899765",
+      "repository": "https://github.com/Dubwise56/Skylights",
+      "versionEvidence": "Author page lists 1.7",
+      "requiredChecks": ["exact-source license", "sunlight under roof", "heated room in outdoor frost", "roof restrictions", "plant growth", "save/load", "rendering performance"]
+    },
+    {
+      "name": "Vehicle Framework",
+      "purpose": "ground vehicles and aircraft",
+      "source": "https://github.com/SmashPhil/Vehicle-Framework",
+      "versionEvidence": "README declares support for 1.7",
+      "declaredBehavior": "Vehicle pawns, custom pathing, vehicle component health, turrets and aerial launch/landing; no playable vehicles by itself",
+      "requiredChecks": ["exact release and license", "embedded Harmony", "caravan travel and return", "cargo and injured pawns", "map transitions", "save/load", "load/cancel/death failure paths", "air combat features separately"]
+    },
+    {
+      "name": "Exosuit Framework",
+      "purpose": "modular power armor and maintenance gantry",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3352894993",
+      "repository": "https://github.com/AobaKuma/MechsuitFramework",
+      "versionEvidence": "Author page and repository list 1.7",
+      "knownConstraint": "Author warns Simple Sidearms loses sidearms with integrated weapon modules; Sidearms is already in our foundation",
+      "requiredChecks": ["reuse terms", "equip/unequip at gantry", "Sidearms weapon round trip", "integrated weapon modules", "Melee and Hands rendering", "energy system implementation", "disabled pilot rescue", "save/load"]
+    }
+  ],
+  "notAutomaticallySelected": ["Combat Extended", "Vanilla Psycasts Expanded", "Vanilla Races Expanded Androids", "Big and Small Framework"],
+  "rule": "Author declarations are evidence for selection, not a passing integration test. Freeze exact sources, audit reuse terms and validate actual behavior before publishing an integrated component."
+}
