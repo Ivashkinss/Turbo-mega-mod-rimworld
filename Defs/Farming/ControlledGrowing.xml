@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Defs>
+  <!-- Private runtime helpers: neither buildable nor selectable. Their native
+       power/glow components are saved with the map and owned by one zone. -->
+  <ThingDef Name="TMM_GreenhouseNodeBase" Abstract="True">
+    <thingClass>TurboMegaMod.Building_GreenhouseNode</thingClass>
+    <category>Building</category>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>None</drawerType>
+    <selectable>false</selectable>
+    <useHitPoints>false</useHitPoints>
+    <drawGUIOverlay>false</drawGUIOverlay>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <canOverlapZones>true</canOverlapZones>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="TMM_GreenhouseNodeBase">
+    <defName>TMM_GreenhouseLight</defName>
+    <label>greenhouse grow light</label>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <compClass>TurboMegaMod.CompGreenhouseGlower</compClass>
+        <glowRadius>3</glowRadius>
+        <overlightRadius>2.3</overlightRadius>
+        <glowColor>(370,370,370,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>TMM_LitHydroponicsBasin</defName>
+    <label>hydroponics basin with grow light</label>
+    <description>A nutrient bath with its own overhead grow light. Connect to the power grid as usual. Pump and lighting consumption is 15% above an ordinary basin plus its share of a sun lamp. Lighting follows the normal plant resting period. The room still needs a suitable temperature; this basin does not heat it.</description>
+    <thingClass>TurboMegaMod.Building_LitHydroponics</thingClass>
+    <uiIconPath>UI/Farming/LitHydroponics</uiIconPath>
+    <graphicData>
+      <texPath>Things/Building/Production/HydroponicsBasin</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,4)</drawSize>
+    </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <fillPercent>0.3</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <constructEffect>ConstructMetal</constructEffect>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <statBases>
+      <WorkToBuild>3400</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Cleanliness>-3</Cleanliness>
+    </statBases>
+    <size>(1,4)</size>
+    <costList>
+      <Steel>130</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <fertility>2.8</fertility>
+    <building>
+      <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+      <sowTag>Hydroponic</sowTag>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>220</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <compClass>TurboMegaMod.CompHydroponicsGlower</compClass>
+        <glowRadius>5</glowRadius>
+        <overlightRadius>3.1</overlightRadius>
+        <glowColor>(370,370,370,0)</glowColor>
+      </li>
+      <li>
+        <compClass>TurboMegaMod.CompLitHydroponicsPower</compClass>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>Hydroponics</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Production</designationCategory>
+  </ThingDef>
+  <ThingDef ParentName="Wall">
+    <defName>TMM_GreenhouseGlassWall</defName>
+    <label>greenhouse glass wall</label>
+    <description>A load-bearing glazed greenhouse panel. Encloses the growing room and supports its glass roof.</description>
+    <graphicData Inherit="False">
+      <texPath>Things/Farming/GlassWall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <uiIconPath>Things/Farming/GlassWall</uiIconPath>
+    <stuffCategories Inherit="False"/>
+    <costStuffCount>0</costStuffCount>
+    <costList>
+      <Steel>8</Steel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+  </ThingDef>
+  <ThingDef ParentName="Door">
+    <defName>TMM_GreenhouseGlassDoor</defName>
+    <label>greenhouse glass door</label>
+    <description>A manually operated greenhouse door. Keep it closed to retain heat. Extra doors can be built with the normal building tool.</description>
+    <graphicData Inherit="False">
+      <texPath>Things/Farming/GlassDoor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <uiIconPath>Things/Farming/GlassDoor</uiIconPath>
+    <stuffCategories Inherit="False"/>
+    <costStuffCount>0</costStuffCount>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>850</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+  </ThingDef>
+  <ThingDef ParentName="Wall">
+    <defName>TMM_GreenhouseClimateUnit</defName>
+    <label>greenhouse climate panel</label>
+    <description>A wall-integrated greenhouse climate system. Its connected growing zone controls the heating target, grow lights and electricity use. Connect a conduit next to the greenhouse perimeter. Construction and a closed roofed room are required before heating starts.</description>
+    <thingClass>TurboMegaMod.Building_GreenhouseNode</thingClass>
+    <graphicData Inherit="False">
+      <texPath>Things/Farming/ClimateUnit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconPath>Things/Farming/ClimateUnit</uiIconPath>
+    <stuffCategories Inherit="False"/>
+    <costStuffCount>0</costStuffCount>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>1200</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+  </ThingDef>
+  <RoofDef>
+    <defName>TMM_GreenhouseGlassRoof</defName>
+    <label>greenhouse glass roof</label>
+    <isNatural>false</isNatural>
+    <isThickRoof>false</isThickRoof>
+    <canCollapse>true</canCollapse>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+  </RoofDef>
+</Defs>

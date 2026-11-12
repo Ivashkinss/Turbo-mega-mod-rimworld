@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TerrainDef ParentName="NaturalTerrainBase">
+    <defName>TMM_TilledSoil</defName>
+    <label>till soil</label>
+    <description>Work the existing soil to reach 200% fertility, or 222% inside a completed greenhouse. Requires colonist construction work and no materials. Cannot turn stone, water or installed floors into farmland. Pollution still limits fertility. Remove this terrain layer to restore the original soil.</description>
+    <texturePath>Terrain/Surfaces/SoilRich</texturePath>
+    <color>(0.8,0.72,0.64)</color>
+    <edgeType>FadeRough</edgeType>
+    <categoryType>Soil</categoryType>
+    <renderPrecedence>349</renderPrecedence>
+    <layerable>true</layerable>
+    <fertility>2</fertility>
+    <pathCost>2</pathCost>
+    <takeFootprints>true</takeFootprints>
+    <designationCategory>Production</designationCategory>
+    <constructEffect>ConstructDirt</constructEffect>
+    <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
+    <statBases><WorkToBuild>300</WorkToBuild><Beauty>-3</Beauty><Cleanliness>-1</Cleanliness></statBases>
+    <affordances><li>Light</li><li>Medium</li><li>Heavy</li><li>GrowSoil</li><li>Diggable</li></affordances>
+    <tags><li>Soil</li></tags>
+    <placeWorkers><li>TurboMegaMod.PlaceWorker_TillableSoil</li></placeWorkers>
+  </TerrainDef>
+</Defs>

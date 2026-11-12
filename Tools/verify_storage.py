@@ -46,7 +46,7 @@ def vector(text):
 
 
 def main():
-    project_xml = [path for folder in ("About", "Components", "Languages", "ThirdParty")
+    project_xml = [path for folder in ("About", "Components", "Languages", "ThirdParty", "Defs", "Patches")
                    for path in (PROJECT / folder).rglob("*.xml")] + [PROJECT / "LoadFolders.xml"]
     for path in project_xml:
         ET.parse(str(path))

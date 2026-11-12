@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression)
+param([Parameter(Mandatory=$true)][ValidateSet('Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Farming' { @{ folder=''; id='turbomegamod.farming'; dll='Assemblies\TurboMegaMod.dll'; source='InGameFarmingProbe.cs'; flag='-tmm-farming-probe'; report='FarmingProbe.json'; ui='FarmingUiProbe.json'; key='farming'; prefix='Farming' } }
     'Harmony' { @{ folder='2009463077'; id='brrainz.harmony'; dll='Components\Harmony\1.6\Assemblies\HarmonyMod.dll'; source='InGameHarmonyProbe.cs'; flag='-tmm-harmony-probe'; report='HarmonyProbe.json'; ui='HarmonyUiProbe.json'; key='harmony'; prefix='Harmony' } }
     'VanillaExpandedFramework' { @{ folder='Vanilla Expanded Framework (Библиотека)'; id='oskarpotocki.vanillafactionsexpanded.core'; dll='Components\VanillaExpandedFramework\1.7\Assemblies\VEF.dll'; source='InGameVefProbe.cs'; flag='-tmm-vef-probe'; report='VefProbe.json'; ui='VefUiProbe.json'; key='vef'; prefix='Vef' } }
     'MapPreview' { @{ folder='Map Preview (Предпросмотр карты)'; id='m00nl1ght.mappreview'; dll='Components\MapPreview\Assemblies\LunarLoader.dll'; source='InGameMapPreviewProbe.cs'; flag='-tmm-preview-probe'; report='PreviewProbe.json'; ui='PreviewUiProbe.json'; key='preview'; prefix='Preview' } }
@@ -47,7 +48,12 @@ if ($WithNiceBillTab -and $Component -ne 'UsefulMarks') { throw 'Combined menu r
 if ($OriginalActive -and !(Test-Path -LiteralPath (Join-Path $gamePath ('Mods\' + $definition.folder + '\About\About.xml')))) {
     throw ('Restore original ' + $Component + ' before testing -OriginalActive.')
 }
-& (Join-Path $PSScriptRoot 'build_assembly.ps1')
+if (!$UseBuiltAssembly) { & (Join-Path $PSScriptRoot 'build_assembly.ps1') }
+elseif (!(Test-Path -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll'))) { throw 'Production assembly is missing.' }
+if ($UseBuiltAssembly) {
+    $assemblyTime=(Get-Item -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll')).LastWriteTimeUtc
+    if (@(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before using -UseBuiltAssembly.' }
+}
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','Unity.Mathematics.dll') |
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
@@ -179,6 +185,7 @@ try {
         knownExternalMessages = @($errors | ForEach-Object { $_.Line -replace '^\d+:\d+:\d+\s+ERROR ', '' })
         gpuLost = [bool](Select-String -LiteralPath (Join-Path $testRoot 'stdout.log') -SimpleMatch 'VK_ERROR_DEVICE_LOST')
         visualUiVerified = $false; stoppedByTest = $true
+        productionAssemblySha256 = (Get-FileHash -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll') -Algorithm SHA256).Hash.ToLowerInvariant()
     }
     $result[$definition.key] = $componentResult
     $result.passed = $localization.passed -and $componentResult.passed -and $ui.passed -and $activity.framesAdvanced -gt 0 -and

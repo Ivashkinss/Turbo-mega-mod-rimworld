@@ -1,0 +1,21 @@
+{
+  "farmingReload": {
+    "passed": true,
+    "checks": 15,
+    "actualRoomTemperature": 21.4687,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4192,
+    "ticksAdvanced": 61166,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
+  "passed": true
+}

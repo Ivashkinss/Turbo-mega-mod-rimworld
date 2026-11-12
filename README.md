@@ -4,6 +4,12 @@
 
 Следующий этап — общая игра Fallout × «Сверхъестественное» с сюжетными экспедициями, базами фракций, новым хозяйством и платными услугами колонии. [Концепция и порядок разработки](Documentation/FALLOUT-SUPERNATURAL-DESIGN.md); [исследование кандидатов](Documentation/ContentCandidates.json). Это план нового контента: перечисленные кандидаты ещё не интегрированы.
 
+## Хозяйство
+
+Добавлены уличная теплица с планом стеклянных стен, крыши и двери, автоматическими посевами и настоящим отоплением; гидропоника со встроенным светильником; вспашка почвы. Солнце отключает дневную подсветку, затмение и полярная темнота включают её, ночью остаётся тусклый экономичный свет. Расход масштабируется по площади с надбавкой 15%.
+
+Готовая теплица сразу даёт почве 200% плодородия. Вспашка требует работы и даёт 200% снаружи или 222% в теплице. Гидропоника сохраняет свои 280%. [Постройка, управление, расход и ограничения](Documentation/CONTROLLED-FARMING.md).
+
 ## Установка
 
 Папка проекта с `About/About.xml` должна находиться непосредственно в `RimWorld/Mods`. Включите Core, установленные DLC и Turbo mega mod после них. Отдельные Harmony, HugsLib, VEF и Adaptive Storage не требуются.
@@ -24,7 +30,7 @@
 
 27 зданий Neat Storage имеют удвоенную вместимость. Семь холодильников Fridge сохраняют исходные значения; большой холодильник использует адаптивную сетку предметов.
 
-В проекте **2997 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 45 строк боевого журнала. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Character Editor сохраняет собственный русский интерфейс.
+В проекте **3033 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 45 строк боевого журнала. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Character Editor сохраняет собственный русский интерфейс.
 
 Camera+, Realistic Lighting and Shadows, Enhanced of Vanilla — Flaks and Plates и Vanilla Textures Expanded исключены из плана. Camera+ ранее воспроизводила GPU-сбой; возвращать её в сборку не следует. Подробности — [CrashInvestigation.json](Documentation/CrashInvestigation.json).
 
@@ -43,6 +49,8 @@ Camera+, Realistic Lighting and Shadows, Enhanced of Vanilla — Flaks and Plate
 Реальные игровые тесты выполняются в отдельных профилях на RimWorld **1.7.5000 rev1275**. Они создают новую карту, проверяют функциональность компонентов, переводы, сериализацию настроек и продвижение кадров/тиков. При проверке оригинала подтверждается единственная загруженная копия библиотеки. Тестовые DLL удаляются после завершения.
 
 Для Harmony проверяются настоящие prefix/postfix/transpiler, пропуск оригинального метода и снятие патчей, единственный поставщик, версия и RuntimeIL. Итоговый профиль дополнительно повторяет проверки VEF, фонового генератора Map Preview, всех 34 хранилищ/холодильников, Common Sense и HugsLib. Отдельные сценарии проверяют реальную анимацию Melee/отрисовку рук и выстрел RunAndGun во время движения.
+
+Итоговая сверка текущей DLL — 473 игровых проверки (407 компонентов, 51 хозяйства и 15 после загрузки тестового сохранения), ещё 22 проверки мощности. Пользовательские сохранения не менялись.
 
 Основные отчёты: [Harmony-FullSet.json](Documentation/Harmony-FullSet.json), [VanillaExpandedFramework-FullSet.json](Documentation/VanillaExpandedFramework-FullSet.json), [UtilityVerification.json](Documentation/UtilityVerification.json), [Verification.json](Documentation/Verification.json), [RuntimeLocalizationTests.json](Documentation/RuntimeLocalizationTests.json). Прежние этапы и точные ограничения каждого компонента сохранены в [CONTINUE.md](CONTINUE.md) и `Documentation/*-FullSet.json`.
 
@@ -68,13 +76,18 @@ python Tools/fetch_build_references.py
 ./Tools/test_runtime_localization.ps1
 ./Tools/test_realistic_rooms_runtime.ps1
 ./Tools/test_vef_initializer.ps1
-./Tools/test_component.ps1 -Component Harmony -FullSet -WithCoreRegression
-./Tools/test_component.ps1 -Component MeleeAnimation -FullSet -WithHands
-./Tools/test_component.ps1 -Component HugsLib -FullSet -WithRunAndGun
+./Tools/test_farming_power.ps1
+./Tools/test_component.ps1 -Component Farming -FullSet
+./Tools/test_farming_reload.ps1 -Profile TestRuns/<успешный-профиль-Farming>
+./Tools/test_component.ps1 -Component Harmony -FullSet -WithCoreRegression -UseBuiltAssembly
+./Tools/test_component.ps1 -Component MeleeAnimation -FullSet -WithHands -UseBuiltAssembly
+./Tools/test_component.ps1 -Component HugsLib -FullSet -WithRunAndGun -UseBuiltAssembly
 ```
 
 Общая DLL собирается против RimWorld 1.6 reference assemblies, расположенных в `Tools/Build/RimRef-1.6.4871/ref/net472`, либо через `build_assembly.ps1 -ManagedPath <каталог Managed 1.6>`. Встроенная Harmony 1.6 используется для компиляции; нужная игровая версия выбирается через LoadFolders.
 
 Импорт отдельного компонента: `python Tools/build_utility_components.py --component <имя>`. Для повторного импорта нужен его оригинал из локального архива; существующие записи остальных компонентов сохраняются. После добавления русских строк VEF запускайте `build_vef_localization.py`, для строк DLL — `build_runtime_localization.py`.
+
+`-UseBuiltAssembly` сохраняет одну и ту же производственную DLL между групповыми проверками; при изменении исходников требует новой сборки. Итоговая сверка: `python Tools/verify_integration_complete.py`.
 
 Проверенные этапы отправляются в [репозиторий](https://github.com/Ivashkinss/Turbo-mega-mod-rimworld) согласно разрешению пользователя.

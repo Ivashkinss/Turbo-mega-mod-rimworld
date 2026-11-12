@@ -12,14 +12,21 @@
     "ludeon.rimworld.odyssey",
     "colonyproject.integrated"
   ],
-  "russianEntries": 2997,
+  "russianEntries": 3033,
   "componentResourceHashesVerified": 4069,
-  "finalRuntimeChecks": 407,
-  "productionAssemblySha256": "d23b609e81d6e0e1503359924eac9fd4df78a9c9beefe44b9ebf84ab5325d784",
+  "finalRuntimeChecks": 473,
+  "integratedComponentRuntimeChecks": 407,
+  "farmingRuntimeChecks": 51,
+  "farmingReloadChecks": 15,
+  "farmingPowerChecks": 22,
+  "farmingAssetsVerified": 9,
+  "isolatedFarmingSaveReloadVerified": true,
+  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
   "fullSetReports": {
     "Harmony": "Harmony-FullSet.json",
     "MeleeAnimation": "MeleeAnimation-FullSet.json",
-    "HugsLib": "HugsLib-FullSet.json"
+    "HugsLib": "HugsLib-FullSet.json",
+    "Farming": "Farming-FullSet.json"
   },
   "libraryRegressions": {
     "VEF": 47,

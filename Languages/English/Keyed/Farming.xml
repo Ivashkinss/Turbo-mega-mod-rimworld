@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Farming.Greenhouse>Outdoor greenhouse zone</TMM.Farming.Greenhouse>
+  <TMM.Farming.GreenhouseDesignator>Mark the complete rectangular greenhouse footprint, from 4x4 to 64x64. The game plans glass walls, one door, a climate panel, roof supports and a roof; colonists must construct them. Growing cells are created automatically inside. Connect power next to the perimeter. Demand scales with growing area with a 15% premium over equivalent lighting and heating.</TMM.Farming.GreenhouseDesignator>
+  <TMM.Farming.OutdoorOnly>Plan the greenhouse on unroofed outdoor soil.</TMM.Farming.OutdoorOnly>
+  <TMM.Farming.Status>Greenhouse: {0}</TMM.Farming.Status>
+  <TMM.Farming.Powered>powered</TMM.Farming.Powered>
+  <TMM.Farming.NoPower>no power — crops exposed</TMM.Farming.NoPower>
+  <TMM.Farming.Disabled>switched off</TMM.Farming.Disabled>
+  <TMM.Farming.Demand>Electricity demand: {0} W for {1} cells</TMM.Farming.Demand>
+  <TMM.Farming.Target>Heating target: {0} °C</TMM.Farming.Target>
+  <TMM.Farming.Lighting>Grow lights: {0}</TMM.Farming.Lighting>
+  <TMM.Farming.On>on</TMM.Farming.On>
+  <TMM.Farming.Off>off</TMM.Farming.Off>
+  <TMM.Farming.Toggle>Greenhouse system</TMM.Farming.Toggle>
+  <TMM.Farming.ToggleDesc>Switch heating and lighting together. Plant growth, harvesting and sowing use the normal growing-zone controls.</TMM.Farming.ToggleDesc>
+  <TMM.Farming.Colder>Target −1 °C</TMM.Farming.Colder>
+  <TMM.Farming.Warmer>Target +1 °C</TMM.Farming.Warmer>
+  <TMM.Farming.TargetDesc>Set the greenhouse heating target between 1 and 30 °C. Heating does not provide cooling in hot weather.</TMM.Farming.TargetDesc>
+  <TMM.Farming.Unplanned>choose a valid rectangular footprint</TMM.Farming.Unplanned>
+  <TMM.Farming.Unfinished>build and enclose the greenhouse</TMM.Farming.Unfinished>
+  <TMM.Farming.PlanInvalid>The greenhouse needs a clear rectangular 4x4–64x64 footprint with room for walls and a door.</TMM.Farming.PlanInvalid>
+  <TMM.Farming.NightLight>dim night light</TMM.Farming.NightLight>
+  <TMM.Farming.Manage>Manage greenhouse</TMM.Farming.Manage>
+  <TMM.Farming.ManageDesc>Select the greenhouse growing zone. If the zone was deleted, restore it inside the existing structure without replacing other zones or buildings.</TMM.Farming.ManageDesc>
+  <TMM.Farming.TillSoilOnly>Only existing unpaved soil can be tilled.</TMM.Farming.TillSoilOnly>
+</LanguageData>

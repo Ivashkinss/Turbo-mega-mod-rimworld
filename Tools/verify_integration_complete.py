@@ -29,12 +29,14 @@ def main():
     active = ET.parse(str(config_path)).xpath('/ModsConfigData/activeMods/li/text()')
     assert active.count('colonyproject.integrated') == 1
     assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
-    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib')}
+    assembly_hash = hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest()
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming')}
     for name, report in reports.items():
         assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
         assert report['mapActivity']['ticksAdvanced'] > 0, name
         assert report['fullUserModSet'] and not report['originalComponentActive'], name
-        assert report['localization']['keyed'] == 2477 and report['localization']['scalarFields'] == 512, name
+        assert report['localization']['keyed'] == 2501 and report['localization']['scalarFields'] == 524, name
+        assert report['productionAssemblySha256'] == assembly_hash, ('Stale production binary report', name)
         assert report['knownExternalRuntimeErrors'] in (0, 2), name
         assert not any('Field injection' in message for message in report['knownExternalMessages']), name
     related = reports['Harmony']['relatedRegressions']
@@ -45,6 +47,13 @@ def main():
     checks = reports['Harmony']['harmony']['checks'] + sum(value['runtime']['checks'] for value in related.values())
     checks += reports['MeleeAnimation']['melee']['checks'] + reports['MeleeAnimation']['relatedHands']['runtime']['checks']
     checks += reports['HugsLib']['hugsLib']['checks'] + reports['HugsLib']['relatedRunAndGun']['runtime']['checks']
+    integration_checks = checks
+    reload = read('Farming-Reload.json')
+    assert reload['passed'] and reload['runtimeErrors'] == 0 and not reload['gpuLost']
+    assert reload['productionAssemblySha256'] == assembly_hash
+    assert reload['mapActivity']['ticksAdvanced'] > 0 and reload['isolatedFixtureSave'] and not reload['userSaveTested']
+    assert read('FarmingPowerTests.json')['passed']
+    checks += reports['Farming']['farming']['checks'] + reload['farmingReload']['checks']
     utility = read('UtilityVerification.json')
     assert utility['passed'] and utility['externalRequiredDependencies'] == 0
     storage = read('Verification.json')
@@ -52,12 +61,23 @@ def main():
     assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
     assert read('VefInitializerTests.json')['passed']
     russian, duplicates = entries([PROJECT / 'Languages/Russian'])
-    assert not duplicates and len(russian) == 2997
+    assert not duplicates and len(russian) == 3033
+    artwork = read('GeminiFarmingAssets.json')
+    accepted_assets = artwork['assets'] + artwork['glassAssets']
+    assert len(accepted_assets) == 9
+    for asset in accepted_assets:
+        folder = 'UI/Farming' if asset['file'] in ('GreenhouseZone.png', 'LitHydroponics.png') else 'Things/Farming'
+        file = PROJECT / 'Textures' / folder / asset['file']
+        assert hashlib.sha256(file.read_bytes()).hexdigest() == asset['sha256'], str(file)
     result = dict(plannedComponents=28, integratedComponents=28, originalFoldersRemaining=0,
                   externalRequiredDependencies=0, activeMods=active, russianEntries=len(russian),
                   componentResourceHashesVerified=utility['resourceHashesVerified'],
                   finalRuntimeChecks=checks,
-                  productionAssemblySha256=hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest(),
+                  integratedComponentRuntimeChecks=integration_checks,
+                  farmingRuntimeChecks=reports['Farming']['farming']['checks'], farmingReloadChecks=reload['farmingReload']['checks'],
+                  farmingPowerChecks=read('FarmingPowerTests.json')['checks'], farmingAssetsVerified=len(accepted_assets),
+                  isolatedFarmingSaveReloadVerified=True,
+                  productionAssemblySha256=assembly_hash,
                   fullSetReports={name: name + '-FullSet.json' for name in reports},
                   libraryRegressions={name: value['runtime'].get('checks') for name, value in related.items()},
                   gameVersion=reports['Harmony']['gameVersion'], liveGame16Verified=False,
