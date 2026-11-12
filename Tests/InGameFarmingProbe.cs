@@ -76,6 +76,51 @@ public sealed class FarmingProbe : MapComponent
         frame.CompleteConstruction(map.mapPawns.FreeColonistsSpawned.First());
         Check(cell.GetTerrain(map) == terrain, "Native construction did not produce tilled soil");
     }
+    private void GlassDurability()
+    {
+        var cell = new IntVec3(75, 0, 52);
+        foreach (string name in new[] { "TMM_GreenhouseGlassWall", "TMM_GreenhouseGlassDoor" })
+        {
+            bool wall = name.EndsWith("Wall");
+            foreach (string damage in new[] { "Blunt", "Cut", "Bullet", "Bomb" })
+            {
+                Thing target = Spawn(name, cell, Rot4.North);
+                Check(target.MaxHitPoints == (wall ? 50 : 70), "Incorrect glass durability: " + name);
+                Check(target.def.damageMultipliers.Count == 0, "Glass retained inherited damage armour");
+                int before = target.HitPoints;
+                var damageDef = DefDatabase<DamageDef>.GetNamed(damage);
+                target.TakeDamage(new DamageInfo(damageDef, 10f, 999f));
+                float expected = damageDef.buildingDamageFactor * (damage == "Bomb" ? (wall ? 40f : 20f) : 10f);
+                int lost = before - target.HitPoints;
+                Check(lost >= Math.Min(before, Mathf.FloorToInt(expected)) && lost <= Math.Min(before, Mathf.CeilToInt(expected)), name + " damage " + damage + " expected " + expected + " lost " + lost);
+                if (!target.Destroyed) target.Destroy();
+            }
+            Thing weak = Spawn(name, cell, Rot4.North); int weakBefore = weak.HitPoints;
+            weak.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("Bullet"), 1f, 999f));
+            Check(weak.HitPoints == weakBefore - 1, "Artificial minimum damage added to glass"); weak.Destroy();
+            Thing strong = Spawn(name, cell, Rot4.North); strong.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 1000f, 999f));
+            Check(strong.Destroyed, "Strong attack was capped or glass did not shatter");
+        }
+        var blunt = DamageDefOf.Blunt;
+        float oldSolid = blunt.buildingDamageFactorImpassable, oldPassable = blunt.buildingDamageFactorPassable;
+        try
+        {
+            foreach (float factor in new[] { 0f, 3f })
+            {
+                blunt.buildingDamageFactorImpassable = factor; blunt.buildingDamageFactorPassable = factor;
+                foreach (string name in new[] { "TMM_GreenhouseGlassWall", "TMM_GreenhouseGlassDoor", "Wall" })
+                {
+                    Thing target = Spawn(name, cell, Rot4.North); int before = target.HitPoints;
+                    target.TakeDamage(new DamageInfo(blunt, 10f, 999f));
+                    int expected = Mathf.RoundToInt(blunt.buildingDamageFactor * (name == "Wall" ? factor * 10f : 10f));
+                    Check(before - target.HitPoints == expected, "Glass isolation failed at global factor " + factor + " for " + name);
+                    target.Destroy();
+                }
+            }
+        }
+        finally { blunt.buildingDamageFactorImpassable = oldSolid; blunt.buildingDamageFactorPassable = oldPassable; }
+        Check(DefDatabase<ThingDef>.GetNamed("TMM_GreenhouseClimateUnit").GetStatValueAbstract(StatDefOf.MaxHitPoints) == 180f, "Climate panel durability changed");
+    }
     public override void MapComponentUpdate()
     {
         bool reload = Environment.GetCommandLineArgs().Contains("-tmm-farming-reload");
@@ -88,6 +133,8 @@ public sealed class FarmingProbe : MapComponent
                 {
                     Check(savePrepared, "Save fixture marker missing"); Check(zone != null && hydro != null && soilPlant != null, "Saved references failed to resolve");
                     Check(zone.planned && zone.CellCount == 36 && zone.Enclosed, "Saved greenhouse plan/room/crops changed");
+                    Check(new IntVec3(40, 0, 44).GetEdifice(map).HitPoints == 50, "Legacy wall HP did not clamp to new maximum");
+                    Check(zone.DoorCell.GetEdifice(map).HitPoints == 70, "Legacy door HP did not clamp to new maximum");
                     Check(zone.lightNodes.Count == savedLightCount && zone.lightNodes.All(n => n != null && n.Spawned), "Saved light references missing");
                     Check(Math.Abs(map.fertilityGrid.FertilityAt(new IntVec3(43, 0, 43)) - 2.22f) < 0.001f, "Saved greenhouse tilling lost 222% fertility");
                     Check(Math.Abs(map.fertilityGrid.FertilityAt(new IntVec3(55, 0, 43)) - 2f) < 0.001f, "Saved outdoor tilling lost 200% fertility");
@@ -117,6 +164,10 @@ public sealed class FarmingProbe : MapComponent
                 activeMap = map; Noon();
                 diagnostic.Patch(AccessTools.PropertyGetter(typeof(SkyManager), "CurSkyGlow"), prefix: new HarmonyMethod(typeof(FarmingProbe), "Sky"));
                 Prepare(new CellRect(38, 38, 40, 20));
+                var tilledDef = DefDatabase<TerrainDef>.GetNamed("TMM_TilledSoil");
+                Check(tilledDef.texturePath == "Terrain/Farming/TilledSoil" && ContentFinder<Texture2D>.Get(tilledDef.texturePath, false) != null, "New tilled soil texture missing");
+                Check(tilledDef.uiIconPath == "UI/Farming/TillSoil" && ContentFinder<Texture2D>.Get(tilledDef.uiIconPath, false) != null, "New tilling icon missing");
+                GlassDurability();
                 zone = new Zone_Greenhouse(map.zoneManager); map.zoneManager.RegisterZone(zone);
                 foreach (var c in new CellRect(40, 40, 8, 8)) zone.AddCell(c);
                 Check(zone.CreatePlan(), "Failed to create greenhouse plan");
@@ -236,6 +287,9 @@ public sealed class FarmingProbe : MapComponent
                 if ((!zone.Powered || !hydro.TryGetComp<CompPowerTrader>().PowerOn) && Find.TickManager.TicksGame - stageTick < 2000) return;
                 Check(zone.Powered && hydro.TryGetComp<CompPowerTrader>().PowerOn, "Power failed to resume after replacing generators");
                 savePrepared = true; savedLightCount = zone.lightNodes.Count;
+                // Simulate an older save carrying pre-balance hit point totals.
+                new IntVec3(40, 0, 44).GetEdifice(map).HitPoints = 120;
+                zone.DoorCell.GetEdifice(map).HitPoints = 150;
                 GameDataSaveLoader.SaveGame("TMM-Farming");
                 Check(File.Exists(GenFilePaths.FilePathForSavedGame("TMM-Farming")), "Full map save not written");
                 Finish();
@@ -253,8 +307,12 @@ public sealed class FarmingProbe : MapComponent
     {
         if (uiReported || stage != 99 || Find.CurrentMap != map || !Environment.GetCommandLineArgs().Contains("-tmm-farming-probe") || Event.current.type != EventType.Repaint) return;
         uiReported = true; string error = null;
-        try { new Designator_ZoneAdd_Greenhouse().GizmoOnGUI(new Vector2(20, 20), 120f, default(GizmoRenderParms)); }
+        try
+        {
+            new Designator_ZoneAdd_Greenhouse().GizmoOnGUI(new Vector2(20, 20), 120f, default(GizmoRenderParms));
+            new Designator_Build(DefDatabase<TerrainDef>.GetNamed("TMM_TilledSoil")).GizmoOnGUI(new Vector2(160, 20), 120f, default(GizmoRenderParms));
+        }
         catch (Exception e) { error = e.ToString(); }
-        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath, "FarmingUiProbe.json"), "{\"passed\":" + (error == null ? "true" : "false") + ",\"designatorDrawInvokedInRepaint\":true,\"visualLayoutInspected\":false,\"error\":" + (error == null ? "null" : Escape(error)) + "}");
+        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath, "FarmingUiProbe.json"), "{\"passed\":" + (error == null ? "true" : "false") + ",\"designatorDrawInvokedInRepaint\":true,\"tillingDesignatorDrawInvokedInRepaint\":true,\"visualLayoutInspected\":false,\"error\":" + (error == null ? "null" : Escape(error)) + "}");
     }
 }

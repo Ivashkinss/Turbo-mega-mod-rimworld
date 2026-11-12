@@ -1,0 +1,55 @@
+{
+  "verifiedIndependently": true,
+  "previewInspected": true,
+  "assets": [
+    {
+      "file": "TilledSoil.png",
+      "width": 256,
+      "height": 256,
+      "size": "256x256",
+      "mode": "RGBA",
+      "sha256": "3f9392c6aea50e98676aba3a44bf781a9237fb2e91c2d728c0aa364915e1229c",
+      "totalPixels": 65536,
+      "transparentPixels": 0,
+      "nonTransparentPixels": 65536,
+      "opaquePixels": 65536,
+      "translucentPixels": 0,
+      "seamMetrics": {
+        "seamDiffXMean": 1.875,
+        "seamDiffXMax": 17.0,
+        "internalDiffXMean": 2.0704,
+        "internalDiffXMax": 27.0,
+        "seamRatioX": 0.9056,
+        "seamDiffYMean": 0.9961,
+        "seamDiffYMax": 5.0,
+        "internalDiffYMean": 2.378,
+        "internalDiffYMax": 23.0,
+        "seamRatioY": 0.4189,
+        "seamlessVerified": true
+      },
+      "projectFile": "Textures/Terrain/Farming/TilledSoil.png"
+    },
+    {
+      "file": "TillSoil.png",
+      "width": 128,
+      "height": 128,
+      "size": "128x128",
+      "mode": "RGBA",
+      "sha256": "f34adcd10d8ed25cd7071df29c909d84396f2d6debf6be81ace979c73a1a9d09",
+      "totalPixels": 16384,
+      "transparentPixels": 11387,
+      "nonTransparentPixels": 4997,
+      "opaquePixels": 3685,
+      "translucentPixels": 1312,
+      "margins": {
+        "left": 12,
+        "right": 11,
+        "top": 9,
+        "bottom": 9,
+        "minMarginPx": 9,
+        "marginRequirementMet": true
+      },
+      "projectFile": "Textures/UI/Farming/TillSoil.png"
+    }
+  ]
+}

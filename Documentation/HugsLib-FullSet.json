@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4178,
-    "ticksAdvanced": 1761,
+    "framesAdvanced": 4196,
+    "ticksAdvanced": 1168,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -34,7 +34,7 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
+  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
   "hugsLib": {
     "passed": true,
     "checks": 18,
@@ -44,12 +44,6 @@
   },
   "passed": true,
   "relatedRunAndGun": {
-    "ui": {
-      "passed": true,
-      "customControlsDrawnInRepaint": true,
-      "visualLayoutInspected": false,
-      "error": null
-    },
     "passed": true,
     "runtime": {
       "passed": true,
@@ -57,6 +51,12 @@
       "successfulShotsWhileMoving": 1,
       "attackRequestedByTest": true,
       "errors": []
+    },
+    "ui": {
+      "passed": true,
+      "customControlsDrawnInRepaint": true,
+      "visualLayoutInspected": false,
+      "error": null
     }
   }
 }

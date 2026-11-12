@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4152,
-    "ticksAdvanced": 1748,
+    "framesAdvanced": 4162,
+    "ticksAdvanced": 1749,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -34,23 +34,17 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
+  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
   "melee": {
     "passed": true,
     "checks": 151,
     "animationDataLoaded": 66,
-    "animationTimeAdvanced": 0.9902014,
+    "animationTimeAdvanced": 0.9254698,
     "patchedMethods": 19,
     "errors": []
   },
   "passed": true,
   "relatedHands": {
-    "ui": {
-      "passed": true,
-      "settingsDrawInvokedInRepaint": true,
-      "visualLayoutInspected": false,
-      "error": null
-    },
     "passed": true,
     "runtime": {
       "passed": true,
@@ -59,6 +53,12 @@
       "meshDrawCallsDuringExplicitRender": 2,
       "visualHandPlacementInspected": false,
       "errors": []
+    },
+    "ui": {
+      "passed": true,
+      "settingsDrawInvokedInRepaint": true,
+      "visualLayoutInspected": false,
+      "error": null
     }
   }
 }

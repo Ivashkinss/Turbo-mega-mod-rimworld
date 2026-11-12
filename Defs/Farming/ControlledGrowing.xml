@@ -98,7 +98,7 @@
   <ThingDef ParentName="Wall">
     <defName>TMM_GreenhouseGlassWall</defName>
     <label>greenhouse glass wall</label>
-    <description>A load-bearing glazed greenhouse panel. Encloses the growing room and supports its glass roof.</description>
+    <description>A fragile load-bearing glazed greenhouse panel. Encloses the growing room and supports its glass roof. Protect it with a separate defensive perimeter.</description>
     <graphicData Inherit="False">
       <texPath>Things/Farming/GlassWall</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -111,16 +111,17 @@
       <Steel>8</Steel>
     </costList>
     <statBases>
-      <MaxHitPoints>120</MaxHitPoints>
+      <MaxHitPoints>50</MaxHitPoints>
       <WorkToBuild>300</WorkToBuild>
       <Flammability>0</Flammability>
     </statBases>
+    <comps><li><compClass>TurboMegaMod.CompGreenhouseGlassIntegrity</compClass></li></comps>
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
   </ThingDef>
   <ThingDef ParentName="Door">
     <defName>TMM_GreenhouseGlassDoor</defName>
     <label>greenhouse glass door</label>
-    <description>A manually operated greenhouse door. Keep it closed to retain heat. Extra doors can be built with the normal building tool.</description>
+    <description>A fragile manually operated greenhouse glass door. Keep it closed to retain heat. Extra doors can be built with the normal building tool.</description>
     <graphicData Inherit="False">
       <texPath>Things/Farming/GlassDoor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -133,10 +134,11 @@
       <Steel>20</Steel>
     </costList>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>70</MaxHitPoints>
       <WorkToBuild>850</WorkToBuild>
       <Flammability>0</Flammability>
     </statBases>
+    <comps><li><compClass>TurboMegaMod.CompGreenhouseGlassIntegrity</compClass></li></comps>
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
   </ThingDef>
   <ThingDef ParentName="Wall">

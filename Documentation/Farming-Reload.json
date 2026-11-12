@@ -1,21 +1,21 @@
 {
   "farmingReload": {
     "passed": true,
-    "checks": 15,
-    "actualRoomTemperature": 21.4687,
+    "checks": 17,
+    "actualRoomTemperature": 21.08105,
     "errors": []
   },
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4192,
-    "ticksAdvanced": 61166,
+    "framesAdvanced": 4198,
+    "ticksAdvanced": 61167,
     "newsWindowsDismissedInTest": 0
   },
   "runtimeErrors": 0,
   "gpuLost": false,
   "isolatedFixtureSave": true,
   "userSaveTested": false,
-  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
+  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
   "passed": true
 }

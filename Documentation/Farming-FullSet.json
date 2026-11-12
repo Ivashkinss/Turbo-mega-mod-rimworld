@@ -14,13 +14,14 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4059,
-    "ticksAdvanced": 75715,
+    "framesAdvanced": 3961,
+    "ticksAdvanced": 75676,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
     "passed": true,
     "designatorDrawInvokedInRepaint": true,
+    "tillingDesignatorDrawInvokedInRepaint": true,
     "visualLayoutInspected": false,
     "error": null
   },
@@ -34,10 +35,10 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "4983207b788a9207dd46bb39532816a7ba8f9063a417282d89746ff1923d3a5f",
+  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
   "farming": {
     "passed": true,
-    "checks": 51,
+    "checks": 88,
     "actualRoomTemperature": 21,
     "errors": []
   },

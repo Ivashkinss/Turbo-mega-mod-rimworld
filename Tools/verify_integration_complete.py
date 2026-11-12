@@ -69,13 +69,20 @@ def main():
         folder = 'UI/Farming' if asset['file'] in ('GreenhouseZone.png', 'LitHydroponics.png') else 'Things/Farming'
         file = PROJECT / 'Textures' / folder / asset['file']
         assert hashlib.sha256(file.read_bytes()).hexdigest() == asset['sha256'], str(file)
+    soil_artwork = read('GeminiSoilAssets.json')
+    assert soil_artwork['verifiedIndependently'] and soil_artwork['previewInspected']
+    assert len(soil_artwork['assets']) == 2
+    for asset in soil_artwork['assets']:
+        file = PROJECT / asset['projectFile']
+        assert hashlib.sha256(file.read_bytes()).hexdigest() == asset['sha256'], str(file)
+    assert reports['Farming']['settingsUi']['tillingDesignatorDrawInvokedInRepaint']
     result = dict(plannedComponents=28, integratedComponents=28, originalFoldersRemaining=0,
                   externalRequiredDependencies=0, activeMods=active, russianEntries=len(russian),
                   componentResourceHashesVerified=utility['resourceHashesVerified'],
                   finalRuntimeChecks=checks,
                   integratedComponentRuntimeChecks=integration_checks,
                   farmingRuntimeChecks=reports['Farming']['farming']['checks'], farmingReloadChecks=reload['farmingReload']['checks'],
-                  farmingPowerChecks=read('FarmingPowerTests.json')['checks'], farmingAssetsVerified=len(accepted_assets),
+                  farmingPowerChecks=read('FarmingPowerTests.json')['checks'], farmingAssetsVerified=len(accepted_assets) + len(soil_artwork['assets']),
                   isolatedFarmingSaveReloadVerified=True,
                   productionAssemblySha256=assembly_hash,
                   fullSetReports={name: name + '-FullSet.json' for name in reports},
