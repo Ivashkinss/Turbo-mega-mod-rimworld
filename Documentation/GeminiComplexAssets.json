@@ -1,0 +1,26 @@
+{
+  "source": "Tools/Build/GeminiComplexAssets",
+  "previewInspected": true,
+  "verifiedIndependently": true,
+  "originalArtwork": true,
+  "assets": [
+    {
+      "projectFile": "Textures/Things/Complex/ReceptionDesk.png",
+      "sha256": "ba2b0e6764faf700ef4b34091586ea20e2d486616b886c26fe5563107ded2c10",
+      "margin": 11,
+      "requiredMargin": 7
+    },
+    {
+      "projectFile": "Textures/UI/Complex/Staff.png",
+      "sha256": "b1486eb1b3bed1ce03393c532c4082a49d6a032ca0a5985a0f1e631d2a5cec73",
+      "margin": 15,
+      "requiredMargin": 8
+    },
+    {
+      "projectFile": "Textures/UI/Complex/Workplaces.png",
+      "sha256": "505cb3be58b9cdccf18c3c0ec4a56f3695b31a345cb7cadc1182c25e64b15992",
+      "margin": 10,
+      "requiredMargin": 8
+    }
+  ]
+}

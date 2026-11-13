@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+﻿<?xml version='1.0' encoding='UTF-8'?>
 <LanguageData>
   <TMM_GreenhouseLight.label>тепличная подсветка растений</TMM_GreenhouseLight.label>
   <TMM_LitHydroponicsBasin.label>гидропоника со встроенным светильником</TMM_LitHydroponicsBasin.label>
@@ -8,5 +8,5 @@
   <TMM_GreenhouseGlassDoor.label>стеклянная дверь теплицы</TMM_GreenhouseGlassDoor.label>
   <TMM_GreenhouseGlassDoor.description>Хрупкая стеклянная дверь теплицы с ручным открыванием. Закрывайте её, чтобы удерживать тепло. Дополнительные двери можно ставить обычным инструментом строительства.</TMM_GreenhouseGlassDoor.description>
   <TMM_GreenhouseClimateUnit.label>климатическая панель теплицы</TMM_GreenhouseClimateUnit.label>
-  <TMM_GreenhouseClimateUnit.description>Встроенная в стену климатическая система. Тепличная зона управляет температурой, подсветкой и потреблением энергии. Подведите кабель к периметру теплицы. Обогрев начинается после строительства и закрытия помещения крышей.</TMM_GreenhouseClimateUnit.description>
+  <TMM_GreenhouseClimateUnit.description>Встроенная в стену климатическая система. Тепличная зона управляет температурой, подсветкой и потреблением энергии. Подведите кабель к периметру теплицы. Климат-контроль нагревает или охлаждает закрытое помещение. Чем больше разница между текущей и заданной температурой, тем выше расход энергии.</TMM_GreenhouseClimateUnit.description>
 </LanguageData>

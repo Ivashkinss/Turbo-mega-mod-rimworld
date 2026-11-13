@@ -21,7 +21,7 @@ if (!(Test-Path -LiteralPath (Join-Path $frameworkPath 'AdaptiveStorageFramework
 $compilerPath = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
 $outputPath = Join-Path $projectPath 'Assemblies'
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','UnityEngine.CoreModule.dll','Unity.Mathematics.dll','Assembly-CSharp.dll') |
+$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','UnityEngine.TextRenderingModule.dll','Unity.Mathematics.dll','Assembly-CSharp.dll') |
     ForEach-Object { '/reference:' + (Join-Path $ManagedPath $_) }
 $references += @('AdaptiveStorageFramework.dll','1ITransformable.dll') |
     ForEach-Object { '/reference:' + (Join-Path $frameworkPath $_) }

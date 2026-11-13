@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -208,7 +208,7 @@ namespace TurboMegaMod
             if (counters.Length == 0) return;
             foreach (var guest in map.mapPawns.AllPawnsSpawned.ToArray())
             {
-                if (!RestaurantMeals.Guest(guest) || ForGuest(guest) != null || !guest.Awake() || guest.needs.food == null ||
+                if (!RestaurantMeals.Guest(guest) || ForGuest(guest) != null || guest.CurJobDef == JobDefOf.Ingest || !guest.Awake() || guest.needs.food == null ||
                     guest.needs.food.CurLevelPercentage >= 0.55f || guest.needs.food.CurCategory == HungerCategory.Starving ||
                     (guest.CurJob != null && !guest.CurJob.def.casualInterruptible)) continue;
                 foreach (var counter in counters) if (TryOrder(guest, counter) != null) break;
@@ -263,6 +263,7 @@ namespace TurboMegaMod
             // the buyer's inventory. Release it before Ingest reserves the meal.
             map.reservationManager.Release(delivered, waiter, waiter.CurJob);
             order.delivered = true; order.counter.earned += order.price;
+            ComplexWorkPolicy.Record(map, order.counter.Position, "restaurant", order.price);
             ProcessOrders(false);
             var eat = JobMaker.MakeJob(JobDefOf.Ingest, delivered); eat.count = 1;
             guest.jobs.StartJob(eat, JobCondition.InterruptForced);

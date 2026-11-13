@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
+param([Parameter(Mandatory=$true)][ValidateSet('Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Complex' { @{ folder=''; id='turbomegamod.complex'; dll='Assemblies\TurboMegaMod.dll'; source='InGameComplexProbe.cs'; flag='-tmm-complex-probe'; report='ComplexProbe.json'; ui='ComplexUiProbe.json'; key='complex'; prefix='Complex' } }
     'Restaurant' { @{ folder=''; id='turbomegamod.restaurant'; dll='Assemblies\TurboMegaMod.dll'; source='InGameRestaurantProbe.cs'; flag='-tmm-restaurant-probe'; report='RestaurantProbe.json'; ui='RestaurantUiProbe.json'; key='restaurant'; prefix='Restaurant' } }
     'Hospitality' { @{ folder='Hospitality (Continued)'; id='orion.hospitality'; dll='Components\Hospitality\1.6\Assemblies\Hospitality.dll'; source='InGameHospitalityProbe.cs'; flag='-tmm-hospitality-probe'; report='HospitalityProbe.json'; ui='HospitalityUiProbe.json'; key='hospitality'; prefix='Hospitality' } }
     'Farming' { @{ folder=''; id='turbomegamod.farming'; dll='Assemblies\TurboMegaMod.dll'; source='InGameFarmingProbe.cs'; flag='-tmm-farming-probe'; report='FarmingProbe.json'; ui='FarmingUiProbe.json'; key='farming'; prefix='Farming' } }
@@ -57,7 +58,7 @@ if ($UseBuiltAssembly) {
     if (@(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before using -UseBuiltAssembly.' }
 }
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
-$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','Unity.Mathematics.dll') |
+$references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','UnityEngine.TextRenderingModule.dll','Unity.Mathematics.dll') |
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
 $references += '/reference:' + (& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))
 $references += '/reference:' + (Join-Path $projectPath $definition.dll)

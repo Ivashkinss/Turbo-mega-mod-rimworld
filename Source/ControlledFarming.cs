@@ -124,7 +124,7 @@ namespace TurboMegaMod
             get
             {
                 return !planned || !systemEnabled || !Enclosed ? 0f : FarmingPowerBudget.Greenhouse(CellCount, LampsNeeded,
-                    GrowingRoom.Temperature < targetTemperature, ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"),
+                    GrowingRoom.Temperature, targetTemperature, ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"), ControlledFarming.BasePower("Cooler"),
                     lightingMode == 2, ControlledFarming.BasePower("StandingLamp"));
             }
         }
@@ -252,7 +252,12 @@ namespace TurboMegaMod
         public void ApplyHeat()
         {
             if (!Powered || CellCount == 0) return;
-            float energy = DefDatabase<ThingDef>.GetNamed("Heater").GetCompProperties<CompProperties_TempControl>().energyPerSecond * CellCount / 36f * (250f / 60f);
+            // Keep this public method name for existing callers; the panel now
+            // controls temperature in both directions, with a modulating load.
+            float difference = targetTemperature - GrowingRoom.Temperature;
+            if (Mathf.Abs(difference) < 0.001f) return;
+            var control = DefDatabase<ThingDef>.GetNamed(difference > 0f ? "Heater" : "Cooler").GetCompProperties<CompProperties_TempControl>();
+            float energy = Mathf.Abs(control.energyPerSecond) * Mathf.Sign(difference) * Mathf.Abs(difference) / 20f * CellCount / 36f * (250f / 60f);
             GrowingRoom.Temperature += GenTemperature.ControlTemperatureTempChange(Cells[0], Map, energy, targetTemperature);
         }
         private Building SpawnNode(string defName, IntVec3 cell)

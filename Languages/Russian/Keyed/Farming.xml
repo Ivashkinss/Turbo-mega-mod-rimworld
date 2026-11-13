@@ -1,22 +1,22 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
   <TMM.Farming.Greenhouse>Уличная тепличная зона</TMM.Farming.Greenhouse>
-  <TMM.Farming.GreenhouseDesignator>Выделите полный прямоугольник теплицы от 4×4 до 64×64 клеток. Появится план стеклянных стен, двери, климатической панели, опор и крыши; постройки должны возвести колонисты. Внутри автоматически создаются посевы. Подведите питание к периметру. Потребление зависит от площади посадок и на 15% выше эквивалентного освещения и отопления.</TMM.Farming.GreenhouseDesignator>
+  <TMM.Farming.GreenhouseDesignator>Выделите полный прямоугольник теплицы от 4×4 до 64×64 клеток. Появится план стеклянных стен, двери, климатической панели, опор и крыши; постройки должны возвести колонисты. Внутри автоматически создаются посевы. Подведите питание к периметру. Система нагревает и охлаждает помещение до заданной температуры. Потребление зависит от площади посадок и перепада температуры; освещение имеет надбавку 15%.</TMM.Farming.GreenhouseDesignator>
   <TMM.Farming.OutdoorOnly>Размечайте теплицу на открытой почве без крыши.</TMM.Farming.OutdoorOnly>
   <TMM.Farming.Status>Теплица: {0}</TMM.Farming.Status>
   <TMM.Farming.Powered>питание есть</TMM.Farming.Powered>
   <TMM.Farming.NoPower>нет питания — посевы без защиты</TMM.Farming.NoPower>
   <TMM.Farming.Disabled>выключена</TMM.Farming.Disabled>
   <TMM.Farming.Demand>Потребление: {0} Вт на {1} клеток</TMM.Farming.Demand>
-  <TMM.Farming.Target>Температура обогрева: {0} °C</TMM.Farming.Target>
+  <TMM.Farming.Target>Целевая температура: {0} °C</TMM.Farming.Target>
   <TMM.Farming.Lighting>Подсветка растений: {0}</TMM.Farming.Lighting>
   <TMM.Farming.On>включена</TMM.Farming.On>
   <TMM.Farming.Off>выключена</TMM.Farming.Off>
   <TMM.Farming.Toggle>Система теплицы</TMM.Farming.Toggle>
-  <TMM.Farming.ToggleDesc>Включить или выключить обогрев и подсветку. Выбор культуры, посев и сбор урожая управляются как в обычной зоне посевов.</TMM.Farming.ToggleDesc>
+  <TMM.Farming.ToggleDesc>Включить или выключить климат-контроль и подсветку. Выбор культуры, посев и сбор урожая управляются как в обычной зоне посевов.</TMM.Farming.ToggleDesc>
   <TMM.Farming.Colder>Температура −1 °C</TMM.Farming.Colder>
   <TMM.Farming.Warmer>Температура +1 °C</TMM.Farming.Warmer>
-  <TMM.Farming.TargetDesc>Задать обогрев от 1 до 30 °C. В жару система не охлаждает посевы.</TMM.Farming.TargetDesc>
+  <TMM.Farming.TargetDesc>Задать температуру от 1 до 30 °C. Система нагревает или охлаждает воздух; чем больше разница с заданной температурой, тем выше расход энергии.</TMM.Farming.TargetDesc>
   <TMM.Farming.Unplanned>нужен подходящий прямоугольный контур</TMM.Farming.Unplanned>
   <TMM.Farming.Unfinished>теплица ещё не построена или не закрыта</TMM.Farming.Unfinished>
   <TMM.Farming.PlanInvalid>Теплице нужен свободный прямоугольник от 4×4 до 64×64 клеток с местом для стен и двери.</TMM.Farming.PlanInvalid>

@@ -4,8 +4,8 @@
   "fullUserModSet": true,
   "gameVersion": "1.7.5000 rev1275",
   "localization": {
-    "keyed": 2667,
-    "scalarFields": 639,
+    "keyed": 2691,
+    "scalarFields": 641,
     "grammarLines": 90,
     "displayPatches": 12,
     "passed": true,
@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4054,
-    "ticksAdvanced": 75715,
+    "framesAdvanced": 3806,
+    "ticksAdvanced": 75638,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -35,11 +35,11 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "1f3106fac27ce50d453cfc47aaa2061e590704ca4f90484ca83ecc14f12650ae",
+  "productionAssemblySha256": "f42ac141b4cb16ff8a4c38d9d5f754ec32b8855632170703505838b8cd586d8f",
   "farming": {
     "passed": true,
-    "checks": 88,
-    "actualRoomTemperature": 21,
+    "checks": 92,
+    "actualRoomTemperature": 20.99902,
     "errors": []
   },
   "passed": true

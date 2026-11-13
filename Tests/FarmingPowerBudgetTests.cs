@@ -23,6 +23,15 @@ public static class FarmingPowerBudgetTests
         Check(Near(FarmingPowerBudget.Hydroponics(false, 70f, 2900f, true), 84.33333f), "Night lighting adds a small ordinary-lamp share to pumps");
         Check(Near(FarmingPowerBudget.Greenhouse(36, false, false, 2900f, 175f, true) - FarmingPowerBudget.Greenhouse(36, false, false, 2900f, 175f), 34.5f), "Night comfort light is one ordinary lamp per 36 cells plus premium");
         Check(FarmingPowerBudget.Hydroponics(false, 70f, 2900f, true) < FarmingPowerBudget.Hydroponics(true, 70f, 2900f), "Night must save energy relative to grow lights");
+        float idleClimate = FarmingPowerBudget.Greenhouse(36, false, 21f, 21f, 2900f, 175f, 200f);
+        Check(Near(idleClimate, 20.125f), "Climate keeps a small standby load at its target");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 1f, 21f, 2900f, 175f, 200f), 201.25f), "Nominal heating load includes the 15% premium");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 41f, 21f, 2900f, 175f, 200f), 227.125f), "Cooling uses the vanilla cooler baseline");
+        Check(FarmingPowerBudget.Greenhouse(36, false, -19f, 21f, 2900f, 175f, 200f) > FarmingPowerBudget.Greenhouse(36, false, 11f, 21f, 2900f, 175f, 200f), "Larger cold gap must draw more power");
+        Check(FarmingPowerBudget.Greenhouse(36, false, 61f, 21f, 2900f, 175f, 200f) > FarmingPowerBudget.Greenhouse(36, false, 31f, 21f, 2900f, 175f, 200f), "Larger hot gap must draw more power");
+        Check(Near(FarmingPowerBudget.Greenhouse(72, false, 41f, 21f, 2900f, 175f, 200f), 2f * FarmingPowerBudget.Greenhouse(36, false, 41f, 21f, 2900f, 175f, 200f)), "Climate load scales with area");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 31f, 21f, 2900f, 175f, 200f), FarmingPowerBudget.Greenhouse(36, false, 11f, 1f, 2900f, 175f, 200f)), "Consumption follows relative temperature gap");
+        Check(FarmingPowerBudget.Greenhouse(0, true, -25f, 21f, 2900f, 175f, 200f) == 0f, "No climate load without growing cells");
         Console.WriteLine("{\"checks\":" + checks + ",\"passed\":true}");
     }
 }

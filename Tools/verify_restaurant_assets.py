@@ -7,8 +7,8 @@ from PIL import Image
 PROJECT = Path(__file__).resolve().parents[1]
 
 
-def main():
-    report = json.loads((PROJECT / 'Documentation/GeminiRestaurantAssets.json').read_text(encoding='utf-8-sig'))
+def verify_assets(report_name, result_name):
+    report = json.loads((PROJECT / 'Documentation' / report_name).read_text(encoding='utf-8-sig'))
     assert report['previewInspected'] and report['verifiedIndependently']
     assert len(report['assets']) == 3
     for asset in report['assets']:
@@ -21,7 +21,11 @@ def main():
             left, top, right, bottom = alpha.getbbox()
             margin = min(left, top, 128 - right, 128 - bottom)
             assert margin == asset['margin'] and margin >= asset['requiredMargin'], path
-    print(json.dumps({'restaurantAssets': 3, 'passed': True}))
+    print(json.dumps({result_name: 3, 'passed': True}))
+
+
+def main():
+    verify_assets('GeminiRestaurantAssets.json', 'restaurantAssets')
 
 
 if __name__ == '__main__':

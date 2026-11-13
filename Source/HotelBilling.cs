@@ -27,6 +27,21 @@ namespace TurboMegaMod
             harmony.Patch(AccessTools.Method(driver, "MakeNewToils"), postfix: new HarmonyMethod(typeof(HotelBillingHooks), "ClaimToils"));
             harmony.Patch(AccessTools.Method(bedType, "GetInspectString"), postfix: new HarmonyMethod(typeof(HotelBillingHooks), "BedInspect"));
             harmony.Patch(AccessTools.Method(AccessTools.TypeByName("Hospitality.Mod_Hospitality"), "SettingsCategory"), postfix: new HarmonyMethod(typeof(HotelBillingHooks), "SettingsCategory"));
+            var departure = AccessTools.Method(AccessTools.TypeByName("Hospitality.LordJob_VisitColony"), "OnLeaveTriggered");
+            if (departure != null) harmony.Patch(departure, postfix: new HarmonyMethod(typeof(HotelBillingHooks), "RefreshDepartingGuests"));
+        }
+        private static void RefreshDepartingGuests(object __instance)
+        {
+            // Hospitality caches PresentGuests for up to 15000 ticks. Its path
+            // patch otherwise keeps departing visitors inside the guest area.
+            var lord = AccessTools.Field(__instance.GetType(), "lord").GetValue(__instance) as Verse.AI.Group.Lord;
+            if (lord == null || lord.Map == null) return;
+            var native = lord.Map.components.FirstOrDefault(c => c.GetType().FullName == "Hospitality.Hospitality_MapComponent");
+            if (native != null) AccessTools.Method(native.GetType(), "RefreshGuestListTotal").Invoke(native, null);
+            // Leaving removes guest-only needs (including joy). Finish the old
+            // relaxation job before it ticks again against removed needs.
+            foreach (var pawn in lord.ownedPawns.ToArray())
+                if (pawn.Spawned && !pawn.Dead) pawn.jobs.StopAll();
         }
         public static ThingComp Guest(Pawn pawn) { return pawn == null || !Enabled ? null : pawn.AllComps.FirstOrDefault(c => guestType.IsInstanceOfType(c)); }
         public static Building_Bed Bed(Pawn pawn)
@@ -39,6 +54,9 @@ namespace TurboMegaMod
         private static void ClaimToils(JobDriver __instance, ref IEnumerable<Toil> __result) { __result = WatchClaims(__instance, __result); }
         private static IEnumerable<Toil> WatchClaims(JobDriver driver, IEnumerable<Toil> toils)
         {
+            // Starting a path while already touching the bed can run the next
+            // toil inside this initAction. Observe that nested check-in once.
+            bool observing = false;
             foreach (var toil in toils)
             {
                 var original = toil.initAction;
@@ -46,13 +64,19 @@ namespace TurboMegaMod
                 {
                     toil.initAction = delegate
                     {
-                        var pawn = driver.pawn;
-                        var previous = Bed(pawn);
-                        int before = Money(pawn);
-                        original();
-                        var assigned = Bed(pawn);
-                        if (assigned != null && assigned != previous && pawn.Spawned)
-                            pawn.Map.GetComponent<HotelBilling>().RecordClaim(pawn, assigned, Math.Max(0, before - Money(pawn)));
+                        if (observing) { original(); return; }
+                        observing = true;
+                        try
+                        {
+                            var pawn = driver.pawn;
+                            var previous = Bed(pawn);
+                            int before = Money(pawn);
+                            original();
+                            var assigned = Bed(pawn);
+                            if (assigned != null && assigned != previous && pawn.Spawned)
+                                pawn.Map.GetComponent<HotelBilling>().RecordClaim(pawn, assigned, Math.Max(0, before - Money(pawn)));
+                        }
+                        finally { observing = false; }
                     };
                 }
                 yield return toil;
@@ -104,6 +128,7 @@ namespace TurboMegaMod
         {
             stays.RemoveAll(s => s.guest == guest);
             int fee = HotelBillingHooks.Fee(bed);
+            ComplexWorkPolicy.Record(map, bed.Position, "hotel", Math.Min(fee, amountPaid));
             stays.Add(new HotelStay { guest = guest, bed = bed,
                 nextChargeTick = Find.TickManager.TicksGame + (amountPaid >= fee ? DayTicks : 0),
                 remaining = amountPaid >= fee ? -1 : fee - amountPaid, periodFee = fee });
@@ -147,6 +172,7 @@ namespace TurboMegaMod
                         Thing dropped;
                         if (!stay.guest.inventory.innerContainer.TryDrop(silver, stay.guest.Position, map, ThingPlaceMode.Near, count, out dropped)) break;
                         stay.remaining -= count;
+                        ComplexWorkPolicy.Record(map, stay.bed.Position, "hotel", count);
                     }
                     if (stay.remaining != 0) break;
                     stay.remaining = -1;

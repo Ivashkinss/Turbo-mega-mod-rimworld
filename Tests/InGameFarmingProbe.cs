@@ -213,6 +213,20 @@ public sealed class FarmingProbe : MapComponent
                 var orphan = (Building_GreenhouseNode)Spawn("TMM_GreenhouseClimateUnit", new IntVec3(75, 0, 55), Rot4.North);
                 orphan.zoneId = zone.ID; orphan.TickRare();
                 Check(orphan.Owner == null && orphan.TryGetComp<CompPowerTrader>().PowerOutput == 0f, "Unrelated climate panel claimed another greenhouse"); orphan.Destroy();
+                // Waiting for power/light also advances ambient heat exchange.
+                // Establish cold conditions immediately before measuring heat.
+                zone.GrowingRoom.Temperature = 45f;
+                float hot = zone.GrowingRoom.Temperature;
+                for (int i = 0; i < 200; i++) zone.ApplyHeat();
+                Check(zone.GrowingRoom.Temperature < hot && zone.GrowingRoom.Temperature >= zone.targetTemperature - 0.01f, "Climate cooling failed or overshot");
+                Check(Math.Abs(zone.GrowingRoom.Temperature - zone.targetTemperature) < 0.1f, "Cooling did not reach the selected target");
+                zone.GrowingRoom.Temperature = zone.targetTemperature; float idleDemand = zone.Demand;
+                zone.GrowingRoom.Temperature = zone.targetTemperature + 10f; float mildCooling = zone.Demand;
+                zone.GrowingRoom.Temperature = zone.targetTemperature + 30f;
+                Check(zone.Demand > mildCooling && mildCooling > idleDemand, "Cooling demand does not follow temperature difference");
+                zone.GrowingRoom.Temperature = zone.targetTemperature - 10f; float mildHeating = zone.Demand;
+                zone.GrowingRoom.Temperature = -25f;
+                Check(zone.Demand > mildHeating && mildHeating > idleDemand, "Heating demand does not follow temperature difference");
                 float before = zone.GrowingRoom.Temperature;
                 for (int i = 0; i < 200; i++) zone.ApplyHeat();
                 warmed = zone.GrowingRoom.Temperature;
@@ -235,7 +249,7 @@ public sealed class FarmingProbe : MapComponent
                 Check(!zone.LampsNeeded && !zone.LampsOn, "Sunlit greenhouse kept grow lights on");
                 Check(map.glowGrid.GroundGlowAt(soilPlant.Position) >= 0.99f, "Glass roof blocks natural sunlight");
                 Check(ControlledFarming.HydroLightingMode(hydro) == 1, "Opaque indoor roof incorrectly supplies sunlight");
-                Check(Math.Abs(zone.Demand - FarmingPowerBudget.Greenhouse(36, false, zone.GrowingRoom.Temperature < zone.targetTemperature, 2900f, 175f)) < 0.1f, "Sunlit greenhouse still pays for grow lights");
+                Check(Math.Abs(zone.Demand - FarmingPowerBudget.Greenhouse(36, false, zone.GrowingRoom.Temperature, zone.targetTemperature, 2900f, 175f, 200f)) < 0.1f, "Sunlit greenhouse still pays for grow lights");
                 sky = 0f; zone.SyncPowerAndLights();
                 var breach = new IntVec3(40, 0, 44); breach.GetEdifice(map).Destroy(); map.regionAndRoomUpdater.RebuildAllRegionsAndRooms(); zone.SyncPowerAndLights();
                 Check(!zone.Enclosed && zone.Demand == 0f, "Breached greenhouse still runs as a sealed room");
@@ -247,7 +261,9 @@ public sealed class FarmingProbe : MapComponent
                 Check(FarmingPowerBudget.Greenhouse(72, true, true, 2900f, 175f) == power36 * 2f, "Zone demand does not scale with area");
                 zone.systemEnabled = false; zone.SyncPowerAndLights();
                 Check(!zone.LampsOn && zone.Power.PowerOutput == 0f, "Zone switch did not stop systems");
-                float offBefore = zone.GrowingRoom.Temperature; zone.ApplyHeat(); Check(zone.GrowingRoom.Temperature == offBefore, "Disabled zone still heats");
+                zone.GrowingRoom.Temperature = zone.targetTemperature + 15f;
+                float offBefore = zone.GrowingRoom.Temperature; zone.ApplyHeat(); Check(zone.GrowingRoom.Temperature == offBefore, "Disabled zone still controls temperature");
+                zone.GrowingRoom.Temperature = zone.targetTemperature;
                 zone.systemEnabled = true; zone.SyncPowerAndLights();
                 stage = 2; stageTick = Find.TickManager.TicksGame; return;
             }

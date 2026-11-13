@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>TMM_ComplexDesk</defName><label>hospitality complex reception desk</label>
+    <description>Manage the complex's area, guest access, restaurant defaults and resident staff. Each colonist can work only in the colony, only in the complex, or in both places. Housing and work are independent. Roles set a primary work priority while preserving other jobs. Ordinary recreation is included in the stay.</description>
+    <thingClass>TurboMegaMod.Building_ComplexDesk</thingClass>
+    <placeWorkers><li>TurboMegaMod.PlaceWorker_ComplexDesk</li></placeWorkers>
+    <graphicData><texPath>Things/Complex/ReceptionDesk</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <size>(1,1)</size><rotatable>false</rotatable><altitudeLayer>Building</altitudeLayer><passability>PassThroughOnly</passability><pathCost>30</pathCost><fillPercent>0.5</fillPercent>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>1800</WorkToBuild><Flammability>0.5</Flammability></statBases>
+    <costList><WoodLog>60</WoodLog><Steel>25</Steel></costList><building><isEdifice>false</isEdifice></building>
+    <designationCategory>Production</designationCategory><terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+  </ThingDef>
+</Defs>

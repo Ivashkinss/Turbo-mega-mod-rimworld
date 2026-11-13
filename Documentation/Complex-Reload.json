@@ -1,0 +1,21 @@
+{
+  "complexReload": {
+    "passed": true,
+    "checks": 8,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4216,
+    "ticksAdvanced": 1776,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "f42ac141b4cb16ff8a4c38d9d5f754ec32b8855632170703505838b8cd586d8f",
+  "passed": true
+}

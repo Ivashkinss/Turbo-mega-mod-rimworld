@@ -1,0 +1,104 @@
+{
+  "sourceRepository": "https://github.com/tomvd/Hospital",
+  "sourceRevision": "82a15e711129a32e5bfe772663160433ee566316",
+  "sourceRevisionIndependentlyVerified": true,
+  "imported": false,
+  "geminiDrafts": [
+    "GeminiClinicSurvey",
+    "GeminiClinicLocalization",
+    "GeminiClinicIntegrationAudit",
+    "GeminiClinicBedsAndPersistence",
+    "GeminiClinicBillingCases",
+    "GeminiClinicGuestLifecycle",
+    "GeminiClinicGameApi",
+    "GeminiClinicPackage"
+  ],
+  "independentlyConfirmed": [
+    {
+      "fact": "PatientArrived is public and adds an existing Pawn to Patients, but does not create the patient Lord or preserve the Hospitality stay lifecycle",
+      "source": "Source/Hospital/Hospital/HospitalMapComponent.cs",
+      "method": "PatientArrived"
+    },
+    {
+      "fact": "SetUpNewPatient destroys equipment and inventory, with no apparel destruction call; never use for hotel guests",
+      "source": "Source/Hospital/IncidentWorker/IncidentHelper.cs",
+      "method": "SetUpNewPatient"
+    },
+    {
+      "fact": "Hospital and Surgery initialize or update the private hospitalInt field; restricting only property setters would not cover all writes",
+      "source": "Source/Hospital/Hospital/CompHospitalBed.cs"
+    },
+    {
+      "fact": "Patient bed finder falls back to the preexisting native result; filtering only Hospital getter is insufficient to guarantee no use of colonial beds",
+      "source": "Source/Hospital/Patches/Patients_BedFinder_Patch.cs",
+      "method": "FindBedPatch.Postfix"
+    },
+    {
+      "fact": "PatientData.Type is not serialized, but inspected reads occur during arrival injury generation; loss alone does not demonstrate broken treatment after loading",
+      "source": "Source/Hospital/Hospital/PatientData.cs; Source/Hospital/Utilities/PatientUtility.cs"
+    },
+    {
+      "fact": "PatientLeaves creates silver and ignores the boolean result of placement before dismissing; Dismissed guards repeated normal calls but is not evidence of successful physical receipt",
+      "source": "Source/Hospital/Hospital/HospitalMapComponent.cs",
+      "method": "PatientLeaves"
+    },
+    {
+      "fact": "Feeding billing attaches an unconditional finish action: JobCondition is ignored. A success-only charge is not established by this source; failure/cancellation needs a regression and an integration guard.",
+      "source": "Source/Hospital/Patches/Billing_Feed_Patch.cs",
+      "method": "BillPatientsForFood.Postfix"
+    }
+  ],
+  "pending": [
+    "Versioned import, Russian draft review and actual 1.7 API binding test",
+    "Separate clinical allowed area; preserve colony medical beds and clear invalid native fallback",
+    "Guest-to-patient bridge with inventory, food policy, room/stay and return lifecycle preserved",
+    "Physical clinic payment receipt with exactly-once accounting",
+    "Actual treatment and save/reload tests"
+  ],
+  "multiplayerFeaturePlanned": false,
+  "billingArithmeticReview": {
+    "rows": 34,
+    "arithmeticIssues": [],
+    "scope": "CSV supplied charge totals, bill cap, multiplier cap and truncation only; not verification of recipe prices, all formula inputs or gameplay",
+    "goodwillInputsIncomplete": true,
+    "engineGarbageCollectionClaimAccepted": false,
+    "feedSuccessClaimAccepted": false
+  },
+  "localizationDraftReview": {
+    "keyedEntries": 63,
+    "existingRootKeyCollisions": [
+      "BedsFilled",
+      "SilverMultiplier"
+    ],
+    "actionRequired": "Reuse existing compatible shared keys instead of introducing duplicate root translations; review final payout messages against actual receipt handling",
+    "defInjectedFilesReviewed": 4,
+    "imported": false
+  },
+  "guestLifecycleReview": {
+    "confirmed": [
+      "CompGuest.ResetForGuest clears boughtItems and unclaims the ordinary bed",
+      "CompGuest.PostExposeData serializes boughtItems, bed and arrived; sentAway is not serialized",
+      "LordJob_VisitColony.Notify_PawnLost returns early only for ExitedMap, otherwise unclaims ownership and calls OnLostEntireGroup if the group is empty"
+    ],
+    "unverifiedClaimsNotAccepted": [
+      "Automatic deletion of the empty Lord in the engine was not established by this source inspection",
+      "A guaranteed NullReferenceException or impossibility of retaining the original Lord was not established"
+    ],
+    "adapterChosen": false,
+    "nextTask": "Delegation/ClinicGameApi/TASK.md"
+  },
+  "packageReview": {
+    "files": 117,
+    "rawIdentical": 116,
+    "xml": 60,
+    "bytesByCategory": {
+      "package": 793867,
+      "upstream_source": 148140,
+      "russian_draft": 11245
+    },
+    "deduplicatedRussianKeys": 61,
+    "passed": true,
+    "imported": false,
+    "nextTask": "Delegation/ClinicGuestAI/TASK.md"
+  }
+}

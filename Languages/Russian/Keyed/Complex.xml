@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Complex.Area>Территория комплекса</TMM.Complex.Area>
+  <TMM.Complex.GuestArea>Гостевая область</TMM.Complex.GuestArea>
+  <TMM.Complex.FoodArea>Запасы ресторана</TMM.Complex.FoodArea>
+  <TMM.Complex.AreasHelp>Используйте разрешённые области. Территория комплекса определяет место работы и включает служебные комнаты. Гостевая область и запасы назначаются отдельно. Одна стойка управляет комплексом этой карты.</TMM.Complex.AreasHelp>
+  <TMM.Complex.Employees>Персонал и проживание</TMM.Complex.Employees>
+  <TMM.Complex.EmployeesHelp>Место автоматической работы и проживание независимы. «Оба места» сохраняет работы колонии. Роль задаёт профильной работе приоритет 1, не меняя остальные. Отдых, собственное лечение, пожаротушение и ручные приказы остаются штатными. Новый режим применяется при следующем поиске работы.</TMM.Complex.EmployeesHelp>
+  <TMM.Complex.Apply>Применить настройки служб</TMM.Complex.Apply>
+  <TMM.Complex.ApplyHelp>Назначает области ещё не настроенным ресторанам внутри комплекса и задаёт гостевую область новым группам Hospitality. Индивидуальные ограничения уже прибывших гостей и настройки существующих стоек сохраняются.</TMM.Complex.ApplyHelp>
+  <TMM.Complex.Mode.Both>Оба места</TMM.Complex.Mode.Both>
+  <TMM.Complex.Mode.ColonyOnly>Только колония</TMM.Complex.Mode.ColonyOnly>
+  <TMM.Complex.Mode.ComplexOnly>Только комплекс</TMM.Complex.Mode.ComplexOnly>
+  <TMM.Complex.Role.None>Без назначения</TMM.Complex.Role.None>
+  <TMM.Complex.Role.Waiter>Официант</TMM.Complex.Role.Waiter>
+  <TMM.Complex.Role.Cook>Повар</TMM.Complex.Role.Cook>
+  <TMM.Complex.Role.Doctor>Врач</TMM.Complex.Role.Doctor>
+  <TMM.Complex.Role.Host>Администратор</TMM.Complex.Role.Host>
+  <TMM.Complex.Role.Cleaner>Уборщик</TMM.Complex.Role.Cleaner>
+  <TMM.Complex.Resident>Живёт в комплексе</TMM.Complex.Resident>
+  <TMM.Complex.NotResident>Поселить в комплексе</TMM.Complex.NotResident>
+  <TMM.Complex.Incapable>{0} не может выполнять эту работу.</TMM.Complex.Incapable>
+  <TMM.Complex.NoBed>Нужна свободная обычная кровать внутри территории комплекса: не гостевая и не медицинская.</TMM.Complex.NoBed>
+  <TMM.Complex.Income>Получено с установки ресепшена — номера: {0}; блюда: {1}; клиника: {2} серебра.</TMM.Complex.Income>
+  <TMM.Complex.StaffCount>Записей персонала: {0}.</TMM.Complex.StaffCount>
+  <TMM.Complex.OneDesk>На карте уже есть стойка управления комплексом или план её строительства.</TMM.Complex.OneDesk>
+</LanguageData>

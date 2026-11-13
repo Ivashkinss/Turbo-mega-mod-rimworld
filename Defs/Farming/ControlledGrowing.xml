@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+﻿<?xml version='1.0' encoding='UTF-8'?>
 <Defs>
   <!-- Private runtime helpers: neither buildable nor selectable. Their native
        power/glow components are saved with the map and owned by one zone. -->
@@ -144,7 +144,7 @@
   <ThingDef ParentName="Wall">
     <defName>TMM_GreenhouseClimateUnit</defName>
     <label>greenhouse climate panel</label>
-    <description>A wall-integrated greenhouse climate system. Its connected growing zone controls the heating target, grow lights and electricity use. Connect a conduit next to the greenhouse perimeter. Construction and a closed roofed room are required before heating starts.</description>
+    <description>A wall-integrated greenhouse climate system. Its connected growing zone controls the temperature target, grow lights and electricity use. Connect a conduit next to the greenhouse perimeter. Construction and a closed roofed room are required. The panel heats or cools the air; electricity demand grows with the temperature gap.</description>
     <thingClass>TurboMegaMod.Building_GreenhouseNode</thingClass>
     <graphicData Inherit="False">
       <texPath>Things/Farming/ClimateUnit</texPath>

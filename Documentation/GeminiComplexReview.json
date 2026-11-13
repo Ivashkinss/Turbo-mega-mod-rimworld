@@ -1,0 +1,20 @@
+{
+  "guideSource": "Tools/Build/GeminiComplexPlayerGuide",
+  "acceptedAsReviewedDraft": true,
+  "productionGuide": "COMPLEX.md",
+  "manualChecks": "COMPLEX-MANUAL-CHECKS.md",
+  "corrections": [
+    "Manual work priorities use 1-4, not 1-9",
+    "Restaurant stock area contains prepared meals, not automatically managed kitchen ingredients",
+    "Doctor role does not yet integrate Hospital; clinic revenue field reserved",
+    "Normal recreation is available through accessible vanilla facilities; no paid entertainment module claimed",
+    "Host role enables the Diplomacy work type used by Hospitality guest interaction jobs"
+  ],
+  "assets": {
+    "accepted": 3,
+    "previewInspected": true,
+    "independentGeneratorRuns": 2,
+    "inventory": "GeminiComplexAssets.json"
+  },
+  "gameplayClaimsFromGeminiAcceptedWithoutRuntimeVerification": false
+}
