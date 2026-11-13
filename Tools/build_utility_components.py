@@ -681,7 +681,7 @@ def main():
                 report[name]['textNormalization'] = 'Preserve original bytes except the documented two-message correction in the runtime English keyed file; DLLs and source untouched'
                 report[name]['sourceRepository'] = 'https://github.com/Zaljerem/Hospitality'
                 report[name]['sourceRevision'] = 'd465bdc07b88d77eb3d158c215af388dcf771863'
-                report[name]['sharedDependencies'] = {'0MultiplayerAPI.dll': 'Uses the byte-identical 0.3.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider'}
+                report[name]['sharedDependencies'] = {'0MultiplayerAPI.dll': 'Uses the byte-identical 0.5.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider'}
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):

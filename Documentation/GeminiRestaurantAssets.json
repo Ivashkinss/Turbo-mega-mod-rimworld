@@ -1,0 +1,26 @@
+{
+  "source": "Tools/Build/GeminiRestaurantAssets",
+  "previewInspected": true,
+  "verifiedIndependently": true,
+  "originalArtwork": true,
+  "assets": [
+    {
+      "projectFile": "Textures/Things/Restaurant/ServiceCounter.png",
+      "sha256": "2a959e46477231edd2c9e6573c17ec70675f86d86db98b9b4605f3351a425fd9",
+      "margin": 12,
+      "requiredMargin": 7
+    },
+    {
+      "projectFile": "Textures/UI/Restaurant/Restaurant.png",
+      "sha256": "ca45ee6029f5c0e55fff66ad364e92020d97aaa762f0370f6320ad26ea3b19d7",
+      "margin": 15,
+      "requiredMargin": 8
+    },
+    {
+      "projectFile": "Textures/UI/Restaurant/Menu.png",
+      "sha256": "6f5f6ed81162d05f5f8cfecfe6608a5480090a89585858f45bc2af0bbd432005",
+      "margin": 10,
+      "requiredMargin": 8
+    }
+  ]
+}

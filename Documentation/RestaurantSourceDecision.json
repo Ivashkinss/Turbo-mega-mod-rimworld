@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-13",
+  "decision": "Original restaurant module over the already integrated Hospitality; no Gastronomy or CashRegister code, DLLs, definitions or artwork imported.",
+  "implementation": "Source/Restaurant.cs",
+  "evidence": {
+    "gastronomyForkRevision": "9fc05404e0379c542966b9571b604fce4fb0cef4",
+    "cashRegisterForkRevision": "a98c46bee61a785203cf24147ac152ad52cfd557",
+    "gastronomyReadmeChange": "c896e3dd4b54a6dc54f19cafa8ff005ed2dfbc3d",
+    "cashRegisterInitialRevisionPrefix": "32cc9ffb",
+    "finding": "GPL LICENSE files coexist with explicit README statements applying CC BY-NC-ND to all code and artwork. The contradictory notices remain unresolved; this stage avoids importing those artifacts.",
+    "verifiedFromLocalGitHistory": true,
+    "geminiReports": "Tools/Build/GeminiRestaurantEvidence/"
+  },
+  "claimsReview": {
+    "numericThoughtIndicesAutomaticallyBroken": "Not established; the prior categorical claim was retracted.",
+    "staticMapDictionaryProvesGravshipCrash": "Not established; runtime compatibility must be tested separately.",
+    "originalModuleGravshipsVerified": false
+  },
+  "artwork": "Original Gemini assets independently verified through Tools/verify_restaurant_assets.py; inventory Documentation/GeminiRestaurantAssets.json"
+}

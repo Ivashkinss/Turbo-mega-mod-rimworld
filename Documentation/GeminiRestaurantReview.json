@@ -1,0 +1,16 @@
+{
+  "assets": {"accepted": 3, "previewInspected": true, "independentGeneratorRuns": 2, "inventory": "GeminiRestaurantAssets.json"},
+  "guide": {
+    "source": "Tools/Build/GeminiRestaurantPlayerGuide",
+    "acceptedAsReviewedDraft": true,
+    "corrections": ["6000 ticks are 2.4 game hours, not 100 game minutes", "Order cleanup runs every 250 ticks, not instantly", "Inspector does not display an explicit Ready status", "Work requires capacities, not intact natural limbs", "Full portions need nutrition at least 0.5", "Accepted quotes remain fixed when pricing settings change"]
+  },
+  "balance": {
+    "source": "Tools/Build/GeminiRestaurantBalance",
+    "budgetRowsIndependentlyVerified": 72,
+    "uniqueMealDefinitions": 11,
+    "fullPortionDefinitionsAfterAdditionalNutritionFilter": 9,
+    "automaticBalanceChangesApplied": false,
+    "notes": ["Generated starting silver is inventory-capacity-limited; computed minimum is not a guaranteed inventory balance", "Royalty 100-150 silver examples are not inferred from the default formula", "Recipe cost completeness and recipeMaker-derived work amounts were not certified"]
+  }
+}

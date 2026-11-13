@@ -16,7 +16,11 @@
 
 Обычные кровати переключаются кнопкой «Для гостей», тариф задаётся на панели кровати. Первые сутки оплачиваются при заселении, последующие — каждые 60 000 игровых тиков. Серебро физически передаётся из инвентаря гостя на землю рядом с ним. Новый тариф применяется к следующему расчёту; при нехватке денег платная кровать освобождается без объявления вражды. Бесплатные места поддерживаются. [Руководство и правила оплаты](Documentation/HOTEL.md).
 
-Следующий этап — [ресторан: рабочий проект и сценарии приёмки](Documentation/RESTAURANT-PLAN.md). Ресторан пока не установлен; выбор основы ожидает проверки лицензий и версии исходников.
+## Ресторан
+
+Добавлен собственный ресторан: стойка, отдельные области столов и продуктов, работа официанта, выбор блюда и процента цены. Гость занимает место у стола, получает настоящую порцию и платит серебром при доставке. Цена заказа сохраняется; поддерживаются бесплатное обслуживание и отмена с возвратом удержанных монет. [Настройка и ограничения](Documentation/RESTAURANT.md), [сценарии ручной проверки](Documentation/RESTAURANT-MANUAL-CHECKS.md).
+
+Следующий этап — управление единым гостиничным комплексом с клиникой, отдыхом и персоналом. Для каждого колониста нужны режимы «только колония», «только комплекс», «оба места», отдельно от проживания. В смешанном режиме остальные работы и приоритеты сохраняются. Эта часть пока разрабатывается.
 
 ## Установка
 
@@ -39,7 +43,7 @@
 
 27 зданий Neat Storage имеют удвоенную вместимость. Семь холодильников Fridge сохраняют исходные значения; большой холодильник использует адаптивную сетку предметов.
 
-В проекте **3297 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 90 строк правил. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Исправлены числовые параметры и перепутанные сообщения Hospitality о фракциях. Character Editor сохраняет собственный русский интерфейс.
+В проекте **3319 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 90 строк правил. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Исправлены числовые параметры и перепутанные сообщения Hospitality о фракциях. Character Editor сохраняет собственный русский интерфейс.
 
 Camera+, Realistic Lighting and Shadows, Enhanced of Vanilla — Flaks and Plates и Vanilla Textures Expanded исключены из плана. Camera+ ранее воспроизводила GPU-сбой; возвращать её в сборку не следует. Подробности — [CrashInvestigation.json](Documentation/CrashInvestigation.json).
 
@@ -90,6 +94,8 @@ python Tools/fetch_build_references.py
 ./Tools/test_farming_reload.ps1 -Profile TestRuns/<успешный-профиль-Farming>
 ./Tools/test_component.ps1 -Component Hospitality -FullSet -UseBuiltAssembly
 ./Tools/test_hotel_reload.ps1 -Profile TestRuns/<успешный-профиль-Hospitality>
+./Tools/test_component.ps1 -Component Restaurant -FullSet -UseBuiltAssembly
+./Tools/test_restaurant_reload.ps1 -Profile TestRuns/<успешный-профиль-Restaurant>
 ./Tools/test_component.ps1 -Component Harmony -FullSet -WithCoreRegression -UseBuiltAssembly
 ./Tools/test_component.ps1 -Component MeleeAnimation -FullSet -WithHands -UseBuiltAssembly
 ./Tools/test_component.ps1 -Component HugsLib -FullSet -WithRunAndGun -UseBuiltAssembly
@@ -104,3 +110,5 @@ Hospitality импортируется из закреплённого checkout:
 `-UseBuiltAssembly` сохраняет одну и ту же производственную DLL между групповыми проверками; при изменении исходников требует новой сборки. Итоговая сверка: `python Tools/verify_integration_complete.py`.
 
 Проверенные этапы отправляются в [репозиторий](https://github.com/Ivashkinss/Turbo-mega-mod-rimworld) согласно разрешению пользователя.
+
+Gastronomy и CashRegister не импортированы: зафиксированное расхождение лицензий и выбор собственной реализации описаны в [RestaurantSourceDecision.json](Documentation/RestaurantSourceDecision.json). Рисунки Gemini оригинальные, проверяются `Tools/verify_restaurant_assets.py`.

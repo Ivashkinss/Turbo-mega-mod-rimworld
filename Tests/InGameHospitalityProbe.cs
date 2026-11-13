@@ -9,6 +9,7 @@ using TurboMegaMod;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 [StaticConstructorOnStartup]
 public static class HotelReloadLaunch
@@ -59,7 +60,7 @@ public sealed class HospitalityProbe : MapComponent
         if (pawn.needs.joy != null) pawn.needs.joy.CurLevelPercentage = 1f;
         AccessTools.Method(AccessTools.TypeByName("Hospitality.IncidentWorker_VisitorGroup"), "CreateLord").Invoke(null,
             new object[] { faction, new IntVec3(44, 0, 44), new List<Pawn> { pawn }, map, false, false, 600000 });
-        AccessTools.Method(AccessTools.TypeByName("Hospitality.Utilities.GuestUtility"), "Arrive").Invoke(null, new object[] { pawn });
+        pawn.GetLord().ReceiveMemo("TravelArrived");
         var comp = HotelBillingHooks.Guest(pawn); Set(comp, "lastBedCheckTick", Find.TickManager.TicksGame - 10000);
         return pawn;
     }

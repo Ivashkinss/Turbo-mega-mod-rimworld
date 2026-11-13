@@ -31,12 +31,12 @@ def main():
     assert active.count('colonyproject.integrated') == 1
     assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
     assembly_hash = hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest()
-    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality')}
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality', 'Restaurant')}
     for name, report in reports.items():
         assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
         assert report['mapActivity']['ticksAdvanced'] > 0, name
         assert report['fullUserModSet'] and not report['originalComponentActive'], name
-        assert report['localization']['keyed'] == 2656 and report['localization']['scalarFields'] == 628 and report['localization']['grammarLines'] == 90, name
+        assert report['localization']['keyed'] == 2667 and report['localization']['scalarFields'] == 639 and report['localization']['grammarLines'] == 90, name
         assert report['productionAssemblySha256'] == assembly_hash, ('Stale production binary report', name)
         assert report['knownExternalRuntimeErrors'] in (0, 2), name
         assert not any('Field injection' in message for message in report['knownExternalMessages']), name
@@ -62,6 +62,13 @@ def main():
     assert hotel_reload['unresolvedReferences'] == 0
     hotel_checks = reports['Hospitality']['hospitality']['checks'] + hotel_reload['hotelReload']['checks']
     checks += hotel_checks
+    restaurant_reload = read('Restaurant-Reload.json')
+    assert restaurant_reload['passed'] and restaurant_reload['runtimeErrors'] == 0 and not restaurant_reload['gpuLost']
+    assert restaurant_reload['productionAssemblySha256'] == assembly_hash and restaurant_reload['unresolvedReferences'] == 0
+    assert restaurant_reload['isolatedFixtureSave'] and not restaurant_reload['userSaveTested']
+    checks += reports['Restaurant']['restaurant']['checks'] + restaurant_reload['restaurantReload']['checks']
+    from verify_restaurant_assets import main as verify_restaurant_assets
+    verify_restaurant_assets()
     utility = read('UtilityVerification.json')
     assert utility['passed'] and utility['externalRequiredDependencies'] == 0
     storage = read('Verification.json')
@@ -69,7 +76,7 @@ def main():
     assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
     assert read('VefInitializerTests.json')['passed']
     russian, duplicates = entries([PROJECT / 'Languages/Russian'])
-    assert not duplicates and len(russian) == 3297
+    assert not duplicates and len(russian) == 3319
     artwork = read('GeminiFarmingAssets.json')
     accepted_assets = artwork['assets'] + artwork['glassAssets']
     assert len(accepted_assets) == 9
@@ -94,6 +101,8 @@ def main():
                   isolatedFarmingSaveReloadVerified=True,
                   hotelRuntimeChecks=reports['Hospitality']['hospitality']['checks'], hotelReloadChecks=hotel_reload['hotelReload']['checks'],
                   isolatedHotelSaveReloadVerified=True,
+                  restaurantRuntimeChecks=reports['Restaurant']['restaurant']['checks'], restaurantReloadChecks=restaurant_reload['restaurantReload']['checks'],
+                  restaurantAssetsVerified=3, isolatedRestaurantSaveReloadVerified=True,
                   productionAssemblySha256=assembly_hash,
                   fullSetReports={name: name + '-FullSet.json' for name in reports},
                   libraryRegressions={name: value['runtime'].get('checks') for name, value in related.items()},

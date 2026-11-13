@@ -4,8 +4,8 @@
   "fullUserModSet": true,
   "gameVersion": "1.7.5000 rev1275",
   "localization": {
-    "keyed": 2656,
-    "scalarFields": 628,
+    "keyed": 2667,
+    "scalarFields": 639,
     "grammarLines": 90,
     "displayPatches": 12,
     "passed": true,
@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4067,
-    "ticksAdvanced": 1608,
+    "framesAdvanced": 3906,
+    "ticksAdvanced": 1730,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -35,7 +35,7 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "876b3c571b1157c79d23c402ac3d3201586b864abc6bccab60450bcb71efeb29",
+  "productionAssemblySha256": "1f3106fac27ce50d453cfc47aaa2061e590704ca4f90484ca83ecc14f12650ae",
   "harmony": {
     "passed": true,
     "checks": 19,
@@ -48,12 +48,6 @@
   "passed": true,
   "relatedRegressions": {
     "VEF": {
-      "ui": {
-        "passed": true,
-        "settingsDrawInvokedInRepaint": true,
-        "visualLayoutInspected": false,
-        "error": null
-      },
       "runtime": {
         "passed": true,
         "checks": 47,
@@ -61,15 +55,15 @@
         "patchedMethods": 309,
         "errors": []
       },
-      "passed": true
-    },
-    "MapPreview": {
+      "passed": true,
       "ui": {
         "passed": true,
         "settingsDrawInvokedInRepaint": true,
         "visualLayoutInspected": false,
         "error": null
-      },
+      }
+    },
+    "MapPreview": {
       "runtime": {
         "passed": true,
         "checks": 23,
@@ -78,15 +72,15 @@
         "realWorkerRequest": true,
         "errors": []
       },
-      "passed": true
-    },
-    "AdaptiveStorage": {
+      "passed": true,
       "ui": {
         "passed": true,
         "settingsDrawInvokedInRepaint": true,
         "visualLayoutInspected": false,
         "error": null
-      },
+      }
+    },
+    "AdaptiveStorage": {
       "runtime": {
         "passed": true,
         "checks": 78,
@@ -94,30 +88,30 @@
         "patchedMethods": 26,
         "errors": []
       },
-      "passed": true
-    },
-    "CommonSense": {
+      "passed": true,
       "ui": {
         "passed": true,
         "settingsDrawInvokedInRepaint": true,
         "visualLayoutInspected": false,
         "error": null
-      },
+      }
+    },
+    "CommonSense": {
       "runtime": {
         "passed": true,
         "checks": 21,
         "patchedMethods": 36,
         "errors": []
       },
-      "passed": true
-    },
-    "HugsLib": {
+      "passed": true,
       "ui": {
         "passed": true,
         "settingsDrawInvokedInRepaint": true,
         "visualLayoutInspected": false,
         "error": null
-      },
+      }
+    },
+    "HugsLib": {
       "runtime": {
         "passed": true,
         "checks": 18,
@@ -125,7 +119,13 @@
         "listenerTicks": 15,
         "errors": []
       },
-      "passed": true
+      "passed": true,
+      "ui": {
+        "passed": true,
+        "settingsDrawInvokedInRepaint": true,
+        "visualLayoutInspected": false,
+        "error": null
+      }
     }
   }
 }

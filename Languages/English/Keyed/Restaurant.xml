@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Restaurant.Tables>Dining area</TMM.Restaurant.Tables>
+  <TMM.Restaurant.Stock>Food-stock area</TMM.Restaurant.Stock>
+  <TMM.Restaurant.Unassigned>Unassigned</TMM.Restaurant.Unassigned>
+  <TMM.Restaurant.AreasHelp>Create allowed areas with the normal area tool, then assign dining seats and food stock separately. Both areas are required. Dining seats must also be allowed to the guest.</TMM.Restaurant.AreasHelp>
+  <TMM.Restaurant.Open>Accept restaurant orders</TMM.Restaurant.Open>
+  <TMM.Restaurant.OpenHelp>Closing cancels unserved orders without charging guests.</TMM.Restaurant.OpenHelp>
+  <TMM.Restaurant.Meal>Meal</TMM.Restaurant.Meal>
+  <TMM.Restaurant.MenuHelp>Offer one prepared meal type at this counter. Guests' dietary restrictions and actual ingredients are checked.</TMM.Restaurant.MenuHelp>
+  <TMM.Restaurant.Price>Meal price: {0}%</TMM.Restaurant.Price>
+  <TMM.Restaurant.PriceHelp>Percentage of market value, rounded up to whole silver. Accepted orders retain their price. Hospitality's free-food setting makes restaurant meals free too.</TMM.Restaurant.PriceHelp>
+  <TMM.Restaurant.Inspect>Meal revenue: {0} silver. Pending orders: {1}.</TMM.Restaurant.Inspect>
+</LanguageData>

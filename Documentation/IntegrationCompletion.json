@@ -13,9 +13,9 @@
     "ludeon.rimworld.odyssey",
     "colonyproject.integrated"
   ],
-  "russianEntries": 3297,
+  "russianEntries": 3319,
   "componentResourceHashesVerified": 4344,
-  "finalRuntimeChecks": 556,
+  "finalRuntimeChecks": 599,
   "integratedComponentRuntimeChecks": 407,
   "farmingRuntimeChecks": 88,
   "farmingReloadChecks": 17,
@@ -25,13 +25,18 @@
   "hotelRuntimeChecks": 36,
   "hotelReloadChecks": 8,
   "isolatedHotelSaveReloadVerified": true,
-  "productionAssemblySha256": "876b3c571b1157c79d23c402ac3d3201586b864abc6bccab60450bcb71efeb29",
+  "restaurantRuntimeChecks": 32,
+  "restaurantReloadChecks": 11,
+  "restaurantAssetsVerified": 3,
+  "isolatedRestaurantSaveReloadVerified": true,
+  "productionAssemblySha256": "1f3106fac27ce50d453cfc47aaa2061e590704ca4f90484ca83ecc14f12650ae",
   "fullSetReports": {
     "Harmony": "Harmony-FullSet.json",
     "MeleeAnimation": "MeleeAnimation-FullSet.json",
     "HugsLib": "HugsLib-FullSet.json",
     "Farming": "Farming-FullSet.json",
-    "Hospitality": "Hospitality-FullSet.json"
+    "Hospitality": "Hospitality-FullSet.json",
+    "Restaurant": "Restaurant-FullSet.json"
   },
   "libraryRegressions": {
     "VEF": 47,

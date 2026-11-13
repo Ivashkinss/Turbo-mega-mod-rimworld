@@ -26273,7 +26273,7 @@
     "sourceRepository": "https://github.com/Zaljerem/Hospitality",
     "sourceRevision": "d465bdc07b88d77eb3d158c215af388dcf771863",
     "sharedDependencies": {
-      "0MultiplayerAPI.dll": "Uses the byte-identical 0.3.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider"
+      "0MultiplayerAPI.dll": "Uses the byte-identical 0.5.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider"
     }
   }
 }

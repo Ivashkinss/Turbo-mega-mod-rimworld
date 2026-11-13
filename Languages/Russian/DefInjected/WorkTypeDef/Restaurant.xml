@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_RestaurantService.labelShort>Ресторан</TMM_RestaurantService.labelShort>
+  <TMM_RestaurantService.pawnLabel>официант</TMM_RestaurantService.pawnLabel>
+  <TMM_RestaurantService.gerundLabel>обслуживает гостей</TMM_RestaurantService.gerundLabel>
+  <TMM_RestaurantService.description>Доставляет готовые блюда из назначенных запасов ресторана к столам гостей.</TMM_RestaurantService.description>
+</LanguageData>
