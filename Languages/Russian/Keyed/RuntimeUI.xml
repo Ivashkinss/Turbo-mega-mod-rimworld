@@ -22,6 +22,8 @@
   <TMM.Literal.b7dddca9e13f>Анимация рук с оружием</TMM.Literal.b7dddca9e13f>
   <TMM.Literal.dce9e8c811b6>Поведение животных</TMM.Literal.dce9e8c811b6>
   <TMM.Literal.5ceb45edca0b>Включение животных</TMM.Literal.5ceb45edca0b>
+  <TMM.Literal.0953e0d5167d>Сбросить настройки</TMM.Literal.0953e0d5167d>
+  <TMM.Literal.a011afe42172>Эту кровать нельзя закрепить за пешкой.</TMM.Literal.a011afe42172>
   <TMM.CorpseOffset.None>Не смещать</TMM.CorpseOffset.None>
   <TMM.CorpseOffset.InterpolateToCorrect>Плавно возвращать на место</TMM.CorpseOffset.InterpolateToCorrect>
   <TMM.CorpseOffset.KeepOffset>Сохранять смещение</TMM.CorpseOffset.KeepOffset>

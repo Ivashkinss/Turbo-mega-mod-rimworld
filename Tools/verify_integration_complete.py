@@ -17,11 +17,12 @@ def read(name):
 def main():
     inventory = read('inventory.json')
     planned = [m for m in inventory['mods'] if m['include']]
+    additional = read('AdditionalComponents.json')['mods']
     manifest = read('UtilityComponents.json')
-    expected = {m['packageId'].lower() for m in planned}
+    expected = {m['packageId'].lower() for m in planned + additional}
     actual = {m['packageId'].lower() for m in manifest.values()} | {'sbz.neatstorage', 'sbz.neatstoragefridge'}
-    assert actual == expected and len(actual) == 28, (actual ^ expected)
-    for mod in planned:
+    assert actual == expected and len(actual) == 29, (actual ^ expected)
+    for mod in planned + additional:
         assert not (PROJECT.parent / mod['folder']).exists(), ('Original still installed', mod['folder'])
     assert not (PROJECT / 'Assemblies/TurboMegaMod.TestProbe.dll').exists(), 'Test DLL left installed'
     assert not ET.parse(str(PROJECT / 'About/About.xml')).xpath('/ModMetaData/modDependencies/li')
@@ -30,12 +31,12 @@ def main():
     assert active.count('colonyproject.integrated') == 1
     assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
     assembly_hash = hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest()
-    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming')}
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality')}
     for name, report in reports.items():
         assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
         assert report['mapActivity']['ticksAdvanced'] > 0, name
         assert report['fullUserModSet'] and not report['originalComponentActive'], name
-        assert report['localization']['keyed'] == 2501 and report['localization']['scalarFields'] == 524, name
+        assert report['localization']['keyed'] == 2656 and report['localization']['scalarFields'] == 628 and report['localization']['grammarLines'] == 90, name
         assert report['productionAssemblySha256'] == assembly_hash, ('Stale production binary report', name)
         assert report['knownExternalRuntimeErrors'] in (0, 2), name
         assert not any('Field injection' in message for message in report['knownExternalMessages']), name
@@ -54,6 +55,13 @@ def main():
     assert reload['mapActivity']['ticksAdvanced'] > 0 and reload['isolatedFixtureSave'] and not reload['userSaveTested']
     assert read('FarmingPowerTests.json')['passed']
     checks += reports['Farming']['farming']['checks'] + reload['farmingReload']['checks']
+    hotel_reload = read('Hospitality-Reload.json')
+    assert hotel_reload['passed'] and hotel_reload['runtimeErrors'] == 0 and not hotel_reload['gpuLost']
+    assert hotel_reload['productionAssemblySha256'] == assembly_hash
+    assert hotel_reload['mapActivity']['ticksAdvanced'] > 0 and hotel_reload['isolatedFixtureSave'] and not hotel_reload['userSaveTested']
+    assert hotel_reload['unresolvedReferences'] == 0
+    hotel_checks = reports['Hospitality']['hospitality']['checks'] + hotel_reload['hotelReload']['checks']
+    checks += hotel_checks
     utility = read('UtilityVerification.json')
     assert utility['passed'] and utility['externalRequiredDependencies'] == 0
     storage = read('Verification.json')
@@ -61,7 +69,7 @@ def main():
     assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
     assert read('VefInitializerTests.json')['passed']
     russian, duplicates = entries([PROJECT / 'Languages/Russian'])
-    assert not duplicates and len(russian) == 3033
+    assert not duplicates and len(russian) == 3297
     artwork = read('GeminiFarmingAssets.json')
     accepted_assets = artwork['assets'] + artwork['glassAssets']
     assert len(accepted_assets) == 9
@@ -76,7 +84,7 @@ def main():
         file = PROJECT / asset['projectFile']
         assert hashlib.sha256(file.read_bytes()).hexdigest() == asset['sha256'], str(file)
     assert reports['Farming']['settingsUi']['tillingDesignatorDrawInvokedInRepaint']
-    result = dict(plannedComponents=28, integratedComponents=28, originalFoldersRemaining=0,
+    result = dict(plannedComponents=28, additionalComponents=len(additional), integratedComponents=len(actual), originalFoldersRemaining=0,
                   externalRequiredDependencies=0, activeMods=active, russianEntries=len(russian),
                   componentResourceHashesVerified=utility['resourceHashesVerified'],
                   finalRuntimeChecks=checks,
@@ -84,6 +92,8 @@ def main():
                   farmingRuntimeChecks=reports['Farming']['farming']['checks'], farmingReloadChecks=reload['farmingReload']['checks'],
                   farmingPowerChecks=read('FarmingPowerTests.json')['checks'], farmingAssetsVerified=len(accepted_assets) + len(soil_artwork['assets']),
                   isolatedFarmingSaveReloadVerified=True,
+                  hotelRuntimeChecks=reports['Hospitality']['hospitality']['checks'], hotelReloadChecks=hotel_reload['hotelReload']['checks'],
+                  isolatedHotelSaveReloadVerified=True,
                   productionAssemblySha256=assembly_hash,
                   fullSetReports={name: name + '-FullSet.json' for name in reports},
                   libraryRegressions={name: value['runtime'].get('checks') for name, value in related.items()},

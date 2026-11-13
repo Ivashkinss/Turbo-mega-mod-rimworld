@@ -1,5 +1,6 @@
 {
   "components": [
+    "Hospitality",
     "Harmony",
     "VanillaExpandedFramework",
     "MapPreview",
@@ -27,8 +28,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 4069,
+  "resourceHashesVerified": 4344,
   "russianKeysByComponent": {
+    "Hospitality": 149,
     "Harmony": 0,
     "VanillaExpandedFramework": 497,
     "MapPreview": 76,
@@ -65,6 +67,8 @@
   "vefVersionAndOriginalBranchesChecked": 4,
   "vefDefinitionFieldsTranslated": 192,
   "harmonyVersionAndOriginalBranchesChecked": 4,
+  "hospitalityVersionOriginalAndOptionalBranchesChecked": 16,
+  "hospitalityOptionalVnpeRuntimeVerified": false,
   "externalRequiredDependencies": 0,
   "sidearmsDefinitionFieldsVerified": 21,
   "singleSharedFloatSubMenuVerified": true,

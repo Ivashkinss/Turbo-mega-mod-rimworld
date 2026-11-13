@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Hotel.Settings>Hotel and guests</TMM.Hotel.Settings>
+  <TMM.Hotel.DailyRate>Rate per game day: {0} silver. The first day is paid when checking in.</TMM.Hotel.DailyRate>
+  <TMM.Hotel.CannotExtend>{0} cannot afford another day. The paid guest bed has been released; a free bed can still be used.</TMM.Hotel.CannotExtend>
+  <GuestsCantCome>Guests cannot be invited right now.</GuestsCantCome>
+</LanguageData>

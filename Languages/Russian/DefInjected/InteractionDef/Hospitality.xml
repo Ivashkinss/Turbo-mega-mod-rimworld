@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <GuestDiplomacy.label>улучшить отношения</GuestDiplomacy.label>
+  <GuestDiplomacy.logRulesInitiator.rulesStrings>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] ведёт дипломатический разговор с [RECIPIENT_nameDef] [TalkTopicLight].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] [complimented] [PersonalCharacteristic] [RECIPIENT_nameDef].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] [complimented] фракцию [RECIPIENT_nameDef].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] [complimented] отношения с [RECIPIENT_factionName].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] уважительно отзывается о [PersonFamily] [RECIPIENT_nameDef].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] пытается найти общий язык с [RECIPIENT_nameDef], обсуждая [opinion].</li>
+    <li>opinion-&gt;важность [ConceptPositive]</li>
+    <li>opinion-&gt;неприятие [ConceptAngsty]</li>
+    <li>opinion-&gt;страх [ConceptAngsty]</li>
+    <li>opinion-&gt;разнообразие мнений насчёт [ConceptAny]</li>
+    <li>opinion-&gt;значимость [ConceptPositive]</li>
+    <li>complimented-&gt;хвалит</li>
+    <li>complimented-&gt;одобряет</li>
+    <li>complimented-&gt;по достоинству оценивает</li>
+    <li>complimented-&gt;отмечает</li>
+    <li>complimented-&gt;восхваляет</li>
+  </GuestDiplomacy.logRulesInitiator.rulesStrings>
+  <CharmGuestAttempt.label>попытка очаровать</CharmGuestAttempt.label>
+  <CharmGuestAttempt.logRulesInitiator.rulesStrings>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] и [RECIPIENT_nameDef] обсуждают, сколько [ConceptPositive] может предложить [INITIATOR_factionName].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] рассказывает [RECIPIENT_nameDef], сколько [ConceptPositive] может предложить [INITIATOR_factionName].</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] говорит [RECIPIENT_nameDef] [adjwords] слова о других поселенцах.</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] знакомит [RECIPIENT_nameDef] с другим поселенцем.</li>
+    <li>saidwords-&gt;произносит [adjwords] слова в адрес</li>
+    <li>saidwords-&gt;говорит о значимости [ConceptPositive]</li>
+    <li>saidwords-&gt;делает [adjwords] жесты в сторону</li>
+    <li>adjwords-&gt;интригующие</li>
+    <li>adjwords-&gt;добрые</li>
+    <li>adjwords-&gt;приглашающие</li>
+    <li>adjwords-&gt;дружественные</li>
+    <li>adjwords-&gt;завлекающие</li>
+  </CharmGuestAttempt.logRulesInitiator.rulesStrings>
+  <ScroungeFoodAttempt.label>попрошайничество</ScroungeFoodAttempt.label>
+  <ScroungeFoodAttempt.logRulesInitiator.rulesStrings>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] просит у [RECIPIENT_nameDef] немного еды.</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] спрашивает, есть ли у [RECIPIENT_nameDef] что-то поесть.</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] не мигая смотрит на то как [RECIPIENT_nameDef] что-то ест.</li>
+  </ScroungeFoodAttempt.logRulesInitiator.rulesStrings>
+</LanguageData>

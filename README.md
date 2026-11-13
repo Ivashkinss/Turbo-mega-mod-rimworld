@@ -1,6 +1,6 @@
 # Turbo mega mod
 
-Все **28 из 28** выбранных компонентов объединены в один мод для RimWorld 1.6/1.7. Технический packageId: `colonyproject.integrated`. Harmony и остальные обязательные библиотеки встроены.
+Все **28 из 28** первоначальных компонентов объединены в один мод для RimWorld 1.6/1.7. Дополнительно встроена Hospitality (Continued): теперь 29 компонентов. Технический packageId: `colonyproject.integrated`. Harmony и остальные обязательные библиотеки встроены.
 
 Следующий этап — общая игра Fallout × «Сверхъестественное» с сюжетными экспедициями, базами фракций, новым хозяйством и платными услугами колонии. [Концепция и порядок разработки](Documentation/FALLOUT-SUPERNATURAL-DESIGN.md); [исследование кандидатов](Documentation/ContentCandidates.json). Это план нового контента: перечисленные кандидаты ещё не интегрированы.
 
@@ -11,6 +11,10 @@
 Стеклянные стены имеют 50 HP, двери — 70 HP; усиление Walls Are Solid на них не действует. Вспашка получила собственную текстуру почвы и иконку от Gemini.
 
 Готовая теплица сразу даёт почве 200% плодородия. Вспашка требует работы и даёт 200% снаружи или 222% в теплице. Гидропоника сохраняет свои 280%. [Постройка, управление, расход и ограничения](Documentation/CONTROLLED-FARMING.md).
+
+## Гостиница
+
+Обычные кровати переключаются кнопкой «Для гостей», тариф задаётся на панели кровати. Первые сутки оплачиваются при заселении, последующие — каждые 60 000 игровых тиков. Серебро физически передаётся из инвентаря гостя на землю рядом с ним. Новый тариф применяется к следующему расчёту; при нехватке денег платная кровать освобождается без объявления вражды. Бесплатные места поддерживаются. [Руководство и правила оплаты](Documentation/HOTEL.md).
 
 ## Установка
 
@@ -29,10 +33,11 @@
 | Бой и пешки | Melee Animation, Show Me Your Hands, RunAndGun, Simple Sidearms, Snap Out!, Character Editor |
 | Работа и строительство | Smarter Construction, Common Sense, Pick Up And Haul, More Planning, Walls Are Solid |
 | Интерфейс и управление | Smart Speed, Interaction Bubbles, Realistic Rooms, Almost There! Fork, Dev In Your Language, Nice Bill Tab, Useful Marks, Dynamic Trade Interface, Map Preview |
+| Гости и платные услуги | Hospitality (Continued), собственная посуточная оплата гостиницы |
 
 27 зданий Neat Storage имеют удвоенную вместимость. Семь холодильников Fridge сохраняют исходные значения; большой холодильник использует адаптивную сетку предметов.
 
-В проекте **3033 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 45 строк боевого журнала. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Character Editor сохраняет собственный русский интерфейс.
+В проекте **3297 уникальных русских записей**, включая восстановленные 615 строк Dev In Your Language и 90 строк правил. VEF покрыт всеми 497 английскими ключами и 192 полями определений, Map Preview — всеми 76 текущими ключами. Исправлены числовые параметры и перепутанные сообщения Hospitality о фракциях. Character Editor сохраняет собственный русский интерфейс.
 
 Camera+, Realistic Lighting and Shadows, Enhanced of Vanilla — Flaks and Plates и Vanilla Textures Expanded исключены из плана. Camera+ ранее воспроизводила GPU-сбой; возвращать её в сборку не следует. Подробности — [CrashInvestigation.json](Documentation/CrashInvestigation.json).
 
@@ -52,7 +57,7 @@ Camera+, Realistic Lighting and Shadows, Enhanced of Vanilla — Flaks and Plate
 
 Для Harmony проверяются настоящие prefix/postfix/transpiler, пропуск оригинального метода и снятие патчей, единственный поставщик, версия и RuntimeIL. Итоговый профиль дополнительно повторяет проверки VEF, фонового генератора Map Preview, всех 34 хранилищ/холодильников, Common Sense и HugsLib. Отдельные сценарии проверяют реальную анимацию Melee/отрисовку рук и выстрел RunAndGun во время движения.
 
-Итоговая сверка текущей DLL — 512 игровых проверок (407 компонентов, 88 хозяйства и 17 после загрузки тестового сохранения), ещё 22 проверки мощности. Пользовательские сохранения не менялись.
+Итоговая сверка текущей DLL записывается в [IntegrationCompletion.json](Documentation/IntegrationCompletion.json); отдельные отчёты содержат проверки компонентов, хозяйства, гостиницы и загрузки тестовых сохранений. Пользовательские сохранения не менялись.
 
 Основные отчёты: [Harmony-FullSet.json](Documentation/Harmony-FullSet.json), [VanillaExpandedFramework-FullSet.json](Documentation/VanillaExpandedFramework-FullSet.json), [UtilityVerification.json](Documentation/UtilityVerification.json), [Verification.json](Documentation/Verification.json), [RuntimeLocalizationTests.json](Documentation/RuntimeLocalizationTests.json). Прежние этапы и точные ограничения каждого компонента сохранены в [CONTINUE.md](CONTINUE.md) и `Documentation/*-FullSet.json`.
 
@@ -81,6 +86,8 @@ python Tools/fetch_build_references.py
 ./Tools/test_farming_power.ps1
 ./Tools/test_component.ps1 -Component Farming -FullSet
 ./Tools/test_farming_reload.ps1 -Profile TestRuns/<успешный-профиль-Farming>
+./Tools/test_component.ps1 -Component Hospitality -FullSet -UseBuiltAssembly
+./Tools/test_hotel_reload.ps1 -Profile TestRuns/<успешный-профиль-Hospitality>
 ./Tools/test_component.ps1 -Component Harmony -FullSet -WithCoreRegression -UseBuiltAssembly
 ./Tools/test_component.ps1 -Component MeleeAnimation -FullSet -WithHands -UseBuiltAssembly
 ./Tools/test_component.ps1 -Component HugsLib -FullSet -WithRunAndGun -UseBuiltAssembly
@@ -89,6 +96,8 @@ python Tools/fetch_build_references.py
 Общая DLL собирается против RimWorld 1.6 reference assemblies, расположенных в `Tools/Build/RimRef-1.6.4871/ref/net472`, либо через `build_assembly.ps1 -ManagedPath <каталог Managed 1.6>`. Встроенная Harmony 1.6 используется для компиляции; нужная игровая версия выбирается через LoadFolders.
 
 Импорт отдельного компонента: `python Tools/build_utility_components.py --component <имя>`. Для повторного импорта нужен его оригинал из локального архива; существующие записи остальных компонентов сохраняются. После добавления русских строк VEF запускайте `build_vef_localization.py`, для строк DLL — `build_runtime_localization.py`.
+
+Hospitality импортируется из закреплённого checkout: `python Tools/build_utility_components.py --component Hospitality --source-root Tools/Build/HospitalitySnapshot`. SHA и источники — [AdditionalComponents.json](Documentation/AdditionalComponents.json) и [сведения о лицензии и сборке](ThirdParty/Hospitality.md). Её 1.7 DLL требует .NET 10 и игровых библиотек 1.7; общий код мода по-прежнему компилируется против 1.6.
 
 `-UseBuiltAssembly` сохраняет одну и ту же производственную DLL между групповыми проверками; при изменении исходников требует новой сборки. Итоговая сверка: `python Tools/verify_integration_complete.py`.
 

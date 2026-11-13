@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
+param([Parameter(Mandatory=$true)][ValidateSet('Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Hospitality' { @{ folder='Hospitality (Continued)'; id='orion.hospitality'; dll='Components\Hospitality\1.6\Assemblies\Hospitality.dll'; source='InGameHospitalityProbe.cs'; flag='-tmm-hospitality-probe'; report='HospitalityProbe.json'; ui='HospitalityUiProbe.json'; key='hospitality'; prefix='Hospitality' } }
     'Farming' { @{ folder=''; id='turbomegamod.farming'; dll='Assemblies\TurboMegaMod.dll'; source='InGameFarmingProbe.cs'; flag='-tmm-farming-probe'; report='FarmingProbe.json'; ui='FarmingUiProbe.json'; key='farming'; prefix='Farming' } }
     'Harmony' { @{ folder='2009463077'; id='brrainz.harmony'; dll='Components\Harmony\1.6\Assemblies\HarmonyMod.dll'; source='InGameHarmonyProbe.cs'; flag='-tmm-harmony-probe'; report='HarmonyProbe.json'; ui='HarmonyUiProbe.json'; key='harmony'; prefix='Harmony' } }
     'VanillaExpandedFramework' { @{ folder='Vanilla Expanded Framework (Библиотека)'; id='oskarpotocki.vanillafactionsexpanded.core'; dll='Components\VanillaExpandedFramework\1.7\Assemblies\VEF.dll'; source='InGameVefProbe.cs'; flag='-tmm-vef-probe'; report='VefProbe.json'; ui='VefUiProbe.json'; key='vef'; prefix='Vef' } }
@@ -59,6 +60,7 @@ $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll',
     ForEach-Object { '/reference:' + (Join-Path $referencePath $_) }
 $references += '/reference:' + (& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))
 $references += '/reference:' + (Join-Path $projectPath $definition.dll)
+if ($Component -eq 'Hospitality') { $references += '/reference:' + (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll') }
 if ($WithCoreRegression) { $references += '/reference:' + (Join-Path $projectPath 'Components\HugsLib\Assemblies\HugsLib.dll') }
 $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs',$definition.source) |

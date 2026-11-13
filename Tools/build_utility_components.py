@@ -10,6 +10,8 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "Hospitality": ("Hospitality (Continued)", "orion.hospitality",
+                    json.loads((PROJECT / "Tools/ComponentFiles/Hospitality.json").read_text(encoding="utf-8"))),
     "Harmony": ("2009463077", "brrainz.harmony", {
         "LICENSE": "LICENSE", "README.md": "README.md", "About/Manifest.xml": "About/Manifest.xml",
         **{f"{version}/Assemblies/{name}.dll": f"{version}/Assemblies/{name}.dll"
@@ -601,19 +603,29 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--component", action="append", choices=COMPONENTS,
                         help="Import only this component and preserve other manifest entries; repeat as needed.")
-    selected = parser.parse_args().component or list(COMPONENTS)
+    parser.add_argument("--source-root", type=Path, help="Read one selected component from a pinned source checkout instead of a separately installed mod.")
+    args = parser.parse_args()
+    selected = args.component or list(COMPONENTS)
+    if args.source_root and len(selected) != 1:
+        parser.error("--source-root requires exactly one --component")
+    source_override = args.source_root.resolve() if args.source_root else None
     for name in selected:
         folder, _, files = COMPONENTS[name]
+        if name == 'Hospitality':
+            pinned = subprocess.run(['git', '-C', str(source_override or PROJECT.parent / folder), 'rev-parse', 'HEAD'],
+                                    check=True, capture_output=True, text=True).stdout.strip()
+            if pinned != 'd465bdc07b88d77eb3d158c215af388dcf771863':
+                raise ValueError('Hospitality import requires the reviewed pinned source revision')
         for relative in [*files, "About/About.xml"]:
-            original = PROJECT.parent / folder / relative
+            original = (source_override or PROJECT.parent / folder) / relative
             if not original.is_file():
                 raise FileNotFoundError(f"Restore original resources before importing: {original}")
     manifest = PROJECT / "Documentation/UtilityComponents.json"
     report = json.loads(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
     for name in selected:
         folder, package_id, files = COMPONENTS[name]
-        source = PROJECT.parent / folder
-        byte_exact = name in ("MapPreview", "Harmony")
+        source = source_override or PROJECT.parent / folder
+        byte_exact = name in ("MapPreview", "Harmony", "Hospitality")
         items = []
         for relative, destination in output_pairs(files):
             original = source / relative
@@ -621,6 +633,14 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(original, target)
             source_hash = hashlib.sha256(original.read_bytes()).hexdigest()
+            hotel_message_fix = name == 'Hospitality' and relative.endswith('/Languages/English/Keyed/Hospitality.xml')
+            if hotel_message_fix:
+                text = target.read_text(encoding='utf-8-sig')
+                text = text.replace('The members of {0} never heard back of their delegation ({2}).',
+                                    'The members of {0} are upset with you for recruiting {1} ({2}).')
+                text = text.replace('The members of {0} are upset with you for recruiting ({1}).',
+                                    'The members of {0} never heard back of their delegation ({1}).')
+                target.write_text(text, encoding='utf-8')
             if not byte_exact and (target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md")):
                 clean_text(target)
             data = target.read_bytes()
@@ -630,6 +650,8 @@ def main():
                           "projectFile": target.relative_to(PROJECT).as_posix(),
                           "sourceRawSha256": source_hash,
                           "sha256": hashlib.sha256(data).hexdigest()})
+            if hotel_message_fix:
+                items[-1]['textTransform'] = 'Correct the two swapped leaderless-faction messages against GuestUtility callers (recruitment has three arguments; missing delegation has two); UTF-8 output'
         if name == 'VanillaExpandedFramework':
             powershell = shutil.which('pwsh') or shutil.which('powershell')
             if not powershell:
@@ -647,12 +669,19 @@ def main():
                         "textNormalization": "XML, JSON and LICENSE: LF line endings and trailing line whitespace removed; content otherwise unchanged"}
         if byte_exact:
             report[name]["byteExactResources"] = True
-            report[name]["bundledHarmonyCopied"] = True
+            report[name]["bundledHarmonyCopied"] = name in ("MapPreview", "Harmony")
             report[name]["textNormalization"] = "None: preserve every original byte"
             if name == 'MapPreview':
                 report[name]["bundledHarmonyFallback"] = "Lunar/HarmonyLib is preserved with its checksum but is not loaded when the active 0Harmony meets the loader requirement"
             if name == 'Harmony':
                 report[name]['runtimeProvider'] = 'One selected 0Harmony/HarmonyMod pair: 1.6 or 1.7; RuntimeIL only on 1.7'
+            if name == 'Hospitality':
+                report[name]['byteExactResources'] = False
+                report[name]['rawResourceHashes'] = True
+                report[name]['textNormalization'] = 'Preserve original bytes except the documented two-message correction in the runtime English keyed file; DLLs and source untouched'
+                report[name]['sourceRepository'] = 'https://github.com/Zaljerem/Hospitality'
+                report[name]['sourceRevision'] = 'd465bdc07b88d77eb3d158c215af388dcf771863'
+                report[name]['sharedDependencies'] = {'0MultiplayerAPI.dll': 'Uses the byte-identical 0.3.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider'}
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):
@@ -661,6 +690,16 @@ def main():
                 continue
             if not tree.xpath(f"/{tree.getroot().tag}/{version}/li[text()='Components/{name}']"):
                 ET.SubElement(tree.find(version), "li", IfModNotActive=package_id).text = f"Components/{name}"
+        if 'Hospitality' in report:
+            for node in list(tree.find(version)):
+                if node.text.startswith('Components/Hospitality'):
+                    tree.find(version).remove(node)
+            for folder, active in ((version[1:], None), (version[1:] + '/Compat/Royalty', 'ludeon.rimworld.royalty'), (version[1:] + '/Compat/VNPE', 'vanillaexpanded.vnutriente')):
+                hospitality_folder = 'Components/Hospitality/' + folder
+                attrs = {'IfModNotActive': 'orion.hospitality'}
+                if active: attrs['IfModActive'] = active
+                ET.SubElement(tree.find(version), 'li', **attrs).text = hospitality_folder
+            ET.SubElement(tree.find(version), 'li', IfModNotActive='orion.hospitality').text = 'Components/Hospitality'
         # Root TurboMegaMod.dll derives from the framework's ItemGraphicWorker.
         # Verse validates types as it loads each folder, so this dependency must
         # precede the root assembly, not merely be present in the same package.

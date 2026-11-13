@@ -53,6 +53,8 @@ namespace TurboMegaMod
                 || name == "PickUpAndHaul.Modbase"
                 || name == "NiceBillTab.NiceBillTabMod"
                 || name == "ShowMeYourHands.ShowMeYourHandsMod"
+                || name == "Hospitality.ModSettings_Hospitality"
+                || name.StartsWith("Hospitality.Patches.Building_Bed_Patch", StringComparison.Ordinal)
                 || name == "VEF.AnimalBehaviours.AnimalBehaviours_Mod"
                 || name == "VEF.AnimalBehaviours.VanillaAnimalsExpanded_Mod";
         }
@@ -103,7 +105,7 @@ namespace TurboMegaMod
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 string name = assembly.GetName().Name;
-                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab" && name != "ShowMeYourHands" && name != "VEF") continue;
+                if (name != "zAnimationMod" && name != "DynamicTradeInterface" && name != "SmartSpeed" && name != "Bubbles" && name != "CaravanDontRest" && name != "SnapOut" && name != "PickUpAndHaul" && name != "NiceBillTab" && name != "ShowMeYourHands" && name != "VEF" && name != "Hospitality") continue;
                 foreach (Type type in assembly.GetTypes())
                 {
                     if (!IsDisplayType(type)) continue;

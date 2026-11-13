@@ -24610,5 +24610,1670 @@
     "textNormalization": "None: preserve every original byte",
     "byteExactResources": true,
     "runtimeProvider": "One selected 0Harmony/HarmonyMod pair: 1.6 or 1.7; RuntimeIL only on 1.7"
+  },
+  "Hospitality": {
+    "packageId": "orion.hospitality",
+    "files": [
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Assemblies/Hospitality.dll",
+        "projectFile": "Components/Hospitality/1.6/Assemblies/Hospitality.dll",
+        "sourceRawSha256": "b1dc2b09cee3ff76f2616b0e3202e66126be3e0b8e2040576779783f8ee009a6",
+        "sha256": "b1dc2b09cee3ff76f2616b0e3202e66126be3e0b8e2040576779783f8ee009a6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/ConceptDefs/Concepts_NotedOpportunistic.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/ConceptDefs/Concepts_NotedOpportunistic.xml",
+        "sourceRawSha256": "4d3bbdf0df6ebdb52e06779f7a2d24da6c2771bbce7e4f85cc108cb80f06ad31",
+        "sha256": "4d3bbdf0df6ebdb52e06779f7a2d24da6c2771bbce7e4f85cc108cb80f06ad31"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/ConceptDefs/Concepts_NotedSelfshow.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/ConceptDefs/Concepts_NotedSelfshow.xml",
+        "sourceRawSha256": "c473e9543f9b75048eb1c72ff13a7b8d9d7d32debd74485953ecccd0efc52e6e",
+        "sha256": "c473e9543f9b75048eb1c72ff13a7b8d9d7d32debd74485953ecccd0efc52e6e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/Config/ConfigDef.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/Config/ConfigDef.xml",
+        "sourceRawSha256": "b694d81a99de7ff4ea56fd820c6ea7f55cac11f8efb27884a0ef629c852c9d86",
+        "sha256": "b694d81a99de7ff4ea56fd820c6ea7f55cac11f8efb27884a0ef629c852c9d86"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/DutyDefs/Duties_Visit.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/DutyDefs/Duties_Visit.xml",
+        "sourceRawSha256": "2c14d64d45d322ff0f63c760905b7528eb644bd98d5aff0a3751908ead19ca37",
+        "sha256": "2c14d64d45d322ff0f63c760905b7528eb644bd98d5aff0a3751908ead19ca37"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/Goodwill/GoodwillEvents.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/Goodwill/GoodwillEvents.xml",
+        "sourceRawSha256": "75bb8594152ae318fe01906f22984159301b224ff99e800f29121daea64a0dbd",
+        "sha256": "75bb8594152ae318fe01906f22984159301b224ff99e800f29121daea64a0dbd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/InteractionDefs/Interactions_Guest.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/InteractionDefs/Interactions_Guest.xml",
+        "sourceRawSha256": "e659129f1a3379c4fb86cd3ba4f691ee64bd94f6819193b503900864d14204b8",
+        "sha256": "e659129f1a3379c4fb86cd3ba4f691ee64bd94f6819193b503900864d14204b8"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/JobDefs/Jobs_Misc.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/JobDefs/Jobs_Misc.xml",
+        "sourceRawSha256": "955bd53e900effa01d751cad74acc2748085b2c25828d31c99b3ef5f8bce6093",
+        "sha256": "955bd53e900effa01d751cad74acc2748085b2c25828d31c99b3ef5f8bce6093"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/Joy/JoyGivers.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/Joy/JoyGivers.xml",
+        "sourceRawSha256": "c95125cde248dca0e8ce5f9c8b1d568c28be18d489ff68bb3fe6346be028bd80",
+        "sha256": "c95125cde248dca0e8ce5f9c8b1d568c28be18d489ff68bb3fe6346be028bd80"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/Joy/JoyKinds.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/Joy/JoyKinds.xml",
+        "sourceRawSha256": "e4abc2667fe14c7c945ec28df750948d8b80ccece5611769a478ab5305f73e7f",
+        "sha256": "e4abc2667fe14c7c945ec28df750948d8b80ccece5611769a478ab5305f73e7f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/LetterDefs/CustomNotificationLetters.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/LetterDefs/CustomNotificationLetters.xml",
+        "sourceRawSha256": "21b144031bdb8d62803aa15a7ec4d224980ccbf54ccaa225f67acf2cce3cd595",
+        "sha256": "21b144031bdb8d62803aa15a7ec4d224980ccbf54ccaa225f67acf2cce3cd595"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/RoomRoleDefs/RoomRoles.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/RoomRoleDefs/RoomRoles.xml",
+        "sourceRawSha256": "13c865186b2f29b3f204242a4eb6ecb2bf10796d87e7e3f954bfc74e9eabdf7a",
+        "sha256": "13c865186b2f29b3f204242a4eb6ecb2bf10796d87e7e3f954bfc74e9eabdf7a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/RulePackDefs/RulePacks_InteractionsExtra.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/RulePackDefs/RulePacks_InteractionsExtra.xml",
+        "sourceRawSha256": "1eeff3583b7ac2f3ffb0031dc920387cfcde7ca4d296babfcb80032d24ab7aae",
+        "sha256": "1eeff3583b7ac2f3ffb0031dc920387cfcde7ca4d296babfcb80032d24ab7aae"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/SpacerGuests/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/SpacerGuests/Incidents_Map_Special.xml",
+        "sourceRawSha256": "2c77c868c1ff4b034b2a646536fadfd732af4c195f7121b60579dc62c0851153",
+        "sha256": "2c77c868c1ff4b034b2a646536fadfd732af4c195f7121b60579dc62c0851153"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/StatDefs/Stats_Pawns_Guest.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/StatDefs/Stats_Pawns_Guest.xml",
+        "sourceRawSha256": "452b730cd8ccfb6e604e673d0e33faa0467fed512790f5bcbc32395c18158f1f",
+        "sha256": "452b730cd8ccfb6e604e673d0e33faa0467fed512790f5bcbc32395c18158f1f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/Storyteller/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/Storyteller/Incidents_Map_Special.xml",
+        "sourceRawSha256": "aa45fb621efc523337e5b2c79dac3c496c0165c6270c9638d2e3144547807eb1",
+        "sha256": "aa45fb621efc523337e5b2c79dac3c496c0165c6270c9638d2e3144547807eb1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/ThoughtDefs/Thoughts_Memory_Guest.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/ThoughtDefs/Thoughts_Memory_Guest.xml",
+        "sourceRawSha256": "12cb87a302586a3ac4bd95afe05a657edc3798719f4319e7ad4462bb6ce2f876",
+        "sha256": "12cb87a302586a3ac4bd95afe05a657edc3798719f4319e7ad4462bb6ce2f876"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/ThoughtDefs/Thoughts_Situation_General.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/ThoughtDefs/Thoughts_Situation_General.xml",
+        "sourceRawSha256": "ea3e7ff68faa3d9ddef0198807d493119d2b39e76b38f463fd1e5617379bfa4a",
+        "sha256": "ea3e7ff68faa3d9ddef0198807d493119d2b39e76b38f463fd1e5617379bfa4a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/TraderKindDefs/TraderKinds_Guests.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/TraderKindDefs/TraderKinds_Guests.xml",
+        "sourceRawSha256": "27285c3d95ec212ca4846ef9ac44acf09c3ef64e9f045db9a180bb5fa3155934",
+        "sha256": "27285c3d95ec212ca4846ef9ac44acf09c3ef64e9f045db9a180bb5fa3155934"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/WorkGiverDefs/WorkGivers.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/WorkGiverDefs/WorkGivers.xml",
+        "sourceRawSha256": "43b47038da4b14305965cb7f6e611c76398b10512b49c699cad7b7d5acebc005",
+        "sha256": "43b47038da4b14305965cb7f6e611c76398b10512b49c699cad7b7d5acebc005"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/WorkTypeDefs/WorkTypes.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/WorkTypeDefs/WorkTypes.xml",
+        "sourceRawSha256": "f475f6919a2618cae291038ab2b7a984cafd4dad93096f50e8631a8cd5e05b8f",
+        "sha256": "f475f6919a2618cae291038ab2b7a984cafd4dad93096f50e8631a8cd5e05b8f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/MainTab/MainButtonDefs/MainButtons.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/MainTab/MainButtonDefs/MainButtons.xml",
+        "sourceRawSha256": "c427131f2af5065ff0eed11b3b9e39e5315ec0807d80492e62523e60c44710ca",
+        "sha256": "c427131f2af5065ff0eed11b3b9e39e5315ec0807d80492e62523e60c44710ca"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/MainTab/PawnColumnDefs/PawnColumns.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/MainTab/PawnColumnDefs/PawnColumns.xml",
+        "sourceRawSha256": "c618faca23917d5fd9afed08adf61994ad13aedd7a778973b4fb9f8d978bb2bd",
+        "sha256": "c618faca23917d5fd9afed08adf61994ad13aedd7a778973b4fb9f8d978bb2bd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Defs/MainTab/PawnTableDefs/PawnTables.xml",
+        "projectFile": "Components/Hospitality/1.6/Defs/Hospitality/MainTab/PawnTableDefs/PawnTables.xml",
+        "sourceRawSha256": "f8d0f692107da9d81efc852830c17c77a1a4f78a2b3558cf1314b28af3821ca4",
+        "sha256": "f8d0f692107da9d81efc852830c17c77a1a4f78a2b3558cf1314b28af3821ca4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Patches/patches.xml",
+        "projectFile": "Components/Hospitality/1.6/Patches/Hospitality/patches.xml",
+        "sourceRawSha256": "216e386cc4243ed71840fc835ea09a0ebe2eaf5af1bab7ffc1b6ecdfa144f5c4",
+        "sha256": "216e386cc4243ed71840fc835ea09a0ebe2eaf5af1bab7ffc1b6ecdfa144f5c4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Compat/Royalty/Patches/Royalty_PeacefulPawnKindGroupMaker.xml",
+        "projectFile": "Components/Hospitality/1.6/Compat/Royalty/Patches/Hospitality/Royalty_PeacefulPawnKindGroupMaker.xml",
+        "sourceRawSha256": "c111d008e4b13b1521df4887b27938b747a6776e67f0189eade43eea893b375e",
+        "sha256": "c111d008e4b13b1521df4887b27938b747a6776e67f0189eade43eea893b375e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.6/Compat/VNPE/Patches/Vending_FeederAndTap.xml",
+        "projectFile": "Components/Hospitality/1.6/Compat/VNPE/Patches/Hospitality/Vending_FeederAndTap.xml",
+        "sourceRawSha256": "cc2b0e5390bbe8bd1ef32b34b783b3d2375d38fb9249a8c3a1837a634c85f0c1",
+        "sha256": "cc2b0e5390bbe8bd1ef32b34b783b3d2375d38fb9249a8c3a1837a634c85f0c1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Assemblies/Hospitality.dll",
+        "projectFile": "Components/Hospitality/1.7/Assemblies/Hospitality.dll",
+        "sourceRawSha256": "6c169fed1229d1ee18b478aabfc7cbf23f92dc401a641a33c938e8055b345d56",
+        "sha256": "6c169fed1229d1ee18b478aabfc7cbf23f92dc401a641a33c938e8055b345d56"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/ConceptDefs/Concepts_NotedOpportunistic.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/ConceptDefs/Concepts_NotedOpportunistic.xml",
+        "sourceRawSha256": "4d3bbdf0df6ebdb52e06779f7a2d24da6c2771bbce7e4f85cc108cb80f06ad31",
+        "sha256": "4d3bbdf0df6ebdb52e06779f7a2d24da6c2771bbce7e4f85cc108cb80f06ad31"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/ConceptDefs/Concepts_NotedSelfshow.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/ConceptDefs/Concepts_NotedSelfshow.xml",
+        "sourceRawSha256": "c473e9543f9b75048eb1c72ff13a7b8d9d7d32debd74485953ecccd0efc52e6e",
+        "sha256": "c473e9543f9b75048eb1c72ff13a7b8d9d7d32debd74485953ecccd0efc52e6e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/Config/ConfigDef.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/Config/ConfigDef.xml",
+        "sourceRawSha256": "b694d81a99de7ff4ea56fd820c6ea7f55cac11f8efb27884a0ef629c852c9d86",
+        "sha256": "b694d81a99de7ff4ea56fd820c6ea7f55cac11f8efb27884a0ef629c852c9d86"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/DutyDefs/Duties_Visit.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/DutyDefs/Duties_Visit.xml",
+        "sourceRawSha256": "2c14d64d45d322ff0f63c760905b7528eb644bd98d5aff0a3751908ead19ca37",
+        "sha256": "2c14d64d45d322ff0f63c760905b7528eb644bd98d5aff0a3751908ead19ca37"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/Goodwill/GoodwillEvents.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/Goodwill/GoodwillEvents.xml",
+        "sourceRawSha256": "75bb8594152ae318fe01906f22984159301b224ff99e800f29121daea64a0dbd",
+        "sha256": "75bb8594152ae318fe01906f22984159301b224ff99e800f29121daea64a0dbd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/InteractionDefs/Interactions_Guest.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/InteractionDefs/Interactions_Guest.xml",
+        "sourceRawSha256": "e659129f1a3379c4fb86cd3ba4f691ee64bd94f6819193b503900864d14204b8",
+        "sha256": "e659129f1a3379c4fb86cd3ba4f691ee64bd94f6819193b503900864d14204b8"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/JobDefs/Jobs_Misc.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/JobDefs/Jobs_Misc.xml",
+        "sourceRawSha256": "955bd53e900effa01d751cad74acc2748085b2c25828d31c99b3ef5f8bce6093",
+        "sha256": "955bd53e900effa01d751cad74acc2748085b2c25828d31c99b3ef5f8bce6093"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/Joy/JoyGivers.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/Joy/JoyGivers.xml",
+        "sourceRawSha256": "c95125cde248dca0e8ce5f9c8b1d568c28be18d489ff68bb3fe6346be028bd80",
+        "sha256": "c95125cde248dca0e8ce5f9c8b1d568c28be18d489ff68bb3fe6346be028bd80"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/Joy/JoyKinds.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/Joy/JoyKinds.xml",
+        "sourceRawSha256": "e4abc2667fe14c7c945ec28df750948d8b80ccece5611769a478ab5305f73e7f",
+        "sha256": "e4abc2667fe14c7c945ec28df750948d8b80ccece5611769a478ab5305f73e7f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/LetterDefs/CustomNotificationLetters.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/LetterDefs/CustomNotificationLetters.xml",
+        "sourceRawSha256": "21b144031bdb8d62803aa15a7ec4d224980ccbf54ccaa225f67acf2cce3cd595",
+        "sha256": "21b144031bdb8d62803aa15a7ec4d224980ccbf54ccaa225f67acf2cce3cd595"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/RoomRoleDefs/RoomRoles.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/RoomRoleDefs/RoomRoles.xml",
+        "sourceRawSha256": "13c865186b2f29b3f204242a4eb6ecb2bf10796d87e7e3f954bfc74e9eabdf7a",
+        "sha256": "13c865186b2f29b3f204242a4eb6ecb2bf10796d87e7e3f954bfc74e9eabdf7a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/RulePackDefs/RulePacks_InteractionsExtra.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/RulePackDefs/RulePacks_InteractionsExtra.xml",
+        "sourceRawSha256": "1eeff3583b7ac2f3ffb0031dc920387cfcde7ca4d296babfcb80032d24ab7aae",
+        "sha256": "1eeff3583b7ac2f3ffb0031dc920387cfcde7ca4d296babfcb80032d24ab7aae"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/SpacerGuests/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/SpacerGuests/Incidents_Map_Special.xml",
+        "sourceRawSha256": "2c77c868c1ff4b034b2a646536fadfd732af4c195f7121b60579dc62c0851153",
+        "sha256": "2c77c868c1ff4b034b2a646536fadfd732af4c195f7121b60579dc62c0851153"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/StatDefs/Stats_Pawns_Guest.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/StatDefs/Stats_Pawns_Guest.xml",
+        "sourceRawSha256": "452b730cd8ccfb6e604e673d0e33faa0467fed512790f5bcbc32395c18158f1f",
+        "sha256": "452b730cd8ccfb6e604e673d0e33faa0467fed512790f5bcbc32395c18158f1f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/Storyteller/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/Storyteller/Incidents_Map_Special.xml",
+        "sourceRawSha256": "aa45fb621efc523337e5b2c79dac3c496c0165c6270c9638d2e3144547807eb1",
+        "sha256": "aa45fb621efc523337e5b2c79dac3c496c0165c6270c9638d2e3144547807eb1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/ThoughtDefs/Thoughts_Memory_Guest.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/ThoughtDefs/Thoughts_Memory_Guest.xml",
+        "sourceRawSha256": "12cb87a302586a3ac4bd95afe05a657edc3798719f4319e7ad4462bb6ce2f876",
+        "sha256": "12cb87a302586a3ac4bd95afe05a657edc3798719f4319e7ad4462bb6ce2f876"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/ThoughtDefs/Thoughts_Situation_General.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/ThoughtDefs/Thoughts_Situation_General.xml",
+        "sourceRawSha256": "ea3e7ff68faa3d9ddef0198807d493119d2b39e76b38f463fd1e5617379bfa4a",
+        "sha256": "ea3e7ff68faa3d9ddef0198807d493119d2b39e76b38f463fd1e5617379bfa4a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/TraderKindDefs/TraderKinds_Guests.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/TraderKindDefs/TraderKinds_Guests.xml",
+        "sourceRawSha256": "27285c3d95ec212ca4846ef9ac44acf09c3ef64e9f045db9a180bb5fa3155934",
+        "sha256": "27285c3d95ec212ca4846ef9ac44acf09c3ef64e9f045db9a180bb5fa3155934"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/WorkGiverDefs/WorkGivers.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/WorkGiverDefs/WorkGivers.xml",
+        "sourceRawSha256": "43b47038da4b14305965cb7f6e611c76398b10512b49c699cad7b7d5acebc005",
+        "sha256": "43b47038da4b14305965cb7f6e611c76398b10512b49c699cad7b7d5acebc005"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/WorkTypeDefs/WorkTypes.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/WorkTypeDefs/WorkTypes.xml",
+        "sourceRawSha256": "f475f6919a2618cae291038ab2b7a984cafd4dad93096f50e8631a8cd5e05b8f",
+        "sha256": "f475f6919a2618cae291038ab2b7a984cafd4dad93096f50e8631a8cd5e05b8f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/MainTab/MainButtonDefs/MainButtons.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/MainTab/MainButtonDefs/MainButtons.xml",
+        "sourceRawSha256": "c427131f2af5065ff0eed11b3b9e39e5315ec0807d80492e62523e60c44710ca",
+        "sha256": "c427131f2af5065ff0eed11b3b9e39e5315ec0807d80492e62523e60c44710ca"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/MainTab/PawnColumnDefs/PawnColumns.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/MainTab/PawnColumnDefs/PawnColumns.xml",
+        "sourceRawSha256": "c618faca23917d5fd9afed08adf61994ad13aedd7a778973b4fb9f8d978bb2bd",
+        "sha256": "c618faca23917d5fd9afed08adf61994ad13aedd7a778973b4fb9f8d978bb2bd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Defs/MainTab/PawnTableDefs/PawnTables.xml",
+        "projectFile": "Components/Hospitality/1.7/Defs/Hospitality/MainTab/PawnTableDefs/PawnTables.xml",
+        "sourceRawSha256": "f8d0f692107da9d81efc852830c17c77a1a4f78a2b3558cf1314b28af3821ca4",
+        "sha256": "f8d0f692107da9d81efc852830c17c77a1a4f78a2b3558cf1314b28af3821ca4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Patches/patches.xml",
+        "projectFile": "Components/Hospitality/1.7/Patches/Hospitality/patches.xml",
+        "sourceRawSha256": "216e386cc4243ed71840fc835ea09a0ebe2eaf5af1bab7ffc1b6ecdfa144f5c4",
+        "sha256": "216e386cc4243ed71840fc835ea09a0ebe2eaf5af1bab7ffc1b6ecdfa144f5c4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Compat/Royalty/Patches/Royalty_PeacefulPawnKindGroupMaker.xml",
+        "projectFile": "Components/Hospitality/1.7/Compat/Royalty/Patches/Hospitality/Royalty_PeacefulPawnKindGroupMaker.xml",
+        "sourceRawSha256": "c111d008e4b13b1521df4887b27938b747a6776e67f0189eade43eea893b375e",
+        "sha256": "c111d008e4b13b1521df4887b27938b747a6776e67f0189eade43eea893b375e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Compat/VNPE/Patches/Vending_FeederAndTap.xml",
+        "projectFile": "Components/Hospitality/1.7/Compat/VNPE/Patches/Hospitality/Vending_FeederAndTap.xml",
+        "sourceRawSha256": "cc2b0e5390bbe8bd1ef32b34b783b3d2375d38fb9249a8c3a1837a634c85f0c1",
+        "sha256": "cc2b0e5390bbe8bd1ef32b34b783b3d2375d38fb9249a8c3a1837a634c85f0c1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/HospitalityModIcon.png",
+        "projectFile": "Components/Hospitality/Textures/HospitalityModIcon.png",
+        "sourceRawSha256": "55bb78dc5cbc0411b9eb3254f6caf7a83ec24b6dbe8596f2fb703a204208d5f7",
+        "sha256": "55bb78dc5cbc0411b9eb3254f6caf7a83ec24b6dbe8596f2fb703a204208d5f7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/Things/Misc/Flag.png",
+        "projectFile": "Components/Hospitality/Textures/Things/Misc/Flag.png",
+        "sourceRawSha256": "3352c23d9209e8aacad278c4ccef8f29c876e0f075270ea3e24530f0585dd865",
+        "sha256": "3352c23d9209e8aacad278c4ccef8f29c876e0f075270ea3e24530f0585dd865"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/Things/Misc/PSDs/Flag.psd",
+        "projectFile": "Components/Hospitality/Textures/Things/Misc/PSDs/Flag.psd",
+        "sourceRawSha256": "94f7d38de000faf33f066fa29b8888a126d8294828b86de4836199e9106501a2",
+        "sha256": "94f7d38de000faf33f066fa29b8888a126d8294828b86de4836199e9106501a2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/Things/Mote/SpeechSymbols/Diplomacy.png",
+        "projectFile": "Components/Hospitality/Textures/Things/Mote/SpeechSymbols/Diplomacy.png",
+        "sourceRawSha256": "79c1555df650ef1ffbbfc466ad5e1b8d1f5d4bb68afbe2505af771143df71b7a",
+        "sha256": "79c1555df650ef1ffbbfc466ad5e1b8d1f5d4bb68afbe2505af771143df71b7a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/AsGuest.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/AsGuest.png",
+        "sourceRawSha256": "9ec7c14cca0eb70a74377d613ced570e0688bee3c9a03d40a2e8c622e2e3e59a",
+        "sha256": "9ec7c14cca0eb70a74377d613ced570e0688bee3c9a03d40a2e8c622e2e3e59a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/ButtonNumberAuto.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/ButtonNumberAuto.png",
+        "sourceRawSha256": "0d0f0044f70865800f3df673fb77e70207a4f2d846c085d1ee5f0b89d0c961f3",
+        "sha256": "0d0f0044f70865800f3df673fb77e70207a4f2d846c085d1ee5f0b89d0c961f3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/ButtonNumberDown.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/ButtonNumberDown.png",
+        "sourceRawSha256": "4f9718d9501471c8229f9e12fd23215a015b4b56b02595b41107a6063f5e768c",
+        "sha256": "4f9718d9501471c8229f9e12fd23215a015b4b56b02595b41107a6063f5e768c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/ButtonNumberUp.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/ButtonNumberUp.png",
+        "sourceRawSha256": "12029d9e90c09a92c571ef77a8ddbb40444c7a7d776c3140c4fe68a3fbbf152f",
+        "sha256": "12029d9e90c09a92c571ef77a8ddbb40444c7a7d776c3140c4fe68a3fbbf152f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/VendingMachine.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/VendingMachine.png",
+        "sourceRawSha256": "70df6261b362fa01db8fe7dcac08956245431e5e3c3e8055b4be9641e042a08b",
+        "sha256": "70df6261b362fa01db8fe7dcac08956245431e5e3c3e8055b4be9641e042a08b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Tab/Entertain.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Tab/Entertain.png",
+        "sourceRawSha256": "110fa02c15c2d44cade9c8c094446ff70ac8cd6b929ae1a31c1b7719128369bc",
+        "sha256": "110fa02c15c2d44cade9c8c094446ff70ac8cd6b929ae1a31c1b7719128369bc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Tab/Friends.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Tab/Friends.png",
+        "sourceRawSha256": "4fa3ff1ecba151ea9880330b15b7bec4546eba7df0e005c4f2f2287e40fe4978",
+        "sha256": "4fa3ff1ecba151ea9880330b15b7bec4546eba7df0e005c4f2f2287e40fe4978"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Tab/Hospitality.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Tab/Hospitality.png",
+        "sourceRawSha256": "55bb78dc5cbc0411b9eb3254f6caf7a83ec24b6dbe8596f2fb703a204208d5f7",
+        "sha256": "55bb78dc5cbc0411b9eb3254f6caf7a83ec24b6dbe8596f2fb703a204208d5f7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Tab/MakeFriends.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Tab/MakeFriends.png",
+        "sourceRawSha256": "52053716e77f642ef5b185b96e1d116e8547588d748da2177b85935586181379",
+        "sha256": "52053716e77f642ef5b185b96e1d116e8547588d748da2177b85935586181379"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Tab/Relationship.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Tab/Relationship.png",
+        "sourceRawSha256": "de4b8dad19b93a0ac386f3c1094740e6afef28db8980a2438e66c5f97d668cf8",
+        "sha256": "de4b8dad19b93a0ac386f3c1094740e6afef28db8980a2438e66c5f97d668cf8"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Buttons/MainButtons/IconHospitality.png",
+        "projectFile": "Components/Hospitality/Textures/UI/Buttons/MainButtons/IconHospitality.png",
+        "sourceRawSha256": "7b6bf8f21d0ff85989ce9b6df11704ee9a87e49ff39d447131f5035975fcda4f",
+        "sha256": "7b6bf8f21d0ff85989ce9b6df11704ee9a87e49ff39d447131f5035975fcda4f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/PSDs/AsGuest.psd",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/PSDs/AsGuest.psd",
+        "sourceRawSha256": "49942e9f5f272935689a90c923552d6803bcbcf1dff8cf9ee0fb10f7e84e7a8d",
+        "sha256": "49942e9f5f272935689a90c923552d6803bcbcf1dff8cf9ee0fb10f7e84e7a8d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/PSDs/ChangePrice.psd",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/PSDs/ChangePrice.psd",
+        "sourceRawSha256": "7f785f0a8af05448f4f983d82f85dded6efc39a0ce3093558838ad476968600f",
+        "sha256": "7f785f0a8af05448f4f983d82f85dded6efc39a0ce3093558838ad476968600f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Textures/UI/Commands/PSDs/VendingMachine.psd",
+        "projectFile": "Components/Hospitality/Textures/UI/Commands/PSDs/VendingMachine.psd",
+        "sourceRawSha256": "1aa55f5f5e798ebeb6cbdc765e4e3ec3fea7a0d40bde52878512c531e5fbb56d",
+        "sha256": "1aa55f5f5e798ebeb6cbdc765e4e3ec3fea7a0d40bde52878512c531e5fbb56d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Alert_Guest.cs",
+        "projectFile": "Components/Hospitality/Source/Alert_Guest.cs",
+        "sourceRawSha256": "31e5193a451b1d9d6b1f4cb8e684927d70efaa08deaca9386361ec1708aef18a",
+        "sha256": "31e5193a451b1d9d6b1f4cb8e684927d70efaa08deaca9386361ec1708aef18a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Alert_GuestCantClaimBed.cs",
+        "projectFile": "Components/Hospitality/Source/Alert_GuestCantClaimBed.cs",
+        "sourceRawSha256": "f770919ae7a4ada4729d743977113c23c574831da26c983b1602b53339f3ea3e",
+        "sha256": "f770919ae7a4ada4729d743977113c23c574831da26c983b1602b53339f3ea3e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Alert_GuestHasNoFood.cs",
+        "projectFile": "Components/Hospitality/Source/Alert_GuestHasNoFood.cs",
+        "sourceRawSha256": "8c69f3c710c751973bd8ec25110dff8bed0a5508f58fc28dda1d72e5efe876fd",
+        "sha256": "8c69f3c710c751973bd8ec25110dff8bed0a5508f58fc28dda1d72e5efe876fd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Alert_GuestNotEnoughBeds.cs",
+        "projectFile": "Components/Hospitality/Source/Alert_GuestNotEnoughBeds.cs",
+        "sourceRawSha256": "21f597fa7cf46a907fb374cc2c6c1fe452ce1318c29372406fb5c59e19777419",
+        "sha256": "21f597fa7cf46a907fb374cc2c6c1fe452ce1318c29372406fb5c59e19777419"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Alert_GuestThought.cs",
+        "projectFile": "Components/Hospitality/Source/Alert_GuestThought.cs",
+        "sourceRawSha256": "ee4baca953aea6f7a932a765e20e842230b245e0d1f7d96171f907d60855f720",
+        "sha256": "ee4baca953aea6f7a932a765e20e842230b245e0d1f7d96171f907d60855f720"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/BedStatsDrawer.cs",
+        "projectFile": "Components/Hospitality/Source/BedStatsDrawer.cs",
+        "sourceRawSha256": "2c004e641d921706b321f90feb8e3b34b3a11df255db4311767a2fce155c0c74",
+        "sha256": "2c004e641d921706b321f90feb8e3b34b3a11df255db4311767a2fce155c0c74"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Building_GuestBed.cs",
+        "projectFile": "Components/Hospitality/Source/Building_GuestBed.cs",
+        "sourceRawSha256": "be369ad9fc30dcd9b30ca3b918eb5a327015fd3a37b408b7f4bbc4ec2c020f49",
+        "sha256": "be369ad9fc30dcd9b30ca3b918eb5a327015fd3a37b408b7f4bbc4ec2c020f49"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ChoiceLetter_GuestJoinRequest.cs",
+        "projectFile": "Components/Hospitality/Source/ChoiceLetter_GuestJoinRequest.cs",
+        "sourceRawSha256": "e205f52a0ddd58fbe6af2b0b5fdd1717d3445674b3f40fae3aea81771c13d98c",
+        "sha256": "e205f52a0ddd58fbe6af2b0b5fdd1717d3445674b3f40fae3aea81771c13d98c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/CompGuest.cs",
+        "projectFile": "Components/Hospitality/Source/CompGuest.cs",
+        "sourceRawSha256": "53f3614373557cd9f75fc104dd247fe5b497babadaa7b3221416f5885b8e8ad4",
+        "sha256": "53f3614373557cd9f75fc104dd247fe5b497babadaa7b3221416f5885b8e8ad4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/CompProperties_Guest.cs",
+        "projectFile": "Components/Hospitality/Source/CompProperties_Guest.cs",
+        "sourceRawSha256": "972ffe99d224196b1914f28fbca524075d8b1b6f0707e3889a7133bb28cba657",
+        "sha256": "972ffe99d224196b1914f28fbca524075d8b1b6f0707e3889a7133bb28cba657"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/CompVendingMachine.cs",
+        "projectFile": "Components/Hospitality/Source/CompVendingMachine.cs",
+        "sourceRawSha256": "16b96f2b8df3e564f070f07f10c80ce11e1731cad8c0a180ba1835240728cf3d",
+        "sha256": "16b96f2b8df3e564f070f07f10c80ce11e1731cad8c0a180ba1835240728cf3d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ConvertibleIntRange.cs",
+        "projectFile": "Components/Hospitality/Source/ConvertibleIntRange.cs",
+        "sourceRawSha256": "3de100cb342b49fedcadf0417e9f29a88704c9018c15341cfb24f4be58ac3ed1",
+        "sha256": "3de100cb342b49fedcadf0417e9f29a88704c9018c15341cfb24f4be58ac3ed1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/EventAction.cs",
+        "projectFile": "Components/Hospitality/Source/EventAction.cs",
+        "sourceRawSha256": "8d9f7de8a72b2ca562526136c37f220f15587147b2ae6995a24818937681c3f3",
+        "sha256": "8d9f7de8a72b2ca562526136c37f220f15587147b2ae6995a24818937681c3f3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/EventAction_Pawns.cs",
+        "projectFile": "Components/Hospitality/Source/EventAction_Pawns.cs",
+        "sourceRawSha256": "e8a308ac1bdf96b2a31289261d4e7e8cc2cb3b11d8d928c8ce7c4cca2d22a720",
+        "sha256": "e8a308ac1bdf96b2a31289261d4e7e8cc2cb3b11d8d928c8ce7c4cca2d22a720"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Gizmo_GuestBed.cs",
+        "projectFile": "Components/Hospitality/Source/Gizmo_GuestBed.cs",
+        "sourceRawSha256": "f6b247afd54876e2af4e10e23831c0e249af5b67110173bb162be7d7256c4ddc",
+        "sha256": "f6b247afd54876e2af4e10e23831c0e249af5b67110173bb162be7d7256c4ddc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Gizmo_ModifyNumber.cs",
+        "projectFile": "Components/Hospitality/Source/Gizmo_ModifyNumber.cs",
+        "sourceRawSha256": "b98b55c01e9544e4a290c1ddcac3f4d9e16965c132f09ff7692567ce4fb9839b",
+        "sha256": "b98b55c01e9544e4a290c1ddcac3f4d9e16965c132f09ff7692567ce4fb9839b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Gizmo_VendingMachine.cs",
+        "projectFile": "Components/Hospitality/Source/Gizmo_VendingMachine.cs",
+        "sourceRawSha256": "1b75e5fda06e38caac663b14eae74698b1b4fcb9697818d97224aca03f0bcfaf",
+        "sha256": "1b75e5fda06e38caac663b14eae74698b1b4fcb9697818d97224aca03f0bcfaf"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Gizmo_VendingMachineContent.cs",
+        "projectFile": "Components/Hospitality/Source/Gizmo_VendingMachineContent.cs",
+        "sourceRawSha256": "a15920bed8bd0ab007ddd62b012c8bc5edf18c317c99db808e5d2238d1d2e413",
+        "sha256": "a15920bed8bd0ab007ddd62b012c8bc5edf18c317c99db808e5d2238d1d2e413"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/GuestBedExtension.cs",
+        "projectFile": "Components/Hospitality/Source/GuestBedExtension.cs",
+        "sourceRawSha256": "e0acdbaf5329bbb8c4d15bbe4b9e0744025c8e22cf788bab1009e752bfdfacec",
+        "sha256": "e0acdbaf5329bbb8c4d15bbe4b9e0744025c8e22cf788bab1009e752bfdfacec"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Hospitality.csproj",
+        "projectFile": "Components/Hospitality/Source/Hospitality.csproj",
+        "sourceRawSha256": "40c8d0c18cb0bb5b254fcc287331f8d278a92c446f3b5a6d0212d494aa830ec4",
+        "sha256": "40c8d0c18cb0bb5b254fcc287331f8d278a92c446f3b5a6d0212d494aa830ec4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Hospitality.slnx",
+        "projectFile": "Components/Hospitality/Source/Hospitality.slnx",
+        "sourceRawSha256": "afc53c5cc6a65598c6818bdd56660137cd20a523d5a4efb5ad4f76f00a6dd2db",
+        "sha256": "afc53c5cc6a65598c6818bdd56660137cd20a523d5a4efb5ad4f76f00a6dd2db"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/HospitalityConfigDef.cs",
+        "projectFile": "Components/Hospitality/Source/HospitalityConfigDef.cs",
+        "sourceRawSha256": "1bcc4a07f6eb6d116c95b90146918c14d8ca82fd9be9ac2e581eb579de3d4688",
+        "sha256": "1bcc4a07f6eb6d116c95b90146918c14d8ca82fd9be9ac2e581eb579de3d4688"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Hospitality_GameComponent.cs",
+        "projectFile": "Components/Hospitality/Source/Hospitality_GameComponent.cs",
+        "sourceRawSha256": "da2d32722b1deccf93ba5afeecc639ee947d35131f8083dc55e7d871aebcb88a",
+        "sha256": "da2d32722b1deccf93ba5afeecc639ee947d35131f8083dc55e7d871aebcb88a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Hospitality_MapComponent.cs",
+        "projectFile": "Components/Hospitality/Source/Hospitality_MapComponent.cs",
+        "sourceRawSha256": "296eb923f2a30b2876e427e0004f5a51656711a21e7da2e44bf2db484422fca6",
+        "sha256": "296eb923f2a30b2876e427e0004f5a51656711a21e7da2e44bf2db484422fca6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Hospitality_SpecialInjector.cs",
+        "projectFile": "Components/Hospitality/Source/Hospitality_SpecialInjector.cs",
+        "sourceRawSha256": "a7c2a144b9b6c615fb6a743ad4de5df6ca5aac787b33ae956146c61f2c8d245b",
+        "sha256": "a7c2a144b9b6c615fb6a743ad4de5df6ca5aac787b33ae956146c61f2c8d245b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/IncidentWorker_HappyGuestJoins.cs",
+        "projectFile": "Components/Hospitality/Source/IncidentWorker_HappyGuestJoins.cs",
+        "sourceRawSha256": "1fe0c6d1f634b7c7e8aeda750705559f61e37243e77dc30da135dc057f0f3b87",
+        "sha256": "1fe0c6d1f634b7c7e8aeda750705559f61e37243e77dc30da135dc057f0f3b87"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/IncidentWorker_VisitorGroup.cs",
+        "projectFile": "Components/Hospitality/Source/IncidentWorker_VisitorGroup.cs",
+        "sourceRawSha256": "2fc8ecbf6405c025dd4353f4d669c1bc77556d848b0c02a1087ae35cfb0247a0",
+        "sha256": "2fc8ecbf6405c025dd4353f4d669c1bc77556d848b0c02a1087ae35cfb0247a0"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/IncidentWorker_VisitorGroupMax.cs",
+        "projectFile": "Components/Hospitality/Source/IncidentWorker_VisitorGroupMax.cs",
+        "sourceRawSha256": "eb415f0c80a0a4b385d5a8ad285812d5ca0da9021968034c2b115e8a7260b3ff",
+        "sha256": "eb415f0c80a0a4b385d5a8ad285812d5ca0da9021968034c2b115e8a7260b3ff"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/IncidentWorker_VisitorGroupSelectFaction.cs",
+        "projectFile": "Components/Hospitality/Source/IncidentWorker_VisitorGroupSelectFaction.cs",
+        "sourceRawSha256": "eda2afe15e336be6f4a6a839e45284ce25c6b65af8d48cfe8ea565b4e6a3f983",
+        "sha256": "eda2afe15e336be6f4a6a839e45284ce25c6b65af8d48cfe8ea565b4e6a3f983"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/InteractionWorker_CharmGuestAttempt.cs",
+        "projectFile": "Components/Hospitality/Source/InteractionWorker_CharmGuestAttempt.cs",
+        "sourceRawSha256": "27ffe0a7f13b6e8f0a6d5415ffe79d50112fc2cfd72c04f7117beb135170b409",
+        "sha256": "27ffe0a7f13b6e8f0a6d5415ffe79d50112fc2cfd72c04f7117beb135170b409"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/InteractionWorker_GuestDiplomacy.cs",
+        "projectFile": "Components/Hospitality/Source/InteractionWorker_GuestDiplomacy.cs",
+        "sourceRawSha256": "6c20841814340bbf9a134211991abcff41a9bfa9caebb647711f325533cc9ce0",
+        "sha256": "6c20841814340bbf9a134211991abcff41a9bfa9caebb647711f325533cc9ce0"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/InteractionWorker_ScroungeFoodAttempt.cs",
+        "projectFile": "Components/Hospitality/Source/InteractionWorker_ScroungeFoodAttempt.cs",
+        "sourceRawSha256": "116ab286e8ba18ed58acfde95c911a0085c7153b28e7580711ca348e30b53e88",
+        "sha256": "116ab286e8ba18ed58acfde95c911a0085c7153b28e7580711ca348e30b53e88"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ITab_Pawn_Guest.cs",
+        "projectFile": "Components/Hospitality/Source/ITab_Pawn_Guest.cs",
+        "sourceRawSha256": "027d652a20f5112630d63d5a64345a1f9de8be1974c73f614b75d052401729eb",
+        "sha256": "027d652a20f5112630d63d5a64345a1f9de8be1974c73f614b75d052401729eb"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_BrowseItems.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_BrowseItems.cs",
+        "sourceRawSha256": "4375547900fe58672c42e9fceabdf3f86737fa233bea800dc45d915e0cbb512a",
+        "sha256": "4375547900fe58672c42e9fceabdf3f86737fa233bea800dc45d915e0cbb512a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_BuyItem.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_BuyItem.cs",
+        "sourceRawSha256": "6833be66ad9c99dc5f85532aa8bc5f7409dfdb84aff962b6927d5a8bd8bf669b",
+        "sha256": "6833be66ad9c99dc5f85532aa8bc5f7409dfdb84aff962b6927d5a8bd8bf669b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_CharmGuest.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_CharmGuest.cs",
+        "sourceRawSha256": "35a222952d5fba1e397019ee1d699ddd34546c957134c8e6fa0e0312594ec333",
+        "sha256": "35a222952d5fba1e397019ee1d699ddd34546c957134c8e6fa0e0312594ec333"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_ClaimBed.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_ClaimBed.cs",
+        "sourceRawSha256": "907cf23cc4cdba1c6a500a100091bfd809807497a2f08ad3b58b58b219fe54ef",
+        "sha256": "907cf23cc4cdba1c6a500a100091bfd809807497a2f08ad3b58b58b219fe54ef"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_EmptyVendingMachine.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_EmptyVendingMachine.cs",
+        "sourceRawSha256": "1ebb7446252247c053342e7d59bf6619294901e0a4f19273dfcb55b4475662fc",
+        "sha256": "1ebb7446252247c053342e7d59bf6619294901e0a4f19273dfcb55b4475662fc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_GuestBase.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_GuestBase.cs",
+        "sourceRawSha256": "2958c33e09f665073888003fcea4c109b55e79b5a4e92a20bd81c78fe0b3c4cc",
+        "sha256": "2958c33e09f665073888003fcea4c109b55e79b5a4e92a20bd81c78fe0b3c4cc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_GuestImproveRelationship.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_GuestImproveRelationship.cs",
+        "sourceRawSha256": "2c3ade29e61965ffb93daa4a4e84f45a3c03b2a8f4177fefe128494dc5602baf",
+        "sha256": "2c3ade29e61965ffb93daa4a4e84f45a3c03b2a8f4177fefe128494dc5602baf"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_ScroungeFood.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_ScroungeFood.cs",
+        "sourceRawSha256": "b41e2267787cdeef1a60ef746b1ecb57e47a8e8c0aec998a95eacb5499712c22",
+        "sha256": "b41e2267787cdeef1a60ef746b1ecb57e47a8e8c0aec998a95eacb5499712c22"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobDriver_SwipeFood.cs",
+        "projectFile": "Components/Hospitality/Source/JobDriver_SwipeFood.cs",
+        "sourceRawSha256": "fff0d095a1af0bc6bc947962b9c4b47faf1ff37c3bf59a3c033ddf22e5d6056b",
+        "sha256": "fff0d095a1af0bc6bc947962b9c4b47faf1ff37c3bf59a3c033ddf22e5d6056b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_BuyFood.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_BuyFood.cs",
+        "sourceRawSha256": "2237101a66e72c16ef2dac5e2f2b6dd1f37a5b61a900c07c93c53b6d9752a762",
+        "sha256": "2237101a66e72c16ef2dac5e2f2b6dd1f37a5b61a900c07c93c53b6d9752a762"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_ClaimBed.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_ClaimBed.cs",
+        "sourceRawSha256": "fc05046afde81b335e6d181d013fc3cb5598d471bb0e87251a7eef5d4771db99",
+        "sha256": "fc05046afde81b335e6d181d013fc3cb5598d471bb0e87251a7eef5d4771db99"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_GotoGuestArea.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_GotoGuestArea.cs",
+        "sourceRawSha256": "2989234f80e02697baa775df4d7a15e4c49402d880e2c087baab7513e2d31180",
+        "sha256": "2989234f80e02697baa775df4d7a15e4c49402d880e2c087baab7513e2d31180"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_OptimizeApparel_Guest.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_OptimizeApparel_Guest.cs",
+        "sourceRawSha256": "f01c93771f62f0c1f0a915aa5a126d7b6f199eab108841dcd610e578db33dbfc",
+        "sha256": "f01c93771f62f0c1f0a915aa5a126d7b6f199eab108841dcd610e578db33dbfc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_Relax.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_Relax.cs",
+        "sourceRawSha256": "484afb5e88a1d5c2de35e7aa3002fa1ee54c4e97ea1ded6dccada6a704c8759f",
+        "sha256": "484afb5e88a1d5c2de35e7aa3002fa1ee54c4e97ea1ded6dccada6a704c8759f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_ScroungeFood.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_ScroungeFood.cs",
+        "sourceRawSha256": "17341386f61db2acc39b5651e9c57a235074a3a60289cdbb34df1b4677907178",
+        "sha256": "17341386f61db2acc39b5651e9c57a235074a3a60289cdbb34df1b4677907178"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JobGiver_Sleep.cs",
+        "projectFile": "Components/Hospitality/Source/JobGiver_Sleep.cs",
+        "sourceRawSha256": "9b8c38e9d0f47a777cc8e3259bcfafa4653042f1322ac98ce8d7e801189cdca1",
+        "sha256": "9b8c38e9d0f47a777cc8e3259bcfafa4653042f1322ac98ce8d7e801189cdca1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JoyGiverDefShopping.cs",
+        "projectFile": "Components/Hospitality/Source/JoyGiverDefShopping.cs",
+        "sourceRawSha256": "b586fcf31f99d2e56a35430314c67795d6262cc6f8c00e01b5fd0f98e218036b",
+        "sha256": "b586fcf31f99d2e56a35430314c67795d6262cc6f8c00e01b5fd0f98e218036b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JoyGiver_BuyFood.cs",
+        "projectFile": "Components/Hospitality/Source/JoyGiver_BuyFood.cs",
+        "sourceRawSha256": "cc8dbabee80ccbf5d7c0bc90bb61ec7265b92e5095f1eebd20b019eb4aade817",
+        "sha256": "cc8dbabee80ccbf5d7c0bc90bb61ec7265b92e5095f1eebd20b019eb4aade817"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/JoyGiver_BuyStuff.cs",
+        "projectFile": "Components/Hospitality/Source/JoyGiver_BuyStuff.cs",
+        "sourceRawSha256": "4e14d50489cf9763e112fe07d6269e0a2cfd9434e9d78da7943597916ce11645",
+        "sha256": "4e14d50489cf9763e112fe07d6269e0a2cfd9434e9d78da7943597916ce11645"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/LordJob_VisitColony.cs",
+        "projectFile": "Components/Hospitality/Source/LordJob_VisitColony.cs",
+        "sourceRawSha256": "1be6063fdff7846be856f3443d4512b405a4692973af9297189fac8a5065ba26",
+        "sha256": "1be6063fdff7846be856f3443d4512b405a4692973af9297189fac8a5065ba26"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/LordToil_CustomTravel.cs",
+        "projectFile": "Components/Hospitality/Source/LordToil_CustomTravel.cs",
+        "sourceRawSha256": "ffb2d93ff1f8755858a4337f9d60de250b0f5b8da02823dcc1809bc9b4ac8ec9",
+        "sha256": "ffb2d93ff1f8755858a4337f9d60de250b0f5b8da02823dcc1809bc9b4ac8ec9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/LordToil_VisitPoint.cs",
+        "projectFile": "Components/Hospitality/Source/LordToil_VisitPoint.cs",
+        "sourceRawSha256": "85cc9aa1042b16b58e95b1e6fab6fe93e38443f4ee206f2d74dc2dea1abdd2de",
+        "sha256": "85cc9aa1042b16b58e95b1e6fab6fe93e38443f4ee206f2d74dc2dea1abdd2de"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ModSettings_Hospitality.cs",
+        "projectFile": "Components/Hospitality/Source/ModSettings_Hospitality.cs",
+        "sourceRawSha256": "dee839d9b1e938fcd228cc353914195f932d3e2a3c3ef9faaaf0885732c6a612",
+        "sha256": "dee839d9b1e938fcd228cc353914195f932d3e2a3c3ef9faaaf0885732c6a612"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Mod_Hospitality.cs",
+        "projectFile": "Components/Hospitality/Source/Mod_Hospitality.cs",
+        "sourceRawSha256": "8c2baf76031eb3a02facda68c9d29d6fdb99af95d9435e48c8b83c7c656aa092",
+        "sha256": "8c2baf76031eb3a02facda68c9d29d6fdb99af95d9435e48c8b83c7c656aa092"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Multiplayer.cs",
+        "projectFile": "Components/Hospitality/Source/Multiplayer.cs",
+        "sourceRawSha256": "bf47d7801a42951b6f3f36246bdcf1047688550d76e583eba7f88e6651de7a39",
+        "sha256": "bf47d7801a42951b6f3f36246bdcf1047688550d76e583eba7f88e6651de7a39"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/RoomRoleWorker_GuestRoom.cs",
+        "projectFile": "Components/Hospitality/Source/RoomRoleWorker_GuestRoom.cs",
+        "sourceRawSha256": "2c6183b3b1707406827112d5a2e7e4218d6b96f4c9e687d76d51d8beae90c760",
+        "sha256": "2c6183b3b1707406827112d5a2e7e4218d6b96f4c9e687d76d51d8beae90c760"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/StatWorker_ForcedRelationshipDamage.cs",
+        "projectFile": "Components/Hospitality/Source/StatWorker_ForcedRelationshipDamage.cs",
+        "sourceRawSha256": "f4f46c6ee394406ec160545a598e21b7cf7b94e9b653c7467c95688c13ad8543",
+        "sha256": "f4f46c6ee394406ec160545a598e21b7cf7b94e9b653c7467c95688c13ad8543"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/StatWorker_RecruitEffectivity.cs",
+        "projectFile": "Components/Hospitality/Source/StatWorker_RecruitEffectivity.cs",
+        "sourceRawSha256": "ddac2fe81e150b610a0d5dc487aa51d48abcb614cff98876786b9336fe56f69c",
+        "sha256": "ddac2fe81e150b610a0d5dc487aa51d48abcb614cff98876786b9336fe56f69c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/StatWorker_RelationshipDamage.cs",
+        "projectFile": "Components/Hospitality/Source/StatWorker_RelationshipDamage.cs",
+        "sourceRawSha256": "84d18f01dd3472ade136ba6f483c94c43de121e383e099c75c6a6c6ac1cf0452",
+        "sha256": "84d18f01dd3472ade136ba6f483c94c43de121e383e099c75c6a6c6ac1cf0452"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThinkNode_ConditionalShouldKeepLyingDown.cs",
+        "projectFile": "Components/Hospitality/Source/ThinkNode_ConditionalShouldKeepLyingDown.cs",
+        "sourceRawSha256": "e090b7eb0a4b331360a4b41e51d71496c2e7ed6619f85fa9d8cb1059214f2049",
+        "sha256": "e090b7eb0a4b331360a4b41e51d71496c2e7ed6619f85fa9d8cb1059214f2049"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThinkNode_ConditionalWantsToHelp.cs",
+        "projectFile": "Components/Hospitality/Source/ThinkNode_ConditionalWantsToHelp.cs",
+        "sourceRawSha256": "3f49cf472e5d0901cec927914ee11964ce76d1b6a2430055b6dc1ecd5dea7474",
+        "sha256": "3f49cf472e5d0901cec927914ee11964ce76d1b6a2430055b6dc1ecd5dea7474"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThinkNode_InGuestArea.cs",
+        "projectFile": "Components/Hospitality/Source/ThinkNode_InGuestArea.cs",
+        "sourceRawSha256": "a962e308c39d14757f02d5667c1587e439af14bdfe0aeca109e8a05da4b69d1a",
+        "sha256": "a962e308c39d14757f02d5667c1587e439af14bdfe0aeca109e8a05da4b69d1a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThinkNode_OnlyAllowed.cs",
+        "projectFile": "Components/Hospitality/Source/ThinkNode_OnlyAllowed.cs",
+        "sourceRawSha256": "fd3640f842639c35a9167fe96254de459b62901a4d4dd8699e9f02e96c927590",
+        "sha256": "fd3640f842639c35a9167fe96254de459b62901a4d4dd8699e9f02e96c927590"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThoughtWorkerCached.cs",
+        "projectFile": "Components/Hospitality/Source/ThoughtWorkerCached.cs",
+        "sourceRawSha256": "d28568d24932202dfb818745e1861b9f042a59b2fb33c4ece90a550d2b8bfcdd",
+        "sha256": "d28568d24932202dfb818745e1861b9f042a59b2fb33c4ece90a550d2b8bfcdd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThoughtWorker_Beds.cs",
+        "projectFile": "Components/Hospitality/Source/ThoughtWorker_Beds.cs",
+        "sourceRawSha256": "c0d18c568998529e2281a9dd962bd061981590f0c3dd79efe9bcf19705fc4727",
+        "sha256": "c0d18c568998529e2281a9dd962bd061981590f0c3dd79efe9bcf19705fc4727"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThoughtWorker_CantAffordBed.cs",
+        "projectFile": "Components/Hospitality/Source/ThoughtWorker_CantAffordBed.cs",
+        "sourceRawSha256": "c696259437dbf168a1da2ccb05e435787ca3f484f3317e130259f57c4bf14cdc",
+        "sha256": "c696259437dbf168a1da2ccb05e435787ca3f484f3317e130259f57c4bf14cdc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/ThoughtWorker_HasNoFood.cs",
+        "projectFile": "Components/Hospitality/Source/ThoughtWorker_HasNoFood.cs",
+        "sourceRawSha256": "5a2f58c4ef9402256e3fc575474f4a5a126866571177ab2a47ad1c241774e485",
+        "sha256": "5a2f58c4ef9402256e3fc575474f4a5a126866571177ab2a47ad1c241774e485"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Toils_Ingest_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Toils_Ingest_Patch.cs",
+        "sourceRawSha256": "809e86d10d932afa48aca151d027a94946e79255644ccd633b07156b7174b16c",
+        "sha256": "809e86d10d932afa48aca151d027a94946e79255644ccd633b07156b7174b16c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/TransitionAction_EnsureHaveNearbyExitDestination.cs",
+        "projectFile": "Components/Hospitality/Source/TransitionAction_EnsureHaveNearbyExitDestination.cs",
+        "sourceRawSha256": "f04bf754f0a5ee26ee4337fcba8f80d7a7f9ac0fc24f20d2bfec5f3f21d25ace",
+        "sha256": "f04bf754f0a5ee26ee4337fcba8f80d7a7f9ac0fc24f20d2bfec5f3f21d25ace"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/TransitionAction_MessageDebug.cs",
+        "projectFile": "Components/Hospitality/Source/TransitionAction_MessageDebug.cs",
+        "sourceRawSha256": "2552acecaa932395c3dd09488eed1a12d2bee694640d9cb81f0423ae33a95364",
+        "sha256": "2552acecaa932395c3dd09488eed1a12d2bee694640d9cb81f0423ae33a95364"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/TransitionAction_SendAway.cs",
+        "projectFile": "Components/Hospitality/Source/TransitionAction_SendAway.cs",
+        "sourceRawSha256": "a662ccd796a4cddef50d8b8c66792f349ded0d36043e32de7be1d5d088ad54a3",
+        "sha256": "a662ccd796a4cddef50d8b8c66792f349ded0d36043e32de7be1d5d088ad54a3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Trigger_SentAway.cs",
+        "projectFile": "Components/Hospitality/Source/Trigger_SentAway.cs",
+        "sourceRawSha256": "e8328a321a2a3da3f52a16d4291bbc0ef7f97519d1ae0a9b7712d5fb720db341",
+        "sha256": "e8328a321a2a3da3f52a16d4291bbc0ef7f97519d1ae0a9b7712d5fb720db341"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Trigger_TicksPassedAndOkayToLeave.cs",
+        "projectFile": "Components/Hospitality/Source/Trigger_TicksPassedAndOkayToLeave.cs",
+        "sourceRawSha256": "bbe8c8430d21efa58b0cc66d490713dc6a564af1655f75a3d6419f6b571faa5e",
+        "sha256": "bbe8c8430d21efa58b0cc66d490713dc6a564af1655f75a3d6419f6b571faa5e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Trigger_UrgentlyCold.cs",
+        "projectFile": "Components/Hospitality/Source/Trigger_UrgentlyCold.cs",
+        "sourceRawSha256": "e49f16d69ae4744a81e4817468b6cf6147a0d5d346b2907e50c49676e54f4b0d",
+        "sha256": "e49f16d69ae4744a81e4817468b6cf6147a0d5d346b2907e50c49676e54f4b0d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Trigger_Visitors.cs",
+        "projectFile": "Components/Hospitality/Source/Trigger_Visitors.cs",
+        "sourceRawSha256": "02c77676ec155f6b0d849d1a1093ff7a4cfb8586b6af75e7eaa147be4a56ff0b",
+        "sha256": "02c77676ec155f6b0d849d1a1093ff7a4cfb8586b6af75e7eaa147be4a56ff0b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/WorkGiver_Diplomat.cs",
+        "projectFile": "Components/Hospitality/Source/WorkGiver_Diplomat.cs",
+        "sourceRawSha256": "d05e8200bcf919bcd04fc439d97be704246927898c1d4f98c64b3fc46e2c871c",
+        "sha256": "d05e8200bcf919bcd04fc439d97be704246927898c1d4f98c64b3fc46e2c871c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/WorkGiver_EmptyVendingMachine.cs",
+        "projectFile": "Components/Hospitality/Source/WorkGiver_EmptyVendingMachine.cs",
+        "sourceRawSha256": "e26afa7c4d5beecff225360a54f9abf678e88b6d70ba3c3e3b786ad76c4039af",
+        "sha256": "e26afa7c4d5beecff225360a54f9abf678e88b6d70ba3c3e3b786ad76c4039af"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/WorkGiver_Recruiter.cs",
+        "projectFile": "Components/Hospitality/Source/WorkGiver_Recruiter.cs",
+        "sourceRawSha256": "ad0749f28c887aed8b48f18d9c530bb394734834ef5f38d4296e801f49967228",
+        "sha256": "ad0749f28c887aed8b48f18d9c530bb394734834ef5f38d4296e801f49967228"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/AreaGUI.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/AreaGUI.cs",
+        "sourceRawSha256": "c7b0c12d51d8ccfc2f9d648192284845ab2ace2628371ee4ab735d24591de16f",
+        "sha256": "c7b0c12d51d8ccfc2f9d648192284845ab2ace2628371ee4ab735d24591de16f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/Dialog_MapSettings.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/Dialog_MapSettings.cs",
+        "sourceRawSha256": "b8b24208c530e403a3529a79cafd8f0cdd7067e2361ac9724a5130ec0d9db657",
+        "sha256": "b8b24208c530e403a3529a79cafd8f0cdd7067e2361ac9724a5130ec0d9db657"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/MainTabUtility.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/MainTabUtility.cs",
+        "sourceRawSha256": "b55f0dd3f2e5c39798fe7c54ab8815d0789708b9e8244c015bb6746ef47339e2",
+        "sha256": "b55f0dd3f2e5c39798fe7c54ab8815d0789708b9e8244c015bb6746ef47339e2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/MainTabWindow_Hospitality.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/MainTabWindow_Hospitality.cs",
+        "sourceRawSha256": "af08a8cc1436e5b79aa040ecbf84dcf186e29d67f6ce31b95b018b58af3be2e6",
+        "sha256": "af08a8cc1436e5b79aa040ecbf84dcf186e29d67f6ce31b95b018b58af3be2e6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_AccommodationArea.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_AccommodationArea.cs",
+        "sourceRawSha256": "3aff363db8fa45ab52b42f078b98776a078c6d4d68611a6da32006d084f91522",
+        "sha256": "3aff363db8fa45ab52b42f078b98776a078c6d4d68611a6da32006d084f91522"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_AreaBase.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_AreaBase.cs",
+        "sourceRawSha256": "03132cfdefd5b5dea1ffab965872e3010029eb7e3b794339e344b3fa5c55dfaa",
+        "sha256": "03132cfdefd5b5dea1ffab965872e3010029eb7e3b794339e344b3fa5c55dfaa"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_ButtonMore.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_ButtonMore.cs",
+        "sourceRawSha256": "8a7eb1733c87bc0e3e2d3fff7b3103fa84a4d98ee1cbdcde9dada3f2fbe69c26",
+        "sha256": "8a7eb1733c87bc0e3e2d3fff7b3103fa84a4d98ee1cbdcde9dada3f2fbe69c26"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_Entertain.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_Entertain.cs",
+        "sourceRawSha256": "7d576ad8c830ba8bece70a9af668dc33659d8e44cb9b0aa41c4dee1a56e03835",
+        "sha256": "7d576ad8c830ba8bece70a9af668dc33659d8e44cb9b0aa41c4dee1a56e03835"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_Faction.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_Faction.cs",
+        "sourceRawSha256": "2d9afc117676633cecdff4c5d94a93afc4f121113021cacbd5fee3e9f74abcfc",
+        "sha256": "2d9afc117676633cecdff4c5d94a93afc4f121113021cacbd5fee3e9f74abcfc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_FriendsForRecruiting.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_FriendsForRecruiting.cs",
+        "sourceRawSha256": "f8046db683f2cb64ae36ff074c986394ea7025d6d8dd8ab167614dfb8eaba650",
+        "sha256": "f8046db683f2cb64ae36ff074c986394ea7025d6d8dd8ab167614dfb8eaba650"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_Hospitality.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_Hospitality.cs",
+        "sourceRawSha256": "aec4cc6ba9fcabd6555b82dcd04062fa47d562e34da86005a6729b6c1df744ef",
+        "sha256": "aec4cc6ba9fcabd6555b82dcd04062fa47d562e34da86005a6729b6c1df744ef"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_LabelCustom.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_LabelCustom.cs",
+        "sourceRawSha256": "c29b4a6e79c4c7bb1e872c954119ffc2b29b9d24e3a7d5a3f1f0ca8ef0807599",
+        "sha256": "c29b4a6e79c4c7bb1e872c954119ffc2b29b9d24e3a7d5a3f1f0ca8ef0807599"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_MakeFriends.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_MakeFriends.cs",
+        "sourceRawSha256": "036b8a07e79ea88c41df0c3cc498902da8d46c9bc527e493c2d53e773cad4e5d",
+        "sha256": "036b8a07e79ea88c41df0c3cc498902da8d46c9bc527e493c2d53e773cad4e5d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_Relationship.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_Relationship.cs",
+        "sourceRawSha256": "695b465107893aca6e667ba8d4db4b46b1f3c631eca04eceea695d53881eea55",
+        "sha256": "695b465107893aca6e667ba8d4db4b46b1f3c631eca04eceea695d53881eea55"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnColumnWorker_ShoppingArea.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnColumnWorker_ShoppingArea.cs",
+        "sourceRawSha256": "ae57f60d67a646231bd1300f069293a6ed1793cb2249e8d5a560d4a07cf75dd9",
+        "sha256": "ae57f60d67a646231bd1300f069293a6ed1793cb2249e8d5a560d4a07cf75dd9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/MainTab/PawnTable_Guests.cs",
+        "projectFile": "Components/Hospitality/Source/MainTab/PawnTable_Guests.cs",
+        "sourceRawSha256": "986c6ec062bc2887d9b125bfbe8505f03b8f97fa9951fa7677148a400fe0c858",
+        "sha256": "986c6ec062bc2887d9b125bfbe8505f03b8f97fa9951fa7677148a400fe0c858"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/AddictionUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/AddictionUtility_Patch.cs",
+        "sourceRawSha256": "b2dacf992837919d0bf7595ab56778a44e2eda789bdf412ab098ea7b1ad7b002",
+        "sha256": "b2dacf992837919d0bf7595ab56778a44e2eda789bdf412ab098ea7b1ad7b002"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Building_Bed_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Building_Bed_Patch.cs",
+        "sourceRawSha256": "61684cb0958119207a7dc9a61d67943a02bad3dd20c5e0722d2e4edab4d55d8e",
+        "sha256": "61684cb0958119207a7dc9a61d67943a02bad3dd20c5e0722d2e4edab4d55d8e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Building_Door_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Building_Door_Patch.cs",
+        "sourceRawSha256": "82dfc6b85a2dc486856702ca45f11c986d673c977ac9a57d8de6e9701ad4001a",
+        "sha256": "82dfc6b85a2dc486856702ca45f11c986d673c977ac9a57d8de6e9701ad4001a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ExpectationsUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ExpectationsUtility_Patch.cs",
+        "sourceRawSha256": "10c50feea62acee1dd2e47a87eedce26e54a0bed2f3b8470c6fcd7a1d9be41e2",
+        "sha256": "10c50feea62acee1dd2e47a87eedce26e54a0bed2f3b8470c6fcd7a1d9be41e2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/FactionDialogMaker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/FactionDialogMaker_Patch.cs",
+        "sourceRawSha256": "ff6d2d2d28b38eccf1e8d825121830c390ed0a2f4c308843cfab8d04c8550c70",
+        "sha256": "ff6d2d2d28b38eccf1e8d825121830c390ed0a2f4c308843cfab8d04c8550c70"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/FactionUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/FactionUtility_Patch.cs",
+        "sourceRawSha256": "7f84be19f82917f0bb0bc0dbf7eb529e0990544b20903a50c09121286ccb37ca",
+        "sha256": "7f84be19f82917f0bb0bc0dbf7eb529e0990544b20903a50c09121286ccb37ca"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Faction_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Faction_Patch.cs",
+        "sourceRawSha256": "45206048116b2c0dd2426da69eabf3111405355cf82d081fe1166912b37ba12e",
+        "sha256": "45206048116b2c0dd2426da69eabf3111405355cf82d081fe1166912b37ba12e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/FoodUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/FoodUtility_Patch.cs",
+        "sourceRawSha256": "4c081e8e7cb71b7d5d258650005c442080f49522d9b5af84e354e0bcbe55a5b7",
+        "sha256": "4c081e8e7cb71b7d5d258650005c442080f49522d9b5af84e354e0bcbe55a5b7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ForbidUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ForbidUtility_Patch.cs",
+        "sourceRawSha256": "928ba2c48733f2b5235dcdfc58fc5ecd80e437c439dbedd794653e297700012b",
+        "sha256": "928ba2c48733f2b5235dcdfc58fc5ecd80e437c439dbedd794653e297700012b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Game_FinalizeInit_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Game_FinalizeInit_Patch.cs",
+        "sourceRawSha256": "6f5e77106ea182bcd8abc266eee256a811abc66b7c16aa3e554a996231bd7ce6",
+        "sha256": "6f5e77106ea182bcd8abc266eee256a811abc66b7c16aa3e554a996231bd7ce6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Game_LoadGame_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Game_LoadGame_Patch.cs",
+        "sourceRawSha256": "513dc2e126b38170828398c01ae13cc462d3a654af80b7ed32ba063fe86a4c31",
+        "sha256": "513dc2e126b38170828398c01ae13cc462d3a654af80b7ed32ba063fe86a4c31"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/GatheringsUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/GatheringsUtility_Patch.cs",
+        "sourceRawSha256": "27125ab9caf3f5ed1ec1d82087d1b5602ffe5746bbcc45da073a0014b95c84b4",
+        "sha256": "27125ab9caf3f5ed1ec1d82087d1b5602ffe5746bbcc45da073a0014b95c84b4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/GenGuest_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/GenGuest_Patch.cs",
+        "sourceRawSha256": "c94e0cdbe339b23a500f3cbb0680474031eec4dbe90723ae09dce45cde627448",
+        "sha256": "c94e0cdbe339b23a500f3cbb0680474031eec4dbe90723ae09dce45cde627448"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Hediff_Pregnant_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Hediff_Pregnant_Patch.cs",
+        "sourceRawSha256": "d83dea821c3e76b4ded048d560e626e5dbd189cc25f9470662260b4b4b688a7c",
+        "sha256": "d83dea821c3e76b4ded048d560e626e5dbd189cc25f9470662260b4b4b688a7c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/InteractionWorker_RecruitAttempt_DoRecruit_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/InteractionWorker_RecruitAttempt_DoRecruit_Patch.cs",
+        "sourceRawSha256": "4ac8675b88e73d862c8ab9872f60f53350b601928c7f3a53a773f7fde2ffa824",
+        "sha256": "4ac8675b88e73d862c8ab9872f60f53350b601928c7f3a53a773f7fde2ffa824"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ITab_Pawn_Guest_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ITab_Pawn_Guest_Patch.cs",
+        "sourceRawSha256": "56c21804bb8ce57be80b2f4a3c48e348611fca3b34e6fd14e12ac8b18f5461a9",
+        "sha256": "56c21804bb8ce57be80b2f4a3c48e348611fca3b34e6fd14e12ac8b18f5461a9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/JobDriver_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/JobDriver_Patch.cs",
+        "sourceRawSha256": "5c9620aa637df31d106e0c148d5a6ee885e87fc02231c643ecb393bd19305eb7",
+        "sha256": "5c9620aa637df31d106e0c148d5a6ee885e87fc02231c643ecb393bd19305eb7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/JobGiver_Work_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/JobGiver_Work_Patch.cs",
+        "sourceRawSha256": "cf9cedf959bcdff95c21ae1ca2703662475343da766586edac298f86af65da53",
+        "sha256": "cf9cedf959bcdff95c21ae1ca2703662475343da766586edac298f86af65da53"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/JoyGiver_Ingest_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/JoyGiver_Ingest_Patch.cs",
+        "sourceRawSha256": "e7b8049218b8e6fe43202adf4aaa20994ec073afad1a9d73dab36561a8503ef5",
+        "sha256": "e7b8049218b8e6fe43202adf4aaa20994ec073afad1a9d73dab36561a8503ef5"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/MentalStateHandler_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/MentalStateHandler_Patch.cs",
+        "sourceRawSha256": "5f90c3194ad99ec3d6a242d12cda1b62e79a086bf7fe7523a7590dcf75216415",
+        "sha256": "5f90c3194ad99ec3d6a242d12cda1b62e79a086bf7fe7523a7590dcf75216415"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/MinifiedThing_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/MinifiedThing_Patch.cs",
+        "sourceRawSha256": "448da1d64871237c6b1e81b72d17c177e4566ef271bacaa4dc8e034c67020f57",
+        "sha256": "448da1d64871237c6b1e81b72d17c177e4566ef271bacaa4dc8e034c67020f57"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/OverlayDrawer_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/OverlayDrawer_Patch.cs",
+        "sourceRawSha256": "41daba2c8d911031bad1ad20b3d78231c045f77c398c1c65f223929e316b6505",
+        "sha256": "41daba2c8d911031bad1ad20b3d78231c045f77c398c1c65f223929e316b6505"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/PathFinder_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/PathFinder_Patch.cs",
+        "sourceRawSha256": "5e0fa5561a999b757723edd9b9d010fdbba3e7497fef77b06865346c2b0c3cd1",
+        "sha256": "5e0fa5561a999b757723edd9b9d010fdbba3e7497fef77b06865346c2b0c3cd1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/PathfindingAvoidance.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/PathfindingAvoidance.cs",
+        "sourceRawSha256": "c000bd5685e8d05627b7b3e60e2e9b7dcd831e1a37879aa5f93a26e3df1083d3",
+        "sha256": "c000bd5685e8d05627b7b3e60e2e9b7dcd831e1a37879aa5f93a26e3df1083d3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/PawnNameColorUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/PawnNameColorUtility_Patch.cs",
+        "sourceRawSha256": "d72333af3bfc7b75739fcf9debf5315a6d28a1a58142761976124385d4443bad",
+        "sha256": "d72333af3bfc7b75739fcf9debf5315a6d28a1a58142761976124385d4443bad"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/PawnUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/PawnUtility_Patch.cs",
+        "sourceRawSha256": "d2e44b742d5b55c6835fe15e3a4a5d24e03b252442dc05bc922ea6aca9312927",
+        "sha256": "d2e44b742d5b55c6835fe15e3a4a5d24e03b252442dc05bc922ea6aca9312927"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_ApparelTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_ApparelTracker_Patch.cs",
+        "sourceRawSha256": "0f658dfe23b3a58f79f4ac34594b4214f211ba3f51ac71d72c9b353a6bc65b91",
+        "sha256": "0f658dfe23b3a58f79f4ac34594b4214f211ba3f51ac71d72c9b353a6bc65b91"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_FoodRestrictionTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_FoodRestrictionTracker_Patch.cs",
+        "sourceRawSha256": "88ece6103d77c33c0a66c4a2be0250dbef7aa4680e01d00ab337cdfd3de46dd2",
+        "sha256": "88ece6103d77c33c0a66c4a2be0250dbef7aa4680e01d00ab337cdfd3de46dd2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_GuestTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_GuestTracker_Patch.cs",
+        "sourceRawSha256": "ea8c73b2c81404edbc676b6e6a7e6240b7a3534b5176f24dce8d5454e1bfb26f",
+        "sha256": "ea8c73b2c81404edbc676b6e6a7e6240b7a3534b5176f24dce8d5454e1bfb26f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_HealthTracker_CheckForStateChange_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_HealthTracker_CheckForStateChange_Patch.cs",
+        "sourceRawSha256": "e9453019b6125c005fe7148167f7636d8f4eaf725fff4026249930eeec8e7362",
+        "sha256": "e9453019b6125c005fe7148167f7636d8f4eaf725fff4026249930eeec8e7362"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_HealthTracker_MakeDowned_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_HealthTracker_MakeDowned_Patch.cs",
+        "sourceRawSha256": "f9d10bc23bbb8b5321c77c8bea9ba3a94ede0c2e9df7b2a53c772cfae5ff548b",
+        "sha256": "f9d10bc23bbb8b5321c77c8bea9ba3a94ede0c2e9df7b2a53c772cfae5ff548b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_InteractionsTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_InteractionsTracker_Patch.cs",
+        "sourceRawSha256": "d089d6296d5e8e2103f53fd1e8ed1901864ee7943d2e2fad9373d334eb506720",
+        "sha256": "d089d6296d5e8e2103f53fd1e8ed1901864ee7943d2e2fad9373d334eb506720"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_MindState_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_MindState_Patch.cs",
+        "sourceRawSha256": "b23fd6940f00480220a72204396e13ff873d38b14f66ec034a1985e7e9e98603",
+        "sha256": "b23fd6940f00480220a72204396e13ff873d38b14f66ec034a1985e7e9e98603"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_NeedsTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_NeedsTracker_Patch.cs",
+        "sourceRawSha256": "7744b3901e134d814f2583e817a2d62a513bdf958db8233bf1480f441b1d932a",
+        "sha256": "7744b3901e134d814f2583e817a2d62a513bdf958db8233bf1480f441b1d932a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_Ownership_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_Ownership_Patch.cs",
+        "sourceRawSha256": "720ff4e3950b3155d7b3c2d71285a34f909ce05124d685cea455d772e13e17d1",
+        "sha256": "720ff4e3950b3155d7b3c2d71285a34f909ce05124d685cea455d772e13e17d1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_Patch.cs",
+        "sourceRawSha256": "1115b3cc9cc15601bfcf34c53f65c010fb28fdf92289fdb7529a1a88f4198312",
+        "sha256": "1115b3cc9cc15601bfcf34c53f65c010fb28fdf92289fdb7529a1a88f4198312"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_RelationsTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_RelationsTracker_Patch.cs",
+        "sourceRawSha256": "06054cb07b0c73a7f733bf88b28bf01ba2df3e5d5c215fb659712a799c4bc1b9",
+        "sha256": "06054cb07b0c73a7f733bf88b28bf01ba2df3e5d5c215fb659712a799c4bc1b9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Pawn_TraderTracker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Pawn_TraderTracker_Patch.cs",
+        "sourceRawSha256": "b70eb7fa8b7c13170261c87c733977f0be09ae258886edb739b787792e0e71fa",
+        "sha256": "b70eb7fa8b7c13170261c87c733977f0be09ae258886edb739b787792e0e71fa"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Reachability_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Reachability_Patch.cs",
+        "sourceRawSha256": "442392ddda5d8ddabf36ef4943c9775da9aab4e7cb30a33bc8af38f59ae58898",
+        "sha256": "442392ddda5d8ddabf36ef4943c9775da9aab4e7cb30a33bc8af38f59ae58898"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/RestUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/RestUtility_Patch.cs",
+        "sourceRawSha256": "58566c957718cf0b8d5cb5f2ebad1a2e69081f9182ef39bc67498308035498e0",
+        "sha256": "58566c957718cf0b8d5cb5f2ebad1a2e69081f9182ef39bc67498308035498e0"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Room_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Room_Patch.cs",
+        "sourceRawSha256": "bd96409aa11e177cad1d5b077584607456faf5d3fc728e809120a611e06478e4",
+        "sha256": "bd96409aa11e177cad1d5b077584607456faf5d3fc728e809120a611e06478e4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/SmoothableWallUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/SmoothableWallUtility_Patch.cs",
+        "sourceRawSha256": "85d0aacd3b51afef9bdb8584e84438b6f87c36ed0c9ace914f704a377628da68",
+        "sha256": "85d0aacd3b51afef9bdb8584e84438b6f87c36ed0c9ace914f704a377628da68"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/SocialCardUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/SocialCardUtility_Patch.cs",
+        "sourceRawSha256": "1cdf820041f4d8d07ab53448c4c393da9e188e6949f4bd878daecd1ecfb29276",
+        "sha256": "1cdf820041f4d8d07ab53448c4c393da9e188e6949f4bd878daecd1ecfb29276"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/SoftWarmBeds_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/SoftWarmBeds_Patch.cs",
+        "sourceRawSha256": "1f77228781cdcb52ea914f65d66ea94e833d41db20ebf70252ac250da3e30e73",
+        "sha256": "1f77228781cdcb52ea914f65d66ea94e833d41db20ebf70252ac250da3e30e73"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/StoreUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/StoreUtility_Patch.cs",
+        "sourceRawSha256": "c9e2f94e384ed35517c2efe8eb2889a30c0727b7c66cccdbbf896314e69b28e9",
+        "sha256": "c9e2f94e384ed35517c2efe8eb2889a30c0727b7c66cccdbbf896314e69b28e9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ThingFilter_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ThingFilter_Patch.cs",
+        "sourceRawSha256": "aceb989a1abe6b530e117b04d39a93c9b506e34a0fe4911433b9a9b41424ee9c",
+        "sha256": "aceb989a1abe6b530e117b04d39a93c9b506e34a0fe4911433b9a9b41424ee9c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Thing_SpawnSetupPatch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Thing_SpawnSetupPatch.cs",
+        "sourceRawSha256": "f67a25ff0f646fd47172dfa432af59821250ff63f839dca15918f9373dafb798",
+        "sha256": "f67a25ff0f646fd47172dfa432af59821250ff63f839dca15918f9373dafb798"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ThinkNode_ConditionalNPCCanSelfTendNow_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ThinkNode_ConditionalNPCCanSelfTendNow_Patch.cs",
+        "sourceRawSha256": "0dbf4ba08989842c3194a6954fd7ac2db07dcafeaea61fcdb9d48f4fa9903a89",
+        "sha256": "0dbf4ba08989842c3194a6954fd7ac2db07dcafeaea61fcdb9d48f4fa9903a89"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/ThoughtWorker_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/ThoughtWorker_Patch.cs",
+        "sourceRawSha256": "2f757096dca5558fe3ea3aa80229181e5a76124823a175c3281043d0bd22ebbd",
+        "sha256": "2f757096dca5558fe3ea3aa80229181e5a76124823a175c3281043d0bd22ebbd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Toils_LayDown_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/Toils_LayDown_Patch.cs",
+        "sourceRawSha256": "d065eb994fab3a054a1d015bc0d82f4b32d39544610064a69c3068dd297204ca",
+        "sha256": "d065eb994fab3a054a1d015bc0d82f4b32d39544610064a69c3068dd297204ca"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/TradeUtility_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/TradeUtility_Patch.cs",
+        "sourceRawSha256": "f0cb1248633a5e0e877792dcbfd36ae0d587d92fd8ef13545c1171d220791bd9",
+        "sha256": "f0cb1248633a5e0e877792dcbfd36ae0d587d92fd8ef13545c1171d220791bd9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/TransitionAction_EnsureHaveExitDestination_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/TransitionAction_EnsureHaveExitDestination_Patch.cs",
+        "sourceRawSha256": "02da5e61a431b876e0fe31ed2b7c457103054a29eaebde812966652f5e69f3dc",
+        "sha256": "02da5e61a431b876e0fe31ed2b7c457103054a29eaebde812966652f5e69f3dc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/TransitionAction_SetDefendLocalGroup_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/TransitionAction_SetDefendLocalGroup_Patch.cs",
+        "sourceRawSha256": "21db22872d3699636bb99c839ddf6445b2f532b3df9e63c567cc33c828aa24c3",
+        "sha256": "21db22872d3699636bb99c839ddf6445b2f532b3df9e63c567cc33c828aa24c3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/WorkGiver_HunterHunt_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/WorkGiver_HunterHunt_Patch.cs",
+        "sourceRawSha256": "fe669b80cc1a40e5e371e27e029d89c68e013de7cbf7f03c72b6e29cd7aea8c8",
+        "sha256": "fe669b80cc1a40e5e371e27e029d89c68e013de7cbf7f03c72b6e29cd7aea8c8"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/WorkGiver_RescueDownedPatch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/WorkGiver_RescueDownedPatch.cs",
+        "sourceRawSha256": "d86f45aa7f2136d1e5f366d61a6c744ae34e54ebf9caf4137fe02509a3393b6f",
+        "sha256": "d86f45aa7f2136d1e5f366d61a6c744ae34e54ebf9caf4137fe02509a3393b6f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/WorkGiver_TakeToPen_Patch.cs",
+        "projectFile": "Components/Hospitality/Source/Patches/WorkGiver_TakeToPen_Patch.cs",
+        "sourceRawSha256": "c4950416bd98a92b9a5a0134422484dd2f0e9cd660ceeb206b64deef912b6ccd",
+        "sha256": "c4950416bd98a92b9a5a0134422484dd2f0e9cd660ceeb206b64deef912b6ccd"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Spacer/IncidentWorker_VisitorGroupSpacer.cs",
+        "projectFile": "Components/Hospitality/Source/Spacer/IncidentWorker_VisitorGroupSpacer.cs",
+        "sourceRawSha256": "5e429c7a18e9dee74df6e06b23e83f1320cfdb5203910f9ed65d2a50c63ec7bb",
+        "sha256": "5e429c7a18e9dee74df6e06b23e83f1320cfdb5203910f9ed65d2a50c63ec7bb"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Spacer/IncidentWorker_VisitorGroupSpacerCruise.cs",
+        "projectFile": "Components/Hospitality/Source/Spacer/IncidentWorker_VisitorGroupSpacerCruise.cs",
+        "sourceRawSha256": "0dbb3ff633dd8ec29891d382936f42ee5db65418f99f8167aef4a646f993e028",
+        "sha256": "0dbb3ff633dd8ec29891d382936f42ee5db65418f99f8167aef4a646f993e028"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Spacer/IncidentWorker_VisitorGroupSpacerLuxury.cs",
+        "projectFile": "Components/Hospitality/Source/Spacer/IncidentWorker_VisitorGroupSpacerLuxury.cs",
+        "sourceRawSha256": "a046831cd9c10e3b9bfa2bc67ae229c4d5b5bbb914e8a824ff5ccbcee27a0b89",
+        "sha256": "a046831cd9c10e3b9bfa2bc67ae229c4d5b5bbb914e8a824ff5ccbcee27a0b89"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/BedComponentTransfer.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/BedComponentTransfer.cs",
+        "sourceRawSha256": "d6dff469524b8c438f39466f276728e67029a498d2497b65658b009ec4a45650",
+        "sha256": "d6dff469524b8c438f39466f276728e67029a498d2497b65658b009ec4a45650"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/BedUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/BedUtility.cs",
+        "sourceRawSha256": "944b07a9639d78fbba4a8cdc4ddacaaf1de3531701a6b8c50ec1e350f70e2fba",
+        "sha256": "944b07a9639d78fbba4a8cdc4ddacaaf1de3531701a6b8c50ec1e350f70e2fba"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/CompUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/CompUtility.cs",
+        "sourceRawSha256": "0178c30d99bd5ce3ba5b432a7a2276eea6fc5ed879bb8b9eb3dcda5a6725b0e7",
+        "sha256": "0178c30d99bd5ce3ba5b432a7a2276eea6fc5ed879bb8b9eb3dcda5a6725b0e7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/CustomWidget.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/CustomWidget.cs",
+        "sourceRawSha256": "d4d7752215f798039e432fd09946feea4abe90b51459e015b96b04da4903625e",
+        "sha256": "d4d7752215f798039e432fd09946feea4abe90b51459e015b96b04da4903625e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/DefOf.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/DefOf.cs",
+        "sourceRawSha256": "7f15ef59a7fad9ddded11e43bfdea3c4879787843a632d3fc1e34aa571e550c6",
+        "sha256": "7f15ef59a7fad9ddded11e43bfdea3c4879787843a632d3fc1e34aa571e550c6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/DefsUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/DefsUtility.cs",
+        "sourceRawSha256": "0db7311dd9a0c4b3e4b7874650c9fb8dbe1d02e37fbb337978a747271ef5447b",
+        "sha256": "0db7311dd9a0c4b3e4b7874650c9fb8dbe1d02e37fbb337978a747271ef5447b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/DialogUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/DialogUtility.cs",
+        "sourceRawSha256": "54d3378a2f381fa5214945c74b4a46e1305894df82a1592082542cb4e7d2f9b7",
+        "sha256": "54d3378a2f381fa5214945c74b4a46e1305894df82a1592082542cb4e7d2f9b7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/FoodUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/FoodUtility.cs",
+        "sourceRawSha256": "ecd4d48feb47ed3dce77366ca3c9d4f7108693202a3168a3163f659ab3a8ef7b",
+        "sha256": "ecd4d48feb47ed3dce77366ca3c9d4f7108693202a3168a3163f659ab3a8ef7b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/GenericUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/GenericUtility.cs",
+        "sourceRawSha256": "502c129a582aa8443b45bcf625512b9699f763b91ef506366a2cfcd526f07227",
+        "sha256": "502c129a582aa8443b45bcf625512b9699f763b91ef506366a2cfcd526f07227"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/GuestBeddingDiagnostics.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/GuestBeddingDiagnostics.cs",
+        "sourceRawSha256": "536216a23f1157e91cc625a79ad45547c85ef78ee02c13dada5892d522b92b94",
+        "sha256": "536216a23f1157e91cc625a79ad45547c85ef78ee02c13dada5892d522b92b94"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/GuestUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/GuestUtility.cs",
+        "sourceRawSha256": "025902cc8e4d6e0194896b4bb42269e56dc6cd224a01a70ca9f84269f498b749",
+        "sha256": "025902cc8e4d6e0194896b4bb42269e56dc6cd224a01a70ca9f84269f498b749"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/HospitalityContent.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/HospitalityContent.cs",
+        "sourceRawSha256": "2c4c2a48239c16398cfca26df6b5007898705ff3e5fb084f99d860029be41b26",
+        "sha256": "2c4c2a48239c16398cfca26df6b5007898705ff3e5fb084f99d860029be41b26"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/InternalDefOf.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/InternalDefOf.cs",
+        "sourceRawSha256": "a6a3593d363554f616ba21590f8b265796e73098498fcef5654bbe4087626b87",
+        "sha256": "a6a3593d363554f616ba21590f8b265796e73098498fcef5654bbe4087626b87"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/InventoryCapacityCompatibility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/InventoryCapacityCompatibility.cs",
+        "sourceRawSha256": "65aca9af99ddcdcda017e09b12c57dcae2ebeaadcfb1aeccdbefefbebac3367c",
+        "sha256": "65aca9af99ddcdcda017e09b12c57dcae2ebeaadcfb1aeccdbefefbebac3367c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/ItemUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/ItemUtility.cs",
+        "sourceRawSha256": "8c2cec29db7ccb22f02b5bf3a14dc89348bf9150b6f566a0c94a0be1e82fb372",
+        "sha256": "8c2cec29db7ccb22f02b5bf3a14dc89348bf9150b6f566a0c94a0be1e82fb372"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/Listing_Custom.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/Listing_Custom.cs",
+        "sourceRawSha256": "d2147d4aef56d23a068f52e7fc9098a7d6bbb7175aaf5e4a5ac345eee1be9b91",
+        "sha256": "d2147d4aef56d23a068f52e7fc9098a7d6bbb7175aaf5e4a5ac345eee1be9b91"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/MapComponentCache.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/MapComponentCache.cs",
+        "sourceRawSha256": "7fa162c41d3576d969193aae50768ae4b1ce143c7d3e745e6aa925c500bf15df",
+        "sha256": "7fa162c41d3576d969193aae50768ae4b1ce143c7d3e745e6aa925c500bf15df"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/RelationsCache.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/RelationsCache.cs",
+        "sourceRawSha256": "0049d7a51fa79462b8b86f4a4f0e9a3c2e46c633340cd42d361d7c35fa69ed2b",
+        "sha256": "0049d7a51fa79462b8b86f4a4f0e9a3c2e46c633340cd42d361d7c35fa69ed2b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/RelationUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/RelationUtility.cs",
+        "sourceRawSha256": "346e87ec250eb9450c684a25ffb7887f802e2c70f34ad7be7f2ff7e19fc67472",
+        "sha256": "346e87ec250eb9450c684a25ffb7887f802e2c70f34ad7be7f2ff7e19fc67472"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/ScroungeReservationLayer.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/ScroungeReservationLayer.cs",
+        "sourceRawSha256": "bcef7d843e3e640b9d93137e840100e5d84898b2382521b88b7644f26e172dad",
+        "sha256": "bcef7d843e3e640b9d93137e840100e5d84898b2382521b88b7644f26e172dad"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/ShoppingSearchUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/ShoppingSearchUtility.cs",
+        "sourceRawSha256": "5e3061625d3d896dd4b933538f33fd3414a417b3f58c97e379d15ea13246caf6",
+        "sha256": "5e3061625d3d896dd4b933538f33fd3414a417b3f58c97e379d15ea13246caf6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/SoftWarmBedsCompatibility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/SoftWarmBedsCompatibility.cs",
+        "sourceRawSha256": "68f0dc7c0afe2da5ea33e69c42c44d471b599220f2e9a3d828fb767f8a72d879",
+        "sha256": "68f0dc7c0afe2da5ea33e69c42c44d471b599220f2e9a3d828fb767f8a72d879"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/SpaceMapUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/SpaceMapUtility.cs",
+        "sourceRawSha256": "48a00131301d846ec742e5803bae0ccf7db3957ef6ea47403a48226dfb482f90",
+        "sha256": "48a00131301d846ec742e5803bae0ccf7db3957ef6ea47403a48226dfb482f90"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/SpawnGroupUtility.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/SpawnGroupUtility.cs",
+        "sourceRawSha256": "7ecf35722b03c959e38da2187c770a1fdcc1b5a469c3d4016f975b1325772b4a",
+        "sha256": "7ecf35722b03c959e38da2187c770a1fdcc1b5a469c3d4016f975b1325772b4a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/TDPackAreas.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/TDPackAreas.cs",
+        "sourceRawSha256": "59fa9e862421a7e5ba405b12df4af28ed6819fe66184ee55056be24fd828e03e",
+        "sha256": "59fa9e862421a7e5ba405b12df4af28ed6819fe66184ee55056be24fd828e03e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/ThingCache.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/ThingCache.cs",
+        "sourceRawSha256": "2ad79d1154f3ec2f92b0ffe1fdd94c5a6f9f8ccbd8b44adf6fc1143322e6e8c6",
+        "sha256": "2ad79d1154f3ec2f92b0ffe1fdd94c5a6f9f8ccbd8b44adf6fc1143322e6e8c6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Utilities/ThoughtResultCache.cs",
+        "projectFile": "Components/Hospitality/Source/Utilities/ThoughtResultCache.cs",
+        "sourceRawSha256": "111f4916dba7746d2646634a44370c61b9aab4bbb152da62ef6fed1e1a3febc3",
+        "sha256": "111f4916dba7746d2646634a44370c61b9aab4bbb152da62ef6fed1e1a3febc3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Debug/Debug_MeditationJoy.cs.bak",
+        "projectFile": "Components/Hospitality/Source/Patches/Debug/Debug_MeditationJoy.cs.bak",
+        "sourceRawSha256": "951c34cd4d8cfca420118d875e544b51cf93b66f88e08f04ffb7f13e97865eeb",
+        "sha256": "951c34cd4d8cfca420118d875e544b51cf93b66f88e08f04ffb7f13e97865eeb"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Debug/Debug_MeditationRoom.cs.bak",
+        "projectFile": "Components/Hospitality/Source/Patches/Debug/Debug_MeditationRoom.cs.bak",
+        "sourceRawSha256": "d3306c909a169e12cbe0625750aa16854d67e38811eaa6d6f847d2fa81484b57",
+        "sha256": "d3306c909a169e12cbe0625750aa16854d67e38811eaa6d6f847d2fa81484b57"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/Source/Patches/Debug/Debug_MeditationSpot.cs.bak",
+        "projectFile": "Components/Hospitality/Source/Patches/Debug/Debug_MeditationSpot.cs.bak",
+        "sourceRawSha256": "a88adaaa78c64776f02b5798a2f5fc62a6d909670967f6584417c06cd927efbf",
+        "sha256": "a88adaaa78c64776f02b5798a2f5fc62a6d909670967f6584417c06cd927efbf"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/LICENSE",
+        "projectFile": "Components/Hospitality/LICENSE",
+        "sourceRawSha256": "53927bd0b739d38c87a0a82236fd9b070c2dfff11c0c119be50372005d5047ad",
+        "sha256": "53927bd0b739d38c87a0a82236fd9b070c2dfff11c0c119be50372005d5047ad"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/README.md",
+        "projectFile": "Components/Hospitality/README.md",
+        "sourceRawSha256": "3c180b3699fa76000e12eedd90d4a000e8d2356b1507a4cebe6b9d9162eb481d",
+        "sha256": "3c180b3699fa76000e12eedd90d4a000e8d2356b1507a4cebe6b9d9162eb481d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/About/About.xml",
+        "projectFile": "Components/Hospitality/Upstream/About/About.xml",
+        "sourceRawSha256": "f2fc199bcfae22abe789757139908eaab21e6c0b608b3857ef300fb025b1d7a4",
+        "sha256": "f2fc199bcfae22abe789757139908eaab21e6c0b608b3857ef300fb025b1d7a4"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/LoadFolders.xml",
+        "projectFile": "Components/Hospitality/Upstream/LoadFolders.xml",
+        "sourceRawSha256": "81feabaa242dcce885e576582ebf297e9a943f04cc80618a630f34fad9392c4c",
+        "sha256": "81feabaa242dcce885e576582ebf297e9a943f04cc80618a630f34fad9392c4c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/Keyed/Hospitality.xml",
+        "projectFile": "Components/Hospitality/Languages/English/Keyed/Hospitality_Hospitality.xml",
+        "sourceRawSha256": "1a02df0246e913ae71530908ed14f0dbc5a6b98b257eb583ee2902539387d632",
+        "sha256": "dee2c940df3f51eaa089dd2f615bcd6ce40d5f2b591d9c6377b024ca6119fbcc",
+        "textTransform": "Correct the two swapped leaderless-faction messages against GuestUtility callers (recruitment has three arguments; missing delegation has two); UTF-8 output"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/ConceptDef/Concepts.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/ConceptDef/Concepts.xml",
+        "sourceRawSha256": "71ab744b914186291125e21a48f6ce8dc8060f64558e050edb85f9a85c4bb4d5",
+        "sha256": "71ab744b914186291125e21a48f6ce8dc8060f64558e050edb85f9a85c4bb4d5"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/HistoryEventDef/GoodwillEvents.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/HistoryEventDef/GoodwillEvents.xml",
+        "sourceRawSha256": "603e5b05d5ca54a5b21eaae87ff3ce6404683f02c8901010f2e79fde8dc4be7a",
+        "sha256": "603e5b05d5ca54a5b21eaae87ff3ce6404683f02c8901010f2e79fde8dc4be7a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/InteractionDef/Interactions_Guest.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/InteractionDef/Interactions_Guest.xml",
+        "sourceRawSha256": "7d4df1751a167244f594deb53d49a1842eed8ada5ed33f1fa50b6a960f2d9d16",
+        "sha256": "7d4df1751a167244f594deb53d49a1842eed8ada5ed33f1fa50b6a960f2d9d16"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/JobDef/Jobs_Misc.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/JobDef/Jobs_Misc.xml",
+        "sourceRawSha256": "2ff52df35b5c194e25fa6410994ec972400615c127dfb4d8cd23be1fa3390ef1",
+        "sha256": "2ff52df35b5c194e25fa6410994ec972400615c127dfb4d8cd23be1fa3390ef1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/MainButtonDef/MainButton.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/MainButtonDef/MainButton.xml",
+        "sourceRawSha256": "83b97454e1c1bd7b6f9f4289019ef159dc1253d8ce34304d1627656b0ecd9199",
+        "sha256": "83b97454e1c1bd7b6f9f4289019ef159dc1253d8ce34304d1627656b0ecd9199"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/PawnColumnDef/Columns.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/PawnColumnDef/Columns.xml",
+        "sourceRawSha256": "5f7b2dc2522530ea22b1d799ea8147d30e7ea411135867861421c1ce7ed66138",
+        "sha256": "5f7b2dc2522530ea22b1d799ea8147d30e7ea411135867861421c1ce7ed66138"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/RoomRoleDef/RoomRoles.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/RoomRoleDef/RoomRoles.xml",
+        "sourceRawSha256": "9d69d87422242f33b8fd07d571356d9c1db57b9b71e4239b4531f252728be4a7",
+        "sha256": "9d69d87422242f33b8fd07d571356d9c1db57b9b71e4239b4531f252728be4a7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/RulePackDef/RulePacks_InteractionsExtra.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/RulePackDef/RulePacks_InteractionsExtra.xml",
+        "sourceRawSha256": "c6b4a83f9411fda609ab06b3866d8d3e575cc3586c5c9d8a6928c94b35f12331",
+        "sha256": "c6b4a83f9411fda609ab06b3866d8d3e575cc3586c5c9d8a6928c94b35f12331"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/StatDef/Stats_Pawns_Guest.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/StatDef/Stats_Pawns_Guest.xml",
+        "sourceRawSha256": "45aab73e156f541d78d4443c2e7b638257f2a35611c5a55957a118d4af955fab",
+        "sha256": "45aab73e156f541d78d4443c2e7b638257f2a35611c5a55957a118d4af955fab"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/ThoughtDef/Thoughts_Guest.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/ThoughtDef/Thoughts_Guest.xml",
+        "sourceRawSha256": "eff51c9cd4abfcaf5b8e90c40172856a858ed687997db353afbba53ab3102d71",
+        "sha256": "eff51c9cd4abfcaf5b8e90c40172856a858ed687997db353afbba53ab3102d71"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/WorkGiverDef/WorkGivers.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/WorkGiverDef/WorkGivers.xml",
+        "sourceRawSha256": "76757d0fdc564b777230f7fb2ed680fd93c379cfd7bfb1f3889c3115067a580b",
+        "sha256": "76757d0fdc564b777230f7fb2ed680fd93c379cfd7bfb1f3889c3115067a580b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/HospitalitySnapshot/1.7/Languages/English/DefInjected/WorkTypeDef/WorkTypes.xml",
+        "projectFile": "Components/Hospitality/Upstream/1.7/Languages/English/DefInjected/WorkTypeDef/WorkTypes.xml",
+        "sourceRawSha256": "f8d0bb527a26cf75a6623cb1804c1055d0d2bad90cc5e82685ceed846218ad86",
+        "sha256": "f8d0bb527a26cf75a6623cb1804c1055d0d2bad90cc5e82685ceed846218ad86"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "Preserve original bytes except the documented two-message correction in the runtime English keyed file; DLLs and source untouched",
+    "byteExactResources": false,
+    "rawResourceHashes": true,
+    "sourceRepository": "https://github.com/Zaljerem/Hospitality",
+    "sourceRevision": "d465bdc07b88d77eb3d158c215af388dcf771863",
+    "sharedDependencies": {
+      "0MultiplayerAPI.dll": "Uses the byte-identical 0.3.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider"
+    }
   }
 }

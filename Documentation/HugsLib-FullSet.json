@@ -4,9 +4,9 @@
   "fullUserModSet": true,
   "gameVersion": "1.7.5000 rev1275",
   "localization": {
-    "keyed": 2501,
-    "scalarFields": 524,
-    "grammarLines": 45,
+    "keyed": 2656,
+    "scalarFields": 628,
+    "grammarLines": 90,
     "displayPatches": 12,
     "passed": true,
     "errors": []
@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4196,
-    "ticksAdvanced": 1168,
+    "framesAdvanced": 4187,
+    "ticksAdvanced": 1760,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -34,7 +34,7 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
+  "productionAssemblySha256": "876b3c571b1157c79d23c402ac3d3201586b864abc6bccab60450bcb71efeb29",
   "hugsLib": {
     "passed": true,
     "checks": 18,
@@ -44,7 +44,12 @@
   },
   "passed": true,
   "relatedRunAndGun": {
-    "passed": true,
+    "ui": {
+      "passed": true,
+      "customControlsDrawnInRepaint": true,
+      "visualLayoutInspected": false,
+      "error": null
+    },
     "runtime": {
       "passed": true,
       "checks": 15,
@@ -52,11 +57,6 @@
       "attackRequestedByTest": true,
       "errors": []
     },
-    "ui": {
-      "passed": true,
-      "customControlsDrawnInRepaint": true,
-      "visualLayoutInspected": false,
-      "error": null
-    }
+    "passed": true
   }
 }

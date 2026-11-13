@@ -23,6 +23,8 @@ internal static readonly Dictionary<string, string> Literals = new Dictionary<st
 {"Show Me Your Hands","TMM.Literal.b7dddca9e13f"},
 {"Animal Behaviours","TMM.Literal.dce9e8c811b6"},
 {"Animal Toggles","TMM.Literal.5ceb45edca0b"},
+{"Reset to Defaults","TMM.Literal.0953e0d5167d"},
+{"This bed type is not assignable to pawns.","TMM.Literal.a011afe42172"},
 };
 internal static readonly Dictionary<string, string> CorpseOffset = new Dictionary<string, string> {
 {"None","TMM.CorpseOffset.None"},

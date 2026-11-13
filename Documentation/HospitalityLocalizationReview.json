@@ -1,0 +1,18 @@
+{
+  "sourceRevision": "d465bdc07b88d77eb3d158c215af388dcf771863",
+  "reviewedSuggestions": 15,
+  "applied": [
+    "RecruitAngerMultiple",
+    "RecruitQuestion",
+    "ForceRecruitQuestion",
+    "RecruitFactionAngerLeaderless",
+    "LostGroupFactionAngerLeaderless",
+    "Sentence_CharmAttemptAccepted.rulePack.rulesStrings",
+    "Sentence_CharmAttemptRejected.rulePack.rulesStrings",
+    "Recruiter.label",
+    "Recruiter.verb",
+    "Recruiter.gerund",
+    "CharmGuestAttempt.logRulesInitiator.rulesStrings"
+  ],
+  "note": "The prior numeric thought paths were already translated by installed 1.7; TKey aliases are adopted where explicitly declared, not treated as proof that numeric paths were broken. Rejected sentence uses a gender-neutral predicate; interaction sentence also avoids an uninflected dative name."
+}

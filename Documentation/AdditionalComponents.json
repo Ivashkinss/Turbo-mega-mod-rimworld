@@ -1,0 +1,14 @@
+{
+  "note": "Additional stages after the original 28-component inventory; that historical inventory is preserved.",
+  "mods": [
+    {
+      "name": "Hospitality (Continued)",
+      "folder": "Hospitality (Continued)",
+      "packageId": "orion.hospitality",
+      "component": "Hospitality",
+      "sourceRepository": "https://github.com/Zaljerem/Hospitality",
+      "sourceRevision": "d465bdc07b88d77eb3d158c215af388dcf771863",
+      "standaloneInstalledForImport": false
+    }
+  ]
+}

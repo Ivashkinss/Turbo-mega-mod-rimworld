@@ -1,0 +1,11 @@
+# Hospitality (Continued)
+
+Upstream: https://github.com/Zaljerem/Hospitality, revision `d465bdc07b88d77eb3d158c215af388dcf771863` (develop), version 1.1.8. Original author: Orion; continued maintenance: Zaljerem and upstream contributors. Original metadata: `Hospitality.About.xml` and `../Components/Hospitality/Upstream/About/`.
+
+Upstream README assigns original artwork to Orion under CC BY-SA 4.0 and the other parts to GPL 3.0, with its code notice allowing GPL 3 or later. The original README and full GPL text are preserved at `../Components/Hospitality/README.md` and `../Components/Hospitality/LICENSE`. Artwork license: https://creativecommons.org/licenses/by-sa/4.0/ . Attribution and upstream notices are retained; artwork is unchanged.
+
+Runtime files for 1.6 and 1.7, optional Royalty/VNPE branches, common textures and current upstream C# source are included. `Documentation/UtilityComponents.json` records the file hashes, source revision and transformations. No upstream DLL was modified. Duplicate Multiplayer API files are omitted in favour of the byte-identical bundled Adaptive Storage provider. Two swapped English leaderless-faction messages are corrected; Russian translations are merged centrally and corrected as recorded in `Documentation/HospitalityLocalizationReview.json`.
+
+The new daily-payment integration is separate, readable code in `../Source/HotelBilling.cs`, provided under GPL-3.0-or-later. The matching source for this added integration is shipped in the repository; its build is `Tools/build_assembly.ps1`. It wraps native check-in, retains native physical first payment and records subsequent payments in a saved map component.
+
+The upstream source project is preserved as published, including developer-local reference paths. To rebuild that project, use .NET 10, replace its reference paths with the corresponding RimWorld 1.7 Assembly-CSharp/UnityStubs/Waylith and bundled Multiplayer API references, and restore its declared packages. It does not reproduce the root integration DLL. The 1.6 binary is the unmodified upstream artifact; current source is the upstream 1.7 project. No claim of a live 1.6 test or independently reproducible upstream binary build is made.

@@ -1,6 +1,7 @@
 {
   "plannedComponents": 28,
-  "integratedComponents": 28,
+  "additionalComponents": 1,
+  "integratedComponents": 29,
   "originalFoldersRemaining": 0,
   "externalRequiredDependencies": 0,
   "activeMods": [
@@ -12,21 +13,25 @@
     "ludeon.rimworld.odyssey",
     "colonyproject.integrated"
   ],
-  "russianEntries": 3033,
-  "componentResourceHashesVerified": 4069,
-  "finalRuntimeChecks": 512,
+  "russianEntries": 3297,
+  "componentResourceHashesVerified": 4344,
+  "finalRuntimeChecks": 556,
   "integratedComponentRuntimeChecks": 407,
   "farmingRuntimeChecks": 88,
   "farmingReloadChecks": 17,
   "farmingPowerChecks": 22,
   "farmingAssetsVerified": 11,
   "isolatedFarmingSaveReloadVerified": true,
-  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
+  "hotelRuntimeChecks": 36,
+  "hotelReloadChecks": 8,
+  "isolatedHotelSaveReloadVerified": true,
+  "productionAssemblySha256": "876b3c571b1157c79d23c402ac3d3201586b864abc6bccab60450bcb71efeb29",
   "fullSetReports": {
     "Harmony": "Harmony-FullSet.json",
     "MeleeAnimation": "MeleeAnimation-FullSet.json",
     "HugsLib": "HugsLib-FullSet.json",
-    "Farming": "Farming-FullSet.json"
+    "Farming": "Farming-FullSet.json",
+    "Hospitality": "Hospitality-FullSet.json"
   },
   "libraryRegressions": {
     "VEF": 47,

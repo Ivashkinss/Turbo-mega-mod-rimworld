@@ -19,7 +19,9 @@
     "Nice Bill Tab": "Удобные производственные задания",
     "Show Me Your Hands": "Анимация рук с оружием",
     "Animal Behaviours": "Поведение животных",
-    "Animal Toggles": "Включение животных"
+    "Animal Toggles": "Включение животных",
+    "Reset to Defaults": "Сбросить настройки",
+    "This bed type is not assignable to pawns.": "Эту кровать нельзя закрепить за пешкой."
   },
   "corpseOffsetModes": {
     "None": "Не смещать",

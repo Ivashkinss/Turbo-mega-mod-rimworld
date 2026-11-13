@@ -79,7 +79,7 @@
 
 | Кандидат | Для чего | Проверенный факт / ограничение |
 | --- | --- | --- |
-| [Hospitality (Continued)](https://github.com/Zaljerem/Hospitality) | Посетители и гостиница | В репозитории есть ветка ресурсов 1.7; код GPL-3.0, исходная графика CC-BY-SA. Сначала проверить гостевой цикл в нашей сборке. |
+| [Hospitality (Continued)](https://github.com/Zaljerem/Hospitality) | Посетители и гостиница | Встроена с собственной посуточной оплатой; приём, заселение, платное/бесплатное продление, уход и загрузка отдельного сейва проверены. Руководство: [HOTEL.md](HOTEL.md). Код GPL-3.0, исходная графика CC-BY-SA. |
 | [Gastronomy (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3509488152) + [Cash Register (Continued)](https://steamcommunity.com/workshop/filedetails/?id=3509487668) | Ресторан, официанты, меню, касса | Автор заявил обновление 1.7. У кассы прямо указано ограничение для гравикораблей Odyssey. Workshop указывает GPL, но README репозитория Gastronomy сохраняет CC-BY-NC-ND: перед копированием разрешить противоречие конкретного пакета. |
 | [Hospital](https://steamcommunity.com/sharedfiles/filedetails/?id=2992224079) | Платная клиника и репутация | Автор добавил поддержку 1.7; указаны проблемы с Combat Extended и VRE Androids. Обычные пациенты и синты потребуют разных проверок. |
 | [Tilled Soil](https://steamcommunity.com/workshop/filedetails/?id=725747149) | Вспашка | Автор описывает 200% плодородия; на просмотренной странице версии до 1.6. Запуск на 1.7 и условия переноса ещё не проверены. |

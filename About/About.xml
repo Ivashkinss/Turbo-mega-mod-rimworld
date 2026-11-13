@@ -4,16 +4,19 @@
   <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
   <packageId>colonyproject.integrated</packageId>
   <supportedVersions><li>1.6</li><li>1.7</li></supportedVersions>
-  <description>Объединены все 28 выбранных компонентов для RimWorld 1.6/1.7, включая Harmony, HugsLib, Adaptive Storage Framework, Vanilla Expanded Framework, FSharp.Core и XML Extensions. Внешние обязательные библиотеки не нужны.
+  <description>Объединены все 28 первоначальных компонентов для RimWorld 1.6/1.7 и дополнительно Hospitality (Continued): 29 компонентов. Встроены Harmony, HugsLib, Adaptive Storage Framework, Vanilla Expanded Framework, FSharp.Core и XML Extensions. Внешние обязательные библиотеки не нужны.
+
+Гостиница: гостевые кровати, зоны посетителей и торговли, реальные платежи серебром за каждые игровые сутки. Первые сутки оплачиваются при заселении; при нехватке денег платная кровать освобождается без объявления вражды. Сохранение удерживает срок следующей оплаты.
 
 Добавлены теплицы со стеклянными стенами, крышей, дверью, автоматическими посевами и отоплением; гидропоника со встроенным светильником; вспашка. Подсветка использует солнце, включается при дневной темноте и переходит ночью на тусклый экономичный свет. Почва в готовой теплице — 200%, вспашка — 200% на улице и 222% в теплице.
 
 27 хранилищ Neat Storage имеют удвоенную вместимость; 7 холодильников Fridge сохраняют исходную вместимость. Встроены Melee Animation, Character Editor, Map Preview, Smart Speed, Smarter Construction, Interaction Bubbles, Realistic Rooms, Almost There!, Dev In Your Language, Snap Out!, Common Sense, RunAndGun, Simple Sidearms, Pick Up And Haul, Nice Bill Tab, More Planning, Show Me Your Hands, Useful Marks, Dynamic Trade Interface и Walls Are Solid.
 
-3033 уникальных русских записей, включая 45 строк боевого журнала. Сохранены исходные ресурсы и лицензии компонентов. На 1.7 исправлены перечисление участников поединков, параметры отрисовки Melee и инициализатор кэша VEF. Библиотеки загружаются в порядке зависимостей; при включении поддерживаемых оригиналов их встроенные копии пропускаются. Neat Storage и Fridge отдельно включать нельзя.
+3297 уникальных русских записей. Сохранены исходные ресурсы и лицензии компонентов. На 1.7 исправлены перечисление участников поединков, параметры отрисовки Melee и инициализатор кэша VEF. Библиотеки загружаются в порядке зависимостей; при включении поддерживаемых оригиналов их встроенные копии пропускаются. Neat Storage и Fridge отдельно включать нельзя.
 
 Camera+ исключена по просьбе пользователя. Игровые проверки выполнены на 1.7.5000; все игровые ситуации, визуальная раскладка окон и запуск на 1.6 не проверены. Подробности и ограничения — README.md и Documentation.</description>
   <loadAfter>
+    <li>orion.hospitality</li>
     <li>brrainz.harmony</li>
     <li>adaptive.storage.framework</li>
     <li>latta.devl10n</li>

@@ -1,11 +1,12 @@
 {
   "checkedDate": "2026-11-12",
-  "status": "research-only; not installed, integrated or runtime-tested",
+  "status": "Historical research snapshot; Hospitality subsequently integrated, see AdditionalComponents.json and Hospitality runtime reports. Other candidates remain research-only.",
   "workingGameVersion": "1.7.5000 rev1275",
   "candidates": [
     {
       "name": "Hospitality (Continued)",
       "purpose": "hotel and visitors",
+      "currentStatus": "Integrated with daily billing; isolated arrival/check-in/payment/departure/save-load checks passed on RimWorld 1.7.5000",
       "source": "https://github.com/Zaljerem/Hospitality",
       "versionEvidence": "Repository lists a 1.7 directory",
       "reuseEvidence": "README: GPL-3.0 code, CC-BY-SA artwork; audit exact imported files",

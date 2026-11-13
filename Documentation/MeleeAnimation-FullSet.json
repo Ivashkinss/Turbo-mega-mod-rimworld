@@ -4,9 +4,9 @@
   "fullUserModSet": true,
   "gameVersion": "1.7.5000 rev1275",
   "localization": {
-    "keyed": 2501,
-    "scalarFields": 524,
-    "grammarLines": 45,
+    "keyed": 2656,
+    "scalarFields": 628,
+    "grammarLines": 90,
     "displayPatches": 12,
     "passed": true,
     "errors": []
@@ -14,8 +14,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4162,
-    "ticksAdvanced": 1749,
+    "framesAdvanced": 4160,
+    "ticksAdvanced": 1751,
     "newsWindowsDismissedInTest": 1
   },
   "settingsUi": {
@@ -34,18 +34,23 @@
   "gpuLost": false,
   "visualUiVerified": false,
   "stoppedByTest": true,
-  "productionAssemblySha256": "f8b32717c0c429773006516585bdabdca68ad1eb2985d2db9869de32a7e727c9",
+  "productionAssemblySha256": "876b3c571b1157c79d23c402ac3d3201586b864abc6bccab60450bcb71efeb29",
   "melee": {
     "passed": true,
     "checks": 151,
     "animationDataLoaded": 66,
-    "animationTimeAdvanced": 0.9254698,
+    "animationTimeAdvanced": 0.8916258,
     "patchedMethods": 19,
     "errors": []
   },
   "passed": true,
   "relatedHands": {
-    "passed": true,
+    "ui": {
+      "passed": true,
+      "settingsDrawInvokedInRepaint": true,
+      "visualLayoutInspected": false,
+      "error": null
+    },
     "runtime": {
       "passed": true,
       "checks": 17,
@@ -54,11 +59,6 @@
       "visualHandPlacementInspected": false,
       "errors": []
     },
-    "ui": {
-      "passed": true,
-      "settingsDrawInvokedInRepaint": true,
-      "visualLayoutInspected": false,
-      "error": null
-    }
+    "passed": true
   }
 }

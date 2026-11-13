@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VisitorGroup.label>гости</VisitorGroup.label>
+  <VisitorGroupMax.label>гости (максимум)</VisitorGroupMax.label>
+  <VisitorGroupSelectFaction.label>гости (выбрать фракцию)</VisitorGroupSelectFaction.label>
+  <HappyGuestJoins.label>гость присоединяется</HappyGuestJoins.label>
+  <VisitorGroupSpacerCruise.label>гости</VisitorGroupSpacerCruise.label>
+  <VisitorGroupSpacerLuxury.label>гости</VisitorGroupSpacerLuxury.label>
+</LanguageData>

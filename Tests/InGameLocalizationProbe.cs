@@ -33,6 +33,19 @@ public static class InGameLocalizationProbe
             if (value == null) return null;
             int index;
             if (int.TryParse(part, out index)) { value = ((IList)value)[index]; continue; }
+            var list = value as IList;
+            if (list != null)
+            {
+                value = list.Cast<object>().FirstOrDefault(item =>
+                {
+                    var original = AccessTools.Field(item.GetType(), "untranslatedLabel");
+                    var label = AccessTools.Field(item.GetType(), "label");
+                    string text = original == null ? null : original.GetValue(item) as string;
+                    if (string.IsNullOrEmpty(text) && label != null) text = label.GetValue(item) as string;
+                    return text != null && text.ToLowerInvariant().Replace(' ', '_') == part;
+                });
+                continue;
+            }
             FieldInfo field = AccessTools.Field(value.GetType(), part);
             value = field != null ? field.GetValue(value) : AccessTools.Property(value.GetType(), part).GetValue(value, null);
         }
@@ -64,7 +77,14 @@ public static class InGameLocalizationProbe
             {
                 try
                 {
-                    string[] path = node.Name.Split('.');
+                    string translatedPath = node.Name;
+                    var normalizer = AccessTools.Method(AccessTools.TypeByName("Verse.TKeySystem"), "TryGetNormalizedPath");
+                    if (normalizer != null)
+                    {
+                        object[] arguments = { translatedPath, null };
+                        if ((bool)normalizer.Invoke(null, arguments)) translatedPath = (string)arguments[1];
+                    }
+                    string[] path = translatedPath.Split('.');
                     object definition = typeof(DefDatabase<>).MakeGenericType(type).GetMethod("GetNamedSilentFail").Invoke(null, new object[] { path[0] });
                     if (definition == null) { errors.Add("Missing definition: " + node.Name); continue; }
                     object value = ReadPath(definition, path.Skip(1).ToArray());

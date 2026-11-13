@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from lxml import etree as ET
@@ -9,6 +10,17 @@ from lxml import etree as ET
 from audit_localization import enabled, entries
 from build_utility_components import COMPONENTS, PROJECT
 from verify_combat_localization import check_text
+
+def check_hotel_text(source, translated, label):
+    # Russian may introduce gender/number selectors or avoid an English pronoun.
+    # Preserve actual numbers and argument roots, rather than requiring identical
+    # repetitions of grammatical forms in two different languages.
+    positional = r'(?<!\{)\{\d+\}(?!\})'
+    token = r'(?<!\{)\{[^{}]+\}(?!\})'
+    assert Counter(re.findall(positional, source)) == Counter(re.findall(positional, translated)), (label, 'numeric arguments')
+    roots = lambda text: {value[1:-1].split('?')[0].strip().split('_')[0] for value in re.findall(token, text)}
+    assert roots(source) == roots(translated), (label, 'argument roots')
+    check_text(re.sub(r'\n+', '\n', re.sub(token, '', source)), re.sub(r'\n+', '\n', re.sub(token, '', translated)), label)
 
 
 def main():
@@ -24,7 +36,7 @@ def main():
         for item in manifest[name]["files"]:
             path = PROJECT / item["projectFile"]
             data = path.read_bytes()
-            if not manifest[name].get('byteExactResources') and (path.suffix.lower() in (".xml", ".json") or path.name in ("LICENSE", "LICENSE.md")):
+            if not (manifest[name].get('byteExactResources') or manifest[name].get('rawResourceHashes')) and (path.suffix.lower() in (".xml", ".json") or path.name in ("LICENSE", "LICENSE.md")):
                 data = data.replace(b"\r\n", b"\n")
             assert hashlib.sha256(data).hexdigest() == item["sha256"], path
             count += 1
@@ -71,7 +83,8 @@ def main():
         english, _ = entries([PROJECT / "Components" / name / "Languages/English"])
         for key, source in english.items():
             assert key in russian, key
-            check_text(source["text"].replace("\\n", "\n").strip(), russian[key]["text"].replace("\\n", "\n").strip(), str(key))
+            checker = check_hotel_text if name == 'Hospitality' else check_text
+            checker(source["text"].replace("\\n", "\n").strip(), russian[key]["text"].replace("\\n", "\n").strip(), str(key))
             if key == ("Keyed", "Bubbles.OffsetDirections"):
                 assert len(source["text"].split("|")) == len(russian[key]["text"].split("|")) == 4
         translated[name] = len(english)
@@ -115,6 +128,18 @@ def main():
     assert {p.relative_to(PROJECT).as_posix() for p in (PROJECT / 'Components').rglob('0Harmony.dll')} == {'Components/Harmony/1.6/Assemblies/0Harmony.dll', 'Components/Harmony/1.7/Assemblies/0Harmony.dll'}
     assert not ET.parse(str(PROJECT / 'About/About.xml')).xpath('/ModMetaData/modDependencies/li'), 'Unexpected external required dependency'
     report['harmonyVersionAndOriginalBranchesChecked'] = 4
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            for royalty in (False, True):
+                for vnpe in (False, True):
+                    ids = ({'orion.hospitality'} if original else set()) | ({'ludeon.rimworld.royalty'} if royalty else set()) | ({'vanillaexpanded.vnutriente'} if vnpe else set())
+                    selected = [n.text for n in folders.find(version) if n.text.startswith('Components/Hospitality') and enabled(n.attrib, ids)]
+                    base = 'Components/Hospitality/' + version[1:]
+                    expected = [] if original else [base] + ([base + '/Compat/Royalty'] if royalty else []) + ([base + '/Compat/VNPE'] if vnpe else []) + ['Components/Hospitality']
+                    assert selected == expected, (version, ids, selected)
+    assert not list((PROJECT / 'Components/Hospitality').rglob('0MultiplayerAPI.dll'))
+    report['hospitalityVersionOriginalAndOptionalBranchesChecked'] = 16
+    report['hospitalityOptionalVnpeRuntimeVerified'] = False
     report['externalRequiredDependencies'] = 0
     report["sidearmsDefinitionFieldsVerified"] = sidearm_fields
     menus = list((PROJECT / 'Components').rglob('FloatSubMenu.dll'))
