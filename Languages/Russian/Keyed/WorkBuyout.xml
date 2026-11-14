@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Buyout.None>Самовыкуп не учитывается</TMM.Buyout.None>
+  <TMM.Buyout.Progress>Выкуп: {0}/{1}; осталось {2} серебра</TMM.Buyout.Progress>
+  <TMM.Buyout.Help>Учёт обычной работы: {0}. Сумма фиксируется при начале учёта. Полученная колонией выручка за обычное общение засчитывается на 100%, за ресторанное обслуживание с расходниками — на 50%. Это не личная выплата и не дополнительное серебро. После накопления суммы доступно штатное освобождение. Переговоры с фракцией и квесты договоров — отдельный этап разработки.</TMM.Buyout.Help>
+  <TMM.Buyout.Target>Сумма выкупа: {0}</TMM.Buyout.Target>
+  <TMM.Buyout.Begin>Начать учёт обычного самовыкупа</TMM.Buyout.Begin>
+  <TMM.Buyout.Release>Сумма собрана — освободить</TMM.Buyout.Release>
+  <TMM.Buyout.Menu>Обычный труд: учёт самовыкупа</TMM.Buyout.Menu>
+  <TMM.Buyout.NoWorkers>На карте нет рабов или активных записей самовыкупа.</TMM.Buyout.NoWorkers>
+  <TMM.Complex.CompanyIncome>Общение — получено колонией: {0} серебра.</TMM.Complex.CompanyIncome>
+</LanguageData>

@@ -1,0 +1,14 @@
+{
+  "originalGenerator": "Tools/Build/GeminiCompanyAssets/make_assets.py",
+  "createdBy": "Gemini at user delegation; reviewed original ordinary conversation icon",
+  "projectFile": "Textures/UI/Company/Company.png",
+  "sha256": "8ba20263618cb5f820193ef72a20eba64a3b55151ebc1e74ab88a5df8dda2fbe",
+  "dimensions": [
+    128,
+    128
+  ],
+  "mode": "RGBA",
+  "previewInspected": true,
+  "verifiedIndependently": true,
+  "changesAfterGeneration": false
+}

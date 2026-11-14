@@ -1,7 +1,7 @@
 {
   "plannedComponents": 28,
-  "additionalComponents": 1,
-  "integratedComponents": 29,
+  "additionalComponents": 2,
+  "integratedComponents": 30,
   "originalFoldersRemaining": 0,
   "externalRequiredDependencies": 0,
   "activeMods": [
@@ -13,13 +13,13 @@
     "ludeon.rimworld.odyssey",
     "colonyproject.integrated"
   ],
-  "russianEntries": 3345,
-  "componentResourceHashesVerified": 4344,
-  "finalRuntimeChecks": 644,
+  "russianEntries": 3485,
+  "componentResourceHashesVerified": 4456,
+  "finalRuntimeChecks": 879,
   "integratedComponentRuntimeChecks": 407,
-  "farmingRuntimeChecks": 92,
+  "farmingRuntimeChecks": 124,
   "farmingReloadChecks": 17,
-  "farmingPowerChecks": 30,
+  "farmingPowerChecks": 32,
   "farmingAssetsVerified": 11,
   "isolatedFarmingSaveReloadVerified": true,
   "hotelRuntimeChecks": 40,
@@ -33,7 +33,26 @@
   "isolatedComplexSaveReloadVerified": true,
   "restaurantAssetsVerified": 3,
   "isolatedRestaurantSaveReloadVerified": true,
-  "productionAssemblySha256": "f42ac141b4cb16ff8a4c38d9d5f754ec32b8855632170703505838b8cd586d8f",
+  "serviceChecks": {
+    "Clinic": {
+      "fresh": 20,
+      "reload": 6
+    },
+    "ClinicGuest": {
+      "fresh": 15,
+      "reload": 10
+    },
+    "ComplexLayout": {
+      "fresh": 28,
+      "reload": 18
+    },
+    "Company": {
+      "fresh": 94,
+      "reload": 12
+    }
+  },
+  "companyAssetsVerified": 1,
+  "productionAssemblySha256": "6ca9e18a2a99c95ae660c054f2605ff13b62c5b3c9e7e064c015f4f32416d263",
   "fullSetReports": {
     "Harmony": "Harmony-FullSet.json",
     "MeleeAnimation": "MeleeAnimation-FullSet.json",
@@ -41,7 +60,11 @@
     "Farming": "Farming-FullSet.json",
     "Hospitality": "Hospitality-FullSet.json",
     "Restaurant": "Restaurant-FullSet.json",
-    "Complex": "Complex-FullSet.json"
+    "Complex": "Complex-FullSet.json",
+    "Clinic": "Clinic-FullSet.json",
+    "ClinicGuest": "ClinicGuest-FullSet.json",
+    "ComplexLayout": "ComplexLayout-FullSet.json",
+    "Company": "Company-FullSet.json"
   },
   "libraryRegressions": {
     "VEF": 47,
@@ -54,6 +77,8 @@
   "liveGame16Verified": false,
   "userSaveTested": false,
   "visualLayoutInspected": false,
-  "knownRemainingIssue": "Installed Odyssey Russian faction-name grammar; exact error pair recorded in runtime reports",
+  "odysseyGrammarChecks": 252,
+  "odysseyRussianGrammarRuntimeErrors": 0,
+  "knownRemainingIssue": null,
   "passed": true
 }

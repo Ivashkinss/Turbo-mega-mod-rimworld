@@ -1,0 +1,49 @@
+{
+  "status": "verified in final isolated 1.7 regression",
+  "scope": "Russian Odyssey in game1.7 only; game archives unchanged",
+  "changes": [
+    {
+      "archiveEntry": "DefInjected/RulePackDef/RulePacks_Namers_Factions.xml",
+      "sourceSha256": "b4758cf9f6881816c8ca10002585bd3e1bed38c2b7cc2730cb8835655f47526e",
+      "field": "NamerFactionTradersGuild.rulePack.rulesStrings",
+      "before": "[tradeAdj_fem] [tradeNoun_fem]",
+      "after": "r_name->[tradeAdj_fem] [tradeNoun_fem]",
+      "preservedRuleCount": 35
+    },
+    {
+      "archiveEntry": "DefInjected/RulePackDef/RulePacks_Namers_Gravship.xml",
+      "sourceSha256": "4e059610c6e5e42b21ff75fb00aef6e6279992dffdeb3c9a384558b166b65d44",
+      "field": "NamerGravship.rulePack.rulesStrings",
+      "before": "[AdjectiveLarge_fem] [thing_badass_fem]",
+      "after": "narrative_name->[AdjectiveLarge_fem] [thing_badass_fem]",
+      "preservedRuleCount": 141
+    }
+  ],
+  "additionalExactRepairs": {
+    "NamerGravship": [
+      "subject(p=5)_gen -> subject_gen(p=5)",
+      "flying_adjective(p=2)_mas -> flying_adjective_mas(p=2)",
+      "flying_adjective(p=2)_fem -> flying_adjective_fem(p=2)",
+      "ship_word(p=5)_mas -> ship_word_mas(p=5), both ship and gravship alternatives"
+    ],
+    "NamerUniqueWeapon": [
+      "weapon_noun(p=2)_{mas,fem,neu} -> weapon_noun_{mas,fem,neu}(p=2)",
+      "weapon_adjective(p=2)_{fem,neu} -> weapon_adjective_{fem,neu}(p=2)",
+      "Split the exact joined trait_adjective/trait_adjective_mas line into two rules and correct masculine modifier order"
+    ]
+  },
+  "liveVerification": {
+    "report": "ComplexLayout-FullSet.json",
+    "probe": "odysseyGrammar",
+    "checks": 252,
+    "generatedTraderFactionNames": 64,
+    "generatedGravshipNames": 64,
+    "uniqueWeaponRuleParsingChecked": true,
+    "runtimeErrors": 0,
+    "userSaveTested": false
+  },
+  "method": "Exact in-memory repair after language injection; translated rule caches invalidated. Source archives independently inspected. Extra DefInjected override was tested and did not take precedence, so removed.",
+  "source": "Source/OdysseyGrammarCompatibility.cs",
+  "productionAssemblySha256": "6ca9e18a2a99c95ae660c054f2605ff13b62c5b3c9e7e064c015f4f32416d263",
+  "finalVerification": "IntegrationCompletion.json"
+}

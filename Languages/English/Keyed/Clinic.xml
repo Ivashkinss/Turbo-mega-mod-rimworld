@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Clinic.Area>Clinic area</TMM.Clinic.Area>
+  <TMM.Clinic.OutsideWard>Mark a bed medical in an enclosed room within the complex guest area. Guest wards must not be staff-only.</TMM.Clinic.OutsideWard>
+  <TMM.Clinic.Settings>Complex clinic</TMM.Clinic.Settings>
+  <TMM.Clinic.DischargePaid>{0} has been discharged. Payment: {1} silver. Faction goodwill change: {2}.</TMM.Clinic.DischargePaid>
+  <TMM.Clinic.DischargePending>{0} has been discharged. Payment of {1} silver is awaiting free space near reception. Faction goodwill change: {2}.</TMM.Clinic.DischargePending>
+  <TMM.Clinic.Admit>Admit a hotel guest</TMM.Clinic.Admit>
+  <TMM.Clinic.AdmitHelp>Choose an injured or ill hotel guest for the clinical ward. Belongings, purchases, paid room and original visiting group are retained.</TMM.Clinic.AdmitHelp>
+  <TMM.Clinic.Care>Medical care</TMM.Clinic.Care>
+  <TMM.Clinic.Admitted>{0} has been admitted to the ward. The hotel visit is retained.</TMM.Clinic.Admitted>
+  <TMM.Clinic.NoCandidates>No arrived hotel guests currently need medical care.</TMM.Clinic.NoCandidates>
+  <TMM.Clinic.CannotAdmit>A free reachable medical bed is required inside the clinic area, within the complex territory.</TMM.Clinic.CannotAdmit>
+</LanguageData>

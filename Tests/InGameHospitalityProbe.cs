@@ -121,7 +121,7 @@ public sealed class HospitalityProbe : MapComponent
         var restored = convertCell.GetThingList(map).OfType<Building_Bed>().Single();
         Check(restored.def == ThingDefOf.Bed && restored.HitPoints == oldHitPoints, "Returning a guest bed to normal failed");
         restored.Destroy();
-        reception = (Building_ComplexDesk)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("TMM_ComplexDesk"));
+        reception = (Building_ComplexDesk)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("TMM_ComplexDesk")); reception.automaticServices = false;
         reception.SetFaction(Faction.OfPlayer); GenSpawn.Spawn(reception, new IntVec3(42, 0, 42), map); reception.area = hotelArea;
         bed = MakeBed(new IntVec3(45, 0, 45), 20); bed.Position.GetRoom(map).Temperature = 21f;
         Check(HotelBillingHooks.Fee(bed) == 20, "Room rate did not change");

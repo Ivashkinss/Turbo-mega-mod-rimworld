@@ -26275,5 +26275,694 @@
     "sharedDependencies": {
       "0MultiplayerAPI.dll": "Uses the byte-identical 0.5.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider"
     }
+  },
+  "Hospital": {
+    "packageId": "adamas.hospital",
+    "files": [
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/LICENSE",
+        "projectFile": "Components/Hospital/LICENSE",
+        "sourceRawSha256": "53927bd0b739d38c87a0a82236fd9b070c2dfff11c0c119be50372005d5047ad",
+        "sha256": "53927bd0b739d38c87a0a82236fd9b070c2dfff11c0c119be50372005d5047ad"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/README.md",
+        "projectFile": "Components/Hospital/README.md",
+        "sourceRawSha256": "2995d9eb19bcc629b310c8eec18925ae549e1d9b9182499bdd3d855b7beeecf5",
+        "sha256": "2995d9eb19bcc629b310c8eec18925ae549e1d9b9182499bdd3d855b7beeecf5"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/CONTRIBUTING.md",
+        "projectFile": "Components/Hospital/CONTRIBUTING.md",
+        "sourceRawSha256": "ed5814e6834692223f83ac5f4a1b33b36831ae37a72bf03c698407302f14d018",
+        "sha256": "ed5814e6834692223f83ac5f4a1b33b36831ae37a72bf03c698407302f14d018"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Patches/MedPod.xml",
+        "projectFile": "Components/Hospital/Patches/Hospital/MedPod.xml",
+        "sourceRawSha256": "1d3321c70f0f48954dafd2718a0474618b55032c16ae088731f4023f8e496558",
+        "sha256": "1d3321c70f0f48954dafd2718a0474618b55032c16ae088731f4023f8e496558"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Textures/HospitalModIcon.png",
+        "projectFile": "Components/Hospital/Textures/HospitalModIcon.png",
+        "sourceRawSha256": "9acfe5c659caec64f62b78cff3d8c58202ee76bd9292040843c1f795b5daab8f",
+        "sha256": "9acfe5c659caec64f62b78cff3d8c58202ee76bd9292040843c1f795b5daab8f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Textures/UI/Commands/AsHospital.png",
+        "projectFile": "Components/Hospital/Textures/UI/Commands/AsHospital.png",
+        "sourceRawSha256": "1a09c5d388b955831adb35f55649be60e28ebe06fa979a990f3ca9fe1f5e3b4a",
+        "sha256": "1a09c5d388b955831adb35f55649be60e28ebe06fa979a990f3ca9fe1f5e3b4a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Textures/UI/Commands/AsSurgery.png",
+        "projectFile": "Components/Hospital/Textures/UI/Commands/AsSurgery.png",
+        "sourceRawSha256": "c075df9614d3135251ee276be82021fb30ddd5d951a6c2f241e770d5bf695019",
+        "sha256": "c075df9614d3135251ee276be82021fb30ddd5d951a6c2f241e770d5bf695019"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Textures/UI/Buttons/MainButtons/IconHospital.png",
+        "projectFile": "Components/Hospital/Textures/UI/Buttons/MainButtons/IconHospital.png",
+        "sourceRawSha256": "9acfe5c659caec64f62b78cff3d8c58202ee76bd9292040843c1f795b5daab8f",
+        "sha256": "9acfe5c659caec64f62b78cff3d8c58202ee76bd9292040843c1f795b5daab8f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Textures/UI/Commands/PSDs/allows.afdesign",
+        "projectFile": "Components/Hospital/Textures/UI/Commands/PSDs/allows.afdesign",
+        "sourceRawSha256": "684e17c6535aa17d0df318bceb52cea674fb26d86843a709489ae58a19c292fe",
+        "sha256": "684e17c6535aa17d0df318bceb52cea674fb26d86843a709489ae58a19c292fe"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/Duties/Duties_Hospital.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/Duties/Duties_Hospital.xml",
+        "sourceRawSha256": "a22574746cb3ceaf5d76a1350131a333d7dd824e161c7164ba4c9e05f08c27a7",
+        "sha256": "a22574746cb3ceaf5d76a1350131a333d7dd824e161c7164ba4c9e05f08c27a7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/MainTab/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/MainTab/MainButtons.xml",
+        "sourceRawSha256": "eedaf696ea94e1b7e9342514fc0481f7c73c6d57c5750e30587926774a0092ba",
+        "sha256": "eedaf696ea94e1b7e9342514fc0481f7c73c6d57c5750e30587926774a0092ba"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/MainTab/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/MainTab/PawnColumns.xml",
+        "sourceRawSha256": "c6392fd9cdd98238fcca93a331eed1f95f0dc9b38a09c2fe77ab1e659f06d146",
+        "sha256": "c6392fd9cdd98238fcca93a331eed1f95f0dc9b38a09c2fe77ab1e659f06d146"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/MainTab/PawnTables.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/MainTab/PawnTables.xml",
+        "sourceRawSha256": "a5a9d89cc63c192f5af8b0325304fcf0bb947759aa01e2760b2fae54ae23d14e",
+        "sha256": "a5a9d89cc63c192f5af8b0325304fcf0bb947759aa01e2760b2fae54ae23d14e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/Storyteller/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/Storyteller/Incidents_Map_Special.xml",
+        "sourceRawSha256": "624a466c12bdf3375b5e23f9cc613f30201338d689238c01b33fc7dea103dc32",
+        "sha256": "624a466c12bdf3375b5e23f9cc613f30201338d689238c01b33fc7dea103dc32"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Defs/ThingDefs_Buildings/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.6/Defs/Hospital/ThingDefs_Buildings/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "4e87fbf0c053fce3a523a74b3f435aa97a83e8ebc7bb23146504b0440b004c97",
+        "sha256": "4e87fbf0c053fce3a523a74b3f435aa97a83e8ebc7bb23146504b0440b004c97"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/English/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/English/Keyed/Hospital.xml",
+        "sourceRawSha256": "fd9fbe8c6bc928aeb62d2a28a29170b33332b524802c152ad01f54a5124c1623",
+        "sha256": "39362622cba6e8ba0d50d4225fdfec8f62b3322bdff1ba2b93d9b78618862c5a",
+        "textTransform": "Reuse Hospitality English BedsFilled and SilverMultiplier; remove only these duplicated compatible keys"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/French/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/French/Keyed/Hospital.xml",
+        "sourceRawSha256": "e30db6dfc5b585dc05c512e8cf3985e0767e41b8ecc8c1811858049259c0cc54",
+        "sha256": "e30db6dfc5b585dc05c512e8cf3985e0767e41b8ecc8c1811858049259c0cc54"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/French/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/French/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "ae17b70b4d39d9c15082707133394d13c0fc416b36f5654d8c3cc24805a47972",
+        "sha256": "ae17b70b4d39d9c15082707133394d13c0fc416b36f5654d8c3cc24805a47972"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/French/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/French/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "2f99761b166c2ba3b8d4cc0f849be37257662612abc0870ed7c9fc6076495c1e",
+        "sha256": "2f99761b166c2ba3b8d4cc0f849be37257662612abc0870ed7c9fc6076495c1e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/French/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/French/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "7a62e5622dc9b97d19bf44cd74bcdf02a3f8b6bfd5f6d4fb1b4a995e16b1693c",
+        "sha256": "7a62e5622dc9b97d19bf44cd74bcdf02a3f8b6bfd5f6d4fb1b4a995e16b1693c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/French/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/French/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "f86860756397051dfb4ac860b12b2e460b4d89eaa0753c0f2e3aea0799458631",
+        "sha256": "f86860756397051dfb4ac860b12b2e460b4d89eaa0753c0f2e3aea0799458631"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/German/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/German/Keyed/Hospital.xml",
+        "sourceRawSha256": "98445cdbf7e64dce98474b4316d5f874d4841fe8fddb59ac2736174c6aab315e",
+        "sha256": "98445cdbf7e64dce98474b4316d5f874d4841fe8fddb59ac2736174c6aab315e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/German/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/German/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "f417289f78e9ffe4fe300e900b93811c3a8d430385d04c19511fdc03d58e0f49",
+        "sha256": "f417289f78e9ffe4fe300e900b93811c3a8d430385d04c19511fdc03d58e0f49"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/German/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/German/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "0406a1e02d059a02a6ad59c9711f30211b44e6ba0e04494d3757d3f504f1dbf6",
+        "sha256": "0406a1e02d059a02a6ad59c9711f30211b44e6ba0e04494d3757d3f504f1dbf6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/German/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/German/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "f6a703d4acb71c7e4109195d5d40ac26bc6cb77555b0f37b277e0e6607f6fd2c",
+        "sha256": "f6a703d4acb71c7e4109195d5d40ac26bc6cb77555b0f37b277e0e6607f6fd2c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/German/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/German/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "c9c575637b843ae276b0d3fe91bf1f24100291c83ac6af731885329b609cf38a",
+        "sha256": "c9c575637b843ae276b0d3fe91bf1f24100291c83ac6af731885329b609cf38a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/Spanish/Keyed/Hospital-spanish.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/Spanish/Keyed/Hospital-spanish.xml",
+        "sourceRawSha256": "1e220d8f9cca62d671e22f42f5d904e101b645b88b574d47465decec3aa84901",
+        "sha256": "1e220d8f9cca62d671e22f42f5d904e101b645b88b574d47465decec3aa84901"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/Spanish/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/Spanish/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c",
+        "sha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/Spanish/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/Spanish/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741",
+        "sha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/Spanish/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/Spanish/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c",
+        "sha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/Spanish/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/Spanish/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022",
+        "sha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/SpanishLatin/Keyed/Hospital-spanishlatin.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/SpanishLatin/Keyed/Hospital-spanishlatin.xml",
+        "sourceRawSha256": "30e94c3b8e7abf7f85d057791a99d43f0d476f8c868f5b6e5f166342fd62b511",
+        "sha256": "30e94c3b8e7abf7f85d057791a99d43f0d476f8c868f5b6e5f166342fd62b511"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/SpanishLatin/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/SpanishLatin/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c",
+        "sha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/SpanishLatin/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/SpanishLatin/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741",
+        "sha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/SpanishLatin/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/SpanishLatin/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c",
+        "sha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Languages/SpanishLatin/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.6/Languages/SpanishLatin/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022",
+        "sha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.6/Assemblies/Hospital.dll",
+        "projectFile": "Components/Hospital/1.6/Assemblies/Hospital.dll",
+        "sourceRawSha256": "63aa0c88d60d1d88476d659d682605b3b7b041972326df0c0402c1ded172d5e8",
+        "sha256": "63aa0c88d60d1d88476d659d682605b3b7b041972326df0c0402c1ded172d5e8"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/Duties/Duties_Hospital.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/Duties/Duties_Hospital.xml",
+        "sourceRawSha256": "a22574746cb3ceaf5d76a1350131a333d7dd824e161c7164ba4c9e05f08c27a7",
+        "sha256": "a22574746cb3ceaf5d76a1350131a333d7dd824e161c7164ba4c9e05f08c27a7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/MainTab/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/MainTab/MainButtons.xml",
+        "sourceRawSha256": "eedaf696ea94e1b7e9342514fc0481f7c73c6d57c5750e30587926774a0092ba",
+        "sha256": "eedaf696ea94e1b7e9342514fc0481f7c73c6d57c5750e30587926774a0092ba"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/MainTab/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/MainTab/PawnColumns.xml",
+        "sourceRawSha256": "c6392fd9cdd98238fcca93a331eed1f95f0dc9b38a09c2fe77ab1e659f06d146",
+        "sha256": "c6392fd9cdd98238fcca93a331eed1f95f0dc9b38a09c2fe77ab1e659f06d146"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/MainTab/PawnTables.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/MainTab/PawnTables.xml",
+        "sourceRawSha256": "a5a9d89cc63c192f5af8b0325304fcf0bb947759aa01e2760b2fae54ae23d14e",
+        "sha256": "a5a9d89cc63c192f5af8b0325304fcf0bb947759aa01e2760b2fae54ae23d14e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/Storyteller/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/Storyteller/Incidents_Map_Special.xml",
+        "sourceRawSha256": "624a466c12bdf3375b5e23f9cc613f30201338d689238c01b33fc7dea103dc32",
+        "sha256": "624a466c12bdf3375b5e23f9cc613f30201338d689238c01b33fc7dea103dc32"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Defs/ThingDefs_Buildings/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.7/Defs/Hospital/ThingDefs_Buildings/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "4e87fbf0c053fce3a523a74b3f435aa97a83e8ebc7bb23146504b0440b004c97",
+        "sha256": "4e87fbf0c053fce3a523a74b3f435aa97a83e8ebc7bb23146504b0440b004c97"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/English/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/English/Keyed/Hospital.xml",
+        "sourceRawSha256": "fd9fbe8c6bc928aeb62d2a28a29170b33332b524802c152ad01f54a5124c1623",
+        "sha256": "39362622cba6e8ba0d50d4225fdfec8f62b3322bdff1ba2b93d9b78618862c5a",
+        "textTransform": "Reuse Hospitality English BedsFilled and SilverMultiplier; remove only these duplicated compatible keys"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/French/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/French/Keyed/Hospital.xml",
+        "sourceRawSha256": "e30db6dfc5b585dc05c512e8cf3985e0767e41b8ecc8c1811858049259c0cc54",
+        "sha256": "e30db6dfc5b585dc05c512e8cf3985e0767e41b8ecc8c1811858049259c0cc54"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/French/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/French/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "ae17b70b4d39d9c15082707133394d13c0fc416b36f5654d8c3cc24805a47972",
+        "sha256": "ae17b70b4d39d9c15082707133394d13c0fc416b36f5654d8c3cc24805a47972"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/French/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/French/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "2f99761b166c2ba3b8d4cc0f849be37257662612abc0870ed7c9fc6076495c1e",
+        "sha256": "2f99761b166c2ba3b8d4cc0f849be37257662612abc0870ed7c9fc6076495c1e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/French/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/French/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "7a62e5622dc9b97d19bf44cd74bcdf02a3f8b6bfd5f6d4fb1b4a995e16b1693c",
+        "sha256": "7a62e5622dc9b97d19bf44cd74bcdf02a3f8b6bfd5f6d4fb1b4a995e16b1693c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/French/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/French/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "f86860756397051dfb4ac860b12b2e460b4d89eaa0753c0f2e3aea0799458631",
+        "sha256": "f86860756397051dfb4ac860b12b2e460b4d89eaa0753c0f2e3aea0799458631"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/German/Keyed/Hospital.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/German/Keyed/Hospital.xml",
+        "sourceRawSha256": "98445cdbf7e64dce98474b4316d5f874d4841fe8fddb59ac2736174c6aab315e",
+        "sha256": "98445cdbf7e64dce98474b4316d5f874d4841fe8fddb59ac2736174c6aab315e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/German/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/German/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "f417289f78e9ffe4fe300e900b93811c3a8d430385d04c19511fdc03d58e0f49",
+        "sha256": "f417289f78e9ffe4fe300e900b93811c3a8d430385d04c19511fdc03d58e0f49"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/German/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/German/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "0406a1e02d059a02a6ad59c9711f30211b44e6ba0e04494d3757d3f504f1dbf6",
+        "sha256": "0406a1e02d059a02a6ad59c9711f30211b44e6ba0e04494d3757d3f504f1dbf6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/German/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/German/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "f6a703d4acb71c7e4109195d5d40ac26bc6cb77555b0f37b277e0e6607f6fd2c",
+        "sha256": "f6a703d4acb71c7e4109195d5d40ac26bc6cb77555b0f37b277e0e6607f6fd2c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/German/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/German/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "c9c575637b843ae276b0d3fe91bf1f24100291c83ac6af731885329b609cf38a",
+        "sha256": "c9c575637b843ae276b0d3fe91bf1f24100291c83ac6af731885329b609cf38a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/Spanish/Keyed/Hospital-spanish.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/Spanish/Keyed/Hospital-spanish.xml",
+        "sourceRawSha256": "1e220d8f9cca62d671e22f42f5d904e101b645b88b574d47465decec3aa84901",
+        "sha256": "1e220d8f9cca62d671e22f42f5d904e101b645b88b574d47465decec3aa84901"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/Spanish/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/Spanish/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c",
+        "sha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/Spanish/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/Spanish/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741",
+        "sha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/Spanish/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/Spanish/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c",
+        "sha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/Spanish/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/Spanish/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022",
+        "sha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/SpanishLatin/Keyed/Hospital-spanishlatin.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/SpanishLatin/Keyed/Hospital-spanishlatin.xml",
+        "sourceRawSha256": "30e94c3b8e7abf7f85d057791a99d43f0d476f8c868f5b6e5f166342fd62b511",
+        "sha256": "30e94c3b8e7abf7f85d057791a99d43f0d476f8c868f5b6e5f166342fd62b511"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/SpanishLatin/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/SpanishLatin/DefInjected/IncidentDef/Incidents_Map_Special.xml",
+        "sourceRawSha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c",
+        "sha256": "d810e7b189238265688d1070c32faed1f35891d3221a21d246bbfe8ebf0a370c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/SpanishLatin/DefInjected/MainButtonDef/MainButtons.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/SpanishLatin/DefInjected/MainButtonDef/MainButtons.xml",
+        "sourceRawSha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741",
+        "sha256": "4e759fcf08b8ce00f0c833204b4a9f9e66f779d16c92f84841fd9f42819b5741"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/SpanishLatin/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/SpanishLatin/DefInjected/PawnColumnDef/PawnColumns.xml",
+        "sourceRawSha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c",
+        "sha256": "4e1d94f13db568b1f79b68913086731ea12a9c3cd962960b3ff0ca0b7865385c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Languages/SpanishLatin/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "projectFile": "Components/Hospital/1.7/Languages/SpanishLatin/DefInjected/ThingDef/Buildings_Misc_Landing.xml",
+        "sourceRawSha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022",
+        "sha256": "28fb13609b6c1d7c730c3d6a839892beaabc78d3aed0119dff60ea2c66ae2022"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/1.7/Assemblies/Hospital.dll",
+        "projectFile": "Components/Hospital/1.7/Assemblies/Hospital.dll",
+        "sourceRawSha256": "8dcc54470ac0a1bebcf79a0e5a877d47f64f536c36faac893dbde6a0ac6fe40a",
+        "sha256": "8dcc54470ac0a1bebcf79a0e5a877d47f64f536c36faac893dbde6a0ac6fe40a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Hospital.csproj",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Hospital.csproj",
+        "sourceRawSha256": "9d90835f3ade054fe7552d017e0873c3d74c61df97166d050499907431790d0e",
+        "sha256": "9d90835f3ade054fe7552d017e0873c3d74c61df97166d050499907431790d0e"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/HospitalMod.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/HospitalMod.cs",
+        "sourceRawSha256": "a457358eea1a89044fccecc3d7bc18f22cd990f39708cb3c70fcdc4f502e023a",
+        "sha256": "a457358eea1a89044fccecc3d7bc18f22cd990f39708cb3c70fcdc4f502e023a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Multiplayer.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Multiplayer.cs",
+        "sourceRawSha256": "e8e9bccf123eb3caf8962827e624786849d3e669111af49b920e9550ef864d29",
+        "sha256": "e8e9bccf123eb3caf8962827e624786849d3e669111af49b920e9550ef864d29"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Settings.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Settings.cs",
+        "sourceRawSha256": "53dafd330701538785320f76b87037eb122a03a92fff1601f5f321d323d4b19f",
+        "sha256": "53dafd330701538785320f76b87037eb122a03a92fff1601f5f321d323d4b19f"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/SettingsHelper.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/SettingsHelper.cs",
+        "sourceRawSha256": "2985f7cda455dce065e0decbd84edef5a06b378c4a81c83aa03ecfc2d8c4ea7a",
+        "sha256": "2985f7cda455dce065e0decbd84edef5a06b378c4a81c83aa03ecfc2d8c4ea7a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/AI/LordJob_VisitColonyAsPatient.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/AI/LordJob_VisitColonyAsPatient.cs",
+        "sourceRawSha256": "ef762cb123eb057b024a8acc1be04ef7c270174a904c9133fe5e6ee7c0926236",
+        "sha256": "ef762cb123eb057b024a8acc1be04ef7c270174a904c9133fe5e6ee7c0926236"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/AI/LordToilData_Patient.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/AI/LordToilData_Patient.cs",
+        "sourceRawSha256": "868713370315713d269e22a717d2cfa856614d496365aaa29289de1467417922",
+        "sha256": "868713370315713d269e22a717d2cfa856614d496365aaa29289de1467417922"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/AI/TransitionAction_EnsureHaveNearbyExitDestination.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/AI/TransitionAction_EnsureHaveNearbyExitDestination.cs",
+        "sourceRawSha256": "08e75f0b708eddf4d9628e2de7a988fe5f543bfa8768f4020587181166f4825a",
+        "sha256": "08e75f0b708eddf4d9628e2de7a988fe5f543bfa8768f4020587181166f4825a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/AI/Trigger_SentAway.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/AI/Trigger_SentAway.cs",
+        "sourceRawSha256": "2dfa6fabeb2ed62e2b37446cbf95c7e43ccb7157070c70e1a19ed36ae997cbf9",
+        "sha256": "2dfa6fabeb2ed62e2b37446cbf95c7e43ccb7157070c70e1a19ed36ae997cbf9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Hospital/CompHospitalBed.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Hospital/CompHospitalBed.cs",
+        "sourceRawSha256": "31f732863caa524de08d7897b423db8b8df5851091226c74867bc3f34fb330a7",
+        "sha256": "31f732863caa524de08d7897b423db8b8df5851091226c74867bc3f34fb330a7"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Hospital/HospitalBed_Injector.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Hospital/HospitalBed_Injector.cs",
+        "sourceRawSha256": "e82b502ee0d8daa9eaed7b586b5e5c8a0b2b933cf988acea92606b0e7fca102b",
+        "sha256": "e82b502ee0d8daa9eaed7b586b5e5c8a0b2b933cf988acea92606b0e7fca102b"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Hospital/HospitalMapComponent.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Hospital/HospitalMapComponent.cs",
+        "sourceRawSha256": "b65217f3bf8124dd9c3a957daa326218e560954c3c2fab31017257105a5d6d20",
+        "sha256": "b65217f3bf8124dd9c3a957daa326218e560954c3c2fab31017257105a5d6d20"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Hospital/PatientData.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Hospital/PatientData.cs",
+        "sourceRawSha256": "e40eec955f738af43c936c52ea1e636f82e41b39e41fdef54ca20b3da5ccbf2c",
+        "sha256": "e40eec955f738af43c936c52ea1e636f82e41b39e41fdef54ca20b3da5ccbf2c"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/IncidentSchedule/IncidentScheduler.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/IncidentSchedule/IncidentScheduler.cs",
+        "sourceRawSha256": "360e74cfe1e14e589c3deb778839a2f8893169ab04cb3b9474ee5a0b8f619eb2",
+        "sha256": "360e74cfe1e14e589c3deb778839a2f8893169ab04cb3b9474ee5a0b8f619eb2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/IncidentWorker/IncidentHelper.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/IncidentWorker/IncidentHelper.cs",
+        "sourceRawSha256": "4e9bc52922ede6948cf9e0af7791fa2fd6e969620d7d86feee65ce1e68cf9ed5",
+        "sha256": "4e9bc52922ede6948cf9e0af7791fa2fd6e969620d7d86feee65ce1e68cf9ed5"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/IncidentWorker/IncidentWorker_MassCasualtyEvent.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/IncidentWorker/IncidentWorker_MassCasualtyEvent.cs",
+        "sourceRawSha256": "b60c157dbe72230e802bc681027148737959d8c6506556760ed889bff0fe9e81",
+        "sha256": "b60c157dbe72230e802bc681027148737959d8c6506556760ed889bff0fe9e81"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/IncidentWorker/IncidentWorker_PatientArrives.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/IncidentWorker/IncidentWorker_PatientArrives.cs",
+        "sourceRawSha256": "f168a21fdf28936d757eac01f2323fbc975ae227d2b48538d1a9adbb24df88a2",
+        "sha256": "f168a21fdf28936d757eac01f2323fbc975ae227d2b48538d1a9adbb24df88a2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/Dialog_Blacklist.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/Dialog_Blacklist.cs",
+        "sourceRawSha256": "5e1c8eae5a5df27bfce002312c7bd865eb3a18c57651ec17ee32aef142e0233d",
+        "sha256": "5e1c8eae5a5df27bfce002312c7bd865eb3a18c57651ec17ee32aef142e0233d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/Dialog_MapSettings.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/Dialog_MapSettings.cs",
+        "sourceRawSha256": "c249b63c7ea62f3646798f6049aafdfbb809f4d4163229bca995e8999d434a33",
+        "sha256": "c249b63c7ea62f3646798f6049aafdfbb809f4d4163229bca995e8999d434a33"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/MainTabWindow_Hospital.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/MainTabWindow_Hospital.cs",
+        "sourceRawSha256": "514d9747f17be25b3164795450dbef9ea67ddf52cda73075fd4bc2b0f8066de0",
+        "sha256": "514d9747f17be25b3164795450dbef9ea67ddf52cda73075fd4bc2b0f8066de0"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_Bill.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_Bill.cs",
+        "sourceRawSha256": "e2ecf9a31ae08232e6110a30f93458ea74035a3aa1e9fc96295903f1aa8b1a44",
+        "sha256": "e2ecf9a31ae08232e6110a30f93458ea74035a3aa1e9fc96295903f1aa8b1a44"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_ButtonDisallow.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_ButtonDisallow.cs",
+        "sourceRawSha256": "7cf3215ab0c6c3d0946c6b8773adb739104bef60a4aaeb6b63caf0d288c411af",
+        "sha256": "7cf3215ab0c6c3d0946c6b8773adb739104bef60a4aaeb6b63caf0d288c411af"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_ButtonDismiss.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_ButtonDismiss.cs",
+        "sourceRawSha256": "2aca47498cebdd43a1d9d82ceefa78a958219a3e08f92fa8727823d11040227d",
+        "sha256": "2aca47498cebdd43a1d9d82ceefa78a958219a3e08f92fa8727823d11040227d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_Cure.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_Cure.cs",
+        "sourceRawSha256": "4845a3edf8230efba8e850978047419e98af499787c724f9573231d19318adf3",
+        "sha256": "4845a3edf8230efba8e850978047419e98af499787c724f9573231d19318adf3"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_Diagnosis.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_Diagnosis.cs",
+        "sourceRawSha256": "8fa179b789d185bb526e2a6eec0658e1b561f05a06dab2c011200db22d7d6771",
+        "sha256": "8fa179b789d185bb526e2a6eec0658e1b561f05a06dab2c011200db22d7d6771"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_LabelCustom.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_LabelCustom.cs",
+        "sourceRawSha256": "815198ff378c13689ccf79edc756b11942249e10a28fa4037a32aa7774dc1b6a",
+        "sha256": "815198ff378c13689ccf79edc756b11942249e10a28fa4037a32aa7774dc1b6a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_PatientRating.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_PatientRating.cs",
+        "sourceRawSha256": "3cffedee229c305c34cdbe1c5f46d9efbae0fd53753f0cea7b13a0665c8a3196",
+        "sha256": "3cffedee229c305c34cdbe1c5f46d9efbae0fd53753f0cea7b13a0665c8a3196"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnColumnWorker_PatientTimeSpent.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnColumnWorker_PatientTimeSpent.cs",
+        "sourceRawSha256": "cab0f4a1db99efd57808c63caf1e1357e72cd4affea46acf0838cc825b482504",
+        "sha256": "cab0f4a1db99efd57808c63caf1e1357e72cd4affea46acf0838cc825b482504"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/PawnTable_Patients.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/PawnTable_Patients.cs",
+        "sourceRawSha256": "404a810d9f97bddc272fec88b48f7f16117fb6b7d8e7c02fb6f871ec118d146a",
+        "sha256": "404a810d9f97bddc272fec88b48f7f16117fb6b7d8e7c02fb6f871ec118d146a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/MainTab/TimetableUtility.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/MainTab/TimetableUtility.cs",
+        "sourceRawSha256": "a85bdb5293123cfb56cde9747c11001754f84dd5961bd1056337c3a54227bae6",
+        "sha256": "a85bdb5293123cfb56cde9747c11001754f84dd5961bd1056337c3a54227bae6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Allow_Operations_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Allow_Operations_Patch.cs",
+        "sourceRawSha256": "9fdc651bf122e13ed67cfce5f3aac3ef5ca18bfb3d62915a5561e28950b6d81d",
+        "sha256": "9fdc651bf122e13ed67cfce5f3aac3ef5ca18bfb3d62915a5561e28950b6d81d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Allow_Operations_PatchNoViolation.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Allow_Operations_PatchNoViolation.cs",
+        "sourceRawSha256": "17430693de9dd78f661fb24a8e461e86f6da63ac9e7094a1e662fea6f3aa6598",
+        "sha256": "17430693de9dd78f661fb24a8e461e86f6da63ac9e7094a1e662fea6f3aa6598"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/BedColorPatch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/BedColorPatch.cs",
+        "sourceRawSha256": "064e36ea240af6a6539e394202a2e7520d9d518b203d09eff30cacc1d935682a",
+        "sha256": "064e36ea240af6a6539e394202a2e7520d9d518b203d09eff30cacc1d935682a"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Billing_Feed_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Billing_Feed_Patch.cs",
+        "sourceRawSha256": "b5e89bd58929f75592cbba95a08938ce6c338fc2de1e0804ebe11f2efc53324d",
+        "sha256": "b5e89bd58929f75592cbba95a08938ce6c338fc2de1e0804ebe11f2efc53324d"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Billing_Surgery_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Billing_Surgery_Patch.cs",
+        "sourceRawSha256": "12593b892d5708d778eeaca0244db50ae60fd6086d295f6fe72ff3c0f49456f6",
+        "sha256": "12593b892d5708d778eeaca0244db50ae60fd6086d295f6fe72ff3c0f49456f6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Billing_Tend_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Billing_Tend_Patch.cs",
+        "sourceRawSha256": "d21619b4b91134132a79efb7de32d1f4521a28e638dd4a53b638f507ca469bc9",
+        "sha256": "d21619b4b91134132a79efb7de32d1f4521a28e638dd4a53b638f507ca469bc9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/EnemySelfPreservation_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/EnemySelfPreservation_Patch.cs",
+        "sourceRawSha256": "8bf892513184bb3c7e1a1bb5150db491ffdc35571c9ebf59ad2caccd917c4841",
+        "sha256": "8bf892513184bb3c7e1a1bb5150db491ffdc35571c9ebf59ad2caccd917c4841"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/JobGiver_Work_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/JobGiver_Work_Patch.cs",
+        "sourceRawSha256": "c879c8f113d959e1c323e049ba3d17dfd0215878a9b43ff9028797568200c3cc",
+        "sha256": "c879c8f113d959e1c323e049ba3d17dfd0215878a9b43ff9028797568200c3cc"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/PatientOutcome_Patches.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/PatientOutcome_Patches.cs",
+        "sourceRawSha256": "f17765bc931ec1c590d10a38c6128227957dc06d3850b97918025c88a1e1eef6",
+        "sha256": "f17765bc931ec1c590d10a38c6128227957dc06d3850b97918025c88a1e1eef6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/Patients_BedFinder_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/Patients_BedFinder_Patch.cs",
+        "sourceRawSha256": "7e659e1fa588e6d00f7257af98b8f4ce8f913977f1d360a61bdc5c5ebffe77d2",
+        "sha256": "7e659e1fa588e6d00f7257af98b8f4ce8f913977f1d360a61bdc5c5ebffe77d2"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/TakeWoundedGuestPatch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/TakeWoundedGuestPatch.cs",
+        "sourceRawSha256": "ea6ebfcb46b25416c6934d42a04f60f2522a92d9fb421459a9180bc6a27d4928",
+        "sha256": "ea6ebfcb46b25416c6934d42a04f60f2522a92d9fb421459a9180bc6a27d4928"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Patches/ThinkNode_ConditionalNPCCanSelfTendNow_Patch.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Patches/ThinkNode_ConditionalNPCCanSelfTendNow_Patch.cs",
+        "sourceRawSha256": "4bd6d7e48cbdbea3739b36ecdf68ebfc3a3f183365191b78872014bc67225aa6",
+        "sha256": "4bd6d7e48cbdbea3739b36ecdf68ebfc3a3f183365191b78872014bc67225aa6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Properties/AssemblyInfo.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Properties/AssemblyInfo.cs",
+        "sourceRawSha256": "aa5bf1fc0ce0d3d91870a7896eb6937a45cabc17859e530889631a1e8ca175c1",
+        "sha256": "aa5bf1fc0ce0d3d91870a7896eb6937a45cabc17859e530889631a1e8ca175c1"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Utilities/DiseaseUtility.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Utilities/DiseaseUtility.cs",
+        "sourceRawSha256": "d7732913932b52b586c0b2b3b7654b4c89fe88974ecf09c3f59ae3941b5b8bbb",
+        "sha256": "d7732913932b52b586c0b2b3b7654b4c89fe88974ecf09c3f59ae3941b5b8bbb"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Utilities/PatientUtility.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Utilities/PatientUtility.cs",
+        "sourceRawSha256": "a55678ecb1ce9764bd2d1d5615d8292301c6eec9d396ad89b7fcd22d5c0009d6",
+        "sha256": "a55678ecb1ce9764bd2d1d5615d8292301c6eec9d396ad89b7fcd22d5c0009d6"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Utilities/SurgeryUtility.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Utilities/SurgeryUtility.cs",
+        "sourceRawSha256": "44dd834c944ef52f13fa936ff5b5360118f8402ec4997fceaec616c2b746d3e9",
+        "sha256": "44dd834c944ef52f13fa936ff5b5360118f8402ec4997fceaec616c2b746d3e9"
+      },
+      {
+        "source": "Turbo-mega-mod-rimworld/Tools/Build/GeminiClinicSurvey/Hospital/Source/Hospital/Utilities/WoundsUtility.cs",
+        "projectFile": "Components/Hospital/UpstreamSource/Hospital/Utilities/WoundsUtility.cs",
+        "sourceRawSha256": "75e8f886997c8e5dcbb3d646f6110a0e3bbfa58fb9a2ab7a9b97a487b9a8f595",
+        "sha256": "75e8f886997c8e5dcbb3d646f6110a0e3bbfa58fb9a2ab7a9b97a487b9a8f595"
+      }
+    ],
+    "bundledHarmonyCopied": false,
+    "textNormalization": "Preserve original bytes except removing two shared English keys; namespaced Defs/Patches paths prevent XML overrides",
+    "byteExactResources": false,
+    "rawResourceHashes": true,
+    "sourceRepository": "https://github.com/tomvd/Hospital",
+    "sourceRevision": "82a15e711129a32e5bfe772663160433ee566316",
+    "sharedDependencies": {
+      "0MultiplayerAPI.dll": "Uses existing shared provider; single-player binding verified separately",
+      "Harmony": "Uses existing version-selected provider"
+    }
   }
 }

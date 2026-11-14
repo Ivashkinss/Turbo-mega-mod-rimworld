@@ -1,4 +1,4 @@
-"""Verify the final installed state and collect the integration evidence."""
+﻿"""Verify the final installed state and collect the integration evidence."""
 import json
 import hashlib
 import os
@@ -21,7 +21,7 @@ def main():
     manifest = read('UtilityComponents.json')
     expected = {m['packageId'].lower() for m in planned + additional}
     actual = {m['packageId'].lower() for m in manifest.values()} | {'sbz.neatstorage', 'sbz.neatstoragefridge'}
-    assert actual == expected and len(actual) == 29, (actual ^ expected)
+    assert actual == expected and len(actual) == 30, (actual ^ expected)
     for mod in planned + additional:
         assert not (PROJECT.parent / mod['folder']).exists(), ('Original still installed', mod['folder'])
     assert not (PROJECT / 'Assemblies/TurboMegaMod.TestProbe.dll').exists(), 'Test DLL left installed'
@@ -31,14 +31,15 @@ def main():
     assert active.count('colonyproject.integrated') == 1
     assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
     assembly_hash = hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest()
-    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality', 'Restaurant', 'Complex')}
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality', 'Restaurant', 'Complex', 'Clinic', 'ClinicGuest', 'ComplexLayout', 'Company')}
     for name, report in reports.items():
         assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
         assert report['mapActivity']['ticksAdvanced'] > 0, name
         assert report['fullUserModSet'] and not report['originalComponentActive'], name
-        assert report['localization']['keyed'] == 2691 and report['localization']['scalarFields'] == 641 and report['localization']['grammarLines'] == 90, name
+        assert report['localization']['keyed'] == 2800 and report['localization']['scalarFields'] == 672 and report['localization']['grammarLines'] == 90, name
         assert report['productionAssemblySha256'] == assembly_hash, ('Stale production binary report', name)
-        assert report['knownExternalRuntimeErrors'] in (0, 2), name
+        assert report['knownExternalRuntimeErrors'] == 0, name
+        assert report['odysseyGrammar']['passed'] and report['odysseyGrammar']['checks'] == 252, name
         assert not any('Field injection' in message for message in report['knownExternalMessages']), name
     related = reports['Harmony']['relatedRegressions']
     assert set(related) == {'VEF', 'MapPreview', 'AdaptiveStorage', 'CommonSense', 'HugsLib'}
@@ -72,6 +73,15 @@ def main():
     assert complex_reload['productionAssemblySha256'] == assembly_hash and complex_reload['unresolvedReferences'] == 0
     assert complex_reload['isolatedFixtureSave'] and not complex_reload['userSaveTested']
     checks += reports['Complex']['complex']['checks'] + complex_reload['complexReload']['checks']
+    extra_service_checks = {}
+    for component, key in [('Clinic', 'clinic'), ('ClinicGuest', 'clinicguest'), ('ComplexLayout', 'layout'), ('Company', 'company')]:
+        extra_reload = read(component + '-Reload.json')
+        assert extra_reload['passed'] and extra_reload['runtimeErrors'] == 0 and not extra_reload['gpuLost'], component
+        assert extra_reload['productionAssemblySha256'] == assembly_hash and extra_reload['unresolvedReferences'] == 0, component
+        assert extra_reload['isolatedFixtureSave'] and not extra_reload['userSaveTested'], component
+        runtime_key = {'ComplexLayout': 'complexLayout', 'ClinicGuest': 'clinicGuest'}.get(component, key)
+        checks += reports[component][runtime_key]['checks'] + extra_reload[key + 'Reload']['checks']
+        extra_service_checks[component] = dict(fresh=reports[component][runtime_key]['checks'], reload=extra_reload[key + 'Reload']['checks'])
     from verify_complex_assets import main as verify_complex_assets
     verify_complex_assets()
     from verify_restaurant_assets import main as verify_restaurant_assets
@@ -83,7 +93,7 @@ def main():
     assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
     assert read('VefInitializerTests.json')['passed']
     russian, duplicates = entries([PROJECT / 'Languages/Russian'])
-    assert not duplicates and len(russian) == 3345
+    assert not duplicates and len(russian) == 3485
     artwork = read('GeminiFarmingAssets.json')
     accepted_assets = artwork['assets'] + artwork['glassAssets']
     assert len(accepted_assets) == 9
@@ -97,6 +107,9 @@ def main():
     for asset in soil_artwork['assets']:
         file = PROJECT / asset['projectFile']
         assert hashlib.sha256(file.read_bytes()).hexdigest() == asset['sha256'], str(file)
+    company_artwork = read('GeminiCompanyAssets.json')
+    assert company_artwork['verifiedIndependently'] and company_artwork['previewInspected']
+    assert hashlib.sha256((PROJECT / company_artwork['projectFile']).read_bytes()).hexdigest() == company_artwork['sha256']
     assert reports['Farming']['settingsUi']['tillingDesignatorDrawInvokedInRepaint']
     result = dict(plannedComponents=28, additionalComponents=len(additional), integratedComponents=len(actual), originalFoldersRemaining=0,
                   externalRequiredDependencies=0, activeMods=active, russianEntries=len(russian),
@@ -112,12 +125,14 @@ def main():
                   complexRuntimeChecks=reports['Complex']['complex']['checks'], complexReloadChecks=complex_reload['complexReload']['checks'],
                   complexAssetsVerified=3, isolatedComplexSaveReloadVerified=True,
                   restaurantAssetsVerified=3, isolatedRestaurantSaveReloadVerified=True,
+                  serviceChecks=extra_service_checks, companyAssetsVerified=1,
                   productionAssemblySha256=assembly_hash,
                   fullSetReports={name: name + '-FullSet.json' for name in reports},
                   libraryRegressions={name: value['runtime'].get('checks') for name, value in related.items()},
                   gameVersion=reports['Harmony']['gameVersion'], liveGame16Verified=False,
                   userSaveTested=False, visualLayoutInspected=False,
-                  knownRemainingIssue='Installed Odyssey Russian faction-name grammar; exact error pair recorded in runtime reports',
+                  odysseyGrammarChecks=252, odysseyRussianGrammarRuntimeErrors=0,
+                  knownRemainingIssue=None,
                   passed=True)
     (DOCS / 'IntegrationCompletion.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False))

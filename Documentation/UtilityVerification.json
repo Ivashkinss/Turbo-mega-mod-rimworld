@@ -1,5 +1,6 @@
 {
   "components": [
+    "Hospital",
     "Hospitality",
     "Harmony",
     "VanillaExpandedFramework",
@@ -28,8 +29,9 @@
     "RealisticRooms",
     "AlmostThere"
   ],
-  "resourceHashesVerified": 4344,
+  "resourceHashesVerified": 4456,
   "russianKeysByComponent": {
+    "Hospital": 61,
     "Hospitality": 149,
     "Harmony": 0,
     "VanillaExpandedFramework": 497,
@@ -67,6 +69,11 @@
   "vefVersionAndOriginalBranchesChecked": 4,
   "vefDefinitionFieldsTranslated": 192,
   "harmonyVersionAndOriginalBranchesChecked": 4,
+  "hospitalVersionOriginalBranchesChecked": 4,
+  "hospitalVersionedRussianKeysVerified": {
+    "1.6": 61,
+    "1.7": 61
+  },
   "hospitalityVersionOriginalAndOptionalBranchesChecked": 16,
   "hospitalityOptionalVnpeRuntimeVerified": false,
   "externalRequiredDependencies": 0,

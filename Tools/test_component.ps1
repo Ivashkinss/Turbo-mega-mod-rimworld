@@ -1,8 +1,12 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly)
+param([Parameter(Mandatory=$true)][ValidateSet('ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'ClinicGuest' { @{ folder=''; id='turbomegamod.clinicguest'; dll='Assemblies\TurboMegaMod.dll'; source='InGameClinicGuestProbe.cs'; flag='-tmm-clinicguest-probe'; report='ClinicGuestProbe.json'; ui='ClinicGuestUiProbe.json'; key='clinicGuest'; prefix='ClinicGuest' } }
+    'Company' { @{ folder=''; id='turbomegamod.company'; dll='Assemblies\TurboMegaMod.dll'; source='InGameCompanyProbe.cs'; flag='-tmm-company-probe'; report='CompanyProbe.json'; ui='CompanyUiProbe.json'; key='company'; prefix='Company' } }
+    'ComplexLayout' { @{ folder=''; id='turbomegamod.layout'; dll='Assemblies\TurboMegaMod.dll'; source='InGameComplexLayoutProbe.cs'; flag='-tmm-layout-probe'; report='ComplexLayoutProbe.json'; ui='ComplexLayoutUiProbe.json'; key='complexLayout'; prefix='ComplexLayout' } }
+    'Clinic' { @{ folder=''; id='turbomegamod.clinic'; dll='Assemblies\TurboMegaMod.dll'; source='InGameClinicProbe.cs'; flag='-tmm-clinic-probe'; report='ClinicProbe.json'; ui='ClinicUiProbe.json'; key='clinic'; prefix='Clinic' } }
     'Complex' { @{ folder=''; id='turbomegamod.complex'; dll='Assemblies\TurboMegaMod.dll'; source='InGameComplexProbe.cs'; flag='-tmm-complex-probe'; report='ComplexProbe.json'; ui='ComplexUiProbe.json'; key='complex'; prefix='Complex' } }
     'Restaurant' { @{ folder=''; id='turbomegamod.restaurant'; dll='Assemblies\TurboMegaMod.dll'; source='InGameRestaurantProbe.cs'; flag='-tmm-restaurant-probe'; report='RestaurantProbe.json'; ui='RestaurantUiProbe.json'; key='restaurant'; prefix='Restaurant' } }
     'Hospitality' { @{ folder='Hospitality (Continued)'; id='orion.hospitality'; dll='Components\Hospitality\1.6\Assemblies\Hospitality.dll'; source='InGameHospitalityProbe.cs'; flag='-tmm-hospitality-probe'; report='HospitalityProbe.json'; ui='HospitalityUiProbe.json'; key='hospitality'; prefix='Hospitality' } }
@@ -65,7 +69,7 @@ $references += '/reference:' + (Join-Path $projectPath $definition.dll)
 if ($Component -eq 'Hospitality') { $references += '/reference:' + (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll') }
 if ($WithCoreRegression) { $references += '/reference:' + (Join-Path $projectPath 'Components\HugsLib\Assemblies\HugsLib.dll') }
 $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
-$sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs',$definition.source) |
+$sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs','InGameGrammarProbe.cs',$definition.source) |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
 foreach ($regression in $regressions) { $sources += Join-Path $projectPath ('Tests\' + $regression.source) }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
@@ -74,6 +78,7 @@ if ($WithRunAndGun) { $sources += Join-Path $projectPath 'Tests\InGameRunAndGunP
 if ($WithWallsAreSolid) { $sources += Join-Path $projectPath 'Tests\InGameWallsProbe.cs' }
 & (Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe') /noconfig /nologo /nostdlib+ /target:library (('/out:') + $builtProbe) @references @sources
 if ($LASTEXITCODE -ne 0) { throw ($Component + ' probe compile failed') }
+if ($CompileProbeOnly) { Write-Output ('Compiled probe: ' + $builtProbe); return }
 $label = if ($FullSet) { 'FullSet' } elseif ($OriginalActive) { 'OriginalActive' } else { 'Integrated' }
 $testRoot = Join-Path $projectPath ('TestRuns\' + $definition.prefix + '-' + $label + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path (Join-Path $testRoot 'Config') -Force | Out-Null
@@ -129,7 +134,7 @@ try {
     Copy-Item -LiteralPath $builtProbe -Destination $installedProbe
     $probeInstalled = $true
     $arguments = @(
-        ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe',$definition.flag
+        ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe','-tmm-grammar-probe',$definition.flag
     )
     foreach ($regression in $regressions) { $arguments += $regression.flag }
     if ($WithNiceBillTab) { $arguments += '-tmm-nicebill-probe' }
@@ -139,7 +144,7 @@ try {
     $process = Start-Process -FilePath (Join-Path $gamePath 'RimWorld.exe') -WorkingDirectory $gamePath -ArgumentList $arguments -WindowStyle Hidden -RedirectStandardOutput (Join-Path $testRoot 'stdout.log') -RedirectStandardError (Join-Path $testRoot 'stderr.log') -PassThru
     Write-Output ('TestRoot: ' + $testRoot)
     $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
-    $reports = @('LocalizationProbe.json',$definition.report,'GpuMapProbe.json',$definition.ui)
+    $reports = @('LocalizationProbe.json',$definition.report,'GpuMapProbe.json',$definition.ui,'GrammarProbe.json')
     foreach ($regression in $regressions) { $reports += @($regression.report, $regression.ui) }
     if ($WithNiceBillTab) { $reports += @('NiceBillProbe.json','NiceBillUiProbe.json') }
     if ($WithHands) { $reports += @('HandsProbe.json','HandsUiProbe.json') }
@@ -163,6 +168,7 @@ try {
     $componentResult = Get-Content -LiteralPath (Join-Path $testRoot $reports[1]) -Raw | ConvertFrom-Json
     $activity = Get-Content -LiteralPath (Join-Path $testRoot $reports[2]) -Raw | ConvertFrom-Json
     $ui = Get-Content -LiteralPath (Join-Path $testRoot $reports[3]) -Raw | ConvertFrom-Json
+    $grammar = Get-Content -LiteralPath (Join-Path $testRoot 'GrammarProbe.json') -Raw | ConvertFrom-Json
     $errors = @(Select-String -LiteralPath (Join-Path $testRoot 'stdout.log') -Pattern '^\d+:\d+:\d+\s+(ERROR|CRIT)')
     $knownExternal = 0
     $vefIssue = 'Field injection: VEF: VEF.AestheticScaling.CachedPawnDataExtensions.GetCachePrePatched: initializer GetDefaultCache must be exactly one static method on VEF.AestheticScaling.CachedPawnDataExtensions returning VEF.AestheticScaling.CachedPawnData and taking the target or nothing (0 found).'
@@ -184,7 +190,7 @@ try {
         component = $Component; originalComponentActive = [bool]$OriginalActive; fullUserModSet = [bool]$FullSet
         gameVersion = [IO.File]::ReadAllText((Join-Path $gamePath 'Version.txt')).Trim()
         localization = $localization; mapActivity = $activity
-        settingsUi = $ui
+        settingsUi = $ui; odysseyGrammar = $grammar
         runtimeErrors = $errors.Count; knownExternalRuntimeErrors = $knownExternal; unexpectedRuntimeErrors = $errors.Count - $knownExternal
         knownExternalMessages = @($errors | ForEach-Object { $_.Line -replace '^\d+:\d+:\d+\s+ERROR ', '' })
         gpuLost = [bool](Select-String -LiteralPath (Join-Path $testRoot 'stdout.log') -SimpleMatch 'VK_ERROR_DEVICE_LOST')
@@ -192,7 +198,7 @@ try {
         productionAssemblySha256 = (Get-FileHash -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll') -Algorithm SHA256).Hash.ToLowerInvariant()
     }
     $result[$definition.key] = $componentResult
-    $result.passed = $localization.passed -and $componentResult.passed -and $ui.passed -and $activity.framesAdvanced -gt 0 -and
+    $result.passed = $grammar.passed -and $localization.passed -and $componentResult.passed -and $ui.passed -and $activity.framesAdvanced -gt 0 -and
         $activity.ticksAdvanced -gt 0 -and $errors.Count -eq $knownExternal -and !$result.gpuLost
     if ($WithCoreRegression) {
         $result.relatedRegressions = [ordered]@{}

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Clinic.Area>Область клиники</TMM.Clinic.Area>
+  <TMM.Clinic.OutsideWard>Отметьте кровать как медицинскую в закрытой комнате внутри гостевой территории комплекса. Не включайте гостевую палату в служебную область.</TMM.Clinic.OutsideWard>
+  <TMM.Clinic.Settings>Клиника комплекса</TMM.Clinic.Settings>
+  <TMM.Clinic.DischargePaid>{0}: выписка завершена. Получено {1} серебра. Изменение отношений с фракцией: {2}.</TMM.Clinic.DischargePaid>
+  <TMM.Clinic.DischargePending>{0}: выписка завершена. Выплата {1} серебра ожидает свободного места около ресепшена. Изменение отношений с фракцией: {2}.</TMM.Clinic.DischargePending>
+  <TMM.Clinic.Admit>Госпитализировать постояльца</TMM.Clinic.Admit>
+  <TMM.Clinic.AdmitHelp>Выбрать раненого или заболевшего постояльца для палаты клиники. Вещи, покупки, оплаченный номер и исходная группа гостей сохраняются.</TMM.Clinic.AdmitHelp>
+  <TMM.Clinic.Care>Медицинская помощь</TMM.Clinic.Care>
+  <TMM.Clinic.Admitted>{0}: постоялец принят в палату. Гостиничный визит сохраняется.</TMM.Clinic.Admitted>
+  <TMM.Clinic.NoCandidates>Среди прибывших постояльцев сейчас нет нуждающихся в лечении.</TMM.Clinic.NoCandidates>
+  <TMM.Clinic.CannotAdmit>Нужна свободная доступная медицинская койка в области клиники, внутри территории комплекса.</TMM.Clinic.CannotAdmit>
+</LanguageData>

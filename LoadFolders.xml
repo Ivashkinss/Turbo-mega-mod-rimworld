@@ -44,10 +44,12 @@
     <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
     <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
     <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.6</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality/1.6</li>
     <li IfModNotActive="orion.hospitality" IfModActive="ludeon.rimworld.royalty">Components/Hospitality/1.6/Compat/Royalty</li>
     <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.6/Compat/VNPE</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital/1.6</li>
   </v1.6>
   <v1.7>
     <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
@@ -93,9 +95,11 @@
     <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
     <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
     <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.7</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality/1.7</li>
     <li IfModNotActive="orion.hospitality" IfModActive="ludeon.rimworld.royalty">Components/Hospitality/1.7/Compat/Royalty</li>
     <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.7/Compat/VNPE</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital/1.7</li>
   </v1.7>
 </loadFolders>

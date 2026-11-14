@@ -26,7 +26,9 @@ public static class FarmingPowerBudgetTests
         float idleClimate = FarmingPowerBudget.Greenhouse(36, false, 21f, 21f, 2900f, 175f, 200f);
         Check(Near(idleClimate, 20.125f), "Climate keeps a small standby load at its target");
         Check(Near(FarmingPowerBudget.Greenhouse(36, false, 1f, 21f, 2900f, 175f, 200f), 201.25f), "Nominal heating load includes the 15% premium");
-        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 41f, 21f, 2900f, 175f, 200f), 227.125f), "Cooling uses the vanilla cooler baseline");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 41f, 21f, 2900f, 175f, 200f), 230f), "Cooling uses full vanilla cooler power plus premium");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 21f, 21f, 2900f, 175f, 200f, false, 30f, 35f), 230f), "Hot outdoors must retain full cooling demand at the room target");
+        Check(Near(FarmingPowerBudget.Greenhouse(36, false, 35f, 21f, 2900f, 175f, 200f, false, 30f, 35f), 230f), "Fourteen degrees of heat must not under-power the cooler");
         Check(FarmingPowerBudget.Greenhouse(36, false, -19f, 21f, 2900f, 175f, 200f) > FarmingPowerBudget.Greenhouse(36, false, 11f, 21f, 2900f, 175f, 200f), "Larger cold gap must draw more power");
         Check(FarmingPowerBudget.Greenhouse(36, false, 61f, 21f, 2900f, 175f, 200f) > FarmingPowerBudget.Greenhouse(36, false, 31f, 21f, 2900f, 175f, 200f), "Larger hot gap must draw more power");
         Check(Near(FarmingPowerBudget.Greenhouse(72, false, 41f, 21f, 2900f, 175f, 200f), 2f * FarmingPowerBudget.Greenhouse(36, false, 41f, 21f, 2900f, 175f, 200f)), "Climate load scales with area");

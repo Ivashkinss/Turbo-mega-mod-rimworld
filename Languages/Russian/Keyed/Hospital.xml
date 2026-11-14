@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PatientsTab>Пациенты</PatientsTab>
+  <DiagnosisWounds>ранения</DiagnosisWounds>
+  <CureWounds>перевязать раны</CureWounds>
+  <CureDisease>дать лекарство</CureDisease>
+  <DiagnosisSurgeryOnPart>проблема: {0}</DiagnosisSurgeryOnPart>
+  <DiagnosisSurgeryNoPart>требуется операция</DiagnosisSurgeryNoPart>
+  <DiagnosisArtificialBodyPart>требуется: {0}</DiagnosisArtificialBodyPart>
+  <Dismiss>Выписать</Dismiss>
+  <Disallow>Отказать в операции</Disallow>
+  <RefusedOperations>Запрещённые операции:</RefusedOperations>
+  <HospitalPatientLeaves>Пациент {0} покидает больницу: получено {1}, изменение отношений с фракцией {3}: {2}</HospitalPatientLeaves>
+  <HospitalPatientLeavesNoFaction>Пациент {0} покидает больницу: получено {1}</HospitalPatientLeavesNoFaction>
+  <HospitalPatientDied>Пациент {0} скончался: -{1} к отношениям с фракцией {2}</HospitalPatientDied>
+  <HospitalSurgeryFailed>Операция пациента {0} провалена: -{1} к отношениям с фракцией {2}</HospitalSurgeryFailed>
+  <HospitalPatientDismissed>Пациент {0} выписан.</HospitalPatientDismissed>
+  <HospitalBlacklisted>Операция «{0}» добавлена в чёрный список.</HospitalBlacklisted>
+  <Blacklists>Чёрные списки</Blacklists>
+  <BlacklistHint>Отмеченные пункты занесены в чёрный список и не будут появляться.</BlacklistHint>
+  <BlacklistSurgeries>Запрещённые операции ({0})...</BlacklistSurgeries>
+  <BlacklistDiseases>Запрещённые болезни ({0})...</BlacklistDiseases>
+  <BlacklistFactions>Запрещённые фракции ({0})...</BlacklistFactions>
+  <BlacklistSurgeriesTitle>Запрещённые операции</BlacklistSurgeriesTitle>
+  <BlacklistDiseasesTitle>Запрещённые болезни</BlacklistDiseasesTitle>
+  <BlacklistFactionsTitle>Запрещённые фракции</BlacklistFactionsTitle>
+  <HospitalMapSettings>Правила больницы...</HospitalMapSettings>
+  <HospitalSettings>Правила больницы</HospitalSettings>
+  <AcceptPatients>Принимать пациентов</AcceptPatients>
+  <AcceptPatientsTooltip>Снимите этот флажок, если хотите временно прекратить приём пациентов.</AcceptPatientsTooltip>
+  <AcceptSurgery>Принимать на операции</AcceptSurgery>
+  <AcceptSurgeryTooltip>Снимите этот флажок, если не хотите получать события пациентов, требующих хирургических операций.</AcceptSurgeryTooltip>
+  <AcceptDanger>Принимать пациентов при опасности</AcceptDanger>
+  <AcceptDangerTooltip>Установите этот флажок, если хотите разрешить прибытие пациентов даже при наличии опасности на карте (токсичные осадки, вулканическая зима, налёты, бешеные животные).</AcceptDangerTooltip>
+  <SilverMultiplierTooltip>Масштабирует итоговый счёт пациента на указанный процент (рекомендуется: 100%).</SilverMultiplierTooltip>
+  <DifficultySettings>Сложность</DifficultySettings>
+  <GoodwillGainMultiplier>Множитель улучшения отношений</GoodwillGainMultiplier>
+  <GoodwillGainMultiplierTooltip>Масштабирует прирост доброй воли фракции от выписанных довольных пациентов (по умолчанию: 100%).</GoodwillGainMultiplierTooltip>
+  <DeathGoodwillPenalty>Штраф отношений за смерть пациента</DeathGoodwillPenalty>
+  <DeathGoodwillPenaltyTooltip>Потеря доброй воли с фракцией в случае смерти её пациента в вашей больнице (по умолчанию: 10).</DeathGoodwillPenaltyTooltip>
+  <SurgeryFailGoodwillPenalty>Штраф отношений за провал операции</SurgeryFailGoodwillPenalty>
+  <SurgeryFailGoodwillPenaltyTooltip>Потеря доброй воли с фракцией в случае врачебной ошибки при операции её пациента (по умолчанию: 1).</SurgeryFailGoodwillPenaltyTooltip>
+  <DiseaseSeverityMultiplier>Множитель тяжести болезней</DiseaseSeverityMultiplier>
+  <DiseaseSeverityMultiplierTooltip>Масштабирует начальную тяжесть болезней у прибывающих пациентов. Чем выше, тем сложнее (по умолчанию: 100%).</DiseaseSeverityMultiplierTooltip>
+  <WoundSeverityMultiplier>Множитель тяжести ранений</WoundSeverityMultiplier>
+  <WoundSeverityMultiplierTooltip>Масштабирует тяжесть ранений прибывающих пациентов. Чем выше, тем сложнее (по умолчанию: 100%).</WoundSeverityMultiplierTooltip>
+  <ResetToDefaults>Сбросить по умолчанию</ResetToDefaults>
+  <BedsReserved>Резерв коек для поселенцев</BedsReserved>
+  <BedsReservedTooltip>Количество медицинских коек, зарезервированных для собственных поселенцев, чтобы пациенты не заняли все места.</BedsReservedTooltip>
+  <ShowMessageAtArrival>Сообщение вместо письма</ShowMessageAtArrival>
+  <ShowMessageAtArrivalTooltip>Показывать короткое всплывающее сообщение вместо полноценного письма при прибытии нового пациента.</ShowMessageAtArrivalTooltip>
+  <PreventIncapacitatedArrivals>Предотвращать прибытие без сознания</PreventIncapacitatedArrivals>
+  <PreventIncapacitatedArrivalsTooltip>Ранения пациентов ограничиваются так, чтобы они не теряли сознание и могли самостоятельно дойти до койки. Отключите для усложнения массовых бедствий, когда раненых придётся переносить вручную.</PreventIncapacitatedArrivalsTooltip>
+  <MassCasualties>Массовые бедствия</MassCasualties>
+  <MassCasualtiesTooltip>События массовых бедствий будут периодически переполнять вашу больницу большим числом экстренных пациентов.</MassCasualtiesTooltip>
+  <CommandBedSetAsHospitalLabel>Больничная койка</CommandBedSetAsHospitalLabel>
+  <CommandBedSetAsHospitalDesc>Назначить эту кровать для внешних пациентов больницы.</CommandBedSetAsHospitalDesc>
+  <CommandBedSetAsSurgeryLabel>Хирургическая койка</CommandBedSetAsSurgeryLabel>
+  <CommandBedSetAsSurgeryDesc>Назначить эту кровать специально для пациентов, ожидающих хирургических операций.</CommandBedSetAsSurgeryDesc>
+  <MCE_Pandemic>эпидемия</MCE_Pandemic>
+  <MCE_Raid>крупный налёт</MCE_Raid>
+  <MCE_Crash>крушение транспортного челнока</MCE_Crash>
+  <MCE_Fire>сильный пожар</MCE_Fire>
+</LanguageData>

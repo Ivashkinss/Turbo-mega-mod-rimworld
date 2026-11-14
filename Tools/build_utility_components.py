@@ -10,6 +10,8 @@ from lxml import etree as ET
 
 PROJECT = Path(__file__).resolve().parents[1]
 COMPONENTS = {
+    "Hospital": ("Hospital", "adamas.hospital",
+                 json.loads((PROJECT / "Tools/ComponentFiles/Hospital.json").read_text(encoding="utf-8"))),
     "Hospitality": ("Hospitality (Continued)", "orion.hospitality",
                     json.loads((PROJECT / "Tools/ComponentFiles/Hospitality.json").read_text(encoding="utf-8"))),
     "Harmony": ("2009463077", "brrainz.harmony", {
@@ -611,11 +613,12 @@ def main():
     source_override = args.source_root.resolve() if args.source_root else None
     for name in selected:
         folder, _, files = COMPONENTS[name]
-        if name == 'Hospitality':
+        if name in ('Hospitality', 'Hospital'):
             pinned = subprocess.run(['git', '-C', str(source_override or PROJECT.parent / folder), 'rev-parse', 'HEAD'],
                                     check=True, capture_output=True, text=True).stdout.strip()
-            if pinned != 'd465bdc07b88d77eb3d158c215af388dcf771863':
-                raise ValueError('Hospitality import requires the reviewed pinned source revision')
+            expected = 'd465bdc07b88d77eb3d158c215af388dcf771863' if name == 'Hospitality' else '82a15e711129a32e5bfe772663160433ee566316'
+            if pinned != expected:
+                raise ValueError(name + ' import requires the reviewed pinned source revision')
         for relative in [*files, "About/About.xml"]:
             original = (source_override or PROJECT.parent / folder) / relative
             if not original.is_file():
@@ -625,7 +628,7 @@ def main():
     for name in selected:
         folder, package_id, files = COMPONENTS[name]
         source = source_override or PROJECT.parent / folder
-        byte_exact = name in ("MapPreview", "Harmony", "Hospitality")
+        byte_exact = name in ("MapPreview", "Harmony", "Hospitality", "Hospital")
         items = []
         for relative, destination in output_pairs(files):
             original = source / relative
@@ -641,6 +644,13 @@ def main():
                 text = text.replace('The members of {0} are upset with you for recruiting ({1}).',
                                     'The members of {0} never heard back of their delegation ({1}).')
                 target.write_text(text, encoding='utf-8')
+            hospital_shared_keys = name == 'Hospital' and relative.endswith('/Languages/English/Keyed/Hospital.xml')
+            if hospital_shared_keys:
+                tree = ET.parse(str(target))
+                for key in ('BedsFilled', 'SilverMultiplier'):
+                    node = tree.getroot().find(key)
+                    if node is not None: tree.getroot().remove(node)
+                tree.write(str(target), encoding='utf-8', xml_declaration=True)
             if not byte_exact and (target.suffix.lower() in (".xml", ".json") or target.name in ("LICENSE", "LICENSE.md")):
                 clean_text(target)
             data = target.read_bytes()
@@ -652,6 +662,8 @@ def main():
                           "sha256": hashlib.sha256(data).hexdigest()})
             if hotel_message_fix:
                 items[-1]['textTransform'] = 'Correct the two swapped leaderless-faction messages against GuestUtility callers (recruitment has three arguments; missing delegation has two); UTF-8 output'
+            if hospital_shared_keys:
+                items[-1]['textTransform'] = 'Reuse Hospitality English BedsFilled and SilverMultiplier; remove only these duplicated compatible keys'
         if name == 'VanillaExpandedFramework':
             powershell = shutil.which('pwsh') or shutil.which('powershell')
             if not powershell:
@@ -682,6 +694,13 @@ def main():
                 report[name]['sourceRepository'] = 'https://github.com/Zaljerem/Hospitality'
                 report[name]['sourceRevision'] = 'd465bdc07b88d77eb3d158c215af388dcf771863'
                 report[name]['sharedDependencies'] = {'0MultiplayerAPI.dll': 'Uses the byte-identical 0.5.0.0 provider in Components/AdaptiveStorage/Assemblies; Harmony uses the existing version-selected provider'}
+            if name == 'Hospital':
+                report[name]['byteExactResources'] = False
+                report[name]['rawResourceHashes'] = True
+                report[name]['textNormalization'] = 'Preserve original bytes except removing two shared English keys; namespaced Defs/Patches paths prevent XML overrides'
+                report[name]['sourceRepository'] = 'https://github.com/tomvd/Hospital'
+                report[name]['sourceRevision'] = '82a15e711129a32e5bfe772663160433ee566316'
+                report[name]['sharedDependencies'] = {'0MultiplayerAPI.dll': 'Uses existing shared provider; single-player binding verified separately', 'Harmony': 'Uses existing version-selected provider'}
     path = PROJECT / "LoadFolders.xml"
     tree = ET.parse(str(path), ET.XMLParser(remove_blank_text=True))
     for version in ("v1.6", "v1.7"):
@@ -700,6 +719,11 @@ def main():
                 if active: attrs['IfModActive'] = active
                 ET.SubElement(tree.find(version), 'li', **attrs).text = hospitality_folder
             ET.SubElement(tree.find(version), 'li', IfModNotActive='orion.hospitality').text = 'Components/Hospitality'
+        if 'Hospital' in report:
+            for node in list(tree.find(version)):
+                if node.text.startswith('Components/Hospital/'):
+                    tree.find(version).remove(node)
+            ET.SubElement(tree.find(version), 'li', IfModNotActive='adamas.hospital').text = 'Components/Hospital/' + version[1:]
         # Root TurboMegaMod.dll derives from the framework's ItemGraphicWorker.
         # Verse validates types as it loads each folder, so this dependency must
         # precede the root assembly, not merely be present in the same package.

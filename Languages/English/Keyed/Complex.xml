@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
   <TMM.Complex.Area>Complex area</TMM.Complex.Area>
   <TMM.Complex.GuestArea>Guest area</TMM.Complex.GuestArea>
   <TMM.Complex.FoodArea>Restaurant stock</TMM.Complex.FoodArea>
-  <TMM.Complex.AreasHelp>Use allowed areas. The complex area defines the workplace, including staff rooms and service facilities. Guest and stock areas remain separate. One reception desk manages this map.</TMM.Complex.AreasHelp>
+  <TMM.Complex.AreasHelp>Choose the whole complex and optional staff-only rooms. Guests cannot enter the staff area; staff may move and work elsewhere. Beds outside staff rooms become guest beds, except explicitly assigned staff housing. Mark any bed medical to make the entire enclosed room a ward. Bedroom tables serve only that room’s guests; restaurant service excludes wards. Waiters prefer suitable meals in complex fridges, then accessible colony fridges. A restaurant service counter is required.</TMM.Complex.AreasHelp>
   <TMM.Complex.Employees>Personnel and housing</TMM.Complex.Employees>
   <TMM.Complex.EmployeesHelp>Choose automatic work locations independently from housing. Both places preserves colony jobs. Roles set their work to priority 1 and retain other priorities. Rest, self-treatment, firefighting and direct orders remain normal. The next work search uses the selected mode.</TMM.Complex.EmployeesHelp>
   <TMM.Complex.Apply>Apply service defaults</TMM.Complex.Apply>

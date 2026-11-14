@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PatientRating.label>настроение</PatientRating.label>
+  <PatientRating.headerTip>Насколько пациент доволен пребыванием в больнице.</PatientRating.headerTip>
+  <PatientTimeSpent.label>время</PatientTimeSpent.label>
+  <PatientTimeSpent.headerTip>Сколько часов пациент провёл в вашей больнице.</PatientTimeSpent.headerTip>
+  <PatientDiagnosis.label>диагноз</PatientDiagnosis.label>
+  <PatientDiagnosis.headerTip>Чем болен или от чего страдает этот пациент.</PatientDiagnosis.headerTip>
+  <PatientCure.label>лечение</PatientCure.label>
+  <PatientCure.headerTip>Какая медицинская помощь или операция требуется пациенту.</PatientCure.headerTip>
+  <PatientBill.label>к оплате</PatientBill.label>
+  <PatientBill.headerTip>Текущая начисленная стоимость лечения, подлежащая оплате при успешной выписке.</PatientBill.headerTip>
+</LanguageData>

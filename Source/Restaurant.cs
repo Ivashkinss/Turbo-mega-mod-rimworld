@@ -19,8 +19,12 @@ namespace TurboMegaMod
         public ThingDef mealDef;
         public int pricePercent = 100, earned;
         public bool open = true;
-        public bool Ready { get { return Spawned && open && serviceArea != null && foodArea != null &&
-            Map.areaManager.AllAreas.Contains(serviceArea) && Map.areaManager.AllAreas.Contains(foodArea); } }
+        public Building_ComplexDesk Complex { get { var desk = ComplexLayout.Desk(Map); return desk != null && desk.area[Position] ? desk : null; } }
+        public Area Tables { get { return Complex == null ? serviceArea : Complex.area; } }
+        public ThingDef Meal { get { return Complex == null ? mealDef : Complex.restaurantMeal ?? ThingDefOf.MealSimple; } }
+        public int PricePercent { get { return Complex == null ? pricePercent : Complex.restaurantPercent; } }
+        public bool Ready { get { return Spawned && (Complex != null ? Complex.restaurantOpen : open && serviceArea != null && foodArea != null &&
+            Map.areaManager.AllAreas.Contains(serviceArea) && Map.areaManager.AllAreas.Contains(foodArea)); } }
         public override void ExposeData()
         {
             base.ExposeData();
@@ -54,6 +58,7 @@ namespace TurboMegaMod
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (var gizmo in base.GetGizmos()) yield return gizmo;
+            if (Complex != null) yield break;
             yield return AreaCommand(true); yield return AreaCommand(false);
             yield return new Command_Toggle { defaultLabel = "TMM.Restaurant.Open".Translate(), defaultDesc = "TMM.Restaurant.OpenHelp".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Restaurant/Restaurant"), isActive = () => open, toggleAction = () => open = !open };
@@ -120,14 +125,47 @@ namespace TurboMegaMod
         }
         public static bool AllowedSeat(Pawn guest, Thing seat)
         {
+            return AllowedCell(guest, seat.Position);
+        }
+        public static bool AllowedCell(Pawn guest, IntVec3 cell)
+        {
             var area = guestArea == null ? null : guestArea.Invoke(null, new object[] { guest }) as Area;
-            return area == null || area[seat.Position];
+            return area == null || area[cell];
         }
         public static bool Seat(Thing thing, Building_ServiceCounter counter)
         {
-            return thing.Spawned && thing.Map == counter.Map && thing.def.building != null && thing.def.building.isSittable && counter.serviceArea[thing.Position] &&
+            return thing.Spawned && thing.Map == counter.Map && thing.def.building != null && thing.def.building.isSittable && counter.Tables[thing.Position] &&
                 GenAdj.CellsAdjacentCardinal(thing).Any(c => c.InBounds(counter.Map) && c.GetThingList(counter.Map)
                     .Any(t => t.def.surfaceType == SurfaceType.Eat));
+        }
+        public static bool SeatForGuest(Pawn guest, Thing seat, Building_ServiceCounter counter)
+        {
+            if (!Seat(seat, counter) || !AllowedSeat(guest, seat)) return false;
+            var desk = counter.Complex;
+            if (desk == null) return true;
+            if (ComplexLayout.StaffOnly(desk, seat.Position)) return false;
+            var room = seat.GetRoom();
+            if (ComplexLayout.MedicalRoom(room)) return false;
+            if (room != null && room.ContainedBeds.Any(ComplexLayout.IsGuest)) {
+                var bed = HotelBillingHooks.Bed(guest);
+                return bed != null && bed.GetRoom() == room;
+            }
+            return true;
+        }
+        public static bool FridgeAt(Map map, IntVec3 cell)
+        {
+            foreach (var storage in cell.GetThingList(map).OfType<Building_Storage>()) {
+                string name = storage.def.defName;
+                if (storage.Faction == Faction.OfPlayer && name.IndexOf("Fridge", StringComparison.OrdinalIgnoreCase) >= 0 && name.IndexOf("Corpse", StringComparison.OrdinalIgnoreCase) < 0) return true;
+                var room = storage.GetRoom();
+                if (storage.Faction == Faction.OfPlayer && room != null && !room.UsesOutdoorTemperature && room.Temperature <= 10f) return true;
+            }
+            return false;
+        }
+        public static bool Stock(Building_ServiceCounter counter, Thing food)
+        {
+            return food != null && food.Spawned && food.Map == counter.Map &&
+                (counter.Complex != null ? FridgeAt(counter.Map, food.Position) : counter.foodArea != null && counter.foodArea[food.Position]);
         }
         public static bool Edible(Pawn guest, Thing food)
         {
@@ -138,7 +176,7 @@ namespace TurboMegaMod
         {
             var native = counter.Map.components.FirstOrDefault(c => c.GetType().FullName == "Hospitality.Hospitality_MapComponent");
             bool free = native != null && (bool)AccessTools.Field(native.GetType(), "guestsCanTakeFoodForFree").GetValue(native);
-            return free ? 0 : Mathf.Max(0, Mathf.CeilToInt(food.MarketValue * counter.pricePercent / 100f));
+            return free ? 0 : Mathf.Max(0, Mathf.CeilToInt(food.MarketValue * counter.PricePercent / 100f));
         }
         public static void MarkSold(Pawn guest, Thing meal)
         {
@@ -172,7 +210,7 @@ namespace TurboMegaMod
         {
             return RestaurantMeals.Guest(order.guest) && order.guest.Map == map && order.guest.CurJobDef == RestaurantMeals.WaitJob &&
                 order.counter != null && order.counter.Ready && order.counter.Map == map && order.chair != null && order.chair.Spawned &&
-                RestaurantMeals.Seat(order.chair, order.counter) && RestaurantMeals.AllowedSeat(order.guest, order.chair) &&
+                RestaurantMeals.SeatForGuest(order.guest, order.chair, order.counter) &&
                 HasPortion(order) &&
                 order.guest.needs.food != null && order.guest.needs.food.CurCategory != HungerCategory.Starving &&
                 Find.TickManager.TicksGame - order.created < 6000;
@@ -181,7 +219,7 @@ namespace TurboMegaMod
         {
             var carried = order.waiter == null ? null : order.waiter.carryTracker.CarriedThing;
             return (carried != null && carried.def == order.mealDef && order.waiter.Map == map) ||
-                (order.food != null && !order.food.Destroyed && order.food.Spawned && order.food.Map == map && order.counter.foodArea[order.food.Position]);
+                (order.food != null && !order.food.Destroyed && RestaurantMeals.Stock(order.counter, order.food));
         }
         public override void MapComponentTick()
         {
@@ -199,7 +237,16 @@ namespace TurboMegaMod
                     order.GetDirectlyHeldThings().TryTransferAllToContainer(order.guest.inventory.innerContainer);
                 if (order.cancelled && order.guest == null)
                     order.GetDirectlyHeldThings().TryDropAll(order.receiptCell, map, ThingPlaceMode.Near);
-                if (order.delivered) order.GetDirectlyHeldThings().TryDropAll(order.receiptCell, map, ThingPlaceMode.Near);
+                if (order.delivered) {
+                    var cash=order.GetDirectlyHeldThings();int before=cash.Sum(t=>t.stackCount);
+                    cash.TryDropAll(order.receiptCell,map,ThingPlaceMode.Near);
+                    int received=before-cash.Sum(t=>t.stackCount);
+                    if(received>0){
+                        if(order.counter!=null&&!order.counter.Destroyed)order.counter.earned+=received;
+                        ComplexWorkPolicy.Record(map,order.receiptCell,"restaurant",received);
+                        Current.Game.GetComponent<WorkBuyouts>().Credit(order.waiter,"restaurant:"+map.uniqueID+":"+order.id+":"+before,received,true);
+                    }
+                }
                 if ((order.cancelled || order.delivered) && order.GetDirectlyHeldThings().Count == 0) orders.Remove(order);
             }
             if (!findCustomers) return;
@@ -217,11 +264,11 @@ namespace TurboMegaMod
         public RestaurantOrder TryOrder(Pawn guest, Building_ServiceCounter counter)
         {
             if (!RestaurantMeals.Guest(guest) || guest.Map != map || ForGuest(guest) != null || counter == null || !counter.Ready || counter.Map != map) return null;
-            var seat = map.listerBuildings.allBuildingsColonist.FirstOrDefault(t => RestaurantMeals.Seat(t, counter) && RestaurantMeals.AllowedSeat(guest, t) &&
+            var seat = map.listerBuildings.allBuildingsColonist.FirstOrDefault(t => RestaurantMeals.SeatForGuest(guest, t, counter) &&
                 !orders.Any(o => !o.cancelled && !o.delivered && o.chair == t) && guest.CanReserveAndReach(t, PathEndMode.OnCell, Danger.Some));
             if (seat == null) return null;
-            var food = map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree).FirstOrDefault(t => t.Spawned && t.def == counter.mealDef && counter.foodArea[t.Position] &&
-                RestaurantMeals.Edible(guest, t) && !orders.Any(o => !o.delivered && !o.cancelled && o.food == t) && HotelBillingHooks.Money(guest) >= RestaurantMeals.Quote(counter, t));
+            var food = FindFood(counter, guest, null, null);
+            if (food != null && HotelBillingHooks.Money(guest) < RestaurantMeals.Quote(counter, food)) return null;
             if (food == null) return null;
             var order = new RestaurantOrder { id = ++nextOrderId, guest = guest, counter = counter, chair = seat, food = food, mealDef = food.def,
                 price = RestaurantMeals.Quote(counter, food), created = Find.TickManager.TicksGame, receiptCell = counter.Position };
@@ -230,8 +277,21 @@ namespace TurboMegaMod
             guest.jobs.StartJob(wait, JobCondition.InterruptForced);
             return order;
         }
+        private Thing FindFood(Building_ServiceCounter counter, Pawn guest, Pawn waiter, RestaurantOrder own)
+        {
+            return map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree).Where(t => t.def == counter.Meal && RestaurantMeals.Stock(counter, t) &&
+                RestaurantMeals.Edible(guest, t) && !orders.Any(o => o != own && !o.delivered && !o.cancelled && o.food == t) &&
+                (waiter == null || (!t.IsForbidden(waiter) && waiter.CanReserveAndReach(t, PathEndMode.Touch, Danger.Some))))
+                .OrderBy(t => counter.Complex != null && counter.Complex.area[t.Position] ? 0 : 1)
+                .ThenBy(t => t.Position.DistanceToSquared(counter.Position)).FirstOrDefault();
+        }
         public RestaurantOrder ForWaiter(Pawn waiter, Building_ServiceCounter counter)
         {
+            if (counter != null && counter.Complex != null) foreach (var order in orders.Where(o => o.counter == counter && !o.delivered && !o.cancelled &&
+                (o.waiter == null || o.waiter.CurJobDef != RestaurantMeals.ServeJob))) {
+                if (order.food == null || !RestaurantMeals.Stock(counter, order.food) || order.food.IsForbidden(waiter) || !waiter.CanReserveAndReach(order.food, PathEndMode.Touch, Danger.Some))
+                    order.food = FindFood(counter, order.guest, waiter, order);
+            }
             return orders.FirstOrDefault(o => o.counter == counter && !o.cancelled && !o.delivered && Valid(o) && o.guest.Position == o.chair.Position &&
                 (o.waiter == null || !o.waiter.Spawned || o.waiter.CurJobDef != RestaurantMeals.ServeJob) &&
                 o.food != null && o.food.Spawned && !o.food.IsForbidden(waiter) && waiter.CanReserveAndReach(o.food, PathEndMode.Touch, Danger.Some) &&
@@ -262,8 +322,7 @@ namespace TurboMegaMod
             // The carrier's reservation can follow the split-off portion into
             // the buyer's inventory. Release it before Ingest reserves the meal.
             map.reservationManager.Release(delivered, waiter, waiter.CurJob);
-            order.delivered = true; order.counter.earned += order.price;
-            ComplexWorkPolicy.Record(map, order.counter.Position, "restaurant", order.price);
+            order.delivered = true;
             ProcessOrders(false);
             var eat = JobMaker.MakeJob(JobDefOf.Ingest, delivered); eat.count = 1;
             guest.jobs.StartJob(eat, JobCondition.InterruptForced);

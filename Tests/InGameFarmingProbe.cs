@@ -31,6 +31,7 @@ public sealed class FarmingProbe : MapComponent
     private readonly List<string> errors = new List<string>();
     private static Map activeMap;
     private static float sky = 0f;
+    private static float outdoor = 21f;
     private float warmed, soilGrowth, hydroGrowth;
     private readonly Harmony diagnostic = new Harmony("tmm.test.farming.environment");
     public FarmingProbe(Map map) : base(map) { }
@@ -42,6 +43,7 @@ public sealed class FarmingProbe : MapComponent
     private static string Escape(string s) { return "\"" + s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\r", "\\r").Replace("\n", "\\n") + "\""; }
     private void Check(bool value, string message) { if (!value) throw new Exception(message); checks++; }
     private static bool Sky(ref float __result) { __result = sky; return false; }
+    private static bool Outdoor(ref float __result) { __result = outdoor; return false; }
     private void Noon()
     {
         float d = GenLocalDate.DayPercent(map); int delta = Mathf.RoundToInt((0.5f - d) * 60000f); if (delta < 0) delta += 60000;
@@ -51,7 +53,9 @@ public sealed class FarmingProbe : MapComponent
     {
         foreach (var c in rect)
         {
-            foreach (var thing in c.GetThingList(map).ToArray()) if (thing is Plant || thing is Building) thing.Destroy();
+            foreach (var thing in c.GetThingList(map).ToArray()) if (thing is Plant || thing is Building) {
+                if(thing.def.destroyable)thing.Destroy();else thing.DeSpawn();
+            }
             map.roofGrid.SetRoof(c, null); map.terrainGrid.SetTerrain(c, TerrainDefOf.Soil); map.snowGrid.SetDepth(c, 0f);
         }
     }
@@ -121,6 +125,27 @@ public sealed class FarmingProbe : MapComponent
         finally { blunt.buildingDamageFactorImpassable = oldSolid; blunt.buildingDamageFactorPassable = oldPassable; }
         Check(DefDatabase<ThingDef>.GetNamed("TMM_GreenhouseClimateUnit").GetStatValueAbstract(StatDefOf.MaxHitPoints) == 180f, "Climate panel durability changed");
     }
+    private void ScopedRotations()
+    {
+        foreach(var rotation in new[]{Rot4.North,Rot4.East,Rot4.South,Rot4.West}) {
+            var basin=(Building_LitHydroponics)Spawn("TMM_LitHydroponicsBasin",new IntVec3(72,0,43),rotation);
+            // Spatial scope fixture explicitly controls the electrical state;
+            // the main basin separately tests the real connected power grid.
+            basin.TryGetComp<CompPowerTrader>().PowerOn=true;
+            basin.TryGetComp<CompLitHydroponicsPower>().RefreshDemand();
+            var own=basin.OccupiedRect().ToArray();
+            var neighbours=basin.OccupiedRect().ExpandedBy(1).Where(c=>!own.Contains(c)).ToArray();
+            Check(own.All(c=>map.glowGrid.GroundGlowAt(c)>=0.99f),"Rotated basin lacks own-cell light: "+rotation);
+            Check(neighbours.All(c=>map.glowGrid.GroundGlowAt(c)<0.51f),"Rotated basin leaks to a neighbouring cell: "+rotation);
+            Check(own.All(c=>map.glowGrid.VisualGlowAt(map.cellIndices.CellToIndex(c)).r>=200),"Floor renderer misses scoped light: "+rotation);
+            Check(!basin.TryGetComp<CompGlower>().Glows,"Scoped basin registered an empty radial light: "+rotation);
+            basin.TryGetComp<CompPowerTrader>().PowerOn=false;basin.TryGetComp<CompLitHydroponicsPower>().RefreshDemand();
+            Check(own.All(c=>map.glowGrid.GroundGlowAt(c)<0.51f),"Unpowered rotated basin still emits light: "+rotation);
+            sky=1f;
+            Check(own.Concat(neighbours).All(c=>map.glowGrid.GroundGlowAt(c)>=0.99f),"Scoped light erased natural sunlight: "+rotation);
+            sky=0f;basin.Destroy();
+        }
+    }
     public override void MapComponentUpdate()
     {
         bool reload = Environment.GetCommandLineArgs().Contains("-tmm-farming-reload");
@@ -139,6 +164,7 @@ public sealed class FarmingProbe : MapComponent
                     Check(Math.Abs(map.fertilityGrid.FertilityAt(new IntVec3(43, 0, 43)) - 2.22f) < 0.001f, "Saved greenhouse tilling lost 222% fertility");
                     Check(Math.Abs(map.fertilityGrid.FertilityAt(new IntVec3(55, 0, 43)) - 2f) < 0.001f, "Saved outdoor tilling lost 200% fertility");
                     Noon(); diagnostic.Patch(AccessTools.PropertyGetter(typeof(SkyManager), "CurSkyGlow"), prefix: new HarmonyMethod(typeof(FarmingProbe), "Sky"));
+                    diagnostic.Patch(AccessTools.PropertyGetter(typeof(MapTemperature), "OutdoorTemp"), prefix: new HarmonyMethod(typeof(FarmingProbe), "Outdoor"));
                     stage = 1; stageTick = Find.TickManager.TicksGame; return;
                 }
                 if (Find.TickManager.TicksGame - stageTick < 300) return;
@@ -163,6 +189,7 @@ public sealed class FarmingProbe : MapComponent
             {
                 activeMap = map; Noon();
                 diagnostic.Patch(AccessTools.PropertyGetter(typeof(SkyManager), "CurSkyGlow"), prefix: new HarmonyMethod(typeof(FarmingProbe), "Sky"));
+                diagnostic.Patch(AccessTools.PropertyGetter(typeof(MapTemperature), "OutdoorTemp"), prefix: new HarmonyMethod(typeof(FarmingProbe), "Outdoor"));
                 Prepare(new CellRect(38, 38, 40, 20));
                 var tilledDef = DefDatabase<TerrainDef>.GetNamed("TMM_TilledSoil");
                 Check(tilledDef.texturePath == "Terrain/Farming/TilledSoil" && ContentFinder<Texture2D>.Get(tilledDef.texturePath, false) != null, "New tilled soil texture missing");
@@ -220,7 +247,9 @@ public sealed class FarmingProbe : MapComponent
                 for (int i = 0; i < 200; i++) zone.ApplyHeat();
                 Check(zone.GrowingRoom.Temperature < hot && zone.GrowingRoom.Temperature >= zone.targetTemperature - 0.01f, "Climate cooling failed or overshot");
                 Check(Math.Abs(zone.GrowingRoom.Temperature - zone.targetTemperature) < 0.1f, "Cooling did not reach the selected target");
-                zone.GrowingRoom.Temperature = zone.targetTemperature; float idleDemand = zone.Demand;
+                zone.GrowingRoom.Temperature = zone.targetTemperature;
+                float idleDemand = FarmingPowerBudget.Greenhouse(zone.CellCount, zone.LampsNeeded, zone.targetTemperature, zone.targetTemperature,
+                    ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"), ControlledFarming.BasePower("Cooler"));
                 zone.GrowingRoom.Temperature = zone.targetTemperature + 10f; float mildCooling = zone.Demand;
                 zone.GrowingRoom.Temperature = zone.targetTemperature + 30f;
                 Check(zone.Demand > mildCooling && mildCooling > idleDemand, "Cooling demand does not follow temperature difference");
@@ -232,6 +261,11 @@ public sealed class FarmingProbe : MapComponent
                 warmed = zone.GrowingRoom.Temperature;
                 Check(warmed > before && warmed <= zone.targetTemperature + 0.01f, "Actual room heating failed or overshot");
                 Check(warmed >= 10f, "Heating did not reach crop survival temperature");
+                outdoor=35f;zone.GrowingRoom.Temperature=35f;zone.ApplyHeat();zone.SyncPowerAndLights();
+                Check(Math.Abs(zone.GrowingRoom.Temperature-21f)<0.01f,"Climate did not reach21 with outdoor35");
+                float lightShare=zone.CellCount*FarmingPowerBudget.Premium*ControlledFarming.BasePower("SunLamp")/96f;
+                Check(zone.Demand-lightShare>=ControlledFarming.BasePower("Cooler")*1.15f-0.1f,"Climate stopped paying for outside heat after reaching its target");
+                outdoor=21f;zone.SyncPowerAndLights();
                 Check(Math.Abs(map.fertilityGrid.FertilityAt(soilPlant.Position) - 2f) < 0.001f, "Completed greenhouse soil did not instantly reach 200%");
                 Till(new IntVec3(55, 0, 43));
                 Check(Math.Abs(map.fertilityGrid.FertilityAt(new IntVec3(55, 0, 43)) - 2f) < 0.001f, "Outdoor tilled soil is not 200%");
@@ -241,6 +275,14 @@ public sealed class FarmingProbe : MapComponent
                 Check(zone.LampsOn, "Grow lights not on during polar darkness at local noon");
                 Check(map.glowGrid.GroundGlowAt(soilPlant.Position) >= 0.99f, "Greenhouse crops lack real grow light: " + map.glowGrid.GroundGlowAt(soilPlant.Position) + " lights=" + string.Join(";", zone.lightNodes.Select(n => n.Position + ":" + n.TryGetComp<CompGlower>().Glows + ":" + n.TryGetComp<CompGlower>().Props.overlightRadius)));
                 Check(map.glowGrid.GroundGlowAt(hydroPlant.Position) >= 0.99f, "Hydroponic crops lack real grow light");
+                ScopedRotations();
+                var adjacent = (Building_PlantGrower)Spawn("HydroponicsBasin", new IntVec3(62, 0, 43), Rot4.North);
+                Check(hydro.OccupiedRect().All(c => map.glowGrid.GroundGlowAt(c) >= 0.99f), "Lit basin does not illuminate all four of its own cells");
+                Check(adjacent.OccupiedRect().All(c => map.glowGrid.GroundGlowAt(c) < 0.99f), "Built-in grow light leaked into the adjacent ordinary basin");
+                Check(hydro.TryGetComp<CompGlower>().Props.glowRadius == 0f, "Lit basin retained a radial light flood");
+                adjacent.Destroy();
+                foreach (var name in new[] { "TMM_GreenhouseGlassWall", "TMM_GreenhouseGlassDoor", "TMM_GreenhouseClimateUnit" })
+                    Check(!DefDatabase<ThingDef>.GetNamed(name).canGenerateDefaultDesignator, "Internal greenhouse part remains directly buildable: " + name);
                 Check(Math.Abs(-hydro.TryGetComp<CompPowerTrader>().PowerOutput - FarmingPowerBudget.Hydroponics(true, 70f, 2900f)) < 0.1f, "Hydroponic power budget wrong");
                 soilGrowth = soilPlant.Growth; hydroGrowth = hydroPlant.Growth;
                 for (int i = 0; i < 3; i++) { soilPlant.TickLong(); hydroPlant.TickLong(); }
@@ -249,7 +291,7 @@ public sealed class FarmingProbe : MapComponent
                 Check(!zone.LampsNeeded && !zone.LampsOn, "Sunlit greenhouse kept grow lights on");
                 Check(map.glowGrid.GroundGlowAt(soilPlant.Position) >= 0.99f, "Glass roof blocks natural sunlight");
                 Check(ControlledFarming.HydroLightingMode(hydro) == 1, "Opaque indoor roof incorrectly supplies sunlight");
-                Check(Math.Abs(zone.Demand - FarmingPowerBudget.Greenhouse(36, false, zone.GrowingRoom.Temperature, zone.targetTemperature, 2900f, 175f, 200f)) < 0.1f, "Sunlit greenhouse still pays for grow lights");
+                Check(Math.Abs(zone.Demand - FarmingPowerBudget.Greenhouse(36, false, zone.GrowingRoom.Temperature, zone.targetTemperature, 2900f, 175f, 200f, false, 30f, map.mapTemperature.OutdoorTemp)) < 0.1f, "Sunlit greenhouse still pays for grow lights");
                 sky = 0f; zone.SyncPowerAndLights();
                 var breach = new IntVec3(40, 0, 44); breach.GetEdifice(map).Destroy(); map.regionAndRoomUpdater.RebuildAllRegionsAndRooms(); zone.SyncPowerAndLights();
                 Check(!zone.Enclosed && zone.Demand == 0f, "Breached greenhouse still runs as a sealed room");

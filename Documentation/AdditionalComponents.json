@@ -9,6 +9,15 @@
       "sourceRepository": "https://github.com/Zaljerem/Hospitality",
       "sourceRevision": "d465bdc07b88d77eb3d158c215af388dcf771863",
       "standaloneInstalledForImport": false
+    },
+    {
+      "name": "Hospital",
+      "folder": "Hospital",
+      "packageId": "adamas.hospital",
+      "component": "Hospital",
+      "sourceRepository": "https://github.com/tomvd/Hospital",
+      "sourceRevision": "82a15e711129a32e5bfe772663160433ee566316",
+      "standaloneInstalledForImport": false
     }
   ]
 }

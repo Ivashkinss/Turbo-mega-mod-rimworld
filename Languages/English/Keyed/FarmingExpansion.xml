@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Farming.Expand>Expand greenhouse</TMM.Farming.Expand>
+  <TMM.Farming.ExpandHelp>Mark an extension next to the greenhouse. The resulting footprint is rectangular, up to 64×64. New perimeter and supports require normal construction and materials. After they are complete, old interior panels are designated for deconstruction and the growing area expands automatically.</TMM.Farming.ExpandHelp>
+  <TMM.Farming.ExpansionInvalid>An adjacent clear area without another zone or roof is required; maximum footprint is 64×64. Finish the previous expansion first.</TMM.Farming.ExpansionInvalid>
+  <TMM.Farming.CancelExpansion>Cancel extension</TMM.Farming.CancelExpansion>
+  <TMM.Farming.CancelExpansionHelp>Cancel the pending plan. Frame materials are returned through normal cancellation; already completed structures remain.</TMM.Farming.CancelExpansionHelp>
+</LanguageData>

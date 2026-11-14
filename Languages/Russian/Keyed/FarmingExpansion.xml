@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Farming.Expand>Расширить теплицу</TMM.Farming.Expand>
+  <TMM.Farming.ExpandHelp>Выделите прирост рядом с теплицей. Итоговый план будет прямоугольным, до 64×64. Сначала строится новый оплачиваемый периметр и опоры; затем старые внутренние панели назначаются к разборке, а посевная зона расширяется автоматически.</TMM.Farming.ExpandHelp>
+  <TMM.Farming.ExpansionInvalid>Нужно примыкающее свободное место без другой зоны или крыши; итог не более 64×64. Дождитесь завершения предыдущего расширения.</TMM.Farming.ExpansionInvalid>
+  <TMM.Farming.CancelExpansion>Отменить расширение</TMM.Farming.CancelExpansion>
+  <TMM.Farming.CancelExpansionHelp>Отменяет ещё не завершённый план. Материалы каркасов возвращаются штатной отменой игры; уже построенные части остаются.</TMM.Farming.CancelExpansionHelp>
+</LanguageData>

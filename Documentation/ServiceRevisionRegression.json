@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "runner": "Tools/test_service_revision.ps1",
+  "productionAssemblySha256": "6ca9e18a2a99c95ae660c054f2605ff13b62c5b3c9e7e064c015f4f32416d263",
+  "startedUtc": "2026-11-14T09:26:44.9280720Z",
+  "isolatedLaunches": 19,
+  "steps": [
+    {
+      "name": "Farming",
+      "seconds": 91.1
+    },
+    {
+      "name": "Farming reload",
+      "seconds": 64.8
+    },
+    {
+      "name": "Core libraries",
+      "seconds": 82.4
+    },
+    {
+      "name": "Melee and hands",
+      "seconds": 79.7
+    },
+    {
+      "name": "HugsLib and RunAndGun",
+      "seconds": 80.5
+    },
+    {
+      "name": "Hospitality",
+      "seconds": 92.6
+    },
+    {
+      "name": "Hospitality reload",
+      "seconds": 61.8
+    },
+    {
+      "name": "Restaurant",
+      "seconds": 80.5
+    },
+    {
+      "name": "Restaurant reload",
+      "seconds": 62.9
+    },
+    {
+      "name": "Complex",
+      "seconds": 79.5
+    },
+    {
+      "name": "Complex reload",
+      "seconds": 60.8
+    },
+    {
+      "name": "Clinic",
+      "seconds": 78.4
+    },
+    {
+      "name": "Clinic reload",
+      "seconds": 63.1
+    },
+    {
+      "name": "ClinicGuest",
+      "seconds": 116.8
+    },
+    {
+      "name": "ClinicGuest reload",
+      "seconds": 64.2
+    },
+    {
+      "name": "ComplexLayout",
+      "seconds": 83.6
+    },
+    {
+      "name": "ComplexLayout reload",
+      "seconds": 62.9
+    },
+    {
+      "name": "Company",
+      "seconds": 94.8
+    },
+    {
+      "name": "Company reload",
+      "seconds": 69.9
+    }
+  ],
+  "userSaveTested": false,
+  "testProbeRemoved": true
+}

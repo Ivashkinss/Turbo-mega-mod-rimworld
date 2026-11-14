@@ -84,7 +84,7 @@ public sealed class ComplexProbe : MapComponent
         actor.workSettings.SetPriority(WorkTypeDefOf.Hauling, 2);
         originalBed = Bed(new IntVec3(60, 0, 48)); staffBed = Bed(new IntVec3(43, 0, 48));
         publicArea[staffBed.Position] = false; actor.ownership.ClaimBedIfNonMedical(originalBed);
-        desk = (Building_ComplexDesk)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("TMM_ComplexDesk")); desk.SetFaction(Faction.OfPlayer);
+        desk = (Building_ComplexDesk)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("TMM_ComplexDesk")); desk.automaticServices = false; desk.SetFaction(Faction.OfPlayer);
         GenSpawn.Spawn(desk, new IntVec3(42, 0, 48), map); desk.area = complex; desk.guestArea = publicArea; desk.foodArea = stock;
         Check(desk.Active && map.GetComponent<ComplexMap>().desk == desk, "Reception registration failed");
         Check(!new PlaceWorker_ComplexDesk().AllowsPlacing(desk.def, new IntVec3(65, 0, 45), Rot4.North, map).Accepted, "Second reception was allowed");

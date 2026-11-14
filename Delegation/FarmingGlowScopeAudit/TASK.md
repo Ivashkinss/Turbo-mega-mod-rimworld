@@ -1,0 +1,9 @@
+# Gemini: механический аудит света гидропоники 1.7/1.6
+
+Запись только в `Tools/Build/GeminiFarmingGlowScopeAudit/`. Читать `Tools/Build/FarmingGlowScopeSnapshot/ControlledFarming.cs`, установленную игру `../../Assembly-CSharp.dll`, эталон `Tools/Build/RimRef-1.6.4871/ref/net472/Assembly-CSharp.dll`. Разрешено читать метаданные/IL через Mono.Cecil из доверенной `Components/Harmony/1.6/Assemblies/0Harmony.dll` (рефлексией по типу). Не исполнять DLL игры/кандидатов, не запускать игру, сеть, установки пакетов, не менять исходники, Defs, настройки, Git, чужие отчёты. Не трогать активный тестовый запуск Codex.
+
+Задача: выяснить ТОЛЬКО по точным сигнатурам/IL, как ограничить собственный свет гидропоники её четырьмя клетками, сохранив независимые солнце/обычные лампы. В снимке черновой вариант убирает радиальный поток CompHydroponicsGlower и добавляет локальное GroundGlowAt/GetAccumulatedGlowAt. Не объявлять его корректным без игры.
+
+1. `API.json`: точные сигнатуры, типы параметров и поля GlowGrid (GroundGlowAt, оба GetAccumulatedGlowAt, VisualGlowAt, RegisterGlower, GlowGridUpdate), CompGlower, доступного GlowFlooder/GlowPool/GlowLight для обеих версий. Разделить отсутствующие методы и тела эталона.
+2. `CALLS.json`: непосредственные CALL/CALLVIRT к GetAccumulatedGlowAt/VisualGlowAt и прямые чтения accumulatedGlow/ссылки на загрузку GPU-буферов во всей игре1.7: список вызывающий тип/метод + IL-offset + цель. Отдельно показать, обходят ли видимый свет пола/шейдеры эти getters. Если IL не позволяет уверенный вывод — так и написать.
+3. `REPORT.md`: до15фактов с точными токенами/сигнатурами. Отдельно риски нулевого glowRadius (деление/пустая регистрация) и ограничения патча getter только IntVec3 при наличии index-перегрузки. Не предлагать вычитать итоговый свет всех ламп или обрезать настоящий солнечный свет. Это статический аудит, не выполненный игровой тест.

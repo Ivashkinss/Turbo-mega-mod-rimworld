@@ -17,7 +17,8 @@ namespace TurboMegaMod
         public Pawn pawn;
         public ComplexWorkMode mode;
         public ComplexRole role;
-        public bool resident;
+        public bool resident, company;
+        public int originalCompanyPriority;
         public Building_Bed originalBed, managedBed;
         public WorkTypeDef managedWork;
         public int originalPriority;
@@ -25,6 +26,7 @@ namespace TurboMegaMod
         {
             Scribe_References.Look(ref pawn, "pawn"); Scribe_Values.Look(ref mode, "mode"); Scribe_Values.Look(ref role, "role");
             Scribe_Values.Look(ref resident, "resident"); Scribe_References.Look(ref originalBed, "originalBed"); Scribe_References.Look(ref managedBed, "managedBed");
+            Scribe_Values.Look(ref company, "company"); Scribe_Values.Look(ref originalCompanyPriority, "originalCompanyPriority");
             Scribe_Defs.Look(ref managedWork, "managedWork"); Scribe_Values.Look(ref originalPriority, "originalPriority");
         }
     }
@@ -40,9 +42,15 @@ namespace TurboMegaMod
     {
         private static readonly FieldInfo priorityField = AccessTools.Field(typeof(Pawn_WorkSettings), "priorities");
         private static DefMap<WorkTypeDef, int> Priorities(Pawn pawn) { return pawn == null || pawn.workSettings == null || priorityField == null ? null : priorityField.GetValue(pawn.workSettings) as DefMap<WorkTypeDef, int>; }
-        public Area area, guestArea, foodArea;
+        public Area area, guestArea, foodArea, clinicArea;
+        public Area staffArea;
+        public bool automaticServices = true, restaurantOpen = true, surgeryAllowed = true;
+        public int roomRate = 30, restaurantPercent = 100;
+        public ThingDef restaurantMeal;
         public List<ComplexEmployee> employees = new List<ComplexEmployee>();
-        public int hotelIncome, restaurantIncome, clinicIncome;
+        public int hotelIncome, restaurantIncome, clinicIncome, companyIncome;
+        public bool companyOpen = true;
+        public int companyPercent = 100;
         public bool Active { get { return Spawned && area != null && Map.areaManager.AllAreas.Contains(area) && Map.GetComponent<ComplexMap>().desk == this; } }
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -52,8 +60,15 @@ namespace TurboMegaMod
         public override void ExposeData()
         {
             base.ExposeData(); Scribe_References.Look(ref area, "complexArea"); Scribe_References.Look(ref guestArea, "guestArea"); Scribe_References.Look(ref foodArea, "foodArea");
+            Scribe_References.Look(ref clinicArea, "clinicArea");
+            Scribe_References.Look(ref staffArea, "staffArea"); Scribe_Values.Look(ref automaticServices, "automaticServices", true);
+            Scribe_Values.Look(ref roomRate, "roomRate", 30); Scribe_Values.Look(ref restaurantPercent, "restaurantPercent", 100);
+            Scribe_Values.Look(ref restaurantOpen, "restaurantOpen", true); Scribe_Values.Look(ref surgeryAllowed, "surgeryAllowed", true);
+            Scribe_Defs.Look(ref restaurantMeal, "restaurantMeal");
             Scribe_Collections.Look(ref employees, "employees", LookMode.Deep);
             Scribe_Values.Look(ref hotelIncome, "hotelIncome"); Scribe_Values.Look(ref restaurantIncome, "restaurantIncome"); Scribe_Values.Look(ref clinicIncome, "clinicIncome");
+            Scribe_Values.Look(ref companyIncome,"companyIncome");
+            Scribe_Values.Look(ref companyOpen, "companyOpen", true); Scribe_Values.Look(ref companyPercent, "companyPercent", 100);
             if (Scribe.mode == LoadSaveMode.PostLoadInit && employees == null) employees = new List<ComplexEmployee>();
         }
         public ComplexEmployee Employee(Pawn pawn, bool create = false)
@@ -81,6 +96,19 @@ namespace TurboMegaMod
             if (work != null) { employee.originalPriority = priorities[work]; pawn.workSettings.SetPriority(work, 1); }
             return true;
         }
+        public bool SetCompany(Pawn pawn, bool value)
+        {
+            var priorities = Priorities(pawn);
+            if (priorities == null || (value && pawn.WorkTypeIsDisabled(CompanyRules.Work))) return false;
+            var employee = Employee(pawn, true);
+            if (employee.company == value) return true;
+            if (value) { employee.originalCompanyPriority = priorities[CompanyRules.Work]; pawn.workSettings.SetPriority(CompanyRules.Work, 1); }
+            else {
+                if (priorities[CompanyRules.Work] == 1) pawn.workSettings.SetPriority(CompanyRules.Work, employee.originalCompanyPriority);
+                if (pawn.Map != null) pawn.Map.GetComponent<CompanyService>().Cancel(pawn);
+            }
+            employee.company = value; return true;
+        }
         private static void RestorePriority(ComplexEmployee employee)
         {
             var priorities = Priorities(employee.pawn);
@@ -98,11 +126,12 @@ namespace TurboMegaMod
             if (!Active || pawn.Map != Map) return false;
             var guestBed = AccessTools.TypeByName("Hospitality.Building_GuestBed");
             var beds = Map.listerBuildings.allBuildingsColonist.OfType<Building_Bed>().Where(b => area[b.Position] && !b.Medical && !b.ForPrisoners && b.def.building.bed_humanlike &&
-                (guestBed == null || !guestBed.IsInstanceOfType(b))).ToArray();
+                (guestBed == null || !guestBed.IsInstanceOfType(b) || (automaticServices && b.OwnersForReading.Count == 0))).ToArray();
             var original = pawn.ownership.OwnedBed;
             var bed = beds.FirstOrDefault(b => b == original) ?? beds.Where(b => b.AnyUnownedSleepingSlot)
                 .OrderBy(b => b.CompAssignableToPawn.AssignedPawnsForReading.Count).ThenBy(b => b.Position.DistanceToSquared(pawn.Position)).FirstOrDefault();
             if (bed == null) return false;
+            if (automaticServices && ComplexLayout.IsGuest(bed)) bed = Map.GetComponent<ComplexLayout>().PrepareStaffBed(bed);
             employee.originalBed = original;
             if (pawn.ownership.OwnedBed != bed && !pawn.ownership.ClaimBedIfNonMedical(bed)) return false;
             employee.managedBed = bed; employee.resident = true; return true;
@@ -119,7 +148,7 @@ namespace TurboMegaMod
         }
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
-            foreach (var employee in employees) { RestorePriority(employee); RestoreBed(employee); }
+            foreach (var employee in employees) { SetCompany(employee.pawn, false); RestorePriority(employee); RestoreBed(employee); }
             employees.Clear();
             var component = Map.GetComponent<ComplexMap>(); if (component.desk == this) component.desk = null;
             base.DeSpawn(mode);
@@ -127,6 +156,7 @@ namespace TurboMegaMod
         public void ApplyServiceAreas()
         {
             if (!Active) return;
+            if (automaticServices) { Map.GetComponent<ComplexLayout>().Synchronize(); return; }
             foreach (var counter in Map.listerBuildings.allBuildingsColonist.OfType<Building_ServiceCounter>().Where(c => area[c.Position])) {
                 if (counter.serviceArea == null) counter.serviceArea = guestArea;
                 if (counter.foodArea == null) counter.foodArea = foodArea;
@@ -146,9 +176,26 @@ namespace TurboMegaMod
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (var gizmo in base.GetGizmos()) yield return gizmo;
+            if (automaticServices) {
+                yield return AreaButton("TMM.Complex.Area", () => area, value => { area = value; Map.GetComponent<ComplexLayout>().Synchronize(); });
+                yield return AreaButton("TMM.Complex.StaffArea", () => staffArea, value => { staffArea = value; Map.GetComponent<ComplexLayout>().Synchronize(); });
+                yield return new Command_Action { defaultLabel = "TMM.Complex.Services".Translate(), defaultDesc = "TMM.Complex.ServicesHelp".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Complex/Workplaces"), action = () => Find.WindowStack.Add(new Dialog_ComplexServices(this)) };
+                yield return new Command_Action { defaultLabel = "TMM.Complex.Employees".Translate(), defaultDesc = "TMM.Complex.EmployeesHelp".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Complex/Staff"), action = () => Find.WindowStack.Add(new Dialog_ComplexEmployees(this)) };
+                yield return new Command_Action { defaultLabel = "TMM.Clinic.Admit".Translate(), defaultDesc = "TMM.Clinic.AdmitHelp".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Complex/Staff"), action = () => ClinicGuests.ShowAdmission(this) };
+                yield break;
+            }
+            foreach (var gizmo in CompanyMenus.Gizmos(this)) yield return gizmo;
             yield return AreaButton("TMM.Complex.Area", () => area, value => area = value);
             yield return AreaButton("TMM.Complex.GuestArea", () => guestArea, value => guestArea = value);
             yield return AreaButton("TMM.Complex.FoodArea", () => foodArea, value => foodArea = value);
+            yield return AreaButton("TMM.Clinic.Area", () => clinicArea, value => {
+                clinicArea = value;
+                foreach (var bed in Map.listerBuildings.allBuildingsColonist.OfType<Building_Bed>()) bed.Notify_ColorChanged();
+            });
+            yield return new Command_Action {defaultLabel="TMM.Clinic.Admit".Translate(),defaultDesc="TMM.Clinic.AdmitHelp".Translate(),icon=ContentFinder<UnityEngine.Texture2D>.Get("UI/Complex/Staff"),action=()=>ClinicGuests.ShowAdmission(this)};
             yield return new Command_Action { defaultLabel = "TMM.Complex.Employees".Translate(), defaultDesc = "TMM.Complex.EmployeesHelp".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Complex/Staff"), action = () => Find.WindowStack.Add(new Dialog_ComplexEmployees(this)) };
             yield return new Command_Action { defaultLabel = "TMM.Complex.Apply".Translate(), defaultDesc = "TMM.Complex.ApplyHelp".Translate(),
@@ -156,7 +203,7 @@ namespace TurboMegaMod
         }
         public override string GetInspectString()
         {
-            return base.GetInspectString() + "\n" + "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome) + "\n" + "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead));
+            return base.GetInspectString() + "\n" + "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome) + "\n" + "TMM.Complex.CompanyIncome".Translate(companyIncome) + "\n" + "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead));
         }
     }
 
@@ -180,24 +227,29 @@ namespace TurboMegaMod
         {
             string help = "TMM.Complex.EmployeesHelp".Translate(); float helpHeight = Mathf.Max(50, Text.CalcHeight(help, rect.width));
             Widgets.Label(new Rect(0, 0, rect.width, helpHeight), help);
-            var pawns = desk.Map.mapPawns.FreeColonistsSpawned.Concat(desk.employees.Select(e => e.pawn).Where(p => p != null && !p.Dead)).Distinct().OrderBy(p => p.LabelShort).ToArray();
+            var pawns = desk.Map.mapPawns.AllPawnsSpawned.Where(p => p.IsColonist || p.IsSlaveOfColony)
+                .Concat(desk.employees.Select(e => e.pawn).Where(p => p != null && !p.Dead)).Distinct().OrderBy(p => p.LabelShort).ToArray();
             var outer = new Rect(0, helpHeight + 10, rect.width, rect.height - helpHeight - 65); var inner = new Rect(0, 0, rect.width - 20, pawns.Length * 48);
             Widgets.BeginScrollView(outer, ref scroll, inner);
             for (int i = 0; i < pawns.Length; i++) {
                 var pawn = pawns[i]; var employee = desk.Employee(pawn, true); float y = i * 48;
-                Widgets.Label(new Rect(0, y, 180, 40), pawn.LabelShortCap);
-                if (Widgets.ButtonText(new Rect(185, y, 210, 38), ("TMM.Complex.Mode." + employee.mode).Translate())) {
+                Widgets.Label(new Rect(0, y, 145, 40), pawn.LabelShortCap);
+                if (Widgets.ButtonText(new Rect(150, y, 175, 38), ("TMM.Complex.Mode." + employee.mode).Translate())) {
                     Find.WindowStack.Add(new FloatMenu(Enum.GetValues(typeof(ComplexWorkMode)).Cast<ComplexWorkMode>()
                         .Select(m => new FloatMenuOption(("TMM.Complex.Mode." + m).Translate(), () => employee.mode = m)).ToList()));
                 }
-                if (Widgets.ButtonText(new Rect(405, y, 190, 38), ("TMM.Complex.Role." + employee.role).Translate())) {
+                if (Widgets.ButtonText(new Rect(330, y, 150, 38), ("TMM.Complex.Role." + employee.role).Translate())) {
                     Find.WindowStack.Add(new FloatMenu(Enum.GetValues(typeof(ComplexRole)).Cast<ComplexRole>().Select(r => new FloatMenuOption(("TMM.Complex.Role." + r).Translate(), delegate {
                         if (!desk.SetRole(pawn, r)) Messages.Message("TMM.Complex.Incapable".Translate(pawn.LabelShortCap), MessageTypeDefOf.RejectInput, false);
                     })).ToList()));
                 }
-                if (Widgets.ButtonText(new Rect(605, y, 280, 38), (employee.resident ? "TMM.Complex.Resident" : "TMM.Complex.NotResident").Translate())) {
+                if (Widgets.ButtonText(new Rect(485, y, 205, 38), (employee.resident ? "TMM.Complex.Resident" : "TMM.Complex.NotResident").Translate())) {
                     if (!desk.SetResidence(pawn, !employee.resident)) Messages.Message("TMM.Complex.NoBed".Translate(), MessageTypeDefOf.RejectInput, false);
                 }
+                if (Widgets.ButtonText(new Rect(695, y, 240, 38), (employee.company ? "TMM.Company.Enabled" : "TMM.Company.Disabled").Translate())) {
+                    if (!desk.SetCompany(pawn, !employee.company)) Messages.Message("TMM.Complex.Incapable".Translate(pawn.LabelShortCap), MessageTypeDefOf.RejectInput, false);
+                }
+                TooltipHandler.TipRegion(new Rect(695, y, 240, 38), "TMM.Company.ParticipationHelp".Translate());
             }
             Widgets.EndScrollView();
         }
@@ -208,7 +260,8 @@ namespace TurboMegaMod
     {
         [ThreadStatic] private static Pawn scanningPawn;
         [ThreadStatic] private static bool essential;
-        private struct Context { public Pawn pawn; public bool essential; }
+        [ThreadStatic] private static bool supply;
+        private struct Context { public Pawn pawn; public bool essential, supply; }
         public static bool Patched { get; private set; }
         static ComplexWorkPolicy()
         {
@@ -230,12 +283,13 @@ namespace TurboMegaMod
             harmony.Patch(AccessTools.Method(typeof(ForbidUtility), "InAllowedArea"), postfix: new HarmonyMethod(typeof(ComplexWorkPolicy), "Allowed"));
             Patched = true;
         }
-        private static void Begin(Pawn __0, out Context __state) { __state = new Context { pawn = scanningPawn, essential = essential }; scanningPawn = __0; essential = false; }
-        private static Exception End(Exception __exception, Context __state) { scanningPawn = __state.pawn; essential = __state.essential; return __exception; }
+        private static void Begin(Pawn __0, out Context __state) { __state = new Context { pawn = scanningPawn, essential = essential, supply = supply }; scanningPawn = __0; essential = false; supply = false; }
+        private static Exception End(Exception __exception, Context __state) { scanningPawn = __state.pawn; essential = __state.essential; supply = __state.supply; return __exception; }
         private static void Considering(WorkGiver __instance)
         {
             var work = __instance.def == null ? null : __instance.def.workType;
             essential = work != null && (work.defName == "Firefighter" || work.defName == "Patient" || work.defName == "BedRest");
+            supply = work != null && work.defName == "TMM_RestaurantService";
         }
         public static bool Allows(Pawn pawn, IntVec3 cell)
         {
@@ -247,6 +301,10 @@ namespace TurboMegaMod
         }
         private static void Allowed(IntVec3 __0, Pawn __1, ref bool __result)
         {
+            if (__result && __1 == scanningPawn && supply) {
+                var desk = ComplexLayout.Desk(__1.Map);
+                if (desk != null && desk.Mode(__1) != ComplexWorkMode.ColonyOnly && RestaurantMeals.FridgeAt(__1.Map, __0)) return;
+            }
             if (__result && __1 == scanningPawn && !essential && !Allows(__1, __0)) __result = false;
         }
         public static void Record(Map map, IntVec3 cell, string service, int amount)
@@ -257,6 +315,7 @@ namespace TurboMegaMod
             if (service == "hotel") desk.hotelIncome += amount;
             else if (service == "restaurant") desk.restaurantIncome += amount;
             else if (service == "clinic") desk.clinicIncome += amount;
+            else if (service == "company") desk.companyIncome += amount;
         }
     }
 }

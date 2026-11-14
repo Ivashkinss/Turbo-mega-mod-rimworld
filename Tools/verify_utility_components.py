@@ -88,6 +88,18 @@ def main():
             if key == ("Keyed", "Bubbles.OffsetDirections"):
                 assert len(source["text"].split("|")) == len(russian[key]["text"].split("|")) == 4
         translated[name] = len(english)
+    # Hospital keeps its language files in version folders. Validate those
+    # explicitly instead of reporting zero keys from the empty common path.
+    hospital_counts = {}
+    for version in ('1.6', '1.7'):
+        english, duplicate = entries([PROJECT / 'Components/Hospital' / version / 'Languages/English'])
+        english = {key: value for key, value in english.items() if key[0] == 'Keyed'}
+        assert not duplicate
+        for key, source in english.items():
+            assert key in russian, (version, key)
+            check_hotel_text(source['text'], russian[key]['text'], (version, key))
+        hospital_counts[version] = len(english)
+    translated['Hospital'] = hospital_counts['1.7']
     # The source Russian tutorials/jobs used obsolete defNames. Verify against
     # the definitions that are actually shipped, including all current fields.
     sidearm_fields = 0
@@ -128,6 +140,14 @@ def main():
     assert {p.relative_to(PROJECT).as_posix() for p in (PROJECT / 'Components').rglob('0Harmony.dll')} == {'Components/Harmony/1.6/Assemblies/0Harmony.dll', 'Components/Harmony/1.7/Assemblies/0Harmony.dll'}
     assert not ET.parse(str(PROJECT / 'About/About.xml')).xpath('/ModMetaData/modDependencies/li'), 'Unexpected external required dependency'
     report['harmonyVersionAndOriginalBranchesChecked'] = 4
+    for version in ('v1.6', 'v1.7'):
+        for original in (False, True):
+            ids = {'adamas.hospital'} if original else set()
+            active_selected = [n.text for n in folders.find(version) if (n.text == 'Components/Hospital' or n.text.startswith('Components/Hospital/')) and enabled(n.attrib, ids)]
+            assert active_selected == ([] if original else ['Components/Hospital', 'Components/Hospital/' + version[1:]])
+    assert not list((PROJECT / 'Components/Hospital').rglob('0MultiplayerAPI.dll'))
+    report['hospitalVersionOriginalBranchesChecked'] = 4
+    report['hospitalVersionedRussianKeysVerified'] = hospital_counts
     for version in ('v1.6', 'v1.7'):
         for original in (False, True):
             for royalty in (False, True):

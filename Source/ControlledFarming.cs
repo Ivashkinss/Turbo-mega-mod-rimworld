@@ -15,13 +15,24 @@ namespace TurboMegaMod
         static ControlledFarming()
         {
             var h = new Harmony("turbomegamod.controlled.farming");
+            h.Patch(AccessTools.Method(typeof(BuildCopyCommandUtility), "BuildCopyCommand"), prefix: new HarmonyMethod(typeof(ControlledFarming), "CanCopyPart"));
             h.Patch(AccessTools.Method(typeof(RoofGrid), "SetRoof"), prefix: new HarmonyMethod(typeof(ControlledFarming), "GlassRoof"));
             var glow = AccessTools.Method(typeof(GlowGrid), "GroundGlowAt");
             h.Patch(glow, postfix: new HarmonyMethod(typeof(ControlledFarming), glow.GetParameters().Length == 3 ? "Daylight17" : "Daylight16"));
+            var accumulated = AccessTools.Method(typeof(GlowGrid), "GetAccumulatedGlowAt", new[] { typeof(int), typeof(bool) });
+            if (accumulated != null) h.Patch(accumulated, postfix: new HarmonyMethod(typeof(ControlledFarming), "ScopedHydroColorIndex"));
+            else {
+                var visual = AccessTools.Method(typeof(GlowGrid), "VisualGlowAt", new[] { typeof(IntVec3) });
+                if (visual != null) h.Patch(visual, postfix: new HarmonyMethod(typeof(ControlledFarming), "ScopedHydroColor"));
+            }
         }
         public static float BasePower(string defName)
         {
             return DefDatabase<ThingDef>.GetNamed(defName).GetCompProperties<CompProperties_Power>().PowerConsumption;
+        }
+        private static bool CanCopyPart(BuildableDef __0)
+        {
+            return __0 == null || (__0.defName != "TMM_GreenhouseGlassWall" && __0.defName != "TMM_GreenhouseGlassDoor" && __0.defName != "TMM_GreenhouseClimateUnit");
         }
         public static bool LightingPeriod(Map map)
         {
@@ -44,11 +55,37 @@ namespace TurboMegaMod
         }
         private static void GlassRoof(IntVec3 __0, ref RoofDef __1, Map ___map)
         {
+            if(__1!=RoofDefOf.RoofConstructed)return;
             var zone = ZoneAt(___map, __0);
+            if(zone==null)zone=___map.zoneManager.AllZones.OfType<Zone_Greenhouse>().FirstOrDefault(z=>z.expansion!=null&&z.expansion.Rect.Contains(__0));
             if (__1 == RoofDefOf.RoofConstructed && zone != null && zone.planned) __1 = DefDatabase<RoofDef>.GetNamed("TMM_GreenhouseGlassRoof");
         }
-        private static void Daylight16(IntVec3 __0, bool __1, Map ___map, ref float __result) { TransmitDaylight(__0, ___map, ref __result); }
-        private static void Daylight17(IntVec3 __0, bool __2, Map ___map, ref float __result) { if (!__2) TransmitDaylight(__0, ___map, ref __result); }
+        private static void Daylight16(IntVec3 __0, bool __1, Map ___map, ref float __result) { TransmitDaylight(__0, ___map, ref __result); HydroLight(__0, ___map, ref __result); }
+        private static void Daylight17(IntVec3 __0, bool __2, Map ___map, ref float __result) { if (!__2) TransmitDaylight(__0, ___map, ref __result); HydroLight(__0, ___map, ref __result); }
+        private static int HydroModeAt(IntVec3 cell, Map map)
+        {
+            if (map == null || !cell.InBounds(map)) return 0;
+            foreach (var thing in cell.GetThingList(map)) {
+                if (!(thing is Building_LitHydroponics)) continue;
+                var power = thing.TryGetComp<CompPowerTrader>();
+                if (power != null && power.PowerOn) return HydroLightingMode(thing);
+            }
+            return 0;
+        }
+        private static void HydroLight(IntVec3 cell, Map map, ref float glow)
+        {
+            int mode = HydroModeAt(cell, map);
+            if (mode != 0) glow = Mathf.Max(glow, mode == 1 ? 1f : 0.5f);
+        }
+        private static void ScopedHydroColor(IntVec3 __0, Map ___map, ref Color32 __result)
+        {
+            int mode = HydroModeAt(__0, ___map);
+            if (mode == 0) return;
+            byte level = (byte)(mode == 1 ? 210 : 40);
+            __result = new Color32((byte)Math.Max(__result.r, level), (byte)Math.Max(__result.g, level), (byte)Math.Max(__result.b, level),
+                mode == 1 ? (byte)1 : __result.a);
+        }
+        private static void ScopedHydroColorIndex(int __0, Map ___map, ref Color32 __result) { ScopedHydroColor(___map.cellIndices.IndexToCell(__0), ___map, ref __result); }
         private static void TransmitDaylight(IntVec3 c, Map map, ref float glow)
         {
             if (map == null || !c.InBounds(map)) return;
@@ -94,7 +131,7 @@ namespace TurboMegaMod
     }
 
     [StaticConstructorOnStartup]
-    public sealed class Zone_Greenhouse : Zone_Growing
+    public sealed partial class Zone_Greenhouse : Zone_Growing
     {
         public bool systemEnabled = true;
         public bool planned;
@@ -111,8 +148,8 @@ namespace TurboMegaMod
         protected override Color NextZoneColor { get { return new Color(0.2f, 0.75f, 0.7f, 0.45f); } }
         public CompPowerTrader Power { get { return powerNode == null || !powerNode.Spawned ? null : powerNode.TryGetComp<CompPowerTrader>(); } }
         public CellRect Footprint { get { return new CellRect(minX, minZ, width, height); } }
-        public IntVec3 ClimateCell { get { return new IntVec3(minX + width / 2, 0, minZ + height - 1); } }
-        public IntVec3 DoorCell { get { return new IntVec3(minX + width / 2, 0, minZ); } }
+        public IntVec3 ClimateCell { get { return climatePosition.IsValid ? climatePosition : new IntVec3(minX + width / 2, 0, minZ + height - 1); } }
+        public IntVec3 DoorCell { get { return doorPosition.IsValid ? doorPosition : new IntVec3(minX + width / 2, 0, minZ); } }
         public Room GrowingRoom { get { return CellCount == 0 ? null : Cells[0].GetRoom(Map); } }
         public bool Enclosed { get { var r = GrowingRoom; return r != null && !r.UsesOutdoorTemperature; } }
         public bool Powered { get { return planned && systemEnabled && Enclosed && Power != null && Power.PowerOn; } }
@@ -125,12 +162,13 @@ namespace TurboMegaMod
             {
                 return !planned || !systemEnabled || !Enclosed ? 0f : FarmingPowerBudget.Greenhouse(CellCount, LampsNeeded,
                     GrowingRoom.Temperature, targetTemperature, ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"), ControlledFarming.BasePower("Cooler"),
-                    lightingMode == 2, ControlledFarming.BasePower("StandingLamp"));
+                    lightingMode == 2, ControlledFarming.BasePower("StandingLamp"), Map.mapTemperature.OutdoorTemp);
             }
         }
         public override void ExposeData()
         {
             base.ExposeData();
+            ExposeExpansionData();
             Scribe_Values.Look(ref planned, "TMM_planned");
             Scribe_Values.Look(ref minX, "TMM_minX"); Scribe_Values.Look(ref minZ, "TMM_minZ"); Scribe_Values.Look(ref width, "TMM_width"); Scribe_Values.Look(ref height, "TMM_height");
             Scribe_Values.Look(ref systemEnabled, "TMM_systemEnabled", true);
@@ -172,7 +210,13 @@ namespace TurboMegaMod
             yield return new Command_Action { defaultLabel = "TMM.Farming.Warmer".Translate(), defaultDesc = "TMM.Farming.TargetDesc".Translate(), icon = TexCommand.ToggleVent,
                 action = () => { targetTemperature = Mathf.Min(30f, targetTemperature + 1f); SyncPowerAndLights(); } };
         }
-        public override IEnumerable<Gizmo> GetZoneAddGizmos() { if (!planned) yield return new Designator_ZoneAdd_Greenhouse(); }
+        public override IEnumerable<Gizmo> GetZoneAddGizmos()
+        {
+            if (!planned) yield return new Designator_ZoneAdd_Greenhouse();
+            else if (expansion == null) yield return new Designator_GreenhouseExpansion(this);
+            else if (!expansion.committed) yield return new Command_Action { defaultLabel = "TMM.Farming.CancelExpansion".Translate(),
+                defaultDesc = "TMM.Farming.CancelExpansionHelp".Translate(), icon = TexCommand.ClearPrioritizedWork, action = CancelExpansion };
+        }
         public bool CreatePlan()
         {
             if (planned || CellCount == 0) return planned;
@@ -197,6 +241,7 @@ namespace TurboMegaMod
         }
         public void Synchronize()
         {
+            ExpansionTick();
             if (!planned || CellCount == 0) return;
             if (powerNode == null || !powerNode.Spawned)
             {
@@ -205,6 +250,7 @@ namespace TurboMegaMod
             if (Power == null) return;
             var controller = (Building_GreenhouseNode)powerNode;
             controller.zoneId = ID; controller.planMinX = minX; controller.planMinZ = minZ; controller.planWidth = width; controller.planHeight = height;
+            controller.planDoor = DoorCell;
             // Any boundary cell next to a conduit is sufficient. There is one
             // consumer per zone; adjacent networks are never bridged together.
             CompPower transmitter = Power.connectParent;
@@ -256,8 +302,11 @@ namespace TurboMegaMod
             // controls temperature in both directions, with a modulating load.
             float difference = targetTemperature - GrowingRoom.Temperature;
             if (Mathf.Abs(difference) < 0.001f) return;
-            var control = DefDatabase<ThingDef>.GetNamed(difference > 0f ? "Heater" : "Cooler").GetCompProperties<CompProperties_TempControl>();
-            float energy = Mathf.Abs(control.energyPerSecond) * Mathf.Sign(difference) * Mathf.Abs(difference) / 20f * CellCount / 36f * (250f / 60f);
+            // This is an automatically sized, powered climate installation,
+            // not a single under-sized cooler. Correct the whole room each
+            // control interval; GenTemperature clamps exactly at the target.
+            // Electricity includes area, outdoor maintenance and recovery load.
+            float energy = difference * GrowingRoom.CellCount;
             GrowingRoom.Temperature += GenTemperature.ControlTemperatureTempChange(Cells[0], Map, energy, targetTemperature);
         }
         private Building SpawnNode(string defName, IntVec3 cell)
@@ -309,6 +358,7 @@ namespace TurboMegaMod
     {
         public int zoneId = -1;
         public int planMinX, planMinZ, planWidth, planHeight;
+        public IntVec3 planDoor = IntVec3.Invalid;
         public Zone_Greenhouse Owner { get { return Map == null ? null : Map.zoneManager.AllZones.OfType<Zone_Greenhouse>().FirstOrDefault(z => z.ID == zoneId &&
             (def.defName == "TMM_GreenhouseClimateUnit" ? z.ClimateCell == Position : z.ContainsCell(Position))); } }
         public override void ExposeData()
@@ -316,6 +366,7 @@ namespace TurboMegaMod
             base.ExposeData(); Scribe_Values.Look(ref zoneId, "TMM_zoneId", -1);
             Scribe_Values.Look(ref planMinX, "planMinX"); Scribe_Values.Look(ref planMinZ, "planMinZ");
             Scribe_Values.Look(ref planWidth, "planWidth"); Scribe_Values.Look(ref planHeight, "planHeight");
+            Scribe_Values.Look(ref planDoor, "planDoor", IntVec3.Invalid);
         }
         public Zone_Greenhouse RestoreZone()
         {
@@ -324,7 +375,8 @@ namespace TurboMegaMod
             var cells = new CellRect(planMinX, planMinZ, planWidth, planHeight).ContractedBy(1)
                 .Where(c => c.InBounds(Map) && Map.zoneManager.ZoneAt(c) == null && c.GetEdifice(Map) == null && c.GetTerrain(Map).fertility > 0f).ToArray();
             if (cells.Length == 0) return null;
-            var zone = new Zone_Greenhouse(Map.zoneManager) { planned = true, minX = planMinX, minZ = planMinZ, width = planWidth, height = planHeight };
+            var zone = new Zone_Greenhouse(Map.zoneManager) { planned = true, minX = planMinX, minZ = planMinZ, width = planWidth, height = planHeight,
+                climatePosition = Position, doorPosition = planDoor };
             Map.zoneManager.RegisterZone(zone); foreach (var c in cells) zone.AddCell(c);
             zone.powerNode = this; zoneId = zone.ID; zone.Synchronize(); return zone;
         }
@@ -352,10 +404,12 @@ namespace TurboMegaMod
         public override void Initialize(CompProperties properties)
         {
             var source = (CompProperties_Glower)properties;
-            growColor = source.glowColor; growRadius = source.glowRadius; growOverlight = source.overlightRadius;
+            bool scoped = this is CompHydroponicsGlower;
+            growColor = scoped ? new ColorInt(0, 0, 0, 0) : source.glowColor;
+            growRadius = scoped ? 0f : source.glowRadius; growOverlight = scoped ? 0f : source.overlightRadius;
             // Never change a shared ThingDef when switching a single lamp.
-            base.Initialize(new CompProperties_Glower { compClass = source.compClass, glowColor = source.glowColor,
-                glowRadius = source.glowRadius, overlightRadius = source.overlightRadius });
+            base.Initialize(new CompProperties_Glower { compClass = source.compClass, glowColor = growColor,
+                glowRadius = growRadius, overlightRadius = growOverlight });
         }
         public void Refresh(int lightingMode)
         {
@@ -364,12 +418,13 @@ namespace TurboMegaMod
             {
                 parent.Map.glowGrid.DeRegisterGlower(this);
                 mode = lightingMode;
-                Props.glowColor = mode == 2 ? new ColorInt(140, 125, 100, 0) : growColor;
+                Props.glowColor = growRadius == 0f ? new ColorInt(0, 0, 0, 0) : mode == 2 ? new ColorInt(140, 125, 100, 0) : growColor;
                 Props.overlightRadius = mode == 2 ? 0f : growOverlight;
                 Props.glowRadius = growRadius;
                 if (ShouldBeLitNow) parent.Map.glowGrid.RegisterGlower(this);
             }
             UpdateLit(parent.Map);
+            var hydro = this as CompHydroponicsGlower; if (hydro != null) hydro.RefreshCells();
         }
     }
     public sealed class CompGreenhouseGlower : CompFarmingGlower
@@ -415,7 +470,16 @@ namespace TurboMegaMod
     }
     public sealed class CompHydroponicsGlower : CompFarmingGlower
     {
-        protected override bool ShouldBeLitNow { get { return parent.Spawned && parent.TryGetComp<CompPowerTrader>().PowerOn && ControlledFarming.HydroLightingMode(parent) != 0; } }
+        private int previous = -1;
+        // Scoped light is supplied by the cell getter, never by a radial native
+        // source. Even a zero-radius registered source wastes a glow-pool slot.
+        protected override bool ShouldBeLitNow { get { return false; } }
+        internal void RefreshCells()
+        {
+            int mode = parent.TryGetComp<CompPowerTrader>().PowerOn ? ControlledFarming.HydroLightingMode(parent) : 0;
+            if (mode == previous) return; previous = mode;
+            foreach (var cell in parent.OccupiedRect()) parent.Map.mapDrawer.MapMeshDirty(cell, MapMeshFlagDefOf.GroundGlow);
+        }
     }
     [StaticConstructorOnStartup]
     public sealed class Building_LitHydroponics : Building_PlantGrower

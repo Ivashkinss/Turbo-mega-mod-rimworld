@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Buyout.None>No work buyout account</TMM.Buyout.None>
+  <TMM.Buyout.Progress>Buyout: {0}/{1}; {2} silver remaining</TMM.Buyout.Progress>
+  <TMM.Buyout.Help>Ordinary work accounting for {0}. The target is fixed when accounting begins. Actual colony receipts from ordinary conversation count at 100%; restaurant service with consumables counts at 50%. This is neither a personal payment nor extra silver. Normal release is available once the target is met. Faction negotiations and contract quests are a separate development stage.</TMM.Buyout.Help>
+  <TMM.Buyout.Target>Buyout target: {0}</TMM.Buyout.Target>
+  <TMM.Buyout.Begin>Begin ordinary work buyout accounting</TMM.Buyout.Begin>
+  <TMM.Buyout.Release>Target reached — release</TMM.Buyout.Release>
+  <TMM.Buyout.Menu>Ordinary work: buyout accounts</TMM.Buyout.Menu>
+  <TMM.Buyout.NoWorkers>No slaves or active work buyout accounts on this map.</TMM.Buyout.NoWorkers>
+  <TMM.Complex.CompanyIncome>Conversation receipts for the colony: {0} silver.</TMM.Complex.CompanyIncome>
+</LanguageData>
