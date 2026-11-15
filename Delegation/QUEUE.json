@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "paused": false,
+  "tasks": [
+    {
+      "id": "WholesaleFinalGuide",
+      "state": "assigned",
+      "taskFile": "Delegation/WholesaleFinalGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiWholesaleFinalGuide",
+      "expectedOutputs": ["GUIDE.md", "USER-CHECKLIST.md", "REPORT.md"],
+      "note": "Already given manually by the user. Finish/resume the existing assignment; do not start a second copy."
+    }
+  ]
+}
