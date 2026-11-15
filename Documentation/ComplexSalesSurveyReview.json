@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-15",
+  "salesImplemented": false,
+  "hospitalitySource": {
+    "repository": "https://github.com/Zaljerem/Hospitality",
+    "commit": "d465bdc07b88d77eb3d158c215af388dcf771863",
+    "localSnapshot": "Tools/Build/HospitalitySnapshot"
+  },
+  "storageMatrix": {
+    "report": "Tools/Build/GeminiSaleStorageCompatibility/MATRIX.json",
+    "independentlyMatchedXmlDefNamesAndClasses": 34,
+    "neatStorageDefs": 27,
+    "fridgeDefs": 7,
+    "adaptiveStorageClass": 32,
+    "nativeStorageClass": 2,
+    "nativeStorageDefs": ["sbz_HorizontalWeaponRack", "sbz_VerticalWeaponRack"],
+    "containerCandidates": ["RimWorld.Building_Bookcase", "RimWorld.Building_OutfitStand"],
+    "containerDispensingVerifiedInGame": false
+  },
+  "wholesaleCases": {
+    "report": "Tools/Build/GeminiWholesaleScalingCases/REPORT.md",
+    "validatorRunIndependently": true,
+    "matchingCases": 32,
+    "monotonicityPoints": 200,
+    "stackSplitComparisons": 3,
+    "scope": "Provisional balance model only; no production stock scanner, sales checkbox or wholesale AI yet.",
+    "limitations": [
+      "Decimal values are converted to float for ceiling in the supplied validator.",
+      "No explicit NaN/Infinity rejection in the supplied stock model.",
+      "Rechecked stock controls maySpawn, but budget is still derived from the earlier value.",
+      "Negative self-checks compare model values; they are not mutation tests of production code."
+    ]
+  },
+  "followup": {
+    "task": "Delegation/SaleTransferEdgeAudit/TASK.md",
+    "reasons": [
+      "Do not assume a positive transfer return count after a successful stack merge on 1.7; Restaurant.cs already handles that case.",
+      "Distinguish direct TryAdd from TryStartCarry, which calls SplitOff first, before declaring all container withdrawals impossible.",
+      "Keep private storage inaccessible to guests; delivery requires an employee and a verified transaction."
+    ]
+  }
+}

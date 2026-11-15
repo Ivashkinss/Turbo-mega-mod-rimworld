@@ -1,87 +1,98 @@
 {
   "passed": true,
   "runner": "Tools/test_service_revision.ps1",
-  "productionAssemblySha256": "6ca9e18a2a99c95ae660c054f2605ff13b62c5b3c9e7e064c015f4f32416d263",
-  "startedUtc": "2026-11-14T09:26:44.9280720Z",
-  "isolatedLaunches": 19,
+  "productionAssemblySha256": "977c5a482254b4cd578a4b072e80bfd01a4255ac7f9698b44e4b8b6ac44d015b",
+  "startedUtc": "2026-11-15T01:44:09.0127512Z",
+  "isolatedLaunches": 21,
   "steps": [
     {
+      "name": "Recruit",
+      "seconds": 92.2
+    },
+    {
+      "name": "Recruit reload",
+      "seconds": 70.0
+    },
+    {
       "name": "Farming",
-      "seconds": 91.1
+      "seconds": 86.7
     },
     {
       "name": "Farming reload",
-      "seconds": 64.8
+      "seconds": 63.8
     },
     {
       "name": "Core libraries",
-      "seconds": 82.4
+      "seconds": 88.9
     },
     {
       "name": "Melee and hands",
-      "seconds": 79.7
+      "seconds": 90.1
     },
     {
       "name": "HugsLib and RunAndGun",
-      "seconds": 80.5
+      "seconds": 86.9
     },
     {
       "name": "Hospitality",
-      "seconds": 92.6
+      "seconds": 97.2
     },
     {
       "name": "Hospitality reload",
-      "seconds": 61.8
+      "seconds": 62.8
     },
     {
       "name": "Restaurant",
-      "seconds": 80.5
+      "seconds": 85.6
     },
     {
       "name": "Restaurant reload",
-      "seconds": 62.9
+      "seconds": 63.7
     },
     {
       "name": "Complex",
-      "seconds": 79.5
+      "seconds": 89.7
     },
     {
       "name": "Complex reload",
-      "seconds": 60.8
+      "seconds": 65.9
     },
     {
       "name": "Clinic",
-      "seconds": 78.4
+      "seconds": 80.6
     },
     {
       "name": "Clinic reload",
-      "seconds": 63.1
+      "seconds": 62.8
     },
     {
       "name": "ClinicGuest",
-      "seconds": 116.8
+      "seconds": 121.0
     },
     {
       "name": "ClinicGuest reload",
-      "seconds": 64.2
+      "seconds": 61.7
     },
     {
       "name": "ComplexLayout",
-      "seconds": 83.6
+      "seconds": 84.6
     },
     {
       "name": "ComplexLayout reload",
-      "seconds": 62.9
+      "seconds": 65.9
     },
     {
       "name": "Company",
-      "seconds": 94.8
+      "seconds": 92.0
     },
     {
       "name": "Company reload",
-      "seconds": 69.9
+      "seconds": 73.9
     }
   ],
   "userSaveTested": false,
-  "testProbeRemoved": true
+  "testProbeRemoved": true,
+  "failedAttemptsOutsideSuccessfulSteps": 2,
+  "supplementalIsolatedLaunches": 2,
+  "testNotes": "ServiceRevisionTestNotes.json"
 }

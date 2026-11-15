@@ -1,0 +1,26 @@
+{
+  "productionAssemblySha256": "977c5a482254b4cd578a4b072e80bfd01a4255ac7f9698b44e4b8b6ac44d015b",
+  "failedAttemptsOutsideSuccessfulSteps": [
+    {
+      "component": "Hospitality",
+      "check": "Native sent-away guest must physically leave the map within 4000 ticks.",
+      "observed": "After 36 assertions the guest was still walking in LordToil_Travel toward an exit; the run failed and was not accepted.",
+      "change": "Test guests now use a healthy adult generation request and a cleared soil route to nearby edges. The 4000-tick limit and physical departure assertion were retained. No production code was changed for this failure.",
+      "freshRetestPassed": true,
+      "priorSuccessfulStepsReusedOnlyOnSameProductionHash": true
+    },
+    {
+      "component": "Company",
+      "check": "Accepted conversation must start and accrue real talking ticks before saving.",
+      "observed": "The initial fixture stopped after 92 assertions because its order had been cancelled before the conversation began. The cancellation cause was not captured in that run.",
+      "change": "Added test-only cancellation diagnostics. No production logic or success assertions were weakened. Two subsequent fresh runs each passed 94 assertions, and the first of those fixtures passed 12 reload assertions. Neither fresh repeat reproduced an unexpected cancellation.",
+      "freshRetestPassed": true,
+      "causeEstablished": false
+    }
+  ],
+  "supplementalChecks": [
+    {"component": "Recruit", "passed": true, "checks": 127, "purpose": "Repeat after calling native quest-window PreOpen before Repaint; zero null-texture warnings."},
+    {"component": "Company", "passed": true, "checks": 94, "purpose": "Repeat with cancellation diagnostics after the earlier unexplained cancellation."}
+  ],
+  "scope": "Successful regression steps are counted separately from failed attempts and diagnostic repeats. User saves were not tested."
+}

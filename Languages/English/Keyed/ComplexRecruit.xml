@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Recruit.QuestName>Work in the complex</TMM.Recruit.QuestName>
+  <TMM.Recruit.QuestDescription>{0} offers to join your colony as an ordinary free colonist to work in the complex. This offer remains valid for {1} days.
+
+Terms of agreement:
+1. Until a suitable assignment in the complex is granted, their mood will suffer a penalty of -50 due to broken promises.
+2. Once assigned any regular role (cook, waiter, doctor, host, or cleaner), they receive an initial mood boost of +15, which gradually declines to +10 and +5. The adaptation period ends after 15 in-game days.
+3. Participation in paid conversations with guests is strictly voluntary: declining an individual conversation carries no penalty and does not revoke their employee status.
+
+{0} will become a full colonist upon arrival.</TMM.Recruit.QuestDescription>
+  <TMM.Recruit.Arrived>{0} arrives to work in the complex</TMM.Recruit.Arrived>
+  <TMM.Recruit.ArrivedHelp>{0} joins the colony as a regular colonist. Assign a regular role in the staff menu at the reception desk to prevent a severe mood drop.</TMM.Recruit.ArrivedHelp>
+  <TMM.Recruit.WaitingLabel>Awaiting complex assignment</TMM.Recruit.WaitingLabel>
+  <TMM.Recruit.WaitingDescription>I was promised steady work in the complex, but I still have not been assigned a suitable role. I feel deceived and useless.</TMM.Recruit.WaitingDescription>
+  <TMM.Recruit.Settled15Label>Started complex work</TMM.Recruit.Settled15Label>
+  <TMM.Recruit.Settled15Description>I was assigned work in the complex, just as promised. It feels great to be occupied and needed in my new home.</TMM.Recruit.Settled15Description>
+  <TMM.Recruit.Settled10Label>Settling into the complex</TMM.Recruit.Settled10Label>
+  <TMM.Recruit.Settled10Description>I am getting used to my duties and the routine of the complex. Work is proceeding smoothly.</TMM.Recruit.Settled10Description>
+  <TMM.Recruit.Settled5Label>Finalizing adaptation</TMM.Recruit.Settled5Label>
+  <TMM.Recruit.Settled5Description>Working in the complex has become a familiar part of everyday colony life for me.</TMM.Recruit.Settled5Description>
+  <TMM.Recruit.StatusWaiting>Awaiting assignment</TMM.Recruit.StatusWaiting>
+  <TMM.Recruit.StatusWorking>Working in complex</TMM.Recruit.StatusWorking>
+  <TMM.Recruit.StatusAdapted>Adapted</TMM.Recruit.StatusAdapted>
+  <TMM.Recruit.NoComplex>There is no configured active complex with designated territory and a reception desk.</TMM.Recruit.NoComplex>
+  <TMM.Recruit.NoSuitableWork>The colonist has no enabled regular work or suitable role in the complex.</TMM.Recruit.NoSuitableWork>
+  <TMM.Recruit.CandidateUnavailable>The candidate or map is unavailable; the recruitment offer cannot be fulfilled.</TMM.Recruit.CandidateUnavailable>
+</LanguageData>

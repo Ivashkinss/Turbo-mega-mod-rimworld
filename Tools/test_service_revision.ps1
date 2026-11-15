@@ -1,4 +1,4 @@
-param([int]$TimeoutSeconds=240)
+param([int]$TimeoutSeconds=240, [switch]$Resume)
 $ErrorActionPreference='Stop'
 $projectPath=Split-Path -Parent $PSScriptRoot
 $runs=Join-Path $projectPath 'TestRuns'
@@ -9,10 +9,26 @@ $production=Join-Path $projectPath 'Assemblies\TurboMegaMod.dll'
 $hash=(Get-FileHash -LiteralPath $production -Algorithm SHA256).Hash.ToLowerInvariant()
 $state=[ordered]@{started=[DateTime]::UtcNow.ToString('o');productionAssemblySha256=$hash;current=$null;completed=@();passed=$false;error=$null}
 $lastProfile=$null
+$resumeCount=0
+$resumeIndex=0
+if($Resume) {
+    $previous=Get-Content -LiteralPath $progress -Raw | ConvertFrom-Json
+    if($previous.productionAssemblySha256 -ne $hash){throw 'Cannot resume tests from another production DLL.'}
+    if($previous.passed -or !$previous.error){throw 'Resume requires an interrupted or failed regression.'}
+    if(Get-Process RimWorld -ErrorAction SilentlyContinue){throw 'A RimWorld process is still running.'}
+    $state.started=$previous.started;$state.completed=@($previous.completed)
+    $resumeCount=$state.completed.Count
+}
 function Save-Progress { $state|ConvertTo-Json -Depth 8|Set-Content -LiteralPath $progress -Encoding utf8 }
 function Step([string]$name,[string]$script,[hashtable]$parameters) {
     if(Test-Path -LiteralPath $stop){throw 'Cooperative stop requested before next test.'}
     if((Get-FileHash -LiteralPath $production -Algorithm SHA256).Hash.ToLowerInvariant() -ne $hash){throw 'Production DLL changed during regression.'}
+    if($script:resumeIndex -lt $resumeCount) {
+        $prior=$state.completed[$script:resumeIndex]
+        if($prior.name -ne $name){throw 'Saved regression step order does not match this runner.'}
+        $script:lastProfile=$prior.profile;$script:resumeIndex++
+        Write-Output ('Reusing passed step '+$name);return
+    }
     $state.current=$name;Save-Progress;Write-Output ('Starting '+$name)
     $watch=[Diagnostics.Stopwatch]::StartNew()
     $result= & (Join-Path $PSScriptRoot $script) @parameters | Out-String
@@ -24,6 +40,8 @@ function Step([string]$name,[string]$script,[hashtable]$parameters) {
     Save-Progress;Write-Output ('Passed '+$name)
 }
 try {
+    Step 'Recruit' 'test_component.ps1' @{Component='Recruit';FullSet=$true;UseBuiltAssembly=$true;TimeoutSeconds=$TimeoutSeconds}
+    Step 'Recruit reload' 'test_recruit_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
     Step 'Farming' 'test_component.ps1' @{Component='Farming';FullSet=$true;UseBuiltAssembly=$true;TimeoutSeconds=$TimeoutSeconds}
     Step 'Farming reload' 'test_farming_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
     Step 'Core libraries' 'test_component.ps1' @{Component='Harmony';FullSet=$true;UseBuiltAssembly=$true;WithCoreRegression=$true;TimeoutSeconds=$TimeoutSeconds}

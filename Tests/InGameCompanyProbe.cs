@@ -14,7 +14,24 @@ using Verse.AI.Group;
 [StaticConstructorOnStartup]
 public static class CompanyReloadLaunch
 {
-    static CompanyReloadLaunch() { if(Environment.GetCommandLineArgs().Contains("-tmm-company-reload"))LongEventHandler.ExecuteWhenFinished(()=>GameDataSaveLoader.LoadGame("TMM-Company")); }
+    static CompanyReloadLaunch() {
+        if(Environment.GetCommandLineArgs().Contains("-tmm-company-reload"))LongEventHandler.ExecuteWhenFinished(()=>GameDataSaveLoader.LoadGame("TMM-Company"));
+        if(Environment.GetCommandLineArgs().Contains("-tmm-company-probe"))
+            new Harmony("tmm.test.company.cancellation").Patch(AccessTools.Method(typeof(CompanyService),"Process"),prefix:new HarmonyMethod(typeof(CompanyReloadLaunch),"TraceCancellation"));
+    }
+    private static readonly HashSet<int> traced = new HashSet<int>();
+    private static string PawnState(Pawn p) {
+        return p==null?"null":p.LabelShort+" pos="+p.Position+" fit="+CompanyRules.Fit(p)+" job="+p.CurJob+" awake="+p.Awake()+
+            " rest="+(p.needs.rest==null?-1:p.needs.rest.CurLevelPercentage)+" mood="+(p.needs.mood==null?-1:p.needs.mood.CurLevelPercentage)+
+            " mental="+p.InMentalState+" slave="+p.IsSlaveOfColony+" lord="+(p.GetLord()==null?"none":p.GetLord().CurLordToil.GetType().Name);
+    }
+    private static void TraceCancellation(CompanyService __instance) {
+        foreach(var o in __instance.orders.Where(o=>!o.completed&&!__instance.Valid(o)))if(traced.Add(o.id))
+            File.AppendAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"CompanyCancellation.log"),
+                "tick="+Find.TickManager.TicksGame+" id="+o.id+" cancelled="+o.cancelled+" talked="+o.talked+
+                " participant="+CompanyRules.Participates(o.employee,o.desk)+" arrived="+RestaurantMeals.Guest(o.guest)+
+                " room="+(CompanyRules.GuestRoom(o.guest)==o.roomBed)+" employee="+PawnState(o.employee)+" guest="+PawnState(o.guest)+Environment.NewLine);
+    }
 }
 public sealed class CompanyProbe : MapComponent
 {

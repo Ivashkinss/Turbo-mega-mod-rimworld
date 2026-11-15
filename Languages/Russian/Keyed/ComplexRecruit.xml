@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Recruit.QuestName>Работа в комплексе</TMM.Recruit.QuestName>
+  <TMM.Recruit.QuestDescription>{0} предлагает присоединиться к вашей колонии в качестве обычного свободного жителя и трудиться в комплексе. Предложение действительно в течение {1} дн.
+
+Условия договора:
+1. До назначения подходящей работы в комплексе настроение жителя будет снижено на 50 единиц из-за обманутых ожиданий.
+2. После назначения любой обычной профильной роли (повар, официант, врач, администратор или уборщик) житель получает начальный подъём настроения +15, который со временем спадает до +10 и +5. Через 15 игровых суток период адаптации завершается.
+3. Участие в платных беседах с постояльцами строго добровольное: отказ от сеанса общения не наказывается и не лишает статуса работника.
+
+{0} станет полноправным колонистом сразу после прибытия.</TMM.Recruit.QuestDescription>
+  <TMM.Recruit.Arrived>{0} прибывает, чтобы работать в комплексе</TMM.Recruit.Arrived>
+  <TMM.Recruit.ArrivedHelp>{0} присоединяется к колонии на правах обычного жителя. Назначьте обычную роль в меню персонала на ресепшене, чтобы избежать резкого падения настроения.</TMM.Recruit.ArrivedHelp>
+  <TMM.Recruit.WaitingLabel>Ожидание работы в комплексе</TMM.Recruit.WaitingLabel>
+  <TMM.Recruit.WaitingDescription>Мне обещали постоянную работу в комплексе, но до сих пор не назначили подходящую роль. Я чувствую себя обманутым и бесполезным.</TMM.Recruit.WaitingDescription>
+  <TMM.Recruit.Settled15Label>Начало работы в комплексе</TMM.Recruit.Settled15Label>
+  <TMM.Recruit.Settled15Description>Мне назначили работу в комплексе, как и обещали. Приятно заниматься делом и быть нужным новому дому.</TMM.Recruit.Settled15Description>
+  <TMM.Recruit.Settled10Label>Освоение в комплексе</TMM.Recruit.Settled10Label>
+  <TMM.Recruit.Settled10Description>Я привыкаю к своим обязанностям и распорядку комплекса. Работа идёт своим чередом.</TMM.Recruit.Settled10Description>
+  <TMM.Recruit.Settled5Label>Завершение адаптации</TMM.Recruit.Settled5Label>
+  <TMM.Recruit.Settled5Description>Работа в комплексе стала для меня привычной частью повседневной жизни колонии.</TMM.Recruit.Settled5Description>
+  <TMM.Recruit.StatusWaiting>Ожидает назначения</TMM.Recruit.StatusWaiting>
+  <TMM.Recruit.StatusWorking>Работает в комплексе</TMM.Recruit.StatusWorking>
+  <TMM.Recruit.StatusAdapted>Адаптирован</TMM.Recruit.StatusAdapted>
+  <TMM.Recruit.NoComplex>Нет настроенного действующего комплекса с активной территорией и стойкой ресепшена.</TMM.Recruit.NoComplex>
+  <TMM.Recruit.NoSuitableWork>У жителя нет включённой обычной работы или подходящей роли в комплексе.</TMM.Recruit.NoSuitableWork>
+  <TMM.Recruit.CandidateUnavailable>Кандидат или карта недоступны; предложение найма не может быть исполнено.</TMM.Recruit.CandidateUnavailable>
+</LanguageData>

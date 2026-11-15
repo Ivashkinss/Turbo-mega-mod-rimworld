@@ -31,12 +31,12 @@ def main():
     assert active.count('colonyproject.integrated') == 1
     assert not expected.intersection(x.lower() for x in active), 'Original packageIds still enabled'
     assembly_hash = hashlib.sha256((PROJECT / 'Assemblies/TurboMegaMod.dll').read_bytes()).hexdigest()
-    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality', 'Restaurant', 'Complex', 'Clinic', 'ClinicGuest', 'ComplexLayout', 'Company')}
+    reports = {name: read(name + '-FullSet.json') for name in ('Harmony', 'MeleeAnimation', 'HugsLib', 'Farming', 'Hospitality', 'Restaurant', 'Complex', 'Clinic', 'ClinicGuest', 'ComplexLayout', 'Company', 'Recruit')}
     for name, report in reports.items():
         assert report['passed'] and report['unexpectedRuntimeErrors'] == 0 and not report['gpuLost'], name
         assert report['mapActivity']['ticksAdvanced'] > 0, name
         assert report['fullUserModSet'] and not report['originalComponentActive'], name
-        assert report['localization']['keyed'] == 2800 and report['localization']['scalarFields'] == 672 and report['localization']['grammarLines'] == 90, name
+        assert report['localization']['keyed'] == 2818 and report['localization']['scalarFields'] == 681 and report['localization']['grammarLines'] == 90, name
         assert report['productionAssemblySha256'] == assembly_hash, ('Stale production binary report', name)
         assert report['knownExternalRuntimeErrors'] == 0, name
         assert report['odysseyGrammar']['passed'] and report['odysseyGrammar']['checks'] == 252, name
@@ -74,7 +74,7 @@ def main():
     assert complex_reload['isolatedFixtureSave'] and not complex_reload['userSaveTested']
     checks += reports['Complex']['complex']['checks'] + complex_reload['complexReload']['checks']
     extra_service_checks = {}
-    for component, key in [('Clinic', 'clinic'), ('ClinicGuest', 'clinicguest'), ('ComplexLayout', 'layout'), ('Company', 'company')]:
+    for component, key in [('Clinic', 'clinic'), ('ClinicGuest', 'clinicguest'), ('ComplexLayout', 'layout'), ('Company', 'company'), ('Recruit', 'recruit')]:
         extra_reload = read(component + '-Reload.json')
         assert extra_reload['passed'] and extra_reload['runtimeErrors'] == 0 and not extra_reload['gpuLost'], component
         assert extra_reload['productionAssemblySha256'] == assembly_hash and extra_reload['unresolvedReferences'] == 0, component
@@ -93,7 +93,7 @@ def main():
     assert read('RuntimeLocalizationTests.json')['passed'] and read('RealisticRoomsRuntime.json')['passed']
     assert read('VefInitializerTests.json')['passed']
     russian, duplicates = entries([PROJECT / 'Languages/Russian'])
-    assert not duplicates and len(russian) == 3485
+    assert not duplicates and len(russian) == 3512
     artwork = read('GeminiFarmingAssets.json')
     accepted_assets = artwork['assets'] + artwork['glassAssets']
     assert len(accepted_assets) == 9
@@ -134,6 +134,12 @@ def main():
                   odysseyGrammarChecks=252, odysseyRussianGrammarRuntimeErrors=0,
                   knownRemainingIssue=None,
                   passed=True)
+    notes_path = DOCS / 'ServiceRevisionTestNotes.json'
+    if notes_path.exists():
+        notes = read(notes_path.name)
+        if notes['productionAssemblySha256'] == assembly_hash:
+            result['testStabilityLimitations'] = [note['component'] + ': ' + note['observed']
+                for note in notes['failedAttemptsOutsideSuccessfulSteps'] if note.get('causeEstablished') is False]
     (DOCS / 'IntegrationCompletion.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False))
 

@@ -13,9 +13,9 @@
     "ludeon.rimworld.odyssey",
     "colonyproject.integrated"
   ],
-  "russianEntries": 3485,
+  "russianEntries": 3512,
   "componentResourceHashesVerified": 4456,
-  "finalRuntimeChecks": 879,
+  "finalRuntimeChecks": 1020,
   "integratedComponentRuntimeChecks": 407,
   "farmingRuntimeChecks": 124,
   "farmingReloadChecks": 17,
@@ -49,10 +49,14 @@
     "Company": {
       "fresh": 94,
       "reload": 12
+    },
+    "Recruit": {
+      "fresh": 127,
+      "reload": 14
     }
   },
   "companyAssetsVerified": 1,
-  "productionAssemblySha256": "6ca9e18a2a99c95ae660c054f2605ff13b62c5b3c9e7e064c015f4f32416d263",
+  "productionAssemblySha256": "977c5a482254b4cd578a4b072e80bfd01a4255ac7f9698b44e4b8b6ac44d015b",
   "fullSetReports": {
     "Harmony": "Harmony-FullSet.json",
     "MeleeAnimation": "MeleeAnimation-FullSet.json",
@@ -64,7 +68,8 @@
     "Clinic": "Clinic-FullSet.json",
     "ClinicGuest": "ClinicGuest-FullSet.json",
     "ComplexLayout": "ComplexLayout-FullSet.json",
-    "Company": "Company-FullSet.json"
+    "Company": "Company-FullSet.json",
+    "Recruit": "Recruit-FullSet.json"
   },
   "libraryRegressions": {
     "VEF": 47,
@@ -80,5 +85,8 @@
   "odysseyGrammarChecks": 252,
   "odysseyRussianGrammarRuntimeErrors": 0,
   "knownRemainingIssue": null,
-  "passed": true
+  "passed": true,
+  "testStabilityLimitations": [
+    "Company: The initial fixture stopped after 92 assertions because its order had been cancelled before the conversation began. The cancellation cause was not captured in that run."
+  ]
 }

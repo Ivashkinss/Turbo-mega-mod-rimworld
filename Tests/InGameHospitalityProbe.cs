@@ -53,7 +53,10 @@ public sealed class HospitalityProbe : MapComponent
     private Pawn MakeGuest(IntVec3 cell, int money)
     {
         var faction = Find.FactionManager.AllFactionsListForReading.First(f => !f.IsPlayer && f.def.humanlikeFaction && !f.HostileTo(Faction.OfPlayer));
-        var pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction); GenSpawn.Spawn(pawn, cell, map);
+        var request = new PawnGenerationRequest(PawnKindDefOf.Colonist, faction, forceGenerateNewPawn:true,
+            allowDead:false, allowDowned:false, allowAddictions:false, allowPregnant:false,
+            fixedBiologicalAge:30f, validatorPreGear:p => p.health.capacities.GetLevel(PawnCapacityDefOf.Moving) >= 1f);
+        var pawn = PawnGenerator.GeneratePawn(request); GenSpawn.Spawn(pawn, cell, map);
         pawn.inventory.innerContainer.ClearAndDestroyContents();
         Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver); silver.stackCount = money; pawn.inventory.innerContainer.TryAdd(silver);
         if (pawn.needs.food != null) pawn.needs.food.CurLevelPercentage = 1f;
@@ -95,6 +98,15 @@ public sealed class HospitalityProbe : MapComponent
         Area_Allowed allowed, shop; map.areaManager.TryMakeNewAllowed(out allowed); map.areaManager.TryMakeNewAllowed(out shop);
         hotelArea = allowed; shoppingArea = shop;
         var room = new CellRect(40, 40, 10, 10);
+        // This fixture checks native guest departure and billing cleanup, not
+        // random quicktest terrain or age-related walking impairments. Give
+        // healthy guests an unobstructed soil route to the nearby map edges.
+        foreach (var c in new CellRect(0, 0, 60, 60)) {
+            foreach (var thing in c.GetThingList(map).ToArray()) if (thing is Building || thing is Plant) {
+                if (thing.def.destroyable) thing.Destroy(); else thing.DeSpawn();
+            }
+            map.terrainGrid.SetTerrain(c, TerrainDefOf.Soil); map.roofGrid.SetRoof(c, null);
+        }
         foreach (var c in room)
         {
             foreach (var thing in c.GetThingList(map).ToArray()) if (thing is Building || thing is Plant) thing.Destroy();
@@ -198,7 +210,7 @@ public sealed class HospitalityProbe : MapComponent
             if (stage == 4)
             {
                 if (poorGuest.Spawned && Find.TickManager.TicksGame - stageTick < 4000) return;
-                Check(!poorGuest.Spawned, "Sent-away guest did not leave the map: job=" + poorGuest.CurJob + " position=" + poorGuest.Position + " downed=" + poorGuest.Downed + " mental=" + poorGuest.InMentalState + " lord=" + (poorGuest.GetLord() == null ? "none" : poorGuest.GetLord().CurLordToil.GetType().FullName));
+                Check(!poorGuest.Spawned, "Sent-away guest did not leave the map: job=" + poorGuest.CurJob + " position=" + poorGuest.Position + " downed=" + poorGuest.Downed + " mental=" + poorGuest.InMentalState + " moveSpeed=" + poorGuest.GetStatValue(StatDefOf.MoveSpeed) + " lord=" + (poorGuest.GetLord() == null ? "none" : poorGuest.GetLord().CurLordToil.GetType().FullName));
                 Ledger.ProcessPayments(); Check(!Ledger.stays.Any(s => s.guest == poorGuest), "Departed guest kept a billing account");
                 Check(HotelBillingHooks.Money(guest) == 50 && FloorSilver() == initialSilver + 70, "Departure changed another guest's payment");
                 saved = true; savedMoney = HotelBillingHooks.Money(guest); savedNextDue = Stay(guest).nextChargeTick; savedFloor = FloorSilver();

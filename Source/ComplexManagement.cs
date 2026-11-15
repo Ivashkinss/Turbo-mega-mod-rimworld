@@ -90,10 +90,11 @@ namespace TurboMegaMod
             var priorities = Priorities(pawn);
             if (priorities == null || (work != null && pawn.WorkTypeIsDisabled(work))) return false;
             var employee = Employee(pawn, true);
-            if (employee.role == role) return true;
+            if (employee.role == role) { ComplexRecruitment.Notify(pawn); return true; }
             RestorePriority(employee);
             employee.role = role; employee.managedWork = work;
             if (work != null) { employee.originalPriority = priorities[work]; pawn.workSettings.SetPriority(work, 1); }
+            ComplexRecruitment.Notify(pawn);
             return true;
         }
         public bool SetCompany(Pawn pawn, bool value)
@@ -233,10 +234,15 @@ namespace TurboMegaMod
             Widgets.BeginScrollView(outer, ref scroll, inner);
             for (int i = 0; i < pawns.Length; i++) {
                 var pawn = pawns[i]; var employee = desk.Employee(pawn, true); float y = i * 48;
-                Widgets.Label(new Rect(0, y, 145, 40), pawn.LabelShortCap);
+                string recruitStatus = ComplexRecruitment.Status(pawn);
+                Widgets.Label(new Rect(0, y, 145, recruitStatus == null ? 40 : 22), pawn.LabelShortCap);
+                if (recruitStatus != null) {
+                    var font = Text.Font; Text.Font = GameFont.Tiny;
+                    Widgets.Label(new Rect(0, y + 22, 145, 22), recruitStatus); Text.Font = font;
+                }
                 if (Widgets.ButtonText(new Rect(150, y, 175, 38), ("TMM.Complex.Mode." + employee.mode).Translate())) {
                     Find.WindowStack.Add(new FloatMenu(Enum.GetValues(typeof(ComplexWorkMode)).Cast<ComplexWorkMode>()
-                        .Select(m => new FloatMenuOption(("TMM.Complex.Mode." + m).Translate(), () => employee.mode = m)).ToList()));
+                        .Select(m => new FloatMenuOption(("TMM.Complex.Mode." + m).Translate(), () => { employee.mode = m; ComplexRecruitment.Notify(pawn); })).ToList()));
                 }
                 if (Widgets.ButtonText(new Rect(330, y, 150, 38), ("TMM.Complex.Role." + employee.role).Translate())) {
                     Find.WindowStack.Add(new FloatMenu(Enum.GetValues(typeof(ComplexRole)).Cast<ComplexRole>().Select(r => new FloatMenuOption(("TMM.Complex.Role." + r).Translate(), delegate {
