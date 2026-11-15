@@ -46,6 +46,8 @@ try {
     Step 'Sales reload' 'test_sales_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
     Step 'SalesDelivery' 'test_component.ps1' @{Component='SalesDelivery';FullSet=$true;UseBuiltAssembly=$true;TimeoutSeconds=$TimeoutSeconds}
     Step 'SalesDelivery reload' 'test_sales_delivery_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
+    Step 'Wholesale' 'test_component.ps1' @{Component='Wholesale';FullSet=$true;UseBuiltAssembly=$true;TimeoutSeconds=$TimeoutSeconds}
+    Step 'Wholesale reload' 'test_wholesale_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
     Step 'Farming' 'test_component.ps1' @{Component='Farming';FullSet=$true;UseBuiltAssembly=$true;TimeoutSeconds=$TimeoutSeconds}
     Step 'Farming reload' 'test_farming_reload.ps1' @{Profile=$lastProfile;TimeoutSeconds=$TimeoutSeconds}
     Step 'Core libraries' 'test_component.ps1' @{Component='Harmony';FullSet=$true;UseBuiltAssembly=$true;WithCoreRegression=$true;TimeoutSeconds=$TimeoutSeconds}

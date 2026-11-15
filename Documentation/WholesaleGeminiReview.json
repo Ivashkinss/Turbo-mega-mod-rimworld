@@ -1,0 +1,54 @@
+{
+  "reviewedBy": "Codex",
+  "date": "2026-11-15",
+  "generationApi": {
+    "accepted": "Adult fresh generation; public WorldPawns handoff of owned unspawned candidates only.",
+    "rejected": "Using private DiscardGeneratedPawn outside its generation stack; generating from arbitrary faction names without real world eligibility."
+  },
+  "saveAudit": {
+    "accepted": "Inventory of 40 saved fields in 5 classes and 12 proposed manual checks.",
+    "corrections": [
+      "Despawn alone does not imply a reference becomes null. Loaded-object registration and retention matter.",
+      "Missing-container guards do not prove all malformed saves are safe.",
+      "Loose deep-saved goods and quality were subsequently exercised in a real isolated save/reload."
+    ]
+  },
+  "travelDutyAudit": {
+    "accepted": "Native TravelOrLeave duty and periodic TravelArrived evaluation; approach still needs physical reachability.",
+    "limits": "Metadata does not prove a custom think-tree override is required. Actual approach and departure were tested separately."
+  },
+  "scheduleCases": {
+    "modelCasesPassed": 24,
+    "negativeMutationsCaught": 8,
+    "nativeScope": "24 Delay projections plus selected real scheduler transitions; not all 24 model transitions executed in game."
+  },
+  "finalGuide": {
+    "acceptedWithEdits": [
+      "Purchased batch can be a partial stack.",
+      "Animals and equal distribution among all members are not required.",
+      "Actual dropped silver drives income; pending escrow is not yet reported as received.",
+      "Avoid unverified exact vanilla inventory tab labels and absolute route isolation promises."
+    ]
+  },
+  "factionFilterCases": {
+    "sourceSha256": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "caseFileSha256": "357f4be2e41a315403461d9f1d9f26209a0e8419e292a32d44101774d06c26fa",
+    "modelCasesPassed": 20,
+    "negativeMutationsCaught": 8,
+    "nativeCasesExecuted": 0,
+    "corrections": [
+      "ToolUser is a race intelligence/property check, not proof of the generated pawn's manipulation capacity.",
+      "No pack animals is supported by a human fallback; it is not itself a reason for generation failure.",
+      "The report paraphrases TryVisit using a different collection/null predicate; actual source uses AllFactionsListForReading.",
+      "The require_animals mutation rejects every case rather than modelling a real carrier flag; it only checks that some no-animal fixtures must remain eligible.",
+      "Python float does not prove every Single rounding boundary. No guarantee for all future modded factions."
+    ]
+  },
+  "documentationConsistency": {
+    "inspectedFiles": 13,
+    "reportedContradictions": 0,
+    "codexVerifiedAllReportedHashes": true,
+    "findingSha256": "4e30fbf7c6385413c10b84d13db5fd9f65b47c3ffb1cb80cfb83812fd91a3bac",
+    "limits": "No contradiction found in the specified files and rules; this is not proof of all documentation consistency or game correctness. The report overstates its global conclusion."
+  }
+}

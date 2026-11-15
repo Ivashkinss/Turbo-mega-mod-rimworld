@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Wholesale.ArrivalLabel>Wholesale buyers</TMM.Wholesale.ArrivalLabel>
+  <TMM.Wholesale.ArrivalText>A group from {0} has arrived to purchase designated complex goods with a budget of {1} silver. The wholesale buyers do not occupy guest rooms. Purchases depend on unreserved goods and the group's carrying capacity. Items in restricted staff storages must be delivered by complex staff.</TMM.Wholesale.ArrivalText>
+  <TMM.Wholesale.Approaching>Heading to shop</TMM.Wholesale.Approaching>
+  <TMM.Wholesale.Shopping>Shopping for goods</TMM.Wholesale.Shopping>
+  <TMM.Wholesale.Leaving>Leaving the complex</TMM.Wholesale.Leaving>
+  <TMM.Wholesale.Aborted>Visit cancelled</TMM.Wholesale.Aborted>
+  <TMM.Wholesale.WaitingStock>No available goods or suitable delivery.</TMM.Wholesale.WaitingStock>
+  <TMM.Wholesale.Inspect>Remaining silver: {0}, spent on purchases: {1}</TMM.Wholesale.Inspect>
+  <TMM.Wholesale.VisitReport>The group from {0} has concluded their visit. Paid {1} silver for purchases.</TMM.Wholesale.VisitReport>
+  <TMM.Wholesale.NoRoute>Visit cancelled: no accessible path to the complex public area.</TMM.Wholesale.NoRoute>
+</LanguageData>

@@ -1,0 +1,1849 @@
+[
+  {
+    "id": "CASE-01",
+    "name": "Группа только из людей: распределение оплаты и товара без животных",
+    "description": "Два человека (h1 и h2) выкупают 10 медикаментов (цена ceil(10*18*0.55)=99). h1 платит 60, h2 платит 39. h1 вмещает все 10 медикаментов.",
+    "inputs": {
+      "id": "CASE-01",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 50,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "h1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "15.0",
+          "silver": 60
+        },
+        {
+          "id": "h2",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 60
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "h1": 60,
+        "h2": 39
+      },
+      "goodsByCarrier": {
+        "h1": 10,
+        "h2": 0
+      },
+      "finalSilverByCarrier": {
+        "h1": 0,
+        "h2": 21
+      },
+      "finalMassByCarrier": {
+        "h1": "15.520",
+        "h2": "9.688"
+      },
+      "finalStockCount": 40,
+      "deliveredCount": 10,
+      "escrow": 0,
+      "physicalReceipts": 99,
+      "colonyIncome": 99
+    }
+  },
+  {
+    "id": "CASE-02",
+    "name": "Смешанная группа: человек и вьючный муффало",
+    "description": "Человек c1_human и муффало c2_muffalo выкупают 100 стали (Quote=105). c1 платит 50, c2 платит 55. Сталь распределяется по инвентарям.",
+    "inputs": {
+      "id": "CASE-02",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 100,
+      "stockCount": 200,
+      "reservedCount": 0,
+      "unitMarketValue": "1.9",
+      "itemUnitMass": "0.5",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1_human",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "20.0",
+          "silver": 50
+        },
+        {
+          "id": "c2_muffalo",
+          "eligible": true,
+          "capacity": "84.0",
+          "currentMass": "30.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        105
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 105,
+      "debitByCarrier": {
+        "c1_human": 50,
+        "c2_muffalo": 55
+      },
+      "goodsByCarrier": {
+        "c1_human": 30,
+        "c2_muffalo": 70
+      },
+      "finalSilverByCarrier": {
+        "c1_human": 0,
+        "c2_muffalo": 45
+      },
+      "finalMassByCarrier": {
+        "c1_human": "34.600",
+        "c2_muffalo": "64.560"
+      },
+      "finalStockCount": 100,
+      "deliveredCount": 100,
+      "escrow": 0,
+      "physicalReceipts": 105,
+      "colonyIncome": 105
+    }
+  },
+  {
+    "id": "CASE-03",
+    "name": "Раздельная упаковка: партия делится между двумя носильщиками",
+    "description": "Партия из 20 пива (Quote=132, масса 0.3) делится: 12 штук первому носильщику, 8 штук второму.",
+    "inputs": {
+      "id": "CASE-03",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 20,
+      "stockCount": 50,
+      "reservedCount": 0,
+      "unitMarketValue": "12.0",
+      "itemUnitMass": "0.3",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "p1",
+          "eligible": true,
+          "capacity": "20.0",
+          "currentMass": "17.0",
+          "silver": 100
+        },
+        {
+          "id": "p2",
+          "eligible": true,
+          "capacity": "20.0",
+          "currentMass": "17.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        132
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 132,
+      "debitByCarrier": {
+        "p1": 100,
+        "p2": 32
+      },
+      "goodsByCarrier": {
+        "p1": 12,
+        "p2": 8
+      },
+      "finalSilverByCarrier": {
+        "p1": 0,
+        "p2": 68
+      },
+      "finalMassByCarrier": {
+        "p1": "19.800",
+        "p2": "19.144"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 20,
+      "escrow": 0,
+      "physicalReceipts": 132,
+      "colonyIncome": 132
+    }
+  },
+  {
+    "id": "CASE-04",
+    "name": "Неделимый тяжёлый предмет: отказ при достаточной общей, но недостаточной индивидуальной вместимости",
+    "description": "Тяжёлая скульптура (1 штука, масса 25.0 кг). У c1 свободно 15 кг, у c2 свободно 15 кг (всего 30 кг). Неделимая вещь не помещается ни к кому -> отказ.",
+    "inputs": {
+      "id": "CASE-04",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 1,
+      "stockCount": 3,
+      "reservedCount": 0,
+      "unitMarketValue": "300.0",
+      "itemUnitMass": "25.0",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "30.0",
+          "currentMass": "15.0",
+          "silver": 100
+        },
+        {
+          "id": "c2",
+          "eligible": true,
+          "capacity": "30.0",
+          "currentMass": "15.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        165
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 165,
+      "debitByCarrier": {
+        "c1": 0,
+        "c2": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0,
+        "c2": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100,
+        "c2": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "15.0",
+        "c2": "15.0"
+      },
+      "finalStockCount": 3,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-05",
+    "name": "Освобождение места уплаченным серебром: предмет помещается только после дебета",
+    "description": "У носителя capacity=35.0, currentMass=34.0 (включая 1000 монет = 8.0 кг). Исходно свободно всего 1.0 кг. Товар весит 5.0 кг. При оплате 701 монеты освобождается 5.608 кг, и товар помещается.",
+    "inputs": {
+      "id": "CASE-05",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 1,
+      "stockCount": 5,
+      "reservedCount": 0,
+      "unitMarketValue": "1273.0",
+      "itemUnitMass": "5.0",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "34.0",
+          "silver": 1000
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        701
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 701,
+      "debitByCarrier": {
+        "c1": 701
+      },
+      "goodsByCarrier": {
+        "c1": 1
+      },
+      "finalSilverByCarrier": {
+        "c1": 299
+      },
+      "finalMassByCarrier": {
+        "c1": "33.392"
+      },
+      "finalStockCount": 4,
+      "deliveredCount": 1,
+      "escrow": 0,
+      "physicalReceipts": 701,
+      "colonyIncome": 701
+    }
+  },
+  {
+    "id": "CASE-06",
+    "name": "Дорогая лёгкая партия: высокий бюджет при минимальной массе",
+    "description": "10 передовых медикаментов (MV=50.0, масса 0.1 кг). Quote=275. Общая масса товара всего 1.0 кг.",
+    "inputs": {
+      "id": "CASE-06",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "50.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 300
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        275
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 275,
+      "debitByCarrier": {
+        "c1": 275
+      },
+      "goodsByCarrier": {
+        "c1": 10
+      },
+      "finalSilverByCarrier": {
+        "c1": 25
+      },
+      "finalMassByCarrier": {
+        "c1": "8.800"
+      },
+      "finalStockCount": 10,
+      "deliveredCount": 10,
+      "escrow": 0,
+      "physicalReceipts": 275,
+      "colonyIncome": 275
+    }
+  },
+  {
+    "id": "CASE-07",
+    "name": "Дешёвая тяжёлая партия: низкая цена при огромной массе",
+    "description": "200 гранитных блоков (MV=0.5, масса 1.0 кг). Quote=55. Общая масса 200.0 кг. Требует слонов с большой вместимостью.",
+    "inputs": {
+      "id": "CASE-07",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 200,
+      "stockCount": 500,
+      "reservedCount": 0,
+      "unitMarketValue": "0.5",
+      "itemUnitMass": "1.0",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "el1",
+          "eligible": true,
+          "capacity": "140.0",
+          "currentMass": "20.0",
+          "silver": 30
+        },
+        {
+          "id": "el2",
+          "eligible": true,
+          "capacity": "140.0",
+          "currentMass": "20.0",
+          "silver": 30
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        55
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 55,
+      "debitByCarrier": {
+        "el1": 30,
+        "el2": 25
+      },
+      "goodsByCarrier": {
+        "el1": 120,
+        "el2": 80
+      },
+      "finalSilverByCarrier": {
+        "el1": 0,
+        "el2": 5
+      },
+      "finalMassByCarrier": {
+        "el1": "139.760",
+        "el2": "99.800"
+      },
+      "finalStockCount": 300,
+      "deliveredCount": 200,
+      "escrow": 0,
+      "physicalReceipts": 55,
+      "colonyIncome": 55
+    }
+  },
+  {
+    "id": "CASE-08",
+    "name": "Товар нулевой массы: чертежи и нематериальные предметы",
+    "description": "5 чертежей (MV=1000.0, масса 0.0 кг). Quote=2750. Товар не увеличивает массу носителя.",
+    "inputs": {
+      "id": "CASE-08",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 10,
+      "reservedCount": 0,
+      "unitMarketValue": "1000.0",
+      "itemUnitMass": "0.0",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "25.0",
+          "silver": 3000
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        2750
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 2750,
+      "debitByCarrier": {
+        "c1": 2750
+      },
+      "goodsByCarrier": {
+        "c1": 5
+      },
+      "finalSilverByCarrier": {
+        "c1": 250
+      },
+      "finalMassByCarrier": {
+        "c1": "3.000"
+      },
+      "finalStockCount": 5,
+      "deliveredCount": 5,
+      "escrow": 0,
+      "physicalReceipts": 2750,
+      "colonyIncome": 2750
+    }
+  },
+  {
+    "id": "CASE-09",
+    "name": "Отказ: весь запас зарезервирован другими задачами",
+    "description": "stockCount=20, reservedCount=20. Доступный свободный запас 0. Запрос 5 штук отклоняется.",
+    "inputs": {
+      "id": "CASE-09",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 20,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-10",
+    "name": "Отказ: частичный резерв не оставляет запрошенного количества",
+    "description": "stockCount=20, reservedCount=17. Свободно только 3 штуки, запрошено 5. Отказ без списания денег.",
+    "inputs": {
+      "id": "CASE-10",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 17,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-11",
+    "name": "Отказ: нехватка реального серебра у подходящих носильщиков",
+    "description": "Quote=99, а у единственного подходящего носильщика есть только 75 монет. Отказ.",
+    "inputs": {
+      "id": "CASE-11",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 50,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 75
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 75
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 50,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-12",
+    "name": "Отказ: недоступный носильщик имеет деньги, но подходящие — нет",
+    "description": "У ineligible носителя c_bad есть 10 000 серебра, а у eligible c_good только 10. Quote=99. Серебро c_bad трогать нельзя -> отказ.",
+    "inputs": {
+      "id": "CASE-12",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 50,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c_bad",
+          "eligible": false,
+          "capacity": "80.0",
+          "currentMass": "80.0",
+          "silver": 10000
+        },
+        {
+          "id": "c_good",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "5.0",
+          "silver": 10
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 99,
+      "debitByCarrier": {
+        "c_bad": 0,
+        "c_good": 0
+      },
+      "goodsByCarrier": {
+        "c_bad": 0,
+        "c_good": 0
+      },
+      "finalSilverByCarrier": {
+        "c_bad": 10000,
+        "c_good": 10
+      },
+      "finalMassByCarrier": {
+        "c_bad": "80.0",
+        "c_good": "5.0"
+      },
+      "finalStockCount": 50,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-13",
+    "name": "Служебный склад: успешная сделка при готовом сотруднике доставки",
+    "description": "storagePublic=False, но staffDeliveryReady=True. Сделка успешно обслуживается.",
+    "inputs": {
+      "id": "CASE-13",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": false,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 50
+      },
+      "goodsByCarrier": {
+        "c1": 5
+      },
+      "finalSilverByCarrier": {
+        "c1": 50
+      },
+      "finalMassByCarrier": {
+        "c1": "10.100"
+      },
+      "finalStockCount": 15,
+      "deliveredCount": 5,
+      "escrow": 0,
+      "physicalReceipts": 50,
+      "colonyIncome": 50
+    }
+  },
+  {
+    "id": "CASE-14",
+    "name": "Отказ: служебный склад без назначенного сотрудника доставки",
+    "description": "storagePublic=False и staffDeliveryReady=False. Гости не могут войти на склад, а сотрудника нет -> отказ.",
+    "inputs": {
+      "id": "CASE-14",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": false,
+      "storagePublic": false,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-15",
+    "name": "Отказ: караван ещё в пути (arrived=False)",
+    "description": "arrived=False. Торговля до физического прибытия на место запрещена.",
+    "inputs": {
+      "id": "CASE-15",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": false,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-16",
+    "name": "Отказ: фракция враждебна комплексу (factionFriendly=False)",
+    "description": "factionFriendly=False. Сделки с враждебными фракциями не проводятся.",
+    "inputs": {
+      "id": "CASE-16",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": false,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-17",
+    "name": "Отказ: комплекс не активен (complexActive=False)",
+    "description": "complexActive=False (нет ресепшена или комплекс выключен).",
+    "inputs": {
+      "id": "CASE-17",
+      "duplicate": false,
+      "complexActive": false,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-18",
+    "name": "Отказ: точка передачи не является публичной (publicHandover=False)",
+    "description": "publicHandover=False. Передача товара вне публичной зоны ресепшена запрещена.",
+    "inputs": {
+      "id": "CASE-18",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": false,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 5,
+      "stockCount": 20,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 100
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50
+      ]
+    },
+    "expected": {
+      "status": "refused",
+      "quote": 50,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 100
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-19",
+    "name": "Детерминированный порядок: перестановка списка носителей во входе",
+    "description": "Носители заданы в порядке z_carrier, a_carrier, m_carrier. План списания и размещения обязан строго следовать ASCII-сортировке a_carrier -> m_carrier -> z_carrier.",
+    "inputs": {
+      "id": "CASE-19",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 50,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "z_carrier",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 50
+        },
+        {
+          "id": "a_carrier",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 50
+        },
+        {
+          "id": "m_carrier",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 50
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "z_carrier": 0,
+        "a_carrier": 50,
+        "m_carrier": 49
+      },
+      "goodsByCarrier": {
+        "z_carrier": 0,
+        "a_carrier": 10,
+        "m_carrier": 0
+      },
+      "finalSilverByCarrier": {
+        "z_carrier": 50,
+        "a_carrier": 0,
+        "m_carrier": 1
+      },
+      "finalMassByCarrier": {
+        "z_carrier": "10.000",
+        "a_carrier": "10.600",
+        "m_carrier": "9.608"
+      },
+      "finalStockCount": 40,
+      "deliveredCount": 10,
+      "escrow": 0,
+      "physicalReceipts": 99,
+      "colonyIncome": 99
+    }
+  },
+  {
+    "id": "CASE-20",
+    "name": "Округление крошечной цены: ceil(1 * 1 * 0.55) = 1",
+    "description": "1 дешевый предмет (MV=1.0). Quote=1 монета.",
+    "inputs": {
+      "id": "CASE-20",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 1,
+      "stockCount": 10,
+      "reservedCount": 0,
+      "unitMarketValue": "1.0",
+      "itemUnitMass": "0.05",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "5.0",
+          "silver": 10
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        1
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 1,
+      "debitByCarrier": {
+        "c1": 1
+      },
+      "goodsByCarrier": {
+        "c1": 1
+      },
+      "finalSilverByCarrier": {
+        "c1": 9
+      },
+      "finalMassByCarrier": {
+        "c1": "5.042"
+      },
+      "finalStockCount": 9,
+      "deliveredCount": 1,
+      "escrow": 0,
+      "physicalReceipts": 1,
+      "colonyIncome": 1
+    }
+  },
+  {
+    "id": "CASE-21",
+    "name": "Стандартная партия: 10 предметов по 18.0 серебра (Quote=99)",
+    "description": "10 единиц товара по 18.0. Точная цена ceil(10 * 18.0 * 0.55) = 99.",
+    "inputs": {
+      "id": "CASE-21",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 99
+      },
+      "goodsByCarrier": {
+        "c1": 10
+      },
+      "finalSilverByCarrier": {
+        "c1": 21
+      },
+      "finalMassByCarrier": {
+        "c1": "10.208"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 10,
+      "escrow": 0,
+      "physicalReceipts": 99,
+      "colonyIncome": 99
+    }
+  },
+  {
+    "id": "CASE-22",
+    "name": "Отмена сделки: срыв физической передачи (transferSucceeded=False)",
+    "description": "Предусловия выполнены, но физический трансфер сорван. Статус cancelled, полный откат, 0 списаний и 0 дохода.",
+    "inputs": {
+      "id": "CASE-22",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": false,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "cancelled",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-23",
+    "name": "Заблокированная выручка: успешная передача при пустом dropParts",
+    "description": "Товар передан, 99 монет перешли в эскроу, но сброс заблокирован (dropParts=[]). escrow=99, доход=0.",
+    "inputs": {
+      "id": "CASE-23",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": []
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 99
+      },
+      "goodsByCarrier": {
+        "c1": 10
+      },
+      "finalSilverByCarrier": {
+        "c1": 21
+      },
+      "finalMassByCarrier": {
+        "c1": "10.208"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 10,
+      "escrow": 99,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-24",
+    "name": "Частичный сброс выручки: dropParts=[40] при Quote=99",
+    "description": "Сброшено 40 монет. escrow=59, physicalReceipts=40, colonyIncome=40.",
+    "inputs": {
+      "id": "CASE-24",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        40
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 99
+      },
+      "goodsByCarrier": {
+        "c1": 10
+      },
+      "finalSilverByCarrier": {
+        "c1": 21
+      },
+      "finalMassByCarrier": {
+        "c1": "10.208"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 10,
+      "escrow": 59,
+      "physicalReceipts": 40,
+      "colonyIncome": 40
+    }
+  },
+  {
+    "id": "CASE-25",
+    "name": "Полный многоэтапный сброс: dropParts=[50, 49] при Quote=99",
+    "description": "Сброшено 50 и затем 49 монет. escrow=0, physicalReceipts=99, colonyIncome=99.",
+    "inputs": {
+      "id": "CASE-25",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        50,
+        49
+      ]
+    },
+    "expected": {
+      "status": "completed",
+      "quote": 99,
+      "debitByCarrier": {
+        "c1": 99
+      },
+      "goodsByCarrier": {
+        "c1": 10
+      },
+      "finalSilverByCarrier": {
+        "c1": 21
+      },
+      "finalMassByCarrier": {
+        "c1": "10.208"
+      },
+      "finalStockCount": 20,
+      "deliveredCount": 10,
+      "escrow": 0,
+      "physicalReceipts": 99,
+      "colonyIncome": 99
+    }
+  },
+  {
+    "id": "CASE-26",
+    "name": "Дублирующий вызов: duplicate=True",
+    "description": "Повторная обработка уже проведённой сделки. Статус duplicate, 0 списаний, 0 дохода.",
+    "inputs": {
+      "id": "CASE-26",
+      "duplicate": true,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        99
+      ]
+    },
+    "expected": {
+      "status": "duplicate",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-27",
+    "name": "Невалидный вход: отрицательное запрошенное количество",
+    "description": "requestedCount=-5. Статус invalid, quote=0.",
+    "inputs": {
+      "id": "CASE-27",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": -5,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": []
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-28",
+    "name": "Невалидный вход: нечисловое значение unitMarketValue ('NaN')",
+    "description": "unitMarketValue='NaN'. Статус invalid, quote=0.",
+    "inputs": {
+      "id": "CASE-28",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "NaN",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": []
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-29",
+    "name": "Невалидный вход: текущая масса меньше массы серебра",
+    "description": "currentMass=1.0, но silver=1000 (масса серебра 8.0 кг). Физическая невозможность -> invalid.",
+    "inputs": {
+      "id": "CASE-29",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "1.0",
+          "silver": 1000
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": []
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 1000
+      },
+      "finalMassByCarrier": {
+        "c1": "1.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-30",
+    "name": "Невалидный вход: неуникальные идентификаторы носильщиков",
+    "description": "Два носителя с одинаковым id 'c1'. Статус invalid.",
+    "inputs": {
+      "id": "CASE-30",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 50
+        },
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 50
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": []
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 50
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-31",
+    "name": "Невалидный вход: сумма dropParts превышает Quote",
+    "description": "Quote=99, dropParts=[60, 50] (сумма 110). Невалидный сценарий целиком -> invalid.",
+    "inputs": {
+      "id": "CASE-31",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        60,
+        50
+      ]
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  },
+  {
+    "id": "CASE-32",
+    "name": "Невалидный вход: единичный сброс больше эскроу",
+    "description": "Quote=99, dropParts=[120]. Элемент превышает доступный эскроу -> invalid.",
+    "inputs": {
+      "id": "CASE-32",
+      "duplicate": false,
+      "complexActive": true,
+      "factionFriendly": true,
+      "arrived": true,
+      "publicHandover": true,
+      "staffDeliveryReady": true,
+      "storagePublic": true,
+      "requestedCount": 10,
+      "stockCount": 30,
+      "reservedCount": 0,
+      "unitMarketValue": "18.0",
+      "itemUnitMass": "0.1",
+      "silverUnitMass": "0.008",
+      "carriers": [
+        {
+          "id": "c1",
+          "eligible": true,
+          "capacity": "35.0",
+          "currentMass": "10.0",
+          "silver": 120
+        }
+      ],
+      "transferSucceeded": true,
+      "dropParts": [
+        120
+      ]
+    },
+    "expected": {
+      "status": "invalid",
+      "quote": 0,
+      "debitByCarrier": {
+        "c1": 0
+      },
+      "goodsByCarrier": {
+        "c1": 0
+      },
+      "finalSilverByCarrier": {
+        "c1": 120
+      },
+      "finalMassByCarrier": {
+        "c1": "10.0"
+      },
+      "finalStockCount": 30,
+      "deliveredCount": 0,
+      "escrow": 0,
+      "physicalReceipts": 0,
+      "colonyIncome": 0
+    }
+  }
+]

@@ -5,8 +5,8 @@ using System.Linq;
 namespace TurboMegaMod.Wholesale
 {
     // Pure planning only: no ThingOwner mutations and no invented currency.
-    // Compiled by test_wholesale_planner.ps1. The current game assembly does
-    // not include this directory until a real wholesale service consumes it.
+    // Shared by the game adapter and test_wholesale_planner.ps1. Runtime
+    // callers still validate and commit the actual item/currency transfers.
     public sealed class CargoCarrier
     {
         public string Id;

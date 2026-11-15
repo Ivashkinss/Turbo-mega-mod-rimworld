@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
+param([Parameter(Mandatory=$true)][ValidateSet('Wholesale','SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Wholesale' { @{ folder=''; id='turbomegamod.wholesale'; dll='Assemblies\TurboMegaMod.dll'; source='InGameWholesaleProbe.cs'; flag='-tmm-wholesale-probe'; report='WholesaleProbe.json'; ui='WholesaleUiProbe.json'; key='wholesale'; prefix='Wholesale' } }
     'SalesDelivery' { @{ folder=''; id='turbomegamod.delivery'; dll='Assemblies\TurboMegaMod.dll'; source='InGameSalesDeliveryProbe.cs'; flag='-tmm-delivery-probe'; report='SalesDeliveryProbe.json'; ui='SalesDeliveryUiProbe.json'; key='salesDelivery'; prefix='SalesDelivery' } }
     'Sales' { @{ folder=''; id='turbomegamod.sales'; dll='Assemblies\TurboMegaMod.dll'; source='InGameSalesProbe.cs'; flag='-tmm-sales-probe'; report='SalesProbe.json'; ui='SalesUiProbe.json'; key='sales'; prefix='Sales' } }
     'Recruit' { @{ folder=''; id='turbomegamod.recruit'; dll='Assemblies\TurboMegaMod.dll'; source='InGameRecruitProbe.cs'; flag='-tmm-recruit-probe'; report='RecruitProbe.json'; ui='RecruitUiProbe.json'; key='recruit'; prefix='Recruit' } }
@@ -62,7 +63,7 @@ if (!$UseBuiltAssembly) { & (Join-Path $PSScriptRoot 'build_assembly.ps1') }
 elseif (!(Test-Path -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll'))) { throw 'Production assembly is missing.' }
 if ($UseBuiltAssembly) {
     $assemblyTime=(Get-Item -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll')).LastWriteTimeUtc
-    if (@(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before using -UseBuiltAssembly.' }
+    if (@(Get-ChildItem -LiteralPath @((Join-Path $projectPath 'Source'),(Join-Path $projectPath 'Source\Wholesale')) -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before using -UseBuiltAssembly.' }
 }
 $referencePath = Join-Path $PSScriptRoot 'Build\RimRef-1.6.4871\ref\net472'
 $references = @('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','System.Xml.dll','System.Xml.Linq.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','UnityEngine.TextRenderingModule.dll','Unity.Mathematics.dll') |
@@ -75,6 +76,7 @@ $builtProbe = Join-Path $PSScriptRoot ('Build\' + $Component + 'Probe.dll')
 $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs','InGameGrammarProbe.cs',$definition.source) |
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
 foreach ($regression in $regressions) { $sources += Join-Path $projectPath ('Tests\' + $regression.source) }
+if ($Component -eq 'Wholesale') { $sources += Join-Path $projectPath 'Tests\WholesaleDelayCases.cs' }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
 if ($WithHands) { $sources += Join-Path $projectPath 'Tests\InGameHandsProbe.cs' }
 if ($WithRunAndGun) { $sources += Join-Path $projectPath 'Tests\InGameRunAndGunProbe.cs' }

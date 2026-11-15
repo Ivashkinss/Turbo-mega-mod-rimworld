@@ -1,0 +1,25 @@
+{
+  "productionAssemblySha256": "89cb684fe7fe505fee1c298299ae0c668c1fd39e4c0d0b8bdb9fc43782b06b1a",
+  "successfulPrimaryRun": "10 targeted steps, 295 assertions; includes a two-live-group cap check.",
+  "successfulSupplement": "54 fresh + 31 reload assertions, overlapping primary coverage; includes loose excellent apparel deep save and 24 Delay projections.",
+  "failedAttempts": [
+    {
+      "phase": "Earlier native approach fixture",
+      "observation": "A distant entry point did not complete approach within the fixture deadline.",
+      "resolution": "Choose the nearest reachable map edge in production; confirm native approach and departure in isolated tests."
+    },
+    {
+      "phase": "First supplemental reload on the final production DLL",
+      "observation": "15 checks passed before immediate TryVisit returned false after cancelling the prior order.",
+      "cause": "The first report did not capture stock and reservation diagnostics; stale job reservations are a hypothesis, not a proven cause.",
+      "resolution": "The test now waits for fresh available stock before requesting a new visit and reports stock/group diagnostics on failure. Retest passed 31 checks on the unchanged production DLL."
+    }
+  ],
+  "limits": [
+    "No tests of user saves or live RimWorld 1.6.",
+    "No visual layout approval.",
+    "No claim of permanent retention of cargo by WorldPawnGC.",
+    "No full regression of every component on this DLL.",
+    "No guarantee of exit through completely sealed terrain."
+  ]
+}

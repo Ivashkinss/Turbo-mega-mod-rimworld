@@ -4,11 +4,52 @@
   "tasks": [
     {
       "id": "WholesaleFinalGuide",
-      "state": "assigned",
+      "state": "reviewed",
       "taskFile": "Delegation/WholesaleFinalGuide/TASK.md",
       "outputDir": "Tools/Build/GeminiWholesaleFinalGuide",
-      "expectedOutputs": ["GUIDE.md", "USER-CHECKLIST.md", "REPORT.md"],
-      "note": "Already given manually by the user. Finish/resume the existing assignment; do not start a second copy."
+      "expectedOutputs": [
+        "GUIDE.md",
+        "USER-CHECKLIST.md",
+        "REPORT.md"
+      ],
+      "note": "Completed; Codex reviewed outputs and will apply final editorial adjustments."
+    },
+    {
+      "id": "WholesaleFactionFilterCases",
+      "state": "reviewed",
+      "taskFile": "Delegation/WholesaleFactionFilterCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiWholesaleFactionFilterCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T18:06:03.132116+03:00",
+      "note": "Codex ran 20 model cases and 8 mutation checks, compared predicates with source; accepted with documentation corrections. This is not a native generator test."
+    },
+    {
+      "id": "WholesaleDocumentationConsistency",
+      "state": "reviewed",
+      "taskFile": "Delegation/WholesaleDocumentationConsistency/TASK.md",
+      "outputDir": "Tools/Build/GeminiWholesaleDocumentationConsistency",
+      "expectedOutputs": [
+        "FINDINGS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T15:28:32.8013515Z",
+      "note": "Codex checked all 13 reported file hashes and reviewed the scoped empty findings; report global certainty is not adopted."
+    },
+    {
+      "id": "ClinicReceiptAllocationCases",
+      "state": "pending",
+      "taskFile": "Delegation/ClinicReceiptAllocationCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiClinicReceiptAllocationCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T15:33:19.3195326Z"
     }
   ]
 }

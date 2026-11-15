@@ -1,4 +1,4 @@
-﻿param([Parameter(Mandatory=$true)][string]$Profile, [int]$TimeoutSeconds=240)
+param([Parameter(Mandatory=$true)][string]$Profile, [int]$TimeoutSeconds=240)
 $ErrorActionPreference='Stop'
 $projectPath=Split-Path -Parent $PSScriptRoot
 $gamePath=Split-Path -Parent (Split-Path -Parent $projectPath)
@@ -7,7 +7,7 @@ $allowed=(Join-Path $projectPath 'TestRuns')+[IO.Path]::DirectorySeparatorChar
 if (!$testRoot.StartsWith($allowed,[StringComparison]::OrdinalIgnoreCase)) { throw 'Use an isolated TestRuns profile only.' }
 if (Get-Process RimWorld -ErrorAction SilentlyContinue) { throw 'Close RimWorld before running the isolated reload.' }
 $assemblyTime=(Get-Item -LiteralPath (Join-Path $projectPath 'Assemblies\TurboMegaMod.dll')).LastWriteTimeUtc
-if (@(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before reload.' }
+if (@(Get-ChildItem -LiteralPath @((Join-Path $projectPath 'Source'),(Join-Path $projectPath 'Source\Wholesale')) -Filter '*.cs' -File | Where-Object LastWriteTimeUtc -gt $assemblyTime).Count) { throw 'Sources changed after the production build; rebuild before reload.' }
 $fresh=Get-Content -LiteralPath (Join-Path $testRoot 'SalesDeliveryProbe.json') -Raw | ConvertFrom-Json
 if (!$fresh.passed -or !(Test-Path -LiteralPath (Join-Path $testRoot 'Saves\TMM-Delivery.rws'))) { throw 'A passing fresh sales fixture and its save are required.' }
 $installed=Join-Path $projectPath 'Assemblies\TurboMegaMod.TestProbe.dll'

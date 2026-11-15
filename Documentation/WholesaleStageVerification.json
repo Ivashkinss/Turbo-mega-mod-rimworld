@@ -1,0 +1,200 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "89cb684fe7fe505fee1c298299ae0c668c1fd39e4c0d0b8bdb9fc43782b06b1a",
+  "successfulPrimarySteps": 10,
+  "primaryRuntimeChecks": 295,
+  "primaryComponents": {
+    "Wholesale": {
+      "fresh": 27,
+      "reload": 27
+    },
+    "Sales": {
+      "fresh": 55,
+      "reload": 20
+    },
+    "SalesDelivery": {
+      "fresh": 38,
+      "reload": 43
+    },
+    "Hospitality": {
+      "fresh": 40,
+      "reload": 10
+    },
+    "Complex": {
+      "fresh": 27,
+      "reload": 8
+    }
+  },
+  "supplementalSteps": 2,
+  "supplementalWholesaleChecks": {
+    "fresh": 54,
+    "reload": 31
+  },
+  "latestComponentReports": {
+    "Wholesale": {
+      "fresh": 54,
+      "reload": 31
+    },
+    "Sales": {
+      "fresh": 55,
+      "reload": 20
+    },
+    "SalesDelivery": {
+      "fresh": 38,
+      "reload": 43
+    },
+    "Hospitality": {
+      "fresh": 40,
+      "reload": 10
+    },
+    "Complex": {
+      "fresh": 27,
+      "reload": 8
+    }
+  },
+  "latestReportRuntimeChecks": 326,
+  "countNote": "Supplemental checks overlap the primary wholesale scenario. Do not add these totals as distinct coverage.",
+  "standalonePlannerChecks": 87,
+  "standaloneFixtureCases": 24,
+  "standaloneFixtureAssertions": 214,
+  "runtimeDelayProjections": 24,
+  "russianEntries": 3538,
+  "resourceHashesVerified": 4456,
+  "wholesaleBuyersImplemented": true,
+  "privateWarehouseDeliveryImplemented": true,
+  "scope": "Real group silver and cargo, partial handover rollback, escrow, loose deep-saved goods and quality, staff delivery, native approach/departure, deadline, scheduling and affected retail/hotel/staff regressions.",
+  "fullRegressionOnThisAssembly": false,
+  "baselineFullRegressionCommit": "04729c6e6d3f4ae359d6c2a3e094458c025b2745",
+  "userSaveTested": false,
+  "liveGame16Verified": false,
+  "visualLayoutInspected": false,
+  "allFutureFactionsVerified": false,
+  "sourceSha256": {
+    "Source\\CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source\\Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source\\ClinicBilling.cs": "63d5ad62e20c2be8f1b6d38dd25a2ee048f4a089b3e975a29f46d224146f40ae",
+    "Source\\ClinicGuests.cs": "31ce95f7b962195e7c86d50a21f1c5bb0680d9decb47d970edf7cdef5106bb0a",
+    "Source\\Company.cs": "e64e878b16c0966f9d8e16e248e11803521b6976777d64180220615f34091438",
+    "Source\\CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source\\ComplexLayout.cs": "de68c5bf1d413cff2f26a91153a2ca6ea3738b89a1f875a330bac06827535909",
+    "Source\\ComplexManagement.cs": "b202b6fc621f51420b1f28939a8cad582fffdb040f38644fe279809c14dbfe94",
+    "Source\\ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source\\ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source\\ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source\\ComplexSales.cs": "0c74ac8d91104fc69d748d1f38e56dc406bc62f5abc2878e540ac967a820d73f",
+    "Source\\ComplexServicesDialog.cs": "2d1fc73ff538d829221d8e29b74ca25671706107d455b98a9a9728f8f7822a65",
+    "Source\\ControlledFarming.cs": "b7d0a8ccf21d8b44d8895b87063b6f142b984df7ad5d9ee413084783d8700bf9",
+    "Source\\FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source\\FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source\\GreenhouseExpansion.cs": "8754836741387f4db5128252541599d6df1925d7ffdc6a1a8aa768d1c90684d3",
+    "Source\\GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source\\HotelBilling.cs": "ebd570529e188ac6973c2e527a0c69c8e21dcf00f92c2ce59e55e7610c183f3c",
+    "Source\\HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source\\MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source\\MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source\\MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source\\OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source\\RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source\\RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source\\Restaurant.cs": "0032b030ada7756d044349cfec68fb02334be49fede1758ff311ecf5c438f26b",
+    "Source\\RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source\\RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source\\SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source\\SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source\\VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source\\Wholesale\\PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source\\WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source\\WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source\\WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-174315\\Result.json",
+      "sha256": "cad8280aacdae1ce6689a9c992071fce145796e69cf863cef72d58d330a00af5"
+    },
+    {
+      "path": "Documentation\\Wholesale-FullSet.json",
+      "sha256": "bbbe7237d6b5cfddf4f435afe5bd151cec157fc41ee613f2d513e98c558c13d6"
+    },
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-174315\\ReloadResult.json",
+      "sha256": "06d80575b4c0721de7b0946d1909749cafb7a4901555f6b78a3dc293965f87ac"
+    },
+    {
+      "path": "Documentation\\Wholesale-Reload.json",
+      "sha256": "fc0ea0704c22f0e882646622d6219adecd2f3d82be0fb93ed2e1a080b3d6530c"
+    },
+    {
+      "path": "TestRuns\\Sales-FullSet-20261115-174718\\Result.json",
+      "sha256": "c2399ae03a45b3a4507ff8ce2ece6cdb4044e00d9d296692a40d00cce7baba90"
+    },
+    {
+      "path": "Documentation\\Sales-FullSet.json",
+      "sha256": "c2399ae03a45b3a4507ff8ce2ece6cdb4044e00d9d296692a40d00cce7baba90"
+    },
+    {
+      "path": "TestRuns\\Sales-FullSet-20261115-174718\\ReloadResult.json",
+      "sha256": "909a530cb222d7b5b5a7534195be5aa897a59a5f92fa44b50d5e95b4bc8a8000"
+    },
+    {
+      "path": "Documentation\\Sales-Reload.json",
+      "sha256": "909a530cb222d7b5b5a7534195be5aa897a59a5f92fa44b50d5e95b4bc8a8000"
+    },
+    {
+      "path": "TestRuns\\SalesDelivery-FullSet-20261115-174952\\Result.json",
+      "sha256": "b7115b02c72371c3545dcb05742a0ca3f8c20e073ed4ab67de193196436d2abc"
+    },
+    {
+      "path": "Documentation\\SalesDelivery-FullSet.json",
+      "sha256": "b7115b02c72371c3545dcb05742a0ca3f8c20e073ed4ab67de193196436d2abc"
+    },
+    {
+      "path": "TestRuns\\SalesDelivery-FullSet-20261115-174952\\ReloadResult.json",
+      "sha256": "12ef02c8afa592e9c2f45ed3e2cb04b184947e9e380ac02e9366b9b1dd2a162c"
+    },
+    {
+      "path": "Documentation\\SalesDelivery-Reload.json",
+      "sha256": "12ef02c8afa592e9c2f45ed3e2cb04b184947e9e380ac02e9366b9b1dd2a162c"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261115-175230\\Result.json",
+      "sha256": "3396c98e434a8fff6bb9340e5147ec2be2477c81c044bba09216c900a346e121"
+    },
+    {
+      "path": "Documentation\\Hospitality-FullSet.json",
+      "sha256": "3396c98e434a8fff6bb9340e5147ec2be2477c81c044bba09216c900a346e121"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261115-175230\\ReloadResult.json",
+      "sha256": "fcf8246fe8eff01790eab546bf3b1ac020c2efd92b4ee79afe9ef5f78f2e29e5"
+    },
+    {
+      "path": "Documentation\\Hospitality-Reload.json",
+      "sha256": "fcf8246fe8eff01790eab546bf3b1ac020c2efd92b4ee79afe9ef5f78f2e29e5"
+    },
+    {
+      "path": "TestRuns\\Complex-FullSet-20261115-175524\\Result.json",
+      "sha256": "70aee0a1582d52407c559de48a59497544e347c94b6e0c0276976ad229e370f9"
+    },
+    {
+      "path": "Documentation\\Complex-FullSet.json",
+      "sha256": "70aee0a1582d52407c559de48a59497544e347c94b6e0c0276976ad229e370f9"
+    },
+    {
+      "path": "TestRuns\\Complex-FullSet-20261115-175524\\ReloadResult.json",
+      "sha256": "581eb006245c7a7ab5c864bb298a4b06ee52aa0f920fde5456482dfa0f638c0e"
+    },
+    {
+      "path": "Documentation\\Complex-Reload.json",
+      "sha256": "581eb006245c7a7ab5c864bb298a4b06ee52aa0f920fde5456482dfa0f638c0e"
+    },
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-180841\\Result.json",
+      "sha256": "bbbe7237d6b5cfddf4f435afe5bd151cec157fc41ee613f2d513e98c558c13d6"
+    },
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-180841\\ReloadResult.json",
+      "sha256": "fc0ea0704c22f0e882646622d6219adecd2f3d82be0fb93ed2e1a080b3d6530c"
+    }
+  ]
+}

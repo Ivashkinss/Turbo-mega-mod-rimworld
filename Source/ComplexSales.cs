@@ -90,6 +90,7 @@ namespace TurboMegaMod
         }
         public static int Space(Pawn buyer, Thing item)
         {
+            if (WholesaleTrade.Group(buyer) != null) return WholesaleTrade.Space(buyer, item);
             int count = MassUtility.CountToPickUpUntilOverEncumbered(buyer, item);
             var utility = AccessTools.TypeByName("Hospitality.Utilities.ItemUtility");
             if (utility != null) count = Math.Min(count, (int)AccessTools.Method(utility, "GetInventorySpaceFor").Invoke(null, new object[] { buyer, item }));
@@ -97,7 +98,7 @@ namespace TurboMegaMod
         }
         public static bool Buyer(Pawn pawn)
         {
-            return RestaurantMeals.Guest(pawn) && !Clinic.ActivePatient(pawn) && pawn.Awake() && pawn.inventory != null;
+            return (RestaurantMeals.Guest(pawn) && !Clinic.ActivePatient(pawn) || WholesaleTrade.Buyer(pawn)) && pawn.Awake() && pawn.inventory != null;
         }
         public static bool Allowed(Pawn buyer, Building storage, Thing item)
         {
@@ -107,6 +108,7 @@ namespace TurboMegaMod
         }
         public static bool Suitable(Pawn buyer, Thing item)
         {
+            if (WholesaleTrade.Group(buyer) != null) return true;
             return item.def.ingestible == null || buyer.RaceProps.CanEverEat(item) && !item.IsNotFresh() &&
                 (buyer.foodRestriction == null || buyer.foodRestriction.CurrentFoodPolicy.Allows(item.def)) && FoodUtility.WillEat(buyer, item);
         }
@@ -135,6 +137,9 @@ namespace TurboMegaMod
         public IntVec3 receiptCell, waitCell;
         private ThingOwner<Thing> cash;
         public ThingOwner<Thing> returnedGoods;
+        public List<WholesaleDebit> wholesaleDebits = new List<WholesaleDebit>();
+        public List<WholesaleRecovery> wholesaleRecoveries = new List<WholesaleRecovery>();
+        public List<Thing> unplacedGoods = new List<Thing>();
         public SaleOrder() { cash = new ThingOwner<Thing>(this); returnedGoods = new ThingOwner<Thing>(this); }
         public IThingHolder ParentHolder { get { return null; } }
         public ThingOwner GetDirectlyHeldThings() { return cash; }
@@ -149,9 +154,16 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref completed, "completed"); Scribe_Values.Look(ref cancelled, "cancelled"); Scribe_Values.Look(ref receiptCell, "receiptCell");
             Scribe_Deep.Look(ref cash, "cash", this);
             Scribe_Deep.Look(ref returnedGoods, "returnedGoods", this);
+            Scribe_Collections.Look(ref wholesaleDebits, "wholesaleDebits", LookMode.Deep);
+            Scribe_Collections.Look(ref wholesaleRecoveries, "wholesaleRecoveries", LookMode.Deep);
+            Scribe_Collections.Look(ref unplacedGoods, "unplacedGoods", LookMode.Deep);
             if (Scribe.mode == LoadSaveMode.PostLoadInit) {
                 if (cash == null) cash = new ThingOwner<Thing>(this);
                 if (returnedGoods == null) returnedGoods = new ThingOwner<Thing>(this);
+                if (wholesaleDebits == null) wholesaleDebits = new List<WholesaleDebit>();
+                if (wholesaleRecoveries == null) wholesaleRecoveries = new List<WholesaleRecovery>();
+                if (unplacedGoods == null) unplacedGoods = new List<Thing>();
+                wholesaleDebits.RemoveAll(d => d == null); wholesaleRecoveries.RemoveAll(r => r == null);
             }
         }
     }
@@ -240,7 +252,7 @@ namespace TurboMegaMod
                 p.CanReach(WaitAt(buyer), PathEndMode.OnCell, Danger.None)).Max(p => p.carryTracker.AvailableStackSpace(item.def)));
             if (count <= 0) return null;
             int price = SaleStock.Price(unit, count);
-            if (price <= 0 || HotelBillingHooks.Money(buyer) < price || !delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
+            if (price <= 0 || WholesaleTrade.Money(buyer) < price || !delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
             var desk = map.GetComponent<ComplexMap>().desk;
             var order = new SaleOrder { id = ++nextId, buyer = buyer, storage = storage, item = item, count = count,
                 unitPrice = unit, price = price, created = Find.TickManager.TicksGame, receiptCell = desk.Position,
@@ -252,9 +264,9 @@ namespace TurboMegaMod
             if (!SaleStock.Buyer(buyer) || buyer.CurJobDef == BuyJob || buyer.CurJobDef == WaitJob) return null;
             foreach (var storage in SaleStock.Stores(map).InRandomOrder())
                 foreach (var item in SaleStock.Contents(storage).Where(SaleStock.Tradeable).Where(qualifies).InRandomOrder()) {
-                    int affordable = (int)Math.Min(10, HotelBillingHooks.Money(buyer) / SaleStock.UnitPrice(item));
+                    int affordable = (int)Math.Min(WholesaleTrade.Group(buyer) == null ? 10 : 100, WholesaleTrade.Money(buyer) / SaleStock.UnitPrice(item));
                     if (affordable <= 0) continue;
-                    var order = Create(buyer, storage, item, Rand.RangeInclusive(1, affordable));
+                    var order = Create(buyer, storage, item, WholesaleTrade.Group(buyer) == null ? Rand.RangeInclusive(1, affordable) : affordable);
                     if (order == null) continue;
                     var job = order.delivery ? JobMaker.MakeJob(WaitJob, order.waitCell) : JobMaker.MakeJob(BuyJob, storage);
                     job.count = order.id; return job;
@@ -269,6 +281,7 @@ namespace TurboMegaMod
         }
         private bool Settle(SaleOrder o, Thing offered)
         {
+            if (WholesaleTrade.Group(o.buyer) != null) return WholesaleTrade.Settle(this, o, offered);
             if (!SaleStock.Suitable(o.buyer, offered) || SaleStock.Space(o.buyer, offered) < o.count) return false;
             var cash = o.GetDirectlyHeldThings();
             if (HotelBillingHooks.Money(o.buyer) < o.price) return false;
@@ -322,6 +335,7 @@ namespace TurboMegaMod
         {
             if (o == null || o.completed) return;
             o.cancelled = true;
+            WholesaleTrade.Recover(o);
             // Only take back this order's exact object; never confiscate an
             // unrelated load picked up by the employee's next job.
             if (o.goods != null && o.worker != null && o.worker.carryTracker != null && o.worker.carryTracker.CarriedThing == o.goods) {
@@ -332,11 +346,18 @@ namespace TurboMegaMod
         public void Process()
         {
             foreach (var o in orders.ToArray()) {
+                foreach (var thing in o.unplacedGoods.ToArray()) {
+                    if (thing == null || thing.Destroyed || thing.Spawned || thing.holdingOwner != null) { o.unplacedGoods.Remove(thing); continue; }
+                    o.returnedGoods.TryAdd(thing, false);
+                    if (o.returnedGoods.Contains(thing)) o.unplacedGoods.Remove(thing);
+                }
                 if (!o.completed && !o.cancelled && !Valid(o)) Cancel(o);
                 if (o.cancelled) Cancel(o);
                 var cash = o.GetDirectlyHeldThings();
                 if (o.cancelled) o.refund = cash.Sum(t => t.stackCount);
-                if (o.refund > 0 && o.buyer != null && o.buyer.inventory != null && !o.buyer.Destroyed) {
+                if (o.cancelled && o.wholesaleDebits.Count > 0) {
+                    WholesaleTrade.Refund(o, map); o.refund = cash.Sum(t => t.stackCount);
+                } else if (o.refund > 0 && o.buyer != null && o.buyer.inventory != null && !o.buyer.Destroyed) {
                     foreach (var silver in cash.ToArray()) {
                         int before = cash.Sum(t => t.stackCount);
                         cash.TryTransferToContainer(silver, o.buyer.inventory.innerContainer, Math.Min(o.refund, silver.stackCount), false);
@@ -360,7 +381,7 @@ namespace TurboMegaMod
                     if (source != null) o.returnedGoods.TryTransferAllToContainer(source.SearchableContents, false);
                     o.returnedGoods.TryDropAll(o.storage != null && o.storage.Spawned ? o.storage.Position : o.receiptCell, map, ThingPlaceMode.Near);
                 }
-                if ((o.cancelled || o.completed) && cash.Count == 0 && o.returnedGoods.Count == 0) orders.Remove(o);
+                if ((o.cancelled || o.completed) && cash.Count == 0 && o.returnedGoods.Count == 0 && o.wholesaleRecoveries.Count == 0 && o.unplacedGoods.Count == 0) orders.Remove(o);
             }
         }
         public override void MapComponentTick() { if (Find.TickManager.TicksGame >= nextCheck) { nextCheck = Find.TickManager.TicksGame + 120; Process(); } }

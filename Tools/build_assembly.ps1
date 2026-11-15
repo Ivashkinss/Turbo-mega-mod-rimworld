@@ -28,6 +28,7 @@ $references += @('AdaptiveStorageFramework.dll','1ITransformable.dll') |
 $harmonyPath = & (Join-Path $PSScriptRoot 'get_harmony_reference.ps1')
 $references += '/reference:' + $harmonyPath
 $sourceFiles = @(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source') -Filter '*.cs' -File | Select-Object -ExpandProperty FullName)
+$sourceFiles += @(Get-ChildItem -LiteralPath (Join-Path $projectPath 'Source\Wholesale') -Filter '*.cs' -File | Select-Object -ExpandProperty FullName)
 $buildPath = Join-Path $PSScriptRoot 'Build'
 New-Item -ItemType Directory -Path $buildPath -Force | Out-Null
 $builtAssembly = Join-Path $buildPath 'TurboMegaMod.dll'
