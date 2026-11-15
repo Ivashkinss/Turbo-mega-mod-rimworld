@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-15",
+  "status": "partially_accepted_corrections_requested",
+  "source": "Tools/Build/GeminiWholesaleVisitLifecycle",
+  "independentEvidence": "Tools/Build/WholesaleCodexReview (Cecil metadata/IL only; no game execution)",
+  "confirmed": [
+    "The inspected public generation, spawning, Lord creation and toil-constructor overloads exist. IncidentParmsUtility's optional parameter is named ensureCanGenerateAtLeastOnePawn, not ensureCanGeneratePawn.",
+    "LordToil_Travel.LordToilTick checks arrival every 205 ticks and emits TravelArrived after distance and reachability checks.",
+    "MassUtility.Capacity first calls CanEverCarryAnything, then uses actual BodySize*35; FreeSpace subtracts GearAndInventoryMass and clamps to zero.",
+    "In the ordinary non-caravan branch of Pawn.ExitMap, non-Pawn carryTracker cargo is destroyed at IL_0101..010D. Carried pawns and caravan creation have separate branches. Bought cargo should be packed in inventory before normal NPC departure.",
+    "Native trader role Carrier requires packAnimal and a nonempty inventory; it is not synonymous with every pawn capable of carrying goods."
+  ],
+  "corrections": [
+    {
+      "finding": "Pack animals are not mandatory for every wholesale group.",
+      "evidence": "CanEverCarryAnything permits eligible tool users as well as pack animals. Several humanoids can divide silver and goods. For example, 5000 silver weighs 40 kg and can fit across two suitably equipped humans with enough actual FreeSpace.",
+      "action": "Use actual current per-pawn capacities and packing feasibility; do not impose a faction or packAnimal whitelist."
+    },
+    {
+      "finding": "A state-transition timer does not guarantee physical exit from a sealed map, protect all paths from staffArea, or prevent pathfinding spikes.",
+      "evidence": "Trigger_TicksPassed.ActivateOn increments its own counter on tick signals and tests ticksPassed > duration. It does not move pawns, resolve obstructions, or establish a global arrival-based deadline.",
+      "action": "Separate an absolute persisted visit deadline from phase timers and test unreachable paths. No guaranteed exit or no-lag claims from trigger presence alone."
+    },
+    {
+      "finding": "The proposed arrival-timeout transition is inconsistent.",
+      "evidence": "LIFECYCLE's diagram sends arrival timeout to Shopping, while the proposed blocked-entrance test expects departure.",
+      "action": "A failed approach should cancel purchases and initiate departure; do not trade remotely through a closed entrance."
+    },
+    {
+      "finding": "Downed/death inventory losslessness is overstated.",
+      "evidence": "MakeDowned calls DropAndForbidEverything; that method branches on enclosed containers, spawn state and being in bed. DropAllNearPawnHelper checks MapHeld and ignores the bool result of TryDrop at IL_0143..0148. Mere method presence does not prove every item was placed on the floor.",
+      "action": "Trace the actual death and downed call chains and describe conditional success, retention and failure separately."
+    },
+    {
+      "finding": "Universal metadata and WorldPawns persistence claims are not established.",
+      "evidence": "CompQuality.PostSplitOff copies quality, but that does not prove every component, arbitrary mod metadata or indefinite world-pawn retention. PassToWorld alone is insufficient evidence.",
+      "action": "Limit claims to inspected methods and the specific live tests already performed; identify unverified cases."
+    }
+  ],
+  "scope": "Review of reported API and key behavioral claims. Wholesale AI is still unimplemented; no new runtime wholesale tests were performed."
+}
