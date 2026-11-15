@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "b0aa5c1cedbf24ec8db8d113f13bc3f2330c9f110c67e88d1eb37854860d651a",
+  "successfulIsolatedSteps": 6,
+  "runtimeChecks": 174,
+  "components": {
+    "Clinic": {
+      "fresh": 32,
+      "reload": 11
+    },
+    "ClinicGuest": {
+      "fresh": 15,
+      "reload": 10
+    },
+    "Company": {
+      "fresh": 94,
+      "reload": 12
+    }
+  },
+  "standaloneAllocationCases": 20,
+  "standaloneAllocationChecks": 219,
+  "medicalWorkAttributionImplemented": true,
+  "medicalBuyoutCreditImplemented": true,
+  "consumableServiceCreditPercent": 50,
+  "laborOnlyServiceCreditPercent": 100,
+  "countNote": "Standalone numerical assertions are separate from live game assertions.",
+  "scope": "Native tending and medical bill-completion callbacks, whole-service consumable classification, two workers, physical partial receipts, half-coin and frozen-plan Scribe persistence, repeated discharge, clinical guest and existing work-credit regressions.",
+  "fullSurgeryJobWithIngredientsTested": false,
+  "allMalformedSavesTested": false,
+  "fullRegressionOnThisAssembly": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "liveGame16Verified": false,
+  "russianEntries": 3538,
+  "sourceSha256": {
+    "Source\\CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source\\Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source\\ClinicBilling.cs": "6b9bbccfdda1c56a7b85a5a4c2c5c9e7523828d2e56416f043a77f130ce9b4f3",
+    "Source\\ClinicContributions.cs": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49",
+    "Source\\ClinicGuests.cs": "31ce95f7b962195e7c86d50a21f1c5bb0680d9decb47d970edf7cdef5106bb0a",
+    "Source\\ClinicMedicalHooks.cs": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3",
+    "Source\\Company.cs": "e64e878b16c0966f9d8e16e248e11803521b6976777d64180220615f34091438",
+    "Source\\CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source\\ComplexLayout.cs": "de68c5bf1d413cff2f26a91153a2ca6ea3738b89a1f875a330bac06827535909",
+    "Source\\ComplexManagement.cs": "b202b6fc621f51420b1f28939a8cad582fffdb040f38644fe279809c14dbfe94",
+    "Source\\ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source\\ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source\\ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source\\ComplexSales.cs": "0c74ac8d91104fc69d748d1f38e56dc406bc62f5abc2878e540ac967a820d73f",
+    "Source\\ComplexServicesDialog.cs": "2d1fc73ff538d829221d8e29b74ca25671706107d455b98a9a9728f8f7822a65",
+    "Source\\ControlledFarming.cs": "b7d0a8ccf21d8b44d8895b87063b6f142b984df7ad5d9ee413084783d8700bf9",
+    "Source\\FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source\\FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source\\GreenhouseExpansion.cs": "8754836741387f4db5128252541599d6df1925d7ffdc6a1a8aa768d1c90684d3",
+    "Source\\GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source\\HotelBilling.cs": "ebd570529e188ac6973c2e527a0c69c8e21dcf00f92c2ce59e55e7610c183f3c",
+    "Source\\HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source\\MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source\\MedicalAllocation.cs": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+    "Source\\MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source\\MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source\\OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source\\RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source\\RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source\\Restaurant.cs": "0032b030ada7756d044349cfec68fb02334be49fede1758ff311ecf5c438f26b",
+    "Source\\RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source\\RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source\\SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source\\SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source\\VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source\\Wholesale\\PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source\\WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source\\WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source\\WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns\\Clinic-FullSet-20261115-190122\\Result.json",
+      "sha256": "a1ffcf85219046c77908c6767f81dffa58c80fe5b7f47a9ce017162ceab55434"
+    },
+    {
+      "path": "Documentation\\Clinic-FullSet.json",
+      "sha256": "a1ffcf85219046c77908c6767f81dffa58c80fe5b7f47a9ce017162ceab55434"
+    },
+    {
+      "path": "TestRuns\\Clinic-FullSet-20261115-190122\\ReloadResult.json",
+      "sha256": "5a8d5fa279a38e570a4b27c644c9b396b6316deb0538e98faffce8ecb52cbc48"
+    },
+    {
+      "path": "Documentation\\Clinic-Reload.json",
+      "sha256": "5a8d5fa279a38e570a4b27c644c9b396b6316deb0538e98faffce8ecb52cbc48"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261115-190358\\Result.json",
+      "sha256": "6bd5b21838d79193900b28c76569a655a6b509d6858dca73b43b28067cc7b260"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-FullSet.json",
+      "sha256": "6bd5b21838d79193900b28c76569a655a6b509d6858dca73b43b28067cc7b260"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261115-190358\\ReloadResult.json",
+      "sha256": "fb4fbbd0c748626d7e3f152393525c49749249e6beccd0609b1e21537a3c44a8"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-Reload.json",
+      "sha256": "fb4fbbd0c748626d7e3f152393525c49749249e6beccd0609b1e21537a3c44a8"
+    },
+    {
+      "path": "TestRuns\\Company-FullSet-20261115-191305\\Result.json",
+      "sha256": "53656bbc0f8d1001e0c4c7d335feba717623458f47e9b48e5bcad207a04e1e57"
+    },
+    {
+      "path": "Documentation\\Company-FullSet.json",
+      "sha256": "53656bbc0f8d1001e0c4c7d335feba717623458f47e9b48e5bcad207a04e1e57"
+    },
+    {
+      "path": "TestRuns\\Company-FullSet-20261115-191305\\ReloadResult.json",
+      "sha256": "7e86240631bc7856015c1bb5be8f3a11631a9a4b5acd0d6e107a9e738cafd108"
+    },
+    {
+      "path": "Documentation\\Company-Reload.json",
+      "sha256": "7e86240631bc7856015c1bb5be8f3a11631a9a4b5acd0d6e107a9e738cafd108"
+    }
+  ]
+}

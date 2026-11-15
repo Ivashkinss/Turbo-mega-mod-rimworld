@@ -1,0 +1,38 @@
+{
+  "reviewedBy": "Codex",
+  "date": "2026-11-15",
+  "receiptAllocationCases": {
+    "modelCases": 20,
+    "caughtMutations": 8,
+    "productionCSharpCases": 20,
+    "productionCSharpAssertions": 219,
+    "limits": [
+      "The Gemini save_load event does not actually serialize objects; the C# adapter roundtrips its pure state and the live probe separately exercises Scribe.",
+      "C# numerical adapter checks allocations, statuses, income and paid conservation; active contract arithmetic is exercised in game.",
+      "Patient pricing remains upstream; fixture billCoins is already final."
+    ]
+  },
+  "saveAudit": {
+    "persistedFieldsAcrossFiveClasses": 20,
+    "findingsReported": 0,
+    "notes": [
+      "Checked saved-wrapper keys against source, unique inside each class.",
+      "Surgery classification was simplified after the snapshot; saved wrappers did not change.",
+      "Claims of perfect invariants and universal absence of reference leaks are not adopted.",
+      "Death does not imply Discharge can never be invoked; cancelled/unregistered patients must not create a payable receipt."
+    ]
+  },
+  "playerGuideEdits": [
+    "Initial buyout currently opens only for colony slaves; not an arbitrary colonist contract.",
+    "Shares are proportional with integer rounding, not exact real-number proportionality.",
+    "Removed internal AddToBill/Hamilton/halfRemainder/unattributed vocabulary from the short player guide.",
+    "Furniture or partial silver stacks do not guarantee blocking GenPlace Near; exact blockage is a test-only scenario.",
+    "A receipt already created at discharge is not cancelled automatically by a later death.",
+    "Manual early dismissal cancels the reward; paid checks must await normal discharge.",
+    "A labor-only surgery recipe may require the isolated Codex fixture; no such vanilla option is promised."
+  ],
+  "policy": "A surgery requiring materials uses50% on the entire billed service. No duplicate upstream pricing calculation.",
+  "incidentsDecision": "Deferred by user to the final story stage.",
+  "userSaveTested": false,
+  "fullSurgeryJobWithIngredientsTested": false
+}

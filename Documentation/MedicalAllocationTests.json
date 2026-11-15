@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 20,
+  "checks": 219,
+  "scope": "Actual production allocation arithmetic and notification state; contract credits are verified by separate live WorkBuyouts tests.",
+  "sourceSha256": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+  "fixtureSha256": "dbb739299252018e477c63bf0623e386fb474a0e08430077a2fbe88fa3cb008c"
+}

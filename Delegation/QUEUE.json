@@ -41,7 +41,7 @@
     },
     {
       "id": "ClinicReceiptAllocationCases",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/ClinicReceiptAllocationCases/TASK.md",
       "outputDir": "Tools/Build/GeminiClinicReceiptAllocationCases",
       "expectedOutputs": [
@@ -49,7 +49,44 @@
         "validate.py",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-15T15:33:19.3195326Z"
+      "createdUtc": "2026-11-15T15:33:19.3195326Z",
+      "note": "Codex ran model20/8 mutations and cross-checked production C# allocation20/219 assertions; live contract credits tested separately."
+    },
+    {
+      "id": "ClinicContributionSaveAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/ClinicContributionSaveAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiClinicContributionSaveAudit",
+      "expectedOutputs": [
+        "FIELDS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T15:51:53.7967181Z",
+      "note": "Codex reviewed 20 persisted fields in5 classes; saved-wrapper source matches. Global safety claims rejected, surgery classification simplified without changing saved fields."
+    },
+    {
+      "id": "ClinicWorkGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/ClinicWorkGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiClinicWorkGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T16:04:20.6302364Z",
+      "note": "Codex edited guide boundaries and manual blockage assumptions; draft is not a report of passed game checks."
+    },
+    {
+      "id": "GuestDossierDataSources",
+      "state": "pending",
+      "taskFile": "Delegation/GuestDossierDataSources/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDossierDataSources",
+      "expectedOutputs": [
+        "SOURCES.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T16:16:52.6588480Z"
     }
   ]
 }

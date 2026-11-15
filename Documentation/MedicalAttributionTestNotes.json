@@ -1,0 +1,30 @@
+{
+  "productionAssemblySha256": "b0aa5c1cedbf24ec8db8d113f13bc3f2330c9f110c67e88d1eb37854860d651a",
+  "failedOrSupersededAttempts": [
+    {
+      "phase": "First native medical fixture on preliminary DLL0c83ff9a",
+      "observation": "Test-created RecipeDef lacked defaultIngredientFilter, so the native Bill constructor threw before surgery-completion checks.",
+      "resolution": "Initialise the test recipe filter, remove its temporary bills before saving, and retest. This was a fixture-construction failure."
+    },
+    {
+      "phase": "Preliminary classification and four-step partial run on DLL0c83ff9a",
+      "observation": "The first implementation split an operation's time/material price into credit categories. The user's rule requires50% for the entire service when it needs consumables.",
+      "resolution": "Simplify the hook to use the real upstream increment and classify the whole operation. Rebuild to b0aa5c1c and repeat all affected target steps; do not mix old hashes. The earlier runner correctly stopped when sources became newer than its DLL."
+    },
+    {
+      "phase": "First Company regression on b0aa5c1c",
+      "observation": "After92 assertions the conversation order was cancelled. Diagnostics showed the fixture employee far from its manually assigned room position and GuestRoom no longer matching. The employee's original position/path state was not captured in that failed attempt.",
+      "resolution": "Use StopDead, Notify_Teleported and a fresh wait job when relocating the test employee. Keep the same talking-tick and real-payment assertions; production Company code remains unchanged. Retest passed94 fresh plus12 reload checks.",
+      "rootCauseConclusive": false,
+      "reusedResults": "Only already-passed Clinic/ClinicGuest steps on the identical b0aa5c1c DLL; all result files rechecked before resume."
+    }
+  ],
+  "successfulEvidence": "174 game assertions across6 targeted steps, plus219 separate production arithmetic assertions across20 fixtures.",
+  "limits": [
+    "No user save tested or changed.",
+    "No full27-step regression on this DLL.",
+    "No visual layout approval or live RimWorld1.6 run.",
+    "Surgery billing uses actual native completion callbacks in a fixture; the entire surgical job and ingredient consumption were not exercised.",
+    "Unknown or destroyed performers, malformed saves and every modded procedure are not exhaustively covered."
+  ]
+}

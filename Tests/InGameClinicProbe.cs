@@ -17,6 +17,7 @@ public static class ClinicReloadLaunch
 
 public sealed class ClinicProbe : MapComponent
 {
+    private MedicalAttributionFixture medical;
     private bool reported, uiReported;
     private int checks;
     private readonly List<string> errors = new List<string>();
@@ -28,6 +29,7 @@ public sealed class ClinicProbe : MapComponent
     public ClinicProbe(Map map) : base(map) { }
     public override void ExposeData()
     {
+        Scribe_Deep.Look(ref medical,"medicalAttribution");
         base.ExposeData(); Scribe_References.Look(ref savedDesk,"clinicDesk"); Scribe_References.Look(ref savedPatient,"clinicPatient");
         Scribe_Values.Look(ref saved,"clinicSaved"); Scribe_Values.Look(ref savedFloor,"clinicFloor");
     }
@@ -53,15 +55,17 @@ public sealed class ClinicProbe : MapComponent
         if (reported || Find.CurrentMap != map || (!reload && !Environment.GetCommandLineArgs().Contains("-tmm-clinic-probe"))) return;
         try {
             if(reload){
+                medical.BeforeReloadPlacement(map,Check);
                 Check(saved && savedDesk!=null && savedPatient!=null,"Saved clinic references missing");
                 var ledger=map.GetComponent<ClinicAccounts>();
                 int pending=ledger.receipts.Sum(r=>r.GetDirectlyHeldThings().Sum(t=>t.stackCount));
-                Check(pending+FloorSilver()==savedFloor+35,"Saved physical payment was lost or duplicated on load");
-                Check(ledger.settled.Count==3 && savedDesk.clinicIncome==99+35-pending,"Settlement flags or income lost");
+                Check(pending+FloorSilver()==savedFloor+35+medical.coins-1,"Saved physical payment was lost or duplicated on load");
+                Check(ledger.settled.Count==4 && savedDesk.clinicIncome==99+35+medical.coins-pending,"Settlement flags or income lost");
                 Check((bool)AccessTools.Field(Clinic.Data(savedPatient).GetType(),"Dismissed").GetValue(Clinic.Data(savedPatient)),"Native discharge flag lost");
-                ledger.PlaceReceipts(); Check(FloorSilver()==savedFloor+35 && savedDesk.clinicIncome==134,"Saved escrow did not reach reception exactly once");
+                ledger.PlaceReceipts(); Check(FloorSilver()==savedFloor+35+medical.coins-1 && savedDesk.clinicIncome==134+medical.coins,"Saved escrow did not reach reception exactly once");
                 ledger.PlaceReceipts(); AccessTools.Method(Clinic.HospitalType,"PatientLeaves").Invoke(Clinic.Hospital(map),new object[]{savedPatient});
-                Check(FloorSilver()==savedFloor+35 && savedDesk.clinicIncome==134 && ledger.receipts.Count==0,"Reload repeated a completed payout");
+                Check(FloorSilver()==savedFloor+35+medical.coins-1 && savedDesk.clinicIncome==134+medical.coins && ledger.receipts.Count==0,"Reload repeated a completed payout");
+                medical.AfterReloadPlacement(map,Check);
                 Finish(true);return;
             }
             Check(Clinic.Enabled, "Clinic adapter did not load");
@@ -116,6 +120,7 @@ public sealed class ClinicProbe : MapComponent
             AccessTools.Method(Clinic.HospitalType,"PatientLeftTheMap").Invoke(hospital,new object[]{patient});
             Register(patient,Find.TickManager.TicksGame+1,0.99f); leave.Invoke(hospital,new object[]{patient});
             Check(FloorSilver()==floor+99 && desk.clinicIncome==99,"Sub-coin bill spawned a zero stack or extra money");
+            medical=new MedicalAttributionFixture();medical.Prepare(map,desk,Register,Check);
             var accounts=map.GetComponent<ClinicAccounts>();accounts.Queue("probe-saved-receipt",desk.Position,35);
             savedDesk=desk;savedPatient=patient;savedFloor=FloorSilver();saved=true;GameDataSaveLoader.SaveGame("TMM-Clinic");
             Check(File.Exists(GenFilePaths.FilePathForSavedGame("TMM-Clinic")),"Clinic save was not created");

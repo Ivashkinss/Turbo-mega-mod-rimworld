@@ -77,6 +77,7 @@ $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs','InGameGramm
     ForEach-Object { Join-Path $projectPath ('Tests\' + $_) }
 foreach ($regression in $regressions) { $sources += Join-Path $projectPath ('Tests\' + $regression.source) }
 if ($Component -eq 'Wholesale') { $sources += Join-Path $projectPath 'Tests\WholesaleDelayCases.cs' }
+if ($Component -eq 'Clinic') { $sources += Join-Path $projectPath 'Tests\MedicalAttributionFixture.cs' }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
 if ($WithHands) { $sources += Join-Path $projectPath 'Tests\InGameHandsProbe.cs' }
 if ($WithRunAndGun) { $sources += Join-Path $projectPath 'Tests\InGameRunAndGunProbe.cs' }

@@ -1,0 +1,1508 @@
+[
+  {
+    "id": "case-01-b0-no-claims",
+    "description": "Счёт billCoins = 0 без процедурных требований: пустой план, нулевые выплаты",
+    "billCoins": 0,
+    "procedureClaims": [],
+    "contracts": {},
+    "events": [
+      {
+        "receiptId": "rec-01",
+        "subreceiptId": "sub-01",
+        "placedCoins": 0
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [],
+      "eventResults": [
+        {
+          "receiptId": "rec-01",
+          "subreceiptId": "sub-01",
+          "placedCoins": 0,
+          "status": "zero",
+          "coinsAccepted": 0
+        }
+      ],
+      "paidTotal": 0,
+      "colonyIncome": 0,
+      "allocatedByWorkerAndCategory": [],
+      "creditedByWorker": {},
+      "finalHalfRemainders": {},
+      "remainingTargets": {}
+    }
+  },
+  {
+    "id": "case-02-b0-with-claims",
+    "description": "Счёт billCoins = 0 при наличии требований: план замораживает 0 монет для врача",
+    "billCoins": 0,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "10.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-02",
+        "subreceiptId": "sub-01",
+        "placedCoins": 0
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [],
+      "eventResults": [
+        {
+          "receiptId": "rec-02",
+          "subreceiptId": "sub-01",
+          "placedCoins": 0,
+          "status": "zero",
+          "coinsAccepted": 0
+        }
+      ],
+      "paidTotal": 0,
+      "colonyIncome": 0,
+      "allocatedByWorkerAndCategory": [],
+      "creditedByWorker": {},
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 100
+      }
+    }
+  },
+  {
+    "id": "case-03-no-claims-positive-b",
+    "description": "Счёт B = 10 без claims: вся сумма замораживается как unattributed, 0 зачёта врачам",
+    "billCoins": 10,
+    "procedureClaims": [],
+    "contracts": {},
+    "events": [
+      {
+        "receiptId": "rec-03",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": null,
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-03",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": null,
+          "consumables": false,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {},
+      "finalHalfRemainders": {},
+      "remainingTargets": {}
+    }
+  },
+  {
+    "id": "case-04-all-zero-weights",
+    "description": "Все веса требований равны 0.0: отсекаются, вся сумма B = 10 уходит в unattributed",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "0.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": true,
+        "weight": "0.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-04",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": null,
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-04",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": null,
+          "consumables": false,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {},
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 100
+      }
+    }
+  },
+  {
+    "id": "case-05-single-worker-labor-only",
+    "description": "Один врач, чистый труд (consumables = false): 100% зачёт в самовыкуп",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-05",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-05",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 10
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 90
+      }
+    }
+  },
+  {
+    "id": "case-06-single-worker-consumables-only",
+    "description": "Один врач, расходники (consumables = true): 50% зачёт в самовыкуп",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": true,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-06",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-06",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 5
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 95
+      }
+    }
+  },
+  {
+    "id": "case-07-two-workers-equal-weights",
+    "description": "Два врача с равными весами: план делит B = 10 поровну (5 и 5 монет)",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrBeta": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-07",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 5
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "share": 5
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-07",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 5
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "allocated": 5
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 5,
+        "DrBeta": 5
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0,
+        "DrBeta": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 95,
+        "DrBeta": 95
+      }
+    }
+  },
+  {
+    "id": "case-08-three-workers-fractional-hamilton",
+    "description": "Три врача с равными долями 1/3: 10 монет дают 3+3+3 и остаток 1 по стабильному ключу DrAlpha",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrGamma",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrBeta": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrGamma": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-08",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 4
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "share": 3
+        },
+        {
+          "workerId": "DrGamma",
+          "consumables": false,
+          "share": 3
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-08",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 4
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "allocated": 3
+        },
+        {
+          "workerId": "DrGamma",
+          "consumables": false,
+          "allocated": 3
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 4,
+        "DrBeta": 3,
+        "DrGamma": 3
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0,
+        "DrBeta": 0,
+        "DrGamma": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 96,
+        "DrBeta": 97,
+        "DrGamma": 97
+      }
+    }
+  },
+  {
+    "id": "case-09-duplicate-worker-claims-aggregation",
+    "description": "Повторяющиеся записи одного врача суммируются в единую категорию (2.5 + 1.5 = 4.0)",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "2.5"
+      },
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.5"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": false,
+        "weight": "6.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrBeta": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-09",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 4
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "share": 6
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-09",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 4
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "allocated": 6
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 4,
+        "DrBeta": 6
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0,
+        "DrBeta": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 96,
+        "DrBeta": 94
+      }
+    }
+  },
+  {
+    "id": "case-10-unknown-worker-unattributed",
+    "description": "Процедура без исполнителя (workerId = null): доля замораживается как unattributed, 0 зачёта",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": null,
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-10",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 5
+        },
+        {
+          "workerId": null,
+          "consumables": false,
+          "share": 5
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-10",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 5
+        },
+        {
+          "workerId": null,
+          "consumables": false,
+          "allocated": 5
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 5
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 95
+      }
+    }
+  },
+  {
+    "id": "case-11-hamilton-fractional-ties-stable-order",
+    "description": "Равенство дробных остатков: известные перед null, ordinal workerId, labor перед consumables",
+    "billCoins": 3,
+    "procedureClaims": [
+      {
+        "workerId": null,
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": true,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrAlpha",
+        "consumables": true,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrBeta": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-11",
+        "subreceiptId": "sub-01",
+        "placedCoins": 3
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 1
+        },
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "share": 1
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": true,
+          "share": 1
+        },
+        {
+          "workerId": null,
+          "consumables": false,
+          "share": 0
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-11",
+          "subreceiptId": "sub-01",
+          "placedCoins": 3,
+          "status": "accepted",
+          "coinsAccepted": 3
+        }
+      ],
+      "paidTotal": 3,
+      "colonyIncome": 3,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 1
+        },
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "allocated": 1
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": true,
+          "allocated": 1
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 1,
+        "DrBeta": 0
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 1,
+        "DrBeta": 1
+      },
+      "remainingTargets": {
+        "DrAlpha": 99,
+        "DrBeta": 100
+      }
+    }
+  },
+  {
+    "id": "case-12-mixture-labor-and-consumables",
+    "description": "Смесь труда и расходников одного врача: труд даёт 100%, расходники 50% с halfRemainder",
+    "billCoins": 6,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrAlpha",
+        "consumables": true,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-12",
+        "subreceiptId": "sub-01",
+        "placedCoins": 6
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 3
+        },
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "share": 3
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-12",
+          "subreceiptId": "sub-01",
+          "placedCoins": 6,
+          "status": "accepted",
+          "coinsAccepted": 6
+        }
+      ],
+      "paidTotal": 6,
+      "colonyIncome": 6,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 3
+        },
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "allocated": 3
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 4
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 1
+      },
+      "remainingTargets": {
+        "DrAlpha": 96
+      }
+    }
+  },
+  {
+    "id": "case-13-contract-target-cap",
+    "description": "Ограничение цели договора: начисление останавливается при remainingTarget = 0, remainder обнуляется",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 4,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-13",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-13",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 4
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 0
+      }
+    }
+  },
+  {
+    "id": "case-14-missing-or-inactive-contract",
+    "description": "Неактивный договор и отсутствие договора: монеты в казне колонии, зачёт врачам = 0",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": false,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-14",
+        "subreceiptId": "sub-01",
+        "placedCoins": 10
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 5
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "share": 5
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-14",
+          "subreceiptId": "sub-01",
+          "placedCoins": 10,
+          "status": "accepted",
+          "coinsAccepted": 10
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 5
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "allocated": 5
+        }
+      ],
+      "creditedByWorker": {},
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 100
+      }
+    }
+  },
+  {
+    "id": "case-15-partial-payments-sequential",
+    "description": "Последовательные частичные выплаты (3 + 4 + 3 = 10): курсор продвигается по фиксированному плану",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-15",
+        "subreceiptId": "sub-01",
+        "placedCoins": 3
+      },
+      {
+        "receiptId": "rec-15",
+        "subreceiptId": "sub-02",
+        "placedCoins": 4
+      },
+      {
+        "receiptId": "rec-15",
+        "subreceiptId": "sub-03",
+        "placedCoins": 3
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-15",
+          "subreceiptId": "sub-01",
+          "placedCoins": 3,
+          "status": "accepted",
+          "coinsAccepted": 3
+        },
+        {
+          "receiptId": "rec-15",
+          "subreceiptId": "sub-02",
+          "placedCoins": 4,
+          "status": "accepted",
+          "coinsAccepted": 4
+        },
+        {
+          "receiptId": "rec-15",
+          "subreceiptId": "sub-03",
+          "placedCoins": 3,
+          "status": "accepted",
+          "coinsAccepted": 3
+        }
+      ],
+      "paidTotal": 10,
+      "colonyIncome": 10,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 10
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 10
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 90
+      }
+    }
+  },
+  {
+    "id": "case-16-duplicate-subreceipt-ignored",
+    "description": "Повторный subreceiptId отклоняется как duplicate: не создаёт повторного дохода или зачёта",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-16",
+        "subreceiptId": "sub-01",
+        "placedCoins": 5
+      },
+      {
+        "receiptId": "rec-16",
+        "subreceiptId": "sub-01",
+        "placedCoins": 5
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-16",
+          "subreceiptId": "sub-01",
+          "placedCoins": 5,
+          "status": "accepted",
+          "coinsAccepted": 5
+        },
+        {
+          "receiptId": "rec-16",
+          "subreceiptId": "sub-01",
+          "placedCoins": 5,
+          "status": "duplicate",
+          "coinsAccepted": 0
+        }
+      ],
+      "paidTotal": 5,
+      "colonyIncome": 5,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 5
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 5
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 95
+      }
+    }
+  },
+  {
+    "id": "case-17-zero-placed-coins-then-success",
+    "description": "Нулевая попытка (placed = 0) не сдвигает курсор и не блокирует поздний успешный сброс",
+    "billCoins": 10,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-17",
+        "subreceiptId": "sub-01",
+        "placedCoins": 0
+      },
+      {
+        "receiptId": "rec-17",
+        "subreceiptId": "sub-01",
+        "placedCoins": 6
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 10
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-17",
+          "subreceiptId": "sub-01",
+          "placedCoins": 0,
+          "status": "zero",
+          "coinsAccepted": 0
+        },
+        {
+          "receiptId": "rec-17",
+          "subreceiptId": "sub-01",
+          "placedCoins": 6,
+          "status": "accepted",
+          "coinsAccepted": 6
+        }
+      ],
+      "paidTotal": 6,
+      "colonyIncome": 6,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 6
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 6
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 94
+      }
+    }
+  },
+  {
+    "id": "case-18-invalid-overpay-rejected",
+    "description": "Попытка сброса монет сверх остатка счёта (B = 5, paid = 3, overpay = 4) отклоняется как INVALID",
+    "billCoins": 5,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-18",
+        "subreceiptId": "sub-01",
+        "placedCoins": 3
+      },
+      {
+        "receiptId": "rec-18",
+        "subreceiptId": "sub-02",
+        "placedCoins": 4
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 5
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-18",
+          "subreceiptId": "sub-01",
+          "placedCoins": 3,
+          "status": "accepted",
+          "coinsAccepted": 3
+        },
+        {
+          "receiptId": "rec-18",
+          "subreceiptId": "sub-02",
+          "placedCoins": 4,
+          "status": "invalid_overpay",
+          "coinsAccepted": 0
+        }
+      ],
+      "paidTotal": 3,
+      "colonyIncome": 3,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 3
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 3
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 97
+      }
+    }
+  },
+  {
+    "id": "case-19-save-load-mid-billing",
+    "description": "Сериализация save/load между частичными выплатами: замороженный план и halfRemainder сохраняются",
+    "billCoins": 6,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": true,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-19",
+        "subreceiptId": "sub-01",
+        "placedCoins": 1
+      },
+      {
+        "type": "save_load"
+      },
+      {
+        "receiptId": "rec-19",
+        "subreceiptId": "sub-02",
+        "placedCoins": 1
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "share": 6
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-19",
+          "subreceiptId": "sub-01",
+          "placedCoins": 1,
+          "status": "accepted",
+          "coinsAccepted": 1
+        },
+        {
+          "status": "save_load"
+        },
+        {
+          "receiptId": "rec-19",
+          "subreceiptId": "sub-02",
+          "placedCoins": 1,
+          "status": "accepted",
+          "coinsAccepted": 1
+        }
+      ],
+      "paidTotal": 2,
+      "colonyIncome": 2,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": true,
+          "allocated": 2
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 1
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 99
+      }
+    }
+  },
+  {
+    "id": "case-20-re-hamilton-defect-prevention-1plus1-vs-2",
+    "description": "Предотвращение дефекта пере-Hamilton: веса 2:1 при B = 2 дают DrAlpha: 1, DrBeta: 1 как для 2, так и для 1+1",
+    "billCoins": 2,
+    "procedureClaims": [
+      {
+        "workerId": "DrAlpha",
+        "consumables": false,
+        "weight": "2.0"
+      },
+      {
+        "workerId": "DrBeta",
+        "consumables": false,
+        "weight": "1.0"
+      }
+    ],
+    "contracts": {
+      "DrAlpha": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      },
+      "DrBeta": {
+        "active": true,
+        "target": 100,
+        "credited": 0,
+        "halfRemainder": 0
+      }
+    },
+    "events": [
+      {
+        "receiptId": "rec-20",
+        "subreceiptId": "sub-01",
+        "placedCoins": 1
+      },
+      {
+        "receiptId": "rec-20",
+        "subreceiptId": "sub-02",
+        "placedCoins": 1
+      }
+    ],
+    "expectedOutputs": {
+      "frozenShares": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "share": 1
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "share": 1
+        }
+      ],
+      "eventResults": [
+        {
+          "receiptId": "rec-20",
+          "subreceiptId": "sub-01",
+          "placedCoins": 1,
+          "status": "accepted",
+          "coinsAccepted": 1
+        },
+        {
+          "receiptId": "rec-20",
+          "subreceiptId": "sub-02",
+          "placedCoins": 1,
+          "status": "accepted",
+          "coinsAccepted": 1
+        }
+      ],
+      "paidTotal": 2,
+      "colonyIncome": 2,
+      "allocatedByWorkerAndCategory": [
+        {
+          "workerId": "DrAlpha",
+          "consumables": false,
+          "allocated": 1
+        },
+        {
+          "workerId": "DrBeta",
+          "consumables": false,
+          "allocated": 1
+        }
+      ],
+      "creditedByWorker": {
+        "DrAlpha": 1,
+        "DrBeta": 1
+      },
+      "finalHalfRemainders": {
+        "DrAlpha": 0,
+        "DrBeta": 0
+      },
+      "remainingTargets": {
+        "DrAlpha": 99,
+        "DrBeta": 99
+      }
+    }
+  }
+]

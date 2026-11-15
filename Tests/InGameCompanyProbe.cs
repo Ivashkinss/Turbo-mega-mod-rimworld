@@ -77,8 +77,8 @@ public sealed class CompanyProbe : MapComponent
                 halfRemainder=(int)(float.Parse(row[7],CultureInfo.InvariantCulture)*2),active=bool.Parse(row[4])};
             model.entries.Add(entry);if(bool.Parse(row[11]))entry.receipts.Add("fixture-case");
             int before=entry.credited;
-            // No medical worker is yet attributable to an aggregate clinic
-            // payout; the production clinic therefore never invokes Credit.
+            // Legacy clinic fixtures have no identified worker. Attributed
+            // medical receipts are covered by the separate clinic fixture.
             if(row[1]!="clinic")model.Credit(other,"fixture-case",int.Parse(row[2]),bool.Parse(row[3]));
             Check(entry.credited-before==int.Parse(row[8]),"Independent credit case "+row[0]);
             Check(Math.Abs(entry.halfRemainder/2f-float.Parse(row[9],CultureInfo.InvariantCulture))<0.001f,"Independent carry case "+row[0]);
@@ -104,7 +104,9 @@ public sealed class CompanyProbe : MapComponent
             var candidate=PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist,Faction.OfPlayer);
             if(capable(candidate)){GenSpawn.Spawn(candidate,new IntVec3(43,0,42),map);employee=candidate;Wait(employee);}else candidate.Destroy();
         }
-        if(employee==null)throw new Exception("No capable fixture employee");employee.Position=new IntVec3(43,0,42);ResetNeeds(employee);
+        if(employee==null)throw new Exception("No capable fixture employee");
+        File.AppendAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"CompanyCancellation.log"),"fixture employee before relocation="+employee.Position+Environment.NewLine);
+        employee.pather.StopDead();employee.Position=new IntVec3(43,0,42);employee.Notify_Teleported();Wait(employee);ResetNeeds(employee);
         foreach(var w in DefDatabase<WorkTypeDef>.AllDefsListForReading)employee.workSettings.SetPriority(w,0);
         employee.workSettings.SetPriority(WorkTypeDefOf.Hauling,2);
         for(int h=0;h<24;h++)employee.timetable.SetAssignment(h,TimeAssignmentDefOf.Work);
