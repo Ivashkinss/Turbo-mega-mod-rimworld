@@ -10,7 +10,7 @@ using Verse;
 namespace TurboMegaMod
 {
     public enum ComplexWorkMode { Both, ColonyOnly, ComplexOnly }
-    public enum ComplexRole { None, Waiter, Cook, Doctor, Host, Cleaner }
+    public enum ComplexRole { None, Waiter, Cook, Doctor, Host, Cleaner, Seller }
 
     public sealed class ComplexEmployee : IExposable
     {
@@ -81,7 +81,7 @@ namespace TurboMegaMod
         public static WorkTypeDef Work(ComplexRole role)
         {
             string name = role == ComplexRole.Waiter ? "TMM_RestaurantService" : role == ComplexRole.Cook ? "Cooking" : role == ComplexRole.Doctor ? "Doctor" :
-                role == ComplexRole.Host ? "Diplomat" : role == ComplexRole.Cleaner ? "Cleaning" : null;
+                role == ComplexRole.Host ? "Diplomat" : role == ComplexRole.Cleaner ? "Cleaning" : role == ComplexRole.Seller ? "TMM_SalesService" : null;
             return name == null ? null : DefDatabase<WorkTypeDef>.GetNamed(name);
         }
         public bool SetRole(Pawn pawn, ComplexRole role)

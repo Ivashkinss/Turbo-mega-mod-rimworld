@@ -99,6 +99,9 @@ public sealed class SalesProbe : MapComponent
     private void Setup()
     {
         foreach (var p in map.mapPawns.FreeColonistsSpawned) Wait(p);
+        // Keep the public-retail fixture independent of automatic staff
+        // delivery, which is exercised in its own fresh/reload scenario.
+        foreach (var p in map.mapPawns.FreeColonistsSpawned) p.workSettings.SetPriority(ComplexSales.SalesWork, 0);
         foreach (var c in new CellRect(38, 38, 30, 20)) {
             foreach (var t in c.GetThingList(map).ToArray()) if (t is Building || t is Plant) { if (t.def.destroyable) t.Destroy(); else t.DeSpawn(); }
             map.terrainGrid.SetTerrain(c, TerrainDefOf.Soil); map.roofGrid.SetRoof(c, null);

@@ -103,9 +103,12 @@ namespace TurboMegaMod
         {
             if (!Buyer(buyer) || !Public(storage) || storage.Map != buyer.Map || !Contains(storage, item) ||
                 !RestaurantMeals.AllowedCell(buyer, storage.Position) || storage.IsForbidden(buyer) || Space(buyer, item) < 1) return false;
-            if (item.def.ingestible != null && (!buyer.RaceProps.CanEverEat(item) || item.IsNotFresh() ||
-                (buyer.foodRestriction != null && !buyer.foodRestriction.CurrentFoodPolicy.Allows(item.def)) || !FoodUtility.WillEat(buyer, item))) return false;
-            return true;
+            return Suitable(buyer, item);
+        }
+        public static bool Suitable(Pawn buyer, Thing item)
+        {
+            return item.def.ingestible == null || buyer.RaceProps.CanEverEat(item) && !item.IsNotFresh() &&
+                (buyer.foodRestriction == null || buyer.foodRestriction.CurrentFoodPolicy.Allows(item.def)) && FoodUtility.WillEat(buyer, item);
         }
         public static double UnitPrice(Thing item)
         {
@@ -123,13 +126,13 @@ namespace TurboMegaMod
 
     public sealed class SaleOrder : IExposable, IThingHolder
     {
-        public Pawn buyer;
+        public Pawn buyer, worker;
         public Building storage;
-        public Thing item;
+        public Thing item, goods;
         public int id, count, price, created, refund;
         public double unitPrice;
-        public bool completed, cancelled;
-        public IntVec3 receiptCell;
+        public bool completed, cancelled, delivery;
+        public IntVec3 receiptCell, waitCell;
         private ThingOwner<Thing> cash;
         public ThingOwner<Thing> returnedGoods;
         public SaleOrder() { cash = new ThingOwner<Thing>(this); returnedGoods = new ThingOwner<Thing>(this); }
@@ -139,6 +142,8 @@ namespace TurboMegaMod
         public void ExposeData()
         {
             Scribe_References.Look(ref buyer, "buyer"); Scribe_References.Look(ref storage, "storage"); Scribe_References.Look(ref item, "item");
+            Scribe_References.Look(ref worker, "worker"); Scribe_References.Look(ref goods, "goods");
+            Scribe_Values.Look(ref delivery, "delivery"); Scribe_Values.Look(ref waitCell, "waitCell");
             Scribe_Values.Look(ref id, "id"); Scribe_Values.Look(ref count, "count"); Scribe_Values.Look(ref price, "price"); Scribe_Values.Look(ref created, "created");
             Scribe_Values.Look(ref unitPrice, "unitPrice"); Scribe_Values.Look(ref refund, "refund");
             Scribe_Values.Look(ref completed, "completed"); Scribe_Values.Look(ref cancelled, "cancelled"); Scribe_Values.Look(ref receiptCell, "receiptCell");
@@ -158,6 +163,9 @@ namespace TurboMegaMod
         private int nextId, nextCheck;
         public ComplexSales(Map map) : base(map) { }
         public static JobDef BuyJob { get { return DefDatabase<JobDef>.GetNamed("TMM_BuyComplexGoods"); } }
+        public static JobDef WaitJob { get { return DefDatabase<JobDef>.GetNamed("TMM_WaitForGoods"); } }
+        public static JobDef DeliverJob { get { return DefDatabase<JobDef>.GetNamed("TMM_DeliverGoods"); } }
+        public static WorkTypeDef SalesWork { get { return DefDatabase<WorkTypeDef>.GetNamed("TMM_SalesService"); } }
         public override void ExposeData()
         {
             base.ExposeData(); Scribe_Collections.Look(ref orders, "TMM_saleOrders", LookMode.Deep);
@@ -168,45 +176,100 @@ namespace TurboMegaMod
         public int FreeCount(Thing item, SaleOrder own = null)
         {
             if (!SaleStock.Tradeable(item) || orders.Any(o => o != own && !o.cancelled && !o.completed && o.item == item)) return 0;
-            if (map.reservationManager.IsReserved(item) && (own == null || !own.buyer.HasReserved(item))) return 0;
+            if (map.reservationManager.IsReserved(item) && (own == null ||
+                !own.buyer.HasReserved(item) && (own.worker == null || !own.worker.HasReserved(item)))) return 0;
             return item.stackCount;
         }
         public bool Valid(SaleOrder o)
         {
-            return o != null && !o.completed && !o.cancelled && o.count > 0 && SaleStock.Allowed(o.buyer, o.storage, o.item) &&
-                o.item.stackCount >= o.count && FreeCount(o.item, o) >= o.count && Find.TickManager.TicksGame - o.created < 6000 &&
-                (Find.TickManager.TicksGame <= o.created + 1 || o.buyer.CurJobDef == BuyJob && o.buyer.CurJob.count == o.id);
+            if (o == null || o.completed || o.cancelled || o.count <= 0 || Find.TickManager.TicksGame - o.created >= 6000 ||
+                !SaleStock.Buyer(o.buyer) || o.buyer.Map != map ||
+                !(Find.TickManager.TicksGame <= o.created + 1 || o.buyer.CurJobDef == (o.delivery ? WaitJob : BuyJob) && o.buyer.CurJob.count == o.id)) return false;
+            if (!o.delivery) return SaleStock.Allowed(o.buyer, o.storage, o.item) && o.item.stackCount >= o.count && FreeCount(o.item, o) >= o.count;
+            var flag = o.storage == null ? null : o.storage.GetComp<CompComplexSale>();
+            if (flag == null || !flag.forSale || !SaleStock.Active(o.storage) || !WaitingCell(o.buyer, o.waitCell) ||
+                o.worker != null && !WorkerEnabled(o.worker)) return false;
+            if (o.goods != null) return o.worker != null && o.worker.Spawned && o.worker.Map == map &&
+                o.worker.carryTracker.CarriedThing == o.goods && SaleStock.Tradeable(o.goods) && o.goods.stackCount == o.count;
+            return SaleStock.Contains(o.storage, o.item) && o.item.stackCount >= o.count && FreeCount(o.item, o) >= o.count;
+        }
+        public bool WaitingCell(Pawn buyer, IntVec3 cell)
+        {
+            var desk = map.GetComponent<ComplexMap>().desk;
+            return desk != null && desk.Active && cell.InBounds(map) && desk.area[cell] && !ComplexLayout.StaffOnly(desk, cell) &&
+                cell.Standable(map) && RestaurantMeals.AllowedCell(buyer, cell) && !cell.IsForbidden(buyer);
+        }
+        public IntVec3 WaitAt(Pawn buyer)
+        {
+            var desk = map.GetComponent<ComplexMap>().desk;
+            if (desk == null || !desk.Active) return IntVec3.Invalid;
+            foreach (var c in GenRadial.RadialCellsAround(desk.Position, 5f, true))
+                if (WaitingCell(buyer, c) && buyer.CanReserveAndReach(c, PathEndMode.OnCell, Danger.None)) return c;
+            return IntVec3.Invalid;
+        }
+        public bool WorkerEnabled(Pawn p)
+        {
+            var desk = map.GetComponent<ComplexMap>().desk;
+            return p != null && p.Spawned && p.Map == map && p.Faction == Faction.OfPlayer && !p.Dead && !p.Downed && !p.Drafted &&
+                !p.InMentalState && p.workSettings != null && !p.WorkTypeIsDisabled(SalesWork) && p.workSettings.GetPriority(SalesWork) > 0 &&
+                p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation) && p.health.capacities.CapableOf(PawnCapacityDefOf.Moving) &&
+                desk != null && desk.Active && desk.Mode(p) != ComplexWorkMode.ColonyOnly;
+        }
+        public bool CanCollect(Pawn worker, Building storage, Thing item, int count)
+        {
+            return WorkerEnabled(worker) && worker.carryTracker.CarriedThing == null && worker.carryTracker.AvailableStackSpace(item.def) >= count &&
+                !storage.IsForbidden(worker) && !item.IsForbidden(worker) && ComplexWorkPolicy.Allows(worker, storage.Position) &&
+                worker.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None) && worker.CanReserve(item, 1, count);
+        }
+        public bool Requestable(Pawn buyer, Building storage, Thing item)
+        {
+            if (SaleStock.Public(storage)) return SaleStock.Allowed(buyer, storage, item);
+            if (!SaleStock.Buyer(buyer) || buyer.Map != map || storage == null || storage.Map != map || !SaleStock.Contains(storage, item) ||
+                SaleStock.Space(buyer, item) < 1) return false;
+            var cell = WaitAt(buyer);
+            return SaleStock.Suitable(buyer, item) && cell.IsValid && map.mapPawns.AllPawnsSpawned.Any(p =>
+                CanCollect(p, storage, item, 1) && p.CanReach(cell, PathEndMode.OnCell, Danger.None));
         }
         public SaleOrder Create(Pawn buyer, Building storage, Thing item, int requested)
         {
-            if (!SaleStock.Allowed(buyer, storage, item) || orders.Any(o => !o.cancelled && !o.completed && o.buyer == buyer)) return null;
+            if (!Requestable(buyer, storage, item) || orders.Any(o => !o.cancelled && !o.completed && o.buyer == buyer)) return null;
+            bool delivery = !SaleStock.Public(storage);
             double unit = SaleStock.UnitPrice(item);
             int count = Math.Min(Math.Min(requested, FreeCount(item)), SaleStock.Space(buyer, item));
+            if (delivery && count > 0) count = Math.Min(count, map.mapPawns.AllPawnsSpawned.Where(p => CanCollect(p, storage, item, 1) &&
+                p.CanReach(WaitAt(buyer), PathEndMode.OnCell, Danger.None)).Max(p => p.carryTracker.AvailableStackSpace(item.def)));
             if (count <= 0) return null;
             int price = SaleStock.Price(unit, count);
-            if (price <= 0 || HotelBillingHooks.Money(buyer) < price || !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
+            if (price <= 0 || HotelBillingHooks.Money(buyer) < price || !delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
             var desk = map.GetComponent<ComplexMap>().desk;
             var order = new SaleOrder { id = ++nextId, buyer = buyer, storage = storage, item = item, count = count,
-                unitPrice = unit, price = price, created = Find.TickManager.TicksGame, receiptCell = desk.Position };
+                unitPrice = unit, price = price, created = Find.TickManager.TicksGame, receiptCell = desk.Position,
+                delivery = delivery, waitCell = delivery ? WaitAt(buyer) : IntVec3.Invalid };
             orders.Add(order); return order;
         }
         public Job ShoppingJob(Pawn buyer, Func<Thing, bool> qualifies)
         {
-            if (!SaleStock.Buyer(buyer) || buyer.CurJobDef == BuyJob) return null;
-            foreach (var storage in SaleStock.Stores(map).Where(SaleStock.Public).InRandomOrder())
+            if (!SaleStock.Buyer(buyer) || buyer.CurJobDef == BuyJob || buyer.CurJobDef == WaitJob) return null;
+            foreach (var storage in SaleStock.Stores(map).InRandomOrder())
                 foreach (var item in SaleStock.Contents(storage).Where(SaleStock.Tradeable).Where(qualifies).InRandomOrder()) {
                     int affordable = (int)Math.Min(10, HotelBillingHooks.Money(buyer) / SaleStock.UnitPrice(item));
                     if (affordable <= 0) continue;
                     var order = Create(buyer, storage, item, Rand.RangeInclusive(1, affordable));
                     if (order == null) continue;
-                    var job = JobMaker.MakeJob(BuyJob, storage); job.count = order.id; return job;
+                    var job = order.delivery ? JobMaker.MakeJob(WaitJob, order.waitCell) : JobMaker.MakeJob(BuyJob, storage);
+                    job.count = order.id; return job;
                 }
             return null;
         }
         public bool Buy(SaleOrder o)
         {
-            if (!Valid(o) || o.buyer.CurJobDef != BuyJob || o.buyer.CurJob.count != o.id ||
+            if (!Valid(o) || o.delivery || o.buyer.CurJobDef != BuyJob || o.buyer.CurJob.count != o.id ||
                 !o.buyer.Position.AdjacentTo8WayOrInside(o.storage) || SaleStock.Space(o.buyer, o.item) < o.count) return false;
+            return Settle(o, o.item);
+        }
+        private bool Settle(SaleOrder o, Thing offered)
+        {
+            if (!SaleStock.Suitable(o.buyer, offered) || SaleStock.Space(o.buyer, offered) < o.count) return false;
             var cash = o.GetDirectlyHeldThings();
             if (HotelBillingHooks.Money(o.buyer) < o.price) return false;
             int required = o.price;
@@ -217,10 +280,10 @@ namespace TurboMegaMod
                 if (required == 0) break;
             }
             if (required != 0) { o.cancelled = true; Process(); return false; }
-            Thing bought = null; var owner = o.item.holdingOwner;
-            if (!o.item.Spawned && owner != null) owner.TryTransferToContainer(o.item, o.buyer.inventory.innerContainer, o.count, out bought, false);
-            else if (o.item.Spawned) {
-                var piece = o.item.SplitOff(o.count);
+            Thing bought = null; var owner = offered.holdingOwner;
+            if (!offered.Spawned && owner != null) owner.TryTransferToContainer(offered, o.buyer.inventory.innerContainer, o.count, out bought, false);
+            else if (offered.Spawned) {
+                var piece = offered.SplitOff(o.count);
                 o.buyer.inventory.innerContainer.TryAdd(piece, false);
                 if (o.buyer.inventory.innerContainer.Contains(piece)) bought = piece;
                 else if (!piece.Destroyed && !piece.Spawned) o.returnedGoods.TryAdd(piece, false);
@@ -228,14 +291,49 @@ namespace TurboMegaMod
             int actual = bought != null && o.buyer.inventory.innerContainer.Contains(bought) ? bought.stackCount : 0;
             if (actual <= 0) { o.cancelled = true; Process(); return false; }
             o.completed = true; o.count = actual; o.price = SaleStock.Price(o.unitPrice, actual);
+            o.goods = null;
             o.refund = Math.Max(0, cash.Sum(t => t.stackCount) - o.price);
             RestaurantMeals.MarkSold(o.buyer, bought);
             Process(); return true;
         }
+        public SaleOrder ForWorker(Pawn worker)
+        {
+            if (!WorkerEnabled(worker)) return null;
+            return orders.FirstOrDefault(o => o.delivery && o.worker == null && Valid(o) && CanCollect(worker, o.storage, o.item, o.count) &&
+                worker.CanReach(o.buyer, PathEndMode.Touch, Danger.None) && ComplexWorkPolicy.Allows(worker, o.waitCell));
+        }
+        public bool PickUp(SaleOrder o, Pawn worker)
+        {
+            if (!Valid(o) || o.worker != worker || o.goods != null || !worker.Position.AdjacentTo8WayOrInside(o.storage) ||
+                worker.carryTracker.CarriedThing != null || worker.carryTracker.AvailableStackSpace(o.item.def) < o.count) return false;
+            if (o.item.Spawned) worker.carryTracker.TryStartCarry(o.item, o.count, false);
+            else if (o.item.holdingOwner != null) {
+                Thing taken; o.item.holdingOwner.TryTransferToContainer(o.item, worker.carryTracker.innerContainer, o.count, out taken, false);
+            }
+            o.goods = worker.carryTracker.CarriedThing;
+            return o.goods != null && o.goods.stackCount == o.count;
+        }
+        public bool Deliver(SaleOrder o, Pawn worker)
+        {
+            return Valid(o) && o.worker == worker && o.goods != null && worker.CurJobDef == DeliverJob && worker.CurJob.count == o.id &&
+                o.buyer.Position == o.waitCell && worker.Position.AdjacentTo8WayOrInside(o.buyer) && Settle(o, o.goods);
+        }
+        public void Cancel(SaleOrder o)
+        {
+            if (o == null || o.completed) return;
+            o.cancelled = true;
+            // Only take back this order's exact object; never confiscate an
+            // unrelated load picked up by the employee's next job.
+            if (o.goods != null && o.worker != null && o.worker.carryTracker != null && o.worker.carryTracker.CarriedThing == o.goods) {
+                o.worker.carryTracker.innerContainer.TryTransferToContainer(o.goods, o.returnedGoods, o.goods.stackCount, false);
+            }
+            o.goods = null;
+        }
         public void Process()
         {
             foreach (var o in orders.ToArray()) {
-                if (!o.completed && !o.cancelled && !Valid(o)) o.cancelled = true;
+                if (!o.completed && !o.cancelled && !Valid(o)) Cancel(o);
+                if (o.cancelled) Cancel(o);
                 var cash = o.GetDirectlyHeldThings();
                 if (o.cancelled) o.refund = cash.Sum(t => t.stackCount);
                 if (o.refund > 0 && o.buyer != null && o.buyer.inventory != null && !o.buyer.Destroyed) {
@@ -275,7 +373,7 @@ namespace TurboMegaMod
         {
             var o = Order;
             return o != null && pawn.Reserve(job.targetA, job, 1, -1, null, errorOnFailed) &&
-                (!o.item.Spawned || pawn.Reserve(o.item, job, 1, o.count, null, errorOnFailed));
+                pawn.Reserve(o.item, job, 1, o.count, null, errorOnFailed);
         }
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -310,7 +408,8 @@ namespace TurboMegaMod
         private static bool Chance(Pawn __0, ref float __result)
         {
             if (!HasComplex(__0)) return true;
-            __result = SaleStock.Buyer(__0) && HotelBillingHooks.Money(__0) > 0 && SaleStock.Stores(__0.Map).Any(SaleStock.Public) ? 25f : 0f;
+            __result = SaleStock.Buyer(__0) && HotelBillingHooks.Money(__0) > 0 && SaleStock.Stores(__0.Map).Any(s => SaleStock.Public(s) ||
+                SaleStock.Contents(s).Any(t => __0.Map.GetComponent<ComplexSales>().Requestable(__0, s, t))) ? 25f : 0f;
             return false;
         }
         private static bool Shopping(JoyGiver __instance, Pawn __0, ref Job __result)

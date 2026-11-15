@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-15",
+  "productionAssemblySha256": "1fecee150b52039400a3eaf6b65726c6c7ba59c90ae9cbca4b9d4e3017a6f096",
+  "preliminaryAssemblySha256": "ff65f30b713114b570cbb5220bf5faa72cf50395d4dfa9d3018a37d4f52d0342",
+  "preliminaryFindings": [
+    "The first fixture incorrectly expected GetPriority to return 1 while checkbox work mode was active. Switched the numeric-priority fixture to useWorkPriorities=true; production role logic was already correct.",
+    "Initial actual delivery and reload passed before final reachability and worker-availability guards were tightened.",
+    "Source changes during the preliminary sequence caused the build-age guard to stop its next fresh component. It was not counted as a completed regression, and the final sequence was restarted after rebuilding.",
+    "Final worker scan includes all eligible player workers rather than FreeColonistsSpawned, so ordinary slave employment is supported. A live reload case exercises this.",
+    "A closed-wall fixture verifies that a worker able to reach stock but unable to reach the public waiting point cannot accept delivery. Food suitability is rechecked at handover."
+  ],
+  "currentResults": "DeliveryStageVerification.json contains only successful steps from the final production hash.",
+  "runtimeFixtureLimits": "Own TestRuns profiles only; no user saves and no live RimWorld 1.6 test. Metadata tests cover the specific native book and Excellent shirt, not every modded item."
+}

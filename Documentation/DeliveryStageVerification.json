@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "1fecee150b52039400a3eaf6b65726c6c7ba59c90ae9cbca4b9d4e3017a6f096",
+  "successfulIsolatedSteps": 12,
+  "runtimeChecks": 481,
+  "components": {
+    "SalesDelivery": {
+      "fresh": 38,
+      "reload": 43
+    },
+    "Sales": {
+      "fresh": 55,
+      "reload": 20
+    },
+    "Complex": {
+      "fresh": 27,
+      "reload": 8
+    },
+    "Recruit": {
+      "fresh": 127,
+      "reload": 14
+    },
+    "Restaurant": {
+      "fresh": 32,
+      "reload": 11
+    },
+    "Company": {
+      "fresh": 94,
+      "reload": 12
+    }
+  },
+  "russianEntries": 3528,
+  "privateWarehouseDeliveryImplemented": true,
+  "wholesaleBuyersImplemented": false,
+  "fullRegressionOnThisAssembly": false,
+  "baselinePublicRetailCommit": "b20c7a7e9765346392ad4a2645236db5ef42cbc4",
+  "scope": "Staff-only stock delivery, real pickup and handover, cancellation, persistence, and affected service/job/recruitment regressions.",
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "liveGame16Verified": false
+}

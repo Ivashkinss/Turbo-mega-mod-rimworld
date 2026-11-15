@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-15",
+  "apiAudit": "Tools/Build/GeminiPrivateDeliveryApiAudit",
+  "stateModel": "Tools/Build/GeminiPrivateDeliveryCases",
+  "acceptedApiFacts": [
+    "Native StartCarryThing treats job.count as quantity; our order-ID jobs use custom pickup.",
+    "Actual items in spawned containers can be reserved directly; reserving only the cabinet is insufficient.",
+    "Map-spawned stock must be distinguished by Spawned before inspecting holdingOwner.",
+    "Worker hand capacity and buyer inventory weight are separate checks."
+  ],
+  "rejectedOrLimitedClaims": [
+    "SAFE-SEQUENCE point 10 repeats a false blanket quality-loss claim. ThingWithComps.SplitOff calls PostSplitOff; CompQuality copies qualityInt. Actual book and Excellent apparel identity are tested in game.",
+    "Point 5's spawned-parent GotoThing flag is only necessary when targeting an unspawned item. This implementation targets its spawned storage building instead.",
+    "The state model passes 24 cases and 6 mutations but is not implementation or runtime proof.",
+    "The model's save_load handler is pass; it does not exercise real Scribe serialization.",
+    "The model does not enforce all declared inputs (for example storage_active and occupied hands) and uses float pricing. Production guards and live tests remain authoritative.",
+    "Model item-quality preservation is an assigned state, not evidence about every mod's metadata."
+  ],
+  "accounting": "All successfully placed retail receipts belong to the colony. No delivery commission or buyout credit is invented from the full price of sold goods.",
+  "testScope": "See DeliveryStageVerification.json for current-DLL results; older full regression and public retail reports retain their original hashes."
+}

@@ -10,4 +10,16 @@
     <joyGainRate>1</joyGainRate>
     <joyKind>Shopping</joyKind>
   </JobDef>
+  <WorkTypeDef>
+    <defName>TMM_SalesService</defName><labelShort>sales</labelShort><pawnLabel>sales assistant</pawnLabel><gerundLabel>delivering purchases</gerundLabel>
+    <description>Bring goods from staff-only storage to buyers waiting in the public part of the complex.</description>
+    <naturalPriority>575</naturalPriority><workTags>ManualDumb</workTags>
+  </WorkTypeDef>
+  <WorkGiverDef>
+    <defName>TMM_ComplexSalesDelivery</defName><label>deliver purchases</label><giverClass>TurboMegaMod.WorkGiver_ComplexSales</giverClass>
+    <workType>TMM_SalesService</workType><priorityInType>100</priorityInType><verb>deliver</verb><gerund>delivering purchases</gerund>
+    <requiredCapacities><li>Manipulation</li><li>Moving</li></requiredCapacities>
+  </WorkGiverDef>
+  <JobDef><defName>TMM_WaitForGoods</defName><driverClass>TurboMegaMod.JobDriver_WaitForGoods</driverClass><reportString>waiting for a purchase.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+  <JobDef><defName>TMM_DeliverGoods</defName><driverClass>TurboMegaMod.JobDriver_DeliverGoods</driverClass><reportString>delivering a purchase.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
 </Defs>

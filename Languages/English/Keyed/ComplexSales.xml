@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <TMM.Sales.ForSale>For sale</TMM.Sales.ForSale>
-  <TMM.Sales.ForSaleHelp>Sell this storage's contents to visitors. The entire storage must be inside the complex. Guests collect accessible goods themselves and cannot enter staff rooms. Prices are 55% of market value, matching normal Hospitality shopping. Silver appears at reception after delivery. No shopping area is required.</TMM.Sales.ForSaleHelp>
+  <TMM.Sales.ForSaleHelp>Sell this storage's contents to visitors. The entire storage must be inside the complex. Guests collect public goods themselves; staff with the Sales work enabled deliver from staff rooms. Prices are 55% of market value, matching normal Hospitality shopping. Silver appears at reception after delivery. No shopping area is required.</TMM.Sales.ForSaleHelp>
   <TMM.Sales.Outside>Sales inactive: storage is outside the complex.</TMM.Sales.Outside>
   <TMM.Sales.Income>Complex sales: {0} silver received.</TMM.Sales.Income>
-  <TMM.Sales.StaffOnly>Self-service unavailable: staff-only storage.</TMM.Sales.StaffOnly>
+  <TMM.Sales.StaffOnly>Staff-only storage: requires an employee with Sales work enabled.</TMM.Sales.StaffOnly>
+  <TMM.Complex.Role.Seller>Sales assistant</TMM.Complex.Role.Seller>
 </LanguageData>
