@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": 87,
+  "scope": "Pure packing and quote planner; no live transaction or game AI",
+  "linkedIntoGameAssembly": false,
+  "runtimeWholesaleImplemented": false,
+  "plannerSha256": "8a970e693b47716cff70b78694655b1b468147b7b5ab738428dddd5918a2f850",
+  "testSha256": "065607da32e2f4f0fa6070be99a026c63bbb29e077cc127c4815f3032184149d"
+}

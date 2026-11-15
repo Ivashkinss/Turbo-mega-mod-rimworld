@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-15",
+  "source": "Tools/Build/GeminiWholesaleVisitCorrections",
+  "status": "usable_with_codex_corrections",
+  "accepted": [
+    "Multiple eligible humanoids may divide silver and goods; packAnimal is not a mandatory group prerequisite.",
+    "Aggregate free mass alone does not prove that an indivisible item fits one carrier.",
+    "Failed approach must cancel purchases and initiate departure, not advance to remote shopping.",
+    "An independent persisted visit deadline is needed; transition timers do not guarantee physical escape from a sealed map.",
+    "Drop success and retention depend on actual branches and outcomes. CompQuality copying does not establish preservation of arbitrary component metadata.",
+    "IncidentParmsUtility optional parameter name is ensureCanGenerateAtLeastOnePawn."
+  ],
+  "remainingCorrections": [
+    {
+      "claim": "Trigger_TicksPassed resets whenever a toil changes.",
+      "correction": "SourceToilBecameActive resets ticksPassed only when the supplied toil is NOT in the transition's sources. Transitions with multiple source toils can preserve their trigger count across those sources.",
+      "evidence": "Trigger_TicksPassed.SourceToilBecameActive IL_0001..001A: sources.Contains(toil) branches past the reset when true. ActivateOn uses a strict > comparison."
+    },
+    {
+      "claim": "Pawn.Kill calls DropAndForbidEverything(false, true).",
+      "correction": "In the independently inspected 1.7 IL at 0412..0415, both passed bool arguments are false. The death branch bypasses the in-bed suppression associated with the first true argument, but the report's literal call is inaccurate."
+    },
+    {
+      "claim": "Any adult ToolUser can carry; vanilla door Forbid provides guest access locks.",
+      "correction": "CanEverCarryAnything also excludes baby and IsSubhuman tool users unless packAnimal permits carrying. Use the native predicate. Door Forbid has not been proven to be an access lock for these neutral groups; public destinations and native toils alone do not prove staff-area path isolation."
+    },
+    {
+      "claim": "Specific WorldPawnGC retention behavior was proved by this audit.",
+      "correction": "The deliverables do not include an independent trace of WorldPawnGC or PassToWorld's full retention decisions. Keep indefinite inventory retention explicitly unverified; do not infer it from the existence of a method name."
+    }
+  ],
+  "independentEvidence": "Tools/Build/WholesaleCodexReview, read from installed Assembly-CSharp.dll with trusted Cecil; no execution of game code.",
+  "nextStep": "Deterministic transaction packing/payment cases in Delegation/WholesalePackingCases/TASK.md.",
+  "runtimeWholesaleImplemented": false,
+  "runtimeTestsPerformedForThisReview": false
+}
