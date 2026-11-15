@@ -15,7 +15,6 @@ namespace TurboMegaMod
         static ControlledFarming()
         {
             var h = new Harmony("turbomegamod.controlled.farming");
-            h.Patch(AccessTools.Method(typeof(BuildCopyCommandUtility), "BuildCopyCommand"), prefix: new HarmonyMethod(typeof(ControlledFarming), "CanCopyPart"));
             h.Patch(AccessTools.Method(typeof(RoofGrid), "SetRoof"), prefix: new HarmonyMethod(typeof(ControlledFarming), "GlassRoof"));
             var glow = AccessTools.Method(typeof(GlowGrid), "GroundGlowAt");
             h.Patch(glow, postfix: new HarmonyMethod(typeof(ControlledFarming), glow.GetParameters().Length == 3 ? "Daylight17" : "Daylight16"));
@@ -29,10 +28,6 @@ namespace TurboMegaMod
         public static float BasePower(string defName)
         {
             return DefDatabase<ThingDef>.GetNamed(defName).GetCompProperties<CompProperties_Power>().PowerConsumption;
-        }
-        private static bool CanCopyPart(BuildableDef __0)
-        {
-            return __0 == null || (__0.defName != "TMM_GreenhouseGlassWall" && __0.defName != "TMM_GreenhouseGlassDoor" && __0.defName != "TMM_GreenhouseClimateUnit");
         }
         public static bool LightingPeriod(Map map)
         {
@@ -57,7 +52,6 @@ namespace TurboMegaMod
         {
             if(__1!=RoofDefOf.RoofConstructed)return;
             var zone = ZoneAt(___map, __0);
-            if(zone==null)zone=___map.zoneManager.AllZones.OfType<Zone_Greenhouse>().FirstOrDefault(z=>z.expansion!=null&&z.expansion.Rect.Contains(__0));
             if (__1 == RoofDefOf.RoofConstructed && zone != null && zone.planned) __1 = DefDatabase<RoofDef>.GetNamed("TMM_GreenhouseGlassRoof");
         }
         private static void Daylight16(IntVec3 __0, bool __1, Map ___map, ref float __result) { TransmitDaylight(__0, ___map, ref __result); HydroLight(__0, ___map, ref __result); }
@@ -160,7 +154,7 @@ namespace TurboMegaMod
         {
             get
             {
-                return !planned || !systemEnabled || !Enclosed ? 0f : FarmingPowerBudget.Greenhouse(CellCount, LampsNeeded,
+                return !planned || !systemEnabled || !Enclosed ? 0f : FarmingPowerBudget.Greenhouse(manualLayout ? Math.Max(CellCount,GrowingRoom.CellCount) : CellCount, LampsNeeded,
                     GrowingRoom.Temperature, targetTemperature, ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"), ControlledFarming.BasePower("Cooler"),
                     lightingMode == 2, ControlledFarming.BasePower("StandingLamp"), Map.mapTemperature.OutdoorTemp);
             }
@@ -170,6 +164,7 @@ namespace TurboMegaMod
             base.ExposeData();
             ExposeExpansionData();
             Scribe_Values.Look(ref planned, "TMM_planned");
+            Scribe_Values.Look(ref manualLayout,"TMM_manualLayout");
             Scribe_Values.Look(ref minX, "TMM_minX"); Scribe_Values.Look(ref minZ, "TMM_minZ"); Scribe_Values.Look(ref width, "TMM_width"); Scribe_Values.Look(ref height, "TMM_height");
             Scribe_Values.Look(ref systemEnabled, "TMM_systemEnabled", true);
             Scribe_Values.Look(ref targetTemperature, "TMM_targetTemperature", 21f);
@@ -213,12 +208,10 @@ namespace TurboMegaMod
         public override IEnumerable<Gizmo> GetZoneAddGizmos()
         {
             if (!planned) yield return new Designator_ZoneAdd_Greenhouse();
-            else if (expansion == null) yield return new Designator_GreenhouseExpansion(this);
-            else if (!expansion.committed) yield return new Command_Action { defaultLabel = "TMM.Farming.CancelExpansion".Translate(),
-                defaultDesc = "TMM.Farming.CancelExpansionHelp".Translate(), icon = TexCommand.ClearPrioritizedWork, action = CancelExpansion };
         }
         public bool CreatePlan()
         {
+            if(manualLayout)return InitializeManual();
             if (planned || CellCount == 0) return planned;
             int x = Cells.Min(c => c.x), z = Cells.Min(c => c.z), w = Cells.Max(c => c.x) - x + 1, h = Cells.Max(c => c.z) - z + 1;
             if (w < 4 || h < 4 || w > 64 || h > 64 || CellCount != w * h) return false;
@@ -245,17 +238,20 @@ namespace TurboMegaMod
             if (!planned || CellCount == 0) return;
             if (powerNode == null || !powerNode.Spawned)
             {
-                powerNode = ClimateCell.GetThingList(Map).OfType<Building_GreenhouseNode>().FirstOrDefault(n => n.def.defName == "TMM_GreenhouseClimateUnit");
+                if(manualLayout)FindManualController();
+                else powerNode = ClimateCell.GetThingList(Map).OfType<Building_GreenhouseNode>().FirstOrDefault(n => n.def.defName == "TMM_GreenhouseClimateUnit");
             }
             if (Power == null) return;
             var controller = (Building_GreenhouseNode)powerNode;
             controller.zoneId = ID; controller.planMinX = minX; controller.planMinZ = minZ; controller.planWidth = width; controller.planHeight = height;
             controller.planDoor = DoorCell;
+            controller.planManual=manualLayout;
             // Any boundary cell next to a conduit is sufficient. There is one
             // consumer per zone; adjacent networks are never bridged together.
             CompPower transmitter = Power.connectParent;
-            if (transmitter != null && (!transmitter.parent.Spawned || transmitter.PowerNet == null || !Footprint.ExpandedBy(1).Contains(transmitter.parent.Position))) transmitter = null;
-            foreach (var c in Footprint)
+            var connectionArea=manualLayout?Footprint.ExpandedBy(1):Footprint;
+            if (transmitter != null && (!transmitter.parent.Spawned || transmitter.PowerNet == null || !connectionArea.ExpandedBy(1).Contains(transmitter.parent.Position))) transmitter = null;
+            foreach (var c in connectionArea)
             {
                 if (transmitter != null) break;
                 foreach (var offset in GenAdj.CardinalDirectionsAndInside)
@@ -358,6 +354,7 @@ namespace TurboMegaMod
     {
         public int zoneId = -1;
         public int planMinX, planMinZ, planWidth, planHeight;
+        public bool planManual;
         public IntVec3 planDoor = IntVec3.Invalid;
         public Zone_Greenhouse Owner { get { return Map == null ? null : Map.zoneManager.AllZones.OfType<Zone_Greenhouse>().FirstOrDefault(z => z.ID == zoneId &&
             (def.defName == "TMM_GreenhouseClimateUnit" ? z.ClimateCell == Position : z.ContainsCell(Position))); } }
@@ -367,16 +364,20 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref planMinX, "planMinX"); Scribe_Values.Look(ref planMinZ, "planMinZ");
             Scribe_Values.Look(ref planWidth, "planWidth"); Scribe_Values.Look(ref planHeight, "planHeight");
             Scribe_Values.Look(ref planDoor, "planDoor", IntVec3.Invalid);
+            Scribe_Values.Look(ref planManual,"planManual");
         }
         public Zone_Greenhouse RestoreZone()
         {
             if (Owner != null) return Owner;
-            if (!Spawned || planWidth < 4 || planHeight < 4) return null;
-            var cells = new CellRect(planMinX, planMinZ, planWidth, planHeight).ContractedBy(1)
+            if(!Spawned)return null;
+            if(planManual||planWidth<1||planHeight<1)return ManualGreenhouse.FromRoom(this);
+            if(planWidth<4||planHeight<4)return null;
+            var rect=new CellRect(planMinX,planMinZ,planWidth,planHeight);
+            var cells = rect.ContractedBy(1)
                 .Where(c => c.InBounds(Map) && Map.zoneManager.ZoneAt(c) == null && c.GetEdifice(Map) == null && c.GetTerrain(Map).fertility > 0f).ToArray();
             if (cells.Length == 0) return null;
             var zone = new Zone_Greenhouse(Map.zoneManager) { planned = true, minX = planMinX, minZ = planMinZ, width = planWidth, height = planHeight,
-                climatePosition = Position, doorPosition = planDoor };
+                climatePosition = Position, doorPosition = planDoor,manualLayout=planManual };
             Map.zoneManager.RegisterZone(zone); foreach (var c in cells) zone.AddCell(c);
             zone.powerNode = this; zoneId = zone.ID; zone.Synchronize(); return zone;
         }

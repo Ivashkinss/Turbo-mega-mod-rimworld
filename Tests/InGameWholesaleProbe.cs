@@ -254,8 +254,9 @@ public sealed class WholesaleProbe : MapComponent
                 Visits.nextVisitTick=Find.TickManager.TicksGame-1;Visits.retryAfterTick=Find.TickManager.TicksGame+1000;
                 SchedulerOnce();Check(!Visits.Groups.Any(),"Scheduler ignored failed-attempt cooldown");
                 Visits.nextVisitTick=Find.TickManager.TicksGame;Visits.retryAfterTick=Find.TickManager.TicksGame;SchedulerOnce();
-                Check(Visits.Groups.Count()==1&&Visits.lastVisitTick==Find.TickManager.TicksGame&&Visits.nextVisitTick>Visits.lastVisitTick,"Automatic due-visit scheduler did not create a group or advance its timer");
-                Visits.Groups.First().Leave(false);Check(Sales.earned==price+bookPrice+automaticPrice,"New visit generated passive income");Finish(true);
+                Check(Visits.Groups.Count()==1&&Visits.lastVisitTick==Find.TickManager.TicksGame&&Visits.nextVisitTick>Visits.lastVisitTick,"Automatic due-visit scheduler did not create a group or advance its timer: groups="+Visits.Groups.Count()+" stock="+Visits.StockValue()+" next="+Visits.nextVisitTick+" last="+Visits.lastVisitTick+" retry="+Visits.retryAfterTick+" now="+Find.TickManager.TicksGame);
+                Visits.Groups.First().Leave(false);Check(Sales.earned==price+bookPrice+automaticPrice,"New visit generated passive income");
+                Check(GuestDossiers.Book.records.All(r=>r.id!=buyer.GetUniqueLoadID())&&GuestDossiers.Book.records.Sum(r=>r.sales)==0,"Wholesale buyers were registered as hotel guests");Finish(true);
             }
         }catch(Exception ex){errors.Add(ex.ToString());Finish(reload);}
     }

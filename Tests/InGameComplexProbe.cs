@@ -53,6 +53,7 @@ public sealed class ComplexProbe : MapComponent
     }
     private void Setup()
     {
+        map.fogGrid.ClearAllFog();
         Check(ComplexWorkPolicy.Patched, "Workplace policy hooks not installed");
         Check(Building_ComplexDesk.Work(ComplexRole.Host) == DefDatabase<WorkGiverDef>.GetNamed("Diplomat").workType,
             "Host role does not enable Hospitality's actual guest service work");
@@ -72,11 +73,12 @@ public sealed class ComplexProbe : MapComponent
         Area_Allowed complex, publicArea, stock, shopping;
         map.areaManager.TryMakeNewAllowed(out complex); map.areaManager.TryMakeNewAllowed(out publicArea); map.areaManager.TryMakeNewAllowed(out stock); map.areaManager.TryMakeNewAllowed(out shopping);
         foreach (var cell in rect) {
-            foreach (var t in cell.GetThingList(map).ToArray()) if (t is Building || t is Plant) t.Destroy();
+            foreach (var t in cell.GetThingList(map).ToArray()) if (t is Building || t is Plant) {if(t.def.destroyable)t.Destroy();else t.DeSpawn();}
             map.terrainGrid.SetTerrain(cell, TerrainDefOf.Soil); map.roofGrid.SetRoof(cell, null); map.areaManager.Home[cell] = true;
             if (cell.x <= 51 && cell.z <= 51) { complex[cell] = true; publicArea[cell] = true; }
         }
         actor.pather.StopDead(); actor.Position = new IntVec3(42, 0, 43);
+        actor.Notify_Teleported();
         actor.needs.food.CurLevelPercentage = 1; actor.needs.rest.CurLevelPercentage = 1;
         if (actor.needs.joy != null) actor.needs.joy.CurLevelPercentage = 1;
         for (int hour = 0; hour < 24; hour++) actor.timetable.SetAssignment(hour, TimeAssignmentDefOf.Work);
@@ -105,7 +107,7 @@ public sealed class ComplexProbe : MapComponent
         Find.PlaySettings.useWorkPriorities = false; desk.SetRole(actor, ComplexRole.None);
         Check(actor.workSettings.GetPriority(WorkTypeDefOf.Doctor) == 0, "Checkbox mode lost original disabled-work setting");
         Find.PlaySettings.useWorkPriorities = true; desk.SetRole(actor, ComplexRole.Doctor);
-        var fallback = FindWork(); Check(HaulsWood(fallback), "Doctor without patients did not fall back to colony work: " + fallback);
+        var fallback = FindWork(); Check(HaulsWood(fallback), "Doctor without patients did not fall back to colony work: " + fallback+" reach="+actor.CanReach(wood,PathEndMode.Touch,Danger.Deadly)+" forbidden="+wood.IsForbidden(actor)+" hauling="+actor.workSettings.GetPriority(WorkTypeDefOf.Hauling));
         actor.workSettings.SetPriority(WorkTypeDefOf.Doctor, 3); desk.SetRole(actor, ComplexRole.None);
         Check(actor.workSettings.GetPriority(WorkTypeDefOf.Doctor) == 3, "Removing role overwrote manual priorities"); actor.workSettings.SetPriority(WorkTypeDefOf.Doctor, 0);
         Check(desk.SetRole(actor, ComplexRole.Waiter), "Waiter role rejected");
@@ -145,6 +147,8 @@ public sealed class ComplexProbe : MapComponent
     {
         bool reload = Environment.GetCommandLineArgs().Contains("-tmm-complex-reload");
         if (reported || Find.CurrentMap != map || (!reload && !Environment.GetCommandLineArgs().Contains("-tmm-complex-probe"))) return;
+        // This isolated automated fixture must actually simulate its jobs.
+        Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
         try {
             if (reload) {
                 Check(saved && desk != null && actor != null && desk.Active, "Complex save references missing");

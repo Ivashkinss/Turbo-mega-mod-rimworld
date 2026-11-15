@@ -1,0 +1,81 @@
+{
+  "scope": "Independent Codex source review of Gemini dossier artifacts; runtime verification remains separate.",
+  "dataSources": {
+    "accepted": true,
+    "corrections": [
+      "CompGuest.Leave flags departure; only confirmed map departure closes a visit.",
+      "Clinical receipts require explicit saved guest identity.",
+      "Native group score is not a personal preference or reputation.",
+      "No guaranteed WorldPawn retention.",
+      "Only incidents were deferred to the story stage; VIP is a later separate feature."
+    ]
+  },
+  "texts": {
+    "pairedKeys": 42,
+    "placeholderKeys": 9,
+    "editedEmptyHistoryAndBanScope": true
+  },
+  "saveAudit": {
+    "classes": 9,
+    "persistedFields": 97,
+    "universalSafetyClaimsAccepted": false
+  },
+  "playerGuide": {
+    "reviewed": true,
+    "manualScenarios": 12,
+    "manualPlansNotPassedTests": true
+  },
+  "greenhouseAudit": {
+    "points": 20,
+    "corrections": [
+      "Position fields use Scribe_Values, not Scribe_Deep.",
+      "Manual restoration now scans the real adjacent room.",
+      "Error-free migration cannot be inferred from a static audit."
+    ]
+  },
+  "areaTooltipAudit": {
+    "snapshotKeyPairs": 75,
+    "findings": 0,
+    "scope": "Earlier shared-tooltip revision, before the later reception tabs."
+  },
+  "receptionGuide": {
+    "reviewed": true,
+    "manualPlansNotPassedTests": true,
+    "corrections": [
+      "CompanyService means conversations, not a joint-stock company.",
+      "Refuse-until-beds requires any guest beds, not spare bed capacity.",
+      "Admission-open status and free-bed count are separate native conditions.",
+      "Use actual operation/buyout captions and allow colony wards in staff-only rooms."
+    ],
+    "runtimeRevisionScope": "Guide snapshot predates room-based cleanup and carried-patient roster adjustments; these are tested separately."
+  },
+  "manualGreenhouseFinalAudit": {
+    "classes": 4,
+    "persistedFields": 32,
+    "findings": [
+      {
+        "topic": "Room division",
+        "disposition": "One manual zone belongs to one room; repaint after building a partition. RestoreZone scans the real adjacent room."
+      },
+      {
+        "topic": "Multiple panels",
+        "disposition": "One zone uses one automatically sized node. Additional panels do not share the load."
+      }
+    ],
+    "runtimeChecksSeparate": true,
+    "universalCompatibilityClaimAccepted": false
+  },
+  "serviceAcceptanceRefresh": {
+    "checklistItems": 12,
+    "manualScenarios": 24,
+    "reviewed": true,
+    "corrections": [
+      "Personnel submenu path",
+      "Staff-area bed remains an ordinary bed after employee departure",
+      "Restaurant counter/waiter prerequisites",
+      "Medical source path",
+      "Use a separate patient for early-discharge branch"
+    ],
+    "manualPlanNotRuntimeReport": true
+  }
+}

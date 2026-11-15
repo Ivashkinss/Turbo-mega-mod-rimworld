@@ -11,6 +11,7 @@ namespace TurboMegaMod
 {
     public sealed class ClinicReceipt : IExposable, IThingHolder
     {
+        public GuestReceiptLink dossier;
         public string token;
         public IntVec3 cell;
         public int paid;
@@ -24,6 +25,7 @@ namespace TurboMegaMod
         public void ExposeData()
         {
             Scribe_Values.Look(ref token, "token"); Scribe_Values.Look(ref cell, "cell"); Scribe_Deep.Look(ref cash, "cash", this);
+            Scribe_Deep.Look(ref dossier,"dossier");
             Scribe_Values.Look(ref paid,"paid");
             Scribe_Collections.Look(ref shares,"shares",LookMode.Deep);
             Scribe_Collections.Look(ref subreceipts,"subreceipts",LookMode.Value);
@@ -53,12 +55,12 @@ namespace TurboMegaMod
             if (Scribe.mode == LoadSaveMode.PostLoadInit) { if (settled == null) settled = new List<string>(); if (receipts == null) receipts = new List<ClinicReceipt>(); if(episodes==null)episodes=new List<ClinicEpisode>();
                 receipts.RemoveAll(r=>r==null);episodes.RemoveAll(e=>e==null); }
         }
-        public void Queue(string token, IntVec3 cell, int coins, List<ClinicFrozenShare> shares = null)
+        public void Queue(string token, IntVec3 cell, int coins, List<ClinicFrozenShare> shares = null, GuestReceiptLink dossier = null)
         {
             if(settled.Contains(token))return;
             settled.Add(token);
             if (coins <= 0) return;
-            var receipt = new ClinicReceipt { token = token, cell = cell, shares=shares??new List<ClinicFrozenShare>{new ClinicFrozenShare{coins=coins}} };
+            var receipt = new ClinicReceipt { token = token, cell = cell, dossier=dossier,shares=shares??new List<ClinicFrozenShare>{new ClinicFrozenShare{coins=coins}} };
             for(int remaining=coins;remaining>0;){
                 var silver = ThingMaker.MakeThing(ThingDefOf.Silver); silver.stackCount = Math.Min(remaining,ThingDefOf.Silver.stackLimit);
                 receipt.GetDirectlyHeldThings().TryAdd(silver, false);remaining-=silver.stackCount;
@@ -73,7 +75,8 @@ namespace TurboMegaMod
                     int before = cash.Sum(t => t.stackCount); Thing dropped;
                     cash.TryDrop(silver, receipt.cell, map, ThingPlaceMode.Near, silver.stackCount, out dropped);
                     int placed = before - cash.Sum(t => t.stackCount);
-                    if (placed > 0) { ComplexWorkPolicy.Record(map, receipt.cell, "clinic", placed); ClinicContributions.Credit(receipt,placed); }
+                    if (placed > 0) { ComplexWorkPolicy.Record(map, receipt.cell, "clinic", placed); ClinicContributions.Credit(receipt,placed);
+                        if(receipt.dossier!=null)receipt.dossier.Received("clinic",placed,"clinic:"+map.uniqueID+":"+receipt.token+":"+before); }
                 }
                 if (cash.Count == 0) receipts.Remove(receipt);
             }
@@ -127,7 +130,7 @@ namespace TurboMegaMod
             int coins = (int)Math.Min(4000f, Math.Max(0f, amount));
             int goodwill = pawn.Faction == null ? 0 : (int)AccessTools.Method(utility, "CalculateGoodwillToGain").Invoke(null, new[] { (object)pawn, data });
             var desk = Clinic.Desk(map); var cell = desk == null ? pawn.PositionHeld : desk.Position;
-            accounts.Queue(token, cell, coins,ClinicContributions.Freeze(accounts,pawn,coins));
+            accounts.Queue(token, cell, coins,ClinicContributions.Freeze(accounts,pawn,coins),GuestDossiers.Capture(pawn,map));
             dismissed.SetValue(data, true);
             AccessTools.Method(Clinic.HospitalType, "RemoveFromPatientList").Invoke(__instance, new object[] { pawn });
             if (pawn.Faction != null) pawn.Faction.TryAffectGoodwillWith(Faction.OfPlayer, goodwill, false);

@@ -69,6 +69,7 @@ namespace TurboMegaMod
 
     public sealed class CompanyOrder : IExposable, IThingHolder
     {
+        public GuestReceiptLink dossier;
         public Pawn guest, employee;
         public Building_ComplexDesk desk;
         public Building_Bed roomBed;
@@ -83,6 +84,7 @@ namespace TurboMegaMod
         public void ExposeData()
         {
             Scribe_References.Look(ref guest, "guest"); Scribe_References.Look(ref employee, "employee");
+            Scribe_Deep.Look(ref dossier,"dossier");
             Scribe_References.Look(ref desk, "desk"); Scribe_References.Look(ref roomBed, "roomBed");
             Scribe_Values.Look(ref guestCell, "guestCell"); Scribe_Values.Look(ref employeeCell, "employeeCell");
             Scribe_Values.Look(ref refundCell, "refundCell"); Scribe_Values.Look(ref id, "id");
@@ -203,7 +205,7 @@ namespace TurboMegaMod
             int price = CompanyRules.Quote(employee, desk.companyPercent);
             if (HotelBillingHooks.Money(guest) < price || !Consent(guest, employee)) return null;
             var order = new CompanyOrder { id = ++nextId, guest = guest, employee = employee, desk = desk, roomBed = bed,
-                guestCell = a, employeeCell = b, refundCell = desk.Position, price = price, created = tick };
+                guestCell = a, employeeCell = b, refundCell = desk.Position, price = price, created = tick, dossier=GuestDossiers.Capture(guest,map) };
             orders.Add(order);
             int remaining = price;
             foreach (var silver in guest.inventory.innerContainer.Where(t => t.def == ThingDefOf.Silver).ToArray()) {
@@ -258,6 +260,8 @@ namespace TurboMegaMod
                     if(received>0){
                         wallet.earned+=received;
                         ComplexWorkPolicy.Record(map,order.refundCell,"company",received);
+                        if(order.dossier==null)order.dossier=GuestDossiers.Capture(order.guest,map);
+                        if(order.dossier!=null)order.dossier.Received("company",received,"company:"+map.uniqueID+":"+order.id+":"+before);
                         Current.Game.GetComponent<WorkBuyouts>().Credit(order.employee,"company:"+map.uniqueID+":"+order.id+":"+before,received,false);
                     }
                 } else if (order.cancelled) {

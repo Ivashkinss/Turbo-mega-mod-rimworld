@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Dossier.Title>Guests &amp; Blacklist</TMM.Dossier.Title>
+  <TMM.Dossier.Help>Observed visits and received payments. Personal spending is separate from faction medical rewards. The blacklist applies to future hotel visits across the colony; medical care is not blocked.</TMM.Dossier.Help>
+  <TMM.Dossier.Search>Search:</TMM.Dossier.Search>
+  <TMM.Dossier.All>All</TMM.Dossier.All>
+  <TMM.Dossier.Present>Present</TMM.Dossier.Present>
+  <TMM.Dossier.Blocked>Blacklisted</TMM.Dossier.Blocked>
+  <TMM.Dossier.Empty>No guests found</TMM.Dossier.Empty>
+  <TMM.Dossier.Select>Select a guest from the list</TMM.Dossier.Select>
+  <TMM.Dossier.Faction>Faction: {0}</TMM.Dossier.Faction>
+  <TMM.Dossier.Visits>Registered visits: {0}</TMM.Dossier.Visits>
+  <TMM.Dossier.FirstSeen>First seen: {0}</TMM.Dossier.FirstSeen>
+  <TMM.Dossier.LastSeen>Last seen: {0}</TMM.Dossier.LastSeen>
+  <TMM.Dossier.StatePresent>Present on map</TMM.Dossier.StatePresent>
+  <TMM.Dossier.StateLeaving>Leaving map</TMM.Dossier.StateLeaving>
+  <TMM.Dossier.StateAway>Off-map</TMM.Dossier.StateAway>
+  <TMM.Dossier.StateBlocked>Admission blocked</TMM.Dossier.StateBlocked>
+  <TMM.Dossier.SpendTotal>Total guest spending: {0}</TMM.Dossier.SpendTotal>
+  <TMM.Dossier.Hotel>Hotel lodging</TMM.Dossier.Hotel>
+  <TMM.Dossier.Restaurant>Restaurant</TMM.Dossier.Restaurant>
+  <TMM.Dossier.Company>Paid conversations</TMM.Dossier.Company>
+  <TMM.Dossier.Sales>Merchandise sales</TMM.Dossier.Sales>
+  <TMM.Dossier.Clinic>Medical rewards (from faction)</TMM.Dossier.Clinic>
+  <TMM.Dossier.VisitsHeading>Visit History</TMM.Dossier.VisitsHeading>
+  <TMM.Dossier.PaymentsHeading>Service Payments</TMM.Dossier.PaymentsHeading>
+  <TMM.Dossier.Day>Colony day {0}</TMM.Dossier.Day>
+  <TMM.Dossier.Ongoing>Ongoing visit in progress</TMM.Dossier.Ongoing>
+  <TMM.Dossier.Legacy>Already on map when logging started (initial arrival unknown)</TMM.Dossier.Legacy>
+  <TMM.Dossier.Died>Confirmed deceased on map</TMM.Dossier.Died>
+  <TMM.Dossier.Lost>Contact lost (death unconfirmed)</TMM.Dossier.Lost>
+  <TMM.Dossier.Departed>Departed from the map</TMM.Dossier.Departed>
+  <TMM.Dossier.Block>Add to blacklist</TMM.Dossier.Block>
+  <TMM.Dossier.Unblock>Remove from blacklist</TMM.Dossier.Unblock>
+  <TMM.Dossier.Reason>Ban reason</TMM.Dossier.Reason>
+  <TMM.Dossier.ReasonHelp>Enter a brief reason for the ban. The reason can be changed at any time by unblocking and re-adding the guest.</TMM.Dossier.ReasonHelp>
+  <TMM.Dossier.Since>Blacklisted since: {0}</TMM.Dossier.Since>
+  <TMM.Dossier.DefaultReason>By decision of the colony administration</TMM.Dossier.DefaultReason>
+  <TMM.Dossier.Denied>{0} is blacklisted: admission to the hotel is denied.</TMM.Dossier.Denied>
+  <TMM.Dossier.Focus>Center on pawn</TMM.Dossier.Focus>
+  <TMM.Dossier.NoHistory>No records yet</TMM.Dossier.NoHistory>
+  <TMM.Dossier.TypeMedical>Medical care</TMM.Dossier.TypeMedical>
+  <TMM.Dossier.Amount>{0} silver</TMM.Dossier.Amount>
+  <TMM.Dossier.CurrentVisitAllowed>Current visit and medical care may be completed. The ban applies only to new hotel check-ins.</TMM.Dossier.CurrentVisitAllowed>
+</LanguageData>

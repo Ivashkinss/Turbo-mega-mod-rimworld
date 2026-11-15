@@ -128,6 +128,8 @@ namespace TurboMegaMod
 
     public sealed class SaleOrder : IExposable, IThingHolder
     {
+        public GuestReceiptLink dossier;
+        public bool wholesale;
         public Pawn buyer, worker;
         public Building storage;
         public Thing item, goods;
@@ -147,6 +149,7 @@ namespace TurboMegaMod
         public void ExposeData()
         {
             Scribe_References.Look(ref buyer, "buyer"); Scribe_References.Look(ref storage, "storage"); Scribe_References.Look(ref item, "item");
+            Scribe_Deep.Look(ref dossier,"dossier");Scribe_Values.Look(ref wholesale,"wholesale");
             Scribe_References.Look(ref worker, "worker"); Scribe_References.Look(ref goods, "goods");
             Scribe_Values.Look(ref delivery, "delivery"); Scribe_Values.Look(ref waitCell, "waitCell");
             Scribe_Values.Look(ref id, "id"); Scribe_Values.Look(ref count, "count"); Scribe_Values.Look(ref price, "price"); Scribe_Values.Look(ref created, "created");
@@ -254,7 +257,7 @@ namespace TurboMegaMod
             int price = SaleStock.Price(unit, count);
             if (price <= 0 || WholesaleTrade.Money(buyer) < price || !delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
             var desk = map.GetComponent<ComplexMap>().desk;
-            var order = new SaleOrder { id = ++nextId, buyer = buyer, storage = storage, item = item, count = count,
+            var order = new SaleOrder { id = ++nextId, buyer = buyer, storage = storage, item = item, count = count, wholesale=WholesaleTrade.Group(buyer)!=null,dossier=GuestDossiers.Capture(buyer,map),
                 unitPrice = unit, price = price, created = Find.TickManager.TicksGame, receiptCell = desk.Position,
                 delivery = delivery, waitCell = delivery ? WaitAt(buyer) : IntVec3.Invalid };
             orders.Add(order); return order;
@@ -374,7 +377,11 @@ namespace TurboMegaMod
                 }
                 if (o.completed && o.refund == 0) {
                     int before = cash.Sum(t => t.stackCount); cash.TryDropAll(o.receiptCell, map, ThingPlaceMode.Near);
-                    earned += before - cash.Sum(t => t.stackCount);
+                    int received=before-cash.Sum(t=>t.stackCount);earned += received;
+                    if(!o.wholesale&&o.wholesaleDebits.Count==0&&WholesaleTrade.Group(o.buyer)==null){
+                        if(o.dossier==null)o.dossier=GuestDossiers.Capture(o.buyer,map);
+                        if(o.dossier!=null)o.dossier.Received("sales",received,"sales:"+map.uniqueID+":"+o.id+":"+before);
+                    }
                 }
                 if (o.returnedGoods.Count > 0) {
                     var source = o.storage == null || o.storage.Destroyed ? null : o.storage as ISearchableContents;

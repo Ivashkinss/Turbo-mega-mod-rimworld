@@ -1,14 +1,14 @@
 {
   "restaurantReload": {
     "passed": true,
-    "checks": 11,
+    "checks": 12,
     "errors": []
   },
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 1632,
-    "ticksAdvanced": 1823,
+    "framesAdvanced": 3645,
+    "ticksAdvanced": 1770,
     "newsWindowsDismissedInTest": 0
   },
   "runtimeErrors": 0,
@@ -16,6 +16,6 @@
   "gpuLost": false,
   "isolatedFixtureSave": true,
   "userSaveTested": false,
-  "productionAssemblySha256": "1fecee150b52039400a3eaf6b65726c6c7ba59c90ae9cbca4b9d4e3017a6f096",
+  "productionAssemblySha256": "636bba4cb4066a512c96c6bdb205031f73031f25f8021c67f404eb34d13e6fa5",
   "passed": true
 }

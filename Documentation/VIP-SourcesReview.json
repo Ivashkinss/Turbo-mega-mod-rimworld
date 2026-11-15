@@ -1,0 +1,22 @@
+{
+  "implementationAdded": false,
+  "scope": "Read-only preparation for the next VIP/regular-customer stage. Source paths refer to the pinned Hospitality snapshot and current own modules.",
+  "acceptedFacts": [
+    "Bed search is delayed by 4 game ticks per silver before the first attempt.",
+    "A failed search sets lastBedCheckTick to now+500, so a later attempt also includes the purse-dependent delay.",
+    "Native personal visit score differs from the group average used for gifts and goodwill.",
+    "Dossier identity and blacklist provide extension points; no VIP state is yet implemented."
+  ],
+  "corrections": [
+    "A rejected visitor may already be spawned and walks off; map entry is not prevented.",
+    "Current accepted visits, registered clinical guests and recovered-on-map groups are exempted by existing admission filtering.",
+    "Real seconds depend on simulation speed; use game ticks or in-game hours.",
+    "The native wallet capacity branch must be followed before claiming excess money drops on the ground.",
+    "When spaceFor>0 the purse is clamped to spaceFor; the excess is not dropped. The floor fallback is only the zero-space branch."
+  ],
+  "nextStageConstraints": [
+    "No story incidents in this stage.",
+    "Do not change faction availability assumptions for future mod factions.",
+    "VIP wealth is a physical budget, not automatic income."
+  ]
+}

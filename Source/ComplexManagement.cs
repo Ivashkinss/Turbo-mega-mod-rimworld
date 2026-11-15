@@ -165,10 +165,10 @@ namespace TurboMegaMod
             var native = Map.components.FirstOrDefault(c => c.GetType().FullName == "Hospitality.Hospitality_MapComponent");
             if (native != null && guestArea != null) AccessTools.Field(native.GetType(), "defaultAreaRestriction").SetValue(native, guestArea);
         }
-        private Command_Action AreaButton(string key, Func<Area> getter, Action<Area> setter)
+        internal Command_Action AreaButton(string key, Func<Area> getter, Action<Area> setter)
         {
             return new Command_Action { defaultLabel = key.Translate() + ": " + (getter() == null ? "TMM.Restaurant.Unassigned".Translate().ToString() : getter().Label),
-                defaultDesc = "TMM.Complex.AreasHelp".Translate(), icon = ContentFinder<Texture2D>.Get("UI/Complex/Workplaces"), action = delegate {
+                defaultDesc = (key+"Help").Translate(), icon = ContentFinder<Texture2D>.Get("UI/Complex/Workplaces"), action = delegate {
                     var options = new List<FloatMenuOption> { new FloatMenuOption("TMM.Restaurant.Unassigned".Translate(), () => setter(null)) };
                     foreach (var candidate in Map.areaManager.AllAreas.Where(a => a is Area_Allowed)) { var selected = candidate; options.Add(new FloatMenuOption(candidate.Label, () => setter(selected))); }
                     Find.WindowStack.Add(new FloatMenu(options));
@@ -177,15 +177,11 @@ namespace TurboMegaMod
         public override IEnumerable<Gizmo> GetGizmos()
         {
             foreach (var gizmo in base.GetGizmos()) yield return gizmo;
+            yield return new Command_Action {defaultLabel="TMM.Dossier.Title".Translate(),defaultDesc="TMM.Dossier.Help".Translate(),
+                icon=ContentFinder<Texture2D>.Get("UI/Complex/Staff"),action=()=>Find.WindowStack.Add(new Dialog_GuestDossiers(this))};
             if (automaticServices) {
-                yield return AreaButton("TMM.Complex.Area", () => area, value => { area = value; Map.GetComponent<ComplexLayout>().Synchronize(); });
-                yield return AreaButton("TMM.Complex.StaffArea", () => staffArea, value => { staffArea = value; Map.GetComponent<ComplexLayout>().Synchronize(); });
                 yield return new Command_Action { defaultLabel = "TMM.Complex.Services".Translate(), defaultDesc = "TMM.Complex.ServicesHelp".Translate(),
                     icon = ContentFinder<Texture2D>.Get("UI/Complex/Workplaces"), action = () => Find.WindowStack.Add(new Dialog_ComplexServices(this)) };
-                yield return new Command_Action { defaultLabel = "TMM.Complex.Employees".Translate(), defaultDesc = "TMM.Complex.EmployeesHelp".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Complex/Staff"), action = () => Find.WindowStack.Add(new Dialog_ComplexEmployees(this)) };
-                yield return new Command_Action { defaultLabel = "TMM.Clinic.Admit".Translate(), defaultDesc = "TMM.Clinic.AdmitHelp".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Complex/Staff"), action = () => ClinicGuests.ShowAdmission(this) };
                 yield break;
             }
             foreach (var gizmo in CompanyMenus.Gizmos(this)) yield return gizmo;

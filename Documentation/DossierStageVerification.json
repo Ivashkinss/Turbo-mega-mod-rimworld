@@ -1,0 +1,322 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "636bba4cb4066a512c96c6bdb205031f73031f25f8021c67f404eb34d13e6fa5",
+  "successfulIsolatedSteps": 24,
+  "runtimeChecks": 807,
+  "components": {
+    "ComplexLayout": {
+      "fresh": 50,
+      "reload": 26
+    },
+    "Farming": {
+      "fresh": 124,
+      "reload": 17
+    },
+    "Dossier": {
+      "fresh": 30,
+      "reload": 8
+    },
+    "Hospitality": {
+      "fresh": 40,
+      "reload": 11
+    },
+    "Restaurant": {
+      "fresh": 34,
+      "reload": 12
+    },
+    "Company": {
+      "fresh": 94,
+      "reload": 13
+    },
+    "Clinic": {
+      "fresh": 32,
+      "reload": 12
+    },
+    "ClinicGuest": {
+      "fresh": 15,
+      "reload": 10
+    },
+    "Sales": {
+      "fresh": 55,
+      "reload": 21
+    },
+    "SalesDelivery": {
+      "fresh": 38,
+      "reload": 44
+    },
+    "Wholesale": {
+      "fresh": 54,
+      "reload": 32
+    },
+    "Complex": {
+      "fresh": 27,
+      "reload": 8
+    }
+  },
+  "guestDossiersImplemented": true,
+  "personalBlacklistImplemented": true,
+  "manualGreenhousePartsImplemented": true,
+  "automaticExpansionRetired": true,
+  "unifiedReceptionPages": 5,
+  "nativeGuestAndPatientBottomTabsHidden": true,
+  "patientAdmissionHoursVisible": 24,
+  "historyLimits": {
+    "visitsPerGuest": 50,
+    "paymentsPerGuest": 200
+  },
+  "lifetimeTotalsRetained": true,
+  "receiptDedupeTokensRetained": true,
+  "worldPawnRetentionGuaranteed": false,
+  "scope": "Native arrival/departure and admission exceptions, lost-reference payment links and actual service income; five reception pages and rosters, native hour controls with persistence; manual glass roof, panel binding, room restoration, heating/cooling, conduit connection and legacy expansion cancellation/refund.",
+  "financialTestNote": "The dossier probe uses synthetic ledger entries for deduplication. Actual hotel/restaurant/conversation/shop/clinical income is separately cross-checked in the service probes.",
+  "fullRegressionOnThisAssembly": false,
+  "baselineMedicalCommit": "893a7bc",
+  "baselineFullRegressionCommit": "04729c6e6d3f4ae359d6c2a3e094458c025b2745",
+  "vipImplemented": false,
+  "storyIncidentsImplemented": false,
+  "allInboundTransportModsTested": false,
+  "userSaveTested": false,
+  "liveGame16Verified": false,
+  "visualLayoutInspected": false,
+  "russianEntries": 3608,
+  "sourceSha256": {
+    "Source\\CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source\\Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source\\ClinicBilling.cs": "c27aee409faf05acdce30928846708273d1af4b2cfc9e48326b9aab14e7507fd",
+    "Source\\ClinicContributions.cs": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49",
+    "Source\\ClinicGuests.cs": "31ce95f7b962195e7c86d50a21f1c5bb0680d9decb47d970edf7cdef5106bb0a",
+    "Source\\ClinicMedicalHooks.cs": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3",
+    "Source\\Company.cs": "56a0c72b7a72a78c7e93fdca33fdf505e69996389d0f98da211ee15e41c36d71",
+    "Source\\CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source\\ComplexLayout.cs": "de68c5bf1d413cff2f26a91153a2ca6ea3738b89a1f875a330bac06827535909",
+    "Source\\ComplexManagement.cs": "5e7ce0a12cd4ed629a081c8d14925a0bdb7fe2e14c4c469cc3a9f2be2967b69d",
+    "Source\\ComplexReceptionUI.cs": "7a0602f15db28afc71c14ca0786187dae29c546384cc9ce9277a232e6848851b",
+    "Source\\ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source\\ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source\\ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source\\ComplexSales.cs": "55afbc658a3a5f7a381ba8b4fdf02f6af001c7f32dd68be6ed2a78cba308ae08",
+    "Source\\ComplexServicesDialog.cs": "349a3f9ee4a31e9ebba935532571a95aac46b91065a13f5538ce4e4be41edffa",
+    "Source\\ControlledFarming.cs": "419d64eca8c35ddbb2d368421e3499f60dfd490be14c4e1630b5a9db94ddb844",
+    "Source\\FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source\\FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source\\GreenhouseExpansion.cs": "61198a3a19ad517ca0e473e30b520f670ef85a3a5ef31354bd034ce166564a26",
+    "Source\\GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source\\GuestDossierDialog.cs": "7c07a0eb380af98def912931ea3c0fdcb99ef857548fdc82ab88a430389fd4a9",
+    "Source\\GuestDossierHooks.cs": "3009e7b596a3c1b141b9dea648c656bd7263ff6e16d3b32f94e0c77ce4d07565",
+    "Source\\GuestDossiers.cs": "800893fcbbd461256700976bbc1b52c84009c56b83d83fab03013627d29aad9c",
+    "Source\\HotelBilling.cs": "913bd04d83491f660b7d2487e6b045360988c615e94698b6e09451ffaf95f5dd",
+    "Source\\HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source\\ManualGreenhouse.cs": "ced0a292921285e4b969a22916dd771325695c3f73f2ec6ba27750dcfaaf6a9a",
+    "Source\\MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source\\MedicalAllocation.cs": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+    "Source\\MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source\\MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source\\OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source\\RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source\\RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source\\Restaurant.cs": "97d6e54f2b2dbc3563730519fe3b8c0c6b40fa7dbb9121f9a8e63d9d45ce85ee",
+    "Source\\RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source\\RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source\\SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source\\SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source\\VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source\\Wholesale\\PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source\\WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source\\WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source\\WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns\\ComplexLayout-FullSet-20261115-232428\\Result.json",
+      "sha256": "7179f493c1949301954991d587390d220b5d7d5f17a7498b3350ea259747bb22"
+    },
+    {
+      "path": "Documentation\\ComplexLayout-FullSet.json",
+      "sha256": "7179f493c1949301954991d587390d220b5d7d5f17a7498b3350ea259747bb22"
+    },
+    {
+      "path": "TestRuns\\ComplexLayout-FullSet-20261115-232428\\ReloadResult.json",
+      "sha256": "df8a7abb272971a8e76eb9246456c47835eeb570ff4deadef7718e03c8c8d61e"
+    },
+    {
+      "path": "Documentation\\ComplexLayout-Reload.json",
+      "sha256": "df8a7abb272971a8e76eb9246456c47835eeb570ff4deadef7718e03c8c8d61e"
+    },
+    {
+      "path": "TestRuns\\Farming-FullSet-20261115-232656\\Result.json",
+      "sha256": "47ba49d224164c2c29665f2bc1b3c7d43e3486273d5d3bba8a0c9cee72839086"
+    },
+    {
+      "path": "Documentation\\Farming-FullSet.json",
+      "sha256": "47ba49d224164c2c29665f2bc1b3c7d43e3486273d5d3bba8a0c9cee72839086"
+    },
+    {
+      "path": "TestRuns\\Farming-FullSet-20261115-232656\\ReloadResult.json",
+      "sha256": "e2d89331ea105c2ff32f308457cb86b75257cd6165d7442039942cb2c85969d4"
+    },
+    {
+      "path": "Documentation\\Farming-Reload.json",
+      "sha256": "e2d89331ea105c2ff32f308457cb86b75257cd6165d7442039942cb2c85969d4"
+    },
+    {
+      "path": "TestRuns\\Dossier-FullSet-20261115-232926\\Result.json",
+      "sha256": "38e0149d01f1f08a23f6e35e35995205141d16d56db162d1f57b6c0a36d948bb"
+    },
+    {
+      "path": "Documentation\\Dossier-FullSet.json",
+      "sha256": "38e0149d01f1f08a23f6e35e35995205141d16d56db162d1f57b6c0a36d948bb"
+    },
+    {
+      "path": "TestRuns\\Dossier-FullSet-20261115-232926\\ReloadResult.json",
+      "sha256": "67fd9f093c44121e8265988a9c0747ef43e7b939cb0db4db92558a5408879ae7"
+    },
+    {
+      "path": "Documentation\\Dossier-Reload.json",
+      "sha256": "67fd9f093c44121e8265988a9c0747ef43e7b939cb0db4db92558a5408879ae7"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261115-233155\\Result.json",
+      "sha256": "f4608c6447338096b63acd21500d3fe511a0ea34e4bc9b1e6cb3802b27c6d5cf"
+    },
+    {
+      "path": "Documentation\\Hospitality-FullSet.json",
+      "sha256": "f4608c6447338096b63acd21500d3fe511a0ea34e4bc9b1e6cb3802b27c6d5cf"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261115-233155\\ReloadResult.json",
+      "sha256": "855c6e8bcdadf56c8cad98fbff671311372e59b9f5f1c0a661df2acdbe214827"
+    },
+    {
+      "path": "Documentation\\Hospitality-Reload.json",
+      "sha256": "855c6e8bcdadf56c8cad98fbff671311372e59b9f5f1c0a661df2acdbe214827"
+    },
+    {
+      "path": "TestRuns\\Restaurant-FullSet-20261115-233755\\Result.json",
+      "sha256": "a64a47d2078a1934bfabf64f7bf87d03fd5a12af0b16c0a623a34d5c434d0137"
+    },
+    {
+      "path": "Documentation\\Restaurant-FullSet.json",
+      "sha256": "a64a47d2078a1934bfabf64f7bf87d03fd5a12af0b16c0a623a34d5c434d0137"
+    },
+    {
+      "path": "TestRuns\\Restaurant-FullSet-20261115-233755\\ReloadResult.json",
+      "sha256": "1b57e774857763ab6e1be3acf6eef505b5815576449c9fb29c51219e96798e42"
+    },
+    {
+      "path": "Documentation\\Restaurant-Reload.json",
+      "sha256": "1b57e774857763ab6e1be3acf6eef505b5815576449c9fb29c51219e96798e42"
+    },
+    {
+      "path": "TestRuns\\Company-FullSet-20261115-234052\\Result.json",
+      "sha256": "4995f8caaf2c3d476472c93d69c9e4e69e91afdbee52f5c38edafe7a581b327f"
+    },
+    {
+      "path": "Documentation\\Company-FullSet.json",
+      "sha256": "4995f8caaf2c3d476472c93d69c9e4e69e91afdbee52f5c38edafe7a581b327f"
+    },
+    {
+      "path": "TestRuns\\Company-FullSet-20261115-234052\\ReloadResult.json",
+      "sha256": "95605cdf85f361a495a3f948ccabf2a6c9a964b9c1ea1a1b148935e80ab65bfb"
+    },
+    {
+      "path": "Documentation\\Company-Reload.json",
+      "sha256": "95605cdf85f361a495a3f948ccabf2a6c9a964b9c1ea1a1b148935e80ab65bfb"
+    },
+    {
+      "path": "TestRuns\\Clinic-FullSet-20261115-234342\\Result.json",
+      "sha256": "fee487d59b9e9f0707d5242b0e2b58f309609a7ab2b92c7b531e511dc88d787d"
+    },
+    {
+      "path": "Documentation\\Clinic-FullSet.json",
+      "sha256": "fee487d59b9e9f0707d5242b0e2b58f309609a7ab2b92c7b531e511dc88d787d"
+    },
+    {
+      "path": "TestRuns\\Clinic-FullSet-20261115-234342\\ReloadResult.json",
+      "sha256": "02af74b07b9953f774b47a90b23f89102b2441fcce39f33c15a8e6c4f4059d83"
+    },
+    {
+      "path": "Documentation\\Clinic-Reload.json",
+      "sha256": "02af74b07b9953f774b47a90b23f89102b2441fcce39f33c15a8e6c4f4059d83"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261115-234628\\Result.json",
+      "sha256": "9b7b92b59e596ceed1b2dc44266dd5356b283b05e0303a06b71341d0f0fd8ebd"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-FullSet.json",
+      "sha256": "9b7b92b59e596ceed1b2dc44266dd5356b283b05e0303a06b71341d0f0fd8ebd"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261115-234628\\ReloadResult.json",
+      "sha256": "6dbecd17c68f1081924da0892582ba5d09d2b3a57f4a59ab5998b3f46afae2ef"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-Reload.json",
+      "sha256": "6dbecd17c68f1081924da0892582ba5d09d2b3a57f4a59ab5998b3f46afae2ef"
+    },
+    {
+      "path": "TestRuns\\Sales-FullSet-20261115-234948\\Result.json",
+      "sha256": "9a33d16bd4ed7076ac99aa4519a08739ea5b92bd0f52c04408f090d4e471b4ae"
+    },
+    {
+      "path": "Documentation\\Sales-FullSet.json",
+      "sha256": "9a33d16bd4ed7076ac99aa4519a08739ea5b92bd0f52c04408f090d4e471b4ae"
+    },
+    {
+      "path": "TestRuns\\Sales-FullSet-20261115-234948\\ReloadResult.json",
+      "sha256": "b0e91de1f7ba3daa4f5287cbcd2ad1bd6ff7a3d192f6f88560e41c1fce55b98d"
+    },
+    {
+      "path": "Documentation\\Sales-Reload.json",
+      "sha256": "b0e91de1f7ba3daa4f5287cbcd2ad1bd6ff7a3d192f6f88560e41c1fce55b98d"
+    },
+    {
+      "path": "TestRuns\\SalesDelivery-FullSet-20261115-235229\\Result.json",
+      "sha256": "39beb94e5cba19682aea98b4a35ca71e72a3f019b9b0caa3ee2f114f5b67f54b"
+    },
+    {
+      "path": "Documentation\\SalesDelivery-FullSet.json",
+      "sha256": "39beb94e5cba19682aea98b4a35ca71e72a3f019b9b0caa3ee2f114f5b67f54b"
+    },
+    {
+      "path": "TestRuns\\SalesDelivery-FullSet-20261115-235229\\ReloadResult.json",
+      "sha256": "115ef8a814a2f0220d2464df6f44d6b2ff462c8d56999347eb4f02e2933af354"
+    },
+    {
+      "path": "Documentation\\SalesDelivery-Reload.json",
+      "sha256": "115ef8a814a2f0220d2464df6f44d6b2ff462c8d56999347eb4f02e2933af354"
+    },
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-235512\\Result.json",
+      "sha256": "178e3869d77d5b4fc4a5c5df7fb50de185dcaf0620b4f1a1dd00d5541538fddd"
+    },
+    {
+      "path": "Documentation\\Wholesale-FullSet.json",
+      "sha256": "178e3869d77d5b4fc4a5c5df7fb50de185dcaf0620b4f1a1dd00d5541538fddd"
+    },
+    {
+      "path": "TestRuns\\Wholesale-FullSet-20261115-235512\\ReloadResult.json",
+      "sha256": "2c73a98112732a41321dffce495acfaf1f0026ca74bbfcdec0802aacf84f9718"
+    },
+    {
+      "path": "Documentation\\Wholesale-Reload.json",
+      "sha256": "2c73a98112732a41321dffce495acfaf1f0026ca74bbfcdec0802aacf84f9718"
+    },
+    {
+      "path": "TestRuns\\Complex-FullSet-20261116-001814\\Result.json",
+      "sha256": "e9d02e5d0fa15174cb48bcf886b12bd61fbc9c19cfd54b84bf6496e5f38b35e9"
+    },
+    {
+      "path": "Documentation\\Complex-FullSet.json",
+      "sha256": "e9d02e5d0fa15174cb48bcf886b12bd61fbc9c19cfd54b84bf6496e5f38b35e9"
+    },
+    {
+      "path": "TestRuns\\Complex-FullSet-20261116-001814\\ReloadResult.json",
+      "sha256": "43dbee86682c7fb5670823f026468e5c1c7971bda4ed60d67ce280e16161196c"
+    },
+    {
+      "path": "Documentation\\Complex-Reload.json",
+      "sha256": "43dbee86682c7fb5670823f026468e5c1c7971bda4ed60d67ce280e16161196c"
+    }
+  ]
+}

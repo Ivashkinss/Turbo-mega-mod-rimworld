@@ -1,6 +1,9 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
   <TMM.Farming.Greenhouse>Outdoor greenhouse zone</TMM.Farming.Greenhouse>
+  <TMM.Farming.ManualRoof>Greenhouse glass roof</TMM.Farming.ManualRoof>
+  <TMM.Farming.ManualRoofHelp>Build walls and a door first, then mark free cells inside one enclosed room without an opaque roof. Colonists build the transparent roof and these cells become greenhouse growing space. Build a climate panel separately; it serves one greenhouse zone in the room. Large roofs need normal supports. If a normal growing zone already occupies these cells, remove only its zone marking first; the plants remain.</TMM.Farming.ManualRoofHelp>
+  <TMM.Farming.ManualRoom>Mark cells inside one room enclosed by walls, without an opaque roof. The marked area may be up to 64x64.</TMM.Farming.ManualRoom>
   <TMM.Farming.GreenhouseDesignator>Mark the complete rectangular greenhouse footprint, from 4x4 to 64x64. The game plans glass walls, one door, a climate panel, roof supports and a roof; colonists must construct them. Growing cells are created automatically inside. Connect power next to the perimeter. The system heats and cools the room to its target. Demand scales with growing area and the temperature gap; lighting carries a 15% premium.</TMM.Farming.GreenhouseDesignator>
   <TMM.Farming.OutdoorOnly>Plan the greenhouse on unroofed outdoor soil.</TMM.Farming.OutdoorOnly>
   <TMM.Farming.Status>Greenhouse: {0}</TMM.Farming.Status>
@@ -22,6 +25,6 @@
   <TMM.Farming.PlanInvalid>The greenhouse needs a clear rectangular 4x4–64x64 footprint with room for walls and a door.</TMM.Farming.PlanInvalid>
   <TMM.Farming.NightLight>dim night light</TMM.Farming.NightLight>
   <TMM.Farming.Manage>Manage greenhouse</TMM.Farming.Manage>
-  <TMM.Farming.ManageDesc>Select the greenhouse growing zone. If the zone was deleted, restore it inside the existing structure without replacing other zones or buildings.</TMM.Farming.ManageDesc>
+  <TMM.Farming.ManageDesc>Select the linked greenhouse growing zone and its temperature controls. Restore a missing zone within existing walls without replacing other zones or buildings. A separately built panel can create its zone in a suitable adjacent room; walls and opaque roofs are not automatically rebuilt.</TMM.Farming.ManageDesc>
   <TMM.Farming.TillSoilOnly>Only existing unpaved soil can be tilled.</TMM.Farming.TillSoilOnly>
 </LanguageData>

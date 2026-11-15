@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -55,9 +55,10 @@ public sealed class ComplexLayoutProbe : MapComponent
     private void Wait(Pawn pawn) { var job = JobMaker.MakeJob(JobDefOf.Wait); job.expiryInterval = 600000; pawn.jobs.StartJob(job, JobCondition.InterruptForced); }
     private void Setup()
     {
+        map.fogGrid.ClearAllFog();
         foreach (var pawn in map.mapPawns.FreeColonistsSpawned) Wait(pawn);
         foreach (var c in new CellRect(38, 38, 53, 30)) {
-            foreach (var t in c.GetThingList(map).ToArray()) if (t is Building || t is Plant) t.Destroy();
+            foreach (var t in c.GetThingList(map).ToArray()) if (t is Building || t is Plant) {if(t.def.destroyable)t.Destroy();else t.DeSpawn();}
             map.terrainGrid.SetTerrain(c, TerrainDefOf.Soil); map.roofGrid.SetRoof(c, null); map.areaManager.Home[c] = true;
         }
         RoomAt(40,40); RoomAt(50,40); RoomAt(40,50); RoomAt(50,50);
@@ -92,7 +93,7 @@ public sealed class ComplexLayoutProbe : MapComponent
         Check(!gizmos.Any(g=>g.GetType().FullName=="Hospitality.Gizmo_GuestBed"),"Per-bed guest pricing still visible");
         Check(desk.GetGizmos().OfType<Command>().Count(c=>c.defaultLabel.StartsWith("TMM.Complex.FoodArea".Translate().ToString()))==0,"Reception still exposes stock area");
         var faction=Find.FactionManager.AllFactionsListForReading.First(f=>!f.IsPlayer && f.def.humanlikeFaction && !f.HostileTo(Faction.OfPlayer));
-        guest=PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist,faction);GenSpawn.Spawn(guest,new IntVec3(44,0,43),map);
+        guest=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,faction,canGeneratePawnRelations:false));GenSpawn.Spawn(guest,new IntVec3(44,0,43),map);
         guest.inventory.innerContainer.ClearAndDestroyContents(); var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=500;guest.inventory.innerContainer.TryAdd(silver);
         AccessTools.Method(AccessTools.TypeByName("Hospitality.IncidentWorker_VisitorGroup"),"CreateLord").Invoke(null,new object[]{faction,new IntVec3(62,0,44),new List<Pawn>{guest},map,false,false,600000});
         guest.GetLord().ReceiveMemo("TravelArrived");
@@ -113,7 +114,7 @@ public sealed class ComplexLayoutProbe : MapComponent
         var work=DefDatabase<WorkTypeDef>.GetNamed("TMM_RestaurantService");
         actor=map.mapPawns.FreeColonistsSpawned.FirstOrDefault(p=>p.workSettings!=null&&!p.WorkTypeIsDisabled(work));
         for(int attempt=0;actor==null&&attempt<32;attempt++){
-            var candidate=PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist,Faction.OfPlayer);
+            var candidate=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,canGeneratePawnRelations:false));
             if(!candidate.WorkTypeIsDisabled(work)){GenSpawn.Spawn(candidate,new IntVec3(52,0,52),map);actor=candidate;Wait(actor);}else candidate.Destroy();
         }
         Check(actor!=null,"Could not generate waiter fixture");actor.Position=new IntVec3(52,0,52);
@@ -124,16 +125,22 @@ public sealed class ComplexLayoutProbe : MapComponent
         Check(housing!=null&&!ComplexLayout.IsGuest(housing)&&actor.ownership.OwnedBed==housing,"Automatic layout reclaimed assigned staff housing");
         desk.SetResidence(actor,false);staffBed.Medical=false;layout.Synchronize();
         Check(ComplexLayout.IsGuest(housing.Position.GetThingList(map).OfType<Building_Bed>().Single()),"Released staff room did not return to guest service");
-        // A real paid-construction expansion, saved before new work is complete.
+        // Keep the whole-plan tool and verify separate manual parts/roof migration.
         greenhouse=new Zone_Greenhouse(map.zoneManager);map.zoneManager.RegisterZone(greenhouse);
         foreach(var c in new CellRect(80,40,6,6))greenhouse.AddCell(c);
-        Check(greenhouse.CreatePlan(),"Greenhouse fixture plan failed");
+        if(!greenhouse.CreatePlan()){
+            var reasons=new List<string>();
+            foreach(var c in new CellRect(80,40,6,6).EdgeCells){
+                var name=c==new IntVec3(83,0,40)?"TMM_GreenhouseGlassDoor":c==new IntVec3(83,0,45)?"TMM_GreenhouseClimateUnit":"TMM_GreenhouseGlassWall";
+                var report=GenConstruct.CanPlaceBlueprintAt(DefDatabase<ThingDef>.GetNamed(name),c,Rot4.North,map,false);
+                if(!report.Accepted)reasons.Add(c+":"+report.Reason);
+            }
+            throw new Exception("Greenhouse fixture plan failed: cells="+greenhouse.CellCount+" "+string.Join(";",reasons));
+        }checks++;
         CompleteGreenhouseBlueprints();foreach(var c in greenhouse.Cells)map.roofGrid.SetRoof(c,RoofDefOf.RoofConstructed);
         map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
-        Check(greenhouse.TryExpand(new CellRect(86,40,2,6)),"Adjacent greenhouse expansion refused");
-        Check(greenhouse.expansion!=null && !greenhouse.expansion.committed && greenhouse.width==6,"Expansion resized before construction");
-        Check(greenhouse.Footprint.EdgeCells.All(c=>c.GetEdifice(map)!=null),"Expansion immediately tore down old perimeter");
-        Check(map.listerThings.AllThings.OfType<Blueprint_Build>().Any(b=>b.Position.x>=86),"Expansion created free built walls");
+        checks+=ManualGreenhouseFixture.Setup(map,greenhouse,actor);
+        checks+=ReceptionNavigationFixture.Setup(desk,guest);
         saved=true;GameDataSaveLoader.SaveGame("TMM-Layout");
     }
     private void CompleteGreenhouseBlueprints()
@@ -154,30 +161,16 @@ public sealed class ComplexLayoutProbe : MapComponent
                 Check(guest.needs.food.CurLevelPercentage>0.35f,"Guest did not eat the delivered fallback meal");
                 var credit=Current.Game.GetComponent<WorkBuyouts>().Entry(actor);
                 Check(credit!=null&&credit.credited==desk.restaurantIncome/2&&credit.halfRemainder==desk.restaurantIncome%2,"Real restaurant receipt did not credit its waiter at 50 percent");
+                checks+=ManualGreenhouseFixture.Running(map);
                 Finish(true);return;
             }
             Check(saved&&desk!=null&&bed!=null&&staffBed!=null&&wardBed!=null,"Saved room references missing");
             Check(desk.staffArea!=null&&desk.automaticServices&&desk.roomRate==45,"Saved automatic settings changed");
             var layout=map.GetComponent<ComplexLayout>();layout.Synchronize();
             Check(HotelBillingHooks.Bed(guest)==bed&&!layout.guestAccess[staffBed.Position]&&Clinic.WardBed(wardBed),"Saved ownership/access/ward changed");
-            Check(greenhouse!=null&&greenhouse.expansion!=null&&!greenhouse.expansion.committed,"Pending expansion lost on load");
-            CompleteGreenhouseBlueprints();map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();greenhouse.ExpansionTick();
-            Check(greenhouse.expansion!=null&&!greenhouse.expansion.committed&&greenhouse.width==6,"Expansion dismantled the old greenhouse before the new roof was ready");
-            var newRoof=greenhouse.expansion.Rect.ContractedBy(1).Where(c=>!greenhouse.Footprint.Contains(c)&&c.GetEdifice(map)==null).ToArray();
-            Check(newRoof.Length>0&&newRoof.All(c=>actor.CanReach(c,PathEndMode.OnCell,Danger.None)),"Builders cannot enter the enclosed extension to finish its roof");
-            var oldPartition=greenhouse.Footprint.EdgeCells.First(c=>!greenhouse.expansion.parts.Any(p=>p.cell==c)&&greenhouse.expansion.Rect.ContractedBy(1).Contains(c));
-            Check(new WorkGiver_BuildRoof().HasJobOnCell(actor,oldPartition,false),"Native roofer cannot roof an old partition before deconstruction");
-            foreach(var c in greenhouse.expansion.Rect.ContractedBy(1).Where(c=>!greenhouse.expansion.parts.Any(p=>p.cell==c)))map.roofGrid.SetRoof(c,RoofDefOf.RoofConstructed);
-            Check(newRoof.All(c=>map.roofGrid.RoofAt(c).defName=="TMM_GreenhouseGlassRoof"),"Pending expansion got an opaque roof");
-            greenhouse.ExpansionTick();
-            Check(greenhouse.width==8&&greenhouse.expansion!=null&&greenhouse.expansion.committed,"Built expansion did not commit");
-            var obsolete=greenhouse.expansion.obsolete.ToArray();
-            Check(obsolete.Length>0&&obsolete.All(b=>b.Spawned&&map.designationManager.DesignationOn(b,DesignationDefOf.Deconstruct)!=null),"Old walls not scheduled for normal deconstruction");
-            foreach(var b in obsolete)b.Destroy(DestroyMode.Deconstruct);
-            greenhouse.ExpansionTick();foreach(var c in greenhouse.Cells)map.roofGrid.SetRoof(c,RoofDefOf.RoofConstructed);
-            map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
-            Check(greenhouse.expansion==null&&greenhouse.CellCount==24&&greenhouse.Enclosed,"Expanded greenhouse area/enclosure wrong");
-            Check(greenhouse.ClimateCell.GetEdifice(map)!=null&&greenhouse.ClimateCell.GetEdifice(map).def.defName=="TMM_GreenhouseClimateUnit","Expanded greenhouse lost its controller");
+            Check(greenhouse!=null,"Saved automatic greenhouse zone missing");
+            checks+=ManualGreenhouseFixture.Reload(map,greenhouse);
+            checks+=ReceptionNavigationFixture.Reload(desk);
             counter=map.listerBuildings.allBuildingsColonist.OfType<Building_ServiceCounter>().Single();
             actor.pather.StopDead();actor.Position=new IntVec3(62,0,44);
             actor.guest.SetGuestStatus(Faction.OfPlayer,GuestStatus.Slave);
@@ -202,7 +195,13 @@ public sealed class ComplexLayoutProbe : MapComponent
     {
         if(uiReported||!reported||desk==null||Event.current.type!=EventType.Repaint||!Environment.GetCommandLineArgs().Contains("-tmm-layout-probe"))return;
         uiReported=true;string error=null;GUI.BeginGroup(new Rect(0,0,1000,750));
-        try{new Dialog_ComplexServices(desk).DoWindowContents(new Rect(0,0,680,650));foreach(var gizmo in bed.GetGizmos())if(gizmo is Command_Toggle)gizmo.GizmoOnGUI(new Vector2(720,40),120,default(GizmoRenderParms));}
+        try{
+            var services=new Dialog_ComplexServices(desk);
+            for(int page=0;page<5;page++){services.page=page;services.DoWindowContents(new Rect(0,0,720,680));}
+            new Dialog_ComplexRoster(desk,false).DoWindowContents(new Rect(0,0,970,650));
+            new Dialog_ComplexRoster(desk,true).DoWindowContents(new Rect(0,0,970,650));
+            foreach(var gizmo in bed.GetGizmos())if(gizmo is Command_Toggle)gizmo.GizmoOnGUI(new Vector2(720,40),120,default(GizmoRenderParms));
+        }
         catch(Exception ex){error=ex.ToString();}finally{GUI.EndGroup();}
         File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"ComplexLayoutUiProbe.json"),"{\"passed\":"+(error==null?"true":"false")+",\"visualLayoutInspected\":false,\"error\":"+(error==null?"null":"\""+error.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n")+"\"")+"}");
     }

@@ -176,6 +176,7 @@ public sealed class CompanyProbe : MapComponent
                 Check(guest.needs.mood.thoughts.memories.Memories.Any(m=>m.def.defName=="TMM_GoodCompany"),"Guest did not receive good-company thought");
                 Service.Process();Service.Process();Check(Floor()==savedFloor+price&&Wallet.earned==price&&book.Entry(employee).credited==price,"Repeated settlement duplicated income or buyout credit");
                 Check(desk.hotelIncome==0&&desk.restaurantIncome==0&&desk.clinicIncome==0&&desk.companyIncome==price,"Conversation mixed with other service accounts");
+                Check(GuestDossiers.Book.Find(guest.GetUniqueLoadID()).company==price,"Dossier conversation income lost or duplicated");
                 Check(book.Release(other)&&!other.IsSlaveOfColony&&book.Entry(other).released&&!book.Release(other),"Completed ordinary buyout did not release exactly once");
                 Wait(employee);Wait(guest);desk.SetCompany(employee,false);
                 Check(employee.workSettings.GetPriority(CompanyRules.Work)==0&&employee.workSettings.GetPriority(WorkTypeDefOf.Hauling)>0,"Removing conversation did not restore previous work settings");

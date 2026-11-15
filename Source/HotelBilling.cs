@@ -69,12 +69,16 @@ namespace TurboMegaMod
                         try
                         {
                             var pawn = driver.pawn;
+                            // Completing the native toil can clear driver.job.
+                            // Capture its identity before invoking it.
+                            var claimJob=driver.job;
+                            string receipt=claimJob==null?null:"hotel:"+pawn.Map.uniqueID+":"+claimJob.GetUniqueLoadID();
                             var previous = Bed(pawn);
                             int before = Money(pawn);
                             original();
                             var assigned = Bed(pawn);
                             if (assigned != null && assigned != previous && pawn.Spawned)
-                                pawn.Map.GetComponent<HotelBilling>().RecordClaim(pawn, assigned, Math.Max(0, before - Money(pawn)));
+                                pawn.Map.GetComponent<HotelBilling>().RecordClaim(pawn, assigned, Math.Max(0, before - Money(pawn)),receipt);
                         }
                         finally { observing = false; }
                     };
@@ -124,11 +128,13 @@ namespace TurboMegaMod
             Scribe_Collections.Look(ref stays, "TMM_hotelStays", LookMode.Deep);
             if (Scribe.mode == LoadSaveMode.PostLoadInit && stays == null) stays = new List<HotelStay>();
         }
-        public void RecordClaim(Pawn guest, Building_Bed bed, int amountPaid)
+        public void RecordClaim(Pawn guest, Building_Bed bed, int amountPaid, string receiptToken = null)
         {
             stays.RemoveAll(s => s.guest == guest);
             int fee = HotelBillingHooks.Fee(bed);
             ComplexWorkPolicy.Record(map, bed.Position, "hotel", Math.Min(fee, amountPaid));
+            var link=GuestDossiers.Capture(guest,map);
+            if(link!=null)link.Received("hotel",Math.Min(fee,amountPaid),receiptToken??GuestDossiers.Book.ReceiptToken("hotel",map));
             stays.Add(new HotelStay { guest = guest, bed = bed,
                 nextChargeTick = Find.TickManager.TicksGame + (amountPaid >= fee ? DayTicks : 0),
                 remaining = amountPaid >= fee ? -1 : fee - amountPaid, periodFee = fee });
@@ -169,10 +175,13 @@ namespace TurboMegaMod
                     {
                         if (stay.remaining == 0) break;
                         int count = Math.Min(stay.remaining, silver.stackCount);
+                        int beforeMoney=HotelBillingHooks.Money(stay.guest),beforeRemaining=stay.remaining;
                         Thing dropped;
                         if (!stay.guest.inventory.innerContainer.TryDrop(silver, stay.guest.Position, map, ThingPlaceMode.Near, count, out dropped)) break;
                         stay.remaining -= count;
                         ComplexWorkPolicy.Record(map, stay.bed.Position, "hotel", count);
+                        var link=GuestDossiers.Capture(stay.guest,map);
+                        if(link!=null)link.Received("hotel",beforeMoney-HotelBillingHooks.Money(stay.guest),"hotel-day:"+map.uniqueID+":"+stay.guest.GetUniqueLoadID()+":"+stay.nextChargeTick+":"+beforeRemaining);
                     }
                     if (stay.remaining != 0) break;
                     stay.remaining = -1;

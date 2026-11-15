@@ -212,7 +212,7 @@ public sealed class SalesDeliveryProbe : MapComponent
                 Order.created=Find.TickManager.TicksGame-6000;Sales.Process();Wait(buyer);Wait(worker);
                 Check(Order==null&&worker.carryTracker.CarriedThing==null,"6000-tick boundary did not cancel pending order");
                 Check(Floor()==floorBefore+Sales.earned&&HotelBillingHooks.Money(buyer)+Sales.earned==2000,"Timeout created income");
-                Finish(true);
+                Check(GuestDossiers.Book.records.Sum(r=>r.sales)==Sales.earned,"Dossier staff-delivery revenue differs from physical receipts");Finish(true);
             }
         }catch(Exception ex){errors.Add(ex.ToString());Finish(reload);}
     }

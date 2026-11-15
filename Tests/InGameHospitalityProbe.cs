@@ -166,6 +166,7 @@ public sealed class HospitalityProbe : MapComponent
                 Check(HotelBillingHooks.Money(guest) == savedMoney - 20 && FloorSilver() == savedFloor + 20, "Next day after reload did not transfer real silver");
                 Ledger.ProcessPayments(); Check(HotelBillingHooks.Money(guest) == savedMoney - 20, "Post-load billing repeated");
                 Check(reception.hotelIncome == 90, "Reception missed post-load room payment or counted it twice");
+                Check(GuestDossiers.Book.records.Sum(r=>r.hotel)==reception.hotelIncome,"Dossier room payments differ from real hotel income");
                 bed.Destroy(); Ledger.ProcessPayments(); Check(!Ledger.stays.Any(s => s.guest == guest), "Destroyed bed kept a billing account");
                 Finish(); return;
             }

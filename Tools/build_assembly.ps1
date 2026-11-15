@@ -1,4 +1,4 @@
-param([string]$ManagedPath)
+param([string]$ManagedPath,[switch]$CompileOnly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
@@ -34,4 +34,4 @@ New-Item -ItemType Directory -Path $buildPath -Force | Out-Null
 $builtAssembly = Join-Path $buildPath 'TurboMegaMod.dll'
 & $compilerPath /noconfig /nologo /target:library /optimize+ /nostdlib+ @references (('/out:') + $builtAssembly) @sourceFiles
 if ($LASTEXITCODE -ne 0) { throw "Compiler failed: $LASTEXITCODE" }
-Copy-Item -LiteralPath $builtAssembly -Destination (Join-Path $outputPath 'TurboMegaMod.dll') -Force
+if (!$CompileOnly) { Copy-Item -LiteralPath $builtAssembly -Destination (Join-Path $outputPath 'TurboMegaMod.dll') -Force }

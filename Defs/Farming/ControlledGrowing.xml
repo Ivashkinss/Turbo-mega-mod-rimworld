@@ -97,7 +97,7 @@
   </ThingDef>
   <ThingDef ParentName="Wall">
     <defName>TMM_GreenhouseGlassWall</defName>
-    <canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+    <canGenerateDefaultDesignator>true</canGenerateDefaultDesignator>
     <label>greenhouse glass wall</label>
     <description>A fragile load-bearing glazed greenhouse panel. Encloses the growing room and supports its glass roof. Protect it with a separate defensive perimeter.</description>
     <graphicData Inherit="False">
@@ -121,7 +121,7 @@
   </ThingDef>
   <ThingDef ParentName="Door">
     <defName>TMM_GreenhouseGlassDoor</defName>
-    <canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+    <canGenerateDefaultDesignator>true</canGenerateDefaultDesignator>
     <label>greenhouse glass door</label>
     <description>A fragile manually operated greenhouse glass door. Keep it closed to retain heat. Extra doors can be built with the normal building tool.</description>
     <graphicData Inherit="False">
@@ -145,7 +145,7 @@
   </ThingDef>
   <ThingDef ParentName="Wall">
     <defName>TMM_GreenhouseClimateUnit</defName>
-    <canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+    <canGenerateDefaultDesignator>true</canGenerateDefaultDesignator>
     <label>greenhouse climate panel</label>
     <description>A wall-integrated greenhouse climate system. Its connected growing zone controls the temperature target, grow lights and electricity use. Connect a conduit next to the greenhouse perimeter. Construction and a closed roofed room are required. The panel heats or cools the air; electricity demand grows with the temperature gap.</description>
     <thingClass>TurboMegaMod.Building_GreenhouseNode</thingClass>

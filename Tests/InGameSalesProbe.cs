@@ -209,7 +209,7 @@ public sealed class SalesProbe : MapComponent
                 Check(adaptiveStock.stackCount==8&&buyer.inventory.innerContainer.Where(t=>t.def==ThingDefOf.Steel).Sum(t=>t.stackCount)==5,"Adaptive Storage stock duplicated or missing");
                 Sales.Process();Sales.Process();
                 Check(HotelBillingHooks.Money(buyer)==500-price-shirtPrice-adaptivePrice&&Sales.earned==price+bookPrice+shirtPrice+adaptivePrice&&Floor()==initialFloor+price+bookPrice+shirtPrice+adaptivePrice,"Adaptive Storage sale did not conserve money");
-                Finish(true);
+                Check(GuestDossiers.Book.records.Sum(r=>r.sales)==Sales.earned,"Dossier sales income differs from physical receipts");Finish(true);
             }
         } catch (Exception ex) { errors.Add(ex.ToString()); Finish(reload); }
     }

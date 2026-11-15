@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Wholesale','SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
+param([Parameter(Mandatory=$true)][ValidateSet('Dossier','Wholesale','SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Dossier' { @{ folder=''; id='turbomegamod.dossier'; dll='Assemblies\TurboMegaMod.dll'; source='InGameDossierProbe.cs'; flag='-tmm-dossier-probe'; report='DossierProbe.json'; ui='DossierUiProbe.json'; key='dossier'; prefix='Dossier' } }
     'Wholesale' { @{ folder=''; id='turbomegamod.wholesale'; dll='Assemblies\TurboMegaMod.dll'; source='InGameWholesaleProbe.cs'; flag='-tmm-wholesale-probe'; report='WholesaleProbe.json'; ui='WholesaleUiProbe.json'; key='wholesale'; prefix='Wholesale' } }
     'SalesDelivery' { @{ folder=''; id='turbomegamod.delivery'; dll='Assemblies\TurboMegaMod.dll'; source='InGameSalesDeliveryProbe.cs'; flag='-tmm-delivery-probe'; report='SalesDeliveryProbe.json'; ui='SalesDeliveryUiProbe.json'; key='salesDelivery'; prefix='SalesDelivery' } }
     'Sales' { @{ folder=''; id='turbomegamod.sales'; dll='Assemblies\TurboMegaMod.dll'; source='InGameSalesProbe.cs'; flag='-tmm-sales-probe'; report='SalesProbe.json'; ui='SalesUiProbe.json'; key='sales'; prefix='Sales' } }
@@ -78,6 +79,7 @@ $sources = @('InGameLocalizationProbe.cs','InGameRenderingProbe.cs','InGameGramm
 foreach ($regression in $regressions) { $sources += Join-Path $projectPath ('Tests\' + $regression.source) }
 if ($Component -eq 'Wholesale') { $sources += Join-Path $projectPath 'Tests\WholesaleDelayCases.cs' }
 if ($Component -eq 'Clinic') { $sources += Join-Path $projectPath 'Tests\MedicalAttributionFixture.cs' }
+if ($Component -eq 'ComplexLayout') { $sources += Join-Path $projectPath 'Tests\ManualGreenhouseFixture.cs'; $sources += Join-Path $projectPath 'Tests\ReceptionNavigationFixture.cs' }
 if ($WithNiceBillTab) { $sources += Join-Path $projectPath 'Tests\InGameNiceBillProbe.cs' }
 if ($WithHands) { $sources += Join-Path $projectPath 'Tests\InGameHandsProbe.cs' }
 if ($WithRunAndGun) { $sources += Join-Path $projectPath 'Tests\InGameRunAndGunProbe.cs' }

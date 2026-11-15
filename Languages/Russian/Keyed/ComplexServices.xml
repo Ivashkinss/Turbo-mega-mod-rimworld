@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Services.General>Общее</TMM.Services.General>
+  <TMM.Services.Hotel>Гостиница</TMM.Services.Hotel>
+  <TMM.Services.Clinic>Клиника</TMM.Services.Clinic>
+  <TMM.Services.Restaurant>Ресторан</TMM.Services.Restaurant>
+  <TMM.Services.Staff>Персонал</TMM.Services.Staff>
+  <TMM.Services.AutoAreas>Для автоматического управления нужны только общая территория и, при необходимости, служебные помещения. Область для гостей рассчитывается автоматически. Палатой становится закрытая комната с медицинской отметкой на кровати; её не включают в служебные помещения.</TMM.Services.AutoAreas>
+  <TMM.Services.HotelHelp>Здесь задаются суточная цена номера и правила приёма гостей. Эти переключатели разрешают визиты, но не вызывают группу немедленно: прибытие планируется заранее и зависит от обстановки. В список ниже входят посетители этой карты. Территория и служебные комнаты выбираются на вкладке «Общее».</TMM.Services.HotelHelp>
+  <TMM.Services.ClinicHelp>Для приёма нужны закрытая палата с медицинскими койками внутри комплекса, врач и включённый приём пациентов. Проверьте часы ниже: новые пациенты могут прибыть только в открытые часы, с некоторой вероятностью. Разрешение операций само по себе не открывает приём. Уже принятые пациенты продолжают лечение и после закрытия приёма.</TMM.Services.ClinicHelp>
+  <TMM.Services.RestaurantHelp>Постройте раздаточный пункт внутри комплекса и назначьте официанта на вкладке «Персонал». Повар заранее готовит выбранное блюдо. Официант сначала берёт его из холодильника комплекса, а при отсутствии — из доступного холодильника колонии. Отдельно выделять столы и запасы не нужно.</TMM.Services.RestaurantHelp>
+  <TMM.Services.GuestList>Список постояльцев</TMM.Services.GuestList>
+  <TMM.Services.PatientList>Список пациентов</TMM.Services.PatientList>
+  <TMM.Services.ClinicAdvanced>Лечение: диеты, опасности и ограничения</TMM.Services.ClinicAdvanced>
+  <TMM.Services.ClinicStatus>Приём сейчас: {0}. Свободных коек клиники: {1}.</TMM.Services.ClinicStatus>
+  <TMM.Services.OpenNow>открыт</TMM.Services.OpenNow>
+  <TMM.Services.ClosedNow>закрыт</TMM.Services.ClosedNow>
+  <TMM.Services.HoursHelp>Часы приёма новых пациентов. Зелёный — открыт, серый — закрыт. Нажмите на час, чтобы переключить его.</TMM.Services.HoursHelp>
+  <TMM.Services.HourTip>Интервал {0}:00–{1}:00 по местному времени. Нажмите, чтобы разрешить или запретить прибытие новых пациентов в этот час.</TMM.Services.HourTip>
+  <TMM.Services.AllDay>Открыть приём круглосуточно</TMM.Services.AllDay>
+  <TMM.Services.NextGuest>Ближайший плановый визит гостей: примерно через {0} ч. Прибытие зависит от доступности карты и правил приёма.</TMM.Services.NextGuest>
+  <TMM.Services.NoGuestVisit>Плановых визитов гостей в очереди пока нет. Планирование проверяется игрой периодически; разрешение приёма не вызывает группу сразу.</TMM.Services.NoGuestVisit>
+</LanguageData>

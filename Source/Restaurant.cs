@@ -87,6 +87,7 @@ namespace TurboMegaMod
         public IntVec3 receiptCell;
         public bool delivered, cancelled;
         private ThingOwner<Thing> cash;
+        public GuestReceiptLink dossier;
         public RestaurantOrder() { cash = new ThingOwner<Thing>(this); }
         public IThingHolder ParentHolder { get { return null; } }
         public ThingOwner GetDirectlyHeldThings() { return cash; }
@@ -99,6 +100,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref id, "id"); Scribe_Values.Look(ref price, "price"); Scribe_Values.Look(ref created, "created"); Scribe_Values.Look(ref receiptCell, "receiptCell");
             Scribe_Values.Look(ref delivered, "delivered"); Scribe_Values.Look(ref cancelled, "cancelled");
             Scribe_Deep.Look(ref cash, "cash", this);
+            Scribe_Deep.Look(ref dossier,"dossier");
         }
     }
 
@@ -244,6 +246,8 @@ namespace TurboMegaMod
                     if(received>0){
                         if(order.counter!=null&&!order.counter.Destroyed)order.counter.earned+=received;
                         ComplexWorkPolicy.Record(map,order.receiptCell,"restaurant",received);
+                        if(order.dossier==null)order.dossier=GuestDossiers.Capture(order.guest,map);
+                        if(order.dossier!=null)order.dossier.Received("restaurant",received,"restaurant:"+map.uniqueID+":"+order.id+":"+before);
                         Current.Game.GetComponent<WorkBuyouts>().Credit(order.waiter,"restaurant:"+map.uniqueID+":"+order.id+":"+before,received,true);
                     }
                 }
@@ -271,7 +275,7 @@ namespace TurboMegaMod
             if (food != null && HotelBillingHooks.Money(guest) < RestaurantMeals.Quote(counter, food)) return null;
             if (food == null) return null;
             var order = new RestaurantOrder { id = ++nextOrderId, guest = guest, counter = counter, chair = seat, food = food, mealDef = food.def,
-                price = RestaurantMeals.Quote(counter, food), created = Find.TickManager.TicksGame, receiptCell = counter.Position };
+                price = RestaurantMeals.Quote(counter, food), created = Find.TickManager.TicksGame, receiptCell = counter.Position, dossier=GuestDossiers.Capture(guest,map) };
             orders.Add(order);
             var wait = JobMaker.MakeJob(RestaurantMeals.WaitJob, seat); wait.count = order.id;
             guest.jobs.StartJob(wait, JobCondition.InterruptForced);

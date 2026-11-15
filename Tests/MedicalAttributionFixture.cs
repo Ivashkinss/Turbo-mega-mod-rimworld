@@ -100,6 +100,8 @@ public sealed class MedicalAttributionFixture : IExposable
     {
         var accounts=map.GetComponent<ClinicAccounts>();
         check(!accounts.receipts.Any(r=>r.token==token),"Medical escrow not completed");
+        var dossier=GuestDossiers.Book.Find(patient.GetUniqueLoadID());
+        check(dossier!=null&&dossier.clinic==coins&&dossier.PersonalTotal==0,"Dossier counted faction reward as personal spending or lost patient identity");
         // The first actor tended with medicine; the second completed both
         // labor-only and material-using medical bills.
         var claims=MedicalAllocation.Freeze(coins,new[]{new MedicalClaim{workerId=a.GetUniqueLoadID(),consumables=true,weight=(decimal)tendWeight},

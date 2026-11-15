@@ -282,7 +282,7 @@ public sealed class FarmingProbe : MapComponent
                 Check(hydro.TryGetComp<CompGlower>().Props.glowRadius == 0f, "Lit basin retained a radial light flood");
                 adjacent.Destroy();
                 foreach (var name in new[] { "TMM_GreenhouseGlassWall", "TMM_GreenhouseGlassDoor", "TMM_GreenhouseClimateUnit" })
-                    Check(!DefDatabase<ThingDef>.GetNamed(name).canGenerateDefaultDesignator, "Internal greenhouse part remains directly buildable: " + name);
+                    Check(DefDatabase<ThingDef>.GetNamed(name).canGenerateDefaultDesignator, "Standalone greenhouse part is hidden: " + name);
                 Check(Math.Abs(-hydro.TryGetComp<CompPowerTrader>().PowerOutput - FarmingPowerBudget.Hydroponics(true, 70f, 2900f)) < 0.1f, "Hydroponic power budget wrong");
                 soilGrowth = soilPlant.Growth; hydroGrowth = hydroPlant.Growth;
                 for (int i = 0; i < 3; i++) { soilPlant.TickLong(); hydroPlant.TickLong(); }

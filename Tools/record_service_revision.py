@@ -6,7 +6,7 @@ from pathlib import Path
 from verify_integration_complete import main as verify_integration
 
 PROJECT = Path(__file__).resolve().parents[1]
-EXPECTED_STEPS = ['Recruit', 'Recruit reload', 'Sales', 'Sales reload', 'SalesDelivery', 'SalesDelivery reload', 'Wholesale', 'Wholesale reload', 'Farming', 'Farming reload',
+EXPECTED_STEPS = ['Recruit', 'Recruit reload', 'Sales', 'Sales reload', 'SalesDelivery', 'SalesDelivery reload', 'Wholesale', 'Wholesale reload', 'Dossier', 'Dossier reload', 'Farming', 'Farming reload',
                   'Core libraries', 'Melee and hands', 'HugsLib and RunAndGun']
 for component in ['Hospitality', 'Restaurant', 'Complex', 'Clinic', 'ClinicGuest',
                   'ComplexLayout', 'Company']:

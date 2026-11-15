@@ -1,0 +1,45 @@
+{
+  "productionAssemblySha256": "636bba4cb4066a512c96c6bdb205031f73031f25f8021c67f404eb34d13e6fa5",
+  "productionSourceFrozenDuringTargetedRun": true,
+  "harnessCorrections": [
+    {
+      "topic": "Generated map obstacles",
+      "change": "Clear fog and despawn non-destroyable test-map geysers rather than calling Destroy. These are isolated fixture changes."
+    },
+    {
+      "topic": "Manual room restoration",
+      "change": "Use the real Zone.Delete path in the fixture; bare DeregisterZone leaves the cell grid behind. Production rejection cleanup also uses Delete."
+    },
+    {
+      "topic": "Power after partitioning",
+      "change": "The fixture supplies a conduit by the new room wall as required by the actual manual-room power boundary."
+    },
+    {
+      "topic": "Guest generation",
+      "change": "Disable generated pawn relationships in the layout fixture to avoid references to rejected generated candidates."
+    },
+    {
+      "topic": "Standalone restaurant",
+      "change": "First confirm no complex dossier is created without a reception; then add a manual-mode reception before testing positive restaurant payment attribution."
+    },
+    {
+      "topic": "Legacy complex fixture simulation",
+      "change": "Explicitly run normal time, reveal its isolated map and notify the test actor after teleport. A paused run and an unreachable-haul setup were not counted."
+    }
+  ],
+  "resumedStepsRule": "Only earlier successful steps using the same production DLL are reused. Failed attempts do not contribute checks. Changed later fixture logic is rerun.",
+  "runtimeTestsDoNotClaim": [
+    "User save gameplay tests",
+    "Live RimWorld1.6 execution",
+    "Manual visual inspection of all UI",
+    "All future faction/race/transport mods",
+    "A full29-step regression of every subsystem"
+  ],
+  "readOnlyUserSaveInspection": "Only arrival queue, admission hours and candidate bed membership were inspected; the save was not played or changed.",
+  "wholesaleRetryObservation": {
+    "firstReloadAttempt": "Scheduled generation did not yield a new group in one attempt; runtime errors and broken references were zero.",
+    "replay": "Same saved fixture and production DLL passed after adding failure-context diagnostics only.",
+    "exactInitialGenerationRefusalReasonEstablished": false,
+    "limit": "TryVisit can legitimately return false and the production scheduler backs off2500ticks; do not interpret the passed scenario as a guaranteed spawn for every world/faction."
+  }
+}

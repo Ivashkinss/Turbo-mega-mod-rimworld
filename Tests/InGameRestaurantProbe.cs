@@ -118,6 +118,10 @@ public sealed class RestaurantProbe : MapComponent
         map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
         waiter.pather.StopDead(); waiter.Position = new IntVec3(42, 0, 43);
         MealStock(2); guest = MakeGuest(50);
+        Check(GuestDossiers.Capture(guest,map)==null,"Standalone restaurant unexpectedly created a complex dossier");
+        var reception=(Building_ComplexDesk)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("TMM_ComplexDesk"));
+        reception.automaticServices=false;reception.area=hotel;reception.guestArea=hotel;reception.foodArea=stock;
+        reception.SetFaction(Faction.OfPlayer);GenSpawn.Spawn(reception,new IntVec3(50,0,50),map);
         Check(Service.TryOrder(guest, counter) == null, "Unassigned restaurant sold food");
         counter.serviceArea = dining; counter.foodArea = stock;
         Check(RestaurantMeals.Seat(chair, counter), "Dining fixture has no table beside chair");
@@ -233,6 +237,7 @@ public sealed class RestaurantProbe : MapComponent
     }
     private void Finish()
     {
+        if(errors.Count==0)Check(GuestDossiers.Book.records.Sum(r=>r.restaurant)==counter.earned,"Dossier restaurant payments differ from physical revenue");
         reported = true;
         string file = Environment.GetCommandLineArgs().Contains("-tmm-restaurant-reload") ? "RestaurantReloadProbe.json" : "RestaurantProbe.json";
         File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath, file), "{\"passed\":" + (errors.Count == 0 ? "true" : "false") + ",\"checks\":" + checks + ",\"errors\":[" + string.Join(",", errors.Select(Escape)) + "]}");

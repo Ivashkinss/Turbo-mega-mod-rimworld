@@ -1,0 +1,28 @@
+{
+  "userReport": "No guests or patients during approximately two game days.",
+  "userSaveReadOnlyInspected": true,
+  "userSaveLoadedInGame": false,
+  "userSaveModified": false,
+  "observedTicksGame": 360000,
+  "guestQueueTicks": [
+    373258,
+    796644,
+    2290623
+  ],
+  "nextPlannedVisitHours": 5.3032,
+  "guestBedsRecognized": 4,
+  "patientAdmissionEnabled": true,
+  "openHourStarts": [
+    7,
+    11,
+    15,
+    19
+  ],
+  "candidateMedicalBeds": 2,
+  "medicalBedsInsideComplex": true,
+  "medicalBedsOutsideStaffArea": true,
+  "medicalRoomAndPathRuntimeVerifiedOnUserMap": false,
+  "conclusion": "A guest visit was already queued. Patient arrivals are probabilistic and gated by opening hours; two days alone do not prove an arrival defect.",
+  "settingsChanged": false,
+  "rateOrQueueForced": false
+}

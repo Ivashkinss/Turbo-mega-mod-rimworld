@@ -79,14 +79,140 @@
     },
     {
       "id": "GuestDossierDataSources",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/GuestDossierDataSources/TASK.md",
       "outputDir": "Tools/Build/GeminiGuestDossierDataSources",
       "expectedOutputs": [
         "SOURCES.json",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-15T16:16:52.6588480Z"
+      "createdUtc": "2026-11-15T16:16:52.658848Z",
+      "note": "Codex checked arrival/departure and actual receipt sources; clinic and delayed orders need explicit persisted guest identity. Detailed review accompanies implementation."
+    },
+    {
+      "id": "GuestDossierTexts",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDossierTexts/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDossierTexts",
+      "expectedOutputs": [
+        "TEXTS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T16:53:48.9072382Z",
+      "note": "Codex independently checked42 paired keys/placeholders, clarified global admission scope and neutral empty histories before import."
+    },
+    {
+      "id": "GuestDossierSaveAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDossierSaveAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDossierSaveAudit",
+      "expectedOutputs": [
+        "FIELDS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T17:12:16.6433667Z",
+      "note": "Codex checked97 persisted fields in9 classes against saved-wrapper sources; perfect-safety claims are not adopted. Live persistence remains a separate gate."
+    },
+    {
+      "id": "GuestDossierPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDossierPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDossierPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T17:32:47.5521295Z",
+      "note": "Codex reviewed bounded history, global next-visit admission, clinical payment and pawn-retention boundaries. Manual scenarios remain plans."
+    },
+    {
+      "id": "GreenhouseManualUpdatePoints",
+      "state": "reviewed",
+      "taskFile": "Delegation/GreenhouseManualUpdatePoints/TASK.md",
+      "outputDir": "Tools/Build/GeminiGreenhouseManualUpdatePoints",
+      "expectedOutputs": [
+        "UPDATE-POINTS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T19:32:59.0218310Z",
+      "note": "Codex checked20 update points. Manual RestoreZone changed to room scanning; Scribe_Values positions are not Scribe_Deep, and universal error-free claims rejected. Runtime migration tested separately."
+    },
+    {
+      "id": "ComplexAreaTooltipReview",
+      "state": "reviewed",
+      "taskFile": "Delegation/ComplexAreaTooltipReview/TASK.md",
+      "outputDir": "Tools/Build/GeminiComplexAreaTooltipReview",
+      "expectedOutputs": [
+        "TEXT-REVIEW.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T19:47:22.163679+00:00",
+      "note": "Codex checked75 paired snapshot keys and unique helpers; no findings. Later reception tabs are outside this snapshot and have a separate guide task."
+    },
+    {
+      "id": "ReceptionServicesGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/ReceptionServicesGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiReceptionServicesGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T20:08:59.463262+00:00",
+      "note": "Codex corrected fictitious joint-stock company, no-bed vs no-free-bed option, surgery wording and open-status vs capacity. Guide is a plan, not passed tests."
+    },
+    {
+      "id": "VipGuestReadinessSurvey",
+      "state": "reviewed",
+      "taskFile": "Delegation/VipGuestReadinessSurvey/TASK.md",
+      "outputDir": "Tools/Build/GeminiVipGuestReadinessSurvey",
+      "expectedOutputs": [
+        "SOURCES.json",
+        "DESIGN-NOTES.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T20:18:48.583258+00:00",
+      "note": "Codex reviewed source entry points and 4 ticks/silver delay. Rejected no-map-entry/only-clinical-exception claims: current visits and recovered groups are also protected; refused pawns walk off after spawn. Timing in real seconds assumes normal speed."
+    },
+    {
+      "id": "ManualGreenhouseFinalAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/ManualGreenhouseFinalAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiManualGreenhouseFinalAudit",
+      "expectedOutputs": [
+        "STATE-FIELDS.json",
+        "FINDINGS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T20:27:18.437399+00:00",
+      "note": "Codex checked32 saved fields in4 classes and accepted two documented limits: repaint after dividing a room; one managed climate node per zone. No additional source changes required; live geometry/power/save tests passed separately."
+    },
+    {
+      "id": "ServiceAcceptanceMenuRefresh",
+      "state": "reviewed",
+      "taskFile": "Delegation/ServiceAcceptanceMenuRefresh/TASK.md",
+      "outputDir": "Tools/Build/GeminiServiceAcceptanceMenuRefresh",
+      "expectedOutputs": [
+        "USER-CHECKLIST.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T20:53:22.431348+00:00",
+      "note": "Codex checked12 checklist items/24 scenarios, corrected personnel submenu, staff-bed return, restaurant prerequisites, medical source path and independent early-discharge patient. Manual plans are not passed game results."
+    },
+    {
+      "id": "VipGuestBinaryHookAudit",
+      "state": "pending",
+      "taskFile": "Delegation/VipGuestBinaryHookAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiVipGuestBinaryHookAudit",
+      "expectedOutputs": [
+        "API.json",
+        "ORDER.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T21:27:34.604216+00:00"
     }
   ]
 }
