@@ -204,7 +204,7 @@ namespace TurboMegaMod
         }
         public override string GetInspectString()
         {
-            return base.GetInspectString() + "\n" + "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome) + "\n" + "TMM.Complex.CompanyIncome".Translate(companyIncome) + "\n" + "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead));
+            return base.GetInspectString() + "\n" + "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome) + "\n" + "TMM.Complex.CompanyIncome".Translate(companyIncome) + "\n" + "TMM.Sales.Income".Translate(Map == null ? 0 : Map.GetComponent<ComplexSales>().earned) + "\n" + "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead));
         }
     }
 

@@ -1,6 +1,8 @@
 {
   "date": "2026-11-15",
-  "salesImplemented": false,
+  "publicRetailImplemented": true,
+  "privateWarehouseDeliveryImplemented": false,
+  "wholesaleBuyersImplemented": false,
   "hospitalitySource": {
     "repository": "https://github.com/Zaljerem/Hospitality",
     "commit": "d465bdc07b88d77eb3d158c215af388dcf771863",
@@ -23,7 +25,7 @@
     "matchingCases": 32,
     "monotonicityPoints": 200,
     "stackSplitComparisons": 3,
-    "scope": "Provisional balance model only; no production stock scanner, sales checkbox or wholesale AI yet.",
+    "scope": "Provisional wholesale balance model only; public retail and its checkbox are implemented separately, wholesale AI is still pending.",
     "limitations": [
       "Decimal values are converted to float for ceiling in the supplied validator.",
       "No explicit NaN/Infinity rejection in the supplied stock model.",
@@ -32,7 +34,7 @@
     ]
   },
   "followup": {
-    "task": "Delegation/SaleTransferEdgeAudit/TASK.md",
+    "task": "Delegation/PublicSalesGuide/TASK.md",
     "reasons": [
       "Do not assume a positive transfer return count after a successful stack merge on 1.7; Restaurant.cs already handles that case.",
       "Distinguish direct TryAdd from TryStartCarry, which calls SplitOff first, before declaring all container withdrawals impossible.",

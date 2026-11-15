@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "9665d3ed41ed6969429117f9ed3949867ce683ee7e504700513a13831839fd50",
+  "successfulIsolatedSteps": 13,
+  "runtimeChecks": 540,
+  "components": {
+    "Sales": {
+      "fresh": 55,
+      "reload": 20
+    },
+    "Harmony": {
+      "fresh": 19
+    },
+    "Hospitality": {
+      "fresh": 40,
+      "reload": 10
+    },
+    "Restaurant": {
+      "fresh": 32,
+      "reload": 11
+    },
+    "ClinicGuest": {
+      "fresh": 15,
+      "reload": 10
+    },
+    "Complex": {
+      "fresh": 27,
+      "reload": 8
+    },
+    "Company": {
+      "fresh": 94,
+      "reload": 12
+    }
+  },
+  "russianEntries": 3518,
+  "baselineFullRegressionCommit": "04729c6e6d3f4ae359d6c2a3e094458c025b2745",
+  "scope": "Public retail, stored flags, real goods/currency, container withdrawals and affected service regressions.",
+  "privateWarehouseDeliveryImplemented": false,
+  "wholesaleBuyersImplemented": false,
+  "supplementalSalesReloadChecks": 20,
+  "supplementalScope": "Additional live withdrawal from sbz_Crate, with exact stock and money conservation.",
+  "fullRegressionOnThisAssembly": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false
+}

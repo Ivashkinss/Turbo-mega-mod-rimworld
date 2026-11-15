@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>TMM_BuyComplexGoods</defName>
+    <driverClass>TurboMegaMod.JobDriver_BuyComplexGoods</driverClass>
+    <reportString>buying goods.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <joyMaxParticipants>1</joyMaxParticipants>
+    <joyDuration>8000</joyDuration>
+    <joyGainRate>1</joyGainRate>
+    <joyKind>Shopping</joyKind>
+  </JobDef>
+</Defs>

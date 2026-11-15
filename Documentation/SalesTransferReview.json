@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-15",
+  "gameVersion": "1.7.5000 rev1275",
+  "assemblyVersion": "1.7.9805.38275",
+  "reviewedReports": [
+    "Tools/Build/GeminiSaleTransferEdgeAudit/REPORT.md",
+    "Tools/Build/GeminiWholesalePawnCatalog/REPORT.md"
+  ],
+  "independentlyConfirmed": [
+    "ThingOwner transfer return counts may be zero after a successful merge; currency settlement measures actual container deltas.",
+    "A spawned ground item in installed 1.7 can have holdingOwner.Owner of type Map. Use Spawned to select the ground pickup path before considering a container transfer.",
+    "ThingWithComps.SplitOff invokes ThingComp.PostSplitOff; CompQuality.PostSplitOff copies qualityInt. The report's blanket claim that partial splits necessarily lose quality is incorrect.",
+    "Full book and apparel transfers are separately checked for identity and quality in the sales fixture.",
+    "Reference assembly signatures do not establish executable 1.6 behavior; no live 1.6 test is claimed.",
+    "MassUtility.FreeSpace clamps Capacity minus GearAndInventoryMass to at least zero. Runtime inventory capacity, not nominal XML carrying figures, limits purchases."
+  ],
+  "wholesalePlanning": {
+    "silverUnitMass": 0.008,
+    "nominalSilverMassKg": {"1000": 8, "5000": 40, "30000": 240},
+    "factionSelectionMustUseCurrentWorldAndRelationships": true,
+    "futureFactionModsMustNotRequireDefNameWhitelistEdits": true,
+    "catalogIsReferenceNotRuntimeFactionAvailability": true,
+    "wholesaleRuntimeImplemented": false
+  },
+  "nextGeminiTask": "Delegation/PrivateDeliveryApiAudit/TASK.md"
+}

@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-15",
+  "sourceReport": "Tools/Build/GeminiSalesGuestUiAudit/REPORT.md",
+  "acceptedAsUnqualifiedImplementationPlan": false,
+  "corrections": [
+    "The claim that no mod patch hides old bed controls is false: ComplexLayoutHooks already patches Building_GuestBed.GetGizmos and Building_Bed.GetGizmos and supplies GuestBedGizmos/BedGizmos.",
+    "Do not duplicate the existing bed patches or remove global PawnColumnDef entries based on this report.",
+    "A proposed extra MayBuy prefix does not prove compatibility with every external mod.",
+    "Drawing a cover over a dropdown after it has processed input is not an established safe way to disable that control."
+  ],
+  "followupScope": "Verify remaining ShoppingArea controls and their actual runtime signatures before a map-specific UI change; retain food policy and controls on maps without an active complex.",
+  "nextGeminiTask": "Delegation/PrivateDeliveryApiAudit/TASK.md"
+}
