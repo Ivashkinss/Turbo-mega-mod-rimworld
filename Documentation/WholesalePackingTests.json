@@ -5,5 +5,19 @@
   "linkedIntoGameAssembly": false,
   "runtimeWholesaleImplemented": false,
   "plannerSha256": "8a970e693b47716cff70b78694655b1b468147b7b5ab738428dddd5918a2f850",
-  "testSha256": "065607da32e2f4f0fa6070be99a026c63bbb29e077cc127c4815f3032184149d"
+  "testSha256": "44885cd0ebb710c5e4fb10cea51805f1ed7616a7b4302796146811157f398de5",
+  "fixtureCases": 24,
+  "fixtureAssertions": 214,
+  "excludedCases": [
+    "CASE-14",
+    "CASE-15",
+    "CASE-16",
+    "CASE-17",
+    "CASE-18",
+    "CASE-26",
+    "CASE-31",
+    "CASE-32"
+  ],
+  "fixtureAdapterSha256": "73cca229845be6c478c95b7afc31b022ae13bc4d49ce22a201894b9d1bd61d34",
+  "fixtureSha256": "33b1da9069e45af90077daec2a31aeb5b0e8c24fc65c897e17589a4844d74137"
 }

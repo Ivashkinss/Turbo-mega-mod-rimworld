@@ -1,3 +1,4 @@
+param([string]$Cases)
 $ErrorActionPreference='Stop'
 $projectPath=Split-Path -Parent $PSScriptRoot
 $buildPath=Join-Path $PSScriptRoot 'Build'
@@ -6,14 +7,18 @@ $compiler=Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
 $program=Join-Path $buildPath 'WholesalePackingTests.exe'
 $planner=Join-Path $projectPath 'Source\Wholesale\PackingPlanner.cs'
 $test=Join-Path $projectPath 'Tests\WholesalePackingTests.cs'
-& $compiler /noconfig /nologo /target:exe /optimize+ /reference:System.dll /reference:System.Core.dll ('/out:'+$program) $planner $test
+$caseProbe=Join-Path $projectPath 'Tests\WholesalePackingCaseProbe.cs'
+& $compiler /noconfig /nologo /target:exe /optimize+ /reference:System.dll /reference:System.Core.dll /reference:System.Web.Extensions.dll ('/out:'+$program) $planner $test $caseProbe
 if($LASTEXITCODE -ne 0){throw 'Wholesale packing tests failed to compile.'}
-$output=& $program | Out-String
+$output=if($Cases){& $program (Resolve-Path -LiteralPath $Cases).Path | Out-String}else{& $program | Out-String}
 if($LASTEXITCODE -ne 0){throw 'Wholesale packing tests failed.'}
 $result=$output | ConvertFrom-Json
 if(!$result.passed){throw 'Wholesale packing test report failed.'}
 $report=[ordered]@{passed=$true;checks=$result.checks;scope=$result.scope;linkedIntoGameAssembly=$false;runtimeWholesaleImplemented=$false;
     plannerSha256=(Get-FileHash -LiteralPath $planner -Algorithm SHA256).Hash.ToLowerInvariant();
-    testSha256=(Get-FileHash -LiteralPath $test -Algorithm SHA256).Hash.ToLowerInvariant()}
+    testSha256=(Get-FileHash -LiteralPath $test -Algorithm SHA256).Hash.ToLowerInvariant();
+    fixtureCases=$result.fixtureCases;fixtureAssertions=$result.fixtureAssertions;excludedCases=$result.excludedCases;
+    fixtureAdapterSha256=(Get-FileHash -LiteralPath $caseProbe -Algorithm SHA256).Hash.ToLowerInvariant();
+    fixtureSha256=$(if($Cases){(Get-FileHash -LiteralPath $Cases -Algorithm SHA256).Hash.ToLowerInvariant()}else{$null})}
 $report | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $projectPath 'Documentation\WholesalePackingTests.json') -Encoding utf8
 $report | ConvertTo-Json

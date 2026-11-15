@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-15",
+  "caseSource": "Tools/Build/GeminiWholesalePackingCases",
+  "pythonModel": {"verifiedCases": 32, "negativeSelfTests": 8},
+  "csharpPlanner": {"syntheticAssertions": 87, "fixtureCasesVerified": 24, "fixtureAssertions": 214,
+    "excludedCases": ["CASE-14", "CASE-15", "CASE-16", "CASE-17", "CASE-18", "CASE-26", "CASE-31", "CASE-32"],
+    "excludedScope": "Lifecycle access gates, duplicate receipt processing and invalid receipt-drop sequences belong to the future service, not PackingPlanner. CASE-22 confirms feasible planning before a hypothetical failed transfer; it is not a rollback test."},
+  "rejectedRuntimeAdvice": [
+    "Do not replace inventory MassUtility.Capacity/FreeSpace with StatDefOf.CarryingCapacity, which relates to carrying in hands and is not the inspected inventory formula.",
+    "Physical silver escrow must retain actual Things via a serialized ThingOwner; Scribe_Values of a numeric escrow balance alone would not preserve the physical money.",
+    "The report's guessed TryAddOrTransfer signature and return meaning are not independent API evidence; use verified container overloads and actual observed ownership/quantity.",
+    "Do not infer a fixed drop radius, guaranteed failed placement from an occupied cell, or unconditional reservation cleanup from the arithmetic model."
+  ],
+  "textSource": "Tools/Build/GeminiWholesaleVisitTexts/TEXTS.json",
+  "textAdjustments": ["Arrival must not promise no overnight stay: no hotel room is different from a visit never spanning night.", "Leaving status must not assert purchases when a group may leave empty-handed."],
+  "scope": "Independent numeric and text review, not live wholesale AI, transfer, navigation, save/load or WorldPawns retention evidence."
+}

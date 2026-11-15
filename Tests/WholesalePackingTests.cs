@@ -24,7 +24,7 @@ public static class WholesalePackingTests
         }
         return plan;
     }
-    public static int Main()
+    public static int Main(string[] args)
     {
         try {
             var request=Request(10,18m,0.1m,Carrier("human-b",35m,25m,2500),Carrier("human-a",35m,28m,2500));
@@ -69,7 +69,11 @@ public static class WholesalePackingTests
             request=Request(1,1m,0.0000000000000000000000000001m,Carrier("a",100m,1m,100));Ready(request);
             request.UnitMass=-1;Check(PackingPlanner.Create(request).Status==PackingStatus.Invalid,"Accepted negative item mass");
             request.UnitMass=0;request.Count=0;Check(PackingPlanner.Create(request).Status==PackingStatus.Invalid,"Accepted zero requested count");
-            Console.WriteLine("{\"passed\":true,\"checks\":"+checks+",\"scope\":\"Pure packing and quote planner; no live transaction or game AI\"}");return 0;
+            if(args.Length>0)WholesalePackingCaseProbe.Run(args[0]);
+            Console.WriteLine("{\"passed\":true,\"checks\":"+checks+",\"fixtureCases\":"+WholesalePackingCaseProbe.Cases+
+                ",\"fixtureAssertions\":"+WholesalePackingCaseProbe.Checks+",\"excludedCases\":["+
+                string.Join(",",WholesalePackingCaseProbe.Excluded.Select(id=>"\""+id+"\""))+
+                "],\"scope\":\"Pure packing and quote planner; no live transaction or game AI\"}");return 0;
         }catch(Exception e){Console.Error.WriteLine(e);return 1;}
     }
 }

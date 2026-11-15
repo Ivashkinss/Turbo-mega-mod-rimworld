@@ -4,7 +4,7 @@
 
 The planner uses a deterministic payment order; it does not search every possible redistribution of silver to find an optimal packing. The caller proposes a fixed quantity and can try a smaller quantity on failure. Quotes round the whole batch once at 55% of market value. Mass released by the proposed payment is credited only to the carrier paying those coins.
 
-Run `Tools/test_wholesale_planner.ps1` from the mod directory. This compiles the planner and standalone numerical tests against .NET Framework, without loading or running RimWorld. Results are recorded in `Documentation/WholesalePackingTests.json` with both source hashes.
+Run `Tools/test_wholesale_planner.ps1` from the mod directory. Add `-Cases Tools/Build/GeminiWholesalePackingCases/CASES.json` to check independent fixture data on the real C# planner. This compiles the planner and standalone numerical tests against .NET Framework, without loading or running RimWorld. Results are recorded in `Documentation/WholesalePackingTests.json` with source and fixture hashes. The fixture adapter explicitly reports excluded lifecycle/receipt cases instead of claiming the pure planner tested those systems.
 
 This directory is deliberately **not yet included in the production DLL**: `Tools/build_assembly.ps1` compiles only top-level Source files. When the wholesale service consumes this planner, add these sources explicitly to the compiler and source-freshness guards, rebuild the game assembly, and test actual transactions and saved visits. The checked hotel/retail assembly remains unchanged at this checkpoint.
 
