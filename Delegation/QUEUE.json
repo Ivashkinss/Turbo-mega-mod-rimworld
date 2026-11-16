@@ -269,7 +269,7 @@
     },
     {
       "id": "GuestNeedEligibilityBinaryAudit",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/GuestNeedEligibilityBinaryAudit/TASK.md",
       "outputDir": "Tools/Build/GeminiGuestNeedEligibilityBinaryAudit",
       "expectedOutputs": [
@@ -277,7 +277,58 @@
         "IL.txt",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-16T01:14:37.274588+00:00"
+      "createdUtc": "2026-11-16T01:14:37.274588+00:00",
+      "note": "Native method/gate extraction accepted. Claim of no Outdoors for all visitors rejected: GuestUtility.Arrive sets HostFaction=OfPlayer before CompGuest.Arrive. Runtime hosted-guest eligibility confirmed. Exact24 is only base/DLC XML scope."
+    },
+    {
+      "id": "DeathrestGuestApiAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/DeathrestGuestApiAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiDeathrestGuestApiAudit",
+      "expectedOutputs": [
+        "API.json",
+        "FLOW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T04:35:11.542670+00:00",
+      "note": "Codex confirmed native CanBindToBindable faction gate and ShouldBeDowned chain. Accepted as API candidate map, not proof of live guest deathrest. Bed validity does not mean pathfinding prohibition; actual wake/group/billing still needs runtime."
+    },
+    {
+      "id": "OutdoorPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/OutdoorPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutdoorPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T04:56:57.015916+00:00",
+      "note": "Codex checked10 scenarios. Corrected no power requirement for reception, checkbox-independent needs window, native need can be absent, roof hole is not necessarily a courtyard, and target run now10 steps after transport registry fix."
+    },
+    {
+      "id": "TemporaryGuestTransportAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/TemporaryGuestTransportAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiTemporaryGuestTransportAudit",
+      "expectedOutputs": [
+        "METHODS.json",
+        "CASES.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T05:09:24.815784+00:00",
+      "note": "Codex confirmed native cache chain/GetLord direct field/null guards and12 planned cases. Corrected ErrorOnce is not proven crash. Long carry billing retention is a separate real issue in Valid(Spawned), now next targeted fix."
+    },
+    {
+      "id": "HotelCarryBillingCases",
+      "state": "pending",
+      "taskFile": "Delegation/HotelCarryBillingCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiHotelCarryBillingCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T05:21:37.628202+00:00"
     }
   ]
 }

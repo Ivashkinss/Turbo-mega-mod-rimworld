@@ -1,5 +1,18 @@
 # Продолжение Turbo mega mod — 16 ноября 2026
 
+## Текущий этап: прогулки гостей и реестр после переноски
+
+DLL151fa0aa00ba901e8b3c04521edf1e61e2f515ebe18b86dba5d01cae05d78829: **200 проверок/10 успешных игровых шагов**. Outdoor27+4, Dossier30+8, Hospitality40+11, Vip47+8, ClinicGuest15+10. Всё на одной DLL,0runtime errors/0lost references; отчёт Documentation/OutdoorStageVerification.json, строгая проверка Tools/verify_outdoor_stage.py. 4456ресурсов,3640RUзаписей; runtime2925Keyed/702scalar/90grammar, Odyssey252. Тесты — только одноразовые карты/сейвы, с21C/ясной погодой и очисткой враждебных целей; пользовательские данные/файлы игры не менялись. Живой1.6/все будущие моды/визуальная оценка/весь29модульный прогон не заявляются.
+
+Добавлены Source/GuestOutdoor.cs и GuestNeedsDialog.cs: нативные видимые шкалы на ресепшене, автоматический отдых приOutdoors<35%, максимум2500тиков/до70%, нативное естественное восстановление, SafeWeather/Threat/Temperature/Public BFS(60клеток/6000проверок), retry1000. Еда<55%, сон<40%, медицинская помощь, ресторан, заселение и беседа важнее. Во время клиники бар не меняется, включая переноску; UI включает клинических постояльцев в носильщике. Отключение автоматических прогулок не удаляет нативную потребность. Новый JobDef и локализация должны быть в Git: verifier проверяет tracked resources.
+
+Ключевое исправление аудита: GuestUtility.Arrive назначает HostFaction=OfPlayer, поэтому утверждение Gemini «Outdoors нет у всех гостей» неверно. Нашего ShouldHaveNeed-патча нет. Refresh использует нативное право. Core GetLord(Pawn) в1.7 читает pawn.lord напрямую. При переноске CompGuest.PostDeSpawn убирает PresentGuests, PostSpawnSetup не возвращает; GuestDossierHooks теперь на Pawn.SpawnSetup восстанавливает native registry для уже прибывшего гостя без Begin/RecordClaim. Это устраняет ошибочную классификацию и логOptimizeApparel безOutfitTracker. Проверены прямойIsGuest послеcarry/drop и нативныйThinkTree; логошибка не называется доказаннымкрашем.
+
+Документы OUTDOOR-REST.md, OUTDOOR-GUIDE.md, OUTDOOR-MANUAL-CHECKS.md; OutdoorGeminiReview.json и OutdoorStageTestNotes.json честно сохраняют неудачные стенды/исправленный XML/статическуюошибку. Старые200не прибавлять кVIP203прошлогоэтапа.
+
+Следующая обнаруженная правка: HotelBilling.Valid требуетSpawned, поэтому долгийcarry>250тиков может выбросить сохранённую HotelStay. Нужно удерживать её поMapHeld и не собирать монеты доSpawned. Сейчас Gemini получает **Delegation/HotelCarryBillingCases/TASK.md**, ожидаемые12проектныхслучаев, snapshotстарогокода. Перед продолжением проверить реальный статус, а не предполагать запуск. NativeDeathrest API и TemporaryGuestTransportAudit проверены как подготовка; смертосон не реализован, его autoWake/faction/group/billing требуют отдельныхruntimeпроверок. Происшествия всё ещё только для совместной сюжетной финалки.
+
+
 ## Текущий проверенный этап: VIP и постоянные клиенты
 
 DLL `c8239581aa32d1c2970c16ef4e9ed7994e2e791458ccf7d5051126dffee0a38a`. Итог: **203 проверок в9 успешных изолированных игровых шагах**, 38 примеров на настоящем C# модуле,14 metadata-проверок нативных хуков1.6/1.7,4456 хешей ресурсов. Отчёт — [Documentation/VipStageVerification.json](Documentation/VipStageVerification.json); проверка Tools/verify_vip_stage.py. Vip47+8+11(последнее — миграция отсутствующих вложенных полей), Dossier30+8, Hospitality40+11, Restaurant36+12. Везде совпадает DLL,0runtime errors/0lost references/безGPUloss. Source заморожены на этой DLL. Полный прогон всех29подсистем на ней не заявляется. Живой1.6, пользовательский сейв и визуальный осмотр не заявляются. Неуспешные/прерванные попытки отдельно описаны в Documentation/VipStageTestNotes.json.

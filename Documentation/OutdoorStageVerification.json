@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "151fa0aa00ba901e8b3c04521edf1e61e2f515ebe18b86dba5d01cae05d78829",
+  "successfulIsolatedSteps": 10,
+  "runtimeChecks": 200,
+  "checksByStep": {
+    "Outdoor": 27,
+    "Outdoor reload": 4,
+    "Dossier": 30,
+    "Dossier reload": 8,
+    "Hospitality": 40,
+    "Hospitality reload": 11,
+    "Vip": 47,
+    "Vip reload": 8,
+    "ClinicGuest": 15,
+    "ClinicGuest reload": 10
+  },
+  "defaults": {
+    "outdoorBreaks": true,
+    "lowLevel": 0.35,
+    "finishLevel": 0.7,
+    "maxBreakTicks": 2500,
+    "minimumFood": 0.55,
+    "minimumRest": 0.4,
+    "searchRadius": 60,
+    "searchCellLimit": 6000,
+    "retryTicks": 1000
+  },
+  "naturalNeedRecoveryVerified": true,
+  "nativeNeedEligibilityUnchanged": true,
+  "disablingBreaksPreservesNativeNeed": true,
+  "clinicalNeedPauseIncludingCarriedGuestVerified": true,
+  "nativeGuestRegistryRestoredAfterTransport": true,
+  "needsWindowUsesActualNeedTracker": true,
+  "runtimeResourcesTracked": true,
+  "runtimeResourceSha256": {
+    "Defs/Complex/GuestOutdoor.xml": "879968d463be53dd3b87cf9de46737beb281781dfd6ef751ad6b9ef886c7d463",
+    "Languages/English/Keyed/GuestOutdoor.xml": "30408335212b5d6683795ac8185ac0f7dad4690edcb194d23c3cab844f6ff7b8",
+    "Languages/Russian/Keyed/GuestOutdoor.xml": "bf832bb017a910cc566bfb52021d41950f2eaca3efe980d40890179bec7284f6",
+    "Languages/Russian/DefInjected/JobDef/GuestOutdoor.xml": "875e8ab1803c0eb2f1bd4de21b9eb099fe2562a18033b2b6e97181c1b80cf151"
+  },
+  "russianEntries": 3640,
+  "resourceHashesVerified": 4456,
+  "scope": "Physical courtyard travel and native need recovery; native health eligibility, public-only search, hunger/rest/clinical and toxic-fallout guards, carried-patient pause/registry restoration, save/reload, needs/reception repaint API, dossier/hotel/VIP/clinic guest regressions.",
+  "testEnvironment": "Only disposable test maps clear fog/hostile targets and set stable clear weather at21C. Original game files, user settings and user saves are not changed.",
+  "limits": [
+    "No new satisfaction override or ShouldHaveNeed patch; hosted guests can already have Outdoors.",
+    "No guarantee of all modded race/DLC needs being serviced.",
+    "Safety uses native danger/weather/threat checks; it is not a proof against all future hazards.",
+    "The public BFS is bounded; large complexes need nearby courtyards."
+  ],
+  "baselineCommit": "dcfd791",
+  "fullAllSubsystemRegressionOnThisAssembly": false,
+  "liveGame16Verified": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "deathrestGuestSupportImplemented": false,
+  "storyIncidentsImplemented": false,
+  "sourceSha256": {
+    "Source\\CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source\\Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source\\ClinicBilling.cs": "c27aee409faf05acdce30928846708273d1af4b2cfc9e48326b9aab14e7507fd",
+    "Source\\ClinicContributions.cs": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49",
+    "Source\\ClinicGuests.cs": "31ce95f7b962195e7c86d50a21f1c5bb0680d9decb47d970edf7cdef5106bb0a",
+    "Source\\ClinicMedicalHooks.cs": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3",
+    "Source\\Company.cs": "56a0c72b7a72a78c7e93fdca33fdf505e69996389d0f98da211ee15e41c36d71",
+    "Source\\CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source\\ComplexLayout.cs": "de68c5bf1d413cff2f26a91153a2ca6ea3738b89a1f875a330bac06827535909",
+    "Source\\ComplexManagement.cs": "2c6d3014948d6d11c584c414514ec38a0e3380ba0f02a0fc33a407b15825768b",
+    "Source\\ComplexReceptionUI.cs": "7a0602f15db28afc71c14ca0786187dae29c546384cc9ce9277a232e6848851b",
+    "Source\\ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source\\ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source\\ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source\\ComplexSales.cs": "55afbc658a3a5f7a381ba8b4fdf02f6af001c7f32dd68be6ed2a78cba308ae08",
+    "Source\\ComplexServicesDialog.cs": "90958ff04c86fb030998a25985d71686e7f05da3ee3f24da49b16dd8730319ee",
+    "Source\\ControlledFarming.cs": "419d64eca8c35ddbb2d368421e3499f60dfd490be14c4e1630b5a9db94ddb844",
+    "Source\\FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source\\FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source\\GreenhouseExpansion.cs": "61198a3a19ad517ca0e473e30b520f670ef85a3a5ef31354bd034ce166564a26",
+    "Source\\GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source\\GuestDossierDialog.cs": "e07f393c996ec896db98dacebaee31d0b44b2a63c212f3dec287582ad5078897",
+    "Source\\GuestDossierHooks.cs": "59cc6c5de8e0b88a4643e5486b8ed4ac47294d0c94dda750b353d6bda56e30e8",
+    "Source\\GuestDossiers.cs": "ed9361e18ee59532a1f1b4a06edc07c2a7a99934adf5e97aff455739fde59e26",
+    "Source\\GuestNeedsDialog.cs": "681af031d04891bb7128ddb291714e1bb8b690a18c910fcfb4d7294ef8084f78",
+    "Source\\GuestOutdoor.cs": "7005438e43c435bb971d15a6a0e263b7d6f6062aa4c41926c449360663d54f82",
+    "Source\\GuestProfileRules.cs": "ced380b802e538ffab6cd0ef8bed9da2fc627b21616b6fa2b820065ff87f6e10",
+    "Source\\GuestProfiles.cs": "e038719a61ac2808483a885051f0ab436172cf8c9ac3d7e0fccda60ddd07a118",
+    "Source\\HotelBilling.cs": "1901c9a76ef977866c148f3cbd55da07937c185009b2dc8c3f008174e48555bb",
+    "Source\\HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source\\ManualGreenhouse.cs": "ced0a292921285e4b969a22916dd771325695c3f73f2ec6ba27750dcfaaf6a9a",
+    "Source\\MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source\\MedicalAllocation.cs": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+    "Source\\MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source\\MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source\\OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source\\RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source\\RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source\\Restaurant.cs": "fc79b6c16151608ae56ceb6bdda0d90053363aefa65e5b469800c8905074235c",
+    "Source\\RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source\\RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source\\SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source\\SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source\\VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source\\Wholesale\\PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source\\WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source\\WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source\\WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns\\Outdoor-FullSet-20261116-080626\\Result.json",
+      "sha256": "4ffdc5c0c668a32e1736fc912a289dd200242f5df65dfad2e98cb62a03ffbb61"
+    },
+    {
+      "path": "Documentation\\Outdoor-FullSet.json",
+      "sha256": "4ffdc5c0c668a32e1736fc912a289dd200242f5df65dfad2e98cb62a03ffbb61"
+    },
+    {
+      "path": "TestRuns\\Outdoor-FullSet-20261116-080626\\ReloadResult.json",
+      "sha256": "e6e5cf17b6e7d46d842ddf4ba84b3ff682b8c85e56eff44cb258078e8d83cb0b"
+    },
+    {
+      "path": "Documentation\\Outdoor-Reload.json",
+      "sha256": "e6e5cf17b6e7d46d842ddf4ba84b3ff682b8c85e56eff44cb258078e8d83cb0b"
+    },
+    {
+      "path": "TestRuns\\Dossier-FullSet-20261116-080847\\Result.json",
+      "sha256": "a7de729df68fc62571b9ca75a5b4168d152420c8f3cb42aecd16ad1b765202e5"
+    },
+    {
+      "path": "Documentation\\Dossier-FullSet.json",
+      "sha256": "a7de729df68fc62571b9ca75a5b4168d152420c8f3cb42aecd16ad1b765202e5"
+    },
+    {
+      "path": "TestRuns\\Dossier-FullSet-20261116-080847\\ReloadResult.json",
+      "sha256": "c00e8c15bd9fa9e972cf0c474441b6b4629664aed35d386fb67de6ad066a0fa8"
+    },
+    {
+      "path": "Documentation\\Dossier-Reload.json",
+      "sha256": "c00e8c15bd9fa9e972cf0c474441b6b4629664aed35d386fb67de6ad066a0fa8"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261116-081110\\Result.json",
+      "sha256": "d5e030dc0fec8ee05f41f5ecd34affcaf9a7a5e409f1609b3e1813aae85adfe4"
+    },
+    {
+      "path": "Documentation\\Hospitality-FullSet.json",
+      "sha256": "d5e030dc0fec8ee05f41f5ecd34affcaf9a7a5e409f1609b3e1813aae85adfe4"
+    },
+    {
+      "path": "TestRuns\\Hospitality-FullSet-20261116-081110\\ReloadResult.json",
+      "sha256": "c4a1f200651f903ffae1a8e8a654b1f073700a49836f2607a23f06712d9f762c"
+    },
+    {
+      "path": "Documentation\\Hospitality-Reload.json",
+      "sha256": "c4a1f200651f903ffae1a8e8a654b1f073700a49836f2607a23f06712d9f762c"
+    },
+    {
+      "path": "TestRuns\\Vip-FullSet-20261116-081348\\Result.json",
+      "sha256": "0de5c25d1a1140ed9020d93df7c5b0da0f96353c5984e7025a22a0d6b6a910e1"
+    },
+    {
+      "path": "Documentation\\Vip-FullSet.json",
+      "sha256": "0de5c25d1a1140ed9020d93df7c5b0da0f96353c5984e7025a22a0d6b6a910e1"
+    },
+    {
+      "path": "TestRuns\\Vip-FullSet-20261116-081348\\ReloadResult.json",
+      "sha256": "1fa618d09829d518324b35006484d7169c5e5d00ec8a57b608733f21d098dcdb"
+    },
+    {
+      "path": "Documentation\\Vip-Reload.json",
+      "sha256": "1fa618d09829d518324b35006484d7169c5e5d00ec8a57b608733f21d098dcdb"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261116-081609\\Result.json",
+      "sha256": "aea902af3951bc10e1cf3685e6f29b84ae7c52acfaafa49300dac47f5f69e5c5"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-FullSet.json",
+      "sha256": "aea902af3951bc10e1cf3685e6f29b84ae7c52acfaafa49300dac47f5f69e5c5"
+    },
+    {
+      "path": "TestRuns\\ClinicGuest-FullSet-20261116-081609\\ReloadResult.json",
+      "sha256": "fe98b2b00628470c0f3a90377ad0baaf412c109ac74e3e66682ae1cb2132639c"
+    },
+    {
+      "path": "Documentation\\ClinicGuest-Reload.json",
+      "sha256": "fe98b2b00628470c0f3a90377ad0baaf412c109ac74e3e66682ae1cb2132639c"
+    }
+  ]
+}

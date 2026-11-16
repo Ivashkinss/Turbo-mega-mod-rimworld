@@ -1,0 +1,21 @@
+{
+  "outdoorReload": {
+    "passed": true,
+    "checks": 4,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 1270,
+    "ticksAdvanced": 1434,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "151fa0aa00ba901e8b3c04521edf1e61e2f515ebe18b86dba5d01cae05d78829",
+  "passed": true
+}

@@ -47,7 +47,7 @@ namespace TurboMegaMod
         public bool automaticServices = true, restaurantOpen = true, surgeryAllowed = true;
         public int roomRate = 30, restaurantPercent = 100;
         public int vipChance=3;
-        public bool preferRegulars=true;
+        public bool preferRegulars=true,outdoorBreaks=true;
         public ThingDef restaurantMeal;
         public List<ComplexEmployee> employees = new List<ComplexEmployee>();
         public int hotelIncome, restaurantIncome, clinicIncome, companyIncome;
@@ -61,7 +61,7 @@ namespace TurboMegaMod
         }
         public override void ExposeData()
         {
-            base.ExposeData(); Scribe_Values.Look(ref vipChance,"vipChance",3);Scribe_Values.Look(ref preferRegulars,"preferRegulars",true);
+            base.ExposeData(); Scribe_Values.Look(ref vipChance,"vipChance",3);Scribe_Values.Look(ref preferRegulars,"preferRegulars",true);Scribe_Values.Look(ref outdoorBreaks,"outdoorBreaks",true);
             Scribe_References.Look(ref area, "complexArea"); Scribe_References.Look(ref guestArea, "guestArea"); Scribe_References.Look(ref foodArea, "foodArea");
             Scribe_References.Look(ref clinicArea, "clinicArea");
             Scribe_References.Look(ref staffArea, "staffArea"); Scribe_Values.Look(ref automaticServices, "automaticServices", true);

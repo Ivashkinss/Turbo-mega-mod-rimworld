@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Outdoor.Enabled>Guest outdoor breaks</TMM.Outdoor.Enabled>
+  <TMM.Outdoor.Help>Guests take breaks according to their native outdoors need, if applicable. When it is low they can rest for up to an hour in an accessible public courtyard within the complex. Food, sleep, treatment and safety take priority.</TMM.Outdoor.Help>
+  <TMM.Outdoor.NeedsTitle>Guest needs</TMM.Outdoor.NeedsTitle>
+  <TMM.Outdoor.NeedsHelp>These are the actual needs of present guests. Needs depend on race, genes and DLC; a missing need is not always an error. Include reachable unroofed cells outside staff rooms in the complex territory to provide a courtyard. Breaks do not fill needs automatically.</TMM.Outdoor.NeedsHelp>
+  <TMM.Outdoor.Unavailable>Outdoor breaks are disabled or there is no active hotel visit.</TMM.Outdoor.Unavailable>
+  <TMM.Outdoor.Clinical>Under treatment: the outdoors need is temporarily paused.</TMM.Outdoor.Clinical>
+  <TMM.Outdoor.NotApplicable>Native rules do not give this guest an outdoors need.</TMM.Outdoor.NotApplicable>
+  <TMM.Outdoor.Enough>The guest has had enough fresh air for now.</TMM.Outdoor.Enough>
+  <TMM.Outdoor.BasicNeedsFirst>The guest needs food, sleep or medical attention first.</TMM.Outdoor.BasicNeedsFirst>
+  <TMM.Outdoor.UnsafeWeather>Break postponed: poor weather or an active threat.</TMM.Outdoor.UnsafeWeather>
+  <TMM.Outdoor.NoCourtyard>No safe accessible courtyard nearby: provide unroofed cells within the complex, outside staff rooms, with a route through the public area. Check the temperature too.</TMM.Outdoor.NoCourtyard>
+  <TMM.Outdoor.Ready>The guest can take a short break in the public courtyard.</TMM.Outdoor.Ready>
+  <TMM.Outdoor.NoGuests>There are no present guests.</TMM.Outdoor.NoGuests>
+</LanguageData>

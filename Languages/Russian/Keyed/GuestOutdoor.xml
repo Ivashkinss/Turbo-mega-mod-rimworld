@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Outdoor.Enabled>Отдых гостей на свежем воздухе</TMM.Outdoor.Enabled>
+  <TMM.Outdoor.Help>Гости отдыхают по своей нативной шкале свежего воздуха, если она им положена. При низкой шкале они могут отдохнуть до часа в доступной публичной части комплекса под открытым небом. Еда, сон, лечение и безопасность важнее прогулки.</TMM.Outdoor.Help>
+  <TMM.Outdoor.NeedsTitle>Потребности постояльцев</TMM.Outdoor.NeedsTitle>
+  <TMM.Outdoor.NeedsHelp>Здесь показаны настоящие шкалы присутствующих гостей. Шкалы зависят от расы, генов и DLC; отсутствие шкалы не всегда означает ошибку. Для двора включите в территорию комплекса доступные клетки под открытым небом вне служебных помещений. Отдых не заполняет шкалы автоматически.</TMM.Outdoor.NeedsHelp>
+  <TMM.Outdoor.Unavailable>Прогулки выключены или сейчас нет активного гостиничного визита.</TMM.Outdoor.Unavailable>
+  <TMM.Outdoor.Clinical>Идёт лечение: потребность в свежем воздухе временно приостановлена.</TMM.Outdoor.Clinical>
+  <TMM.Outdoor.NotApplicable>Потребность в свежем воздухе неприменима к этому гостю по правилам игры.</TMM.Outdoor.NotApplicable>
+  <TMM.Outdoor.Enough>Свежего воздуха пока достаточно.</TMM.Outdoor.Enough>
+  <TMM.Outdoor.BasicNeedsFirst>Сначала гость должен поесть, выспаться или получить помощь.</TMM.Outdoor.BasicNeedsFirst>
+  <TMM.Outdoor.UnsafeWeather>Прогулка отложена: плохая погода или активная угроза.</TMM.Outdoor.UnsafeWeather>
+  <TMM.Outdoor.NoCourtyard>Нет безопасного доступного двора рядом: нужны клетки без крыши внутри территории комплекса вне служебных помещений и путь к ним через публичную часть. Проверьте также температуру.</TMM.Outdoor.NoCourtyard>
+  <TMM.Outdoor.Ready>Гость может выйти на короткий отдых в публичный двор.</TMM.Outdoor.Ready>
+  <TMM.Outdoor.NoGuests>Сейчас нет присутствующих постояльцев.</TMM.Outdoor.NoGuests>
+</LanguageData>

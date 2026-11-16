@@ -1,0 +1,57 @@
+{
+  "nativeNeedAudit": {
+    "status": "reviewed with correction",
+    "confirmed": [
+      "Native faction and HostFaction gate signatures",
+      "Four Hospitality explicit need overrides",
+      "Native health/gene/race checks remain relevant"
+    ],
+    "rejectedClaim": "Outdoors absent from all already-arrived visitors.",
+    "evidence": "Hospitality GuestUtility.Arrive calls SetGuestStatus(Faction.OfPlayer), then CompGuest.Arrive; runtime ShouldHaveNeed and native need creation succeeded for a hosted guest.",
+    "implementation": "No ShouldHaveNeed transpiler or postfix is retained. Only native list refresh and a new needs-driven outdoor job are used."
+  },
+  "deathrestApi": {
+    "status": "reviewed as candidate API only",
+    "confirmed": [
+      "Gene_Deathrest.CanBindToBindable has faction-equality gate",
+      "Pawn_HealthTracker.ShouldBeDowned uses CanBeAwake/capacities"
+    ],
+    "notImplemented": true,
+    "unknown": [
+      "Actual foreign guest bed/casket workflow",
+      "Auto-wake, group retention and billing during long sleep"
+    ],
+    "correction": "A bed-validity rejection is not a general ban on pathfinding to the building."
+  },
+  "playerGuide": {
+    "status": "reviewed with corrected copies",
+    "scenarios": 10,
+    "corrections": [
+      "No power required for reception",
+      "Needs window always accessible regardless of break toggle",
+      "Only applicable native needs are shown",
+      "Roof hole in a closed room is not necessarily an outdoor courtyard",
+      "Cancellation does not guarantee immediate return to shelter",
+      "Hostile-active-threat predicate is true, not false, on danger",
+      "Final regression is10steps, not8",
+      "Carried clinical guests are included by saved clinical visit records"
+    ]
+  },
+  "transportAudit": {
+    "status": "reviewed",
+    "scenarios": 12,
+    "scenarioStatus": "plans, not passed game claims",
+    "confirmed": [
+      "Native cache remove/contains chain",
+      "Guest optimizer falls through to base when cache misses",
+      "Native RefreshGuestListTotal guards null map/lord manager",
+      "GetLord(Pawn) reads pawn.lord directly in current1.7 binary",
+      "Respawn hook does not call Begin/RecordClaim"
+    ],
+    "corrections": [
+      "ErrorOnce is a logged error, not a proven game crash.",
+      "No new billing row in this hook does not prove long carry billing retention: HotelBilling.Valid currently requires Spawned."
+    ],
+    "nextFix": "Retain HotelStay by MapHeld and defer payment while unspawned."
+  }
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef><defName>TMM_GuestOutdoorBreak</defName><driverClass>TurboMegaMod.JobDriver_GuestOutdoor</driverClass><reportString>resting in the courtyard.</reportString><casualInterruptible>true</casualInterruptible></JobDef>
+</Defs>

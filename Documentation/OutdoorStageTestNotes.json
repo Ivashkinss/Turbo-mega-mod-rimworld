@@ -1,0 +1,47 @@
+{
+  "scope": "Only successful same-binary results count in OutdoorStageVerification.json.",
+  "attempts": [
+    {
+      "profile": "TestRuns/Outdoor-Integrated-20261116-074545",
+      "outcome": "failed fixture assertion",
+      "detail": "Toggling breaks was incorrectly expected to remove Outdoors. Hosted visitors have HostFaction=OfPlayer; the audit assumption was false. Removed the prototype ShouldHaveNeed patch completely; toggle now only controls automatic jobs."
+    },
+    {
+      "profile": "TestRuns/Outdoor-Integrated-20261116-074817",
+      "outcome": "failed fixture environment assertion",
+      "detail": "Temperature was21C, but weather/threat readiness was not established. Added separate diagnostics and stabilized only the disposable map."
+    },
+    {
+      "profile": "TestRuns/Outdoor-Integrated-20261116-075014",
+      "outcome": "failed fixture environment assertion",
+      "detail": "Native pleasant weather was true, active hostile threat was true. Cleared only hostile targets from disposable quicktest map; production threat guard retained."
+    },
+    {
+      "profile": "TestRuns/Outdoor-Integrated-20261116-075245",
+      "outcome": "23 module assertions passed, aggregate failed",
+      "detail": "Loader caught an invalid checkOverrideOnExpire JobDef field. Removed the XML field; it belongs to job state, not this Def."
+    },
+    {
+      "profile": "TestRuns/Outdoor-FullSet-20261116-075511",
+      "outcome": "failed fixture geometry assertion",
+      "detail": "An unroofed cell could still belong to a closed carved mountain room. Added a public exterior connection outside desk.area and rebuilt regions."
+    },
+    {
+      "profile": "TestRuns/Outdoor-FullSet-20261116-075758",
+      "outcome": "failed movement assertion",
+      "detail": "Guest did not remain at target by deadline. Exact initial cause was not logged. Fixture weather age changed from10000to0 to avoid an immediate randomized weather change; added per-150-tick movement diagnostics."
+    },
+    {
+      "profile": "TestRuns/Outdoor-FullSet-20261116-080300",
+      "outcome": "26 module assertions passed, aggregate failed",
+      "detail": "A temporary carried guest was missing from native PresentGuests. Manual native duty evaluation fell through to base OptimizeApparel without OutfitTracker. Added accepted-guest registry restoration after Pawn.SpawnSetup and a direct native IsGuest assertion."
+    }
+  ],
+  "environment": "Fog/hostile-target cleanup, exterior corridor and21C/clear weather override are limited to disposable test profiles. No original game files, settings or user saves are changed.",
+  "productionCorrections": [
+    "Do not override native Need eligibility",
+    "Preserve native need when automatic breaks are disabled",
+    "Pause clinical needs even while held by a carrier",
+    "Restore native visitor registry after temporary carry/drop"
+  ]
+}

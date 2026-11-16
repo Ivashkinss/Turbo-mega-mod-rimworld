@@ -21,6 +21,7 @@ namespace TurboMegaMod
         {
             var comp=AccessTools.TypeByName("Hospitality.CompGuest");if(comp==null)return;
             var h=new Harmony("turbomegamod.guest.dossiers");
+            h.Patch(AccessTools.Method(typeof(Pawn),"SpawnSetup"),postfix:new HarmonyMethod(typeof(GuestDossierHooks),"Respawned"));
             h.Patch(AccessTools.Method(comp,"Arrive"),postfix:new HarmonyMethod(typeof(GuestDossierHooks),"Arrived"));
             h.Patch(AccessTools.Method(comp,"Leave"),postfix:new HarmonyMethod(typeof(GuestDossierHooks),"Leaving"));
             h.Patch(AccessTools.Method(comp,"PostDeSpawn"),postfix:new HarmonyMethod(typeof(GuestDossierHooks),"Despawned"));
@@ -28,6 +29,15 @@ namespace TurboMegaMod
             h.Patch(core??AccessTools.Method(worker,"CreateLord"),
                 prefix:new HarmonyMethod(typeof(GuestDossierHooks),core==null?"FilterLegacy":"Filter"),
                 postfix:new HarmonyMethod(typeof(GuestDossierHooks),"SendRefused"));
+        }
+        private static void Respawned(Pawn __instance)
+        {
+            // CompGuest.PostDeSpawn removes a carried visitor from PresentGuests.
+            // Its accepted lord and arrived flag survive clinical transport.
+            // Restore the native registry before guest AI runs on the map again.
+            if(!__instance.Spawned||!GuestDossiers.Arrived(__instance))return;
+            var native=__instance.Map.components.FirstOrDefault(c=>c.GetType().FullName=="Hospitality.Hospitality_MapComponent");
+            if(native!=null)AccessTools.Method(native.GetType(),"RefreshGuestListTotal").Invoke(native,null);
         }
         private static Pawn PawnOf(ThingComp comp){return comp.parent as Pawn;}
         private static void Arrived(ThingComp __instance)
