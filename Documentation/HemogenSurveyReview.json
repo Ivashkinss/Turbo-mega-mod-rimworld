@@ -1,0 +1,14 @@
+{
+  "status": "partially accepted; targeted corrections queued",
+  "accepted": [
+    "Native1.7 JobGiver_GetHemogen.TryGiveJob uses ShouldConsumeHemogenNow and FloorToInt((Max-Value)/packGain).",
+    "Native TryGiveJob also has a prisoner bloodfeeding branch; do not add it wholesale for guests.",
+    "Native pack search has no sale transaction; a scoped purchase/owned-inventory adapter needs review."
+  ],
+  "corrections": [
+    "Current ComplexSalesHooks.Shopping replaces the native JoyGiver_BuyStuff.TryGiveJob for complex guests. Legacy Likey is not proof that our sale stock cannot sell hemogen.",
+    "GuestUtility.Arrive already calls SetGuestStatus(OfPlayer); clinical admission is not the first source of HostFaction.",
+    "Absence in Relax alone does not prove absence from the full main/constant think-tree path; trace conditional guards.",
+    "Manual cancellation/drop behavior and fixed price5 in survey are not established runtime facts. Existing sales price is 55% market value per batch with ceiling."
+  ]
+}

@@ -170,6 +170,7 @@ namespace TurboMegaMod
                     if (stay.remaining < 0) { stay.periodFee = HotelBillingHooks.Fee(stay.bed); stay.remaining = stay.periodFee; }
                     if (HotelBillingHooks.Money(stay.guest) < stay.remaining)
                     {
+                        GuestDeathrest.Cancel(stay.guest);
                         stay.guest.ownership.UnclaimBed();
                         stays.Remove(stay);
                         Messages.Message("TMM.Hotel.CannotExtend".Translate(stay.guest.LabelShortCap), stay.guest, MessageTypeDefOf.NeutralEvent, false);

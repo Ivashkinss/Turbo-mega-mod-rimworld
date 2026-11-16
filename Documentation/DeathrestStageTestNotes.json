@@ -1,0 +1,30 @@
+{
+  "failedFreshAttempts": [
+    {
+      "profile": "TestRuns/Deathrest-FullSet-20261116-122838",
+      "reason": "Readiness refused before diagnostic fixture fixes."
+    },
+    {
+      "profile": "TestRuns/Deathrest-FullSet-20261116-123022",
+      "reason": "Guest casket active power stayed zero."
+    },
+    {
+      "profile": "TestRuns/Deathrest-FullSet-20261116-123223",
+      "reason": "Diagnostic: unsafe roof and tendable injuries under unsupported artificial fixture roof."
+    },
+    {
+      "profile": "TestRuns/Deathrest-FullSet-20261116-123430",
+      "reason": "Supported fixture passed readiness; presence250 still yielded zero power. Native1.7 basePowerConsumption is private; upstream public-field clone loses it. Production corrected for guest casket only."
+    }
+  ],
+  "reloadFixtureCorrection": "Initial probe queried map.GetComponent<GuestDeathrest> during deep registry restoration. The early session lookup was false while first map update was true; paid period, native sleep, lord and native binding were already correct. Session references are now checked after full map initialization. This is not claimed as a production save-data fix.",
+  "acceleration": "Fixture completion sets native deathrestTicks and adjustedDeathrestTicks; it is not four naturally elapsed days.",
+  "powerTest": "Native comp active output tested with fixture PowerOn=true and native presence accumulation; no full electrical network failure/reconnection test claimed.",
+  "freshProbeNote": "Reload-only diagnostic and timing assertions were refined after the passing fresh fixture; all successful reports must still match one production DLL.",
+  "userDataModified": false,
+  "outdoorFixtureAttempt": {
+    "profile": "TestRuns/Outdoor-FullSet-20261116-125021",
+    "reason": "Native hosted-guest outdoor eligibility check failed before detailed diagnostics existed. Precise original eligibility cause is not established.",
+    "fixtureChange": "Reference outdoor actor is now explicitly Baseliner; no production need eligibility rule is bypassed. Failure diagnostics now include host, arrival, genes and hediffs."
+  }
+}

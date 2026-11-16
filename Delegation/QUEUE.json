@@ -333,7 +333,7 @@
     },
     {
       "id": "GeneratedGuestDeathrestBeds",
-      "state": "assigned",
+      "state": "reviewed",
       "taskFile": "Delegation/GeneratedGuestDeathrestBeds/TASK.md",
       "outputDir": "Tools/Build/GeminiGeneratedGuestDeathrestBeds",
       "expectedOutputs": [
@@ -342,7 +342,71 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T05:30:09.180570+00:00",
-      "note": "Worker running observed; read DEFS/FINDINGS/REPORT before making runtime claims. SpecialInjector guest variants were omitted by prior broad casket API assumptions."
+      "note": "Codex checked SpecialInjector/DeathrestCasket XML and native gene/comp methods. Candidate guest casket will be confirmed in runtime. Preserve foreign permanent bindings; fix specific guest casket ticking; no claim all guest beds lack bindable comp."
+    },
+    {
+      "id": "DeathrestBudgetCases",
+      "state": "reviewed",
+      "taskFile": "Delegation/DeathrestBudgetCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiDeathrestBudgetCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T09:19:39.978692+00:00",
+      "note": "20 input cases and budget boundary arithmetic checked; separate actual C# comparison follows. Correct report completeness claim: not exhaustive/full runtime coverage."
+    },
+    {
+      "id": "GuestDeathrestSaveTextAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDeathrestSaveTextAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDeathrestSaveTextAudit",
+      "expectedOutputs": [
+        "FIELDS.json",
+        "TEXTS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T09:29:19.215129+00:00",
+      "note": "Codex independently matched7+1+1 saved fields and RU/EN8 keys. Qualification: Hold covers pending sessions too; UI callsites were outside this snapshot, not all keys provable from included C# alone. Runtime test in progress."
+    },
+    {
+      "id": "GuestDeathrestPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDeathrestPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDeathrestPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T09:33:52.414386+00:00",
+      "note": "Codex checked guide and10 manual plans; removed internal ID, corrected food threshold and ordinary group departure/early interruption wording. Manual scenarios are plans, not claimed executions."
+    },
+    {
+      "id": "GuestHemogenSupplySurvey",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestHemogenSupplySurvey/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestHemogenSupplySurvey",
+      "expectedOutputs": [
+        "API.json",
+        "FLOW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T09:40:27.803206+00:00",
+      "note": "Partially accepted native metadata. Current sales override and native Arrive host status require corrected conclusions; see Documentation/HemogenSurveyReview.json and next task. No hemogen service runtime claim."
+    },
+    {
+      "id": "GuestHemogenSurveyCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/GuestHemogenSurveyCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestHemogenSurveyCorrections",
+      "expectedOutputs": [
+        "CORRECTIONS.json",
+        "FLOW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T09:57:19.169847+00:00"
     }
   ]
 }

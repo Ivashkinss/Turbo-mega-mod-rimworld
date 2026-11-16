@@ -20,13 +20,14 @@ namespace TurboMegaMod
             Text.Font=GameFont.Medium;Widgets.Label(new Rect(0,0,rect.width,36),"TMM.Outdoor.NeedsTitle".Translate());Text.Font=GameFont.Small;
             Widgets.Label(new Rect(0,42,rect.width,90),"TMM.Outdoor.NeedsHelp".Translate());
             var pawns=desk.Map.mapPawns.AllPawnsSpawned.Where(GuestDossiers.Arrived).Concat(desk.Map.GetComponent<ClinicGuests>().visits.Where(v=>v.pawn!=null&&v.pawn.MapHeld==desk.Map).Select(v=>v.pawn)).Distinct().Where(p=>p.needs!=null).OrderBy(p=>p.LabelShortCap.ToString()).ToList();
-            var view=new Rect(0,140,rect.width,rect.height-185);var content=new Rect(0,0,view.width-20,Math.Max(view.height,pawns.Count*160));Widgets.BeginScrollView(view,ref scroll,content);
+            var view=new Rect(0,140,rect.width,rect.height-185);var content=new Rect(0,0,view.width-20,Math.Max(view.height,pawns.Count*205));Widgets.BeginScrollView(view,ref scroll,content);
             for(int i=0;i<pawns.Count;i++){
-                var p=pawns[i];float y=i*160;Widgets.Label(new Rect(0,y,content.width-125,27),p.LabelShortCap);
+                var p=pawns[i];float y=i*205;Widgets.Label(new Rect(0,y,content.width-125,27),p.LabelShortCap);
                 if(Widgets.ButtonText(new Rect(content.width-115,y,110,27),"TMM.Dossier.Focus".Translate()))CameraJumper.TryJump(p);
                 string levels=string.Join(" · ",p.needs.AllNeeds.Where(n=>n.def.showOnNeedList).OrderByDescending(n=>n.def.listPriority).Select(n=>n.def.LabelCap+": "+(n.CurLevelPercentage*100).ToString("0")+"%"));
                 Widgets.Label(new Rect(0,y+32,content.width,65),levels);
                 if(!outdoor.ContainsKey(p))outdoor[p]=GuestOutdoor.Status(p);Widgets.Label(new Rect(0,y+100,content.width,50),outdoor[p]);
+                Widgets.Label(new Rect(0,y+151,content.width,48),GuestDeathrest.Status(p));
             }
             if(pawns.Count==0)Widgets.Label(new Rect(0,0,content.width,60),"TMM.Outdoor.NoGuests".Translate());Widgets.EndScrollView();
         }

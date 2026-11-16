@@ -1,0 +1,368 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "audit": "DeathrestBudgetCases",
+  "generatedUtc": "2026-11-16T09:27:00Z",
+  "totalScenarios": 20,
+  "cases": [
+    {
+      "id": "CASE-01",
+      "description": "Typical 4-day deathrest at rate 30 with exact silver balance",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 50000,
+        "duration": 240000,
+        "rate": 30,
+        "silver": 120
+      },
+      "expected": {
+        "endTick": 250500,
+        "charges": 4,
+        "budget": 120,
+        "affordable": true
+      },
+      "category": "TypicalFourDay"
+    },
+    {
+      "id": "CASE-02",
+      "description": "Typical 4-day deathrest at rate 30 with silver 1 less than budget",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 50000,
+        "duration": 240000,
+        "rate": 30,
+        "silver": 119
+      },
+      "expected": {
+        "endTick": 250500,
+        "charges": 4,
+        "budget": 120,
+        "affordable": false
+      },
+      "category": "SilverMinusOne"
+    },
+    {
+      "id": "CASE-03",
+      "description": "Typical 4-day deathrest at rate 30 with silver 1 more than budget",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 50000,
+        "duration": 240000,
+        "rate": 30,
+        "silver": 121
+      },
+      "expected": {
+        "endTick": 250500,
+        "charges": 4,
+        "budget": 120,
+        "affordable": true
+      },
+      "category": "SilverPlusOne"
+    },
+    {
+      "id": "CASE-04",
+      "description": "Wake-up completes before current paid period expires (0 future charges)",
+      "inputs": {
+        "now": 0,
+        "nextDue": 60000,
+        "duration": 50000,
+        "rate": 25,
+        "silver": 0
+      },
+      "expected": {
+        "endTick": 50500,
+        "charges": 0,
+        "budget": 0,
+        "affordable": true
+      },
+      "category": "ZeroChargesBeforeDue"
+    },
+    {
+      "id": "CASE-05",
+      "description": "Exact boundary where end == nextDue yields 1 future charge",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 70500,
+        "duration": 60000,
+        "rate": 40,
+        "silver": 40
+      },
+      "expected": {
+        "endTick": 70500,
+        "charges": 1,
+        "budget": 40,
+        "affordable": true
+      },
+      "category": "ExactBoundaryEqual"
+    },
+    {
+      "id": "CASE-06",
+      "description": "Boundary end == nextDue - 1 yields 0 future charges",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 70501,
+        "duration": 60000,
+        "rate": 40,
+        "silver": 0
+      },
+      "expected": {
+        "endTick": 70500,
+        "charges": 0,
+        "budget": 0,
+        "affordable": true
+      },
+      "category": "BoundaryMinusOne"
+    },
+    {
+      "id": "CASE-07",
+      "description": "Boundary end == nextDue + 1 yields 1 future charge",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 70499,
+        "duration": 60000,
+        "rate": 40,
+        "silver": 40
+      },
+      "expected": {
+        "endTick": 70500,
+        "charges": 1,
+        "budget": 40,
+        "affordable": true
+      },
+      "category": "BoundaryPlusOne"
+    },
+    {
+      "id": "CASE-08",
+      "description": "Exact multiple of Day: end - nextDue == 60000 (crossing into 2nd charge)",
+      "inputs": {
+        "now": 0,
+        "nextDue": 60000,
+        "duration": 119500,
+        "rate": 35,
+        "silver": 70
+      },
+      "expected": {
+        "endTick": 120000,
+        "charges": 2,
+        "budget": 70,
+        "affordable": true
+      },
+      "category": "ExactDayMultiple"
+    },
+    {
+      "id": "CASE-09",
+      "description": "Just below second charge: end - nextDue == 59999 (only 1 charge)",
+      "inputs": {
+        "now": 0,
+        "nextDue": 60000,
+        "duration": 119499,
+        "rate": 35,
+        "silver": 35
+      },
+      "expected": {
+        "endTick": 119999,
+        "charges": 1,
+        "budget": 35,
+        "affordable": true
+      },
+      "category": "DayMultipleMinusOne"
+    },
+    {
+      "id": "CASE-10",
+      "description": "Free lodging rate == 0 with multi-day stay",
+      "inputs": {
+        "now": 1000,
+        "nextDue": 30000,
+        "duration": 300000,
+        "rate": 0,
+        "silver": 0
+      },
+      "expected": {
+        "endTick": 301500,
+        "charges": 5,
+        "budget": 0,
+        "affordable": true
+      },
+      "category": "ZeroRate"
+    },
+    {
+      "id": "CASE-11",
+      "description": "Game startup tick now == 0 with 1 day stay",
+      "inputs": {
+        "now": 0,
+        "nextDue": 20000,
+        "duration": 60000,
+        "rate": 20,
+        "silver": 20
+      },
+      "expected": {
+        "endTick": 60500,
+        "charges": 1,
+        "budget": 20,
+        "affordable": true
+      },
+      "category": "ZeroNow"
+    },
+    {
+      "id": "CASE-12",
+      "description": "Large tick values near int.MaxValue avoiding 32-bit integer overflow",
+      "inputs": {
+        "now": 2000000000,
+        "nextDue": 2000010000,
+        "duration": 200000000,
+        "rate": 15,
+        "silver": 50010
+      },
+      "expected": {
+        "endTick": 2200000500,
+        "charges": 3334,
+        "budget": 50010,
+        "affordable": true
+      },
+      "category": "IntOverflowProtection"
+    },
+    {
+      "id": "CASE-13",
+      "description": "Minimal duration 1 tick completed inside current paid period",
+      "inputs": {
+        "now": 5000,
+        "nextDue": 10000,
+        "duration": 1,
+        "rate": 50,
+        "silver": 0
+      },
+      "expected": {
+        "endTick": 5501,
+        "charges": 0,
+        "budget": 0,
+        "affordable": true
+      },
+      "category": "MinimalDuration"
+    },
+    {
+      "id": "CASE-14",
+      "description": "Extended 10-day stay with silver 1 less than total budget",
+      "inputs": {
+        "now": 50000,
+        "nextDue": 70000,
+        "duration": 600000,
+        "rate": 50,
+        "silver": 499
+      },
+      "expected": {
+        "endTick": 650500,
+        "charges": 10,
+        "budget": 500,
+        "affordable": false
+      },
+      "category": "TenDayUnfordable"
+    },
+    {
+      "id": "CASE-15",
+      "description": "Negative now tick (invalid input)",
+      "inputs": {
+        "now": -1,
+        "nextDue": 60000,
+        "duration": 60000,
+        "rate": 30,
+        "silver": 100
+      },
+      "expected": {
+        "endTick": null,
+        "charges": null,
+        "budget": -1,
+        "affordable": false
+      },
+      "category": "NegativeNow"
+    },
+    {
+      "id": "CASE-16",
+      "description": "nextDue equal to now indicating expired or unpaid period (invalid input)",
+      "inputs": {
+        "now": 60000,
+        "nextDue": 60000,
+        "duration": 60000,
+        "rate": 30,
+        "silver": 100
+      },
+      "expected": {
+        "endTick": null,
+        "charges": null,
+        "budget": -1,
+        "affordable": false
+      },
+      "category": "DueEqualNow"
+    },
+    {
+      "id": "CASE-17",
+      "description": "nextDue strictly less than now (invalid input)",
+      "inputs": {
+        "now": 70000,
+        "nextDue": 60000,
+        "duration": 60000,
+        "rate": 30,
+        "silver": 100
+      },
+      "expected": {
+        "endTick": null,
+        "charges": null,
+        "budget": -1,
+        "affordable": false
+      },
+      "category": "DueLessThanNow"
+    },
+    {
+      "id": "CASE-18",
+      "description": "Non-positive duration: duration == 0 (invalid input)",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 60000,
+        "duration": 0,
+        "rate": 30,
+        "silver": 100
+      },
+      "expected": {
+        "endTick": null,
+        "charges": null,
+        "budget": -1,
+        "affordable": false
+      },
+      "category": "ZeroDuration"
+    },
+    {
+      "id": "CASE-19",
+      "description": "Negative rate (invalid input)",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 60000,
+        "duration": 60000,
+        "rate": -5,
+        "silver": 100
+      },
+      "expected": {
+        "endTick": null,
+        "charges": null,
+        "budget": -1,
+        "affordable": false
+      },
+      "category": "NegativeRate"
+    },
+    {
+      "id": "CASE-20",
+      "description": "Negative silver balance with budget == 0 (invalid funds)",
+      "inputs": {
+        "now": 10000,
+        "nextDue": 60000,
+        "duration": 30000,
+        "rate": 30,
+        "silver": -1
+      },
+      "expected": {
+        "endTick": 40500,
+        "charges": 0,
+        "budget": 0,
+        "affordable": false
+      },
+      "category": "NegativeSilver"
+    }
+  ]
+}

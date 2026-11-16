@@ -1,0 +1,14 @@
+{
+  "budgetCases": 20,
+  "csharpComparison": "Documentation/DeathrestBudgetVerification.json",
+  "mutationsCaught": 6,
+  "saveFields": 9,
+  "pairedKeys": 8,
+  "qualifications": [
+    "20 examples are not exhaustive coverage of all runtime states.",
+    "Hold also covers pending protected jobs, not only sleeping pawns.",
+    "Snapshot did not include every UI callsite; Codex inspected actual ComplexServicesDialog separately.",
+    "Guide corrected 55% food threshold wording and normal-vs-emergency group departure.",
+    "Generated casket power additionally needs private basePowerConsumption copied in 1.7; earlier static clone audit did not prove its value."
+  ]
+}

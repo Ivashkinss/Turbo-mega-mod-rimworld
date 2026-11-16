@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 20,
+  "actualCSharpSource": true,
+  "sourceSha256": "30453f9d736ddd82f822b2cab8bc3fafaacfd2ff9f6ba2e71bf696577b4dcad9",
+  "casesSha256": "9a74baf7f361567a1bf8f1261a582db6f77c93b0810cb4addc4212c68f5010ed",
+  "runtimeTest": false
+}

@@ -57,7 +57,7 @@ public sealed class OutdoorProbe : MapComponent
         Area_Allowed area;map.areaManager.TryMakeNewAllowed(out area);map.areaManager.TryMakeNewAllowed(out staff);foreach(var c in new CellRect(38,38,20,20))area[c]=true;
         desk.area=area;desk.ApplyServiceAreas();
         var faction=Find.FactionManager.AllFactionsListForReading.First(f=>!f.IsPlayer&&f.def.humanlikeFaction&&!f.HostileTo(Faction.OfPlayer));
-        guest=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,faction,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:30,allowDead:false,allowDowned:false,allowAddictions:false));
+        guest=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,faction,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:30,allowDead:false,allowDowned:false,allowAddictions:false,forcedXenotype:XenotypeDefOf.Baseliner));
         foreach(var t in guest.story.traits.allTraits.Where(t=>t.def==TraitDefOf.Undergrounder).ToArray())guest.story.traits.RemoveTrait(t);
         GenSpawn.Spawn(guest,new IntVec3(44,0,44),map);guest.needs.food.CurLevelPercentage=1;guest.needs.rest.CurLevelPercentage=1;
         // Quicktest can generate an ancient hostile group elsewhere on its map.
@@ -66,7 +66,7 @@ public sealed class OutdoorProbe : MapComponent
         Check(!Should(guest,GuestOutdoor.Outdoors),"Nonvisiting foreign pawn acquired outdoor need");
         AccessTools.Method(AccessTools.TypeByName("Hospitality.IncidentWorker_VisitorGroup"),"CreateLord").Invoke(null,new object[]{faction,new IntVec3(44,0,44),new List<Pawn>{guest},map,false,false,600000});guest.GetLord().ReceiveMemo("TravelArrived");GuestOutdoor.Refresh(guest);
         guest.needs.joy.CurLevelPercentage=0.99f;
-        Check(GuestOutdoor.Eligible(guest)&&Should(guest,GuestOutdoor.Outdoors)&&Need!=null,"Native hosted-guest rules did not permit/create outdoors need");
+        Check(GuestOutdoor.Eligible(guest)&&Should(guest,GuestOutdoor.Outdoors)&&Need!=null,"Native hosted-guest rules did not permit/create outdoors need: eligible="+GuestOutdoor.Eligible(guest)+" should="+Should(guest,GuestOutdoor.Outdoors)+" need="+(Need!=null)+" host="+guest.HostFaction+" arrived="+GuestDossiers.Arrived(guest)+" genes="+string.Join(",",guest.genes.GenesListForReading.Select(g=>g.def.defName))+" hediffs="+string.Join(",",guest.health.hediffSet.hediffs.Select(h=>h.def.defName)));
         var colonist=map.mapPawns.FreeColonistsSpawned.First();Check(Should(colonist,GuestOutdoor.Outdoors),"Colony need eligibility was changed");
         var learning=DefDatabase<NeedDef>.GetNamedSilentFail("Learning");if(learning!=null)Check(!Should(guest,learning),"Outdoor bypass enabled unrelated learning need");
         // A real native health restriction must survive the faction-gate bypass.

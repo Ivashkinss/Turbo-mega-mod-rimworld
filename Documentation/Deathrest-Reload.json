@@ -1,0 +1,21 @@
+{
+  "deathrestReload": {
+    "passed": true,
+    "checks": 13,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4163,
+    "ticksAdvanced": 1774,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "5a8c5413e2f1f95d68c698155d815161636d33919d6b697b5f9e496ac7381141",
+  "passed": true
+}

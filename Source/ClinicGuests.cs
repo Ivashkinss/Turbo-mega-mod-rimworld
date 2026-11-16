@@ -57,7 +57,7 @@ namespace TurboMegaMod
         }
         public static bool Eligible(Pawn pawn)
         {
-            if(pawn==null||!pawn.Spawned||pawn.Dead||pawn.Faction==Faction.OfPlayer||pawn.IsPrisoner||pawn.IsSlave||pawn.InMentalState||Leaving(pawn.GetLord()))return false;
+            if(pawn==null||!pawn.Spawned||pawn.Dead||pawn.Faction==Faction.OfPlayer||pawn.IsPrisoner||pawn.IsSlave||pawn.InMentalState||GuestDeathrest.Stay(pawn)!=null||Leaving(pawn.GetLord()))return false;
             var comp=HotelBillingHooks.Guest(pawn);
             return comp!=null && (bool)AccessTools.Field(comp.GetType(),"arrived").GetValue(comp);
         }
@@ -156,7 +156,7 @@ namespace TurboMegaMod
             // doctor is bringing them to a hospitalized visitor. Keep vanilla
             // food suitability, diet, reservations and access checks for this
             // care task; self-service guests retain Hospitality's rules.
-            return getter==null||getter==eater||getter.Faction!=Faction.OfPlayer||Visit(eater)==null||!Clinic.ActivePatient(eater);
+            return getter==null||getter==eater||getter.Faction!=Faction.OfPlayer||(GuestDeathrest.Stay(eater)==null&&(Visit(eater)==null||!Clinic.ActivePatient(eater)));
         }
         private static bool KeepBoardingStatus(Pawn __0)
         {
