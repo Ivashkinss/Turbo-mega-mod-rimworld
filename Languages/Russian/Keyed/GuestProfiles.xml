@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Profile.Vip>VIP-гость</TMM.Profile.Vip>
+  <TMM.Profile.Regular>Постоянный клиент</TMM.Profile.Regular>
+  <TMM.Profile.Help>VIP-гости — редкие обеспеченные посетители с настоящим серебром. Предпочитают отдельный впечатляющий номер и изысканные блюда. Постоянным клиентом становится гость после трёх проживаний (не менее 6 часов каждое), если минимум два визита оценены хорошо. Старые визиты без наблюдений не засчитываются.</TMM.Profile.Help>
+  <TMM.Profile.Chance>Доля VIP среди новых взрослых гостей: {0}%</TMM.Profile.Chance>
+  <TMM.Profile.PreferRegulars>Предпочитать постоянных клиентов при повторных визитах</TMM.Profile.PreferRegulars>
+  <TMM.Profile.Stays>Подтверждённые проживания: {0}; хорошие отзывы: {1}</TMM.Profile.Stays>
+  <TMM.Profile.Score>Последняя оценка проживания: {0}%</TMM.Profile.Score>
+  <TMM.Profile.Preferences>Предпочтения VIP: отдельный закрытый номер с впечатлением от 85; изысканная или роскошная ресторанная еда. Аскеты не требуют роскоши.</TMM.Profile.Preferences>
+</LanguageData>

@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "metadataOnly": true,
+  "liveGame16Verified": false,
+  "checks": 14,
+  "hooks": [
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "System.Void Hospitality.IncidentWorker_VisitorGroup::GiveItems(System.Collections.Generic.IEnumerable`1<Verse.Pawn>)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "System.Collections.Generic.IEnumerable`1<Verse.Pawn> Hospitality.IncidentWorker_VisitorGroup::GetPawnsToSpawn(RimWorld.IncidentParms)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "Verse.AI.Job Hospitality.JobGiver_ClaimBed::TryGiveJob(Verse.Pawn)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "Hospitality.Building_GuestBed Hospitality.Utilities.BedUtility::FindBedFor(Verse.Pawn)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "System.Void Hospitality.CompGuest::Leave(System.Boolean)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "System.Single Hospitality.LordToil_VisitPoint::GetVisitScore(Verse.Pawn)"
+    },
+    {
+      "version": "1.6",
+      "hasBody": true,
+      "signature": "System.Single Hospitality.Utilities.BedUtility::CalculateBedValue(Hospitality.Building_GuestBed,Verse.Pawn,System.Int32)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "System.Void Hospitality.IncidentWorker_VisitorGroup::GiveItems(System.Collections.Generic.IEnumerable`1<Verse.Pawn>)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "System.Collections.Generic.IEnumerable`1<Verse.Pawn> Hospitality.IncidentWorker_VisitorGroup::GetPawnsToSpawn(RimWorld.IncidentParms)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "Verse.AI.Job Hospitality.JobGiver_ClaimBed::TryGiveJob(Verse.Pawn)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "Hospitality.Building_GuestBed Hospitality.Utilities.BedUtility::FindBedFor(Verse.Pawn)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "System.Void Hospitality.CompGuest::Leave(System.Boolean)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "System.Single Hospitality.LordToil_VisitPoint::GetVisitScore(Verse.Pawn)"
+    },
+    {
+      "version": "1.7",
+      "hasBody": true,
+      "signature": "System.Single Hospitality.Utilities.BedUtility::CalculateBedValue(Hospitality.Building_GuestBed,Verse.Pawn,System.Int32,System.Int32,System.Collections.Generic.HashSet`1<Verse.ThingDef>&)"
+    }
+  ]
+}

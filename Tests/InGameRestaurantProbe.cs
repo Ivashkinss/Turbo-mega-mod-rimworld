@@ -152,6 +152,7 @@ public sealed class RestaurantProbe : MapComponent
         var order = Service.TryOrder(guest, counter); Check(order != null, "No diner order created: guest=" + RestaurantMeals.Guest(guest) +
             " seat=" + guest.CanReserveAndReach(chair, PathEndMode.OnCell, Danger.Some) + " food=" + mealOnFloor.Spawned); firstPrice = order.price;
         Check(firstPrice > 6 && HotelBillingHooks.Money(guest) == 50, "Order charged before delivery or split-currency fixture invalid");
+        Check(GuestProfiles.Row(guest).Current.experience.meal==-1,"Unserved restaurant order created a food review");
         Check(Service.TryOrder(poor, counter) == null, "Two guests received the same seat/portion");
         counter.pricePercent = 200; counter.mealDef = ThingDefOf.MealFine;
         Check(order.price == firstPrice && order.mealDef == ThingDefOf.MealSimple, "Accepted order changed with the menu");
@@ -194,6 +195,7 @@ public sealed class RestaurantProbe : MapComponent
                     " stock " + (current == null ? "none" : current.food + "/" + current.food.Spawned) + "\n" + string.Join("\n", RestaurantReloadLaunch.JobEnds));
                 Check(HotelBillingHooks.Money(guest) == 50 - firstPrice, "Wrong payment across multiple silver stacks");
                 Check(FloorSilver() == initialFloor + firstPrice, "Restaurant created or lost silver");
+                Check(GuestProfiles.Row(guest).Current.experience.meal==0,"Actual simple meal delivery did not update guest service experience");
                 Check(guest.needs.food.CurLevelPercentage > 0.35f, "Guest never ate delivered food: " + guest.CurJobDef + "\n" + string.Join("\n", RestaurantReloadLaunch.JobEnds));
                 Check(guest.inventory.innerContainer.Where(t => t.def == ThingDefOf.MealSimple).Sum(t => t.stackCount) == 2, "Delivery consumed the guest's pre-existing meal stack");
                 Check(!Service.Deliver(waiter, guest), "Same meal sold twice");

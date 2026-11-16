@@ -204,7 +204,7 @@
     },
     {
       "id": "VipGuestBinaryHookAudit",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/VipGuestBinaryHookAudit/TASK.md",
       "outputDir": "Tools/Build/GeminiVipGuestBinaryHookAudit",
       "expectedOutputs": [
@@ -212,7 +212,72 @@
         "ORDER.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-15T21:27:34.604216+00:00"
+      "createdUtc": "2026-11-15T21:27:34.604216+00:00",
+      "note": "Codex checked member signatures/order against current source; Arrive is after travel, so VIP allocation hooks GiveItems rather than repeatable Arrive. 1.6 has no CreateLordCore."
+    },
+    {
+      "id": "VipLoyaltyRuleCases",
+      "state": "reviewed",
+      "taskFile": "Delegation/VipLoyaltyRuleCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiVipLoyaltyRuleCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T21:44:33.739068+00:00",
+      "note": "Codex independently checked vectors/keys/fields. Snapshot has19 fields; final source adds observingLodging. 32 actual C# vectors passed; runtime evidence separate."
+    },
+    {
+      "id": "VipLoyaltySaveTextAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/VipLoyaltySaveTextAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiVipLoyaltySaveTextAudit",
+      "expectedOutputs": [
+        "FIELDS.json",
+        "TEXTS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-15T21:51:32.618550+00:00",
+      "note": "Codex independently checked vectors/keys/fields. Snapshot has19 fields; final source adds observingLodging. 32 actual C# vectors passed; runtime evidence separate."
+    },
+    {
+      "id": "VipLoyaltyPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/VipLoyaltyPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiVipLoyaltyPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T00:47:43.569765+00:00",
+      "note": "Codex reviewed10 scenarios and corrected synchronous spawn, weight-limited purse, generated visitor wording, meal delivery, powered desk assumption and scope of familiarity/return preference. Corrected copies published under Documentation."
+    },
+    {
+      "id": "ComplexNeedsCoverage",
+      "state": "reviewed",
+      "taskFile": "Delegation/ComplexNeedsCoverage/TASK.md",
+      "outputDir": "Tools/Build/GeminiComplexNeedsCoverage",
+      "expectedOutputs": [
+        "NEEDS.json",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T01:03:03.165961+00:00",
+      "note": "Codex accepted explicit XML/override inventory with reservations: no proof of all needs covered, Food/Rest universal presence, Deathrest on all gene-bearing guests, or Outdoors explicitly disabled. Native eligibility follow-up queued."
+    },
+    {
+      "id": "GuestNeedEligibilityBinaryAudit",
+      "state": "pending",
+      "taskFile": "Delegation/GuestNeedEligibilityBinaryAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestNeedEligibilityBinaryAudit",
+      "expectedOutputs": [
+        "NEED-RULES.json",
+        "IL.txt",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T01:14:37.274588+00:00"
     }
   ]
 }

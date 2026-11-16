@@ -1,0 +1,59 @@
+{
+  "reviewed": true,
+  "ruleCases": {
+    "workerCases": 32,
+    "actualCSharpPassed": 32,
+    "addedBoundaries": 6,
+    "limitations": "Model vectors do not test physical money or serialization."
+  },
+  "saveTextAudit": {
+    "snapshotFields": 19,
+    "currentFields": 20,
+    "addedAfterSnapshot": "GuestStayExperience.observingLodging prevents clinical intervals being credited as lodging.",
+    "keyed": 8,
+    "thoughtStages": 5,
+    "translationFields": 10,
+    "limitations": "Static null guards are not proof of successful runtime loading. Separate runtime save/reload probe required."
+  },
+  "runtimeEvidence": "TestRuns/Vip-Integrated-20261116-005742/Result.json",
+  "workerFindingsRequiringCodeChange": [],
+  "playerGuide": {
+    "reviewed": true,
+    "manualScenarios": 10,
+    "corrections": [
+      "Purse target versus actual capacity-limited coins",
+      "New generated visitor already has a name",
+      "Reception does not require power",
+      "GiveItems is synchronous; no manual wait between native items and VIP grant",
+      "Food thought reacts to delivered restaurant meal, not any eating",
+      "Regular familiarity only during active nonclinical stay",
+      "0% does not strip existing VIP identity",
+      "Regular preference needs an eligible replacement and WorldPawn; no guaranteed visit"
+    ]
+  },
+  "finalStateChangesAfterAudit": [
+    "Saved observingLodging flag prevents credit for clinical gaps",
+    "Only a confirmed normal departure with leaving flag qualifies",
+    "Synchronize releases the purse guard after an abandoned pre-arrival approach"
+  ],
+  "needsCoverageSurvey": {
+    "status": "partially accepted; native eligibility follow-up required",
+    "explicitNeedDefs": 18,
+    "manualScenarios": 12,
+    "confirmed": [
+      "Hospitality explicitly overrides Joy/Comfort/Beauty/RoomSize for guests.",
+      "Core Outdoors is colonistAndPrisonersOnly and is not among those four overrides.",
+      "Company is recreation/social interaction, not a standalone Need_Social.",
+      "Synchronous guest setup adds joy/comfort and reading tracker."
+    ],
+    "corrections": [
+      "Static servicing paths do not prove all need bars are fully covered.",
+      "Food/Rest existence can have native race/gene exceptions; not guaranteed for every biological pawn.",
+      "Deathrest presence cannot be proved solely by absence of colonistsOnly in XML.",
+      "Missing Outdoors override means native rules remain, not that a patch explicitly disables it.",
+      "Shopping-area manual scenarios refer to upstream legacy UI; our public storage uses For sale inside the complex.",
+      "One meal does not necessarily fill Food to maximum.",
+      "The eighteen explicit XML definitions do not prove there are no implied/generated need defs."
+    ]
+  }
+}

@@ -135,6 +135,7 @@ namespace TurboMegaMod
             ComplexWorkPolicy.Record(map, bed.Position, "hotel", Math.Min(fee, amountPaid));
             var link=GuestDossiers.Capture(guest,map);
             if(link!=null)link.Received("hotel",Math.Min(fee,amountPaid),receiptToken??GuestDossiers.Book.ReceiptToken("hotel",map));
+            GuestProfiles.Claimed(guest);
             stays.Add(new HotelStay { guest = guest, bed = bed,
                 nextChargeTick = Find.TickManager.TicksGame + (amountPaid >= fee ? DayTicks : 0),
                 remaining = amountPaid >= fee ? -1 : fee - amountPaid, periodFee = fee });

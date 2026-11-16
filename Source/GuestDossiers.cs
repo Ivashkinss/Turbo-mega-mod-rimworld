@@ -13,10 +13,12 @@ namespace TurboMegaMod
         public int id,mapId,started,ended=-1,pendingExit=-1;
         public string mapName,endReason;
         public bool legacy,medical,leaving;
+        public GuestStayExperience experience=new GuestStayExperience();
         public void ExposeData()
         {
             Scribe_Values.Look(ref id,"id");Scribe_Values.Look(ref mapId,"mapId");Scribe_Values.Look(ref mapName,"mapName");
             Scribe_Values.Look(ref started,"started");Scribe_Values.Look(ref ended,"ended",-1);Scribe_Values.Look(ref pendingExit,"pendingExit",-1);
+            Scribe_Deep.Look(ref experience,"experience");if(experience==null)experience=new GuestStayExperience();
             Scribe_Values.Look(ref legacy,"legacy");Scribe_Values.Look(ref medical,"medical");Scribe_Values.Look(ref leaving,"leaving");Scribe_Values.Look(ref endReason,"endReason");
         }
     }
@@ -32,6 +34,7 @@ namespace TurboMegaMod
         public Pawn pawn;
         public int firstSeen,lastSeen,visitCount,blockedAt,rejectedCount;
         public bool blocked;
+        public GuestProfile profile=new GuestProfile();
         public string reason;
         public long hotel,restaurant,company,sales,clinic;
         public List<GuestVisitRecord> visits=new List<GuestVisitRecord>();
@@ -45,6 +48,7 @@ namespace TurboMegaMod
             if(Scribe.mode==LoadSaveMode.Saving&&pawn!=null&&(pawn.Destroyed||pawn.MapHeld==null&&!Find.WorldPawns.Contains(pawn)))pawn=null;
             Scribe_References.Look(ref pawn,"pawn");Scribe_Values.Look(ref firstSeen,"firstSeen");Scribe_Values.Look(ref lastSeen,"lastSeen");
             Scribe_Values.Look(ref visitCount,"visitCount");Scribe_Values.Look(ref blockedAt,"blockedAt");Scribe_Values.Look(ref rejectedCount,"rejectedCount");
+            Scribe_Deep.Look(ref profile,"profile");if(profile==null)profile=new GuestProfile();
             Scribe_Values.Look(ref blocked,"blocked");Scribe_Values.Look(ref reason,"reason");
             Scribe_Values.Look(ref hotel,"hotel");Scribe_Values.Look(ref restaurant,"restaurant");Scribe_Values.Look(ref company,"company");Scribe_Values.Look(ref sales,"sales");Scribe_Values.Look(ref clinic,"clinic");
             Scribe_Collections.Look(ref visits,"visits",LookMode.Deep);Scribe_Collections.Look(ref payments,"payments",LookMode.Deep);Scribe_Collections.Look(ref receipts,"receipts",LookMode.Value);
@@ -123,7 +127,7 @@ namespace TurboMegaMod
         }
         private static void End(GuestDossier row,string reason,int tick)
         {
-            var current=row.Current;if(current==null)return;current.ended=tick;current.endReason=reason;current.pendingExit=-1;
+            var current=row.Current;if(current==null)return;GuestProfiles.Settle(row,reason);current.ended=tick;current.endReason=reason;current.pendingExit=-1;
         }
         public void Leaving(Pawn pawn)
         {
@@ -162,6 +166,10 @@ namespace TurboMegaMod
                 if(pawn.Faction!=Faction.OfPlayer&&!pawn.IsPrisoner&&!pawn.IsSlave&&(Arrived(pawn)||Clinic.ActivePatient(pawn))){
                     if(!HasCurrent(pawn,map))Begin(pawn,map,true,Clinic.ActivePatient(pawn));else Observe(pawn);
                 }
+            // A visitor can abandon the approach before CompGuest.Arrive. Once
+            // physically gone, a future genuine visit may prepare a new purse.
+            foreach(var row in records.Where(r=>r.Current==null&&r.profile.arrivalPrepared))
+                if(row.pawn==null||row.pawn.Dead||row.pawn.MapHeld==null)row.profile.arrivalPrepared=false;
             foreach(var row in records.Where(r=>r.Current!=null).ToArray()){
                 var visit=row.Current;var pawn=row.pawn;
                 if(pawn==null){End(row,"lost",Now);continue;}
@@ -169,7 +177,7 @@ namespace TurboMegaMod
                 if(pawn.Faction==Faction.OfPlayer||pawn.IsPrisoner||pawn.IsSlave){End(row,"changed",Now);continue;}
                 var held=pawn.MapHeld;
                 if(held==null||held.uniqueID!=visit.mapId)End(row,"departed",visit.pendingExit>=0?visit.pendingExit:Now);
-                else visit.pendingExit=-1;
+                else {visit.pendingExit=-1;GuestProfiles.Sample(row);}
             }
         }
         public override void GameComponentTick(){if(Now<nextCheck)return;nextCheck=Now+500;Synchronize();}

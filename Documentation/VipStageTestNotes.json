@@ -1,0 +1,35 @@
+{
+  "scope": "VIP/regular guest revision; unsuccessful or interrupted attempts are excluded from final successful checks.",
+  "attempts": [
+    {
+      "profile": "TestRuns/Vip-Integrated-20261116-005316",
+      "result": "failed fixture assertion",
+      "detail": "The test assigned lastSample=now-500 near tick0, producing an invalid negative sentinel. Production correctly refused to accrue unobserved time. Fixture now waits past500ticks."
+    },
+    {
+      "profile": "TestRuns/Vip-Integrated-20261116-005620",
+      "result": "failed fixture assertion",
+      "detail": "A second missed-observation test also assigned negative time. Replaced with legitimate tick0, preserving the cap-on-missed-observations test."
+    },
+    {
+      "profile": "TestRuns/Vip-Integrated-20261116-005742",
+      "result": "preliminary44-check pass on earlier dbb55858 binary; first reload assertion failed then corrected",
+      "detail": "Actual saved fields were present in XML. Native score sampling resumed before MapComponentUpdate and replaced synthetic score0.72. Reload assertion moved to PostLoadInit. Subsequent8-check reload and11-check migration passed on that earlier binary; final stage reruns on c8239581."
+    },
+    {
+      "profile": "TestRuns/Hospitality-FullSet-20261116-035832",
+      "result": "interrupted execution session before game test reports",
+      "detail": "No HospitalityProbe.json or Result.json was produced. No live RimWorld or wrapper session remained; only the owned test DLL was left. Removed that probe and resumed the runner from the five verified same-binary steps. Exit cause was not established; no GPU crash claim."
+    }
+  ],
+  "sourceCorrections": [
+    "Track prior lodging observation to exclude clinical gaps.",
+    "Require normal leaving before loyalty settlement.",
+    "Clear purse-preparation guard after an abandoned pre-arrival approach."
+  ],
+  "testLimits": [
+    "Settlement thresholds use controlled counter transitions alongside real sampled time; three naturally elapsed multi-hour guest visits are not claimed.",
+    "Migration removes nested fields only in a copy of the isolated fixture; no user save is edited.",
+    "Native APIs invoked by controlled fixtures; ambient VIP arrival frequency is a configured rule rather than an empirically measured population rate."
+  ]
+}

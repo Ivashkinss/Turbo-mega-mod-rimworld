@@ -1,0 +1,405 @@
+[
+  {
+    "id": 1,
+    "function": "RollVip",
+    "description": "Минимальное неотрицательное значение броска (0.0) при шансе 3%",
+    "inputs": {
+      "percent": 3,
+      "roll": 0.0
+    },
+    "expected": true
+  },
+  {
+    "id": 2,
+    "function": "RollVip",
+    "description": "Бросок строго ниже порога 3% (0.0299 против 0.03)",
+    "inputs": {
+      "percent": 3,
+      "roll": 0.0299
+    },
+    "expected": true
+  },
+  {
+    "id": 3,
+    "function": "RollVip",
+    "description": "Точное равенство порогу 0.03 не проходит 3% (строгое неравенство roll < percent/100)",
+    "inputs": {
+      "percent": 3,
+      "roll": 0.03
+    },
+    "expected": false
+  },
+  {
+    "id": 4,
+    "function": "RollVip",
+    "description": "Бросок строго выше порога 3% (0.0301 против 0.03)",
+    "inputs": {
+      "percent": 3,
+      "roll": 0.0301
+    },
+    "expected": false
+  },
+  {
+    "id": 5,
+    "function": "RollVip",
+    "description": "Шанс 0% отключает генерацию VIP при любом значении броска",
+    "inputs": {
+      "percent": 0,
+      "roll": 0.0
+    },
+    "expected": false
+  },
+  {
+    "id": 6,
+    "function": "RollVip",
+    "description": "Шанс 100% при броске 0.999 успешно даёт VIP",
+    "inputs": {
+      "percent": 100,
+      "roll": 0.999
+    },
+    "expected": true
+  },
+  {
+    "id": 7,
+    "function": "RollVip",
+    "description": "Шанс 100% при броске 1.0 не проходит полуинтервал [0, 1.0)",
+    "inputs": {
+      "percent": 100,
+      "roll": 1.0
+    },
+    "expected": false
+  },
+  {
+    "id": 8,
+    "function": "RollVip",
+    "description": "Отрицательный бросок (-0.01) строго отклоняется",
+    "inputs": {
+      "percent": 5,
+      "roll": -0.01
+    },
+    "expected": false
+  },
+  {
+    "id": 9,
+    "function": "Regular",
+    "description": "Точная граница постоянного клиента: 3 завершённых визита и 2 хороших",
+    "inputs": {
+      "completed": 3,
+      "good": 2
+    },
+    "expected": true
+  },
+  {
+    "id": 10,
+    "function": "Regular",
+    "description": "Превышение требований: 4 завершённых визита и 3 хороших",
+    "inputs": {
+      "completed": 4,
+      "good": 3
+    },
+    "expected": true
+  },
+  {
+    "id": 11,
+    "function": "Regular",
+    "description": "Недостаточно завершённых визитов (2 вместо 3) при 2 хороших",
+    "inputs": {
+      "completed": 2,
+      "good": 2
+    },
+    "expected": false
+  },
+  {
+    "id": 12,
+    "function": "Regular",
+    "description": "Недостаточно хороших визитов (1 вместо 2) при 5 завершённых",
+    "inputs": {
+      "completed": 5,
+      "good": 1
+    },
+    "expected": false
+  },
+  {
+    "id": 13,
+    "function": "Regular",
+    "description": "Новый посетитель без визитов (0 завершённых, 0 хороших)",
+    "inputs": {
+      "completed": 0,
+      "good": 0
+    },
+    "expected": false
+  },
+  {
+    "id": 14,
+    "function": "Qualifies",
+    "description": "Точная граница длительности проживания: 15000 тиков при штатном уходе departed",
+    "inputs": {
+      "reason": "departed",
+      "medicalOnly": false,
+      "ticks": 15000
+    },
+    "expected": true
+  },
+  {
+    "id": 15,
+    "function": "Qualifies",
+    "description": "Длительное гостиничное проживание (24000 тиков) при штатном уходе departed",
+    "inputs": {
+      "reason": "departed",
+      "medicalOnly": false,
+      "ticks": 24000
+    },
+    "expected": true
+  },
+  {
+    "id": 16,
+    "function": "Qualifies",
+    "description": "Нехватка 1 тика до границы (14999 тиков вместо 15000)",
+    "inputs": {
+      "reason": "departed",
+      "medicalOnly": false,
+      "ticks": 14999
+    },
+    "expected": false
+  },
+  {
+    "id": 17,
+    "function": "Qualifies",
+    "description": "Посещение только клиники (medicalOnly = true) не засчитывается в гостиничный статус",
+    "inputs": {
+      "reason": "departed",
+      "medicalOnly": true,
+      "ticks": 20000
+    },
+    "expected": false
+  },
+  {
+    "id": 18,
+    "function": "Qualifies",
+    "description": "Гибель гостя на карте (reason = 'died') исключает зачёт",
+    "inputs": {
+      "reason": "died",
+      "medicalOnly": false,
+      "ticks": 20000
+    },
+    "expected": false
+  },
+  {
+    "id": 19,
+    "function": "Qualifies",
+    "description": "Плетение или похищение гостя (reason = 'kidnapped') исключает зачёт",
+    "inputs": {
+      "reason": "kidnapped",
+      "medicalOnly": false,
+      "ticks": 20000
+    },
+    "expected": false
+  },
+  {
+    "id": 20,
+    "function": "Qualifies",
+    "description": "Вербовка гостя в колонию (reason = 'recruited') исключает зачёт",
+    "inputs": {
+      "reason": "recruited",
+      "medicalOnly": false,
+      "ticks": 20000
+    },
+    "expected": false
+  },
+  {
+    "id": 21,
+    "function": "Good",
+    "description": "Точная граница положительной оценки визита (0.6)",
+    "inputs": {
+      "score": 0.6
+    },
+    "expected": true
+  },
+  {
+    "id": 22,
+    "function": "Good",
+    "description": "Высокая оценка удовлетворённости гостя (0.85 >= 0.6)",
+    "inputs": {
+      "score": 0.85
+    },
+    "expected": true
+  },
+  {
+    "id": 23,
+    "function": "Good",
+    "description": "Оценка чуть ниже порога (0.5999 вместо 0.6)",
+    "inputs": {
+      "score": 0.5999
+    },
+    "expected": false
+  },
+  {
+    "id": 24,
+    "function": "Good",
+    "description": "Нейтральная оценка (0.0 < 0.6)",
+    "inputs": {
+      "score": 0.0
+    },
+    "expected": false
+  },
+  {
+    "id": 25,
+    "function": "Good",
+    "description": "Отрицательная оценка испорченного визита (-0.5)",
+    "inputs": {
+      "score": -0.5
+    },
+    "expected": false
+  },
+  {
+    "id": 26,
+    "function": "Good",
+    "description": "Неопределённая оценка NaN строго отклоняется",
+    "inputs": {
+      "score": null
+    },
+    "expected": false
+  },
+  {
+    "id": 27,
+    "function": "CoinsToAdd",
+    "description": "Ограничение по грузоподъёмности: freeSpace 35.0 кг, coinMass 0.03125 кг (1/32) -> capacity 1024 меньше недостачи 1800",
+    "inputs": {
+      "money": 200,
+      "target": 2000,
+      "freeSpace": 35.0,
+      "coinMass": 0.03125
+    },
+    "expected": 1024
+  },
+  {
+    "id": 28,
+    "function": "CoinsToAdd",
+    "description": "Полная выдача недостачи при достаточном запасе веса: freeSpace 103.0 кг -> capacity 3200 больше недостачи 1800",
+    "inputs": {
+      "money": 200,
+      "target": 2000,
+      "freeSpace": 103.0,
+      "coinMass": 0.03125
+    },
+    "expected": 1800
+  },
+  {
+    "id": 29,
+    "function": "CoinsToAdd",
+    "description": "Текущий кошелёк превышает цель (2200 > 2000) — кошелёк не уменьшается, выдача 0",
+    "inputs": {
+      "money": 2200,
+      "target": 2000,
+      "freeSpace": 50.0,
+      "coinMass": 0.03125
+    },
+    "expected": 0
+  },
+  {
+    "id": 30,
+    "function": "CoinsToAdd",
+    "description": "Свободный вес ровно равен обязательному запасу 3 кг (freeSpace = 3.0 кг) -> эффективная вместимость 0",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": 3.0,
+      "coinMass": 0.03125
+    },
+    "expected": 0
+  },
+  {
+    "id": 31,
+    "function": "CoinsToAdd",
+    "description": "Свободный вес меньше запаса 3 кг (freeSpace = 2.0 кг) -> выдача 0",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": 2.0,
+      "coinMass": 0.03125
+    },
+    "expected": 0
+  },
+  {
+    "id": 32,
+    "function": "CoinsToAdd",
+    "description": "Нулевая или отрицательная масса монеты (coinMass <= 0) возвращает 0",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": 50.0,
+      "coinMass": 0.0
+    },
+    "expected": 0
+  },
+  {
+    "function": "CoinsToAdd",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": 50.0,
+      "coinMass": -1.0
+    },
+    "expected": 0,
+    "id": 33,
+    "description": "Codex additional boundary/invalid-input case"
+  },
+  {
+    "function": "CoinsToAdd",
+    "inputs": {
+      "money": -1,
+      "target": 2000,
+      "freeSpace": 50.0,
+      "coinMass": 0.03125
+    },
+    "expected": 0,
+    "id": 34,
+    "description": "Codex additional boundary/invalid-input case"
+  },
+  {
+    "function": "CoinsToAdd",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": null,
+      "coinMass": 0.03125
+    },
+    "expected": 0,
+    "id": 35,
+    "description": "Codex additional boundary/invalid-input case"
+  },
+  {
+    "function": "CoinsToAdd",
+    "inputs": {
+      "money": 100,
+      "target": 2000,
+      "freeSpace": 50.0,
+      "coinMass": null
+    },
+    "expected": 0,
+    "id": 36,
+    "description": "Codex additional boundary/invalid-input case"
+  },
+  {
+    "function": "CoinsToAdd",
+    "inputs": {
+      "money": 0,
+      "target": 100,
+      "freeSpace": 3.0625,
+      "coinMass": 0.03125
+    },
+    "expected": 2,
+    "id": 37,
+    "description": "Codex additional boundary/invalid-input case"
+  },
+  {
+    "function": "RollVip",
+    "inputs": {
+      "percent": 200,
+      "roll": 1.0
+    },
+    "expected": false,
+    "id": 38,
+    "description": "Codex additional boundary/invalid-input case"
+  }
+]

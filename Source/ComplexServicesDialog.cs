@@ -35,6 +35,9 @@ namespace TurboMegaMod
                 Widgets.Label(new Rect(0,y,440,32),"TMM.Complex.RoomRate".Translate(desk.roomRate));
                 if(Widgets.ButtonText(new Rect(inner.width-150,y,65,32),"−5")){desk.roomRate=Math.Max(0,desk.roomRate-5);desk.ApplyServiceAreas();}
                 if(Widgets.ButtonText(new Rect(inner.width-75,y,65,32),"+5")){desk.roomRate=Math.Min(10000,desk.roomRate+5);desk.ApplyServiceAreas();}y+=45;
+                Help(inner,ref y,"TMM.Profile.Help");
+                if(Widgets.ButtonText(new Rect(0,y,inner.width,32),"TMM.Profile.Chance".Translate(desk.vipChance)))Find.WindowStack.Add(new FloatMenu(new[]{0,1,3,5,10}.Select(p=>new FloatMenuOption(p+"%",()=>desk.vipChance=p)).ToList()));y+=42;
+                Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.Profile.PreferRegulars".Translate(),ref desk.preferRegulars);y+=42;
                 ComplexReceptionUI.GuestOptions(desk,inner,ref y);
                 if(Button(inner,ref y,"TMM.Services.GuestList"))Find.WindowStack.Add(new Dialog_ComplexRoster(desk,false));
             }else if(page==2){

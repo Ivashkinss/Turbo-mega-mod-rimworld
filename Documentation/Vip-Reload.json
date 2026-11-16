@@ -1,0 +1,22 @@
+{
+  "vipReload": {
+    "passed": true,
+    "checks": 8,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4085,
+    "ticksAdvanced": 1767,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "c8239581aa32d1c2970c16ef4e9ed7994e2e791458ccf7d5051126dffee0a38a",
+  "passed": true,
+  "migrationFromMissingProfileFields": false
+}

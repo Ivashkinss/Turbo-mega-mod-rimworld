@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -326,6 +326,7 @@ namespace TurboMegaMod
             // The carrier's reservation can follow the split-off portion into
             // the buyer's inventory. Release it before Ingest reserves the meal.
             map.reservationManager.Release(delivered, waiter, waiter.CurJob);
+            GuestProfiles.Meal(guest,delivered.def);
             order.delivered = true;
             ProcessOrders(false);
             var eat = JobMaker.MakeJob(JobDefOf.Ingest, delivered); eat.count = 1;
