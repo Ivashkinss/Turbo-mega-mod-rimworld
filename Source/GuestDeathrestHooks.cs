@@ -37,6 +37,10 @@ namespace TurboMegaMod
             var original=DefDatabase<ThingDef>.GetNamedSilentFail("DeathrestCasket");
             if(def==null||original==null)return;
             def.tickerType=TickerType.Rare;
+            // A rented casket uses OwnedBed, not the permanent
+            // AssignedDeathrestCasket slot (whose load validator removes renters).
+            var rental=def.comps.FirstOrDefault(c=>c.compClass==typeof(CompAssignableToPawn_DeathrestCasket));
+            if(rental!=null)rental.compClass=typeof(CompAssignableToPawn_Bed);
             // Hospitality clones public fields. In 1.7 basePowerConsumption
             // became private and silently remains zero in the generated copy.
             var field=AccessTools.Field(typeof(CompProperties_Power),"basePowerConsumption");

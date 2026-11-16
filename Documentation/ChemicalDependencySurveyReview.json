@@ -1,0 +1,28 @@
+{
+  "catalogChecked": {
+    "chemicals": 7,
+    "generatedGenes": 5,
+    "drugs": 9,
+    "xmlDefinitionsResolved": true
+  },
+  "policyAccepted": false,
+  "findings": [
+    {
+      "id": "CHEM-01",
+      "issue": "Genetic DrugValidator mental-policy branch was read backwards",
+      "evidence": "IL_0096..00ae: with disallowed entry and non-null drugs, nonmental returns false; mental ignoreDrugPolicy=false branches to true at00ad, while ignoreDrugPolicy=true falls to false at00ab. Ordinary addiction uses a different true-branch at00d7.",
+      "scope": "Native1.7 validator result only, not complete job eligibility or endorsement of this apparent native behavior."
+    },
+    {
+      "id": "CHEM-02",
+      "issue": "IsSociallyProper parameter names and generalization incorrect",
+      "evidence": "Actual parameters t,p,forPrisoner,animalsCare. Two-argument overload supplies p.IsPrisonerOfColony and false. IsForbidden is checked by caller, not this method; socialPropernessMatters/Spawned/animals/hemogen-room branches qualify final prison-cell predicate.",
+      "scope": "No claim every map item is freely available to every guest or every recreational giver."
+    },
+    {
+      "id": "CHEM-03",
+      "issue": "No chemical service implemented",
+      "scope": "7/5/9 XML catalog is preparatory; live behavior/current job paths and UI policies require separate implementation and tests."
+    }
+  ]
+}

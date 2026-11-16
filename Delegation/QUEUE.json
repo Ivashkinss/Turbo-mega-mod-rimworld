@@ -398,7 +398,7 @@
     },
     {
       "id": "GuestHemogenSurveyCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/GuestHemogenSurveyCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiGuestHemogenSurveyCorrections",
       "expectedOutputs": [
@@ -406,7 +406,100 @@
         "FLOW.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-16T09:57:19.169847+00:00"
+      "createdUtc": "2026-11-16T09:57:19.169847+00:00",
+      "note": "Codex confirmed current sales override, price and arrival HostFaction. Qualified Suitable/WillEat as policy-dependent and StaffOnly as prohibiting self-service, not authorized staff delivery. Native full think path is no longer inferred from Relax alone."
+    },
+    {
+      "id": "GuestHemogenCountCases",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestHemogenCountCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestHemogenCountCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T10:06:50.360762+00:00",
+      "note": "Codex checked16 expected counts incl0.6/0.8 float32 boundaries and converted to actual C# in-game vectors. Mutation decimal_boundary actually uses Python double, not exact decimal arithmetic; qualification will be retained in review."
+    },
+    {
+      "id": "GuestHemogenPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestHemogenPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestHemogenPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T10:16:53.617545+00:00",
+      "note": "Codex checked5 keys and8 manual plans. Qualified timing, removed instant drinking guarantee, restricted bloodfeeding statement to automatic service."
+    },
+    {
+      "id": "GuestDutyTreeKeyAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestDutyTreeKeyAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestDutyTreeKeyAudit",
+      "expectedOutputs": [
+        "KEYS.json",
+        "REVIEW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T10:30:45.348254+00:00",
+      "note": "Codex independently confirmed native cloned-duty dispatch and native key/RNG helpers. Normal-return RNG isolation and weak-marker lifetime qualified; no all-mod/topology guarantee. Actual automatic ingest job-giver-key reload is now tested separately."
+    },
+    {
+      "id": "GuestChemicalNeedsSurvey",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestChemicalNeedsSurvey/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestChemicalNeedsSurvey",
+      "expectedOutputs": [
+        "API.json",
+        "FLOW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T10:50:48.267424+00:00",
+      "note": "Preliminary only: metadata and future path notes preserved. Qualified signature equivalence vs live compatibility, context-dependent social properness, and proposed vs implemented supply. No chemical service merged."
+    },
+    {
+      "id": "GuestCasketOwnershipAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestCasketOwnershipAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestCasketOwnershipAudit",
+      "expectedOutputs": [
+        "API.json",
+        "REVIEW.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T11:11:52.835821+00:00",
+      "note": "Codex confirmed permanent-vs-rental predicates and generated-only comp change against current source/native evidence. Reading test assertions is not runtime execution; actual29+15 game checks are separate. Old damaged references/live1.6/third-party ownership not guaranteed."
+    },
+    {
+      "id": "GuestChemicalDependencyDefs",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestChemicalDependencyDefs/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestChemicalDependencyDefs",
+      "expectedOutputs": [
+        "DEPENDENCIES.json",
+        "POLICY-QUESTIONS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T11:21:12.457204+00:00",
+      "note": "Partially accepted7chemicals/5generated genes/9drugs with XML paths checked. Native policy conclusions rejected: genetic mental branch reversed and SocialProperness parameter names/context wrong; see Documentation/ChemicalDependencySurveyReview.json and correction task."
+    },
+    {
+      "id": "GuestChemicalPolicyCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/GuestChemicalPolicyCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestChemicalPolicyCorrections",
+      "expectedOutputs": [
+        "CORRECTIONS.json",
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T20:10:11.796104+00:00",
+      "note": "Correct exact native policy branch interpretation before designing chemical guest service; no production behavior change."
     }
   ]
 }

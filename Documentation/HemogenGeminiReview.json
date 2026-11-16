@@ -1,0 +1,41 @@
+{
+  "countVectorsAccepted": 16,
+  "negativeMutations": 4,
+  "qualifications": [
+    "The mutation named decimal_boundary uses Python binary64 arithmetic, not exact Decimal; no exact decimal mutation coverage is claimed.",
+    "16 native C# count vectors do not test eligibility, prices or transactions.",
+    "SaleStock.Suitable and WillEat depend on the actual food policy; staff-only stock remains deliverable when authorized.",
+    "Guide removed immediate-drinking guarantee and qualified automatic bloodfeeding statement to this service."
+  ],
+  "correctedSurvey": "Documentation/HemogenSurveyReview.json",
+  "cachedDutyAudit": {
+    "metadataMethods": 7,
+    "sourceInsertionTypes": 4,
+    "verifiedAsStaticReview": true,
+    "runtimeGiverKeyReloadSeparate": true,
+    "qualifications": [
+      "RNG state is restored on normal native AssignSingleKey return, not a claim about exceptional paths.",
+      "CWT itself does not retain native duty nodes through its object marker; no general memory-leak guarantee for every mod.",
+      "Reference1.6 signature match is not live1.6 execution."
+    ]
+  },
+  "chemicalSurvey": {
+    "status": "preliminary research only; not an implemented service",
+    "qualifications": [
+      "Reference signature matching is not 100% runtime compatibility.",
+      "SocialProperness claim requires actual calling context; not a universal statement about every un-forbidden item.",
+      "Personal-first/paid-purchase chemical supply is a future architecture proposal, not current drug-service behavior."
+    ]
+  },
+  "guestCasketOwnershipAudit": {
+    "metadataMethods": 8,
+    "reviewed": true,
+    "nativePredicatesConfirmed": "AssignedDeathrestCasket for permanent casket; OwnedBed for ordinary/rented bed",
+    "sourceScope": "Only generated DeathrestCasketGuest assignable compClass; original casket, bindable and power retained",
+    "qualifications": [
+      "Static reading of test assertions is not execution; separate native game reports provide runtime evidence.",
+      "Signature matches do not prove live1.6 behavior.",
+      "Previously lost assignments and third-party ownership mutations are not universally migrated."
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "attempts": [
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-131515",
+      "reason": "Personal ingestion passed, purchased goods were not used automatically. Direct DutyDef tests did not cover native cached duty trees."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-131958",
+      "reason": "Trace proved Managed/Fit true with personal inventory, but actual game never chose new giver. Native ThinkNode_Duty indexes cloned subNodes; production now patches cached Relax copies."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-132925",
+      "reason": "Automatic purchased ingest and expected11 silver passed. Fixture assertion incorrectly relied on original loose stack identity."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-133600",
+      "reason": "Diagnostic proved original loose object destroyed/count0 after native merge, while map still had6 physical packs and guest had none after ingestion. Assert physical quantities instead of stale identity."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-133914",
+      "reason": "Physical quantity assertion passed. Staff-only fixture still allowed sale from public shelf holding the merged remainder; disable public sale before independent private-stock scenario."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261116-134152",
+      "reason": "Fixture floor snapshot includes starting silver on the rest of the map. Native hauling can move silver into player inventory/carry. Financial assertion now counts physical colony silver on map and in player inventories/carry, alongside actual sales income and guest debit."
+    },
+    {
+      "profile": "TestRuns/Outdoor-FullSet-20261116-142539",
+      "reason": "Outdoor27 behavior assertions passed but run rejected for AreaSource.DataForArea KeyNotFound and subsequent nonempty path queue. Native cache is gathered once per tick; fixture creates/rewrites allowed areas and started path in same tick. Delay test job selection to a later tick, without bypassing cache or suppressing errors. Exact ordering in failed process not independently captured; production source unchanged."
+    }
+  ],
+  "fixtureControls": "21C fixture temperature; food/rest/joy filled; runtime search backoff reset only between independent policy/budget cases.",
+  "userDataModified": false,
+  "noDirectResourceValueAssignmentInProduction": true,
+  "resourceGain": "Fixture initializes the gene value; subsequent restoration is from actual native Ingest outcomes.",
+  "realIngestSave": "A second fixture save is made with an automatically selected JobGiver_GuestHemogen Ingest job. Reload validates jobGiverThinkTree lookup by the saved native key before finishing ingestion.",
+  "previousBinaryPartialRegression": "On43c2500e: hemogen44+5+12 and delivery fresh/reload passed; deathrest reload exposed native casket ownership mismatch. These are historical partial checks, not the final DLL proof.",
+  "casketOwnershipFailure": "Native CompAssignableToPawn_DeathrestCasket.PostPostExposeData removes renters not pointing to AssignedDeathrestCasket. Log confirms removal, first tick cancels now-ownerless room. Guest def now uses ordinary CompAssignableToPawn_Bed; original casket def unchanged. New fixture preserves a separate permanent home casket across check-in/wake/reload.",
+  "outdoorRetest": {
+    "profile": "TestRuns/Outdoor-FullSet-20261116-142849",
+    "passed": true,
+    "checks": 27,
+    "runtimeErrors": 0,
+    "productionSourceChanged": false,
+    "qualification": "Deferring fixture path issuance to a later tick passed; original ordering was not traced, so universal causality/production-cache repair not claimed."
+  }
+}

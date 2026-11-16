@@ -99,10 +99,10 @@ public sealed class OutdoorProbe : MapComponent
         map.GetComponent<ClinicGuests>().visits.Remove(visit);Clinic.Patients(map).Remove(guest);
         Check((bool)AccessTools.Method(AccessTools.TypeByName("Hospitality.Utilities.GuestUtility"),"IsGuest").Invoke(null,new object[]{guest}),"Native guest registry did not recover after temporary transport");
         Need.CurLevelPercentage=0.35f;Check(GuestOutdoor.MakeJob(guest)==null,"Outdoor break ignored exact low threshold");Need.CurLevelPercentage=0.1f;
-        guest.jobs.EndCurrentJob(JobCondition.InterruptForced,false);
-        var result=DefDatabase<DutyDef>.GetNamed("Relax").thinkNode.TryIssueJobPackage(guest,default(JobIssueParams));
-        Check(result.Job!=null&&result.Job.def==JobDef,"Native guest think tree did not issue outdoor job");
-        guest.jobs.StartJob(result.Job,JobCondition.InterruptForced);start=GuestDossiers.Now;stage=1;Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
+        // Setup creates and rewrites allowed areas after the native path data
+        // may already have been gathered for this tick. Let a new tick gather
+        // those areas before requesting a real asynchronous path.
+        start=GuestDossiers.Now;stage=-1;Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
     }
     public override void MapComponentUpdate()
     {
@@ -117,6 +117,13 @@ public sealed class OutdoorProbe : MapComponent
                 Finish(true);return;
             }
             if(stage==0){Setup();return;}
+            if(stage==-1){
+                if(GuestDossiers.Now<=start)return;
+                guest.jobs.EndCurrentJob(JobCondition.InterruptForced,false);
+                var result=guest.thinker.MainThinkNodeRoot.TryIssueJobPackage(guest,default(JobIssueParams));
+                Check(result.Job!=null&&result.Job.def==JobDef,"Native guest think tree did not issue outdoor job");
+                guest.jobs.StartJob(result.Job,JobCondition.InterruptForced);start=GuestDossiers.Now;stage=1;return;
+            }
             if(GuestDossiers.Now%150==0)File.AppendAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"OutdoorProgress.log"),GuestDossiers.Now+" "+guest.Position+" "+guest.CurJob+" fit="+GuestOutdoor.Fit(guest)+" weather="+GuestOutdoor.Weather(guest)+" need="+(Need==null?-1:Need.CurLevelPercentage)+Environment.NewLine);
             if(GuestDossiers.Now-start<1000&&(Need==null||Need.CurLevelPercentage<0.14f||guest.CurJob==null||guest.Position!=guest.CurJob.targetA.Cell))return;
             Check(guest.CurJobDef==JobDef&&guest.Position==guest.CurJob.targetA.Cell,"Guest did not physically reach courtyard: position="+guest.Position+" job="+guest.CurJob+" fit="+GuestOutdoor.Fit(guest)+" weather="+GuestOutdoor.Weather(guest)+" needs="+(Need==null?-1:Need.CurLevelPercentage));

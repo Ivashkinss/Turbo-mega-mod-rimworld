@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Hemogen.Purchases>Buy hemogen when personal supplies run out</TMM.Hemogen.Purchases>
+  <TMM.Hemogen.Help>Guests with an active hemogen gene and packs enabled use personal supplies first. When buying is enabled, missing packs are purchased at normal complex sale prices, exclusively from stores marked For sale. A salesperson delivers from staff stores. Normal sales check price, food restrictions, silver and availability. Disabling purchases preserves personal supplies and already accepted orders. This service never assigns bloodfeeding from colonists or prisoners.</TMM.Hemogen.Help>
+  <TMM.Hemogen.Status>Hemogen: {0}%; personal packs: {1}; {2}.</TMM.Hemogen.Status>
+  <TMM.Hemogen.Allowed>packs allowed</TMM.Hemogen.Allowed>
+  <TMM.Hemogen.Blocked>packs disabled by gene setting</TMM.Hemogen.Blocked>
+</LanguageData>

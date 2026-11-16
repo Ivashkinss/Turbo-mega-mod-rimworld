@@ -19,14 +19,22 @@ public static class DeathrestProbeLaunch
     {
         var args=Environment.GetCommandLineArgs();
         if(args.Contains("-tmm-deathrest-probe")||args.Contains("-tmm-deathrest-reload"))new Harmony("tmm.test.deathrest.temperature").Patch(AccessTools.PropertyGetter(typeof(MapTemperature),"OutdoorTemp"),prefix:new HarmonyMethod(typeof(DeathrestProbeLaunch),"Temp"));
+        if(args.Contains("-tmm-deathrest-reload"))new Harmony("tmm.test.deathrest.cancel.trace").Patch(AccessTools.Method(typeof(GuestDeathrest),"Cancel"),prefix:new HarmonyMethod(typeof(DeathrestProbeLaunch),"CancelTrace"));
         if(args.Contains("-tmm-deathrest-reload"))LongEventHandler.ExecuteWhenFinished(()=>GameDataSaveLoader.LoadGame("TMM-Deathrest"));
+    }
+    private static void CancelTrace(Pawn p)
+    {
+        if(p==null||p.MapHeld==null)return;var comp=HotelBillingHooks.Guest(p);var bed=comp==null?null:AccessTools.Field(comp.GetType(),"bed").GetValue(comp) as Building_Bed;var desk=GuestDossiers.Desk(p.MapHeld);
+        string data="tick="+GuestDossiers.Now+" pawn="+p+" rawBed="+bed+" current="+p.CurrentBed()+" visit="+GuestDeathrest.Visiting(p)+" sleep="+GuestDeathrest.Sleeping(p)+" tend="+p.health.HasHediffsNeedingTend()+" gene="+GuestDeathrest.Gene(p).DeathrestPercent;
+        if(bed!=null)data+=" spawned="+bed.Spawned+" faction="+bed.Faction+" medical="+bed.Medical+" burning="+bed.IsBurning()+" temp="+bed.Position.GetTemperature(p.MapHeld)+" min="+p.GetStatValue(StatDefOf.ComfyTemperatureMin)+" max="+p.GetStatValue(StatDefOf.ComfyTemperatureMax)+" cells="+string.Join(";",bed.OccupiedRect().Select(c=>c+":"+c.Roofed(p.MapHeld)+":"+(desk!=null&&desk.area[c])+":"+(desk!=null&&ComplexLayout.StaffOnly(desk,c))));
+        File.AppendAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"DeathrestCancelTrace.log"),data+Environment.NewLine+Environment.StackTrace+Environment.NewLine);
     }
     private static bool Temp(ref float __result){__result=21;return false;}
 }
 public sealed class DeathrestProbe : MapComponent
 {
     private Building_ComplexDesk desk;
-    private Building_Bed bed;
+    private Building_Bed bed,homeCasket;
     private Pawn guest;
     private Lord originalLord;
     private bool saved,loaded,reported,ui;
@@ -48,7 +56,7 @@ public sealed class DeathrestProbe : MapComponent
     private static string Escape(string t){return "\""+t.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n")+"\"";}
     public override void ExposeData()
     {
-        base.ExposeData();Scribe_References.Look(ref desk,"drDesk");Scribe_References.Look(ref bed,"drBed");Scribe_References.Look(ref guest,"drGuest");Scribe_References.Look(ref originalLord,"drLord");
+        base.ExposeData();Scribe_References.Look(ref desk,"drDesk");Scribe_References.Look(ref bed,"drBed");Scribe_References.Look(ref homeCasket,"drHomeCasket");Scribe_References.Look(ref guest,"drGuest");Scribe_References.Look(ref originalLord,"drLord");
         Scribe_Values.Look(ref saved,"drSaved");Scribe_Values.Look(ref savedMoney,"drMoney");Scribe_Values.Look(ref savedDue,"drDue");Scribe_Values.Look(ref savedStarted,"drStarted");Scribe_Values.Look(ref savedDeadline,"drDeadline");
         if(Scribe.mode==LoadSaveMode.PostLoadInit){
             // The map component registry may still be restoring the deep list.
@@ -82,6 +90,8 @@ public sealed class DeathrestProbe : MapComponent
         guest=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,faction,forceGenerateNewPawn:true,canGeneratePawnRelations:false,allowDead:false,allowDowned:false,allowAddictions:false,fixedBiologicalAge:30,validatorPreGear:p=>!p.health.HasHediffsNeedingTend()&&!HealthAIUtility.ShouldSeekMedicalRest(p)));
         foreach(var gene in guest.genes.GenesListForReading.ToArray())guest.genes.RemoveGene(gene);
         guest.genes.AddGene(DefDatabase<GeneDef>.GetNamed("Deathrest"),false);guest.needs.AddOrRemoveNeedsAsAppropriate();
+        homeCasket=(Building_Bed)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("DeathrestCasket"));homeCasket.SetFaction(faction);GenSpawn.Spawn(homeCasket,new IntVec3(34,0,44),map);
+        Check(guest.ownership.ClaimDeathrestCasket(homeCasket),"Could not set permanent home casket fixture");
         guest.inventory.innerContainer.ClearAndDestroyContents();var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=1000;guest.inventory.innerContainer.TryAdd(silver);
         GenSpawn.Spawn(guest,new IntVec3(43,0,44),map);guest.needs.food.CurLevelPercentage=1;guest.needs.rest.CurLevelPercentage=0.5f;
         foreach(var target in map.attackTargetsCache.TargetsHostileToFaction(faction).Select(t=>t.Thing).Where(t=>t.Spawned).ToArray())target.DeSpawn();
@@ -96,7 +106,7 @@ public sealed class DeathrestProbe : MapComponent
     private void StartCycle()
     {
         Gene.DeathrestNeed.CurLevelPercentage=0.1f;guest.needs.food.CurLevelPercentage=1;
-        var job=DefDatabase<DutyDef>.GetNamed("Relax").thinkNode.TryIssueJobPackage(guest,default(JobIssueParams)).Job;Check(job!=null&&job.def==JobDefOf.Deathrest,"Native guest tree did not offer safe affordable deathrest; bed="+HotelBillingHooks.Bed(guest)+" need="+Gene.DeathrestNeed.CurLevelPercentage+" job="+job);
+        var job=guest.thinker.MainThinkNodeRoot.TryIssueJobPackage(guest,default(JobIssueParams)).Job;Check(job!=null&&job.def==JobDefOf.Deathrest,"Native guest tree did not offer safe affordable deathrest; bed="+HotelBillingHooks.Bed(guest)+" need="+Gene.DeathrestNeed.CurLevelPercentage+" job="+job);
         guest.jobs.StartJob(job,JobCondition.InterruptForced);start=GuestDossiers.Now;
     }
     private void CompleteNative()
@@ -106,6 +116,7 @@ public sealed class DeathrestProbe : MapComponent
         Check(!guest.health.hediffSet.HasHediff(HediffDefOf.InterruptedDeathrest),"Completed cycle received interrupted penalty");
         Check(Bindable.BoundPawn==null&&!Gene.BoundBuildings.Contains(bed),"Temporary binding survived completion");
         Check(HotelBillingHooks.Bed(guest)==bed&&guest.GetLord()==originalLord,"Completion released room/group");
+        Check(guest.ownership.AssignedDeathrestCasket==homeCasket,"Completion changed permanent home casket assignment");
     }
     private void FreshStep()
     {
@@ -113,6 +124,7 @@ public sealed class DeathrestProbe : MapComponent
         if(stage==1){
             if(HotelBillingHooks.Bed(guest)!=bed){if(GuestDossiers.Now-start>2500)throw new Exception("Check-in timed out: "+guest.CurJob);return;}
             Check(Paid.remaining<0&&Money==970,"Initial room charge incorrect");
+            Check(bed.CompAssignableToPawn.GetType()==typeof(CompAssignableToPawn_Bed)&&guest.ownership.AssignedDeathrestCasket==homeCasket,"Rental replaced permanent casket assignment");
             int due=Paid.nextChargeTick,before=Money;desk.deathrestGuests=true;Check(GuestDeathrest.Ready(guest),"Guest not ready after paid check-in: visiting="+GuestDeathrest.Visiting(guest)+" active="+Gene.Active+" down="+guest.Downed+" food="+guest.needs.food.CurLevelPercentage+" need="+Gene.DeathrestNeed.CurLevelPercentage+" safe="+GuestDeathrest.RoomSafe(guest,bed)+" reserve="+guest.CanReserveAndReach(bed,PathEndMode.OnCell,Danger.None)+" medical="+HealthAIUtility.ShouldSeekMedicalRest(guest)+" tend="+guest.health.HasHediffsNeedingTend()+" clinic="+Clinic.ActivePatient(guest)+" due="+Paid.nextChargeTick+" now="+GuestDossiers.Now+" duration="+Gene.MinDeathrestTicks+" job="+guest.CurJob);
             desk.deathrestGuests=false;Check(GuestDeathrest.MakeJob(guest)==null,"Disabled service still offered cycle");desk.deathrestGuests=true;
             foreach(var t in guest.inventory.innerContainer.ToArray())t.Destroy();Check(!GuestDeathrest.Ready(guest),"Unaffordable cycle accepted");
@@ -144,7 +156,8 @@ public sealed class DeathrestProbe : MapComponent
     private void ReloadStep()
     {
         Check(loaded,"Session, paid period, native sleep or temporary binding failed PostLoadInit roundtrip: "+loadState+" afterSession="+(Session!=null)+" afterLord="+(guest.GetLord()==originalLord)+" afterSleep="+GuestDeathrest.Sleeping(guest));
-        Check(Session!=null&&Session.started==savedStarted&&Session.deadline==savedDeadline&&Session.temporaryBinding,"Saved service state did not restore after full map initialization");
+        Check(Session!=null&&Session.started==savedStarted&&Session.deadline==savedDeadline&&Session.temporaryBinding,"Saved service state did not restore after full map initialization: session="+(Session!=null)+" started="+(Session==null?-1:Session.started)+" expected="+savedStarted+" deadline="+(Session==null?-1:Session.deadline)+" expected="+savedDeadline+" temporary="+(Session!=null&&Session.temporaryBinding)+" sleep="+GuestDeathrest.Sleeping(guest)+" bound="+(Bindable.BoundPawn==guest)+" serviceEntries="+Service.stays.Count+" safe="+GuestDeathrest.RoomSafe(guest,bed)+" visit="+GuestDeathrest.Visiting(guest)+" lord="+(guest.GetLord()==originalLord));
+        Check(guest.ownership.AssignedDeathrestCasket==homeCasket,"Permanent home casket was not restored");
         Check(desk.deathrestGuests&&GuestDeathrest.Sleeping(guest)&&HotelBillingHooks.Bed(guest)==bed,"Loaded guest lost service or room");
         Check(Money==savedMoney&&Paid.nextChargeTick==savedDue,"Load changed cash/paid deadline");CompleteNative();
         // A real second native cycle: forced nonpayment must wake before unclaim.

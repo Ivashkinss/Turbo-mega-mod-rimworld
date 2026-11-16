@@ -1,0 +1,18 @@
+<cases>
+  <case id="case01_v0_m1_g02" value="0.0" max="1.0" gain="0.2" expected="5" />
+  <case id="case02_v01_m1_g02" value="0.1" max="1.0" gain="0.2" expected="4" />
+  <case id="case03_v02_m1_g02" value="0.2" max="1.0" gain="0.2" expected="4" />
+  <case id="case04_v04_m1_g02" value="0.4" max="1.0" gain="0.2" expected="3" />
+  <case id="case05_v05_m1_g02" value="0.5" max="1.0" gain="0.2" expected="2" />
+  <case id="case06_v06_m1_g02" value="0.6" max="1.0" gain="0.2" expected="1" />
+  <case id="case07_v08_m1_g02" value="0.8" max="1.0" gain="0.2" expected="0" />
+  <case id="case08_v09_m1_g02" value="0.9" max="1.0" gain="0.2" expected="0" />
+  <case id="case09_v1_m1_g02" value="1.0" max="1.0" gain="0.2" expected="0" />
+  <case id="case10_negative_value" value="-0.1" max="1.0" gain="0.2" expected="0" />
+  <case id="case11_gain_zero" value="0.5" max="1.0" gain="0.0" expected="0" />
+  <case id="case12_gain_negative" value="0.5" max="1.0" gain="-0.2" expected="0" />
+  <case id="case13_value_nan" value="NaN" max="1.0" gain="0.2" expected="0" />
+  <case id="case14_max_infinity" value="0.5" max="Infinity" gain="0.2" expected="0" />
+  <case id="case15_gain_infinity" value="0.5" max="1.0" gain="Infinity" expected="0" />
+  <case id="case16_overflow_clamp" value="0.0" max="3.4028235e+38" gain="1.401298464e-45" expected="2147483647" />
+</cases>

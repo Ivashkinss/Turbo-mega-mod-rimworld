@@ -22,7 +22,7 @@ namespace TurboMegaMod
                 var color=GUI.color;if(page==i)GUI.color=new Color(0.65f,1f,0.7f);
                 if(Widgets.ButtonText(new Rect(i*rect.width/5f,0,rect.width/5f-4,34),pages[i].Translate())){page=i;scroll=Vector2.zero;}GUI.color=color;
             }
-            var body=new Rect(0,48,rect.width,rect.height-92);var inner=new Rect(0,0,body.width-25,1550);
+            var body=new Rect(0,48,rect.width,rect.height-92);var inner=new Rect(0,0,body.width-25,1850);
             Widgets.BeginScrollView(body,ref scroll,inner);float y=0;
             if(page==0){
                 Help(inner,ref y,"TMM.Complex.ServicesHelp");
@@ -45,6 +45,8 @@ namespace TurboMegaMod
                     Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.Deathrest.Enabled".Translate(),ref desk.deathrestGuests);y+=42;
                     Help(inner,ref y,"TMM.Deathrest.Help");
                     if(Button(inner,ref y,"TMM.Deathrest.Manage"))GuestDeathrest.Show(desk);
+                    Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.Hemogen.Purchases".Translate(),ref desk.hemogenPurchases);y+=42;
+                    Help(inner,ref y,"TMM.Hemogen.Help");
                 }
                 ComplexReceptionUI.GuestOptions(desk,inner,ref y);
                 if(Button(inner,ref y,"TMM.Services.GuestList"))Find.WindowStack.Add(new Dialog_ComplexRoster(desk,false));

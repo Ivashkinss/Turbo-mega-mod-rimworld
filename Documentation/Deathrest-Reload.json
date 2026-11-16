@@ -1,14 +1,14 @@
 {
   "deathrestReload": {
     "passed": true,
-    "checks": 13,
+    "checks": 15,
     "errors": []
   },
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4163,
-    "ticksAdvanced": 1774,
+    "framesAdvanced": 3965,
+    "ticksAdvanced": 1769,
     "newsWindowsDismissedInTest": 0
   },
   "runtimeErrors": 0,
@@ -16,6 +16,6 @@
   "gpuLost": false,
   "isolatedFixtureSave": true,
   "userSaveTested": false,
-  "productionAssemblySha256": "5a8c5413e2f1f95d68c698155d815161636d33919d6b697b5f9e496ac7381141",
+  "productionAssemblySha256": "71c7690d211c9b256600b89cf2dfca82c674c6688d89680c67b8fe820a03ca90",
   "passed": true
 }
