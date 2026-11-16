@@ -1,6 +1,7 @@
 """Require successful same-binary VIP and affected service evidence."""
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 from audit_localization import entries
 
@@ -54,6 +55,12 @@ def main():
     hooks=read(DOCS/'VipHookVerification.json');assert hooks['passed'] and hooks['checks']==14 and hooks['metadataOnly']
     utility=read(DOCS/'UtilityVerification.json');assert utility['passed'] and utility['resourceHashesVerified']==4456
     russian,duplicates=entries([ROOT/'Languages/Russian']);assert not duplicates and len(russian)==3626
+    resources=['Defs/Complex/GuestProfiles.xml','Languages/English/Keyed/GuestProfiles.xml',
+               'Languages/Russian/Keyed/GuestProfiles.xml','Languages/Russian/DefInjected/ThoughtDef/GuestProfiles.xml']
+    # A successful local game can still use an untracked XML file. Require the
+    # index to contain every runtime resource before publishing the stage.
+    for resource in resources:
+        subprocess.run(['git','ls-files','--error-unmatch','--',resource],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
     result=dict(passed=True,productionAssemblySha256=digest,successfulIsolatedSteps=len(steps),runtimeChecks=checks,checksByStep=counts,
                 actualCSharpRuleCases=rules['cases'],nativeHookMetadataChecks=14,resourceHashesVerified=4456,russianEntries=len(russian),
                 vipImplemented=True,regularGuestsImplemented=True,defaults=dict(vipChancePercent=3,targetPurse=[1500,3000],reservedCapacityKg=3,privateRoomImpressiveness=85,
@@ -63,6 +70,7 @@ def main():
                 migrationEvidence='An isolated fixture copy has non-VIP profile/experience nodes removed, then loads with empty defaults while another saved VIP retains its data.',
                 baselineCommit='5224f39',fullAllSubsystemRegressionOnThisAssembly=False,liveGame16Verified=False,visualLayoutInspected=False,userSaveTested=False,
                 worldPawnRetentionGuaranteed=False,storyIncidentsImplemented=False,
+                runtimeResourcesTracked=True,runtimeResourceSha256={p:sha(ROOT/p) for p in resources},
                 sourceSha256={str(p.relative_to(ROOT)):sha(p) for p in sorted((ROOT/'Source').rglob('*.cs'))},evidence=evidence)
     (DOCS/'VipStageVerification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in result.items() if k not in ('sourceSha256','evidence')},ensure_ascii=False))

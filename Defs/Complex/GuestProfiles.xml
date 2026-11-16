@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef><defName>TMM_VipRoom</defName><workerClass>TurboMegaMod.ThoughtWorker_VipRoom</workerClass><validWhileDespawned>false</validWhileDespawned><stages><li><label>disappointing VIP room</label><description>I expected a private, impressive room.</description><baseMoodEffect>-6</baseMoodEffect></li><li><label>comfortable VIP room</label><description>This private room meets my expectations.</description><baseMoodEffect>4</baseMoodEffect></li></stages></ThoughtDef>
+  <ThoughtDef><defName>TMM_VipFood</defName><workerClass>TurboMegaMod.ThoughtWorker_VipFood</workerClass><validWhileDespawned>false</validWhileDespawned><stages><li><label>ordinary restaurant meal</label><description>I expected something more refined from the restaurant.</description><baseMoodEffect>-3</baseMoodEffect></li><li><label>fine restaurant service</label><description>The restaurant served a suitably fine meal.</description><baseMoodEffect>3</baseMoodEffect></li></stages></ThoughtDef>
+  <ThoughtDef><defName>TMM_RegularGuest</defName><workerClass>TurboMegaMod.ThoughtWorker_RegularGuest</workerClass><validWhileDespawned>false</validWhileDespawned><stages><li><label>familiar hospitality</label><description>I know this place. It feels good to return.</description><baseMoodEffect>3</baseMoodEffect></li></stages></ThoughtDef>
+</Defs>

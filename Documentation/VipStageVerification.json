@@ -44,6 +44,13 @@
   "userSaveTested": false,
   "worldPawnRetentionGuaranteed": false,
   "storyIncidentsImplemented": false,
+  "runtimeResourcesTracked": true,
+  "runtimeResourceSha256": {
+    "Defs/Complex/GuestProfiles.xml": "04f98aeb27908632208662481114e53bad7110de834b57711e0be8c720f9a8c8",
+    "Languages/English/Keyed/GuestProfiles.xml": "c004e4051465d0ed7ff4c0c124aa7bbdebb0dc197ac0ba8b49901f99971eb35d",
+    "Languages/Russian/Keyed/GuestProfiles.xml": "c83852137d5cc89eeeeb48e3cae1d3fe5ea65d2e2707932eb173855666aa5317",
+    "Languages/Russian/DefInjected/ThoughtDef/GuestProfiles.xml": "e45a029486794d41ebe4eae7c1c4719d91c8a55eab3a3a8e6484271e197c5c2e"
+  },
   "sourceSha256": {
     "Source\\CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
     "Source\\Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
