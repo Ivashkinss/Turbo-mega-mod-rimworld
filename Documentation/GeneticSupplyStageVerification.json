@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "37a34e3dd0213944a67609eb23748dd5acd79e959276a9da76b2b5ee3ce239e1",
+  "successfulIsolatedSteps": 10,
+  "runtimeChecks": 239,
+  "checksByStep": {
+    "GeneticSupply": 39,
+    "GeneticSupply ingest reload": 5,
+    "GeneticSupply reload": 13,
+    "Hemogen": 44,
+    "Hemogen ingest reload": 5,
+    "Deathrest": 29,
+    "Deathrest reload": 15,
+    "ClinicGuest": 15,
+    "Hospitality": 47,
+    "Outdoor": 27
+  },
+  "staticNativePolicyCases": 24,
+  "staticPolicyMutations": 4,
+  "sourceSha256": {
+    "Source/CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source/Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source/ClinicBilling.cs": "c27aee409faf05acdce30928846708273d1af4b2cfc9e48326b9aab14e7507fd",
+    "Source/ClinicContributions.cs": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49",
+    "Source/ClinicGuests.cs": "4433dd7b22c607d7f21a72b6383755f67c687ac6a848a45759a0c0712b0d3a17",
+    "Source/ClinicMedicalHooks.cs": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3",
+    "Source/Company.cs": "56a0c72b7a72a78c7e93fdca33fdf505e69996389d0f98da211ee15e41c36d71",
+    "Source/CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source/ComplexLayout.cs": "de68c5bf1d413cff2f26a91153a2ca6ea3738b89a1f875a330bac06827535909",
+    "Source/ComplexManagement.cs": "5d5883cc97cd83acd7400026a2adb3b8b79dbbff479b7af8195b564e3cb7dd72",
+    "Source/ComplexReceptionUI.cs": "7a0602f15db28afc71c14ca0786187dae29c546384cc9ce9277a232e6848851b",
+    "Source/ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source/ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source/ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source/ComplexSales.cs": "55afbc658a3a5f7a381ba8b4fdf02f6af001c7f32dd68be6ed2a78cba308ae08",
+    "Source/ComplexServicesDialog.cs": "9d6c06462e037ddd9114d5baafcd25ae1ed3d5db6cd7a3fb263326f51144c820",
+    "Source/ControlledFarming.cs": "419d64eca8c35ddbb2d368421e3499f60dfd490be14c4e1630b5a9db94ddb844",
+    "Source/FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source/FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source/GreenhouseExpansion.cs": "61198a3a19ad517ca0e473e30b520f670ef85a3a5ef31354bd034ce166564a26",
+    "Source/GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source/GuestDeathrest.cs": "611a082661b8e4eabec09f9959a9a0c8976b693ac5bf9316da88b523d249a107",
+    "Source/GuestDeathrestHooks.cs": "482ab84f316bcb3744adecf224a4884c843c1d6fe427199d27c6b829a060ccea",
+    "Source/GuestDeathrestRules.cs": "30453f9d736ddd82f822b2cab8bc3fafaacfd2ff9f6ba2e71bf696577b4dcad9",
+    "Source/GuestDossierDialog.cs": "e07f393c996ec896db98dacebaee31d0b44b2a63c212f3dec287582ad5078897",
+    "Source/GuestDossierHooks.cs": "59cc6c5de8e0b88a4643e5486b8ed4ac47294d0c94dda750b353d6bda56e30e8",
+    "Source/GuestDossiers.cs": "ed9361e18ee59532a1f1b4a06edc07c2a7a99934adf5e97aff455739fde59e26",
+    "Source/GuestDutyTrees.cs": "0005dcc639eef0110bd0e95ef0bbf0aea647b7194cbda7cbfe8e7be9453f2da4",
+    "Source/GuestGeneticSupply.cs": "875900c7f5eede53f478e1e888ece33c3992327ee073958adf096a70072921f1",
+    "Source/GuestHemogen.cs": "bfeea0f9a8832cd8f641fe631f4cb05f2e0ff0764edfdce39af34c4315654899",
+    "Source/GuestNeedsDialog.cs": "cd22d474291d9cad6b464a08e56dc7eec2242f9f5058268d6e05a2c176f908de",
+    "Source/GuestOutdoor.cs": "7005438e43c435bb971d15a6a0e263b7d6f6062aa4c41926c449360663d54f82",
+    "Source/GuestProfileRules.cs": "ced380b802e538ffab6cd0ef8bed9da2fc627b21616b6fa2b820065ff87f6e10",
+    "Source/GuestProfiles.cs": "e038719a61ac2808483a885051f0ab436172cf8c9ac3d7e0fccda60ddd07a118",
+    "Source/HotelBilling.cs": "b21d3c0f6035b23d4ed0b0aa86ad0467f837db9fbe700ade31e04a74a9ea1281",
+    "Source/HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source/ManualGreenhouse.cs": "ced0a292921285e4b969a22916dd771325695c3f73f2ec6ba27750dcfaaf6a9a",
+    "Source/MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source/MedicalAllocation.cs": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+    "Source/MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source/MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source/OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source/RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source/RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source/Restaurant.cs": "fc79b6c16151608ae56ceb6bdda0d90053363aefa65e5b469800c8905074235c",
+    "Source/RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source/RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source/SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source/SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source/VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source/Wholesale/PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source/WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source/WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source/WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "runtimeResourceSha256": {
+    "Languages/English/Keyed/GuestGeneticSupply.xml": "48becbebb9685c4d5dbd993e1e98563dad4e1912c3f683cdb70b8d91c4482b6d",
+    "Languages/Russian/Keyed/GuestGeneticSupply.xml": "cd9804caae49941c31925268d54b08a713318fcf94248cfdf42f0f8916c35321"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns/GeneticSupply-FullSet-20261116-232318/Result.json",
+      "sha256": "eaa72ce2ca62e9c6295b584a3f6be2d3e61b7151d504c55dc41f125cae319b5d"
+    },
+    {
+      "path": "Documentation/GeneticSupply-FullSet.json",
+      "sha256": "eaa72ce2ca62e9c6295b584a3f6be2d3e61b7151d504c55dc41f125cae319b5d"
+    },
+    {
+      "path": "TestRuns/GeneticSupply-FullSet-20261116-232318/IngestReloadResult.json",
+      "sha256": "cd3d9c7a310f4c14fec113d13949a420fc556152249566c3879774bb6f3ed3ff"
+    },
+    {
+      "path": "Documentation/GeneticSupply-IngestReload.json",
+      "sha256": "cd3d9c7a310f4c14fec113d13949a420fc556152249566c3879774bb6f3ed3ff"
+    },
+    {
+      "path": "TestRuns/GeneticSupply-FullSet-20261116-232318/ReloadResult.json",
+      "sha256": "ca3ee2f046488ab30b7b1bb2edb735c847b9a786d8222043250e46b331fc5040"
+    },
+    {
+      "path": "Documentation/GeneticSupply-Reload.json",
+      "sha256": "ca3ee2f046488ab30b7b1bb2edb735c847b9a786d8222043250e46b331fc5040"
+    },
+    {
+      "path": "TestRuns/Hemogen-FullSet-20261116-232725/Result.json",
+      "sha256": "13fcfaedbda33be35a1ba5a3fc874b19d9df02d01cbd4da73bf7a22b8cf0d12c"
+    },
+    {
+      "path": "Documentation/Hemogen-FullSet.json",
+      "sha256": "13fcfaedbda33be35a1ba5a3fc874b19d9df02d01cbd4da73bf7a22b8cf0d12c"
+    },
+    {
+      "path": "TestRuns/Hemogen-FullSet-20261116-232725/IngestReloadResult.json",
+      "sha256": "8545e870b718ee9155a2d7113438cc59465969b75225712b592c566369e0d5fd"
+    },
+    {
+      "path": "Documentation/Hemogen-IngestReload.json",
+      "sha256": "8545e870b718ee9155a2d7113438cc59465969b75225712b592c566369e0d5fd"
+    },
+    {
+      "path": "TestRuns/Deathrest-FullSet-20261116-233004/Result.json",
+      "sha256": "8a410c6846178af9faabf6585552b360a32399152d352550a04ee06b5d79bd3f"
+    },
+    {
+      "path": "Documentation/Deathrest-FullSet.json",
+      "sha256": "8a410c6846178af9faabf6585552b360a32399152d352550a04ee06b5d79bd3f"
+    },
+    {
+      "path": "TestRuns/Deathrest-FullSet-20261116-233004/ReloadResult.json",
+      "sha256": "da480a158543847d81d82f6e543a9bc12d405a0e446667e354e8ca6bab873982"
+    },
+    {
+      "path": "Documentation/Deathrest-Reload.json",
+      "sha256": "da480a158543847d81d82f6e543a9bc12d405a0e446667e354e8ca6bab873982"
+    },
+    {
+      "path": "TestRuns/ClinicGuest-FullSet-20261116-233257/Result.json",
+      "sha256": "db6ef2f45d95df9c9cee9f4db288b510c084db002c2324d2f1b91f619bc66fad"
+    },
+    {
+      "path": "Documentation/ClinicGuest-FullSet.json",
+      "sha256": "db6ef2f45d95df9c9cee9f4db288b510c084db002c2324d2f1b91f619bc66fad"
+    },
+    {
+      "path": "TestRuns/Hospitality-FullSet-20261116-233518/Result.json",
+      "sha256": "f95bf0790f5ce5131ef82c2c79c592ae0e2cd19682fbc8e6053612d5991ac0d4"
+    },
+    {
+      "path": "Documentation/Hospitality-FullSet.json",
+      "sha256": "f95bf0790f5ce5131ef82c2c79c592ae0e2cd19682fbc8e6053612d5991ac0d4"
+    },
+    {
+      "path": "TestRuns/Outdoor-FullSet-20261116-233731/Result.json",
+      "sha256": "350517a92725dba91bec73080730085f5d0e699ecf1ea248716bdd1f55759bb2"
+    },
+    {
+      "path": "Documentation/Outdoor-FullSet.json",
+      "sha256": "350517a92725dba91bec73080730085f5d0e699ecf1ea248716bdd1f55759bb2"
+    }
+  ],
+  "personalDoseConsumedWithoutPayment": true,
+  "publicSaleThenAutonomousNativeIngest": true,
+  "staffStockDeliveredWithoutGuestEntry": true,
+  "physicalGuestDebitColonySilverAndSalesIncome": true,
+  "pendingDeliverySaveLoad": true,
+  "automaticIngestSaveLoadWithResolvedGiverKey": true,
+  "cancelledDeliveryPreservesGoodsAndNoIncome": true,
+  "existingDutyKeysPreservedAndRepeatedSyncIdempotent": true,
+  "mainThinkRootUsedByOutdoorAndDeathrestProbes": true,
+  "sourceDutyOnlyTestsWereInsufficientInPriorStages": true,
+  "guestCasketUsesRentalOwnershipAndPreservesHomeAssignment": true,
+  "colonySilverMeasuredIncludingPlayerInventoryAndCarry": true,
+  "physicalStackQuantitiesInsteadOfOriginalMergedIdentity": true,
+  "additionalPolicyReferenceSaveLoad": true,
+  "oneDoseRequested": true,
+  "ordinaryAddictionImplemented": false,
+  "recreationImplemented": false,
+  "directlyResetDependencyInProduction": false,
+  "liveGame16Verified": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "allThirdPartyDrugGenesSupported": false,
+  "allSubsystemRegressionOnThisAssembly": false
+}

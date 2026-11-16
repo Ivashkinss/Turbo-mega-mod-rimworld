@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.GeneticSupply.Purchases>Покупать препараты при генетической зависимости</TMM.GeneticSupply.Purchases>
+  <TMM.GeneticSupply.Policy>Дополнительная политика препаратов: {0}</TMM.GeneticSupply.Policy>
+  <TMM.GeneticSupply.GuestPolicy>Только политика самого гостя</TMM.GeneticSupply.GuestPolicy>
+  <TMM.GeneticSupply.ManagePolicies>Настроить политики препаратов</TMM.GeneticSupply.ManagePolicies>
+  <TMM.GeneticSupply.Help>Постоялец с активной генетической зависимостью принимает одну дозу при наступлении штатной потребности. Сначала используется личный запас; недостающее покупается со склада «На продажу», со служебного склада доставляет продавец. Разрешение «При зависимости» проверяется в политике гостя и выбранной дополнительной политике; расписание и рекреационное употребление служба не назначает. Для покупки также действуют пищевые ограничения и обычные правила торговли. Отключение закупки сохраняет личное употребление и принятые заказы. Без денег или товара препарат не создаётся; кома и лечение остаются задачей клиники.</TMM.GeneticSupply.Help>
+  <TMM.GeneticSupply.Status>Генетические зависимости: {0}</TMM.GeneticSupply.Status>
+  <TMM.GeneticSupply.Due>нужна доза</TMM.GeneticSupply.Due>
+  <TMM.GeneticSupply.NotDue>доза пока не нужна</TMM.GeneticSupply.NotDue>
+</LanguageData>

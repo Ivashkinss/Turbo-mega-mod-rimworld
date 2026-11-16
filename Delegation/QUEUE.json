@@ -489,7 +489,7 @@
     },
     {
       "id": "GuestChemicalPolicyCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/GuestChemicalPolicyCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiGuestChemicalPolicyCorrections",
       "expectedOutputs": [
@@ -499,7 +499,48 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T20:10:11.796104+00:00",
-      "note": "Correct exact native policy branch interpretation before designing chemical guest service; no production behavior change."
+      "note": "Codex compared both native IL policy tails and actual SocialProperness parameters; reran24cases/4mutations. Accepted as static model only. Current service excludes mental states, respects native addiction permission and optional extra policy; no ordinary addiction/recreation stage yet."
+    },
+    {
+      "id": "GeneticSupplyPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/GeneticSupplyPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiGeneticSupplyPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T20:21:29.075968+00:00",
+      "note": "Codex curated guide8plans: optional foreign drug tracker, no immediate promise, actual seller draft cancellation instead of impossible guest drafting, personal-second-dependency priority, active ingest save/load, physical silver income and shared-policy editor scope. No blanket cure/all-gene runtime claim."
+    },
+    {
+      "id": "OrdinaryAddictionNativeCases",
+      "state": "pending",
+      "taskFile": "Delegation/OrdinaryAddictionNativeCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiOrdinaryAddictionNativeCases",
+      "expectedOutputs": [
+        "API.json",
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T20:29:04.611021+00:00",
+      "note": "Bounded native classification evidence for next ordinary-addiction stage; no merged runtime implementation."
+    },
+    {
+      "id": "ComplexPricingNativeAudit",
+      "state": "pending",
+      "taskFile": "Delegation/ComplexPricingNativeAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiComplexPricingNativeAudit",
+      "expectedOutputs": [
+        "HOOKS.json",
+        "FLOW.md",
+        "CHECKS.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T20:35:35.516653+00:00",
+      "note": "User requested store pricing and differentiated bed tariffs, explicitly per whole bed/day; static integration evidence before implementation."
     }
   ]
 }

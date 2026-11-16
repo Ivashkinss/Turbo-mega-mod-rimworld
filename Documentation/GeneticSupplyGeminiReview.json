@@ -1,0 +1,33 @@
+{
+  "nativePolicyCorrectionAccepted": true,
+  "staticPolicyCases": 24,
+  "negativeMutations": 4,
+  "qualifications": [
+    "Native genetic mental-state branch is opposite to ordinary addiction; service excludes mental states and does not rewrite the native validator.",
+    "Static IL interpreter is not live C# execution or complete job eligibility.",
+    "Two-argument SocialProperness supplies prisoner context; forbid/reservation/path/duty/trade constraints are independent.",
+    "Reference1.6 signatures do not prove live1.6 execution."
+  ],
+  "catalog": {
+    "chemicals": 7,
+    "generatedGenes": 5,
+    "drugDefs": 9
+  },
+  "staticModelEvidenceSha256": {
+    "CASES.json": "57c284c28e8dd5330bedada31e7bcb102a239f0a3124f0355b4f00683bfb779e",
+    "validate.py": "244c03fb098eae773c8b65b37215b5f1d3b0907a5d46e4adc64a37825eab8c79",
+    "CORRECTIONS.json": "7f8c4e027ef5d7475ccb1a219a2587c8746f73e4f83560e10fabe16270154bf0"
+  },
+  "playerGuide": {
+    "plans": 8,
+    "reviewed": true,
+    "corrections": [
+      "Qualified optional/missing guest policy and supplied separate-policy editing advice.",
+      "Removed immediate-ingestion guarantee and scoped purchase toggle to this service.",
+      "Replaced invalid foreign-guest draft instruction with seller draft before transfer.",
+      "Replaced two-personal-stock order plan with personal stock of second dependency preceding paid dose.",
+      "Added active-ingest save/load and physical silver placement to manual plan.",
+      "No universal cure/automatic admission/all5genes runtime claim."
+    ]
+  }
+}

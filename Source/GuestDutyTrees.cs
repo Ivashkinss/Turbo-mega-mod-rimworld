@@ -55,7 +55,7 @@ namespace TurboMegaMod
             var original=Walk(root).ToDictionary(n=>n,n=>n.UniqueSaveKey);
             bool changed=false;
             // Include only our service nodes already installed in this def.
-            foreach(var type in new[]{typeof(JobGiver_GuestHemogen),typeof(JobGiver_GuestDeathrest),typeof(JobGiver_GuestOutdoor)}){
+            foreach(var type in new[]{typeof(JobGiver_GuestGeneticSupply),typeof(JobGiver_GuestHemogen),typeof(JobGiver_GuestDeathrest),typeof(JobGiver_GuestOutdoor)}){
                 if(!source.subNodes.Any(n=>n.GetType()==type)||target.subNodes.Any(n=>n.GetType()==type))continue;
                 var node=(ThinkNode)Activator.CreateInstance(type);
                 Prepare(node,target,"TurboMegaMod:Relax:"+root.UniqueSaveKey+":"+type.FullName);

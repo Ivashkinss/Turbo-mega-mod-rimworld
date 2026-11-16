@@ -1,0 +1,16 @@
+{
+  "attempts": [
+    {
+      "profile": "TestRuns/GeneticSupply-FullSet-20261116-231949",
+      "reason": "Mechanical fixture rename accidentally changed Hemogenic to nonexistent GeneticSupplyic, causing GeneMaker.MakeGene(null). Corrected test to actual generated ChemicalDependency_Psychite; production source unchanged."
+    },
+    {
+      "profile": "TestRuns/GeneticSupply-FullSet-20261116-232138",
+      "reason": "Foreign guest has no native drugs tracker. Fixture dereferenced it when assigning an explicit test policy; service already permits missing tracker and optional supply policy still applies. Fixture now verifies default policy first, then creates tracker only to exercise explicit-policy cases."
+    }
+  ],
+  "fixtureControls": "Disposable profiles only,21C,controlled food/rest/joy,cleared hostile targets; gene severity initialized between independent cases. Recovery after ingestion is native, not manually reset by production.",
+  "userDataModified": false,
+  "ordinaryAddictionImplemented": false,
+  "recreationalSupplyImplemented": false
+}

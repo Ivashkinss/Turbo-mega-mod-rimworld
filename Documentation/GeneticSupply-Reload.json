@@ -1,0 +1,21 @@
+{
+  "geneticSupplyReload": {
+    "passed": true,
+    "checks": 13,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 3909,
+    "ticksAdvanced": 1769,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "37a34e3dd0213944a67609eb23748dd5acd79e959276a9da76b2b5ee3ce239e1",
+  "passed": true
+}

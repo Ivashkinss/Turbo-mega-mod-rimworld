@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.GeneticSupply.Purchases>Buy drugs for genetic dependency</TMM.GeneticSupply.Purchases>
+  <TMM.GeneticSupply.Policy>Additional drug policy: {0}</TMM.GeneticSupply.Policy>
+  <TMM.GeneticSupply.GuestPolicy>Guest policy only</TMM.GeneticSupply.GuestPolicy>
+  <TMM.GeneticSupply.ManagePolicies>Manage drug policies</TMM.GeneticSupply.ManagePolicies>
+  <TMM.GeneticSupply.Help>An arrived guest with an active genetic dependency takes one dose when the native need is due. Personal stock comes first; missing doses are purchased from For sale storage, with a salesperson delivering staff stock. Allowed for addiction must permit the drug in the guest policy and any additional policy. This service does not schedule recreational drug use. Purchases also follow food restrictions and normal sales rules. Disabling purchases preserves personal use and accepted orders. No money or stock means no generated drug; coma and treatment remain clinic concerns.</TMM.GeneticSupply.Help>
+  <TMM.GeneticSupply.Status>Genetic dependencies: {0}</TMM.GeneticSupply.Status>
+  <TMM.GeneticSupply.Due>dose due</TMM.GeneticSupply.Due>
+  <TMM.GeneticSupply.NotDue>dose not yet due</TMM.GeneticSupply.NotDue>
+</LanguageData>
