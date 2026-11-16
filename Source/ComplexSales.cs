@@ -114,9 +114,9 @@ namespace TurboMegaMod
         }
         public static double UnitPrice(Thing item)
         {
-            // Match Hospitality's normal retail factor, while keeping the quote
+            // Reception controls the market percentage; a stored quote remains
             // independent of the stock's spawned/container representation.
-            return (double)item.MarketValue * 0.55;
+            return (double)item.MarketValue * ComplexPricing.Percent(item) / 100.0;
         }
         public static int Price(double unit, int count)
         {

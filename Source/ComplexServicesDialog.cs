@@ -29,6 +29,7 @@ namespace TurboMegaMod
                 Command(inner,ref y,desk.AreaButton("TMM.Complex.Area",()=>desk.area,v=>{desk.area=v;desk.ApplyServiceAreas();}));
                 Command(inner,ref y,desk.AreaButton("TMM.Complex.StaffArea",()=>desk.staffArea,v=>{desk.staffArea=v;desk.ApplyServiceAreas();}));
                 Help(inner,ref y,"TMM.Services.AutoAreas");
+                if(Button(inner,ref y,"TMM.Prices.Title"))Find.WindowStack.Add(new Dialog_ComplexPrices(desk));
                 if(Button(inner,ref y,"TMM.Dossier.Title"))Find.WindowStack.Add(new Dialog_GuestDossiers(desk));
             }else if(page==1){
                 Help(inner,ref y,"TMM.Services.HotelHelp");

@@ -1,0 +1,39 @@
+{
+  "acceptedAsStaticPreparation": true,
+  "nativeMethodsReviewed": [
+    "RimWorld.CompDrug.PrePostIngested",
+    "RimWorld.CompDrug.PostIngested",
+    "RimWorld.Hediff_Addiction.get_CurStageIndex"
+  ],
+  "outputsSha256": {
+    "OUTCOME.json": "a001005ddb74436037769febacaa1e421f356291b5b5ed09beb444dea650a8d8",
+    "CHECKS.md": "25a9ac974d59e6b9875222ccc00096fbea40f03678c323119f3d498ae2ede10a",
+    "REPORT.md": "09b3c1f895969306a8bb427c54b016306da7c5a27c611b49fa67ecbdcbc5682f"
+  },
+  "corrections": [
+    {
+      "path": "chemicalComparisons.beerAlcohol.drugDef",
+      "actual": "Beer",
+      "reason": "Core Alcohol_Beer.xml line5 ThingDef.defName Beer; Alcohol is ChemicalDef name."
+    },
+    {
+      "claim": "Taking a dose always moves category to Satisfied and raises addiction severity.",
+      "actual": "PrePostIngested requires Addictive and flesh; adds configured existingAddictionSeverityOffset, which may be0/modified. Need offset is tolerance/body scaled, so final category must be observed, not assumed."
+    },
+    {
+      "claim": "Manual need fill bypasses payment deduction in native ingestion.",
+      "actual": "Payment belongs to ComplexSales transaction, not native Ingest. Direct need fill bypasses dose/effects but native Ingest itself does not charge shop money."
+    },
+    {
+      "claim": "Luciferium doses prevent death / universally cannot be cured.",
+      "actual": "A suitable dose can restore chemical level and leave withdrawal stage; no resurrection, universal future-mod cure exclusion or deterministic death deadline follows. deathMtbDays is probabilistic, not a fixed10day deadline."
+    }
+  ],
+  "independentFacts": [
+    "CompDrug.PrePostIngested existing-offset add0075..007b and scaled need add01b6..01dc confirmed.",
+    "Hediff_Addiction.get_CurStageIndex returns1 only for existing need categoryWithdrawal; nullneed returns0.",
+    "Beer XML offset0.20, need0.9 and AlcoholAddiction severityPerDay-0.0333 confirmed; Luciferium need0.9/deathMtbDays10 in Core XML."
+  ],
+  "ordinaryGuestSupplyImplemented": false,
+  "nativeIngestRuntimeTestPerformedByThisAudit": false
+}

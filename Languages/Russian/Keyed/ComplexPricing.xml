@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Prices.Title>Цены магазина и кроватей</TMM.Prices.Title>
+  <TMM.Prices.Sales>Цена товаров, % рыночной стоимости</TMM.Prices.Sales>
+  <TMM.Prices.Markup>Отклонение от рынка: {0}%</TMM.Prices.Markup>
+  <TMM.Prices.BaseBed>Общий тариф за всю кровать в сутки</TMM.Prices.BaseBed>
+  <TMM.Prices.Help>Тариф — за всю кровать в сутки, а не с каждого постояльца. Индивидуальная цена сохраняется при изменении общего тарифа. «Комната» применяет цену к каждой текущей гостевой кровати этой комнаты, не ко всему помещению одной суммой. Новые цены действуют при новых заказах и следующих сутках; принятые заказы и уже оплаченный период сохраняются. Ноль означает бесплатную кровать. Один гость может арендовать двуспальную кровать целиком; для нового подселения второго нужны текущие отношения супругов, помолвленных или любовников и штатное согласие делить кровать.</TMM.Prices.Help>
+  <TMM.Prices.Bed>{0}, мест: {1}
+{2} · {3}</TMM.Prices.Bed>
+  <TMM.Prices.Common>Общий</TMM.Prices.Common>
+  <TMM.Prices.Custom>Свой</TMM.Prices.Custom>
+  <TMM.Prices.Reset>Общий тариф</TMM.Prices.Reset>
+  <TMM.Prices.Room>Комната</TMM.Prices.Room>
+  <TMM.Prices.RoomHelp>Применить цену этой кровати ко всем нынешним гостевым кроватям её закрытой комнаты.</TMM.Prices.RoomHelp>
+  <TMM.Prices.NoBeds>В гостевой части комплекса нет доступных для настройки кроватей.</TMM.Prices.NoBeds>
+  <TMM.Prices.BedDaily>За всю кровать в сутки: {0} серебра</TMM.Prices.BedDaily>
+</LanguageData>

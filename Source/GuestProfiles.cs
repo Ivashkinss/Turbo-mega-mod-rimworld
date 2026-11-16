@@ -105,7 +105,7 @@ namespace TurboMegaMod
             if(GuestDossiers.Now<stay.nextBedCheck)return false;
             stay.nextBedCheck=GuestDossiers.Now+GuestProfileRules.BedRetryDelay;Consolidate(__0);
             var bed=(Building_Bed)AccessTools.Method(AccessTools.TypeByName("Hospitality.Utilities.BedUtility"),"FindBedFor").Invoke(null,new object[]{__0});
-            if(bed!=null)__result=new Job(DefDatabase<JobDef>.GetNamed("ClaimGuestBed"),bed){takeExtraIngestibles=HotelBillingHooks.Fee(bed)};
+            if(bed!=null)__result=new Job(DefDatabase<JobDef>.GetNamed("ClaimGuestBed"),bed){takeExtraIngestibles=__0.Map.GetComponent<HotelBilling>().EntryFee(bed)};
             return false;
         }
         public static bool GoodRoom(Building_Bed bed)

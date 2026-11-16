@@ -1,0 +1,25 @@
+{
+  "acceptedAsStaticPreparation": true,
+  "nativeAssemblySha256": "d55aa8e47fa3c5463ca85b0eccd51f195b4bbcd04f56da3af21c2f6688a81254",
+  "cases": 6,
+  "outputsSha256": {
+    "ELIGIBILITY.json": "5e83521afe6899bea7ba6094589ffadbe5b1a7618df5d7db447d39ce026bc59f",
+    "CASES.md": "ba47b3dd944af97d10c2897608208ee02292379029b967af566fa52d7bb589a7",
+    "REPORT.md": "671cc0ced10e5b4b64191f3fa943553543160e1630142477d12fd6df81f5d4b7"
+  },
+  "independentEvidence": [
+    "Codex read445instructions of native ShouldHaveNeed and actual Hospitality prefix source; chemical need is outside four forced guest needs.",
+    "Core Defs/Drugs/DrugBases.xml DrugAddictionNeedBase has onlyIfCausedByHediff=true, no player-faction-only override.",
+    "Native AddDirect DirtyCache at0205, DirtyCache calls CacheNeeds at000d. RemoveHediff calls DirtyCache at001e then PostRemoved at0024; PostRemoved only calls need recalculation, does not directly clear/rebuild needs cache."
+  ],
+  "qualifications": [
+    "A matching chemical need may be enabled by hediff.def.chemicalNeed or CurStage.enablesNeeds. Do not generalize exclusively to Hediff_Addiction class or every modified def.",
+    "Other active onlyIfCausedBy flags participate in native OR-cause logic; all other gate checks still apply.",
+    "Only adult unmodified Core scenarios have straightforward expected true; no blanket age/race/mutant/DLC eligibility guarantee.",
+    "Departure changes guest-only overrides, but runtime persistence after all third-party hooks is not proven by ShouldHaveNeed alone.",
+    "HostFaction==OfPlayer is not a necessary/general assertion for all Hospitality visitors.",
+    "Case5 eligibility is distinct from ticking/ingestion; its broad necessity claim about NeedInterval/Spawned is not established by these methods."
+  ],
+  "ordinaryGuestSupplyImplemented": false,
+  "nativeRuntimeTestPerformed": false
+}

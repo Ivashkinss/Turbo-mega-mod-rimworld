@@ -1,0 +1,6 @@
+# PricingSaveFieldAudit
+Читать только Tools/Build/PricingSaveSnapshot/ и SNAPSHOT.json. Писать только Tools/Build/GeminiPricingSaveFieldAudit/ и свой WorkerState. Не менять Source, XML, DLL, Git, игру, настройки или сохранения; без сети и запуска игры.
+
+FIELDS.json: механический каталог сохраняемых полей ComplexPricing, BedTariff, HotelStay, HotelBilling: объявленный тип, default, точный Scribe key/method, cleanup phase и owning method. Отдельно перечислить transient quoteDepth/QuoteScope.previous, nextCheck, despawning guard — не объявлять их сохраняемыми. Уникальность ключей проверять внутри класса, не между независимыми объектами.
+CHECKS.md: ровно6 коротких ручных планов: старый сейв без компонента (55 и пустые overrides), сохранение custom rate/shared remaining+periodFee, destroyed bed ref cleanup, штатный Swap перенос ссылки, исключение при QuoteScope с восстановлением глубины, исключение DeSpawn с очисткой guard. Явно отличать статическое доказательство от runtime и не обещать весь пользовательский сейв/все моды/1.6.
+REPORT.md до35строк: факты с файлами/строками; неоднозначности обозначить, не фантазировать. Не создавать копии рабочего кода, валидатор C# или новые функции. Это ограниченная сверка 3файлов, без дополнительных аудитов.

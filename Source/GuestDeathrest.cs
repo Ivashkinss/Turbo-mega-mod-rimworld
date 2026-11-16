@@ -61,7 +61,7 @@ namespace TurboMegaMod
             if(need==null||need.CurLevelPercentage>GuestDeathrestRules.StartLevel||!RoomSafe(p,bed)||!p.CanReserveAndReach(bed,PathEndMode.OnCell,Danger.None))return false;
             var paid=p.Map.GetComponent<HotelBilling>().stays.FirstOrDefault(s=>s.guest==p&&s.bed==bed);
             if(paid==null||paid.remaining>=0)return false;
-            return GuestDeathrestRules.Affordable(HotelBillingHooks.Money(p),GuestDeathrestRules.Budget(GuestDossiers.Now,paid.nextChargeTick,gene.MinDeathrestTicks,HotelBillingHooks.Fee(bed)));
+            return GuestDeathrestRules.Affordable(p.Map.GetComponent<HotelBilling>().SharedMoney(bed),GuestDeathrestRules.Budget(GuestDossiers.Now,paid.nextChargeTick,gene.MinDeathrestTicks,HotelBillingHooks.Fee(bed)));
         }
         public static Job MakeJob(Pawn p){return Ready(p)?JobMaker.MakeJob(JobDefOf.Deathrest,HotelBillingHooks.Bed(p)):null;}
         public bool Begin(Pawn p,Building_Bed bed)

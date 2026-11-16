@@ -1,0 +1,284 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "d47f23b5594fad31dbfc8c16ea3eefa11e1f66c336ec6290b7de421cd368e2a5",
+  "successfulIsolatedSteps": 20,
+  "runtimeChecks": 651,
+  "checksByStep": {
+    "Pricing": 34,
+    "Pricing reload": 19,
+    "Hotel prior-save migration": 16,
+    "Hospitality": 47,
+    "Hospitality reload": 16,
+    "Sales": 55,
+    "Sales reload": 21,
+    "SalesDelivery": 38,
+    "SalesDelivery reload": 44,
+    "Wholesale": 54,
+    "Wholesale reload": 32,
+    "ComplexLayout": 50,
+    "ComplexLayout reload": 26,
+    "Deathrest": 29,
+    "Deathrest reload": 15,
+    "Vip": 47,
+    "GeneticSupply": 39,
+    "Hemogen": 44,
+    "ClinicGuest": 15,
+    "ClinicGuest reload": 10
+  },
+  "sharedBedArithmeticCases": 24,
+  "arithmeticNegativeMutations": 6,
+  "sourceSha256": {
+    "Source/CharacterEditorCompatibility.cs": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336",
+    "Source/Clinic.cs": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078",
+    "Source/ClinicBilling.cs": "c27aee409faf05acdce30928846708273d1af4b2cfc9e48326b9aab14e7507fd",
+    "Source/ClinicContributions.cs": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49",
+    "Source/ClinicGuests.cs": "4433dd7b22c607d7f21a72b6383755f67c687ac6a848a45759a0c0712b0d3a17",
+    "Source/ClinicMedicalHooks.cs": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3",
+    "Source/Company.cs": "56a0c72b7a72a78c7e93fdca33fdf505e69996389d0f98da211ee15e41c36d71",
+    "Source/CompanyMenus.cs": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663",
+    "Source/ComplexLayout.cs": "553dc98866850556e35176c559d723136f77d1984522458ac66e4a0f845c89ef",
+    "Source/ComplexManagement.cs": "5d5883cc97cd83acd7400026a2adb3b8b79dbbff479b7af8195b564e3cb7dd72",
+    "Source/ComplexPricing.cs": "b6bf097e3a0c1282f8bbac3626d7cbd8a8d75db0941079a1b697d16c1f127f5b",
+    "Source/ComplexReceptionUI.cs": "7a0602f15db28afc71c14ca0786187dae29c546384cc9ce9277a232e6848851b",
+    "Source/ComplexRecruitment.cs": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639",
+    "Source/ComplexRecruitQuest.cs": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406",
+    "Source/ComplexSaleDelivery.cs": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73",
+    "Source/ComplexSales.cs": "06367279e2813cc399e58e25bed9b2e1d733604f5a8e039b00df477b8586ed58",
+    "Source/ComplexServicesDialog.cs": "116e4ae72a2c6d4f8201da3ec4f1c7cf755535465049c3aa2c2339c83479e69a",
+    "Source/ControlledFarming.cs": "419d64eca8c35ddbb2d368421e3499f60dfd490be14c4e1630b5a9db94ddb844",
+    "Source/FarmingPowerBudget.cs": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35",
+    "Source/FridgeItemGraphicWorker.cs": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c",
+    "Source/GreenhouseExpansion.cs": "61198a3a19ad517ca0e473e30b520f670ef85a3a5ef31354bd034ce166564a26",
+    "Source/GreenhouseGlassDurability.cs": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b",
+    "Source/GuestDeathrest.cs": "c311d43c5ce0810fe2c5ea238480627612730f8574931c34adb7bda707905d47",
+    "Source/GuestDeathrestHooks.cs": "482ab84f316bcb3744adecf224a4884c843c1d6fe427199d27c6b829a060ccea",
+    "Source/GuestDeathrestRules.cs": "30453f9d736ddd82f822b2cab8bc3fafaacfd2ff9f6ba2e71bf696577b4dcad9",
+    "Source/GuestDossierDialog.cs": "e07f393c996ec896db98dacebaee31d0b44b2a63c212f3dec287582ad5078897",
+    "Source/GuestDossierHooks.cs": "59cc6c5de8e0b88a4643e5486b8ed4ac47294d0c94dda750b353d6bda56e30e8",
+    "Source/GuestDossiers.cs": "ed9361e18ee59532a1f1b4a06edc07c2a7a99934adf5e97aff455739fde59e26",
+    "Source/GuestDutyTrees.cs": "0005dcc639eef0110bd0e95ef0bbf0aea647b7194cbda7cbfe8e7be9453f2da4",
+    "Source/GuestGeneticSupply.cs": "875900c7f5eede53f478e1e888ece33c3992327ee073958adf096a70072921f1",
+    "Source/GuestHemogen.cs": "bfeea0f9a8832cd8f641fe631f4cb05f2e0ff0764edfdce39af34c4315654899",
+    "Source/GuestNeedsDialog.cs": "cd22d474291d9cad6b464a08e56dc7eec2242f9f5058268d6e05a2c176f908de",
+    "Source/GuestOutdoor.cs": "7005438e43c435bb971d15a6a0e263b7d6f6062aa4c41926c449360663d54f82",
+    "Source/GuestProfileRules.cs": "ced380b802e538ffab6cd0ef8bed9da2fc627b21616b6fa2b820065ff87f6e10",
+    "Source/GuestProfiles.cs": "f8e01bd408bab315469230258d68c5b83327762921ac7dc1d0af1aa489946a21",
+    "Source/HotelBilling.cs": "35c81936e6b3c9ff3ae88c26913013c0fcaf525c025c40956a008445ede29d5a",
+    "Source/HugsLibCompatibility.cs": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552",
+    "Source/ManualGreenhouse.cs": "ced0a292921285e4b969a22916dd771325695c3f73f2ec6ba27750dcfaaf6a9a",
+    "Source/MapPreviewCompatibility.cs": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a",
+    "Source/MedicalAllocation.cs": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1",
+    "Source/MeleeCompatibility.cs": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef",
+    "Source/MeleeResourceCompatibility.cs": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2",
+    "Source/OdysseyGrammarCompatibility.cs": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84",
+    "Source/RealisticRoomsCompatibility.cs": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40",
+    "Source/RecruitmentProgress.cs": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a",
+    "Source/Restaurant.cs": "fc79b6c16151608ae56ceb6bdda0d90053363aefa65e5b469800c8905074235c",
+    "Source/RuntimeLocalization.cs": "32041258ddae069cfdf2c5ece338d1441f0b303629479c43e7e936f3aaa11cae",
+    "Source/RuntimeTranslationKeys.Generated.cs": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499",
+    "Source/SidearmsCompatibility.cs": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e",
+    "Source/SoilCultivation.cs": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31",
+    "Source/VefCompatibility.cs": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31",
+    "Source/Wholesale/PackingPlanner.cs": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52",
+    "Source/WholesaleTrading.cs": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b",
+    "Source/WholesaleVisits.cs": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0",
+    "Source/WorkBuyout.cs": "08117bb96d6ff86f4e0b3fa13a7970f5948164699924bde74a24c3187c31a056"
+  },
+  "runtimeResourceSha256": {
+    "Languages/English/Keyed/ComplexPricing.xml": "cee1aaffc69c0c4cc384a37ee5a01b044853ae5cc05adc34843b3f3f479228e8",
+    "Languages/Russian/Keyed/ComplexPricing.xml": "e6f15f55432dd0d9b438ac8d91369352f08b78a4b41b97b093ce90c771d03ce2"
+  },
+  "evidence": [
+    {
+      "path": "TestRuns/Pricing-FullSet-20261117-002423/Result.json",
+      "sha256": "68e4803a72aa34da6a9cece18c1cfb491be544e65a6723a9107603e299c727fb"
+    },
+    {
+      "path": "Documentation/Pricing-FullSet.json",
+      "sha256": "68e4803a72aa34da6a9cece18c1cfb491be544e65a6723a9107603e299c727fb"
+    },
+    {
+      "path": "TestRuns/Pricing-FullSet-20261117-002423/ReloadResult.json",
+      "sha256": "82586fdbcefe294368774aac02931449659a9b48b0fa8c7f9aedec55f0beff8e"
+    },
+    {
+      "path": "Documentation/Pricing-Reload.json",
+      "sha256": "82586fdbcefe294368774aac02931449659a9b48b0fa8c7f9aedec55f0beff8e"
+    },
+    {
+      "path": "TestRuns/Hospitality-FullSet-20261116-233518/MigrationResult.json",
+      "sha256": "1ca53cad4d293d59dd16d728305689c1d4626590c682175d01b0ff415c6bc5cc"
+    },
+    {
+      "path": "Documentation/Pricing-HotelMigration.json",
+      "sha256": "1ca53cad4d293d59dd16d728305689c1d4626590c682175d01b0ff415c6bc5cc"
+    },
+    {
+      "path": "TestRuns/Hospitality-FullSet-20261117-004151/Result.json",
+      "sha256": "2b1c9edbd5b79626379fdabe4da9146d937b38f92e5a443e15061c1ae0f15728"
+    },
+    {
+      "path": "Documentation/Hospitality-FullSet.json",
+      "sha256": "2b1c9edbd5b79626379fdabe4da9146d937b38f92e5a443e15061c1ae0f15728"
+    },
+    {
+      "path": "TestRuns/Hospitality-FullSet-20261117-004151/ReloadResult.json",
+      "sha256": "71df5591530b96f0883f0d1e03b6bf2ea642893d5d43df98240c0b0f523b2650"
+    },
+    {
+      "path": "Documentation/Hospitality-Reload.json",
+      "sha256": "71df5591530b96f0883f0d1e03b6bf2ea642893d5d43df98240c0b0f523b2650"
+    },
+    {
+      "path": "TestRuns/Sales-FullSet-20261117-004448/Result.json",
+      "sha256": "fffa1fc47523a78621d7117c2390b9dc5050cbba7e471ccab04c365eb6675b3e"
+    },
+    {
+      "path": "Documentation/Sales-FullSet.json",
+      "sha256": "fffa1fc47523a78621d7117c2390b9dc5050cbba7e471ccab04c365eb6675b3e"
+    },
+    {
+      "path": "TestRuns/Sales-FullSet-20261117-004448/ReloadResult.json",
+      "sha256": "c8ed6ac7ef472fce66b18b93f4e356117bd68daa174cdd72082853728a11dd58"
+    },
+    {
+      "path": "Documentation/Sales-Reload.json",
+      "sha256": "c8ed6ac7ef472fce66b18b93f4e356117bd68daa174cdd72082853728a11dd58"
+    },
+    {
+      "path": "TestRuns/SalesDelivery-FullSet-20261117-004709/Result.json",
+      "sha256": "41fb1f08eea633e7b21ab078853225ae15bcbbe1e5555ef5b6917b82779d778c"
+    },
+    {
+      "path": "Documentation/SalesDelivery-FullSet.json",
+      "sha256": "41fb1f08eea633e7b21ab078853225ae15bcbbe1e5555ef5b6917b82779d778c"
+    },
+    {
+      "path": "TestRuns/SalesDelivery-FullSet-20261117-004709/ReloadResult.json",
+      "sha256": "1a20b292baf79ac06a2376abc55c7e3dc7f49103a940af43d7e9203da9b52475"
+    },
+    {
+      "path": "Documentation/SalesDelivery-Reload.json",
+      "sha256": "1a20b292baf79ac06a2376abc55c7e3dc7f49103a940af43d7e9203da9b52475"
+    },
+    {
+      "path": "TestRuns/Wholesale-FullSet-20261117-005035/Result.json",
+      "sha256": "43caa986c3b76ec34b918c2bc41046f82c4425773166d23d7854d29cb77f23b8"
+    },
+    {
+      "path": "Documentation/Wholesale-FullSet.json",
+      "sha256": "43caa986c3b76ec34b918c2bc41046f82c4425773166d23d7854d29cb77f23b8"
+    },
+    {
+      "path": "TestRuns/Wholesale-FullSet-20261117-005035/ReloadResult.json",
+      "sha256": "d6496be2392f2d2245d7f20b1615bde70d19fb66e8aaa33458f042803d61e6c9"
+    },
+    {
+      "path": "Documentation/Wholesale-Reload.json",
+      "sha256": "d6496be2392f2d2245d7f20b1615bde70d19fb66e8aaa33458f042803d61e6c9"
+    },
+    {
+      "path": "TestRuns/ComplexLayout-FullSet-20261117-005338/Result.json",
+      "sha256": "5024de38505a02df48ce5693e99a2e70d37c31d9c7ae73664cd1a094397f2e0e"
+    },
+    {
+      "path": "Documentation/ComplexLayout-FullSet.json",
+      "sha256": "5024de38505a02df48ce5693e99a2e70d37c31d9c7ae73664cd1a094397f2e0e"
+    },
+    {
+      "path": "TestRuns/ComplexLayout-FullSet-20261117-005338/ReloadResult.json",
+      "sha256": "8c3ad286a68519c8759cebd9be351d97de648c159ba71b0bc9208d35d57d2bcf"
+    },
+    {
+      "path": "Documentation/ComplexLayout-Reload.json",
+      "sha256": "8c3ad286a68519c8759cebd9be351d97de648c159ba71b0bc9208d35d57d2bcf"
+    },
+    {
+      "path": "TestRuns/Deathrest-FullSet-20261117-005604/Result.json",
+      "sha256": "d7577f40074a861a31ad87ae4027d03851f3902ddb8618dca09ee29d14f9af71"
+    },
+    {
+      "path": "Documentation/Deathrest-FullSet.json",
+      "sha256": "d7577f40074a861a31ad87ae4027d03851f3902ddb8618dca09ee29d14f9af71"
+    },
+    {
+      "path": "TestRuns/Deathrest-FullSet-20261117-005604/ReloadResult.json",
+      "sha256": "d3087305e3d60ab3a33436058b1bb8e9a9b556ea9f89f0b9fb9190beb22f7bcd"
+    },
+    {
+      "path": "Documentation/Deathrest-Reload.json",
+      "sha256": "d3087305e3d60ab3a33436058b1bb8e9a9b556ea9f89f0b9fb9190beb22f7bcd"
+    },
+    {
+      "path": "TestRuns/Vip-FullSet-20261117-005844/Result.json",
+      "sha256": "80ca24f31b0e2e801e67081685bc5a7c3f3f9347614b3b34bb59031c84dac761"
+    },
+    {
+      "path": "Documentation/Vip-FullSet.json",
+      "sha256": "80ca24f31b0e2e801e67081685bc5a7c3f3f9347614b3b34bb59031c84dac761"
+    },
+    {
+      "path": "TestRuns/GeneticSupply-FullSet-20261117-010012/Result.json",
+      "sha256": "582b84996af5b093097f383c9c7caa9b9fadf5cf82367ee22c34f3d0de73d652"
+    },
+    {
+      "path": "Documentation/GeneticSupply-FullSet.json",
+      "sha256": "582b84996af5b093097f383c9c7caa9b9fadf5cf82367ee22c34f3d0de73d652"
+    },
+    {
+      "path": "TestRuns/Hemogen-FullSet-20261117-010511/Result.json",
+      "sha256": "905569281e6c465bbebcc36f2ecbf3a6019423809cf1e4d0b0e3a2e115e8bfee"
+    },
+    {
+      "path": "Documentation/Hemogen-FullSet.json",
+      "sha256": "905569281e6c465bbebcc36f2ecbf3a6019423809cf1e4d0b0e3a2e115e8bfee"
+    },
+    {
+      "path": "TestRuns/ClinicGuest-FullSet-20261117-010655/Result.json",
+      "sha256": "b03e4526674b889b66d119411e89df173ba6810b42b85f112f2ff3ca7f89e6d0"
+    },
+    {
+      "path": "Documentation/ClinicGuest-FullSet.json",
+      "sha256": "b03e4526674b889b66d119411e89df173ba6810b42b85f112f2ff3ca7f89e6d0"
+    },
+    {
+      "path": "TestRuns/ClinicGuest-FullSet-20261117-010655/ReloadResult.json",
+      "sha256": "ca3617ec00ab8c2caa233b3ebc1051104ae9591fe59a082af9fd194449198ed5"
+    },
+    {
+      "path": "Documentation/ClinicGuest-Reload.json",
+      "sha256": "ca3617ec00ab8c2caa233b3ebc1051104ae9591fe59a082af9fd194449198ed5"
+    },
+    {
+      "path": "Documentation/PricingStageTestNotes.json",
+      "sha256": "5148d8ef7a095c8d12e5530b953336706d88b3be354e391697be5e178b58bcad"
+    }
+  ],
+  "oneBedRateForTwoGuests": true,
+  "soloDoubleBedAllowed": true,
+  "newSharedAdmissionRequiresCurrentLovePartner": true,
+  "actualPartnersLayDownInDistinctSlots": true,
+  "lateJoinKeepsPaidDeadlineAndNoSecondFullCharge": true,
+  "pendingDebtKeepsOriginalRate": true,
+  "pooledRenewalWithoutDoubleIncome": true,
+  "physicalSilverAndPayerDossier": true,
+  "existingGoodsOrderKeepsQuoteAfterMarkupChange": true,
+  "individualRatesSurviveDefaultAndMedicalSwap": true,
+  "nativeTeardownCannotReenterMedicalRoomConversion": true,
+  "configuredFeeUiNotAffectedByScopedEntryQuote": true,
+  "explicitOldIsolatedSaveMigration": true,
+  "sourceOldSaveAssemblySha256": "37a34e3dd0213944a67609eb23748dd5acd79e959276a9da76b2b5ee3ce239e1",
+  "oldSaveSha256": "17bc03d1bad428c66bd197604a8e8c5ac928a0e38f0d33dcc0c79deaffe1617d",
+  "temporaryCarryDefersSharedCollection": true,
+  "emptyBedClosesBooking": true,
+  "boundedCatchupAndZeroRate": true,
+  "partialReceiptsPersistAndResumeWithoutDuplicate": true,
+  "liveGame16Verified": false,
+  "userSaveTested": false,
+  "visualLayoutInspected": false,
+  "rejectedAttemptsDocumented": true,
+  "unresolvedIntermittentNativeAreaPathError": true,
+  "passingRetryDoesNotProveAreaPathFix": true,
+  "allFutureModRacesSupported": false,
+  "allSubsystemRegressionOnThisAssembly": false
+}

@@ -155,6 +155,8 @@ public sealed class HospitalityProbe : MapComponent
         hotelArea[bed.Position] = true;
         Check(bedFinder.Invoke(null, new object[] { guest }) == bed, "Guest did not select the bed inside its allowed area");
         StartCheckIn(guest);
+        Log.Message("[TMM hotel fixture] Starting simulation; prior speed="+Find.TickManager.CurTimeSpeed+"; windows="+string.Join(",",Find.WindowStack.Windows.Select(w=>w.GetType().FullName)));
+        Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
     }
     public override void MapComponentUpdate()
     {
@@ -165,6 +167,7 @@ public sealed class HospitalityProbe : MapComponent
             if (reload)
             {
                 Check(saved && guest != null && bed != null, "Saved hotel fixture missing");
+                var prices=map.GetComponent<ComplexPricing>();Check(prices!=null&&prices.salePercent==55&&prices.bedTariffs.Count==0,"Default pricing component failed old/new save load");
                 Check(HotelBillingHooks.Bed(guest) == bed, "Native guest bed ownership did not restore");
                 Check(HotelBillingHooks.Money(guest) == savedMoney && FloorSilver() == savedFloor, "Save/load created or removed money");
                 Check(reception != null && reception.hotelIncome == 70, "Reception income did not survive save/load");

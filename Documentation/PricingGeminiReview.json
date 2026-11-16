@@ -1,0 +1,54 @@
+{
+  "nativeAudit": "Documentation/PricingNativeReview.json",
+  "sharedPeriodArithmeticCases": 24,
+  "negativeMutations": 6,
+  "qualifications": [
+    "Static arithmetic model is not a native billing/pathing/save proof.",
+    "Original only-partners and Direct-TryDrop audit statements were corrected by Codex against actual IL.",
+    "New explicit relationship rule was requested by user after native audit and is enforced separately."
+  ],
+  "modelEvidence": {
+    "CASES.json": "bc14bb1298c68bdcce558e89e8828a84f51ba6f7f45e170d89ca4aff05b77d25",
+    "validate.py": "0c5517ecc9c14cc58c0a69773e41b2e169244d0e4eddfbd9b3e9758d438e5c5b"
+  },
+  "guideReview": {
+    "source": "Tools/Build/GeminiComplexPricingPlayerGuide",
+    "outputsSha256": {
+      "GUIDE.md": "e15bd52ff1b238e888f1f7c5aed84addc8359d7ae925f5cf1e0f5bdf6c75ae24",
+      "MANUAL-CHECKS.md": "a41435e122bf3d4eac5a6a75c8f447b40a3da46deec23577598c25292aff3315",
+      "REPORT.md": "0ec7925cc98e3541337499a4a4bc8dca23ea1c2668f2a07c499dabbf778ad0b2"
+    },
+    "curated": [
+      "Documentation/COMPLEX-PRICES.md",
+      "Documentation/COMPLEX-PRICES-MANUAL-CHECKS.md"
+    ],
+    "corrections": [
+      "Room applies rate per bed, not per sleeping slot.",
+      "New admission gate does not retroactively evict existing old-save occupants.",
+      "Removed internal identifiers from player guide.",
+      "Renewal example distinguishes stable ID order; no assumption A always first.",
+      "Medical UI instead of nonexistent named Swap command."
+    ],
+    "manualPlansAreNotRuntimeProof": true
+  },
+  "saveFieldAudit": {
+    "savedFields": 10,
+    "classes": 4,
+    "transientEntries": 6,
+    "manualPlans": 6,
+    "source": "Tools/Build/GeminiPricingSaveFieldAudit",
+    "outputsSha256": {
+      "FIELDS.json": "c2123816bd3d259391dc7c571be6ee7022cc94d4fcfbcdbf740911fd660a7d87",
+      "CHECKS.md": "4c9b3c4b095a8b18e1466a0ad893f2a766723dad2ead96e056af9694ceb00ce3",
+      "REPORT.md": "a37c04e4bf7a593f0437aa0b904aaef4e1a07c708fb79922f5faebb6c050f578"
+    },
+    "qualifications": [
+      "Canonical/CopyPeriod normalization runs in billing processing/check-in, not directly in HotelStay.ExposeData or its PostLoadInit.",
+      "QuoteScope is a reference type transient object; stack-allocated assertion is unsupported. QuoteEnd restores previous depth, which may be nonzero in a nested scope.",
+      "BedTariff.bed is a managed reference serialized by Scribe, not System.WeakReference. Runtime destroyed-reference cleanup needs separate evidence.",
+      "Medical is the user checkbox; Swap is an implementation method, not a named UI button.",
+      "Exception injection and live1.6 remain untested; static finalizer registration alone does not prove all Harmony failure paths."
+    ],
+    "acceptedAsStaticOnly": true
+  }
+}

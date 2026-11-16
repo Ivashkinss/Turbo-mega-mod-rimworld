@@ -51,6 +51,7 @@ namespace TurboMegaMod
             changing = true;
             try { swap.Invoke(null, new object[] { bed }); } finally { changing = false; }
             var result = pos.GetThingList(map).OfType<Building_Bed>().FirstOrDefault(b => b.def.defName == target);
+            if(result!=null)map.GetComponent<ComplexPricing>().Transfer(bed,result);
             if (result != null && !selected) Find.Selector.Deselect(result);
             managedBeds.Remove(bed);
             return result ?? bed;
@@ -89,7 +90,8 @@ namespace TurboMegaMod
                     if (medical) { changing = true; try { bed.Medical = true; } finally { changing = false; } }
                     else if (IsGuest(bed)) {
                         if (!managedBeds.Contains(bed)) managedBeds.Add(bed);
-                        if (HotelBillingHooks.Fee(bed) != desk.roomRate) AccessTools.Method(guestBedType, "SetRentalFee").Invoke(bed, new object[] { desk.roomRate });
+                        int rate=map.GetComponent<ComplexPricing>().Rate(bed,desk.roomRate);
+                        if (HotelBillingHooks.Fee(bed) != rate) AccessTools.Method(guestBedType, "SetRentalFee").Invoke(bed, new object[] { rate });
                     }
                 }
             }
@@ -115,10 +117,12 @@ namespace TurboMegaMod
     [StaticConstructorOnStartup]
     public static class ComplexLayoutHooks
     {
+        [ThreadStatic]private static HashSet<Building_Bed> despawning;
         static ComplexLayoutHooks()
         {
             var h = new Harmony("turbomegamod.complex.automatic.layout");
             h.CreateReversePatcher(AccessTools.DeclaredMethod(typeof(Building_Bed), "GetGizmos"), new HarmonyMethod(typeof(ComplexLayoutHooks), "BaseBedGizmos")).Patch();
+            h.Patch(AccessTools.Method(typeof(Building_Bed),"DeSpawn"),prefix:new HarmonyMethod(typeof(ComplexLayoutHooks),"DespawnStart"),finalizer:new HarmonyMethod(typeof(ComplexLayoutHooks),"DespawnEnd"));
             h.Patch(AccessTools.PropertySetter(typeof(Building_Bed), "Medical"), prefix: new HarmonyMethod(typeof(ComplexLayoutHooks), "Medical"));
             h.Patch(AccessTools.Method(typeof(Building_Bed), "GetGizmos"), postfix: new HarmonyMethod(typeof(ComplexLayoutHooks), "BedGizmos") { priority = Priority.Last });
             var guestBed = AccessTools.TypeByName("Hospitality.Building_GuestBed");
@@ -127,9 +131,19 @@ namespace TurboMegaMod
             var comp = AccessTools.TypeByName("Hospitality.CompGuest");
             if (comp != null) h.Patch(AccessTools.PropertyGetter(comp, "GuestArea"), postfix: new HarmonyMethod(typeof(ComplexLayoutHooks), "GuestArea") { priority = Priority.Last });
         }
+        private static void DespawnStart(Building_Bed __instance,out bool __state)
+        {
+            if(despawning==null)despawning=new HashSet<Building_Bed>();__state=despawning.Add(__instance);
+        }
+        private static Exception DespawnEnd(Building_Bed __instance,bool __state,Exception __exception)
+        {
+            if(__state&&despawning!=null)despawning.Remove(__instance);return __exception;
+        }
         private static bool Medical(Building_Bed __instance, bool value)
         {
-            if (ComplexLayout.changing || !__instance.Spawned) return true;
+            // Native DeSpawn clears Medical; it must not swap the room while
+            // that same bed is already being removed. Ignore no-op setters too.
+            if (ComplexLayout.changing || !__instance.Spawned || __instance.Medical==value || (despawning!=null&&despawning.Contains(__instance))) return true;
             var desk = ComplexLayout.Desk(__instance.Map);
             if (desk == null || !desk.area[__instance.Position] || ComplexLayout.StaffBed(desk, __instance)) return true;
             __instance.Map.GetComponent<ComplexLayout>().SetMedicalRoom(__instance, value); return false;

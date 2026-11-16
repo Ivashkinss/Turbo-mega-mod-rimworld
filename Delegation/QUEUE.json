@@ -516,7 +516,7 @@
     },
     {
       "id": "OrdinaryAddictionNativeCases",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/OrdinaryAddictionNativeCases/TASK.md",
       "outputDir": "Tools/Build/GeminiOrdinaryAddictionNativeCases",
       "expectedOutputs": [
@@ -526,11 +526,11 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T20:29:04.611021+00:00",
-      "note": "Bounded native classification evidence for next ordinary-addiction stage; no merged runtime implementation."
+      "note": "16model rows/4mutations rerun; accepted as preparation with need-eligibility, possible extra collection and Luciferium cure/time qualifications. No ordinary-addiction guest implementation; pricing user request now priority."
     },
     {
       "id": "ComplexPricingNativeAudit",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/ComplexPricingNativeAudit/TASK.md",
       "outputDir": "Tools/Build/GeminiComplexPricingNativeAudit",
       "expectedOutputs": [
@@ -540,7 +540,85 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T20:35:35.516653+00:00",
-      "note": "User requested store pricing and differentiated bed tariffs, explicitly per whole bed/day; static integration evidence before implementation."
+      "note": "Partially accepted quote/payment/Swap ownership points. Codex corrected nonexistent CanClaim to actual IsAvailableBed, Near enum1 instead of Direct0, and overly broad only-partners sharing claim. See Documentation/PricingNativeReview.json; not runtime proof."
+    },
+    {
+      "id": "SharedBedPeriodCases",
+      "state": "reviewed",
+      "taskFile": "Delegation/SharedBedPeriodCases/TASK.md",
+      "outputDir": "Tools/Build/GeminiSharedBedPeriodCases",
+      "expectedOutputs": [
+        "CASES.json",
+        "validate.py",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T20:45:43.644808+00:00",
+      "note": "24arithmetic cases/6negative mutations rerun. Accepted as model only; actual C# execution, native ownership, pathing and field migration are separately tested. Debit order stable pawn IDs; latejoin quote0 and pending locked fee preserved."
+    },
+    {
+      "id": "ComplexPricingPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/ComplexPricingPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiComplexPricingPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T21:26:21.757383+00:00",
+      "note": "Codex read guide12plans; accepted after removing internal identifiers, clarifying per-bed rather than per-slot room copying, current admission vs retroactive old occupants and deterministic ID scenario. Native proof recorded separately."
+    },
+    {
+      "id": "PricingSaveFieldAudit",
+      "state": "reviewed",
+      "taskFile": "Delegation/PricingSaveFieldAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiPricingSaveFieldAudit",
+      "expectedOutputs": [
+        "FIELDS.json",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T21:42:28.713802+00:00",
+      "note": "10saved fields/4classes/6transient entries checked against owning source. Qualified normalization timing, reference-vs-stack/weak-reference wording, nested scope restore and nonexistent Swap button. Static only; native evidence separate in PricingStageVerification."
+    },
+    {
+      "id": "GuestChemicalNeedEligibility",
+      "state": "reviewed",
+      "taskFile": "Delegation/GuestChemicalNeedEligibility/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestChemicalNeedEligibility",
+      "expectedOutputs": [
+        "ELIGIBILITY.json",
+        "CASES.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T21:50:00.703231+00:00",
+      "note": "Native445IL + actual Hospitality prefix and Core XML checked independently. Accepted6static scenarios with cause/class/age/HostFaction/departure qualifications; clarified AddDirect->DirtyCache->CacheNeeds and RemoveHediff->DirtyCache->PostRemoved, no direct cache clear in PostRemoved. No service runtime."
+    },
+    {
+      "id": "OrdinaryAddictionIngestOutcome",
+      "state": "reviewed",
+      "taskFile": "Delegation/OrdinaryAddictionIngestOutcome/TASK.md",
+      "outputDir": "Tools/Build/GeminiOrdinaryAddictionIngestOutcome",
+      "expectedOutputs": [
+        "OUTCOME.json",
+        "CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T21:59:50.713735+00:00",
+      "note": "Partially accepted after independent CompDrug/CurStage IL and Core XML. Correct Beer ThingDef vs Alcohol ChemicalDef, conditional/scaled effects, native ingestion vs separate sales payment, and no universal Luciferium cure/death guarantee. See OrdinaryAddictionOutcomeReview; static only."
+    },
+    {
+      "id": "GuestAreaPathCacheAudit",
+      "state": "pending",
+      "taskFile": "Delegation/GuestAreaPathCacheAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiGuestAreaPathCacheAudit",
+      "expectedOutputs": [
+        "FLOW.json",
+        "REPRO-PLAN.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T22:08:47.489455+00:00",
+      "note": "Priority follow-up for rejected native area path error, not a claimed pricing fix; unchanged retry passed."
     }
   ]
 }

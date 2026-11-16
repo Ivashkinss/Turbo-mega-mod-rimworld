@@ -1,0 +1,44 @@
+{
+  "attempts": [
+    {
+      "profile": "TestRuns/Pricing-FullSet-20261117-000319",
+      "reason": "7pricing/swap/sharing-eligibility assertions passed, but native FindBedFor chose a different, cheaper bed. Forbid on a player bed is not a reliable exclusion for a foreign guest. Competing comparison beds are now destroyed only after their tariff/room/swap assertions, leaving one real double bed for native check-in. Production not changed for this fixture correction."
+    },
+    {
+      "profile": "TestRuns/Pricing-FullSet-20261117-000702",
+      "reason": "Comparison bed reference was already destroyed after room medical conversions; trying to destroy it again caused native DeSpawn Map null. Fixture now reacquires live double-bed identity from listerBuildings and asserts actual override, then removes only currently spawned, non-destroyed comparison beds. No blanket map/game bug claim."
+    },
+    {
+      "profile": "TestRuns/Pricing-FullSet-20261117-001457",
+      "reason": "Fresh live-bed references still failed on Destroy. Independent native IL proves Building_Bed.DeSpawn calls set_Medical(false) at00a9 before base DeSpawn. Our old Medical prefix unnecessarily called SetMedicalRoom(false), swapping/destroying a bed already being removed. This is a production reentrancy bug, not just a stale fixture reference. Added thread-scoped despawn guard with finalizer cleanup and no-op setter gate; fixture now destroys both guest and medical live beds."
+    },
+    {
+      "profile": "TestRuns/Hospitality-FullSet-20261117-003143",
+      "reason": "Broad regression hotel fixture timed out with zero advanced ticks and no runtime error report. Exact pause cause was not established. Added explicit TimeSpeed.Normal at fixture setup, like pricing/genetic fixtures, and diagnostic prior speed/window log. Repeat004151 completed47 checks with1640 observed ticks; its prior speed was alreadyNormal, so this is not proof of a production pause fix. Production DLL unchanged."
+    },
+    {
+      "profile": "TestRuns/Hemogen-FullSet-20261117-010140",
+      "reason": "All44 hemogen assertions passed but run rejected with2 native path errors: AreaSource.DataForArea KeyNotFoundException for auto guest area, then non-empty pathfinder work queue. Occurred just after fixture creates areas/guest and starts ingestion. Native IL confirms DataForArea direct dictionary indexing; ComputeAll/UpdateIncrementally register current AreaManager entries. Exact temporal cause and whether reproducible in ordinary play are not established. No error exclusion or production patch added; same unchanged fixture is rerun, and even a passing retry is not proof of a pathfinding fix.",
+      "rejectedDespiteFunctionalAssertions": true
+    }
+  ],
+  "fixtureControls": "Disposable test maps/profiles only;21C,cleared dangerous targets,traits cleared and spouse relation to satisfy native sharing; test prefix can block second inventory TryDrop to produce real partial receipt; reload delays automatic billing only until restored state is inspected.",
+  "userDataModified": false,
+  "nativePaymentNotMocked": true,
+  "newUserRule": "Solo rental allowed; two occupants must be current spouses/fiances/lovers, plus original native sharing/ideology filters. Enforced on selection and again before claim toil.",
+  "priorDiagnosisQualification": "Earlier stale-reference hypothesis was incomplete; native teardown-triggered room conversion explains live object becoming destroyed mid-Despawn.",
+  "runnerRecovery": {
+    "after": "SalesDelivery reload",
+    "failure": "PowerShell progress Set-Content collided with a concurrent progress reader and threw IOException before starting Wholesale. No game or test DLL remained.",
+    "fix": "Bounded20x50ms retry for progress write IO contention only; Resume verifies each reused passing result and same production SHA. No production change or failed game assertion waived."
+  },
+  "nativeAreaPathFailureUnresolved": true,
+  "unchangedHemogenRetry": {
+    "profile": "TestRuns/Hemogen-FullSet-20261117-010511",
+    "checks": 44,
+    "runtimeErrors": 0,
+    "sameProductionDll": true,
+    "sameHemogenFixture": true,
+    "doesNotEstablishRootCauseOrFix": true
+  }
+}

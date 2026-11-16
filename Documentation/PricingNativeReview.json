@@ -1,0 +1,27 @@
+{
+  "reviewed": "partially accepted static audit",
+  "corrections": [
+    {
+      "id": "PRICE-01",
+      "issue": "Actual method is IsAvailableBed, not CanClaim",
+      "evidence": "Hospitality.Utilities.BedUtility.IsAvailableBed(Building_GuestBed,Pawn,int,out int), IL0000..0076."
+    },
+    {
+      "id": "PRICE-02",
+      "issue": "Native initial TryDrop uses Near, not Direct",
+      "evidence": "IL0105 loads1; actual ThingPlaceMode enum Direct0,Near1,Radius2."
+    },
+    {
+      "id": "PRICE-03",
+      "issue": "Strangers never share / only spouses-lovers is too broad",
+      "evidence": "Native WillingToShareBed checks SharedBed and Spouse/NonSpouse ideology history willingness; OtherOwnerScore also requires reciprocal willingness and minimum opinion15. No universal all-race/all-ideology claim."
+    }
+  ],
+  "accepted": [
+    "Internal get_RentalFee is the native entry quote; public GetRentalFee remains stored configured rate.",
+    "Current initial claim and daily collection both charge each occupant unless integrated.",
+    "ComplexLayout synchronizes generic roomRate and Swap replaces reference.",
+    "SaleOrder stores actual unit/total quote; GuestDeathrest reads HotelStay."
+  ],
+  "runtimeProof": false
+}
