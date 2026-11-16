@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Housekeeping.Progress>Cleaning credited: {0}; pending work credit: {1} silver. Unallocated room revenue for work credit: {2}.</TMM.Housekeeping.Progress>
+  <TMM.Housekeeping.Help>Actual filth removed inside the complex accumulates work credit, funded only by room payments already received by the colony. No extra coins are created. Fractional work persists; interrupted cleaning that removed no layer earns no credit.</TMM.Housekeeping.Help>
+</LanguageData>

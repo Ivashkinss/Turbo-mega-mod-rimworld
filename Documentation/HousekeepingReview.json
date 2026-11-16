@@ -1,0 +1,46 @@
+{
+  "nativeAuditSource": "Tools\\Build\\GeminiHotelCleaningNativeHooks",
+  "outputsSha256": {
+    "HOOKS.json": "9ec2043a0f10a2f85c0c490f9b04d7d4cf3b7db05b8d1a577bb4c89246bdc002",
+    "NOTES.md": "b77b2a1353e91f30b79b2a28a643f45813ed75086e292fb3e4f1709cb6877e6f"
+  },
+  "accepted": [
+    "Native1.7 cleaning callback is tickIntervalAction Action<int>; legacy tickAction alone is insufficient.",
+    "ThinFilth decrements thickness and destroys at0; native progress resets after layer.",
+    "Dirt35/Blood70/BlastMark50 are base layer work, not elapsed pawn ticks."
+  ],
+  "corrections": [
+    "Codex initially misread literal1 as TargetIndex.B. Independent metadata of both1.6 and1.7 proves None0/A1/B2/C3: Gemini get_Filth=A was correct. Fixed probe queueA and disabled autonomous fixture work. Production getter uses reflection, no numeric target assumption.",
+    "Public thickness can also be changed by construction/load/mod code; ThinFilth is the relevant native removal method, not a proof of exclusive ownership.",
+    "Partial native job progress is serialized, but interruption/reassignment behavior should not be described as universal destruction of every queued driver. Completed-layer credit intentionally depends only on actual ThinFilth from current cleaning scope."
+  ],
+  "initialRejectedRun": "TestRuns/Housekeeping-FullSet-20261117-015051",
+  "initialFailure": "4checks then no credit account: only legacy tickAction was wrapped. Added1.7 interval callback, current target and native progress guards.",
+  "noRuntimePassFromGemini": true,
+  "fixtureFailures": [
+    {
+      "profile": "TestRuns/Housekeeping-FullSet-20261117-015426",
+      "reason": "Probe wrong queueB completed immediately, then native autonomous cleaning occurred; intended partial job was not the current job."
+    },
+    {
+      "profile": "TestRuns/Housekeeping-FullSet-20261117-015830",
+      "reason": "Slow/fresh filth alone did not repair incorrect job queue. Detailed current-job diagnostic exposed replacement by ordinary JobGiver_Work."
+    }
+  ],
+  "guide": {
+    "source": "Tools\\Build\\GeminiHousekeepingPlayerNotes",
+    "outputsSha256": {
+      "GUIDE.md": "f9e65f384808e04f53a5d5153ea97b2f45ba80825ab54d0a62f71dd705b11943",
+      "CHECKS.md": "18ae86433983e27cbad07e595f1323f30abd40e16b25436a8d5df275316bc8db"
+    },
+    "manualPlans": 5,
+    "curatedCorrections": [
+      "Slave eligibility currently required by existing Begin, not a new full free-worker contract.",
+      "Save file rather than profile.",
+      "Hotel silver falls near guest, not magically into warehouse.",
+      "Interrupted completed layers remain credited.",
+      "Whole-unit credit also requires received hotel funding."
+    ]
+  },
+  "fixtureControls": "Own disposable game only: fixed21C, healthy workers, autonomous work priorities0, correct native queueA, native growTick initialized, one deliberately slow filth layer to observe interruption; restored before continuing/saving. Real cleaning, real room silver, no manual pending credit for positive cases."
+}

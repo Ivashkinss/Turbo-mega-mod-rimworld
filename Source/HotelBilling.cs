@@ -176,6 +176,7 @@ namespace TurboMegaMod
         private void RecordPayment(Pawn guest,Building_Bed bed,int amount,string receipt)
         {
             if(amount<=0)return;ComplexWorkPolicy.Record(map,bed.Position,"hotel",amount);
+            map.GetComponent<HousekeepingLedger>().Receive(bed.Position,amount,receipt);
             var link=GuestDossiers.Capture(guest,map);if(link!=null)link.Received("hotel",amount,receipt);
         }
         public void RecordClaim(Pawn guest, Building_Bed bed, int amountPaid, string receiptToken = null)

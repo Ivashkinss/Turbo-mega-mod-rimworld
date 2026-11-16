@@ -631,6 +631,42 @@
       ],
       "createdUtc": "2026-11-16T22:25:17.660705+00:00",
       "note": "Curated2notes: shared policy and personal stock priority retained; replaced unsupported salesperson schedule with actual work/mode, added actual save/load to sixth plan, qualified native effect risks and shop percentage. No runtime claims from writer."
+    },
+    {
+      "id": "HotelCleaningNativeHooks",
+      "state": "reviewed",
+      "taskFile": "Delegation/HotelCleaningNativeHooks/TASK.md",
+      "outputDir": "Tools/Build/GeminiHotelCleaningNativeHooks",
+      "expectedOutputs": [
+        "HOOKS.json",
+        "NOTES.md"
+      ],
+      "createdUtc": "2026-11-16T22:43:35.080714+00:00",
+      "note": "Confirmed native interval callback, work fields and3def costs; corrected get_Filth targetB and overbroad exclusivity/interruption assertions. Fixed actual legacy-only callback omission in production; runtime tests ongoing."
+    },
+    {
+      "id": "HousekeepingPlayerNotes",
+      "state": "reviewed",
+      "taskFile": "Delegation/HousekeepingPlayerNotes/TASK.md",
+      "outputDir": "Tools/Build/GeminiHousekeepingPlayerNotes",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "CHECKS.md"
+      ],
+      "createdUtc": "2026-11-16T22:57:04.541875+00:00",
+      "note": "Curated2docs/5manual plans. Corrected save-vs-profile, physical room payment near guest, partial job completed layers, funding prerequisite and current slave eligibility. Native tests separate."
+    },
+    {
+      "id": "WorkContractNativeTransitions",
+      "state": "pending",
+      "taskFile": "Delegation/WorkContractNativeTransitions/TASK.md",
+      "outputDir": "Tools/Build/GeminiWorkContractNativeTransitions",
+      "expectedOutputs": [
+        "API.json",
+        "NOTES.md"
+      ],
+      "createdUtc": "2026-11-16T23:10:53.632824+00:00",
+      "note": "Four-method transition/field lookup for next basic ordinary labour-contract stage; no implementation or story raids."
     }
   ]
 }

@@ -1,0 +1,46 @@
+{
+  "component": "Housekeeping",
+  "originalComponentActive": false,
+  "fullUserModSet": true,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 2963,
+    "scalarFields": 702,
+    "grammarLines": 90,
+    "displayPatches": 12,
+    "passed": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4044,
+    "ticksAdvanced": 1708,
+    "newsWindowsDismissedInTest": 0
+  },
+  "settingsUi": {
+    "passed": true,
+    "visualLayoutInspected": false,
+    "error": null
+  },
+  "odysseyGrammar": {
+    "passed": true,
+    "odysseyActive": true,
+    "checks": 252,
+    "errors": []
+  },
+  "runtimeErrors": 0,
+  "knownExternalRuntimeErrors": 0,
+  "unexpectedRuntimeErrors": 0,
+  "knownExternalMessages": [],
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "productionAssemblySha256": "57817e1908d4e43e119025a1691311e84cb6ac99d33685dd668dd047dee9d94a",
+  "housekeeping": {
+    "passed": true,
+    "checks": 15,
+    "errors": []
+  },
+  "passed": true
+}

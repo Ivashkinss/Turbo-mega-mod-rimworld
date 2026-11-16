@@ -68,7 +68,7 @@ namespace TurboMegaMod
         private readonly Pawn pawn;
         private int target=10000;
         public Dialog_WorkBuyout(Pawn pawn){this.pawn=pawn;forcePause=true;doCloseX=true;doCloseButton=true;absorbInputAroundWindow=true;}
-        public override Vector2 InitialSize {get{return new Vector2(650,420);}}
+        public override Vector2 InitialSize {get{return new Vector2(650,520);}}
         public override void DoWindowContents(Rect rect)
         {
             if(pawn==null||pawn.Dead){Close();return;}
@@ -77,6 +77,7 @@ namespace TurboMegaMod
             Widgets.Label(new Rect(0,0,rect.width,h),help);
             float y=h+15;
             Widgets.Label(new Rect(0,y,rect.width,36),book.Status(pawn));y+=45;
+            if(entry!=null&&pawn.MapHeld!=null){var text=pawn.MapHeld.GetComponent<HousekeepingLedger>().Status(pawn);float height=Text.CalcHeight(text,rect.width);Widgets.Label(new Rect(0,y,rect.width,height),text);TooltipHandler.TipRegion(new Rect(0,y,rect.width,height),"TMM.Housekeeping.Help".Translate());y+=height+12;}
             if(entry==null){
                 Widgets.Label(new Rect(0,y,300,32),"TMM.Buyout.Target".Translate(target));
                 if(Widgets.ButtonText(new Rect(320,y,90,32),"−1000"))target=Math.Max(1000,target-1000);
