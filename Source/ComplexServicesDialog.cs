@@ -49,6 +49,8 @@ namespace TurboMegaMod
                     Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.Hemogen.Purchases".Translate(),ref desk.hemogenPurchases);y+=42;
                     Help(inner,ref y,"TMM.Hemogen.Help");
                     Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.GeneticSupply.Purchases".Translate(),ref desk.geneticDrugPurchases);y+=42;
+                    Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.AddictionSupply.Purchases".Translate(),ref desk.ordinaryDrugPurchases);y+=42;
+                    Help(inner,ref y,"TMM.AddictionSupply.Help");
                     var policy=GuestGeneticSupply.SupplyPolicy(desk);
                     if(Widgets.ButtonText(new Rect(0,y,inner.width,32),"TMM.GeneticSupply.Policy".Translate(policy==null?"TMM.GeneticSupply.GuestPolicy".Translate().ToString():policy.label))){
                         var options=Current.Game.drugPolicyDatabase.AllPolicies.Select(p=>new FloatMenuOption(p.label,()=>desk.dependencySupplyPolicy=p)).ToList();

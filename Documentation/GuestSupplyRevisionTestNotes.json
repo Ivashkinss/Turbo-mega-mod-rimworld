@@ -1,0 +1,22 @@
+{
+  "rejectedFixtureRun": {
+    "profile": "TestRuns/Addiction-FullSet-20261117-012507",
+    "checksBeforeFailure": 24,
+    "cause": "Test looked up a completed sale by ID after ComplexSales had legitimately removed it. Retained the actual SaleOrder reference for the completion assertion; production sale logic unchanged."
+  },
+  "controlledAreaBaseline": {
+    "profile": "TestRuns/AreaCacheBaseline-FullSet-20261117-011720",
+    "productionSha256": "d47f23b5594fad31dbfc8c16ea3eefa11e1f66c336ec6290b7de421cd368e2a5",
+    "expectedMissingAreaExceptionCaught": true,
+    "actualNativeFindPathNowUsed": true,
+    "testOnlyInvalidationForBaselineRecovery": true
+  },
+  "earlyFixedCandidate": {
+    "profile": "TestRuns/AreaCache-FullSet-20261117-012249",
+    "productionSha256": "fbf38e05271ef57b81d22dd0a16c341c78f96f0b430e8eeaf2ab96e9e032a03e",
+    "checks": 10,
+    "finalCandidateHasAdditionalNullLayoutGuard": true,
+    "notIncludedInCurrentRuntimeTotal": true
+  },
+  "fixtureControls": "Disposable maps only: cleared fixture terrain, healthy adult baseliner, fixed outdoor21C, independent cases reset chemical need and alcohol high. Native ingestion, payments, sale delivery and think-tree save resolution are executed; production does not manually fill chemical needs. No original user settings or saves edited."
+}

@@ -7,8 +7,8 @@
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 4184,
-    "ticksAdvanced": 1766,
+    "framesAdvanced": 4159,
+    "ticksAdvanced": 1772,
     "newsWindowsDismissedInTest": 0
   },
   "runtimeErrors": 0,
@@ -16,6 +16,6 @@
   "gpuLost": false,
   "isolatedFixtureSave": true,
   "userSaveTested": false,
-  "productionAssemblySha256": "d47f23b5594fad31dbfc8c16ea3eefa11e1f66c336ec6290b7de421cd368e2a5",
+  "productionAssemblySha256": "c6bc6de79daf522279a4bf13736efa37fc9f3a3946784cb2d0c1a5d08bab9e35",
   "passed": true
 }

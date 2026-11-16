@@ -1,0 +1,30 @@
+{
+  "acceptedMechanism": true,
+  "baselineNativeProbe": "Documentation/AreaCacheBaseline-FullSet.json",
+  "fixedNativeProbe": "Documentation/AreaCache-FullSet.json",
+  "nativeMethodsCheckedIndependently": [
+    "PathFinderMapData.GatherData same-tick guard",
+    "AreaSource DataForArea/ComputeAll/UpdateIncrementally",
+    "PathFinder.FindPathNow and PathFinderTick caller ordering"
+  ],
+  "qualified": [
+    "Original failing run exact timing was not instrumented; cannot claim exact retry tick ordering as proven from old logs.",
+    "No evidence for a multithreaded race is needed: a single-thread same-tick sequence reproduces the missing area."
+  ],
+  "controlledReproduction": "Baseline d47f23b5 primed actual cache, created auto area, performed native FindPathNow; caught expected KeyNotFoundException. Explicit test-only cache invalidation recovered actual route. Fixed candidate succeeds on same sequence without test invalidation; deletion/recreation also succeeds; staff cells remain excluded.",
+  "sourceFix": "Only missing registered ComplexLayout.guestAccess under same-tick GatherData causes native refresh. No null/unrestricted guest area fallback. Native callers complete scheduled jobs before GatherData; normal native recycling stays active.",
+  "outputsSha256": {
+    "FLOW.json": "e14876c9333d0a9f1daab292f92494de477c33af53b17d6e6aec180f68f11b90",
+    "REPRO-PLAN.md": "6eb6306f1c3df2b12f0cee01acf7c9e24a5b00cd761efb30a35ace0e4ebbdd4a",
+    "REPORT.md": "2d215ebbde3a139227f54182b4013f68346b7498eb16615724b85f764e10f749"
+  },
+  "compactPlayerNotes": {
+    "source": "Tools/Build/GeminiAddictionSupplyPlayerNotes",
+    "outputsSha256": {
+      "GUIDE.md": "99d6bdb3777b76bf98ecef599c59da7e5a4658d4076397dcea59ae076517c9a0",
+      "CHECKS.md": "4edfed9c65a27b42609d7b6cfff7f83ff49edc7cb4c44718bc3f6646dfe6831e"
+    },
+    "manualPlans": 6,
+    "curated": true
+  }
+}

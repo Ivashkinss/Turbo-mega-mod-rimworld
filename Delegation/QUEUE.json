@@ -609,7 +609,7 @@
     },
     {
       "id": "GuestAreaPathCacheAudit",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/GuestAreaPathCacheAudit/TASK.md",
       "outputDir": "Tools/Build/GeminiGuestAreaPathCacheAudit",
       "expectedOutputs": [
@@ -618,7 +618,19 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T22:08:47.489455+00:00",
-      "note": "Priority follow-up for rejected native area path error, not a claimed pricing fix; unchanged retry passed."
+      "note": "Mechanism checked against independent native IL and deterministic baseline/fixed FindPathNow probes10/10. Exact old-run/retry timing remains uninstrumented; single-thread same-tick sequence sufficient. See GuestAreaPathCacheReview."
+    },
+    {
+      "id": "AddictionSupplyPlayerNotes",
+      "state": "reviewed",
+      "taskFile": "Delegation/AddictionSupplyPlayerNotes/TASK.md",
+      "outputDir": "Tools/Build/GeminiAddictionSupplyPlayerNotes",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "CHECKS.md"
+      ],
+      "createdUtc": "2026-11-16T22:25:17.660705+00:00",
+      "note": "Curated2notes: shared policy and personal stock priority retained; replaced unsupported salesperson schedule with actual work/mode, added actual save/load to sixth plan, qualified native effect risks and shop percentage. No runtime claims from writer."
     }
   ]
 }
