@@ -1,0 +1,13 @@
+{
+  "reviewed": true,
+  "modelCases": 12,
+  "caseStatus": "Plan, not passed game tests",
+  "reviewNotes": [
+    "Retain by same MapHeld; real exit/bed destruction/recruitment invalidates as before",
+    "Do not change absolute nextChargeTick, remaining or periodFee during carry",
+    "Defer physical payment collection until Spawned on the same map",
+    "Unavailable Position is not asserted as a universal engine law",
+    "Native real check-in/carry/partial overdue fixture/save with held guest/reload passed; 4-step aggregate still checked separately"
+  ],
+  "nextResearch": "GeneratedGuestDeathrestBeds checks automatically injected caskets omitted by prior API generalization"
+}

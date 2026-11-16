@@ -1,4 +1,4 @@
-﻿// Installed only in a disposable test profile; no user profile is changed.
+// Installed only in a disposable test profile; no user profile is changed.
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,7 @@ public sealed class HospitalityProbe : MapComponent
     private readonly List<string> errors = new List<string>();
     private Mod hotel;
     private Building_Bed bed, spareBed;
-    private Pawn guest, poorGuest;
+    private Pawn guest, poorGuest, hotelCarrier;
     private Area hotelArea, shoppingArea;
     private Building_ComplexDesk reception;
     private object nativeMap;
@@ -35,7 +35,7 @@ public sealed class HospitalityProbe : MapComponent
     public override void ExposeData()
     {
         base.ExposeData(); Scribe_Values.Look(ref saved, "hotelSaved"); Scribe_References.Look(ref reception, "complexReception");
-        Scribe_References.Look(ref bed, "hotelBed"); Scribe_References.Look(ref guest, "hotelGuest");
+        Scribe_References.Look(ref bed, "hotelBed"); Scribe_References.Look(ref guest, "hotelGuest"); Scribe_References.Look(ref hotelCarrier,"hotelCarrier");
         Scribe_Values.Look(ref savedMoney, "hotelMoney"); Scribe_Values.Look(ref savedNextDue, "hotelNextDue"); Scribe_Values.Look(ref savedFloor, "hotelFloor");
     }
     private void Check(bool value, string message) { if (!value) throw new Exception(message); checks++; }
@@ -73,6 +73,15 @@ public sealed class HospitalityProbe : MapComponent
         var giver = Activator.CreateInstance(AccessTools.TypeByName("Hospitality.JobGiver_ClaimBed"));
         var job = (Job)Call(giver, "TryGiveJob", pawn); Check(job != null, "Native guest AI did not offer a check-in job");
         pawn.jobs.StartJob(job, JobCondition.InterruptForced);
+    }
+    private void HoldGuest()
+    {
+        hotelCarrier=map.mapPawns.FreeColonistsSpawned.First(p=>p.carryTracker.CarriedThing==null);
+        Check(hotelCarrier.carryTracker.TryStartCarry(guest,1,false)==1&&guest.MapHeld==map&&!guest.Spawned,"Hotel carry fixture could not hold guest");
+    }
+    private void DropGuest()
+    {
+        Thing dropped;Check(hotelCarrier.carryTracker.TryDropCarriedThing(new IntVec3(44,0,44),ThingPlaceMode.Near,out dropped)&&guest.Spawned,"Hotel carry fixture could not drop guest");
     }
     private void Setup()
     {
@@ -160,6 +169,9 @@ public sealed class HospitalityProbe : MapComponent
                 Check(HotelBillingHooks.Money(guest) == savedMoney && FloorSilver() == savedFloor, "Save/load created or removed money");
                 Check(reception != null && reception.hotelIncome == 70, "Reception income did not survive save/load");
                 Check(Stay(guest).nextChargeTick == savedNextDue, "Saved billing deadline changed");
+                Check(hotelCarrier!=null&&hotelCarrier.carryTracker.CarriedThing==guest&&!guest.Spawned&&guest.MapHeld==map,"Carried hotel guest did not survive save/load");
+                Ledger.ProcessPayments();Check(Stay(guest).nextChargeTick==savedNextDue&&HotelBillingHooks.Money(guest)==savedMoney,"Load changed carried guest's paid period");
+                DropGuest();Check(HotelBillingHooks.Bed(guest)==bed,"Dropping saved guest lost its assigned room");
                 Ledger.ProcessPayments(); Ledger.ProcessPayments();
                 Check(HotelBillingHooks.Money(guest) == savedMoney, "Reload charged the paid day again");
                 Stay(guest).nextChargeTick = Find.TickManager.TicksGame; Ledger.ProcessPayments();
@@ -179,6 +191,13 @@ public sealed class HospitalityProbe : MapComponent
                 Check(reception.hotelIncome == 20, "Reception did not record real check-in silver: income=" + reception.hotelIncome + " active=" + reception.Active + " spawned=" + reception.Spawned + " included=" + reception.area[bed.Position]);
                 Check(Stay(guest).nextChargeTick > Find.TickManager.TicksGame + 59000, "First day deadline is not one game day");
                 Ledger.ProcessPayments(); Check(HotelBillingHooks.Money(guest) == 80, "Paid day charged again");
+                var held=Stay(guest);int originalDue=held.nextChargeTick,originalRemaining=held.remaining,originalFee=held.periodFee;
+                HoldGuest();held.nextChargeTick=Find.TickManager.TicksGame-300;held.remaining=7;held.periodFee=20;
+                Ledger.ProcessPayments();Ledger.ProcessPayments();
+                Check(Ledger.stays.Contains(held)&&held.remaining==7&&held.nextChargeTick==Find.TickManager.TicksGame-300,"Carried/overdue guest lost its original account or partial payment");
+                Check(HotelBillingHooks.Money(guest)==80&&FloorSilver()==initialSilver+20&&reception.hotelIncome==20,"Collection occurred while guest was unspawned");
+                held.nextChargeTick=originalDue;held.remaining=originalRemaining;held.periodFee=originalFee;DropGuest();Ledger.ProcessPayments();
+                Check(Stay(guest)==held&&held.nextChargeTick==originalDue&&HotelBillingHooks.Money(guest)==80,"Drop recreated stay or restarted paid period");
                 Call(bed, "SetRentalFee", 30); Ledger.ProcessPayments(); Check(HotelBillingHooks.Money(guest) == 80, "Price change retroactively charged a paid day");
                 Stay(guest).nextChargeTick = Find.TickManager.TicksGame; int due = Stay(guest).nextChargeTick; Ledger.ProcessPayments();
                 Check(HotelBillingHooks.Money(guest) == 50 && FloorSilver() == initialSilver + 50, "Renewal did not transfer the new 30-silver rate");
@@ -215,6 +234,7 @@ public sealed class HospitalityProbe : MapComponent
                 Ledger.ProcessPayments(); Check(!Ledger.stays.Any(s => s.guest == poorGuest), "Departed guest kept a billing account");
                 Check(HotelBillingHooks.Money(guest) == 50 && FloorSilver() == initialSilver + 70, "Departure changed another guest's payment");
                 saved = true; savedMoney = HotelBillingHooks.Money(guest); savedNextDue = Stay(guest).nextChargeTick; savedFloor = FloorSilver();
+                HoldGuest();Ledger.ProcessPayments();Check(Stay(guest).nextChargeTick==savedNextDue,"Pre-save carry reset the deadline");
                 GameDataSaveLoader.SaveGame("TMM-Hotel"); Check(File.Exists(GenFilePaths.FilePathForSavedGame("TMM-Hotel")), "Hotel save not written"); Finish();
             }
         }

@@ -321,14 +321,28 @@
     },
     {
       "id": "HotelCarryBillingCases",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/HotelCarryBillingCases/TASK.md",
       "outputDir": "Tools/Build/GeminiHotelCarryBillingCases",
       "expectedOutputs": [
         "CASES.json",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-16T05:21:37.628202+00:00"
+      "createdUtc": "2026-11-16T05:21:37.628202+00:00",
+      "note": "Codex checked12 target-state plans against the minimal fix and passing actual47/15 hotel tests. Collection deferral is policy; absent/invalid Position is not proven universal for every despawn. Full current4-step regression finishing."
+    },
+    {
+      "id": "GeneratedGuestDeathrestBeds",
+      "state": "assigned",
+      "taskFile": "Delegation/GeneratedGuestDeathrestBeds/TASK.md",
+      "outputDir": "Tools/Build/GeminiGeneratedGuestDeathrestBeds",
+      "expectedOutputs": [
+        "DEFS.json",
+        "FINDINGS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T05:30:09.180570+00:00",
+      "note": "Worker running observed; read DEFS/FINDINGS/REPORT before making runtime claims. SpecialInjector guest variants were omitted by prior broad casket API assumptions."
     }
   ]
 }

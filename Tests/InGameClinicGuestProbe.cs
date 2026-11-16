@@ -85,6 +85,10 @@ public sealed class ClinicGuestProbe : MapComponent
         bool reload=Environment.GetCommandLineArgs().Contains("-tmm-clinicguest-reload");
         if(reported||Find.CurrentMap!=map||(!reload&&!Environment.GetCommandLineArgs().Contains("-tmm-clinicguest-probe")))return;
         try{
+            // Only this isolated fixture owns the simulation. A stray pause
+            // must not turn a medical AI check into a wall-clock timeout.
+            if(Time.frameCount%120==0)File.AppendAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"ClinicGuestFrames.log"),"frame="+Time.frameCount+" tick="+Find.TickManager.TicksGame+" speed="+Find.TickManager.CurTimeSpeed+" paused="+Find.TickManager.Paused+" stage="+stage+" windows="+string.Join(",",Find.WindowStack.Windows.Select(w=>w.GetType().FullName))+Environment.NewLine);
+            Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
             if(reload){
                 if(stage==0){
                 Check(saved&&guest!=null&&doctor!=null&&desk!=null&&lord!=null,"Clinical guest save references missing");

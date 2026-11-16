@@ -1,14 +1,14 @@
 {
   "hotelReload": {
     "passed": true,
-    "checks": 11,
+    "checks": 15,
     "errors": []
   },
   "mapActivity": {
     "mapLoaded": true,
     "observedActiveSeconds": 30,
-    "framesAdvanced": 1590,
-    "ticksAdvanced": 1806,
+    "framesAdvanced": 1188,
+    "ticksAdvanced": 1401,
     "newsWindowsDismissedInTest": 0
   },
   "runtimeErrors": 0,
@@ -16,6 +16,6 @@
   "gpuLost": false,
   "isolatedFixtureSave": true,
   "userSaveTested": false,
-  "productionAssemblySha256": "151fa0aa00ba901e8b3c04521edf1e61e2f515ebe18b86dba5d01cae05d78829",
+  "productionAssemblySha256": "468b3fc698ccdcf15da635dc9b4aa1e59d3a93fd4be6be5bc5cd26ce8b30e1b4",
   "passed": true
 }

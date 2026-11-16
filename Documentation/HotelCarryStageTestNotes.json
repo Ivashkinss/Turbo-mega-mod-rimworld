@@ -1,0 +1,14 @@
+{
+  "attempt": "TestRuns/ClinicGuest-FullSet-20261116-082739",
+  "outcome": "Timed out before final clinical report; excluded from successful checks.",
+  "observations": [
+    "Last tick-based diagnostic showed valid clinical guest, reachable patient and doctor tending, with no runtime error.",
+    "Exact reason for stalled progress was not established.",
+    "The isolated fixture now forces normal simulation speed and records frame/tick/pause/window diagnostics.",
+    "Resume reused two already-passing same-binary hotel results; fresh/reload clinical retries passed."
+  ],
+  "productionSourceChanges": [
+    "Source/HotelBilling.cs only"
+  ],
+  "userDataChanged": false
+}

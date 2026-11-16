@@ -117,7 +117,7 @@ namespace TurboMegaMod
         public HotelBilling(Map map) : base(map) { }
         private bool Valid(HotelStay stay)
         {
-            return stay.guest != null && stay.guest.Spawned && !stay.guest.Dead && stay.guest.Map == map &&
+            return stay.guest != null && !stay.guest.Destroyed && !stay.guest.Dead && stay.guest.MapHeld == map &&
                 stay.guest.Faction != Faction.OfPlayer && !stay.guest.IsPrisoner && !stay.guest.IsSlave &&
                 stay.bed != null && stay.bed.Spawned && stay.bed.Map == map && HotelBillingHooks.Bed(stay.guest) == stay.bed;
         }
@@ -160,6 +160,9 @@ namespace TurboMegaMod
             }
             foreach (var stay in stays.ToArray())
             {
+                // Keep the original absolute deadline and partial payment while
+                // carried/contained. Physical collection resumes after respawn.
+                if (!stay.guest.Spawned || stay.guest.Map != map) continue;
                 // Bounded catch-up for controlled time jumps; ordinary play
                 // processes one period at a time. Each period keeps its own rate.
                 for (int periods = 0; periods < 4 && Find.TickManager.TicksGame >= stay.nextChargeTick; periods++)
