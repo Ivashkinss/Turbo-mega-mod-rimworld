@@ -658,7 +658,7 @@
     },
     {
       "id": "WorkContractNativeTransitions",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/WorkContractNativeTransitions/TASK.md",
       "outputDir": "Tools/Build/GeminiWorkContractNativeTransitions",
       "expectedOutputs": [
@@ -666,7 +666,36 @@
         "NOTES.md"
       ],
       "createdUtc": "2026-11-16T23:10:53.632824+00:00",
-      "note": "Four-method transition/field lookup for next basic ordinary labour-contract stage; no implementation or story raids."
+      "note": "Cross-checked native IL; accept field/status signatures, qualify exit route/ShouldStayOnMap and inventory guarantees. Native contract probes in progress."
+    },
+    {
+      "id": "RimHUDPackageReview",
+      "state": "reviewed",
+      "taskFile": "Delegation/RimHUDPackageReview/TASK.md",
+      "outputDir": "Tools/Build/GeminiRimHUDPackageReview",
+      "expectedOutputs": [
+        "REPORT.md",
+        "FILES.json"
+      ],
+      "createdUtc": "2026-11-16T23:33:22.289292+00:00",
+      "note": "Confirmed official source/release lacks explicit redistribution license; own compact pawn inspector chosen. Correct Harmony dependency has no specified min-version in About; no need to redistribute root Presets."
+    },
+    {
+      "id": "FactionRansomImplementation",
+      "state": "pending",
+      "taskFile": "Delegation/FactionRansomImplementation/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionRansomImplementation",
+      "expectedOutputs": [
+        "Candidate/Source/FactionRansom.cs",
+        "Candidate/Languages/Russian/Keyed/FactionRansom.xml",
+        "Candidate/Languages/English/Keyed/FactionRansom.xml",
+        "build_candidate.ps1",
+        "TEST-RESULTS.json",
+        "DECISIONS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-16T23:41:46.226169+00:00",
+      "note": "TASK updated 2026-11-17 02:44 MSK BEFORE observed start: implement explicit paid-faction deception state/history too, without raids/rebellions or automatic goodwill changes. 20 acceptance cases. Read full revised TASK."
     }
   ]
 }

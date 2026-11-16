@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using HarmonyLib;
+using RimWorld;
+using TurboMegaMod;
+using UnityEngine;
+using Verse;
+using Verse.AI;
+using Verse.AI.Group;
+
+[StaticConstructorOnStartup]
+public static class WorkContractProbeLaunch {
+    static WorkContractProbeLaunch(){var args=Environment.GetCommandLineArgs();if(args.Contains("-tmm-contract-probe")||args.Contains("-tmm-contract-reload"))new Harmony("tmm.test.contract.temp").Patch(AccessTools.PropertyGetter(typeof(MapTemperature),"OutdoorTemp"),prefix:new HarmonyMethod(typeof(WorkContractProbeLaunch),"Temp"));if(args.Contains("-tmm-contract-reload"))LongEventHandler.ExecuteWhenFinished(()=>GameDataSaveLoader.LoadGame("TMM-WorkContract"));}
+    private static bool Temp(ref float __result){__result=21;return false;}
+}
+public sealed class WorkContractProbe : MapComponent {
+    private Pawn employee,applicant,guest;private Faction home;private Building_ComplexDesk desk;private Building_Bed bed;private List<Filth> dirt=new List<Filth>();private int stage,start,checks,initialSilver;private bool done,ui,saved;private string error;
+    public WorkContractProbe(Map map):base(map){}
+    private WorkBuyouts Book {get{return Current.Game.GetComponent<WorkBuyouts>();}}
+    private WorkBuyoutEntry Contract {get{return Book.Entry(employee);}}
+    private HousekeepingLedger Ledger {get{return map.GetComponent<HousekeepingLedger>();}}
+    private int Silver {get{return map.listerThings.ThingsOfDef(ThingDefOf.Silver).Where(t=>t.Spawned).Sum(t=>t.stackCount);}}
+    private static string Q(string s){return "\""+s.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n")+"\"";}
+    private void Check(bool ok,string message){if(!ok)throw new Exception(message);checks++;}
+    private static void Wait(Pawn p){var job=JobMaker.MakeJob(JobDefOf.Wait);job.expiryInterval=600000;p.jobs.StartJob(job,JobCondition.InterruptForced);}
+    private Building Build(string name,IntVec3 c){var d=DefDatabase<ThingDef>.GetNamed(name);var b=(Building)ThingMaker.MakeThing(d,d.MadeFromStuff?ThingDefOf.Steel:null);b.SetFaction(Faction.OfPlayer);return (Building)GenSpawn.Spawn(b,c,map);}
+    private Pawn Slave(bool accept,IntVec3 c){
+        Pawn p=null;for(int i=0;i<128;i++){
+            var candidate=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,home,forceGenerateNewPawn:true,canGeneratePawnRelations:false,forcedXenotype:XenotypeDefOf.Baseliner,fixedBiologicalAge:30,allowDead:false,allowDowned:false,allowAddictions:false,validatorPreGear:x=>!x.WorkTypeIsDisabled(WorkTypeDefOf.Cleaning)));
+            if(WorkContracts.WillAccept(candidate)==accept){p=candidate;break;}candidate.Destroy();
+        }
+        if(p==null)throw new Exception("Could not find stable response fixture");GenSpawn.Spawn(p,c,map);p.guest.SetGuestStatus(Faction.OfPlayer,GuestStatus.Slave);
+        foreach(var work in DefDatabase<WorkTypeDef>.AllDefsListForReading)p.workSettings.SetPriority(work,0);
+        p.inventory.innerContainer.ClearAndDestroyContents();var steel=ThingMaker.MakeThing(ThingDefOf.Steel);steel.stackCount=3;p.inventory.innerContainer.TryAdd(steel);p.needs.food.CurLevelPercentage=1;p.needs.rest.CurLevelPercentage=1;Wait(p);return p;
+    }
+    private int PersonalSteel(Pawn p){return p.inventory.innerContainer.Where(t=>t.def==ThingDefOf.Steel).Sum(t=>t.stackCount);}
+    private void Clean(int count){Wait(employee);dirt.Clear();for(int i=0;i<count;i++){var cell=new IntVec3(42+i,0,43);foreach(var old in cell.GetThingList(map).OfType<Filth>().ToArray())old.Destroy();var f=(Filth)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Filth_Dirt"));GenSpawn.Spawn(f,cell,map);AccessTools.Field(typeof(Filth),"growTick").SetValue(f,GuestDossiers.Now);dirt.Add(f);}var job=JobMaker.MakeJob(JobDefOf.Clean);job.targetQueueA=dirt.Select(f=>new LocalTargetInfo(f)).ToList();employee.jobs.StartJob(job,JobCondition.InterruptForced);start=GuestDossiers.Now;}
+    private bool Cleaned(){if(dirt.All(f=>f.Destroyed))return true;if(GuestDossiers.Now-start>4000)throw new Exception("Contract cleaning timed out: "+employee.CurJob);return false;}
+    private void Setup(){
+        map.fogGrid.ClearAllFog();foreach(var p in map.mapPawns.FreeColonistsSpawned)Wait(p);
+        foreach(var c in new CellRect(0,0,65,65)){foreach(var t in c.GetThingList(map).ToArray())if(t is Building||t is Plant||t is Filth){if(t.def.destroyable)t.Destroy();else t.DeSpawn();}map.terrainGrid.SetTerrain(c,TerrainDefOf.Soil);map.roofGrid.SetRoof(c,null);map.areaManager.Home[c]=true;}
+        var room=new CellRect(39,39,13,12);foreach(var c in room.EdgeCells)Build(c==new IntVec3(44,0,39)?"Door":"Wall",c);foreach(var c in room.ContractedBy(1))map.roofGrid.SetRoof(c,RoofDefOf.RoofConstructed);
+        Area_Allowed area;map.areaManager.TryMakeNewAllowed(out area);foreach(var c in new CellRect(36,36,24,21))area[c]=true;desk=(Building_ComplexDesk)Build("TMM_ComplexDesk",new IntVec3(40,0,37));desk.area=area;desk.roomRate=4;desk.vipChance=0;bed=(Building_Bed)Build("BedGuest",new IntVec3(48,0,48));map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();desk.ApplyServiceAreas();
+        home=Find.FactionManager.AllFactionsListForReading.First(f=>!f.IsPlayer&&f.def.humanlikeFaction&&!f.HostileTo(Faction.OfPlayer));
+        employee=Slave(true,new IntVec3(41,0,43));applicant=Slave(false,new IntVec3(42,0,45));
+        Check(employee.IsSlaveOfColony&&employee.HomeFaction==home,"Original slave faction fixture invalid");Check(desk.SetRole(employee,ComplexRole.Cleaner),"Cleaner role unavailable");desk.Employee(employee).mode=ComplexWorkMode.ComplexOnly;employee.workSettings.SetPriority(WorkTypeDefOf.Cleaning,2);
+        var operation=new Bill_Medical(DefDatabase<RecipeDef>.GetNamed("Anesthetize"),null);employee.BillStack.AddBill(operation);Check(WorkContracts.Offer(employee,1)==null&&employee.IsSlaveOfColony&&employee.BillStack.Bills.Contains(operation)&&Book.Entry(employee)==null,"Pending operation was erased or offer rolled early");employee.BillStack.Clear();
+        var e=WorkContracts.Offer(employee,1);Check(e!=null&&e.contractOffered&&e.freeContract&&e.active&&e.originalFaction==home,"Accepted contract state incorrect");Check(employee.Faction==Faction.OfPlayer&&employee.IsColonist&&!employee.IsSlave&&!employee.IsPrisoner&&employee.guest.HostFaction==null,"Contract employee still enslaved/captive");Check(employee.needs.AllNeeds.All(n=>n.def.defName!="Suppression"),"Slave suppression need retained");Check(PersonalSteel(employee)==3,"Status transition lost inventory");Check(desk.Employee(employee).role==ComplexRole.Cleaner&&desk.Mode(employee)==ComplexWorkMode.ComplexOnly&&((DefMap<WorkTypeDef,int>)AccessTools.Field(typeof(Pawn_WorkSettings),"priorities").GetValue(employee.workSettings))[WorkTypeDefOf.Cleaning]==2,"Transition erased role/mode/priority");
+        Check(WorkContracts.Offer(employee,99999)==e&&e.target==1&&!e.joinRequested,"Accepted offer rerolled or changed locked target");Check(!Book.Release(employee)&&employee.Faction==Faction.OfPlayer,"Unpaid contract released early");
+        var request=WorkContracts.Offer(applicant,3000);Check(request!=null&&request.contractOffered&&request.joinRequested&&!request.active&&applicant.IsSlaveOfColony,"Refusal forced membership or active debt");Check(WorkContracts.Offer(applicant,1)==request&&request.target==3000,"Refused offer rerolled");Book.Credit(applicant,"must-not-credit-refusal",100,false);Check(request.credited==0,"Declined contract earned credit");
+        employee.workSettings.SetPriority(WorkTypeDefOf.Cleaning,0);Wait(employee);Wait(applicant);
+        guest=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,home,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:30,allowDead:false,allowDowned:false,allowAddictions:false));GenSpawn.Spawn(guest,new IntVec3(43,0,37),map);guest.inventory.innerContainer.ClearAndDestroyContents();var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=500;guest.inventory.innerContainer.TryAdd(silver);guest.needs.food.CurLevelPercentage=1;guest.needs.rest.CurLevelPercentage=1;
+        foreach(var t in map.attackTargetsCache.TargetsHostileToFaction(home).Select(t=>t.Thing).Where(t=>t.Spawned).ToArray())t.DeSpawn();AccessTools.Method(AccessTools.TypeByName("Hospitality.IncidentWorker_VisitorGroup"),"CreateLord").Invoke(null,new object[]{home,new IntVec3(44,0,44),new List<Pawn>{guest},map,false,false,600000});guest.GetLord().ReceiveMemo("TravelArrived");guest.needs.joy.CurLevelPercentage=1;
+        initialSilver=Silver;AccessTools.Field(HotelBillingHooks.Guest(guest).GetType(),"lastBedCheckTick").SetValue(HotelBillingHooks.Guest(guest),GuestDossiers.Now-100000);var giver=Activator.CreateInstance(AccessTools.TypeByName("Hospitality.JobGiver_ClaimBed"));var job=(Job)AccessTools.Method(giver.GetType(),"TryGiveJob").Invoke(giver,new object[]{guest});Check(job!=null&&job.targetA.Thing==bed,"Contract fixture hotel check-in unavailable");guest.jobs.StartJob(job,JobCondition.InterruptForced);start=GuestDossiers.Now;stage=1;Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;
+    }
+    private void Fresh(){if(stage==0){Setup();return;}if(stage==1){if(HotelBillingHooks.Bed(guest)!=bed){if(GuestDossiers.Now-start>2000)throw new Exception("Check-in timeout");return;}Wait(guest);Check(HotelBillingHooks.Money(guest)==496&&Silver==initialSilver+4&&Ledger.Balance==4,"Real room funding missing");Clean(1);stage=2;return;}if(stage==2){if(!Cleaned())return;Wait(employee);Check(Contract.credited==0&&Ledger.Account(employee).workUnits==35000&&Ledger.Balance==4,"Free employee fractional cleaning not captured");saved=true;GameDataSaveLoader.SaveGame("TMM-WorkContract");Check(File.Exists(GenFilePaths.FilePathForSavedGame("TMM-WorkContract")),"Contract save missing");Check(WorkContracts.AcceptPermanent(applicant)&&!applicant.IsSlave&&applicant.IsColonist&&!Book.Entry(applicant).active&&Book.Entry(applicant).joinedPermanently,"Permanent membership acceptance failed");Check(PersonalSteel(applicant)==3,"Permanent transition lost inventory");Finish(false);}}
+    private void Reload(){
+        if(stage==0){Check(saved&&Contract!=null&&Contract.originalFaction==home&&Contract.freeContract&&Contract.active&&employee.Faction==Faction.OfPlayer&&!employee.IsSlave,"Free contract/home faction failed load");Check(Ledger.Account(employee).workUnits==35000&&Ledger.Balance==4&&PersonalSteel(employee)==3,"Contract work or inventory failed load");var e=Book.Entry(applicant);Check(e!=null&&e.joinRequested&&!e.active&&applicant.IsSlaveOfColony,"Pending membership decision failed load");Check(WorkContracts.Offer(applicant,1)==e&&e.joinRequested&&e.target==3000,"Reload rerolled refusal");Check(WorkContracts.AcceptPermanent(applicant)&&applicant.IsColonist&&!applicant.IsSlave&&!e.active,"Loaded permanent membership failed");Clean(7);stage=1;return;}
+        if(stage==1){if(!Cleaned())return;Wait(employee);Check(Contract.Remaining==0&&Contract.credited==1&&Ledger.allocated==1&&Silver==initialSilver+4,"Free contract work overcharged/invented silver");
+            var walls=new List<Building>();foreach(var c in new CellRect(employee.Position.x-1,employee.Position.z-1,3,3).EdgeCells){foreach(var t in c.GetThingList(map).ToArray())if(t is Building||t is Plant||t is Filth)t.Destroy();walls.Add(Build("Wall",c));}map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();Check(!Book.Release(employee)&&Contract.active&&employee.Faction==Faction.OfPlayer,"Blocked route falsely completed departure");foreach(var wall in walls)wall.Destroy();map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
+            var cargo=ThingMaker.MakeThing(ThingDefOf.Steel);cargo.stackCount=5;GenSpawn.Spawn(cargo,employee.Position,map);Check(employee.carryTracker.TryStartCarry(cargo,5,false)==5,"Could not stage held colony cargo");Check(Book.Release(employee)&&Contract.released&&!Contract.active&&employee.Faction==home&&!employee.IsSlave,"Completed contract did not restore original faction");Check(cargo.Spawned&&cargo.stackCount==5&&employee.carryTracker.CarriedThing==null&&PersonalSteel(employee)==3,"Release lost held cargo or personal inventory");Check(desk.Employee(employee)==null,"Released worker retained complex assignment");Check(employee.guest.Released&&employee.CurJob!=null&&employee.CurJob.exitMapOnArrival,"Native released-guest exit was not assigned");Check(!Book.Release(employee),"Release repeated");start=GuestDossiers.Now;stage=2;return;
+        }
+        if(stage==2){if(employee.Spawned){if(GuestDossiers.Now-start>7000)throw new Exception("Released employee did not physically exit: "+employee.CurJob);return;}Check(employee.Faction==home&&Contract.released&&!Contract.active,"Actual map exit lost completion/faction state");Finish(true);}
+    }
+    public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref employee,"ctEmployee");Scribe_References.Look(ref applicant,"ctApplicant");Scribe_References.Look(ref guest,"ctGuest");Scribe_References.Look(ref home,"ctHome");Scribe_References.Look(ref desk,"ctDesk");Scribe_References.Look(ref bed,"ctBed");Scribe_Values.Look(ref saved,"ctSaved");Scribe_Values.Look(ref initialSilver,"ctSilver");}
+    public override void MapComponentUpdate(){bool reload=Environment.GetCommandLineArgs().Contains("-tmm-contract-reload");if(done||Find.CurrentMap!=map||(!reload&&!Environment.GetCommandLineArgs().Contains("-tmm-contract-probe")))return;try{if(reload)Reload();else Fresh();}catch(Exception e){error=e.ToString();Finish(reload);}}
+    private void Finish(bool reload){done=true;File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,reload?"WorkContractReloadProbe.json":"WorkContractProbe.json"),"{\"passed\":"+(error==null?"true":"false")+",\"checks\":"+checks+",\"errors\":"+(error==null?"[]":"["+Q(error)+"]")+"}");}
+    public override void MapComponentOnGUI(){if(ui||!done||employee==null||Event.current.type!=EventType.Repaint)return;ui=true;string e=null;try{new Dialog_WorkBuyout(employee).DoWindowContents(new Rect(0,0,660,610));new Dialog_WorkBuyout(applicant).DoWindowContents(new Rect(0,0,660,610));}catch(Exception ex){e=ex.ToString();}File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"WorkContractUiProbe.json"),"{\"passed\":"+(e==null?"true":"false")+",\"visualLayoutInspected\":false,\"error\":"+(e==null?"null":Q(e))+"}");}
+}
+

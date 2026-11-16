@@ -26,8 +26,8 @@ namespace TurboMegaMod
         public HousekeepingAccount Account(Pawn p){return accounts.FirstOrDefault(a=>a.worker==p);}
         private WorkBuyoutEntry Contract(Pawn p)
         {
-            if(p==null||p.Destroyed||p.Dead||!p.IsSlaveOfColony)return null;
-            var e=Current.Game.GetComponent<WorkBuyouts>().Entry(p);return e!=null&&e.active&&!e.released&&e.Remaining>0?e:null;
+            if(p==null||p.Destroyed||p.Dead)return null;
+            var e=Current.Game.GetComponent<WorkBuyouts>().Entry(p);return WorkContracts.Working(e)&&e.Remaining>0?e:null;
         }
         public void Receive(IntVec3 cell,int amount,string receipt)
         {

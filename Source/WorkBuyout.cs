@@ -14,6 +14,8 @@ namespace TurboMegaMod
         public Pawn pawn;
         public int target = 10000, credited, halfRemainder;
         public bool active, released;
+        public bool contractOffered,freeContract,joinRequested,joinedPermanently;
+        public Faction originalFaction;
         public List<string> receipts = new List<string>();
         public int Remaining { get { return Math.Max(0, target - credited); } }
         public void ExposeData()
@@ -21,6 +23,7 @@ namespace TurboMegaMod
             Scribe_References.Look(ref pawn,"pawn"); Scribe_Values.Look(ref target,"target",10000);
             Scribe_Values.Look(ref credited,"credited"); Scribe_Values.Look(ref halfRemainder,"halfRemainder");
             Scribe_Values.Look(ref active,"active"); Scribe_Values.Look(ref released,"released");
+            Scribe_Values.Look(ref contractOffered,"contractOffered");Scribe_Values.Look(ref freeContract,"freeContract");Scribe_Values.Look(ref joinRequested,"joinRequested");Scribe_Values.Look(ref joinedPermanently,"joinedPermanently");Scribe_References.Look(ref originalFaction,"originalFaction");
             Scribe_Collections.Look(ref receipts,"receipts",LookMode.Value);
             if(Scribe.mode==LoadSaveMode.PostLoadInit&&receipts==null)receipts=new List<string>();
         }
@@ -45,7 +48,7 @@ namespace TurboMegaMod
         public void Credit(Pawn pawn,string receipt,int amount,bool consumables)
         {
             var entry=Entry(pawn);
-            if(entry==null||!entry.active||entry.released||amount<=0||entry.receipts.Contains(receipt))return;
+            if(entry==null||!entry.active||entry.released||amount<=0||entry.receipts.Contains(receipt)||(entry.freeContract&&!WorkContracts.Working(entry)))return;
             entry.receipts.Add(receipt);
             long units=consumables?(long)amount+entry.halfRemainder:(long)amount*2+entry.halfRemainder;
             int credit=(int)Math.Min(entry.Remaining,units/2);
@@ -54,13 +57,19 @@ namespace TurboMegaMod
         public bool Release(Pawn pawn)
         {
             var entry=Entry(pawn);
+            if(entry!=null&&entry.freeContract)return WorkContracts.Complete(entry);
             if(entry==null||!entry.active||entry.released||entry.Remaining!=0||!pawn.IsSlaveOfColony)return false;
             GenGuest.SlaveRelease(pawn);entry.released=true;entry.active=false;return true;
         }
         public string Status(Pawn pawn)
         {
             var entry=Entry(pawn);
-            return entry==null?"TMM.Buyout.None".Translate().ToString():"TMM.Buyout.Progress".Translate(entry.credited,entry.target,entry.Remaining).ToString();
+            if(entry==null)return "TMM.Buyout.None".Translate();
+            if(entry.joinedPermanently)return "TMM.Contract.Permanent".Translate();
+            string status="TMM.Buyout.Progress".Translate(entry.credited,entry.target,entry.Remaining);
+            if(entry.freeContract)status+="\n"+(entry.released?"TMM.Contract.Completed":"TMM.Contract.FreeWorker").Translate();
+            else if(entry.joinRequested)status+="\n"+"TMM.Contract.JoinPending".Translate();
+            return status;
         }
     }
     public sealed class Dialog_WorkBuyout : Window
@@ -68,23 +77,28 @@ namespace TurboMegaMod
         private readonly Pawn pawn;
         private int target=10000;
         public Dialog_WorkBuyout(Pawn pawn){this.pawn=pawn;forcePause=true;doCloseX=true;doCloseButton=true;absorbInputAroundWindow=true;}
-        public override Vector2 InitialSize {get{return new Vector2(650,520);}}
+        public override Vector2 InitialSize {get{return new Vector2(700,650);}}
         public override void DoWindowContents(Rect rect)
         {
             if(pawn==null||pawn.Dead){Close();return;}
             var book=Current.Game.GetComponent<WorkBuyouts>();var entry=book.Entry(pawn);
-            string help="TMM.Buyout.Help".Translate(pawn.LabelShortCap);float h=Text.CalcHeight(help,rect.width);
+            string help="TMM.Buyout.Help".Translate(pawn.LabelShortCap)+"\n"+"TMM.Contract.Help".Translate();float h=Text.CalcHeight(help,rect.width);
             Widgets.Label(new Rect(0,0,rect.width,h),help);
             float y=h+15;
-            Widgets.Label(new Rect(0,y,rect.width,36),book.Status(pawn));y+=45;
+            string state=book.Status(pawn);float stateHeight=Text.CalcHeight(state,rect.width);Widgets.Label(new Rect(0,y,rect.width,stateHeight),state);y+=stateHeight+12;
             if(entry!=null&&pawn.MapHeld!=null){var text=pawn.MapHeld.GetComponent<HousekeepingLedger>().Status(pawn);float height=Text.CalcHeight(text,rect.width);Widgets.Label(new Rect(0,y,rect.width,height),text);TooltipHandler.TipRegion(new Rect(0,y,rect.width,height),"TMM.Housekeeping.Help".Translate());y+=height+12;}
             if(entry==null){
                 Widgets.Label(new Rect(0,y,300,32),"TMM.Buyout.Target".Translate(target));
                 if(Widgets.ButtonText(new Rect(320,y,90,32),"−1000"))target=Math.Max(1000,target-1000);
                 if(Widgets.ButtonText(new Rect(420,y,90,32),"+1000"))target=Math.Min(1000000,target+1000);y+=45;
-                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Buyout.Begin".Translate())){book.Begin(pawn,target);}
-            }else if(entry.active&&entry.Remaining==0){
-                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Buyout.Release".Translate())){book.Release(pawn);Close();}
+                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Contract.Offer".Translate())){WorkContracts.Offer(pawn,target);}
+            }else if(!entry.contractOffered&&entry.active&&pawn.IsSlaveOfColony){
+                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Contract.Offer".Translate()))WorkContracts.Offer(pawn,entry.target);y+=45;
+            }
+            if(entry!=null&&entry.joinRequested&&!entry.joinedPermanently&&pawn.IsSlaveOfColony){
+                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Contract.AcceptPermanent".Translate()))WorkContracts.AcceptPermanent(pawn);
+            }else if(entry!=null&&entry.active&&entry.Remaining==0){
+                if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Buyout.Release".Translate())){if(book.Release(pawn))Close();else Messages.Message("TMM.Contract.CannotLeave".Translate(),pawn,MessageTypeDefOf.RejectInput,false);}
             }
         }
         public static void Show(Building_ComplexDesk desk)

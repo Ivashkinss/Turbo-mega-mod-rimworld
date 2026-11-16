@@ -1,6 +1,18 @@
 # Продолжение Turbo mega mod — 17 ноября 2026
 
-## Последний этап: зачёт уборки в обычный самовыкуп
+## Последний проверенный этап: свободные обычные трудовые договоры
+
+DLL `7e8197b407f720ddb15092da60dcda21793d4abc02cf03a1620d99bb7bef57e1`: 58 проверок / 4 целевых native шага на 1.7 (WorkContract19+reload14, Housekeeping15+reload10), 0 runtimeerrors/0 missingrefs в reload. Сводка `Documentation/WorkContractRevisionVerification.json`, воспроизведение `Tools/test_work_contract_revision.ps1 -Profile <passing isolated contract profile>`. Ни пользовательский сейв, ни live1.6, ни все подсистемы/визуальная раскладка не заявляются проверенными.
+
+Source/WorkContracts.cs: offer90/10 стабильный по pawn/world seed; ответ, target и исходная фракция сохраняются в WorkBuyoutEntry. Согласие переводит раба в свободного колониста-работника, восстанавливает raw приоритеты, роль/вещи; отказ оставляет отдельную просьбу permanentjoin и не начисляет долг. Принять постоянным — отдельное решение игрока. Незавершённые операции блокируют смену статуса (native SetGuestStatus очищает bills). Housekeeping принимает и legacyslave entries, и новые свободные договоры; старая арифметика directcredit сохранена. Complete по достижении суммы: preflight выхода, сброс carry на карту, снять назначения, вернуть исходную faction, native GuestRelease; реально проверен выход к нейтральной фракции. Повтор/недоступный выход не завершают запись. Все модовые/враждебные фракции отдельно не проверены.
+
+Неудачи разработки: первый native тест ошибочно проверял GetPriority==2 в checkbox UI (native нормализует до3), заменён на проверку raw DefMap; production transition уже сохранял raw. Перед ops-тестом исправлена ненативная MakeRecipeBill на Bill_Medical constructor; это ошибка компиляции теста, не игровой сбой. Полезные правила: `Documentation/WORK-CONTRACTS.md`.
+
+Пользователь добавил панель персонажа как RimHUD. Official Jaxe-Dev/RimHUD commit6f1dbfc3ba1196ab081ee4d382101ddd6b23badb/release1.17.5 без явной лицензии на redistrib и без1.7 в manifest: GeminiPackageReview подтверждён с квалификацией minHarmonyversion и rootpaths. Решено написать собственную компактную панель (пользователю сообщено); чужой DLL/код/ресурсы НЕ импортированы. Предварительный НАБРОСОК `Tools/Build/PawnOverview.cs` пока НЕ Source/production, не компилировался. Нужны build, native layout/selection/непешки, русскийUI, screenshot, fallback при внешнем RimHUD. Текущая работа Codex — эта панель; исходный Source до неё проверен.
+
+Пользователь специально попросил крупную задачу Gemini на время обновления лимита. `Delegation/FactionRansomImplementation/TASK.md` В ОЧЕРЕДИ: полноценный изолированный кандидат будущего выкупа исходной фракцией50%, escrow, save/load, защита от дублей, RU/EN, build/tests. Snapshot `Tools/Build/FactionRansomImplementationSnapshot/`, output `Tools/Build/GeminiFactionRansomImplementation/`. Пользователь затем разрешил МЕХАНИКУ ОБМАНА после оплаченного фракцией выкупа: TASK обновлён ДО observedACK,20приёмочныхслучаев, хранить факт/тик/faction/сумму, можно позже отпустить, история не стирается. Рейды/бунты/goodwillавтоматически НЕ подключать. Не распространять это пока на обман свободного работника. Следить за WorkerState/результатом, reviewer переносит только проверенный код. Рабочий Source Gemini менять запрещено. Не начинать самому этот будущий этап параллельно: пользователь хочет разгрузить Codex.
+
+## Предыдущий этап: зачёт уборки в обычный самовыкуп
 
 DLL `57817e1908d4e43e119025a1691311e84cb6ac99d33685dd668dd047dee9d94a`: **78 проверок / 4 целевых игровых шага** на1.7. Housekeeping15+reload10, Pricing34+reload19;0runtimeerrors/0missingrefsпри загрузке,2963Keyed/702scalar/90grammar/12display+252Odyssey. Сводка Documentation/HousekeepingRevisionVerification.json, Tools/verify_housekeeping_revision.py. Предыдущие179/7 и651/20 — другие DLL, не суммировать. Все подсистемы/все моды/live1.6/пользовательскийсейв/визуальнаяинспекция не заявляются.
 

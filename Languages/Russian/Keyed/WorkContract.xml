@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Contract.Offer>Предложить свободный трудовой договор</TMM.Contract.Offer>
+  <TMM.Contract.Accepted>{0} соглашается на трудовой договор и теперь работает как свободный сотрудник.</TMM.Contract.Accepted>
+  <TMM.Contract.JoinRequested>{0} отказывается от договора и просит принять в колонию навсегда. Решение — за вами.</TMM.Contract.JoinRequested>
+  <TMM.Contract.AcceptPermanent>Принять в колонию без договора</TMM.Contract.AcceptPermanent>
+  <TMM.Contract.Permanent>Постоянный колонист — договор не действует</TMM.Contract.Permanent>
+  <TMM.Contract.FreeWorker>Свободный сотрудник на трудовом договоре</TMM.Contract.FreeWorker>
+  <TMM.Contract.Completed>Договор выполнен — сотрудник отпущен</TMM.Contract.Completed>
+  <TMM.Contract.JoinPending>Просит стать постоянным колонистом</TMM.Contract.JoinPending>
+  <TMM.Contract.CannotLeave>Сейчас сотрудник не может уйти. Нужны доступный выход с карты и возможность двигаться.</TMM.Contract.CannotLeave>
+  <TMM.Contract.Help>Предложение делается один раз: 90% — согласие на обычную работу до выкупа, 10% — просьба стать постоянным колонистом. Ответ сохраняется и не зависит от загрузки или изменения цены. При согласии статус раба снимается; рабочие приоритеты сохраняются. Заработок продолжает учитываться по прежним правилам. После выполнения договора можно отпустить работника в исходную фракцию. Переговоры об оплате фракцией и последствия обмана — отдельный этап.</TMM.Contract.Help>
+  <TMM.Contract.Unavailable>Перед сменой статуса завершите или отмените назначенные операции.</TMM.Contract.Unavailable>
+</LanguageData>

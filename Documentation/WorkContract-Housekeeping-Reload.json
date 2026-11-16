@@ -1,0 +1,21 @@
+{
+  "housekeepingReload": {
+    "passed": true,
+    "checks": 10,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4129,
+    "ticksAdvanced": 1773,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "7e8197b407f720ddb15092da60dcda21793d4abc02cf03a1620d99bb7bef57e1",
+  "passed": true
+}
