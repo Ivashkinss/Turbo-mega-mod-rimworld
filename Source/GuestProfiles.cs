@@ -13,8 +13,8 @@ namespace TurboMegaMod
     // This state belongs to the dossier identity, not the map or a generated name.
     public sealed class GuestProfile : IExposable
     {
-        public bool evaluated,vip,arrivalPrepared;
-        public int completed,good,grantTarget,grantAdded;
+        public bool evaluated,vip,arrivalPrepared,tripPrepared;
+        public int completed,good,grantTarget,grantAdded,tripTarget,tripAdded;
         public float lastScore=-1;
         public bool Regular {get{return GuestProfileRules.Regular(completed,good);}}
         public void ExposeData()
@@ -22,6 +22,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref evaluated,"evaluated");Scribe_Values.Look(ref vip,"vip");Scribe_Values.Look(ref arrivalPrepared,"arrivalPrepared");
             Scribe_Values.Look(ref completed,"completed");Scribe_Values.Look(ref good,"good");Scribe_Values.Look(ref lastScore,"lastScore",-1);
             Scribe_Values.Look(ref grantTarget,"grantTarget");Scribe_Values.Look(ref grantAdded,"grantAdded");
+            Scribe_Values.Look(ref tripPrepared,"tripPrepared");Scribe_Values.Look(ref tripTarget,"tripTarget");Scribe_Values.Look(ref tripAdded,"tripAdded");
         }
     }
     public sealed class GuestStayExperience : IExposable
@@ -75,7 +76,15 @@ namespace TurboMegaMod
                 if(pawn.inventory.innerContainer.TryAdd(silver,false))profile.grantAdded=extra;else silver.Destroy();}
             Consolidate(pawn);
         }
-        private static void ItemsGiven(IEnumerable<Pawn> __0){foreach(var pawn in __0)Prepare(pawn);}
+        private static void ItemsGiven(IEnumerable<Pawn> __0)
+        {
+            if(__0==null)return;
+            foreach(var pawn in __0)
+            {
+                Prepare(pawn);
+                GuestTripBudget.PrepareTrip(pawn);
+            }
+        }
         // Hospitality searches and charges only the first silver stack. Its own
         // generated purse also exceeds the floor stack limit. Preserve all coins.
         public static void Consolidate(Pawn pawn)
@@ -151,6 +160,7 @@ namespace TurboMegaMod
                 row.profile.completed++;row.profile.lastScore=state.score;if(GuestProfileRules.Good(state.score))row.profile.good++;
             }
             row.profile.arrivalPrepared=false;
+            GuestTripBudget.ResetTrip(row.profile);
         }
         public static ThoughtState Mood(Pawn pawn,int kind)
         {

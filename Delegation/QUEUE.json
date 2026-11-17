@@ -948,7 +948,7 @@
     },
     {
       "id": "OrdinaryGuestPurseCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/OrdinaryGuestPurseCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiOrdinaryGuestPurseCorrections",
       "expectedOutputs": [
@@ -963,7 +963,22 @@
         "MANUAL-CHECKS.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T11:35:24.4591199Z"
+      "createdUtc": "2026-11-17T11:35:24.4591199Z",
+      "note": "Root curated and integrated on3742bf22. 96 native checks/3 passing exact-binary steps: fresh63, reload20, old-save13. Two fixture corrections documented separately; zero runtime errors and zero unresolved references in final loads. Arithmetic9/9. VisitorServiceAcceptance delegated separately, not claimed passed."
+    },
+    {
+      "id": "VisitorServiceAcceptance",
+      "state": "pending",
+      "taskFile": "Delegation/VisitorServiceAcceptance/TASK.md",
+      "outputDir": "Tools/Build/GeminiVisitorServiceAcceptance",
+      "expectedOutputs": [
+        "Candidate/Tests/InGameVisitorServiceAcceptanceProbe.cs",
+        "build_probe.ps1",
+        "FLOW.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T11:53:11.2000440Z"
     }
   ]
 }

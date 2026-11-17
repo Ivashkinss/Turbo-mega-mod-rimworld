@@ -168,8 +168,8 @@ namespace TurboMegaMod
                 }
             // A visitor can abandon the approach before CompGuest.Arrive. Once
             // physically gone, a future genuine visit may prepare a new purse.
-            foreach(var row in records.Where(r=>r.Current==null&&r.profile.arrivalPrepared))
-                if(row.pawn==null||row.pawn.Dead||row.pawn.MapHeld==null)row.profile.arrivalPrepared=false;
+            foreach(var row in records.Where(r=>r.Current==null&&(r.profile.arrivalPrepared||r.profile.tripPrepared)))
+                if(row.pawn==null||row.pawn.Dead||row.pawn.MapHeld==null){row.profile.arrivalPrepared=false;GuestTripBudget.ResetTrip(row.profile);}
             foreach(var row in records.Where(r=>r.Current!=null).ToArray()){
                 var visit=row.Current;var pawn=row.pawn;
                 if(pawn==null){End(row,"lost",Now);continue;}

@@ -164,6 +164,12 @@ public sealed class VipProbe : MapComponent
                 Check(s.meal==1&&s.firstClaim>=0&&s.nextBedCheck>0,"Active stay changed unexpectedly after simulation resumed");
                 int before=HotelBillingHooks.Money(vip);GuestProfiles.Prepare(vip);Check(HotelBillingHooks.Money(vip)==before,"Reload reissued VIP grant");
                 Check(GuestProfiles.Mood(vip,2).Active,"Regular thought not restored");
+                Check(!Row.profile.tripPrepared&&Row.profile.tripTarget==0&&Row.profile.tripAdded==0,"Pre-budget stay lost zero defaults");
+                // Isolate the Current guard on this real old active stay; restore its VIP identity immediately.
+                int oldMoney=HotelBillingHooks.Money(vip);bool oldVip=Row.profile.vip;
+                try {Row.profile.vip=false;Check(GuestTripBudget.Eligible(vip),"Old active fixture otherwise ineligible");GuestTripBudget.PrepareTrip(vip);
+                    Check(HotelBillingHooks.Money(vip)==oldMoney&&!Row.profile.tripPrepared,"Old active stay received a new trip budget");}
+                finally {Row.profile.vip=oldVip;}
                 if(Environment.GetCommandLineArgs().Contains("-tmm-vip-migration")){
                     var legacy=GuestProfiles.Row(ordinary);Check(legacy!=null&&!legacy.profile.evaluated&&!legacy.profile.vip&&!legacy.profile.Regular,"Missing legacy profile acquired fabricated status");
                     var old=legacy.visits.Last().experience;Check(old.firstClaim==-1&&old.lastSample==-1&&old.meal==-1&&old.score==-1&&!old.observingLodging,"Missing legacy experience acquired past lodging or ratings");

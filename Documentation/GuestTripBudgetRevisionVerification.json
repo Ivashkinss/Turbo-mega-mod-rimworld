@@ -1,0 +1,375 @@
+{
+  "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+  "gameVersion": "1.7.5000 rev1275",
+  "passed": true,
+  "nativeChecks": 96,
+  "passingNativeSteps": 3,
+  "freshProfile": "TestRuns/OrdinaryPurse-FullSet-20261117-145157",
+  "legacyProfile": "TestRuns/Vip-FullSet-20261117-005844",
+  "fresh": {
+    "component": "OrdinaryPurse",
+    "originalComponentActive": false,
+    "fullUserModSet": true,
+    "gameVersion": "1.7.5000 rev1275",
+    "localization": {
+      "keyed": 3127,
+      "scalarFields": 702,
+      "grammarLines": 90,
+      "displayPatches": 12,
+      "passed": true,
+      "errors": []
+    },
+    "mapActivity": {
+      "mapLoaded": true,
+      "observedActiveSeconds": 30,
+      "framesAdvanced": 3926,
+      "ticksAdvanced": 1653,
+      "newsWindowsDismissedInTest": 0
+    },
+    "settingsUi": {
+      "passed": true,
+      "visualLayoutInspected": false,
+      "error": null
+    },
+    "odysseyGrammar": {
+      "passed": true,
+      "odysseyActive": true,
+      "checks": 252,
+      "errors": []
+    },
+    "runtimeErrors": 0,
+    "knownExternalRuntimeErrors": 0,
+    "unexpectedRuntimeErrors": 0,
+    "knownExternalMessages": [],
+    "gpuLost": false,
+    "visualUiVerified": false,
+    "stoppedByTest": true,
+    "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+    "ordinaryPurse": {
+      "passed": true,
+      "checks": 63,
+      "errors": []
+    },
+    "passed": true
+  },
+  "reload": {
+    "ordinaryPurseReload": {
+      "passed": true,
+      "checks": 20,
+      "errors": []
+    },
+    "mapActivity": {
+      "mapLoaded": true,
+      "observedActiveSeconds": 30,
+      "framesAdvanced": 4225,
+      "ticksAdvanced": 1778,
+      "newsWindowsDismissedInTest": 0
+    },
+    "runtimeErrors": 0,
+    "unresolvedReferences": 0,
+    "gpuLost": false,
+    "isolatedFixtureSave": true,
+    "userSaveTested": false,
+    "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+    "passed": true
+  },
+  "oldVipReload": {
+    "vipReload": {
+      "passed": true,
+      "checks": 13,
+      "errors": []
+    },
+    "mapActivity": {
+      "mapLoaded": true,
+      "observedActiveSeconds": 30,
+      "framesAdvanced": 4144,
+      "ticksAdvanced": 1765,
+      "newsWindowsDismissedInTest": 0
+    },
+    "runtimeErrors": 0,
+    "unresolvedReferences": 0,
+    "gpuLost": false,
+    "isolatedFixtureSave": true,
+    "userSaveTested": false,
+    "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+    "passed": true,
+    "migrationFromMissingProfileFields": false
+  },
+  "legacySaveSha256": "5985177b0df9a0cb3bb5edc32eb172c378b6e2f65924fd80de43f6ca9a6b4b9e",
+  "pureArithmeticChecks": 9,
+  "fixtureCorrections": [
+    "Initial fresh63 functional pass excluded from final clean save acceptance: removed monolith and unsaved rich/encumbered probe references. Corrected fixture rerun on same DLL.",
+    "Initial legacy assertion wrongly required departed/blocked ordinary pawn to still have Current. Corrected legacy test uses real active old VIP stay, temporarily clears VIP flag only to isolate Current guard, immediately restores identity."
+  ],
+  "limits": [
+    "Departure in purse reload is an explicit real despawn followed by owning Synchronize, not a naturally walked multi-day holiday.",
+    "Legacy test isolates ordinary Current guard by temporarily clearing VIP flag on actual active pre-budget stay; original save bytes unchanged.",
+    "No optional Combat Extended CompInventory, all future modded races, user save, live1.6, or all-service end-to-end pass claimed."
+  ],
+  "sourceHashes": [
+    {
+      "path": "Source/CharacterEditorCompatibility.cs",
+      "sha256": "771053864ed41335b33fe235878a8a74123efe72ffbe9aadc05e6bd861ccf336"
+    },
+    {
+      "path": "Source/Clinic.cs",
+      "sha256": "f4e0f6f34485c3f2e949b397c542045584bdd9f27a1585ee0d1108a5f8d4e078"
+    },
+    {
+      "path": "Source/ClinicBilling.cs",
+      "sha256": "c27aee409faf05acdce30928846708273d1af4b2cfc9e48326b9aab14e7507fd"
+    },
+    {
+      "path": "Source/ClinicContributions.cs",
+      "sha256": "5c739a9d20de71f65d57e2b84c54fb461cc663d8449352d0f746708ec16ede49"
+    },
+    {
+      "path": "Source/ClinicGuests.cs",
+      "sha256": "4433dd7b22c607d7f21a72b6383755f67c687ac6a848a45759a0c0712b0d3a17"
+    },
+    {
+      "path": "Source/ClinicMedicalHooks.cs",
+      "sha256": "4ca678be07ef7f143e0027613104cd1dd5b99163bfcd741decc6ff6ec609cba3"
+    },
+    {
+      "path": "Source/Company.cs",
+      "sha256": "56a0c72b7a72a78c7e93fdca33fdf505e69996389d0f98da211ee15e41c36d71"
+    },
+    {
+      "path": "Source/CompanyMenus.cs",
+      "sha256": "b43af32c0a537dd1f8067e6ce6df84e12ae6d38b1e2b2c78125eb12df04e6663"
+    },
+    {
+      "path": "Source/ComplexLayout.cs",
+      "sha256": "553dc98866850556e35176c559d723136f77d1984522458ac66e4a0f845c89ef"
+    },
+    {
+      "path": "Source/ComplexManagement.cs",
+      "sha256": "bfd459df4dba5a272334e2eaa11122c156c62ea8b7f6e6e4781bddd1a237cc0b"
+    },
+    {
+      "path": "Source/ComplexOpeningVisit.cs",
+      "sha256": "304ccaed54a52c2291bb977f77dc6a14bc4ea580623fbfb803b3c13a0a54eb0a"
+    },
+    {
+      "path": "Source/ComplexPricing.cs",
+      "sha256": "b6bf097e3a0c1282f8bbac3626d7cbd8a8d75db0941079a1b697d16c1f127f5b"
+    },
+    {
+      "path": "Source/ComplexReceptionUI.cs",
+      "sha256": "7a0602f15db28afc71c14ca0786187dae29c546384cc9ce9277a232e6848851b"
+    },
+    {
+      "path": "Source/ComplexRecruitment.cs",
+      "sha256": "ed5b8097d7a61df93912a82617f07c08757c58fee074b1a09255351080fb3639"
+    },
+    {
+      "path": "Source/ComplexRecruitQuest.cs",
+      "sha256": "83d693eb05c60f071967cdb2b5e4573a3ad41ac2672427a7aa98858818226406"
+    },
+    {
+      "path": "Source/ComplexSaleDelivery.cs",
+      "sha256": "1f7bb0a4a33bdd21f1ed69fb54b3c02d8bc59e2ce03e4bbb35ad9cd52faa7f73"
+    },
+    {
+      "path": "Source/ComplexSales.cs",
+      "sha256": "d71e3b95e40b1b78ca14708a8114caffcd9c3ced2d3ba3afbe1fdf3a9ab2fad7"
+    },
+    {
+      "path": "Source/ComplexServicesDialog.cs",
+      "sha256": "e05de8899200fb4275c09f92eb945e68676b7234cc6becdb95b5a922ea3f6c2b"
+    },
+    {
+      "path": "Source/ControlledFarming.cs",
+      "sha256": "419d64eca8c35ddbb2d368421e3499f60dfd490be14c4e1630b5a9db94ddb844"
+    },
+    {
+      "path": "Source/FactionRansom.cs",
+      "sha256": "6beede67ff84c1276be4bd8d68247ec1c2c77328a0633380e7d62334f74d610a"
+    },
+    {
+      "path": "Source/FactionRansomPolicy.cs",
+      "sha256": "e16711f951366fc04968af3d92e67b46c22bb6ed9ddafdd613c0530c7e6afa44"
+    },
+    {
+      "path": "Source/FarmingPowerBudget.cs",
+      "sha256": "ddd435a3babd5da07c579d3d846e9b027ef380ddde0f273b71741293afa2af35"
+    },
+    {
+      "path": "Source/FridgeItemGraphicWorker.cs",
+      "sha256": "6c304170cb0e72efc4e54d0da229c3b011406e77afb6877ff46d799b803c420c"
+    },
+    {
+      "path": "Source/GreenhouseExpansion.cs",
+      "sha256": "61198a3a19ad517ca0e473e30b520f670ef85a3a5ef31354bd034ce166564a26"
+    },
+    {
+      "path": "Source/GreenhouseGlassDurability.cs",
+      "sha256": "610ea457088ef1388701380fccfb19b1823794e608fbebada68dd6ce839fe77b"
+    },
+    {
+      "path": "Source/GuestAddictionSupply.cs",
+      "sha256": "4f9216f27f833373295f545252193ab2d1999e87337be2b947dcd677a376d459"
+    },
+    {
+      "path": "Source/GuestAreaCacheHooks.cs",
+      "sha256": "3eefac1f4786f59563732115f9bd828f7b03f49cc5a8bfabb02dae77336fb20c"
+    },
+    {
+      "path": "Source/GuestDeathrest.cs",
+      "sha256": "c311d43c5ce0810fe2c5ea238480627612730f8574931c34adb7bda707905d47"
+    },
+    {
+      "path": "Source/GuestDeathrestHooks.cs",
+      "sha256": "482ab84f316bcb3744adecf224a4884c843c1d6fe427199d27c6b829a060ccea"
+    },
+    {
+      "path": "Source/GuestDeathrestRules.cs",
+      "sha256": "30453f9d736ddd82f822b2cab8bc3fafaacfd2ff9f6ba2e71bf696577b4dcad9"
+    },
+    {
+      "path": "Source/GuestDossierDialog.cs",
+      "sha256": "e07f393c996ec896db98dacebaee31d0b44b2a63c212f3dec287582ad5078897"
+    },
+    {
+      "path": "Source/GuestDossierHooks.cs",
+      "sha256": "59cc6c5de8e0b88a4643e5486b8ed4ac47294d0c94dda750b353d6bda56e30e8"
+    },
+    {
+      "path": "Source/GuestDossiers.cs",
+      "sha256": "91337267b06d0183d23d7a07f58e83ea6c805a50675c51b06efe98c98f43810e"
+    },
+    {
+      "path": "Source/GuestDutyTrees.cs",
+      "sha256": "1b14804d0222e226ed3b14e22a531aa5d58ede3c2e2022fbbafeeb471ab34b6a"
+    },
+    {
+      "path": "Source/GuestGeneticSupply.cs",
+      "sha256": "875900c7f5eede53f478e1e888ece33c3992327ee073958adf096a70072921f1"
+    },
+    {
+      "path": "Source/GuestHemogen.cs",
+      "sha256": "bfeea0f9a8832cd8f641fe631f4cb05f2e0ff0764edfdce39af34c4315654899"
+    },
+    {
+      "path": "Source/GuestNeedsDialog.cs",
+      "sha256": "cd22d474291d9cad6b464a08e56dc7eec2242f9f5058268d6e05a2c176f908de"
+    },
+    {
+      "path": "Source/GuestOutdoor.cs",
+      "sha256": "7005438e43c435bb971d15a6a0e263b7d6f6062aa4c41926c449360663d54f82"
+    },
+    {
+      "path": "Source/GuestProfileRules.cs",
+      "sha256": "ced380b802e538ffab6cd0ef8bed9da2fc627b21616b6fa2b820065ff87f6e10"
+    },
+    {
+      "path": "Source/GuestProfiles.cs",
+      "sha256": "c3c67814f1ba7ca3d122bbe3cd5ee1c9b13c6d36ae3d25c150d1a006114110ef"
+    },
+    {
+      "path": "Source/GuestTripBudget.cs",
+      "sha256": "0075c1c0545d072770f8fcab5299b7fcbaf691fd029ae4108bac30c9ed2577f5"
+    },
+    {
+      "path": "Source/HotelBilling.cs",
+      "sha256": "937745adfcf4b7137899135411402878d48e20a3bc356a7985f48d7a22087413"
+    },
+    {
+      "path": "Source/HousekeepingCredit.cs",
+      "sha256": "8aa25b5612fa88e30e1857c7b915ae07dbda5c58107741101226b958fa39065c"
+    },
+    {
+      "path": "Source/HugsLibCompatibility.cs",
+      "sha256": "cbea8f2bced978035658cfcd081a8a4533f5bea05483d2b6e2217ce502684552"
+    },
+    {
+      "path": "Source/ManualGreenhouse.cs",
+      "sha256": "ced0a292921285e4b969a22916dd771325695c3f73f2ec6ba27750dcfaaf6a9a"
+    },
+    {
+      "path": "Source/MapPreviewCompatibility.cs",
+      "sha256": "7293b9c44c5b6c6f026041c77428a205e9ebf123b4aac408b0339ef08f509a2a"
+    },
+    {
+      "path": "Source/MedicalAllocation.cs",
+      "sha256": "be95f0525216f8e198f185b9708b5b6912c56ceb6c47f243880c7a0b7aafc5c1"
+    },
+    {
+      "path": "Source/MeleeCompatibility.cs",
+      "sha256": "8c0bc965787d6facb21fd1edca34d59a7e586658bfb5541601995cd474f500ef"
+    },
+    {
+      "path": "Source/MeleeResourceCompatibility.cs",
+      "sha256": "3612292db4d0912c92cb11403fc2b92cc6f0c94bfd5a6c04770c02fb801b7fd2"
+    },
+    {
+      "path": "Source/OdysseyGrammarCompatibility.cs",
+      "sha256": "e1d8cbf37e062968495135a101c3644cc9231672fea6414b56ccb7424b356c84"
+    },
+    {
+      "path": "Source/PawnOverview.cs",
+      "sha256": "1340f07ebcb7c487117411e3d9ed3ab7be719adbfba15759552acc47925086c5"
+    },
+    {
+      "path": "Source/RealisticRoomsCompatibility.cs",
+      "sha256": "45fcaffa2809d6839daf3251aec85c56ee7be35725cea23568f8c628355dfc40"
+    },
+    {
+      "path": "Source/RecruitmentProgress.cs",
+      "sha256": "2bd9071aed96beb5273765a24e338df173aabe74a0d4ce200340696dbca9c63a"
+    },
+    {
+      "path": "Source/Restaurant.cs",
+      "sha256": "95b899b558be1ec46d111c0d6a636890c8652a61521701a0fbb4d36e13915308"
+    },
+    {
+      "path": "Source/RestaurantMenu.cs",
+      "sha256": "a07b62b32c350a2bd7064b34d0300669ea8f8df210c26dc352b1ccfeb89838a2"
+    },
+    {
+      "path": "Source/RuntimeLocalization.cs",
+      "sha256": "0312a4c756a8ab214f09cb8612d3dd5e0b42a0fd00582577087b5f60ffea4e94"
+    },
+    {
+      "path": "Source/RuntimeTranslationKeys.Generated.cs",
+      "sha256": "0140a15352df65e357ebd8d2c370ce751d28d18004078851d451dd787366c499"
+    },
+    {
+      "path": "Source/ServiceReadiness.cs",
+      "sha256": "7a07a7a453c9028f71fbc60da071a3a41680ab4cb12a972a3bb100972fd96f8d"
+    },
+    {
+      "path": "Source/SidearmsCompatibility.cs",
+      "sha256": "7d124f1b8347401ae86795b0531886c5230c864f46ffc951efbdc0440a18374e"
+    },
+    {
+      "path": "Source/SoilCultivation.cs",
+      "sha256": "9d457875ed7a0c1053f1513b4ba85cdd9e2626795fca111954b9bd8f077acc31"
+    },
+    {
+      "path": "Source/VefCompatibility.cs",
+      "sha256": "ac48b5c12a4eeeaa80eae579f8f33b2026b19c8c54ef8cb08d66518a2be87f31"
+    },
+    {
+      "path": "Source/WholesaleTrading.cs",
+      "sha256": "2ea03b2473aaa487ee8e13a34293b1adf18d901770c6c3266d13394f5934c22b"
+    },
+    {
+      "path": "Source/WholesaleVisits.cs",
+      "sha256": "a520f3c5d3dee1dffb669e542a644c143d9457be87851b5d1665a4ad6da1bfe0"
+    },
+    {
+      "path": "Source/WorkBuyout.cs",
+      "sha256": "ac7ba98308ce7611a2061c561de0b6e504ab13afd625d224c761063ab14888ac"
+    },
+    {
+      "path": "Source/WorkContracts.cs",
+      "sha256": "c97357146da78be83eb345e332461e2b88316759ae0f87ff4e00da68374255b5"
+    },
+    {
+      "path": "Source/Wholesale/PackingPlanner.cs",
+      "sha256": "0a6e59ab86046d341b901a9a4ede919d2403762c09057743bf581f8effe31b52"
+    }
+  ]
+}

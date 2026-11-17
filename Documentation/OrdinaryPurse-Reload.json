@@ -1,0 +1,21 @@
+{
+  "ordinaryPurseReload": {
+    "passed": true,
+    "checks": 20,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4225,
+    "ticksAdvanced": 1778,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+  "passed": true
+}
