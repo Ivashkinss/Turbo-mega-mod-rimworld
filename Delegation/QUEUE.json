@@ -931,7 +931,7 @@
     },
     {
       "id": "OrdinaryGuestPurseImplementation",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/OrdinaryGuestPurseImplementation/TASK.md",
       "outputDir": "Tools/Build/GeminiOrdinaryGuestPurseImplementation",
       "expectedOutputs": [
@@ -943,7 +943,27 @@
         "MANUAL-CHECKS.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T09:58:34.663828+00:00"
+      "createdUtc": "2026-11-17T09:58:34.663828+00:00",
+      "note": "Root repeated candidate+probe builds exit0. Not integrated: OP-01 overflow/tiny-positive arithmetic reproduced by exact-method harness (7/9); OP-02 missing native inventory space; OP-03 native GiveItems test assumptions; OP-04 simulated departure. Corrections queued."
+    },
+    {
+      "id": "OrdinaryGuestPurseCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/OrdinaryGuestPurseCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiOrdinaryGuestPurseCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/GuestTripBudget.cs",
+        "Candidate/Source/GuestProfiles.cs",
+        "Candidate/Source/GuestDossiers.cs",
+        "Candidate/Tests/InGameOrdinaryPurseProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "RESPONSE.md",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T11:35:24.4591199Z"
     }
   ]
 }

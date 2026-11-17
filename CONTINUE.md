@@ -1,3 +1,7 @@
+## Текущая работа: обычные кошельки, review 17.11
+
+Gemini OrdinaryGuestPurseImplementation завершён. Root повторил обе сборки exit0, но НЕ интегрировал. Адресные OP-01..04 в Delegation/OrdinaryGuestPurseImplementation/REVIEW.md: переполнение перед clamp (точный pure production метод7/9), пропуск provider inventory capacity, неверные assertions о native GiveItems silver/food, fake Settle вместо lifecycle. Новый готовый TASK Delegation/OrdinaryGuestPurseCorrections/TASK.md опубликован pending в QUEUE; ждать ACK/артефакты, затем owning review/build/native fresh+reload. Worker output Tools/Build/GeminiOrdinaryGuestPurseCorrections/. Текущий проверенный production SHA c21bdb3b, OpeningVisit33/3 без изменений. Не устанавливать исходный кандидат bb4e6cde. Tools/verify_guest_trip_budget_math.ps1 извлекает точную чистую функцию и константу, не загружает Assembly-CSharp; для исходного кандидата ожидаемо2ошибки, это не live-regression. Малый multiplier с baseRoll2e9 — контракт функции, не native roll150–300. Никаких реальных игровых проверок нового бюджета ещё не было.
+
 # Продолжение Turbo mega mod — 17 ноября 2026
 
 ## Завершённый этап: первый визит готовой гостиницы (17.11,13:11)
