@@ -1,0 +1,38 @@
+{
+  "candidateBuildRepeatedByCodex": true,
+  "buildExitCode": 0,
+  "productionChanged": false,
+  "nativeGameTestRun": false,
+  "findings": [
+    {
+      "id": "SR-01",
+      "file": "Candidate/Source/ServiceReadiness.cs",
+      "finding": "bedsInArea counts ordinary colonist beds as guest beds if automatic conversion is disabled. Occupancy chooses occupants OR owners: a sleeping spouse hides the awake owner, creating a false free slot. Clinical count ignores a player pawn occupying a ward bed.",
+      "requirement": "Count actual Hospitality guest-bed type through existing metadata predicate, valid current map/area/staff guards. Bound the union of assigned owners and physical occupants per bed by slots; no double count. Describe unassigned places honestly without guaranteeing a rentable separate place in a double bed. Clinic physical occupancy must include colonists too; distinguish actual occupied versus reserved if needed."
+    },
+    {
+      "id": "SR-02",
+      "file": "Candidate/Source/ServiceReadiness.cs",
+      "finding": "All worker counts start from FreeColonistsSpawned, excluding existing slave employees supported by the service. Custom waiters predicate misses manipulation and never proves ready/free reachability.",
+      "requirement": "Use AllPawnsSpawned and existing owning eligibility guards where available (ComplexSales.WorkerEnabled, CompanyRules, actual work rules). Do not create jobs or call mutating work search. Where there is no nonmutating complete guard, label as work enabled plus explicitly listed capacities/mode; do not promise ready or free workers. Check invalid employees/null pawn references."
+    },
+    {
+      "id": "SR-03",
+      "file": "Candidate/Source/ServiceReadiness.cs",
+      "finding": "guestsWelcome/refuseUntilBeds/deskActive/hotelModuleEnabled/clinicModuleEnabled are gathered but never displayed; window misses the central reason the user needs it. ClinicOpenNow reads openingHours alone, bypasses patched Hospital.IsOpen and its active-desk/space-map rules.",
+      "requirement": "Display inactive/missing desk/modules and both existing Hospitality admission flags. Show native patched Hospital.IsOpen separately from number of enabled schedule hours, with safe absent API handling. Do not mutate schedule or settings. GetNextVisit itself was checked and is a read-only queue scan; reflect optional property safely."
+    },
+    {
+      "id": "SR-04",
+      "file": "Candidate/Languages/Russian/Keyed/ServiceReadiness.xml",
+      "finding": "SalesNote says private-stock goods can be delivered by wholesale groups. NoSellers says free sellers although WorkerEnabled does not test hands/job/reach. TradeableItemsTotal counts stacks, label says items.",
+      "requirement": "Fix paired RU/EN: only colony staff deliver from staff rooms, buyers including wholesale wait publicly. Call count stacks or sum stackCount and label units; physical stock is not unreserved availability. Enabled work is not immediate job availability. StaffOnly service supply permission does not mean absolute prohibition on all other outside activities. Use exact existing work labels without inventing another job name."
+    },
+    {
+      "id": "SR-05",
+      "file": "Candidate/Source/ServiceReadiness.cs",
+      "finding": "DrawRow hardcodes 24px height for both label and value; long area names/translations wrap over following rows. Candidate probe checks only null/default booleans, not these actual data cases.",
+      "requirement": "Use measured row heights or single-line truncation with full tooltip. Add meaningful native fixture checks for disabled auto-services + ordinary bed, actual double guest bed with one sleeper and two owners, occupied clinical bed, slave worker, explicit denied admission, inactive desk/hospital schedule, and unchanged settings/roles/queues/money after repeated Gather. Do not claim native PASS before Codex runs it."
+    }
+  ]
+}

@@ -12,6 +12,8 @@ Sales: Requestable сохраняет остановку на первом по�
 
 Gemini получил следующую самостоятельную задачу `Delegation/ServiceReadinessImplementation/TASK.md`; вход `Tools/Build/ServiceReadinessSnapshot`, выход `Tools/Build/GeminiServiceReadinessImplementation`. ACK running наблюдался. Это read-only окно Состояние служб из общей страницы ресепшена, без новой экономики/ИИ/патчей тика. Кандидат НЕ входит в текущую DLL: сначала прочитать отчёт/источники, самостоятельно собрать и проверить, затем интегрировать отдельным пакетом. Root владеет QUEUE; worker только isolated output/WorkerState. Дежурство каждые 5 минут, не просить пользователя дублировать подтверждённый старт.
 
+После коммита 80274c4: Gemini ServiceReadinessImplementation уже done; Codex самостоятельно повторил build кандидат/проба exit0. Source прочитан, НЕ интегрирован. Рецензия `Documentation/ServiceReadinessCandidateReview.json`: 5 пунктов (фактические guest beds и union owners/occupants; slave staff/честная доступность; видимые admission flags и patched IsOpen; неверный текст о выдаче оптовиками; высота строк/реальные fixtures). Следующая активная задача `Delegation/ServiceReadinessCorrections/TASK.md`, output `Tools/Build/GeminiServiceReadinessCorrections`. Проверять её, а не принимать первый кандидат как готовый. Производственная DLL меню остаётся dfab9ba4, коммит 80274c4 отправлен.
+
 Разовый запуск 07:00 уже выполнен и удалён; нового таймера не создавать без запроса. Происшествия/рейды/бунты отложены к сюжету. Следующий шаг — приёмка кандидата состояния служб, затем следующий полезный пакет по плану комплекса, без повторных больших аудитов и 20-шаговых прогонов без причины.
 
 

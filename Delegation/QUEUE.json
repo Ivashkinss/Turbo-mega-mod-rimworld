@@ -811,7 +811,7 @@
     },
     {
       "id": "ServiceReadinessImplementation",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/ServiceReadinessImplementation/TASK.md",
       "outputDir": "Tools/Build/GeminiServiceReadinessImplementation",
       "expectedOutputs": [
@@ -825,7 +825,27 @@
         "MANUAL-CHECKS.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T04:50:48.698012+00:00"
+      "createdUtc": "2026-11-17T04:50:48.698012+00:00",
+      "note": "Codex repeated candidate and probe build successfully. Not integrated: SR-01..05 occupancy/real guest beds/staff/admission/native IsOpen/wording/row height issues. ServiceReadinessCorrections queued."
+    },
+    {
+      "id": "ServiceReadinessCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/ServiceReadinessCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiServiceReadinessCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/ServiceReadiness.cs",
+        "Candidate/Source/ComplexServicesDialog.cs",
+        "Candidate/Languages/Russian/Keyed/ServiceReadiness.xml",
+        "Candidate/Languages/English/Keyed/ServiceReadiness.xml",
+        "Candidate/Tests/InGameServiceReadinessProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "RESPONSE.md",
+        "REPORT.md"
+      ],
+      "afterTask": "ServiceReadinessImplementation",
+      "createdUtc": "2026-11-17T05:03:22.416587+00:00"
     }
   ]
 }
