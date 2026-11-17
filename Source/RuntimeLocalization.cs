@@ -12,6 +12,7 @@ namespace TurboMegaMod
     {
         public TurboMegaMod(ModContentPack content) : base(content)
         {
+            PawnOverview.Settings=GetSettings<PawnOverviewSettings>();
             MeleeResourceCompatibility.Apply();
             CharacterEditorCompatibility.Apply();
             MapPreviewCompatibility.Apply();
@@ -19,6 +20,14 @@ namespace TurboMegaMod
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
             HugsLibCompatibility.Apply();
+        }
+        public override string SettingsCategory(){return "Turbo mega mod";}
+        public override void DoSettingsWindowContents(UnityEngine.Rect rect)
+        {
+            var list=new Listing_Standard();list.Begin(rect);
+            list.CheckboxLabeled("TMM.HUD.Enabled".Translate(),ref PawnOverview.Settings.enabled,"TMM.HUD.Help".Translate());
+            if(PawnOverview.ExternalHUD)list.Label("TMM.HUD.External".Translate());
+            list.End();
         }
     }
 

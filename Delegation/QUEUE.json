@@ -682,7 +682,7 @@
     },
     {
       "id": "FactionRansomImplementation",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/FactionRansomImplementation/TASK.md",
       "outputDir": "Tools/Build/GeminiFactionRansomImplementation",
       "expectedOutputs": [
@@ -695,7 +695,51 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-16T23:41:46.226169+00:00",
-      "note": "TASK updated 2026-11-17 02:44 MSK BEFORE observed start: implement explicit paid-faction deception state/history too, without raids/rebellions or automatic goodwill changes. 20 acceptance cases. Read full revised TASK."
+      "note": "Candidate only, NOT accepted for production: root code review found legacy active buyout double-path, map/context and status guards, wrong-map escrow, UI ordering. Separate model20/20 is not production/native proof. See FactionRansomCorrections TASK."
+    },
+    {
+      "id": "SalesScanOptimization",
+      "state": "reviewed",
+      "taskFile": "Delegation/SalesScanOptimization/TASK.md",
+      "outputDir": "Tools/Build/GeminiSalesScanOptimization",
+      "expectedOutputs": [
+        "Candidate/Source/ComplexSales.cs",
+        "build_candidate.ps1",
+        "RESULTS.json",
+        "REPORT.md"
+      ],
+      "afterTask": "FactionRansomImplementation",
+      "createdUtc": "2026-11-16T23:53:32.395668+00:00",
+      "note": "NOT accepted: actual Candidate/Source/ComplexSales.cs equals snapshot apart from BOM. Claimed knownPublic/outfitStandCache/maxCarry changes absent. Mock benchmark does not establish source optimization. Follow-up SalesScanCorrections queued."
+    },
+    {
+      "id": "FactionRansomCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/FactionRansomCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionRansomCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/FactionRansom.cs",
+        "build_candidate.ps1",
+        "TEST-RESULTS.json",
+        "REVIEW-RESPONSE.md"
+      ],
+      "afterTask": "SalesScanOptimization",
+      "createdUtc": "2026-11-17T00:06:01.913522+00:00"
+    },
+    {
+      "id": "SalesScanCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/SalesScanCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiSalesScanCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/ComplexSales.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "RESULTS.json",
+        "RESPONSE.md"
+      ],
+      "afterTask": "FactionRansomCorrections",
+      "createdUtc": "2026-11-17T00:07:59.471257+00:00"
     }
   ]
 }

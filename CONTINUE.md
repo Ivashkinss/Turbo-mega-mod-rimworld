@@ -1,6 +1,20 @@
 # Продолжение Turbo mega mod — 17 ноября 2026
 
-## Последний проверенный этап: свободные обычные трудовые договоры
+## Последний проверенный этап: компактная панель персонажа
+
+DLL `13bf2709081b0b6ec127cbedd5532e7041445e63e3cf312b3e9c007b8b3b81aa`: 37 проверок / 2 целевых native шага1.7 (PawnOverview15 +GUI3, WorkContract19),0runtimeerrors/GPU loss;2989Keyed/702scalar/90grammar/12display+252Odyssey. `Documentation/PawnOverviewRevisionVerification.json`, `Tools/verify_pawn_overview.py --hud TestRuns/PawnOverview-FullSet-20261117-030603 --contract TestRuns/WorkContract-FullSet-20261117-030825`. Исторические58/4 и78/4 относятся к другим DLL, не суммировать. Пользовательский сейв/live1.6/всеDPI/все подсистемы не заявлять проверенными.
+
+Source/PawnOverview.cs — собственный inspector, без code/DLL/assets/presets RimHUD. Harmony5точек: native body, buttons, PaneSizeFor, PaneTopY, RecentHeight. Размер460x220 логическихединиц; животные165+. Пользователь отверг первый слишком крупный620x310 и урезанный набормаркеров. Финальный: титул, пол/возраст, health+generalcondition, Mood+thresholds+MoodString, все прочиевидимыеNeeds сscroll, job; справа4маркераapparel/food/schedule/area, навыки2колонки сnativepassionflames. Mood.ShowOnNeedList=false — теперь явно включён. Заголовок сохраняетnativebuttons и добавляетmedical/selftend/faction/ideo/xenotype по наличию. ПолитикиOwnpawnсfloatmenu, scheduleоткрываетMainButtonDef Schedule через DefDatabase (вMainButtonDefOf нет поля). Самолечениене переопределяетworkrestrictions. RootMod получил SettingsCategory/checkbox и GetSettings. Settingsenabled Scribe roundtrip проверен; внешний jaxe.rimhud вызываетfallback, проверен только simulated ModsConfig guard, чужаяDLL не ставилась.
+
+Визуально просмотрены Human/Animal кадры1280x800 в TestRuns/PawnOverview-FullSet-20261117-030603/. В screenshot цвет/плотность/сохранениевкладок просмотрены, нативный захватScreenCapture черезtestReflection; WindowsCUA Sky не видел hiddenwindow, не меняли пользовательское окно. Все реальныеclicks/DPI/alienraces/кровотечения отдельноне проверены. ПоздниеизменениятолькоUI +Modconstructor; Source WorkContracts/денежныевсефайлы совпадают с предыдущим провереннымэтапом. Исторический WorkContract-FullSet восстановлен, новый source-provingregression хранится PawnOverview-WorkContract-FullSet.json.
+
+Gemini уже сдал2кандидата, оба НЕ ПЕРЕНЕСЕНЫ:
+- FactionRansomImplementation: реальный candidatebuild есть, но standalone20/20 — отдельныйMockGame сдругимRNG, не production/nativesaveproof. Rootнашёл legacybuyoutactive+acceptedransom, обход legacyRelease, отсутствующийspawn/desk/mapконтекст, переносescrowнаwrongmap, недостаточныйcurrentstatusguard, UIцепочкаfirstFaction→thenLabour нарушена. `Delegation/FactionRansomCorrections/TASK.md` поставлен, outputновая GeminiFactionRansomCorrections/. Исходнуюсдачуне менять. Обманвключёнпослеоплатыфракцией, безрейдов/бунтов/автогодвила; потомможноотпуститьсисторией.
+- SalesScanOptimization: REPORT заявляет knownPublic/outfitStandCache/maxCarry и3.68x, но фактический Candidate/Source/ComplexSales.cs РАВЕН снимку кромеBOM. Не приниматьпроценты/псевдокод. `Delegation/SalesScanCorrections/TASK.md` очередь послеFactionRansomCorrections; новыйoutput GeminiSalesScanCorrections/. Требоватьреальныйdiff/hash/сборку иCecilподтверждениеметода, не модельныеобещанияFPS.
+
+Пользователь подтвердилmainGeminiактивен, разрешилочередьбудущихзадач. ТекущийрабочийSourceGeminiнетрогает. СледующийэтапCodex — проверитьисправленныйFactionRansomcandidate ивстроитьтолькопосленативныхpayment/escrow/save/договор/release/deceptionchecks, затем настоящуюоптимизациюеслибудет. Не возобновлятьсамостоятельнонаписаниепервогокандидата/аудиттеже20кейсов. Продолжатьцелевымипакетами; широкая20-stepрегрессияпосленебольшойUIне нужна.
+
+## Предыдущий проверенный этап: свободные обычные трудовые договоры
 
 DLL `7e8197b407f720ddb15092da60dcda21793d4abc02cf03a1620d99bb7bef57e1`: 58 проверок / 4 целевых native шага на 1.7 (WorkContract19+reload14, Housekeeping15+reload10), 0 runtimeerrors/0 missingrefs в reload. Сводка `Documentation/WorkContractRevisionVerification.json`, воспроизведение `Tools/test_work_contract_revision.ps1 -Profile <passing isolated contract profile>`. Ни пользовательский сейв, ни live1.6, ни все подсистемы/визуальная раскладка не заявляются проверенными.
 

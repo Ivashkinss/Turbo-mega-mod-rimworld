@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.HUD.Health>Здоровье</TMM.HUD.Health>
+  <TMM.HUD.Bleeding>Кровотечение! Подробности — на вкладке «Здоровье».</TMM.HUD.Bleeding>
+  <TMM.HUD.HealthTip>Общее состояние здоровья. Диагнозы и лечение — на вкладке «Здоровье».</TMM.HUD.HealthTip>
+  <TMM.HUD.Idle>Нет текущего задания</TMM.HUD.Idle>
+  <TMM.HUD.Enabled>Компактная панель персонажа</TMM.HUD.Enabled>
+  <TMM.HUD.Help>Показывает здоровье, все видимые потребности, навыки и текущее задание выбранного персонажа. Длинный список потребностей прокручивается. Стандартные вкладки и кнопки сохраняются.</TMM.HUD.Help>
+  <TMM.HUD.External>Обнаружен отдельный RimHUD: встроенная панель уступает ему управление.</TMM.HUD.External>
+  <TMM.HUD.FoodPolicy>Питание: {0}</TMM.HUD.FoodPolicy>
+  <TMM.HUD.Apparel>Одежда: {0}</TMM.HUD.Apparel>
+  <TMM.HUD.Schedule>Режим: {0}</TMM.HUD.Schedule>
+  <TMM.HUD.Area>Зона: {0}</TMM.HUD.Area>
+  <TMM.HUD.Bio>{0}, возраст: {1}</TMM.HUD.Bio>
+  <TMM.HUD.Medical>Медицинская помощь: {0}</TMM.HUD.Medical>
+  <TMM.HUD.SelfTend>Самолечение: {0}. Недоступно при запрете работы врача.</TMM.HUD.SelfTend>
+  <TMM.HUD.Unrestricted>Не ограничено</TMM.HUD.Unrestricted>
+</LanguageData>

@@ -1,0 +1,9 @@
+{
+  "upstream": "https://github.com/Jaxe-Dev/RimHUD",
+  "sourceCommit": "6f1dbfc3ba1196ab081ee4d382101ddd6b23badb",
+  "release": "1.17.5",
+  "manifestSupportedThrough": "1.6",
+  "explicitRedistributionLicenseFound": false,
+  "decision": "Original compact inspector using vanilla data and assets; no upstream code/DLL/assets/presets redistributed.",
+  "review": "Gemini package review independently checked; no exact pixel/layout parity or full RimHUD preset system claimed."
+}
