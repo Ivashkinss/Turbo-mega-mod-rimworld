@@ -1175,7 +1175,7 @@
     },
     {
       "id": "OutpostMapProgression",
-      "state": "assigned",
+      "state": "reviewed",
       "taskFile": "Delegation/OutpostMapProgression/TASK.md",
       "outputDir": "Tools/Build/GeminiOutpostMapProgression",
       "expectedOutputs": [
@@ -1189,7 +1189,30 @@
         "VALIDATION.json"
       ],
       "createdUtc": "2026-11-17T21:27:24.671521+00:00",
-      "note": "Worker done; NOT integrated or native-reviewed. User requested Codex stop after current core acceptance and hand development to Claude. Review limited map overlay against root material/freeze/shipment fixes; never overwrite core."
+      "note": "Worker done; NOT integrated or native-reviewed. User requested Codex stop after current core acceptance and hand development to Claude. Review limited map overlay against root material/freeze/shipment fixes; never overwrite core. | Claude 2026-11-18: reviewed; regression (missing DefaultStuffFor fallback) and Def-existence probe. Superseded by OutpostMapsNativeProbe."
+    },
+    {
+      "id": "OutpostMapsNativeProbe",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/OutpostMapsNativeProbe/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostMapsProbe",
+      "expectedOutputs": [
+        "Candidate/Source/StrategicOutpostMapComponent.cs",
+        "Candidate/Languages",
+        "Candidate/Tests/InGameOutpostMapsProbe.cs",
+        "Candidate/Tools/test_component.OutpostMaps.patch",
+        "Candidate/Tools/test_outpost_maps_reload.ps1",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "REPORT.md",
+        "VALIDATION.json"
+      ],
+      "createdUtc": "2026-11-17T23:09:34.334166+00:00",
+      "note": "Rebase map candidate on live Source + real native probe. Compile only, no game run."
     }
-  ]
+  ],
+  "owner": "claude",
+  "note": "Since 2026-11-18 Claude owns this queue. Executors take only pending tasks with their assignee; see Delegation/COORDINATION.md."
 }

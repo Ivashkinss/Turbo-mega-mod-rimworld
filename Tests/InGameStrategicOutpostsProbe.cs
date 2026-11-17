@@ -17,6 +17,8 @@ public static class OutpostAcceptanceLaunch
             LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-OutpostDay"));
         if (Environment.GetCommandLineArgs().Contains("-tmm-outpost-reload"))
             LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-StrategicOutpost"));
+        if (Environment.GetCommandLineArgs().Contains("-tmm-outpost-tier10-reload"))
+            LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-OutpostTier10"));
     }
 }
 public sealed class OutpostAcceptanceProbe : MapComponent
@@ -206,19 +208,75 @@ public sealed class OutpostAcceptanceProbe : MapComponent
         station.targetColonyTile=map.Tile;
         station.DoDailyShipment();shipmentStart=Find.TickManager.TicksGame;waitingShipment=true;
     }
+    // Tier10 reload: transient state only, so the saved Scribe layout stays identical to the
+    // fixture written by UpperLevels().
+    private int t10Stage, t10BaseOutput, t10Deadline, t10LoadTick;
+    private string[] t10Workers;
+    private readonly List<string> t10Facts = new List<string>();
+    private StrategicOutpostProductDef Plasteel { get { return DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"); } }
+    private void Tier10Reload()
+    {
+        if(t10Stage==0) {
+            t10LoadTick=Find.TickManager.TicksGame;
+            Check(station!=null&&station.Spawned&&station.level==10,"Saved level10 outpost absent or level changed: "+(station==null?"null":station.level.ToString()));
+            Check(station.MaxCapacity==11&&!station.CanUpgrade,"Level10 capacity/upgrade cap not preserved");
+            Check(station.HasMap&&station.Map.GetComponent<StrategicOutpostMapComponent>().CountRealBeds()>=11,"Level10 map or its eleven real beds lost on load");
+            var workers=station.Workers.InnerListForReading;
+            Check(workers.Count==8&&workers.All(p=>p!=null&&!p.Dead&&!p.Spawned&&p.Faction==Faction.OfPlayer&&p.IsColonist&&Find.WorldPawns.Contains(p)),"Eight held player workers not preserved: "+string.Join(";",workers.Select(p=>p==null?"null":p.ThingID+" faction="+(p.Faction==null?"null":p.Faction.def.defName)+" colonist="+p.IsColonist+" spawned="+p.Spawned+" world="+Find.WorldPawns.Contains(p))));
+            Check(first!=null&&second!=null&&workers.Contains(first)&&workers.Contains(second)&&first.ThingID==savedFirst&&second.ThingID==savedSecond,"Original founders lost identity in level10 save");
+            Check(animal!=null&&!animal.Destroyed&&station.Animals.Contains(animal)&&Find.WorldPawns.Contains(animal)&&animal.ThingID==savedAnimal,"Stored pack animal lost in level10 save");
+            Check(workers.Sum(p=>p.skills.GetSkill(SkillDefOf.Mining).Level)==150,"Saved worker skills changed");
+            Check(station.selectedProductDefNames.Count==1&&station.selectedProductDefNames[0]=="TMM_Outpost_Mining_Plasteel"&&Math.Abs(station.ExpectedYield(Plasteel)-100)<0.0001,"Level10 load does not predict100plasteel/day");
+            Check(station.nextProductionTick>t10LoadTick&&station.nextProductionTick<=t10LoadTick+60000,"Saved production deadline invalid: next="+station.nextProductionTick+" now="+t10LoadTick);
+            t10Workers=workers.Select(p=>p.ThingID).OrderBy(s=>s).ToArray();
+            t10BaseOutput=Output;t10Deadline=station.nextProductionTick;
+            station.DoDailyProduction();Check(Output==t10BaseOutput,"Level10 load permits premature/duplicate production");
+            t10Facts.Add("loadTick="+t10LoadTick);t10Facts.Add("deadline="+t10Deadline);t10Facts.Add("baseOutput="+t10BaseOutput);
+            t10Stage=1;return;
+        }
+        if(t10Stage==1) {
+            if(Find.TickManager.TicksGame>t10Deadline+30000)throw new Exception("No native production on level10 within deadline+0.5day; last="+station.lastProductionTick+" next="+station.nextProductionTick);
+            if(station.lastProductionTick<t10Deadline)return;
+            Check(station.lastProductionTick>=t10Deadline&&station.lastProductionTick-t10Deadline<2500,"Production fired at wrong time: last="+station.lastProductionTick+" deadline="+t10Deadline);
+            int produced=Output-t10BaseOutput;t10Facts.Add("productionTick="+station.lastProductionTick);t10Facts.Add("produced="+produced);
+            Check(produced==100,"Eight-worker 150mining level10 outpost must produce exactly100plasteel per actual day; received "+produced);
+            Check(station.ProducedGoods.All(t=>t.stackCount>0&&t.stackCount<=t.def.stackLimit&&t.holdingOwner==station.ProducedGoods),"Level10 output stacks broken");
+            Check(station.nextProductionTick==station.lastProductionTick+60000,"Next deadline not one day after production");
+            int before=Output;station.DoDailyProduction();station.TriggerDailyProductionNow();Check(Output==before,"Repeated daily entry duplicated level10 production");
+            Check(animal!=null&&!animal.Destroyed&&station.Animals.Contains(animal)&&Find.WorldPawns.Contains(animal),"Stored animal lost to world GC during level10 day");
+            Check(station.Workers.InnerListForReading.Select(p=>p.ThingID).OrderBy(s=>s).SequenceEqual(t10Workers)&&station.Workers.InnerListForReading.All(p=>p.IsColonist&&Find.WorldPawns.Contains(p)),"Worker roster changed during level10 day");
+            t10Stage=2;return;
+        }
+        if(t10Stage==2) {
+            var roster=station.Workers.InnerListForReading.ToList();string reason;
+            Check(station.DeployPersonnelToMap(out reason),"Level10 deploy of eight workers failed: "+reason);
+            Check(roster.All(p=>p.Spawned&&p.Map==station.Map)&&animal.Spawned&&animal.Map==station.Map&&station.Workers.Count==0,"Not all eight workers and the animal reached the level10 map");
+            var beds=station.Map.listerBuildings.allBuildingsColonist.OfType<Building_Bed>().Where(b=>!b.Medical).ToList();
+            Check(beds.Count>=11,"Fewer than eleven ordinary beds on deployed level10 map: "+beds.Count);
+            foreach(var pawn in roster)foreach(var bed in beds)Check(pawn.CanReach(bed,Verse.AI.PathEndMode.Touch,Danger.Some),"Worker "+pawn.ThingID+" cannot reach bed at "+bed.Position);
+            t10Facts.Add("ordinaryBeds="+beds.Count);
+            int before=Output;station.DoDailyProduction();Check(Output==before,"Physical level10 mode produced abstract output");
+            Check(station.RecallPersonnelToAutonomous(out reason),"Level10 recall of eight workers failed: "+reason);
+            Check(station.Workers.InnerListForReading.Select(p=>p.ThingID).OrderBy(s=>s).SequenceEqual(t10Workers)&&roster.All(p=>!p.Spawned&&Find.WorldPawns.Contains(p)&&p.IsColonist)&&station.Animals.Contains(animal),"Recall lost level10 worker identity/ownership");
+            Check(station.nextProductionTick>=Find.TickManager.TicksGame+59000,"Physical time retroactively counted on level10");
+            Finish(null,true,"OutpostTier10ReloadProbe.json");
+        }
+    }
     public override void MapComponentUpdate()
     {
-        bool reload=Environment.GetCommandLineArgs().Contains("-tmm-outpost-reload");
-        if(done||map.Parent is StrategicOutpost||!map.IsPlayerHome||(!reload&&!Environment.GetCommandLineArgs().Contains("-tmm-outpost-probe")))return;
-        try {Find.TickManager.CurTimeSpeed=TimeSpeed.Superfast; if(reload)Reload();else Fresh();}
-        catch(Exception e){Finish(e,reload);}
+        var args=Environment.GetCommandLineArgs();
+        bool tier10=args.Contains("-tmm-outpost-tier10-reload");
+        bool reload=args.Contains("-tmm-outpost-reload");
+        if(done||map.Parent is StrategicOutpost||!map.IsPlayerHome||(!reload&&!tier10&&!args.Contains("-tmm-outpost-probe")))return;
+        try {Find.TickManager.CurTimeSpeed=TimeSpeed.Superfast; if(tier10)Tier10Reload();else if(reload)Reload();else Fresh();}
+        catch(Exception e){if(tier10)Finish(e,true,"OutpostTier10ReloadProbe.json");else Finish(e,reload);}
     }
     private static string Q(string s){return "\""+s.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n")+"\"";}
-    private void Finish(Exception e,bool reload)
+    private void Finish(Exception e,bool reload,string reportName=null)
     {
         done=true;if(e!=null)errors.Add(e.ToString());
-        string report="{\"passed\":"+(e==null?"true":"false")+",\"checks\":"+checks+",\"stage\":"+stage+",\"errors\":["+string.Join(",",errors.Select(Q))+"]}";
-        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,reload?"OutpostReloadProbe.json":"OutpostProbe.json"),report);
+        string report="{\"passed\":"+(e==null?"true":"false")+",\"checks\":"+checks+",\"stage\":"+stage+",\"tier10Stage\":"+t10Stage+",\"facts\":["+string.Join(",",t10Facts.Select(Q))+"],\"errors\":["+string.Join(",",errors.Select(Q))+"]}";
+        File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,reportName??(reload?"OutpostReloadProbe.json":"OutpostProbe.json")),report);
         if(!reload)File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"OutpostUiProbe.json"),"{\"passed\":true,\"visualLayoutInspected\":false,\"error\":null}");
     }
 }
