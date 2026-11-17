@@ -968,7 +968,7 @@
     },
     {
       "id": "VisitorServiceAcceptance",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/VisitorServiceAcceptance/TASK.md",
       "outputDir": "Tools/Build/GeminiVisitorServiceAcceptance",
       "expectedOutputs": [
@@ -978,7 +978,22 @@
         "MANUAL-CHECKS.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T11:53:11.2000440Z"
+      "createdUtc": "2026-11-17T11:53:11.2000440Z",
+      "note": "Root curated native acceptance passed on unchanged3742bf22:40 executed checks across2 clean final steps (fresh15, reload25 new; raw reload39 includes14 saved). Full guest tree claim, physical hotel30 + restaurant payment, normal waiter job, real sentAway/Lord/ExitMap departure. First short fixture timeout separately documented. Clinic scenario delegated separately."
+    },
+    {
+      "id": "ClinicAdmissionAcceptance",
+      "state": "pending",
+      "taskFile": "Delegation/ClinicAdmissionAcceptance/TASK.md",
+      "outputDir": "Tools/Build/GeminiClinicAdmissionAcceptance",
+      "expectedOutputs": [
+        "Candidate/Tests/InGameClinicAdmissionAcceptanceProbe.cs",
+        "build_probe.ps1",
+        "FLOW.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T12:18:02.1326376Z"
     }
   ]
 }

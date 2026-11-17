@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "productionChanged": false,
+  "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+  "gameVersion": "1.7.5000 rev1275",
+  "profile": "TestRuns/VisitorServiceAcceptance-FullSet-20261117-151918",
+  "passingNativeSteps": 2,
+  "freshChecks": 15,
+  "rawReloadChecks": 39,
+  "persistedCheckCounter": 14,
+  "newReloadChecks": 25,
+  "executedChecks": 40,
+  "fresh": {
+    "component": "VisitorServiceAcceptance",
+    "originalComponentActive": false,
+    "fullUserModSet": true,
+    "gameVersion": "1.7.5000 rev1275",
+    "localization": {
+      "keyed": 3127,
+      "scalarFields": 702,
+      "grammarLines": 90,
+      "displayPatches": 12,
+      "passed": true,
+      "errors": []
+    },
+    "mapActivity": {
+      "mapLoaded": true,
+      "observedActiveSeconds": 30,
+      "framesAdvanced": 3857,
+      "ticksAdvanced": 1651,
+      "newsWindowsDismissedInTest": 0
+    },
+    "settingsUi": {
+      "passed": true,
+      "visualLayoutInspected": false,
+      "error": null
+    },
+    "odysseyGrammar": {
+      "passed": true,
+      "odysseyActive": true,
+      "checks": 252,
+      "errors": []
+    },
+    "runtimeErrors": 0,
+    "knownExternalRuntimeErrors": 0,
+    "unexpectedRuntimeErrors": 0,
+    "knownExternalMessages": [],
+    "gpuLost": false,
+    "visualUiVerified": false,
+    "stoppedByTest": true,
+    "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+    "visitorServiceAcceptance": {
+      "passed": true,
+      "checks": 15,
+      "errors": []
+    },
+    "passed": true
+  },
+  "reload": {
+    "visitorServiceAcceptanceReload": {
+      "passed": true,
+      "checks": 39,
+      "errors": []
+    },
+    "mapActivity": {
+      "mapLoaded": true,
+      "observedActiveSeconds": 30,
+      "framesAdvanced": 4104,
+      "ticksAdvanced": 1754,
+      "newsWindowsDismissedInTest": 0
+    },
+    "runtimeErrors": 0,
+    "unresolvedReferences": 0,
+    "gpuLost": false,
+    "isolatedFixtureSave": true,
+    "userSaveTested": false,
+    "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+    "passed": true
+  },
+  "observed": [
+    "Native GiveItems produced the ordinary150-300 purse; no post-generation silver gifts.",
+    "Full MainThinkNodeRoot selected bed claim; real job walked and paid30, physical floor silver rose30.",
+    "Real save/load preserved common purse, paid bed, bill deadline, trip budget guard.",
+    "Normal JobGiver_Work assigned waiter; actual carry/delivery/ingest and physical receipt matched price and dossier income.",
+    "Setting native sentAway simulated player dismissal; Lord/ExitMap physically removed guest, dossier ended and guard reset."
+  ],
+  "controlledConditions": [
+    "Cleared test area, temperature21C, VIP0, hunger1 before bed then0.4 after load, waiter work priorities/timetable.",
+    "Spawn+GiveItems+CreateLord/TravelArrived+Begin is controlled registration, not a full random arrival incident.",
+    "Test periodically queries full guest think tree and starts its chosen ClaimGuestBed; not proof of uninterrupted autonomous timing.",
+    "Restaurant ProcessOrders invoked once to start hunger-triggered service; normal waiter work and JobDrivers complete delivery."
+  ],
+  "rejectedAttempt": {
+    "reason": "Bed claim not completed within2000ticks; root used controlled full-tree job query and5000tick deadline. No production fix.",
+    "profile": "TestRuns/VisitorServiceAcceptance-FullSet-20261117-151651"
+  },
+  "limits": [
+    "No natural multi-day vacation, clinic admission, shop purchase, all modded factions/races, user save, live1.6 or visual UI inspection claimed.",
+    "Short visit correctly gives zero completed loyal stays; guest begins Ingest but a full uninterrupted meal-duration test is not claimed."
+  ],
+  "testSourceSha256": "609e883be0d1e31a9331be6fb585c950a629ae90c302c67dd7522a33fa474de0"
+}
