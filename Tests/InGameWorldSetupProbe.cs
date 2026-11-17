@@ -67,8 +67,16 @@ public static class WorldSetupProbe
                 var region = Find.World.GetComponent<RegionalWorld>();
                 Check(region.clustered && region.relocated > 0, "Regional assignment did not execute");
                 Check(region.distanceAfter < region.distanceBefore, "Regional assignment failed to improve faction geography");
-                var sites = Find.WorldObjects.Settlements.Where(s => s.Faction != null && !s.Faction.IsPlayer).ToArray();
+                var sites = Find.WorldObjects.Settlements.Where(s => s.Faction != null && !s.Faction.IsPlayer && s.Tile.Layer == Find.WorldGrid.Surface).ToArray();
                 Check(sites.Select(s => s.Tile).Distinct().Count() == sites.Length, "Overlapping settlements after reassignment");
+                foreach (var faction in sites.GroupBy(s => s.Faction))
+                {
+                    var data = faction.Select(s => region.For(s)).ToArray();
+                    Check(data.Count(d => d.capital) == 1 && data.Single(d => d.capital).level == 10, "Faction must retain exactly one level-ten capital");
+                    int centers = data.Length >= 6 ? 2 : data.Length >= 2 ? 1 : 0;
+                    Check(data.Count(d => d.regionalCenter) == centers && data.Where(d => d.regionalCenter).All(d => !d.capital && d.level >= 8 && d.level <= 9), "Wrong count/level of faction regional centers");
+                    Check(data.Where(d => !d.capital && !d.regionalCenter).All(d => d.level >= 1 && d.level <= 7), "Ordinary bases overlap the key-city tier range");
+                }
                 first = Find.GameInitData.startingTile;
                 Check(first.Valid && TileFinder.IsValidTileForNewSettlement(first), "Native landing site is not usable");
                 second = sites.OrderByDescending(s => Find.WorldGrid.ApproxDistanceInTiles(first, s.Tile)).First().Tile;

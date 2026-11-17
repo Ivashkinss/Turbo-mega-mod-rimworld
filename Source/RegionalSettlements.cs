@@ -12,12 +12,13 @@ namespace TurboMegaMod
     {
         public Settlement settlement;
         public int level = 1;
-        public bool capital;
+        public bool capital, regionalCenter;
         public void ExposeData()
         {
             Scribe_References.Look(ref settlement, "settlement");
             Scribe_Values.Look(ref level, "level", 1);
             Scribe_Values.Look(ref capital, "capital");
+            Scribe_Values.Look(ref regionalCenter, "regionalCenter");
             if (Scribe.mode == LoadSaveMode.PostLoadInit) level = Math.Max(1, Math.Min(10, level));
         }
     }
@@ -156,6 +157,27 @@ namespace TurboMegaMod
             state.distanceAfter = 0;
             for (int i = 0; i < rows.Count; i++) state.distanceAfter += Distance(anchors[rowGroups[i]].Tile, rows[i].Tile);
             if (rows.Count > 0) { state.distanceBefore /= rows.Count; state.distanceAfter /= rows.Count; }
+            // Key cities are metadata on existing settlements, never extra world objects.
+            for (int index = 0; index < groups.Count; index++)
+            {
+                var members = groups[index];
+                foreach (var settlement in members)
+                {
+                    var data = state.For(settlement);
+                    if (!data.capital) data.level = Math.Min(7, data.level);
+                }
+                var hubs = new List<Settlement> { anchors[index] };
+                int centerCount = members.Count >= 6 ? 2 : members.Count >= 2 ? 1 : 0;
+                for (int center = 0; center < centerCount; center++)
+                {
+                    var selected = members.Where(s => !hubs.Contains(s)).OrderByDescending(s =>
+                        hubs.Min(h => Distance(h.Tile, s.Tile))).ThenBy(s => s.ID).First();
+                    var data = state.For(selected);
+                    data.regionalCenter = true;
+                    data.level = 9 - center;
+                    hubs.Add(selected);
+                }
+            }
             state.clustered = true;
         }
     }
@@ -176,6 +198,7 @@ namespace TurboMegaMod
             if (entry == null) return;
             __result += "\n" + "TMM.World.SettlementLevel".Translate(entry.level);
             if (entry.capital) __result += "\n" + "TMM.World.Capital".Translate();
+            else if (entry.regionalCenter) __result += "\n" + "TMM.World.RegionalCenter".Translate();
         }
     }
 }

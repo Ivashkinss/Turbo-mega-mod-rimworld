@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.WorldTraffic.Patrol>Патруль</TMM.WorldTraffic.Patrol>
+  <TMM.WorldTraffic.Convoy>Торговый караван</TMM.WorldTraffic.Convoy>
+  <TMM.WorldTraffic.Unknown>неизвестное поселение</TMM.WorldTraffic.Unknown>
+  <TMM.WorldTraffic.Route>{0}. Направляются в: {1}</TMM.WorldTraffic.Route>
+  <TMM.WorldTraffic.Stranded>Маршрут прерван. Группа ищет путь домой.</TMM.WorldTraffic.Stranded>
+  <TMM.WorldTraffic.TradeHelp>Торговать с этой группой. Ваш караван должен находиться на той же клетке мира.</TMM.WorldTraffic.TradeHelp>
+  <TMM.WorldTraffic.Trade>Торговать</TMM.WorldTraffic.Trade>
+  <TMM.WorldTraffic.AbandonedCargo>Брошенный груз: {0} ед.</TMM.WorldTraffic.AbandonedCargo>
+  <TMM.WorldTraffic.Recover>Забрать груз</TMM.WorldTraffic.Recover>
+  <TMM.WorldTraffic.RecoverHelp>Перенести в ваш караван столько брошенного груза, сколько он сможет унести. Остаток сохранится на этой клетке.</TMM.WorldTraffic.RecoverHelp>
+  <TMM.WorldTraffic.Crew>Участников группы: {0}</TMM.WorldTraffic.Crew>
+</LanguageData>

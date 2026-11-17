@@ -1,0 +1,21 @@
+{
+  "probe": {
+    "passed": true,
+    "checks": 6,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4172,
+    "ticksAdvanced": 1775,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "sourceSaveUnchanged": true,
+  "profile": "C:\\Users\\vanya\\Downloads\\Rimworld\\RimWorld\\Mods\\Turbo-mega-mod-rimworld\\TestRuns\\RegionalWorld-OldClinic-20261117-234338",
+  "productionAssemblySha256": "450033653018362681f0741e84869770a9e34ae541c0049877b1e8011edf62ce",
+  "passed": true
+}

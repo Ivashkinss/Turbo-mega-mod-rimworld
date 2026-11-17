@@ -4,4 +4,5 @@
   <TMM.World.Capital>Faction capital</TMM.World.Capital>
   <TMM.World.EnterFriendly>Enter friendly settlement</TMM.World.EnterFriendly>
   <TMM.World.EnterFriendlyHelp>Enter the actual settlement map with the caravan at this location. Existing buildings and belongings are preserved. Use the normal caravan reform command to leave.</TMM.World.EnterFriendlyHelp>
+  <TMM.World.RegionalCenter>Major regional center</TMM.World.RegionalCenter>
 </LanguageData>

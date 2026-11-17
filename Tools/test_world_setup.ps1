@@ -1,11 +1,17 @@
-param([string]$Seed='tmm-regions-wide-20261117',[int]$TimeoutSeconds=360)
+param([string]$Seed='tmm-regions-wide-20261117',[int]$TimeoutSeconds=360,[switch]$UseBuiltAssembly)
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent $PSScriptRoot
 $game=Split-Path -Parent (Split-Path -Parent $root)
 if(Get-Process RimWorld -ErrorAction SilentlyContinue){throw 'Close RimWorld before the isolated entry-screen test.'}
 $installed=Join-Path $root 'Assemblies/TurboMegaMod.TestProbe.dll'
 if(Test-Path -LiteralPath $installed){throw 'A test probe is already installed.'}
-& (Join-Path $PSScriptRoot 'build_assembly.ps1')
+if(!$UseBuiltAssembly){ & (Join-Path $PSScriptRoot 'build_assembly.ps1') }
+else {
+ $production=Join-Path $root 'Assemblies/TurboMegaMod.dll'
+ if(!(Test-Path -LiteralPath $production)){throw 'Build the production assembly first.'}
+ $assemblyTime=(Get-Item -LiteralPath $production).LastWriteTimeUtc
+ if(@(Get-ChildItem -LiteralPath (Join-Path $root 'Source') -Recurse -Filter '*.cs' -File|Where-Object LastWriteTimeUtc -gt $assemblyTime).Count){throw 'Production sources changed after the build.'}
+}
 $refs=@('mscorlib.dll','System.dll','System.Core.dll','netstandard.dll','Assembly-CSharp.dll','UnityEngine.CoreModule.dll','UnityEngine.IMGUIModule.dll','UnityEngine.TextRenderingModule.dll','Unity.Mathematics.dll')|ForEach-Object {'/reference:'+(Join-Path $root ('Tools/Build/RimRef-1.6.4871/ref/net472/'+$_))}
 $refs+='/reference:'+(Join-Path $root 'Assemblies/TurboMegaMod.dll')
 $refs+='/reference:'+(& (Join-Path $PSScriptRoot 'get_harmony_reference.ps1'))

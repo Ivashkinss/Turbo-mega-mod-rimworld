@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_WorldTrafficCargo.label>брошенный груз</TMM_WorldTrafficCargo.label>
+  <TMM_WorldTrafficCargo.description>Припасы, оставленные путешествовавшей группой. Караван на той же клетке мира может забрать столько, сколько способен унести.</TMM_WorldTrafficCargo.description>
+</LanguageData>

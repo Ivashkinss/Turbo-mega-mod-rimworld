@@ -1,5 +1,6 @@
-param([Parameter(Mandatory=$true)][string]$Profile,[int]$TimeoutSeconds=300)
+param([Parameter(Mandatory=$true)][string]$Profile,[int]$TimeoutSeconds=300,[string]$ReportName='RegionalWorld-OldClinic.json')
 $ErrorActionPreference='Stop'
+if([IO.Path]::GetFileName($ReportName) -ne $ReportName -or !$ReportName.EndsWith('.json')){throw 'ReportName must be a JSON file name only.'}
 $root=Split-Path -Parent $PSScriptRoot
 $game=Split-Path -Parent (Split-Path -Parent $root)
 $source=(Resolve-Path -LiteralPath $Profile).Path
@@ -40,5 +41,5 @@ try{
  $result|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Join-Path $target 'Result.json') -Encoding utf8
  $result|ConvertTo-Json -Depth 8
  if(!$result.passed){throw 'Old world regression failed.'}
- $result|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Join-Path $root 'Documentation/RegionalWorld-OldClinic.json') -Encoding utf8
+ $result|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Join-Path $root ('Documentation/'+$ReportName)) -Encoding utf8
 }finally{if($process -and !$process.HasExited){$process.Kill();$process.WaitForExit()};if(Test-Path -LiteralPath $installed){Remove-Item -LiteralPath $installed};if((Get-FileHash -LiteralPath $save).Hash -ne $originalHash){throw 'Original fixture changed.'}}

@@ -1,0 +1,43 @@
+{
+  "productionAssemblySha256": "450033653018362681f0741e84869770a9e34ae541c0049877b1e8011edf62ce",
+  "passed": true,
+  "newFunctionalChecks": 86,
+  "nativeSteps": 4,
+  "steps": [
+    {
+      "path": "WorldTraffic-FullSet.json",
+      "checks": 20
+    },
+    {
+      "path": "WorldTraffic-Reload.json",
+      "checks": 24
+    },
+    {
+      "path": "WorldSetupVerification.json",
+      "checks": 36
+    },
+    {
+      "path": "WorldTraffic-OldClinic.json",
+      "checks": 6
+    }
+  ],
+  "visualReview": {
+    "image": "TestRuns/WorldTraffic-FullSet-20261117-233730/WorldTraffic-Convoy.png",
+    "reviewed": true,
+    "observed": [
+      "Actual selected NPC caravan icon on globe",
+      "Three-person group count and destination shown"
+    ]
+  },
+  "limits": [
+    "Controlled native route setup, followed by one actual automatic scheduled departure",
+    "No long-duration load test at 16-group cap",
+    "Player caravan interactive trade and salvage pickup not end-to-end tested",
+    "User saves and live RimWorld 1.6 not tested",
+    "Already generated worlds are not assigned key cities or relocated automatically"
+  ],
+  "excludedAttempts": [
+    "232832 test fixture ETA considered unsupported non-surface routes; fixed explicit surface guards",
+    "Earlier 410b2011 40-check stage superseded; not summed into final checks"
+  ]
+}

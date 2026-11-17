@@ -1,28 +1,28 @@
 {
   "probe": {
     "passed": true,
-    "checks": 12,
+    "checks": 36,
     "entryUiFrames": 120,
-    "nativeSiteCount": 231,
-    "meanDistanceBefore": 226.8238,
-    "meanDistanceAfter": 79.12559,
+    "nativeSiteCount": 224,
+    "meanDistanceBefore": 216.3892,
+    "meanDistanceAfter": 74.66082,
     "errors": []
   },
-  "seed": "tmm-regions-wide-second-20261117",
+  "seed": "tmm-regional-cities-20261117",
   "runtimeErrors": 0,
   "gpuLost": false,
   "quicktestUsed": false,
-  "productionAssemblySha256": "5ac22664216f9be338c1a00a203d3e795a66f426f234ae9393981f0706f70bcf",
+  "productionAssemblySha256": "450033653018362681f0741e84869770a9e34ae541c0049877b1e8011edf62ce",
   "passed": true,
-  "testProfile": "TestRuns/WorldSetup-20261117-231005",
+  "testProfile": "TestRuns/WorldSetup-20261117-234141",
   "scope": [
-    "Native UIRoot_Entry and Page_SelectStartingSite without quicktest",
-    "Native generated settlement site set unchanged; no overlap",
-    "Two actual game tile selections and camera jump; real inspector redraws for 120 frames"
+    "Native entry screen without quicktest; 120 rendered frames",
+    "Every original surface settlement position preserved; no overlaps",
+    "One level-ten capital per faction; regional-center quotas and ordinary tiers",
+    "Two native tile selections, camera change and inspector redraw"
   ],
   "limits": [
-    "Selections use native APIs, not hardware mouse input",
-    "No migration of already generated worlds",
-    "No claim of all seeds/biomes, live 1.6, or user-save verification"
+    "Uses native API selection rather than hardware mouse input",
+    "Existing worlds are not migrated; no all-seed or live-1.6 claim"
   ]
 }

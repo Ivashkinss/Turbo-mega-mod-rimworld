@@ -1097,7 +1097,7 @@
     },
     {
       "id": "StrategicOutpostCoreMapMerge",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/StrategicOutpostCoreMapMerge/TASK.md",
       "outputDir": "Tools/Build/GeminiStrategicOutpostCoreMapMerge",
       "expectedOutputs": [
@@ -1113,11 +1113,12 @@
         "REPORT.md",
         "VALIDATION.json"
       ],
-      "createdUtc": "2026-11-17T20:07:36.143213+00:00"
+      "createdUtc": "2026-11-17T20:07:36.143213+00:00",
+      "note": "Worker done; root independently found remaining runtime ownership/production/evacuation and weak-probe defects. MapIntegrity then RuntimeCompletion required before integration."
     },
     {
       "id": "StrategicOutpostMapIntegrity",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/StrategicOutpostMapIntegrity/TASK.md",
       "outputDir": "Tools/Build/GeminiStrategicOutpostMapIntegrity",
       "expectedOutputs": [
@@ -1131,7 +1132,25 @@
         "VALIDATION.json"
       ],
       "createdUtc": "2026-11-17T20:24:53.794845+00:00",
-      "note": "After StrategicOutpostCoreMapMerge done; concrete item-wipe and sealed north-room bugs, complete safe map planner plus actual native probe cases. No root/game edits."
+      "note": "Worker done; root read planner/report. Kept as isolated candidate; RuntimeCompletion now handles remaining core ownership/deadline/evacuation and actual probe before integration."
+    },
+    {
+      "id": "StrategicOutpostRuntimeCompletion",
+      "state": "pending",
+      "taskFile": "Delegation/StrategicOutpostRuntimeCompletion/TASK.md",
+      "outputDir": "Tools/Build/GeminiStrategicOutpostRuntimeCompletion",
+      "expectedOutputs": [
+        "Candidate/Source",
+        "Candidate/Defs",
+        "Candidate/Languages",
+        "Candidate/Tests",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "REPORT.md",
+        "VALIDATION.json"
+      ],
+      "createdUtc": "2026-11-17T20:39:49.809119+00:00",
+      "note": "After MapIntegrity done. Concrete ownership/stack/deadline/evacuation fixes and replace fake PASS with real native lifecycle probe; root handles world traffic and key cities."
     }
   ]
 }
