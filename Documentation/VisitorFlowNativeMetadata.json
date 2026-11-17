@@ -1,0 +1,88 @@
+{
+  "records": [
+    {
+      "sha256": "b1dc2b09cee3ff76f2616b0e3202e66126be3e0b8e2040576779783f8ee009a6",
+      "type": "Hospitality.Utilities.GenericUtility",
+      "provider": "Components/Hospitality/1.6/Assemblies/Hospitality.dll",
+      "method": "FillIncidentQueue",
+      "selectedInstructions": [
+        "IL_0025: call System.Single Verse.Rand::Range(System.Single,System.Single)",
+        "IL_002d: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_00b4: call System.Single Verse.Rand::Range(System.Single,System.Single)"
+      ]
+    },
+    {
+      "sha256": "b1dc2b09cee3ff76f2616b0e3202e66126be3e0b8e2040576779783f8ee009a6",
+      "type": "Hospitality.IncidentWorker_VisitorGroup",
+      "provider": "Components/Hospitality/1.6/Assemblies/Hospitality.dll",
+      "method": "GiveItems",
+      "selectedInstructions": [
+        "IL_0041: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_017c: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_0195: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_0291: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_02c6: call System.Int32 Verse.Rand::RangeInclusive(System.Int32,System.Int32)"
+      ]
+    },
+    {
+      "sha256": "b1dc2b09cee3ff76f2616b0e3202e66126be3e0b8e2040576779783f8ee009a6",
+      "type": "Hospitality.ModSettings_Hospitality",
+      "provider": "Components/Hospitality/1.6/Assemblies/Hospitality.dll",
+      "method": ".cctor",
+      "selectedInstructions": []
+    },
+    {
+      "sha256": "63aa0c88d60d1d88476d659d682605b3b7b041972326df0c0402c1ded172d5e8",
+      "type": "Hospital.IncidentScheduler",
+      "provider": "Components/Hospital/1.6/Assemblies/Hospital.dll",
+      "method": "MapComponentTick",
+      "selectedInstructions": [
+        "IL_001e: callvirt System.Int32 Hospital.HospitalMapComponent::FreeMedicalBeds()",
+        "IL_0046: call System.Single UnityEngine.Mathf::InverseLerp(System.Single,System.Single,System.Single)"
+      ]
+    },
+    {
+      "sha256": "6c169fed1229d1ee18b478aabfc7cbf23f92dc401a641a33c938e8055b345d56",
+      "type": "Hospitality.Utilities.GenericUtility",
+      "provider": "Components/Hospitality/1.7/Assemblies/Hospitality.dll",
+      "method": "FillIncidentQueue",
+      "selectedInstructions": [
+        "IL_0025: call System.Single Verse.Rand::Range(System.Single,System.Single)",
+        "IL_002d: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_00b4: call System.Single Verse.Rand::Range(System.Single,System.Single)"
+      ]
+    },
+    {
+      "sha256": "6c169fed1229d1ee18b478aabfc7cbf23f92dc401a641a33c938e8055b345d56",
+      "type": "Hospitality.IncidentWorker_VisitorGroup",
+      "provider": "Components/Hospitality/1.7/Assemblies/Hospitality.dll",
+      "method": "GiveItems",
+      "selectedInstructions": [
+        "IL_0041: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_017c: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_0195: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_0295: call System.Int32 Verse.Rand::Range(System.Int32,System.Int32)",
+        "IL_02ca: call System.Int32 Verse.Rand::RangeInclusive(System.Int32,System.Int32)"
+      ]
+    },
+    {
+      "sha256": "6c169fed1229d1ee18b478aabfc7cbf23f92dc401a641a33c938e8055b345d56",
+      "type": "Hospitality.ModSettings_Hospitality",
+      "provider": "Components/Hospitality/1.7/Assemblies/Hospitality.dll",
+      "method": ".cctor",
+      "selectedInstructions": []
+    },
+    {
+      "sha256": "8dcc54470ac0a1bebcf79a0e5a877d47f64f536c36faac893dbde6a0ac6fe40a",
+      "type": "Hospital.IncidentScheduler",
+      "provider": "Components/Hospital/1.7/Assemblies/Hospital.dll",
+      "method": "MapComponentTick",
+      "selectedInstructions": [
+        "IL_001e: callvirt System.Int32 Hospital.HospitalMapComponent::FreeMedicalBeds()",
+        "IL_0046: call System.Single UnityEngine.Mathf::InverseLerp(System.Single,System.Single,System.Single)"
+      ]
+    }
+  ],
+  "runtimeParametersOrFrequencyMeasured": false,
+  "metadataOnly": true
+}

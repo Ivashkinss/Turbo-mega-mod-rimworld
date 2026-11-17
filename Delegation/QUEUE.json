@@ -918,7 +918,7 @@
     },
     {
       "id": "VisitorFlowBaseline",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/VisitorFlowBaseline/TASK.md",
       "outputDir": "Tools/Build/GeminiVisitorFlowBaseline",
       "expectedOutputs": [
@@ -926,7 +926,24 @@
         "PARAMETERS.json",
         "REVIEW.md"
       ],
-      "createdUtc": "2026-11-17T09:33:15.906691+00:00"
+      "createdUtc": "2026-11-17T09:33:15.906691+00:00",
+      "note": "Owning source and installed1.7 IL verified. One-time ready-hotel opening invitation implemented and33 real checks/3 clean exact-binary steps passed. Patient gates/free bed tested, stochastic rate unchanged. Ordinary purse candidate delegated separately."
+    },
+    {
+      "id": "OrdinaryGuestPurseImplementation",
+      "state": "pending",
+      "taskFile": "Delegation/OrdinaryGuestPurseImplementation/TASK.md",
+      "outputDir": "Tools/Build/GeminiOrdinaryGuestPurseImplementation",
+      "expectedOutputs": [
+        "Candidate/Source/GuestTripBudget.cs",
+        "Candidate/Tests/InGameOrdinaryPurseProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T09:58:34.663828+00:00"
     }
   ]
 }

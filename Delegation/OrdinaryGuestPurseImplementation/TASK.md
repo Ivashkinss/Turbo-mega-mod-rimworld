@@ -1,0 +1,20 @@
+# OrdinaryGuestPurseImplementation — бюджет обычной поездки
+
+Факт подтверждён Codex по установленной Hospitality1.7 DLL через IL: обычный кошелёк max(10, round((max(10,10+goodwill/2)+age/5+royal component)*silverMultiplier)), default multiplier1. Взрослый нейтральный посетитель приносит около16–25 серебра, при суточной кровати30 этого не хватает даже на первые сутки. Нативный визит длится1–2.4суток. Нужен компилируемый кандидат адекватного бюджета поездки, сохраняя реальные деньги/лимиты и VIP.
+
+## Изоляция
+Вход immutable Tools/Build/OrdinaryGuestPurseSnapshot/, проверить SNAPSHOT.json. Запись ТОЛЬКО Tools/Build/GeminiOrdinaryGuestPurseImplementation/ и свой Tools/Build/GeminiWorkerState/OrdinaryGuestPurseImplementation.json. Source/Components/Assemblies/Defs/Languages корня, игру, Git/QUEUE, настройки/сейвы не менять; сеть/GUI/игру не запускать. Compiler/reference DLL читать можно. Assembly-CSharp только metadata через Cecil, не исполнять.
+
+## Требования
+1. Базовый диапазон обычного туриста150–300 серебра на поездку при native silverMultiplier1. Учитывать явно установленный нативный множитель денег:0 не должен превращаться в скрытую щедрую субсидию. Ограничение target10000 разумно для overflow, целочисленное/NaN/Infinity безопасно. VIP1500–3000 и его существующие правила не менять.
+2. Только настоящий генератор предметов Hospitality GiveItems для новой гостиничной поездки на карте действующего комплекса; Source/GuestProfiles.cs уже ставит ItemsGiven-postfix. Обычные гости без комплекса, пациенты, оптовики, рабы/заключённые, колонисты, blocked гости и уже живущие гости не получают добавку.
+3. Не давать деньги в публичном GuestProfiles.Prepare для всех вызовов: ручные/старые гости и тестовые нулевые кошельки не должны тайно пополняться при CreateLord/Begin. Сначала изучить порядок GiveItems/Prepare/CreateLord/Dossier.Current в настоящем owning source. Не предполагать, что arrivalPrepared до GiveItems всегдаfalse.
+4. Настоящее серебро в inventory, только недостающая до цели сумма, без уничтожения уже имевшихся денег. Учитывать массу/доступный размер инвентаря, резерв под вещи и существующие native guards; денег из пустоты на полу/в кассе не создавать, доходы колонии и самовыкуп не начислять до реально оплаченной услуги.
+5. Добавка максимум1раз на естественную новую поездку. Повтор GiveItems/Prepare, save/load и смена областей/ресепшена не пополняют уже подготовленного посетителя. Возврат домой/новая настоящая поездка допускает новый дорожный бюджет по правилам; просто отменённое задание/заказ не является новой поездкой. Старые активные сохранения мигрируют без внезапной раздачи денег. При повторном визите с достаточным кошельком ничего не добавляется.
+6. Минимум кода: новый Source/GuestTripBudget.cs и необходимые точечные изменения GuestProfiles.cs (поля/сохранение/порядок), GuestDossiers.cs только если действительно нужен owning reset. Никакого нового MapComponent, тиков, бесконечного refill, новых UI-окон/должностей/настроек или смены тарифов. Не патчить DLL провайдера. Не копировать большой formatter diff.
+7. Если добавляешь IExposable-поле guard, реальные Scribe keys/defaults и cleanup обоснуй. Поведение выхода/повторной поездки должно опираться на существующий lifecycle, а не на периодический сброс или случайный новый ID.
+
+## Сдать
+Candidate/Source/GuestTripBudget.cs + необходимые минимальные changed Source, Candidate/Tests/InGameOrdinaryPurseProbe.cs, build_candidate.ps1 (snapshot + NEW Candidate overlay -> собственный Build), DIFF.patch, GUIDE.md, MANUAL-CHECKS.md, REPORT.md. Реально собрать кандидат и тест.
+Тесты должны вызывать реальные GiveItems/owning hooks с обычным нулевым кошельком, достаточным кошельком, нехваткой массы, multiplier0/1, повтором, настоящим GameSave/Load и новой поездкой. VIP и manual Prepare без GiveItems должны сохраняться. Никакой mirrored cleanup/model вместо реального lifecycle; нативный запуск выполняет Codex позже, не заявлять PASS.
+Сначала WorkerState running, в конце done. Если сомневаешься в реальном lifecycle — покажи конкретный конфликт owning методов и безопасный кандидат, не отключай guards ради прохождения теста.

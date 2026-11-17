@@ -153,6 +153,10 @@ public sealed class VipProbe : MapComponent
         try{
             if(reload){
                 Check(saved&&vip!=null&&desk!=null,"Saved VIP fixture missing");
+                var opening=map.GetComponent<ComplexOpeningVisit>();
+                Check(opening!=null&&opening.scheduledTick==-1&&opening.invitedFaction==null,"Old established hotel acquired an opening invitation");
+                var native=map.components.First(c=>c.GetType().FullName=="Hospitality.Hospitality_MapComponent");var queue=(IncidentQueue)AccessTools.Field(native.GetType(),"incidentQueue").GetValue(native);int queued=queue.Count;
+                opening.TryPlanOpeningVisit();Check(opening.completed&&opening.scheduledTick==-1&&queue.Count==queued,"Existing guests/history caused an extra opening visit");
                 Check(Row.profile.vip&&Row.profile.evaluated&&Row.profile.arrivalPrepared&&Row.profile.grantAdded==grant,"VIP identity/grant guard lost");
                 Check(Row.profile.Regular&&Row.profile.completed==3&&Row.profile.good==2,"Lifetime loyalty lost");
                 Check(desk.vipChance==5&&!desk.preferRegulars,"Reception profile options lost");
