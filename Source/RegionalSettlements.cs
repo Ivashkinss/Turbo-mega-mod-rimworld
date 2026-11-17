@@ -114,46 +114,48 @@ namespace TurboMegaMod
                 anchors.Add(anchor);
                 state.distanceBefore += MeanDistance(members, anchor);
             }
+            var rows = new List<Settlement>();
+            var rowGroups = new List<int>();
             for (int index = 0; index < groups.Count; index++)
             {
-                var members = groups[index]; var anchor = anchors[index]; var faction = anchor.Faction;
-                var frontier = new Queue<PlanetTile>(); var visited = new HashSet<PlanetTile>();
-                var neighbors = new List<PlanetTile>();
-                frontier.Enqueue(anchor.Tile); visited.Add(anchor.Tile);
-                var available = new Queue<PlanetTile>();
-                float radius = Math.Min(55, 9 + (float)Math.Sqrt(members.Count) * 2.5f);
-                while (frontier.Count > 0 && visited.Count < SearchLimit)
+                var anchorData = state.For(anchors[index]);
+                anchorData.capital = true; anchorData.level = 10;
+                foreach (var settlement in groups[index])
                 {
-                    var current = frontier.Dequeue();
-                    Find.WorldGrid.GetTileNeighbors(current, neighbors);
-                    foreach (var next in neighbors)
-                    {
-                        if (!visited.Add(next) || Distance(anchor.Tile, next) > radius) continue;
-                        frontier.Enqueue(next);
-                        float ownDistance = Distance(anchor.Tile, next);
-                        // Voronoi regions keep neighboring powers from mixing their new bases.
-                        if (anchors.Any(a => a != anchor && Distance(a.Tile, next) + 2 < ownDistance)) continue;
-                        available.Enqueue(next);
-                    }
+                    state.For(settlement);
+                    if (settlement == anchors[index]) continue;
+                    rows.Add(settlement); rowGroups.Add(index);
                 }
-                foreach (var settlement in members)
-                {
-                    var data = state.For(settlement);
-                    if (settlement == anchor) { data.capital = true; data.level = 10; continue; }
-                    bool moved = false;
-                    while (available.Count > 0)
-                    {
-                        var tile = available.Dequeue(); state.evaluated++;
-                        if (!Suitable(tile, faction)) continue;
-                        // Keep the same settlement object, name, faction and ID.
-                        settlement.Tile = tile;
-                        moved = true; state.relocated++; break;
-                    }
-                    if (!moved) state.retained++; // Finite fallback for small islands/extreme climates.
-                }
-                state.distanceAfter += MeanDistance(members, anchor);
             }
-            if (groups.Count > 0) { state.distanceBefore /= groups.Count; state.distanceAfter /= groups.Count; }
+            var sites = rows.Select(s => s.Tile).ToArray();
+            var costs = new double[groups.Count, sites.Length];
+            state.distanceBefore = 0;
+            for (int index = 0; index < groups.Count; index++)
+                for (int site = 0; site < sites.Length; site++)
+                {
+                    state.evaluated++;
+                    var terrain = Find.WorldGrid[sites[site]];
+                    var curve = anchors[index].Faction.def.minSettlementTemperatureChanceCurve;
+                    bool legal = terrain.PrimaryBiome.canBuildBase && terrain.PrimaryBiome.implemented &&
+                        terrain.PrimaryBiome.settlementSelectionWeight > 0 && terrain.hilliness != Hilliness.Impassable &&
+                        (curve == null || curve.Evaluate(GenTemperature.MinTemperatureAtTile(sites[site])) > 0);
+                    costs[index, site] = legal ? Distance(anchors[index].Tile, sites[site]) : WorldRegionAllocation.Forbidden;
+                }
+            for (int i = 0; i < rows.Count; i++) state.distanceBefore += Distance(anchors[rowGroups[i]].Tile, sites[i]);
+            int[] assignment = WorldRegionAllocation.Assign(costs, rowGroups.ToArray());
+            // Native positions form a known legal fallback if another world generator imposed
+            // conditions that are not represented by our biome/temperature validation.
+            if (assignment.Where((site, row) => costs[rowGroups[row], site] >= WorldRegionAllocation.Forbidden).Any())
+                for (int i = 0; i < assignment.Length; i++) assignment[i] = i;
+            var moving = rows.Where((settlement, row) => assignment[row] != row).ToList();
+            foreach (var settlement in moving) Find.WorldObjects.Remove(settlement);
+            for (int i = 0; i < rows.Count; i++) rows[i].Tile = sites[assignment[i]];
+            foreach (var settlement in moving) Find.WorldObjects.Add(settlement);
+            state.relocated = moving.Count;
+            state.retained = rows.Count - moving.Count;
+            state.distanceAfter = 0;
+            for (int i = 0; i < rows.Count; i++) state.distanceAfter += Distance(anchors[rowGroups[i]].Tile, rows[i].Tile);
+            if (rows.Count > 0) { state.distanceBefore /= rows.Count; state.distanceAfter /= rows.Count; }
             state.clustered = true;
         }
     }

@@ -1,0 +1,28 @@
+{
+  "probe": {
+    "passed": true,
+    "checks": 12,
+    "entryUiFrames": 120,
+    "nativeSiteCount": 231,
+    "meanDistanceBefore": 226.8238,
+    "meanDistanceAfter": 79.12559,
+    "errors": []
+  },
+  "seed": "tmm-regions-wide-second-20261117",
+  "runtimeErrors": 0,
+  "gpuLost": false,
+  "quicktestUsed": false,
+  "productionAssemblySha256": "5ac22664216f9be338c1a00a203d3e795a66f426f234ae9393981f0706f70bcf",
+  "passed": true,
+  "testProfile": "TestRuns/WorldSetup-20261117-231005",
+  "scope": [
+    "Native UIRoot_Entry and Page_SelectStartingSite without quicktest",
+    "Native generated settlement site set unchanged; no overlap",
+    "Two actual game tile selections and camera jump; real inspector redraws for 120 frames"
+  ],
+  "limits": [
+    "Selections use native APIs, not hardware mouse input",
+    "No migration of already generated worlds",
+    "No claim of all seeds/biomes, live 1.6, or user-save verification"
+  ]
+}

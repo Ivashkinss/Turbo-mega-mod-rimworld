@@ -22,7 +22,12 @@ namespace TurboMegaMod
         private static Pawn scrollPawn;
         public static PawnOverviewSettings Settings;
         public static bool ExternalHUD {get{return ModsConfig.IsActive("jaxe.rimhud");}}
-        public static Pawn Selected {get{return Find.Selector==null?null:Find.Selector.SingleSelectedThing as Pawn;}}
+        public static Pawn Selected {get{
+            // Find.Selector casts the active UI root to UIRoot_Play. World selection also draws
+            // inspect panes, while UIRoot_Entry is still active and no map selector exists.
+            if(Current.ProgramState!=ProgramState.Playing||!(Find.UIRoot is UIRoot_Play)||Find.CurrentMap==null)return null;
+            return Find.Selector==null?null:Find.Selector.SingleSelectedThing as Pawn;
+        }}
         public static bool Active {get{var p=Selected;return Settings!=null&&Settings.enabled&&!ExternalHUD&&p!=null&&!p.Destroyed;}}
         public static List<Need> Needs(Pawn pawn){return pawn.needs==null?new List<Need>():pawn.needs.AllNeeds.Where(n=>n is Need_Mood||n.ShowOnNeedList).OrderBy(n=>n is Need_Mood?0:1).ToList();}
         static PawnOverview()
@@ -35,9 +40,9 @@ namespace TurboMegaMod
             h.Patch(AccessTools.Method(typeof(InspectPaneUtility),"InspectPaneOnGUI"),postfix:new HarmonyMethod(typeof(PawnOverview),"Recent"));
         }
         public static float HeightFor(Pawn pawn){return pawn.skills!=null?Height:Math.Max(165,Math.Min(Height,92+Math.Min(6,Needs(pawn).Count)*14));}
-        private static void Size(IInspectPane pane,ref Vector2 __result){if(Active&&pane is MainTabWindow_Inspect){__result.x=Math.Max(__result.x,Math.Min(460,UI.screenWidth-40));__result.y=HeightFor(Selected);}}
+        private static void Size(IInspectPane pane,ref Vector2 __result){if(pane is MainTabWindow_Inspect&&Active){__result.x=Math.Max(__result.x,Math.Min(460,UI.screenWidth-40));__result.y=HeightFor(Selected);}}
         private static void Top(ref float __result){if(Active)__result=UI.screenHeight-35-HeightFor(Selected);}
-        private static void Recent(IInspectPane pane){if(Active&&pane is MainTabWindow_Inspect)pane.RecentHeight=HeightFor(Selected);}
+        private static void Recent(IInspectPane pane){if(pane is MainTabWindow_Inspect&&Active)pane.RecentHeight=HeightFor(Selected);}
         private static bool Contents(Rect rect){if(!Active)return true;Draw(rect,Selected);return false;}
         private static Rect NextIcon(Rect canvas,ref float used){used+=21;return new Rect(canvas.width-used,0,19,19);}
         private static void Buttons(Rect __0,ref float __1)

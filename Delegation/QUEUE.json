@@ -1055,7 +1055,7 @@
     },
     {
       "id": "StrategicOutpostsCorrections",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/StrategicOutpostsCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiStrategicOutpostsCorrections",
       "expectedOutputs": [
@@ -1071,11 +1071,12 @@
         "REPORT.md",
         "VALIDATION.json"
       ],
-      "createdUtc": "2026-11-17T15:13:26.075699+00:00"
+      "createdUtc": "2026-11-17T15:13:26.075699+00:00",
+      "note": "Worker done; root found remaining core issues, Codex partial curation and map overlay must be merged. Not installed or native-accepted; preserve original outputs."
     },
     {
       "id": "StrategicOutpostMaps",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/StrategicOutpostMaps/TASK.md",
       "outputDir": "Tools/Build/GeminiStrategicOutpostMaps",
       "expectedOutputs": [
@@ -1092,7 +1093,27 @@
         "VALIDATION.json"
       ],
       "createdUtc": "2026-11-17T15:32:44.270908+00:00",
-      "note": "After completing StrategicOutpostsCorrections; visited persistent player outpost maps and additive ten-level upgrades. Root does NPC maps/clustering, Codex subagent world caravans."
+      "note": "Worker done; root found remaining core issues, Codex partial curation and map overlay must be merged. Not installed or native-accepted; preserve original outputs."
+    },
+    {
+      "id": "StrategicOutpostCoreMapMerge",
+      "state": "pending",
+      "taskFile": "Delegation/StrategicOutpostCoreMapMerge/TASK.md",
+      "outputDir": "Tools/Build/GeminiStrategicOutpostCoreMapMerge",
+      "expectedOutputs": [
+        "Candidate/Source",
+        "Candidate/Defs",
+        "Candidate/Languages",
+        "Candidate/Tests",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "MERGE-NOTES.md",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md",
+        "VALIDATION.json"
+      ],
+      "createdUtc": "2026-11-17T20:07:36.143213+00:00"
     }
   ]
 }
