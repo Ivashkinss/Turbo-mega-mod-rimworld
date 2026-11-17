@@ -1114,6 +1114,24 @@
         "VALIDATION.json"
       ],
       "createdUtc": "2026-11-17T20:07:36.143213+00:00"
+    },
+    {
+      "id": "StrategicOutpostMapIntegrity",
+      "state": "pending",
+      "taskFile": "Delegation/StrategicOutpostMapIntegrity/TASK.md",
+      "outputDir": "Tools/Build/GeminiStrategicOutpostMapIntegrity",
+      "expectedOutputs": [
+        "Candidate/Source",
+        "Candidate/Defs",
+        "Candidate/Languages",
+        "Candidate/Tests",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "REPORT.md",
+        "VALIDATION.json"
+      ],
+      "createdUtc": "2026-11-17T20:24:53.794845+00:00",
+      "note": "After StrategicOutpostCoreMapMerge done; concrete item-wipe and sealed north-room bugs, complete safe map planner plus actual native probe cases. No root/game edits."
     }
   ]
 }
