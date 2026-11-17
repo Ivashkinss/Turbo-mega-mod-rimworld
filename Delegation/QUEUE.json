@@ -998,7 +998,7 @@
     },
     {
       "id": "MinutemenHuntersPrototype",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/MinutemenHuntersPrototype/TASK.md",
       "outputDir": "Tools/Build/GeminiMinutemenHuntersPrototype",
       "expectedOutputs": [
@@ -1015,7 +1015,27 @@
         "MANUAL-CHECKS.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T12:42:48.5632737Z"
+      "createdUtc": "2026-11-17T12:42:48.5632737Z",
+      "note": "Worker marked done; root has not reviewed/integrated. Preserve candidate. User prioritizes strategic settlements/outposts/world faction geography before faction content. No follow-up faction integration until foundation chosen."
+    },
+    {
+      "id": "StrategicOutpostsFoundation",
+      "state": "pending",
+      "taskFile": "Delegation/StrategicOutpostsFoundation/TASK.md",
+      "outputDir": "Tools/Build/GeminiStrategicOutpostsFoundation",
+      "expectedOutputs": [
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "SOURCES.json",
+        "DESIGN.md",
+        "INTEGRATION-PLAN.md",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md",
+        "VALIDATION.json",
+        "Candidate/Tests/InGameStrategicOutpostsProbe.cs"
+      ],
+      "createdUtc": "2026-11-17T13:04:54.5372955Z"
     }
   ]
 }
