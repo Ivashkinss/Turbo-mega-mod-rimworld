@@ -73,10 +73,12 @@ namespace TurboMegaMod
             }else if(page==3){
                 Help(inner,ref y,"TMM.Services.RestaurantHelp");
                 Widgets.CheckboxLabeled(new Rect(0,y,inner.width,32),"TMM.Restaurant.Open".Translate(),ref desk.restaurantOpen);y+=42;
-                if(desk.restaurantMeal==null)desk.restaurantMeal=ThingDefOf.MealSimple;
-                if(Widgets.ButtonText(new Rect(0,y,inner.width,32),"TMM.Restaurant.Meal".Translate()+": "+desk.restaurantMeal.LabelCap))
-                    Find.WindowStack.Add(new FloatMenu(DefDatabase<ThingDef>.AllDefsListForReading.Where(RestaurantMeals.Prepared).OrderBy(d=>d.label)
-                        .Select(d=>new FloatMenuOption(d.LabelCap,()=>desk.restaurantMeal=d)).ToList()));y+=42;
+                string menuSummary = desk.restaurantMenu == null || desk.restaurantMenu.Count == 0
+                    ? (string)"TMM.Restaurant.MenuEmptySummary".Translate()
+                    : (string)"TMM.Restaurant.MenuSelectedSummary".Translate(desk.restaurantMenu.Count);
+                if(Widgets.ButtonText(new Rect(0,y,inner.width,32),"TMM.Restaurant.EditMenu".Translate() + " (" + menuSummary + ")"))
+                    Find.WindowStack.Add(new Dialog_RestaurantMenu(desk));
+                y+=42;
                 if(Widgets.ButtonText(new Rect(0,y,inner.width,32),"TMM.Restaurant.Price".Translate(desk.restaurantPercent)))
                     Find.WindowStack.Add(new FloatMenu(new[]{0,50,75,100,125,150,200}.Select(p=>new FloatMenuOption(p+"%",()=>desk.restaurantPercent=p)).ToList()));y+=42;
             }else{

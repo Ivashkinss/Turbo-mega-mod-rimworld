@@ -14,14 +14,19 @@ using Verse.AI.Group;
 public static class SalesDeliveryLaunch
 {
     public static bool blockReceipts;
+    public static bool measure;public static int collectCalls,waitCalls;
     static SalesDeliveryLaunch()
     {
         if (Environment.GetCommandLineArgs().Contains("-tmm-delivery-reload")) LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-Delivery"));
         if (!Environment.GetCommandLineArgs().Any(a => a == "-tmm-delivery-probe" || a == "-tmm-delivery-reload")) return;
         var h = new Harmony("tmm.test.delivery.receipts");
+        h.Patch(AccessTools.Method(typeof(ComplexSales),"CanCollect"),prefix:new HarmonyMethod(typeof(SalesDeliveryLaunch),"Collect"));
+        h.Patch(AccessTools.Method(typeof(ComplexSales),"WaitAt"),prefix:new HarmonyMethod(typeof(SalesDeliveryLaunch),"WaitCell"));
         foreach (var m in typeof(GenPlace).GetMethods().Where(m => m.Name == "TryPlaceThing" && m.ReturnType == typeof(bool) && m.GetParameters()[0].ParameterType == typeof(Thing)))
             h.Patch(m, prefix:new HarmonyMethod(typeof(SalesDeliveryLaunch), "Block"));
     }
+    private static void Collect(){if(measure)collectCalls++;}
+    private static void WaitCell(){if(measure)waitCalls++;}
     private static bool Block(Thing __0, ref bool __result) { if (!blockReceipts || __0.def != ThingDefOf.Silver) return true; __result = false; return false; }
 }
 public sealed class SalesDeliveryProbe : MapComponent
@@ -123,6 +128,17 @@ public sealed class SalesDeliveryProbe : MapComponent
         Check(!Sales.Requestable(buyer,shelf,steel),"Worker with occupied hands accepted order");Thing dropped;worker.carryTracker.TryDropCarriedThing(worker.Position,ThingPlaceMode.Near,out dropped);
         var fake=JobMaker.MakeJob(JobDefOf.Wait);Check(worker.Reserve(book,fake),"Container item cannot be reserved");
         Check(Sales.Create(buyer,bookcase,book,1)==null,"Reserved container item sold twice");map.reservationManager.ReleaseAllForTarget(book);
+        bool pub;IntVec3 cell;int cap;Check(Sales.CheckRequestable(buyer,shelf,steel,false,out pub,out cell,out cap),"Predicate handover fixture invalid");
+        int first=map.mapPawns.AllPawnsSpawned.ToList().FindIndex(p=>Sales.CanCollect(p,shelf,steel,1)&&p.CanReach(cell,PathEndMode.OnCell,Danger.None));
+        SalesDeliveryLaunch.collectCalls=SalesDeliveryLaunch.waitCalls=0;SalesDeliveryLaunch.measure=true;
+        bool requestable;try{requestable=Sales.Requestable(buyer,shelf,steel);}finally{SalesDeliveryLaunch.measure=false;}
+        Check(requestable&&first>=0&&SalesDeliveryLaunch.collectCalls==first+1&&SalesDeliveryLaunch.collectCalls<map.mapPawns.AllPawnsSpawned.Count&&SalesDeliveryLaunch.waitCalls==1,"Real bool predicate did not short-circuit or repeated WaitAt");
+        SalesDeliveryLaunch.collectCalls=SalesDeliveryLaunch.waitCalls=0;SalesDeliveryLaunch.measure=true;SaleOrder capacity;
+        try{capacity=Sales.Create(buyer,shelf,steel,4);}finally{SalesDeliveryLaunch.measure=false;}
+        Check(capacity!=null&&capacity.count==4&&SalesDeliveryLaunch.collectCalls==map.mapPawns.AllPawnsSpawned.Count&&SalesDeliveryLaunch.waitCalls==1,"Real Create did not calculate capacity in a single pass");capacity.cancelled=true;Sales.Process();
+        worker.workSettings.SetPriority(ComplexSales.SalesWork,0);SalesDeliveryLaunch.collectCalls=SalesDeliveryLaunch.waitCalls=0;SalesDeliveryLaunch.measure=true;
+        try{requestable=Sales.Requestable(buyer,shelf,steel);}finally{SalesDeliveryLaunch.measure=false;worker.workSettings.SetPriority(ComplexSales.SalesWork,1);}
+        Check(!requestable&&SalesDeliveryLaunch.collectCalls==map.mapPawns.AllPawnsSpawned.Count&&SalesDeliveryLaunch.waitCalls==1,"No-worker predicate did not scan all candidates once");
         floorBefore=Floor();Request(shelf,steel,3);
         Check(Sales.Create(other,shelf,steel,1)==null,"Competing order accepted same stack");
         Check(orderId!=Order.count,"Fixture does not distinguish ID and quantity");stage=1;

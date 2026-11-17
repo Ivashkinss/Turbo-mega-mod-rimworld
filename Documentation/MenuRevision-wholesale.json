@@ -1,0 +1,46 @@
+{
+  "component": "Wholesale",
+  "originalComponentActive": false,
+  "fullUserModSet": true,
+  "gameVersion": "1.7.5000 rev1275",
+  "localization": {
+    "keyed": 3018,
+    "scalarFields": 702,
+    "grammarLines": 90,
+    "displayPatches": 12,
+    "passed": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4130,
+    "ticksAdvanced": 1768,
+    "newsWindowsDismissedInTest": 0
+  },
+  "settingsUi": {
+    "passed": true,
+    "visualLayoutInspected": false,
+    "error": null
+  },
+  "odysseyGrammar": {
+    "passed": true,
+    "odysseyActive": true,
+    "checks": 252,
+    "errors": []
+  },
+  "runtimeErrors": 0,
+  "knownExternalRuntimeErrors": 0,
+  "unexpectedRuntimeErrors": 0,
+  "knownExternalMessages": [],
+  "gpuLost": false,
+  "visualUiVerified": false,
+  "stoppedByTest": true,
+  "productionAssemblySha256": "dfab9ba49b5a2bef6b85fb64321966196019ca5fcb03b106bf8f659d12ff2358",
+  "wholesale": {
+    "passed": true,
+    "checks": 54,
+    "errors": []
+  },
+  "passed": true
+}

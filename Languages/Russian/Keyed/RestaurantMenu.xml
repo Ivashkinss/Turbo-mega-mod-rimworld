@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Restaurant.MenuTitle>Меню ресторана комплекса</TMM.Restaurant.MenuTitle>
+  <TMM.Restaurant.MenuDialogHelp>Отметьте блюда, разрешённые к подаче в ресторане комплекса. Гости выбирают порции с учётом своих диетических ограничений и личного бюджета. Принятый заказ сохраняет зафиксированное блюдо и цену.</TMM.Restaurant.MenuDialogHelp>
+  <TMM.Restaurant.Search>Поиск:</TMM.Restaurant.Search>
+  <TMM.Restaurant.SelectAll>Выбрать всё</TMM.Restaurant.SelectAll>
+  <TMM.Restaurant.ClearAll>Очистить</TMM.Restaurant.ClearAll>
+  <TMM.Restaurant.MenuEmptyWarning>Внимание: меню пусто! Гости не смогут сделать заказ в ресторане комплекса.</TMM.Restaurant.MenuEmptyWarning>
+  <TMM.Restaurant.SelectedCount>Выбрано видов блюд: {0}</TMM.Restaurant.SelectedCount>
+  <TMM.Restaurant.StockTooltip>{0}
+
+Физическое наличие в холодильниках: {1} шт.
+(Фактическая доступность гостю зависит от его диеты, ингредиентов порции и бюджета).</TMM.Restaurant.StockTooltip>
+  <TMM.Restaurant.NoStockTooltip>{0}
+
+Нет готовых порций в холодильниках комплекса или поселения.</TMM.Restaurant.NoStockTooltip>
+  <TMM.Restaurant.EditMenu>Редактировать меню</TMM.Restaurant.EditMenu>
+  <TMM.Restaurant.MenuEmptySummary>пусто</TMM.Restaurant.MenuEmptySummary>
+  <TMM.Restaurant.MenuSelectedSummary>видов: {0}</TMM.Restaurant.MenuSelectedSummary>
+</LanguageData>

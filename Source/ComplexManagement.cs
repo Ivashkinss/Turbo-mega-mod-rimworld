@@ -50,6 +50,9 @@ namespace TurboMegaMod
         public bool preferRegulars=true,outdoorBreaks=true,deathrestGuests=true,hemogenPurchases=true,geneticDrugPurchases=true,ordinaryDrugPurchases=true;
         public DrugPolicy dependencySupplyPolicy;
         public ThingDef restaurantMeal;
+        public List<ThingDef> restaurantMenu = new List<ThingDef>();
+        public bool restaurantMenuConfigured;
+        private string legacyMealDefName;
         public List<ComplexEmployee> employees = new List<ComplexEmployee>();
         public int hotelIncome, restaurantIncome, clinicIncome, companyIncome;
         public bool companyOpen = true;
@@ -59,6 +62,20 @@ namespace TurboMegaMod
         {
             base.SpawnSetup(map, respawningAfterLoad);
             var component = map.GetComponent<ComplexMap>(); if (component != null && (component.desk == null || !component.desk.Spawned)) component.desk = this;
+            if (!respawningAfterLoad && !restaurantMenuConfigured)
+            {
+                restaurantMenuConfigured = true;
+                if (restaurantMenu == null) restaurantMenu = new List<ThingDef>();
+                if (restaurantMenu.Count == 0)
+                {
+                    ThingDef simple = DefDatabase<ThingDef>.GetNamedSilentFail("MealSimple");
+                    if (simple != null && RestaurantMeals.Prepared(simple))
+                    {
+                        restaurantMenu.Add(simple);
+                        restaurantMeal = simple;
+                    }
+                }
+            }
         }
         public override void ExposeData()
         {
@@ -71,12 +88,60 @@ namespace TurboMegaMod
             Scribe_References.Look(ref staffArea, "staffArea"); Scribe_Values.Look(ref automaticServices, "automaticServices", true);
             Scribe_Values.Look(ref roomRate, "roomRate", 30); Scribe_Values.Look(ref restaurantPercent, "restaurantPercent", 100);
             Scribe_Values.Look(ref restaurantOpen, "restaurantOpen", true); Scribe_Values.Look(ref surgeryAllowed, "surgeryAllowed", true);
-            Scribe_Defs.Look(ref restaurantMeal, "restaurantMeal");
+            Scribe_Values.Look(ref restaurantMenuConfigured, "restaurantMenuConfigured", false);
+            if (Scribe.mode == LoadSaveMode.Saving)
+            {
+                Scribe_Defs.Look(ref restaurantMeal, "restaurantMeal");
+            }
+            else if (Scribe.mode == LoadSaveMode.LoadingVars)
+            {
+                Scribe_Values.Look(ref legacyMealDefName, "restaurantMeal");
+                if (!string.IsNullOrEmpty(legacyMealDefName))
+                {
+                    restaurantMeal = DefDatabase<ThingDef>.GetNamedSilentFail(legacyMealDefName);
+                }
+            }
+            Scribe_Collections.Look(ref restaurantMenu, "restaurantMenu", LookMode.Def);
             Scribe_Collections.Look(ref employees, "employees", LookMode.Deep);
             Scribe_Values.Look(ref hotelIncome, "hotelIncome"); Scribe_Values.Look(ref restaurantIncome, "restaurantIncome"); Scribe_Values.Look(ref clinicIncome, "clinicIncome");
             Scribe_Values.Look(ref companyIncome,"companyIncome");
             Scribe_Values.Look(ref companyOpen, "companyOpen", true); Scribe_Values.Look(ref companyPercent, "companyPercent", 100);
-            if (Scribe.mode == LoadSaveMode.PostLoadInit && employees == null) employees = new List<ComplexEmployee>();
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (employees == null) employees = new List<ComplexEmployee>();
+                if (!restaurantMenuConfigured && restaurantMenu == null)
+                {
+                    restaurantMenuConfigured = true;
+                    restaurantMenu = new List<ThingDef>();
+                    if (restaurantMeal != null && RestaurantMeals.Prepared(restaurantMeal))
+                    {
+                        restaurantMenu.Add(restaurantMeal);
+                    }
+                    else if (string.IsNullOrEmpty(legacyMealDefName))
+                    {
+                        ThingDef simple = DefDatabase<ThingDef>.GetNamedSilentFail("MealSimple");
+                        if (simple != null && RestaurantMeals.Prepared(simple))
+                        {
+                            restaurantMenu.Add(simple);
+                        }
+                    }
+                }
+                else
+                {
+                    restaurantMenuConfigured = true;
+                    if (restaurantMenu == null) restaurantMenu = new List<ThingDef>();
+                    restaurantMenu.RemoveAll(d => d == null || !RestaurantMeals.Prepared(d));
+                    restaurantMenu = restaurantMenu.Distinct().ToList();
+                }
+                if (restaurantMenu.Count > 0)
+                {
+                    restaurantMeal = restaurantMenu[0];
+                }
+                else
+                {
+                    restaurantMeal = null;
+                }
+            }
         }
         public ComplexEmployee Employee(Pawn pawn, bool create = false)
         {

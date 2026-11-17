@@ -766,7 +766,7 @@
     },
     {
       "id": "RestaurantMenuCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/RestaurantMenuCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiRestaurantMenuCorrections",
       "expectedOutputs": [
@@ -776,11 +776,12 @@
         "TEST-RESULTS.json",
         "RESPONSE.md"
       ],
-      "createdUtc": "2026-11-17T04:08:40.306664+00:00"
+      "createdUtc": "2026-11-17T04:08:40.306664+00:00",
+      "note": "Owning code reviewed and integrated into dfab9ba4. 276 real-game checks / 8 clean exact-binary steps; menu/UI/migration/payment/reload and bounded retail/wholesale regressions passed. Documentation curated by root."
     },
     {
       "id": "SalesPredicateCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/SalesPredicateCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiSalesPredicateCorrections",
       "expectedOutputs": [
@@ -791,7 +792,40 @@
         "RESPONSE.md"
       ],
       "afterTask": "RestaurantMenuCorrections",
-      "createdUtc": "2026-11-17T04:16:21.913105+00:00"
+      "createdUtc": "2026-11-17T04:16:21.913105+00:00",
+      "note": "Owning code reviewed and integrated into dfab9ba4. 276 real-game checks / 8 clean exact-binary steps; menu/UI/migration/payment/reload and bounded retail/wholesale regressions passed. Documentation curated by root."
+    },
+    {
+      "id": "MenuDocumentationSync",
+      "state": "reviewed",
+      "taskFile": "Delegation/MenuDocumentationSync/TASK.md",
+      "outputDir": "Tools/Build/GeminiMenuDocumentationSync",
+      "expectedOutputs": [
+        "Candidate/Documentation/RESTAURANT.md",
+        "Candidate/Documentation/COMPLEX.md",
+        "Candidate/Documentation/RESTAURANT-MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T04:37:48.380984+00:00",
+      "note": "Owning code reviewed and integrated into dfab9ba4. 276 real-game checks / 8 clean exact-binary steps; menu/UI/migration/payment/reload and bounded retail/wholesale regressions passed. Documentation curated by root."
+    },
+    {
+      "id": "ServiceReadinessImplementation",
+      "state": "pending",
+      "taskFile": "Delegation/ServiceReadinessImplementation/TASK.md",
+      "outputDir": "Tools/Build/GeminiServiceReadinessImplementation",
+      "expectedOutputs": [
+        "Candidate/Source/ServiceReadiness.cs",
+        "Candidate/Source/ComplexServicesDialog.cs",
+        "Candidate/Languages/Russian/Keyed/ServiceReadiness.xml",
+        "Candidate/Languages/English/Keyed/ServiceReadiness.xml",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T04:50:48.698012+00:00"
     }
   ]
 }

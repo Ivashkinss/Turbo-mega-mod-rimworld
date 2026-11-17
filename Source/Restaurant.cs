@@ -22,6 +22,7 @@ namespace TurboMegaMod
         public Building_ComplexDesk Complex { get { var desk = ComplexLayout.Desk(Map); return desk != null && desk.area[Position] ? desk : null; } }
         public Area Tables { get { return Complex == null ? serviceArea : Complex.area; } }
         public ThingDef Meal { get { return Complex == null ? mealDef : Complex.restaurantMeal ?? ThingDefOf.MealSimple; } }
+        public IEnumerable<ThingDef> Menu { get { return Complex != null ? (Complex.restaurantMenu != null ? Complex.restaurantMenu.AsEnumerable() : Enumerable.Empty<ThingDef>()) : (mealDef != null ? new[] { mealDef } : Enumerable.Empty<ThingDef>()); } }
         public int PricePercent { get { return Complex == null ? pricePercent : Complex.restaurantPercent; } }
         public bool Ready { get { return Spawned && (Complex != null ? Complex.restaurantOpen : open && serviceArea != null && foodArea != null &&
             Map.areaManager.AllAreas.Contains(serviceArea) && Map.areaManager.AllAreas.Contains(foodArea)); } }
@@ -271,8 +272,7 @@ namespace TurboMegaMod
             var seat = map.listerBuildings.allBuildingsColonist.FirstOrDefault(t => RestaurantMeals.SeatForGuest(guest, t, counter) &&
                 !orders.Any(o => !o.cancelled && !o.delivered && o.chair == t) && guest.CanReserveAndReach(t, PathEndMode.OnCell, Danger.Some));
             if (seat == null) return null;
-            var food = FindFood(counter, guest, null, null);
-            if (food != null && HotelBillingHooks.Money(guest) < RestaurantMeals.Quote(counter, food)) return null;
+            var food = FindFood(counter, guest, null, null, null, true);
             if (food == null) return null;
             var order = new RestaurantOrder { id = ++nextOrderId, guest = guest, counter = counter, chair = seat, food = food, mealDef = food.def,
                 price = RestaurantMeals.Quote(counter, food), created = Find.TickManager.TicksGame, receiptCell = counter.Position, dossier=GuestDossiers.Capture(guest,map) };
@@ -281,20 +281,31 @@ namespace TurboMegaMod
             guest.jobs.StartJob(wait, JobCondition.InterruptForced);
             return order;
         }
-        private Thing FindFood(Building_ServiceCounter counter, Pawn guest, Pawn waiter, RestaurantOrder own)
+        private Thing FindFood(Building_ServiceCounter counter, Pawn guest, Pawn waiter, RestaurantOrder own, ThingDef requiredMealDef = null, bool checkAffordable = false)
         {
-            return map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree).Where(t => t.def == counter.Meal && RestaurantMeals.Stock(counter, t) &&
-                RestaurantMeals.Edible(guest, t) && !orders.Any(o => o != own && !o.delivered && !o.cancelled && o.food == t) &&
+            if (counter == null || guest == null) return null;
+            int guestMoney = checkAffordable ? HotelBillingHooks.Money(guest) : int.MaxValue;
+            var menu = counter.Menu;
+
+            return map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree).Where(t =>
+                (requiredMealDef != null ? t.def == requiredMealDef : menu.Contains(t.def)) &&
+                RestaurantMeals.Stock(counter, t) &&
+                RestaurantMeals.Edible(guest, t) &&
+                (!checkAffordable || guestMoney >= RestaurantMeals.Quote(counter, t)) &&
+                !orders.Any(o => o != own && !o.delivered && !o.cancelled && o.food == t) &&
                 (waiter == null || (!t.IsForbidden(waiter) && waiter.CanReserveAndReach(t, PathEndMode.Touch, Danger.Some))))
-                .OrderBy(t => counter.Complex != null && counter.Complex.area[t.Position] ? 0 : 1)
-                .ThenBy(t => t.Position.DistanceToSquared(counter.Position)).FirstOrDefault();
+                .OrderByDescending(t => t.def.ingestible != null ? (int)t.def.ingestible.preferability : 0)
+                .ThenBy(t => counter.Complex != null && counter.Complex.area != null && counter.Complex.area[t.Position] ? 0 : 1)
+                .ThenBy(t => t.Position.DistanceToSquared(counter.Position))
+                .ThenBy(t => t.thingIDNumber)
+                .FirstOrDefault();
         }
         public RestaurantOrder ForWaiter(Pawn waiter, Building_ServiceCounter counter)
         {
             if (counter != null && counter.Complex != null) foreach (var order in orders.Where(o => o.counter == counter && !o.delivered && !o.cancelled &&
                 (o.waiter == null || o.waiter.CurJobDef != RestaurantMeals.ServeJob))) {
                 if (order.food == null || !RestaurantMeals.Stock(counter, order.food) || order.food.IsForbidden(waiter) || !waiter.CanReserveAndReach(order.food, PathEndMode.Touch, Danger.Some))
-                    order.food = FindFood(counter, order.guest, waiter, order);
+                    order.food = FindFood(counter, order.guest, waiter, order, order.mealDef, false);
             }
             return orders.FirstOrDefault(o => o.counter == counter && !o.cancelled && !o.delivered && Valid(o) && o.guest.Position == o.chair.Position &&
                 (o.waiter == null || !o.waiter.Spawned || o.waiter.CurJobDef != RestaurantMeals.ServeJob) &&
@@ -305,8 +316,13 @@ namespace TurboMegaMod
         {
             var order = ForGuest(guest);
             var meal = waiter.carryTracker.CarriedThing;
-            if (order == null || order.waiter != waiter || waiter.CurJob == null || waiter.CurJob.count != order.id || !Valid(order) || waiter.Map != map || guest.Position != order.chair.Position || meal == null || meal.def != order.mealDef ||
-                !RestaurantMeals.Edible(guest, meal) || !waiter.Position.AdjacentTo8WayOrInside(guest.Position)) return false;
+            if (order == null || order.waiter != waiter || waiter.CurJob == null || waiter.CurJob.count != order.id || !Valid(order) || waiter.Map != map || guest.Position != order.chair.Position || meal == null || meal.def != order.mealDef || !waiter.Position.AdjacentTo8WayOrInside(guest.Position)) return false;
+            if (!RestaurantMeals.Edible(guest, meal))
+            {
+                order.cancelled = true;
+                ProcessOrders(false);
+                return false;
+            }
             var cash = order.GetDirectlyHeldThings();
             int required = order.price - cash.Sum(t => t.stackCount);
             if (HotelBillingHooks.Money(guest) < required) return false;

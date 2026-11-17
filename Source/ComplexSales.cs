@@ -102,7 +102,11 @@ namespace TurboMegaMod
         }
         public static bool Allowed(Pawn buyer, Building storage, Thing item)
         {
-            if (!Buyer(buyer) || !Public(storage) || storage.Map != buyer.Map || !Contains(storage, item) ||
+            return Allowed(buyer, storage, item, false);
+        }
+        public static bool Allowed(Pawn buyer, Building storage, Thing item, bool knownPublic)
+        {
+            if (!Buyer(buyer) || !(knownPublic || Public(storage)) || storage.Map != buyer.Map || !Contains(storage, item) ||
                 !RestaurantMeals.AllowedCell(buyer, storage.Position) || storage.IsForbidden(buyer) || Space(buyer, item) < 1) return false;
             return Suitable(buyer, item);
         }
@@ -238,28 +242,59 @@ namespace TurboMegaMod
         }
         public bool Requestable(Pawn buyer, Building storage, Thing item)
         {
-            if (SaleStock.Public(storage)) return SaleStock.Allowed(buyer, storage, item);
+            bool isPublic;
+            IntVec3 waitCell;
+            int maxCarry;
+            return CheckRequestable(buyer, storage, item, false, out isPublic, out waitCell, out maxCarry);
+        }
+        public bool CheckRequestable(Pawn buyer, Building storage, Thing item, bool needMaxCarry, out bool isPublic, out IntVec3 waitCell, out int maxCarry)
+        {
+            waitCell = IntVec3.Invalid;
+            maxCarry = 0;
+            isPublic = SaleStock.Public(storage);
+            if (isPublic) return SaleStock.Allowed(buyer, storage, item, true);
             if (!SaleStock.Buyer(buyer) || buyer.Map != map || storage == null || storage.Map != map || !SaleStock.Contains(storage, item) ||
                 SaleStock.Space(buyer, item) < 1) return false;
-            var cell = WaitAt(buyer);
-            return SaleStock.Suitable(buyer, item) && cell.IsValid && map.mapPawns.AllPawnsSpawned.Any(p =>
-                CanCollect(p, storage, item, 1) && p.CanReach(cell, PathEndMode.OnCell, Danger.None));
+            waitCell = WaitAt(buyer);
+            if (!waitCell.IsValid || !SaleStock.Suitable(buyer, item)) return false;
+
+            int bestCarry = 0;
+            var pawns = map.mapPawns.AllPawnsSpawned;
+            for (int pIdx = 0; pIdx < pawns.Count; pIdx++)
+            {
+                var p = pawns[pIdx];
+                if (CanCollect(p, storage, item, 1) && p.CanReach(waitCell, PathEndMode.OnCell, Danger.None))
+                {
+                    if (!needMaxCarry)
+                    {
+                        maxCarry = 1;
+                        return true;
+                    }
+                    int cap = p.carryTracker.AvailableStackSpace(item.def);
+                    if (cap > bestCarry) bestCarry = cap;
+                }
+            }
+            maxCarry = bestCarry;
+            return bestCarry > 0;
         }
         public SaleOrder Create(Pawn buyer, Building storage, Thing item, int requested)
         {
-            if (!Requestable(buyer, storage, item) || orders.Any(o => !o.cancelled && !o.completed && o.buyer == buyer)) return null;
-            bool delivery = !SaleStock.Public(storage);
+            if (orders.Any(o => !o.cancelled && !o.completed && o.buyer == buyer)) return null;
+            bool isPublic;
+            IntVec3 waitCell;
+            int maxCarry;
+            if (!CheckRequestable(buyer, storage, item, true, out isPublic, out waitCell, out maxCarry)) return null;
+            bool delivery = !isPublic;
             double unit = SaleStock.UnitPrice(item);
             int count = Math.Min(Math.Min(requested, FreeCount(item)), SaleStock.Space(buyer, item));
-            if (delivery && count > 0) count = Math.Min(count, map.mapPawns.AllPawnsSpawned.Where(p => CanCollect(p, storage, item, 1) &&
-                p.CanReach(WaitAt(buyer), PathEndMode.OnCell, Danger.None)).Max(p => p.carryTracker.AvailableStackSpace(item.def)));
+            if (delivery && count > 0) count = Math.Min(count, maxCarry);
             if (count <= 0) return null;
             int price = SaleStock.Price(unit, count);
-            if (price <= 0 || WholesaleTrade.Money(buyer) < price || !delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None)) return null;
+            if (price <= 0 || WholesaleTrade.Money(buyer) < price || (!delivery && !buyer.CanReserveAndReach(storage, PathEndMode.Touch, Danger.None))) return null;
             var desk = map.GetComponent<ComplexMap>().desk;
             var order = new SaleOrder { id = ++nextId, buyer = buyer, storage = storage, item = item, count = count, wholesale=WholesaleTrade.Group(buyer)!=null,dossier=GuestDossiers.Capture(buyer,map),
                 unitPrice = unit, price = price, created = Find.TickManager.TicksGame, receiptCell = desk.Position,
-                delivery = delivery, waitCell = delivery ? WaitAt(buyer) : IntVec3.Invalid };
+                delivery = delivery, waitCell = delivery ? waitCell : IntVec3.Invalid };
             orders.Add(order); return order;
         }
         public Job ShoppingJob(Pawn buyer, Func<Thing, bool> qualifies)
