@@ -1,6 +1,6 @@
 # ClinicAdmissionAcceptance — настоящая приёмка отдельной клиники
 
-Запись только Tools/Build/GeminiClinicAdmissionAcceptance/ и Tools/Build/GeminiWorkerState/ClinicAdmissionAcceptance.json. Вход immutable Tools/Build/VisitorServiceAcceptanceSnapshot/ (Source всех служб), читать Tests/InGameClinicProbe.cs, Tests/InGameClinicGuestProbe.cs, Components/Hospital/Source/, Tools/test_component.ps1 и reference DLL разрешено. Корень, production, Git/QUEUE, игру, настройки и сейвы не менять. Assembly-CSharp только metadata, компиляция разрешена, нативную игру запускает Codex. running -> done.
+Запись только Tools/Build/GeminiClinicAdmissionAcceptance/ и Tools/Build/GeminiWorkerState/ClinicAdmissionAcceptance.json. Вход immutable Tools/Build/VisitorServiceAcceptanceSnapshot/ (Source всех служб), читать Tests/InGameClinicProbe.cs, Tests/InGameClinicGuestProbe.cs, Components/Hospital/UpstreamSource/Hospital/, Tools/test_component.ps1 и reference DLL разрешено. Корень, production, Git/QUEUE, игру, настройки и сейвы не менять. Assembly-CSharp только metadata, компиляция разрешена, нативную игру запускает Codex. running -> done.
 
 После недавнего этапа бюджетов нужно проверить отдельный поток пациентов: игрок построил палату и включил приём, но не знает, почему никто не приходит. Нужен ограниченный НАТИВНЫЙ проверочный probe, не статистический аудит и не изменение частоты.
 
