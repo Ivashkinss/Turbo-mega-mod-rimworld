@@ -1,0 +1,22 @@
+{
+  "factionRansomReload": {
+    "passed": true,
+    "checks": 11,
+    "afterDeception": true,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 3995,
+    "ticksAdvanced": 1716,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "9ca7f87e56b782c5a58d5bd2eb42136e4c6febde612524e11fd3d3023c844591",
+  "passed": true
+}

@@ -714,7 +714,7 @@
     },
     {
       "id": "FactionRansomCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/FactionRansomCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiFactionRansomCorrections",
       "expectedOutputs": [
@@ -724,11 +724,12 @@
         "REVIEW-RESPONSE.md"
       ],
       "afterTask": "SalesScanOptimization",
-      "createdUtc": "2026-11-17T00:06:01.913522+00:00"
+      "createdUtc": "2026-11-17T00:06:01.913522+00:00",
+      "note": "Integrated with root curation: strict missing-map guard, bounded offer, preserved legacy target, scrolling UI. Exact DLL9ca7f8… passed74 checks/6 isolated steps; real partial escrow and2loads, deception/history/native exits, old pre-ransom save, legacy cleaning regression. See FactionRansomRevisionVerification.json."
     },
     {
       "id": "SalesScanCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/SalesScanCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiSalesScanCorrections",
       "expectedOutputs": [
@@ -739,11 +740,12 @@
         "RESPONSE.md"
       ],
       "afterTask": "FactionRansomCorrections",
-      "createdUtc": "2026-11-17T00:07:59.471257+00:00"
+      "createdUtc": "2026-11-17T00:07:59.471257+00:00",
+      "note": "Actual diff/build confirmed. Do not merge yet: public Requestable loses Any short-circuit in real Joy Chance predicate, scans all workers for unnecessary maxCarry. SalesPredicateCorrections queued."
     },
     {
       "id": "RestaurantMenuImplementation",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/RestaurantMenuImplementation/TASK.md",
       "outputDir": "Tools/Build/GeminiRestaurantMenuImplementation",
       "expectedOutputs": [
@@ -760,7 +762,36 @@
       ],
       "afterTask": "SalesScanCorrections",
       "createdUtc": "2026-11-17T00:19:18.026593+00:00",
-      "note": "Large isolated next implementation requested by user for overnight 2–3 hour work. Do after corrections; actual multi-dish code, native probe source, build evidence. Do not edit production."
+      "note": "Candidate not integrated: root found empty menu reset on reinstall, stack count versus portions, raw EN enum labels and GUI state/group guards. RestaurantMenuCorrections queued; native tests still required."
+    },
+    {
+      "id": "RestaurantMenuCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/RestaurantMenuCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiRestaurantMenuCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/RestaurantMenu.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "TEST-RESULTS.json",
+        "RESPONSE.md"
+      ],
+      "createdUtc": "2026-11-17T04:08:40.306664+00:00"
+    },
+    {
+      "id": "SalesPredicateCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/SalesPredicateCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiSalesPredicateCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/ComplexSales.cs",
+        "DIFF.patch",
+        "build_candidate.ps1",
+        "RESULTS.json",
+        "RESPONSE.md"
+      ],
+      "afterTask": "RestaurantMenuCorrections",
+      "createdUtc": "2026-11-17T04:16:21.913105+00:00"
     }
   ]
 }

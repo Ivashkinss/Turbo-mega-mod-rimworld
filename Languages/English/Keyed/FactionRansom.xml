@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.Ransom.Offer>Offer ransom to original faction ({0} silver)</TMM.Ransom.Offer>
+  <TMM.Ransom.OfferTip>One-time offer to slave's original faction for ransom (50% chance). If accepted, faction delivers silver to colony. Terms and decision are permanent.</TMM.Ransom.OfferTip>
+  <TMM.Ransom.Accepted>{0}: Faction {1} accepted the ransom and transferred {2} silver to the colony.</TMM.Ransom.Accepted>
+  <TMM.Ransom.Refused>{0}: Faction {1} refused ransom. The slave remains with the colony and can still be offered an ordinary labour contract.</TMM.Ransom.Refused>
+  <TMM.Ransom.NoValidFaction>{0}: Original faction is missing, defeated, or belongs to the colony. Ransom is impossible.</TMM.Ransom.NoValidFaction>
+  <TMM.Ransom.ContractExists>{0}: This pawn already has an active labour contract or permanent colony membership.</TMM.Ransom.ContractExists>
+  <TMM.Ransom.StatusRefused>Faction refused ransom ({0} silver). Ordinary labour contract available.</TMM.Ransom.StatusRefused>
+  <TMM.Ransom.StatusPaidPending>Faction ransom paid ({0} silver). Awaiting release.</TMM.Ransom.StatusPaidPending>
+  <TMM.Ransom.StatusDeceived>Deception: held in colony after receiving ransom ({0} silver).</TMM.Ransom.StatusDeceived>
+  <TMM.Ransom.StatusReleased>Released to faction upon ransom ({0} silver).</TMM.Ransom.StatusReleased>
+  <TMM.Ransom.StatusReleasedDeceived>Released to faction after deception (previously received ransom {0} silver).</TMM.Ransom.StatusReleasedDeceived>
+  <TMM.Ransom.StatusEscrowPending>Ransom agreed ({0} silver): silver is being delivered near reception ({1}/{0}).</TMM.Ransom.StatusEscrowPending>
+  <TMM.Ransom.Release>Release to faction upon ransom</TMM.Ransom.Release>
+  <TMM.Ransom.ReleaseTip>Release pawn to their original faction. The pawn drops carried items and departs safely.</TMM.Ransom.ReleaseTip>
+  <TMM.Ransom.Deceive>Deceive: hold after ransom</TMM.Ransom.Deceive>
+  <TMM.Ransom.DeceiveTip>Break the agreement: keep the slave in the colony without returning the silver. Warning: this deliberate deception will carry story consequences in future revisions.</TMM.Ransom.DeceiveTip>
+  <TMM.Ransom.DeceivedWarning>{0}: Colony kept the slave after receiving ransom from {1}. Silver retained, deception history recorded.</TMM.Ransom.DeceivedWarning>
+</LanguageData>

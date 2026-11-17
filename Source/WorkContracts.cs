@@ -16,16 +16,20 @@ namespace TurboMegaMod
         }
         public static bool Working(WorkBuyoutEntry e)
         {
-            if(e==null||!e.active||e.released||e.pawn==null||e.pawn.Dead||e.pawn.Destroyed)return false;
+            if(e==null||!e.active||e.released||e.pawn==null||e.pawn.Dead||e.pawn.Destroyed||FactionRansoms.HasAgreedRansom(e.pawn))return false;
             return e.freeContract?e.pawn.Faction==Faction.OfPlayer&&!e.pawn.IsSlave&&!e.pawn.IsPrisoner:e.pawn.IsSlaveOfColony;
         }
         public static WorkBuyoutEntry Offer(Pawn pawn,int target)
         {
             if(pawn==null)return null;var book=Current.Game.GetComponent<WorkBuyouts>();var e=book.Entry(pawn);
             if(e!=null&&e.contractOffered)return e;
-            if(pawn==null||!pawn.Spawned||pawn.Dead||pawn.Downed||pawn.InMentalState||!pawn.IsSlaveOfColony||target<1)return null;
+            var ransoms=Current.Game.GetComponent<FactionRansoms>();
+            var rEntry=ransoms==null?null:ransoms.Entry(pawn);
+            if(rEntry!=null&&rEntry.agreed)return null;
+            int effectiveTarget=(rEntry!=null&&!rEntry.agreed)?rEntry.targetAmount:target;
+            if(pawn==null||!pawn.Spawned||pawn.Dead||pawn.Downed||pawn.InMentalState||!pawn.IsSlaveOfColony||effectiveTarget<1)return null;
             if(PendingOperations(pawn)){Messages.Message("TMM.Contract.Unavailable".Translate(),pawn,MessageTypeDefOf.RejectInput,false);return null;}
-            e=e??book.Begin(pawn,target);if(e==null)return null;
+            e=e??book.Begin(pawn,effectiveTarget);if(e==null)return null;
             e.originalFaction=pawn.HomeFaction;e.contractOffered=true;e.joinRequested=!WillAccept(pawn);
             if(!e.joinRequested){e.freeContract=true;e.active=true;Free(pawn);}else e.active=false;
             Messages.Message((e.joinRequested?"TMM.Contract.JoinRequested":"TMM.Contract.Accepted").Translate(pawn.LabelShortCap),pawn,MessageTypeDefOf.NeutralEvent,false);
@@ -49,7 +53,7 @@ namespace TurboMegaMod
         public static bool AcceptPermanent(Pawn pawn)
         {
             var e=Current.Game.GetComponent<WorkBuyouts>().Entry(pawn);
-            if(e==null||!e.contractOffered||!e.joinRequested||e.joinedPermanently||!pawn.IsSlaveOfColony||!pawn.Spawned||pawn.Dead||pawn.Downed||pawn.InMentalState)return false;
+            if(e==null||!e.contractOffered||!e.joinRequested||e.joinedPermanently||!pawn.IsSlaveOfColony||!pawn.Spawned||pawn.Dead||pawn.Downed||pawn.InMentalState||FactionRansoms.HasAgreedRansom(pawn))return false;
             if(PendingOperations(pawn)){Messages.Message("TMM.Contract.Unavailable".Translate(),pawn,MessageTypeDefOf.RejectInput,false);return false;}
             Free(pawn);e.joinedPermanently=true;e.active=false;return true;
         }
@@ -62,7 +66,7 @@ namespace TurboMegaMod
         }
         public static bool Complete(WorkBuyoutEntry e)
         {
-            if(!Working(e)||!e.freeContract||e.Remaining!=0)return false;var pawn=e.pawn;
+            if(!Working(e)||!e.freeContract||e.Remaining!=0||FactionRansoms.HasAgreedRansom(e.pawn))return false;var pawn=e.pawn;
             if(!pawn.Spawned||pawn.Downed||pawn.InMentalState||PendingOperations(pawn))return false;
             IntVec3 exit;if(!RCellFinder.TryFindBestExitSpot(pawn,out exit,TraverseMode.ByPawn,false))return false;
             if(pawn.carryTracker!=null&&pawn.carryTracker.CarriedThing!=null){Thing dropped;if(!pawn.carryTracker.TryDropCarriedThing(pawn.Position,ThingPlaceMode.Near,out dropped))return false;}

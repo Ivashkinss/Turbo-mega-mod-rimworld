@@ -8,7 +8,7 @@
   <TMM.Contract.FreeWorker>Free employee on a labour contract</TMM.Contract.FreeWorker>
   <TMM.Contract.Completed>Contract fulfilled — employee released</TMM.Contract.Completed>
   <TMM.Contract.JoinPending>Requests permanent colony membership</TMM.Contract.JoinPending>
-  <TMM.Contract.CannotLeave>The employee cannot leave right now. A reachable map exit and ability to move are required.</TMM.Contract.CannotLeave>
-  <TMM.Contract.Help>Make a one-time offer: 90% accept ordinary work toward release, while 10% ask for permanent colony membership. The answer persists and does not change with reloading or price edits. Acceptance removes slave status and preserves work priorities. Existing work-credit rules continue. After completion, release the employee to their original faction. Faction payments and betrayal consequences are a separate stage.</TMM.Contract.Help>
+  <TMM.Contract.CannotLeave>The pawn cannot leave now. Check the map exit route, the pawn's condition and pending operations.</TMM.Contract.CannotLeave>
+  <TMM.Contract.Help>A labour offer has one saved response: 90% accept work toward release, 10% request permanent colony membership. Loading does not reroll it. Acceptance removes slave status while preserving belongings and work priorities. Once the target is earned, the worker can return to the original faction. Deception after faction ransom payment is recorded separately; raids and story consequences are not enabled.</TMM.Contract.Help>
   <TMM.Contract.Unavailable>Complete or cancel queued operations before changing status.</TMM.Contract.Unavailable>
 </LanguageData>

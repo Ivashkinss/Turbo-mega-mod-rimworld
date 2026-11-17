@@ -166,3 +166,5 @@ Gastronomy и CashRegister не импортированы: зафиксиров
 Свободные обычные трудовые договоры: [правила и ограничения](Documentation/WORK-CONTRACTS.md).
 
 Компактная панель персонажа по образцу RimHUD: [возможности и настройка](Documentation/PAWN-OVERVIEW.md).
+
+Выкуп исходной фракцией, сохранение незавершённых выплат и обман после оплаты: [правила](Documentation/FACTION-RANSOM.md).
