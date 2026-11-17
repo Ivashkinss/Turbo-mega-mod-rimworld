@@ -28,7 +28,7 @@ public static class FactionRansomLaunch
 public sealed class FactionRansomProbe:MapComponent
 {
     private Pawn accepted,refused,deceived;private Faction home;private Building_ComplexDesk desk;
-    private bool done,ui,saved,afterDeception;private int checks,stage,start,initialSilver,deceptionTick;private string error;
+    private bool done,ui,saved,afterDeception,policyDefaultsChecked;private int checks,stage,start,initialSilver,deceptionTick;private string error;
     public FactionRansomProbe(Map map):base(map){}
     private FactionRansoms Book{get{return Current.Game.GetComponent<FactionRansoms>();}}
     private WorkBuyouts Labour{get{return Current.Game.GetComponent<WorkBuyouts>();}}
@@ -72,6 +72,7 @@ public sealed class FactionRansomProbe:MapComponent
         saved=true;GameDataSaveLoader.SaveGame("TMM-FactionRansom");Check(File.Exists(GenFilePaths.FilePathForSavedGame("TMM-FactionRansom")),"Partial-escrow save missing");Find.TickManager.CurTimeSpeed=TimeSpeed.Normal;Finish(false);
     }
     private void Reload(){
+        if(!policyDefaultsChecked){Check(Book.defaultChance==50&&Book.overrides.Count==0,"Old save without policy tags did not default to 50%");policyDefaultsChecked=true;}
         var a=Book.Entry(accepted);var c=Book.Entry(deceived);
         if(!afterDeception){
             Check(saved&&a!=null&&c!=null&&a.originalFaction==home&&a.map==map&&a.targetAmount==1200&&a.EscrowCoins==700&&c.EscrowCoins==350,"Pending escrow/terms/faction failed actual reload");

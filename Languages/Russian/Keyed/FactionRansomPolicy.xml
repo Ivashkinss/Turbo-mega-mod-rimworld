@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Ransom.OfferWithChance>Предложить выкуп исходной фракции ({0} сер., шанс {1}%)</TMM.Ransom.OfferWithChance>
+  <TMM.Ransom.OfferTipDynamic>Разовая попытка предложить выкуп исходной фракции раба (вероятность согласия {0}%). При согласии фракция переводит серебро колонии. Сумма и решение фиксируются навсегда.</TMM.Ransom.OfferTipDynamic>
+  <TMM.RansomPolicy.Title>Политика выкупа фракциями</TMM.RansomPolicy.Title>
+  <TMM.RansomPolicy.SettingsButton>Настройки шанса</TMM.RansomPolicy.SettingsButton>
+  <TMM.RansomPolicy.OpenButton>Настройки вероятности</TMM.RansomPolicy.OpenButton>
+  <TMM.RansomPolicy.Note>Настройки определяют вероятность согласия фракций на выкуп. Применяются ТОЛЬКО к новым предложениям; уже зафиксированные решения, переводы и история неизменны.</TMM.RansomPolicy.Note>
+  <TMM.RansomPolicy.DefaultChance>Базовая вероятность согласия: {0}%</TMM.RansomPolicy.DefaultChance>
+  <TMM.RansomPolicy.SearchLabel>Поиск фракции:</TMM.RansomPolicy.SearchLabel>
+  <TMM.RansomPolicy.FactionsListHeader>Индивидуальные исключения для фракций:</TMM.RansomPolicy.FactionsListHeader>
+  <TMM.RansomPolicy.CurrentDefault>{0}% (по умолчанию)</TMM.RansomPolicy.CurrentDefault>
+  <TMM.RansomPolicy.CurrentOverride>{0}% (исключение)</TMM.RansomPolicy.CurrentOverride>
+  <TMM.RansomPolicy.ResetOverride>Сбросить</TMM.RansomPolicy.ResetOverride>
+  <TMM.RansomPolicy.Defeated>разбита</TMM.RansomPolicy.Defeated>
+  <TMM.RansomPolicy.NoFactionsFound>Фракции не найдены</TMM.RansomPolicy.NoFactionsFound>
+  <TMM.RansomPolicy.PresetAlwaysRefuse>0% (всегда отказ)</TMM.RansomPolicy.PresetAlwaysRefuse>
+  <TMM.RansomPolicy.PresetAlwaysAccept>100% (всегда согласие)</TMM.RansomPolicy.PresetAlwaysAccept>
+</LanguageData>

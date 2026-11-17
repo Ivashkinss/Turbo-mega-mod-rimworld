@@ -884,7 +884,7 @@
     },
     {
       "id": "FactionRansomPolicyCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/FactionRansomPolicyCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiFactionRansomPolicyCorrections",
       "expectedOutputs": [
@@ -900,7 +900,20 @@
         "REPORT.md"
       ],
       "afterTask": "FactionRansomPolicyImplementation",
-      "createdUtc": "2026-11-17T08:58:33.570549+00:00"
+      "createdUtc": "2026-11-17T08:58:33.570549+00:00",
+      "note": "Integrated with root curation. 46 actual native checks across3 clean exact-binary steps onf3aa2dfd: fresh24, save/load13, pre-policy save/defaults+deception/native exits9. Genuine same-Def faction instances and physical escrow stack IDs. UI viewed1280x800; no all-DPI claim."
+    },
+    {
+      "id": "ComplexBalanceBaseline",
+      "state": "pending",
+      "taskFile": "Delegation/ComplexBalanceBaseline/TASK.md",
+      "outputDir": "Tools/Build/GeminiComplexBalanceBaseline",
+      "expectedOutputs": [
+        "BALANCE.json",
+        "EXAMPLES.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T09:19:43.973674+00:00"
     }
   ]
 }

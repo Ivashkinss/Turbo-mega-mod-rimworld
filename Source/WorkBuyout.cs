@@ -105,8 +105,11 @@ namespace TurboMegaMod
                         if(Widgets.ButtonText(new Rect(320,y,90,32),"−1000"))target=Math.Max(1000,target-1000);
                         if(Widgets.ButtonText(new Rect(420,y,90,32),"+1000"))target=Math.Min(1000000,target+1000);y+=45;
                     }
-                    if(Widgets.ButtonText(new Rect(0,y,rect.width,36),"TMM.Ransom.Offer".Translate(offerAmount))){FactionRansoms.Offer(pawn,offerAmount);}
-                    TooltipHandler.TipRegion(new Rect(0,y,rect.width,36),"TMM.Ransom.OfferTip".Translate());
+                    int currentChance=FactionRansoms.AcceptanceChanceFor(pawn);
+                    float btnW=rect.width-150;
+                    if(Widgets.ButtonText(new Rect(0,y,btnW,36),"TMM.Ransom.OfferWithChance".Translate(offerAmount,currentChance))){FactionRansoms.Offer(pawn,offerAmount);}
+                    TooltipHandler.TipRegion(new Rect(0,y,btnW,36),"TMM.Ransom.OfferTipDynamic".Translate(currentChance));
+                    if(Widgets.ButtonText(new Rect(btnW+10,y,140,36),"TMM.RansomPolicy.SettingsButton".Translate()))Find.WindowStack.Add(new Dialog_FactionRansomPolicy());
                     y+=45;
                 }else if(!rEntry.agreed&&!rEntry.released){
                     // Faction refused: labour contract now available, target permanently locked from refused offer
@@ -141,8 +144,9 @@ namespace TurboMegaMod
         {
             var book=Current.Game.GetComponent<WorkBuyouts>();
             var pawns=desk.Map.mapPawns.AllPawnsSpawned.Where(p=>p.IsSlaveOfColony).Concat(book.entries.Where(e=>e.active&&e.pawn!=null&&e.pawn.MapHeld==desk.Map).Select(e=>e.pawn)).Distinct().ToArray();
-            if(pawns.Length==0){Messages.Message("TMM.Buyout.NoWorkers".Translate(),MessageTypeDefOf.NeutralEvent,false);return;}
-            Find.WindowStack.Add(new FloatMenu(pawns.Select(p=>new FloatMenuOption(p.LabelShortCap+": "+book.Status(p),()=>Find.WindowStack.Add(new Dialog_WorkBuyout(p)))).ToList()));
+            var options=pawns.Select(p=>new FloatMenuOption(p.LabelShortCap+": "+book.Status(p),()=>Find.WindowStack.Add(new Dialog_WorkBuyout(p)))).ToList();
+            options.Add(new FloatMenuOption("TMM.RansomPolicy.Title".Translate(),()=>Find.WindowStack.Add(new Dialog_FactionRansomPolicy())));
+            Find.WindowStack.Add(new FloatMenu(options));
         }
     }
 }

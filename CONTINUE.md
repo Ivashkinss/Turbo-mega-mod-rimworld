@@ -1,6 +1,21 @@
 # Продолжение Turbo mega mod — 17 ноября 2026
 
-## Завершённый этап: состояние служб на ресепшене (17.11,12:00)
+## Завершённый этап: шанс выкупа по фракциям (17.11,12:27)
+
+Текущая DLL `f3aa2dfdb9b51e8f91130f4993c6ad942c18cd4a672ccfb162e5414e003d3cac`: **46 проверок / 3 целевых шага** — Policy fresh24, настоящий reload13, старый Ransom-save reload9. Все3чистые,0runtimeerrors/0missingrefs вloads,3126Keyed/702scalar/90grammar/12display+252Odyssey. Сводка `Documentation/FactionRansomPolicyRevisionVerification.json`; маршрут `Tools/test_faction_ransom_policy_revision.ps1 -LegacyProfile <свой pre-policy ransom fixture> [-Profile <passing policy fixture>]`; проверка `Tools/verify_faction_ransom_policy.py --profile ... --legacy-profile ... --visual-reviewed` после просмотра. Старые49/276/74 не суммировать. Полная регрессия, пользовательский сейв иlive1.6 не заявляются.
+
+Интегрирован GeminiFactionRansomPolicyCorrections с Root-правками. Default50 и faction-instance overrides0..100 хранятся в FactionRansoms того же мира. Не FactionDef-ключ: два живых экземпляра одинакового типа реально проверены с разными шансами. Старый seeded Rand при50% совпадает, внешнее состояниеRand при0/50/100 сохранено. Setterclamps, null/player guards, детерминированная first-wins очистка duplicate/null и clamp raw250 через настоящий GameSave/Load. Старые offered/agreed/escrow/placed/history не переигрываются. Цена/автопринятие/рейды/бунты не добавлялись.
+
+Ресепшен → Настройки служб комплекса → Персонал → Обычный труд: учёт самовыкупа → Политика выкупа фракциями; работает при пустом списке работников. Поиск, шаг5%, пресеты и сброс исключения, длинные имена truncate+tooltip, двухстрочные ряды. Root исправил сохранявшийся early-return безработников, перенос длинных имён и адаптацию ширины. Снимок окна просмотрен на1280×800; полная строка длинного имени находится ниже видимой части снимка и отдельно визуально не проверялась, другие DPI не тестировались.
+
+Root заменил слабый native probe: створены две live same-Def фракции без fallback на разные Def, реальные Offer0/100, реальные1200монет с сохранением ThingIDs в blocked escrow, неизменность обоих ответов после настройки и reload, реальная выплата1200 единожды, no-room-funding и запись обмана. Native GameDataSaveLoader очищает dirty rules через production ExposeData; не mock. Старый TestRuns/FactionRansom-FullSet-20261117-070557/Saves/TMM-FactionRansom.rws не содержит TMM_defaultRansomChance/TMM_ransomOverrides; реально загружен на новой DLL сdefault50, прежней историей и реальным выходом2 освобождённых пешек. Его оригинальная DLL9ca7f87e. Source относительно Readiness baseline изменён только FactionRansom.cs и WorkBuyout.cs + новый FactionRansomPolicy.cs; readonly/клиника/фермы/платежи остальных служб не менялись.
+
+Документация `Documentation/FACTION-RANSOM-POLICY.md`, общие правила FACTION-RANSOM.md. Следующий утверждённый этап — баланс/приёмка базового комплекса. Gemini выполняет `Delegation/ComplexBalanceBaseline/TASK.md`, immutable `Tools/Build/ComplexBalanceBaselineSnapshot/`, output `Tools/Build/GeminiComplexBalanceBaseline/`; ACK running замечен. Это короткая механическая инвентаризация15–25значений +8 прозрачных расчётов, не новый mock-движок и не полномасштабный аудит. Настройки не менять наугад: сначала проверить owning формулы и конкретные потребности/кошельки. По окончании выдавать полезные изолированные задачи, информируя пользователя о TASK. QUEUE управляет Root.
+
+Сюжетные происшествия/карательные рейды/бунты остаются отложены. Разовый07:00 уже выполнен и удалён, нового таймера без запроса не создавать.
+
+
+## Исторический этап: состояние служб на ресепшене (17.11,12:00)
 
 Текущая DLL `86bcd219a7e88008711dda29e2374cd0bbd010006e5a3fa477e704049bfc7594`: **49 проверок / 2 целевых игровых шага**. Собственная Native Readiness-фикстура35 и загрузка старого RestaurantMenu-сейва14; оба результата clean, 0runtimeerrors, load0unresolvedrefs. 3110Keyed/702scalar/90grammar/12display+252Odyssey. Сводка `Documentation/ServiceReadinessRevisionVerification.json`; запуск `Tools/test_service_readiness_revision.ps1 -LegacyMenuProfile <свой прежний menu fixture> [-Profile <passing readiness>]`; верификация `Tools/verify_service_readiness.py --profile ... --menu-profile ... --visual-reviewed` только после осмотра скриншотов. Пользовательский сейв, live1.6, и все подсистемы не тестировались. Старые276 и74 не суммировать с49.
 

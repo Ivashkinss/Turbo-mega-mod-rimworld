@@ -114,6 +114,8 @@ namespace TurboMegaMod
     {
         public List<FactionRansomEntry> entries = new List<FactionRansomEntry>();
         public int totalRansomIncome;
+        public int defaultChance = 50;
+        public List<FactionRansomOverride> overrides = new List<FactionRansomOverride>();
 
         public FactionRansoms(Game game) { }
 
@@ -122,11 +124,60 @@ namespace TurboMegaMod
             base.ExposeData();
             Scribe_Values.Look(ref totalRansomIncome, "TMM_totalRansomIncome", 0);
             Scribe_Collections.Look(ref entries, "TMM_factionRansoms", LookMode.Deep);
+            Scribe_Values.Look(ref defaultChance, "TMM_defaultRansomChance", 50);
+            Scribe_Collections.Look(ref overrides, "TMM_ransomOverrides", LookMode.Deep);
+
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (entries == null) entries = new List<FactionRansomEntry>();
                 entries.RemoveAll(e => e == null);
+                defaultChance = Mathf.Clamp(defaultChance, 0, 100);
+                if (overrides == null) overrides = new List<FactionRansomOverride>();
+                overrides.RemoveAll(o => o == null || o.faction == null);
+                var seen = new HashSet<Faction>();
+                overrides.RemoveAll(o => !seen.Add(o.faction));
+                foreach (var o in overrides) o.chance = Mathf.Clamp(o.chance, 0, 100);
             }
+        }
+
+        public int GetChance(Faction faction)
+        {
+            if (faction == null || overrides == null) return Mathf.Clamp(defaultChance,0,100);
+            var ov = overrides.FirstOrDefault(o => o != null && o.faction == faction);
+            return Mathf.Clamp(ov != null ? ov.chance : defaultChance,0,100);
+        }
+
+        public void SetOverride(Faction faction, int chance)
+        {
+            if (faction == null || faction.IsPlayer) return;
+            if (overrides == null) overrides = new List<FactionRansomOverride>();
+            chance = Mathf.Clamp(chance, 0, 100);
+            var ov = overrides.FirstOrDefault(o => o != null && o.faction == faction);
+            if (ov != null) ov.chance = chance;
+            else overrides.Add(new FactionRansomOverride(faction, chance));
+        }
+
+        public void RemoveOverride(Faction faction)
+        {
+            if (faction == null || overrides == null) return;
+            overrides.RemoveAll(o => o != null && o.faction == faction);
+        }
+
+        public void SetDefaultChance(int chance)
+        {
+            defaultChance = Mathf.Clamp(chance, 0, 100);
+        }
+
+        public static int AcceptanceChanceFor(Faction faction)
+        {
+            if (Current.Game == null) return 50;
+            var comp = Current.Game.GetComponent<FactionRansoms>();
+            return comp != null ? comp.GetChance(faction) : 50;
+        }
+
+        public static int AcceptanceChanceFor(Pawn pawn)
+        {
+            return pawn != null ? AcceptanceChanceFor(pawn.HomeFaction) : 50;
         }
 
         public void RecordIncome(int amount)
@@ -177,10 +228,20 @@ namespace TurboMegaMod
         public static bool WillFactionAccept(Pawn pawn)
         {
             if (pawn == null || Find.World == null || Find.World.info == null) return false;
+            int chanceInt = AcceptanceChanceFor(pawn);
+            if (chanceInt <= 0) return false;
+            if (chanceInt >= 100) return true;
+
             int seed = GenText.StableStringHash("TMM:faction-ransom:" + Find.World.info.seedString + ":" + pawn.GetUniqueLoadID());
             Rand.PushState(seed);
-            try { return Rand.Chance(0.5f); }
-            finally { Rand.PopState(); }
+            try
+            {
+                return Rand.Chance(chanceInt / 100f);
+            }
+            finally
+            {
+                Rand.PopState();
+            }
         }
 
         public static bool HasAgreedRansom(Pawn pawn)
@@ -232,7 +293,7 @@ namespace TurboMegaMod
                 return null;
             }
 
-            if(bEntry!=null)target=bEntry.target; // Preserve the already agreed legacy obligation.
+            if (bEntry != null) target = bEntry.target; // Preserve the already agreed legacy obligation.
             Map m = pawn.Map;
             if (rEntry == null)
             {
