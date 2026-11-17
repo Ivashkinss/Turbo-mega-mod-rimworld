@@ -1,5 +1,11 @@
 # Продолжение Turbo mega mod — 17 ноября 2026
 
+## Разовое продолжение на 07:00 МСК 17.11.2026
+
+Пользователь попросил автоматическое продолжение работы в07:00 и крупную следующую задачуGemini. Создана ACTIVE thread-heartbeat automation `rimworld-07-00`, однократная (COUNT1) на07:00; prompt требует начать разработку/проверку, а не только статус. Обычные разрешения на проверенныеpush сохраняются. Начать с реальныхWorkerState/артефактов/Git, не с повторных вопросов пользователю.
+
+Новая крупная задача `Delegation/RestaurantMenuImplementation/TASK.md` добавлена после SalesScanCorrections: полноценное многоблюдное меню ресторана, выбор по диете/ингредиентам/деньгам, миграция single meal, фиксация принятого заказа/цены, UIтолько ресепшен, RU/EN, build и nativeprobe-source. Snapshot `Tools/Build/RestaurantMenuImplementationSnapshot/` commit3f25dcf, output `Tools/Build/GeminiRestaurantMenuImplementation/`. Реальная native играGeminiнеразрешена; не приниматьмодельныеPASSзаphysicalmoney/Scribe. НочьюнеизменяетmainSource. В0700 проверить готовность всех текущихкандидатов, независимо рецензировать и продолжатьобычнуюразработку/очередь. Не ждать2–3часаискусственноеслизадачаготовараньше.
+
 ## Последний проверенный этап: компактная панель персонажа
 
 DLL `13bf2709081b0b6ec127cbedd5532e7041445e63e3cf312b3e9c007b8b3b81aa`: 37 проверок / 2 целевых native шага1.7 (PawnOverview15 +GUI3, WorkContract19),0runtimeerrors/GPU loss;2989Keyed/702scalar/90grammar/12display+252Odyssey. `Documentation/PawnOverviewRevisionVerification.json`, `Tools/verify_pawn_overview.py --hud TestRuns/PawnOverview-FullSet-20261117-030603 --contract TestRuns/WorkContract-FullSet-20261117-030825`. Исторические58/4 и78/4 относятся к другим DLL, не суммировать. Пользовательский сейв/live1.6/всеDPI/все подсистемы не заявлять проверенными.

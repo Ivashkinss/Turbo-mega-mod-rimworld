@@ -740,6 +740,27 @@
       ],
       "afterTask": "FactionRansomCorrections",
       "createdUtc": "2026-11-17T00:07:59.471257+00:00"
+    },
+    {
+      "id": "RestaurantMenuImplementation",
+      "state": "pending",
+      "taskFile": "Delegation/RestaurantMenuImplementation/TASK.md",
+      "outputDir": "Tools/Build/GeminiRestaurantMenuImplementation",
+      "expectedOutputs": [
+        "Candidate/Source/RestaurantMenu.cs",
+        "Candidate/Languages/Russian/Keyed/RestaurantMenu.xml",
+        "Candidate/Languages/English/Keyed/RestaurantMenu.xml",
+        "Candidate/Tests/InGameRestaurantMenuProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "TEST-RESULTS.json",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "afterTask": "SalesScanCorrections",
+      "createdUtc": "2026-11-17T00:19:18.026593+00:00",
+      "note": "Large isolated next implementation requested by user for overnight 2–3 hour work. Do after corrections; actual multi-dish code, native probe source, build evidence. Do not edit production."
     }
   ]
 }
