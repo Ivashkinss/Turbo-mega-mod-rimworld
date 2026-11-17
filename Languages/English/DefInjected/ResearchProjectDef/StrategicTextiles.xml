@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_SyntheticTextiles.label>synthread synthesis</TMM_SyntheticTextiles.label>
+  <TMM_SyntheticTextiles.description>Develop a process to synthesize one unit of synthread from one cloth and one chemfuel at a fabrication bench. This is a new industrial process added by Turbo mega mod.</TMM_SyntheticTextiles.description>
+
+  <TMM_AdvancedTextiles.label>hyperweave synthesis</TMM_AdvancedTextiles.label>
+  <TMM_AdvancedTextiles.description>Develop a precise weaving process to produce one unit of hyperweave from one synthread and one chemfuel at a fabrication bench.</TMM_AdvancedTextiles.description>
+</LanguageData>

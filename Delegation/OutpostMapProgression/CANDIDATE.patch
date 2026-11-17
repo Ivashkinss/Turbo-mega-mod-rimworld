@@ -1,0 +1,1068 @@
+--- a/Source/StrategicOutpostMapComponent.cs
++++ b/Source/StrategicOutpostMapComponent.cs
+@@ -14,6 +14,7 @@
+         public IntVec3 position;
+         public Rot4 rotation;
+         public bool isDoor;
++        public bool isMedicalBed;
+         public IntVec3 interactionCell;
+         public bool hasInteractionCell;
+ 
+@@ -45,6 +46,8 @@
+         public CellRect baseFootprint = CellRect.Empty;
+         public IntVec3 supplyDepotCell = IntVec3.Invalid;
+         public List<int> deployedStaffPawnIDs = new List<int>();
++        public bool hasSpawnedGenerator = false;
++        public int farmingZonesCreated = 0;
+ 
+         public StrategicOutpost Outpost
+         {
+@@ -66,6 +69,8 @@
+             Scribe_Values.Look(ref baseCenter, "TMM_outpostBaseCenter", IntVec3.Invalid);
+             Scribe_Values.Look(ref baseFootprint, "TMM_outpostBaseFootprint", CellRect.Empty);
+             Scribe_Values.Look(ref supplyDepotCell, "TMM_outpostSupplyDepotCell", IntVec3.Invalid);
++            Scribe_Values.Look(ref hasSpawnedGenerator, "TMM_hasSpawnedGenerator", false);
++            Scribe_Values.Look(ref farmingZonesCreated, "TMM_farmingZonesCreated", 0);
+             Scribe_Collections.Look(ref deployedStaffPawnIDs, "TMM_deployedStaffPawnIDs", LookMode.Value);
+ 
+             if (deployedStaffPawnIDs == null)
+@@ -81,7 +86,24 @@
+             List<Building> buildings = map.listerBuildings.allBuildingsColonist;
+             for (int i = 0; i < buildings.Count; i++)
+             {
+-                if (buildings[i] is Building_Bed)
++                Building_Bed bed = buildings[i] as Building_Bed;
++                if (bed != null && !bed.Medical)
++                {
++                    count++;
++                }
++            }
++            return count;
++        }
++
++        public int CountMedicalBeds()
++        {
++            if (map == null || map.listerBuildings == null) return 0;
++            int count = 0;
++            List<Building> buildings = map.listerBuildings.allBuildingsColonist;
++            for (int i = 0; i < buildings.Count; i++)
++            {
++                Building_Bed bed = buildings[i] as Building_Bed;
++                if (bed != null && bed.Medical)
+                 {
+                     count++;
+                 }
+@@ -231,6 +253,14 @@
+             return true;
+         }
+ 
++        public static bool IsResearchFinished(string researchDefName)
++        {
++            if (string.IsNullOrEmpty(researchDefName)) return false;
++            ResearchProjectDef rp = DefDatabase<ResearchProjectDef>.GetNamedSilentFail(researchDefName);
++            if (rp == null) return false;
++            return rp.IsFinished;
++        }
++
+         public ModuleLayoutPlan GenerateLayoutPlan(int lvl, CellRect rect, StrategicOutpostSpecialization spec)
+         {
+             ModuleLayoutPlan plan = new ModuleLayoutPlan();
+@@ -244,8 +274,9 @@
+             ThingDef wallDef = ThingDefOf.Wall;
+             ThingDef doorDef = ThingDefOf.Door;
+             ThingDef woodStuff = ThingDefOf.WoodLog;
+-
+-            // Perimeter walls and door
++            ThingDef bedDef = ThingDefOf.Bed;
++
++            // 1. Perimeter walls and door
+             foreach (IntVec3 edge in rect.EdgeCells)
+             {
+                 if (edge == plan.doorCell)
+@@ -256,7 +287,6 @@
+                     doorEntry.position = edge;
+                     doorEntry.rotation = plan.doorFacing;
+                     doorEntry.isDoor = true;
+-                    doorEntry.hasInteractionCell = false;
+                     plan.entries.Add(doorEntry);
+                 }
+                 else
+@@ -267,7 +297,6 @@
+                     wallEntry.position = edge;
+                     wallEntry.rotation = Rot4.South;
+                     wallEntry.isDoor = false;
+-                    wallEntry.hasInteractionCell = false;
+                     plan.entries.Add(wallEntry);
+                 }
+             }
+@@ -275,12 +304,24 @@
+             int cx = rect.CenterCell.x;
+             int cz = rect.CenterCell.z;
+ 
++            // Technology availability check
++            bool hasElectricity = IsResearchFinished("Electricity");
++            bool hasSmithing = IsResearchFinished("Smithing");
++            bool hasClothing = IsResearchFinished("ComplexClothing");
++            bool hasStonecutting = IsResearchFinished("Stonecutting");
++            bool hasMachining = IsResearchFinished("Machining");
++            bool hasFabrication = IsResearchFinished("Fabrication");
++            bool hasTurrets = IsResearchFinished("GunTurrets");
++
+             if (lvl == 1)
+             {
+-                // Main Hall: 2 Beds, Table 2x2, 2 Dining Chairs, Light, Workstation
++                // =========================================================================
++                // Level 1: Main Hall (9x9)
++                // Guaranteed >= 2 regular beds, dining, lighting, specialized workstation
++                // =========================================================================
+                 // Bed 1 (1x2 south): occupies (cx + 1, cz + 2..3)
+                 ModulePlacementEntry bed1 = new ModulePlacementEntry();
+-                bed1.thingDef = ThingDefOf.Bed;
++                bed1.thingDef = bedDef;
+                 bed1.stuffDef = woodStuff;
+                 bed1.position = new IntVec3(cx + 1, 0, cz + 2);
+                 bed1.rotation = Rot4.South;
+@@ -288,7 +329,7 @@
+ 
+                 // Bed 2 (1x2 south): occupies (cx + 3, cz + 2..3)
+                 ModulePlacementEntry bed2 = new ModulePlacementEntry();
+-                bed2.thingDef = ThingDefOf.Bed;
++                bed2.thingDef = bedDef;
+                 bed2.stuffDef = woodStuff;
+                 bed2.position = new IntVec3(cx + 3, 0, cz + 2);
+                 bed2.rotation = Rot4.South;
+@@ -302,7 +343,7 @@
+                 table.rotation = Rot4.North;
+                 plan.entries.Add(table);
+ 
+-                // Dining Chair 1 at (cx - 3, cz) facing East
++                // Dining Chairs facing East
+                 ModulePlacementEntry chair1 = new ModulePlacementEntry();
+                 chair1.thingDef = ThingDefOf.DiningChair;
+                 chair1.stuffDef = woodStuff;
+@@ -310,7 +351,6 @@
+                 chair1.rotation = Rot4.East;
+                 plan.entries.Add(chair1);
+ 
+-                // Dining Chair 2 at (cx - 3, cz + 1) facing East
+                 ModulePlacementEntry chair2 = new ModulePlacementEntry();
+                 chair2.thingDef = ThingDefOf.DiningChair;
+                 chair2.stuffDef = woodStuff;
+@@ -318,16 +358,15 @@
+                 chair2.rotation = Rot4.East;
+                 plan.entries.Add(chair2);
+ 
+-                // TorchLamp bedside between bed heads at (cx + 2, cz + 3)
++                // Torch bedside between bed heads at (cx + 2, cz + 3)
+                 ModulePlacementEntry light = new ModulePlacementEntry();
+                 light.thingDef = ThingDefOf.TorchLamp;
+-                light.stuffDef = null;
+                 light.position = new IntVec3(cx + 2, 0, cz + 3);
+                 light.rotation = Rot4.South;
+                 plan.entries.Add(light);
+ 
+-                // Workstation at (cx + 2, 0, cz - 1), interaction cell at (cx + 2, cz - 2)
+-                ThingDef wsDef = GetWorkstationDef(spec);
++                // Workstation selection matching specialization
++                ThingDef wsDef = GetWorkstationDefForLevel(spec, 1, hasSmithing, hasClothing, hasStonecutting, hasMachining, hasFabrication);
+                 if (wsDef != null)
+                 {
+                     ModulePlacementEntry ws = new ModulePlacementEntry();
+@@ -336,82 +375,577 @@
+                     ws.position = new IntVec3(cx + 2, 0, cz - 1);
+                     ws.rotation = Rot4.South;
+                     ws.hasInteractionCell = true;
+-                    ws.interactionCell = new IntVec3(cx + 2, 0, cz - 2);
++                    ws.interactionCell = new IntVec3(cx + 2, 0, cz);
+                     plan.entries.Add(ws);
+                 }
++
++                // Storage Shelf (2x1) for initial outpost raw supplies
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx - 3, 0, cz - 2);
++                    shelf.rotation = Rot4.North;
++                    plan.entries.Add(shelf);
++                }
++            }
++            else if (lvl == 2)
++            {
++                // =========================================================================
++                // Level 2: North Pavilion (7x7) — Domestic Quarters
++                // 1 regular bed (+1 -> total 3), Storage Shelf, Dresser, TorchLamp
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                // Storage Shelf (2x1) against West wall
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx - 2, 0, cz);
++                    shelf.rotation = Rot4.North;
++                    plan.entries.Add(shelf);
++                }
++
++                // Dresser (2x1) for colonist comfort
++                ThingDef dresserDef = DefDatabase<ThingDef>.GetNamedSilentFail("Dresser");
++                if (dresserDef != null)
++                {
++                    ModulePlacementEntry dresser = new ModulePlacementEntry();
++                    dresser.thingDef = dresserDef;
++                    dresser.stuffDef = woodStuff;
++                    dresser.position = new IntVec3(cx, 0, cz + 2);
++                    dresser.rotation = Rot4.South;
++                    plan.entries.Add(dresser);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx - 2, 0, cz - 1);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++            }
++            else if (lvl == 3)
++            {
++                // =========================================================================
++                // Level 3: East Pavilion (7x7) — Technical Workshop / Kitchen / Processing
++                // 1 regular bed (+1 -> total 4). If Electricity researched -> Generator + Conduit + Lamp
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz - 1);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                // Specialized workstation for level 3
++                ThingDef wsDef = GetWorkstationDefForLevel(spec, 3, hasSmithing, hasClothing, hasStonecutting, hasMachining, hasFabrication);
++                if (wsDef != null)
++                {
++                    ModulePlacementEntry ws = new ModulePlacementEntry();
++                    ws.thingDef = wsDef;
++                    ws.stuffDef = wsDef.MadeFromStuff ? woodStuff : null;
++                    ws.position = new IntVec3(cx, 0, cz + 2);
++                    ws.rotation = Rot4.South;
++                    ws.hasInteractionCell = true;
++                    ws.interactionCell = new IntVec3(cx, 0, cz + 1);
++                    plan.entries.Add(ws);
++                }
++
++                // Power Network Setup if Electricity is researched
++                if (hasElectricity && spec == StrategicOutpostSpecialization.Factory)
++                {
++                    // Exterior generator alcove East of pavilion: x in [cx + 4, cx + 5], z in [cz + 1, cz + 2]
++                    ThingDef genDef = DefDatabase<ThingDef>.GetNamedSilentFail("WoodFiredGenerator");
++                    ThingDef conduitDef = DefDatabase<ThingDef>.GetNamedSilentFail("PowerConduit");
++                    ThingDef lampDef = DefDatabase<ThingDef>.GetNamedSilentFail("StandingLamp");
++
++                    if (genDef != null)
++                    {
++                        ModulePlacementEntry gen = new ModulePlacementEntry();
++                        gen.thingDef = genDef;
++                        gen.stuffDef = null;
++                        gen.position = new IntVec3(cx + 4, 0, cz + 1);
++                        gen.rotation = Rot4.South;
++                        plan.entries.Add(gen);
++                    }
++
++                    if (conduitDef != null)
++                    {
++                        // Conduit line from generator into wall and across to lamp and bench
++                        IntVec3[] conduitCells = new IntVec3[]
++                        {
++                            new IntVec3(cx + 4, 0, cz + 1),
++                            new IntVec3(cx + 3, 0, cz + 1), // in East wall
++                            new IntVec3(cx + 2, 0, cz + 1),
++                            new IntVec3(cx + 1, 0, cz + 1),
++                            new IntVec3(cx, 0, cz + 1)
++                        };
++                        for (int cIdx = 0; cIdx < conduitCells.Length; cIdx++)
++                        {
++                            ModulePlacementEntry conduit = new ModulePlacementEntry();
++                            conduit.thingDef = conduitDef;
++                            conduit.position = conduitCells[cIdx];
++                            conduit.rotation = Rot4.North;
++                            plan.entries.Add(conduit);
++                        }
++                    }
++
++                    if (lampDef != null)
++                    {
++                        ModulePlacementEntry lamp = new ModulePlacementEntry();
++                        lamp.thingDef = lampDef;
++                        lamp.position = new IntVec3(cx + 1, 0, cz + 1);
++                        lamp.rotation = Rot4.South;
++                        plan.entries.Add(lamp);
++                    }
++                }
++                else
++                {
++                    ModulePlacementEntry light = new ModulePlacementEntry();
++                    light.thingDef = ThingDefOf.TorchLamp;
++                    light.position = new IntVec3(cx - 2, 0, cz - 1);
++                    light.rotation = Rot4.South;
++                    plan.entries.Add(light);
++
++                    ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                    if (shelfDef != null)
++                    {
++                        ModulePlacementEntry shelf = new ModulePlacementEntry();
++                        shelf.thingDef = shelfDef;
++                        shelf.stuffDef = woodStuff;
++                        shelf.position = new IntVec3(cx - 2, 0, cz + 1);
++                        shelf.rotation = Rot4.North;
++                        plan.entries.Add(shelf);
++                    }
++                }
++            }
++            else if (lvl == 4)
++            {
++                // =========================================================================
++                // Level 4: South Pavilion (7x7) — Recreation & Barracks
++                // 1 regular bed (+1 -> total 5), ChessTable with chairs, lighting
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                ThingDef chessDef = DefDatabase<ThingDef>.GetNamedSilentFail("ChessTable");
++                if (chessDef != null)
++                {
++                    ModulePlacementEntry chess = new ModulePlacementEntry();
++                    chess.thingDef = chessDef;
++                    chess.stuffDef = woodStuff;
++                    chess.position = new IntVec3(cx - 1, 0, cz);
++                    chess.rotation = Rot4.North;
++                    plan.entries.Add(chess);
++
++                    ModulePlacementEntry c1 = new ModulePlacementEntry();
++                    c1.thingDef = ThingDefOf.DiningChair;
++                    c1.stuffDef = woodStuff;
++                    c1.position = new IntVec3(cx - 2, 0, cz);
++                    c1.rotation = Rot4.East;
++                    plan.entries.Add(c1);
++
++                    ModulePlacementEntry c2 = new ModulePlacementEntry();
++                    c2.thingDef = ThingDefOf.DiningChair;
++                    c2.stuffDef = woodStuff;
++                    c2.position = new IntVec3(cx, 0, cz);
++                    c2.rotation = Rot4.West;
++                    plan.entries.Add(c2);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx - 2, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++            }
++            else if (lvl == 5)
++            {
++                // =========================================================================
++                // Level 5: West Pavilion (7x7) — Depot & Logistics
++                // 1 regular bed (+1 -> total 6), 2 Shelves, sandbag on exterior street
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx - 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry s1 = new ModulePlacementEntry();
++                    s1.thingDef = shelfDef;
++                    s1.stuffDef = woodStuff;
++                    s1.position = new IntVec3(cx + 1, 0, cz + 1);
++                    s1.rotation = Rot4.North;
++                    plan.entries.Add(s1);
++
++                    ModulePlacementEntry s2 = new ModulePlacementEntry();
++                    s2.thingDef = shelfDef;
++                    s2.stuffDef = woodStuff;
++                    s2.position = new IntVec3(cx + 1, 0, cz - 1);
++                    s2.rotation = Rot4.North;
++                    plan.entries.Add(s2);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx - 2, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++
++                // Exterior sandbag on street corner
++                IntVec3 sbCell = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(0, 0, 1);
++                ModulePlacementEntry sb = new ModulePlacementEntry();
++                sb.thingDef = ThingDefOf.Sandbags;
++                sb.position = sbCell;
++                sb.rotation = Rot4.South;
++                plan.entries.Add(sb);
++            }
++            else if (lvl == 6)
++            {
++                // =========================================================================
++                // Level 6: North-East Pavilion (7x7) — Specialized Wing
++                // 1 regular bed (+1 -> total 7). Factory gets Machining if researched
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                ThingDef wsDef = GetWorkstationDefForLevel(spec, 6, hasSmithing, hasClothing, hasStonecutting, hasMachining, hasFabrication);
++                if (wsDef != null)
++                {
++                    ModulePlacementEntry ws = new ModulePlacementEntry();
++                    ws.thingDef = wsDef;
++                    ws.stuffDef = wsDef.MadeFromStuff ? woodStuff : null;
++                    ws.position = new IntVec3(cx - 1, 0, cz + 2);
++                    ws.rotation = Rot4.South;
++                    ws.hasInteractionCell = true;
++                    ws.interactionCell = new IntVec3(cx - 1, 0, cz + 1);
++                    plan.entries.Add(ws);
++                }
++
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx - 2, 0, cz - 1);
++                    shelf.rotation = Rot4.North;
++                    plan.entries.Add(shelf);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx + 2, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++            }
++            else if (lvl == 7)
++            {
++                // =========================================================================
++                // Level 7: South-East Pavilion (7x7) — Defense & Medical Quarters
++                // 1 regular bed (+1 -> total 8) + 1 Medical Cot (does not count toward colonist cap)
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                // Medical bed (separate reserve cot for infirmary)
++                ThingDef medBedDef = DefDatabase<ThingDef>.GetNamedSilentFail("HospitalBed");
++                if (medBedDef == null) medBedDef = bedDef;
++                ModulePlacementEntry medBed = new ModulePlacementEntry();
++                medBed.thingDef = medBedDef;
++                medBed.stuffDef = medBedDef.MadeFromStuff ? woodStuff : null;
++                medBed.position = new IntVec3(cx - 2, 0, cz);
++                medBed.rotation = Rot4.South;
++                medBed.isMedicalBed = true;
++                plan.entries.Add(medBed);
++
++                // Medical supply shelf
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx, 0, cz - 2);
++                    shelf.rotation = Rot4.East;
++                    plan.entries.Add(shelf);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++
++                // Watchtower exterior defense: Turret if researched, else Sandbags
++                if (spec == StrategicOutpostSpecialization.Watchtower && hasTurrets && hasElectricity)
++                {
++                    ThingDef turretDef = DefDatabase<ThingDef>.GetNamedSilentFail("Turret_MiniTurret");
++                    if (turretDef != null)
++                    {
++                        IntVec3 turretCell = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(2, 0, 0);
++                        ModulePlacementEntry turret = new ModulePlacementEntry();
++                        turret.thingDef = turretDef;
++                        turret.stuffDef = DefDatabase<ThingDef>.GetNamedSilentFail("Steel");
++                        turret.position = turretCell;
++                        turret.rotation = Rot4.South;
++                        plan.entries.Add(turret);
++                    }
++                }
++                else
++                {
++                    IntVec3 sbCell = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(1, 0, 0);
++                    ModulePlacementEntry sb = new ModulePlacementEntry();
++                    sb.thingDef = ThingDefOf.Sandbags;
++                    sb.position = sbCell;
++                    sb.rotation = Rot4.South;
++                    plan.entries.Add(sb);
++                }
++            }
++            else if (lvl == 8)
++            {
++                // =========================================================================
++                // Level 8: South-West Pavilion (7x7) — Domestic Living Quarters
++                // 1 regular bed (+1 -> total 9), Dresser, EndTable, Recreation
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                ThingDef dresserDef = DefDatabase<ThingDef>.GetNamedSilentFail("Dresser");
++                if (dresserDef != null)
++                {
++                    ModulePlacementEntry dresser = new ModulePlacementEntry();
++                    dresser.thingDef = dresserDef;
++                    dresser.stuffDef = woodStuff;
++                    dresser.position = new IntVec3(cx - 1, 0, cz + 2);
++                    dresser.rotation = Rot4.South;
++                    plan.entries.Add(dresser);
++                }
++
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx - 2, 0, cz - 1);
++                    shelf.rotation = Rot4.North;
++                    plan.entries.Add(shelf);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx + 2, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
++            }
++            else if (lvl == 9)
++            {
++                // =========================================================================
++                // Level 9: North-West Pavilion (7x7) — Advanced Industry / Garrison Keep
++                // 1 regular bed (+1 -> total 10). Factory gets FabricationBench if researched
++                // =========================================================================
++                ModulePlacementEntry bed = new ModulePlacementEntry();
++                bed.thingDef = bedDef;
++                bed.stuffDef = woodStuff;
++                bed.position = new IntVec3(cx + 2, 0, cz);
++                bed.rotation = Rot4.South;
++                plan.entries.Add(bed);
++
++                ThingDef wsDef = GetWorkstationDefForLevel(spec, 9, hasSmithing, hasClothing, hasStonecutting, hasMachining, hasFabrication);
++                if (wsDef != null)
++                {
++                    ModulePlacementEntry ws = new ModulePlacementEntry();
++                    ws.thingDef = wsDef;
++                    ws.stuffDef = wsDef.MadeFromStuff ? woodStuff : null;
++                    ws.position = new IntVec3(cx - 1, 0, cz + 1);
++                    ws.rotation = Rot4.South;
++                    ws.hasInteractionCell = true;
++                    ws.interactionCell = new IntVec3(cx - 1, 0, cz);
++                    plan.entries.Add(ws);
++                }
++
++                ThingDef shelfDef = DefDatabase<ThingDef>.GetNamedSilentFail("Shelf");
++                if (shelfDef != null)
++                {
++                    ModulePlacementEntry shelf = new ModulePlacementEntry();
++                    shelf.thingDef = shelfDef;
++                    shelf.stuffDef = woodStuff;
++                    shelf.position = new IntVec3(cx - 2, 0, cz - 1);
++                    shelf.rotation = Rot4.North;
++                    plan.entries.Add(shelf);
++                }
++
++                ModulePlacementEntry light = new ModulePlacementEntry();
++                light.thingDef = ThingDefOf.TorchLamp;
++                light.position = new IntVec3(cx + 2, 0, cz + 2);
++                light.rotation = Rot4.South;
++                plan.entries.Add(light);
+             }
+             else if (lvl == 10)
+             {
+-                // Level 10 Command Redoubt: 2 beds (+2 beds to reach 12 beds total, >= 11 required)
++                // =========================================================================
++                // Level 10: Command Redoubt (7x7) — High Bastion & Redoubt
++                // 2 regular beds (+2 -> total 12 regular beds, >= 11 strictly satisfied!)
++                // Fortified sandbags flanking entrance, tactical planning table
++                // =========================================================================
+                 ModulePlacementEntry b1 = new ModulePlacementEntry();
+-                b1.thingDef = ThingDefOf.Bed;
++                b1.thingDef = bedDef;
+                 b1.stuffDef = woodStuff;
+                 b1.position = new IntVec3(cx - 1, 0, cz + 2);
+                 b1.rotation = Rot4.South;
+                 plan.entries.Add(b1);
+ 
+                 ModulePlacementEntry b2 = new ModulePlacementEntry();
+-                b2.thingDef = ThingDefOf.Bed;
++                b2.thingDef = bedDef;
+                 b2.stuffDef = woodStuff;
+                 b2.position = new IntVec3(cx + 1, 0, cz + 2);
+                 b2.rotation = Rot4.South;
+                 plan.entries.Add(b2);
+ 
++                // Tactical Command Table (2x2)
++                ModulePlacementEntry table = new ModulePlacementEntry();
++                table.thingDef = ThingDefOf.Table2x2c;
++                table.stuffDef = woodStuff;
++                table.position = new IntVec3(cx, 0, cz - 1);
++                table.rotation = Rot4.North;
++                plan.entries.Add(table);
++
++                ModulePlacementEntry c1 = new ModulePlacementEntry();
++                c1.thingDef = ThingDefOf.DiningChair;
++                c1.stuffDef = woodStuff;
++                c1.position = new IntVec3(cx - 1, 0, cz - 1);
++                c1.rotation = Rot4.East;
++                plan.entries.Add(c1);
++
++                ModulePlacementEntry c2 = new ModulePlacementEntry();
++                c2.thingDef = ThingDefOf.DiningChair;
++                c2.stuffDef = woodStuff;
++                c2.position = new IntVec3(cx + 1, 0, cz - 1);
++                c2.rotation = Rot4.West;
++                plan.entries.Add(c2);
++
+                 ModulePlacementEntry light = new ModulePlacementEntry();
+                 light.thingDef = ThingDefOf.TorchLamp;
+-                light.stuffDef = null;
+-                light.position = new IntVec3(cx, 0, cz - 1);
++                light.position = new IntVec3(cx, 0, cz + 1);
+                 light.rotation = Rot4.South;
+                 plan.entries.Add(light);
+ 
+-                // Exterior sandbags flanking the door
++                // Exterior fortified sandbags flanking the door
+                 IntVec3 sandbagLeft = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(-1, 0, 0);
+                 IntVec3 sandbagRight = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(1, 0, 0);
+ 
+                 ModulePlacementEntry sbLeft = new ModulePlacementEntry();
+                 sbLeft.thingDef = ThingDefOf.Sandbags;
+-                sbLeft.stuffDef = null;
+                 sbLeft.position = sandbagLeft;
+                 sbLeft.rotation = Rot4.South;
+                 plan.entries.Add(sbLeft);
+ 
+                 ModulePlacementEntry sbRight = new ModulePlacementEntry();
+                 sbRight.thingDef = ThingDefOf.Sandbags;
+-                sbRight.stuffDef = null;
+                 sbRight.position = sandbagRight;
+                 sbRight.rotation = Rot4.South;
+                 plan.entries.Add(sbRight);
+-            }
+-            else
+-            {
+-                // Levels 2..9: Add 1 real bed per module (+ light, optional sandbag)
+-                ModulePlacementEntry bed = new ModulePlacementEntry();
+-                bed.thingDef = ThingDefOf.Bed;
+-                bed.stuffDef = woodStuff;
+-                bed.position = new IntVec3(cx, 0, cz + 1);
+-                bed.rotation = Rot4.South;
+-                plan.entries.Add(bed);
+-
+-                ModulePlacementEntry light = new ModulePlacementEntry();
+-                light.thingDef = ThingDefOf.TorchLamp;
+-                light.stuffDef = null;
+-                light.position = new IntVec3(cx - 1, 0, cz - 1);
+-                light.rotation = Rot4.South;
+-                plan.entries.Add(light);
+-
+-                if (lvl == 5 || lvl == 7)
+-                {
+-                    IntVec3 sandbagCell = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(1, 0, 0);
+-                    ModulePlacementEntry sb = new ModulePlacementEntry();
+-                    sb.thingDef = ThingDefOf.Sandbags;
+-                    sb.stuffDef = null;
+-                    sb.position = sandbagCell;
+-                    sb.rotation = Rot4.South;
+-                    plan.entries.Add(sb);
++
++                // If Watchtower and Turrets researched: place defensive mini-turret
++                if (spec == StrategicOutpostSpecialization.Watchtower && hasTurrets && hasElectricity)
++                {
++                    ThingDef turretDef = DefDatabase<ThingDef>.GetNamedSilentFail("Turret_MiniTurret");
++                    if (turretDef != null)
++                    {
++                        IntVec3 turretCell = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(2, 0, 0);
++                        ModulePlacementEntry turret = new ModulePlacementEntry();
++                        turret.thingDef = turretDef;
++                        turret.stuffDef = DefDatabase<ThingDef>.GetNamedSilentFail("Steel");
++                        turret.position = turretCell;
++                        turret.rotation = Rot4.South;
++                        plan.entries.Add(turret);
++                    }
+                 }
+             }
+ 
+             return plan;
++        }
++
++        private ThingDef GetWorkstationDefForLevel(StrategicOutpostSpecialization spec, int lvl,
++            bool hasSmithing, bool hasClothing, bool hasStonecutting, bool hasMachining, bool hasFabrication)
++        {
++            switch (spec)
++            {
++                case StrategicOutpostSpecialization.Factory:
++                    if (lvl >= 9 && hasFabrication)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("FabricationBench") ?? DefDatabase<ThingDef>.GetNamedSilentFail("TableMachining");
++                    }
++                    if (lvl >= 6 && hasMachining)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("TableMachining") ?? DefDatabase<ThingDef>.GetNamedSilentFail("FueledSmithy");
++                    }
++                    if (hasSmithing)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("FueledSmithy");
++                    }
++                    if (hasClothing)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("HandTailoringBench");
++                    }
++                    return DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
++
++                case StrategicOutpostSpecialization.Farming:
++                    if (lvl >= 3)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("FueledStove") ?? DefDatabase<ThingDef>.GetNamedSilentFail("TableButcher");
++                    }
++                    return DefDatabase<ThingDef>.GetNamedSilentFail("TableButcher") ?? DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
++
++                case StrategicOutpostSpecialization.Mining:
++                case StrategicOutpostSpecialization.Logging:
++                    if (lvl >= 3 && hasSmithing)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("FueledSmithy");
++                    }
++                    if (hasStonecutting)
++                    {
++                        return DefDatabase<ThingDef>.GetNamedSilentFail("TableStonecutter");
++                    }
++                    return DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
++
++                case StrategicOutpostSpecialization.Watchtower:
++                    return DefDatabase<ThingDef>.GetNamedSilentFail("Table1x2c");
++
++                default:
++                    return DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
++            }
+         }
+ 
+         public bool CanSafelyExecutePlan(ModuleLayoutPlan plan, out string failReason)
+@@ -453,6 +987,37 @@
+                 }
+             }
+ 
++            // Check planned entries outside bounds (like exterior generators, turrets, sandbags)
++            for (int i = 0; i < plan.entries.Count; i++)
++            {
++                ModulePlacementEntry entry = plan.entries[i];
++                CellRect occ = entry.GetOccupiedRect();
++                foreach (IntVec3 oc in occ)
++                {
++                    if (!oc.InBounds(map))
++                    {
++                        failReason = "Planned entry outside map bounds: " + entry.thingDef.label;
++                        return false;
++                    }
++                    TerrainDef oTer = map.terrainGrid.TerrainAt(oc);
++                    if (oTer != null && oTer.passability == Traversability.Impassable)
++                    {
++                        failReason = "Planned entry cell impassable: " + entry.thingDef.label;
++                        return false;
++                    }
++                    List<Thing> occThings = oc.GetThingList(map);
++                    for (int tIdx = 0; tIdx < occThings.Count; tIdx++)
++                    {
++                        Thing ot = occThings[tIdx];
++                        if (IsProtectedFromModuleWipe(ot))
++                        {
++                            failReason = "Entry location blocked by protected entity: " + ot.LabelCap;
++                            return false;
++                        }
++                    }
++                }
++            }
++
+             // Unobstructed door access check
+             if (!HasClearExteriorAccess(plan.doorCell, plan.doorFacing))
+             {
+@@ -515,7 +1080,7 @@
+                 return true;
+             }
+ 
+-            // Try small offsets in cardinal directions (4, 8, 12 cells)
++            // Small offsets in cardinal directions
+             IntVec3[] offsets = new IntVec3[]
+             {
+                 new IntVec3(0, 0, 4),
+@@ -569,7 +1134,7 @@
+                 return false;
+             }
+ 
+-            // Clear natural vegetation/rocks only (protected items/structures are never touched)
++            // Clear natural vegetation/rocks only within footprint
+             foreach (IntVec3 c in plan.bounds)
+             {
+                 List<Thing> toClear = new List<Thing>();
+@@ -603,9 +1168,71 @@
+                 ModulePlacementEntry entry = plan.entries[i];
+                 if (entry.thingDef != null && entry.position.InBounds(map))
+                 {
++                    // If exterior cell, clear natural flora/rocks on that cell before spawning
++                    if (!plan.bounds.Contains(entry.position))
++                    {
++                        CellRect occ = entry.GetOccupiedRect();
++                        foreach (IntVec3 oc in occ)
++                        {
++                            List<Thing> extThings = oc.GetThingList(map);
++                            List<Thing> extClear = new List<Thing>();
++                            for (int k = 0; k < extThings.Count; k++)
++                            {
++                                Thing t = extThings[k];
++                                if (t != null && !IsProtectedFromModuleWipe(t) && t.def.destroyable)
++                                {
++                                    extClear.Add(t);
++                                }
++                            }
++                            for (int k = 0; k < extClear.Count; k++)
++                            {
++                                extClear[k].Destroy(DestroyMode.Vanish);
++                            }
++                        }
++                    }
++
+                     Thing spawned = ThingMaker.MakeThing(entry.thingDef, entry.stuffDef);
+                     spawned.SetFaction(Faction.OfPlayer);
++
++                    // If medical bed, set medical flag
++                    if (entry.isMedicalBed)
++                    {
++                        Building_Bed bed = spawned as Building_Bed;
++                        if (bed != null)
++                        {
++                            bed.Medical = true;
++                        }
++                    }
++
+                     GenSpawn.Spawn(spawned, entry.position, map, entry.rotation, WipeMode.Vanish, false, false);
++
++                    // Power Generator: start empty (0 fuel), requiring colonist refueling
++                    if (entry.thingDef.defName == "WoodFiredGenerator")
++                    {
++                        CompRefuelable compRefuel = spawned.TryGetComp<CompRefuelable>();
++                        if (compRefuel != null && compRefuel.Fuel > 0f)
++                        {
++                            compRefuel.ConsumeFuel(compRefuel.Fuel);
++                        }
++                        hasSpawnedGenerator = true;
++                    }
++                }
++            }
++
++            // Farming Specialization: Create native Zone_Growing near campus
++            if (spec == StrategicOutpostSpecialization.Farming)
++            {
++                if (lvl == 1)
++                {
++                    TryCreateOutpostGrowingZone(rect, "Plant_Rice");
++                }
++                else if (lvl == 3)
++                {
++                    TryCreateOutpostGrowingZone(rect, "Plant_Potato");
++                }
++                else if (lvl == 5)
++                {
++                    TryCreateOutpostGrowingZone(rect, "Plant_Cotton");
+                 }
+             }
+ 
+@@ -632,35 +1259,116 @@
+             return true;
+         }
+ 
+-        private ThingDef GetWorkstationDef(StrategicOutpostSpecialization spec)
+-        {
+-            string targetDefName = "CraftingSpot";
+-            switch (spec)
+-            {
+-                case StrategicOutpostSpecialization.Mining:
+-                case StrategicOutpostSpecialization.Logging:
+-                    targetDefName = "TableStonecutter";
++        public bool TryCreateOutpostGrowingZone(CellRect moduleRect, string plantDefName)
++        {
++            if (map == null || map.zoneManager == null) return false;
++
++            // Search offsets around campus (4 directions) for 6x6 fertile soil
++            IntVec3[] searchOffsets = new IntVec3[]
++            {
++                new IntVec3(moduleRect.Width + 2, 0, 0),
++                new IntVec3(-(6 + 2), 0, 0),
++                new IntVec3(0, 0, moduleRect.Height + 2),
++                new IntVec3(0, 0, -(6 + 2)),
++                new IntVec3(moduleRect.Width + 2, 0, moduleRect.Height + 2),
++                new IntVec3(-(6 + 2), 0, -(6 + 2))
++            };
++
++            CellRect zoneRect = CellRect.Empty;
++            for (int o = 0; o < searchOffsets.Length; o++)
++            {
++                CellRect cand = new CellRect(moduleRect.minX + searchOffsets[o].x, moduleRect.minZ + searchOffsets[o].z, 6, 6);
++                if (cand.minX < 6 || cand.maxX >= map.Size.x - 6 || cand.minZ < 6 || cand.maxZ >= map.Size.z - 6)
++                    continue;
++
++                bool allValid = true;
++                int fertileCount = 0;
++                foreach (IntVec3 c in cand)
++                {
++                    if (map.roofGrid.RoofAt(c) != null || map.zoneManager.ZoneAt(c) != null)
++                    {
++                        allValid = false;
++                        break;
++                    }
++                    TerrainDef ter = map.terrainGrid.TerrainAt(c);
++                    if (ter != null && (ter.passability == Traversability.Impassable || ter.IsWater))
++                    {
++                        allValid = false;
++                        break;
++                    }
++                    List<Thing> thingList = c.GetThingList(map);
++                    for (int t = 0; t < thingList.Count; t++)
++                    {
++                        if (IsProtectedFromModuleWipe(thingList[t]))
++                        {
++                            allValid = false;
++                            break;
++                        }
++                    }
++                    if (!allValid) break;
++
++                    if (c.GetFertility(map) >= 0.7f)
++                    {
++                        fertileCount++;
++                    }
++                }
++
++                if (allValid && fertileCount >= 16)
++                {
++                    zoneRect = cand;
+                     break;
+-                case StrategicOutpostSpecialization.Farming:
+-                    targetDefName = "TableButcher";
+-                    break;
+-                case StrategicOutpostSpecialization.Factory:
+-                    targetDefName = "TableSculpting";
+-                    break;
+-                case StrategicOutpostSpecialization.Watchtower:
+-                    targetDefName = "Sandbags";
+-                    break;
+-                default:
+-                    targetDefName = "CraftingSpot";
+-                    break;
+-            }
+-
+-            ThingDef wsDef = DefDatabase<ThingDef>.GetNamedSilentFail(targetDefName);
+-            if (wsDef == null)
+-            {
+-                wsDef = DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
+-            }
+-            return wsDef;
++                }
++            }
++
++            if (zoneRect.IsEmpty)
++            {
++                return false;
++            }
++
++            ThingDef plantDef = DefDatabase<ThingDef>.GetNamedSilentFail(plantDefName);
++            if (plantDef == null)
++            {
++                plantDef = DefDatabase<ThingDef>.GetNamedSilentFail("Plant_Rice");
++            }
++
++            Zone_Growing zone = new Zone_Growing(map.zoneManager);
++            if (plantDef != null)
++            {
++                zone.SetPlantDefToGrow(plantDef);
++            }
++            zone.allowSow = true;
++            zone.allowCut = true;
++            map.zoneManager.RegisterZone(zone);
++
++            foreach (IntVec3 c in zoneRect)
++            {
++                if (c.GetFertility(map) >= 0.7f && map.zoneManager.ZoneAt(c) == null)
++                {
++                    List<Thing> toClear = new List<Thing>();
++                    List<Thing> things = c.GetThingList(map);
++                    for (int i = 0; i < things.Count; i++)
++                    {
++                        Thing t = things[i];
++                        if (t != null && !IsProtectedFromModuleWipe(t) && t.def.destroyable)
++                        {
++                            toClear.Add(t);
++                        }
++                    }
++                    for (int i = 0; i < toClear.Count; i++)
++                    {
++                        toClear[i].Destroy(DestroyMode.Vanish);
++                    }
++
++                    zone.AddCell(c);
++                }
++            }
++
++            if (zone.CellCount > 0)
++            {
++                farmingZonesCreated++;
++                return true;
++            }
++            return false;
+         }
+     }
+ }
+--- a/Source/GenStep_StrategicOutpostBase.cs
++++ b/Source/GenStep_StrategicOutpostBase.cs
+@@ -53,7 +53,7 @@
+             // Unfog base camp area so colonists and player can clearly see it
+             if (!comp.baseFootprint.IsEmpty)
+             {
+-                CellRect unfogRect = comp.baseFootprint.ExpandedBy(3).ClipInsideMap(map);
++                CellRect unfogRect = comp.baseFootprint.ExpandedBy(4).ClipInsideMap(map);
+                 foreach (IntVec3 c in unfogRect)
+                 {
+                     map.fogGrid.Unfog(c);

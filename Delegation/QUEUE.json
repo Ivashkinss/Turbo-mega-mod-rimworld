@@ -1136,7 +1136,7 @@
     },
     {
       "id": "StrategicOutpostRuntimeCompletion",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/StrategicOutpostRuntimeCompletion/TASK.md",
       "outputDir": "Tools/Build/GeminiStrategicOutpostRuntimeCompletion",
       "expectedOutputs": [
@@ -1150,7 +1150,46 @@
         "VALIDATION.json"
       ],
       "createdUtc": "2026-11-17T20:39:49.809119+00:00",
-      "note": "After MapIntegrity done. Concrete ownership/stack/deadline/evacuation fixes and replace fake PASS with real native lifecycle probe; root handles world traffic and key cities."
+      "note": "Worker done. Root independently found weak live probe (no elapsed day, incorrect fixture stack counts, save stage) and remaining evacuation/WorldPawns concerns; root curated CodexOutpostAcceptance and is running native tests. Do not rewrite worker outputs."
+    },
+    {
+      "id": "OutpostCommandAssets",
+      "state": "reviewed",
+      "taskFile": "Delegation/OutpostCommandAssets/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostCommandAssets",
+      "expectedOutputs": [
+        "make_assets.py",
+        "Textures/UI/Commands/FoundOutpost.png",
+        "Textures/UI/Commands/ManageOutpost.png",
+        "Textures/UI/Commands/EnterOutpost.png",
+        "Textures/UI/Commands/ViewMap.png",
+        "Textures/UI/Commands/DeployPersonnel.png",
+        "Textures/UI/Commands/RecallPersonnel.png",
+        "Textures/UI/Commands/UpgradeOutpost.png",
+        "preview.png",
+        "manifest.json",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T20:59:07.147906+00:00",
+      "note": "Root inspected preview, reran deterministic generator, verified all seven128x128RGBA hashes/alpha/margins, copied candidate icons for next native run. Core not yet accepted."
+    },
+    {
+      "id": "OutpostMapProgression",
+      "state": "assigned",
+      "taskFile": "Delegation/OutpostMapProgression/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostMapProgression",
+      "expectedOutputs": [
+        "Candidate/Source",
+        "Candidate/Languages",
+        "Candidate/Tests/InGameOutpostMapProgressionProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "GUIDE.md",
+        "REPORT.md",
+        "VALIDATION.json"
+      ],
+      "createdUtc": "2026-11-17T21:27:24.671521+00:00",
+      "note": "Worker done; NOT integrated or native-reviewed. User requested Codex stop after current core acceptance and hand development to Claude. Review limited map overlay against root material/freeze/shipment fixes; never overwrite core."
     }
   ]
 }

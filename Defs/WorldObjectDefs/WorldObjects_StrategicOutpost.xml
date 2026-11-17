@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <TurboMegaMod.StrategicOutpostDef>
+    <defName>TMM_StrategicOutpost</defName>
+    <label>strategic outpost</label>
+    <description>A strategic remote outpost established by a caravan. Supports both autonomous world operations and real visitable outpost maps with modular living quarters, workstations, and defenses across levels 1 to 10.</description>
+    <worldObjectClass>TurboMegaMod.StrategicOutpost</worldObjectClass>
+    <mapGenerator>TMM_StrategicOutpostMapGenerator</mapGenerator>
+    <texture>World/WorldObjects/DefaultSettlement</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/DefaultSettlement</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+    <baseUpgradeCost>500</baseUpgradeCost>
+    <costMultiplier>1.6</costMultiplier>
+    <maxLevel>10</maxLevel>
+    <baseCapacity>2</baseCapacity>
+    <capacityPerLevel>1</capacityPerLevel>
+  </TurboMegaMod.StrategicOutpostDef>
+</Defs>

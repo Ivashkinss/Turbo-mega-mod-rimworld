@@ -42,7 +42,7 @@ try {
     $log=Join-Path $testRoot 'reload-stdout.log'
     $runtimeErrors=@(Select-String -LiteralPath $log -Pattern '^\d+:\d+:\d+\s+(ERROR|CRIT)')
     $gpuLost=[bool](Select-String -LiteralPath $log -SimpleMatch 'VK_ERROR_DEVICE_LOST')
-    $brokenReferences=@(Select-String -LiteralPath $log -Pattern 'Could not find think node with key|Could not resolve cross-reference|Could not find class|missing reference|Failed to load reference|Could not load reference')
+    $brokenReferences=@(Select-String -LiteralPath $log -Pattern 'Could not find think node with key|Could not resolve cross-reference|Could not resolve reference to object with loadID|Could not find class|missing reference|Failed to load reference|Could not load reference')
     $result=[ordered]@{worldTrafficReload=$probe;mapActivity=$activity;runtimeErrors=$runtimeErrors.Count;unresolvedReferences=$brokenReferences.Count;gpuLost=$gpuLost;isolatedFixtureSave=$true;userSaveTested=$false;productionAssemblySha256=$digest}
     $result.passed=$probe.passed -and $activity.framesAdvanced -gt 0 -and $activity.ticksAdvanced -gt 0 -and $runtimeErrors.Count -eq 0 -and $brokenReferences.Count -eq 0 -and !$gpuLost
     $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $testRoot 'ReloadResult.json') -Encoding utf8

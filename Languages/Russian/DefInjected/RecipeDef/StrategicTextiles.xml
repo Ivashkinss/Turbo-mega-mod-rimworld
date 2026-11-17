@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_MakeSynthread.label>синтезировать синтткань</TMM_MakeSynthread.label>
+  <TMM_MakeSynthread.description>Произвести единицу синтткани из единицы ткани и единицы химтоплива.</TMM_MakeSynthread.description>
+  <TMM_MakeSynthread.jobString>Синтезирует синтткань.</TMM_MakeSynthread.jobString>
+
+  <TMM_MakeHyperweave.label>синтезировать гиперткань</TMM_MakeHyperweave.label>
+  <TMM_MakeHyperweave.description>Произвести единицу гиперткани из единицы синтткани и единицы химтоплива.</TMM_MakeHyperweave.description>
+  <TMM_MakeHyperweave.jobString>Синтезирует гиперткань.</TMM_MakeHyperweave.jobString>
+</LanguageData>

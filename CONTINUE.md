@@ -1,3 +1,13 @@
+# Остановка Codex и передача Claude — 18.11
+
+Пользователь попросил закончить текущую задачу и остановиться до сброса лимитов. Ядро аванпостов сохранено с DLL954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464;34fresh checks на4654ddd9 +55compatibility-reload на954203b8 чистые, безruntime/ref/GPU ошибок. Это89проверок на двух последовательных сборках, не одной. Подробная передача **CLAUDE-HANDOFF.md**; инструкция Documentation/OUTPOSTS.md, доказательства OutpostsCoreVerification.json. Ничего нового после передачи Codex не запускает.
+
+Приняты4типа/2основателя+животные/реальные сутки/выпуск20plasteelдля30Mining/выборсырья/ингредиенты/капсулы/уровни1..10/12коек11мест/карты/режимы/сохранение. NativeTier10save создан, reload10не делался;150Mining→100толькопрогнозна8легальных реальныхработниках. WorldPawns GC мог удалятьживотных, а Notify_PassedToWorld случайносменялфракцию; RootLifecycle+boundedKeepFlag исправлены, хранящиесяактеры приостановлены. Карта/караваны тикаютнативно. Sandbags stufffallback и безопаснаяподтверждённаядоставка исправлены после34fresh;55reload доказываетновыеизменения. Точныйscope/отклонённыефикстурывVerification.
+
+Gemini **OutpostMapProgression done, не интегрирован**: Tools/Build/GeminiOutpostMapProgression, копия patch/report в Delegation/OutpostMapProgression. Следующийагентдолженпросмотретьмалыйoverlayкарты, не перетиратькорневойlifecycle/shipment.СнимокRootSourceдопоследнихисправлений. Командные7иконокпровереныиустановлены. Очередьбезновыхpendingзадач, оставленадляClaude. Pushпо-прежнемунеделатьбезизмененияпоследнейкомандыпользователяработатьлокально. Тестоваяигразакрыта/testprobeудалён, userSave/configнетронуты.
+
+---
+
 # Актуальный этап: мировые группы и ключевые города приняты, 17.11, 23:48
 
 Shipping SHA256 `450033653018362681f0741e84869770a9e34ae541c0049877b1e8011edf62ce`. WorldTraffic.cs/WorldTrafficCargo.cs + own Def/11RUENkeys/2RUInjected приняты. Настоящие NPC Caravan/3adult/native pather/stock+inventory/сохранение/доставка/аварийный груз;16global/2perFaction/250tick poll/6000success/2500retry. Источники/цели динамические человеческие фракции, толькоSurface (первый fixture ошибочно включал другие слои). Старое неверное90000окно больше не blocker: native ETA был5дней; теперь bounded64pair test shortlist rank nativeETA, reloadETA+day. Productiondeadline12days, no fake refills of native empty stock, пайки16на нового человека1раз. Обычные рейды/гости/торговые инциденты не заменены, мировых боёв/войн ещё нет. UITrade и mass-aware salvage retrieval добавлены, но полный интерактивный цикл не тестирован. NativeCameraScreenshot увиден: реальная группа/значок/цель, убрано нативное ложное «0человек».

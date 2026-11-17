@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_SyntheticTextiles.label>синтез синтткани</TMM_SyntheticTextiles.label>
+  <TMM_SyntheticTextiles.description>Разработка процесса производства единицы синтткани из единицы ткани и единицы химтоплива на производственном станке. Это новая технология Turbo mega mod.</TMM_SyntheticTextiles.description>
+
+  <TMM_AdvancedTextiles.label>синтез гиперткани</TMM_AdvancedTextiles.label>
+  <TMM_AdvancedTextiles.description>Разработка точного плетения для производства единицы гиперткани из единицы синтткани и единицы химтоплива на производственном станке.</TMM_AdvancedTextiles.description>
+</LanguageData>

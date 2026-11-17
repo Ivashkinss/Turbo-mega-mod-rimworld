@@ -60,7 +60,7 @@ public static class InGameLocalizationProbe
         foreach (string file in Directory.GetFiles(Path.Combine(root, "Languages/Russian/Keyed"), "*.xml"))
         {
             var document = new XmlDocument(); document.Load(file);
-            foreach (XmlElement node in document.DocumentElement.ChildNodes)
+            foreach (XmlElement node in document.DocumentElement.ChildNodes.OfType<XmlElement>())
             {
                 if (Normalize(Translator.Translate(node.Name).RawText) != Normalize(node.InnerText))
                     errors.Add("Keyed: " + node.Name);
@@ -73,7 +73,7 @@ public static class InGameLocalizationProbe
             Type type = AccessTools.TypeByName(typeName);
             if (type == null) { errors.Add("Missing def type: " + typeName); continue; }
             var document = new XmlDocument(); document.Load(file);
-            foreach (XmlElement node in document.DocumentElement.ChildNodes)
+            foreach (XmlElement node in document.DocumentElement.ChildNodes.OfType<XmlElement>())
             {
                 try
                 {
@@ -91,7 +91,7 @@ public static class InGameLocalizationProbe
                     if (node.HasChildNodes && node.FirstChild is XmlElement)
                     {
                         var actual = ((IEnumerable)value).Cast<object>().Select(x => Normalize(x.ToString())).ToArray();
-                        var expected = node.ChildNodes.Cast<XmlElement>().Select(x => Normalize(x.InnerText)).ToArray();
+                        var expected = node.ChildNodes.OfType<XmlElement>().Select(x => Normalize(x.InnerText)).ToArray();
                         if (!actual.SequenceEqual(expected)) errors.Add("Rule list differs: " + node.Name);
                         rules += expected.Length;
                     }

@@ -1,0 +1,24 @@
+{
+  "outpostsReload": {
+    "passed": true,
+    "checks": 55,
+    "stage": 4,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 2960,
+    "ticksAdvanced": 11054,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "compatibilityReload": true,
+  "freshAssemblySha256": "4654ddd9030e215877fd327fcf989869ba0992ff84fcec2bc36a02ca6b5414f1",
+  "productionAssemblySha256": "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+  "passed": true
+}

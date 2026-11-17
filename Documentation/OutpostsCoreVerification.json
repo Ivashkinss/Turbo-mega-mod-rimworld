@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "productionAssemblySha256": "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+  "freshAssemblySha256": "4654ddd9030e215877fd327fcf989869ba0992ff84fcec2bc36a02ca6b5414f1",
+  "checks": {
+    "fresh": 34,
+    "compatibilityReload": 55,
+    "totalAcrossTwoBuilds": 89
+  },
+  "nativeSteps": 2,
+  "profile": "TestRuns/Outposts-FullSet-20261118-002418",
+  "scope": [
+    "Native caravan founding with two real adult colonists and one pack animal",
+    "60000 actual ticks: 30 combined mining skill produced20plasteel; repeat calls do not duplicate output",
+    "Actual deployment/recall with faction, identity, holder and WorldPawns retention",
+    "Real map generation, level2 upgrade and native bed reachability",
+    "Actual save/load of people, animal, level, deadline and cargo",
+    "Real textile and advanced-component ingredient transactions after native research completion, including3gold for XML0.3",
+    "Actual upgrades3..10 and geometric silver deduction on controlled plots;12 reachable beds, capacity11",
+    "Actual eight-worker roster with legal skills totaling150 and predicted100plasteel/day",
+    "Native pod delivery to original colony and empty repeat without duplicate cargo"
+  ],
+  "limits": [
+    "Fresh34 checks ran on4654ddd9; reload55 on final954203b8 after sandbag-material/shipment changes, not89checks on one DLL",
+    "Upper-level construction plots were cleared of natural obstacles in the isolated fixture",
+    "Only the first mining day elapsed naturally;150skill100yield is a prediction on an actual eight-worker roster",
+    "Factory material adapter tested; no second full calendar factory day, farming calendar or watchtower daily acceptance",
+    "The level10 save was created but not reloaded in this acceptance",
+    "Screenshot timing/fog does not verify the entire visual layout or all management tabs",
+    "User saves, live1.6, combat and all DLC/mod combinations not tested"
+  ],
+  "excludedAttempts": [
+    "235609: fixture searched too close to settlement; XML comments broke localization test, fixed.OfType<XmlElement>",
+    "235818/000318: stored pack animal lost before deployment; bad map ownership assumption corrected; real lifecycle issue fixed",
+    "001222/001908: guarded registration exposed native free-world faction reassignment; native notifier now skipped only for our stored actors",
+    "First reload51functional checks had4Sandbags stuff errors; rejected; final reload55 has0runtimeerrors"
+  ]
+}

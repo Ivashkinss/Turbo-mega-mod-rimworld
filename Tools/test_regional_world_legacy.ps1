@@ -34,7 +34,7 @@ try{
  $functional=Get-Content (Join-Path $target 'RegionalWorldLegacyProbe.json') -Raw|ConvertFrom-Json
  $activity=Get-Content (Join-Path $target 'GpuMapProbe.json') -Raw|ConvertFrom-Json
  $errors=@(Select-String -LiteralPath (Join-Path $target 'stdout.log') -Pattern '^\d+:\d+:\d+\s+(ERROR|CRIT)')
- $broken=@(Select-String -LiteralPath (Join-Path $target 'stdout.log') -Pattern 'Could not find think node with key|Could not resolve cross-reference|Could not find class|missing reference|Failed to load reference|Could not load reference')
+ $broken=@(Select-String -LiteralPath (Join-Path $target 'stdout.log') -Pattern 'Could not find think node with key|Could not resolve cross-reference|Could not resolve reference to object with loadID|Could not find class|missing reference|Failed to load reference|Could not load reference')
  $gpu=[bool](Select-String -LiteralPath (Join-Path $target 'stdout.log') -SimpleMatch 'VK_ERROR_DEVICE_LOST')
  $result=[ordered]@{probe=$functional;mapActivity=$activity;runtimeErrors=$errors.Count;unresolvedReferences=$broken.Count;gpuLost=$gpu;sourceSaveUnchanged=((Get-FileHash -LiteralPath $save).Hash -eq $originalHash);profile=$target;productionAssemblySha256=(Get-FileHash (Join-Path $root 'Assemblies/TurboMegaMod.dll')).Hash.ToLowerInvariant()}
  $result.passed=$functional.passed -and $activity.ticksAdvanced -gt 0 -and $activity.framesAdvanced -gt 0 -and !$gpu -and !$errors.Count -and !$broken.Count -and $result.sourceSaveUnchanged
