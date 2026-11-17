@@ -1,0 +1,34 @@
+{
+  "stage": "ClinicAdmissionAcceptance",
+  "productionAssemblySha256": "3742bf22292641f1cb3076fc144ce7d530feaeb2ac3d6542f5008aea31ce003e",
+  "gameVersion": "1.7.5000 rev1275",
+  "executedChecks": 53,
+  "passingSteps": 2,
+  "steps": [
+    {
+      "profile": "TestRuns\\ClinicAdmissionAcceptance-FullSet-20261117-181043",
+      "report": "Result.json",
+      "checks": 37
+    },
+    {
+      "profile": "TestRuns\\ClinicAdmissionAcceptance-FullSet-20261117-181043",
+      "report": "ReloadResult.json",
+      "checks": 16
+    }
+  ],
+  "verified": [
+    "Actual native PatientArrives incident, pod, ward and patient Lord",
+    "Doctor selected native TendPatient through JobGiver_Work, spent medicine and increased actual bill",
+    "Colony infirmary outside complex excluded from clinical capacity",
+    "Actual save/load retains patient, admission, doctor, bill and supplies; no premature payment"
+  ],
+  "boundaries": [
+    "Controlled21C, all admission hours, no active threats, native wounds fallback",
+    "Full capacity guard uses temporary synthetic registry entry, not physically filled ward",
+    "No autonomous random frequency test, natural recovery/final payout, user save or live1.6 test",
+    "Production unchanged; no service gameplay fix established"
+  ],
+  "runtimeErrors": 0,
+  "unresolvedReferencesOnReload": 0,
+  "passed": true
+}
