@@ -6,3 +6,6 @@ Components/MapPreview/** -text
 Components/Harmony/** -text
 Components/Hospitality/** -text
 Components/Hospital/** -text
+
+# Preserve legal unified-diff context markers in the unaccepted review artifact.
+Delegation/OutpostMapProgression/CANDIDATE.patch -text whitespace=-blank-at-eol

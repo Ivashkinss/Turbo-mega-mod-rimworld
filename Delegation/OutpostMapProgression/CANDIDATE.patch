@@ -7,14 +7,14 @@
 +        public bool isMedicalBed;
          public IntVec3 interactionCell;
          public bool hasInteractionCell;
-
+ 
 @@ -45,6 +46,8 @@
          public CellRect baseFootprint = CellRect.Empty;
          public IntVec3 supplyDepotCell = IntVec3.Invalid;
          public List<int> deployedStaffPawnIDs = new List<int>();
 +        public bool hasSpawnedGenerator = false;
 +        public int farmingZonesCreated = 0;
-
+ 
          public StrategicOutpost Outpost
          {
 @@ -66,6 +69,8 @@
@@ -24,7 +24,7 @@
 +            Scribe_Values.Look(ref hasSpawnedGenerator, "TMM_hasSpawnedGenerator", false);
 +            Scribe_Values.Look(ref farmingZonesCreated, "TMM_farmingZonesCreated", 0);
              Scribe_Collections.Look(ref deployedStaffPawnIDs, "TMM_deployedStaffPawnIDs", LookMode.Value);
-
+ 
              if (deployedStaffPawnIDs == null)
 @@ -81,7 +86,24 @@
              List<Building> buildings = map.listerBuildings.allBuildingsColonist;
@@ -55,7 +55,7 @@
 @@ -231,6 +253,14 @@
              return true;
          }
-
+ 
 +        public static bool IsResearchFinished(string researchDefName)
 +        {
 +            if (string.IsNullOrEmpty(researchDefName)) return false;
@@ -98,7 +98,7 @@
 @@ -275,12 +304,24 @@
              int cx = rect.CenterCell.x;
              int cz = rect.CenterCell.z;
-
+ 
 +            // Technology availability check
 +            bool hasElectricity = IsResearchFinished("Electricity");
 +            bool hasSmithing = IsResearchFinished("Smithing");
@@ -123,7 +123,7 @@
                  bed1.position = new IntVec3(cx + 1, 0, cz + 2);
                  bed1.rotation = Rot4.South;
 @@ -288,7 +329,7 @@
-
+ 
                  // Bed 2 (1x2 south): occupies (cx + 3, cz + 2..3)
                  ModulePlacementEntry bed2 = new ModulePlacementEntry();
 -                bed2.thingDef = ThingDefOf.Bed;
@@ -134,7 +134,7 @@
 @@ -302,7 +343,7 @@
                  table.rotation = Rot4.North;
                  plan.entries.Add(table);
-
+ 
 -                // Dining Chair 1 at (cx - 3, cz) facing East
 +                // Dining Chairs facing East
                  ModulePlacementEntry chair1 = new ModulePlacementEntry();
@@ -143,7 +143,7 @@
 @@ -310,7 +351,6 @@
                  chair1.rotation = Rot4.East;
                  plan.entries.Add(chair1);
-
+ 
 -                // Dining Chair 2 at (cx - 3, cz + 1) facing East
                  ModulePlacementEntry chair2 = new ModulePlacementEntry();
                  chair2.thingDef = ThingDefOf.DiningChair;
@@ -151,7 +151,7 @@
 @@ -318,16 +358,15 @@
                  chair2.rotation = Rot4.East;
                  plan.entries.Add(chair2);
-
+ 
 -                // TorchLamp bedside between bed heads at (cx + 2, cz + 3)
 +                // Torch bedside between bed heads at (cx + 2, cz + 3)
                  ModulePlacementEntry light = new ModulePlacementEntry();
@@ -160,7 +160,7 @@
                  light.position = new IntVec3(cx + 2, 0, cz + 3);
                  light.rotation = Rot4.South;
                  plan.entries.Add(light);
-
+ 
 -                // Workstation at (cx + 2, 0, cz - 1), interaction cell at (cx + 2, cz - 2)
 -                ThingDef wsDef = GetWorkstationDef(spec);
 +                // Workstation selection matching specialization
@@ -625,7 +625,7 @@
                  b1.position = new IntVec3(cx - 1, 0, cz + 2);
                  b1.rotation = Rot4.South;
                  plan.entries.Add(b1);
-
+ 
                  ModulePlacementEntry b2 = new ModulePlacementEntry();
 -                b2.thingDef = ThingDefOf.Bed;
 +                b2.thingDef = bedDef;
@@ -633,7 +633,7 @@
                  b2.position = new IntVec3(cx + 1, 0, cz + 2);
                  b2.rotation = Rot4.South;
                  plan.entries.Add(b2);
-
+ 
 +                // Tactical Command Table (2x2)
 +                ModulePlacementEntry table = new ModulePlacementEntry();
 +                table.thingDef = ThingDefOf.Table2x2c;
@@ -663,19 +663,19 @@
 +                light.position = new IntVec3(cx, 0, cz + 1);
                  light.rotation = Rot4.South;
                  plan.entries.Add(light);
-
+ 
 -                // Exterior sandbags flanking the door
 +                // Exterior fortified sandbags flanking the door
                  IntVec3 sandbagLeft = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(-1, 0, 0);
                  IntVec3 sandbagRight = plan.doorCell + plan.doorFacing.FacingCell + new IntVec3(1, 0, 0);
-
+ 
                  ModulePlacementEntry sbLeft = new ModulePlacementEntry();
                  sbLeft.thingDef = ThingDefOf.Sandbags;
 -                sbLeft.stuffDef = null;
                  sbLeft.position = sandbagLeft;
                  sbLeft.rotation = Rot4.South;
                  plan.entries.Add(sbLeft);
-
+ 
                  ModulePlacementEntry sbRight = new ModulePlacementEntry();
                  sbRight.thingDef = ThingDefOf.Sandbags;
 -                sbRight.stuffDef = null;
@@ -726,7 +726,7 @@
 +                    }
                  }
              }
-
+ 
              return plan;
 +        }
 +
@@ -780,12 +780,12 @@
 +                    return DefDatabase<ThingDef>.GetNamedSilentFail("CraftingSpot");
 +            }
          }
-
+ 
          public bool CanSafelyExecutePlan(ModuleLayoutPlan plan, out string failReason)
 @@ -453,6 +987,37 @@
                  }
              }
-
+ 
 +            // Check planned entries outside bounds (like exterior generators, turrets, sandbags)
 +            for (int i = 0; i < plan.entries.Count; i++)
 +            {
@@ -823,7 +823,7 @@
 @@ -515,7 +1080,7 @@
                  return true;
              }
-
+ 
 -            // Try small offsets in cardinal directions (4, 8, 12 cells)
 +            // Small offsets in cardinal directions
              IntVec3[] offsets = new IntVec3[]
@@ -832,7 +832,7 @@
 @@ -569,7 +1134,7 @@
                  return false;
              }
-
+ 
 -            // Clear natural vegetation/rocks only (protected items/structures are never touched)
 +            // Clear natural vegetation/rocks only within footprint
              foreach (IntVec3 c in plan.bounds)
@@ -909,11 +909,11 @@
 +                    TryCreateOutpostGrowingZone(rect, "Plant_Cotton");
                  }
              }
-
+ 
 @@ -632,35 +1259,116 @@
              return true;
          }
-
+ 
 -        private ThingDef GetWorkstationDef(StrategicOutpostSpecialization spec)
 -        {
 -            string targetDefName = "CraftingSpot";
