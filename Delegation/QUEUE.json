@@ -905,7 +905,7 @@
     },
     {
       "id": "ComplexBalanceBaseline",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/ComplexBalanceBaseline/TASK.md",
       "outputDir": "Tools/Build/GeminiComplexBalanceBaseline",
       "expectedOutputs": [
@@ -913,7 +913,20 @@
         "EXAMPLES.md",
         "REPORT.md"
       ],
-      "createdUtc": "2026-11-17T09:19:43.973674+00:00"
+      "createdUtc": "2026-11-17T09:19:43.973674+00:00",
+      "note": "Preliminary report reviewed, formulas not all independently accepted. Three alleged imbalances are not established: whole-bed price is user intent, cleaning funding is intentional, 55% needs native trade comparison. VisitorFlowBaseline queued for actual arrival/budget inputs."
+    },
+    {
+      "id": "VisitorFlowBaseline",
+      "state": "pending",
+      "taskFile": "Delegation/VisitorFlowBaseline/TASK.md",
+      "outputDir": "Tools/Build/GeminiVisitorFlowBaseline",
+      "expectedOutputs": [
+        "FLOW.md",
+        "PARAMETERS.json",
+        "REVIEW.md"
+      ],
+      "createdUtc": "2026-11-17T09:33:15.906691+00:00"
     }
   ]
 }
