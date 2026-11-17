@@ -3,7 +3,7 @@
 All project changes belong inside this mod directory. Do not modify original mods, game files, user settings, or saves as part of routine development.
 
 Remote repository: https://github.com/Ivashkinss/Turbo-mega-mod-rimworld.git
-Current user decision (18.11.2026): work locally only — commit locally after accepted revisions, do NOT push until the user explicitly says so.
+Current user decision (18.11.2026): commit locally after accepted revisions; push only when the user explicitly asks. Last push on user request: 18.11.2026, main at 43624b6.
 
 Do not commit logs, saves, user configuration, credentials, or temporary game-test data. Preserve existing work in the remote repository. Run checks relevant to changed behavior before committing.
 
