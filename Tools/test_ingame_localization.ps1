@@ -1,4 +1,4 @@
-param([int]$ObserveSeconds = 30)
+﻿param([int]$ObserveSeconds = 30)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)

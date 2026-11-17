@@ -1,4 +1,4 @@
-param([switch]$OriginalActive, [int]$TimeoutSeconds = 240)
+﻿param([switch]$OriginalActive, [int]$TimeoutSeconds = 240)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)

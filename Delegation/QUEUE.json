@@ -1040,7 +1040,7 @@
     },
     {
       "id": "FactionContentRegistry",
-      "state": "pending",
+      "state": "assigned",
       "taskFile": "Delegation/FactionContentRegistry/TASK.md",
       "outputDir": "Tools/Build/GeminiFactionContentRegistry",
       "expectedOutputs": [
@@ -1211,6 +1211,34 @@
       ],
       "createdUtc": "2026-11-17T23:09:34.334166+00:00",
       "note": "Rebase map candidate on live Source + real native probe. Compile only, no game run."
+    },
+    {
+      "id": "OutpostCalendarCycles",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "run",
+      "afterTask": "OutpostMapsNativeProbe",
+      "taskFile": "Delegation/OutpostCalendarCycles/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostCalendarCycles",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T00:20:00Z",
+      "note": "New calendar probe for Farming/Factory/Watchtower over real days + mid-cycle save/reload; game run allowed; Source unchanged."
+    },
+    {
+      "id": "OutpostMapsCodexReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "afterTask": "OutpostMapsNativeProbe",
+      "taskFile": "Delegation/OutpostMapsCodexReview/TASK.md",
+      "outputDir": "Tools/Build/CodexOutpostMapsReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T00:20:00Z",
+      "note": "Independent review of Gemini maps candidate (item safety, regressions, probe validity, build). No commit, no game run."
     }
   ],
   "owner": "claude",
