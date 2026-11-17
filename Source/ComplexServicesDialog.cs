@@ -24,6 +24,7 @@ namespace TurboMegaMod
             }
             var body=new Rect(0,48,rect.width,rect.height-92);var inner=new Rect(0,0,body.width-25,2350);
             Widgets.BeginScrollView(body,ref scroll,inner);float y=0;
+            try{
             if(page==0){
                 Help(inner,ref y,"TMM.Complex.ServicesHelp");
                 Command(inner,ref y,desk.AreaButton("TMM.Complex.Area",()=>desk.area,v=>{desk.area=v;desk.ApplyServiceAreas();}));
@@ -31,6 +32,7 @@ namespace TurboMegaMod
                 Help(inner,ref y,"TMM.Services.AutoAreas");
                 if(Button(inner,ref y,"TMM.Prices.Title"))Find.WindowStack.Add(new Dialog_ComplexPrices(desk));
                 if(Button(inner,ref y,"TMM.Dossier.Title"))Find.WindowStack.Add(new Dialog_GuestDossiers(desk));
+                if(Button(inner,ref y,"TMM.ServiceReadiness.Title"))Find.WindowStack.Add(new Dialog_ServiceReadiness(desk));
             }else if(page==1){
                 Help(inner,ref y,"TMM.Services.HotelHelp");
                 Widgets.Label(new Rect(0,y,440,32),"TMM.Complex.RoomRate".Translate(desk.roomRate));
@@ -87,7 +89,7 @@ namespace TurboMegaMod
                 if(Button(inner,ref y,"TMM.Buyout.Menu"))Dialog_WorkBuyout.Show(desk);
                 foreach(var gizmo in CompanyMenus.Gizmos(desk))Command(inner,ref y,(Command)gizmo);
             }
-            Widgets.EndScrollView();
+            }finally{Widgets.EndScrollView();}
         }
         private static void Help(Rect rect,ref float y,string key){string text=key.Translate();float h=Text.CalcHeight(text,rect.width);Widgets.Label(new Rect(0,y,rect.width,h),text);y+=h+16;}
         private static bool Button(Rect rect,ref float y,string key){bool clicked=Widgets.ButtonText(new Rect(0,y,rect.width,36),key.Translate());y+=46;return clicked;}

@@ -1,0 +1,32 @@
+{
+  "candidateBuildRepeatedByCodex": true,
+  "candidateBuildExitCode": 0,
+  "integrated": false,
+  "nativePolicyTestRun": false,
+  "findings": [
+    {
+      "id": "RP-01",
+      "file": "Candidate/Source/FactionRansomPolicy.cs",
+      "finding": "Preset menu contains hardcoded bilingual strings 0% (всегда отказ / always refuse) and 100% (всегда согласие / always accept).",
+      "required": "Move both labels to paired RU/EN keys. No raw bilingual user strings."
+    },
+    {
+      "id": "RP-02",
+      "file": "Candidate/Source/FactionRansomPolicy.cs",
+      "finding": "Row name width260 and chance rectangle295..435 overlap buttons starting at innerRect.width-245 (about419 at initial size). Fixed40px rows also clip long faction names and wrapped current chance labels.",
+      "required": "Reflow each faction into two measured rows or truncate single-line name with full tooltip. Reserve nonoverlapping widths for value and controls, including reset, at initial size and smaller valid screen bounds. Keep BeginScrollView/GUI guards. No widening beyond practical720x720 just to hide the problem."
+    },
+    {
+      "id": "RP-03",
+      "file": "Candidate/Source/WorkBuyout.cs",
+      "finding": "Most file reformatted although task requires a small functional patch. This obscures billing/save guards.",
+      "required": "Restore frozen snapshot WorkBuyout formatting and apply only actual new controls/chance label/menu entry; provide minimal reviewable diff. Do not change other logic/keys."
+    },
+    {
+      "id": "RP-04",
+      "file": "Candidate/Tests/InGameFactionRansomPolicyProbe.cs",
+      "finding": "Fixture6 calls a local list cleanup and labels it Scribe roundtrip: it never saves or loads through Scribe. Immutability test manually creates an offered entry with fake placedAmount and no physical cash. Two normal different factions do not cover separate instances of the same FactionDef.",
+      "required": "Replace mirrored/fake proof with real owning calls and real native fixtures. Use actual Offer on a valid colony slave with HomeFaction at0/100, real physical escrow/receipts, then change policy and reoffer; preserve money/state. Use actual GameDataSaveLoader save/reload (two-phase probe accepted) or real Scribe with references registered correctly; old tags absent must default50, new faction overrides and duplicate/null cleanup must invoke production ExposeData. Include two live faction instances sharing one FactionDef. No simulated cleanup. RNG baseline comparison at50 is appropriate as an oracle; preserve outer RNG also at0/100. Compile but do not claim native PASS before root runs it."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "restaurantMenuReload": {
+    "passed": true,
+    "checks": 14,
+    "errors": []
+  },
+  "mapActivity": {
+    "mapLoaded": true,
+    "observedActiveSeconds": 30,
+    "framesAdvanced": 4191,
+    "ticksAdvanced": 1767,
+    "newsWindowsDismissedInTest": 0
+  },
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "gpuLost": false,
+  "isolatedFixtureSave": true,
+  "userSaveTested": false,
+  "productionAssemblySha256": "86bcd219a7e88008711dda29e2374cd0bbd010006e5a3fa477e704049bfc7594",
+  "passed": true
+}

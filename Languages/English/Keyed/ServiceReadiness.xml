@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.ServiceReadiness.Title>Complex Service Readiness</TMM.ServiceReadiness.Title>
+  <TMM.ServiceReadiness.Help>A snapshot of complex infrastructure and service settings. Values refresh when this window opens or when you click Refresh.</TMM.ServiceReadiness.Help>
+  <TMM.ServiceReadiness.Refresh>Refresh</TMM.ServiceReadiness.Refresh>
+  <TMM.ServiceReadiness.SectionGeneral>General Complex Status</TMM.ServiceReadiness.SectionGeneral>
+  <TMM.ServiceReadiness.DeskStatusLabel>Complex reception status:</TMM.ServiceReadiness.DeskStatusLabel>
+  <TMM.ServiceReadiness.ActiveDesk>active and bound to map</TMM.ServiceReadiness.ActiveDesk>
+  <TMM.ServiceReadiness.InactiveDesk>inactive (shared area required)</TMM.ServiceReadiness.InactiveDesk>
+  <TMM.ServiceReadiness.InactiveDeskWarning>Reception desk is inactive! Complex services cannot operate without an assigned shared area.</TMM.ServiceReadiness.InactiveDeskWarning>
+  <TMM.ServiceReadiness.Area>Complex shared area:</TMM.ServiceReadiness.Area>
+  <TMM.ServiceReadiness.AreaCells>{0} ({1} cells)</TMM.ServiceReadiness.AreaCells>
+  <TMM.ServiceReadiness.NoArea>none assigned</TMM.ServiceReadiness.NoArea>
+  <TMM.ServiceReadiness.StaffArea>Staff area (colony workers):</TMM.ServiceReadiness.StaffArea>
+  <TMM.ServiceReadiness.AutoServices>Automatic room management:</TMM.ServiceReadiness.AutoServices>
+  <TMM.ServiceReadiness.Enabled>enabled</TMM.ServiceReadiness.Enabled>
+  <TMM.ServiceReadiness.Disabled>disabled</TMM.ServiceReadiness.Disabled>
+  <TMM.ServiceReadiness.HospitalityModule>Hotel service:</TMM.ServiceReadiness.HospitalityModule>
+  <TMM.ServiceReadiness.HospitalModule>Clinic service:</TMM.ServiceReadiness.HospitalModule>
+  <TMM.ServiceReadiness.ModuleDetected>connected</TMM.ServiceReadiness.ModuleDetected>
+  <TMM.ServiceReadiness.ModuleMissing>not detected</TMM.ServiceReadiness.ModuleMissing>
+  <TMM.ServiceReadiness.SectionHotel>Hotel</TMM.ServiceReadiness.SectionHotel>
+  <TMM.ServiceReadiness.GuestsWelcomeLabel>Guest admission:</TMM.ServiceReadiness.GuestsWelcomeLabel>
+  <TMM.ServiceReadiness.RefuseUntilBedsLabel>Turn away guests if beds are lacking:</TMM.ServiceReadiness.RefuseUntilBedsLabel>
+  <TMM.ServiceReadiness.GuestsWelcomeDisabledWarning>Guest admission is disabled. Enable it at reception: Complex service settings → Hotel.</TMM.ServiceReadiness.GuestsWelcomeDisabledWarning>
+  <TMM.ServiceReadiness.Yes>yes</TMM.ServiceReadiness.Yes>
+  <TMM.ServiceReadiness.No>no</TMM.ServiceReadiness.No>
+  <TMM.ServiceReadiness.Allowed>allowed</TMM.ServiceReadiness.Allowed>
+  <TMM.ServiceReadiness.Forbidden>forbidden</TMM.ServiceReadiness.Forbidden>
+  <TMM.ServiceReadiness.RoomRate>Base room rate:</TMM.ServiceReadiness.RoomRate>
+  <TMM.ServiceReadiness.RoomRateValue>{0} silver/day</TMM.ServiceReadiness.RoomRateValue>
+  <TMM.ServiceReadiness.GuestBeds>Guest beds (managed):</TMM.ServiceReadiness.GuestBeds>
+  <TMM.ServiceReadiness.GuestBedsValue>{0} ({1} total slots)</TMM.ServiceReadiness.GuestBedsValue>
+  <TMM.ServiceReadiness.GuestSlotsOccupied>Occupied sleeping slots (guests and owners):</TMM.ServiceReadiness.GuestSlotsOccupied>
+  <TMM.ServiceReadiness.GuestSlotsAvailable>Unoccupied sleeping slots:</TMM.ServiceReadiness.GuestSlotsAvailable>
+  <TMM.ServiceReadiness.GuestBedsFullyFree>Completely unoccupied beds:</TMM.ServiceReadiness.GuestBedsFullyFree>
+  <TMM.ServiceReadiness.StaffBedsInArea>Staff beds in complex area:</TMM.ServiceReadiness.StaffBedsInArea>
+  <TMM.ServiceReadiness.ActiveHotelStays>Active registered hotel stays:</TMM.ServiceReadiness.ActiveHotelStays>
+  <TMM.ServiceReadiness.NextVisitHours>queued in approximately {0} hours</TMM.ServiceReadiness.NextVisitHours>
+  <TMM.ServiceReadiness.NoPlannedVisits>No upcoming visits scheduled in Hospitality queue.</TMM.ServiceReadiness.NoPlannedVisits>
+  <TMM.ServiceReadiness.HotelNote>Ready guest beds do not guarantee immediate arrivals: visit frequency is governed by the Storyteller. In double beds, the unassigned slot can only be occupied by a partner of the guest.</TMM.ServiceReadiness.HotelNote>
+  <TMM.ServiceReadiness.NoGuestBedsWarning>There are no free guest beds in the complex! Visitors will not be able to stay.</TMM.ServiceReadiness.NoGuestBedsWarning>
+  <TMM.ServiceReadiness.SectionClinic>Clinic</TMM.ServiceReadiness.SectionClinic>
+  <TMM.ServiceReadiness.NativeIsOpenLabel>Current patient admission:</TMM.ServiceReadiness.NativeIsOpenLabel>
+  <TMM.ServiceReadiness.OpenNow>open</TMM.ServiceReadiness.OpenNow>
+  <TMM.ServiceReadiness.ClosedNow>closed</TMM.ServiceReadiness.ClosedNow>
+  <TMM.ServiceReadiness.ScheduleHoursLabel>Scheduled open admission hours:</TMM.ServiceReadiness.ScheduleHoursLabel>
+  <TMM.ServiceReadiness.ScheduleHoursValue>{0} of 24 h. (current hour: {1})</TMM.ServiceReadiness.ScheduleHoursValue>
+  <TMM.ServiceReadiness.HourAllowed>allowed</TMM.ServiceReadiness.HourAllowed>
+  <TMM.ServiceReadiness.HourClosed>closed</TMM.ServiceReadiness.HourClosed>
+  <TMM.ServiceReadiness.SurgeryStatus>Surgical operations on guests:</TMM.ServiceReadiness.SurgeryStatus>
+  <TMM.ServiceReadiness.ClinicBeds>Clinical ward beds:</TMM.ServiceReadiness.ClinicBeds>
+  <TMM.ServiceReadiness.ClinicBedsValue>{0} ({1} total slots)</TMM.ServiceReadiness.ClinicBedsValue>
+  <TMM.ServiceReadiness.ClinicOccupied>Occupied ward slots (all pawns):</TMM.ServiceReadiness.ClinicOccupied>
+  <TMM.ServiceReadiness.ClinicAvailable>Available ward slots:</TMM.ServiceReadiness.ClinicAvailable>
+  <TMM.ServiceReadiness.ReadyDoctors>Staff with Doctor work enabled:</TMM.ServiceReadiness.ReadyDoctors>
+  <TMM.ServiceReadiness.NoDoctorsWarning>No capable staff with Doctor work enabled in settlement!</TMM.ServiceReadiness.NoDoctorsWarning>
+  <TMM.ServiceReadiness.NoClinicBedsWarning>No medical beds found in enclosed clinic wards!</TMM.ServiceReadiness.NoClinicBedsWarning>
+  <TMM.ServiceReadiness.ClinicNote>Patients seek clinic care only during open admission hours when suffering from eligible wounds, illnesses, or assigned surgeries.</TMM.ServiceReadiness.ClinicNote>
+  <TMM.ServiceReadiness.SectionRestaurant>Restaurant</TMM.ServiceReadiness.SectionRestaurant>
+  <TMM.ServiceReadiness.RestaurantOrders>Restaurant order intake:</TMM.ServiceReadiness.RestaurantOrders>
+  <TMM.ServiceReadiness.PricePercent>Meal price markup:</TMM.ServiceReadiness.PricePercent>
+  <TMM.ServiceReadiness.ServiceCounters>Service counters built:</TMM.ServiceReadiness.ServiceCounters>
+  <TMM.ServiceReadiness.MenuItems>Meal types on menu:</TMM.ServiceReadiness.MenuItems>
+  <TMM.ServiceReadiness.FridgesFound>Refrigerators and cold storage rooms:</TMM.ServiceReadiness.FridgesFound>
+  <TMM.ServiceReadiness.ReadyMealsStock>Physical stock of menu meals:</TMM.ServiceReadiness.ReadyMealsStock>
+  <TMM.ServiceReadiness.Pieces>{0} pcs.</TMM.ServiceReadiness.Pieces>
+  <TMM.ServiceReadiness.ReadyWaiters>Staff with Restaurant Service work enabled:</TMM.ServiceReadiness.ReadyWaiters>
+  <TMM.ServiceReadiness.NoCountersWarning>No service counter built in complex! Orders cannot be accepted.</TMM.ServiceReadiness.NoCountersWarning>
+  <TMM.ServiceReadiness.EmptyMenuWarning>Restaurant menu is empty! Guests cannot order food.</TMM.ServiceReadiness.EmptyMenuWarning>
+  <TMM.ServiceReadiness.NoMealsWarning>No prepared meal portions from the menu found in available fridges!</TMM.ServiceReadiness.NoMealsWarning>
+  <TMM.ServiceReadiness.NoWaitersWarning>No capable staff with Restaurant Service work enabled!</TMM.ServiceReadiness.NoWaitersWarning>
+  <TMM.ServiceReadiness.RestaurantClosedWarning>Restaurant ordering is disabled in service settings.</TMM.ServiceReadiness.RestaurantClosedWarning>
+  <TMM.ServiceReadiness.RestaurantNote>Physical stock in storage does not guarantee immediate availability to every guest: individual diet, restrictions, meal ingredients, and personal budget are checked.</TMM.ServiceReadiness.RestaurantNote>
+  <TMM.ServiceReadiness.SectionSales>Retail Sales</TMM.ServiceReadiness.SectionSales>
+  <TMM.ServiceReadiness.StoresTotal>Active "For Sale" shelves and racks:</TMM.ServiceReadiness.StoresTotal>
+  <TMM.ServiceReadiness.StoresPublic>Public (guest self-service):</TMM.ServiceReadiness.StoresPublic>
+  <TMM.ServiceReadiness.StoresStaffOnly>Staff-only (dispensed by workers):</TMM.ServiceReadiness.StoresStaffOnly>
+  <TMM.ServiceReadiness.SaleItemsTotal>Tradeable goods on shelves:</TMM.ServiceReadiness.SaleItemsTotal>
+  <TMM.ServiceReadiness.SaleItemsSummary>{0} stacks ({1} units)</TMM.ServiceReadiness.SaleItemsSummary>
+  <TMM.ServiceReadiness.ReadySellers>Staff with Selling work enabled:</TMM.ServiceReadiness.ReadySellers>
+  <TMM.ServiceReadiness.NoStoresWarning>No storage zones or shelves marked "For Sale" in complex!</TMM.ServiceReadiness.NoStoresWarning>
+  <TMM.ServiceReadiness.NoSellersWarning>No capable staff with Selling work enabled for staff-only storage!</TMM.ServiceReadiness.NoSellersWarning>
+  <TMM.ServiceReadiness.SalesNote>In public areas, guests buy items directly. From staff-only storage, goods are delivered exclusively by settlement staff (customers and wholesale caravans wait in the public area).</TMM.ServiceReadiness.SalesNote>
+  <TMM.ServiceReadiness.SectionStaff>Complex Staff</TMM.ServiceReadiness.SectionStaff>
+  <TMM.ServiceReadiness.TotalEmployees>Staff assigned to complex:</TMM.ServiceReadiness.TotalEmployees>
+  <TMM.ServiceReadiness.ResidentEmployees>Living in complex (residents):</TMM.ServiceReadiness.ResidentEmployees>
+  <TMM.ServiceReadiness.CompanyEmployees>Entertaining guests (company):</TMM.ServiceReadiness.CompanyEmployees>
+  <TMM.ServiceReadiness.ReadyCleaners>Staff with Cleaning work enabled:</TMM.ServiceReadiness.ReadyCleaners>
+  <TMM.ServiceReadiness.ReadyHosts>Staff with Hospitality work enabled:</TMM.ServiceReadiness.ReadyHosts>
+  <TMM.ServiceReadiness.ReadyCooks>Staff with Cooking work enabled:</TMM.ServiceReadiness.ReadyCooks>
+  <TMM.ServiceReadiness.StaffNote>Counts reflect enabled work, work mode and basic capacities. Current jobs, pawn schedules, paths and reservations are not checked here. Complex-only staff may fetch service supplies from colony stores; personal needs and emergency actions remain unrestricted.</TMM.ServiceReadiness.StaffNote>
+  <TMM.ServiceReadiness.NextVisitLabel>Scheduled guest visit:</TMM.ServiceReadiness.NextVisitLabel>
+  <TMM.ServiceReadiness.ClinicAdmissionLabel>Patient admission enabled:</TMM.ServiceReadiness.ClinicAdmissionLabel>
+</LanguageData>

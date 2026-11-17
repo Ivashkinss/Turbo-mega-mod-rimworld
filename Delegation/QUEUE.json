@@ -830,7 +830,7 @@
     },
     {
       "id": "ServiceReadinessCorrections",
-      "state": "pending",
+      "state": "reviewed",
       "taskFile": "Delegation/ServiceReadinessCorrections/TASK.md",
       "outputDir": "Tools/Build/GeminiServiceReadinessCorrections",
       "expectedOutputs": [
@@ -845,7 +845,62 @@
         "REPORT.md"
       ],
       "afterTask": "ServiceReadinessImplementation",
-      "createdUtc": "2026-11-17T05:03:22.416587+00:00"
+      "createdUtc": "2026-11-17T05:03:22.416587+00:00",
+      "note": "Root curated and integrated. 35 real native summary checks + 14 old-menu-save reload checks clean on86bcd219; native UI inspected1280x800. Five rejected fixture iterations recorded separately."
+    },
+    {
+      "id": "ReadinessPlayerGuide",
+      "state": "reviewed",
+      "taskFile": "Delegation/ReadinessPlayerGuide/TASK.md",
+      "outputDir": "Tools/Build/GeminiReadinessPlayerGuide",
+      "expectedOutputs": [
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T08:30:40.403219+00:00",
+      "note": "Guide/manual reviewed and curated into Documentation/SERVICE-READINESS*.md; removed nonexistent checkbox and clarified refrigerator/physical stock/read-only wording."
+    },
+    {
+      "id": "FactionRansomPolicyImplementation",
+      "state": "reviewed",
+      "taskFile": "Delegation/FactionRansomPolicyImplementation/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionRansomPolicyImplementation",
+      "expectedOutputs": [
+        "Candidate/Source/FactionRansomPolicy.cs",
+        "Candidate/Source/FactionRansom.cs",
+        "Candidate/Source/WorkBuyout.cs",
+        "Candidate/Languages/Russian/Keyed/FactionRansomPolicy.xml",
+        "Candidate/Languages/English/Keyed/FactionRansomPolicy.xml",
+        "Candidate/Tests/InGameFactionRansomPolicyProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "GUIDE.md",
+        "MANUAL-CHECKS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-17T08:39:32.211107+00:00",
+      "note": "Root build repeated exit0, not integrated. RP-01..04 localization, overlapping fixed row layout, reformat noise, simulated Scribe and artificial financial fixture; corrections queued."
+    },
+    {
+      "id": "FactionRansomPolicyCorrections",
+      "state": "pending",
+      "taskFile": "Delegation/FactionRansomPolicyCorrections/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionRansomPolicyCorrections",
+      "expectedOutputs": [
+        "Candidate/Source/FactionRansomPolicy.cs",
+        "Candidate/Source/FactionRansom.cs",
+        "Candidate/Source/WorkBuyout.cs",
+        "Candidate/Languages/Russian/Keyed/FactionRansomPolicy.xml",
+        "Candidate/Languages/English/Keyed/FactionRansomPolicy.xml",
+        "Candidate/Tests/InGameFactionRansomPolicyProbe.cs",
+        "build_candidate.ps1",
+        "DIFF.patch",
+        "RESPONSE.md",
+        "REPORT.md"
+      ],
+      "afterTask": "FactionRansomPolicyImplementation",
+      "createdUtc": "2026-11-17T08:58:33.570549+00:00"
     }
   ]
 }
