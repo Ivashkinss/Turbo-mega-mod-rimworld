@@ -2,4 +2,6 @@
 <LanguageData>
   <TMM.World.SettlementLevel>Уровень поселения: {0} / 10</TMM.World.SettlementLevel>
   <TMM.World.Capital>Столица фракции</TMM.World.Capital>
+  <TMM.World.EnterFriendly>Войти в дружественное поселение</TMM.World.EnterFriendly>
+  <TMM.World.EnterFriendlyHelp>Войти своим караваном на настоящую карту поселения в этой точке. Существующие постройки и вещи сохранятся. Для выхода используйте обычную команду повторного сбора каравана.</TMM.World.EnterFriendlyHelp>
 </LanguageData>

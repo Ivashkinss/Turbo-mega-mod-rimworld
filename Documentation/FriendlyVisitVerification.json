@@ -1,0 +1,31 @@
+{
+  "stage": "FriendlySettlementVisit",
+  "productionAssemblySha256": "50e109e6ef61ca967582cf940f6c8a2c88899934f4469041c777d419d275f088",
+  "gameVersion": "1.7.5000 rev1275",
+  "executedChecks": 25,
+  "passingSteps": 2,
+  "freshChecks": 14,
+  "reloadChecks": 11,
+  "profile": "TestRuns\\FriendlyVisit-FullSet-20261117-184914",
+  "verified": [
+    "Real patched caravan gizmo -> native generation/entry with same2 visitors and physical19silver",
+    "Normal native reform command available, map/garrison/relations retained after1500native ticks fresh and reload",
+    "Fixed native IsDefeated incorrectly equating living peaceful garrison with no threat",
+    "Suppressed hostile reinforcement countdown on peaceful settlement; hostile behavior retains native path",
+    "Actual save-load keeps map, visitor identity/cargo/tier and diplomacy"
+  ],
+  "visualReview": {
+    "image": "FriendlyCapital.png",
+    "viewed": true,
+    "scope": "One1280x800capital view; no false defeat/reinforcement banner"
+  },
+  "boundaries": [
+    "Visitors placed at actual settlement tile by fixture; player world travel is native and not exercised by this probe",
+    "Not a test of all factions/maps/biomes or combat/hostility transition",
+    "NPC ownership/trade/services and individual faction architecture remain future content",
+    "Original184330 immediate17checks were insufficient and are excluded: visual inspection found delayed false victory"
+  ],
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "passed": true
+}
