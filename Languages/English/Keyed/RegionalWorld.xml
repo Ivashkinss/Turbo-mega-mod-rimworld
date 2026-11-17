@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.World.SettlementLevel>Settlement level: {0} / 10</TMM.World.SettlementLevel>
+  <TMM.World.Capital>Faction capital</TMM.World.Capital>
+</LanguageData>

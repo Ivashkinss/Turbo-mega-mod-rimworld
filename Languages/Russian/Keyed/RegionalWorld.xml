@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.World.SettlementLevel>Уровень поселения: {0} / 10</TMM.World.SettlementLevel>
+  <TMM.World.Capital>Столица фракции</TMM.World.Capital>
+</LanguageData>

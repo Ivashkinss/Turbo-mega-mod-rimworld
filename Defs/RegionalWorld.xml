@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <WorldGenStepDef>
+    <defName>TMM_RegionalFactions</defName>
+    <order>550</order>
+    <worldGenStep Class="TurboMegaMod.WorldGenStep_RegionalFactions" />
+  </WorldGenStepDef>
+</Defs>

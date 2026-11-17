@@ -1,0 +1,46 @@
+{
+  "stage": "RegionalSettlementsAndNpcMaps",
+  "productionAssemblySha256": "4b313b831e6f8c404bc90160a2f604bc730d72dbcdb347220e05731da99d97ab",
+  "gameVersion": "1.7.5000 rev1275",
+  "executedChecks": 50,
+  "passingSteps": 3,
+  "freshProfile": "TestRuns\\RegionalWorld-FullSet-20261117-183018",
+  "checksPerStep": [
+    22,
+    22,
+    6
+  ],
+  "oldProfile": "C:\\Users\\vanya\\Downloads\\Rimworld\\RimWorld\\Mods\\Turbo-mega-mod-rimworld\\TestRuns\\RegionalWorld-OldClinic-20261117-183607",
+  "actualGeneration": {
+    "passed": true,
+    "checks": 22,
+    "relocated": 87,
+    "retained": 0,
+    "distanceBefore": 135.2001,
+    "distanceAfter": 2.351708,
+    "lowBuildings": 632,
+    "highBuildings": 2822,
+    "lowBeds": 47,
+    "highBeds": 156,
+    "lowPawns": 6,
+    "highPawns": 58,
+    "errors": []
+  },
+  "verified": [
+    "New surface generation clusters real existing NPC settlement objects before road generation",
+    "True native faction map generation varies footprint/buildings/beds/defense by settlement level",
+    "Real save-load retains IDs/positions/tiers and both generated maps; repeat visit does not regenerate",
+    "Pre-regional clinic fixture loads with all111 settlement coordinates unchanged; source save unchanged"
+  ],
+  "boundaries": [
+    "First player outpost foundation is a separate candidate under review",
+    "Physical friendly entry command not yet included in this checkpoint",
+    "NPC layouts use native faction style; unique Fallout layouts not yet present",
+    "Old worlds gain stable tier metadata on access, no automatic capital or relocation",
+    "One controlled faction pair at levels1/10, not all factions/biomes/levels or live1.6 tested",
+    "Failed attempts182020 missing surface gen-step registration,182242 scenario metadata,182458 capital fixture,182804 ambiguous Harmony overload are excluded"
+  ],
+  "runtimeErrors": 0,
+  "unresolvedReferences": 0,
+  "passed": true
+}
