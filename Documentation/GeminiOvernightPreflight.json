@@ -1,0 +1,23 @@
+{
+  "checkedUtc": "2026-11-17T00:21:40.629543+00:00",
+  "results": {
+    "GeminiFactionRansomCorrections": {
+      "requiredArtifactsPresent": true,
+      "independentBuildExitCode": 0,
+      "candidateDllSha256": "ff8e4c0861a8acec5029145834b9a0361412070e68cc9852bdbe9254e855ac73",
+      "nativeGameTestRun": false
+    },
+    "GeminiSalesScanCorrections": {
+      "requiredArtifactsPresent": true,
+      "independentBuildExitCode": 0,
+      "candidateDllSha256": "00806c5b2b7ff2fab77b2d7d0866cc0b0e3aebd5af64dd743078de4ed6e420ca",
+      "nativeGameTestRun": false
+    }
+  },
+  "reviewScope": "Preliminary owning-method/diff inspection and repeated candidate compilation only; neither candidate integrated or native-tested.",
+  "remaining": [
+    "Ransom: native payment, blocked/partial escrow, real Scribe/reload, legacy exclusion, native exit and deception/history.",
+    "Sales: actual diff now exists. Requestable now scans all workers instead of Any short-circuit; evaluate ShoppingJob call sites and real cost before claiming optimization. No FPS/speedup accepted.",
+    "RestaurantMenuImplementation: new task queued; no start acknowledgement or deliverables at this check."
+  ]
+}

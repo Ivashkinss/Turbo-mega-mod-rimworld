@@ -1,5 +1,9 @@
 # Продолжение Turbo mega mod — 17 ноября 2026
 
+## Предварительная проверка ночных сдач в03:20
+
+Пользователь попросил приоставшихся3% проверитьGemini. FactionRansomCorrections иSalesScanCorrections WorkerState=done, всеобязательныеартефактыесть; Codexповторилоба build_candidate.ps1 успешно (exit0), mainDLLнеподменялась. `Documentation/GeminiOvernightPreflight.json` hashes/границы. Основныеransomguardремонтывкодеприсутствуют, Salesdiffтеперьреальный. НЕ заявлятьготовностькproduction: nativegame/save/moneyещёнепрогнаны. ОсобоевниманиеSales: public Requestable преждеиспользовалAny(short-circuit), теперьвсегдасчитаетmaxCarryполнымобходомпешек; ShoppingJobможетвызыватьэтонакаждыйпредмет, поэтомуглобальноеускорениенедоказано/возможнаинверсиястоимости. Проверитьcallsitesдоaccept. БольшаяRestaurantMenuImplementationтолько03:19добавлена,на03:20workerACK/файловнебыло,этоещёнепростой>5минут.
+
 ## Разовое продолжение на 07:00 МСК 17.11.2026
 
 Пользователь попросил автоматическое продолжение работы в07:00 и крупную следующую задачуGemini. Создана ACTIVE thread-heartbeat automation `rimworld-07-00`, однократная (COUNT1) на07:00; prompt требует начать разработку/проверку, а не только статус. Обычные разрешения на проверенныеpush сохраняются. Начать с реальныхWorkerState/артефактов/Git, не с повторных вопросов пользователю.
