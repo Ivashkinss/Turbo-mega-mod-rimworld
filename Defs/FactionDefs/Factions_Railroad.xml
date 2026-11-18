@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TMM_RailroadFaction</defName>
+    <label>Railroad</label>
+    <description>A secret network of agents smuggling escaped synths to freedom, hunted by the Institute and distrusted by everyone.</description>
+    <pawnSingular>agent</pawnSingular>
+    <pawnsPlural>agents</pawnsPlural>
+    <leaderTitle>leader</leaderTitle>
+    <fixedName>Railroad</fixedName>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.4</settlementGenerationWeight>
+    <listOrderPriority>19</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.25, 0.25, 0.25)</li>
+      <li>(0.7, 0.2, 0.2)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

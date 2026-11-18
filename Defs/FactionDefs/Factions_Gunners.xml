@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FactionDef ParentName="PirateBandBase">
+    <defName>TMM_GunnersFaction</defName>
+    <label>Gunners</label>
+    <description>A mercenary army that sells its guns to whoever pays. Disciplined, well armed and utterly amoral.</description>
+    <pawnSingular>gunner</pawnSingular>
+    <pawnsPlural>gunners</pawnsPlural>
+    <leaderTitle>commander</leaderTitle>
+    <fixedName>Gunners</fixedName>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.4</settlementGenerationWeight>
+    <listOrderPriority>16</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.45, 0.4, 0.3)</li>
+      <li>(0.6, 0.5, 0.35)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

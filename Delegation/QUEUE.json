@@ -1438,6 +1438,19 @@
       "note": "Super mutant xenotype from vanilla genes following Claude's demon/angel pattern; one in-game run with portraits."
     },
     {
+      "id": "WorldTrafficBackstoryFlake",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/WorldTrafficBackstoryFlake/TASK.md",
+      "outputDir": "Tools/Build/GeminiWorldTrafficBackstoryFlake",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T18:05:00Z",
+      "note": "Rare 'No shuffled Adulthood' error from WorldTraffic.MakePawn; find cause, fix request, prove with 300 generations. For 19.11."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",

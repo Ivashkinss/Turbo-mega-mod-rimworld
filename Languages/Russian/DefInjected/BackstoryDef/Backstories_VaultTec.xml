@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Смотритель Альфонс Альмодовар -->
+  <TMM_BS_alphonse_almodovar_child.title>ученик устава Убежища</TMM_BS_alphonse_almodovar_child.title>
+  <TMM_BS_alphonse_almodovar_child.titleShort>ученик</TMM_BS_alphonse_almodovar_child.titleShort>
+  <TMM_BS_alphonse_almodovar_child.description>Выросший за гермодверями, где каждое правило было выбито на латунных табличках, [PAWN_nameDef] рано усвоил, что послушание поддерживает работу фильтров воздуха. Он обожал заучивать регламенты Убежища и докладывать о сверстниках, нарушавших распорядок.</TMM_BS_alphonse_almodovar_child.description>
+
+  <TMM_BS_alphonse_almodovar_adult.title>авторитарный смотритель Убежища</TMM_BS_alphonse_almodovar_adult.title>
+  <TMM_BS_alphonse_almodovar_adult.titleShort>смотритель</TMM_BS_alphonse_almodovar_adult.titleShort>
+  <TMM_BS_alphonse_almodovar_adult.description>Управляя своим подземным владением с непререкаемой властью, [PAWN_nameDef] убеждён, что полная изоляция — единственный щит от анархии поверхности. Упрямый, властный и скорый на расправу, он хранит тайны Убежища любой ценой.</TMM_BS_alphonse_almodovar_adult.description>
+
+  <!-- Смотритель Гвен Макнамара -->
+  <TMM_BS_gwen_mcnamara_child.title>помощница в лазарете Убежища</TMM_BS_gwen_mcnamara_child.title>
+  <TMM_BS_gwen_mcnamara_child.titleShort>помощница</TMM_BS_gwen_mcnamara_child.titleShort>
+  <TMM_BS_gwen_mcnamara_child.description>Выросшая в замкнутом подземном сообществе со скудным запасом медикаментов, [PAWN_nameDef] помогала врачам Убежища и улаживала споры между жителями тесных отсеков. У неё рано выработались выдержка и дипломатический такт.</TMM_BS_gwen_mcnamara_child.description>
+
+  <TMM_BS_gwen_mcnamara_adult.title>прагматичный смотритель совета</TMM_BS_gwen_mcnamara_adult.title>
+  <TMM_BS_gwen_mcnamara_adult.titleShort>смотритель</TMM_BS_gwen_mcnamara_adult.titleShort>
+  <TMM_BS_gwen_mcnamara_adult.description>Избранная руководителем после подавления внутреннего кризиса, [PAWN_nameDef] сочетает строгие традиции Убежища с осторожной торговлей с поверхностью. Рассудительная и проницательная, она использует дипломатию, чтобы удерживать уцелевшие комплексы Волт-Тек в единстве.</TMM_BS_gwen_mcnamara_adult.description>
+
+  <!-- Доктор Станислас Брон -->
+  <TMM_BS_stanislaus_braun_child.title>эксцентричный вундеркинд</TMM_BS_stanislaus_braun_child.title>
+  <TMM_BS_stanislaus_braun_child.titleShort>вундеркинд</TMM_BS_stanislaus_braun_child.titleShort>
+  <TMM_BS_stanislaus_braun_child.description>Одержимый виртуальными симуляциями и поведенческими головоломками с самого детства, [PAWN_nameDef] предпочитал управлять искусственными мирками, а не играть со сверстниками. Его блестящий ум сочетался с пугающим отсутствием сочувствия.</TMM_BS_stanislaus_braun_child.description>
+
+  <TMM_BS_stanislaus_braun_adult.title>архитектор социальных экспериментов</TMM_BS_stanislaus_braun_adult.title>
+  <TMM_BS_stanislaus_braun_adult.titleShort>архитектор</TMM_BS_stanislaus_braun_adult.titleShort>
+  <TMM_BS_stanislaus_braun_adult.description>Создатель ГЭКК и главный разработчик самых изощрённых экспериментов Волт-Тек, [PAWN_nameDef] смотрит на людей как на подопытных в огромной лаборатории. Обаятельный, но насквозь садистичный, он превращает протоколы выживания в бесконечную игру.</TMM_BS_stanislaus_braun_adult.description>
+
+  <!-- Представитель Волт-Тек -->
+  <TMM_BS_vaulttec_rep_child.title>уличный разносчик газет</TMM_BS_vaulttec_rep_child.title>
+  <TMM_BS_vaulttec_rep_child.titleShort>разносчик</TMM_BS_vaulttec_rep_child.titleShort>
+  <TMM_BS_vaulttec_rep_child.description>Выросший в скромном довоенном пригороде, [PAWN_nameDef] с юности торговал газетами и оттачивал бодрую речь коммивояжёра. Он свято верил, что лучезарная улыбка и фирменный планшет способны открыть любую дверь.</TMM_BS_vaulttec_rep_child.description>
+
+  <TMM_BS_vaulttec_rep_adult.title>корпоративный агент Волт-Тек</TMM_BS_vaulttec_rep_adult.title>
+  <TMM_BS_vaulttec_rep_adult.titleShort>агент</TMM_BS_vaulttec_rep_adult.titleShort>
+  <TMM_BS_vaulttec_rep_adult.description>Брошенный за гермодверями в день падения бомб вопреки десятилетиям верной службы, [PAWN_nameDef] чудом пережил апокалипсис благодаря чистому упрямству. Сохранив довоенный энтузиазм, он убалтывает торговцев Пустоши с отточенным корпоративным шармом.</TMM_BS_vaulttec_rep_adult.description>
+
+  <!-- Начальник охраны Кендалл -->
+  <TMM_BS_security_chief_kendall_child.title>кадет патруля отсеков</TMM_BS_security_chief_kendall_child.title>
+  <TMM_BS_security_chief_kendall_child.titleShort>кадет</TMM_BS_security_chief_kendall_child.titleShort>
+  <TMM_BS_security_chief_kendall_child.description>Обучавшийся с юности охранять шлюзы и разнимать потасовки в столовой, [PAWN_nameDef] гордился своей отутюженной формой и тяжёлой дубинкой. Он знал наизусть каждый тупик и перекрёсток стальных коридоров Убежища.</TMM_BS_security_chief_kendall_child.description>
+
+  <TMM_BS_security_chief_kendall_adult.title>начальник службы безопасности</TMM_BS_security_chief_kendall_adult.title>
+  <TMM_BS_security_chief_kendall_adult.titleShort>начбезопасности</TMM_BS_security_chief_kendall_adult.titleShort>
+  <TMM_BS_security_chief_kendall_adult.description>Возглавляя службу безопасности Волт-Тек в синей броне, [PAWN_nameDef] поддерживает порядок дробовиками, щитами и полным неприятием бунтовщиков. Суровый и беззаветно преданный смотрителям, он воспринимает любой прорыв периметра как личное оскорбление.</TMM_BS_security_chief_kendall_adult.description>
+</LanguageData>

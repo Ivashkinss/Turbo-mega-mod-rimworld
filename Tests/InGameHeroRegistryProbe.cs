@@ -166,6 +166,11 @@ public sealed class HeroRegistryProbe : MapComponent
                 new { fac = "TMM_MinutemenHuntersFaction", xeno = (string)null, ids = new[] { "bobby_singer", "ronnie_shaw", "rufus_turner", "ellen_harvelle" } },
                 new { fac = "TMM_FriendlyMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "fox", "uncle_leo", "strong", "erickson", "virgil" } },
                 new { fac = "TMM_BrotherhoodFaction", xeno = (string)null, ids = new[] { "arthur_maxson", "owen_lyons", "sarah_lyons", "paladin_danse", "captain_kells", "proctor_ingram" } },
+                new { fac = "TMM_GunnersFaction", xeno = (string)null, ids = new[] { "captain_wes", "clint", "tessa", "captain_bridget", "baker" } },
+                new { fac = "TMM_EnclaveFaction", xeno = (string)null, ids = new[] { "colonel_autumn", "dr_curling", "sergeant_dornan", "captain_richards" } },
+                new { fac = "TMM_InstituteFaction", xeno = (string)null, ids = new[] { "father_shaun", "justin_ayo", "x6_88", "madison_li", "kellogg", "alan_binet" } },
+                new { fac = "TMM_RailroadFaction", xeno = (string)null, ids = new[] { "desdemona", "deacon", "tinker_tom", "glory" } },                new { fac = "TMM_VaultTecFaction", xeno = (string)null, ids = new[] { "alphonse_almodovar", "gwen_mcnamara", "stanislaus_braun", "vaulttec_rep", "security_chief_kendall" } },
+                new { fac = "TMM_MenOfLettersFaction", xeno = (string)null, ids = new[] { "dr_hess", "arthur_ketch", "mick_davies", "antonia_bevell", "kendricks" } },
                 new { fac = "TMM_WildMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "swan", "fist", "dead_eye", "mad_racer", "master_butcher" } } };
             foreach (var grp in groups)
             {
@@ -185,7 +190,9 @@ public sealed class HeroRegistryProbe : MapComponent
             }
             Pawn foxP = reg.GetOrCreate(H("TMM_Hero_fox")); Pawn swanP = reg.GetOrCreate(H("TMM_Hero_swan"));
             C("FoxLeadsFriendlyMutants", foxP != null && foxP.Faction != null && foxP.Faction.leader == foxP, "Fox", foxP == null || foxP.Faction == null ? null : foxP.Faction.leader);
-            C("SwanLeadsWildMutants", swanP != null && swanP.Faction != null && swanP.Faction.leader == swanP, "Swan", swanP == null || swanP.Faction == null ? null : swanP.Faction.leader);            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
+            C("SwanLeadsWildMutants", swanP != null && swanP.Faction != null && swanP.Faction.leader == swanP, "Swan", swanP == null || swanP.Faction == null ? null : swanP.Faction.leader);            Pawn vtLeader = null; { FactionDef vd = DefDatabase<FactionDef>.GetNamedSilentFail("TMM_VaultTecFaction"); Faction vf = vd == null ? null : Find.FactionManager.FirstFactionOfDef(vd); vtLeader = vf == null ? null : vf.leader; }
+            C("VaultTecCouncilMemberLeads", vtLeader != null && reg.Records.Any(r => r.pawn == vtLeader && DefDatabase<HeroDef>.GetNamedSilentFail(r.heroDefName) != null && DefDatabase<HeroDef>.GetNamedSilentFail(r.heroDefName).councilMember), "a council member", vtLeader);
+            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
             Pawn azazel = reg.GetOrCreate(H("TMM_Hero_azazel"));
             bool yellow = azazel != null && azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_Devil" && x.Active);
             bool blackOff = azazel != null && !azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_DemonBlack" && x.Active);
@@ -210,7 +217,7 @@ public sealed class HeroRegistryProbe : MapComponent
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
-            C("FortyRecords", reg.Records.Count() == 40, 40, reg.Records.Count());
+            C("SixtyNineRecords", reg.Records.Count() == 69, 69, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -296,7 +303,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 40, 40, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 69, 69, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

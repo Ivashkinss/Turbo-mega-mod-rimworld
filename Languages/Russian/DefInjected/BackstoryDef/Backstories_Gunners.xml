@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Капитан Уэс -->
+  <TMM_BS_captain_wes_child.title>кадет лагеря наёмников</TMM_BS_captain_wes_child.title>
+  <TMM_BS_captain_wes_child.titleShort>кадет</TMM_BS_captain_wes_child.titleShort>
+  <TMM_BS_captain_wes_child.description>Выросший в укреплённом лагере безжалостных наёмников, [PAWN_nameDef] рано усвоил, что верность покупается крышками и свинцом. Пока сверстники копались в скудных огородах, он отрабатывал стрельбу из довоенных винтовок и изучал тактику.</TMM_BS_captain_wes_child.description>
+
+  <TMM_BS_captain_wes_adult.title>главарь синдиката Стрелков</TMM_BS_captain_wes_adult.title>
+  <TMM_BS_captain_wes_adult.titleShort>командир</TMM_BS_captain_wes_adult.titleShort>
+  <TMM_BS_captain_wes_adult.description>Проложив себе путь кровью и железом к командованию штабом Стрелков, [PAWN_nameDef] управляет армией наёмников с холодной корпоративной расчётливостью. Циничный и лишённый морали, он берётся за любой выгодный контракт и стирает в пыль каждого, кто встаёт на пути.</TMM_BS_captain_wes_adult.description>
+
+  <!-- Клинт -->
+  <TMM_BS_clint_child.title>честолюбивый новобранец</TMM_BS_clint_child.title>
+  <TMM_BS_clint_child.titleShort>новобранец</TMM_BS_clint_child.titleShort>
+  <TMM_BS_clint_child.description>Выросший в бедном приграничном городке, [PAWN_nameDef] с раздражением смотрел, как соседи делятся скудными припасами со всякими нахлебниками. Он вступил в ополчение не ради высоких идеалов, а ради оружия, выучки и власти над слабыми.</TMM_BS_clint_child.description>
+
+  <TMM_BS_clint_adult.title>офицер-предатель</TMM_BS_clint_adult.title>
+  <TMM_BS_clint_adult.titleShort>перебежчик</TMM_BS_clint_adult.titleShort>
+  <TMM_BS_clint_adult.description>Некогда доверенный офицер минитменов, [PAWN_nameDef] продал собственных товарищей в Квинси ради тёплого места в рядах Стрелков. Циничный приспособленец, теперь он возглавляет карательные отряды наёмников в руинах, которые сам помог захватить.</TMM_BS_clint_adult.description>
+
+  <!-- Тесса -->
+  <TMM_BS_tessa_child.title>драчунья со свалки</TMM_BS_tessa_child.title>
+  <TMM_BS_tessa_child.titleShort>задира</TMM_BS_tessa_child.titleShort>
+  <TMM_BS_tessa_child.description>Осиротев на беззаконных окраинах разрушенного города, [PAWN_nameDef] выживала в драках за уцелевшие бронепластины и сварочные аппараты. Она быстро научилась наваривать тяжёлый металлолом на самодельные каркасы и крушить черепа в ближнем бою.</TMM_BS_tessa_child.description>
+
+  <TMM_BS_tessa_adult.title>штурмовой лейтенант в броне</TMM_BS_tessa_adult.title>
+  <TMM_BS_tessa_adult.titleShort>штурмовик</TMM_BS_tessa_adult.titleShort>
+  <TMM_BS_tessa_adult.description>Закованная в кустарно усиленную силовую броню, [PAWN_nameDef] обожает врезаться прямо в строй противника и крушить защитников в рукопашной. Свирепая и беспощадная, она воспринимает каждый рейд как повод испытать новые бронепластины в бою.</TMM_BS_tessa_adult.description>
+
+  <!-- Капитан Бриджит -->
+  <TMM_BS_captain_bridget_child.title>собирательница с эстакад</TMM_BS_captain_bridget_child.title>
+  <TMM_BS_captain_bridget_child.titleShort>собирательница</TMM_BS_captain_bridget_child.titleShort>
+  <TMM_BS_captain_bridget_child.description>Выросшая среди завалов разбитых машин и ржавых контейнеров, [PAWN_nameDef] научилась превращать автосвалки в неприступные лабиринты. Она рано освоила тяжёлое оружие, чтобы отгонять соседние банды от своей территории.</TMM_BS_captain_bridget_child.description>
+
+  <TMM_BS_captain_bridget_adult.title>капитан укрепрайона</TMM_BS_captain_bridget_adult.title>
+  <TMM_BS_captain_bridget_adult.titleShort>капитан</TMM_BS_captain_bridget_adult.titleShort>
+  <TMM_BS_captain_bridget_adult.description>Командуя укреплённым бастионом на автосвалке, [PAWN_nameDef] поддерживает железную дисциплину с помощью крупнокалиберных пулемётов и расстрелов за промахи. Прагматичная и жестокая, она превращает каждый подход к своей базе в смертельную огневую ловушку.</TMM_BS_captain_bridget_adult.description>
+
+  <!-- Бейкер -->
+  <TMM_BS_baker_child.title>наблюдатель с крыш</TMM_BS_baker_child.title>
+  <TMM_BS_baker_child.titleShort>наблюдатель</TMM_BS_baker_child.titleShort>
+  <TMM_BS_baker_child.description>Молчаливый и терпеливый с малых лет, [PAWN_nameDef] часами сидел на полуразрушенных крышах, выслеживая рад-оленей и караваны через треснувший бинокль. Он научился задерживать дыхание и не тратить редкие патроны впустую.</TMM_BS_baker_child.description>
+
+  <TMM_BS_baker_adult.title>снайпер прикрытия Стрелков</TMM_BS_baker_adult.title>
+  <TMM_BS_baker_adult.titleShort>снайпер</TMM_BS_baker_adult.titleShort>
+  <TMM_BS_baker_adult.description>Занимая позиции на высоких мостах и колокольнях, [PAWN_nameDef] служит самым метким стрелком на дальней дистанции в рядах Стрелков. Отстранённый и методичный, он издалека снимает командиров и медиков без тени сожаления.</TMM_BS_baker_adult.description>
+</LanguageData>

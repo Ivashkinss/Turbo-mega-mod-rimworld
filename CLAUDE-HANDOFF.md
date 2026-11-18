@@ -158,3 +158,11 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
   - дикие мутанты: Лебедь (лидер), Кувалда, Мёртвый Глаз, Гонщик, Мясник;
   - Братство: Мэксон (лидер), Оуэн и Сара Лайонс, Данс, Келлс, Ингрэм.
 - **Прогоны:** HeroRegistry 91/91 + reload (40 записей), SuperMutantXenotype 25/25, Outposts, MinutemenHunters — ERROR 0.
+## 18.11.2026 вечер — ещё 6 фракций и 29 героев (Hydrogen + Claude)
+- **Фракции:**
+  - Стрелки, Анклав — база пиратов, Анклав с уровнем Spacer;
+  - Институт (Spacer), Подземка, Волт-Тек, Британские Просвещённые — база переселенцев;
+  - у всех фиксированные имена, RU в `Languages/Russian/DefInjected/FactionDef/Factions_Wasteland.xml`.
+- **Совет Волт-Тек:** у `HeroDef.councilMember` нет единого лидера, формальным ванильным лидером становится первый живой член совета (в тесте — Альмодовар).
+- **Прогоны:** HeroRegistry 127/127 (69 записей), reload чистый со второго раза, Outposts — ERROR 0.
+- **Случайный сбой:** первый reload дал одну ошибку `No shuffled Adulthood found for торговец of TribeCivil` из `WorldTraffic.MakePawn`; повтор чистый, за все прогоны встретилась впервые. Расследование — задача Gemini WorldTrafficBackstoryFlake.

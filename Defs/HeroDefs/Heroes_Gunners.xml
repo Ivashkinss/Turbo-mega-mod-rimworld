@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_captain_wes</defName>
+    <childhood>TMM_BS_captain_wes_child</childhood>
+    <adulthood>TMM_BS_captain_wes_adult</adulthood>
+    <label>Captain Wes</label>
+    <factionDef>TMM_GunnersFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Wes</nameFirst><nameNick>Captain Wes</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>40~48</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Social</skill><level>14</level></li>
+      <li><skill>Intellectual</skill><level>12</level></li>
+    </skills>
+    <weapon>Gun_ChargeRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_clint</defName>
+    <childhood>TMM_BS_clint_child</childhood>
+    <adulthood>TMM_BS_clint_adult</adulthood>
+    <label>Clint</label>
+    <factionDef>TMM_GunnersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Clint</nameFirst><nameNick>Clint</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>36~44</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Social</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_AssaultRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_tessa</defName>
+    <childhood>TMM_BS_tessa_child</childhood>
+    <adulthood>TMM_BS_tessa_adult</adulthood>
+    <label>Tessa</label>
+    <factionDef>TMM_GunnersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Tessa</nameFirst><nameNick>Tessa</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>32~40</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>15</level></li>
+      <li><skill>Shooting</skill><level>12</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+    </skills>
+    <weapon>MeleeWeapon_Gladius</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_captain_bridget</defName>
+    <childhood>TMM_BS_captain_bridget_child</childhood>
+    <adulthood>TMM_BS_captain_bridget_adult</adulthood>
+    <label>Captain Bridget</label>
+    <factionDef>TMM_GunnersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Bridget</nameFirst><nameNick>Captain Bridget</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>38~46</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Construction</skill><level>12</level></li>
+      <li><skill>Social</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_LMG</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_baker</defName>
+    <childhood>TMM_BS_baker_child</childhood>
+    <adulthood>TMM_BS_baker_adult</adulthood>
+    <label>Baker</label>
+    <factionDef>TMM_GunnersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Baker</nameFirst><nameNick>Baker</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>30~38</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>16</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+      <li><skill>Animals</skill><level>9</level></li>
+    </skills>
+    <weapon>Gun_SniperRifle</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

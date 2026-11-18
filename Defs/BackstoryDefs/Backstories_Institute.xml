@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Father (Shaun) -->
+  <BackstoryDef>
+    <defName>TMM_BS_father_shaun_child</defName>
+    <slot>Childhood</slot>
+    <title>vault-born specimen</title>
+    <titleShort>specimen</titleShort>
+    <description>Taken from a cryogenically frozen vault as an infant, [PAWN_nameDef] grew up beneath the surface inside a gleaming subterranean research complex. Surrounded by scientists who viewed [PAWN_possessive] uncorrupted DNA as humanity's future, [PAWN_pronoun] never knew life on the ruined surface.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_father_shaun_adult</defName>
+    <slot>Adulthood</slot>
+    <title>director of the institute</title>
+    <titleShort>director</titleShort>
+    <description>Ascending to lead the Institute through decades of secretive research, [PAWN_nameDef] views the irradiated wasteland above as a doomed relic beyond saving. Calm, paternal, and ruthlessly utilitarian, [PAWN_pronoun] believes only underground science can redefine humanity.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>3</Social>
+      <Medicine>1</Medicine>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Justin Ayo -->
+  <BackstoryDef>
+    <defName>TMM_BS_justin_ayo_child</defName>
+    <slot>Childhood</slot>
+    <title>subterranean hall monitor</title>
+    <titleShort>monitor</titleShort>
+    <description>Raised in the spotless corridors of the Institute, [PAWN_nameDef] always took rules, security clearances, and surveillance logs far more seriously than [PAWN_possessive] peers. [PAWN_pronoun] loved catching classmates slipping into restricted labs.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>ManualDumb, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_justin_ayo_adult</defName>
+    <slot>Adulthood</slot>
+    <title>retention bureau chief</title>
+    <titleShort>bureau chief</titleShort>
+    <description>As acting head of the Synth Retention Bureau, [PAWN_nameDef] treats escaped synths as stolen property and surface dwellers as dangerous savages. Suspicious, arrogant, and fiercely loyal to internal security, [PAWN_pronoun] dispatches hunters to reclaim every rogue asset.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Social>3</Social>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb, Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- X6-88 -->
+  <BackstoryDef>
+    <defName>TMM_BS_x6_88_child</defName>
+    <slot>Childhood</slot>
+    <title>courser conditioning subject</title>
+    <titleShort>trainee</titleShort>
+    <description>Shaped from [PAWN_possessive] earliest activation inside sterile tactical simulation chambers, [PAWN_nameDef] was conditioned to suppress hesitation, fear, and sympathy. Every hour was spent mastering close-quarters combat, infiltration, and target tracking.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_x6_88_adult</defName>
+    <slot>Adulthood</slot>
+    <title>elite institute courser</title>
+    <titleShort>courser</titleShort>
+    <description>An emotionless, black-coated operative of the Retention Bureau, [PAWN_nameDef] hunts rogue synths and eliminates threats to the Institute with lethal efficiency. Cold, analytical, and relentless, [PAWN_pronoun] treats every mission as a problem to be solved without mercy.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Dr. Madison Li -->
+  <BackstoryDef>
+    <defName>TMM_BS_madison_li_child</defName>
+    <slot>Childhood</slot>
+    <title>ambitious physics student</title>
+    <titleShort>student</titleShort>
+    <description>Growing up with an insatiable hunger for pre-war engineering and energy theory, [PAWN_nameDef] spent [PAWN_possessive] youth dismantling salvaged fusion cores and reactor schematics. [PAWN_pronoun] possessed little patience for small talk or people who slowed down [PAWN_possessive] work.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_madison_li_adult</defName>
+    <slot>Adulthood</slot>
+    <title>advanced systems director</title>
+    <titleShort>physicist</titleShort>
+    <description>After helping bring clean water to the Capital Wasteland and growing disillusioned with military politics, [PAWN_nameDef] joined the Institute to lead its Advanced Systems division. Sharp-tongued and fiercely dedicated to pure science, [PAWN_pronoun] pushes experimental energy projects forward.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Crafting>3</Crafting>
+      <Medicine>1</Medicine>
+    </skillGains>
+    <workDisables>Artistic, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Kellogg -->
+  <BackstoryDef>
+    <defName>TMM_BS_kellogg_child</defName>
+    <slot>Childhood</slot>
+    <title>hardened frontier drifter</title>
+    <titleShort>drifter</titleShort>
+    <description>Born into a broken home on the western coast, [PAWN_nameDef] learned early that the strong take what they want while the weak get buried. Armed with a heavy revolver before [PAWN_pronoun] was grown, [PAWN_pronoun] drifted eastward taking bloody mercenary contracts.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_kellogg_adult</defName>
+    <slot>Adulthood</slot>
+    <title>cybernetic surface enforcer</title>
+    <titleShort>enforcer</titleShort>
+    <description>After losing everyone [PAWN_pronoun] ever loved, [PAWN_nameDef] sold [PAWN_possessive] conscience to the Institute in exchange for life-extending cybernetic implants. Cold, fatalistic, and deadly with a .44 revolver, [PAWN_pronoun] carries out the Institute's dirtiest surface operations.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Alan Binet -->
+  <BackstoryDef>
+    <defName>TMM_BS_alan_binet_child</defName>
+    <slot>Childhood</slot>
+    <title>curious tinkerer</title>
+    <titleShort>tinkerer</titleShort>
+    <description>Raised in the quiet residential quarters of the Institute, [PAWN_nameDef] spent hours assembling intricate mechanical toys and studying synthetic muscle fibers. Unlike more dogmatic peers, [PAWN_pronoun] felt genuine empathy for everything [PAWN_pronoun] built.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_alan_binet_adult</defName>
+    <slot>Adulthood</slot>
+    <title>robotics division chief</title>
+    <titleShort>roboticist</titleShort>
+    <description>As head of the Robotics division, [PAWN_nameDef] oversees the assembly and refinement of synthetic humans with quiet pride and growing moral doubt. Gentle, thoughtful, and brilliant, [PAWN_pronoun] secretly believes third-generation synths deserve to be treated as living beings.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Crafting>4</Crafting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

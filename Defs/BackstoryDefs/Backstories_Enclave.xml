@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Colonel Autumn -->
+  <BackstoryDef>
+    <defName>TMM_BS_colonel_autumn_child</defName>
+    <slot>Childhood</slot>
+    <title>enclave officer heir</title>
+    <titleShort>cadet</titleShort>
+    <description>Born inside the isolated stronghold of the pre-war government's remnants, [PAWN_nameDef] was raised to believe [PAWN_possessive] people were the sole legitimate heirs to civilization. Taught from birth to view wasteland inhabitants as corrupted mutants, [PAWN_pronoun] excelled in military command.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_colonel_autumn_adult</defName>
+    <slot>Adulthood</slot>
+    <title>enclave field commander</title>
+    <titleShort>colonel</titleShort>
+    <description>Commanding the Enclave's expeditionary forces across the Capital Wasteland, [PAWN_nameDef] combines aristocratic poise with ruthless military pragmatism. Unwilling to bow blindly to automated directives, [PAWN_pronoun] seeks to seize vital infrastructure and impose absolute order by force.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Social>3</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Dr. Charles Curling -->
+  <BackstoryDef>
+    <defName>TMM_BS_dr_curling_child</defName>
+    <slot>Childhood</slot>
+    <title>sterile bunker prodigy</title>
+    <titleShort>prodigy</titleShort>
+    <description>Sheltered from radiation and surface squalor inside an offshore facility, [PAWN_nameDef] spent [PAWN_possessive] youth peering through microscopes and memorizing biochemical formulas. [PAWN_pronoun] grew up convinced that science could cleanse a broken world.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_dr_curling_adult</defName>
+    <slot>Adulthood</slot>
+    <title>chemical corps director</title>
+    <titleShort>biochemist</titleShort>
+    <description>Head of the Enclave's Chemical Corps, [PAWN_nameDef] engineered lethal airborne toxins designed to wipe out every mutated organism on the mainland. Polite and soft-spoken in [PAWN_possessive] lab coat, [PAWN_pronoun] calmly justifies mass extinction as a necessary medical procedure.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Medicine>3</Medicine>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Sergeant Dornan -->
+  <BackstoryDef>
+    <defName>TMM_BS_sergeant_dornan_child</defName>
+    <slot>Childhood</slot>
+    <title>barracks disciplinarian</title>
+    <titleShort>trainee</titleShort>
+    <description>Even as a young recruit, [PAWN_nameDef] possessed lungs loud enough to rattle bunker bulkheads and an obsession with spotless gear. [PAWN_pronoun] never tolerated sloppy posture, missing equipment, or hesitation on the drill ground.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_sergeant_dornan_adult</defName>
+    <slot>Adulthood</slot>
+    <title>furious drill instructor</title>
+    <titleShort>sergeant</titleShort>
+    <description>Infamous across every Enclave outpost for volcanic tirades and bone-crushing standards, [PAWN_nameDef] terrorizes new troopers into peak combat readiness. Anyone caught out of uniform or missing a piece of power armor quickly wishes they were facing a deathclaw instead.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Captain Richards -->
+  <BackstoryDef>
+    <defName>TMM_BS_captain_richards_child</defName>
+    <slot>Childhood</slot>
+    <title>vanguard trooper cadet</title>
+    <titleShort>cadet</titleShort>
+    <description>Trained from childhood in sealed combat simulators and live-fire ranges, [PAWN_nameDef] mastered heavy armor movement before reaching adulthood. [PAWN_pronoun] viewed surface dwellers strictly as hostile targets blocking the reclamation of the homeland.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_captain_richards_adult</defName>
+    <slot>Adulthood</slot>
+    <title>hellfire shock commander</title>
+    <titleShort>captain</titleShort>
+    <description>Leading elite shock troopers clad in experimental thermal power armor, [PAWN_nameDef] spearheads scorched-earth assaults against fortified enemy positions. Cold, fanatical, and heavily armed, [PAWN_pronoun] leaves nothing behind save ash and molten slag.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>2</Melee>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

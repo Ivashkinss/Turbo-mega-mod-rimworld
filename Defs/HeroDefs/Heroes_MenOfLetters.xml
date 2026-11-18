@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_dr_hess</defName>
+    <childhood>TMM_BS_dr_hess_child</childhood>
+    <adulthood>TMM_BS_dr_hess_adult</adulthood>
+    <label>Dr. Hess</label>
+    <factionDef>TMM_MenOfLettersFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Hess</nameFirst><nameNick>Dr. Hess</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>50~58</ageRange>
+    <skills>
+      <li><skill>Intellectual</skill><level>16</level></li>
+      <li><skill>Social</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_arthur_ketch</defName>
+    <childhood>TMM_BS_arthur_ketch_child</childhood>
+    <adulthood>TMM_BS_arthur_ketch_adult</adulthood>
+    <label>Arthur Ketch</label>
+    <factionDef>TMM_MenOfLettersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Arthur</nameFirst><nameNick>Ketch</nameNick><nameLast>Ketch</nameLast>
+    <gender>Male</gender>
+    <ageRange>36~44</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>16</level></li>
+      <li><skill>Melee</skill><level>15</level></li>
+      <li><skill>Crafting</skill><level>12</level></li>
+    </skills>
+    <weapon>Gun_AssaultRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_mick_davies</defName>
+    <childhood>TMM_BS_mick_davies_child</childhood>
+    <adulthood>TMM_BS_mick_davies_adult</adulthood>
+    <label>Mick Davies</label>
+    <factionDef>TMM_MenOfLettersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Mick</nameFirst><nameNick>Mick</nameNick><nameLast>Davies</nameLast>
+    <gender>Male</gender>
+    <ageRange>34~42</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_antonia_bevell</defName>
+    <childhood>TMM_BS_antonia_bevell_child</childhood>
+    <adulthood>TMM_BS_antonia_bevell_adult</adulthood>
+    <label>Lady Antonia Bevell</label>
+    <factionDef>TMM_MenOfLettersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Antonia</nameFirst><nameNick>Lady Bevell</nameNick><nameLast>Bevell</nameLast>
+    <gender>Female</gender>
+    <ageRange>34~42</ageRange>
+    <skills>
+      <li><skill>Intellectual</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Medicine</skill><level>12</level></li>
+    </skills>
+    <weapon>MeleeWeapon_Knife</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_kendricks</defName>
+    <childhood>TMM_BS_kendricks_child</childhood>
+    <adulthood>TMM_BS_kendricks_adult</adulthood>
+    <label>Mr. Kendricks</label>
+    <factionDef>TMM_MenOfLettersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Kendricks</nameFirst><nameNick>Kendricks</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>40~48</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_HeavySMG</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

@@ -79,7 +79,8 @@ namespace TurboMegaMod
             rec.pawn = pawn;
             rec.state = HeroState.AtHome;
             Keep(pawn);
-            if (def.isLeader && (faction.leader == null || faction.leader.Dead || !IsHero(faction.leader))) faction.leader = pawn;
+            // A council (Vault-Tec) has no single leader: the first living council member is the formal vanilla leader.
+            if ((def.isLeader || def.councilMember) && (faction.leader == null || faction.leader.Dead || !IsHero(faction.leader))) faction.leader = pawn;
             return pawn;
         }
 

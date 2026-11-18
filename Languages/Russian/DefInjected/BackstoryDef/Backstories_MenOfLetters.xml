@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Доктор Хесс -->
+  <TMM_BS_dr_hess_child.title>ученица закрытой академии</TMM_BS_dr_hess_child.title>
+  <TMM_BS_dr_hess_child.titleShort>ученица</TMM_BS_dr_hess_child.titleShort>
+  <TMM_BS_dr_hess_child.description>Воспитанная в стенах многовекового оккультного интерната, [PAWN_nameDef] рано усвоила, что чувства — это слабость, а древние печати созданы для контроля. Она с ледяным хладнокровием разбирала запретные фолианты.</TMM_BS_dr_hess_child.description>
+
+  <TMM_BS_dr_hess_adult.title>верховная старейшина Лондона</TMM_BS_dr_hess_adult.title>
+  <TMM_BS_dr_hess_adult.titleShort>старейшина</TMM_BS_dr_hess_adult.titleShort>
+  <TMM_BS_dr_hess_adult.description>Член высшего совета Британских Просвещённых, [PAWN_nameDef] считает зарубежных охотников безрассудными дилетантами, обязанными либо подчиниться британскому надзору, либо исчезнуть. Безжалостная, высокомерная и непреклонная, она хранит тайны ордена любой ценой.</TMM_BS_dr_hess_adult.description>
+
+  <!-- Артур Кетч -->
+  <TMM_BS_arthur_ketch_child.title>воспитанник академии Кендрикса</TMM_BS_arthur_ketch_child.title>
+  <TMM_BS_arthur_ketch_child.titleShort>курсант</TMM_BS_arthur_ketch_child.titleShort>
+  <TMM_BS_arthur_ketch_child.description>Лишённый сентиментальности в суровых залах закрытой академии ордена, [PAWN_nameDef] готовился стать идеальным специалистом по зачисткам. Он в совершенстве овладел огнестрелом, клинками и разрушителями оберегов ещё до совершеннолетия.</TMM_BS_arthur_ketch_child.description>
+
+  <TMM_BS_arthur_ketch_adult.title>оккультный киллер ордена</TMM_BS_arthur_ketch_adult.title>
+  <TMM_BS_arthur_ketch_adult.titleShort>ликвидатор</TMM_BS_arthur_ketch_adult.titleShort>
+  <TMM_BS_arthur_ketch_adult.description>Одетый с иголочки в строгий костюм и носящий саквояж с зачарованным оружием, [PAWN_nameDef] устраняет нечисть и неугодных людей с вежливой социопатической точностью. Хотя порой он проникается странным уважением к достойным противникам, свидетелей он почти не оставляет.</TMM_BS_arthur_ketch_adult.description>
+
+  <!-- Мик Дэвис -->
+  <TMM_BS_mick_davies_child.title>уличный воспитанник Лондона</TMM_BS_mick_davies_child.title>
+  <TMM_BS_mick_davies_child.titleShort>беспризорник</TMM_BS_mick_davies_child.titleShort>
+  <TMM_BS_mick_davies_child.description>Подобранный на мрачных улицах Лондона вербовщиками тайного ордена, [PAWN_nameDef] прошёл через жестокие испытания на верность, чтобы занять место среди знатных учёных. Он выжил благодаря острому уму и умению разгадывать чужие намерения.</TMM_BS_mick_davies_child.description>
+
+  <TMM_BS_mick_davies_adult.title>полевой координатор Просвещённых</TMM_BS_mick_davies_adult.title>
+  <TMM_BS_mick_davies_adult.titleShort>связной</TMM_BS_mick_davies_adult.titleShort>
+  <TMM_BS_mick_davies_adult.description>Отправленный за океан для вербовки местных охотников в ряды Британских Просвещённых, [PAWN_nameDef] делает ставку на переговоры, ресурсы и новейшие оккультные гаджеты. За его безупречными манерами скрывается живая совесть, всё чаще вступающая в конфликт с жестоким кодексом Лондона.</TMM_BS_mick_davies_adult.description>
+
+  <!-- Леди Антония Бевелл -->
+  <TMM_BS_antonia_bevell_child.title>староста оккультной академии</TMM_BS_antonia_bevell_child.title>
+  <TMM_BS_antonia_bevell_child.titleShort>староста</TMM_BS_antonia_bevell_child.titleShort>
+  <TMM_BS_antonia_bevell_child.description>Воспитанная в строгой дисциплине старинной британской академии, [PAWN_nameDef] с детства заучивала енохианские печати и приёмы психологического допроса. Она свято верила, что железный контроль — единственная преграда на пути сверхъестественного хаоса.</TMM_BS_antonia_bevell_child.description>
+
+  <TMM_BS_antonia_bevell_adult.title>оккультный дознаватель</TMM_BS_antonia_bevell_adult.title>
+  <TMM_BS_antonia_bevell_adult.titleShort>дознаватель</TMM_BS_antonia_bevell_adult.titleShort>
+  <TMM_BS_antonia_bevell_adult.description>Элитный полевой агент и мастер слома воли, [PAWN_nameDef] вырывает тайны с помощью ритуальных пыток и алхимических эликсиров. Холодная, гордая и фанатично преданная миссии ордена, она воспринимает любое сопротивление как изъян, который нужно выжечь.</TMM_BS_antonia_bevell_adult.description>
+
+  <!-- Мистер Кендрикс -->
+  <TMM_BS_kendricks_child.title>курсант гарнизона ордена</TMM_BS_kendricks_child.title>
+  <TMM_BS_kendricks_child.titleShort>курсант</TMM_BS_kendricks_child.titleShort>
+  <TMM_BS_kendricks_child.description>Обучавшийся за высокими стенами уединённого британского поместья, [PAWN_nameDef] бесконечно отрабатывал рукопашный бой, стрельбу и захват сверхъестественных тварей. Он рано усвоил, что малейшее промедление во тьме означает верную гибель.</TMM_BS_kendricks_child.description>
+
+  <TMM_BS_kendricks_adult.title>командир тактического спецназа</TMM_BS_kendricks_adult.title>
+  <TMM_BS_kendricks_adult.titleShort>командир</TMM_BS_kendricks_adult.titleShort>
+  <TMM_BS_kendricks_adult.description>Возглавляя тяжёлые штурмовые отряды Британских Просвещённых, [PAWN_nameDef] проводит зачистки с армейской точностью и зачарованным арсеналом. Невозмутимый, дисциплинированный и беспощадный к нечисти, он зачищает целые логова без единого лишнего слова.</TMM_BS_kendricks_adult.description>
+</LanguageData>
