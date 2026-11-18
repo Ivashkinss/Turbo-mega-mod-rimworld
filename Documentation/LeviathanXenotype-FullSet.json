@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3271,
-                         "scalarFields":  1297,
+                         "keyed":  3292,
+                         "scalarFields":  1408,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4258,
-                        "ticksAdvanced":  1787,
+                        "framesAdvanced":  4250,
+                        "ticksAdvanced":  1781,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,12 +42,12 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "b89ba7f7c055a845de5a344d0ce24475ef9b9cd9b26aecabf8169e9660d988e7",
+    "productionAssemblySha256":  "8dee09ef1ebfba1dad9f2cb57692fb8b017cbc9fdafb9c7de8514b1d4985989f",
     "leviathanXenotype":  {
                               "passed":  true,
-                              "checksCount":  17,
+                              "checksCount":  19,
                               "facts":  [
-                                            "xenotype=TMM_Leviathan skinGene=Skin_LightGray"
+                                            "xenotype=TMM_Leviathan skinGene=Skin_SlateGray"
                                         ],
                               "checks":  [
                                              {
@@ -145,6 +145,18 @@
                                                  "passed":  true,
                                                  "expected":  "active",
                                                  "actual":  "active"
+                                             },
+                                             {
+                                                 "name":  "MetabolismNeutral",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "XenotypeMetabolismNeutral",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
                                              },
                                              {
                                                  "name":  "PortraitsSaved",

@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3271,
-                         "scalarFields":  772,
+                         "keyed":  3292,
+                         "scalarFields":  1408,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4249,
-                        "ticksAdvanced":  1785,
+                        "framesAdvanced":  4046,
+                        "ticksAdvanced":  1788,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,12 +42,12 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
+    "productionAssemblySha256":  "8dee09ef1ebfba1dad9f2cb57692fb8b017cbc9fdafb9c7de8514b1d4985989f",
     "demonXenotype":  {
                           "passed":  true,
-                          "checksCount":  32,
+                          "checksCount":  36,
                           "facts":  [
-                                        "skinGene=Skin_DeepRed"
+                                        "xenotype=TMM_Demon skinGene=Skin_InkBlack"
                                     ],
                           "checks":  [
                                          {
@@ -94,6 +94,18 @@
                                          },
                                          {
                                              "name":  "GeneLoaded_TMM_Eyes_DemonBlack",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Wings_Angel",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Eyes_Angel",
                                              "passed":  true,
                                              "expected":  "True",
                                              "actual":  "True"
@@ -231,10 +243,22 @@
                                              "actual":  "active"
                                          },
                                          {
+                                             "name":  "MetabolismNeutral",
+                                             "passed":  true,
+                                             "expected":  "0",
+                                             "actual":  "0"
+                                         },
+                                         {
+                                             "name":  "XenotypeMetabolismNeutral",
+                                             "passed":  true,
+                                             "expected":  "0",
+                                             "actual":  "0"
+                                         },
+                                         {
                                              "name":  "DemonSkinGene",
                                              "passed":  true,
                                              "expected":  "Skin_DeepRed|Skin_InkBlack",
-                                             "actual":  "Skin_DeepRed"
+                                             "actual":  "Skin_InkBlack"
                                          },
                                          {
                                              "name":  "PortraitsSaved",
