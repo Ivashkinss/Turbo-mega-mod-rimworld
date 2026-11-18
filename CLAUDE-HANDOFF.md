@@ -46,3 +46,13 @@ Gemini polling использует Delegation/QUEUE.json, root/Claude влад�
 ## 18.11.2026 — OutpostMapsIntegration принят
 Карты аванпостов перенесены в корень с исправлениями Codex F1–F6. DLL d9d3a293…; 6/6 игровых прогонов чистые: OutpostMaps 53+15, Outposts 34+55, OutpostCalendar 39+16, runtimeErrors 0, unresolved 0, gpuLost false. Профили: TestRuns/OutpostMaps-FullSet-20261118-071621, Outposts-FullSet-20261118-071914, OutpostCalendar-FullSet-20261118-072419. Изменения по ходу: L7 HospitalBed → Bed, упрощён L10, генератор на деревянном полу.
 Открыто: санитайзер связей в Tests/InGameOutpostCalendarProbe.cs:446-479 может скрывать потерю пешки → OutpostRelationLeakAudit. Tier10 reload на новой DLL ещё не перезапускался, это часть OutpostBalanceApply. UI карт в игре глазами не смотрели (visualLayoutInspected false).
+## 18.11.2026 — OutpostBalanceApply принят
+Баланс аванпостов в XML:
+- пласталь 0.4;
+- синткань 1.0;
+- продвинутый компонент 0.06;
+- дерево 4.0;
+- гиперткань 0.35;
+- costMultiplier 1.35: уровни 500/675/911/1230/1661/2242/3027/4086/5516, сумма около 19.8k.
+DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload 120/120. Шахта в игре: 12 пластали в день (2×15) и 60 (сумма навыков 150).
+Колонка «было» в отчёте Gemini неверна, XML-дифф правильный. Тесты теперь очищают relationshipRecords перед сохранением. Причину выясняет OutpostRelationLeakAudit.

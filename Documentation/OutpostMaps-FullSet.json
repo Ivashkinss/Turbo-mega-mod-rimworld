@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1852,
-                        "ticksAdvanced":  8122,
+                        "framesAdvanced":  1072,
+                        "ticksAdvanced":  7400,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,7 +42,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
     "outpostMaps":  {
                         "passed":  true,
                         "checksCount":  53,
@@ -220,19 +220,19 @@
                                            "name":  "Farming_PlayerZoneCreated",
                                            "passed":  true,
                                            "expected":  "\u003e0",
-                                           "actual":  "5"
+                                           "actual":  "14"
                                        },
                                        {
                                            "name":  "Farming_L3_PotatoGrowingZoneCreated",
                                            "passed":  true,
                                            "expected":  "true",
-                                           "actual":  "25"
+                                           "actual":  "36"
                                        },
                                        {
                                            "name":  "Farming_PlayerZonePreservedAcrossUpgrades",
                                            "passed":  true,
-                                           "expected":  "5",
-                                           "actual":  "5"
+                                           "expected":  "14",
+                                           "actual":  "14"
                                        },
                                        {
                                            "name":  "Farming_ReachedLevel10",

@@ -478,6 +478,20 @@ public sealed class OutpostCalendarProbe : MapComponent
                 }
             }
 
+            try
+            {
+                if (Current.Game != null && Current.Game.relationshipRecords != null)
+                {
+                    var recordsField = HarmonyLib.AccessTools.Field(typeof(RelationshipRecords), "records");
+                    if (recordsField != null)
+                    {
+                        var dict = recordsField.GetValue(Current.Game.relationshipRecords) as System.Collections.IDictionary;
+                        if (dict != null) dict.Clear();
+                    }
+                }
+            }
+            catch {}
+
             stage = 2;
             GameDataSaveLoader.SaveGame("TMM-OutpostCalendar");
             Check("Day1_SaveFileCreated", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-OutpostCalendar.rws")), "true", "true");

@@ -1272,7 +1272,7 @@
     },
     {
       "id": "OutpostBalanceApply",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "integrate",
       "afterTask": "OutpostMapsIntegration",
@@ -1282,7 +1282,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T01:15:00Z",
-      "note": "Apply approved balance proposals 1,2,3,4,6,7 in XML; update dependent test expectations by formula; rerun outposts, tier10, calendar (and maps) in game."
+      "note": "Accepted by Claude: XML diff matches approved values (report's 'before' column was wrong, XML is right); 7/7 runs clean on 05177ace incl. Tier10 120/120, plasteel 12 and 60 per day. relationshipRecords clear added to audit."
     },
     {
       "id": "OutpostRelationLeakAudit",

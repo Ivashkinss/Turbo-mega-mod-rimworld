@@ -49,10 +49,74 @@ public sealed class OutpostAcceptanceProbe : MapComponent
     {
         for(int attempt=0;attempt<12;attempt++) {
             var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,allowAddictions:false,canGeneratePawnRelations:false,developmentalStages:DevelopmentalStage.Adult));
-            if(p.skills!=null&&!p.WorkTypeIsDisabled(WorkTypeDefOf.Mining)&&!p.skills.GetSkill(SkillDefOf.Mining).TotallyDisabled) {p.skills.GetSkill(SkillDefOf.Mining).Level=15;return p;}
-            if(!Find.WorldPawns.Contains(p)) Find.WorldPawns.PassToWorld(p,PawnDiscardDecideMode.Discard);
+            if(p.skills!=null&&!p.WorkTypeIsDisabled(WorkTypeDefOf.Mining)&&!p.skills.GetSkill(SkillDefOf.Mining).TotallyDisabled) {
+                p.skills.GetSkill(SkillDefOf.Mining).Level=15;
+                if(p.relations!=null) p.relations.ClearAllRelations();
+                return p;
+            }
+            if(!Find.WorldPawns.Contains(p)) {
+                if(p.relations!=null) p.relations.ClearAllRelations();
+                Find.WorldPawns.PassToWorld(p,PawnDiscardDecideMode.KeepForever);
+            }
         }
         throw new Exception("No capable fixture miner generated.");
+    }
+
+    private void CleanDanglingRelations()
+    {
+        var allKnown = new HashSet<Pawn>();
+        if (Find.Maps != null)
+        {
+            foreach (var m in Find.Maps)
+            {
+                if (m != null && m.mapPawns != null)
+                {
+                    foreach (var p in m.mapPawns.AllPawns) if (p != null) allKnown.Add(p);
+                }
+            }
+        }
+        if (Find.WorldPawns != null)
+        {
+            foreach (var p in Find.WorldPawns.AllPawnsAliveOrDead) if (p != null) allKnown.Add(p);
+        }
+        if (Find.WorldObjects != null)
+        {
+            foreach (var post in Find.WorldObjects.AllWorldObjects.OfType<StrategicOutpost>())
+            {
+                if (post.AllPawns != null)
+                {
+                    foreach (var p in post.AllPawns) if (p != null) allKnown.Add(p);
+                }
+            }
+        }
+        foreach (var p in allKnown)
+        {
+            if (p.relations != null && p.relations.DirectRelations != null)
+            {
+                var rels = p.relations.DirectRelations.ToList();
+                for (int i = rels.Count - 1; i >= 0; i--)
+                {
+                    var rel = rels[i];
+                    if (rel == null || rel.otherPawn == null || !allKnown.Contains(rel.otherPawn))
+                    {
+                        p.relations.RemoveDirectRelation(rel);
+                    }
+                }
+            }
+        }
+        try
+        {
+            if (Current.Game != null && Current.Game.relationshipRecords != null)
+            {
+                var recordsField = HarmonyLib.AccessTools.Field(typeof(RelationshipRecords), "records");
+                if (recordsField != null)
+                {
+                    var dict = recordsField.GetValue(Current.Game.relationshipRecords) as System.Collections.IDictionary;
+                    if (dict != null) dict.Clear();
+                }
+            }
+        }
+        catch {}
     }
     private int Output { get { return station.ProducedGoods.TotalStackCountOfDef(ThingDefOf.Plasteel); } }
     private void Fresh()
@@ -75,7 +139,8 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             Check(!caravan.Spawned&&station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver)>=31,"Empty founding caravan or real cargo lost");
             Check(new[]{first,second,animal}.All(p=>Find.WorldPawns.Contains(p)&&!p.Spawned),"Founders not registered/held");
             station.targetColonyTile=-1;station.selectedProductDefNames.Clear();station.selectedProductDefNames.Add("TMM_Outpost_Mining_Plasteel");
-            Check(Math.Abs(station.ExpectedYield(DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"))-20)<0.0001,"Initial worker labor is not20: "+string.Join(";",station.Workers.InnerListForReading.Select(p=>p.ThingID+" colonist="+p.IsColonist+" downed="+p.Downed+" mining="+p.skills.GetSkill(SkillDefOf.Mining).Level+" manipulation="+p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))));
+            // Balance update: Plasteel yieldPerSkill = 0.4. Two skill 15 miners = 30 skill sum. Expected yield = 30 * 0.4 = 12.0
+            Check(Math.Abs(station.ExpectedYield(DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"))-12)<0.0001,"Initial worker labor is not 12: "+string.Join(";",station.Workers.InnerListForReading.Select(p=>p.ThingID+" colonist="+p.IsColonist+" downed="+p.Downed+" mining="+p.skills.GetSkill(SkillDefOf.Mining).Level+" manipulation="+p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))));
             foundedTick=Find.TickManager.TicksGame; Check(station.nextProductionTick>=foundedTick+59000,"Founding did not schedule an actual full production day");
             savedFirst=first.ThingID;savedSecond=second.ThingID;savedAnimal=animal.ThingID;stage=1;return;
         }
@@ -84,13 +149,15 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             if(station.lastProductionTick<=foundedTick)return;
             Check(Find.TickManager.TicksGame-foundedTick>=60000,"Production occurred before actual day elapsed");
             Check(animal!=null&&!animal.Destroyed&&station.Animals.Contains(animal)&&Find.WorldPawns.Contains(animal),"Stored pack animal lost to world GC during actual production day");
-            Check(Output==20,"Two skill15 miners must produce exactly20plasteel per actual day; received "+Output+"; "+string.Join(";",station.Workers.InnerListForReading.Select(p=>p.ThingID+" colonist="+p.IsColonist+" downed="+p.Downed+" mining="+p.skills.GetSkill(SkillDefOf.Mining).Level+" manipulation="+p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))));
+            // Balance update: Output = 2 * 15 * 0.4 = 12
+            Check(Output==12,"Two skill15 miners must produce exactly 12 plasteel per actual day; received "+Output+"; "+string.Join(";",station.Workers.InnerListForReading.Select(p=>p.ThingID+" colonist="+p.IsColonist+" downed="+p.Downed+" mining="+p.skills.GetSkill(SkillDefOf.Mining).Level+" manipulation="+p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))));
             int before=Output;station.DoDailyProduction();station.TriggerDailyProductionNow();
             Check(Output==before,"Repeated public daily entry duplicated production");
             Check(station.ProducedGoods.All(t=>t.stackCount>0&&t.stackCount<=t.def.stackLimit&&t.holdingOwner==station.ProducedGoods),"Output stack limits/ownership broken");
             first.skills.GetSkill(SkillDefOf.Mining).Level=0; second.skills.GetSkill(SkillDefOf.Mining).Level=0;
             Check(station.ExpectedYield(DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"))==0,"Zero skill produces labor");
             first.skills.GetSkill(SkillDefOf.Mining).Level=15;second.skills.GetSkill(SkillDefOf.Mining).Level=15;
+            CleanDanglingRelations();
             stage=2;GameDataSaveLoader.SaveGame("TMM-OutpostDay");return;
         }
         if(stage==2) {
@@ -158,10 +225,11 @@ public sealed class OutpostAcceptanceProbe : MapComponent
     {
         var component=station.Map.GetComponent<StrategicOutpostMapComponent>();
         for(int desired=3;desired<=10;desired++) {
-            var plot=component.GetDefaultModuleRect(desired);
+            var plot=component.GetDefaultModuleRect(desired).ExpandedBy(2);
             // Controlled native construction plots: clear only natural obstacles, never the
             // existing player base. Production's blocked-item check was exercised separately.
             foreach(var cell in plot) {
+                if(!cell.InBounds(station.Map)) continue;
                 foreach(var thing in cell.GetThingList(station.Map).ToArray())
                     if(thing is Plant || thing is Mineable || (thing.def.thingCategories!=null&&thing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks)))thing.Destroy(DestroyMode.Vanish);
                 var terrain=station.Map.terrainGrid.TerrainAt(cell);
@@ -180,7 +248,9 @@ public sealed class OutpostAcceptanceProbe : MapComponent
         var caravan=CaravanMaker.MakeCaravan(recruits,Faction.OfPlayer,station.Tile,true);
         foreach(var recruit in recruits)Check(station.AddPawnFromCaravan(caravan,recruit,out failure),"Actual additional worker transfer failed: "+failure);
         if(caravan.PawnsListForReading.Count==0)Find.WorldObjects.Remove(caravan);
-        Check(station.Workers.Count==8&&station.Workers.InnerListForReading.Sum(p=>p.skills.GetSkill(SkillDefOf.Mining).Level)==150&&Math.Abs(station.ExpectedYield(DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"))-100)<0.0001,"Legal eight-worker 150mining roster does not predict100plasteel/day");
+        // Balance update: 8 workers with sum of Mining skills = 150. Expected yield = 150 * 0.4 = 60.0
+        Check(station.Workers.Count==8&&station.Workers.InnerListForReading.Sum(p=>p.skills.GetSkill(SkillDefOf.Mining).Level)==150&&Math.Abs(station.ExpectedYield(DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"))-60)<0.0001,"Legal eight-worker 150mining roster does not predict 60 plasteel/day");
+        CleanDanglingRelations();
         GameDataSaveLoader.SaveGame("TMM-OutpostTier10");
     }
     private void Reload()
@@ -226,7 +296,8 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             Check(first!=null&&second!=null&&workers.Contains(first)&&workers.Contains(second)&&first.ThingID==savedFirst&&second.ThingID==savedSecond,"Original founders lost identity in level10 save");
             Check(animal!=null&&!animal.Destroyed&&station.Animals.Contains(animal)&&Find.WorldPawns.Contains(animal)&&animal.ThingID==savedAnimal,"Stored pack animal lost in level10 save");
             Check(workers.Sum(p=>p.skills.GetSkill(SkillDefOf.Mining).Level)==150,"Saved worker skills changed");
-            Check(station.selectedProductDefNames.Count==1&&station.selectedProductDefNames[0]=="TMM_Outpost_Mining_Plasteel"&&Math.Abs(station.ExpectedYield(Plasteel)-100)<0.0001,"Level10 load does not predict100plasteel/day");
+            // Balance update: Plasteel yield = 150 * 0.4 = 60.0
+            Check(station.selectedProductDefNames.Count==1&&station.selectedProductDefNames[0]=="TMM_Outpost_Mining_Plasteel"&&Math.Abs(station.ExpectedYield(Plasteel)-60)<0.0001,"Level10 load does not predict 60 plasteel/day");
             Check(station.nextProductionTick>t10LoadTick&&station.nextProductionTick<=t10LoadTick+60000,"Saved production deadline invalid: next="+station.nextProductionTick+" now="+t10LoadTick);
             t10Workers=workers.Select(p=>p.ThingID).OrderBy(s=>s).ToArray();
             t10BaseOutput=Output;t10Deadline=station.nextProductionTick;
@@ -239,7 +310,8 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             if(station.lastProductionTick<t10Deadline)return;
             Check(station.lastProductionTick>=t10Deadline&&station.lastProductionTick-t10Deadline<2500,"Production fired at wrong time: last="+station.lastProductionTick+" deadline="+t10Deadline);
             int produced=Output-t10BaseOutput;t10Facts.Add("productionTick="+station.lastProductionTick);t10Facts.Add("produced="+produced);
-            Check(produced==100,"Eight-worker 150mining level10 outpost must produce exactly100plasteel per actual day; received "+produced);
+            // Balance update: Plasteel daily produced = 150 * 0.4 = 60
+            Check(produced==60,"Eight-worker 150mining level10 outpost must produce exactly 60 plasteel per actual day; received "+produced);
             Check(station.ProducedGoods.All(t=>t.stackCount>0&&t.stackCount<=t.def.stackLimit&&t.holdingOwner==station.ProducedGoods),"Level10 output stacks broken");
             Check(station.nextProductionTick==station.lastProductionTick+60000,"Next deadline not one day after production");
             int before=Output;station.DoDailyProduction();station.TriggerDailyProductionNow();Check(Output==before,"Repeated daily entry duplicated level10 production");

@@ -498,20 +498,14 @@ public sealed class OutpostMapsAcceptanceProbe : MapComponent
             farmMap.zoneManager.RegisterZone(playerZone);
             foreach (IntVec3 c in playerZoneRect)
             {
-                if (c.InBounds(farmMap) && farmMap.zoneManager.ZoneAt(c) == null && c.GetFirstBuilding(farmMap) == null && c.Standable(farmMap) && c.GetFertility(farmMap) > 0f)
+                if (c.InBounds(farmMap))
                 {
-                    playerZone.AddCell(c);
-                }
-            }
-            if (playerZone.CellCount == 0)
-            {
-                for (int dx = 5; dx < 25; dx++)
-                {
-                    IntVec3 c = new IntVec3(campusFootprint.maxX + dx, 0, campusFootprint.CenterCell.z);
-                    if (c.InBounds(farmMap) && farmMap.zoneManager.ZoneAt(c) == null && c.GetFirstBuilding(farmMap) == null && c.Standable(farmMap) && c.GetFertility(farmMap) > 0f)
+                    farmMap.terrainGrid.SetTerrain(c, TerrainDefOf.Soil);
+                    var bld = c.GetFirstBuilding(farmMap);
+                    if (bld != null) bld.Destroy(DestroyMode.Vanish);
+                    if (farmMap.zoneManager.ZoneAt(c) == null && c.Standable(farmMap))
                     {
                         playerZone.AddCell(c);
-                        if (playerZone.CellCount >= 4) break;
                     }
                 }
             }
@@ -682,6 +676,27 @@ public sealed class OutpostMapsAcceptanceProbe : MapComponent
                 new IntVec3(-(defRect.Width + 2) * 2, 0, 0)
             };
 
+            // Prepare alternate candidate areas to ensure they are buildable if naturally obstructed by mountain/water
+            foreach (var altOffset in new[] { new IntVec3(0, 0, defRect.Height + 2), new IntVec3(defRect.Width + 2, 0, 0) })
+            {
+                CellRect altArea = defRect.MovedBy(altOffset).ExpandedBy(1);
+                foreach (IntVec3 c in altArea)
+                {
+                    if (c.InBounds(bMap))
+                    {
+                        if (bMap.roofGrid.RoofAt(c) != null && bMap.roofGrid.RoofAt(c).isThickRoof)
+                        {
+                            bMap.roofGrid.SetRoof(c, null);
+                        }
+                        var ter = bMap.terrainGrid.TerrainAt(c);
+                        if (ter != null && (ter.passability == Traversability.Impassable || ter.IsWater))
+                        {
+                            bMap.terrainGrid.SetTerrain(c, TerrainDefOf.Soil);
+                        }
+                    }
+                }
+            }
+
             // Part 1: Block ALL 13 candidate locations with valuable gold piles
             var allGoldBlockers = new List<Thing>();
             for (int i = 0; i < searchOffsets.Length; i++)
@@ -721,7 +736,7 @@ public sealed class OutpostMapsAcceptanceProbe : MapComponent
             Thing defaultGoldBlocker = allGoldBlockers[0];
             int cost = blockPost.NextUpgradeCost;
             bool alternateSucceeded = blockPost.TryUpgrade(out failReason);
-            RecordCheck("Blocked_SingleDefaultBlocked_AlternateSucceeds", alternateSucceeded && blockPost.level == 2, "true", alternateSucceeded.ToString().ToLower());
+            RecordCheck("Blocked_SingleDefaultBlocked_AlternateSucceeds", alternateSucceeded && blockPost.level == 2, "true", alternateSucceeded ? "true" : ("false (" + failReason + ")"));
 
             bool defaultGoldStillIntact = defaultGoldBlocker.Spawned && !defaultGoldBlocker.Destroyed && defaultGoldBlocker.stackCount == 50;
             RecordCheck("Blocked_DefaultGoldPilePreservedByAlternatePlacement", defaultGoldStillIntact, "true", defaultGoldStillIntact.ToString().ToLower());

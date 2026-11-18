@@ -4,6 +4,8 @@ kind: run · assignee: gemini · afterTask: OutpostBalanceApply
 
 В OutpostMapsIntegration (попытка 4) reload календаря дал `unresolvedReferences: 1`: у сгенерированного NPC была прямая связь `Lover` к пешке, которой нет в сохранении. Ты добавил санитайзер в `Tests/InGameOutpostCalendarProbe.cs:446-479`. Он удаляет такие связи перед `SaveGame`. Это может скрывать настоящий баг мода: работник аванпоста, которого держит holder, может пропасть из `WorldPawns` или быть discarded.
 
+В OutpostBalanceApply добавилась вторая маскировка: перед сохранением полностью очищается `Current.Game.relationshipRecords.records` (`Tests/InGameOutpostCalendarProbe.cs:481-493`, а также `Tests/InGameStrategicOutpostsProbe.cs`, если там она тоже есть). Диагностируй обе маскировки: отключи обе и для каждой записи `relationshipRecords`, ссылающейся на несохраняемую пешку, собери те же поля.
+
 ## Что сделать (только диагностика, код `Source/` не менять)
 1. Временно (во временной копии probe `Tools/Build/GeminiOutpostRelationLeakAudit/Probe/`, корневой файл не трогать) отключи удаление связей. Вместо этого перед `SaveGame` запиши в отчёт по каждой битой связи:
    - кто владелец (имя, faction, где находится: карта, WorldPawns, holder аванпоста);

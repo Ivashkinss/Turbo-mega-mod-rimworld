@@ -5,11 +5,11 @@
                                  "stage":  4,
                                  "tier10Stage":  2,
                                  "facts":  [
-                                               "loadTick=60029",
-                                               "deadline=120028",
-                                               "baseOutput=20",
-                                               "productionTick=120028",
-                                               "produced=100",
+                                               "loadTick=60026",
+                                               "deadline=120025",
+                                               "baseOutput=12",
+                                               "productionTick=120025",
+                                               "produced=60",
                                                "ordinaryBeds=12"
                                            ],
                                  "errors":  [
@@ -19,8 +19,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3075,
-                        "ticksAdvanced":  10805,
+                        "framesAdvanced":  1283,
+                        "ticksAdvanced":  9884,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -29,8 +29,8 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "fixtureSave":  "TMM-OutpostTier10.rws",
-    "fixtureSaveSha256":  "6bf16de722a1ea800461751cf5787c43026e0aaa79053fd853b37762f9b38814",
-    "fixtureWriterAssemblySha256":  "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
-    "productionAssemblySha256":  "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+    "fixtureSaveSha256":  "6a1d4aca4ce86834560d0a110ee345f4a007a0bb8b5772fa06b866f104e028f9",
+    "fixtureWriterAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
     "passed":  true
 }

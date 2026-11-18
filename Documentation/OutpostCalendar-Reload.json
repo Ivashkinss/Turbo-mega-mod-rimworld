@@ -35,19 +35,19 @@
                                                      "name":  "Reload_FarmP1_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Human42182"
+                                                     "actual":  "Human28293"
                                                  },
                                                  {
                                                      "name":  "Reload_FactP1_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Human42189"
+                                                     "actual":  "Human28300"
                                                  },
                                                  {
                                                      "name":  "Reload_WatchAnimal_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Muffalo42203"
+                                                     "actual":  "Muffalo28314"
                                                  },
                                                  {
                                                      "name":  "Reload_Farm_Day1_Potatoes",
@@ -111,8 +111,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3234,
-                        "ticksAdvanced":  10576,
+                        "framesAdvanced":  1639,
+                        "ticksAdvanced":  10294,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -121,7 +121,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
-    "productionAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "freshAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
     "passed":  true
 }

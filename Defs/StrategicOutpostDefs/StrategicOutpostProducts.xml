@@ -19,9 +19,9 @@
     <specialization>Mining</specialization>
     <producedThingDef>Plasteel</producedThingDef>
     <relevantSkill>Mining</relevantSkill>
-    <baseDailyYieldPerPawn>6.6666667</baseDailyYieldPerPawn>
+    <baseDailyYieldPerPawn>4.0</baseDailyYieldPerPawn>
     <workType>Mining</workType>
-    <yieldPerSkill>0.6666666666666666</yieldPerSkill>
+    <yieldPerSkill>0.4</yieldPerSkill>
   </TurboMegaMod.StrategicOutpostProductDef>
 
   <TurboMegaMod.StrategicOutpostProductDef>
@@ -53,7 +53,8 @@
     <specialization>Mining</specialization>
     <producedThingDef>WoodLog</producedThingDef>
     <relevantSkill>Plants</relevantSkill>
-    <baseDailyYieldPerPawn>25.0</baseDailyYieldPerPawn>
+    <baseDailyYieldPerPawn>40.0</baseDailyYieldPerPawn>
+    <yieldPerSkill>4.0</yieldPerSkill>
     <workType>PlantCutting</workType>
   </TurboMegaMod.StrategicOutpostProductDef>
 
@@ -137,7 +138,8 @@
     <producedThingDef>ComponentSpacer</producedThingDef>
     <relevantSkill>Crafting</relevantSkill>
     <requiredResearch>AdvancedFabrication</requiredResearch>
-    <baseDailyYieldPerPawn>0.3</baseDailyYieldPerPawn>
+    <baseDailyYieldPerPawn>0.6</baseDailyYieldPerPawn>
+    <yieldPerSkill>0.06</yieldPerSkill>
     <workType>Smithing</workType>
     <recipe>Make_ComponentSpacer</recipe>
     <workstation>FabricationBench</workstation>
@@ -151,8 +153,8 @@
     <producedThingDef>Synthread</producedThingDef>
     <relevantSkill>Crafting</relevantSkill>
     <workType>Smithing</workType>
-    <baseDailyYieldPerPawn>4.0</baseDailyYieldPerPawn>
-    <yieldPerSkill>0.4</yieldPerSkill>
+    <baseDailyYieldPerPawn>10.0</baseDailyYieldPerPawn>
+    <yieldPerSkill>1.0</yieldPerSkill>
     <requiredResearch>TMM_SyntheticTextiles</requiredResearch>
     <recipe>TMM_MakeSynthread</recipe>
     <workstation>FabricationBench</workstation>
@@ -166,8 +168,8 @@
     <producedThingDef>Hyperweave</producedThingDef>
     <relevantSkill>Crafting</relevantSkill>
     <workType>Smithing</workType>
-    <baseDailyYieldPerPawn>2.0</baseDailyYieldPerPawn>
-    <yieldPerSkill>0.2</yieldPerSkill>
+    <baseDailyYieldPerPawn>3.5</baseDailyYieldPerPawn>
+    <yieldPerSkill>0.35</yieldPerSkill>
     <requiredResearch>TMM_AdvancedTextiles</requiredResearch>
     <recipe>TMM_MakeHyperweave</recipe>
     <workstation>FabricationBench</workstation>
