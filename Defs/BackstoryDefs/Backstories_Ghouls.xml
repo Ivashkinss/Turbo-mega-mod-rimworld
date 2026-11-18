@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- John Hancock -->
+  <BackstoryDef>
+    <defName>TMM_BS_john_hancock_child</defName>
+    <slot>Childhood</slot>
+    <title>rebellious city youth</title>
+    <titleShort>rebel</titleShort>
+    <description>Born long after the Great War in a fortified city built inside an old stadium, [PAWN_nameDef] grew up chafing under the arrogant rule of wealthy elites. [PAWN_pronoun] spent [PAWN_possessive] youth running with street outcasts and sticking up for those pushed into the slums.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_john_hancock_adult</defName>
+    <slot>Adulthood</slot>
+    <title>anarchist ghoul mayor</title>
+    <titleShort>mayor</titleShort>
+    <description>Transformed into a ghoul after taking an experimental radiation drug to escape despair, [PAWN_nameDef] found new purpose rallying drifters, ghouls, and misfits into a free haven. Clad in a stolen colonial frock coat and tricorn hat, [PAWN_pronoun] rules by street justice and fierce loyalty.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Melee>2</Melee>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Kent Connolly -->
+  <BackstoryDef>
+    <defName>TMM_BS_kent_connolly_child</defName>
+    <slot>Childhood</slot>
+    <title>pre-war radio dreamer</title>
+    <titleShort>dreamer</titleShort>
+    <description>Growing up before the bombs fell, [PAWN_nameDef] spent every evening glued to a crackling vacuum-tube radio listening to pulp crime dramas. [PAWN_pronoun] memorized every dramatic monologue of [PAWN_possessive] favorite masked vigilante hero.</description>
+    <skillGains>
+      <Artistic>4</Artistic>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_kent_connolly_adult</defName>
+    <slot>Adulthood</slot>
+    <title>centuries-old comic idealist</title>
+    <titleShort>archivist</titleShort>
+    <description>Having survived two centuries of radiation and bigotry as a gentle ghoul, [PAWN_nameDef] clings to pre-war radio scripts as a beacon of hope in a cynical wasteland. Nervous and soft-hearted, [PAWN_pronoun] sews replica vigilante costumes and broadcasts tales of justice.</description>
+    <skillGains>
+      <Artistic>3</Artistic>
+      <Crafting>3</Crafting>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Charon -->
+  <BackstoryDef>
+    <defName>TMM_BS_charon_child</defName>
+    <slot>Childhood</slot>
+    <title>conditioned ghoul foundling</title>
+    <titleShort>foundling</titleShort>
+    <description>Raised from youth inside an isolated underground ghoul enclave, [PAWN_nameDef] was subjected to strict psychological conditioning that bound [PAWN_objective] to absolute obedience toward whoever held [PAWN_possessive] contract. [PAWN_pronoun] spoke little and trained relentlessly with heavy shotguns.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Social, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_charon_adult</defName>
+    <slot>Adulthood</slot>
+    <title>silent giant bodyguard</title>
+    <titleShort>bodyguard</titleShort>
+    <description>Towering over humans and fellow ghouls alike, [PAWN_nameDef] is a stoic, terrifyingly efficient enforcer who lets [PAWN_possessive] combat shotgun do all the talking. Unflinching under heavy fire, [PAWN_pronoun] guards [PAWN_possessive] allies with cold, lethal precision.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Social, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Edward Deegan -->
+  <BackstoryDef>
+    <defName>TMM_BS_edward_deegan_child</defName>
+    <slot>Childhood</slot>
+    <title>pre-war city tough</title>
+    <titleShort>scrapper</titleShort>
+    <description>Born in the industrial neighborhoods of a pre-war metropolis, [PAWN_nameDef] learned how to throw a punch and handle a rifle long before the nuclear flash. [PAWN_pronoun] possessed a sharp instinct for sizing up danger and keeping a cool head in a crisis.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_edward_deegan_adult</defName>
+    <slot>Adulthood</slot>
+    <title>immortal wasteland mercenary</title>
+    <titleShort>mercenary</titleShort>
+    <description>Mutated by the fallout of 2077, [PAWN_nameDef] has spent over two hundred years working as a trusted scout, bodyguard, and troubleshooter. World-weary yet fiercely dependable, [PAWN_pronoun] combines pre-war grit with centuries of wasteland combat experience.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Social>2</Social>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Daisy -->
+  <BackstoryDef>
+    <defName>TMM_BS_daisy_child</defName>
+    <slot>Childhood</slot>
+    <title>pre-war shopkeeper's daughter</title>
+    <titleShort>clerk</titleShort>
+    <description>Before the Great War reduced the world to ash, [PAWN_nameDef] helped run a bustling neighborhood general store, balancing ledgers and chatting with regular customers. [PAWN_pronoun] learned early how to spot a fair bargain and stretch scarce supplies.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_daisy_adult</defName>
+    <slot>Adulthood</slot>
+    <title>bicentennial supply merchant</title>
+    <titleShort>merchant</titleShort>
+    <description>Having outlived empires and watched generations of wastelanders come and go, [PAWN_nameDef] runs a thriving supply shop for fellow ghouls and friendly travelers. Sharp-witted and warmly maternal, [PAWN_pronoun] remembers the old world clearly while thriving in the new.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Cooking>2</Cooking>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Gob -->
+  <BackstoryDef>
+    <defName>TMM_BS_gob_child</defName>
+    <slot>Childhood</slot>
+    <title>oppressed saloon apprentice</title>
+    <titleShort>apprentice</titleShort>
+    <description>Enslaved in a harsh wasteland saloon for much of [PAWN_possessive] youth, [PAWN_nameDef] endured constant cruelty from bigoted humans while scrubbing floors and mixing drinks. In secret, [PAWN_pronoun] patched up wounded travelers and studied scavenged medical manuals.</description>
+    <skillGains>
+      <Cooking>3</Cooking>
+      <Medicine>3</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_gob_adult</defName>
+    <slot>Adulthood</slot>
+    <title>compassionate ghoul medic</title>
+    <titleShort>medic</titleShort>
+    <description>Finally free to serve among [PAWN_possessive] own kind, [PAWN_nameDef] tends to the injured and brews restorative tonics with quiet, humble dedication. Despite decades of mistreatment by smoothskins, [PAWN_pronoun] refuses to let bitterness harden [PAWN_possessive] gentle heart.</description>
+    <skillGains>
+      <Medicine>4</Medicine>
+      <Cooking>2</Cooking>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

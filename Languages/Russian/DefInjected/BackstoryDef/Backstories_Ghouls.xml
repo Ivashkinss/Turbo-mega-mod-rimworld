@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Джон Хэнкок -->
+  <TMM_BS_john_hancock_child.title>бунтарь из трущоб</TMM_BS_john_hancock_child.title>
+  <TMM_BS_john_hancock_child.titleShort>бунтарь</TMM_BS_john_hancock_child.titleShort>
+  <TMM_BS_john_hancock_child.description>Рождённый спустя долгие годы после Великой войны в городе-стадионе, [PAWN_nameDef] с юности ненавидел высокомерие местных богачей. Он пропадал среди уличных бродяг и всегда заступался за тех, кого выбрасывали в трущобы.</TMM_BS_john_hancock_child.description>
+
+  <TMM_BS_john_hancock_adult.title>мэр-анархист гулей</TMM_BS_john_hancock_adult.title>
+  <TMM_BS_john_hancock_adult.titleShort>мэр</TMM_BS_john_hancock_adult.titleShort>
+  <TMM_BS_john_hancock_adult.description>Превратившись в гуля после приёма экспериментального препарата от безысходности, [PAWN_nameDef] обрёл новое призвание, сплотив изгоев, гулей и бродяг в вольном городе. Облачённый в краденый исторический сюртук и треуголку, он правит по законам уличной справедливости и братства.</TMM_BS_john_hancock_adult.description>
+
+  <!-- Кент Коннолли -->
+  <TMM_BS_kent_connolly_child.title>довоенный радиомечтатель</TMM_BS_kent_connolly_child.title>
+  <TMM_BS_kent_connolly_child.titleShort>мечтатель</TMM_BS_kent_connolly_child.titleShort>
+  <TMM_BS_kent_connolly_child.description>Выросший ещё до падения ядерных бомб, [PAWN_nameDef] каждый вечер проводил у лампового радиоприёмника, слушая детективные радиоспектакли. Он знал наизусть каждый драматичный монолог любимого героя в маске.</TMM_BS_kent_connolly_child.description>
+
+  <TMM_BS_kent_connolly_adult.title>двухсотлетний идеалист комиксов</TMM_BS_kent_connolly_adult.title>
+  <TMM_BS_kent_connolly_adult.titleShort>архивариус</TMM_BS_kent_connolly_adult.titleShort>
+  <TMM_BS_kent_connolly_adult.description>Пережив два столетия радиации и травли в облике безобидного гуля, [PAWN_nameDef] цепляется за довоенные радиопьесы как за последний луч надежды в жестокой Пустоши. Нервный и добродушный, он шьёт костюмы линчевателя и вещает в эфир истории о справедливости.</TMM_BS_kent_connolly_adult.description>
+
+  <!-- Харон -->
+  <TMM_BS_charon_child.title>воспитанник закрытого анклава</TMM_BS_charon_child.title>
+  <TMM_BS_charon_child.titleShort>подкидыш</TMM_BS_charon_child.titleShort>
+  <TMM_BS_charon_child.description>Выросший с юности в закрытом подземном поселении гулей, [PAWN_nameDef] прошёл жестокую психологическую обработку, привившую ему абсолютную верность тому, кто владеет его контрактом. Он почти не говорил и без устали тренировался с тяжёлым дробовиком.</TMM_BS_charon_child.description>
+
+  <TMM_BS_charon_adult.title>молчаливый гигант-телохранитель</TMM_BS_charon_adult.title>
+  <TMM_BS_charon_adult.titleShort>телохранитель</TMM_BS_charon_adult.titleShort>
+  <TMM_BS_charon_adult.description>Возвышаясь на голову над людьми и сородичами, [PAWN_nameDef] служит невозмутимым и пугающе эффективным бойцом, за которого говорит боевой дробовик. Не дрогнув под плотным огнём, он прикрывает союзников с холодной, смертоносной точностью.</TMM_BS_charon_adult.description>
+
+  <!-- Эдвард Диган -->
+  <TMM_BS_edward_deegan_child.title>довоенный городской задира</TMM_BS_edward_deegan_child.title>
+  <TMM_BS_edward_deegan_child.titleShort>драчун</TMM_BS_edward_deegan_child.titleShort>
+  <TMM_BS_edward_deegan_child.description>Рождённый в рабочих кварталах довоенного мегаполиса, [PAWN_nameDef] научился держать удар и обращаться с винтовкой задолго до ядерной вспышки. У него рано выработалось чутье на опасность и умение сохранять холодную голову в любой передряге.</TMM_BS_edward_deegan_child.description>
+
+  <TMM_BS_edward_deegan_adult.title>бессмертный наёмник Пустоши</TMM_BS_edward_deegan_adult.title>
+  <TMM_BS_edward_deegan_adult.titleShort>наёмник</TMM_BS_edward_deegan_adult.titleShort>
+  <TMM_BS_edward_deegan_adult.description>Мутировавший после катастрофы 2077 года, [PAWN_nameDef] более двух веков работает надёжным разведчиком, телохранителем и решалой. Уставший от жизни, но безотказный в деле, он сочетает довоенную закалку с многовековым боевым опытом.</TMM_BS_edward_deegan_adult.description>
+
+  <!-- Дейзи -->
+  <TMM_BS_daisy_child.title>дочь довоенного лавочника</TMM_BS_daisy_child.title>
+  <TMM_BS_daisy_child.titleShort>продавщица</TMM_BS_daisy_child.titleShort>
+  <TMM_BS_daisy_child.description>До того как Великая война обратила мир в пепел, [PAWN_nameDef] помогала вести дела в оживлённом районном магазинчике, сводя счета и болтая с постоянными покупателями. Она рано научилась отличать выгодную сделку и беречь скудные запасы.</TMM_BS_daisy_child.description>
+
+  <TMM_BS_daisy_adult.title>двухсотлетняя торговка припасами</TMM_BS_daisy_adult.title>
+  <TMM_BS_daisy_adult.titleShort>торговка</TMM_BS_daisy_adult.titleShort>
+  <TMM_BS_daisy_adult.description>Пережив целые эпохи и проводив десятки поколений обитателей Пустоши, [PAWN_nameDef] держит процветающую лавку для гулей и дружелюбных путников. Острая на язык и по-матерински заботливая, она ясно помнит старый мир, но уверенно чувствует себя в новом.</TMM_BS_daisy_adult.description>
+
+  <!-- Гоб -->
+  <TMM_BS_gob_child.title>подневольный слуга салуна</TMM_BS_gob_child.title>
+  <TMM_BS_gob_child.titleShort>батрак</TMM_BS_gob_child.titleShort>
+  <TMM_BS_gob_child.description>Проведя юность в кабале в суровом салуне Пустоши, [PAWN_nameDef] терпел постоянные унижения от жестоких хозяев, драил полы и разливал выпивку. Втайне он перевязывал раненых путников и изучал найденные медицинские справочники.</TMM_BS_gob_child.description>
+
+  <TMM_BS_gob_adult.title>сердобольный медик гулей</TMM_BS_gob_adult.title>
+  <TMM_BS_gob_adult.titleShort>медик</TMM_BS_gob_adult.titleShort>
+  <TMM_BS_gob_adult.description>Наконец обретя свободу среди сородичей, [PAWN_nameDef] лечит раненых и варит целебные настойки с тихой, скромной самоотдачей. Несмотря на десятилетия издевательств со стороны «гладкокожих», он не позволил злобе ожесточить своё доброе сердце.</TMM_BS_gob_adult.description>
+</LanguageData>

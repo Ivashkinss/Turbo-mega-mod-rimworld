@@ -36,4 +36,10 @@
   <TMM_MenOfLettersFaction.pawnsPlural>просвещённые</TMM_MenOfLettersFaction.pawnsPlural>
   <TMM_MenOfLettersFaction.leaderTitle>глава ордена</TMM_MenOfLettersFaction.leaderTitle>
   <TMM_MenOfLettersFaction.fixedName>Британские Просвещённые</TMM_MenOfLettersFaction.fixedName>
+  <TMM_GhoulsFaction.label>разумные гули</TMM_GhoulsFaction.label>
+  <TMM_GhoulsFaction.description>Гули, сохранившие рассудок: торговцы, бродяги и вольнолюбивые проходимцы, которые помнят мир до бомб и не любят «гладкокожих», что их боятся.</TMM_GhoulsFaction.description>
+  <TMM_GhoulsFaction.pawnSingular>гуль</TMM_GhoulsFaction.pawnSingular>
+  <TMM_GhoulsFaction.pawnsPlural>гули</TMM_GhoulsFaction.pawnsPlural>
+  <TMM_GhoulsFaction.leaderTitle>мэр</TMM_GhoulsFaction.leaderTitle>
+  <TMM_GhoulsFaction.fixedName>Разумные гули</TMM_GhoulsFaction.fixedName>
 </LanguageData>

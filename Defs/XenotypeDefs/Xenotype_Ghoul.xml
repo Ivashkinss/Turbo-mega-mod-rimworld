@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ghoul: radiation-ravaged humans who stopped ageing. Biotech only. -->
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Ghoul</defName>
+    <label>ghoul</label>
+    <description>Humans ravaged by radiation who survived and stopped ageing. Their skin peels and their noses are gone, but they shrug off toxins and disease and can outlive centuries.</description>
+    <descriptionShort>Radiation-ravaged humans who stopped ageing. Toxin- and disease-proof, but hideous.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/Waster</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.1</combatPowerFactor>
+    <genes>
+      <li>Skin_PaleRed</li>
+      <li>Skin_Orange</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>TMM_Head_Ghoul</li>
+      <li>Ageless</li>
+      <li>ToxResist_Total</li>
+      <li>ToxicEnvironmentResistance_Total</li>
+      <li>Immunity_SuperStrong</li>
+      <li>Pain_Reduced</li>
+      <li>Beauty_VeryUgly</li>
+    </genes>
+  </XenotypeDef>
+</Defs>

@@ -166,3 +166,8 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - **Совет Волт-Тек:** у `HeroDef.councilMember` нет единого лидера, формальным ванильным лидером становится первый живой член совета (в тесте — Альмодовар).
 - **Прогоны:** HeroRegistry 127/127 (69 записей), reload чистый со второго раза, Outposts — ERROR 0.
 - **Случайный сбой:** первый reload дал одну ошибку `No shuffled Adulthood found for торговец of TribeCivil` из `WorldTraffic.MakePawn`; повтор чистый, за все прогоны встретилась впервые. Расследование — задача Gemini WorldTrafficBackstoryFlake.
+## 18.11.2026 вечер — гули (Claude + Hydrogen)
+- Ксенотип TMM_Ghoul (Biotech): своя голова `TMM_GhoulHead` — без носа, безгубый оскал, запавшие глаза, облезлая кожа. Гены: кожа PaleRed/Orange, лысина, Ageless, токсин-иммунитет, Immunity_SuperStrong, Pain_Reduced, Beauty_VeryUgly.
+- Фракция «Разумные гули» (переселенцы), 6 героев Hydrogen: Хэнкок (лидер), Коннолли, Харон, Диган, Дейзи, Гоб.
+- Прогоны: GhoulXenotype 18/18, HeroRegistry 134/134 + reload (75 записей), ERROR 0. Портреты: `Documentation/Images/GhoulXenotype-ingame.png`.
+- Решение «гули — отдельный ксенотип Biotech» Claude принял сам по образцу остальных рас; пользователь может пересмотреть.
