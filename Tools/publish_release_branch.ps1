@@ -60,6 +60,11 @@ git tag -f "v$Version" $new | Out-Null
 "release -> $new (v$Version from main $short)"
 git ls-tree --name-only $new
 if ($Push) {
-    git push origin refs/heads/release:refs/heads/release
-    git push origin "refs/tags/v${Version}:refs/tags/v$Version"
+    # git reports progress on stderr; judge success by the exit code only.
+    $ErrorActionPreference = 'Continue'
+    git push -q origin refs/heads/release:refs/heads/release 2>$null
+    if ($LASTEXITCODE -ne 0) { throw 'push of release branch failed' }
+    git push -q origin "refs/tags/v${Version}:refs/tags/v$Version" 2>$null
+    if ($LASTEXITCODE -ne 0) { throw "push of tag v$Version failed" }
+    'pushed release and tag'
 }
