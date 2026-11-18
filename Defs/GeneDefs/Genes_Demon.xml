@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demon xenotype genes, stage 1: appearance. Biotech only (user decision 18.11.2026). -->
+<Defs>
+  <GeneDef Name="TMM_DemonHornsBase" ParentName="GeneHeadboneBase" Abstract="True" MayRequire="Ludeon.RimWorld.Biotech">
+    <randomChosen>false</randomChosen>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+  </GeneDef>
+
+  <GeneDef ParentName="TMM_DemonHornsBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Headbone_DemonHorns</defName>
+    <label>demon horns</label>
+    <description>Carriers of this gene grow long, ridged horns that curve up and outward from the skull.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Things/TMM/Xenotypes/Demon/DemonHorns</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.8</drawSize>
+        <drawData>
+          <defaultData><layer>80</layer></defaultData>
+          <dataNorth><layer>10</layer></dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef ParentName="TMM_DemonHornsBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Headbone_DemonHornsSmall</defName>
+    <label>demon spikes</label>
+    <description>Carriers of this gene grow two short, straight horns above the forehead.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Things/TMM/Xenotypes/Demon/DemonHornsSmall</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.8</drawSize>
+        <drawData>
+          <defaultData><layer>80</layer></defaultData>
+          <dataNorth><layer>10</layer></dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef ParentName="TMM_DemonHornsBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Headbone_DemonHornsRam</defName>
+    <label>ram horns</label>
+    <description>Carriers of this gene grow heavy horns that curl around the sides of the head.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Things/TMM/Xenotypes/Demon/DemonHornsRam</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.8</drawSize>
+        <drawData>
+          <defaultData><layer>80</layer></defaultData>
+          <dataNorth><layer>10</layer></dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneTailBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Tail_Demon</defName>
+    <label>demon tail</label>
+    <description>Carriers of this gene grow a long, thin tail ending in an arrow-shaped tip.</description>
+    <iconPath>UI/Icons/Genes/Gene_TailSmooth</iconPath>
+    <randomChosen>false</randomChosen>
+    <biostatCpx>1</biostatCpx>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Things/TMM/Xenotypes/Demon/DemonTail</texPath>
+        <color>(255, 255, 255)</color>
+        <overrideMeshSize>(1, 1)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <scaleOffsetByBodySize>true</scaleOffsetByBodySize>
+          <defaultData><layer>-2</layer></defaultData>
+          <dataNorth><offset>(0.1, 0, -0.25)</offset><layer>90</layer></dataNorth>
+          <dataSouth><offset>(-0.1, 0, -0.25)</offset></dataSouth>
+          <dataEast><offset>(-0.15, 0, -0.15)</offset></dataEast>
+          <dataWest><offset>(0.15, 0, -0.15)</offset></dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef Name="TMM_DemonEyesBase" Abstract="True" MayRequire="Ludeon.RimWorld.Biotech">
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>0</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <exclusionTags><li>EyeColor</li></exclusionTags>
+  </GeneDef>
+
+  <GeneDef ParentName="TMM_DemonEyesBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Eyes_Devil</defName>
+    <label>devil eyes</label>
+    <labelShortAdj>devil-eyed</labelShortAdj>
+    <description>Carriers of this gene have burning amber eyes with slit pupils.</description>
+    <iconPath>UI/Icons/Genes/Gene_RedEyes</iconPath>
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Demon/DevilEye</texPath>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset></defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Demon/DevilEye</texPath>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset><flip>true</flip></defaultData>
+          <dataWest><flip>false</flip></dataWest>
+        </drawData>
+      </li>    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef ParentName="TMM_DemonEyesBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Eyes_DemonBlack</defName>
+    <label>black demon eyes</label>
+    <labelShortAdj>black-eyed</labelShortAdj>
+    <description>Carriers of this gene have eyes that are entirely black, without whites or irises.</description>
+    <iconPath>UI/Icons/Genes/Gene_GrayEyes</iconPath>
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Demon/DemonEyeBlack</texPath>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset></defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Demon/DemonEyeBlack</texPath>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset><flip>true</flip></defaultData>
+          <dataWest><flip>false</flip></dataWest>
+        </drawData>
+      </li>    </renderNodeProperties>
+  </GeneDef>
+</Defs>

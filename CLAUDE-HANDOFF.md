@@ -91,3 +91,20 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - квесты «Помощь» и «Архив» целиком в игре;
 - Престон дольше 2 дней;
 - поведение в старых сейвах: фракция в существующий мир не добавляется.
+## 18.11.2026 — ксенотип «Демон», этап 1 (внешность), Claude
+Новые файлы (всё только при Biotech, через `MayRequire`):
+- `Defs/GeneDefs/Genes_Demon.xml`, 6 генов:
+  - 3 вида рогов;
+  - хвост со стрелкой;
+  - дьявольские глаза и чёрные глаза. Узлы глаз ванильные, с якорями RightEye/LeftEye;
+- `Defs/XenotypeDefs/Xenotype_Demon.xml`: ксенотип TMM_Demon — кожа DeepRed или InkBlack, рога, хвост, чёрные глаза, FireResistant, MaxTemp_LargeIncrease, Aggression_Aggressive;
+- RU-перевод;
+- текстуры в `Textures/Things/TMM/Xenotypes/Demon/`: рога — эталон Claude; малые и бараньи рога, хвост — Gemini; глаза перерисованы под ванильный формат одного глаза.
+
+Проверка: probe `Tests/InGameDemonXenotypeProbe.cs`, 32/32, ERROR 0. Портреты из игры — `Documentation/Images/DemonXenotype-ingame.png`.
+
+Не сделано:
+- маски перекраса;
+- оверлей трещин кожи: вылезает за контур головы;
+- способности демонов;
+- привязка героев-демонов (Кроули, Азазель…).

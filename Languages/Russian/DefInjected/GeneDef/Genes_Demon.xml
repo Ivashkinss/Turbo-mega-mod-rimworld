@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Headbone_DemonHorns.label>демонические рога</TMM_Headbone_DemonHorns.label>
+  <TMM_Headbone_DemonHorns.description>У носителей этого гена растут длинные ребристые рога, изгибающиеся вверх и в стороны.</TMM_Headbone_DemonHorns.description>
+  <TMM_Headbone_DemonHornsSmall.label>демонические шипы</TMM_Headbone_DemonHornsSmall.label>
+  <TMM_Headbone_DemonHornsSmall.description>У носителей этого гена над лбом растут два коротких прямых рога.</TMM_Headbone_DemonHornsSmall.description>
+  <TMM_Headbone_DemonHornsRam.label>бараньи рога</TMM_Headbone_DemonHornsRam.label>
+  <TMM_Headbone_DemonHornsRam.description>У носителей этого гена растут тяжёлые рога, закручивающиеся по бокам головы.</TMM_Headbone_DemonHornsRam.description>
+  <TMM_Tail_Demon.label>демонический хвост</TMM_Tail_Demon.label>
+  <TMM_Tail_Demon.description>У носителей этого гена растёт длинный тонкий хвост с наконечником-стрелкой.</TMM_Tail_Demon.description>
+  <TMM_Eyes_Devil.label>дьявольские глаза</TMM_Eyes_Devil.label>
+  <TMM_Eyes_Devil.labelShortAdj>огнеглазый</TMM_Eyes_Devil.labelShortAdj>
+  <TMM_Eyes_Devil.description>У носителей этого гена горящие янтарные глаза с вертикальными зрачками.</TMM_Eyes_Devil.description>
+  <TMM_Eyes_DemonBlack.label>чёрные глаза демона</TMM_Eyes_DemonBlack.label>
+  <TMM_Eyes_DemonBlack.labelShortAdj>черноглазый</TMM_Eyes_DemonBlack.labelShortAdj>
+  <TMM_Eyes_DemonBlack.description>У носителей этого гена глаза полностью чёрные — без белка и радужки.</TMM_Eyes_DemonBlack.description>
+</LanguageData>
