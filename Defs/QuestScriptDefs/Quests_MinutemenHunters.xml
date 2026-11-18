@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Quest 1: Relief Supplies for Minutemen & Hunters -->
+  <QuestScriptDef>
+    <defName>TMM_MinutemenReliefQuest</defName>
+    <rootSelectionWeight>0.8</rootSelectionWeight>
+    <expireDaysRange>10~15</expireDaysRange>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Militia Distress: Field Relief</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->The minutemen and monster hunters have requested emergency humanitarian relief supplies.</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="TurboMegaMod.QuestNode_Root_MinutemenRelief"/>
+  </QuestScriptDef>
+
+  <!-- Quest 2: Expedition to Recover Lost Field Archive -->
+  <QuestScriptDef>
+    <defName>TMM_MinutemenArchiveQuest</defName>
+    <rootSelectionWeight>0.8</rootSelectionWeight>
+    <expireDaysRange>15~25</expireDaysRange>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Field Archive of the Abandoned Post</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->An abandoned minutemen listening post holds valuable monster defense archives.</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="TurboMegaMod.QuestNode_Root_MinutemenArchive"/>
+  </QuestScriptDef>
+
+</Defs>

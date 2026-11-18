@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SitePartDef>
+    <defName>TMM_MinutemenOutpostSitePart</defName>
+    <label>minutemen listening post</label>
+    <description>An outpost and listening post established by the minutemen and hunters, containing a field archive and radio array.</description>
+    <workerClass>SitePartWorker</workerClass>
+    <siteTexture>World/WorldObjects/Sites/Outpost</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Outpost</expandingIconTexture>
+    <applyFactionColorToSiteTexture>true</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>TMM_MinutemenOutpostGenStep</defName>
+    <linkWithSite>TMM_MinutemenOutpostSitePart</linkWithSite>
+    <order>450</order>
+    <genStep Class="TurboMegaMod.GenStep_MinutemenOutpost"/>
+  </GenStepDef>
+
+</Defs>

@@ -1383,7 +1383,7 @@
     },
     {
       "id": "MinutemenIntegrate",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "integrate",
       "afterTask": "OutpostsProbeFlakyLevel2",

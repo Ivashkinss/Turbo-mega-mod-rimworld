@@ -23,6 +23,7 @@ public static class HeroRegistryProbeLaunch
         AddHero("TMMTest_Third", 2, false, "Third", 10);
         AddHero("TMMTest_Fourth", 1, false, "Fourth", 8);
         AddHero("TMMTest_Fifth", 1, false, "Fifth", 8);
+        AddHeroWithFaction("TMMTest_AbsentFactionHero", "TMM_NoSuchFaction", 1, false, "Ghost", 5);
         DefDatabase<HeroDef>.GetNamed("TMMTest_Leader").successor = DefDatabase<HeroDef>.GetNamed("TMMTest_Second");
 
         string[] args = Environment.GetCommandLineArgs();
@@ -38,13 +39,20 @@ public static class HeroRegistryProbeLaunch
 
     private static void AddHero(string name, int rank, bool leader, string first, int shooting)
     {
+        AddHeroWithFaction(name, TestFaction, rank, leader, first, shooting);
+    }
+
+    private static void AddHeroWithFaction(string name, string factionDef, int rank, bool leader, string first, int shooting)
+    {
         if (DefDatabase<HeroDef>.GetNamedSilentFail(name) != null) return;
+        SkillDef shootDef = DefDatabase<SkillDef>.GetNamedSilentFail("Shooting") ?? SkillDefOf.Shooting;
         var d = new HeroDef
         {
-            defName = name, label = name, factionDef = TestFaction, rank = rank, isLeader = leader,
-            pawnKind = PawnKindDefOf.Villager, nameFirst = first, nameNick = first, nameLast = "Probe",
+            defName = name, label = name, factionDef = factionDef, rank = rank, isLeader = leader,
+            pawnKind = PawnKindDefOf.Villager,
+            nameFirst = first, nameNick = first, nameLast = "Probe",
             gender = Gender.Male, ageRange = new FloatRange(30f, 40f),
-            skills = new List<HeroSkillMin> { new HeroSkillMin { skill = SkillDefOf.Shooting, level = shooting } }
+            skills = new List<HeroSkillMin> { new HeroSkillMin { skill = shootDef, level = shooting } }
         };
         DefDatabase<HeroDef>.Add(d);
     }
@@ -116,10 +124,22 @@ public sealed class HeroRegistryProbe : MapComponent
             C("TestFactionPresent", f != null, HeroRegistryProbeLaunch.TestFaction, f);
             HeroDef preston = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_preston_garvey");
             C("MinutemenHeroesLoadedFromXml", preston != null && DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_sam_winchester") != null, true, preston != null);
-            C("AbsentFactionGivesNull", reg.GetOrCreate(preston) == null, "null", "checked");
-            C("AbsentFactionCreatesNoRecord", reg.RecordFor(preston) == null, "no record", reg.RecordFor(preston) == null ? "no record" : "record");
 
-            leader = reg.GetOrCreate(H("TMMTest_Leader"));
+            HeroDef absentHero = DefDatabase<HeroDef>.GetNamedSilentFail("TMMTest_AbsentFactionHero");
+            C("AbsentFactionGivesNull", reg.GetOrCreate(absentHero) == null, "null", "checked");
+            C("AbsentFactionCreatesNoRecord", reg.RecordFor(absentHero) == null, "no record", reg.RecordFor(absentHero) == null ? "no record" : "record");
+
+            Pawn prestonPawn = reg.GetOrCreate(preston);
+            Faction minutemenFaction = Find.FactionManager.FirstFactionOfDef(DefDatabase<FactionDef>.GetNamedSilentFail("TMM_MinutemenHuntersFaction"));
+            C("PrestonCreated", prestonPawn != null, "pawn", prestonPawn);
+            C("PrestonFactionMatches", prestonPawn != null && minutemenFaction != null && prestonPawn.Faction == minutemenFaction, minutemenFaction != null ? minutemenFaction.Name : "null", prestonPawn != null && prestonPawn.Faction != null ? prestonPawn.Faction.Name : "null");
+            C("PrestonIsFactionLeader", minutemenFaction != null && minutemenFaction.leader == prestonPawn, prestonPawn, minutemenFaction != null ? minutemenFaction.leader : null);
+
+            HeroDef leadDef = H("TMMTest_Leader");
+            if (leadDef != null && leadDef.skills != null && leadDef.skills.Count > 0 && leadDef.skills[0].skill == null)
+                leadDef.skills[0].skill = DefDatabase<SkillDef>.GetNamedSilentFail("Shooting") ?? SkillDefOf.Shooting;
+
+            leader = reg.GetOrCreate(leadDef);
             Pawn again = reg.GetOrCreate(H("TMMTest_Leader"));
             C("LeaderCreated", leader != null, "pawn", leader);
             C("SecondCallSamePawn", leader != null && ReferenceEquals(leader, again), leader == null ? "" : leader.ThingID, again == null ? "null" : again.ThingID);
@@ -133,7 +153,7 @@ public sealed class HeroRegistryProbe : MapComponent
             third = reg.GetOrCreate(H("TMMTest_Third"));
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
-            C("FiveRecords", reg.Records.Count() == 5, 5, reg.Records.Count());
+            C("SixRecords", reg.Records.Count() == 6, 6, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -200,7 +220,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 5, 5, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 6, 6, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <TMM_MinutemenHuntersFaction.label>minutemen and hunters</TMM_MinutemenHuntersFaction.label>
+  <TMM_MinutemenHuntersFaction.description>An alliance of frontier civil minutemen and wandering monster hunters. Organized around mutual community aid ("ready in a minute") and equipped to protect distant outposts from wild beasts and supernatural threats. They maintain archives of protective wards and stand ready to answer distress signals.</TMM_MinutemenHuntersFaction.description>
+  <TMM_MinutemenHuntersFaction.pawnSingular>hunter-militiaman</TMM_MinutemenHuntersFaction.pawnSingular>
+  <TMM_MinutemenHuntersFaction.pawnsPlural>minutemen and hunters</TMM_MinutemenHuntersFaction.pawnsPlural>
+  <TMM_MinutemenHuntersFaction.leaderTitle>general commander</TMM_MinutemenHuntersFaction.leaderTitle>
+
+</LanguageData>

@@ -4,9 +4,9 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3265,
-                         "scalarFields":  745,
-                         "grammarLines":  90,
+                         "keyed":  3271,
+                         "scalarFields":  755,
+                         "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
                          "errors":  [
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2743,
-                        "ticksAdvanced":  25156,
+                        "framesAdvanced":  1644,
+                        "ticksAdvanced":  14488,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,15 +42,15 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "962649acbc5f449453aea737f94bb0865ce1c26031bf245f85ac4330025b38f2",
+    "productionAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
     "heroRegistry":  {
                          "passed":  true,
-                         "checksCount":  28,
+                         "checksCount":  31,
                          "stage":  1,
                          "facts":  [
-                                       "lastLetter=Р‘РѕР¶РёР№ РџСЂРµР»Р°С‚ С„СЂР°РєС†РёРё РћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ СѓРјРµСЂ РЈРјРµСЂ Р‘РѕР¶РёР№ РџСЂРµР»Р°С‚ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ Р‘РѕР¶РёР№ РџСЂРµР»Р°С‚.",
-                                       "secondId=Human14690",
-                                       "thirdId=Human14695"
+                                       "lastLetter=Р’РµР»РёРєРёР№ Р›РёРґРµСЂ С„СЂР°РєС†РёРё РўРёСЌСЂРµР»РёСѓРј СѓРјРµСЂ РЈРјРµСЂ Р’РµР»РёРєРёР№ Р›РёРґРµСЂ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРўРёСЌСЂРµР»РёСѓРј\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ Р’РµР»РёРєРёР№ Р›РёРґРµСЂ.",
+                                       "secondId=Human29317",
+                                       "thirdId=Human29323"
                                    ],
                          "checks":  [
                                         {
@@ -63,7 +63,7 @@
                                             "name":  "TestFactionPresent",
                                             "passed":  true,
                                             "expected":  "OutlanderCivil",
-                                            "actual":  "РћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ"
+                                            "actual":  "РўРёСЌСЂРµР»РёСѓРј"
                                         },
                                         {
                                             "name":  "MinutemenHeroesLoadedFromXml",
@@ -84,6 +84,24 @@
                                             "actual":  "no record"
                                         },
                                         {
+                                            "name":  "PrestonCreated",
+                                            "passed":  true,
+                                            "expected":  "pawn",
+                                            "actual":  "Garvey"
+                                        },
+                                        {
+                                            "name":  "PrestonFactionMatches",
+                                            "passed":  true,
+                                            "expected":  "Р—РµР»С‘РЅС‹Р№ Р”РѕРіРѕРІРѕСЂ",
+                                            "actual":  "Р—РµР»С‘РЅС‹Р№ Р”РѕРіРѕРІРѕСЂ"
+                                        },
+                                        {
+                                            "name":  "PrestonIsFactionLeader",
+                                            "passed":  true,
+                                            "expected":  "Garvey",
+                                            "actual":  "Garvey"
+                                        },
+                                        {
                                             "name":  "LeaderCreated",
                                             "passed":  true,
                                             "expected":  "pawn",
@@ -92,8 +110,8 @@
                                         {
                                             "name":  "SecondCallSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human14684",
-                                            "actual":  "Human14684"
+                                            "expected":  "Human29312",
+                                            "actual":  "Human29312"
                                         },
                                         {
                                             "name":  "NameApplied",
@@ -111,7 +129,7 @@
                                             "name":  "LeaderInFactionAndWorld",
                                             "passed":  true,
                                             "expected":  "faction+world",
-                                            "actual":  "РћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ/True"
+                                            "actual":  "РўРёСЌСЂРµР»РёСѓРј/True"
                                         },
                                         {
                                             "name":  "FactionLeaderIsHero",
@@ -120,10 +138,10 @@
                                             "actual":  "Lead"
                                         },
                                         {
-                                            "name":  "FiveRecords",
+                                            "name":  "SixRecords",
                                             "passed":  true,
-                                            "expected":  "5",
-                                            "actual":  "5"
+                                            "expected":  "6",
+                                            "actual":  "6"
                                         },
                                         {
                                             "name":  "FiveDistinctPawns",
@@ -147,7 +165,7 @@
                                             "name":  "FifthAcceptedByCasket",
                                             "passed":  true,
                                             "expected":  "True",
-                                            "actual":  "CryptosleepCasket14708"
+                                            "actual":  "CryptosleepCasket29342"
                                         },
                                         {
                                             "name":  "SuccessorChosenSynchronously",
@@ -159,7 +177,7 @@
                                             "name":  "LeaderLetterNamesSuccessor",
                                             "passed":  true,
                                             "expected":  "names Second if about leader",
-                                            "actual":  "Р‘РѕР¶РёР№ РџСЂРµР»Р°С‚ С„СЂР°РєС†РёРё РћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ СѓРјРµСЂ РЈРјРµСЂ Р‘РѕР¶РёР№ РџСЂРµР»Р°С‚ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРћР±СЉРµРґРёРЅРµРЅРёРµ РўСЌРґС‚РѕРґРµСЂ\u003c/color\u003e, "
+                                            "actual":  "Р’РµР»РёРєРёР№ Р›РёРґРµСЂ С„СЂР°РєС†РёРё РўРёСЌСЂРµР»РёСѓРј СѓРјРµСЂ РЈРјРµСЂ Р’РµР»РёРєРёР№ Р›РёРґРµСЂ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРўРёСЌСЂРµР»РёСѓРј\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLea"
                                         },
                                         {
                                             "name":  "DeadLeaderStateDead",
@@ -194,7 +212,7 @@
                                         {
                                             "name":  "CapturedHeroSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human14695",
+                                            "expected":  "Human29323",
                                             "actual":  "checked"
                                         },
                                         {

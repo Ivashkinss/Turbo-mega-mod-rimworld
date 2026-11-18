@@ -1,0 +1,54 @@
+﻿{
+    "component":  "MinutemenHunters",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3271,
+                         "scalarFields":  755,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4053,
+                        "ticksAdvanced":  1722,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
+    "minutemenHunters":  {
+                             "passed":  true,
+                             "checks":  36,
+                             "errors":  [
+
+                                        ]
+                         },
+    "passed":  true
+}
