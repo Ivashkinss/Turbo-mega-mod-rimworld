@@ -172,6 +172,7 @@ public sealed class HeroRegistryProbe : MapComponent
                 new { fac = "TMM_RailroadFaction", xeno = (string)null, ids = new[] { "desdemona", "deacon", "tinker_tom", "glory" } },                new { fac = "TMM_VaultTecFaction", xeno = (string)null, ids = new[] { "alphonse_almodovar", "gwen_mcnamara", "stanislaus_braun", "vaulttec_rep", "security_chief_kendall" } },
                 new { fac = "TMM_MenOfLettersFaction", xeno = (string)null, ids = new[] { "dr_hess", "arthur_ketch", "mick_davies", "antonia_bevell", "kendricks" } },
                 new { fac = "TMM_GhoulsFaction", xeno = "TMM_Ghoul", ids = new[] { "john_hancock", "kent_connolly", "charon", "edward_deegan", "daisy", "gob" } },
+                new { fac = "TMM_MonsterClansFaction", xeno = (string)null, ids = new[] { "alpha_vampire", "dick_roman", "eve", "benny_lafitte", "edgar" } },
                 new { fac = "TMM_WildMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "swan", "fist", "dead_eye", "mad_racer", "master_butcher" } } };
             foreach (var grp in groups)
             {
@@ -182,7 +183,8 @@ public sealed class HeroRegistryProbe : MapComponent
                 {
                     Pawn gp = reg.GetOrCreate(H("TMM_Hero_" + gid));
                     string xn = gp == null || gp.genes == null || gp.genes.Xenotype == null ? "none" : gp.genes.Xenotype.defName;
-                    bool xok = grp.xeno == null || xn == grp.xeno;
+                    string wantX = grp.xeno ?? H("TMM_Hero_" + gid).xenotype;
+                    bool xok = wantX.NullOrEmpty() || xn == wantX;
                     bool bs = gp != null && gp.story.Adulthood != null && gp.story.Adulthood.defName == "TMM_BS_" + gid + "_adult";
                     C("Hero_" + gid, gp != null && gp.Faction == gf && xok && bs, grp.fac + "/" + (grp.xeno ?? "any") + "/own backstory", gp == null ? "null" : gp.Faction + "/" + xn + "/" + bs);
                     if (grp.xeno == "TMM_SuperMutant" && gp != null)
@@ -218,7 +220,7 @@ public sealed class HeroRegistryProbe : MapComponent
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
-            C("SeventyFiveRecords", reg.Records.Count() == 75, 75, reg.Records.Count());
+            C("EightyRecords", reg.Records.Count() == 80, 80, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -304,7 +306,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 75, 75, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 80, 80, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

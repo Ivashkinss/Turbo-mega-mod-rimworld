@@ -42,4 +42,10 @@
   <TMM_GhoulsFaction.pawnsPlural>гули</TMM_GhoulsFaction.pawnsPlural>
   <TMM_GhoulsFaction.leaderTitle>мэр</TMM_GhoulsFaction.leaderTitle>
   <TMM_GhoulsFaction.fixedName>Разумные гули</TMM_GhoulsFaction.fixedName>
+  <TMM_MonsterClansFaction.label>кланы нечисти</TMM_MonsterClansFaction.label>
+  <TMM_MonsterClansFaction.description>Гнёзда вампиров и стаи левиафанов, охотящиеся на людей из тени. Подчиняются своим Альфам и древним существам, которые их породили.</TMM_MonsterClansFaction.description>
+  <TMM_MonsterClansFaction.pawnSingular>чудовище</TMM_MonsterClansFaction.pawnSingular>
+  <TMM_MonsterClansFaction.pawnsPlural>чудовища</TMM_MonsterClansFaction.pawnsPlural>
+  <TMM_MonsterClansFaction.leaderTitle>альфа</TMM_MonsterClansFaction.leaderTitle>
+  <TMM_MonsterClansFaction.fixedName>Кланы нечисти</TMM_MonsterClansFaction.fixedName>
 </LanguageData>

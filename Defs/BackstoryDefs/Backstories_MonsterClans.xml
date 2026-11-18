@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Alpha Vampire -->
+  <BackstoryDef>
+    <defName>TMM_BS_alpha_vampire_child</defName>
+    <slot>Childhood</slot>
+    <title>firstborn night predator</title>
+    <titleShort>progenitor</titleShort>
+    <description>Shaped in the primordial darkness at the dawn of humanity, [PAWN_nameDef] was the very first of [PAWN_possessive] bloodline to walk the night. [PAWN_pronoun] learned early to stalk mortal tribes with regal patience and terrifying speed.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_alpha_vampire_adult</defName>
+    <slot>Adulthood</slot>
+    <title>ancient sire of vampires</title>
+    <titleShort>alpha</titleShort>
+    <description>Patriarch of every vampire nest across the world, [PAWN_nameDef] carries himself with aristocratic poise and ancient, predatory authority. Calmer and far wiser than [PAWN_possessive] feral descendants, [PAWN_pronoun] seeks to preserve [PAWN_possessive] kind from both hunters and apocalyptic tyrants.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>3</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Caring, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Dick Roman -->
+  <BackstoryDef>
+    <defName>TMM_BS_dick_roman_child</defName>
+    <slot>Childhood</slot>
+    <title>primordial abyssal beast</title>
+    <titleShort>leviathan</titleShort>
+    <description>Spawned in the darkest depths before angels or humans ever existed, [PAWN_nameDef] possessed an insatiable hunger and a mind built for domination. Sealed away for eons because [PAWN_possessive] kind threatened to devour all creation, [PAWN_pronoun] waited patiently for release.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>Caring, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_dick_roman_adult</defName>
+    <slot>Adulthood</slot>
+    <title>invulnerable corporate apex</title>
+    <titleShort>apex</titleShort>
+    <description>Wearing the polished smile of a billionaire CEO, [PAWN_nameDef] leads the Leviathans in turning humanity into compliant, fattened livestock. Practically invulnerable to conventional weapons, [PAWN_pronoun] combines ruthless corporate strategy with monstrous physical supremacy.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Melee>3</Melee>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Caring, Artistic, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Eve -->
+  <BackstoryDef>
+    <defName>TMM_BS_eve_child</defName>
+    <slot>Childhood</slot>
+    <title>ancient purgatory broodmother</title>
+    <titleShort>ancient</titleShort>
+    <description>Older than angels and born from the same primordial stock as the Leviathans, [PAWN_nameDef] lingered in the shadowy wilds of Purgatory for millennia. From that dark realm, [PAWN_pronoun] shaped the first bloodlines of every monster clan.</description>
+    <skillGains>
+      <Animals>4</Animals>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_eve_adult</defName>
+    <slot>Adulthood</slot>
+    <title>mother of all monsters</title>
+    <titleShort>mother</titleShort>
+    <description>Fiercely protective of the monstrous children [PAWN_pronoun] spawned, [PAWN_nameDef] emerged into the mortal realm to avenge the slaughter of [PAWN_possessive] Alphas. Cold, maternal, and terrifyingly creative, [PAWN_pronoun] breeds twisted new predators to overwhelm [PAWN_possessive] enemies.</description>
+    <skillGains>
+      <Animals>4</Animals>
+      <Intellectual>2</Intellectual>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Benny Lafitte -->
+  <BackstoryDef>
+    <defName>TMM_BS_benny_lafitte_child</defName>
+    <slot>Childhood</slot>
+    <title>bayou dockhand</title>
+    <titleShort>dockhand</titleShort>
+    <description>Raised along the humid bayous and ports of Louisiana, [PAWN_nameDef] grew up working fishing boats and learning Cajun cooking before a night raid claimed [PAWN_possessive] mortal life. Even after being turned, [PAWN_pronoun] clung to a quiet sense of honor.</description>
+    <skillGains>
+      <Cooking>3</Cooking>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_benny_lafitte_adult</defName>
+    <slot>Adulthood</slot>
+    <title>reformed vampire bruiser</title>
+    <titleShort>bruiser</titleShort>
+    <description>Having fought for survival through the brutal wilds of Purgatory alongside a mortal hunter, [PAWN_nameDef] renounced preying on innocent humans. Soft-spoken, loyal, and deadly in close quarters, [PAWN_pronoun] stands as a rare ally caught between hunters and monsters.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Cooking>2</Cooking>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Edgar -->
+  <BackstoryDef>
+    <defName>TMM_BS_edgar_child</defName>
+    <slot>Childhood</slot>
+    <title>ravenous abyssal hound</title>
+    <titleShort>predator</titleShort>
+    <description>Born among the ferocious Leviathan pack in the primordial dark, [PAWN_nameDef] excelled at tracking prey and tearing rival beasts limb from limb. [PAWN_pronoun] respected only apex strength and absolute hierarchy.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>Caring, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_edgar_adult</defName>
+    <slot>Adulthood</slot>
+    <title>leviathan chief enforcer</title>
+    <titleShort>enforcer</titleShort>
+    <description>Right-hand muscle and chief field cleaner for Dick Roman, [PAWN_nameDef] wears a sharp suit over a terrifying, razor-mawed predator form. Brutal, relentless, and nearly impossible to put down, [PAWN_pronoun] hunts down rogue monsters and meddling hunters alike.</description>
+    <skillGains>
+      <Melee>5</Melee>
+      <Shooting>2</Shooting>
+      <Social>1</Social>
+    </skillGains>
+    <workDisables>Caring, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

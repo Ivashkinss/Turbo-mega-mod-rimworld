@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3271,
-                         "scalarFields":  1245,
+                         "scalarFields":  1333,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4115,
-                        "ticksAdvanced":  10636,
+                        "framesAdvanced":  4099,
+                        "ticksAdvanced":  10608,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -49,7 +49,7 @@
                      "stage":  4,
                      "tier10Stage":  0,
                      "facts":  [
-
+                                   "Sanitized foreign relation: Lover | owner=Rin (Human290) | target=РљРёСЃРѕС€ (Human25507) | targetFaction=Р‘СЂРёРіР°РґР° Р“СЂСЏР·Рё"
                                ],
                      "errors":  [
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Альфа-вампир -->
+  <TMM_BS_alpha_vampire_child.title>первородный ночной хищник</TMM_BS_alpha_vampire_child.title>
+  <TMM_BS_alpha_vampire_child.titleShort>прародитель</TMM_BS_alpha_vampire_child.titleShort>
+  <TMM_BS_alpha_vampire_child.description>Сотворённый в первозданной тьме на заре человечества, [PAWN_nameDef] стал самым первым из своего рода, ступившим в ночь. Он рано научился выслеживать людские племена с царственным терпением и пугающей скоростью.</TMM_BS_alpha_vampire_child.description>
+
+  <TMM_BS_alpha_vampire_adult.title>древний патриарх вампиров</TMM_BS_alpha_vampire_adult.title>
+  <TMM_BS_alpha_vampire_adult.titleShort>альфа</TMM_BS_alpha_vampire_adult.titleShort>
+  <TMM_BS_alpha_vampire_adult.description>Прародитель всех вампирских гнездовий в мире, [PAWN_nameDef] держится с аристократическим достоинством и древней хищной властью. Куда более сдержанный и мудрый, чем его одичавшие потомки, он стремится уберечь свой род и от охотников, и от апокалиптических тиранов.</TMM_BS_alpha_vampire_adult.description>
+
+  <!-- Дик Роман -->
+  <TMM_BS_dick_roman_child.title>первозданный зверь бездны</TMM_BS_dick_roman_child.title>
+  <TMM_BS_dick_roman_child.titleShort>левиафан</TMM_BS_dick_roman_child.titleShort>
+  <TMM_BS_dick_roman_child.description>Порождённый в мрачных глубинах ещё до появления ангелов и людей, [PAWN_nameDef] обладал неутолимым голодом и умом, созданным для господства. Заточённый на вечность за угрозу пожрать всё мироздание, он терпеливо ждал часа освобождения.</TMM_BS_dick_roman_child.description>
+
+  <TMM_BS_dick_roman_adult.title>неуязвимый корпоративный хищник</TMM_BS_dick_roman_adult.title>
+  <TMM_BS_dick_roman_adult.titleShort>вожак</TMM_BS_dick_roman_adult.titleShort>
+  <TMM_BS_dick_roman_adult.description>Нося безупречную улыбку миллиардера-корпората, [PAWN_nameDef] возглавляет левиафанов, превращающих человечество в покорный откормленный скот. Практически неуязвимый для обычного оружия, он сочетает безжалостный бизнес-расчёт с чудовищной физической мощью.</TMM_BS_dick_roman_adult.description>
+
+  <!-- Ева -->
+  <TMM_BS_eve_child.title>древняя праматерь Чистилища</TMM_BS_eve_child.title>
+  <TMM_BS_eve_child.titleShort>древняя</TMM_BS_eve_child.titleShort>
+  <TMM_BS_eve_child.description>Старше ангелов и рождённая от того же первозданного корня, что и левиафаны, [PAWN_nameDef] тысячелетиями обитала в сумрачных дебрях Чистилища. Именно там она породила первые родословные всех кланов нечисти.</TMM_BS_eve_child.description>
+
+  <TMM_BS_eve_adult.title>Мать всех тварей</TMM_BS_eve_adult.title>
+  <TMM_BS_eve_adult.titleShort>праматерь</TMM_BS_eve_adult.titleShort>
+  <TMM_BS_eve_adult.description>Яростно оберегающая порождённых ею чудовищ, [PAWN_nameDef] явилась в мир смертных, чтобы отомстить за истребление своих Альф. Холодная, властная и пугающе изобретательная, она выводит новых уродливых хищников, чтобы сокрушить врагов.</TMM_BS_eve_adult.description>
+
+  <!-- Бенни Лафит -->
+  <TMM_BS_benny_lafitte_child.title>докер из луизианских болот</TMM_BS_benny_lafitte_child.title>
+  <TMM_BS_benny_lafitte_child.titleShort>докер</TMM_BS_benny_lafitte_child.titleShort>
+  <TMM_BS_benny_lafitte_child.description>Выросший среди влажных байу и портов Луизианы, [PAWN_nameDef] работал на рыболовецких судах и готовил каджунскую похлёбку, пока ночное нападение не оборвало его смертную жизнь. Даже после обращения он сохранил тихое понятие о чести.</TMM_BS_benny_lafitte_child.description>
+
+  <TMM_BS_benny_lafitte_adult.title>раскаявшийся вампир-боец</TMM_BS_benny_lafitte_adult.title>
+  <TMM_BS_benny_lafitte_adult.titleShort>вышибала</TMM_BS_benny_lafitte_adult.titleShort>
+  <TMM_BS_benny_lafitte_adult.description>Пробившись сквозь жестокие дебри Чистилища плечом к плечу со смертным охотником, [PAWN_nameDef] навсегда отказался от охоты на невинных людей. Немногословный, верный и смертельно опасный в ближнем бою, он остаётся редким союзником между миром охотников и чудовищ.</TMM_BS_benny_lafitte_adult.description>
+
+  <!-- Эдгар -->
+  <TMM_BS_edgar_child.title>ненасытный гончий бездны</TMM_BS_edgar_child.title>
+  <TMM_BS_edgar_child.titleShort>хищник</TMM_BS_edgar_child.titleShort>
+  <TMM_BS_edgar_child.description>Рождённый в свирепой стае левиафанов в первозданной тьме, [PAWN_nameDef] с ранних пор отличался талантом выслеживать добычу и рвать соперников на куски. Он признавал лишь право сильного и железную иерархию.</TMM_BS_edgar_child.description>
+
+  <TMM_BS_edgar_adult.title>главный палач левиафанов</TMM_BS_edgar_adult.title>
+  <TMM_BS_edgar_adult.titleShort>палач</TMM_BS_edgar_adult.titleShort>
+  <TMM_BS_edgar_adult.description>Правая рука и главный ликвидатор Дика Романа, [PAWN_nameDef] носит дорогой костюм поверх жуткого, зубастого облика древнего хищника. Жестокий, неумолимый и почти неубиваемый, он вырезает как строптивых монстров, так и сующих нос охотников.</TMM_BS_edgar_adult.description>
+</LanguageData>

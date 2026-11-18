@@ -176,3 +176,10 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - Гены: кожа LightGray/SlateGray, без бороды, короткие волосы, WoundHealing_SuperFast, MeleeDamage_Strong, Robust, ToxResist_Total, Aggression_HyperAggressive.
 - Прогон: LeviathanXenotype 17/17, ERROR 0. Портреты: `Documentation/Images/LeviathanXenotype-ingame.png`.
 - Неуязвимость Дика Романа без буры — отдельная механика, не сделана.
+## 18.11.2026 вечер — кланы нечисти; проект ролей
+- Фракция «Кланы нечисти» (пираты, вечный враг): 60% сангвофаги, 40% TMM_Leviathan.
+- Герои Hydrogen: Альфа-вампир (лидер), Бенни — Sanguophage; Дик Роман, Ева, Эдгар — TMM_Leviathan.
+- Probe сверяет у каждого героя ксенотип из его HeroDef.
+- Прогоны: HeroRegistry 140/140 + reload (80 записей), Outposts, MinutemenHunters — ERROR 0.
+- Готово 80 из 84 героев каталога. Не сделаны Эдем (ИИ), ПАМ (робот), Ник Валентайн (синт): нужна механика представления.
+- Новый запрос пользователя — роли, ранги и группировка колонистов: `Documentation/COLONY-ROLES-DESIGN.md`, решения записаны, 6 этапов, начать 19.11.
