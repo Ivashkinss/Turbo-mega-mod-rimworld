@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hell heroes (Documentation/FACTIONS-CONTENT-PLAN.md, catalog hell_demons). Demon xenotype; Biotech only. -->
+<Defs>
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_crowley</defName>
+    <label>Crowley</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Crowley</nameFirst><nameNick>Crowley</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>45~55</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>16</level></li>
+      <li><skill>Intellectual</skill><level>12</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_azazel</defName>
+    <label>Azazel</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <extraGenes><li>TMM_Eyes_Devil</li></extraGenes>
+    <nameFirst>Azazel</nameFirst><nameNick>Yellow-Eyes</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>40~50</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>14</level></li>
+      <li><skill>Social</skill><level>10</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_lilith</defName>
+    <label>Lilith</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Lilith</nameFirst><nameNick>Lilith</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>20~28</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>12</level></li>
+      <li><skill>Social</skill><level>12</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_abaddon</defName>
+    <label>Abaddon</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Abaddon</nameFirst><nameNick>Abaddon</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>28~36</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>15</level></li>
+      <li><skill>Shooting</skill><level>12</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_cain</defName>
+    <label>Cain</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Cain</nameFirst><nameNick>Cain</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>55~65</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>18</level></li>
+      <li><skill>Plants</skill><level>10</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_meg</defName>
+    <label>Meg</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Meg</nameFirst><nameNick>Meg</nameNick><nameLast>Masters</nameLast>
+    <gender>Female</gender>
+    <ageRange>24~30</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>12</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>MeleeWeapon_Knife</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_ruby</defName>
+    <label>Ruby</label>
+    <factionDef>TMM_HellFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Demon</xenotype>
+    <nameFirst>Ruby</nameFirst><nameNick>Ruby</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>24~30</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>10</level></li>
+    </skills>
+    <weapon>MeleeWeapon_Knife</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3271,
-                         "scalarFields":  780,
+                         "scalarFields":  786,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4172,
-                        "ticksAdvanced":  10661,
+                        "framesAdvanced":  3362,
+                        "ticksAdvanced":  10433,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,7 +42,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "8a9dfe8bf718c89525b04e51aa490a1136b2f8c39f4628f9093c251d1135bdc6",
+    "productionAssemblySha256":  "22b641bb11abe60af2110c11658c75b76d4a9736ba14b2a4da59fc5f9a41ae50",
     "outposts":  {
                      "passed":  true,
                      "checks":  34,

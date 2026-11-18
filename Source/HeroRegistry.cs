@@ -109,6 +109,9 @@ namespace TurboMegaMod
                     SkillRecord sr = pawn.skills.GetSkill(s.skill);
                     if (!sr.TotallyDisabled && sr.Level < s.level) sr.Level = s.level;
                 }
+            if (ModsConfig.BiotechActive && pawn.genes != null)
+                foreach (GeneDef g in def.extraGenes)
+                    if (g != null && !pawn.genes.HasActiveGene(g)) pawn.genes.AddGene(g, true);
             if (def.weapon != null && pawn.equipment != null)
             {
                 pawn.equipment.DestroyAllEquipment();

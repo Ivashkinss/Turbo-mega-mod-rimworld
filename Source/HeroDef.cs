@@ -34,6 +34,8 @@ namespace TurboMegaMod
         public List<HeroSkillMin> skills = new List<HeroSkillMin>();
         public List<ThingDef> apparel = new List<ThingDef>();
         public ThingDef weapon;
+        /// Extra Biotech genes on top of the xenotype (xenogenes), e.g. a hero-specific eye colour.
+        public List<GeneDef> extraGenes = new List<GeneDef>();
         public bool uniqueWeaponOneShot;
 
         public override IEnumerable<string> ConfigErrors()
