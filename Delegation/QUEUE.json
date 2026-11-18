@@ -1242,7 +1242,7 @@
     },
     {
       "id": "OutpostBalanceReview",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/OutpostBalanceReview/TASK.md",
@@ -1269,6 +1269,20 @@
       ],
       "createdUtc": "2026-11-18T01:05:00Z",
       "note": "Fix Codex F1-F6, integrate map component/langs/probe into root, build, OutpostMaps fresh+reload plus Outposts and OutpostCalendar regressions; rollback after 6 failed attempts."
+    },
+    {
+      "id": "OutpostBalanceApply",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "integrate",
+      "afterTask": "OutpostMapsIntegration",
+      "taskFile": "Delegation/OutpostBalanceApply/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostBalanceApply",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T01:15:00Z",
+      "note": "Apply approved balance proposals 1,2,3,4,6,7 in XML; update dependent test expectations by formula; rerun outposts, tier10, calendar (and maps) in game."
     }
   ],
   "owner": "claude",
