@@ -1,24 +1,30 @@
-{
-  "outpostsReload": {
-    "passed": true,
-    "checks": 55,
-    "stage": 4,
-    "errors": []
-  },
-  "mapActivity": {
-    "mapLoaded": true,
-    "observedActiveSeconds": 30,
-    "framesAdvanced": 2960,
-    "ticksAdvanced": 11054,
-    "newsWindowsDismissedInTest": 0
-  },
-  "runtimeErrors": 0,
-  "unresolvedReferences": 0,
-  "gpuLost": false,
-  "isolatedFixtureSave": true,
-  "userSaveTested": false,
-  "compatibilityReload": true,
-  "freshAssemblySha256": "4654ddd9030e215877fd327fcf989869ba0992ff84fcec2bc36a02ca6b5414f1",
-  "productionAssemblySha256": "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
-  "passed": true
+﻿{
+    "outpostsReload":  {
+                           "passed":  true,
+                           "checks":  55,
+                           "stage":  4,
+                           "tier10Stage":  0,
+                           "facts":  [
+
+                                     ],
+                           "errors":  [
+
+                                      ]
+                       },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  2749,
+                        "ticksAdvanced":  10143,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "productionAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "passed":  true
 }

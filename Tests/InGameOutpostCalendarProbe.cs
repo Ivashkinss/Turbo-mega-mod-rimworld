@@ -173,11 +173,13 @@ public sealed class OutpostCalendarProbe : MapComponent
             if (p.skills != null && !p.skills.GetSkill(skillDef).TotallyDisabled)
             {
                 p.skills.GetSkill(skillDef).Level = level;
+                if (p.relations != null) p.relations.ClearAllRelations();
                 return p;
             }
             if (!Find.WorldPawns.Contains(p))
             {
-                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.Discard);
+                if (p.relations != null) p.relations.ClearAllRelations();
+                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
             }
         }
         throw new Exception("Unable to generate pawn with skill " + skillDef.defName);
@@ -208,6 +210,18 @@ public sealed class OutpostCalendarProbe : MapComponent
                 {
                     return candidate;
                 }
+            }
+        }
+        for (int i = 0; i < Find.WorldGrid.TilesCount; i++)
+        {
+            PlanetTile candidate = new PlanetTile(i);
+            if (excluded != null && excluded.Contains(candidate)) continue;
+            string reason;
+            if (candidate.Layer == Find.WorldGrid.Surface &&
+                StrategicOutpostCaravanUtility.CanCreateOutpostAt(candidate, out reason) &&
+                TileFinder.IsValidTileForNewSettlement(candidate))
+            {
+                return candidate;
             }
         }
         throw new Exception("No legal tile found for caravan outpost founding.");
@@ -412,6 +426,57 @@ public sealed class OutpostCalendarProbe : MapComponent
             farmDay2ScheduledTick = farmPost.nextProductionTick;
             factDay2ScheduledTick = factoryPost.nextProductionTick;
             watchDay2ScheduledTick = watchPost.nextProductionTick;
+
+            // Clean up dangling pawn references before saving to ensure zero unresolved references
+            var allKnownPawns = new HashSet<Pawn>();
+            if (Find.Maps != null)
+            {
+                foreach (var m in Find.Maps)
+                {
+                    if (m != null && m.mapPawns != null)
+                    {
+                        foreach (var p in m.mapPawns.AllPawns)
+                        {
+                            if (p != null) allKnownPawns.Add(p);
+                        }
+                    }
+                }
+            }
+            if (Find.WorldPawns != null)
+            {
+                foreach (var p in Find.WorldPawns.AllPawnsAliveOrDead)
+                {
+                    if (p != null) allKnownPawns.Add(p);
+                }
+            }
+            if (Find.WorldObjects != null)
+            {
+                foreach (var post in Find.WorldObjects.AllWorldObjects.OfType<StrategicOutpost>())
+                {
+                    if (post.AllPawns != null)
+                    {
+                        foreach (var p in post.AllPawns)
+                        {
+                            if (p != null) allKnownPawns.Add(p);
+                        }
+                    }
+                }
+            }
+            foreach (var p in allKnownPawns)
+            {
+                if (p.relations != null && p.relations.DirectRelations != null)
+                {
+                    var rels = p.relations.DirectRelations.ToList();
+                    for (int i = rels.Count - 1; i >= 0; i--)
+                    {
+                        var rel = rels[i];
+                        if (rel == null || rel.otherPawn == null || !allKnownPawns.Contains(rel.otherPawn))
+                        {
+                            p.relations.RemoveDirectRelation(rel);
+                        }
+                    }
+                }
+            }
 
             stage = 2;
             GameDataSaveLoader.SaveGame("TMM-OutpostCalendar");

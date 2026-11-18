@@ -1,0 +1,118 @@
+﻿{
+    "outpostMapsReload":  {
+                              "passed":  true,
+                              "checksCount":  15,
+                              "stage":  7,
+                              "checks":  [
+                                             {
+                                                 "name":  "Reload_StageIsSeven",
+                                                 "passed":  true,
+                                                 "expected":  "7",
+                                                 "actual":  "7"
+                                             },
+                                             {
+                                                 "name":  "Reload_FactoryStationPresent",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "Reload_FarmStationPresent",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "Reload_MineStationPresent",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "Reload_WatchStationPresent",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "Reload_FactoryMapCompBuiltLevel",
+                                                 "passed":  true,
+                                                 "expected":  "10",
+                                                 "actual":  "10"
+                                             },
+                                             {
+                                                 "name":  "Reload_FarmMapCompBuiltLevel",
+                                                 "passed":  true,
+                                                 "expected":  "10",
+                                                 "actual":  "10"
+                                             },
+                                             {
+                                                 "name":  "Reload_MineMapCompBuiltLevel",
+                                                 "passed":  true,
+                                                 "expected":  "10",
+                                                 "actual":  "10"
+                                             },
+                                             {
+                                                 "name":  "Reload_WatchMapCompBuiltLevel",
+                                                 "passed":  true,
+                                                 "expected":  "10",
+                                                 "actual":  "10"
+                                             },
+                                             {
+                                                 "name":  "Reload_GeneratorFuelPreserved",
+                                                 "passed":  true,
+                                                 "expected":  "49.5",
+                                                 "actual":  "49.4"
+                                             },
+                                             {
+                                                 "name":  "Reload_FactoryBuildingDefsPreserved",
+                                                 "passed":  true,
+                                                 "expected":  "Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,ChessTable,DiningChair,DiningChair,DiningChair,DiningChair,Door,Door,Door,Door,Door,Door,Door,Door,Door,Door,Dresser,Dresser,FabricationBench,FueledSmithy,HandTailoringBench,PowerConduit,PowerConduit,PowerConduit,PowerConduit,Sandbags,Sandbags,Sandbags,Sandbags,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,StandingLamp,Table2x2c,TableMachining,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,WoodFiredGenerator",
+                                                 "actual":  "Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,Bed,ChessTable,DiningChair,DiningChair,DiningChair,DiningChair,Door,Door,Door,Door,Door,Door,Door,Door,Door,Door,Dresser,Dresser,FabricationBench,FueledSmithy,HandTailoringBench,PowerConduit,PowerConduit,PowerConduit,PowerConduit,Sandbags,Sandbags,Sandbags,Sandbags,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,Shelf,StandingLamp,Table2x2c,TableMachining,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,TorchLamp,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,WoodFiredGenerator"
+                                             },
+                                             {
+                                                 "name":  "Reload_GrowingZoneCountPreserved",
+                                                 "passed":  true,
+                                                 "expected":  "4",
+                                                 "actual":  "4"
+                                             },
+                                             {
+                                                 "name":  "Reload_GrowingPlantDefsPreserved",
+                                                 "passed":  true,
+                                                 "expected":  "Plant_Cotton,Plant_Dandelion,Plant_Potato,Plant_Rice",
+                                                 "actual":  "Plant_Cotton,Plant_Dandelion,Plant_Potato,Plant_Rice"
+                                             },
+                                             {
+                                                 "name":  "Reload_FactoryBedsReachableFromEdge",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "Reload_FabricationBenchReachable",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             }
+                                         ],
+                              "errors":  [
+
+                                         ]
+                          },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  2021,
+                        "ticksAdvanced":  9310,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "productionAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "passed":  true
+}

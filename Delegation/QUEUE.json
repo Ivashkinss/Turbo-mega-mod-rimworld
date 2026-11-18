@@ -1193,7 +1193,7 @@
     },
     {
       "id": "OutpostMapsNativeProbe",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/OutpostMapsNativeProbe/TASK.md",
@@ -1258,7 +1258,7 @@
     },
     {
       "id": "OutpostMapsIntegration",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "integrate",
       "afterTask": "OutpostBalanceReview",
@@ -1268,7 +1268,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T01:05:00Z",
-      "note": "Fix Codex F1-F6, integrate map component/langs/probe into root, build, OutpostMaps fresh+reload plus Outposts and OutpostCalendar regressions; rollback after 6 failed attempts."
+      "note": "Accepted by Claude: 6/6 runs clean on d9d3a293 (maps 53+15, outposts 34+55, calendar 39+16), TestProbe absent. Open: calendar relation sanitizer -> OutpostRelationLeakAudit; Tier10 reload rerun comes with OutpostBalanceApply."
     },
     {
       "id": "OutpostBalanceApply",
@@ -1283,6 +1283,20 @@
       ],
       "createdUtc": "2026-11-18T01:15:00Z",
       "note": "Apply approved balance proposals 1,2,3,4,6,7 in XML; update dependent test expectations by formula; rerun outposts, tier10, calendar (and maps) in game."
+    },
+    {
+      "id": "OutpostRelationLeakAudit",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "run",
+      "afterTask": "OutpostBalanceApply",
+      "taskFile": "Delegation/OutpostRelationLeakAudit/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostRelationLeakAudit",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T04:50:00Z",
+      "note": "Diagnose the dangling Lover relation hidden by the calendar probe sanitizer: vanilla artifact vs lost outpost pawn. Diagnostics only."
     }
   ],
   "owner": "claude",

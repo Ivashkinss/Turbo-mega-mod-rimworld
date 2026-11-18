@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_Outpost_GeneratorUnfueled>Генератор аванпоста установлен и подключен к локальной сети. Требуется ручная заправка древесиной (0/75).</TMM_Outpost_GeneratorUnfueled>
+  <TMM_Outpost_TechLevelLocked>Технология {0} не исследована: павильон построен в базовой комплектации.</TMM_Outpost_TechLevelLocked>
+  <TMM_Outpost_TechLevelUnlocked>Технология {0} доступна: павильон оснащён специализированным передовым оборудованием.</TMM_Outpost_TechLevelUnlocked>
+  <TMM_Outpost_FarmingZoneDesignated>Размечена зона посадки культуры {0} на прилегающей плодородной почве.</TMM_Outpost_FarmingZoneDesignated>
+  <TMM_Outpost_BedCapacityReport>Жилой фонд аванпоста: {0} обычных спальных мест (уровень {1}).</TMM_Outpost_BedCapacityReport>
+  <TMM_Outpost_MedicalCotAdded>Добавлена резервная медицинская койка (не уменьшает вместимость обычных поселенцев).</TMM_Outpost_MedicalCotAdded>
+  <TMM_Outpost_UpgradeBlockedProtected>Расширение заблокировано: в зоне строительства находится защищённый объект ({0}).</TMM_Outpost_UpgradeBlockedProtected>
+  <TMM_Outpost_ModuleBuilt>Построен павильон модуля {0} (уровень {1}).</TMM_Outpost_ModuleBuilt>
+</LanguageData>

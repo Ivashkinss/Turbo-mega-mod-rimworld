@@ -42,3 +42,7 @@
 Gemini polling использует Delegation/QUEUE.json, root/Claude владеет очередью, worker — только разрешённым output и ACK. Сейчас активных новых задач нет; MapProgression done awaiting review. Дальше задавать конкретные ограниченные реализации и независимо проверять. Командные иконки7PNG уже проверены/включены; их генератор в Tools/Build/GeminiOutpostCommandAssets. Другие исторические кандидаты и резервные копии только в ignored Tools/Build, большие логи/сейвы только в TestRuns — не коммитить.
 
 Снимок Outpost-Level10.png осмотрен, но из-за тайминга переключения/тумана не подтверждает обзор всей планировки. Не объявлять UI/внешний вид полностью проверенными. Пользовательский сейв, live1.6, все биомы/расы/моды/битвы и длительная нагрузка не проверялись.
+
+## 18.11.2026 — OutpostMapsIntegration принят
+Карты аванпостов перенесены в корень с исправлениями Codex F1–F6. DLL d9d3a293…; 6/6 игровых прогонов чистые: OutpostMaps 53+15, Outposts 34+55, OutpostCalendar 39+16, runtimeErrors 0, unresolved 0, gpuLost false. Профили: TestRuns/OutpostMaps-FullSet-20261118-071621, Outposts-FullSet-20261118-071914, OutpostCalendar-FullSet-20261118-072419. Изменения по ходу: L7 HospitalBed → Bed, упрощён L10, генератор на деревянном полу.
+Открыто: санитайзер связей в Tests/InGameOutpostCalendarProbe.cs:446-479 может скрывать потерю пешки → OutpostRelationLeakAudit. Tier10 reload на новой DLL ещё не перезапускался, это часть OutpostBalanceApply. UI карт в игре глазами не смотрели (visualLayoutInspected false).

@@ -1,0 +1,375 @@
+﻿{
+    "component":  "OutpostMaps",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3265,
+                         "scalarFields":  745,
+                         "grammarLines":  90,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1852,
+                        "ticksAdvanced":  8122,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "d9d3a29304da53ce3a3bbd89f3cb685b11e2be3f7b13415542249c2c0f7f83b0",
+    "outpostMaps":  {
+                        "passed":  true,
+                        "checksCount":  53,
+                        "stage":  7,
+                        "checks":  [
+                                       {
+                                           "name":  "Factory_MapComponentExists",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L1_NoSculptingTable",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L1_ManualWorkbenchWithRecipes",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "HandTailoringBench"
+                                       },
+                                       {
+                                           "name":  "Factory_L1_BedCountGte2",
+                                           "passed":  true,
+                                           "expected":  "\u003e=2",
+                                           "actual":  "2"
+                                       },
+                                       {
+                                           "name":  "Factory_L1_InteractionCellReachable",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L1_InteractionCellStandable",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_UpgradeLevel2_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_UpgradeLevel3_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_GeneratorSpawned",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "spawned"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_GeneratorTerrainSupport",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_GeneratorFuelInitiallyZero",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "0.0"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_StandingLampSpawned",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "spawned"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_GeneratorAndLampSharedPowerNet",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_LampUnpoweredBeforeRefuel",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "unpowered"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_GeneratorRefueledTo50",
+                                           "passed":  true,
+                                           "expected":  "50.0",
+                                           "actual":  "50.0"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_LampPoweredNativelyOverTicks",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L3_WoodFuelConsumedOverTime",
+                                           "passed":  true,
+                                           "expected":  "\u003c50.0",
+                                           "actual":  "49.450"
+                                       },
+                                       {
+                                           "name":  "Factory_UpgradeLevel6_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L6_MachiningBenchWithRecipes",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "spawned"
+                                       },
+                                       {
+                                           "name":  "Factory_L6_MachiningInteractionReachable",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L6_MachiningInteractionStandable",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L9_FabricationBenchWithRecipes",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "spawned"
+                                       },
+                                       {
+                                           "name":  "Factory_UpgradeLevel10_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Factory_L10_RegularBedCountGte11",
+                                           "passed":  true,
+                                           "expected":  "\u003e=11",
+                                           "actual":  "12"
+                                       },
+                                       {
+                                           "name":  "Factory_L10_AllBedsReachableFromEdge",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Farming_L1_RiceGrowingZoneCreated",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "36"
+                                       },
+                                       {
+                                           "name":  "Farming_L1_GrowingZoneNoRoof",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Farming_L1_GrowingZoneFertilityGte07",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Farming_PlayerZoneCreated",
+                                           "passed":  true,
+                                           "expected":  "\u003e0",
+                                           "actual":  "5"
+                                       },
+                                       {
+                                           "name":  "Farming_L3_PotatoGrowingZoneCreated",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "25"
+                                       },
+                                       {
+                                           "name":  "Farming_PlayerZonePreservedAcrossUpgrades",
+                                           "passed":  true,
+                                           "expected":  "5",
+                                           "actual":  "5"
+                                       },
+                                       {
+                                           "name":  "Farming_ReachedLevel10",
+                                           "passed":  true,
+                                           "expected":  "10",
+                                           "actual":  "10"
+                                       },
+                                       {
+                                           "name":  "Farming_L10_BedsGte11",
+                                           "passed":  true,
+                                           "expected":  "\u003e=11",
+                                           "actual":  "12"
+                                       },
+                                       {
+                                           "name":  "Mining_VeinCountPreservedOutsideFootprint",
+                                           "passed":  true,
+                                           "expected":  "0",
+                                           "actual":  "0"
+                                       },
+                                       {
+                                           "name":  "Mining_ReachedLevel10",
+                                           "passed":  true,
+                                           "expected":  "10",
+                                           "actual":  "10"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L1_NoTurretsInitially",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L1_NoSandbagsInitially",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_UpgradeLevel5_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L5_SandbagsSpawnedWithClothStuff",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "Cloth"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L5_NoTurretsBeforeGunTurretsResearch",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_UpgradeLevel7_Success",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L7_MiniTurretBuiltWithSteelStuff",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "Steel"
+                                       },
+                                       {
+                                           "name":  "Watchtower_L7_TurretHasRefuelAmmoComponent",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Watchtower_ReachedLevel10",
+                                           "passed":  true,
+                                           "expected":  "10",
+                                           "actual":  "10"
+                                       },
+                                       {
+                                           "name":  "Blocked_AllOffsetsCovered_UpgradeFails",
+                                           "passed":  true,
+                                           "expected":  "false",
+                                           "actual":  "false"
+                                       },
+                                       {
+                                           "name":  "Blocked_SilverNotDeductedOnFailure",
+                                           "passed":  true,
+                                           "expected":  "150000",
+                                           "actual":  "150000"
+                                       },
+                                       {
+                                           "name":  "Blocked_AllProtectedGoldPilesPreserved",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Blocked_BuildingCountUnchangedOnFailure",
+                                           "passed":  true,
+                                           "expected":  "40",
+                                           "actual":  "40"
+                                       },
+                                       {
+                                           "name":  "Blocked_SingleDefaultBlocked_AlternateSucceeds",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Blocked_DefaultGoldPilePreservedByAlternatePlacement",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "Blocked_SilverDeductedExactlyByCost",
+                                           "passed":  true,
+                                           "expected":  "500",
+                                           "actual":  "500"
+                                       },
+                                       {
+                                           "name":  "Blocked_BuildingsCountIncreasedAfterAlternate",
+                                           "passed":  true,
+                                           "expected":  "\u003e40",
+                                           "actual":  "68"
+                                       },
+                                       {
+                                           "name":  "Save_FixtureGameFileCreated",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       }
+                                   ],
+                        "errors":  [
+
+                                   ]
+                    },
+    "passed":  true
+}
