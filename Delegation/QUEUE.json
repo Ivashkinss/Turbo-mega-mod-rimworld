@@ -1312,6 +1312,20 @@
       "note": "Drop the relationshipRecords wipe; sanitizer removes only relations to non-outpost non-player pawns and fails otherwise; rerun calendar, outposts, maps."
     },
     {
+      "id": "MinutemenRebaseRun",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "run",
+      "afterTask": "OutpostSanitizerNarrow",
+      "taskFile": "Delegation/MinutemenRebaseRun/TASK.md",
+      "outputDir": "Tools/Build/GeminiMinutemenRebase",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T10:10:00Z",
+      "note": "Mechanical: rebase 17.11 Minutemen prototype onto current root in a candidate dir, build, run its probe once in game, record errors verbatim. No fixes."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "pending",
       "assignee": "codex",
