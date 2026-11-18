@@ -1465,7 +1465,7 @@
     },
     {
       "id": "OutpostUxAudit",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/OutpostUxAudit/TASK.md",
@@ -1475,6 +1475,19 @@
       ],
       "createdUtc": "2026-11-18T21:25:00Z",
       "note": "Read-only audit of how the player founds, funds, upgrades, visits and recalls an outpost; bed ownership leak. User feedback 18.11."
+    },
+    {
+      "id": "OutpostUxFixes",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/OutpostUxFixes/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostUxFixes",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T23:05:00Z",
+      "note": "Five outpost fixes from Codex's audit: free colony bed on transfer, founding/upgrade/enter/recall tooltips, upgrade pays from caravan on the tile, recall rename and transfer guard. In-game probe with real actions."
     },
     {
       "id": "OutpostShipmentCycles",
