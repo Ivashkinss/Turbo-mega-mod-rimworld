@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Metabolism_Angelic.label>ангельский метаболизм</TMM_Metabolism_Angelic.label>
+  <TMM_Metabolism_Angelic.description>Носители этого гена черпают силы из божественного источника. Ген полностью покрывает метаболическую цену остальных ангельских генов.</TMM_Metabolism_Angelic.description>
+  <TMM_Metabolism_Demonic.label>дьявольский метаболизм</TMM_Metabolism_Demonic.label>
+  <TMM_Metabolism_Demonic.description>Носители этого гена питаются адским пламенем. Ген полностью покрывает метаболическую цену остальных демонических генов.</TMM_Metabolism_Demonic.description>
+  <TMM_Metabolism_Mutant.label>метаболизм мутанта</TMM_Metabolism_Mutant.label>
+  <TMM_Metabolism_Mutant.description>Вирус принудительной эволюции перестроил тело так, что оно сжигает что угодно. Ген полностью покрывает метаболическую цену остальных генов супермутанта.</TMM_Metabolism_Mutant.description>
+  <TMM_Metabolism_Ghoul.label>метаболизм гуля</TMM_Metabolism_Ghoul.label>
+  <TMM_Metabolism_Ghoul.description>Пропитанным радиацией клеткам носителя почти ничего не нужно для жизни. Ген полностью покрывает метаболическую цену остальных генов гуля.</TMM_Metabolism_Ghoul.description>
+  <TMM_Metabolism_Leviathan.label>метаболизм левиафана</TMM_Metabolism_Leviathan.label>
+  <TMM_Metabolism_Leviathan.description>Первородный голод превращает любую еду в чистую силу. Ген полностью покрывает метаболическую цену остальных генов левиафана.</TMM_Metabolism_Leviathan.description>
+</LanguageData>

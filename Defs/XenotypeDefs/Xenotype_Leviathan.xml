@@ -20,6 +20,7 @@
       <li>Robust</li>
       <li>ToxResist_Total</li>
       <li>Aggression_HyperAggressive</li>
+      <li>TMM_Metabolism_Leviathan</li>
     </genes>
   </XenotypeDef>
 </Defs>

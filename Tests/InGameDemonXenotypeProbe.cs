@@ -113,6 +113,11 @@ public sealed class DemonXenotypeProbe : MapComponent
             bool has = demon.genes.GenesListForReading.Any(x => x.def.defName == g && x.Active);
             C("ActiveGene_" + g, has, "active", has ? "active" : "absent");
         }
+        int met = demon.genes.GenesListForReading.Where(x => x.Active).Sum(x => x.def.biostatMet);
+        C("MetabolismNeutral", met == 0, 0, met);
+        XenotypeDef xd = DefDatabase<XenotypeDef>.GetNamedSilentFail(XenoName);
+        int xmet = xd == null ? -999 : xd.genes.Sum(x => x.biostatMet);
+        C("XenotypeMetabolismNeutral", xmet == 0, 0, xmet);
         Gene skin = demon.genes.GenesListForReading.FirstOrDefault(x => x.Active && x.def.skinColorOverride != null);
         facts.Add("xenotype=" + XenoName + " skinGene=" + (skin == null ? "none" : skin.def.defName));
         if (XenoName == "TMM_Demon") C("DemonSkinGene", skin != null && (skin.def.defName == "Skin_DeepRed" || skin.def.defName == "Skin_InkBlack"), "Skin_DeepRed|Skin_InkBlack", skin == null ? "none" : skin.def.defName);
