@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Roles.Gizmo>Role</TMM.Roles.Gizmo>
+  <TMM.Roles.GizmoDesc>Assign this colonist a role. The role sets the profession's work to top priority; ranks, promotion and rank gear come with it.</TMM.Roles.GizmoDesc>
+  <TMM.Roles.None>none</TMM.Roles.None>
+  <TMM.Roles.Clear>Clear role</TMM.Roles.Clear>
+  <TMM.Roles.Civil>Civil</TMM.Roles.Civil>
+  <TMM.Roles.Military>Military</TMM.Roles.Military>
+</LanguageData>

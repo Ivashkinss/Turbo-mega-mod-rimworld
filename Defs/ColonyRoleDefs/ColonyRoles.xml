@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Colony roles and ranks (Documentation/COLONY-ROLES-DESIGN.md). Data: Documentation/ColonyRoles-Data.json (Hydrogen). -->
+<Defs>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_doctor</defName>
+    <label>medic</label>
+    <group>civil</group>
+    <skill>Medicine</skill>
+    <workTypes>
+      <li>Doctor</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>field orderly</label>
+        <description>Confidently applies bandages and stops bleeding even under heavy fire.</description>
+        <skillMin>10</skillMin>
+        <record>TimesTendedOther</record>
+        <recordMin>50</recordMin>
+        <mood>1</mood>
+        <stats>
+          <MedicalTendSpeed>0.04</MedicalTendSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>trauma physician</label>
+        <description>Pulls colonists back from the brink of death and has already saved dozens of lives.</description>
+        <skillMin>15</skillMin>
+        <record>TimesTendedOther</record>
+        <recordMin>150</recordMin>
+        <mood>3</mood>
+        <stats>
+          <MedicalTendSpeed>0.07</MedicalTendSpeed>
+          <MedicalTendQuality>0.05</MedicalTendQuality>
+        </stats>
+      </li>
+      <li>
+        <label>chief surgeon</label>
+        <description>A legend of the infirmary whose hands never tremble during the most hopeless operations.</description>
+        <skillMin>20</skillMin>
+        <record>TimesTendedOther</record>
+        <recordMin>350</recordMin>
+        <mood>5</mood>
+        <stats>
+          <MedicalTendSpeed>0.10</MedicalTendSpeed>
+          <MedicalTendQuality>0.08</MedicalTendQuality>
+          <MedicalSurgerySuccessChance>0.05</MedicalSurgerySuccessChance>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_builder</defName>
+    <label>builder</label>
+    <group>civil</group>
+    <skill>Construction</skill>
+    <workTypes>
+      <li>Construction</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>sapper</label>
+        <description>Quickly raises walls and fortifications out of whatever scrap is at hand.</description>
+        <skillMin>10</skillMin>
+        <record>ThingsConstructed</record>
+        <recordMin>100</recordMin>
+        <mood>1</mood>
+        <stats>
+          <ConstructionSpeed>0.05</ConstructionSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>foreman</label>
+        <description>Knows every joint and beam in the settlement, building to last without a single flaw.</description>
+        <skillMin>15</skillMin>
+        <record>ThingsConstructed</record>
+        <recordMin>300</recordMin>
+        <mood>3</mood>
+        <stats>
+          <ConstructionSpeed>0.08</ConstructionSpeed>
+          <ConstructSuccessChance>0.04</ConstructSuccessChance>
+        </stats>
+      </li>
+      <li>
+        <label>chief architect</label>
+        <description>Turns wasteland ruins into impregnable bastions of pre-war quality.</description>
+        <skillMin>20</skillMin>
+        <record>ThingsConstructed</record>
+        <recordMin>700</recordMin>
+        <mood>5</mood>
+        <stats>
+          <ConstructionSpeed>0.10</ConstructionSpeed>
+          <ConstructSuccessChance>0.07</ConstructSuccessChance>
+          <WorkSpeedGlobal>0.04</WorkSpeedGlobal>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_crafter</defName>
+    <label>crafter</label>
+    <group>civil</group>
+    <skill>Crafting</skill>
+    <workTypes>
+      <li>Crafting</li>
+      <li>Smithing</li>
+      <li>Tailoring</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>tinker</label>
+        <description>Confidently handles the workbench, anvil, and sewing needle alike.</description>
+        <skillMin>10</skillMin>
+        <record>ThingsCrafted</record>
+        <recordMin>80</recordMin>
+        <mood>1</mood>
+        <stats>
+          <GeneralLaborSpeed>0.05</GeneralLaborSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>master artisan</label>
+        <description>Turns out armor and weapons from the workshop that fighters trust with their lives.</description>
+        <skillMin>15</skillMin>
+        <record>ThingsCrafted</record>
+        <recordMin>250</recordMin>
+        <mood>3</mood>
+        <stats>
+          <GeneralLaborSpeed>0.08</GeneralLaborSpeed>
+          <SmeltingSpeed>0.06</SmeltingSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>grand artificer</label>
+        <description>A workbench genius capable of forging a masterpiece from rusted junk and bioferrite.</description>
+        <skillMin>20</skillMin>
+        <record>ThingsCrafted</record>
+        <recordMin>600</recordMin>
+        <mood>5</mood>
+        <stats>
+          <GeneralLaborSpeed>0.10</GeneralLaborSpeed>
+          <SmeltingSpeed>0.08</SmeltingSpeed>
+          <WorkSpeedGlobal>0.04</WorkSpeedGlobal>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_handler</defName>
+    <label>animal handler</label>
+    <group>civil</group>
+    <skill>Animals</skill>
+    <workTypes>
+      <li>Handling</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>herder</label>
+        <description>Knows the habits of wasteland beasts and can calm even skittish livestock.</description>
+        <skillMin>10</skillMin>
+        <record>AnimalsTamed</record>
+        <recordMin>10</recordMin>
+        <mood>1</mood>
+        <stats>
+          <TameAnimalChance>0.04</TameAnimalChance>
+        </stats>
+      </li>
+      <li>
+        <label>beast trainer</label>
+        <description>Turns wild predators into loyal defenders and providers for the colony.</description>
+        <skillMin>15</skillMin>
+        <record>AnimalsTamed</record>
+        <recordMin>25</recordMin>
+        <mood>3</mood>
+        <stats>
+          <TameAnimalChance>0.07</TameAnimalChance>
+          <AnimalGatherYield>0.06</AnimalGatherYield>
+        </stats>
+      </li>
+      <li>
+        <label>packmaster</label>
+        <description>Understands the language of every beast and commands a pack of tamed monsters.</description>
+        <skillMin>20</skillMin>
+        <record>AnimalsTamed</record>
+        <recordMin>50</recordMin>
+        <mood>5</mood>
+        <stats>
+          <TameAnimalChance>0.10</TameAnimalChance>
+          <AnimalGatherYield>0.09</AnimalGatherYield>
+          <TrainAnimalChance>0.07</TrainAnimalChance>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_farmer</defName>
+    <label>farmer</label>
+    <group>civil</group>
+    <skill>Plants</skill>
+    <workTypes>
+      <li>Growing</li>
+      <li>PlantCutting</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>field hand</label>
+        <description>Knows how to coax a harvest even out of ash-poisoned soil.</description>
+        <skillMin>10</skillMin>
+        <record>PlantsHarvested</record>
+        <recordMin>200</recordMin>
+        <mood>1</mood>
+        <stats>
+          <PlantWorkSpeed>0.05</PlantWorkSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>agronomist</label>
+        <description>Tends every sprout with care, keeping the colony supplied with steady provisions.</description>
+        <skillMin>15</skillMin>
+        <record>PlantsHarvested</record>
+        <recordMin>600</recordMin>
+        <mood>3</mood>
+        <stats>
+          <PlantWorkSpeed>0.08</PlantWorkSpeed>
+          <PlantHarvestYield>0.05</PlantHarvestYield>
+        </stats>
+      </li>
+      <li>
+        <label>master botanist</label>
+        <description>Under their care, even the most fragile crops thrive in the harshest climate.</description>
+        <skillMin>20</skillMin>
+        <record>PlantsHarvested</record>
+        <recordMin>1500</recordMin>
+        <mood>5</mood>
+        <stats>
+          <PlantWorkSpeed>0.10</PlantWorkSpeed>
+          <PlantHarvestYield>0.08</PlantHarvestYield>
+          <WorkSpeedGlobal>0.03</WorkSpeedGlobal>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_cook</defName>
+    <label>cook</label>
+    <group>civil</group>
+    <skill>Cooking</skill>
+    <workTypes>
+      <li>Cooking</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>kitchen assistant</label>
+        <description>Quickly preps ingredients, butchers carcasses, and keeps the stew pot full.</description>
+        <skillMin>10</skillMin>
+        <record>MealsCooked</record>
+        <recordMin>100</recordMin>
+        <mood>1</mood>
+        <stats>
+          <CookSpeed>0.05</CookSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>field chef</label>
+        <description>Capable of cooking a hearty dinner even out of questionable mutant meat.</description>
+        <skillMin>15</skillMin>
+        <record>MealsCooked</record>
+        <recordMin>300</recordMin>
+        <mood>3</mood>
+        <stats>
+          <CookSpeed>0.08</CookSpeed>
+          <ButcheryFleshSpeed>0.06</ButcheryFleshSpeed>
+        </stats>
+      </li>
+      <li>
+        <label>master chef</label>
+        <description>Their meals lift the entire colony&apos;s morale better than any pre-war delicacy.</description>
+        <skillMin>20</skillMin>
+        <record>MealsCooked</record>
+        <recordMin>750</recordMin>
+        <mood>5</mood>
+        <stats>
+          <CookSpeed>0.10</CookSpeed>
+          <ButcheryFleshSpeed>0.09</ButcheryFleshSpeed>
+          <WorkSpeedGlobal>0.03</WorkSpeedGlobal>
+        </stats>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+  <TurboMegaMod.ColonyRoleDef>
+    <defName>TMM_Role_trooper</defName>
+    <label>trooper</label>
+    <group>military</group>
+    <skill>Shooting</skill>
+    <workTypes>
+      <li>Hunting</li>
+    </workTypes>
+    <ranks>
+      <li>
+        <label>private</label>
+        <description>Completed basic drill training and holds the line under incoming fire.</description>
+        <skillMin>6</skillMin>
+        <record>Kills</record>
+        <recordMin>10</recordMin>
+        <mood>1</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.03</ShootingAccuracyPawn>
+        </stats>
+      </li>
+      <li>
+        <label>sergeant</label>
+        <description>A skirmish-hardened fighter who knows the value of cover and a fresh magazine.</description>
+        <skillMin>9</skillMin>
+        <record>Kills</record>
+        <recordMin>30</recordMin>
+        <mood>2</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+          <MeleeHitChance>0.04</MeleeHitChance>
+        </stats>
+      </li>
+      <li>
+        <label>lieutenant</label>
+        <description>A junior squad leader who keeps troopers steady through personal example.</description>
+        <skillMin>12</skillMin>
+        <record>Kills</record>
+        <recordMin>60</recordMin>
+        <mood>3</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.04</MeleeDodgeChance>
+        </stats>
+        <aura>
+          <radius>9</radius>
+          <mood>2</mood>
+          <stats>
+            <ShootingAccuracyPawn>0.03</ShootingAccuracyPawn>
+          </stats>
+        </aura>
+      </li>
+      <li>
+        <label>major</label>
+        <description>A seasoned tactician who turns a ragtag squad into a cohesive fighting unit.</description>
+        <skillMin>14</skillMin>
+        <record>Kills</record>
+        <recordMin>100</recordMin>
+        <mood>4</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>
+          <MeleeHitChance>0.05</MeleeHitChance>
+          <MeleeDodgeChance>0.05</MeleeDodgeChance>
+        </stats>
+        <aura>
+          <radius>9</radius>
+          <mood>3</mood>
+          <stats>
+            <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+            <MeleeHitChance>0.03</MeleeHitChance>
+          </stats>
+        </aura>
+      </li>
+      <li>
+        <label>colonel</label>
+        <description>A formidable field commander whose voice drives soldiers to fight to the last round.</description>
+        <skillMin>16</skillMin>
+        <record>Kills</record>
+        <recordMin>160</recordMin>
+        <mood>5</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.09</ShootingAccuracyPawn>
+          <MeleeHitChance>0.07</MeleeHitChance>
+          <MeleeDodgeChance>0.06</MeleeDodgeChance>
+        </stats>
+        <aura>
+          <radius>9</radius>
+          <mood>4</mood>
+          <stats>
+            <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+            <MeleeHitChance>0.05</MeleeHitChance>
+            <MeleeDodgeChance>0.03</MeleeDodgeChance>
+          </stats>
+        </aura>
+      </li>
+      <li>
+        <label>general</label>
+        <description>A living legend of the wasteland whose mere presence on the frontline fills the squad with unbreakable resolve.</description>
+        <skillMin>18</skillMin>
+        <record>Kills</record>
+        <recordMin>250</recordMin>
+        <mood>6</mood>
+        <stats>
+          <ShootingAccuracyPawn>0.10</ShootingAccuracyPawn>
+          <MeleeHitChance>0.08</MeleeHitChance>
+          <MeleeDodgeChance>0.08</MeleeDodgeChance>
+        </stats>
+        <aura>
+          <radius>9</radius>
+          <mood>6</mood>
+          <stats>
+            <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>
+            <MeleeHitChance>0.06</MeleeHitChance>
+            <MeleeDodgeChance>0.05</MeleeDodgeChance>
+          </stats>
+        </aura>
+      </li>
+    </ranks>
+  </TurboMegaMod.ColonyRoleDef>
+</Defs>

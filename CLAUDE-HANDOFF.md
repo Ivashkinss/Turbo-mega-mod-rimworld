@@ -183,3 +183,13 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - Прогоны: HeroRegistry 140/140 + reload (80 записей), Outposts, MinutemenHunters — ERROR 0.
 - Готово 80 из 84 героев каталога. Не сделаны Эдем (ИИ), ПАМ (робот), Ник Валентайн (синт): нужна механика представления.
 - Новый запрос пользователя — роли, ранги и группировка колонистов: `Documentation/COLONY-ROLES-DESIGN.md`, решения записаны, 6 этапов, начать 19.11.
+## 18.11.2026 вечер — роли колонистов, этап 1 (Claude + Hydrogen)
+- `Source/ColonyRoles.cs`:
+  - `ColonyRoleDef` (группа, навык, профильные работы, ранги `ColonyRank` с требованиями, бонусами, настроением, аурой);
+  - `GameComponent ColonyRoles`: роль и ранг каждой пешки, Scribe;
+  - gizmo «Роль» (Harmony на `Pawn.GetGizmos`).
+  - Назначение роли ставит профильные работы на 1, прочие бывшие 1 — на 2, включает ручные приоритеты.
+- Данные Hydrogen: `Documentation/ColonyRoles-Data.json` → `Defs/ColonyRoleDefs/ColonyRoles.xml`, 7 ролей, 24 ранга. RU в `DefInjected/TurboMegaMod.ColonyRoleDef/`.
+- Формат 1.7: `List<StatModifier>` в XML пишется `<CookSpeed>0.05</CookSpeed>`, не через li.
+- Прогоны: ColonyRoles fresh 14/14 + reload, ERROR 0.
+- Дальше по `Documentation/COLONY-ROLES-DESIGN.md`: этап 2 — группировка панели, этап 3 — повышение и ритуал Ideology, этап 4 — бонусы и аура, этап 5 — третий огонёк, этап 6 — экипировка.

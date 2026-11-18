@@ -1,0 +1,469 @@
+{
+  "roles": [
+    {
+      "id": "doctor",
+      "group": "civil",
+      "label_en": "medic",
+      "label_ru": "врач",
+      "skill": "Medicine",
+      "workTypes": ["Doctor"],
+      "ranks": [
+        {
+          "id": "doctor_1",
+          "label_en": "field orderly",
+          "label_ru": "санитар",
+          "skillMin": 10,
+          "record": "TimesTendedOther",
+          "recordMin": 50,
+          "stats": [
+            { "stat": "MedicalTendSpeed", "offset": 0.04 }
+          ],
+          "mood": 1,
+          "desc_ru": "Уверенно накладывает повязки и останавливает кровотечение даже под обстрелом.",
+          "desc_en": "Confidently applies bandages and stops bleeding even under heavy fire."
+        },
+        {
+          "id": "doctor_2",
+          "label_en": "trauma physician",
+          "label_ru": "полевой врач",
+          "skillMin": 15,
+          "record": "TimesTendedOther",
+          "recordMin": 150,
+          "stats": [
+            { "stat": "MedicalTendSpeed", "offset": 0.07 },
+            { "stat": "MedicalTendQuality", "offset": 0.05 }
+          ],
+          "mood": 3,
+          "desc_ru": "Вытаскивает колонистов с того света и спас уже не одну десятку жизней.",
+          "desc_en": "Pulls colonists back from the brink of death and has already saved dozens of lives."
+        },
+        {
+          "id": "doctor_3",
+          "label_en": "chief surgeon",
+          "label_ru": "главный хирург",
+          "skillMin": 20,
+          "record": "TimesTendedOther",
+          "recordMin": 350,
+          "stats": [
+            { "stat": "MedicalTendSpeed", "offset": 0.10 },
+            { "stat": "MedicalTendQuality", "offset": 0.08 },
+            { "stat": "MedicalSurgerySuccessChance", "offset": 0.05 }
+          ],
+          "mood": 5,
+          "desc_ru": "Легенда лазарета, чьи руки не дрожат при самых безнадёжных операциях.",
+          "desc_en": "A legend of the infirmary whose hands never tremble during the most hopeless operations."
+        }
+      ]
+    },
+    {
+      "id": "builder",
+      "group": "civil",
+      "label_en": "builder",
+      "label_ru": "строитель",
+      "skill": "Construction",
+      "workTypes": ["Construction"],
+      "ranks": [
+        {
+          "id": "builder_1",
+          "label_en": "sapper",
+          "label_ru": "подмастерье",
+          "skillMin": 10,
+          "record": "ThingsConstructed",
+          "recordMin": 100,
+          "stats": [
+            { "stat": "ConstructionSpeed", "offset": 0.05 }
+          ],
+          "mood": 1,
+          "desc_ru": "Быстро возводит стены и укрепления из любого подручного лома.",
+          "desc_en": "Quickly raises walls and fortifications out of whatever scrap is at hand."
+        },
+        {
+          "id": "builder_2",
+          "label_en": "foreman",
+          "label_ru": "прораб",
+          "skillMin": 15,
+          "record": "ThingsConstructed",
+          "recordMin": 300,
+          "stats": [
+            { "stat": "ConstructionSpeed", "offset": 0.08 },
+            { "stat": "ConstructSuccessChance", "offset": 0.04 }
+          ],
+          "mood": 3,
+          "desc_ru": "Знает каждый стык и балку в поселении, строя на века без единого брака.",
+          "desc_en": "Knows every joint and beam in the settlement, building to last without a single flaw."
+        },
+        {
+          "id": "builder_3",
+          "label_en": "chief architect",
+          "label_ru": "главный инженер",
+          "skillMin": 20,
+          "record": "ThingsConstructed",
+          "recordMin": 700,
+          "stats": [
+            { "stat": "ConstructionSpeed", "offset": 0.10 },
+            { "stat": "ConstructSuccessChance", "offset": 0.07 },
+            { "stat": "WorkSpeedGlobal", "offset": 0.04 }
+          ],
+          "mood": 5,
+          "desc_ru": "Превращает руины Пустоши в неприступные бастионы довоенного уровня.",
+          "desc_en": "Turns wasteland ruins into impregnable bastions of pre-war quality."
+        }
+      ]
+    },
+    {
+      "id": "crafter",
+      "group": "civil",
+      "label_en": "crafter",
+      "label_ru": "ремесленник",
+      "skill": "Crafting",
+      "workTypes": ["Crafting", "Smithing", "Tailoring"],
+      "ranks": [
+        {
+          "id": "crafter_1",
+          "label_en": "tinker",
+          "label_ru": "механик",
+          "skillMin": 10,
+          "record": "ThingsCrafted",
+          "recordMin": 80,
+          "stats": [
+            { "stat": "GeneralLaborSpeed", "offset": 0.05 }
+          ],
+          "mood": 1,
+          "desc_ru": "Уверенно обращается со станком, наковальней и швейной иглой.",
+          "desc_en": "Confidently handles the workbench, anvil, and sewing needle alike."
+        },
+        {
+          "id": "crafter_2",
+          "label_en": "master artisan",
+          "label_ru": "мастер-оружейник",
+          "skillMin": 15,
+          "record": "ThingsCrafted",
+          "recordMin": 250,
+          "stats": [
+            { "stat": "GeneralLaborSpeed", "offset": 0.08 },
+            { "stat": "SmeltingSpeed", "offset": 0.06 }
+          ],
+          "mood": 3,
+          "desc_ru": "Выпускает из мастерской броню и стволы, которым доверяют жизнь в бою.",
+          "desc_en": "Turns out armor and weapons from the workshop that fighters trust with their lives."
+        },
+        {
+          "id": "crafter_3",
+          "label_en": "grand artificer",
+          "label_ru": "мастер-технолог",
+          "skillMin": 20,
+          "record": "ThingsCrafted",
+          "recordMin": 600,
+          "stats": [
+            { "stat": "GeneralLaborSpeed", "offset": 0.10 },
+            { "stat": "SmeltingSpeed", "offset": 0.08 },
+            { "stat": "WorkSpeedGlobal", "offset": 0.04 }
+          ],
+          "mood": 5,
+          "desc_ru": "Гений верстака, способный собрать шедевр из ржавого хлама и биоферрита.",
+          "desc_en": "A workbench genius capable of forging a masterpiece from rusted junk and bioferrite."
+        }
+      ]
+    },
+    {
+      "id": "handler",
+      "group": "civil",
+      "label_en": "animal handler",
+      "label_ru": "животновод",
+      "skill": "Animals",
+      "workTypes": ["Handling"],
+      "ranks": [
+        {
+          "id": "handler_1",
+          "label_en": "herder",
+          "label_ru": "пастух",
+          "skillMin": 10,
+          "record": "AnimalsTamed",
+          "recordMin": 10,
+          "stats": [
+            { "stat": "TameAnimalChance", "offset": 0.04 }
+          ],
+          "mood": 1,
+          "desc_ru": "Знает повадки зверей Пустоши и умеет успокоить даже пугливый скот.",
+          "desc_en": "Knows the habits of wasteland beasts and can calm even skittish livestock."
+        },
+        {
+          "id": "handler_2",
+          "label_en": "beast trainer",
+          "label_ru": "дрессировщик",
+          "skillMin": 15,
+          "record": "AnimalsTamed",
+          "recordMin": 25,
+          "stats": [
+            { "stat": "TameAnimalChance", "offset": 0.07 },
+            { "stat": "AnimalGatherYield", "offset": 0.06 }
+          ],
+          "mood": 3,
+          "desc_ru": "Превращает диких хищников в верных защитников и добытчиков колонии.",
+          "desc_en": "Turns wild predators into loyal defenders and providers for the colony."
+        },
+        {
+          "id": "handler_3",
+          "label_en": "packmaster",
+          "label_ru": "вожак стаи",
+          "skillMin": 20,
+          "record": "AnimalsTamed",
+          "recordMin": 50,
+          "stats": [
+            { "stat": "TameAnimalChance", "offset": 0.10 },
+            { "stat": "AnimalGatherYield", "offset": 0.09 },
+            { "stat": "TrainAnimalChance", "offset": 0.07 }
+          ],
+          "mood": 5,
+          "desc_ru": "Понимает язык любого зверя и ведёт за собой целую свору приручённых чудовищ.",
+          "desc_en": "Understands the language of every beast and commands a pack of tamed monsters."
+        }
+      ]
+    },
+    {
+      "id": "farmer",
+      "group": "civil",
+      "label_en": "farmer",
+      "label_ru": "фермер",
+      "skill": "Plants",
+      "workTypes": ["Growing", "PlantCutting"],
+      "ranks": [
+        {
+          "id": "farmer_1",
+          "label_en": "field hand",
+          "label_ru": "земледелец",
+          "skillMin": 10,
+          "record": "PlantsHarvested",
+          "recordMin": 200,
+          "stats": [
+            { "stat": "PlantWorkSpeed", "offset": 0.05 }
+          ],
+          "mood": 1,
+          "desc_ru": "Умеет выжать урожай даже из отравленной пеплом земли.",
+          "desc_en": "Knows how to coax a harvest even out of ash-poisoned soil."
+        },
+        {
+          "id": "farmer_2",
+          "label_en": "agronomist",
+          "label_ru": "агроном",
+          "skillMin": 15,
+          "record": "PlantsHarvested",
+          "recordMin": 600,
+          "stats": [
+            { "stat": "PlantWorkSpeed", "offset": 0.08 },
+            { "stat": "PlantHarvestYield", "offset": 0.05 }
+          ],
+          "mood": 3,
+          "desc_ru": "Заботится о каждом ростке, обеспечивая колонию стабильным запасом провизии.",
+          "desc_en": "Tends every sprout with care, keeping the colony supplied with steady provisions."
+        },
+        {
+          "id": "farmer_3",
+          "label_en": "master botanist",
+          "label_ru": "главный агроном",
+          "skillMin": 20,
+          "record": "PlantsHarvested",
+          "recordMin": 1500,
+          "stats": [
+            { "stat": "PlantWorkSpeed", "offset": 0.10 },
+            { "stat": "PlantHarvestYield", "offset": 0.08 },
+            { "stat": "WorkSpeedGlobal", "offset": 0.03 }
+          ],
+          "mood": 5,
+          "desc_ru": "Под его присмотром цветут даже самые капризные культуры в суровом климате.",
+          "desc_en": "Under their care, even the most fragile crops thrive in the harshest climate."
+        }
+      ]
+    },
+    {
+      "id": "cook",
+      "group": "civil",
+      "label_en": "cook",
+      "label_ru": "повар",
+      "skill": "Cooking",
+      "workTypes": ["Cooking"],
+      "ranks": [
+        {
+          "id": "cook_1",
+          "label_en": "kitchen assistant",
+          "label_ru": "помощник повара",
+          "skillMin": 10,
+          "record": "MealsCooked",
+          "recordMin": 100,
+          "stats": [
+            { "stat": "CookSpeed", "offset": 0.05 }
+          ],
+          "mood": 1,
+          "desc_ru": "Быстро чистит овощи, разделывает туши и следит, чтобы котёл не пустовал.",
+          "desc_en": "Quickly preps ingredients, butchers carcasses, and keeps the stew pot full."
+        },
+        {
+          "id": "cook_2",
+          "label_en": "field chef",
+          "label_ru": "полевой повар",
+          "skillMin": 15,
+          "record": "MealsCooked",
+          "recordMin": 300,
+          "stats": [
+            { "stat": "CookSpeed", "offset": 0.08 },
+            { "stat": "ButcheryFleshSpeed", "offset": 0.06 }
+          ],
+          "mood": 3,
+          "desc_ru": "Способен приготовить сытный ужин даже из сомнительного мяса мутантов.",
+          "desc_en": "Capable of cooking a hearty dinner even out of questionable mutant meat."
+        },
+        {
+          "id": "cook_3",
+          "label_en": "master chef",
+          "label_ru": "шеф-повар",
+          "skillMin": 20,
+          "record": "MealsCooked",
+          "recordMin": 750,
+          "stats": [
+            { "stat": "CookSpeed", "offset": 0.10 },
+            { "stat": "ButcheryFleshSpeed", "offset": 0.09 },
+            { "stat": "WorkSpeedGlobal", "offset": 0.03 }
+          ],
+          "mood": 5,
+          "desc_ru": "Его блюда поднимают боевой дух всей колонии лучше любого довоенного деликатеса.",
+          "desc_en": "Their meals lift the entire colony's morale better than any pre-war delicacy."
+        }
+      ]
+    },
+    {
+      "id": "trooper",
+      "group": "military",
+      "label_en": "trooper",
+      "label_ru": "штурмовик",
+      "skill": "Shooting",
+      "workTypes": ["Hunting"],
+      "ranks": [
+        {
+          "id": "trooper_1",
+          "label_en": "private",
+          "label_ru": "рядовой",
+          "skillMin": 6,
+          "record": "Kills",
+          "recordMin": 10,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.03 }
+          ],
+          "mood": 1,
+          "desc_ru": "Прошёл базовую строевую подготовку и держит строй под первым огнём.",
+          "desc_en": "Completed basic drill training and holds the line under incoming fire."
+        },
+        {
+          "id": "trooper_2",
+          "label_en": "sergeant",
+          "label_ru": "сержант",
+          "skillMin": 9,
+          "record": "Kills",
+          "recordMin": 30,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.05 },
+            { "stat": "MeleeHitChance", "offset": 0.04 }
+          ],
+          "mood": 2,
+          "desc_ru": "Закалённый в стычках боец, знающий цену укрытию и вовремя перезаряженному магазину.",
+          "desc_en": "A skirmish-hardened fighter who knows the value of cover and a fresh magazine."
+        },
+        {
+          "id": "trooper_3",
+          "label_en": "lieutenant",
+          "label_ru": "лейтенант",
+          "skillMin": 12,
+          "record": "Kills",
+          "recordMin": 60,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.06 },
+            { "stat": "MeleeDodgeChance", "offset": 0.04 }
+          ],
+          "mood": 3,
+          "aura": {
+            "radius": 9,
+            "mood": 2,
+            "stats": [
+              { "stat": "ShootingAccuracyPawn", "offset": 0.03 }
+            ]
+          },
+          "desc_ru": "Младший командир отряда, своим примером удерживающий бойцов от паники.",
+          "desc_en": "A junior squad leader who keeps troopers steady through personal example."
+        },
+        {
+          "id": "trooper_4",
+          "label_en": "major",
+          "label_ru": "майор",
+          "skillMin": 14,
+          "record": "Kills",
+          "recordMin": 100,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.08 },
+            { "stat": "MeleeHitChance", "offset": 0.05 },
+            { "stat": "MeleeDodgeChance", "offset": 0.05 }
+          ],
+          "mood": 4,
+          "aura": {
+            "radius": 9,
+            "mood": 3,
+            "stats": [
+              { "stat": "ShootingAccuracyPawn", "offset": 0.05 },
+              { "stat": "MeleeHitChance", "offset": 0.03 }
+            ]
+          },
+          "desc_ru": "Опытный тактик, превращающий разношёрстный отряд в слаженную боевую единицу.",
+          "desc_en": "A seasoned tactician who turns a ragtag squad into a cohesive fighting unit."
+        },
+        {
+          "id": "trooper_5",
+          "label_en": "colonel",
+          "label_ru": "полковник",
+          "skillMin": 16,
+          "record": "Kills",
+          "recordMin": 160,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.09 },
+            { "stat": "MeleeHitChance", "offset": 0.07 },
+            { "stat": "MeleeDodgeChance", "offset": 0.06 }
+          ],
+          "mood": 5,
+          "aura": {
+            "radius": 9,
+            "mood": 4,
+            "stats": [
+              { "stat": "ShootingAccuracyPawn", "offset": 0.06 },
+              { "stat": "MeleeHitChance", "offset": 0.05 },
+              { "stat": "MeleeDodgeChance", "offset": 0.03 }
+            ]
+          },
+          "desc_ru": "Грозный полевой командир, чей голос заставляет солдат сражаться до последнего патрона.",
+          "desc_en": "A formidable field commander whose voice drives soldiers to fight to the last round."
+        },
+        {
+          "id": "trooper_6",
+          "label_en": "general",
+          "label_ru": "генерал",
+          "skillMin": 18,
+          "record": "Kills",
+          "recordMin": 250,
+          "stats": [
+            { "stat": "ShootingAccuracyPawn", "offset": 0.10 },
+            { "stat": "MeleeHitChance", "offset": 0.08 },
+            { "stat": "MeleeDodgeChance", "offset": 0.08 }
+          ],
+          "mood": 6,
+          "aura": {
+            "radius": 9,
+            "mood": 6,
+            "stats": [
+              { "stat": "ShootingAccuracyPawn", "offset": 0.08 },
+              { "stat": "MeleeHitChance", "offset": 0.06 },
+              { "stat": "MeleeDodgeChance", "offset": 0.05 }
+            ]
+          },
+          "desc_ru": "Живая легенда Пустоши, одно присутствие которой на передовой вселяет в отряд непоколебимую ярость.",
+          "desc_en": "A living legend of the wasteland whose mere presence on the frontline fills the squad with unbreakable resolve."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+﻿{
+    "colonyRolesReload":  {
+                              "passed":  true,
+                              "checksCount":  4,
+                              "checks":  [
+                                             {
+                                                 "name":  "AssignmentsLoaded",
+                                                 "passed":  true,
+                                                 "expected":  "2",
+                                                 "actual":  "2"
+                                             },
+                                             {
+                                                 "name":  "CookRoleKept",
+                                                 "passed":  true,
+                                                 "expected":  "cook",
+                                                 "actual":  "TMM_Role_cook"
+                                             },
+                                             {
+                                                 "name":  "TrooperRoleKept",
+                                                 "passed":  true,
+                                                 "expected":  "trooper",
+                                                 "actual":  "TMM_Role_trooper"
+                                             },
+                                             {
+                                                 "name":  "CookPriorityKept",
+                                                 "passed":  true,
+                                                 "expected":  "1",
+                                                 "actual":  "1"
+                                             }
+                                         ],
+                              "errors":  [
+
+                                         ]
+                          },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4242,
+                        "ticksAdvanced":  1788,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "e7e8085f1c4f7dfc06d60475f618526e6e982cc088e83218a170c55ae527e719",
+    "productionAssemblySha256":  "e7e8085f1c4f7dfc06d60475f618526e6e982cc088e83218a170c55ae527e719",
+    "passed":  true
+}
