@@ -1356,7 +1356,7 @@
     },
     {
       "id": "OutpostsProbeFlakyLevel2",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "MinutemenFixes",

@@ -199,6 +199,7 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             Check(!component.CanSafelyPlaceModule(rect,2)&&!coins.Destroyed&&coins.stackCount==37,"Planner wipes loose silver");
             // A blocked default location may legitimately use a different free layout.
             coins.DeSpawn();Check(station.RawMaterials.TryAdd(coins,false),"Cannot preserve fixture coins");silver+=37;
+            ClearCompound(component, station.Map);
             Check(station.TryUpgrade(out reason),"Actual level2 upgrade failed: "+reason);
             Check(station.level==2&&station.MaxCapacity==3&&station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver)==silver-500,"Upgrade cost/capacity incorrect");
             Check(component.CountRealBeds()>=3,"Level2 real third bed absent");
@@ -241,19 +242,23 @@ public sealed class OutpostAcceptanceProbe : MapComponent
         Check(input.All(m=>station.RawMaterials.TotalStackCountOfDef(m.Key)==baseline[m.Key])&&station.ProducedGoods.TotalStackCountOfDef(ThingDefOf.ComponentSpacer)==oldAdvanced+1,"Native component recipe counts differ, including three real gold for XML0.3");
         Check(station.ProducedGoods.All(t=>t.stackCount<=t.def.stackLimit&&t.holdingOwner==station.ProducedGoods),"Factory output stacks lost ownership or exceeded stackLimit");
     }
+    private static void ClearCompound(StrategicOutpostMapComponent component, Map map)
+    {
+        int cx = component.baseCenter.IsValid ? component.baseCenter.x : map.Center.x;
+        int cz = component.baseCenter.IsValid ? component.baseCenter.z : map.Center.z;
+        var compound = new CellRect(cx - 26, cz - 26, 53, 53);
+        foreach(var cell in compound) {
+            if(!cell.InBounds(map)) continue;
+            foreach(var thing in cell.GetThingList(map).ToArray())
+                if(thing is Plant || thing is Mineable || (thing.def.thingCategories!=null&&thing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks)))thing.Destroy(DestroyMode.Vanish);
+            var terrain=map.terrainGrid.TerrainAt(cell);
+            if(terrain.passability==Traversability.Impassable||!terrain.affordances.Contains(TerrainAffordanceDefOf.Light))map.terrainGrid.SetTerrain(cell,TerrainDefOf.Soil);
+        }
+    }
     private void UpperLevels()
     {
         var component=station.Map.GetComponent<StrategicOutpostMapComponent>();
-        int cx = component.baseCenter.IsValid ? component.baseCenter.x : station.Map.Center.x;
-        int cz = component.baseCenter.IsValid ? component.baseCenter.z : station.Map.Center.z;
-        var compound = new CellRect(cx - 26, cz - 26, 53, 53);
-        foreach(var cell in compound) {
-            if(!cell.InBounds(station.Map)) continue;
-            foreach(var thing in cell.GetThingList(station.Map).ToArray())
-                if(thing is Plant || thing is Mineable || (thing.def.thingCategories!=null&&thing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks)))thing.Destroy(DestroyMode.Vanish);
-            var terrain=station.Map.terrainGrid.TerrainAt(cell);
-            if(terrain.passability==Traversability.Impassable||!terrain.affordances.Contains(TerrainAffordanceDefOf.Light))station.Map.terrainGrid.SetTerrain(cell,TerrainDefOf.Soil);
-        }
+        ClearCompound(component, station.Map);
         for(int desired=3;desired<=10;desired++) {
             int cost=station.NextUpgradeCost,remaining=cost;
             while(remaining>0) {var money=ThingMaker.MakeThing(ThingDefOf.Silver);money.stackCount=Math.Min(remaining,ThingDefOf.Silver.stackLimit);int count=money.stackCount;if(!station.RawMaterials.TryAdd(money,false))throw new Exception("Fixture upgrade money rejected");remaining-=count;}
