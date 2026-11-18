@@ -1326,6 +1326,21 @@
       "note": "Mechanical: rebase 17.11 Minutemen prototype onto current root in a candidate dir, build, run its probe once in game, record errors verbatim. No fixes."
     },
     {
+      "id": "XenotypeArtPilot",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "MinutemenRebaseRun",
+      "taskFile": "Delegation/XenotypeArtPilot/TASK.md",
+      "outputDir": "Tools/Build/GeminiXenotypeArtPilot",
+      "expectedOutputs": [
+        "REPORT.md",
+        "CONTACT_SHEET.png"
+      ],
+      "createdUtc": "2026-11-18T10:40:00Z",
+      "note": "Pilot RimWorld-style textures (demon horns, tail, angel wings), 4 directions + masks; find out whether image generator or code drawing works. No root changes."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "pending",
       "assignee": "codex",
