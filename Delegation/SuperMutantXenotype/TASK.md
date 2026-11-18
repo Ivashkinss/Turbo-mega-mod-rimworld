@@ -10,6 +10,8 @@ kind: implement + run · assignee: gemini
 
 Решение пользователя: супермутанты — отдельная раса, только при Biotech (`MayRequire="Ludeon.RimWorld.Biotech"`).
 
+**Размер:** пользователь хочет, чтобы супермутанты были визуально крупнее. Это делает Claude отдельным геном `TMM_Body_Giant` с патчем отрисовки и потом сам добавит его в ксенотип. Ты размер не трогай, просто оставь место в списке генов.
+
 ## Сделать (только эти файлы)
 1. `Defs/XenotypeDefs/Xenotype_SuperMutant.xml`:
    - `TMM_SuperMutant`, label `super mutant`;
