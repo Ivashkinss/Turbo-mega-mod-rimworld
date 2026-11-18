@@ -1286,7 +1286,7 @@
     },
     {
       "id": "OutpostRelationLeakAudit",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "gemini",
       "kind": "run",
       "afterTask": "OutpostBalanceApply",
@@ -1296,14 +1296,27 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T04:50:00Z",
-      "note": "Diagnose the dangling Lover relation hidden by the calendar probe sanitizer: vanilla artifact vs lost outpost pawn. Diagnostics only."
+      "note": "Closed by Claude from RUN-1..3.json (worker stalled before REPORT): conclusion A, dangling targets are NPCs of other factions never in outposts; relationshipRecords dangling 0. Follow-up OutpostSanitizerNarrow."
+    },
+    {
+      "id": "OutpostSanitizerNarrow",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/OutpostSanitizerNarrow/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostSanitizerNarrow",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T09:50:00Z",
+      "note": "Drop the relationshipRecords wipe; sanitizer removes only relations to non-outpost non-player pawns and fails otherwise; rerun calendar, outposts, maps."
     },
     {
       "id": "OutpostShipmentCycles",
       "state": "pending",
       "assignee": "gemini",
       "kind": "run",
-      "afterTask": "OutpostRelationLeakAudit",
+      "afterTask": "OutpostSanitizerNarrow",
       "taskFile": "Delegation/OutpostShipmentCycles/TASK.md",
       "outputDir": "Tools/Build/GeminiOutpostShipmentCycles",
       "expectedOutputs": [
