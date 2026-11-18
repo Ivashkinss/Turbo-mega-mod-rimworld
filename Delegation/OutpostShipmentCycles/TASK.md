@@ -1,6 +1,8 @@
 # OutpostShipmentCycles — реальная отправка товаров аванпоста в колонию
 
-kind: run · assignee: gemini · afterTask: OutpostRelationLeakAudit
+kind: run · assignee: codex
+
+Код и probe можно писать сразу. Игру запускать только после того, как `Tools/Build/GeminiWorkerState/OutpostSanitizerNarrow.json` станет `done` или `error`, и только если RimWorld не запущен: одновременно идёт один игровой прогон. Если за сеанс не успел — запиши в ACK `running` с тем, что сделано, и продолжи в следующий опрос.
 
 Не проверено ни разу: отправка накопленной продукции в колонию (`targetColonyTile >= 0`) за несколько игровых дней. Задача — только тест. `Source/` не менять, если не найден баг; если найден — остановиться и описать в REPORT с `файл:строка`.
 
@@ -21,7 +23,7 @@ kind: run · assignee: gemini · afterTask: OutpostRelationLeakAudit
 Только новые `Tests/InGameOutpostShipmentProbe.cs`, `Tools/test_outpost_shipment_reload.ps1`, одну строку в `Tools/test_component.ps1` и `Documentation/OutpostShipment-*.json`. Не коммитить.
 
 ## Сдача
-`Tools/Build/GeminiOutpostShipmentCycles/REPORT.md` в формате COORDINATION:
+`Tools/Build/CodexOutpostShipmentCycles/REPORT.md` в формате COORDINATION:
 - как работает отправка, с `файл:строка`;
 - таблица «день: запас, отправлено, получено»;
 - все прогоны с полями passed, checks, runtimeErrors, unresolvedReferences, gpuLost и SHA;

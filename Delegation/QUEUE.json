@@ -1040,7 +1040,7 @@
     },
     {
       "id": "FactionContentRegistry",
-      "state": "assigned",
+      "state": "accepted",
       "taskFile": "Delegation/FactionContentRegistry/TASK.md",
       "outputDir": "Tools/Build/GeminiFactionContentRegistry",
       "expectedOutputs": [
@@ -1051,7 +1051,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-17T14:53:14.001303+00:00",
-      "note": "Mechanical catalogue of both user-provided faction additions; no gameplay edits. Root keeps strategic foundation review as priority."
+      "note": "Accepted by Claude 18.11: 15 factions, 84 characters, source refs spot-checked against roster lines 9/16/34/43/73/88, validator passes. Open questions in REPORT section 5 go to the user before the first faction."
     },
     {
       "id": "StrategicOutpostsCorrections",
@@ -1314,11 +1314,10 @@
     {
       "id": "OutpostShipmentCycles",
       "state": "pending",
-      "assignee": "gemini",
+      "assignee": "codex",
       "kind": "run",
-      "afterTask": "OutpostSanitizerNarrow",
       "taskFile": "Delegation/OutpostShipmentCycles/TASK.md",
-      "outputDir": "Tools/Build/GeminiOutpostShipmentCycles",
+      "outputDir": "Tools/Build/CodexOutpostShipmentCycles",
       "expectedOutputs": [
         "REPORT.md"
       ],
