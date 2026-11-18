@@ -1,7 +1,7 @@
 ﻿{
     "heroRegistryReload":  {
                                "passed":  true,
-                               "checksCount":  9,
+                               "checksCount":  10,
                                "stage":  1,
                                "facts":  [
 
@@ -10,8 +10,8 @@
                                               {
                                                   "name":  "RegistryLoaded",
                                                   "passed":  true,
-                                                  "expected":  "3",
-                                                  "actual":  "3"
+                                                  "expected":  "5",
+                                                  "actual":  "5"
                                               },
                                               {
                                                   "name":  "LeaderStillDead",
@@ -46,20 +46,26 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human17511",
-                                                  "actual":  "Human17511"
+                                                  "expected":  "Human14690",
+                                                  "actual":  "Human14690"
+                                              },
+                                              {
+                                                  "name":  "FourthSurvivesTwoDays",
+                                                  "passed":  true,
+                                                  "expected":  "alive record",
+                                                  "actual":  "Human14700"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human17511",
-                                                  "actual":  "Human17511"
+                                                  "expected":  "Human14690",
+                                                  "actual":  "Human14690"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
                                                   "passed":  true,
                                                   "expected":  "distinct",
-                                                  "actual":  "3"
+                                                  "actual":  "5"
                                               }
                                           ],
                                "errors":  [
@@ -69,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1582,
-                        "ticksAdvanced":  25481,
+                        "framesAdvanced":  2966,
+                        "ticksAdvanced":  25934,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -79,7 +85,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "878f50f0c8e18dec12031b3e80d6d18fa4f9a05ab72999a2107608cedcc48bc5",
-    "productionAssemblySha256":  "878f50f0c8e18dec12031b3e80d6d18fa4f9a05ab72999a2107608cedcc48bc5",
+    "freshAssemblySha256":  "962649acbc5f449453aea737f94bb0865ce1c26031bf245f85ac4330025b38f2",
+    "productionAssemblySha256":  "962649acbc5f449453aea737f94bb0865ce1c26031bf245f85ac4330025b38f2",
     "passed":  true
 }

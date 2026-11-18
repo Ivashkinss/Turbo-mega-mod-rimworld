@@ -21,6 +21,8 @@ public static class HeroRegistryProbeLaunch
         AddHero("TMMTest_Leader", 4, true, "Lead", 12);
         AddHero("TMMTest_Second", 3, false, "Second", 11);
         AddHero("TMMTest_Third", 2, false, "Third", 10);
+        AddHero("TMMTest_Fourth", 1, false, "Fourth", 8);
+        AddHero("TMMTest_Fifth", 1, false, "Fifth", 8);
         DefDatabase<HeroDef>.GetNamed("TMMTest_Leader").successor = DefDatabase<HeroDef>.GetNamed("TMMTest_Second");
 
         string[] args = Environment.GetCommandLineArgs();
@@ -57,7 +59,7 @@ public sealed class HeroRegistryProbe : MapComponent
     private bool done;
     private int stage;
     private int waitUntil = -1;
-    private Pawn leader, second, third;
+    private Pawn leader, second, third, fourth, fifth;
 
     public HeroRegistryProbe(Map map) : base(map) { }
 
@@ -72,6 +74,12 @@ public sealed class HeroRegistryProbe : MapComponent
     {
         FactionDef fd = DefDatabase<FactionDef>.GetNamedSilentFail(HeroRegistryProbeLaunch.TestFaction);
         return fd == null ? null : Find.FactionManager.FirstFactionOfDef(fd);
+    }
+
+    private static string CriticalReasonOf(Pawn p)
+    {
+        var m = AccessTools.Method(typeof(WorldPawnGC), "GetCriticalPawnReason");
+        return m == null ? "method missing" : (string)m.Invoke(Find.WorldPawns.gc, new object[] { p });
     }
 
     private static void ForceWorldPawnGC()
@@ -123,9 +131,21 @@ public sealed class HeroRegistryProbe : MapComponent
 
             second = reg.GetOrCreate(H("TMMTest_Second"));
             third = reg.GetOrCreate(H("TMMTest_Third"));
-            C("ThreeRecords", reg.Records.Count() == 3, 3, reg.Records.Count());
-            int distinct = new[] { leader, second, third }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
-            C("ThreeDistinctPawns", distinct == 3, 3, distinct);
+            fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
+            fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
+            C("FiveRecords", reg.Records.Count() == 5, 5, reg.Records.Count());
+            int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
+            C("FiveDistinctPawns", distinct == 5, 5, distinct);
+            // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
+            C("FourthNotForceKept", fourth != null && !Find.WorldPawns.ForcefullyKeptPawns.Contains(fourth), "not force-kept", fourth == null ? "null" : Find.WorldPawns.ForcefullyKeptPawns.Contains(fourth).ToString());
+            string reason = CriticalReasonOf(fourth);
+            C("FourthCriticalReasonIsRegistry", reason == "TMM named hero", "TMM named hero", reason ?? "null");
+            // F1: fifth goes into a cryptosleep casket on the player's map: held, not spawned, not at home.
+            ThingDef casketDef = DefDatabase<ThingDef>.GetNamed("CryptosleepCasket");
+            IntVec3 cc = CellFinder.RandomClosewalkCellNear(map.Center, map, 12);
+            var casket = (Building_CryptosleepCasket)GenSpawn.Spawn(ThingMaker.MakeThing(casketDef, GenStuff.DefaultStuffFor(casketDef)), cc, map);
+            if (Find.WorldPawns.Contains(fifth)) Find.WorldPawns.RemovePawn(fifth);
+            C("FifthAcceptedByCasket", casket.TryAcceptThing(fifth, false), true, fifth.ParentHolder);
 
             // Prisoner of the colony: spawn the third hero on the home map and capture it.
             IntVec3 cell = CellFinder.RandomClosewalkCellNear(map.Center, map, 8);
@@ -135,6 +155,15 @@ public sealed class HeroRegistryProbe : MapComponent
 
             // Kill the leader (world pawn, not spawned).
             leader.Kill(null);
+            // F2: vanilla Notify_LeaderDied ran synchronously inside Kill; the successor must already be leader,
+            // before any polling, so the vanilla letter and quest signal name the hero.
+            Faction ff = TestFaction();
+            C("SuccessorChosenSynchronously", ff != null && ff.leader == second, second, ff == null ? null : ff.leader);
+            Letter lt = Find.LetterStack.LettersListForReading.LastOrDefault();
+            ChoiceLetter cl = lt as ChoiceLetter;
+            string ltText = cl == null ? "" : cl.Label.ToString() + " " + cl.Text.ToString();
+            facts.Add("lastLetter=" + ltText.Replace("\n", " "));
+            C("LeaderLetterNamesSuccessor", !ltText.Contains("Lead Probe") || ltText.Contains("Second"), "names Second if about leader", ltText.Length > 120 ? ltText.Substring(0, 120) : ltText);
             stage = 1; waitUntil = now + 600;
             return;
         }
@@ -150,7 +179,10 @@ public sealed class HeroRegistryProbe : MapComponent
             C("CapturedHeroStateCaptive", rt != null && rt.state == HeroState.Captive, "Captive", rt == null ? "none" : rt.state.ToString());
             C("CapturedHeroSamePawn", ReferenceEquals(reg.GetOrCreate(H("TMMTest_Third")), third), third.ThingID, "checked");
 
+            HeroRecord r5 = reg.RecordFor(H("TMMTest_Fifth"));
+            C("CasketHeroStateAway", r5 != null && r5.state == HeroState.Away, "Away", r5 == null ? "none" : r5.state.ToString());
             ForceWorldPawnGC();
+            C("FourthSurvivesGCOnlyByPostfix", !fourth.Discarded && Find.WorldPawns.Contains(fourth), "kept", fourth.Discarded ? "discarded" : (Find.WorldPawns.Contains(fourth) ? "kept" : "not world pawn"));
             C("SecondSurvivesGC", !second.Discarded && Find.WorldPawns.Contains(second), "kept", second.Discarded ? "discarded" : (Find.WorldPawns.Contains(second) ? "kept" : "not world pawn"));
             facts.Add("secondId=" + second.ThingID);
             facts.Add("thirdId=" + third.ThingID);
@@ -168,7 +200,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 3, 3, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 5, 5, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));
@@ -181,12 +213,14 @@ public sealed class HeroRegistryProbe : MapComponent
             C("SameSecondAfterLoad", rs != null && ReferenceEquals(again, rs.pawn), rs == null || rs.pawn == null ? "" : rs.pawn.ThingID, again == null ? "null" : again.ThingID);
             savedSecondId = rs == null || rs.pawn == null ? null : rs.pawn.ThingID;
             ForceWorldPawnGC();
-            stage = 1; waitUntil = now + 60000; // one real in-game day with normal world pawn GC
+            stage = 1; waitUntil = now + 120000; // two real in-game days with normal world pawn GC
             return;
         }
         if (stage == 1)
         {
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
+            HeroRecord r4 = reg.RecordFor(H("TMMTest_Fourth"));
+            C("FourthSurvivesTwoDays", r4 != null && r4.pawn != null && !r4.pawn.Discarded, "alive record", r4 == null || r4.pawn == null ? "null" : r4.pawn.ThingID);
             C("SecondSurvivesDayAndGC", rs != null && rs.pawn != null && !rs.pawn.Discarded && rs.pawn.ThingID == savedSecondId, savedSecondId, rs == null || rs.pawn == null ? "null" : rs.pawn.ThingID);
             C("NoDuplicateRecords", reg.Records.Select(r => r.heroDefName).Distinct().Count() == reg.Records.Count(), "distinct", reg.Records.Count());
             Finish(null, true);

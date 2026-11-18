@@ -1370,7 +1370,7 @@
     },
     {
       "id": "HeroRegistryCodexAccept",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/HeroRegistryCodexAccept/TASK.md",
@@ -1379,7 +1379,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T12:35:00Z",
-      "note": "Read-only review of hero registry stage 1 (pawn lifecycle, WorldPawns, GC patch, Scribe). No game runs, short session."
+      "note": "Codex: accept with fixes F1 (holders), F2 (succession before vanilla letter), F3 (GC postfix untested). Fixed by Claude; in game fresh 28/28 + reload 10/10 (2 days), vanilla letter names the hero successor."
     },
     {
       "id": "OutpostShipmentCycles",

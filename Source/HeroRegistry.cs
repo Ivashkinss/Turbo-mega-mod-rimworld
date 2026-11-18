@@ -128,7 +128,7 @@ namespace TurboMegaMod
         private static void Keep(Pawn pawn)
         {
             if (pawn.Spawned || pawn.Discarded) return;
-            if (!Find.WorldPawns.Contains(pawn)) Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
+            if (!Find.WorldPawns.Contains(pawn)) Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.Decide); // GC protection comes from CriticalReason
         }
 
         private static HeroState Classify(HeroDef def, Pawn p)
@@ -141,9 +141,13 @@ namespace TurboMegaMod
             Faction home = FactionFor(def);
             if (home != null && p.Faction == home)
             {
-                if (!p.Spawned && p.GetCaravan() == null) return HeroState.AtHome;
-                if (p.Spawned && p.Map != null && p.Map.Parent is Settlement && p.Map.Parent.Faction == home) return HeroState.AtHome;
-                return HeroState.Away;
+                // Real position first: caravan, then any map the pawn is held on (spawned, in a pod,
+                // casket or other holder). Only a plain world pawn or the faction's own settlement map is home.
+                if (p.GetCaravan() != null) return HeroState.Away;
+                Map held = p.MapHeld;
+                if (held != null) return held.Parent is Settlement && held.Parent.Faction == home ? HeroState.AtHome : HeroState.Away;
+                if (Find.WorldPawns.Contains(p)) return HeroState.AtHome;
+                return HeroState.Away; // in some world-level holder (transport pod in flight etc.)
             }
             return HeroState.Away;
         }
@@ -180,22 +184,54 @@ namespace TurboMegaMod
             bool wasLeader = gone.isLeader || (faction.leader != null && (faction.leader.Dead || faction.leader.Discarded));
             if (!wasLeader) return;
             if (faction.leader != null && !faction.leader.Dead && !faction.leader.Discarded && IsHero(faction.leader)) return;
+            Pawn next = ChooseSuccessor(gone, faction);
+            if (next != null) faction.leader = next;
+        }
 
-            var seen = new HashSet<HeroDef>();
-            for (HeroDef s = gone.successor; s != null && seen.Add(s); s = s.successor)
+        /// Successor: explicit chain of the gone hero first, then the best living hero of the faction
+        /// (council members first, then rank). Null when no hero can lead.
+        private Pawn ChooseSuccessor(HeroDef gone, Faction faction)
+        {
+            if (gone != null)
             {
-                Pawn p = GetOrCreate(s);
-                if (p != null && p.Faction == faction) { faction.leader = p; return; }
+                var seen = new HashSet<HeroDef>();
+                for (HeroDef s = gone.successor; s != null && seen.Add(s); s = s.successor)
+                {
+                    Pawn p = GetOrCreate(s);
+                    if (p != null && p.Faction == faction) return p;
+                }
             }
+            string fd = faction.def.defName;
             foreach (HeroDef d in DefDatabase<HeroDef>.AllDefs
-                         .Where(d => d.factionDef == gone.factionDef && d != gone)
-                         .OrderByDescending(d => d.councilMember).ThenByDescending(d => d.rank))
+                         .Where(d => d.factionDef == fd && d != gone)
+                         .OrderByDescending(d => d.isLeader).ThenByDescending(d => d.councilMember).ThenByDescending(d => d.rank))
             {
                 HeroRecord r = RecordFor(d);
                 if (r != null && (r.state == HeroState.Dead || r.state == HeroState.Missing)) continue;
                 Pawn p = GetOrCreate(d);
-                if (p != null && p.Faction == faction) { faction.leader = p; return; }
+                if (p != null && p.Faction == faction) return p;
             }
+            return null;
+        }
+
+        /// Called from the Faction.TryGenerateNewLeader prefix, inside vanilla Notify_LeaderDied and before
+        /// its letter and quest signal, so they name the hero who actually becomes leader.
+        public Pawn SuccessorForVacantLeadership(Faction faction)
+        {
+            if (faction == null) return null;
+            HeroDef gone = null;
+            foreach (HeroRecord r in records)
+            {
+                if (r.pawn == null || r.state == HeroState.Dead || r.state == HeroState.Missing) continue;
+                if (!r.pawn.Dead && !r.pawn.Discarded) continue;
+                HeroDef d = DefDatabase<HeroDef>.GetNamedSilentFail(r.heroDefName);
+                if (d == null || d.factionDef != faction.def.defName) continue;
+                r.state = r.pawn.Dead ? HeroState.Dead : HeroState.Missing;
+                if (r.state == HeroState.Dead) r.deathTick = Find.TickManager.TicksGame; else r.pawn = null;
+                if (gone == null || d.isLeader) gone = d;
+            }
+            bool anyHero = DefDatabase<HeroDef>.AllDefs.Any(d => d.factionDef == faction.def.defName);
+            return anyHero ? ChooseSuccessor(gone, faction) : null;
         }
 
         public override void WorldComponentTick()
@@ -221,9 +257,26 @@ namespace TurboMegaMod
     {
         static HeroRegistryPatches()
         {
-            var target = AccessTools.Method(typeof(WorldPawnGC), "GetCriticalPawnReason");
-            if (target == null) { Log.Warning("[TMM] HeroRegistry: WorldPawnGC.GetCriticalPawnReason not found; heroes rely on KeepForever only."); return; }
-            new Harmony("turbomegamod.hero.registry").Patch(target, postfix: new HarmonyMethod(typeof(HeroRegistryPatches), "CriticalReason"));
+            var harmony = new Harmony("turbomegamod.hero.registry");
+            var gc = AccessTools.Method(typeof(WorldPawnGC), "GetCriticalPawnReason");
+            if (gc == null) Log.Error("[TMM] HeroRegistry: WorldPawnGC.GetCriticalPawnReason not found; living heroes are not protected from world pawn GC.");
+            else harmony.Patch(gc, postfix: new HarmonyMethod(typeof(HeroRegistryPatches), "CriticalReason"));
+            var lead = AccessTools.Method(typeof(Faction), "TryGenerateNewLeader");
+            if (lead == null) Log.Error("[TMM] HeroRegistry: Faction.TryGenerateNewLeader not found; hero succession falls back to polling.");
+            else harmony.Patch(lead, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "HeroSuccessor"));
+        }
+
+        /// Vanilla Notify_LeaderDied calls TryGenerateNewLeader and then sends the letter and the
+        /// NoLongerFactionLeader quest signal; choosing the hero here makes both name the real successor.
+        public static bool HeroSuccessor(Faction __instance, ref bool __result)
+        {
+            HeroRegistry reg = HeroRegistry.Instance;
+            if (reg == null) return true;
+            Pawn next = reg.SuccessorForVacantLeadership(__instance);
+            if (next == null) return true;
+            __instance.leader = next;
+            __result = true;
+            return false;
         }
 
         public static void CriticalReason(Pawn pawn, ref string __result)
