@@ -1,4 +1,4 @@
-# Builds the player-only "release" branch from a commit of main (default HEAD) without touching the
+﻿# Builds the player-only "release" branch from a commit of main (default HEAD) without touching the
 # working tree or the main index. The README download button points at
 # https://github.com/Ivashkinss/Turbo-mega-mod-rimworld/archive/refs/heads/release.zip
 # Usage: ./Tools/publish_release_branch.ps1 -Version 0.10 [-Push]
