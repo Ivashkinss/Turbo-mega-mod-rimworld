@@ -1490,6 +1490,20 @@
       "note": "Five outpost fixes from Codex's audit: free colony bed on transfer, founding/upgrade/enter/recall tooltips, upgrade pays from caravan on the tile, recall rename and transfer guard. In-game probe with real actions."
     },
     {
+      "id": "OutpostTabStageA",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "OutpostUxFixes",
+      "taskFile": "Delegation/OutpostTabStageA/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostTabStageA",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T23:20:00Z",
+      "note": "Bottom-menu Outposts tab: list, paid transport pods (chemfuel by distance, silver fallback) for recall, sending workers and silver, upgrade with pod top-up. Real in-game probe plus mid-flight reload."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
