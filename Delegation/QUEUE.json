@@ -1424,6 +1424,20 @@
       "note": "Read-only recheck that Claude's a340af3 closes Codex findings F1-F3. Short session, no game."
     },
     {
+      "id": "SuperMutantXenotype",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/SuperMutantXenotype/TASK.md",
+      "outputDir": "Tools/Build/GeminiSuperMutantXenotype",
+      "expectedOutputs": [
+        "REPORT.md",
+        "PORTRAITS.png"
+      ],
+      "createdUtc": "2026-11-18T16:35:00Z",
+      "note": "Super mutant xenotype from vanilla genes following Claude's demon/angel pattern; one in-game run with portraits."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
