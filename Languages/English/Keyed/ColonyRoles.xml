@@ -9,4 +9,7 @@
   <TMM.Roles.Group>Group</TMM.Roles.Group>
   <TMM.Roles.ShowAll>Show all</TMM.Roles.ShowAll>
   <TMM.Roles.NoRoleGroup>No role</TMM.Roles.NoRoleGroup>
+  <TMM.Roles.RankBonus>Rank</TMM.Roles.RankBonus>
+  <TMM.Roles.AuraBonus>Commander nearby</TMM.Roles.AuraBonus>
+  <TMM.Roles.ProudOfRank>proud to be {0}</TMM.Roles.ProudOfRank>
 </LanguageData>

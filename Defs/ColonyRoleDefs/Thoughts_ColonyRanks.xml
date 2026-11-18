@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>TMM_ProudOfRank</defName>
+    <thoughtClass>TurboMegaMod.Thought_ColonyRank</thoughtClass>
+    <workerClass>TurboMegaMod.ThoughtWorker_ColonyRank</workerClass>
+    <stages>
+      <li>
+        <label>proud of rank</label>
+        <description>My rank in the colony means something. I earned it.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TMM_CommanderNearby</defName>
+    <thoughtClass>TurboMegaMod.Thought_CommanderAura</thoughtClass>
+    <workerClass>TurboMegaMod.ThoughtWorker_CommanderAura</workerClass>
+    <stages>
+      <li>
+        <label>commander nearby</label>
+        <description>Our commander is right here with us. We can hold.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

@@ -107,6 +107,30 @@ public sealed class ColonyRolesProbe : MapComponent
         C("ShowAllRestores", Find.ColonistBar.Entries.Count == all, all, Find.ColonistBar.Entries.Count);
         roles.Assign(third, null);
         roles.For(cook).rank = 0;
+        // Stage 4: rank stat bonus, pride thought, commander aura (uncached stat worker values).
+        StatDef cookSpeed = DefDatabase<StatDef>.GetNamed("CookSpeed");
+        roles.Assign(cook, null);
+        float baseCook = cookSpeed.Worker.GetValue(StatRequest.For(cook));
+        roles.Assign(cook, R("cook"));
+        float rankCook = cookSpeed.Worker.GetValue(StatRequest.For(cook));
+        C("DiagCookPartRegistered", cookSpeed.parts != null && cookSpeed.parts.Any(x => x is StatPart_ColonyRank), true, cookSpeed.parts == null ? "null" : string.Join(",", cookSpeed.parts.Select(x => x.GetType().Name).ToArray()));
+        C("DiagRankStat", R("cook").ranks[0].stats.Count > 0, "stats", string.Join(",", R("cook").ranks[0].stats.Select(m => (m.stat == null ? "null" : m.stat.defName) + "=" + m.value).ToArray()));
+        C("DiagExplanation", true, "", cookSpeed.Worker.GetExplanationFull(StatRequest.For(cook), ToStringNumberSense.Absolute, rankCook).Replace("\n"," | "));
+        C("RankAddsCookSpeed", Math.Abs(rankCook - baseCook - 0.05f) < 0.001f, "+0.05", rankCook - baseCook);
+        C("PrideThoughtActive", DefDatabase<ThoughtDef>.GetNamed("TMM_ProudOfRank").Worker.CurrentState(cook).Active, true, "checked");
+        StatDef acc = DefDatabase<StatDef>.GetNamed("ShootingAccuracyPawn");
+        roles.Assign(third, R("trooper"));
+        float soloAcc = acc.Worker.GetValue(StatRequest.For(third));
+        roles.For(trooper).rank = 2; // lieutenant: aura radius 9, +0.03 accuracy, +2 mood
+        third.Position = CellFinder.RandomClosewalkCellNear(trooper.Position, map, 2);
+        third.Notify_Teleported();
+        C("AuraCoversNearbyTrooper", ColonyRankEffects.AuraFor(third) != null, "aura", ColonyRankEffects.AuraFor(third) == null ? "none" : "aura");
+        float auraAcc = acc.Worker.GetValue(StatRequest.For(third));
+        C("AuraAddsAccuracy", Math.Abs(auraAcc - soloAcc - 0.03f) < 0.001f, "+0.03", auraAcc - soloAcc);
+        C("CommanderThoughtActive", DefDatabase<ThoughtDef>.GetNamed("TMM_CommanderNearby").Worker.CurrentState(third).Active, true, "checked");
+        C("NoAuraForCommanderHimself", ColonyRankEffects.AuraFor(trooper) == null, "none", ColonyRankEffects.AuraFor(trooper) == null ? "none" : "aura");
+        roles.Assign(third, null);
+        roles.For(trooper).rank = 0;
         Command_Action giz = cook.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.defaultLabel != null && g.defaultLabel.Contains(R("cook").LabelCap));
         C("RoleGizmoShowsRole", giz != null, "gizmo with role label", giz == null ? "none" : giz.defaultLabel);
 

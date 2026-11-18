@@ -9,4 +9,7 @@
   <TMM.Roles.Group>Сгруппировать</TMM.Roles.Group>
   <TMM.Roles.ShowAll>Показать всех</TMM.Roles.ShowAll>
   <TMM.Roles.NoRoleGroup>Без роли</TMM.Roles.NoRoleGroup>
+  <TMM.Roles.RankBonus>Звание</TMM.Roles.RankBonus>
+  <TMM.Roles.AuraBonus>Рядом командир</TMM.Roles.AuraBonus>
+  <TMM.Roles.ProudOfRank>гордость: {0}</TMM.Roles.ProudOfRank>
 </LanguageData>

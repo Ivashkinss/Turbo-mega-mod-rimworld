@@ -222,4 +222,139 @@ namespace TurboMegaMod
             }
         }
     }
+
+    /// Stage 4: rank stat bonuses and the commander's aura, as a StatPart added to every stat the ranks use.
+    public sealed class StatPart_ColonyRank : StatPart
+    {
+        // The bonus is added after post-processing (see ColonyRankStatParts.AfterGetValue): many work stats have a
+        // postProcessCurve that would otherwise swallow a raw offset. This part only explains the bonus.
+        public override void TransformValue(StatRequest req, ref float val) { }
+
+        public override string ExplanationPart(StatRequest req)
+        {
+            float own, aura; Offsets(req, out own, out aura);
+            if (own == 0f && aura == 0f) return null;
+            string s = "";
+            if (own != 0f) s += "TMM.Roles.RankBonus".Translate() + ": " + own.ToStringByStyle(parentStat.toStringStyle, ToStringNumberSense.Offset);
+            if (aura != 0f) s += (s.Length > 0 ? "\n" : "") + "TMM.Roles.AuraBonus".Translate() + ": " + aura.ToStringByStyle(parentStat.toStringStyle, ToStringNumberSense.Offset);
+            return s;
+        }
+
+        public void Offsets(StatRequest req, out float own, out float aura) { OffsetsFor(parentStat, req, out own, out aura); }
+
+        public static void OffsetsFor(StatDef parentStat, StatRequest req, out float own, out float aura)
+        {
+            own = 0f; aura = 0f;
+            Pawn p = req.Thing as Pawn;
+            ColonyRoles roles = ColonyRoles.Instance;
+            if (p == null || roles == null) return;
+            ColonyRoleAssignment a = roles.For(p);
+            if (a != null && a.Rank != null) own = a.Rank.stats.Where(m => m.stat == parentStat).Sum(m => m.value);
+            ColonyRankAura best = ColonyRankEffects.AuraFor(p);
+            if (best != null) aura = best.stats.Where(m => m.stat == parentStat).Sum(m => m.value);
+        }
+    }
+
+    public static class ColonyRankEffects
+    {
+        /// The strongest commander aura covering this military pawn (from another military pawn on the same map).
+        public static ColonyRankAura AuraFor(Pawn p)
+        {
+            ColonyRoles roles = ColonyRoles.Instance;
+            if (p == null || roles == null || !p.Spawned) return null;
+            ColonyRoleAssignment mine = roles.For(p);
+            if (mine == null || !mine.role.Military) return null;
+            ColonyRankAura best = null;
+            foreach (ColonyRoleAssignment a in roles.All)
+            {
+                if (a.pawn == p || a.pawn == null || !a.pawn.Spawned || a.pawn.Map != p.Map || a.pawn.Dead || a.pawn.Downed) continue;
+                ColonyRank r = a.Rank;
+                if (r == null || r.aura == null || !a.role.Military) continue;
+                if (a.pawn.Position.DistanceTo(p.Position) > r.aura.radius) continue;
+                if (best == null || r.aura.mood > best.mood) best = r.aura;
+            }
+            return best;
+        }
+    }
+
+    public sealed class ThoughtWorker_ColonyRank : ThoughtWorker
+    {
+        protected override ThoughtState CurrentStateInternal(Pawn p)
+        {
+            ColonyRoles roles = ColonyRoles.Instance;
+            ColonyRoleAssignment a = roles == null ? null : roles.For(p);
+            return a != null && a.Rank != null && a.Rank.mood != 0 ? ThoughtState.ActiveAtStage(0) : ThoughtState.Inactive;
+        }
+    }
+
+    public sealed class Thought_ColonyRank : Thought_Situational
+    {
+        public override float MoodOffset()
+        {
+            ColonyRoles roles = ColonyRoles.Instance;
+            ColonyRoleAssignment a = roles == null ? null : roles.For(pawn);
+            return a == null || a.Rank == null ? 0f : a.Rank.mood;
+        }
+
+        public override string LabelCap
+        {
+            get
+            {
+                ColonyRoles roles = ColonyRoles.Instance;
+                ColonyRoleAssignment a = roles == null ? null : roles.For(pawn);
+                return a == null || a.Rank == null ? base.LabelCap : "TMM.Roles.ProudOfRank".Translate(a.Rank.label).CapitalizeFirst().ToString();
+            }
+        }
+    }
+
+    public sealed class ThoughtWorker_CommanderAura : ThoughtWorker
+    {
+        protected override ThoughtState CurrentStateInternal(Pawn p)
+        {
+            ColonyRankAura aura = ColonyRankEffects.AuraFor(p);
+            return aura != null && aura.mood != 0 ? ThoughtState.ActiveAtStage(0) : ThoughtState.Inactive;
+        }
+    }
+
+    public sealed class Thought_CommanderAura : Thought_Situational
+    {
+        public override float MoodOffset()
+        {
+            ColonyRankAura aura = ColonyRankEffects.AuraFor(pawn);
+            return aura == null ? 0f : aura.mood;
+        }
+    }
+
+    [StaticConstructorOnStartup]
+    public static class ColonyRankStatParts
+    {
+        static ColonyRankStatParts()
+        {
+            var stats = new HashSet<StatDef>();
+            foreach (ColonyRoleDef role in DefDatabase<ColonyRoleDef>.AllDefsListForReading)
+                foreach (ColonyRank r in role.ranks)
+                {
+                    foreach (StatModifier m in r.stats) if (m.stat != null) stats.Add(m.stat);
+                    if (r.aura != null) foreach (StatModifier m in r.aura.stats) if (m.stat != null) stats.Add(m.stat);
+                }
+            foreach (StatDef s in stats)
+            {
+                if (s.parts == null) s.parts = new List<StatPart>();
+                if (!s.parts.Any(x => x is StatPart_ColonyRank)) s.parts.Add(new StatPart_ColonyRank { parentStat = s });
+            }
+            Affected = stats;
+            var target = AccessTools.Method(typeof(StatWorker), "GetValue", new[] { typeof(StatRequest), typeof(bool) });
+            if (target == null) Log.Error("[TMM] ColonyRanks: StatWorker.GetValue(StatRequest, bool) not found; rank bonuses inactive.");
+            else new Harmony("turbomegamod.colony.roles.stats").Patch(target, postfix: new HarmonyMethod(typeof(ColonyRankStatParts), "AfterGetValue"));
+        }
+
+        public static HashSet<StatDef> Affected = new HashSet<StatDef>();
+
+        public static void AfterGetValue(StatRequest req, bool applyPostProcess, ref float __result, StatDef ___stat)
+        {
+            if (!applyPostProcess || ___stat == null || !Affected.Contains(___stat) || !(req.Thing is Pawn)) return;
+            float own, aura; StatPart_ColonyRank.OffsetsFor(___stat, req, out own, out aura);
+            __result += own + aura;
+        }
+    }
 }
