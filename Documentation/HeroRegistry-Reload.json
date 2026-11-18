@@ -1,0 +1,85 @@
+﻿{
+    "heroRegistryReload":  {
+                               "passed":  true,
+                               "checksCount":  9,
+                               "stage":  1,
+                               "facts":  [
+
+                                         ],
+                               "checks":  [
+                                              {
+                                                  "name":  "RegistryLoaded",
+                                                  "passed":  true,
+                                                  "expected":  "3",
+                                                  "actual":  "3"
+                                              },
+                                              {
+                                                  "name":  "LeaderStillDead",
+                                                  "passed":  true,
+                                                  "expected":  "Dead",
+                                                  "actual":  "Dead"
+                                              },
+                                              {
+                                                  "name":  "NoResurrectionAfterLoad",
+                                                  "passed":  true,
+                                                  "expected":  "null",
+                                                  "actual":  "checked"
+                                              },
+                                              {
+                                                  "name":  "SecondAtHome",
+                                                  "passed":  true,
+                                                  "expected":  "AtHome",
+                                                  "actual":  "AtHome"
+                                              },
+                                              {
+                                                  "name":  "ThirdStillCaptive",
+                                                  "passed":  true,
+                                                  "expected":  "Captive",
+                                                  "actual":  "Captive"
+                                              },
+                                              {
+                                                  "name":  "FactionLeaderStillSecond",
+                                                  "passed":  true,
+                                                  "expected":  "Second",
+                                                  "actual":  "Second"
+                                              },
+                                              {
+                                                  "name":  "SameSecondAfterLoad",
+                                                  "passed":  true,
+                                                  "expected":  "Human17511",
+                                                  "actual":  "Human17511"
+                                              },
+                                              {
+                                                  "name":  "SecondSurvivesDayAndGC",
+                                                  "passed":  true,
+                                                  "expected":  "Human17511",
+                                                  "actual":  "Human17511"
+                                              },
+                                              {
+                                                  "name":  "NoDuplicateRecords",
+                                                  "passed":  true,
+                                                  "expected":  "distinct",
+                                                  "actual":  "3"
+                                              }
+                                          ],
+                               "errors":  [
+
+                                          ]
+                           },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1582,
+                        "ticksAdvanced":  25481,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "878f50f0c8e18dec12031b3e80d6d18fa4f9a05ab72999a2107608cedcc48bc5",
+    "productionAssemblySha256":  "878f50f0c8e18dec12031b3e80d6d18fa4f9a05ab72999a2107608cedcc48bc5",
+    "passed":  true
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Hunters and Minutemen, stage 1 of the hero registry. The faction is not in the mod yet, so
+       HeroRegistry.GetOrCreate returns null for these until TMM_MinutemenHuntersFaction is integrated. -->
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_preston_garvey</defName>
+    <label>Preston Garvey</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <successor>TMM_Hero_dean_winchester</successor>
+    <pawnKind>Town_Guard</pawnKind>
+    <nameFirst>Preston</nameFirst>
+    <nameNick>Garvey</nameNick>
+    <nameLast>Garvey</nameLast>
+    <gender>Male</gender>
+    <ageRange>30~38</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>12</level></li>
+      <li><skill>Social</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_BoltActionRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_dean_winchester</defName>
+    <label>Dean Winchester</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Town_Guard</pawnKind>
+    <nameFirst>Dean</nameFirst>
+    <nameNick>Dean</nameNick>
+    <nameLast>Winchester</nameLast>
+    <gender>Male</gender>
+    <ageRange>30~36</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Melee</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_Revolver</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_sam_winchester</defName>
+    <label>Sam Winchester</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Town_Guard</pawnKind>
+    <nameFirst>Sam</nameFirst>
+    <nameNick>Sam</nameNick>
+    <nameLast>Winchester</nameLast>
+    <gender>Male</gender>
+    <ageRange>26~32</ageRange>
+    <skills>
+      <li><skill>Intellectual</skill><level>10</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

@@ -56,3 +56,14 @@ Gemini polling использует Delegation/QUEUE.json, root/Claude влад�
 - costMultiplier 1.35: уровни 500/675/911/1230/1661/2242/3027/4086/5516, сумма около 19.8k.
 DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload 120/120. Шахта в игре: 12 пластали в день (2×15) и 60 (сумма навыков 150).
 Колонка «было» в отчёте Gemini неверна, XML-дифф правильный. Тесты теперь очищают relationshipRecords перед сохранением. Причину выясняет OutpostRelationLeakAudit.
+## 18.11.2026 — HeroRegistryStage1 принят (Claude)
+Новые файлы:
+- `Source/HeroDef.cs`, `Source/HeroRegistry.cs`: WorldComponent; состояние героя определяется опросом раз в 250 тиков; постфикс к WorldPawnGC.GetCriticalPawnReason защищает героев от сборщика мусора;
+- `Defs/HeroDefs/Heroes_MinutemenHunters.xml`: Престон, Дин, Сэм. Пока фракции нет в моде, GetOrCreate возвращает для них null;
+- probe `Tests/InGameHeroRegistryProbe.cs`, reload-скрипт `Tools/test_hero_registry_reload.ps1`.
+
+Игровые прогоны:
+- fresh 21/21, reload 9/9, профиль TestRuns/HeroRegistry-FullSet-20261118-151509;
+- регрессия Outposts чистая (TestRuns/Outposts-FullSet-20261118-152223). Первый прогон упал на случайной карте: нет места для модуля 2-го уровня. Это не связано с героями, исправление — задача OutpostsProbeFlakyLevel2.
+
+Отложено: ксенотипы, генераторы баз и рейдов (этап 2), Эдем, гиганты.
