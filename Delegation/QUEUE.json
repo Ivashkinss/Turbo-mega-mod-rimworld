@@ -1411,6 +1411,19 @@
       "note": "Full demon xenotype texture set by code in the accepted pilot style: 2 more horn shapes, revised tail, black eyes, skin marks overlay. No root changes."
     },
     {
+      "id": "HeroRegistryFixRecheck",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/HeroRegistryFixRecheck/TASK.md",
+      "outputDir": "Tools/Build/CodexHeroRegistryFixRecheck",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T15:00:00Z",
+      "note": "Read-only recheck that Claude's a340af3 closes Codex findings F1-F3. Short session, no game."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
