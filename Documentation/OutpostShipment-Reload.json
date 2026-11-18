@@ -1,0 +1,82 @@
+﻿{
+    "outpostShipmentReload":  {
+                                  "passed":  true,
+                                  "checksCount":  8,
+                                  "stage":  2,
+                                  "shipmentTable":  [
+
+                                                    ],
+                                  "facts":  [
+
+                                            ],
+                                  "checks":  [
+                                                 {
+                                                     "name":  "Reload_SaveState_StageIsTwo",
+                                                     "passed":  true,
+                                                     "expected":  "2",
+                                                     "actual":  "2"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_MinePost_Present",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "true"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Miner1_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Human45279"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Miner2_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Human45282"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Animal_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Muffalo45285"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Day1_DeliveredPlasteelPreserved",
+                                                     "passed":  true,
+                                                     "expected":  "12",
+                                                     "actual":  "12"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Day2_OutpostCargoEmpty",
+                                                     "passed":  true,
+                                                     "expected":  "0",
+                                                     "actual":  "0"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Day2_TotalDeliveredEquals24",
+                                                     "passed":  true,
+                                                     "expected":  "24",
+                                                     "actual":  "24"
+                                                 }
+                                             ],
+                                  "errors":  [
+
+                                             ]
+                              },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3367,
+                        "ticksAdvanced":  10367,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "2108adb6db3b7f6a07eba68933a1dbf8d95aaf01e0298c10582aedfe6c55d440",
+    "productionAssemblySha256":  "2108adb6db3b7f6a07eba68933a1dbf8d95aaf01e0298c10582aedfe6c55d440",
+    "passed":  true
+}

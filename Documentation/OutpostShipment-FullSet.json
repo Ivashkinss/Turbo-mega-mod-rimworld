@@ -1,0 +1,178 @@
+﻿{
+    "component":  "OutpostShipment",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3265,
+                         "scalarFields":  745,
+                         "grammarLines":  90,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3963,
+                        "ticksAdvanced":  10567,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "2108adb6db3b7f6a07eba68933a1dbf8d95aaf01e0298c10582aedfe6c55d440",
+    "outpostShipment":  {
+                            "passed":  true,
+                            "checksCount":  18,
+                            "stage":  4,
+                            "shipmentTable":  [
+                                                  "Stage 0 | Initial home plasteel: 0 | Mining outpost founded at tile 79098,0",
+                                                  "Day 1 | Produced: 12 | Shipped: 12 | OutpostStock: 0 | HomeDelivered: 12",
+                                                  "Day 2 | Produced: 12 | Target: None (-1) | OutpostAccumulated: 12 | HomeTotal: 12",
+                                                  "Day 3 | Produced: 12 | ShippedAccumulated: 24 | OutpostStock: 0 | TotalDeliveredOver3Days: 36"
+                                              ],
+                            "facts":  [
+                                          "Founding: expectedYield=12, prodRate=0.4, workers=2",
+                                          "Stage1 fact: TicksGame=60501, lastProd=60001, lastShip=60001, homePlasteel=12, outpostPlasteel=0, mapThings=1, skyfallers=0",
+                                          "Map[0] (tile 79097,0): plasteelThingsCount=1, plasteelSum=12",
+                                          "Stage1 fact: TicksGame=120003, lastProd=120001, lastShip=60001, homePlasteel=12, outpostPlasteel=12, mapThings=1, skyfallers=0",
+                                          "Map[0] (tile 79097,0): plasteelThingsCount=1, plasteelSum=12"
+                                      ],
+                            "checks":  [
+                                           {
+                                               "name":  "Founding_Mine_Spawned",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_TargetColonyTileSet",
+                                               "passed":  true,
+                                               "expected":  "79097,0",
+                                               "actual":  "79097"
+                                           },
+                                           {
+                                               "name":  "Founding_InitialProducedGoodsEmpty",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Founding_ProductDefLoaded",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_Miner1CanMine",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_Miner2CanMine",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_ExpectedDailyYield12",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Founding_TargetSettlementFound",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Day1_OutpostCargoEmptyAfterShipment",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day1_ColonyReceivedExactPlasteel",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Day1_LastShipmentTickUpdated",
+                                               "passed":  true,
+                                               "expected":  "\u003e0",
+                                               "actual":  "60001"
+                                           },
+                                           {
+                                               "name":  "Day1_SaveFileCreated",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Day2_NoTarget_GoodsAccumulatedInOutpost",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Day2_NoTarget_NoNewDeliveryToColony",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "InvalidTarget_GoodsRetainedInOutpost",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Day3_OutpostCargoEmptyAfterFullShipment",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day3_TotalDeliveredEquals36",
+                                               "passed":  true,
+                                               "expected":  "36",
+                                               "actual":  "36"
+                                           },
+                                           {
+                                               "name":  "Final_MinersAndAnimalPreservedInWorldPawns",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           }
+                                       ],
+                            "errors":  [
+
+                                       ]
+                        },
+    "passed":  true
+}
