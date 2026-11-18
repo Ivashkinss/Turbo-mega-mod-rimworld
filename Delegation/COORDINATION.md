@@ -107,7 +107,7 @@ Claude не опрашивает очередь сам. Он видит резу
 3. Принятие — только по настоящему прогону в игре: `Result.json`/`*Probe.json`, `runtimeErrors=0`, без `VK_ERROR_DEVICE_LOST`, без нерешённых ссылок. «Компиляция успешна» и слова отчёта — не доказательство. Проверка, которая засчитывает PASS за сам факт существования Def, — фиктивная.
 4. Не копировать frozen-снимки `Tools/Build/*Snapshot/RootSource` поверх живого `Source/`.
 5. Не трогать без отдельной задачи: `StrategicOutpost.cs`, `StrategicOutpostPawnLifecycle.cs`, holders, платежи/поставки/режимы аванпостов, world traffic.
-6. Игровой `Assembly-CSharp` не исполнять в хост-процессе — только Cecil/компилятор.
+6. Игровой `Assembly-CSharp` не исполнять в хост-процессе — только Cecil/компилятор. Cecil вызывать только из файла скрипта в `Tools/` (например, `Tools/cecil_check.ps1` с параметрами) и никогда не вызывать через `powershell -Command` с `[Reflection.Assembly]::LoadFrom` в строке. 19.11 Windows Defender принял такую строку за троян Commando.B!ml и остановил процесс. Исключения в антивирусе не добавлять: это настройки пользователя.
 7. Если корень (`Source/` и т. п.) изменился после снимка, на котором делалась задача, — сообщить об этом в REPORT, не «чинить» корень самостоятельно.
 8. На машине только Windows PowerShell 5.1 (pwsh 7 нет). Он читает `.ps1` без BOM как ANSI и ломается на кириллице. Поэтому любой `.ps1` с не-ASCII символами сохранять в **UTF-8 с BOM**. 18.11 BOM добавлен в `build_assembly.ps1`, `test_component.ps1`, `test_bubbles.ps1`, `test_ingame_localization.ps1`; после этого `test_component.ps1 -Component Outposts -CompileProbeOnly -UseBuiltAssembly` проходит.
 
