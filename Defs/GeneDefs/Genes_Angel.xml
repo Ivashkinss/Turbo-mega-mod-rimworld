@@ -23,7 +23,7 @@
         <drawData>
           <scaleOffsetByBodySize>true</scaleOffsetByBodySize>
           <defaultData><layer>-3</layer><offset>(0, 0, 0.38)</offset></defaultData>
-          <dataNorth><layer>90</layer><offset>(0, 0, 0.38)</offset></dataNorth>
+          <dataNorth><layer>90</layer><offset>(0, 0, 0.05)</offset></dataNorth>
         </drawData>
       </li>
     </renderNodeProperties>

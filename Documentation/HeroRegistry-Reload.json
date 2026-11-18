@@ -10,8 +10,8 @@
                                               {
                                                   "name":  "RegistryLoaded",
                                                   "passed":  true,
-                                                  "expected":  "6",
-                                                  "actual":  "6"
+                                                  "expected":  "7",
+                                                  "actual":  "7"
                                               },
                                               {
                                                   "name":  "LeaderStillDead",
@@ -46,26 +46,26 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human29317",
-                                                  "actual":  "Human29317"
+                                                  "expected":  "Human26233",
+                                                  "actual":  "Human26233"
                                               },
                                               {
                                                   "name":  "FourthSurvivesTwoDays",
                                                   "passed":  true,
                                                   "expected":  "alive record",
-                                                  "actual":  "Human29328"
+                                                  "actual":  "Human26245"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human29317",
-                                                  "actual":  "Human29317"
+                                                  "expected":  "Human26233",
+                                                  "actual":  "Human26233"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
                                                   "passed":  true,
                                                   "expected":  "distinct",
-                                                  "actual":  "6"
+                                                  "actual":  "7"
                                               }
                                           ],
                                "errors":  [
@@ -75,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1207,
-                        "ticksAdvanced":  22870,
+                        "framesAdvanced":  2718,
+                        "ticksAdvanced":  24233,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -85,7 +85,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
-    "productionAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
+    "freshAssemblySha256":  "8a9dfe8bf718c89525b04e51aa490a1136b2f8c39f4628f9093c251d1135bdc6",
+    "productionAssemblySha256":  "8a9dfe8bf718c89525b04e51aa490a1136b2f8c39f4628f9093c251d1135bdc6",
     "passed":  true
 }

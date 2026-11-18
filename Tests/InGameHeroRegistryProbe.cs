@@ -23,6 +23,7 @@ public static class HeroRegistryProbeLaunch
         AddHero("TMMTest_Third", 2, false, "Third", 10);
         AddHero("TMMTest_Fourth", 1, false, "Fourth", 8);
         AddHero("TMMTest_Fifth", 1, false, "Fifth", 8);
+        AddHero("TMMTest_Sixth", 1, false, "Sixth", 8);
         AddHeroWithFaction("TMMTest_AbsentFactionHero", "TMM_NoSuchFaction", 1, false, "Ghost", 5);
         DefDatabase<HeroDef>.GetNamed("TMMTest_Leader").successor = DefDatabase<HeroDef>.GetNamed("TMMTest_Second");
 
@@ -67,7 +68,8 @@ public sealed class HeroRegistryProbe : MapComponent
     private bool done;
     private int stage;
     private int waitUntil = -1;
-    private Pawn leader, second, third, fourth, fifth;
+    private Pawn leader, second, third, fourth, fifth, sixth;
+    private ActiveTransporterInfo flight;
 
     public HeroRegistryProbe(Map map) : base(map) { }
 
@@ -153,7 +155,8 @@ public sealed class HeroRegistryProbe : MapComponent
             third = reg.GetOrCreate(H("TMMTest_Third"));
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
-            C("SixRecords", reg.Records.Count() == 6, 6, reg.Records.Count());
+            sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
+            C("SevenRecords", reg.Records.Count() == 7, 7, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -166,6 +169,14 @@ public sealed class HeroRegistryProbe : MapComponent
             var casket = (Building_CryptosleepCasket)GenSpawn.Spawn(ThingMaker.MakeThing(casketDef, GenStuff.DefaultStuffFor(casketDef)), cc, map);
             if (Find.WorldPawns.Contains(fifth)) Find.WorldPawns.RemovePawn(fifth);
             C("FifthAcceptedByCasket", casket.TryAcceptThing(fifth, false), true, fifth.ParentHolder);
+            // F1 (flight): sixth stays a world pawn but sits inside a transporter holder, as in a pod in flight.
+            flight = new ActiveTransporterInfo();
+            bool boarded = flight.innerContainer.TryAdd(sixth);
+            C("SixthInFlightHolder", boarded && Find.WorldPawns.Contains(sixth) && sixth.MapHeld == null && sixth.ParentHolder != null, "world pawn, held, no map", boarded + "/" + Find.WorldPawns.Contains(sixth) + "/" + (sixth.ParentHolder != null));
+            // N1: an explicit Discard of a living hero must not destroy it.
+            Find.WorldPawns.RemovePawn(fourth);
+            Find.WorldPawns.PassToWorld(fourth, PawnDiscardDecideMode.Discard);
+            C("ExplicitDiscardKeepsHero", !fourth.Discarded && !fourth.Destroyed && Find.WorldPawns.Contains(fourth), "kept", fourth.Discarded ? "discarded" : (Find.WorldPawns.Contains(fourth) ? "kept" : "not world pawn"));
 
             // Prisoner of the colony: spawn the third hero on the home map and capture it.
             IntVec3 cell = CellFinder.RandomClosewalkCellNear(map.Center, map, 8);
@@ -179,11 +190,17 @@ public sealed class HeroRegistryProbe : MapComponent
             // before any polling, so the vanilla letter and quest signal name the hero.
             Faction ff = TestFaction();
             C("SuccessorChosenSynchronously", ff != null && ff.leader == second, second, ff == null ? null : ff.leader);
-            Letter lt = Find.LetterStack.LettersListForReading.LastOrDefault();
-            ChoiceLetter cl = lt as ChoiceLetter;
-            string ltText = cl == null ? "" : cl.Label.ToString() + " " + cl.Text.ToString();
-            facts.Add("lastLetter=" + ltText.Replace("\n", " "));
-            C("LeaderLetterNamesSuccessor", !ltText.Contains("Lead Probe") || ltText.Contains("Second"), "names Second if about leader", ltText.Length > 120 ? ltText.Substring(0, 120) : ltText);
+            // N2: the leader-death letter must exist and name the hero successor.
+            string ltText = "";
+            foreach (Letter lt in Find.LetterStack.LettersListForReading)
+            {
+                ChoiceLetter cl = lt as ChoiceLetter;
+                if (cl == null) continue;
+                string s = cl.Label.ToString() + " " + cl.Text.ToString();
+                if (s.Contains("Lead Probe")) ltText = s;
+            }
+            facts.Add("leaderLetter=" + ltText.Replace("\n", " "));
+            C("LeaderLetterNamesSuccessor", ltText.Length > 0 && ltText.Contains("Second Probe"), "letter about Lead Probe naming Second Probe", ltText.Length == 0 ? "no letter" : (ltText.Length > 120 ? ltText.Substring(0, 120) : ltText));
             stage = 1; waitUntil = now + 600;
             return;
         }
@@ -201,6 +218,11 @@ public sealed class HeroRegistryProbe : MapComponent
 
             HeroRecord r5 = reg.RecordFor(H("TMMTest_Fifth"));
             C("CasketHeroStateAway", r5 != null && r5.state == HeroState.Away, "Away", r5 == null ? "none" : r5.state.ToString());
+            HeroRecord r6 = reg.RecordFor(H("TMMTest_Sixth"));
+            C("FlightHeroStateAway", r6 != null && r6.state == HeroState.Away, "Away", r6 == null ? "none" : r6.state.ToString());
+            flight.innerContainer.Remove(sixth); // land the test pod: back to a plain world pawn
+            HeroRecord r4d = reg.RecordFor(H("TMMTest_Fourth"));
+            C("DiscardedHeroNotMissing", r4d != null && r4d.state != HeroState.Missing && r4d.pawn == fourth, "alive record", r4d == null ? "none" : r4d.state.ToString());
             ForceWorldPawnGC();
             C("FourthSurvivesGCOnlyByPostfix", !fourth.Discarded && Find.WorldPawns.Contains(fourth), "kept", fourth.Discarded ? "discarded" : (Find.WorldPawns.Contains(fourth) ? "kept" : "not world pawn"));
             C("SecondSurvivesGC", !second.Discarded && Find.WorldPawns.Contains(second), "kept", second.Discarded ? "discarded" : (Find.WorldPawns.Contains(second) ? "kept" : "not world pawn"));
@@ -220,7 +242,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 6, 6, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 7, 7, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

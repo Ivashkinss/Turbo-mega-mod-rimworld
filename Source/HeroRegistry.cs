@@ -146,6 +146,9 @@ namespace TurboMegaMod
                 if (p.GetCaravan() != null) return HeroState.Away;
                 Map held = p.MapHeld;
                 if (held != null) return held.Parent is Settlement && held.Parent.Faction == home ? HeroState.AtHome : HeroState.Away;
+                // A world pawn can still be inside a world-level holder (transport pod in flight: WorldPawns
+                // contains it, MapHeld is null). Only a pawn held by nothing is really at home.
+                if (p.ParentHolder != null || PawnUtility.IsTravelingInTransportPodWorldObject(p)) return HeroState.Away;
                 if (Find.WorldPawns.Contains(p)) return HeroState.AtHome;
                 return HeroState.Away; // in some world-level holder (transport pod in flight etc.)
             }
@@ -261,6 +264,9 @@ namespace TurboMegaMod
             var gc = AccessTools.Method(typeof(WorldPawnGC), "GetCriticalPawnReason");
             if (gc == null) Log.Error("[TMM] HeroRegistry: WorldPawnGC.GetCriticalPawnReason not found; living heroes are not protected from world pawn GC.");
             else harmony.Patch(gc, postfix: new HarmonyMethod(typeof(HeroRegistryPatches), "CriticalReason"));
+            var pass = AccessTools.Method(typeof(WorldPawns), "PassToWorld");
+            if (pass == null) Log.Error("[TMM] HeroRegistry: WorldPawns.PassToWorld not found; explicit Discard can destroy living heroes.");
+            else harmony.Patch(pass, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "KeepHeroOnDiscard"));
             var lead = AccessTools.Method(typeof(Faction), "TryGenerateNewLeader");
             if (lead == null) Log.Error("[TMM] HeroRegistry: Faction.TryGenerateNewLeader not found; hero succession falls back to polling.");
             else harmony.Patch(lead, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "HeroSuccessor"));
@@ -268,6 +274,15 @@ namespace TurboMegaMod
 
         /// Vanilla Notify_LeaderDied calls TryGenerateNewLeader and then sends the letter and the
         /// NoLongerFactionLeader quest signal; choosing the hero here makes both name the real successor.
+        /// PassToWorld(pawn, Discard) destroys the pawn directly, bypassing the GC. A living registered hero
+        /// is downgraded to Decide, so it stays a world pawn and the GC postfix keeps protecting it.
+        public static void KeepHeroOnDiscard(Pawn pawn, ref PawnDiscardDecideMode discardMode)
+        {
+            if (discardMode != PawnDiscardDecideMode.Discard || pawn == null || pawn.Dead || pawn.Destroyed) return;
+            HeroRegistry reg = HeroRegistry.Instance;
+            if (reg != null && reg.IsHero(pawn)) discardMode = PawnDiscardDecideMode.Decide;
+        }
+
         public static bool HeroSuccessor(Faction __instance, ref bool __result)
         {
             HeroRegistry reg = HeroRegistry.Instance;
