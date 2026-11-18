@@ -1504,6 +1504,20 @@
       "note": "Bottom-menu Outposts tab: list, paid transport pods (chemfuel by distance, silver fallback) for recall, sending workers and silver, upgrade with pod top-up. Real in-game probe plus mid-flight reload."
     },
     {
+      "id": "FactionHierarchyTab",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "OutpostTabStageA",
+      "taskFile": "Delegation/FactionHierarchyTab/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionHierarchyTab",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T23:40:00Z",
+      "note": "Bottom-menu Factions tab: all factions, leader and hero hierarchy tree with states, successor mark, unknown heroes until met (saved known flag). Real probe plus reload."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
