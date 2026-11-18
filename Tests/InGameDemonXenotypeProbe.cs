@@ -32,8 +32,9 @@ public sealed class DemonXenotypeProbe : MapComponent
     private int frames;
     private Pawn demon;
 
-    private static readonly string[] AppearanceGenes = { "TMM_Headbone_DemonHorns", "TMM_Tail_Demon", "TMM_Eyes_DemonBlack" };
-    private static readonly string[] AllTextures =
+    private static string[] AppearanceGenes = { "TMM_Headbone_DemonHorns", "TMM_Tail_Demon", "TMM_Eyes_DemonBlack" };
+    private static string XenoName = "TMM_Demon";
+    private static string[] AllTextures =
     {
         "Things/TMM/Xenotypes/Demon/DemonHorns", "Things/TMM/Xenotypes/Demon/DemonHornsSmall", "Things/TMM/Xenotypes/Demon/DemonHornsRam",
         "Things/TMM/Xenotypes/Demon/DemonTail", "Things/TMM/Xenotypes/Demon/DevilEye", "Things/TMM/Xenotypes/Demon/DemonEyeBlack"
@@ -48,7 +49,8 @@ public sealed class DemonXenotypeProbe : MapComponent
 
     public override void MapComponentUpdate()
     {
-        if (done || !map.IsPlayerHome || !Environment.GetCommandLineArgs().Contains("-tmm-demon-xenotype-probe")) return;
+        string[] a = Environment.GetCommandLineArgs();
+        if (done || !map.IsPlayerHome || !(a.Contains("-tmm-demon-xenotype-probe") || a.Contains("-tmm-angel-xenotype-probe"))) return;
         try
         {
             if (stage == 0) { Prepare(); stage = 1; return; }
@@ -59,10 +61,16 @@ public sealed class DemonXenotypeProbe : MapComponent
 
     private void Prepare()
     {
+        if (Environment.GetCommandLineArgs().Contains("-tmm-angel-xenotype-probe"))
+        {
+            XenoName = "TMM_Angel";
+            AppearanceGenes = new[] { "TMM_Wings_Angel", "TMM_Eyes_Angel" };
+            AllTextures = new[] { "Things/TMM/Xenotypes/Angel/AngelWings", "Things/TMM/Xenotypes/Angel/AngelEye" };
+        }
         C("BiotechActive", ModsConfig.BiotechActive, true, ModsConfig.BiotechActive);
-        XenotypeDef xeno = DefDatabase<XenotypeDef>.GetNamedSilentFail("TMM_Demon");
-        C("XenotypeLoaded", xeno != null, "TMM_Demon", xeno);
-        foreach (string g in new[] { "TMM_Headbone_DemonHorns", "TMM_Headbone_DemonHornsSmall", "TMM_Headbone_DemonHornsRam", "TMM_Tail_Demon", "TMM_Eyes_Devil", "TMM_Eyes_DemonBlack" })
+        XenotypeDef xeno = DefDatabase<XenotypeDef>.GetNamedSilentFail(XenoName);
+        C("XenotypeLoaded", xeno != null, XenoName, xeno);
+        foreach (string g in new[] { "TMM_Headbone_DemonHorns", "TMM_Headbone_DemonHornsSmall", "TMM_Headbone_DemonHornsRam", "TMM_Tail_Demon", "TMM_Eyes_Devil", "TMM_Eyes_DemonBlack", "TMM_Wings_Angel", "TMM_Eyes_Angel" })
             C("GeneLoaded_" + g, DefDatabase<GeneDef>.GetNamedSilentFail(g) != null, true, DefDatabase<GeneDef>.GetNamedSilentFail(g) != null);
         // Every texture must really load in all three drawn rotations.
         foreach (string t in AllTextures)
@@ -71,7 +79,7 @@ public sealed class DemonXenotypeProbe : MapComponent
                 Texture2D tex = ContentFinder<Texture2D>.Get(t + r, false);
                 C("Texture" + t.Substring(t.LastIndexOf('/') + 1) + r, tex != null, "loaded", tex == null ? "missing" : tex.width + "x" + tex.height);
             }
-        if (xeno == null) throw new Exception("TMM_Demon xenotype missing");
+        if (xeno == null) throw new Exception(XenoName + " xenotype missing");
         demon = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
             PawnKindDefOf.Colonist, Faction.OfPlayer, forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
             canGeneratePawnRelations: false, forcedXenotype: xeno, developmentalStages: DevelopmentalStage.Adult));
@@ -80,15 +88,15 @@ public sealed class DemonXenotypeProbe : MapComponent
 
     private void Verify()
     {
-        C("PawnIsDemon", demon.genes != null && demon.genes.Xenotype != null && demon.genes.Xenotype.defName == "TMM_Demon", "TMM_Demon", demon.genes == null || demon.genes.Xenotype == null ? "null" : demon.genes.Xenotype.defName);
+        C("PawnIsDemon", demon.genes != null && demon.genes.Xenotype != null && demon.genes.Xenotype.defName == XenoName, XenoName, demon.genes == null || demon.genes.Xenotype == null ? "null" : demon.genes.Xenotype.defName);
         foreach (string g in AppearanceGenes)
         {
             bool has = demon.genes.GenesListForReading.Any(x => x.def.defName == g && x.Active);
             C("ActiveGene_" + g, has, "active", has ? "active" : "absent");
         }
         Gene skin = demon.genes.GenesListForReading.FirstOrDefault(x => x.Active && x.def.skinColorOverride != null);
-        facts.Add("skinGene=" + (skin == null ? "none" : skin.def.defName));
-        C("DemonSkinGene", skin != null && (skin.def.defName == "Skin_DeepRed" || skin.def.defName == "Skin_InkBlack"), "Skin_DeepRed|Skin_InkBlack", skin == null ? "none" : skin.def.defName);
+        facts.Add("xenotype=" + XenoName + " skinGene=" + (skin == null ? "none" : skin.def.defName));
+        if (XenoName == "TMM_Demon") C("DemonSkinGene", skin != null && (skin.def.defName == "Skin_DeepRed" || skin.def.defName == "Skin_InkBlack"), "Skin_DeepRed|Skin_InkBlack", skin == null ? "none" : skin.def.defName);
 
         // Portraits without apparel so horns, eyes and tail are visible; saved for human review.
         int saved = 0;
@@ -96,7 +104,7 @@ public sealed class DemonXenotypeProbe : MapComponent
         {
             RenderTexture rt = PortraitsCache.Get(demon, new Vector2(256f, 256f), rot, default(Vector3), 1f, true, true, false, false);
             if (rt == null) continue;
-            string path = Path.Combine(GenFilePaths.SaveDataFolderPath, "DemonPortrait_" + rot.ToStringHuman() + ".bmp");
+            string path = Path.Combine(GenFilePaths.SaveDataFolderPath, XenoName + "Portrait_" + rot.AsInt + ".bmp");
             SaveBmp(rt, path);
             if (File.Exists(path)) saved++;
         }

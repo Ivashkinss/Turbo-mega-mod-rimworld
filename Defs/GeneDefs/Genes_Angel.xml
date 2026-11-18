@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Angel xenotype genes, stage 1: appearance. Biotech only (user decision 18.11.2026). -->
+<Defs>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Wings_Angel</defName>
+    <label>angel wings</label>
+    <description>Carriers of this gene grow a pair of large white feathered wings from the shoulder blades.</description>
+    <iconPath>UI/Icons/Genes/Gene_TailFurry</iconPath>
+    <iconColor>(0.95, 0.95, 1.0)</iconColor>
+    <displayCategory>Cosmetic</displayCategory>
+    <displayOrderInCategory>1100</displayOrderInCategory>
+    <biostatCpx>1</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <exclusionTags><li>TMM_Wings</li></exclusionTags>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Things/TMM/Xenotypes/Angel/AngelWings</texPath>
+        <color>(255, 255, 255)</color>
+        <overrideMeshSize>(1.8, 1.8)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <scaleOffsetByBodySize>true</scaleOffsetByBodySize>
+          <defaultData><layer>-3</layer><offset>(0, 0, 0.38)</offset></defaultData>
+          <dataNorth><layer>90</layer><offset>(0, 0, 0.38)</offset></dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Eyes_Angel</defName>
+    <label>radiant eyes</label>
+    <labelShortAdj>radiant-eyed</labelShortAdj>
+    <description>Carriers of this gene have eyes that glow with a cold blue-white light.</description>
+    <iconPath>UI/Icons/Genes/Gene_GrayEyes</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>0</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <exclusionTags><li>EyeColor</li></exclusionTags>
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Angel/AngelEye</texPath>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset></defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/TMM/Xenotypes/Angel/AngelEye</texPath>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <color>(255, 255, 255)</color>
+        <drawData>
+          <defaultData><layer>54</layer><offset>(0, 0, -0.25)</offset><flip>true</flip></defaultData>
+          <dataWest><flip>false</flip></dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+</Defs>

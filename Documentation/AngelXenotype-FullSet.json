@@ -1,0 +1,179 @@
+﻿{
+    "component":  "AngelXenotype",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3271,
+                         "scalarFields":  780,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4251,
+                        "ticksAdvanced":  1783,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "note":  "portraits saved as BMP for human review"
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "c2ad8f479db04ddd681119002404f97b93d93fbfee3b4be585e72f022c08b641",
+    "angelXenotype":  {
+                          "passed":  true,
+                          "checksCount":  20,
+                          "facts":  [
+                                        "xenotype=TMM_Angel skinGene=none"
+                                    ],
+                          "checks":  [
+                                         {
+                                             "name":  "BiotechActive",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "XenotypeLoaded",
+                                             "passed":  true,
+                                             "expected":  "TMM_Angel",
+                                             "actual":  "TMM_Angel"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Headbone_DemonHorns",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Headbone_DemonHornsSmall",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Headbone_DemonHornsRam",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Tail_Demon",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Eyes_Devil",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Eyes_DemonBlack",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Wings_Angel",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "GeneLoaded_TMM_Eyes_Angel",
+                                             "passed":  true,
+                                             "expected":  "True",
+                                             "actual":  "True"
+                                         },
+                                         {
+                                             "name":  "TextureAngelWings_south",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "256x256"
+                                         },
+                                         {
+                                             "name":  "TextureAngelWings_north",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "256x256"
+                                         },
+                                         {
+                                             "name":  "TextureAngelWings_east",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "256x256"
+                                         },
+                                         {
+                                             "name":  "TextureAngelEye_south",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "64x64"
+                                         },
+                                         {
+                                             "name":  "TextureAngelEye_north",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "64x64"
+                                         },
+                                         {
+                                             "name":  "TextureAngelEye_east",
+                                             "passed":  true,
+                                             "expected":  "loaded",
+                                             "actual":  "64x64"
+                                         },
+                                         {
+                                             "name":  "PawnIsDemon",
+                                             "passed":  true,
+                                             "expected":  "TMM_Angel",
+                                             "actual":  "TMM_Angel"
+                                         },
+                                         {
+                                             "name":  "ActiveGene_TMM_Wings_Angel",
+                                             "passed":  true,
+                                             "expected":  "active",
+                                             "actual":  "active"
+                                         },
+                                         {
+                                             "name":  "ActiveGene_TMM_Eyes_Angel",
+                                             "passed":  true,
+                                             "expected":  "active",
+                                             "actual":  "active"
+                                         },
+                                         {
+                                             "name":  "PortraitsSaved",
+                                             "passed":  true,
+                                             "expected":  "3",
+                                             "actual":  "3"
+                                         }
+                                     ],
+                          "errors":  [
+
+                                     ]
+                      },
+    "passed":  true
+}

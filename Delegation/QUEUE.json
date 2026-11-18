@@ -1412,7 +1412,7 @@
     },
     {
       "id": "HeroRegistryFixRecheck",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/HeroRegistryFixRecheck/TASK.md",

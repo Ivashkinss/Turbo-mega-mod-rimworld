@@ -108,3 +108,15 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - оверлей трещин кожи: вылезает за контур головы;
 - способности демонов;
 - привязка героев-демонов (Кроули, Азазель…).
+## 18.11.2026 — ксенотип «Ангел», этап 1 (внешность), Claude
+- `Defs/GeneDefs/Genes_Angel.xml`: крылья (узел на теле, от лопаток) и сияющие бело-голубые глаза (ванильные узлы глаз).
+- `Defs/XenotypeDefs/Xenotype_Angel.xml`, TMM_Angel. Кроме двух генов внешности — ванильные Aggression_DeadCalm, Immunity_SuperStrong, WoundHealing_Fast, Pain_Reduced, PsychicAbility_Enhanced, Beauty_Pretty. Кожа не меняется.
+- Текстуры в `Textures/Things/TMM/Xenotypes/Angel/`: крылья из пилота Gemini, глаза — Claude.
+- Прогон: probe тот же, флаг `-tmm-angel-xenotype-probe`, 20/20, ERROR 0. Портреты: `Documentation/Images/AngelXenotype-ingame.png`.
+
+Перепроверка Codex исправлений реестра (`Tools/Build/CodexHeroRegistryFixRecheck/REPORT.md`):
+- F2 закрыт;
+- F1 открыт: герой в летящей транспортной капсуле считается AtHome;
+- N1: явный `PassToWorld(Discard)` уничтожает героя в обход защиты;
+- N2: проверка письма слабая.
+Следующая задача Claude.

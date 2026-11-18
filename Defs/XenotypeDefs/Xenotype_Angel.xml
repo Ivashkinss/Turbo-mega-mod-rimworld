@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Angel xenotype, stage 1: appearance plus vanilla stat genes. Biotech only. -->
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Angel</defName>
+    <label>angel</label>
+    <description>Soldiers of Heaven inhabiting human vessels: winged, with eyes of cold light. Calm to the point of coldness, hard to wound and quick to heal, keenly attuned to psychic currents.</description>
+    <descriptionShort>Winged soldiers of Heaven with radiant eyes. Calm, resilient, fast-healing, psychically sensitive.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/Baseliner</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.3</combatPowerFactor>
+    <genes>
+      <li>TMM_Wings_Angel</li>
+      <li>TMM_Eyes_Angel</li>
+      <li>Aggression_DeadCalm</li>
+      <li>Immunity_SuperStrong</li>
+      <li>WoundHealing_Fast</li>
+      <li>Pain_Reduced</li>
+      <li>PsychicAbility_Enhanced</li>
+      <li>Beauty_Pretty</li>
+    </genes>
+  </XenotypeDef>
+</Defs>
