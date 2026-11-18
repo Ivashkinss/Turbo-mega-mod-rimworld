@@ -1313,7 +1313,7 @@
     },
     {
       "id": "MinutemenRebaseRun",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "gemini",
       "kind": "run",
       "afterTask": "OutpostSanitizerNarrow",
@@ -1339,6 +1339,20 @@
       ],
       "createdUtc": "2026-11-18T10:40:00Z",
       "note": "Pilot RimWorld-style textures (demon horns, tail, angel wings), 4 directions + masks; find out whether image generator or code drawing works. No root changes."
+    },
+    {
+      "id": "MinutemenFixes",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "XenotypeArtPilot",
+      "taskFile": "Delegation/MinutemenFixes/TASK.md",
+      "outputDir": "Tools/Build/GeminiMinutemenFixes",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T12:20:00Z",
+      "note": "Fix the 3 defects found by MinutemenRebaseRun (hunter weaponMoney, RU quest DefInjected, clinic medical beds) in the candidate; one in-game run."
     },
     {
       "id": "OutpostShipmentCycles",
