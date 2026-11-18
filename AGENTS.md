@@ -3,7 +3,7 @@
 All project changes belong inside this mod directory. Do not modify original mods, game files, user settings, or saves as part of routine development.
 
 Remote repository: https://github.com/Ivashkinss/Turbo-mega-mod-rimworld.git
-Current user decision (18.11.2026): commit locally after accepted revisions. Standing permission: Claude pushes main to origin automatically after each major update — a stage or feature accepted by a real in-game run, or a significant rules/architecture change — without asking again. Small doc or queue edits ride along with the next major push. Executors (Gemini, Codex) do not push unless their TASK.md says so. Before pushing, check that the branch is not behind origin (no force push) and that no logs, saves, TestRuns/ or Tools/Build/ files are included. Last push: 18.11.2026, main at eb83227 (greenhouse roof fix).
+Current user decision (18.11.2026): commit locally after accepted revisions. Standing permission: Claude pushes main to origin automatically after each major update — a stage or feature accepted by a real in-game run, or a significant rules/architecture change — without asking again. Small doc or queue edits ride along with the next major push. Executors (Gemini, Codex) do not push unless their TASK.md says so. Before pushing, check that the branch is not behind origin (no force push) and that no logs, saves, TestRuns/ or Tools/Build/ files are included. Last push: 18.11.2026, main at dcd142a (hero backstories).
 
 Do not commit logs, saves, user configuration, credentials, or temporary game-test data. Preserve existing work in the remote repository. Run checks relevant to changed behavior before committing.
 
