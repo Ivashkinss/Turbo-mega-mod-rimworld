@@ -1,0 +1,1134 @@
+{
+  "items": [
+    {
+      "id": "dean_leather_jacket",
+      "hero": "Дин Винчестер",
+      "faction": "minutemen_hunters",
+      "type": "apparel",
+      "label_en": "Dean's worn leather jacket",
+      "label_ru": "потёртая кожаная куртка Дина",
+      "desc_en": "A scuffed dark-brown cowhide car coat with faded seams, brass snaps, and deep pockets lined with rock-salt pouches and a hidden demon-trap charm.",
+      "desc_ru": "Потёртая в дорогах тёмно-коричневая кожаная куртка со старыми швами, латунными кнопками и глубокими карманами под патроны с солью и амулет.",
+      "baseOn": "Apparel_Jacket",
+      "layers": ["Shell"],
+      "stuff": "Leathery",
+      "stats": {
+        "MarketValue": 950,
+        "Mass": 2.4,
+        "ArmorRating_Sharp": 0.58,
+        "ArmorRating_Blunt": 0.32,
+        "ArmorRating_Heat": 0.40
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.05,
+        "PainShockThreshold": 0.08
+      },
+      "setBonus_ru": "Комплект «Старший брат» (куртка + дробовик Дина): +10% к скорости передвижения и иммунитет к страху от нечисти.",
+      "cost": {
+        "Leather_Plain": 85,
+        "Silver": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Дина Винчестера или выполнить его личный охотничий квест",
+      "special_ru": "Ванильный XML: надёжная защита от когтей и укусов нечисти плюс повышенный болевой порог."
+    },
+    {
+      "id": "dean_sawed_off_shotgun",
+      "hero": "Дин Винчестер",
+      "faction": "minutemen_hunters",
+      "type": "ranged",
+      "label_en": "Dean's sawed-off double-barrel",
+      "label_ru": "обрез дробовика Дина",
+      "desc_en": "A short-barreled 12-gauge double-barrel shotgun with a dark walnut stock, kept in the trunk of a '67 Impala and loaded with coarse rock-salt shells.",
+      "desc_ru": "Короткоствольная двустволка 12-го калибра с тёмным ореховым прикладом из багажника «Импалы», заряженная крупной каменной солью.",
+      "baseOn": "Gun_PumpShotgun",
+      "layers": [],
+      "stats": {
+        "MarketValue": 880,
+        "Mass": 2.6,
+        "ArmorRating_Sharp": 0,
+        "ArmorRating_Blunt": 0,
+        "ArmorRating_Heat": 0
+      },
+      "combat": {
+        "damage": 24,
+        "armorPenetration": 0.25,
+        "cooldown": 1.3,
+        "range": 14
+      },
+      "equippedStatOffsets": {},
+      "setBonus_ru": "Комплект «Старший брат» (куртка + дробовик Дина): +10% к скорости передвижения и иммунитет к страху от нечисти.",
+      "cost": {
+        "Steel": 55,
+        "WoodLog": 25,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Завербовать Дина Винчестера или снять трофеем в бою",
+      "special_ru": "Ванильный XML + кастомный DamageDef соли: сбивает с ног и оглушает демонов и призраков на ближней дистанции."
+    },
+    {
+      "id": "sam_hunting_flannel",
+      "hero": "Сэм Винчестер",
+      "faction": "minutemen_hunters",
+      "type": "apparel",
+      "label_en": "Sam's layered hunter parka",
+      "label_ru": "многослойная куртка Сэма",
+      "desc_en": "A practical olive canvas field jacket worn over a plaid flannel shirt and dark hoodie, with inner pockets stuffed with lore notebooks and Enochian spell slips.",
+      "desc_ru": "Практичная оливковая полевая куртка поверх клетчатой фланелевой рубахи и тёмной толстовки со скрытыми карманами для записных книжек и свитков с ритуалами.",
+      "baseOn": "Apparel_Jacket",
+      "layers": ["Shell"],
+      "stats": {
+        "MarketValue": 920,
+        "Mass": 2.2,
+        "ArmorRating_Sharp": 0.50,
+        "ArmorRating_Blunt": 0.28,
+        "ArmorRating_Heat": 0.35
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.14,
+        "MeleeDodgeChance": 0.05
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 55,
+        "Leather_Plain": 40
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Сэма Винчестера или выполнить его квест по расшифровке гримуара",
+      "special_ru": "Ванильный XML: сочетает полевую защиту с бонусом к скорости исследований."
+    },
+    {
+      "id": "preston_garvey_hat",
+      "hero": "Престон Гарви",
+      "faction": "minutemen_hunters",
+      "type": "apparel",
+      "label_en": "Preston Garvey's colonial hat",
+      "label_ru": "шляпа Престона Гарви",
+      "desc_en": "A wide-brimmed tan felt colonial hat with one side pinned up by a tarnished brass Minutemen badge. A symbol of hope for struggling settlements.",
+      "desc_ru": "Широкополая песочная фетровая шляпа с загнутым полем и потускневшей латунной кокардой Минитменов. Символ надежды для разрозненных поселений.",
+      "baseOn": "Apparel_CowboyHat",
+      "layers": ["Overhead"],
+      "stuff": "Leathery",
+      "stats": {
+        "MarketValue": 640,
+        "Mass": 0.4,
+        "ArmorRating_Sharp": 0.24,
+        "ArmorRating_Blunt": 0.14,
+        "ArmorRating_Heat": 0.22
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.18,
+        "NegotiationAbility": 0.12
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Leather_Plain": 45,
+        "Steel": 5
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Союз с Минитменами и охотниками или вербовка Престона Гарви",
+      "special_ru": "Ванильный XML: повышает социальное влияние и успех переговоров."
+    },
+    {
+      "id": "bobby_singer_cap_vest",
+      "hero": "Бобби Сингер",
+      "faction": "minutemen_hunters",
+      "type": "apparel",
+      "label_en": "Bobby Singer's trucker cap",
+      "label_ru": "кепка Бобби Сингера",
+      "desc_en": "A faded navy-blue mesh trucker cap stained with motor oil and sweat, worn by the gruffest lorekeeper in the hunter network.",
+      "desc_ru": "Выцветшая тёмно-синяя кепка дальнобойщика со следами машинного масла — бессменный головной убор самого ворчливого хранителя знаний.",
+      "baseOn": "Apparel_Tuque",
+      "layers": ["Overhead"],
+      "stats": {
+        "MarketValue": 520,
+        "Mass": 0.2,
+        "ArmorRating_Sharp": 0.14,
+        "ArmorRating_Blunt": 0.10,
+        "ArmorRating_Heat": 0.18
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.12,
+        "GeneralLaborSpeed": 0.08
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Cloth": 40
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Бобби Сингера или помочь защитить его автосвалку",
+      "special_ru": "Ванильный XML: ускоряет исследования и работу на верстаках."
+    },
+    {
+      "id": "castiel_trenchcoat",
+      "hero": "Кастиэль",
+      "faction": "heaven_angels",
+      "type": "apparel",
+      "label_en": "Castiel's rumpled trenchcoat",
+      "label_ru": "мятый плащ Кастиэля",
+      "desc_en": "A battered beige trenchcoat worn over a dark suit and crooked blue tie, subtly scorched along the hems by celestial fire and tailored for angelic wings.",
+      "desc_ru": "Потрёпанный бежевый плащ поверх тёмного костюма и криво повязанного синего галстука, слегка опалённый по краям небесным огнём и скроенный под крылья.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "stats": {
+        "MarketValue": 1450,
+        "Mass": 2.3,
+        "ArmorRating_Sharp": 0.62,
+        "ArmorRating_Blunt": 0.34,
+        "ArmorRating_Heat": 0.70
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "MedicalTendQuality": 0.10,
+        "PsychicSensitivity": 0.20
+      },
+      "setBonus_ru": "Комплект «Мятежный серафим» (плащ + клинок Кастиэля): +15% к скорости движения и сокращение перезарядки ангельских способностей на 20%.",
+      "cost": {
+        "Synthread": 90,
+        "Gold": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Кастиэля или выполнить его квест помощи",
+      "special_ru": "Ванильный XML + тег совместимости с крыльями ангела.",
+      "forRace": "angel_only"
+    },
+    {
+      "id": "castiel_angel_blade",
+      "hero": "Кастиэль",
+      "faction": "heaven_angels",
+      "type": "melee",
+      "label_en": "Castiel's angel blade",
+      "label_ru": "ангельский клинок Кастиэля",
+      "desc_en": "A sleek, triangular silver-steel stiletto carried inside the sleeve of a rebel angel. Forged in Heaven, it pierces supernatural hides and slays lesser demons in a single thrust.",
+      "desc_ru": "Гладкий трёхгранный серебристый стилет, который мятежный ангел прячет в рукаве. Выкован на Небесах и сражает обычных демонов и тварей одним точным ударом.",
+      "baseOn": "MeleeWeapon_Knife",
+      "layers": [],
+      "stats": {
+        "MarketValue": 2600,
+        "Mass": 0.9,
+        "ArmorRating_Sharp": 0,
+        "ArmorRating_Blunt": 0,
+        "ArmorRating_Heat": 0
+      },
+      "combat": {
+        "damage": 32,
+        "armorPenetration": 1.20,
+        "cooldown": 1.2,
+        "range": 1.5
+      },
+      "equippedStatOffsets": {},
+      "setBonus_ru": "Комплект «Мятежный серафим» (плащ + клинок Кастиэля): +15% к скорости движения и сокращение перезарядки ангельских способностей на 20%.",
+      "cost": {
+        "Plasteel": 45,
+        "Silver": 40,
+        "Gold": 15
+      },
+      "workbench": "FabricationBench",
+      "unlock_ru": "Завербовать Кастиэля или снять с тела павшего ангела",
+      "special_ru": "Свой C# (Verb_MeleeAttack): рядовых демонов и ангелов убивает с одного попадания (исключая архангелов и князей Ада)."
+    },
+    {
+      "id": "michael_archangel_plate",
+      "hero": "Михаил",
+      "faction": "heaven_angels",
+      "type": "apparel",
+      "label_en": "Michael's radiant cuirass",
+      "label_ru": "сияющая кираса Михаила",
+      "desc_en": "Ornate white-gold commander armor etched with blazing celestial runes, leaving open vents along the shoulder blades for archangel wings.",
+      "desc_ru": "Парадная бело-золотая кираса полководца Небес с пылающими енохианскими рунами и прорезями на лопатках для крыльев архангела.",
+      "baseOn": "Apparel_PowerArmor",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 3800,
+        "Mass": 7.5,
+        "ArmorRating_Sharp": 1.22,
+        "ArmorRating_Blunt": 0.60,
+        "ArmorRating_Heat": 0.95
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.25,
+        "MeleeHitChance": 0.08
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Plasteel": 95,
+        "Gold": 35,
+        "ComponentSpacer": 1
+      },
+      "workbench": "FabricationBench",
+      "unlock_ru": "Союз с Небесами или победа над Михаилом в бою",
+      "special_ru": "Ванильный XML: высшая защита и командный бонус; крой под крылья ангела.",
+      "forRace": "angel_only"
+    },
+    {
+      "id": "lucifer_white_suit",
+      "hero": "Люцифер",
+      "faction": "heaven_angels",
+      "type": "apparel",
+      "label_en": "Lucifer's immaculate white suit",
+      "label_ru": "белоснежный костюм Люцифера",
+      "desc_en": "A razor-sharp white tailored suit with subtle silver pinstripes, radiating unsettling charisma and cold, theatrical arrogance.",
+      "desc_ru": "Безупречно скроенный белоснежный костюм в тонкую серебристую полоску, излучающий пугающую харизму и холодное высокомерие.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 2900,
+        "Mass": 1.6,
+        "ArmorRating_Sharp": 0.56,
+        "ArmorRating_Blunt": 0.30,
+        "ArmorRating_Heat": 0.95
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.30,
+        "PsychicSensitivity": 0.25
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Hyperweave": 60,
+        "Silver": 25,
+        "Gold": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Победа над Люцифером или завершение его тайной сделки",
+      "special_ru": "Ванильный XML: максимальный бонус к социальному влиянию и защита от огня."
+    },
+    {
+      "id": "crowley_king_suit",
+      "hero": "Кроули",
+      "faction": "hell_demons",
+      "type": "apparel",
+      "label_en": "Crowley's King of Hell suit",
+      "label_ru": "костюм Короля Ада Кроули",
+      "desc_en": "A bespoke charcoal-black Savile Row suit with a crimson pocket square and hidden sigil stitching. Built for negotiating souls in style.",
+      "desc_ru": "Сшитый на заказ угольно-чёрный костюм с алым нагрудным платком и потайными печатями в швах — идеальный наряд для торговли душами.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 2400,
+        "Mass": 1.6,
+        "ArmorRating_Sharp": 0.52,
+        "ArmorRating_Blunt": 0.28,
+        "ArmorRating_Heat": 0.95
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "TradePriceImprovement": 0.18,
+        "NegotiationAbility": 0.22,
+        "SocialImpact": 0.20
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "DevilstrandCloth": 65,
+        "Hyperweave": 25,
+        "Silver": 20
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Заключить союз с Адом или одолеть Кроули",
+      "special_ru": "Ванильный XML: лучший торговый и переговорный бонус в моде."
+    },
+    {
+      "id": "ruby_demon_knife",
+      "hero": "Руби",
+      "faction": "hell_demons",
+      "type": "melee",
+      "label_en": "Ruby's demon-killing knife",
+      "label_ru": "нож Руби",
+      "desc_en": "An ancient curved hunting dagger with a stag-horn handle and a blade covered in worn, arcane engravings. One deep strike destroys lesser demons permanently.",
+      "desc_ru": "Древний изогнутый охотничий кинжал с рукоятью из оленьего рога и клинком, покрытым стёртыми рунами. Один точный удар навсегда убивает рядовых демонов.",
+      "baseOn": "MeleeWeapon_Knife",
+      "layers": [],
+      "stats": {
+        "MarketValue": 2700,
+        "Mass": 0.8,
+        "ArmorRating_Sharp": 0,
+        "ArmorRating_Blunt": 0,
+        "ArmorRating_Heat": 0
+      },
+      "combat": {
+        "damage": 28,
+        "armorPenetration": 1.15,
+        "cooldown": 1.1,
+        "range": 1.5
+      },
+      "equippedStatOffsets": {},
+      "setBonus_ru": "",
+      "cost": {
+        "Plasteel": 40,
+        "Silver": 35,
+        "Bioferrite": 15
+      },
+      "workbench": "FueledSmithy",
+      "unlock_ru": "Завербовать Руби или снять с её тела после предательства",
+      "special_ru": "Свой C# (Verb_MeleeAttack): убивает рядовых демонов с одного удара (не действует на рыцарей, князей Ада и левиафанов)."
+    },
+    {
+      "id": "maxson_battlecoat",
+      "hero": "Артур Мэксон",
+      "faction": "brotherhood",
+      "type": "apparel",
+      "label_en": "Maxson's Elder battlecoat",
+      "label_ru": "боевой плащ старейшины Мэксона",
+      "desc_en": "A heavy sheepskin-lined brown leather bomber trenchcoat worn over Brotherhood combat fatigues, emblazoned with the Elder's steel crest.",
+      "desc_ru": "Тяжёлый коричневый кожаный плащ на овчине поверх боевой формы Братства Стали с нашивкой верховного старейшины.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stuff": "Leathery",
+      "stats": {
+        "MarketValue": 2300,
+        "Mass": 3.8,
+        "ArmorRating_Sharp": 0.88,
+        "ArmorRating_Blunt": 0.46,
+        "ArmorRating_Heat": 0.55
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.25,
+        "AimingDelayFactor": -0.06
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Leather_Plain": 110,
+        "Plasteel": 30,
+        "Steel": 25
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Союз с Братством Стали или победа над Артуром Мэксоном",
+      "special_ru": "Ванильный XML: высокая защита без силовой брони и мощный лидерский бонус."
+    },
+    {
+      "id": "danse_recon_hood",
+      "hero": "Паладин Данс",
+      "faction": "brotherhood",
+      "type": "apparel",
+      "label_en": "Paladin Danse's recon hood",
+      "label_ru": "подшлемник паладина Данса",
+      "desc_en": "A tight olive-drab ballistic skullcap with padded ear cups and a chin strap, designed to cushion the head inside heavy T-60 helmets.",
+      "desc_ru": "Плотный оливковый баллистический подшлемник с мягкими накладками, гасящий вибрацию внутри тяжёлого шлема T-60.",
+      "baseOn": "Apparel_SimpleHelmet",
+      "layers": ["Overhead"],
+      "stats": {
+        "MarketValue": 720,
+        "Mass": 0.8,
+        "ArmorRating_Sharp": 0.45,
+        "ArmorRating_Blunt": 0.32,
+        "ArmorRating_Heat": 0.28
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.06,
+        "PainShockThreshold": 0.06
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 45,
+        "Plasteel": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать паладина Данса или выполнить его личный квест",
+      "special_ru": "Ванильный XML: повышает точность стрельбы и болевой порог."
+    },
+    {
+      "id": "casdin_protector_helm",
+      "hero": "Защитник Генри Касдин",
+      "faction": "outcasts",
+      "type": "apparel",
+      "label_en": "Casdin's Outcast command helmet",
+      "label_ru": "командирский шлем Касдина",
+      "desc_en": "A matte-black T-45d power armor helmet painted with a crimson stripe across the brow and upgraded target-acquisition optics.",
+      "desc_ru": "Матово-чёрный шлем силовой брони T-45d с алой полосой на лбу и модернизированной оптикой наведения.",
+      "baseOn": "Apparel_PowerArmorHelmet",
+      "layers": ["Overhead"],
+      "stats": {
+        "MarketValue": 1650,
+        "Mass": 3.1,
+        "ArmorRating_Sharp": 1.15,
+        "ArmorRating_Blunt": 0.52,
+        "ArmorRating_Heat": 0.72
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.08,
+        "ToxicEnvironmentResistance": 0.50
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Plasteel": 40,
+        "Uranium": 6,
+        "ComponentIndustrial": 4
+      },
+      "workbench": "FabricationBench",
+      "unlock_ru": "Союз с Изгоями или победа над защитником Касдином",
+      "special_ru": "Ванильный XML: повышенная точность стрельбы и герметичность."
+    },
+    {
+      "id": "autumn_enclave_greatcoat",
+      "hero": "Полковник Отем",
+      "faction": "enclave",
+      "type": "apparel",
+      "label_en": "Colonel Autumn's leather greatcoat",
+      "label_ru": "кожаная шинель полковника Отема",
+      "desc_en": "A heavy dark-slate leather command greatcoat with red piping, brass buttons, and concealed ballistic mesh lining.",
+      "desc_ru": "Тяжёлая тёмно-серая кожаная командирская шинель с красной окантовкой, латунными пуговицами и скрытой баллистической подкладкой.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stuff": "Leathery",
+      "stats": {
+        "MarketValue": 2450,
+        "Mass": 3.6,
+        "ArmorRating_Sharp": 0.90,
+        "ArmorRating_Blunt": 0.45,
+        "ArmorRating_Heat": 0.60
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.22,
+        "SuppressionPower": 0.25
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Leather_Plain": 100,
+        "Plasteel": 35,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Победа над полковником Отемом при штурме базы Анклава или выполнение его тайного контракта",
+      "special_ru": "Ванильный XML: отличная защита без силовой брони и бонус к подавлению."
+    },
+    {
+      "id": "father_director_coat",
+      "hero": "Отец (Шон)",
+      "faction": "institute",
+      "type": "apparel",
+      "label_en": "Father's Director lab coat",
+      "label_ru": "белый халат Отца",
+      "desc_en": "An immaculate white synthetic coat with subtle silver trim, worn by the supreme Director of the Institute.",
+      "desc_ru": "Безупречно белый синтетический халат с тонкой серебристой отделкой — одеяние верховного директора Института.",
+      "baseOn": "Apparel_CollarShirt",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 2100,
+        "Mass": 1.3,
+        "ArmorRating_Sharp": 0.34,
+        "ArmorRating_Blunt": 0.18,
+        "ArmorRating_Heat": 0.40
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.25,
+        "SocialImpact": 0.20,
+        "MedicalTendQuality": 0.12
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Hyperweave": 55,
+        "Synthread": 45,
+        "Gold": 5
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Союз с Институтом или захват кабинета Отца при штурме",
+      "special_ru": "Ванильный XML: максимальный бонус к скорости исследований среди одежды."
+    },
+    {
+      "id": "kellogg_cyber_jacket",
+      "hero": "Келлог",
+      "faction": "institute",
+      "type": "apparel",
+      "label_en": "Kellogg's armored mercenary outfit",
+      "label_ru": "бронекуртка Келлога",
+      "desc_en": "A rugged brown leather jacket with a single bolted metal shoulder pauldron and reinforced cybernetic interface straps.",
+      "desc_ru": "Грубая коричневая кожаная куртка с одним прикрученным болтами стальным наплечником и ремнями для кибернетических имплантов.",
+      "baseOn": "Apparel_Jacket",
+      "layers": ["Middle", "Shell"],
+      "stuff": "Leathery",
+      "stats": {
+        "MarketValue": 1850,
+        "Mass": 3.4,
+        "ArmorRating_Sharp": 0.84,
+        "ArmorRating_Blunt": 0.44,
+        "ArmorRating_Heat": 0.45
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.08,
+        "MeleeDamageFactor": 0.12
+      },
+      "setBonus_ru": "Комплект «Наёмник Института» (бронекуртка + револьвер Келлога): -15% к задержке прицеливания.",
+      "cost": {
+        "Leather_Plain": 90,
+        "Plasteel": 30,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Одолеть Келлога в бою или завербовать его по квесту Института",
+      "special_ru": "Ванильный XML: универсальная броня для стрелка и бойца ближнего боя."
+    },
+    {
+      "id": "kellogg_revolver",
+      "hero": "Келлог",
+      "faction": "institute",
+      "type": "ranged",
+      "label_en": "Kellogg's .44 revolver",
+      "label_ru": "револьвер Келлога",
+      "desc_en": "A heavy nickel-plated .44 magnum revolver with a dark wood grip and hair-trigger mechanism, infamous across the wasteland.",
+      "desc_ru": "Тяжёлый никелированный револьвер 44-го калибра с тёмной деревянной рукоятью и облегчённым спуском, печально известный на всю Пустошь.",
+      "baseOn": "Gun_Revolver",
+      "layers": [],
+      "stats": {
+        "MarketValue": 1650,
+        "Mass": 1.8,
+        "ArmorRating_Sharp": 0,
+        "ArmorRating_Blunt": 0,
+        "ArmorRating_Heat": 0
+      },
+      "combat": {
+        "damage": 26,
+        "armorPenetration": 0.45,
+        "cooldown": 1.2,
+        "range": 25
+      },
+      "equippedStatOffsets": {},
+      "setBonus_ru": "Комплект «Наёмник Института» (бронекуртка + револьвер Келлога): -15% к задержке прицеливания.",
+      "cost": {
+        "Plasteel": 35,
+        "Steel": 30,
+        "ComponentIndustrial": 3
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Снять с тела Келлога или получить по контракту Института",
+      "special_ru": "Ванильный XML: высокий урон и точность для одноручного оружия."
+    },
+    {
+      "id": "desdemona_railroad_coat",
+      "hero": "Дездемона",
+      "faction": "railroad",
+      "type": "apparel",
+      "label_en": "Desdemona's ballistic fatigues",
+      "label_ru": "бронекуртка Дездемоны",
+      "desc_en": "A dark olive-grey field jacket interwoven with dense ballistic weave and lined with hidden pockets for cipher keys and synth holotapes.",
+      "desc_ru": "Тёмная оливково-серая полевая куртка, прошитая плотным баллистическим волокном со скрытыми карманами для шифров и голозаписей.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 1950,
+        "Mass": 3.1,
+        "ArmorRating_Sharp": 0.92,
+        "ArmorRating_Blunt": 0.46,
+        "ArmorRating_Heat": 0.52
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.20,
+        "MoveSpeed": 0.10
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 85,
+        "Plasteel": 30,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Союз с Подземкой или завершение сюжетной линии спасения синтов",
+      "special_ru": "Ванильный XML: лёгкая броня с отличной пулестойкостью и лидерским бонусом."
+    },
+    {
+      "id": "deacon_sunglasses",
+      "hero": "Дьякон",
+      "faction": "railroad",
+      "type": "apparel",
+      "label_en": "Deacon's undercover shades",
+      "label_ru": "тёмные очки Дьякона",
+      "desc_en": "Classic black-framed tinted sunglasses paired with a subtle micro-transceiver earpiece. Helps the wearer keep a stone-cold poker face.",
+      "desc_ru": "Классические тёмные очки в чёрной оправе со скрытым микропередатчиком. Помогают сохранять невозмутимый вид при любой легенде.",
+      "baseOn": "Apparel_Tuque",
+      "layers": ["Overhead"],
+      "stats": {
+        "MarketValue": 680,
+        "Mass": 0.1,
+        "ArmorRating_Sharp": 0.08,
+        "ArmorRating_Blunt": 0.05,
+        "ArmorRating_Heat": 0.10
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.15,
+        "NegotiationAbility": 0.15,
+        "ShootingAccuracyPawn": 0.04
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Plasteel": 15,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Завербовать Дьякона или выполнить его разведывательный квест",
+      "special_ru": "Ванильный XML: лёгкий аксессуар для разведчиков и переговорщиков."
+    },
+    {
+      "id": "wes_gunner_coat",
+      "hero": "Капитан Уэс",
+      "faction": "gunners",
+      "type": "apparel",
+      "label_en": "Captain Wes's command coat",
+      "label_ru": "командирский плащ капитана Уэса",
+      "desc_en": "A dark olive mercenary greatcoat layered over reinforced combat armor plates, marked with silver captain bars and the Gunners' skull emblem.",
+      "desc_ru": "Тёмно-оливковый наёмничий плащ поверх усиленных армейских бронепластин с серебряными знаками капитана и эмблемой Стрелков.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 1850,
+        "Mass": 4.2,
+        "ArmorRating_Sharp": 0.94,
+        "ArmorRating_Blunt": 0.46,
+        "ArmorRating_Heat": 0.45
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.06,
+        "AimingDelayFactor": -0.06
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Steel": 80,
+        "Plasteel": 30,
+        "Synthread": 45
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Снять трофеем с капитана Уэса при зачистке штаба Стрелков",
+      "special_ru": "Ванильный XML: боевая броня для командира стрелкового отряда."
+    },
+    {
+      "id": "braun_white_suit",
+      "hero": "Доктор Станислас Брон",
+      "faction": "vault_tec",
+      "type": "apparel",
+      "label_en": "Dr. Braun's simulation suit",
+      "label_ru": "костюм симуляции доктора Брона",
+      "desc_en": "A spotless pre-war cream-white suit fitted with gold cufflinks and neural-interface sensors hidden beneath the collar.",
+      "desc_ru": "Безупречный довоенный кремово-белый костюм с золотыми запонками и скрытыми под воротником датчиками нейроинтерфейса.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 1950,
+        "Mass": 1.4,
+        "ArmorRating_Sharp": 0.28,
+        "ArmorRating_Blunt": 0.16,
+        "ArmorRating_Heat": 0.30
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.22,
+        "GeneralLaborSpeed": 0.10
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 75,
+        "Gold": 15,
+        "ComponentSpacer": 1
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Квест Убежища 112 или захват лаборатории доктора Брона",
+      "special_ru": "Ванильный XML: высокий бонус к научным исследованиям."
+    },
+    {
+      "id": "dr_hess_monocle",
+      "hero": "Доктор Хесс",
+      "faction": "men_of_letters",
+      "type": "apparel",
+      "label_en": "Dr. Hess's arcane monocle",
+      "label_ru": "оккультный монокль доктора Хесс",
+      "desc_en": "A gold-rimmed crystal monocle etched with microscopic Enochian sigils, allowing the wearer to read faint magical residues and spot hidden illusions.",
+      "desc_ru": "Хрустальный монокль в золотой оправе с микроскопической енохианской гравировкой, позволяющий видеть следы магии и скрытые иллюзии.",
+      "baseOn": "Apparel_Tuque",
+      "layers": ["Overhead"],
+      "stats": {
+        "MarketValue": 1750,
+        "Mass": 0.1,
+        "ArmorRating_Sharp": 0.05,
+        "ArmorRating_Blunt": 0.05,
+        "ArmorRating_Heat": 0.10
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.18,
+        "ShootingAccuracyPawn": 0.06,
+        "PsychicSensitivity": -0.30
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Gold": 20,
+        "Silver": 25,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "FabricationBench",
+      "unlock_ru": "Союз с Британскими Просвещёнными или трофей с доктора Хесс",
+      "special_ru": "Ванильный XML: защищает разум, повышает точность и ускоряет исследования."
+    },
+    {
+      "id": "ketch_arsenal_briefcase_coat",
+      "hero": "Артур Кетч",
+      "faction": "men_of_letters",
+      "type": "apparel",
+      "label_en": "Arthur Ketch's bespoke assassin suit",
+      "label_ru": "костюм ликвидатора Артура Кетча",
+      "desc_en": "A razor-tailored charcoal British suit lined with flexible ballistic mesh and concealed holsters for enchanted blades and pistols.",
+      "desc_ru": "Безупречно сидящий угольно-серый британский костюм с гибкой кевларовой подкладкой и потайными кобурами для зачарованных клинков и пистолетов.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 2150,
+        "Mass": 2.2,
+        "ArmorRating_Sharp": 0.78,
+        "ArmorRating_Blunt": 0.38,
+        "ArmorRating_Heat": 0.50
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.07,
+        "MeleeHitChance": 0.07,
+        "MoveSpeed": 0.12
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 80,
+        "Plasteel": 25,
+        "Silver": 20
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Артура Кетча или одолеть его в бою",
+      "special_ru": "Ванильный XML: лёгкий боевой костюм для универсального бойца."
+    },
+    {
+      "id": "hancock_tricorn_coat",
+      "hero": "Джон Хэнкок",
+      "faction": "ghouls",
+      "type": "apparel",
+      "label_en": "Hancock's red frock coat",
+      "label_ru": "красный сюртук Хэнкока",
+      "desc_en": "A weathered, gold-trimmed crimson colonial frock coat worn with a matching tricorn hat, symbolizing Goodneighbor's fierce independence.",
+      "desc_ru": "Потрёпанный алый колониальный сюртук с золотым шитьём — легендарный наряд мэра Добрососедства, символизирующий свободу Пустоши.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 1450,
+        "Mass": 2.5,
+        "ArmorRating_Sharp": 0.56,
+        "ArmorRating_Blunt": 0.28,
+        "ArmorRating_Heat": 0.35
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.25,
+        "MeleeDodgeChance": 0.06
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "DevilstrandCloth": 65,
+        "Gold": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Завербовать Джона Хэнкока или заключить союз с разумными гулями",
+      "special_ru": "Ванильный XML: высокий бонус к харизме и социальному влиянию."
+    },
+    {
+      "id": "silver_shroud_costume",
+      "hero": "Кент Коннолли",
+      "faction": "ghouls",
+      "type": "apparel",
+      "label_en": "Silver Shroud trenchcoat & fedora",
+      "label_ru": "плащ Серебряного Плаща",
+      "desc_en": "A dramatic silver-grey trenchcoat and matching wide-brimmed fedora modeled after a pre-war radio vigilante, reinforced with modern ballistic padding.",
+      "desc_ru": "Эффектный серебристо-серый плащ в духе довоенного радиогероя, укреплённый современными баллистическими вставками.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 1600,
+        "Mass": 2.9,
+        "ArmorRating_Sharp": 0.76,
+        "ArmorRating_Blunt": 0.38,
+        "ArmorRating_Heat": 0.40
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.20,
+        "AimingDelayFactor": -0.05
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 80,
+        "Plasteel": 20,
+        "Silver": 15
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Выполнить квест Кента Коннолли в Добрососедстве",
+      "special_ru": "Ванильный XML: стильная броня с бонусом к социальному влиянию."
+    },
+    {
+      "id": "fawkes_vault87_harness",
+      "hero": "Фокс",
+      "faction": "friendly_mutants",
+      "type": "apparel",
+      "label_en": "Fawkes's torn Vault 87 jumpsuit",
+      "label_ru": "комбинезон Убежища 87 Фокса",
+      "desc_en": "A heavily patched, oversized blue-and-yellow Vault 87 jumpsuit reinforced with leather straps and steel plates to fit a super mutant leader.",
+      "desc_ru": "Сильно перешитый и укреплённый кожаными ремнями сине-жёлтый комбинезон Убежища 87, подогнанный под могучее тело Фокса.",
+      "baseOn": "Apparel_PlateArmor",
+      "layers": ["Middle", "Shell"],
+      "stats": {
+        "MarketValue": 1650,
+        "Mass": 12.0,
+        "ArmorRating_Sharp": 0.92,
+        "ArmorRating_Blunt": 0.50,
+        "ArmorRating_Heat": 0.55
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.20,
+        "ResearchSpeed": 0.10
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Synthread": 90,
+        "Steel": 65,
+        "Leather_Plain": 50
+      },
+      "workbench": "TableMachining",
+      "unlock_ru": "Союз с дружелюбными супермутантами или вербовка Фокса",
+      "special_ru": "Свой C# / XML: уникальная броня только для супермутантов, сохраняющая интеллект и дипломатию.",
+      "forRace": "super_mutant_only"
+    },
+    {
+      "id": "swan_anchor_club",
+      "hero": "Лебедь",
+      "faction": "wild_mutants",
+      "type": "melee",
+      "label_en": "Swan's rusted ship anchor",
+      "label_ru": "корабельный якорь Лебедя",
+      "desc_en": "A massive, barnacle-encrusted iron ship anchor ripped from a sunken hull and wielded as a devastating two-handed club by a behemoth.",
+      "desc_ru": "Огромный ржавый корабельный якорь, вырванный из затонувшего судна и используемый бегемотом Лебедем как сокрушительная дубина.",
+      "baseOn": "MeleeWeapon_Warhammer",
+      "layers": [],
+      "stats": {
+        "MarketValue": 2400,
+        "Mass": 18.0,
+        "ArmorRating_Sharp": 0,
+        "ArmorRating_Blunt": 0,
+        "ArmorRating_Heat": 0
+      },
+      "combat": {
+        "damage": 44,
+        "armorPenetration": 0.72,
+        "cooldown": 2.6,
+        "range": 1.8
+      },
+      "equippedStatOffsets": {},
+      "setBonus_ru": "",
+      "cost": {
+        "Steel": 180,
+        "Plasteel": 25
+      },
+      "workbench": "FueledSmithy",
+      "unlock_ru": "Победить гиганта Лебедя в бою и изучить его трофей",
+      "special_ru": "Свой C# / XML: из-за огромного веса (18 кг) эффективно использовать могут только супермутанты или бойцы в силовой броне."
+    },
+    {
+      "id": "alpha_vampire_cloak",
+      "hero": "Альфа-вампир",
+      "faction": "monster_clans",
+      "type": "apparel",
+      "label_en": "Alpha Vampire's ancient cloak",
+      "label_ru": "древний плащ Альфа-вампира",
+      "desc_en": "A regal, floor-length obsidian silk and leather cloak lined with dark crimson velvet, radiating ancient predatory authority.",
+      "desc_ru": "Царственный обсидиановый плащ до пят из плотного шёлка и кожи с тёмно-алой бархатной подкладкой, излучающий древнюю хищную власть.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "stats": {
+        "MarketValue": 2500,
+        "Mass": 2.4,
+        "ArmorRating_Sharp": 0.74,
+        "ArmorRating_Blunt": 0.36,
+        "ArmorRating_Heat": 0.30
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "MoveSpeed": 0.22,
+        "MeleeDodgeChance": 0.10,
+        "SocialImpact": 0.20
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "DevilstrandCloth": 95,
+        "Hyperweave": 30,
+        "Silver": 20
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Союз с Кланами нечисти или победа над Альфа-вампиром",
+      "special_ru": "Ванильный XML: максимальный бонус к скорости и уклонению среди плащей."
+    },
+    {
+      "id": "dick_roman_corporate_suit",
+      "hero": "Дик Роман",
+      "faction": "monster_clans",
+      "type": "apparel",
+      "label_en": "Dick Roman's billionaire suit",
+      "label_ru": "костюм миллиардера Дика Романа",
+      "desc_en": "An ultra-expensive navy-blue bespoke corporate suit with a crisp white shirt and silk tie, exuding ruthless executive power.",
+      "desc_ru": "Сверхдорогой тёмно-синий деловой костюм с безупречной белой сорочкой и шёлковым галстуком, излучающий безжалостную власть корпората.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "stats": {
+        "MarketValue": 3100,
+        "Mass": 1.5,
+        "ArmorRating_Sharp": 0.62,
+        "ArmorRating_Blunt": 0.34,
+        "ArmorRating_Heat": 0.45
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0
+      },
+      "equippedStatOffsets": {
+        "TradePriceImprovement": 0.20,
+        "SocialImpact": 0.25,
+        "SuppressionPower": 0.20
+      },
+      "setBonus_ru": "",
+      "cost": {
+        "Hyperweave": 65,
+        "Gold": 25,
+        "Silver": 25
+      },
+      "workbench": "ElectricTailoringBench",
+      "unlock_ru": "Победить Дика Романа (с помощью буры) и забрать трофей",
+      "special_ru": "Ванильный XML: высший статус, торговля и подавление."
+    }
+  ]
+}
