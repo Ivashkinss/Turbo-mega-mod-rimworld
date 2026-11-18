@@ -1228,7 +1228,7 @@
     },
     {
       "id": "OutpostMapsCodexReview",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "afterTask": "OutpostMapsNativeProbe",
@@ -1255,6 +1255,20 @@
       ],
       "createdUtc": "2026-11-18T01:00:00Z",
       "note": "Economy vs vanilla colony work, upgrade payback, up to 8 numeric proposals. Analysis only."
+    },
+    {
+      "id": "OutpostMapsIntegration",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "integrate",
+      "afterTask": "OutpostBalanceReview",
+      "taskFile": "Delegation/OutpostMapsIntegration/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostMapsIntegration",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T01:05:00Z",
+      "note": "Fix Codex F1-F6, integrate map component/langs/probe into root, build, OutpostMaps fresh+reload plus Outposts and OutpostCalendar regressions; rollback after 6 failed attempts."
     }
   ],
   "owner": "claude",
