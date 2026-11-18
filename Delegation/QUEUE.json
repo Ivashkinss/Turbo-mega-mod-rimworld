@@ -1342,8 +1342,8 @@
     },
     {
       "id": "OutpostShipmentCycles",
-      "state": "pending",
-      "assignee": "codex",
+      "state": "assigned",
+      "assignee": "gemini",
       "kind": "run",
       "taskFile": "Delegation/OutpostShipmentCycles/TASK.md",
       "outputDir": "Tools/Build/CodexOutpostShipmentCycles",
@@ -1351,7 +1351,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T06:15:00Z",
-      "note": "First real in-game test of outpost-to-colony shipments over 3 days plus reload; tests only."
+      "note": "Probe and scripts written by Codex (attempt 1 aborted by a concurrent Gemini launch at 13:29). Gemini took the task without assignment; Claude reassigned it to Gemini to save Codex limit: run fresh+reload+Outposts regression with Codex probe as is, report to Tools/Build/GeminiOutpostShipmentCycles/REPORT.md."
     },
     {
       "id": "HeroRegistryStage1",
