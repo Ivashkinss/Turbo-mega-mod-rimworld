@@ -1355,12 +1355,12 @@
     },
     {
       "id": "HeroRegistryStage1",
-      "state": "pending",
-      "assignee": "codex",
+      "state": "assigned",
+      "assignee": "claude",
       "kind": "implement",
       "afterTask": "OutpostShipmentCycles",
       "taskFile": "Delegation/HeroRegistryStage1/TASK.md",
-      "outputDir": "Tools/Build/CodexHeroRegistryStage1",
+      "outputDir": "Tools/Build/ClaudeHeroRegistryStage1",
       "expectedOutputs": [
         "REPORT.md"
       ],
