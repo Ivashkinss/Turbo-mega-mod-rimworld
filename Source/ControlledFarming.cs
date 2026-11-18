@@ -229,7 +229,7 @@ namespace TurboMegaMod
                 if (ContainsCell(p.Key)) RemoveCell(p.Key);
                 GenConstruct.PlaceBlueprintForBuild(p.Value, p.Key, Map, Rot4.North, Faction.OfPlayer, null);
             }
-            foreach (var c in Cells) Map.areaManager.BuildRoof[c] = true;
+            foreach (var c in Cells) GreenhouseRoofRules.MarkRoof(Map, c);
             layoutDirty = true; return true;
         }
         public void Synchronize()

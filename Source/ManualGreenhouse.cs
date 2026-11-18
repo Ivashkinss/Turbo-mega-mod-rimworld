@@ -50,13 +50,13 @@ namespace TurboMegaMod
             var existing=map.zoneManager.AllZones.OfType<Zone_Greenhouse>().FirstOrDefault(o=>o!=this&&o.planned&&o.GrowingRoom==room);
             if(existing!=null){
                 var climate=existing.ClimateCell;var door=existing.DoorCell;
-                foreach(var c in Cells.ToArray()){RemoveCell(c);existing.AddCell(c);map.areaManager.BuildRoof[c]=true;}
+                foreach(var c in Cells.ToArray()){RemoveCell(c);existing.AddCell(c);GreenhouseRoofRules.MarkRoof(map,c);}
                 existing.climatePosition=climate;existing.doorPosition=door;existing.manualLayout=true;existing.UpdateManualBounds();
                 if(map.zoneManager.AllZones.Contains(this))map.zoneManager.DeregisterZone(this);
                 existing.Synchronize();return true;
             }
             minX=x;minZ=z;width=w;height=h;planned=true;manualLayout=true;
-            foreach(var c in Cells)map.areaManager.BuildRoof[c]=true;
+            foreach(var c in Cells)GreenhouseRoofRules.MarkRoof(map,c);
             layoutDirty=true;Synchronize();return true;
         }
         private void UpdateManualBounds()
