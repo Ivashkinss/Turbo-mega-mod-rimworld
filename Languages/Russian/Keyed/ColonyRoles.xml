@@ -6,4 +6,7 @@
   <TMM.Roles.Clear>Снять роль</TMM.Roles.Clear>
   <TMM.Roles.Civil>Гражданские</TMM.Roles.Civil>
   <TMM.Roles.Military>Военные</TMM.Roles.Military>
+  <TMM.Roles.Group>Сгруппировать</TMM.Roles.Group>
+  <TMM.Roles.ShowAll>Показать всех</TMM.Roles.ShowAll>
+  <TMM.Roles.NoRoleGroup>Без роли</TMM.Roles.NoRoleGroup>
 </LanguageData>

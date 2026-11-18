@@ -6,4 +6,7 @@
   <TMM.Roles.Clear>Clear role</TMM.Roles.Clear>
   <TMM.Roles.Civil>Civil</TMM.Roles.Civil>
   <TMM.Roles.Military>Military</TMM.Roles.Military>
+  <TMM.Roles.Group>Group</TMM.Roles.Group>
+  <TMM.Roles.ShowAll>Show all</TMM.Roles.ShowAll>
+  <TMM.Roles.NoRoleGroup>No role</TMM.Roles.NoRoleGroup>
 </LanguageData>

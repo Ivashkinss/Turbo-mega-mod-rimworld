@@ -193,3 +193,9 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - Формат 1.7: `List<StatModifier>` в XML пишется `<CookSpeed>0.05</CookSpeed>`, не через li.
 - Прогоны: ColonyRoles fresh 14/14 + reload, ERROR 0.
 - Дальше по `Documentation/COLONY-ROLES-DESIGN.md`: этап 2 — группировка панели, этап 3 — повышение и ритуал Ideology, этап 4 — бонусы и аура, этап 5 — третий огонёк, этап 6 — экипировка.
+## 18.11.2026 вечер — роли, этап 2: группировка панели колонистов
+- `ColonistBarGroups` в `Source/ColonyRoles.cs`:
+  - postfix `ColonistBar.CheckRecacheEntries` фильтрует `cachedEntries` по группе (гражданские / военные / без роли) и сортирует по рангу, старший первым;
+  - postfix `ColonistBarOnGUI` рисует кнопку «Сгруппировать/Показать всех» и кнопки групп с числом колонистов, в левом верхнем углу.
+- Прогон: ColonyRoles 19/19 (группы, сортировка, скрытие, восстановление на настоящем `ColonistBar.Entries`) + reload, ERROR 0.
+- Положение кнопок глазами не проверено: нужен взгляд пользователя.

@@ -150,4 +150,76 @@ namespace TurboMegaMod
             };
         }
     }
+
+    /// Stage 2: colonist bar grouping. "Group" hides the portraits and shows group buttons (civil, military,
+    /// no role); clicking a group shows only its colonists, highest rank first. "Show all" restores the bar.
+    [StaticConstructorOnStartup]
+    public static class ColonistBarGroups
+    {
+        public const string Civil = "civil", Military = "military", NoRole = "none";
+        public static bool Grouped;
+        public static string Active;
+        private static readonly System.Reflection.FieldInfo EntriesField = AccessTools.Field(typeof(ColonistBar), "cachedEntries");
+
+        static ColonistBarGroups()
+        {
+            var harmony = new Harmony("turbomegamod.colony.roles.bar");
+            var recache = AccessTools.Method(typeof(ColonistBar), "CheckRecacheEntries");
+            var gui = AccessTools.Method(typeof(ColonistBar), "ColonistBarOnGUI");
+            if (recache == null || gui == null || EntriesField == null) { Log.Error("[TMM] ColonistBarGroups: ColonistBar members not found; grouping disabled."); return; }
+            harmony.Patch(recache, postfix: new HarmonyMethod(typeof(ColonistBarGroups), "FilterEntries"));
+            harmony.Patch(gui, postfix: new HarmonyMethod(typeof(ColonistBarGroups), "DrawButtons"));
+        }
+
+        public static string GroupOf(Pawn p)
+        {
+            ColonyRoles roles = ColonyRoles.Instance;
+            ColonyRoleAssignment a = roles == null ? null : roles.For(p);
+            return a == null ? NoRole : (a.role.Military ? Military : Civil);
+        }
+
+        public static int RankOf(Pawn p)
+        {
+            ColonyRoles roles = ColonyRoles.Instance;
+            ColonyRoleAssignment a = roles == null ? null : roles.For(p);
+            return a == null ? -1 : a.rank;
+        }
+
+        public static void Set(bool grouped, string active)
+        {
+            Grouped = grouped; Active = active;
+            if (Find.ColonistBar != null) Find.ColonistBar.MarkColonistsDirty();
+        }
+
+        public static void FilterEntries(ColonistBar __instance)
+        {
+            if (!Grouped) return;
+            var list = EntriesField.GetValue(__instance) as List<ColonistBar.Entry>;
+            if (list == null) return;
+            var kept = list.Where(e => e.pawn != null && Active != null && GroupOf(e.pawn) == Active)
+                           .OrderByDescending(e => RankOf(e.pawn)).ThenBy(e => e.pawn.LabelShort).ToList();
+            list.Clear();
+            list.AddRange(kept);
+        }
+
+        public static void DrawButtons()
+        {
+            if (Find.CurrentMap == null || Find.ColonistBar == null) return;
+            var r = new UnityEngine.Rect(8f, 6f, 130f, 24f);
+            if (Verse.Widgets.ButtonText(r, (Grouped ? "TMM.Roles.ShowAll" : "TMM.Roles.Group").Translate()))
+                Set(!Grouped, null);
+            if (!Grouped) return;
+            var pawns = PawnsFinder.AllMaps_FreeColonists.ToList();
+            float x = r.xMax + 6f;
+            foreach (string g in new[] { Civil, Military, NoRole })
+            {
+                int n = pawns.Count(p => GroupOf(p) == g);
+                string key = g == Civil ? "TMM.Roles.Civil" : g == Military ? "TMM.Roles.Military" : "TMM.Roles.NoRoleGroup";
+                var b = new UnityEngine.Rect(x, 6f, 130f, 24f);
+                bool active = Active == g;
+                if (Verse.Widgets.ButtonText(b, key.Translate() + " (" + n + ")" + (active ? " ◄" : ""))) Set(true, active ? null : g);
+                x = b.xMax + 6f;
+            }
+        }
+    }
 }

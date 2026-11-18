@@ -90,6 +90,23 @@ public sealed class ColonyRolesProbe : MapComponent
         roles.Assign(third, null);
         C("ClearRemovesRole", roles.For(third) == null, "none", roles.For(third) == null ? "none" : roles.For(third).role.defName);
 
+        // Stage 2: colonist bar grouping on the real ColonistBar entries.
+        roles.Assign(third, R("farmer"));
+        roles.For(cook).rank = 2;
+        int all = Find.ColonistBar.Entries.Count;
+        ColonistBarGroups.Set(true, ColonistBarGroups.Civil);
+        var civil = Find.ColonistBar.Entries.Select(e => e.pawn).ToList();
+        C("CivilGroupOnlyCivil", civil.Count == 2 && civil.Contains(cook) && civil.Contains(third), "cook+farmer", civil.Count);
+        C("CivilSortedByRank", civil.Count == 2 && civil[0] == cook, "chef first", civil.Count == 0 ? "empty" : civil[0].LabelShort);
+        ColonistBarGroups.Set(true, ColonistBarGroups.Military);
+        var mil = Find.ColonistBar.Entries.Select(e => e.pawn).ToList();
+        C("MilitaryGroupOnlyTrooper", mil.Count == 1 && mil[0] == trooper, "trooper", mil.Count);
+        ColonistBarGroups.Set(true, null);
+        C("GroupedWithoutSelectionHidesPortraits", Find.ColonistBar.Entries.Count == 0, 0, Find.ColonistBar.Entries.Count);
+        ColonistBarGroups.Set(false, null);
+        C("ShowAllRestores", Find.ColonistBar.Entries.Count == all, all, Find.ColonistBar.Entries.Count);
+        roles.Assign(third, null);
+        roles.For(cook).rank = 0;
         Command_Action giz = cook.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.defaultLabel != null && g.defaultLabel.Contains(R("cook").LabelCap));
         C("RoleGizmoShowsRole", giz != null, "gizmo with role label", giz == null ? "none" : giz.defaultLabel);
 
