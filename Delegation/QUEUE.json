@@ -1239,6 +1239,22 @@
       ],
       "createdUtc": "2026-11-18T00:20:00Z",
       "note": "Independent review of Gemini maps candidate (item safety, regressions, probe validity, build). No commit, no game run."
+    },
+    {
+      "id": "OutpostBalanceReview",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/OutpostBalanceReview/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostBalanceReview",
+      "expectedOutputs": [
+        "ECONOMY.json",
+        "COMPARISON.md",
+        "PROPOSALS.md",
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T01:00:00Z",
+      "note": "Economy vs vanilla colony work, upgrade payback, up to 8 numeric proposals. Analysis only."
     }
   ],
   "owner": "claude",
