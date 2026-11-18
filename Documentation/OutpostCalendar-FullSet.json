@@ -1,0 +1,301 @@
+﻿{
+    "component":  "OutpostCalendar",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3257,
+                         "scalarFields":  745,
+                         "grammarLines":  90,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4156,
+                        "ticksAdvanced":  10660,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+    "outpostCalendar":  {
+                            "passed":  true,
+                            "checksCount":  39,
+                            "stage":  4,
+                            "calendarTable":  [
+                                                  "Farming Day 1 | Expected: 12 pot / 12 rice (rem 0.375) | Actual: 12 pot / 12 rice (rem 0.375)",
+                                                  "Factory Day 1 | Expected: 2 comp / 0 steel left | Actual: 2 comp / 0 steel left",
+                                                  "Watchtower Day 1 | Expected: 1 total / 0 hostile | Actual: 1 / 0",
+                                                  "Farming Day 2 | Expected: 24 pot / 24 rice (rem 0.750) | Actual: 24 pot / 24 rice (rem 0.750)",
+                                                  "Factory Day 2 | Expected: 0 new (total 2) | Actual: 2 total components",
+                                                  "Watchtower Day 2 | Expected: 0 goods | Actual: 0 goods",
+                                                  "Farming Day 3 | Expected: 37 pot / 37 rice (rem 0.125) | Actual: 37 pot / 37 rice (rem 0.125)",
+                                                  "Factory Day 3 | Expected: 4 new (total 6), 0 steel left | Actual: 6 total comp, 0 steel left"
+                                              ],
+                            "checks":  [
+                                           {
+                                               "name":  "Founding_Farm_Spawned",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_Factory_Spawned",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Founding_Watchtower_Spawned",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Day1_Farm_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day1_Factory_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day1_Watchtower_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Farming_Day1_Potatoes_Count",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Farming_Day1_Rice_Count",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Farming_Day1_Potatoes_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.375",
+                                               "actual":  "0.375"
+                                           },
+                                           {
+                                               "name":  "Farming_Day1_Rice_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.375",
+                                               "actual":  "0.375"
+                                           },
+                                           {
+                                               "name":  "Farming_Day1_RepeatCallNoDuplicate",
+                                               "passed":  true,
+                                               "expected":  "12",
+                                               "actual":  "12"
+                                           },
+                                           {
+                                               "name":  "Factory_Day1_Components_Count",
+                                               "passed":  true,
+                                               "expected":  "2",
+                                               "actual":  "2"
+                                           },
+                                           {
+                                               "name":  "Factory_Day1_Steel_Deducted",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Factory_Day1_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.000",
+                                               "actual":  "0.000"
+                                           },
+                                           {
+                                               "name":  "Factory_Day1_RepeatCallNoDuplicate",
+                                               "passed":  true,
+                                               "expected":  "2",
+                                               "actual":  "2"
+                                           },
+                                           {
+                                               "name":  "Watchtower_Day1_TotalSettlements",
+                                               "passed":  true,
+                                               "expected":  "1",
+                                               "actual":  "1"
+                                           },
+                                           {
+                                               "name":  "Watchtower_Day1_HostileSettlements",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Watchtower_Day1_NoGoodsProduced",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day1_PersonnelAndAnimalsHeldInWorldPawns",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Day1_SaveFileCreated",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           },
+                                           {
+                                               "name":  "Day2_Farm_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day2_Factory_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day2_Watchtower_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Farming_Day2_Potatoes_Cumulative",
+                                               "passed":  true,
+                                               "expected":  "24",
+                                               "actual":  "24"
+                                           },
+                                           {
+                                               "name":  "Farming_Day2_Rice_Cumulative",
+                                               "passed":  true,
+                                               "expected":  "24",
+                                               "actual":  "24"
+                                           },
+                                           {
+                                               "name":  "Farming_Day2_Potatoes_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.750",
+                                               "actual":  "0.750"
+                                           },
+                                           {
+                                               "name":  "Farming_Day2_Rice_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.750",
+                                               "actual":  "0.750"
+                                           },
+                                           {
+                                               "name":  "Factory_Day2_ZeroIngredients_NoOutput",
+                                               "passed":  true,
+                                               "expected":  "2",
+                                               "actual":  "2"
+                                           },
+                                           {
+                                               "name":  "Watchtower_Day2_NoGoodsProduced",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day3_Farm_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Day3_Factory_TickWindow",
+                                               "passed":  true,
+                                               "expected":  "\u003c=2500",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Farming_Day3_Potatoes_Cumulative",
+                                               "passed":  true,
+                                               "expected":  "37",
+                                               "actual":  "37"
+                                           },
+                                           {
+                                               "name":  "Farming_Day3_Rice_Cumulative",
+                                               "passed":  true,
+                                               "expected":  "37",
+                                               "actual":  "37"
+                                           },
+                                           {
+                                               "name":  "Farming_Day3_Potatoes_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.125",
+                                               "actual":  "0.125"
+                                           },
+                                           {
+                                               "name":  "Farming_Day3_Rice_Remainder",
+                                               "passed":  true,
+                                               "expected":  "0.125",
+                                               "actual":  "0.125"
+                                           },
+                                           {
+                                               "name":  "Factory_Day3_ProductionResumed",
+                                               "passed":  true,
+                                               "expected":  "6",
+                                               "actual":  "6"
+                                           },
+                                           {
+                                               "name":  "Factory_Day3_SteelConsumed",
+                                               "passed":  true,
+                                               "expected":  "0",
+                                               "actual":  "0"
+                                           },
+                                           {
+                                               "name":  "Factory_UnresearchedProduct_Locked",
+                                               "passed":  true,
+                                               "expected":  "false",
+                                               "actual":  "false"
+                                           },
+                                           {
+                                               "name":  "Final_AllNinePawnsPreservedAcrossThreeDays",
+                                               "passed":  true,
+                                               "expected":  "true",
+                                               "actual":  "true"
+                                           }
+                                       ],
+                            "errors":  [
+
+                                       ]
+                        },
+    "passed":  true
+}

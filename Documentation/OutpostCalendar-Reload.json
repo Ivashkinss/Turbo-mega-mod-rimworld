@@ -1,0 +1,127 @@
+﻿{
+    "outpostCalendarReload":  {
+                                  "passed":  true,
+                                  "checksCount":  16,
+                                  "stage":  2,
+                                  "calendarTable":  [
+
+                                                    ],
+                                  "checks":  [
+                                                 {
+                                                     "name":  "Reload_SaveState_StageIsTwo",
+                                                     "passed":  true,
+                                                     "expected":  "2",
+                                                     "actual":  "2"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_FarmPost_Present",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "true"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_FactoryPost_Present",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "true"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_WatchPost_Present",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "true"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_FarmP1_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Human19083"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_FactP1_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Human19090"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_WatchAnimal_Preserved",
+                                                     "passed":  true,
+                                                     "expected":  "true",
+                                                     "actual":  "Muffalo19104"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Farm_Day1_Potatoes",
+                                                     "passed":  true,
+                                                     "expected":  "12",
+                                                     "actual":  "12"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Farm_Day1_Rice",
+                                                     "passed":  true,
+                                                     "expected":  "12",
+                                                     "actual":  "12"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Farm_Day1_PotRemainder",
+                                                     "passed":  true,
+                                                     "expected":  "0.375",
+                                                     "actual":  "0.375"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Farm_Day1_RiceRemainder",
+                                                     "passed":  true,
+                                                     "expected":  "0.375",
+                                                     "actual":  "0.375"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Factory_Day1_Components",
+                                                     "passed":  true,
+                                                     "expected":  "2",
+                                                     "actual":  "2"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Farm_NextProductionTick",
+                                                     "passed":  true,
+                                                     "expected":  "120001",
+                                                     "actual":  "120001"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Factory_NextProductionTick",
+                                                     "passed":  true,
+                                                     "expected":  "120001",
+                                                     "actual":  "120001"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Day2_Farming_Potatoes_Cumulative",
+                                                     "passed":  true,
+                                                     "expected":  "24",
+                                                     "actual":  "24"
+                                                 },
+                                                 {
+                                                     "name":  "Reload_Day2_Factory_Components_UnchangedWithoutSteel",
+                                                     "passed":  true,
+                                                     "expected":  "2",
+                                                     "actual":  "2"
+                                                 }
+                                             ],
+                                  "errors":  [
+
+                                             ]
+                              },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3134,
+                        "ticksAdvanced":  10330,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+    "productionAssemblySha256":  "954203b8586ffb348a595d3519d11bcb2af24508fd08ffe65c955ad82c00b464",
+    "passed":  true
+}

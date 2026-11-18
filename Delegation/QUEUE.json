@@ -1214,7 +1214,7 @@
     },
     {
       "id": "OutpostCalendarCycles",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "run",
       "afterTask": "OutpostMapsNativeProbe",
@@ -1224,7 +1224,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T00:20:00Z",
-      "note": "New calendar probe for Farming/Factory/Watchtower over real days + mid-cycle save/reload; game run allowed; Source unchanged."
+      "note": "Accepted by Claude: fresh39+reload16 clean on954203b8, profile OutpostCalendar-FullSet-20261118-034050. Expected values hand-computed constants; home-map need maintenance touches only spawned home pawns."
     },
     {
       "id": "OutpostMapsCodexReview",
