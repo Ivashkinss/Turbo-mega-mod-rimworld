@@ -12,4 +12,5 @@
   <TMM.Roles.RankBonus>Rank</TMM.Roles.RankBonus>
   <TMM.Roles.AuraBonus>Commander nearby</TMM.Roles.AuraBonus>
   <TMM.Roles.ProudOfRank>proud to be {0}</TMM.Roles.ProudOfRank>
+  <TMM.Roles.GroupToggleTip>Group colonists by role: civil, military, no role.</TMM.Roles.GroupToggleTip>
 </LanguageData>

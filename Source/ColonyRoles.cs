@@ -169,6 +169,9 @@ namespace TurboMegaMod
             if (recache == null || gui == null || EntriesField == null) { Log.Error("[TMM] ColonistBarGroups: ColonistBar members not found; grouping disabled."); return; }
             harmony.Patch(recache, postfix: new HarmonyMethod(typeof(ColonistBarGroups), "FilterEntries"));
             harmony.Patch(gui, postfix: new HarmonyMethod(typeof(ColonistBarGroups), "DrawButtons"));
+            var play = AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls");
+            if (play == null) Log.Error("[TMM] ColonistBarGroups: PlaySettings.DoPlaySettingsGlobalControls not found; group toggle hidden.");
+            else harmony.Patch(play, postfix: new HarmonyMethod(typeof(ColonistBarGroups), "PlaySettingsToggle"));
         }
 
         public static string GroupOf(Pawn p)
@@ -202,23 +205,29 @@ namespace TurboMegaMod
             list.AddRange(kept);
         }
 
+        /// Toggle in the bottom-right play settings icons (user request: the top-left button was in the way).
+        public static void PlaySettingsToggle(WidgetRow row, bool worldView)
+        {
+            if (worldView || row == null) return;
+            bool g = Grouped;
+            row.ToggleableIcon(ref g, TexCommand.Draft, "TMM.Roles.GroupToggleTip".Translate(), null, null);
+            if (g != Grouped) Set(g, null);
+        }
+
+        /// Group buttons appear only while grouped, centred under the colonist bar.
         public static void DrawButtons()
         {
-            if (Find.CurrentMap == null || Find.ColonistBar == null) return;
-            var r = new UnityEngine.Rect(8f, 6f, 130f, 24f);
-            if (Verse.Widgets.ButtonText(r, (Grouped ? "TMM.Roles.ShowAll" : "TMM.Roles.Group").Translate()))
-                Set(!Grouped, null);
-            if (!Grouped) return;
+            if (!Grouped || Find.CurrentMap == null || Find.ColonistBar == null) return;
             var pawns = PawnsFinder.AllMaps_FreeColonists.ToList();
-            float x = r.xMax + 6f;
-            foreach (string g in new[] { Civil, Military, NoRole })
+            float w = 150f, gap = 6f, total = 3 * w + 2 * gap;
+            float x = (Verse.UI.screenWidth - total) / 2f, y = Active == null ? 8f : 118f;
+            foreach (string grp in new[] { Civil, Military, NoRole })
             {
-                int n = pawns.Count(p => GroupOf(p) == g);
-                string key = g == Civil ? "TMM.Roles.Civil" : g == Military ? "TMM.Roles.Military" : "TMM.Roles.NoRoleGroup";
-                var b = new UnityEngine.Rect(x, 6f, 130f, 24f);
-                bool active = Active == g;
-                if (Verse.Widgets.ButtonText(b, key.Translate() + " (" + n + ")" + (active ? " ◄" : ""))) Set(true, active ? null : g);
-                x = b.xMax + 6f;
+                int n = pawns.Count(p => GroupOf(p) == grp);
+                string key = grp == Civil ? "TMM.Roles.Civil" : grp == Military ? "TMM.Roles.Military" : "TMM.Roles.NoRoleGroup";
+                bool active = Active == grp;
+                if (Verse.Widgets.ButtonText(new UnityEngine.Rect(x, y, w, 26f), key.Translate() + " (" + n + ")" + (active ? " ◄" : ""))) Set(true, active ? null : grp);
+                x += w + gap;
             }
         }
     }

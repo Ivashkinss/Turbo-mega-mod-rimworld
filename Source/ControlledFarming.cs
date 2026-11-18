@@ -46,7 +46,8 @@ namespace TurboMegaMod
         }
         public static Zone_Greenhouse ZoneAt(Map map, IntVec3 cell)
         {
-            return map == null || !cell.InBounds(map) ? null : map.zoneManager.ZoneAt(cell) as Zone_Greenhouse;
+            // During map generation (GenStep fertility) the zone manager does not exist yet.
+            return map == null || map.zoneManager == null || !cell.InBounds(map) ? null : map.zoneManager.ZoneAt(cell) as Zone_Greenhouse;
         }
         private static void GlassRoof(IntVec3 __0, ref RoofDef __1, Map ___map)
         {
@@ -135,6 +136,8 @@ namespace TurboMegaMod
         public List<Building> lightNodes = new List<Building>();
         internal bool layoutDirty = true;
         private int lightingMode;
+        private float lampLevel = 1f;
+        public float LampLevel { get { return lampLevel; } }
         private readonly List<Mesh> frameMeshes = new List<Mesh>();
         private static Material frameMaterial;
         public Zone_Greenhouse() { }
@@ -156,7 +159,7 @@ namespace TurboMegaMod
             {
                 return !planned || !systemEnabled || !Enclosed ? 0f : FarmingPowerBudget.Greenhouse(manualLayout ? Math.Max(CellCount,GrowingRoom.CellCount) : CellCount, LampsNeeded,
                     GrowingRoom.Temperature, targetTemperature, ControlledFarming.BasePower("SunLamp"), ControlledFarming.BasePower("Heater"), ControlledFarming.BasePower("Cooler"),
-                    lightingMode == 2, ControlledFarming.BasePower("StandingLamp"), Map.mapTemperature.OutdoorTemp);
+                    lightingMode == 2, ControlledFarming.BasePower("StandingLamp"), Map.mapTemperature.OutdoorTemp, lampLevel);
             }
         }
         public override void ExposeData()
@@ -315,6 +318,9 @@ namespace TurboMegaMod
         public void SyncPowerAndLights()
         {
             lightingMode = !ControlledFarming.LightingPeriod(Map) ? 2 : Map.skyManager.CurSkyGlow < 0.9f || Cells.Any(c => !ControlledFarming.SunlightReaches(Map, c)) ? 1 : 0;
+            // Lamps draw power in proportion to the missing daylight (user report: 600 W jumping to 4 kW at dusk).
+            // Full power only in real darkness or when some cells get no sunlight at all.
+            lampLevel = lightingMode != 1 ? 0f : Cells.Any(c => !ControlledFarming.SunlightReaches(Map, c)) ? 1f : Mathf.Clamp(Mathf.InverseLerp(0.9f, 0.5f, Map.skyManager.CurSkyGlow), 0.25f, 1f);
             if (Power != null) Power.PowerOutput = -Demand;
             foreach (var light in lightNodes) if (light != null && light.Spawned) light.TryGetComp<CompGreenhouseGlower>().Refresh(LampsOn ? 1 : NightLightOn ? 2 : 0);
         }

@@ -205,3 +205,13 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - Прогон: ColonyRoles 28/28 (CookSpeed +0.05, ShootingAccuracyPawn +0.03 аурой, мысли активны) + reload, ERROR 0.
 - Осталось: этап 3 (повышение, требования, ритуал Ideology), этап 5 (третий огонёк), этап 6 (экипировка ранга).
 - Лимиты на вечер 18.11: Hydrogen 98%, Gemini 66%, Codex 19%, Claude 78% (пятичасовое окно Claude — 94% израсходовано).
+## 19.11.2026 ночь — правки по игровой сессии пользователя
+- `ControlledFarming.ZoneAt`: NRE при генерации карты (zoneManager ещё null в GenStep плодородия) исправлен.
+- `Building_ComplexDesk.GetInspectString`: убраны пустые строки (ванильная ошибка «contains empty lines»).
+- Кнопка группировки перенесена в иконки настроек справа внизу (`PlaySettings.DoPlaySettingsGlobalControls`). Кнопки групп по центру под панелью колонистов.
+- Теплица: мощность ламп пропорциональна нехватке дневного света (0.9→0.5 освещённости = 25%→100%), без скачка с 600 Вт до 4 кВт в сумерках. Свет светильников не меняется.
+- Гостиница: `HotelVisitGuarantee` — раз в 6 часов, если в ближайшие 2 дня нет визита и гости разрешены, планирует визит случайной дружественной фракции через 12–48 ч (через рефлексию в Hospitality). Тест `HotelVisit` 7/7.
+- Самовыкуп: подписи «Самовыкуп: предложить рабу договор…» / «На самовыкупе: …».
+- Прогоны: ColonyRoles + reload, HotelVisit, Complex, GreenhouseRoof, Farming — ERROR 0.
+- В очереди: ComponentErrorsSweep (Antigravity: VEF, PickUpAndHaul, MapPreview, поселения фракций), OutpostUxAudit (Codex).
+- Имена агентов: Gemini = чат Hydrogen, Antigravity = дежурный исполнитель.

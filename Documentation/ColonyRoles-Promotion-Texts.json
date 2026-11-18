@@ -1,0 +1,130 @@
+{
+  "ritual": {
+    "civil": {
+      "label_en": "mastery certification",
+      "label_ru": "вручение свидетельства мастерства",
+      "desc_en": "Colonists gather to honor {PAWN}'s hard work and present an official certificate of mastery for the rank of {RANK}.",
+      "desc_ru": "Колонисты собираются вместе, чтобы отметить упорный труд {PAWN} и торжественно вручить свидетельство мастерства ранга «{RANK}»."
+    },
+    "military": {
+      "label_en": "promotion formation",
+      "label_ru": "торжественное построение",
+      "desc_en": "The squad falls into formation as a senior officer pins new rank insignia onto {PAWN}, formally promoting them to {RANK}.",
+      "desc_ru": "Отряд выстраивается в шеренгу, а старший по званию вручает {PAWN} новые погоны, официально присваивая звание «{RANK}»."
+    }
+  },
+  "outcomes": {
+    "civil": [
+      {
+        "quality": "terrible",
+        "label_en": "botched presentation",
+        "label_ru": "скомканное вручение",
+        "desc_en": "The certificate was smudged, speeches dragged on awkwardly, and half the guests drifted back to work early.",
+        "desc_ru": "Свидетельство оказалось помятым, речи звучали неловко, и половина гостей разошлась по делам раньше времени.",
+        "moodAttendees": -2,
+        "moodPromoted": -1
+      },
+      {
+        "quality": "decent",
+        "label_en": "modest recognition",
+        "label_ru": "скромное признание",
+        "desc_en": "The colony gathered briefly to applaud {PAWN}'s dedication and hand over the new title without much fanfare.",
+        "desc_ru": "Колонисты ненадолго собрались, похлопали {PAWN} за усердие и вручили свидетельство без лишнего пафоса.",
+        "moodAttendees": 1,
+        "moodPromoted": 3
+      },
+      {
+        "quality": "good",
+        "label_en": "warm celebration",
+        "label_ru": "тёплое чествование",
+        "desc_en": "Sincere words of gratitude filled the room as {PAWN} proudly accepted recognition from the whole settlement.",
+        "desc_ru": "В зале звучали искренние слова благодарности, а {PAWN} с гордостью принял признание всего поселения.",
+        "moodAttendees": 3,
+        "moodPromoted": 5
+      },
+      {
+        "quality": "excellent",
+        "label_en": "inspiring triumph of craft",
+        "label_ru": "триумф мастерства",
+        "desc_en": "Everyone cheered {PAWN}'s achievements, leaving the entire colony inspired to push their own skills to new heights.",
+        "desc_ru": "Весь зал рукоплескал успехам {PAWN}, а поселенцы разошлись воодушевлёнными и готовыми свернуть горы.",
+        "moodAttendees": 5,
+        "moodPromoted": 8
+      }
+    ],
+    "military": [
+      {
+        "quality": "terrible",
+        "label_en": "chaotic muster",
+        "label_ru": "неряшливое построение",
+        "desc_en": "Troopers straggled in late, the insignia was dropped in the dirt, and the ceremony felt more like a chore than an honor.",
+        "desc_ru": "Бойцы опоздали в строй, погоны уронили в пыль, и церемония больше походила на повинность, чем на честь.",
+        "moodAttendees": -3,
+        "moodPromoted": -1
+      },
+      {
+        "quality": "decent",
+        "label_en": "by-the-book promotion",
+        "label_ru": "строевое повышение",
+        "desc_en": "The squad stood at attention, the order was read aloud, and {PAWN} received the new rank in proper order.",
+        "desc_ru": "Отряд отстоял по стойке смирно, приказ зачитали вслух, и {PAWN} получил новое звание строго по уставу.",
+        "moodAttendees": 1,
+        "moodPromoted": 3
+      },
+      {
+        "quality": "good",
+        "label_en": "rousing salute",
+        "label_ru": "воодушевляющий салют",
+        "desc_en": "Sharp salutes and loud cheers echoed across the yard as {PAWN} pinned on the new insignia with pride.",
+        "desc_ru": "Чёткие салюты и громкие крики «ура» разнеслись по плацу, пока {PAWN} с гордостью принимал новые погоны.",
+        "moodAttendees": 4,
+        "moodPromoted": 6
+      },
+      {
+        "quality": "excellent",
+        "label_en": "unbreakable brotherhood",
+        "label_ru": "нерушимое боевое братство",
+        "desc_en": "The speech stirred every soldier's heart; {PAWN} stepped forward as a true pillar of the squad, ready for any battle.",
+        "desc_ru": "Речь командира зажгла сердце каждого бойца, а {PAWN} шагнул вперёд как истинная опора отряда, готовая к любому бою.",
+        "moodAttendees": 6,
+        "moodPromoted": 8
+      }
+    ]
+  },
+  "thoughts": {
+    "promotedCivil": {
+      "label_en": "certified mastery ({RANK})",
+      "label_ru": "признанное мастерство ({RANK})",
+      "desc_en": "The colony officially recognized my hard work and skill. It feels good to know my craft truly matters here.",
+      "desc_ru": "Поселение официально признало мой труд и опыт. Приятно знать, что моё мастерство здесь по-настоящему ценят."
+    },
+    "promotedMilitary": {
+      "label_en": "promoted to {RANK}",
+      "label_ru": "повышение до звания «{RANK}»",
+      "desc_en": "I earned my new rank in blood and sweat. I won't let the squad down.",
+      "desc_ru": "Я заслужил эти погоны потом и кровью. Я не подведу свой отряд."
+    },
+    "ceremonyAttended": {
+      "label_en": "witnessed promotion",
+      "label_ru": "участие в церемонии повышения",
+      "desc_en": "Seeing one of our own rise through the ranks reminds me that hard work pays off.",
+      "desc_ru": "Видеть, как один из наших растёт в звании — лучшее напоминание, что упорный труд вознаграждается."
+    }
+  },
+  "letters": {
+    "promotedNoDlc_en": "{PAWN} has been promoted to {RANK} in the {ROLE} role, gaining new duties and prestige.",
+    "promotedNoDlc_ru": "{PAWN} получает ранг «{RANK}» в роли «{ROLE}», обретая новый статус и почёт в поселении.",
+    "requirementsMet_en": "{PAWN} has met all requirements for the rank of {RANK} ({ROLE}) and is ready for promotion.",
+    "requirementsMet_ru": "{PAWN} выполняет все требования для получения ранга «{RANK}» ({ROLE}) и готов к повышению.",
+    "notReady_en": "{PAWN} does not yet meet the requirements for {RANK} ({ROLE}): {SKILL} is {HAVE}, need {NEED}.",
+    "notReady_ru": "{PAWN} пока не соответствует требованиям для ранга «{RANK}» ({ROLE}): навык «{SKILL}» — {HAVE} из {NEED}."
+  },
+  "ui": {
+    "promoteButton_en": "Promote to {RANK}",
+    "promoteButton_ru": "Повысить до «{RANK}»",
+    "nextRank_en": "Next rank: {RANK}",
+    "nextRank_ru": "Следующий ранг: {RANK}",
+    "requirement_en": "{SKILL}: {HAVE} / {NEED}",
+    "requirement_ru": "{SKILL}: {HAVE} / {NEED}"
+  }
+}

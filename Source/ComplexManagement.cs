@@ -272,7 +272,9 @@ namespace TurboMegaMod
         }
         public override string GetInspectString()
         {
-            return base.GetInspectString() + "\n" + "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome) + "\n" + "TMM.Complex.CompanyIncome".Translate(companyIncome) + "\n" + "TMM.Sales.Income".Translate(Map == null ? 0 : Map.GetComponent<ComplexSales>().earned) + "\n" + "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead));
+            // Vanilla rejects inspect strings with empty lines; base is often empty for this desk.
+            var lines = new[] { base.GetInspectString(), "TMM.Complex.Income".Translate(hotelIncome, restaurantIncome, clinicIncome).ToString(), "TMM.Complex.CompanyIncome".Translate(companyIncome).ToString(), "TMM.Sales.Income".Translate(Map == null ? 0 : Map.GetComponent<ComplexSales>().earned).ToString(), "TMM.Complex.StaffCount".Translate(employees.Count(e => e.pawn != null && !e.pawn.Dead)).ToString() };
+            return string.Join("\n", lines.Where(l => !l.NullOrEmpty()).Select(l => l.Trim()).Where(l => l.Length > 0).ToArray());
         }
     }
 

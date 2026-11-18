@@ -12,4 +12,5 @@
   <TMM.Roles.RankBonus>Звание</TMM.Roles.RankBonus>
   <TMM.Roles.AuraBonus>Рядом командир</TMM.Roles.AuraBonus>
   <TMM.Roles.ProudOfRank>гордость: {0}</TMM.Roles.ProudOfRank>
+  <TMM.Roles.GroupToggleTip>Сгруппировать колонистов по ролям: гражданские, военные, без роли.</TMM.Roles.GroupToggleTip>
 </LanguageData>

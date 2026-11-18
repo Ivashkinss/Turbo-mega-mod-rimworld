@@ -10,7 +10,7 @@ namespace TurboMegaMod
         {
             return Greenhouse(cells, light, heat ? -20f : 0f, 0f, lampWatts, heaterWatts, heaterWatts, night, nightLampWatts);
         }
-        public static float Greenhouse(int cells, bool light, float temperature, float target, float lampWatts, float heaterWatts, float coolerWatts, bool night = false, float nightLampWatts = 30f, float ambientTemperature = float.NaN)
+        public static float Greenhouse(int cells, bool light, float temperature, float target, float lampWatts, float heaterWatts, float coolerWatts, bool night = false, float nightLampWatts = 30f, float ambientTemperature = float.NaN, float lampLevel = 1f)
         {
             if (cells <= 0) return 0f;
             float difference = target - temperature;
@@ -19,7 +19,7 @@ namespace TurboMegaMod
             float direction = System.Math.Abs(difference) > 0.5f ? difference : ambient;
             float climate = gap <= 0.5f ? heaterWatts * 0.1f :
                 (direction >= 0f ? heaterWatts : coolerWatts) * System.Math.Max(1f, gap / 20f);
-            return cells * Premium * ((light ? lampWatts / 96f : night ? nightLampWatts / 36f : 0f) + climate / 36f);
+            return cells * Premium * ((light ? lampWatts / 96f * lampLevel : night ? nightLampWatts / 36f : 0f) + climate / 36f);
         }
         public static float Hydroponics(bool light, float pumpWatts, float lampWatts, bool night = false, float nightLampWatts = 30f)
         {

@@ -4,7 +4,7 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3283,
+                         "keyed":  3284,
                          "scalarFields":  1392,
                          "grammarLines":  94,
                          "displayPatches":  12,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4097,
-                        "ticksAdvanced":  1733,
+                        "framesAdvanced":  4124,
+                        "ticksAdvanced":  1738,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -41,7 +41,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "b130535ef43c1955980b8449df9c83b96109e41f100fd5fb4c619e793a33612c",
+    "productionAssemblySha256":  "6cf73e580c805012cd4c96be16279d57248c1dca85528fb3d5b10a19504104a7",
     "colonyRoles":  {
                         "passed":  true,
                         "checksCount":  28,
@@ -128,7 +128,7 @@
                                            "name":  "CivilSortedByRank",
                                            "passed":  true,
                                            "expected":  "chef first",
-                                           "actual":  "Youngy"
+                                           "actual":  "Onesan"
                                        },
                                        {
                                            "name":  "MilitaryGroupOnlyTrooper",
@@ -164,13 +164,13 @@
                                            "name":  "DiagExplanation",
                                            "passed":  true,
                                            "expected":  "",
-                                           "actual":  "Р¤Р°РєС‚РѕСЂС‹ РЅР°РІС‹РєРѕРІ |     РљСѓР»РёРЅР°СЂРёСЏ (7): +7.0 | Р¤Р°РєС‚РѕСЂС‹ Р·РґРѕСЂРѕРІСЊСЏ |     Р Р°Р±РѕС‚Р°: +0.0 (100%, РІР»РёСЏРЅРёРµ 16x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |     Р—СЂРµРЅРёРµ: +0.0 (100%, РІР»РёСЏРЅРёРµ 4x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |  | Р—РІР°РЅРёРµ: +5% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°: 7.0 =\u003e 82% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°В вЂ” РґСЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹ |     РћР±С‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹: x120% |  | РС‚РѕРіРѕ: 103%"
+                                           "actual":  "Р¤Р°РєС‚РѕСЂС‹ РЅР°РІС‹РєРѕРІ |     РљСѓР»РёРЅР°СЂРёСЏ (1): +1.0 | Р¤Р°РєС‚РѕСЂС‹ Р·РґРѕСЂРѕРІСЊСЏ |     Р Р°Р±РѕС‚Р°: +0.0 (100%, РІР»РёСЏРЅРёРµ 16x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |     Р—СЂРµРЅРёРµ: +0.0 (100%, РІР»РёСЏРЅРёРµ 4x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |  | Р—РІР°РЅРёРµ: +5% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°: 1.0 =\u003e 46% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°В вЂ” РґСЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹ |     РћР±С‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹: x100% |  | РС‚РѕРіРѕ: 51%"
                                        },
                                        {
                                            "name":  "RankAddsCookSpeed",
                                            "passed":  true,
                                            "expected":  "+0.05",
-                                           "actual":  "0.04999995"
+                                           "actual":  "0.04999998"
                                        },
                                        {
                                            "name":  "PrideThoughtActive",
