@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_arthur_maxson</defName>
+    <childhood>TMM_BS_arthur_maxson_child</childhood>
+    <adulthood>TMM_BS_arthur_maxson_adult</adulthood>
+    <label>Arthur Maxson</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Arthur</nameFirst><nameNick>Maxson</nameNick><nameLast>Maxson</nameLast>
+    <gender>Male</gender>
+    <ageRange>28~34</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>16</level></li>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+    </skills>
+    <weapon>Gun_Minigun</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_owen_lyons</defName>
+    <childhood>TMM_BS_owen_lyons_child</childhood>
+    <adulthood>TMM_BS_owen_lyons_adult</adulthood>
+    <label>Owen Lyons</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Owen</nameFirst><nameNick>Elder Lyons</nameNick><nameLast>Lyons</nameLast>
+    <gender>Male</gender>
+    <ageRange>62~70</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_AssaultRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_sarah_lyons</defName>
+    <childhood>TMM_BS_sarah_lyons_child</childhood>
+    <adulthood>TMM_BS_sarah_lyons_adult</adulthood>
+    <label>Sarah Lyons</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Sarah</nameFirst><nameNick>Sentinel</nameNick><nameLast>Lyons</nameLast>
+    <gender>Female</gender>
+    <ageRange>30~36</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>14</level></li>
+      <li><skill>Social</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_ChargeRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_paladin_danse</defName>
+    <childhood>TMM_BS_paladin_danse_child</childhood>
+    <adulthood>TMM_BS_paladin_danse_adult</adulthood>
+    <label>Paladin Danse</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Danse</nameFirst><nameNick>Paladin Danse</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>34~40</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_ChargeRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_captain_kells</defName>
+    <childhood>TMM_BS_captain_kells_child</childhood>
+    <adulthood>TMM_BS_captain_kells_adult</adulthood>
+    <label>Captain Kells</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Kells</nameFirst><nameNick>Captain Kells</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>42~50</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>13</level></li>
+      <li><skill>Social</skill><level>12</level></li>
+    </skills>
+    <weapon>Gun_HeavySMG</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_proctor_ingram</defName>
+    <childhood>TMM_BS_proctor_ingram_child</childhood>
+    <adulthood>TMM_BS_proctor_ingram_adult</adulthood>
+    <label>Proctor Ingram</label>
+    <factionDef>TMM_BrotherhoodFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Ingram</nameFirst><nameNick>Proctor Ingram</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>33~40</ageRange>
+    <skills>
+      <li><skill>Crafting</skill><level>16</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Construction</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_HeavySMG</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

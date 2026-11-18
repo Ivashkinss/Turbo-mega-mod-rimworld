@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Arthur Maxson -->
+  <BackstoryDef>
+    <defName>TMM_BS_arthur_maxson_child</defName>
+    <slot>Childhood</slot>
+    <title>citadel squire</title>
+    <titleShort>squire</titleShort>
+    <description>Born into the direct bloodline of the Brotherhood's founder, [PAWN_nameDef] was sent east as a boy to be raised inside a fortified bunker. Trained in combat drills and sacred codices from an early age, [PAWN_pronoun] bore the heavy expectations of [PAWN_possessive] name with grim seriousness.</description>
+    <skillGains>
+      <Shooting>2</Shooting>
+      <Social>2</Social>
+      <Melee>1</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_arthur_maxson_adult</defName>
+    <slot>Adulthood</slot>
+    <title>supreme elder</title>
+    <titleShort>elder</titleShort>
+    <description>Rising to become the youngest Elder in Brotherhood history after slaying a super mutant warlord in single combat, [PAWN_nameDef] reunited fractured chapters under one iron banner. Charismatic, uncompromising, and fiercely protective of humanity's future, [PAWN_pronoun] leads crusades against unchecked technology.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Shooting>3</Shooting>
+      <Melee>1</Melee>
+    </skillGains>
+    <workDisables>Artistic, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Owen Lyons -->
+  <BackstoryDef>
+    <defName>TMM_BS_owen_lyons_child</defName>
+    <slot>Childhood</slot>
+    <title>bunker initiate</title>
+    <titleShort>initiate</titleShort>
+    <description>Raised in the strict monastic discipline of a western Brotherhood bunker, [PAWN_nameDef] studied pre-war archives and military history while [PAWN_possessive] peers focused solely on weapons. Even in [PAWN_possessive] youth, [PAWN_pronoun] questioned whether hoarding relics mattered more than saving lives.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_owen_lyons_adult</defName>
+    <slot>Adulthood</slot>
+    <title>veteran guardian elder</title>
+    <titleShort>veteran</titleShort>
+    <description>After leading an expedition across the ruins of the Capital Wasteland, [PAWN_nameDef] defied rigid doctrine to shield local settlers from super mutants and bring clean water to the region. Now an aging senior advisor serving beneath Arthur Maxson, [PAWN_pronoun] tempers zealous crusades with hard-earned wisdom.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>3</Intellectual>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Sarah Lyons -->
+  <BackstoryDef>
+    <defName>TMM_BS_sarah_lyons_child</defName>
+    <slot>Childhood</slot>
+    <title>commander's daughter</title>
+    <titleShort>cadet</titleShort>
+    <description>Determined never to be seen as a sheltered officer's child, [PAWN_nameDef] pushed [PAWN_objective]self harder than any recruit on the firing range. [PAWN_pronoun] earned every stripe through bruised knuckles, sharp marksmanship, and fearless grit.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_sarah_lyons_adult</defName>
+    <slot>Adulthood</slot>
+    <title>vanguard sentinel</title>
+    <titleShort>sentinel</titleShort>
+    <description>Commander of an elite reconnaissance and strike unit, [PAWN_nameDef] spent years fighting on the bloodiest frontlines of the wasteland. Bold, sarcastic, and fiercely loyal to [PAWN_possessive] squad, [PAWN_pronoun] never asks a soldier to charge anywhere [PAWN_pronoun] wouldn't go first.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Social>1</Social>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Paladin Danse -->
+  <BackstoryDef>
+    <defName>TMM_BS_paladin_danse_child</defName>
+    <slot>Childhood</slot>
+    <title>wasteland scrap orphan</title>
+    <titleShort>orphan</titleShort>
+    <description>Growing up alone in a rusted settlement built from a stranded aircraft carrier, [PAWN_nameDef] survived by scavenging and repairing salvageable junk. When Brotherhood recruiters arrived seeking able-bodied youths, [PAWN_pronoun] enlisted without looking back.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_paladin_danse_adult</defName>
+    <slot>Adulthood</slot>
+    <title>devoted field paladin</title>
+    <titleShort>paladin</titleShort>
+    <description>Forged into an exemplary soldier by years of brutal campaigns, [PAWN_nameDef] lives and breathes the Brotherhood's chain of command. Stoic, honorable, and relentless in battle, [PAWN_pronoun] leads deep-recon teams into hostile territory with unwavering resolve.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Captain Kells -->
+  <BackstoryDef>
+    <defName>TMM_BS_captain_kells_child</defName>
+    <slot>Childhood</slot>
+    <title>academy strategist</title>
+    <titleShort>midshipman</titleShort>
+    <description>Raised within the disciplined halls of a Brotherhood stronghold, [PAWN_nameDef] excelled at navigation, logistics, and tactical wargames. [PAWN_pronoun] learned early that victory depends as much on supply lines and timing as on firepower.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_captain_kells_adult</defName>
+    <slot>Adulthood</slot>
+    <title>airship commander</title>
+    <titleShort>captain</titleShort>
+    <description>As commanding officer of the Brotherhood's flagship airship, [PAWN_nameDef] oversees aerial deployments, intelligence operations, and fleet discipline with clinical precision. Calm under pressure and utterly unsentimental, [PAWN_pronoun] executes orders down to the smallest detail.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Social>3</Social>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Proctor Ingram -->
+  <BackstoryDef>
+    <defName>TMM_BS_proctor_ingram_child</defName>
+    <slot>Childhood</slot>
+    <title>scribe apprentice</title>
+    <titleShort>scribe</titleShort>
+    <description>Surrounded by diagnostic terminals and disassembled servos from childhood, [PAWN_nameDef] possessed an intuitive gift for pre-war engineering. [PAWN_pronoun] preferred grease-stained wrenches and schematic blueprints over formal ceremonies.</description>
+    <skillGains>
+      <Crafting>4</Crafting>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_proctor_ingram_adult</defName>
+    <slot>Adulthood</slot>
+    <title>armored chief engineer</title>
+    <titleShort>proctor</titleShort>
+    <description>After losing both legs when a cliffside collapsed beneath [PAWN_possessive] squad, [PAWN_nameDef] refused medical retirement and engineered a modified power armor frame to keep working. Tireless, sharp-tongued, and brilliant, [PAWN_pronoun] keeps the entire fleet's armor and reactors running.</description>
+    <skillGains>
+      <Crafting>5</Crafting>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

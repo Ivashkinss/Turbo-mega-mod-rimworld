@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Бобби Сингер -->
+  <TMM_BS_bobby_singer_child.title>парень с автосвалки</TMM_BS_bobby_singer_child.title>
+  <TMM_BS_bobby_singer_child.titleShort>механик</TMM_BS_bobby_singer_child.titleShort>
+  <TMM_BS_bobby_singer_child.description>Выросший под гнётом озлобленного и жестокого отца, [PAWN_nameDef] находил спасение среди ржавых двигателей и груд металлолома. Он рано научился возвращать к жизни сломанные машины и не лезть на рожон, когда в дом стучалась беда.</TMM_BS_bobby_singer_child.description>
+
+  <TMM_BS_bobby_singer_adult.title>хранитель знаний со свалки</TMM_BS_bobby_singer_adult.title>
+  <TMM_BS_bobby_singer_adult.titleShort>знаток</TMM_BS_bobby_singer_adult.titleShort>
+  <TMM_BS_bobby_singer_adult.description>После личной трагедии, открывшей ему глаза на сверхъестественное, [PAWN_nameDef] превратил свою автосвалку в крепость и библиотеку оккультных книг. Ворчливый и бесконечно находчивый, он стал диспетчером, механиком и приёмным отцом для молодых охотников.</TMM_BS_bobby_singer_adult.description>
+
+  <!-- Ронни Шоу -->
+  <TMM_BS_ronnie_shaw_child.title>закалённое дитя фронтира</TMM_BS_ronnie_shaw_child.title>
+  <TMM_BS_ronnie_shaw_child.titleShort>жительница окраин</TMM_BS_ronnie_shaw_child.titleShort>
+  <TMM_BS_ronnie_shaw_child.description>Выросшая в поселении под постоянной угрозой рейдеров и мутантов, [PAWN_nameDef] научилась таскать брёвна, укреплять баррикады и обращаться с тяжёлой винтовкой ещё до того, как повзрослела. Жалобы никогда не чинили пробитую стену — этот урок она усвоила на всю жизнь.</TMM_BS_ronnie_shaw_child.description>
+
+  <TMM_BS_ronnie_shaw_adult.title>ветеран артиллерии Замка</TMM_BS_ronnie_shaw_adult.title>
+  <TMM_BS_ronnie_shaw_adult.titleShort>ветеран</TMM_BS_ronnie_shaw_adult.titleShort>
+  <TMM_BS_ronnie_shaw_adult.description>Бывший командир Замка, [PAWN_nameDef] муштровала новобранцев в строительстве укреплений и артиллерийской стрельбе, пока ополчение не развалилось изнутри. Прямолинейная, суровая и строго дисциплинированная, она не терпит разгильдяйства на рубежах обороны.</TMM_BS_ronnie_shaw_adult.description>
+
+  <!-- Руфус Тёрнер -->
+  <TMM_BS_rufus_turner_child.title>недоверчивый одиночка</TMM_BS_rufus_turner_child.title>
+  <TMM_BS_rufus_turner_child.titleShort>одиночка</TMM_BS_rufus_turner_child.titleShort>
+  <TMM_BS_rufus_turner_child.description>Ещё в юности [PAWN_nameDef] никому не верил на слово и предпочитал разбирать часы и замки, а не играть со сверстниками. У него рано выработался острый глаз на скрытые механизмы и привычка продумывать три пути отхода из любой комнаты.</TMM_BS_rufus_turner_child.description>
+
+  <TMM_BS_rufus_turner_adult.title>ворчливый мастер ловушек</TMM_BS_rufus_turner_adult.title>
+  <TMM_BS_rufus_turner_adult.titleShort>капканщик</TMM_BS_rufus_turner_adult.titleShort>
+  <TMM_BS_rufus_turner_adult.description>Бывший оперативник спецслужб, ставший матёрым охотником на нечисть, [PAWN_nameDef] предпочитает жить один за рядами растяжек, оберегов и засовов. Постоянно ворча на шум и непрошеных гостей, он всё же неохотно приходит на выручку старым товарищам.</TMM_BS_rufus_turner_adult.description>
+
+  <!-- Эллен Харвелл -->
+  <TMM_BS_ellen_harvelle_child.title>помощница в придорожном кафе</TMM_BS_ellen_harvelle_child.title>
+  <TMM_BS_ellen_harvelle_child.titleShort>помощница</TMM_BS_ellen_harvelle_child.titleShort>
+  <TMM_BS_ellen_harvelle_child.description>Помогая с детства в оживлённой придорожной закусочной, [PAWN_nameDef] научилась с первого взгляда раскусывать незнакомцев, разливать крепкое спиртное и усмирять буйных посетителей. Она сочетала тёплое гостеприимство с крутым нравом, который мало кто решался испытать дважды.</TMM_BS_ellen_harvelle_child.description>
+
+  <TMM_BS_ellen_harvelle_adult.title>хозяйка «Дорожного дома»</TMM_BS_ellen_harvelle_adult.title>
+  <TMM_BS_ellen_harvelle_adult.titleShort>хозяйка бара</TMM_BS_ellen_harvelle_adult.titleShort>
+  <TMM_BS_ellen_harvelle_adult.description>Владелица бара «Дорожный дом» и вдова погибшего охотника, [PAWN_nameDef] держит заряженный дробовик за стойкой и не спускает глаз со своей дочери. Мудрая, заботливая и смертельно меткая в ближнем бою, она остаётся надёжной опорой для всех охотников в округе.</TMM_BS_ellen_harvelle_adult.description>
+</LanguageData>

@@ -15,7 +15,9 @@
       <li>Body_Hulk</li>
       <li>Hair_BaldOnly</li>
       <li>Beard_NoBeardOnly</li>
-      <!-- TMM_Body_Giant will be added here by Claude -->
+      <li>TMM_Head_SuperMutant</li>
+      <li>TMM_Body_Giant</li>
+      <li>TMM_Body_SuperMutant</li>
       <!-- Physical Prowess & Durability -->
       <li>MeleeDamage_Strong</li>
       <li>Robust</li>

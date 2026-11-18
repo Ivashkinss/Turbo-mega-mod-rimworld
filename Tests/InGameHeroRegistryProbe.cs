@@ -161,7 +161,31 @@ public sealed class HeroRegistryProbe : MapComponent
                 C("HeavenHero_" + an, aok, "angel of Heaven with own backstory", ap == null ? "null" : (ap.Faction + "/" + (ap.genes == null || ap.genes.Xenotype == null ? "no xeno" : ap.genes.Xenotype.defName) + "/" + (ap.story.Adulthood == null ? "none" : ap.story.Adulthood.defName)));
             }
             Pawn michael = reg.GetOrCreate(H("TMM_Hero_michael"));
-            C("MichaelLeadsHeaven", heaven != null && michael != null && heaven.leader == michael, "Michael", heaven == null ? null : heaven.leader);            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
+            C("MichaelLeadsHeaven", heaven != null && michael != null && heaven.leader == michael, "Michael", heaven == null ? null : heaven.leader);            // Further groups: Minutemen veterans (humans), friendly and wild super mutants (giant xenotype).
+            var groups = new[] {
+                new { fac = "TMM_MinutemenHuntersFaction", xeno = (string)null, ids = new[] { "bobby_singer", "ronnie_shaw", "rufus_turner", "ellen_harvelle" } },
+                new { fac = "TMM_FriendlyMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "fox", "uncle_leo", "strong", "erickson", "virgil" } },
+                new { fac = "TMM_BrotherhoodFaction", xeno = (string)null, ids = new[] { "arthur_maxson", "owen_lyons", "sarah_lyons", "paladin_danse", "captain_kells", "proctor_ingram" } },
+                new { fac = "TMM_WildMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "swan", "fist", "dead_eye", "mad_racer", "master_butcher" } } };
+            foreach (var grp in groups)
+            {
+                FactionDef gd = DefDatabase<FactionDef>.GetNamedSilentFail(grp.fac);
+                Faction gf = gd == null ? null : Find.FactionManager.FirstFactionOfDef(gd);
+                C("FactionPresent_" + grp.fac, gf != null, grp.fac, gf);
+                foreach (string gid in grp.ids)
+                {
+                    Pawn gp = reg.GetOrCreate(H("TMM_Hero_" + gid));
+                    string xn = gp == null || gp.genes == null || gp.genes.Xenotype == null ? "none" : gp.genes.Xenotype.defName;
+                    bool xok = grp.xeno == null || xn == grp.xeno;
+                    bool bs = gp != null && gp.story.Adulthood != null && gp.story.Adulthood.defName == "TMM_BS_" + gid + "_adult";
+                    C("Hero_" + gid, gp != null && gp.Faction == gf && xok && bs, grp.fac + "/" + (grp.xeno ?? "any") + "/own backstory", gp == null ? "null" : gp.Faction + "/" + xn + "/" + bs);
+                    if (grp.xeno == "TMM_SuperMutant" && gp != null)
+                        C("Giant_" + gid, Math.Abs(GiantDrawScale.FactorFor(gp) - 2.2f) < 0.01f && gp.story.headType != null && gp.story.headType.defName == "TMM_SuperMutantHead", "scale 2.2, mutant head", GiantDrawScale.FactorFor(gp) + "/" + (gp.story.headType == null ? "null" : gp.story.headType.defName));
+                }
+            }
+            Pawn foxP = reg.GetOrCreate(H("TMM_Hero_fox")); Pawn swanP = reg.GetOrCreate(H("TMM_Hero_swan"));
+            C("FoxLeadsFriendlyMutants", foxP != null && foxP.Faction != null && foxP.Faction.leader == foxP, "Fox", foxP == null || foxP.Faction == null ? null : foxP.Faction.leader);
+            C("SwanLeadsWildMutants", swanP != null && swanP.Faction != null && swanP.Faction.leader == swanP, "Swan", swanP == null || swanP.Faction == null ? null : swanP.Faction.leader);            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
             Pawn azazel = reg.GetOrCreate(H("TMM_Hero_azazel"));
             bool yellow = azazel != null && azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_Devil" && x.Active);
             bool blackOff = azazel != null && !azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_DemonBlack" && x.Active);
@@ -186,7 +210,7 @@ public sealed class HeroRegistryProbe : MapComponent
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
-            C("TwentyRecords", reg.Records.Count() == 20, 20, reg.Records.Count());
+            C("FortyRecords", reg.Records.Count() == 40, 40, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -272,7 +296,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 20, 20, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 40, 40, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

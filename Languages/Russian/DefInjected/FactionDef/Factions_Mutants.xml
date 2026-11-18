@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_FriendlyMutantsFaction.label>дружелюбные супермутанты</TMM_FriendlyMutantsFaction.label>
+  <TMM_FriendlyMutantsFaction.description>Разумные супермутанты, сохранившие рассудок после ВРЭ. Живут отдельно от диких сородичей, торгуют, защищают путников и понемногу учатся доверять людям.</TMM_FriendlyMutantsFaction.description>
+  <TMM_FriendlyMutantsFaction.pawnSingular>супермутант</TMM_FriendlyMutantsFaction.pawnSingular>
+  <TMM_FriendlyMutantsFaction.pawnsPlural>супермутанты</TMM_FriendlyMutantsFaction.pawnsPlural>
+  <TMM_FriendlyMutantsFaction.leaderTitle>старейшина</TMM_FriendlyMutantsFaction.leaderTitle>
+  <TMM_FriendlyMutantsFaction.fixedName>Дружелюбные супермутанты</TMM_FriendlyMutantsFaction.fixedName>
+  <TMM_WildMutantsFaction.label>дикие супермутанты</TMM_WildMutantsFaction.label>
+  <TMM_WildMutantsFaction.description>Дикие супермутанты, чей разум сожрал ВРЭ. Совершают набеги, едят пленных и подчиняются только сильнейшему.</TMM_WildMutantsFaction.description>
+  <TMM_WildMutantsFaction.pawnSingular>супермутант</TMM_WildMutantsFaction.pawnSingular>
+  <TMM_WildMutantsFaction.pawnsPlural>супермутанты</TMM_WildMutantsFaction.pawnsPlural>
+  <TMM_WildMutantsFaction.leaderTitle>вожак-бегемот</TMM_WildMutantsFaction.leaderTitle>
+  <TMM_WildMutantsFaction.fixedName>Дикие супермутанты</TMM_WildMutantsFaction.fixedName>
+  <TMM_BrotherhoodFaction.label>Братство Стали</TMM_BrotherhoodFaction.label>
+  <TMM_BrotherhoodFaction.description>Техно-военный орден, поклявшийся собирать и охранять довоенные технологии. Дисциплинированные, гордые и настороженные к мутантам и синтам, его паладины в силовой броне — стальной кулак Пустоши.</TMM_BrotherhoodFaction.description>
+  <TMM_BrotherhoodFaction.pawnSingular>рыцарь</TMM_BrotherhoodFaction.pawnSingular>
+  <TMM_BrotherhoodFaction.pawnsPlural>рыцари</TMM_BrotherhoodFaction.pawnsPlural>
+  <TMM_BrotherhoodFaction.leaderTitle>старейшина</TMM_BrotherhoodFaction.leaderTitle>
+  <TMM_BrotherhoodFaction.fixedName>Братство Стали</TMM_BrotherhoodFaction.fixedName>
+</LanguageData>

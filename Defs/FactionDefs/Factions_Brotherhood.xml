@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brotherhood of Steel, stage 1: a high-tech human faction built on outlanders. -->
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TMM_BrotherhoodFaction</defName>
+    <label>Brotherhood of Steel</label>
+    <description>A techno-military order sworn to gather and guard pre-war technology. Disciplined, proud and wary of mutants and synths, its paladins in power armor are the steel fist of the wasteland.</description>
+    <pawnSingular>knight</pawnSingular>
+    <pawnsPlural>knights</pawnsPlural>
+    <leaderTitle>elder</leaderTitle>
+    <fixedName>Brotherhood of Steel</fixedName>
+    <techLevel>Spacer</techLevel>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.4</settlementGenerationWeight>
+    <listOrderPriority>15</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.45, 0.45, 0.5)</li>
+      <li>(0.7, 0.55, 0.25)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

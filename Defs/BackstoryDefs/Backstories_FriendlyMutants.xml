@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Fox -->
+  <BackstoryDef>
+    <defName>TMM_BS_fox_child</defName>
+    <slot>Childhood</slot>
+    <title>vault test subject</title>
+    <titleShort>subject</titleShort>
+    <description>Exposed to experimental mutagens inside an isolated underground vault, [PAWN_nameDef] endured painful physical transformation without losing [PAWN_possessive] sanity. Locked in a solitary cell by terrified peers, [PAWN_pronoun] spent years reading salvaged terminals to preserve [PAWN_possessive] humanity.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_fox_adult</defName>
+    <slot>Adulthood</slot>
+    <title>calm mutant leader</title>
+    <titleShort>protector</titleShort>
+    <description>After escaping both vault confinement and brutal Enclave captivity, [PAWN_nameDef] dedicated [PAWN_possessive] immense strength to protecting peaceful travelers. Thoughtful and eloquent despite [PAWN_possessive] hulking frame, [PAWN_pronoun] guides fellow rational mutants toward coexistence with the wasteland.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>2</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Uncle Leo -->
+  <BackstoryDef>
+    <defName>TMM_BS_uncle_leo_child</defName>
+    <slot>Childhood</slot>
+    <title>gentle outcast</title>
+    <titleShort>outcast</titleShort>
+    <description>Unlike [PAWN_possessive] aggressive kin who lived only for raiding and bloodshed, [PAWN_nameDef] never felt the urge to crush smaller creatures. Driven out of the warband for refusing to fight, [PAWN_pronoun] learned to forage and survive alone in the ruins.</description>
+    <skillGains>
+      <Plants>3</Plants>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_uncle_leo_adult</defName>
+    <slot>Adulthood</slot>
+    <title>wandering mutant trader</title>
+    <titleShort>wanderer</titleShort>
+    <description>Roaming the dangerous highways of the wasteland with a pack full of salvaged trinkets, [PAWN_nameDef] greets every stranger with warm curiosity and a good story. Though humans often panic at [PAWN_possessive] size, [PAWN_possessive] genuine kindness quickly wins them over.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Intellectual</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Strong -->
+  <BackstoryDef>
+    <defName>TMM_BS_strong_child</defName>
+    <slot>Childhood</slot>
+    <title>tower brawler</title>
+    <titleShort>brawler</titleShort>
+    <description>Born into a violent mutant tribe occupying a ruined skyscraper, [PAWN_nameDef] spent [PAWN_possessive] early years smashing scrap metal and wrestling rivals. [PAWN_pronoun] respected only brute strength and straightforward honesty, despising sneaky tactics and weak excuses.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Mining>2</Mining>
+    </skillGains>
+    <workDisables>Intellectual, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_strong_adult</defName>
+    <slot>Adulthood</slot>
+    <title>seeker of human kindness</title>
+    <titleShort>seeker</titleShort>
+    <description>Fascinated by an old theater performance [PAWN_pronoun] witnessed while captive, [PAWN_nameDef] set out across the wasteland in search of the secret behind human power. Blunt, loyal, and terrifying in close combat, [PAWN_pronoun] eagerly crushes enemies while looking for literal human kindness.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Shooting>3</Shooting>
+    </skillGains>
+    <workDisables>Intellectual, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Erickson -->
+  <BackstoryDef>
+    <defName>TMM_BS_erickson_child</defName>
+    <slot>Childhood</slot>
+    <title>pre-war researcher</title>
+    <titleShort>student</titleShort>
+    <description>Before the world burned and mutagens reshaped [PAWN_possessive] body, [PAWN_nameDef] was a quiet, methodical student of biology and electronics. [PAWN_pronoun] preferred working alone in dimly lit laboratories over crowded lecture halls.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_erickson_adult</defName>
+    <slot>Adulthood</slot>
+    <title>reclusive mutant scholar</title>
+    <titleShort>recluse</titleShort>
+    <description>Retaining [PAWN_possessive] sharp mind after mutation, [PAWN_nameDef] retreated from aggressive mutant warbands to live in foggy isolation. Surrounded by salvaged terminals and tamed wasteland hounds, [PAWN_pronoun] quietly studies biology and trades rare supplies with trusted visitors.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Animals>3</Animals>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Brian Virgil -->
+  <BackstoryDef>
+    <defName>TMM_BS_virgil_child</defName>
+    <slot>Childhood</slot>
+    <title>institute prodigy</title>
+    <titleShort>prodigy</titleShort>
+    <description>Raised in the sterile underground halls of a secretive scientific enclave, [PAWN_nameDef] showed an early gift for genetics and molecular biology. [PAWN_pronoun] believed purely in progress through science, sheltered from the harsh realities of the surface world.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_virgil_adult</defName>
+    <slot>Adulthood</slot>
+    <title>mutated fugitive scientist</title>
+    <titleShort>fugitive</titleShort>
+    <description>Horrified by the unethical human experiments [PAWN_pronoun] was ordered to oversee, [PAWN_nameDef] sabotaged the lab and injected [PAWN_objective]self with a custom mutagen strain to survive the irradiated wasteland. Brilliant yet deeply paranoid, [PAWN_pronoun] hides in remote caves working tirelessly on a cure.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Medicine>3</Medicine>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

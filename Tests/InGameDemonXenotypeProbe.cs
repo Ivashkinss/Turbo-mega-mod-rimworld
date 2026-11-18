@@ -72,7 +72,7 @@ public sealed class DemonXenotypeProbe : MapComponent
         {
             XenoName = "TMM_SuperMutant";
             AppearanceGenes = new[] { "Skin_Green", "Body_Hulk", "Hair_BaldOnly" };
-            AllTextures = new string[0];
+            AllTextures = new[] { "Things/TMM/Xenotypes/SuperMutant/SuperMutantHead", "Things/TMM/Xenotypes/SuperMutant/Naked_TMM_SuperMutant" };
         }
         C("BiotechActive", ModsConfig.BiotechActive, true, ModsConfig.BiotechActive);
         XenotypeDef xeno = DefDatabase<XenotypeDef>.GetNamedSilentFail(XenoName);
@@ -107,14 +107,16 @@ public sealed class DemonXenotypeProbe : MapComponent
         else if (XenoName == "TMM_SuperMutant")
         {
             C("SuperMutantSkinGene", skin != null && skin.def.defName == "Skin_Green", "Skin_Green", skin == null ? "none" : skin.def.defName);
-            C("SuperMutantBodyTypeHulk", demon.story != null && demon.story.bodyType == BodyTypeDefOf.Hulk, "Hulk", demon.story == null || demon.story.bodyType == null ? "null" : demon.story.bodyType.defName);
+            C("SuperMutantHead", demon.story != null && demon.story.headType != null && demon.story.headType.defName == "TMM_SuperMutantHead", "TMM_SuperMutantHead", demon.story == null || demon.story.headType == null ? "null" : demon.story.headType.defName);
+            C("SuperMutantGiantScale", Math.Abs(TurboMegaMod.GiantDrawScale.FactorFor(demon) - 2.2f) < 0.01f, 2.2, TurboMegaMod.GiantDrawScale.FactorFor(demon));
+            C("SuperMutantBodyCustom", demon.story != null && demon.story.bodyType != null && demon.story.bodyType.defName == "TMM_SuperMutant", "TMM_SuperMutant", demon.story == null || demon.story.bodyType == null ? "null" : demon.story.bodyType.defName);
         }
 
         // Portraits without apparel so horns, eyes and tail are visible; saved for human review.
         int saved = 0;
         foreach (Rot4 rot in new[] { Rot4.South, Rot4.East, Rot4.North })
         {
-            RenderTexture rt = PortraitsCache.Get(demon, new Vector2(256f, 256f), rot, default(Vector3), 1f, true, true, false, false);
+            RenderTexture rt = PortraitsCache.Get(demon, new Vector2(256f, 256f), rot, default(Vector3), 1f / TurboMegaMod.GiantDrawScale.FactorFor(demon), true, true, false, false);
             if (rt == null) continue;
             string path = Path.Combine(GenFilePaths.SaveDataFolderPath, XenoName + "Portrait_" + rot.AsInt + ".bmp");
             SaveBmp(rt, path);

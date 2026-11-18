@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Super mutant look (user: "must be instantly recognisable"): own brutish head and a larger body. Biotech only. -->
+<Defs>
+  <GeneDef ParentName="GeneJawBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Head_SuperMutant</defName>
+    <label>mutant skull</label>
+    <description>Carriers of this gene have a massive skull with a heavy brow ridge, a noseless face, a brutal underbite and tusk-like lower teeth.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <forcedHeadTypes>
+      <li>TMM_SuperMutantHead</li>
+    </forcedHeadTypes>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Body_Giant</defName>
+    <label>giant frame</label>
+    <description>Carriers of this gene grow far larger than ordinary humans, towering over everyone around them.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <exclusionTags><li>TMM_DrawSize</li></exclusionTags>
+    <modExtensions>
+      <li Class="TurboMegaMod.GeneDrawScaleExtension">
+        <scale>2.2</scale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Body_SuperMutant</defName>
+    <label>mutant frame</label>
+    <description>Carriers of this gene grow a hunched, massively muscled frame with huge shoulders and almost no neck.</description>
+    <geneClass>TurboMegaMod.Gene_SuperMutantBody</geneClass>
+    <iconPath>UI/Icons/Genes/Gene_BodyHulk</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+  </GeneDef>
+</Defs>

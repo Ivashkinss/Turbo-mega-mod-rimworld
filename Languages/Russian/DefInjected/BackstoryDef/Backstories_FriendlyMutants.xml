@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Фокс -->
+  <TMM_BS_fox_child.title>подопытный из Убежища</TMM_BS_fox_child.title>
+  <TMM_BS_fox_child.titleShort>подопытный</TMM_BS_fox_child.titleShort>
+  <TMM_BS_fox_child.description>Подвергшись воздействию экспериментальных мутагенов в изолированном Убежище, [PAWN_nameDef] пережил мучительное перерождение, но сохранил ясный рассудок. Запертый в одиночной камере напуганными жителями, он годами читал уцелевшие терминалы, чтобы не утратить человечность.</TMM_BS_fox_child.description>
+
+  <TMM_BS_fox_adult.title>рассудительный вожак мутантов</TMM_BS_fox_adult.title>
+  <TMM_BS_fox_adult.titleShort>защитник</TMM_BS_fox_adult.titleShort>
+  <TMM_BS_fox_adult.description>Вырвавшись из Убежища и пережив жестокий плен у Анклава, [PAWN_nameDef] посвятил свою огромную силу защите мирных путников. Спокойный и красноречивый вопреки пугающей внешности, он ведёт разумных супермутантов по пути мирного сосуществования с обитателями Пустоши.</TMM_BS_fox_adult.description>
+
+  <!-- Дядя Лео -->
+  <TMM_BS_uncle_leo_child.title>добродушный изгой</TMM_BS_uncle_leo_child.title>
+  <TMM_BS_uncle_leo_child.titleShort>изгой</TMM_BS_uncle_leo_child.titleShort>
+  <TMM_BS_uncle_leo_child.description>В отличие от агрессивных сородичей, живших лишь налётами и насилием, [PAWN_nameDef] никогда не испытывал желания крушить тех, кто слабее. Изгнанный из стаи за отказ сражаться, он научился собирать припасы и выживать в руинах в одиночку.</TMM_BS_uncle_leo_child.description>
+
+  <TMM_BS_uncle_leo_adult.title>бродячий мутант-торговец</TMM_BS_uncle_leo_adult.title>
+  <TMM_BS_uncle_leo_adult.titleShort>странник</TMM_BS_uncle_leo_adult.titleShort>
+  <TMM_BS_uncle_leo_adult.description>Странствуя по опасным дорогам Пустоши с мешком всякой всячины, [PAWN_nameDef] встречает каждого путника тёплым любопытством и хорошей историей. Хотя люди поначалу пугаются его размеров, искреннее добродушие быстро располагает их к нему.</TMM_BS_uncle_leo_adult.description>
+
+  <!-- Силач -->
+  <TMM_BS_strong_child.title>драчун из небоскрёба</TMM_BS_strong_child.title>
+  <TMM_BS_strong_child.titleShort>громила</TMM_BS_strong_child.titleShort>
+  <TMM_BS_strong_child.description>Выросший в жестокой банде мутантов в руинах небоскрёба, [PAWN_nameDef] с ранних лет крушил металлолом и боролся с сородичами. Он уважал только грубую силу и прямоту, презирая хитрые уловки и слабые оправдания.</TMM_BS_strong_child.description>
+
+  <TMM_BS_strong_adult.title>искатель человеческой доброты</TMM_BS_strong_adult.title>
+  <TMM_BS_strong_adult.titleShort>искатель</TMM_BS_strong_adult.titleShort>
+  <TMM_BS_strong_adult.description>Впечатлённый старой театральной пьесой, увиденной в плену, [PAWN_nameDef] отправился бродить по Пустоши в поисках секрета людской силы. Прямолинейный, верный и страшный в ближнем бою, он с радостью сокрушает врагов, пытаясь отыскать то самое «молоко человеческой доброты».</TMM_BS_strong_adult.description>
+
+  <!-- Эриксон -->
+  <TMM_BS_erickson_child.title>довоенный исследователь</TMM_BS_erickson_child.title>
+  <TMM_BS_erickson_child.titleShort>студент</TMM_BS_erickson_child.titleShort>
+  <TMM_BS_erickson_child.description>До того как мир сгорел, а мутагены изменили его тело, [PAWN_nameDef] был тихим и методичным студентом, изучавшим биологию и электронику. Он всегда предпочитал уединённую работу в полутёмных лабораториях шумным аудиториям.</TMM_BS_erickson_child.description>
+
+  <TMM_BS_erickson_adult.title>замкнутый мутант-учёный</TMM_BS_erickson_adult.title>
+  <TMM_BS_erickson_adult.titleShort>отшельник</TMM_BS_erickson_adult.titleShort>
+  <TMM_BS_erickson_adult.description>Сохранив острый ум после мутации, [PAWN_nameDef] ушёл от агрессивных банд мутантов и поселился в туманной глуши. Окружённый уцелевшими терминалами и приручёнными гончими Пустоши, он тихо занимается исследованиями и торгует с редкими гостями.</TMM_BS_erickson_adult.description>
+
+  <!-- Брайан Верджил -->
+  <TMM_BS_virgil_child.title>вундеркинд Института</TMM_BS_virgil_child.title>
+  <TMM_BS_virgil_child.titleShort>вундеркинд</TMM_BS_virgil_child.titleShort>
+  <TMM_BS_virgil_child.description>Выросший в стерильных подземных залах закрытого научного сообщества, [PAWN_nameDef] рано проявил талант к генетике и молекулярной биологии. Он свято верил в научный прогресс, не зная суровой реальности разрушенного мира наверху.</TMM_BS_virgil_child.description>
+
+  <TMM_BS_virgil_adult.title>беглый учёный-мутант</TMM_BS_virgil_adult.title>
+  <TMM_BS_virgil_adult.titleShort>беглец</TMM_BS_virgil_adult.titleShort>
+  <TMM_BS_virgil_adult.description>Ужаснувшись бесчеловечным экспериментам, которыми его заставляли руководить, [PAWN_nameDef] устроил саботаж в лаборатории и ввёл себе особый штамм мутагена, чтобы выжить в радиоактивной Пустоши. Гениальный, но до крайности параноидальный, он прячется в глухих пещерах и без устали ищет лекарство.</TMM_BS_virgil_adult.description>
+</LanguageData>

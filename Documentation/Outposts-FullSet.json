@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3271,
-                         "scalarFields":  891,
+                         "scalarFields":  1035,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2872,
-                        "ticksAdvanced":  10114,
+                        "framesAdvanced":  3908,
+                        "ticksAdvanced":  10613,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,14 +42,14 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "2abe1c24c48d91ffc2606b6dff7cef01e3b67215e90acf5764ccd690108629e4",
+    "productionAssemblySha256":  "49c521d3fb0027b15784867c6f1429387bc9e35b88c28a869b54aa5cc772a362",
     "outposts":  {
                      "passed":  true,
                      "checks":  34,
                      "stage":  4,
                      "tier10Stage":  0,
                      "facts":  [
-                                   "Sanitized foreign relation: Lover | owner=Pineda (Human101) | target=Slay (Human42166) | targetFaction=РЈРґСѓС€Р»РёРІС‹Рµ РњСѓСЃРѕСЂС‰РёРєРё"
+                                   "Sanitized foreign relation: Spouse | owner=Ulana (Human1013) | target=РЎРєР°Р»СЊРїР°Рє (Human47547) | targetFaction=Р“РЅРёР»СЊС‰РёРєРё РҐРёРјРёРєР°С‚РѕРІ"
                                ],
                      "errors":  [
 

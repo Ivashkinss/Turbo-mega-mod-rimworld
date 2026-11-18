@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Swan -->
+  <BackstoryDef>
+    <defName>TMM_BS_swan_child</defName>
+    <slot>Childhood</slot>
+    <title>cursed lab experiment</title>
+    <titleShort>experiment</titleShort>
+    <description>Once a lowly janitor caught stealing supplies in a secret pre-war facility, [PAWN_nameDef] was subjected to a cruel experimental mutagen trial. As [PAWN_possessive] mind fractured and [PAWN_possessive] body swelled to monstrous proportions, [PAWN_pronoun] tore free of [PAWN_possessive] restraints and vanished into the ruins.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Mining>2</Mining>
+    </skillGains>
+    <workDisables>Intellectual, Social, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_swan_adult</defName>
+    <slot>Adulthood</slot>
+    <title>behemoth of the depths</title>
+    <titleShort>behemoth</titleShort>
+    <description>A towering legend whispered about across the wasteland, [PAWN_nameDef] slumbers beneath stagnant waters and sunken ruins until intruders disturb [PAWN_possessive] territory. Driven by primal rage and utter contempt for fragile humans, [PAWN_pronoun] crushes entire squads with colossal strength.</description>
+    <skillGains>
+      <Melee>5</Melee>
+      <Animals>2</Animals>
+    </skillGains>
+    <workDisables>Intellectual, Social, Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Fist -->
+  <BackstoryDef>
+    <defName>TMM_BS_fist_child</defName>
+    <slot>Childhood</slot>
+    <title>pit fighter mutant</title>
+    <titleShort>pit fighter</titleShort>
+    <description>Raised in the brutal hierarchy of a wild mutant warband, [PAWN_nameDef] learned that only the loudest roar and hardest punch earned respect. [PAWN_pronoun] spent [PAWN_possessive] early years smashing boulders and battering smaller kin into submission.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Mining>3</Mining>
+    </skillGains>
+    <workDisables>Intellectual, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_fist_adult</defName>
+    <slot>Adulthood</slot>
+    <title>berserker warlord</title>
+    <titleShort>warlord</titleShort>
+    <description>Seizing command of a fortified tower after tearing the previous chief apart, [PAWN_nameDef] leads [PAWN_possessive] warband with blind fury and heavy gunfire. [PAWN_pronoun] despises humans as weak, noisy insects fit only to be crushed beneath mutant boots.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Intellectual, Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Dead Eye -->
+  <BackstoryDef>
+    <defName>TMM_BS_dead_eye_child</defName>
+    <slot>Childhood</slot>
+    <title>ruin stalker</title>
+    <titleShort>stalker</titleShort>
+    <description>Unlike [PAWN_possessive] loud, reckless brethren, [PAWN_nameDef] preferred perching atop crumbling overpasses to watch stray wastelanders from afar. [PAWN_pronoun] practiced picking off mutated birds and distant targets with salvaged rifles until [PAWN_pronoun] rarely missed.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Animals>2</Animals>
+    </skillGains>
+    <workDisables>Social, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_dead_eye_adult</defName>
+    <slot>Adulthood</slot>
+    <title>mutant sharpshooter</title>
+    <titleShort>sharpshooter</titleShort>
+    <description>Unusually patient for a wild super mutant, [PAWN_nameDef] commands the marksmen of the warband from high vantage points. [PAWN_pronoun] takes cold satisfaction in pinning down human patrols with precise, lethal fire before the berserkers charge in.</description>
+    <skillGains>
+      <Shooting>5</Shooting>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Social, Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Mad Racer -->
+  <BackstoryDef>
+    <defName>TMM_BS_mad_racer_child</defName>
+    <slot>Childhood</slot>
+    <title>wreckage scavenger</title>
+    <titleShort>scavenger</titleShort>
+    <description>Obsessed with rusted car frames, leaking fuel drums, and roaring explosions, [PAWN_nameDef] spent [PAWN_possessive] youth dragging highway wrecks back to the mutant camp. [PAWN_pronoun] loved loud noises and bright fire far more than talking.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>Intellectual, Social</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_mad_racer_adult</defName>
+    <slot>Adulthood</slot>
+    <title>frenzied charger</title>
+    <titleShort>charger</titleShort>
+    <description>Driven by a manic addiction to speed, smoke, and deafening blasts, [PAWN_nameDef] leads suicidal vanguard charges straight into enemy barricades. [PAWN_pronoun] laughs wildly under heavy fire, eager to blow human defenses to pieces.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Intellectual, Social, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Master Butcher -->
+  <BackstoryDef>
+    <defName>TMM_BS_master_butcher_child</defName>
+    <slot>Childhood</slot>
+    <title>gore-bag apprentice</title>
+    <titleShort>skinner</titleShort>
+    <description>Assigned to tend the grim hanging bags and trophy piles of a mutant lair, [PAWN_nameDef] grew up elbow-deep in blood and scrap iron. [PAWN_pronoun] developed a twisted pride in keeping [PAWN_possessive] crude cleavers razor-sharp.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <workDisables>Intellectual, Social</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_master_butcher_adult</defName>
+    <slot>Adulthood</slot>
+    <title>feral slaughterer</title>
+    <titleShort>butcher</titleShort>
+    <description>Towering over the blood-stained chopping blocks of the warband, [PAWN_nameDef] hacks apart wasteland beasts and unfortunate captives with equal glee. In battle, [PAWN_pronoun] wades into melee swinging heavy blades, treating humans like livestock.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Cooking>3</Cooking>
+    </skillGains>
+    <workDisables>Intellectual, Social, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>
