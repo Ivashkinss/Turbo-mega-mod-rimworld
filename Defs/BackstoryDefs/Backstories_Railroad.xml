@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Desdemona -->
+  <BackstoryDef>
+    <defName>TMM_BS_desdemona_child</defName>
+    <slot>Childhood</slot>
+    <title>underground courier</title>
+    <titleShort>courier</titleShort>
+    <description>Growing up in a settlement terrified of nocturnal kidnappings, [PAWN_nameDef] learned how to slip through ruined alleys unseen and pass coded messages between trusted neighbors. [PAWN_pronoun] developed a fierce hatred for tyranny and hidden oppressors.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_desdemona_adult</defName>
+    <slot>Adulthood</slot>
+    <title>railroad cell leader</title>
+    <titleShort>leader</titleShort>
+    <description>Commanding the secretive Railroad from hidden catacombs, [PAWN_nameDef] coordinates daring rescues to smuggle fugitive synths to freedom. Guarded, chain-smoking, and fiercely principled, [PAWN_pronoun] sacrifices everything to keep the underground network alive.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>2</Intellectual>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Deacon -->
+  <BackstoryDef>
+    <defName>TMM_BS_deacon_child</defName>
+    <slot>Childhood</slot>
+    <title>smooth-talking drifter</title>
+    <titleShort>bluffer</titleShort>
+    <description>Wandering between wasteland towns with little more than a sharp wit and a knack for tall tales, [PAWN_nameDef] learned early that blending in is better than standing out. [PAWN_pronoun] could talk [PAWN_possessive] way out of almost any tight corner.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_deacon_adult</defName>
+    <slot>Adulthood</slot>
+    <title>master of disguise</title>
+    <titleShort>infiltrator</titleShort>
+    <description>Haunted by dark mistakes from [PAWN_possessive] youth, [PAWN_nameDef] joined the Railroad as its sharpest field spy and scout. Constantly changing outfits, faces, and cover stories, [PAWN_pronoun] hides deep loyalty behind endless lies and dry humor.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Social>3</Social>
+      <Melee>1</Melee>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Tinker Tom -->
+  <BackstoryDef>
+    <defName>TMM_BS_tinker_tom_child</defName>
+    <slot>Childhood</slot>
+    <title>paranoid radio builder</title>
+    <titleShort>tinkerer</titleShort>
+    <description>Convinced from childhood that invisible signals and secret cabals were watching the wasteland, [PAWN_nameDef] spent [PAWN_possessive] days soldering salvaged circuit boards and decrypting static broadcasts. [PAWN_pronoun] trusted wires and gauges far more than people.</description>
+    <skillGains>
+      <Crafting>4</Crafting>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_tinker_tom_adult</defName>
+    <slot>Adulthood</slot>
+    <title>eccentric underground engineer</title>
+    <titleShort>engineer</titleShort>
+    <description>The Railroad's resident genius and chief conspiracy theorist, [PAWN_nameDef] builds ballistic-weave armor, tracking beacons, and experimental tech out of wasteland junk. Hyperactive and wildly eccentric, [PAWN_pronoun] backs up [PAWN_possessive] bizarre theories with brilliant inventions.</description>
+    <skillGains>
+      <Crafting>5</Crafting>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Glory -->
+  <BackstoryDef>
+    <defName>TMM_BS_glory_child</defName>
+    <slot>Childhood</slot>
+    <title>conditioned heavy unit</title>
+    <titleShort>recruit</titleShort>
+    <description>Trained in sterile underground facilities to serve without question, [PAWN_nameDef] was built for endurance, discipline, and heavy combat. Yet beneath rigid conditioning, [PAWN_pronoun] quietly yearned for freedom and a life of [PAWN_possessive] own.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_glory_adult</defName>
+    <slot>Adulthood</slot>
+    <title>railroad heavy operative</title>
+    <titleShort>heavy</titleShort>
+    <description>Escaping bondage with the help of the Railroad, [PAWN_nameDef] chose to keep [PAWN_possessive] memories intact and fight for others still trapped underground. Calm, fearless, and armed with a roaring minigun, [PAWN_pronoun] leads the faction's toughest strike missions.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

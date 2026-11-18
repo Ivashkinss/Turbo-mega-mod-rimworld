@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using RimWorld;
+using UnityEngine;
+using Verse;
+
+namespace Hospital.Utilities;
+
+public class DiseaseUtility
+{
+    // The universe of diseases the mod may inflict on a patient, before the per-map blacklist is applied.
+    // Shared by the patient generator and the blacklist picker dialog so they always agree.
+    public static IEnumerable<HediffDef> CandidateDiseases()
+    {
+        return DefDatabase<HediffDef>.defsList.Where(def => def.tendable && def.makesSickThought
+        //&& def.defName.ToLower().Contains("infection") //debug
+        && !CausesAggroMentalState(def)
+        && !def.defName.ToLower().Contains("abasia")
+        && !def.defName.ToLower().Contains("sepsis")
+        && !def.defName.ToLower().Contains("animal")
+        && !def.defName.ToLower().Contains("gene")
+        && !def.defName.ToLower().Contains("infant")
+        && !def.defName.ToLower().Contains("scaria")
+        && !def.defName.Contains("GR") // exlcudes (mostly leathal) diseases from genetics expanded
+        && !def.defName.Contains("VDE") // excludes separation sickness
+        );
+    }
+
+    // A disease that can push its host into an aggro mental state must never be handed to a
+    // patient. Vanilla scaria drives humanlikes permanently berserk, and a berserk pawn is
+    // hostile to everyone regardless of faction (GenHostility asks the mental state, not the
+    // faction), so colonists set to "attack" gun down a friendly visitor and the player eats
+    // the goodwill penalty plus the revenge raid.
+    //
+    // The defName blacklist in CandidateDiseases only catches vanilla scaria by name; this
+    // checks what the disease actually does, so modded equivalents are excluded too.
+    private static bool CausesAggroMentalState(HediffDef def)
+    {
+        if (def.stages == null) return false;
+        foreach (HediffStage stage in def.stages)
+        {
+            if (stage?.mentalStateGivers == null) continue;
+            foreach (MentalStateGiver giver in stage.mentalStateGivers)
+            {
+                if (giver?.mentalState != null && giver.mentalState.IsAggro) return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool AddRandomDisease(Pawn pawn, PatientData patientData, HospitalMapComponent hospital)
+    {
+        bool retry = true;
+        float loweredSeverity = 0;
+        List<HediffDef> list = CandidateDiseases().Where(def => hospital.IsDiseaseAllowed(def)).ToList();
+        if (list.Count == 0)
+        {
+            Log.Message("tried to find a disease but they are all blacklisted");
+            return true; // fall back to wounds
+        }
+        /*foreach (HediffDef def in list)
+        {
+            Log.Message(def.label);
+        }*/
+
+        Hediff hediff = null;
+        while (retry)
+        {
+
+            hediff = HediffMaker.MakeHediff(list.RandomElement(), pawn);
+            //Log.Message(hediff.def.label + " choosen" );
+            float severity = Rand.Range(hediff.def.lethalSeverity / 25.0f, hediff.def.lethalSeverity / 10.0f) * HospitalMod.Settings.DiseaseSeverityMultiplier;
+            hediff.Severity = severity - loweredSeverity;
+            if (!pawn.health.WouldDieAfterAddingHediff(hediff))
+            {
+                
+                if (hediff.def.defName.ToLower().Contains("infection"))
+                {
+                    /* special case - infection also adds a wound */
+                    IEnumerable<BodyPartRecord> source = from x in pawn.health.hediffSet.GetNotMissingParts()
+                        where pawn.health.hediffSet.GetPartHealth(x) >= 2f && x.def.canScarify
+                        select x;
+                    if (!source.Any())
+                    {
+                        break;
+                    }
+                    BodyPartRecord bodyPartRecord = source.RandomElement();
+                    WoundsUtility.DamagePart(pawn, 5, bodyPartRecord, out var s, DamageDefOf.Bite);
+                    pawn.health.AddHediff(hediff, bodyPartRecord); 
+                }
+                else if (hediff.def.defName.ToLower().Contains("lung"))
+                {
+                    /* special case - lung rot is applied to left or right lung */
+                    IEnumerable<BodyPartRecord> source = from x in pawn.health.hediffSet.GetNotMissingParts()
+                        where x.def.defName.ToLower().Contains("lung")
+                        select x;
+                    if (!source.Any())
+                    {
+                        break;
+                    }
+                    BodyPartRecord bodyPartRecord = source.RandomElement();
+                    pawn.health.AddHediff(hediff, bodyPartRecord);
+                }
+                else
+                {
+                    pawn.health.AddHediff(hediff);                    
+                }                
+                // check if the disease actually made the patient sick - otherwise we have to try again
+                //Log.Message(hediff.def.label + " pawn.health.HasHediffsNeedingTend() " + pawn.health.HasHediffsNeedingTend() );
+                //Log.Message(hediff.def.label + " HealthAIUtility.ShouldSeekMedicalRest(pawn) " + HealthAIUtility.ShouldSeekMedicalRest(pawn));
+                retry = (!pawn.health.HasHediffsNeedingTend() 
+                         && !HealthAIUtility.ShouldSeekMedicalRest(pawn));
+            }
+            else
+            {
+                loweredSeverity += 0.1f;
+                //Log.Message("disease would kill patient, trying lower severity " + hediff.def.label);
+                if (loweredSeverity > 0.9f) return true;
+            }
+        }
+
+        patientData.Bill = 10;//Medicine.GetMedicineCountToFullyHeal(pawn) * ((int)pawn.playerSettings.medCare * 15.0f) * 2;
+        patientData.Diagnosis = hediff.Label;
+        patientData.Cure = "CureDisease".Translate();
+        return false;
+    }
+
+    public static void AddPlague(Pawn pawn, PatientData patientData)
+    {
+        bool retry = true;
+        float loweredSeverity = 0;
+        Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.Plague, pawn);;
+        while (retry)
+        {
+
+            //Log.Message(hediff.def.label + " choosen" );
+            float severity = Rand.Range(hediff.def.lethalSeverity / 20.0f, hediff.def.lethalSeverity / 10.0f) * HospitalMod.Settings.DiseaseSeverityMultiplier;
+            hediff.Severity = severity - loweredSeverity;
+            if (!pawn.health.WouldDieAfterAddingHediff(hediff))
+            {
+                pawn.health.AddHediff(hediff);                    
+                // check if the disease actually made the patient sick - otherwise we have to try again
+                //Log.Message(hediff.def.label + " pawn.health.HasHediffsNeedingTend() " + pawn.health.HasHediffsNeedingTend() );
+                //Log.Message(hediff.def.label + " HealthAIUtility.ShouldSeekMedicalRest(pawn) " + HealthAIUtility.ShouldSeekMedicalRest(pawn));
+                retry = (!pawn.health.HasHediffsNeedingTend() && !HealthAIUtility.ShouldSeekMedicalRest(pawn));
+                if (retry) hediff = HediffMaker.MakeHediff(HediffDefOf.Hangover, pawn); // perhaps immune to plague? try flu
+                
+            }
+            else
+            {
+                loweredSeverity += 0.1f;
+                //Log.Message("disease would kill patient, trying lower severity " + hediff.def.label);
+            }
+        }
+
+        if (!retry) patientData.Bill = 10;//Medicine.GetMedicineCountToFullyHeal(pawn) * ((int)pawn.playerSettings.medCare * 15.0f) * 2;
+        patientData.Diagnosis = hediff.Label;
+        patientData.Cure = "CureDisease".Translate();
+    }
+}

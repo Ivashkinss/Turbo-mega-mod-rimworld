@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VFE_IdeoFloatMenuPlus.description>Дополнительная функция расширяет меню создания идеологии, добавляя поиск и полосы прокрутки. Используется в VE Memes и Alpha Memes.</VFE_IdeoFloatMenuPlus.description>
+  <VFE_TileMutatorMechanics.description>Дополнительная функция добавляет расширение TileMutatorExtension для новых механик модификаторов клеток мира в Odyssey.</VFE_TileMutatorMechanics.description>
+  <VFE_WeaponTraitDefMechanics.description>Дополнительная функция добавляет расширение WeaponTraitDefs для новых уникальных особенностей поведения оружия.</VFE_WeaponTraitDefMechanics.description>
+</LanguageData>

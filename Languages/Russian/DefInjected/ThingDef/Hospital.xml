@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <PatientLandingSpot.label>посадочная площадка пациентов</PatientLandingSpot.label>
+  <PatientLandingSpot.description>Обозначает место, куда будут приземляться транспортные капсулы с пациентами.</PatientLandingSpot.description>
+  </LanguageData>

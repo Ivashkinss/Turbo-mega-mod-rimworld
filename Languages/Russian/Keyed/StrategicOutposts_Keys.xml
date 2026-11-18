@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <!-- Modes & Headers -->
+  <StrategicOutpost_Mode_Autonomous>Автономный</StrategicOutpost_Mode_Autonomous>
+  <StrategicOutpost_Mode_Physical>Физический</StrategicOutpost_Mode_Physical>
+  <StrategicOutpost_Mode_Label>Режим работы: {0}</StrategicOutpost_Mode_Label>
+  <StrategicOutpost_CurrentMode>Режим работы: {0}</StrategicOutpost_CurrentMode>
+  <StrategicOutpost_HeaderInfo>Уровень {0}/{1} (Вместимость: {2} работников) | {3}</StrategicOutpost_HeaderInfo>
+  <StrategicOutpost_HeaderInfoFull>Уровень {0}/{1} (Вместимость: {2} работников) | {3} | Режим: {4}</StrategicOutpost_HeaderInfoFull>
+  <StrategicOutpost_BaseYieldSuffix>Базовый выход: {0}/день</StrategicOutpost_BaseYieldSuffix>
+
+  <!-- Commands & Gizmos -->
+  <StrategicOutpost_ManageOutpost_Label>Управление аванпостом</StrategicOutpost_ManageOutpost_Label>
+  <StrategicOutpost_ManageOutpost_Desc>Открыть интерфейс управления аванпостом для распределения персонала, выбора производства и настройки логистики.</StrategicOutpost_ManageOutpost_Desc>
+  <StrategicOutpost_FoundOutpost_Label>Основать аванпост</StrategicOutpost_FoundOutpost_Label>
+  <StrategicOutpost_FoundOutpost_Desc>Основать постоянный стратегический аванпост на этой клетке, используя людей и припасы экспедиции.</StrategicOutpost_FoundOutpost_Desc>
+  <StrategicOutpost_ViewMap_Label>Просмотр карты</StrategicOutpost_ViewMap_Label>
+  <StrategicOutpost_ViewMap_Desc>Переместить камеру к активному базовому лагерю аванпоста на этой клетке.</StrategicOutpost_ViewMap_Desc>
+  <StrategicOutpost_EnterMap_Label>Войти на аванпост</StrategicOutpost_EnterMap_Label>
+  <StrategicOutpost_EnterMap_Desc>Направить караван непосредственно на карту аванпоста.</StrategicOutpost_EnterMap_Desc>
+  <StrategicOutpost_DeployPersonnel_Label>Развернуть персонал</StrategicOutpost_DeployPersonnel_Label>
+  <StrategicOutpost_DeployPersonnel_Desc>Высадить персонал аванпоста из абстрактного хранилища на физическую карту для работы, строительства и обороны.</StrategicOutpost_DeployPersonnel_Desc>
+  <StrategicOutpost_RecallPersonnel_Label>Отозвать персонал</StrategicOutpost_RecallPersonnel_Label>
+  <StrategicOutpost_RecallPersonnel_Desc>Отозвать развёрнутый персонал обратно в автономный режим аванпоста. Запрещено во время боя или нервных срывов.</StrategicOutpost_RecallPersonnel_Desc>
+  <StrategicOutpost_UpgradeAction_Label>Улучшить аванпост (Уровень {0})</StrategicOutpost_UpgradeAction_Label>
+  <StrategicOutpost_UpgradeAction_Desc>Расширить и модернизировать инфраструктуру аванпоста. Стоимость: {0} серебра.</StrategicOutpost_UpgradeAction_Desc>
+  <StrategicOutpost_UnloadCargoPrompt>Выгрузить накопленные ресурсы аванпоста на склад карты:</StrategicOutpost_UnloadCargoPrompt>
+  <StrategicOutpost_UnloadCargo_Label>Выгрузить груз на карту</StrategicOutpost_UnloadCargo_Label>
+
+  <!-- Specializations -->
+  <StrategicOutpost_Spec_Mining>Добыча и лесозаготовка</StrategicOutpost_Spec_Mining>
+  <StrategicOutpost_Spec_Farming>Сельскохозяйственная плантация</StrategicOutpost_Spec_Farming>
+  <StrategicOutpost_Spec_Logging>Лесозаготовка</StrategicOutpost_Spec_Logging>
+  <StrategicOutpost_Spec_Factory>Производственный цех</StrategicOutpost_Spec_Factory>
+  <StrategicOutpost_Spec_Watchtower>Дозорная башня</StrategicOutpost_Spec_Watchtower>
+
+  <StrategicOutpost_SpecDesc_Mining>Добыча металлов, минеральных жил и заготовка строительной древесины.</StrategicOutpost_SpecDesc_Mining>
+  <StrategicOutpost_SpecDesc_Farming>Выращивание продовольственных культур, текстильных волокон и лечебных трав.</StrategicOutpost_SpecDesc_Farming>
+  <StrategicOutpost_SpecDesc_Logging>Валка и распиловка местной древесины на строительные бревна.</StrategicOutpost_SpecDesc_Logging>
+  <StrategicOutpost_SpecDesc_Factory>Переработка сырья в компоненты, ткани и готовые изделия.</StrategicOutpost_SpecDesc_Factory>
+  <StrategicOutpost_SpecDesc_Watchtower>Круглосуточная дальняя разведка поселений в радиусе 15 клеток планеты.</StrategicOutpost_SpecDesc_Watchtower>
+
+  <!-- Tabs -->
+  <StrategicOutpost_Tab_Production>Производство</StrategicOutpost_Tab_Production>
+  <StrategicOutpost_Tab_Personnel>Персонал</StrategicOutpost_Tab_Personnel>
+  <StrategicOutpost_Tab_Logistics>Логистика</StrategicOutpost_Tab_Logistics>
+  <StrategicOutpost_Tab_Evacuation>Эвакуация</StrategicOutpost_Tab_Evacuation>
+
+  <!-- Production Tab UI -->
+  <StrategicOutpost_SpecializationTitle>Специализация аванпоста</StrategicOutpost_SpecializationTitle>
+  <StrategicOutpost_ChangeSpecBtn>Сменить специализацию</StrategicOutpost_ChangeSpecBtn>
+  <StrategicOutpost_LogisticsTitle>Снабжение и доставка</StrategicOutpost_LogisticsTitle>
+  <StrategicOutpost_CurrentTargetColony>Колония доставки: {0}</StrategicOutpost_CurrentTargetColony>
+  <StrategicOutpost_NoTargetColony>Не назначена (хранение на складе)</StrategicOutpost_NoTargetColony>
+  <StrategicOutpost_ChangeTargetColonyBtn>Назначить колонию доставки</StrategicOutpost_ChangeTargetColonyBtn>
+  <StrategicOutpost_ClearTargetColony>Сбросить колонию доставки</StrategicOutpost_ClearTargetColony>
+  <StrategicOutpost_WatchtowerHeader>Стратегическая разведка</StrategicOutpost_WatchtowerHeader>
+  <StrategicOutpost_WatchtowerDescFull>Дозорная башня ведёт постоянное наблюдение в радиусе 15 клеток планеты.\n\nВраждебных поселений обнаружено: {0}\nВсего поселений в радиусе: {1}\n\nРазведка носит исключительно наблюдательный характер и не создаёт бесплатных предметов.</StrategicOutpost_WatchtowerDescFull>
+  <StrategicOutpost_ProductLinesTitle>Активные производственные линии</StrategicOutpost_ProductLinesTitle>
+  <StrategicOutpost_ProductYield>{0} ({1}/день)</StrategicOutpost_ProductYield>
+  <StrategicOutpost_MustKeepOneProduct>Должна быть активна хотя бы одна производственная линия.</StrategicOutpost_MustKeepOneProduct>
+
+  <!-- Personnel Tab UI -->
+  <StrategicOutpost_WorkersInOutpost>Персонал аванпоста ({0}/{1})</StrategicOutpost_WorkersInOutpost>
+  <StrategicOutpost_CaravanColonists>Персонал каравана</StrategicOutpost_CaravanColonists>
+  <StrategicOutpost_ToCaravanBtn>В караван</StrategicOutpost_ToCaravanBtn>
+  <StrategicOutpost_ToOutpostBtn>На аванпост</StrategicOutpost_ToOutpostBtn>
+  <StrategicOutpost_NoCaravanPresentForTransfer>На этой клетке нет каравана игрока для перевода персонала.</StrategicOutpost_NoCaravanPresentForTransfer>
+
+  <!-- Logistics Tab UI -->
+  <StrategicOutpost_RawMaterialsTitle>Склад сырья ({0})</StrategicOutpost_RawMaterialsTitle>
+  <StrategicOutpost_ProducedGoodsTitle>Склад готовой продукции ({0})</StrategicOutpost_ProducedGoodsTitle>
+  <StrategicOutpost_Deposit>Положить припасы</StrategicOutpost_Deposit>
+  <StrategicOutpost_TakeItemBtn>Забрать</StrategicOutpost_TakeItemBtn>
+  <StrategicOutpost_TakeAllBtn>Забрать всё</StrategicOutpost_TakeAllBtn>
+  <StrategicOutpost_NoSupplies>В караване нет подходящих предметов для передачи на склад.</StrategicOutpost_NoSupplies>
+
+  <!-- Evacuation Tab UI -->
+  <StrategicOutpost_EvacuateTitle>Ликвидация и эвакуация аванпоста</StrategicOutpost_EvacuateTitle>
+  <StrategicOutpost_EvacuateWarningFull>Ликвидация аванпоста приведёт к переводу всех работников, животных, сырья и произведённой продукции в состав местного каравана. Объект аванпоста будет удалён с карты мира.</StrategicOutpost_EvacuateWarningFull>
+  <StrategicOutpost_EvacuateButton>Ликвидировать аванпост</StrategicOutpost_EvacuateButton>
+  <StrategicOutpost_ConfirmEvacuatePrompt>Вы уверены, что хотите ликвидировать и эвакуировать этот аванпост?</StrategicOutpost_ConfirmEvacuatePrompt>
+  <StrategicOutpost_EvacuateRequiresCaravan>Для эвакуации на этой клетке должен находиться караван игрока.</StrategicOutpost_EvacuateRequiresCaravan>
+
+  <!-- Inspect Strings -->
+  <StrategicOutpost_InspectLevel>Уровень {0}/{1} (Макс. работников: {2})</StrategicOutpost_InspectLevel>
+  <StrategicOutpost_InspectSpecialization>Специализация: {0}</StrategicOutpost_InspectSpecialization>
+  <StrategicOutpost_InspectWorkers>Назначено работников: {0}/{1}</StrategicOutpost_InspectWorkers>
+  <StrategicOutpost_Animals>Размещено животных: {0}</StrategicOutpost_Animals>
+  <StrategicOutpost_InspectRecon>Разведка: {0} враждебных / {1} всего поселений отслеживается</StrategicOutpost_InspectRecon>
+
+  <!-- Messages & Events -->
+  <StrategicOutpost_InvalidTile>Выбрана некорректная клетка планеты.</StrategicOutpost_InvalidTile>
+  <StrategicOutpost_ImpassableTile>Нельзя основать аванпост в непроходимом биоме или горах.</StrategicOutpost_ImpassableTile>
+  <StrategicOutpost_AlreadyExistsHere>На этой клетке уже расположен стратегический аванпост.</StrategicOutpost_AlreadyExistsHere>
+  <StrategicOutpost_CannotBuildOnSettlement>Нельзя основать аванпост на месте существующего поселения.</StrategicOutpost_CannotBuildOnSettlement>
+  <StrategicOutpost_CannotBuildOnSite>Нельзя основать аванпост в зоне активного происшествия.</StrategicOutpost_CannotBuildOnSite>
+  <StrategicOutpost_NoPlayerCaravan>Для основания требуется активный караван игрока.</StrategicOutpost_NoPlayerCaravan>
+  <StrategicOutpost_CaravanIsMoving>Перед основанием аванпоста караван должен остановиться.</StrategicOutpost_CaravanIsMoving>
+  <StrategicOutpost_RequiresTwoColonists>Для основания требуется не менее 2 дееспособных колонистов (сейчас: {0}).</StrategicOutpost_RequiresTwoColonists>
+  <StrategicOutpost_AdditionalEscort>В караване должен остаться как минимум один дееспособный колонист для сопровождения остальных.</StrategicOutpost_AdditionalEscort>
+  <StrategicOutpost_FoundingRollback>Не удалось основать аванпост: перевод персонала безопасно отменён.</StrategicOutpost_FoundingRollback>
+  <StrategicOutpost_FoundingSuccess>Стратегический аванпост {0} успешно основан с персоналом в {1} чел.</StrategicOutpost_FoundingSuccess>
+  <StrategicOutpost_ShipmentDelivered>Ежедневный груз из {0} доставлен в поселение {1}.</StrategicOutpost_ShipmentDelivered>
+  <StrategicOutpost_MaxLevelReached>Аванпост уже достиг максимального 10 уровня.</StrategicOutpost_MaxLevelReached>
+  <StrategicOutpost_UpgradeBlockedNoSpace>Улучшение заблокировано: на карте нет безопасного свободного места для расширения.</StrategicOutpost_UpgradeBlockedNoSpace>
+  <StrategicOutpost_NotEnoughSilver>Для улучшения требуется {0} серебра (доступно: {1}).</StrategicOutpost_NotEnoughSilver>
+  <StrategicOutpost_UpgradeSuccess>{0} успешно улучшен до уровня {1} (Вместимость: {2}).</StrategicOutpost_UpgradeSuccess>
+  <StrategicOutpost_NoWorkersToDeploy>Нет доступного персонала для развёртывания на карте.</StrategicOutpost_NoWorkersToDeploy>
+  <StrategicOutpost_PersonnelDeployed>{0}: высажено {1} работников на карту аванпоста.</StrategicOutpost_PersonnelDeployed>
+  <StrategicOutpost_PersonnelRecalled>{0}: отозвано {1} работников в автономный режим.</StrategicOutpost_PersonnelRecalled>
+  <StrategicOutpost_CannotRecallDuringCombat>Нельзя отозвать персонал в автономный режим во время активного боя или опасности.</StrategicOutpost_CannotRecallDuringCombat>
+  <StrategicOutpost_CannotRecallMentalBreak>Нельзя отозвать персонал: {0} находится в состоянии нервного срыва.</StrategicOutpost_CannotRecallMentalBreak>
+  <StrategicOutpost_CargoUnloaded>Выгружено {0} предметов груза на склад аванпоста.</StrategicOutpost_CargoUnloaded>
+  <StrategicOutpost_NoCargoToUnload>На складе готовой продукции нет товаров для выгрузки.</StrategicOutpost_NoCargoToUnload>
+  <StrategicOutpost_CaravanTooHeavy>Превышена грузоподъёмность каравана.</StrategicOutpost_CaravanTooHeavy>
+  <StrategicOutpost_CargoRemains>Эвакуация приостановлена: груз или животные не помещаются в караван.</StrategicOutpost_CargoRemains>
+  <StrategicOutpost_Evacuated>Стратегический аванпост {0} ликвидирован, персонал и припасы эвакуированы.</StrategicOutpost_Evacuated>
+  <StrategicOutpost_InvalidCaravanOrPawn>Указан некорректный караван или персонаж.</StrategicOutpost_InvalidCaravanOrPawn>
+  <StrategicOutpost_PawnNotAvailable>Указанный персонаж отсутствует в караване.</StrategicOutpost_PawnNotAvailable>
+  <StrategicOutpost_NotPlayerFaction>Персонаж не принадлежит фракции игрока.</StrategicOutpost_NotPlayerFaction>
+  <StrategicOutpost_CapacityFull>Лимит работников аванпоста исчерпан (максимум {0}).</StrategicOutpost_CapacityFull>
+  <StrategicOutpost_FailedToAddPawn>Не удалось поместить персонажа в хранилище аванпоста.</StrategicOutpost_FailedToAddPawn>
+  <StrategicOutpost_PawnNotFound>Персонаж не найден среди сотрудников аванпоста.</StrategicOutpost_PawnNotFound>
+  <StrategicOutpost_CannotRemoveLastWorker>Нельзя забрать последнего работника с активного аванпоста.</StrategicOutpost_CannotRemoveLastWorker>
+  <StrategicOutpost_ProductUnavailable>Производственная линия сейчас недоступна.</StrategicOutpost_ProductUnavailable>
+  <StrategicOutpost_ResearchRequired>Требуется исследование: {0}</StrategicOutpost_ResearchRequired>
+  <StrategicOutpost_CannotEvacuateActiveMap>Невозможно эвакуировать аванпост, пока активна карта и развёрнут персонал. Сначала отзовите всех колонистов.</StrategicOutpost_CannotEvacuateActiveMap>
+  <StrategicOutpost_CannotFindSpawnCell>Невозможно высадить персонал: не найдены подходящие проходимые клетки около центра базы.</StrategicOutpost_CannotFindSpawnCell>
+  <StrategicOutpost_AlreadyAutonomous>Персонал уже находится в автономном режиме.</StrategicOutpost_AlreadyAutonomous>
+  <StrategicOutpost_AlreadyPhysical>Персонал уже высажен на карту.</StrategicOutpost_AlreadyPhysical>
+  <StrategicOutpost_MapGenFailed>Не удалось сгенерировать карту аванпоста.</StrategicOutpost_MapGenFailed>
+  <StrategicOutpost_PawnNotSuitable>Колонист не подходит для несения службы на аванпосте.</StrategicOutpost_PawnNotSuitable>
+  <StrategicOutpost_EvacuateOverloaded>Эвакуация не завершена: достигнут предел грузоподъёмности каравана. Оставшиеся припасы сохранены на аванпосте.</StrategicOutpost_EvacuateOverloaded>
+  <StrategicOutpost_RosterUnavailable>Часть штатного состава находится вне карты аванпоста. Верните её перед переходом в автономный режим.</StrategicOutpost_RosterUnavailable>
+  <StrategicOutpost_MapRetained>Персонал и доступный груз эвакуированы. Посещённая карта с постройками сохранена.</StrategicOutpost_MapRetained>
+</LanguageData>

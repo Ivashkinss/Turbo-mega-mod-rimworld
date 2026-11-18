@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>TMM_HuntersFieldArchive</defName>
+    <label>hunters field archive</label>
+    <description>A rugged, waterproof field archive and data core compiled by minutemen patrols and monster hunters. Contains detailed records of anomalous entities, behavioral patterns of dangerous frontier beasts, and handwritten notes on protective warding circles.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/SubpersonaCoreTechprof</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+      <MarketValue>650</MarketValue>
+      <Mass>1.5</Mass>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    <tradeTags>
+      <li>ExoticMisc</li>
+      <li>Artifact</li>
+    </tradeTags>
+  </ThingDef>
+
+</Defs>

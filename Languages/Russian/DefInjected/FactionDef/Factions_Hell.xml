@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_HellFaction.label>легионы Ада</TMM_HellFaction.label>
+  <TMM_HellFaction.description>Демоны в украденных человеческих сосудах. Подчиняются Королю Ада, наносят удары из скрытых капищ и алтарей перекрёстков, а торгуют только контрактами, цена которых приходит позже.</TMM_HellFaction.description>
+  <TMM_HellFaction.pawnSingular>демон</TMM_HellFaction.pawnSingular>
+  <TMM_HellFaction.pawnsPlural>демоны</TMM_HellFaction.pawnsPlural>
+  <TMM_HellFaction.leaderTitle>Король Ада</TMM_HellFaction.leaderTitle>
+  <TMM_HellFaction.fixedName>Демоны Ада</TMM_HellFaction.fixedName>
+</LanguageData>

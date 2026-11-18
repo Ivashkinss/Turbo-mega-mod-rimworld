@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Полковник Отем -->
+  <TMM_BS_colonel_autumn_child.title>наследник офицеров Анклава</TMM_BS_colonel_autumn_child.title>
+  <TMM_BS_colonel_autumn_child.titleShort>кадет</TMM_BS_colonel_autumn_child.titleShort>
+  <TMM_BS_colonel_autumn_child.description>Рождённый в закрытом бастионе остатков довоенного правительства, [PAWN_nameDef] с детства верил, что лишь его люди являются законными наследниками цивилизации. Воспитанный в презрении к жителям Пустоши, он рано проявил талант к военному командованию.</TMM_BS_colonel_autumn_child.description>
+
+  <TMM_BS_colonel_autumn_adult.title>полевой главнокомандующий Анклава</TMM_BS_colonel_autumn_adult.title>
+  <TMM_BS_colonel_autumn_adult.titleShort>полковник</TMM_BS_colonel_autumn_adult.titleShort>
+  <TMM_BS_colonel_autumn_adult.description>Возглавляя экспедиционные силы Анклава в Столичной Пустоши, [PAWN_nameDef] сочетает офицерскую выправку с безжалостным прагматизмом. Не желая слепо подчиняться машинным директивам, он стремится захватить ключевые объекты и навести порядок железной рукой.</TMM_BS_colonel_autumn_adult.description>
+
+  <!-- Доктор Чарльз Керлинг -->
+  <TMM_BS_dr_curling_child.title>вундеркинд закрытого бункера</TMM_BS_dr_curling_child.title>
+  <TMM_BS_dr_curling_child.titleShort>вундеркинд</TMM_BS_dr_curling_child.titleShort>
+  <TMM_BS_dr_curling_child.description>Укрытый от радиации и грязи поверхности на морской базе, [PAWN_nameDef] провёл юность за микроскопами и биохимическими формулами. Он вырос с твёрдой убеждённостью, что наука способна стерилизовать и очистить испорченный мир.</TMM_BS_dr_curling_child.description>
+
+  <TMM_BS_dr_curling_adult.title>глава химического корпуса</TMM_BS_dr_curling_adult.title>
+  <TMM_BS_dr_curling_adult.titleShort>биохимик</TMM_BS_dr_curling_adult.titleShort>
+  <TMM_BS_dr_curling_adult.description>Руководитель химического корпуса Анклава, [PAWN_nameDef] разработал смертоносный аэрозольный токсин для уничтожения всех мутировавших организмов на материке. Вежливый и тихий в своём белом халате, он хладнокровно оправдывает геноцид как необходимую санитарную меру.</TMM_BS_dr_curling_adult.description>
+
+  <!-- Сержант Дорнан -->
+  <TMM_BS_sergeant_dornan_child.title>казарменный ревнитель устава</TMM_BS_sergeant_dornan_child.title>
+  <TMM_BS_sergeant_dornan_child.titleShort>новобранец</TMM_BS_sergeant_dornan_child.titleShort>
+  <TMM_BS_sergeant_dornan_child.description>Даже будучи юным курсантом, [PAWN_nameDef] обладал глоткой, способной сотрясать переборки бункера, и одержимостью идеальным порядком в снаряжении. Он на дух не переносил разболтанность, утерю экипировки и промедление на плацу.</TMM_BS_sergeant_dornan_child.description>
+
+  <TMM_BS_sergeant_dornan_adult.title>яростный строевой сержант</TMM_BS_sergeant_dornan_adult.title>
+  <TMM_BS_sergeant_dornan_adult.titleShort>сержант</TMM_BS_sergeant_dornan_adult.titleShort>
+  <TMM_BS_sergeant_dornan_adult.description>Печально известный на всех базах Анклава своими громогласными тирадами и зверской муштрой, [PAWN_nameDef] вбивает в новобранцев боевую выучку. Любой солдат, явившийся не по форме или потерявший комплект силовой брони, быстро начинает мечтать о встрече с когтем смерти.</TMM_BS_sergeant_dornan_adult.description>
+
+  <!-- Капитан Ричардс -->
+  <TMM_BS_captain_richards_child.title>кадет штурмового корпуса</TMM_BS_captain_richards_child.title>
+  <TMM_BS_captain_richards_child.titleShort>кадет</TMM_BS_captain_richards_child.titleShort>
+  <TMM_BS_captain_richards_child.description>Обучавшийся с детства на боевых тренажёрах и закрытых полигонах, [PAWN_nameDef] освоил тактику тяжёлой пехоты ещё до совершеннолетия. Обитателей поверхности он воспринимал исключительно как враждебные цели, мешающие возвращению родины.</TMM_BS_captain_richards_child.description>
+
+  <TMM_BS_captain_richards_adult.title>командир отряда «Адское пламя»</TMM_BS_captain_richards_adult.title>
+  <TMM_BS_captain_richards_adult.titleShort>капитан</TMM_BS_captain_richards_adult.titleShort>
+  <TMM_BS_captain_richards_adult.description>Возглавляя элитных штурмовиков в экспериментальной термостойкой броне, [PAWN_nameDef] ведёт зачистки по тактике выжженной земли. Холодный, фанатичный и вооружённый до зубов, он оставляет после себя лишь пепел и оплавленный шлак.</TMM_BS_captain_richards_adult.description>
+</LanguageData>

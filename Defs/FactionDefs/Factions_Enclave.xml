@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FactionDef ParentName="PirateBandBase">
+    <defName>TMM_EnclaveFaction</defName>
+    <label>Enclave</label>
+    <description>The heirs of the pre-war government: power-armored, ruthless and convinced that only pure humans deserve the future.</description>
+    <pawnSingular>enclave soldier</pawnSingular>
+    <pawnsPlural>enclave soldiers</pawnsPlural>
+    <leaderTitle>colonel</leaderTitle>
+    <fixedName>Enclave</fixedName>
+    <techLevel>Spacer</techLevel>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.4</settlementGenerationWeight>
+    <listOrderPriority>17</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.15, 0.15, 0.18)</li>
+      <li>(0.35, 0.35, 0.4)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

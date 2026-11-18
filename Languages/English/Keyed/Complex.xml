@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Complex.Area>Complex area</TMM.Complex.Area>
+  <TMM.Complex.AreaHelp>Create a normal allowed area in the zone menu and paint the entire complex: guest rooms, common rooms, ward, storage, staff rooms and connecting passages. Then select its name here. This is the overall complex boundary for guests and staff. Ordinary beds become guest beds, except medical beds and assigned staff housing. Individual bedroom areas are not required.</TMM.Complex.AreaHelp>
+  <TMM.Complex.GuestArea>Guest area</TMM.Complex.GuestArea>
+  <TMM.Complex.GuestAreaHelp>Select a normal allowed area covering rooms and passages visitors may use: bedrooms, dining and recreation. Leave staff storage and colony housing outside it. This manual setting is used when automatic management is disabled. Automatic management derives guest access from the complex territory minus staff-only rooms.</TMM.Complex.GuestAreaHelp>
+  <TMM.Complex.FoodArea>Restaurant stock</TMM.Complex.FoodArea>
+  <TMM.Complex.FoodAreaHelp>For manual restaurant management, create an allowed area on cells storing prepared meals and select it here. This supplies the waiter; it is not seating or cooking space. Automatic management needs no separate food area: waiters check complex fridges first, then accessible colony fridges for the selected meal.</TMM.Complex.FoodAreaHelp>
+  <TMM.Complex.AreasHelp>Choose the whole complex and optional staff-only rooms. Guests cannot enter the staff area; staff may move and work elsewhere. Beds outside staff rooms become guest beds, except explicitly assigned staff housing. Mark any bed medical to make the entire enclosed room a ward. Bedroom tables serve only that room’s guests; restaurant service excludes wards. Waiters prefer suitable meals in complex fridges, then accessible colony fridges. A restaurant service counter is required.</TMM.Complex.AreasHelp>
+  <TMM.Complex.Employees>Personnel and housing</TMM.Complex.Employees>
+  <TMM.Complex.EmployeesHelp>Choose automatic work locations independently from housing. Both places preserves colony jobs. Roles set their work to priority 1 and retain other priorities. Rest, self-treatment, firefighting and direct orders remain normal. The next work search uses the selected mode.</TMM.Complex.EmployeesHelp>
+  <TMM.Complex.Apply>Apply service defaults</TMM.Complex.Apply>
+  <TMM.Complex.ApplyHelp>Assign areas to unconfigured restaurant counters inside the complex and use the guest area for newly arriving Hospitality groups. Existing individual guest restrictions and configured counters are retained.</TMM.Complex.ApplyHelp>
+  <TMM.Complex.Mode.Both>Both places</TMM.Complex.Mode.Both>
+  <TMM.Complex.Mode.ColonyOnly>Colony only</TMM.Complex.Mode.ColonyOnly>
+  <TMM.Complex.Mode.ComplexOnly>Complex only</TMM.Complex.Mode.ComplexOnly>
+  <TMM.Complex.Role.None>No role assigned</TMM.Complex.Role.None>
+  <TMM.Complex.Role.Waiter>Waiter</TMM.Complex.Role.Waiter>
+  <TMM.Complex.Role.Cook>Cook</TMM.Complex.Role.Cook>
+  <TMM.Complex.Role.Doctor>Doctor</TMM.Complex.Role.Doctor>
+  <TMM.Complex.Role.Host>Host</TMM.Complex.Role.Host>
+  <TMM.Complex.Role.Cleaner>Cleaner</TMM.Complex.Role.Cleaner>
+  <TMM.Complex.Resident>Lives in the complex</TMM.Complex.Resident>
+  <TMM.Complex.NotResident>Assign housing in complex</TMM.Complex.NotResident>
+  <TMM.Complex.Incapable>{0} cannot perform this work.</TMM.Complex.Incapable>
+  <TMM.Complex.NoBed>A free non-medical bed is required inside the complex territory. Automatic management can also use an unoccupied guest room.</TMM.Complex.NoBed>
+  <TMM.Complex.Income>Receipts since reception setup — rooms: {0}; meals: {1}; clinic: {2} silver.</TMM.Complex.Income>
+  <TMM.Complex.StaffCount>Personnel records: {0}.</TMM.Complex.StaffCount>
+  <TMM.Complex.OneDesk>This map already has a complex reception desk or its construction plan.</TMM.Complex.OneDesk>
+</LanguageData>

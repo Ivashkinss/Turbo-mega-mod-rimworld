@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VEF_AcidBuildup.description>Попавшая на тело кислота продолжает наносить ожоги ещё некоторое время после атаки.</VEF_AcidBuildup.description>
+  <VEF_AcidBuildup.label>кислотный ожог</VEF_AcidBuildup.label>
+  <VEF_AcidBuildup.stages.0.label>лёгкое, ожоги продолжаются</VEF_AcidBuildup.stages.0.label>
+  <VEF_AcidBuildup.stages.1.label>среднее, ожоги продолжаются</VEF_AcidBuildup.stages.1.label>
+  <VEF_AcidBuildup.stages.2.label>тяжёлое, ожоги продолжаются</VEF_AcidBuildup.stages.2.label>
+  <VEF_AcidBurn.description>Кислотный ожог.</VEF_AcidBurn.description>
+  <VEF_AcidBurn.label>кислотный ожог</VEF_AcidBurn.label>
+  <VEF_AcidBurn.labelNoun>кислотный ожог</VEF_AcidBurn.labelNoun>
+  <VEF_ControlledInvisibility.description>Скрыто покровом управляемой невидимости.</VEF_ControlledInvisibility.description>
+  <VEF_ControlledInvisibility.label>невидимость</VEF_ControlledInvisibility.label>
+  <VEF_Kamikaze.description>Бум.</VEF_Kamikaze.description>
+  <VEF_Kamikaze.label>внезапный взрыв</VEF_Kamikaze.label>
+  <VEF_Kamikaze.stages.0.label>начальное, скрытое</VEF_Kamikaze.stages.0.label>
+  <VEF_Kamikaze.stages.1.label>критическое</VEF_Kamikaze.stages.1.label>
+  <VEF_LightSustenance.description>Это существо питается солнечным светом. Недостаток освещения приведёт к его гибели.</VEF_LightSustenance.description>
+  <VEF_LightSustenance.label>уровень солнечного света</VEF_LightSustenance.label>
+  <VEF_LightSustenance.stages.0.label>достаточное освещение</VEF_LightSustenance.stages.0.label>
+  <VEF_LightSustenance.stages.1.label>слабое освещение</VEF_LightSustenance.stages.1.label>
+  <VEF_LightSustenance.stages.2.label>очень слабое освещение</VEF_LightSustenance.stages.2.label>
+  <VEF_LightSustenance.stages.3.label>нехватка солнечного света</VEF_LightSustenance.stages.3.label>
+  <VEF_LightSustenance.stages.4.label>критический недостаток питания</VEF_LightSustenance.stages.4.label>
+  <VEF_PermanentBurn.description>Неизлечимый шрам от ожога.</VEF_PermanentBurn.description>
+  <VEF_PermanentBurn.label>неизлечимый ожог</VEF_PermanentBurn.label>
+  <VEF_PermanentBurn.labelNoun>неизлечимый ожог</VEF_PermanentBurn.labelNoun>
+  <VEF_ToxicBuildup.description>Токсины в крови. Они могут поступать из разных источников, включая загрязнённую среду, ядовитые укусы и отравленное оружие.
+
+В больших дозах отравление смертельно. Даже в малых дозах оно может вызывать рак.
+
+В отличие от стандартного отравления в игре, погибших от этого токсического поражения существ можно употреблять в пищу.</VEF_ToxicBuildup.description>
+  <VEF_ToxicBuildup.label>токсическое отравление</VEF_ToxicBuildup.label>
+  <VEF_ToxicBuildup.stages.0.label>начальное</VEF_ToxicBuildup.stages.0.label>
+  <VEF_ToxicBuildup.stages.1.label>начальное</VEF_ToxicBuildup.stages.1.label>
+  <VEF_ToxicBuildup.stages.2.label>лёгкое</VEF_ToxicBuildup.stages.2.label>
+  <VEF_ToxicBuildup.stages.3.label>среднее</VEF_ToxicBuildup.stages.3.label>
+  <VEF_ToxicBuildup.stages.4.label>тяжёлое</VEF_ToxicBuildup.stages.4.label>
+  <VEF_ToxicBuildup.stages.5.label>критическое</VEF_ToxicBuildup.stages.5.label>
+  <VFEP_HypothermicSlowdown.description>Опасно низкая температура тела. Без согревания замедление от переохлаждения усиливается и приводит к смерти. После согревания пострадавший быстро восстанавливается.</VFEP_HypothermicSlowdown.description>
+  <VFEP_HypothermicSlowdown.label>замедление от переохлаждения</VFEP_HypothermicSlowdown.label>
+  <VFEP_HypothermicSlowdown.stages.0.label>лёгкое</VFEP_HypothermicSlowdown.stages.0.label>
+  <VFEP_HypothermicSlowdown.stages.1.label>лёгкое</VFEP_HypothermicSlowdown.stages.1.label>
+  <VFEP_HypothermicSlowdown.stages.2.label>среднее</VFEP_HypothermicSlowdown.stages.2.label>
+  <VFEP_HypothermicSlowdown.stages.3.label>тяжёлое</VFEP_HypothermicSlowdown.stages.3.label>
+  <VFEP_HypothermicSlowdown.stages.4.label>критическое</VFEP_HypothermicSlowdown.stages.4.label>
+</LanguageData>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Bobby Singer -->
+  <BackstoryDef>
+    <defName>TMM_BS_bobby_singer_child</defName>
+    <slot>Childhood</slot>
+    <title>salvage yard youth</title>
+    <titleShort>tinkerer</titleShort>
+    <description>Growing up under the shadow of a bitter, abusive father, [PAWN_nameDef] found refuge among rusted engines and heaps of scrap metal. [PAWN_pronoun] learned early how to coax life out of broken machines and keep [PAWN_possessive] head down when trouble came knocking.</description>
+    <skillGains>
+      <Crafting>4</Crafting>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_bobby_singer_adult</defName>
+    <slot>Adulthood</slot>
+    <title>junkyard lorekeeper</title>
+    <titleShort>lorekeeper</titleShort>
+    <description>After a personal tragedy opened [PAWN_possessive] eyes to the supernatural, [PAWN_nameDef] turned [PAWN_possessive] salvage yard into a fortress and library of occult knowledge. Gruff and endlessly resourceful, [PAWN_pronoun] acts as dispatcher, mechanic, and surrogate father to younger hunters.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Crafting>3</Crafting>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Ronnie Shaw -->
+  <BackstoryDef>
+    <defName>TMM_BS_ronnie_shaw_child</defName>
+    <slot>Childhood</slot>
+    <title>hardscrabble frontier kid</title>
+    <titleShort>frontier kid</titleShort>
+    <description>Raised in a settlement constantly threatened by raiders and wasteland beasts, [PAWN_nameDef] learned to haul timber, reinforce barricades, and handle heavy rifles before [PAWN_pronoun] was fully grown. Complaining never fixed a broken wall, a lesson [PAWN_pronoun] took to heart.</description>
+    <skillGains>
+      <Construction>3</Construction>
+      <Shooting>3</Shooting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_ronnie_shaw_adult</defName>
+    <slot>Adulthood</slot>
+    <title>castle artillery veteran</title>
+    <titleShort>veteran</titleShort>
+    <description>As a former commander at the Castle, [PAWN_nameDef] drilled recruits in fortification design and long-range artillery fire until the militia fractured from within. Blunt, unsentimental, and fiercely disciplined, [PAWN_pronoun] refuses to let hard-won defenses fall into disrepair.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Construction>3</Construction>
+      <Melee>1</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Rufus Turner -->
+  <BackstoryDef>
+    <defName>TMM_BS_rufus_turner_child</defName>
+    <slot>Childhood</slot>
+    <title>skeptical loner</title>
+    <titleShort>loner</titleShort>
+    <description>Even as a youth, [PAWN_nameDef] trusted no one at face value and preferred taking clocks and locks apart to playing with other children. [PAWN_pronoun] developed a sharp eye for hidden mechanisms and a habit of planning three escape routes from every room.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>Social</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_rufus_turner_adult</defName>
+    <slot>Adulthood</slot>
+    <title>grumpy trap specialist</title>
+    <titleShort>trapper</titleShort>
+    <description>A former intelligence operative turned seasoned monster hunter, [PAWN_nameDef] prefers working alone behind layers of tripwires, wards, and deadbolts. Though constantly complaining about noise and company, [PAWN_pronoun] reluctantly steps in when old allies are in over their heads.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Shooting>3</Shooting>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Ellen Harvelle -->
+  <BackstoryDef>
+    <defName>TMM_BS_ellen_harvelle_child</defName>
+    <slot>Childhood</slot>
+    <title>backroad diner helper</title>
+    <titleShort>helper</titleShort>
+    <description>Growing up helping run a busy roadside stop, [PAWN_nameDef] learned how to read strangers at a glance, pour stiff drinks, and keep rowdy patrons in line. [PAWN_pronoun] balanced warm hospitality with a no-nonsense temper that few dared to test twice.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Cooking>3</Cooking>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_ellen_harvelle_adult</defName>
+    <slot>Adulthood</slot>
+    <title>roadhouse matriarch</title>
+    <titleShort>proprietor</titleShort>
+    <description>Proprietor of the Roadhouse and widow of a fallen hunter, [PAWN_nameDef] keeps a loaded shotgun behind the bar and a watchful eye on her daughter. Wise, protective, and deadly accurate at close range, [PAWN_pronoun] serves as a steady anchor for hunters passing through.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Social>2</Social>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

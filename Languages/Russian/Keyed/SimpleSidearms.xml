@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <SimpleSidearms_ModTitle>Simple Sidearms</SimpleSidearms_ModTitle>
+  <FirstTimeSettingsWarning>Запускаете Simple Sidearms впервые?
+
+Эта иконка означает, что настройки мода еще не были сконфигурированы. Она исчезнет после первого входа в меню настроек.
+
+Нажмите, чтобы перейти к настройкам прямо сейчас.</FirstTimeSettingsWarning>
+  <ActiveTab_desc/>
+  <ActiveTab_title>Вкладки настроек</ActiveTab_title>
+  <ToolAutoSwitch_desc>Должны ли пешки автоматически брать инструменты/оружие, дающее бонус к их текущей работе?</ToolAutoSwitch_desc>
+  <ToolAutoSwitch_title>Автопереключение на инструменты</ToolAutoSwitch_title>
+  <OptimalMelee_desc>Должны ли пешки автоматически переключаться на оружие ближнего боя с наибольшим уроном (DPS)?</OptimalMelee_desc>
+  <OptimalMelee_title>Использовать лучшее оружие ближнего боя</OptimalMelee_title>
+  <CQCAutoSwitch_desc>Должны ли пешки переключаться на вторичное оружие ближнего боя при атаке в ближнем бою?</CQCAutoSwitch_desc>
+  <CQCAutoSwitch_title>Автопереключение в ближнем бою</CQCAutoSwitch_title>
+  <CQCFistSwitch_desc>Должны ли пешки переключаться, даже если они без оружия?</CQCFistSwitch_desc>
+  <CQCFistSwitch_title>Автопереключение при рукопашном бое</CQCFistSwitch_title>
+  <CQCTargetOnly_desc>Должны ли пешки реагировать только на атаки от своей текущей цели?</CQCTargetOnly_desc>
+  <CQCTargetOnly_title>Переключаться только при атаке от цели</CQCTargetOnly_title>
+  <DropMode_desc>В каких ситуациях пешки вынуждены бросать оружие на землю, а не убирать его в инвентарь?</DropMode_desc>
+  <DropMode_title>Условия сброса оружия</DropMode_title>
+  <FumbleRecoveryChance_title>Шанс избежать потери оружия</FumbleRecoveryChance_title>
+  <FumbleRecoveryChance_hint>Вертикальная ось — шанс избежать потери оружия.
+Горизонтальная ось — навык ближнего или дальнего боя (в зависимости от того, какой выше).</FumbleRecoveryChance_hint>
+  <ReEquipOutOfCombat_desc>Если пешка бросила оружие, она автоматически поднимет его после боя, когда минует непосредственная опасность.</ReEquipOutOfCombat_desc>
+  <ReEquipOutOfCombat_title>Переэкипировать брошенное оружие</ReEquipOutOfCombat_title>
+  <ReEquipBest_desc>После сброса оружия автоэкипировка найдет лучшее доступное оружие (вместо ближайшего).</ReEquipBest_desc>
+  <ReEquipBest_title>Переэкипировать лучшее из доступного</ReEquipBest_title>
+  <ReEquipInCombat_desc>Автоматически подбирать брошенное оружие даже во время боя, если пешка в данный момент не сражается.</ReEquipInCombat_desc>
+  <ReEquipInCombat_title>Переэкипировать во время боя</ReEquipInCombat_title>
+  <SkipDangerousWeapons_desc>Запретить автоматическую экипировку опасного оружия (коктейли Молотова, осколочные гранаты, ракетницы и т.д.).</SkipDangerousWeapons_desc>
+  <SkipDangerousWeapons_title>Пропускать опасное оружие</SkipDangerousWeapons_title>
+  <SkipEMPWeapons_desc>Запретить автоматическую экипировку ЭМИ-оружия (обратите внимание, что пешки и так попытаются взять его только при сражении с механоидами).</SkipEMPWeapons_desc>
+  <SkipEMPWeapons_title>Пропускать ЭМИ-оружие</SkipEMPWeapons_title>
+  <PreserveInventoryInCaravans_desc>Сохранять вторичное оружие в нужном инвентаре по возвращении из караванов. (Экспериментально, реализовано XT-0xFF @Github)</PreserveInventoryInCaravans_desc>
+  <PreserveInventoryInCaravans_title>Сохранять вторичное оружие в караванах</PreserveInventoryInCaravans_title>
+  <HideSidearmsInCaravanDialogs_desc>Скрывать вторичное оружие в окне каравана, чтобы предотвратить его случайную продажу. (Экспериментально, реализовано XT-0xFF @Github)</HideSidearmsInCaravanDialogs_desc>
+  <HideSidearmsInCaravanDialogs_title>Скрывать вторичное оружие в диалогах каравана</HideSidearmsInCaravanDialogs_title>
+  <ShowAlertsMissingSidearm_desc>Показывать оповещения для колонистов, которые помнят о наличии вторичного оружия, которого у них больше нет и которому не удается найти замену.</ShowAlertsMissingSidearm_desc>
+  <ShowAlertsMissingSidearm_title>Показывать оповещения о пропавшем оружии</ShowAlertsMissingSidearm_title>
+  <SidearmsPlaySounds_desc>Воспроизводить звуки при смене оружия.</SidearmsPlaySounds_desc>
+  <SidearmsPlaySounds_title>Воспроизводить звуки</SidearmsPlaySounds_title>
+  <ShowBrainscope_desc>Показывать кнопку инструмента разработчика, раскрывающую внутреннее состояние выбранных пешек.</ShowBrainscope_desc>
+  <ShowBrainscope_title>Показывать Brainscope</ShowBrainscope_title>
+  <AllowBlockedWeaponUse_desc>Разрешить использование оружия, которое обычно заблокировано (например, оружие с личностью, биокодированное оружие и оружие, ограниченное ролями идеологии) - см. XKCD #1172</AllowBlockedWeaponUse_desc>
+  <AllowBlockedWeaponUse_title>Разрешить использование заблокированного оружия</AllowBlockedWeaponUse_title>
+  <LimitCarryInfo_desc/>
+  <LimitCarryInfo_title>*Всегда ограничено максимальной грузоподъемностью пешки</LimitCarryInfo_title>
+  <CEOverrideInfo_desc/>
+  <CEOverrideInfo_title>Отключено в пользу системы из Combat Extended.</CEOverrideInfo_title>
+  <LimitModeAmount_title>Режим лимита общего кол-ва вторичного оружия</LimitModeAmount_title>
+  <LimitModeAmountMelee_title>Режим лимита общего кол-ва вторичного оружия ближнего боя</LimitModeAmountMelee_title>
+  <LimitModeAmountRanged_title>Режим лимита общего кол-ва вторичного оружия дальнего боя</LimitModeAmountRanged_title>
+  <LimitModeAmount_desc>Какие ограничения действуют на всё вторичное оружие.</LimitModeAmount_desc>
+  <LimitModeAmountMelee_desc>Какие ограничения действуют на всё вторичное оружие ближнего боя.</LimitModeAmountMelee_desc>
+  <LimitModeAmountRanged_desc>Какие ограничения действуют на всё вторичное оружие дальнего боя.</LimitModeAmountRanged_desc>
+  <LimitModeSingle_title>Режим лимита отдельного вторичного оружия</LimitModeSingle_title>
+  <LimitModeSingleMelee_title>Режим лимита отдельного вторичного оружия ближнего боя</LimitModeSingleMelee_title>
+  <LimitModeSingleRanged_title>Режим лимита отдельного вторичного оружия дальнего боя</LimitModeSingleRanged_title>
+  <LimitModeSingle_desc>Какие ограничения действуют на отдельное вторичное оружие.</LimitModeSingle_desc>
+  <LimitModeSingleMelee_desc>Какие ограничения действуют на отдельное вторичное оружие ближнего боя.</LimitModeSingleMelee_desc>
+  <LimitModeSingleRanged_desc>Какие ограничения действуют на отдельное вторичное оружие дальнего боя.</LimitModeSingleRanged_desc>
+  <LimitModeAmountTotal_title>Всего</LimitModeAmountTotal_title>
+  <LimitModeAmountTotal_desc>Какие ограничения действуют на всё вторичное оружие.</LimitModeAmountTotal_desc>
+  <MaximumMassAmountAbsolute_desc>Максимальная общая масса вторичного оружия, которую может нести пешка.</MaximumMassAmountAbsolute_desc>
+  <MaximumMassAmountAbsolute_title>Макс. масса вторичного оружия</MaximumMassAmountAbsolute_title>
+  <MaximumMassAmountRelative_desc>Максимальный процент массы вторичного оружия относительно грузоподъемности пешки.</MaximumMassAmountRelative_desc>
+  <MaximumMassAmountRelative_title>Макс. процент массы вторичного оружия</MaximumMassAmountRelative_title>
+  <MaximumMassSingleAbsolute_desc>Максимальная масса одной единицы вторичного оружия.</MaximumMassSingleAbsolute_desc>
+  <MaximumMassSingleAbsolute_title>Макс. масса на одно оружие</MaximumMassSingleAbsolute_title>
+  <MaximumMassSingleRelative_desc>Максимальный процент массы одной единицы вторичного оружия относительно грузоподъемности пешки.</MaximumMassSingleRelative_desc>
+  <MaximumMassSingleRelative_title>Макс. процент массы на одно оружие</MaximumMassSingleRelative_title>
+  <MaximumSlots_desc>Сколько единиц вторичного оружия может нести пешка.</MaximumSlots_desc>
+  <MaximumSlots_title>Слоты</MaximumSlots_title>
+  <RangedCombatAutoSwitchMaxWarmup_desc>Каков порог (в процентах), после которого пешка откажется прерывать подготовку выстрела для переключения на вторичное оружие?</RangedCombatAutoSwitchMaxWarmup_desc>
+  <RangedCombatAutoSwitchMaxWarmup_title>Максимальный процент прицеливания</RangedCombatAutoSwitchMaxWarmup_title>
+  <RangedCombatAutoSwitch_desc>Должны ли пешки переключаться на подходящее вторичное оружие дальнего боя при атаке издалека?</RangedCombatAutoSwitch_desc>
+  <RangedCombatAutoSwitch_title>Использовать лучшее оружие дальнего боя</RangedCombatAutoSwitch_title>
+  <SeparateModes_desc>Должно ли оружие ближнего и дальнего боя иметь общие или раздельные ограничения?</SeparateModes_desc>
+  <SeparateModes_title>Разделить ближний/дальний бой</SeparateModes_title>
+  <SidearmSelection_desc/>
+  <SidearmSelection_title>Выбор вторичного оружия</SidearmSelection_title>
+  <SingleshotAutoSwitch_desc>Должны ли пешки переключаться на вторичное оружие после использования одноразового оружия?</SingleshotAutoSwitch_desc>
+  <SingleshotAutoSwitch_title>Автопереключение после одного выстрела</SingleshotAutoSwitch_title>
+  <SpeedSelectionBiasMelee_desc>Склонность пешек к выбору оружия с большей скоростью атаки.</SpeedSelectionBiasMelee_desc>
+  <SpeedSelectionBiasMelee_title>Приоритет скорости (ближний бой)</SpeedSelectionBiasMelee_title>
+  <SpeedSelectionBiasRanged_desc>Склонность пешек к выбору оружия с более быстрым прицеливанием.</SpeedSelectionBiasRanged_desc>
+  <SpeedSelectionBiasRanged_title>Приоритет скорости (дальний бой)</SpeedSelectionBiasRanged_title>
+  <WeaponMatch_desc>Это оружие, которое соответствует заданным критериям.</WeaponMatch_desc>
+  <WeaponMatch_title/>
+  <MaximumMassAmountRelative_hint>Расчет исходит из стандартной грузоподъемности в 35 кг</MaximumMassAmountRelative_hint>
+  <SidearmSpawnChance_desc>Шанс того, что пешка, появляющаяся с оружием, также будет иметь при себе вторичное оружие.</SidearmSpawnChance_desc>
+  <SidearmSpawnChance_title>Шанс появления с вторичным оружием</SidearmSpawnChance_title>
+  <SidearmSpawnChanceDropoff_desc>Величина, на которую уменьшается шанс появления для каждого дополнительного вторичного оружия.</SidearmSpawnChanceDropoff_desc>
+  <SidearmSpawnChanceDropoff_title>Снижение шанса для доп. оружия</SidearmSpawnChanceDropoff_title>
+  <SidearmBudgetMultiplier_desc>Сумма денег, которую может стоить вторичное оружие (основывается на стоимости основного оружия).</SidearmBudgetMultiplier_desc>
+  <SidearmBudgetMultiplier_title>Множитель бюджета на вторичное оружие</SidearmBudgetMultiplier_title>
+  <SidearmBudgetDropoff_desc>Сумма, на которую уменьшается бюджет для каждого дополнительного вторичного оружия.</SidearmBudgetDropoff_desc>
+  <SidearmBudgetDropoff_title>Снижение бюджета для доп. оружия</SidearmBudgetDropoff_title>
+  <ColonistDefaultWeaponMode_desc>Стандартный режим предпочтения оружия для пешек игрока.</ColonistDefaultWeaponMode_desc>
+  <ColonistDefaultWeaponMode_title>Режим оружия колонистов по умолчанию</ColonistDefaultWeaponMode_title>
+  <NPCDefaultWeaponMode_desc>Стандартный режим предпочтения оружия для NPC.</NPCDefaultWeaponMode_desc>
+  <NPCDefaultWeaponMode_title>Режим оружия NPC по умолчанию</NPCDefaultWeaponMode_title>
+  <PrimaryWeaponMode_option_Ranged>Дальний бой</PrimaryWeaponMode_option_Ranged>
+  <PrimaryWeaponMode_option_Melee>Ближний бой</PrimaryWeaponMode_option_Melee>
+  <PrimaryWeaponMode_option_BySkill>По навыку</PrimaryWeaponMode_option_BySkill>
+  <PrimaryWeaponMode_option_ByGenerated>По основному</PrimaryWeaponMode_option_ByGenerated>
+  <LimitModeSingle_option_None>Без лимита</LimitModeSingle_option_None>
+  <LimitModeSingle_option_RelativeWeight>Доля массы</LimitModeSingle_option_RelativeWeight>
+  <LimitModeSingle_option_AbsoluteWeight>Абсолютная масса</LimitModeSingle_option_AbsoluteWeight>
+  <LimitModeSingle_option_Selection>Конкретное оружие</LimitModeSingle_option_Selection>
+  <LimitModeAmount_option_None>Без лимита</LimitModeAmount_option_None>
+  <LimitModeAmount_option_RelativeWeight>Доля массы</LimitModeAmount_option_RelativeWeight>
+  <LimitModeAmount_option_AbsoluteWeight>Абсолютная масса</LimitModeAmount_option_AbsoluteWeight>
+  <LimitModeAmount_option_Slots>Слоты</LimitModeAmount_option_Slots>
+  <ActiveTab_option_Folded>&lt;</ActiveTab_option_Folded>
+  <ActiveTab_option_Presets>Пресеты</ActiveTab_option_Presets>
+  <ActiveTab_option_Automation>Триггеры</ActiveTab_option_Automation>
+  <ActiveTab_option_Allowances>Лимиты</ActiveTab_option_Allowances>
+  <ActiveTab_option_Spawning>Появление</ActiveTab_option_Spawning>
+  <ActiveTab_option_Misc>Разное</ActiveTab_option_Misc>
+  <DropMode_option_Never>Никогда</DropMode_option_Never>
+  <DropMode_option_InDistress>В беде (Стресс)</DropMode_option_InDistress>
+  <DropMode_option_InCombat>В бою</DropMode_option_InCombat>
+  <DropMode_option_Always>Всегда</DropMode_option_Always>
+  <Fumbled>Выронил!</Fumbled>
+  <Fumbled_dev>Выронил! ({0})</Fumbled_dev>
+  <PresetExport_title/>
+  <PresetExport_desc/>
+  <PresetExport_label>Скопировать текущую конфигурацию в буфер обмена</PresetExport_label>
+  <PresetCustom_title>Свой</PresetCustom_title>
+  <PresetCustom_desc>Пользовательские настройки. Выбирается автоматически при внесении изменений.</PresetCustom_desc>
+  <PresetCustom_label/>
+  <Preset0_title>Отключено</Preset0_title>
+  <Preset0_desc>Все опции отключены. Хорошая база для конфигураций, использующих только малую часть возможностей мода.</Preset0_desc>
+  <Preset0_label/>
+  <Preset1half_title>Легкий</Preset1half_title>
+  <Preset1half_desc>Позволяет использовать одно легкое оружие в качестве вторичного.</Preset1half_desc>
+  <Preset1half_label/>
+  <Preset1_title>Только инвентарь</Preset1_title>
+  <Preset1_desc>Позволяет экипировать вторичное оружие, но не более того. По сути, это удобное расширение инвентаря.</Preset1_desc>
+  <Preset1_label/>
+  <Preset2_title>Базовый</Preset2_title>
+  <Preset2_desc>Простая настройка. Пешки могут использовать несколько видов легкого оружия и будут пытаться применять их в соответствующих ситуациях.</Preset2_desc>
+  <Preset2_label/>
+  <Preset3_title>Продвинутый</Preset3_title>
+  <Preset3_desc>Пешки более креативно подходят к выбору оружия, но в пределах того, что можно ожидать от обычных людей, выживающих в опасном мире.</Preset3_desc>
+  <Preset3_label/>
+  <Preset4_title>Чрезмерный</Preset4_title>
+  <Preset4_desc>Бери всё! Миниган? Давай два! Копья? У меня в рюкзаке целая коллекция!</Preset4_desc>
+  <Preset4_label/>
+  <Preset5_title>Режим драчуна</Preset5_title>
+  <Preset5_desc>Вторичное оружие ближнего боя для всех.</Preset5_desc>
+  <Preset5_label/>
+  <SidearmPickupFail_NoFreeSpace>Нет свободного места</SidearmPickupFail_NoFreeSpace>
+  <SidearmPickupFail_TooHeavyForSidearmMelee>Слишком тяжело для вторичного оружия ближнего боя</SidearmPickupFail_TooHeavyForSidearmMelee>
+  <SidearmPickupFail_TooHeavyForSidearmRanged>Слишком тяжело для вторичного оружия дальнего боя</SidearmPickupFail_TooHeavyForSidearmRanged>
+  <SidearmPickupFail_TooHeavyForSidearm>Слишком тяжелое для вторичного оружия</SidearmPickupFail_TooHeavyForSidearm>
+  <SidearmPickupFail_SidearmsTooHeavyMelee>Экипировка для ближнего боя слишком тяжелая</SidearmPickupFail_SidearmsTooHeavyMelee>
+  <SidearmPickupFail_SidearmsTooHeavyRanged>Экипировка для дальнего боя слишком тяжелая</SidearmPickupFail_SidearmsTooHeavyRanged>
+  <SidearmPickupFail_SidearmsTooHeavyInTotal>Экипировка слишком тяжелая</SidearmPickupFail_SidearmsTooHeavyInTotal>
+  <SidearmPickupFail_NotASidearm>Не вторичное оружие</SidearmPickupFail_NotASidearm>
+  <SidearmPickupFail_NotASidearmMelee>Не вторичное оружие</SidearmPickupFail_NotASidearmMelee>
+  <SidearmPickupFail_NotASidearmRanged>Не вторичное оружие</SidearmPickupFail_NotASidearmRanged>
+  <SidearmPickupFail_AllSlotsFull>Слоты заполнены</SidearmPickupFail_AllSlotsFull>
+  <SidearmPickupFail_MeleeSlotsFull>Слоты ближнего боя заполнены</SidearmPickupFail_MeleeSlotsFull>
+  <SidearmPickupFail_RangedSlotsFull>Слоты дальнего боя заполнены</SidearmPickupFail_RangedSlotsFull>
+  <SidearmPickupFail_NotAToolForPacifist>Не инструмент. {0} не способен к насилию.</SidearmPickupFail_NotAToolForPacifist>
+  <SidearmPickupFail_NotYetBladelinkBonded>Еще не привязано</SidearmPickupFail_NotYetBladelinkBonded>
+  <SidearmPickupPass>Нет проблем</SidearmPickupPass>
+  <AsSidearm> как вторичное оружие</AsSidearm>
+  <AsTool> как инструмент</AsTool>
+  <Preset_option_NoneApplied>Нет</Preset_option_NoneApplied>
+  <Preset_option_Custom>Свой</Preset_option_Custom>
+  <Preset_option_Lite>Легкий</Preset_option_Lite>
+  <Preset_option_Disabled>Отключено</Preset_option_Disabled>
+  <Preset_option_LoadoutOnly>Только инвентарь</Preset_option_LoadoutOnly>
+  <Preset_option_Basic>Базовый</Preset_option_Basic>
+  <Preset_option_Advanced>Продвинутый</Preset_option_Advanced>
+  <Preset_option_Excessive>Чрезмерный</Preset_option_Excessive>
+  <Preset_option_Brawler>Драчун</Preset_option_Brawler>
+  <WeaponListKind_option_Both>Оба</WeaponListKind_option_Both>
+  <WeaponListKind_option_Melee>Ближний бой</WeaponListKind_option_Melee>
+  <WeaponListKind_option_Ranged>Дальний бой</WeaponListKind_option_Ranged>
+  <TribalWeapons>Племенное</TribalWeapons>
+  <NonTribalWeapons>Не племенное</NonTribalWeapons>
+  <ConsideredSidearms>Считаются вторичным оружием</ConsideredSidearms>
+  <NotConsideredSidearms>Не считаются вторичным оружием</NotConsideredSidearms>
+  <LockedWeaponSwitch>Автопереключение невозможно (дальний бой)</LockedWeaponSwitch>
+  <UnlockedWeaponSwitch>Автопереключение возможно (дальний бой)</UnlockedWeaponSwitch>
+  <WeaponSwitchAutolockOn>Блок. автопереключения при доставании</WeaponSwitchAutolockOn>
+  <WeaponSwitchAutolockOff>Выкл.</WeaponSwitchAutolockOff>
+  <DrawSidearm_gizmoTitle>Вторичное оружие</DrawSidearm_gizmoTitle>
+  <SidearmPreference_Ranged>Использовать оружие дальнего боя.</SidearmPreference_Ranged>
+  <SidearmPreference_Skill>Использовать оружие в зависимости от навыка или увлеченности.</SidearmPreference_Skill>
+  <SidearmPreference_Melee>Использовать оружие ближнего боя.</SidearmPreference_Melee>
+  <DrawSidearm_gizmoTooltipRanged>Левый клик, чтобы установить {0} как стандартное оружие дальнего боя.
+Правый клик, чтобы выбросить {0}.</DrawSidearm_gizmoTooltipRanged>
+  <DrawSidearm_gizmoTooltipMelee>Левый клик, чтобы установить {0} как предпочитаемое оружие ближнего боя.
+Правый клик, чтобы выбросить {0}.</DrawSidearm_gizmoTooltipMelee>
+  <DrawSidearm_gizmoTooltipRangedDefault>Левый клик, чтобы принудительно использовать {0}.
+Правый клик, чтобы снять {0} со статуса стандартного оружия дальнего боя.</DrawSidearm_gizmoTooltipRangedDefault>
+  <DrawSidearm_gizmoTooltipMeleePreferred>Левый клик, чтобы принудительно использовать {0}.
+Правый клик, чтобы убрать предпочтение {0} для ближнего боя.</DrawSidearm_gizmoTooltipMeleePreferred>
+  <DrawSidearm_gizmoTooltipForced>Правый клик, чтобы отменить принудительное использование {0}.</DrawSidearm_gizmoTooltipForced>
+  <DrawSidearm_gizmoTooltipWhileDrafted>Левый клик, чтобы принудительно использовать {0} до конца боя.</DrawSidearm_gizmoTooltipWhileDrafted>
+  <DrawSidearm_gizmoTooltipForcedWhileDrafted>Правый клик, чтобы отменить принудительное использование {0}.</DrawSidearm_gizmoTooltipForcedWhileDrafted>
+  <DrawSidearm_gizmoTooltipMemory>Правый клик, чтобы забыть о {0}.</DrawSidearm_gizmoTooltipMemory>
+  <DrawSidearm_gizmoTooltipMemoryWhileDrafted>Взаимодействие в боевом режиме недоступно.</DrawSidearm_gizmoTooltipMemoryWhileDrafted>
+  <DrawSidearm_gizmoTooltipUnarmed>Левый клик, чтобы установить рукопашный бой как предпочитаемый вариант ближнего боя.</DrawSidearm_gizmoTooltipUnarmed>
+  <DrawSidearm_gizmoTooltipUnarmedPreferred>Левый клик, чтобы принудительно сражаться без оружия.
+Правый клик, чтобы убрать бой без оружия из предпочитаемых вариантов.</DrawSidearm_gizmoTooltipUnarmedPreferred>
+  <DrawSidearm_gizmoTooltipUnarmedForced>Правый клик, чтобы отменить принудительный бой без оружия.</DrawSidearm_gizmoTooltipUnarmedForced>
+  <DrawSidearm_gizmoTooltipUnarmedWhileDrafted>Левый клик, чтобы принудительно сражаться без оружия до конца боя.</DrawSidearm_gizmoTooltipUnarmedWhileDrafted>
+  <DrawSidearm_gizmoTooltipUnarmedForcedWhileDrafted>Правый клик, чтобы отменить принудительный бой без оружия.</DrawSidearm_gizmoTooltipUnarmedForcedWhileDrafted>
+  <DrawSidearm_blocked>Оружие недоступно</DrawSidearm_blocked>
+  <Alert_MissingSidearm_label>Нет вторичного оружия</Alert_MissingSidearm_label>
+  <Alert_MissingPrimary_label>Нет основного оружия</Alert_MissingPrimary_label>
+  <Alert_MissingSidearm_desc>Этим колонистам не хватает одного или нескольких видов вторичного оружия:\n\n{0}</Alert_MissingSidearm_desc>
+  <Alert_MissingPrimary_desc>Этим колонистам не хватает основного оружия:\n\n{0}</Alert_MissingPrimary_desc>
+  <SS_EquipWarning_CannotUseWithShield>Использование {0} предотвратит использование {1}.</SS_EquipWarning_CannotUseWithShield>
+  <SS_EquipWarning_WillUnequipOffhand>Экипировка {0} приведет к снятию {1} со второй руки.</SS_EquipWarning_WillUnequipOffhand>
+  <SS_EquipOffandFail_NoPrimary>Невозможно экипировать {0} во вторую руку - сначала необходимо взять основное оружие.</SS_EquipOffandFail_NoPrimary>
+  <SS_EquipOffandFail_PrimaryTwoHanded>Невозможно экипировать {0} во вторую руку - {1} является двуручным оружием.</SS_EquipOffandFail_PrimaryTwoHanded>
+  <SS_EquipOffandFail_AlreadyHoldingShield>Невозможно экипировать {0} во вторую руку - уже используется {1}.</SS_EquipOffandFail_AlreadyHoldingShield>
+  <SS_EquipAsOffand>Левый клик по иконке второй руки, чтобы экипировать {0} как оружие для второй руки.</SS_EquipAsOffand>
+  <SS_CanEquipAsOffand>Левый клик по иконке второй руки, чтобы экипировать {0} как оружие для второй руки.</SS_CanEquipAsOffand>
+  <DropMode_option_Panic>В беде (Стресс)</DropMode_option_Panic>
+  <DropMode_option_PanicOrRange>В бою</DropMode_option_PanicOrRange>
+  <SidearmsEnableNeolithicExtension_desc>Разрешить племенам использовать больше оружия в качестве вторичного.</SidearmsEnableNeolithicExtension_desc>
+  <SidearmsEnableNeolithicExtension_title>Расширить племенное вторичное оружие</SidearmsEnableNeolithicExtension_title>
+  <SidearmsNeolithicExtension_desc/>
+  <SidearmsNeolithicExtension_title>Оружие, считающееся племенным</SidearmsNeolithicExtension_title>
+</LanguageData>

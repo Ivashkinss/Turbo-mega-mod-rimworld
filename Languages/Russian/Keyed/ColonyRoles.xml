@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Roles.Gizmo>Роль</TMM.Roles.Gizmo>
+  <TMM.Roles.GizmoDesc>Назначить колонисту роль. Роль ставит работу по профессии на высший приоритет; к ней прилагаются ранги, повышение и снаряжение ранга.</TMM.Roles.GizmoDesc>
+  <TMM.Roles.None>нет</TMM.Roles.None>
+  <TMM.Roles.Clear>Снять роль</TMM.Roles.Clear>
+  <TMM.Roles.Civil>Гражданские</TMM.Roles.Civil>
+  <TMM.Roles.Military>Военные</TMM.Roles.Military>
+  <TMM.Roles.Group>Сгруппировать</TMM.Roles.Group>
+  <TMM.Roles.ShowAll>Показать всех</TMM.Roles.ShowAll>
+  <TMM.Roles.NoRoleGroup>Без роли</TMM.Roles.NoRoleGroup>
+  <TMM.Roles.RankBonus>Звание</TMM.Roles.RankBonus>
+  <TMM.Roles.AuraBonus>Рядом командир</TMM.Roles.AuraBonus>
+  <TMM.Roles.ProudOfRank>гордость: {0}</TMM.Roles.ProudOfRank>
+  <TMM.Roles.GroupToggleTip>Сгруппировать колонистов по ролям: гражданские, военные, без роли.</TMM.Roles.GroupToggleTip>
+</LanguageData>

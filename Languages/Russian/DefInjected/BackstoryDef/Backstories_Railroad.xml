@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Дездемона -->
+  <TMM_BS_desdemona_child.title>подпольный связной</TMM_BS_desdemona_child.title>
+  <TMM_BS_desdemona_child.titleShort>связной</TMM_BS_desdemona_child.titleShort>
+  <TMM_BS_desdemona_child.description>Выросшая в поселении, жившем в страхе перед ночными похищениями, [PAWN_nameDef] научилась незаметно проскальзывать по руинам и передавать шифрованные записки между доверенными людьми. У неё рано появилась лютая ненависть к тирании и тайным угнетателям.</TMM_BS_desdemona_child.description>
+
+  <TMM_BS_desdemona_adult.title>лидер ячейки Подземки</TMM_BS_desdemona_adult.title>
+  <TMM_BS_desdemona_adult.titleShort>лидер</TMM_BS_desdemona_adult.titleShort>
+  <TMM_BS_desdemona_adult.description>Руководя законспирированной Подземкой из тайных катакомб, [PAWN_nameDef] организует дерзкие операции по спасению беглых синтов. Осторожная, не выпускающая сигарету из рук и непреклонная в своих принципах, она готова пожертвовать всем ради спасения подпольной сети.</TMM_BS_desdemona_adult.description>
+
+  <!-- Дьякон -->
+  <TMM_BS_deacon_child.title>болтливый бродяга</TMM_BS_deacon_child.title>
+  <TMM_BS_deacon_child.titleShort>хитрец</TMM_BS_deacon_child.titleShort>
+  <TMM_BS_deacon_child.description>Странствуя между городками Пустоши без гроша за душой, но с острым языком и талантом к небылицам, [PAWN_nameDef] рано понял, что лучше сливаться с толпой, чем выделяться. Он умел выпутаться словами почти из любой передряги.</TMM_BS_deacon_child.description>
+
+  <TMM_BS_deacon_adult.title>мастер маскировки Подземки</TMM_BS_deacon_adult.title>
+  <TMM_BS_deacon_adult.titleShort>лазутчик</TMM_BS_deacon_adult.titleShort>
+  <TMM_BS_deacon_adult.description>Преследуемый тяжёлыми ошибками юности, [PAWN_nameDef] вступил в Подземку и стал её лучшим полевым разведчиком. Постоянно меняя облик, одежду и легенды, он прячет искреннюю преданность делу за бесконечной ложью и сухим юмором.</TMM_BS_deacon_adult.description>
+
+  <!-- Техник Том -->
+  <TMM_BS_tinker_tom_child.title>параноидальный радиолюбитель</TMM_BS_tinker_tom_child.title>
+  <TMM_BS_tinker_tom_child.titleShort>самоделкин</TMM_BS_tinker_tom_child.titleShort>
+  <TMM_BS_tinker_tom_child.description>С детства убеждённый, что невидимые сигналы и тайные заговорщики следят за каждым шагом в Пустоши, [PAWN_nameDef] днями паял уцелевшие платы и расшифровывал помехи в эфире. Проводам и приборам он доверял куда больше, чем людям.</TMM_BS_tinker_tom_child.description>
+
+  <TMM_BS_tinker_tom_adult.title>эксцентричный инженер Подземки</TMM_BS_tinker_tom_adult.title>
+  <TMM_BS_tinker_tom_adult.titleShort>техник</TMM_BS_tinker_tom_adult.titleShort>
+  <TMM_BS_tinker_tom_adult.description>Штатный гений Подземки и главный конспиролог, [PAWN_nameDef] собирает броню из баллистического волокна, маячки и экспериментальные приборы из мусора Пустоши. Гиперактивный и чудаковатый, он подкрепляет самые безумные теории блестящими изобретениями.</TMM_BS_tinker_tom_adult.description>
+
+  <!-- Глория -->
+  <TMM_BS_glory_child.title>боец подземной подготовки</TMM_BS_glory_child.title>
+  <TMM_BS_glory_child.titleShort>рекрут</TMM_BS_glory_child.titleShort>
+  <TMM_BS_glory_child.description>Воспитанная в стерильных подземных комплексах для беспрекословного подчинения, [PAWN_nameDef] готовилась к выносливости, дисциплине и тяжёлым боям. Однако за жёсткой выучкой в ней тихо зрела жажда свободы и собственной судьбы.</TMM_BS_glory_child.description>
+
+  <TMM_BS_glory_adult.title>тяжёлый оперативник Подземки</TMM_BS_glory_adult.title>
+  <TMM_BS_glory_adult.titleShort>штурмовик</TMM_BS_glory_adult.titleShort>
+  <TMM_BS_glory_adult.description>Вырвавшись на свободу с помощью Подземки, [PAWN_nameDef] решила сохранить свои воспоминания и сражаться за тех, кто всё ещё остаётся в неволе. Спокойная, бесстрашная и вооружённая ревущим миниганом, она возглавляет самые опасные силовые операции фракции.</TMM_BS_glory_adult.description>
+</LanguageData>

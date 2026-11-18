@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_ChannelAnimation.reportString>выполняет анимацию приёма</AM_ChannelAnimation.reportString>
+  <AM_DoFriendlyDuel.reportString>участвует в дружеском поединке с TargetA</AM_DoFriendlyDuel.reportString>
+  <AM_GrapplePawn.reportString>притягивает персонажа лассо</AM_GrapplePawn.reportString>
+  <AM_InAnimation.reportString>участвует в анимации</AM_InAnimation.reportString>
+  <AM_SpectateFriendlyDuel.reportString>смотрит поединок и болеет за TargetC</AM_SpectateFriendlyDuel.reportString>
+  <AM_WalkToExecution.reportString>приближается к TargetA для добивания.</AM_WalkToExecution.reportString>
+</LanguageData>

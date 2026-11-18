@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <!-- Modes & Headers -->
+  <StrategicOutpost_Mode_Autonomous>Autonomous</StrategicOutpost_Mode_Autonomous>
+  <StrategicOutpost_Mode_Physical>Physical</StrategicOutpost_Mode_Physical>
+  <StrategicOutpost_Mode_Label>Operational Mode: {0}</StrategicOutpost_Mode_Label>
+  <StrategicOutpost_CurrentMode>Operational Mode: {0}</StrategicOutpost_CurrentMode>
+  <StrategicOutpost_HeaderInfo>Level {0}/{1} (Capacity: {2} workers) | {3}</StrategicOutpost_HeaderInfo>
+  <StrategicOutpost_HeaderInfoFull>Level {0}/{1} (Capacity: {2} workers) | {3} | Mode: {4}</StrategicOutpost_HeaderInfoFull>
+  <StrategicOutpost_BaseYieldSuffix>Base: {0}/day</StrategicOutpost_BaseYieldSuffix>
+
+  <!-- Commands & Gizmos -->
+  <StrategicOutpost_ManageOutpost_Label>Manage outpost</StrategicOutpost_ManageOutpost_Label>
+  <StrategicOutpost_ManageOutpost_Desc>Open the strategic outpost management interface to assign personnel, set production, and configure logistics.</StrategicOutpost_ManageOutpost_Desc>
+  <StrategicOutpost_FoundOutpost_Label>Found outpost</StrategicOutpost_FoundOutpost_Label>
+  <StrategicOutpost_FoundOutpost_Desc>Establish a permanent strategic outpost on this tile using expedition personnel and supplies.</StrategicOutpost_FoundOutpost_Desc>
+  <StrategicOutpost_ViewMap_Label>View map</StrategicOutpost_ViewMap_Label>
+  <StrategicOutpost_ViewMap_Desc>Pan camera to the active outpost base camp on this tile.</StrategicOutpost_ViewMap_Desc>
+  <StrategicOutpost_EnterMap_Label>Enter outpost</StrategicOutpost_EnterMap_Label>
+  <StrategicOutpost_EnterMap_Desc>Move the caravan directly into the outpost map.</StrategicOutpost_EnterMap_Desc>
+  <StrategicOutpost_DeployPersonnel_Label>Deploy personnel</StrategicOutpost_DeployPersonnel_Label>
+  <StrategicOutpost_DeployPersonnel_Desc>Deploy outpost staff from abstract storage onto the physical map to work, build, and defend.</StrategicOutpost_DeployPersonnel_Desc>
+  <StrategicOutpost_RecallPersonnel_Label>Recall personnel</StrategicOutpost_RecallPersonnel_Label>
+  <StrategicOutpost_RecallPersonnel_Desc>Recall deployed personnel back into abstract outpost duty. Prohibited during combat or mental breaks.</StrategicOutpost_RecallPersonnel_Desc>
+  <StrategicOutpost_UpgradeAction_Label>Upgrade outpost (Level {0})</StrategicOutpost_UpgradeAction_Label>
+  <StrategicOutpost_UpgradeAction_Desc>Expand and upgrade outpost infrastructure. Costs {0} silver.</StrategicOutpost_UpgradeAction_Desc>
+  <StrategicOutpost_UnloadCargoPrompt>Unload stored outpost cargo onto the map depot floor:</StrategicOutpost_UnloadCargoPrompt>
+  <StrategicOutpost_UnloadCargo_Label>Unload cargo to map</StrategicOutpost_UnloadCargo_Label>
+
+  <!-- Specializations -->
+  <StrategicOutpost_Spec_Mining>Mining &amp; Timber</StrategicOutpost_Spec_Mining>
+  <StrategicOutpost_Spec_Farming>Farming Plantation</StrategicOutpost_Spec_Farming>
+  <StrategicOutpost_Spec_Logging>Timber Logging</StrategicOutpost_Spec_Logging>
+  <StrategicOutpost_Spec_Factory>Manufacturing Workshop</StrategicOutpost_Spec_Factory>
+  <StrategicOutpost_Spec_Watchtower>Watchtower</StrategicOutpost_Spec_Watchtower>
+
+  <StrategicOutpost_SpecDesc_Mining>Extracts metals, mineral veins, and harvests timber logs.</StrategicOutpost_SpecDesc_Mining>
+  <StrategicOutpost_SpecDesc_Farming>Cultivates food, textile fibers, and medicinal herbs.</StrategicOutpost_SpecDesc_Farming>
+  <StrategicOutpost_SpecDesc_Logging>Harvests local timber into construction logs.</StrategicOutpost_SpecDesc_Logging>
+  <StrategicOutpost_SpecDesc_Factory>Processes raw resources into components, textiles, and finished goods.</StrategicOutpost_SpecDesc_Factory>
+  <StrategicOutpost_SpecDesc_Watchtower>Conducts long-range surveillance of settlements within 15 world tiles.</StrategicOutpost_SpecDesc_Watchtower>
+
+  <!-- Tabs -->
+  <StrategicOutpost_Tab_Production>Production</StrategicOutpost_Tab_Production>
+  <StrategicOutpost_Tab_Personnel>Personnel</StrategicOutpost_Tab_Personnel>
+  <StrategicOutpost_Tab_Logistics>Logistics</StrategicOutpost_Tab_Logistics>
+  <StrategicOutpost_Tab_Evacuation>Evacuation</StrategicOutpost_Tab_Evacuation>
+
+  <!-- Production Tab UI -->
+  <StrategicOutpost_SpecializationTitle>Outpost Specialization</StrategicOutpost_SpecializationTitle>
+  <StrategicOutpost_ChangeSpecBtn>Change specialization</StrategicOutpost_ChangeSpecBtn>
+  <StrategicOutpost_LogisticsTitle>Supply Logistics</StrategicOutpost_LogisticsTitle>
+  <StrategicOutpost_CurrentTargetColony>Delivery Colony: {0}</StrategicOutpost_CurrentTargetColony>
+  <StrategicOutpost_NoTargetColony>None (retentive storage)</StrategicOutpost_NoTargetColony>
+  <StrategicOutpost_ChangeTargetColonyBtn>Set delivery colony</StrategicOutpost_ChangeTargetColonyBtn>
+  <StrategicOutpost_ClearTargetColony>Clear delivery target</StrategicOutpost_ClearTargetColony>
+  <StrategicOutpost_WatchtowerHeader>Strategic Reconnaissance</StrategicOutpost_WatchtowerHeader>
+  <StrategicOutpost_WatchtowerDescFull>The watchtower maintains round-the-clock radar and lookout scanning over a 15-tile planetary radius.\n\nHostile settlements tracked: {0}\nTotal settlements in range: {1}\n\nReconnaissance is strictly observational and generates zero free items.</StrategicOutpost_WatchtowerDescFull>
+  <StrategicOutpost_ProductLinesTitle>Active Product Lines</StrategicOutpost_ProductLinesTitle>
+  <StrategicOutpost_ProductYield>{0} ({1}/day)</StrategicOutpost_ProductYield>
+  <StrategicOutpost_MustKeepOneProduct>At least one product line must remain active.</StrategicOutpost_MustKeepOneProduct>
+
+  <!-- Personnel Tab UI -->
+  <StrategicOutpost_WorkersInOutpost>Outpost Personnel ({0}/{1})</StrategicOutpost_WorkersInOutpost>
+  <StrategicOutpost_CaravanColonists>Caravan Personnel</StrategicOutpost_CaravanColonists>
+  <StrategicOutpost_ToCaravanBtn>To Caravan</StrategicOutpost_ToCaravanBtn>
+  <StrategicOutpost_ToOutpostBtn>To Outpost</StrategicOutpost_ToOutpostBtn>
+  <StrategicOutpost_NoCaravanPresentForTransfer>No player caravan present at this tile to transfer personnel.</StrategicOutpost_NoCaravanPresentForTransfer>
+
+  <!-- Logistics Tab UI -->
+  <StrategicOutpost_RawMaterialsTitle>Raw Materials Storage ({0})</StrategicOutpost_RawMaterialsTitle>
+  <StrategicOutpost_ProducedGoodsTitle>Produced Goods Storage ({0})</StrategicOutpost_ProducedGoodsTitle>
+  <StrategicOutpost_Deposit>Deposit items</StrategicOutpost_Deposit>
+  <StrategicOutpost_TakeItemBtn>Take</StrategicOutpost_TakeItemBtn>
+  <StrategicOutpost_TakeAllBtn>Take all</StrategicOutpost_TakeAllBtn>
+  <StrategicOutpost_NoSupplies>Caravan has no eligible items to deposit.</StrategicOutpost_NoSupplies>
+
+  <!-- Evacuation Tab UI -->
+  <StrategicOutpost_EvacuateTitle>Abandon and Evacuate Outpost</StrategicOutpost_EvacuateTitle>
+  <StrategicOutpost_EvacuateWarningFull>Abandoning this outpost will transfer all personnel, pack animals, raw materials, and produced goods into the local caravan. The outpost world object will be decommissioned.</StrategicOutpost_EvacuateWarningFull>
+  <StrategicOutpost_EvacuateButton>Abandon Outpost</StrategicOutpost_EvacuateButton>
+  <StrategicOutpost_ConfirmEvacuatePrompt>Are you sure you want to abandon and evacuate this outpost?</StrategicOutpost_ConfirmEvacuatePrompt>
+  <StrategicOutpost_EvacuateRequiresCaravan>A player caravan must be present on this tile to receive evacuated personnel and supplies.</StrategicOutpost_EvacuateRequiresCaravan>
+
+  <!-- Inspect Strings -->
+  <StrategicOutpost_InspectLevel>Level {0}/{1} (Max workers: {2})</StrategicOutpost_InspectLevel>
+  <StrategicOutpost_InspectSpecialization>Specialization: {0}</StrategicOutpost_InspectSpecialization>
+  <StrategicOutpost_InspectWorkers>Assigned workers: {0}/{1}</StrategicOutpost_InspectWorkers>
+  <StrategicOutpost_Animals>Stationed animals: {0}</StrategicOutpost_Animals>
+  <StrategicOutpost_InspectRecon>Reconnaissance: {0} hostile / {1} total settlements tracked</StrategicOutpost_InspectRecon>
+
+  <!-- Messages & Events -->
+  <StrategicOutpost_InvalidTile>Invalid planetary tile selected.</StrategicOutpost_InvalidTile>
+  <StrategicOutpost_ImpassableTile>Outposts cannot be founded on impassable biomes or mountains.</StrategicOutpost_ImpassableTile>
+  <StrategicOutpost_AlreadyExistsHere>A strategic outpost already exists on this tile.</StrategicOutpost_AlreadyExistsHere>
+  <StrategicOutpost_CannotBuildOnSettlement>Cannot found outpost on an existing settlement.</StrategicOutpost_CannotBuildOnSettlement>
+  <StrategicOutpost_CannotBuildOnSite>Cannot found outpost on an active encounter site.</StrategicOutpost_CannotBuildOnSite>
+  <StrategicOutpost_NoPlayerCaravan>Founding requires an active player caravan.</StrategicOutpost_NoPlayerCaravan>
+  <StrategicOutpost_CaravanIsMoving>Caravan must halt before founding an outpost.</StrategicOutpost_CaravanIsMoving>
+  <StrategicOutpost_RequiresTwoColonists>Founding requires at least 2 capable colonists (current: {0}).</StrategicOutpost_RequiresTwoColonists>
+  <StrategicOutpost_AdditionalEscort>The caravan must retain at least one capable colonist escort for non-founder pawns.</StrategicOutpost_AdditionalEscort>
+  <StrategicOutpost_FoundingRollback>Failed to found outpost: personnel transfer rolled back safely.</StrategicOutpost_FoundingRollback>
+  <StrategicOutpost_FoundingSuccess>Strategic outpost {0} established with {1} personnel.</StrategicOutpost_FoundingSuccess>
+  <StrategicOutpost_ShipmentDelivered>Daily cargo shipment from {0} delivered to {1}.</StrategicOutpost_ShipmentDelivered>
+  <StrategicOutpost_MaxLevelReached>Outpost has already achieved maximum Level 10.</StrategicOutpost_MaxLevelReached>
+  <StrategicOutpost_UpgradeBlockedNoSpace>Upgrade blocked: no safe expansion space available on the map.</StrategicOutpost_UpgradeBlockedNoSpace>
+  <StrategicOutpost_NotEnoughSilver>Upgrade requires {0} silver (available: {1}).</StrategicOutpost_NotEnoughSilver>
+  <StrategicOutpost_UpgradeSuccess>{0} upgraded to Level {1} (Capacity: {2}).</StrategicOutpost_UpgradeSuccess>
+  <StrategicOutpost_NoWorkersToDeploy>No outpost personnel available to deploy.</StrategicOutpost_NoWorkersToDeploy>
+  <StrategicOutpost_PersonnelDeployed>{0}: deployed {1} personnel to outpost map.</StrategicOutpost_PersonnelDeployed>
+  <StrategicOutpost_PersonnelRecalled>{0}: recalled {1} personnel to autonomous operations.</StrategicOutpost_PersonnelRecalled>
+  <StrategicOutpost_CannotRecallDuringCombat>Cannot recall personnel to autonomous storage during active combat or hostility.</StrategicOutpost_CannotRecallDuringCombat>
+  <StrategicOutpost_CannotRecallMentalBreak>Cannot recall personnel: {0} is currently in a mental state.</StrategicOutpost_CannotRecallMentalBreak>
+  <StrategicOutpost_CargoUnloaded>Unloaded {0} cargo items into the supply depot.</StrategicOutpost_CargoUnloaded>
+  <StrategicOutpost_NoCargoToUnload>No produced goods in storage to unload.</StrategicOutpost_NoCargoToUnload>
+  <StrategicOutpost_CaravanTooHeavy>Caravan mass capacity exceeded.</StrategicOutpost_CaravanTooHeavy>
+  <StrategicOutpost_CargoRemains>Evacuation halted: cargo or stationed animals remain without sufficient caravan capacity.</StrategicOutpost_CargoRemains>
+  <StrategicOutpost_Evacuated>Strategic outpost {0} has been abandoned and evacuated.</StrategicOutpost_Evacuated>
+  <StrategicOutpost_InvalidCaravanOrPawn>Invalid caravan or pawn specified.</StrategicOutpost_InvalidCaravanOrPawn>
+  <StrategicOutpost_PawnNotAvailable>Specified pawn is not available in the caravan.</StrategicOutpost_PawnNotAvailable>
+  <StrategicOutpost_NotPlayerFaction>Pawn does not belong to the player faction.</StrategicOutpost_NotPlayerFaction>
+  <StrategicOutpost_CapacityFull>Outpost worker capacity full ({0} workers max).</StrategicOutpost_CapacityFull>
+  <StrategicOutpost_FailedToAddPawn>Failed to add pawn to outpost storage.</StrategicOutpost_FailedToAddPawn>
+  <StrategicOutpost_PawnNotFound>Pawn not found in outpost personnel roster.</StrategicOutpost_PawnNotFound>
+  <StrategicOutpost_CannotRemoveLastWorker>Cannot remove the last worker from an active outpost.</StrategicOutpost_CannotRemoveLastWorker>
+  <StrategicOutpost_ProductUnavailable>Product line is not currently available.</StrategicOutpost_ProductUnavailable>
+  <StrategicOutpost_ResearchRequired>Requires research: {0}</StrategicOutpost_ResearchRequired>
+  <StrategicOutpost_CannotEvacuateActiveMap>Cannot abandon outpost while map is active and personnel are deployed. Recall all personnel first.</StrategicOutpost_CannotEvacuateActiveMap>
+  <StrategicOutpost_CannotFindSpawnCell>Cannot deploy personnel: failed to find suitable standable spawn locations near base center.</StrategicOutpost_CannotFindSpawnCell>
+  <StrategicOutpost_AlreadyAutonomous>Personnel are already in autonomous mode.</StrategicOutpost_AlreadyAutonomous>
+  <StrategicOutpost_AlreadyPhysical>Personnel are already deployed on the map.</StrategicOutpost_AlreadyPhysical>
+  <StrategicOutpost_MapGenFailed>Failed to generate outpost map.</StrategicOutpost_MapGenFailed>
+  <StrategicOutpost_PawnNotSuitable>Colonist is not capable of outpost duties.</StrategicOutpost_PawnNotSuitable>
+  <StrategicOutpost_EvacuateOverloaded>Evacuation incomplete: caravan mass capacity reached. Remaining supplies left at outpost.</StrategicOutpost_EvacuateOverloaded>
+  <StrategicOutpost_RosterUnavailable>Some stationed personnel are away from the outpost map. Return them before switching to autonomous mode.</StrategicOutpost_RosterUnavailable>
+  <StrategicOutpost_MapRetained>Personnel and available cargo evacuated. The visited map and its buildings are retained.</StrategicOutpost_MapRetained>
+</LanguageData>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VFEC_AddStartingStructure.label>добавить постройку на стартовую карту</VFEC_AddStartingStructure.label>
+  <VFEC_ForcedFactionGoodwill.label>заданные отношения фракций</VFEC_ForcedFactionGoodwill.label>
+  <VFEC_PlayerPawnsArriveMethodEdge.label>способ прибытия поселенцев</VFEC_PlayerPawnsArriveMethodEdge.label>
+</LanguageData>

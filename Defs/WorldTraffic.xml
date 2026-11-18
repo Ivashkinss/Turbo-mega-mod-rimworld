@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <WorldObjectDef>
+    <defName>TMM_WorldTrafficCargo</defName>
+    <label>abandoned cargo</label>
+    <description>Physical supplies left behind by a travelling group. A caravan on the same tile can collect what it can carry.</description>
+    <worldObjectClass>TurboMegaMod.WorldTrafficCargo</worldObjectClass>
+    <texture>World/WorldObjects/Caravan</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/Expanding/Caravan</expandingIconTexture>
+    <expandingIconPriority>80</expandingIconPriority>
+    <useDynamicDrawer>true</useDynamicDrawer>
+  </WorldObjectDef>
+</Defs>

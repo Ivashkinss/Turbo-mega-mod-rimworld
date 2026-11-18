@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Михаил -->
+  <TMM_BS_michael_child.title>первородный архангел</TMM_BS_michael_child.title>
+  <TMM_BS_michael_child.titleShort>первородный</TMM_BS_michael_child.titleShort>
+  <TMM_BS_michael_child.description>Сотворённый на самой заре мироздания, [PAWN_nameDef] был призван стать незыблемым столпом небесного порядка. С первых мгновений бытия он ставил долг и послушание выше любых личных чувств.</TMM_BS_michael_child.description>
+
+  <TMM_BS_michael_adult.title>полководец воинства</TMM_BS_michael_adult.title>
+  <TMM_BS_michael_adult.titleShort>полководец</TMM_BS_michael_adult.titleShort>
+  <TMM_BS_michael_adult.description>Верховный главнокомандующий небесных армий, [PAWN_nameDef] без колебаний низвергал мятежных братьев и воплощал великий замысел. Непреклонный, суровый и собранный, он воспринимает каждую битву как священный приказ, который обязан довести до конца.</TMM_BS_michael_adult.description>
+
+  <!-- Люцифер -->
+  <TMM_BS_lucifer_child.title>утренняя звезда</TMM_BS_lucifer_child.title>
+  <TMM_BS_lucifer_child.titleShort>светоносный</TMM_BS_lucifer_child.titleShort>
+  <TMM_BS_lucifer_child.description>Некогда самый яркий и любимый из архангелов, [PAWN_nameDef] славился ослепительным сиянием и острым умом. Однако за его безупречным обаянием постепенно зрела жгучая обида из-за приказа почитать несовершенных смертных.</TMM_BS_lucifer_child.description>
+
+  <TMM_BS_lucifer_adult.title>падший архангел</TMM_BS_lucifer_adult.title>
+  <TMM_BS_lucifer_adult.titleShort>падший</TMM_BS_lucifer_adult.titleShort>
+  <TMM_BS_lucifer_adult.description>Изгнанный за бунт и создание первых демонов, [PAWN_nameDef] веками копил ярость за древними печатями. Ступив на землю в чужом сосуде, он прячет чудовищную жестокость за чёрным юмором, театральной учтивостью и смертоносным расчётом.</TMM_BS_lucifer_adult.description>
+
+  <!-- Кастиэль -->
+  <TMM_BS_castiel_child.title>воин гарнизона</TMM_BS_castiel_child.title>
+  <TMM_BS_castiel_child.titleShort>воин</TMM_BS_castiel_child.titleShort>
+  <TMM_BS_castiel_child.description>Созданный как верный солдат небесного воинства, [PAWN_nameDef] тысячелетиями исполнял приказы без единого вопроса. Он наблюдал, как человечество поднимается из праха, связанный строгим запретом вмешиваться в дела смертных.</TMM_BS_castiel_child.description>
+
+  <TMM_BS_castiel_adult.title>мятежный ангел</TMM_BS_castiel_adult.title>
+  <TMM_BS_castiel_adult.titleShort>мятежник</TMM_BS_castiel_adult.titleShort>
+  <TMM_BS_castiel_adult.description>Получив приказ вытащить обречённого охотника из глубин преисподней, [PAWN_nameDef] постепенно познал сомнения, свободу воли и искреннюю преданность смертным друзьям. Пусть людские шутки и привычки порой ставят его в тупик, он не раз бросал вызов самим Небесам ради тех, кто ему дорог.</TMM_BS_castiel_adult.description>
+
+  <!-- Гавриил -->
+  <TMM_BS_gabriel_child.title>небесный вестник</TMM_BS_gabriel_child.title>
+  <TMM_BS_gabriel_child.titleShort>вестник</TMM_BS_gabriel_child.titleShort>
+  <TMM_BS_gabriel_child.description>Младший из великих архангелов, [PAWN_nameDef] всегда ценил смех и хитрые проделки куда больше небесных интриг. Когда старшие братья начали грызню друг с другом, он предпочёл тихо исчезнуть, лишь бы не выбирать сторону.</TMM_BS_gabriel_child.description>
+
+  <TMM_BS_gabriel_adult.title>архангел-трикстер</TMM_BS_gabriel_adult.title>
+  <TMM_BS_gabriel_adult.titleShort>трикстер</TMM_BS_gabriel_adult.titleShort>
+  <TMM_BS_gabriel_adult.description>Скрываясь среди людей под личиной языческого бога обмана, [PAWN_nameDef] предавался любви к сладостям, изощрённым розыгрышам и жёстким урокам морали. За его беспечной ухмылкой таится мощь архангела, который в глубине души всё ещё надеется, что человечество сумеет выстоять.</TMM_BS_gabriel_adult.description>
+
+  <!-- Захария -->
+  <TMM_BS_zachariah_child.title>небесный клерк</TMM_BS_zachariah_child.title>
+  <TMM_BS_zachariah_child.titleShort>клерк</TMM_BS_zachariah_child.titleShort>
+  <TMM_BS_zachariah_child.description>Даже в ранние эпохи Небес [PAWN_nameDef] предпочитал отчёты, субординацию и строгий протокол прямому бою. Он быстро освоил искусство угождать начальству и перекладывать промахи на плечи подчинённых.</TMM_BS_zachariah_child.description>
+
+  <TMM_BS_zachariah_adult.title>небесный бюрократ</TMM_BS_zachariah_adult.title>
+  <TMM_BS_zachariah_adult.titleShort>бюрократ</TMM_BS_zachariah_adult.titleShort>
+  <TMM_BS_zachariah_adult.description>Нося облик самодовольного топ-менеджера, [PAWN_nameDef] относится к апокалипсису как к крупному корпоративному проекту. Циничный и беспринципный, он манипулирует смертными пешками с помощью ложных обещаний и жестоких ультиматумов, загоняя их в рамки «плана».</TMM_BS_zachariah_adult.description>
+
+  <!-- Наоми -->
+  <TMM_BS_naomi_child.title>наблюдатель во тьме</TMM_BS_naomi_child.title>
+  <TMM_BS_naomi_child.titleShort>наблюдатель</TMM_BS_naomi_child.titleShort>
+  <TMM_BS_naomi_child.description>Воспитанная в тихих коридорах тайных архивов Небес, [PAWN_nameDef] рано усвоила, что информация ранит точнее любого клинка. Она следила за ангелами и смертными из тени, фиксируя каждую слабость и крамольную мысль.</TMM_BS_naomi_child.description>
+
+  <TMM_BS_naomi_adult.title>глава разведки</TMM_BS_naomi_adult.title>
+  <TMM_BS_naomi_adult.titleShort>разведчица</TMM_BS_naomi_adult.titleShort>
+  <TMM_BS_naomi_adult.description>Холодная и расчётливая руководительница небесной разведки, [PAWN_nameDef] поддерживает порядок с помощью слежки, допросов и тонкой перестройки сознания. Лишённая сентиментальности, она убеждена, что свобода воли — опасный изъян, который необходимо вовремя исправлять.</TMM_BS_naomi_adult.description>
+</LanguageData>

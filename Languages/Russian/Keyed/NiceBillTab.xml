@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <NiceBillTabEnabledMod>Мод включён</NiceBillTabEnabledMod>
+  <FlatDamage>Урон</FlatDamage>
+  <FlatDamageTooltip>Урон одного выстрела или атаки</FlatDamageTooltip>
+  <DamageDPS>Урон (DPS)</DamageDPS>
+  <DamageDPSTooltip>Урон в секунду (DPS) — это показатель, отражающий среднее количество урона, наносимого оружием за секунду боя. Учитывается время подготовки атаки, нанесённый урон и скорость атаки/стрельбы.</DamageDPSTooltip>
+  <WeaponFireRate>Скорострельность</WeaponFireRate>
+  <WeaponFireRateTooltip>Скорострельность показывает количество выстрелов в секунду. Включает время перезарядки и задержки между выстрелами в серии.\n\n{0} / ({1} + {2}) = {3}</WeaponFireRateTooltip>
+  <WeaponTotalBurstTime>Очередь</WeaponTotalBurstTime>
+  <CooldownReload>Перезарядка</CooldownReload>
+  <ShotPerSecondShort>выстр./сек</ShotPerSecondShort>
+  <SecondShort>сек</SecondShort>
+  <WeaponAttackSpeed>Скорость атаки</WeaponAttackSpeed>
+  <WeaponAttackSpeedTooltip>Скорость атаки — время, необходимое для выполнения одной атаки.</WeaponAttackSpeedTooltip>
+  <WeaponAccuracy>Точность</WeaponAccuracy>
+  <WeaponAccuracyTouch>вплотную</WeaponAccuracyTouch>
+  <WeaponAccuracyShort>близко</WeaponAccuracyShort>
+  <WeaponAccuracyMedium>средне</WeaponAccuracyMedium>
+  <WeaponAccuracyLong>далеко</WeaponAccuracyLong>
+  <NotCovers>Не закрывает</NotCovers>
+  <PasteBillHere>Вставьте задание сюда</PasteBillHere>
+  <BillButton_Make>Создать</BillButton_Make>
+  <BillButton_Cook>Готовить</BillButton_Cook>
+  <BillButton_Gestate>Выращивать</BillButton_Gestate>
+  <NoOneCanDoThisWork>Никто не может выполнить эту работу</NoOneCanDoThisWork>
+  <BillFilterTip>Фильтруйте задания по имени. Также можно фильтровать по категории. Для этого введите {0} и затем название категории (можно часть слова).</BillFilterTip>
+  <ApparelLayerFilterTip>Используйте {0} для фильтра по слою одежды.</ApparelLayerFilterTip>
+  <ModFilterTip>Используйте {0} для фильтра по моду или DLC.</ModFilterTip>
+  <BillAvailableCategories>Доступные категории</BillAvailableCategories>
+  <DefaultRecipeList>Широкий список рецептов</DefaultRecipeList>
+  <CompactRecipeList>Компактный список рецептов</CompactRecipeList>
+  <CategorizedRecipeList>Категоризированный список рецептов</CategorizedRecipeList>
+  <CompareBarsWithColors>Сравнивать полосы показателей предметов цветами</CompareBarsWithColors>
+  <CompareRecipesFail>Невозможно сравнить рецепты</CompareRecipesFail>
+  <SelectMaterial>Выбрать материал</SelectMaterial>
+  <StatMaximize>Максимизировать {0}</StatMaximize>
+  <MaximizeFromColonyMaterials>Из материалов в поселении</MaximizeFromColonyMaterials>
+  <MaximizeFromAnyMaterial>Из любого материала</MaximizeFromAnyMaterial>
+  <CompareWhenSelectMaterial>Сравнивать при выборе материала</CompareWhenSelectMaterial>
+  <SearchBetterMaterialFail>Невозможно найти материал лучше</SearchBetterMaterialFail>
+  <GlowingYellowHintEnabled>Включить мигающую желтую подсказку</GlowingYellowHintEnabled>
+  <UseSpecialSymbolToFilterByCategory>Использовать специальный символ {0} для фильтрации по категории</UseSpecialSymbolToFilterByCategory>
+  <CEmmShort>мм</CEmmShort>
+  <OpenInfoDialog>Посмотреть информацию</OpenInfoDialog>
+  <FindOnMap>Найти в поселении</FindOnMap>
+  <CreateTaskOnAvailableWorkbench>Поставить в очередь задание на доступном верстаке</CreateTaskOnAvailableWorkbench>
+  <NoExistOnCurrentMap>Искомый объект отсутствует на карте</NoExistOnCurrentMap>
+  <SelectThisAmmo>Рассчитать с этими боеприпасами</SelectThisAmmo>
+  <UseNonLinearBars>Использовать нелинейные полосы</UseNonLinearBars>
+  <ShowFlatDamageForRanged>Показывать урон одного выстрела для дальнего оружия</ShowFlatDamageForRanged>
+  <ShowFlatDamageForMelee>Показывать урон одного удара для ближнего оружия</ShowFlatDamageForMelee>
+  <ArmorRatingSharpSimple>Броня: Колющее</ArmorRatingSharpSimple>
+  <ArmorRatingBluntSimple>Броня: Дробящее</ArmorRatingBluntSimple>
+  <BillTabHeight>Высота окна ({0})</BillTabHeight>
+  <BillTabListingExtraWidth>Дополнительная ширина списка заданий ({0})</BillTabListingExtraWidth>
+  <AddDetailsButtonToBillQueue>Добавить кнопку 'Детали...' к списку заданий</AddDetailsButtonToBillQueue>
+  <StoppingPowerShort>Остан. сила</StoppingPowerShort>
+  <ShowStatInfoUniversal>Показывать '{0}'</ShowStatInfoUniversal>
+  <SettingsCommonTab>Общее</SettingsCommonTab>
+  <SettingsItemTab>Предметы</SettingsItemTab>
+  <SettingsExperimentalTab>Экспериментальное</SettingsExperimentalTab>
+  <EnableScrollUpWhenBillAdded>Включить прокрутку вверх при добавлении задания</EnableScrollUpWhenBillAdded>
+  <EnableClassicSuspendButton>Включить классическую кнопку приостановки</EnableClassicSuspendButton>
+  <ShowBarTicks>Показывать штрихи на полосах</ShowBarTicks>
+</LanguageData>

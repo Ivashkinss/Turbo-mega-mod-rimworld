@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_BuyComplexGoods.reportString>Покупает товары.</TMM_BuyComplexGoods.reportString>
+  <TMM_WaitForGoods.reportString>Ждёт покупку.</TMM_WaitForGoods.reportString>
+  <TMM_DeliverGoods.reportString>Выдаёт покупку.</TMM_DeliverGoods.reportString>
+</LanguageData>

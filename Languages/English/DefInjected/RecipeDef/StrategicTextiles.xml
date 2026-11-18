@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_MakeSynthread.label>synthesize synthread</TMM_MakeSynthread.label>
+  <TMM_MakeSynthread.description>Synthesize one unit of synthread from one cloth and one chemfuel.</TMM_MakeSynthread.description>
+  <TMM_MakeSynthread.jobString>Synthesizing synthread.</TMM_MakeSynthread.jobString>
+
+  <TMM_MakeHyperweave.label>synthesize hyperweave</TMM_MakeHyperweave.label>
+  <TMM_MakeHyperweave.description>Synthesize one unit of hyperweave from one synthread and one chemfuel.</TMM_MakeHyperweave.description>
+  <TMM_MakeHyperweave.jobString>Synthesizing hyperweave.</TMM_MakeHyperweave.jobString>
+</LanguageData>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Hotel.Settings>Гостиница и гости</TMM.Hotel.Settings>
+  <TMM.Hotel.DailyRate>Цена за игровые сутки: {0} серебра. Первые сутки оплачиваются при заселении.</TMM.Hotel.DailyRate>
+  <TMM.Hotel.CannotExtend>{0} не может оплатить следующие сутки. Платная гостевая кровать освобождена; гость ещё может воспользоваться бесплатной.</TMM.Hotel.CannotExtend>
+  <GuestsCantCome>Сейчас нельзя пригласить гостей.</GuestsCantCome>
+</LanguageData>

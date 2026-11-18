@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <GuestClaimedBed.stages.0.label>бесплатная кровать</GuestClaimedBed.stages.0.label>
+  <GuestClaimedBed.stages.0.description>Мне предоставили кровать бесплатно, так что жаловаться не на что.</GuestClaimedBed.stages.0.description>
+  <GuestClaimedBed.stages.1.label>чрезвычайно дорогая кровать</GuestClaimedBed.stages.1.label>
+  <GuestClaimedBed.stages.1.description>Эта кровать явно не стоила таких больших денег.</GuestClaimedBed.stages.1.description>
+  <GuestClaimedBed.stages.2.label>дорогая кровать</GuestClaimedBed.stages.2.label>
+  <GuestClaimedBed.stages.2.description>Эта кровать не стоит тех денег, которые пришлось заплатить.</GuestClaimedBed.stages.2.description>
+  <GuestClaimedBed.stages.3.label>плохая кровать</GuestClaimedBed.stages.3.label>
+  <GuestClaimedBed.stages.3.description>Эта кровать не стоила своей цены.</GuestClaimedBed.stages.3.description>
+  <GuestClaimedBed.stages.4.label>приемлемая кровать</GuestClaimedBed.stages.4.label>
+  <GuestClaimedBed.stages.4.description>Цена за кровать тут приемлемая.</GuestClaimedBed.stages.4.description>
+  <GuestClaimedBed.stages.5.label>хорошая цена за кровать</GuestClaimedBed.stages.5.label>
+  <GuestClaimedBed.stages.5.description>Хорошая цена за кровать.</GuestClaimedBed.stages.5.description>
+  <GuestClaimedBed.stages.6.label>отличная цена за кровать</GuestClaimedBed.stages.6.label>
+  <GuestClaimedBed.stages.6.description>Кровать досталась мне по хорошей цене!</GuestClaimedBed.stages.6.description>
+  <GuestAngered.stages.angered_by_recruitment.label>недовольство вербовкой</GuestAngered.stages.angered_by_recruitment.label>
+  <GuestAngered.stages.angered_by_recruitment.description>Они пытаются украсть моих товарищей!</GuestAngered.stages.angered_by_recruitment.description>
+  <GuestRecruitmentForced.stages.involuntarily_recruited.label>принудительная вербовка</GuestRecruitmentForced.stages.involuntarily_recruited.label>
+  <GuestRecruitmentForced.stages.involuntarily_recruited.description>Не знаю, нужно ли мне тут быть..</GuestRecruitmentForced.stages.involuntarily_recruited.description>
+  <GuestOffendedRelationship.stages.insulted_by_colonist.label>оскорбление от поселенца</GuestOffendedRelationship.stages.insulted_by_colonist.label>
+  <GuestOffendedRelationship.stages.insulted_by_colonist.labelSocial>оскорбил(а) меня</GuestOffendedRelationship.stages.insulted_by_colonist.labelSocial>
+  <GuestOffendedRelationship.stages.insulted_by_colonist.description>Тут никто не умеет себя прилично вести!</GuestOffendedRelationship.stages.insulted_by_colonist.description>
+  <GuestPleasedRelationship.stages.charmed_by_colonist.label>очаровательный поселенец</GuestPleasedRelationship.stages.charmed_by_colonist.label>
+  <GuestPleasedRelationship.stages.charmed_by_colonist.labelSocial>очаровал(а) меня</GuestPleasedRelationship.stages.charmed_by_colonist.labelSocial>
+  <GuestPleasedRelationship.stages.charmed_by_colonist.description>Какие милые люди!</GuestPleasedRelationship.stages.charmed_by_colonist.description>
+  <EndorsedByRecruiter.stages.endorsed_by_recruiter.label>рекомендован дипломатом</EndorsedByRecruiter.stages.endorsed_by_recruiter.label>
+  <EndorsedByRecruiter.stages.endorsed_by_recruiter.labelSocial>был мне рекомендован</EndorsedByRecruiter.stages.endorsed_by_recruiter.labelSocial>
+  <EndorsedByRecruiter.stages.endorsed_by_recruiter.description>Мне порекомендовали этого человека.</EndorsedByRecruiter.stages.endorsed_by_recruiter.description>
+  <GuestDismissiveAttitude.stages.tired_of_talking.label>много разговоров</GuestDismissiveAttitude.stages.tired_of_talking.label>
+  <GuestDismissiveAttitude.stages.tired_of_talking.description>Сколько можно разговаривать. Оставьте меня в покое.</GuestDismissiveAttitude.stages.tired_of_talking.description>
+  <GuestExpensiveFood.stages.0.label>дорогая еда</GuestExpensiveFood.stages.0.label>
+  <GuestExpensiveFood.stages.0.description>Мне пришлось дорого заплатить за еду из дозатора.</GuestExpensiveFood.stages.0.description>
+  <GuestCheapFood.stages.0.label>дешёвая еда</GuestCheapFood.stages.0.label>
+  <GuestCheapFood.stages.0.description>Еда в дозаторе тут стоит дёшево.</GuestCheapFood.stages.0.description>
+  <GuestCantAffordBed.stages.0.label>недостаточно денег на кровать</GuestCantAffordBed.stages.0.label>
+  <GuestCantAffordBed.stages.0.description>Не могу позволить себе оплатить кровать.</GuestCantAffordBed.stages.0.description>
+  <GuestHasNoFood.stages.no_food.label>нет еды</GuestHasNoFood.stages.no_food.label>
+  <GuestHasNoFood.stages.no_food.description>Мне нечего есть.</GuestHasNoFood.stages.no_food.description>
+  <GuestBedCount.stages.no_guest_beds.label>нет гостевых кроватей</GuestBedCount.stages.no_guest_beds.label>
+  <GuestBedCount.stages.no_guest_beds.description>У них даже кроватей для гостей нет.</GuestBedCount.stages.no_guest_beds.description>
+  <GuestBedCount.stages.not_enough_guest_beds.label>не хватает гостевых кроватей</GuestBedCount.stages.not_enough_guest_beds.label>
+  <GuestBedCount.stages.not_enough_guest_beds.description>Тут не хватает кроватей на всех гостей.</GuestBedCount.stages.not_enough_guest_beds.description>
+  <GuestBedCount.stages.enough_beds.label>достаточно кроватей</GuestBedCount.stages.enough_beds.label>
+  <GuestBedCount.stages.enough_beds.description>Тут оказалось достаточно кроватей для всех нас.</GuestBedCount.stages.enough_beds.description>
+  <GuestBedCount.stages.lots_of_beds.label>много кроватей</GuestBedCount.stages.lots_of_beds.label>
+  <GuestBedCount.stages.lots_of_beds.description>Ничего себе, так много кроватей!</GuestBedCount.stages.lots_of_beds.description>
+</LanguageData>

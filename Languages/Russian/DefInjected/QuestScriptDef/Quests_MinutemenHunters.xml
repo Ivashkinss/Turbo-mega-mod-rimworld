@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <TMM_MinutemenReliefQuest.questNameRules.rulesStrings>
+    <li>questName->Сигнал ополчения: полевое снабжение</li>
+  </TMM_MinutemenReliefQuest.questNameRules.rulesStrings>
+  <TMM_MinutemenReliefQuest.questDescriptionRules.rulesStrings>
+    <li>questDescription->Ополченцы-минитмены и охотники на нечисть запросили срочную гуманитарную помощь полевыми припасами.</li>
+  </TMM_MinutemenReliefQuest.questDescriptionRules.rulesStrings>
+
+  <TMM_MinutemenArchiveQuest.questNameRules.rulesStrings>
+    <li>questName->Полевой архив заброшенного поста</li>
+  </TMM_MinutemenArchiveQuest.questNameRules.rulesStrings>
+  <TMM_MinutemenArchiveQuest.questDescriptionRules.rulesStrings>
+    <li>questDescription->Заброшенный укреплённый пост минитменов содержит ценные архивные записи по защите от чудовищ.</li>
+  </TMM_MinutemenArchiveQuest.questDescriptionRules.rulesStrings>
+
+</LanguageData>

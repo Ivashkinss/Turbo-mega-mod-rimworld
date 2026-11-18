@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Престон Гарви -->
+  <TMM_BS_preston_garvey_child.title>идеалист Содружества</TMM_BS_preston_garvey_child.title>
+  <TMM_BS_preston_garvey_child.titleShort>идеалист</TMM_BS_preston_garvey_child.titleShort>
+  <TMM_BS_preston_garvey_child.description>[PAWN_nameDef] вырос на старых рассказах о народном ополчении, защищавшем беззащитные городки от рейдеров и мутантов. Пока сверстники искали выгоду только для себя, он латал заборы по периметру и перевязывал раненых соседей.</TMM_BS_preston_garvey_child.description>
+
+  <TMM_BS_preston_garvey_adult.title>генерал минитменов</TMM_BS_preston_garvey_adult.title>
+  <TMM_BS_preston_garvey_adult.titleShort>генерал</TMM_BS_preston_garvey_adult.titleShort>
+  <TMM_BS_preston_garvey_adult.description>Пережив предательство и бойню в Квинси, [PAWN_nameDef] не позволил идеалам ополчения кануть в лету. Не расставаясь с верным лазерным мушкетом, он объединяет разрозненные поселения в единую сеть обороны и всегда готов выступить туда, где нужна помощь.</TMM_BS_preston_garvey_adult.description>
+
+  <!-- Дин Винчестер -->
+  <TMM_BS_dean_winchester_child.title>выросший в мотелях</TMM_BS_dean_winchester_child.title>
+  <TMM_BS_dean_winchester_child.titleShort>бродяга</TMM_BS_dean_winchester_child.titleShort>
+  <TMM_BS_dean_winchester_child.description>[PAWN_nameDef] не знал постоянного дома, проведя детство на заднем сиденье чёрного маслкара и в дешёвых придорожных мотелях. Научившись чистить дробовик раньше, чем решать уравнения, он присматривал за младшим братом, пока отец охотился на тварей во тьме.</TMM_BS_dean_winchester_child.description>
+
+  <TMM_BS_dean_winchester_adult.title>матёрый охотник на нечисть</TMM_BS_dean_winchester_adult.title>
+  <TMM_BS_dean_winchester_adult.titleShort>охотник</TMM_BS_dean_winchester_adult.titleShort>
+  <TMM_BS_dean_winchester_adult.description>Закалённый в бесчисленных схватках с вампирами, призраками и демонами, [PAWN_nameDef] полагается на серебро, каменную соль и упрямство. Пряча чувства за мрачным юмором и гордостью, он без раздумий шагнёт в самое пекло ради тех, кого считает семьёй.</TMM_BS_dean_winchester_adult.description>
+
+  <!-- Сэм Винчестер -->
+  <TMM_BS_sam_winchester_child.title>охотник поневоле</TMM_BS_sam_winchester_child.title>
+  <TMM_BS_sam_winchester_child.titleShort>книгочей</TMM_BS_sam_winchester_child.titleShort>
+  <TMM_BS_sam_winchester_child.description>Кочуя из города в город в бесконечной погоне за чудовищами, [PAWN_nameDef] мечтал об обычной жизни без крови и пороха. Он с головой уходил в учёбу и пыльные фолианты, надеясь вырваться из семейного ремесла силой ума.</TMM_BS_sam_winchester_child.description>
+
+  <TMM_BS_sam_winchester_adult.title>знаток оккультизма</TMM_BS_sam_winchester_adult.title>
+  <TMM_BS_sam_winchester_adult.titleShort>оккультист</TMM_BS_sam_winchester_adult.titleShort>
+  <TMM_BS_sam_winchester_adult.description>Трагедия заставила [PAWN_nameDef] бросить перспективную учёбу на юриста в Стэнфорде и вернуться на дорогу. Сочетая аналитический ум с глубокими познаниями в древних ритуалах и демонологии, он находит скрытые уязвимости тварей, которых не взять грубой силой.</TMM_BS_sam_winchester_adult.description>
+
+  <!-- Кроули -->
+  <TMM_BS_crowley_child.title>шотландский портной</TMM_BS_crowley_child.title>
+  <TMM_BS_crowley_child.titleShort>портной</TMM_BS_crowley_child.titleShort>
+  <TMM_BS_crowley_child.description>Задолго до того, как его душу перемололо в преисподней, [PAWN_nameDef] был желчным и честолюбивым портным в Шотландии XVII века. Уже тогда он обладал подвешенным языком и острым чутьём на чужие пороки и тайные желания.</TMM_BS_crowley_child.description>
+
+  <TMM_BS_crowley_adult.title>Король Ада</TMM_BS_crowley_adult.title>
+  <TMM_BS_crowley_adult.titleShort>Король Ада</TMM_BS_crowley_adult.titleShort>
+  <TMM_BS_crowley_adult.description>Пройдя путь от ушлого демона перекрёстка до правителя преисподней, [PAWN_nameDef] ведёт дела Ада как крупную корпорацию. Язвительный, расчётливый и скользкий, он предпочитает безупречно составленные сделки грязным дракам, но всегда держит козырь в рукаве своего костюма.</TMM_BS_crowley_adult.description>
+
+  <!-- Азазель -->
+  <TMM_BS_azazel_child.title>древний послушник тьмы</TMM_BS_azazel_child.title>
+  <TMM_BS_azazel_child.titleShort>послушник</TMM_BS_azazel_child.titleShort>
+  <TMM_BS_azazel_child.description>Выкованный на заре падения, [PAWN_nameDef] постиг терпение и фанатичную преданность ещё до появления первых людских городов. В тени забытых капищ он с холодной желтоглазой одержимостью изучал родословные и запретные пророчества.</TMM_BS_azazel_child.description>
+
+  <TMM_BS_azazel_adult.title>желтоглазый кукловод</TMM_BS_azazel_adult.title>
+  <TMM_BS_azazel_adult.titleShort>кукловод</TMM_BS_azazel_adult.titleShort>
+  <TMM_BS_azazel_adult.description>Могущественный князь Ада, [PAWN_nameDef] десятилетиями плёл зловещий замысел вокруг поколения «особых детей». Безжалостный и склонный к театральности, он стравливает избранных сосудов друг с другом, чтобы распахнуть врата преисподней.</TMM_BS_azazel_adult.description>
+
+  <!-- Лилит -->
+  <TMM_BS_lilith_child.title>первая искажённая душа</TMM_BS_lilith_child.title>
+  <TMM_BS_lilith_child.titleShort>первенец</TMM_BS_lilith_child.titleShort>
+  <TMM_BS_lilith_child.description>Лишённая человеческой благодати на заре времён, [PAWN_nameDef] стала самой первой душой, обращённой в демона. Века мучений выжгли в ней всякое сострадание, оставив лишь жестокое, по-детски капризное любопытство к чужим страданиям.</TMM_BS_lilith_child.description>
+
+  <TMM_BS_lilith_adult.title>разрушительница печатей</TMM_BS_lilith_adult.title>
+  <TMM_BS_lilith_adult.titleShort>вестница</TMM_BS_lilith_adult.titleShort>
+  <TMM_BS_lilith_adult.description>Внушающая ужас даже высшим демонам, [PAWN_nameDef] ведёт за собой легионы с садистской улыбкой и сокрушительной силой. Движимая слепой преданностью своему создателю, она планомерно взламывает шестьдесят шесть мистических печатей, сдерживающих апокалипсис.</TMM_BS_lilith_adult.description>
+
+  <!-- Абаддон -->
+  <TMM_BS_abaddon_child.title>безжалостная фанатичка</TMM_BS_abaddon_child.title>
+  <TMM_BS_abaddon_child.titleShort>фанатичка</TMM_BS_abaddon_child.titleShort>
+  <TMM_BS_abaddon_child.description>Ещё в своей короткой смертной жизни, до того как её отобрали для обращения, [PAWN_nameDef] презирала слабость и милосердие. Она чувствовала себя как дома лишь там, где выживали только самый острый клинок и несгибаемая воля.</TMM_BS_abaddon_child.description>
+
+  <TMM_BS_abaddon_adult.title>Рыцарь Ада</TMM_BS_abaddon_adult.title>
+  <TMM_BS_abaddon_adult.titleShort>рыцарь Ада</TMM_BS_abaddon_adult.titleShort>
+  <TMM_BS_abaddon_adult.description>Одна из первых Рыцарей Ада, [PAWN_nameDef] презирает кабинетных дельцов и правит исключительно страхом и кровью. Почти неуязвимая для обычного оружия, она бросается в самую гущу боя, разрывая на куски и охотников, и соперников-демонов.</TMM_BS_abaddon_adult.description>
+
+  <!-- Каин -->
+  <TMM_BS_cain_child.title>проклятый первенец</TMM_BS_cain_child.title>
+  <TMM_BS_cain_child.titleShort>первенец</TMM_BS_cain_child.titleShort>
+  <TMM_BS_cain_child.description>[PAWN_nameDef] возделывал землю на заре мира, пока ревность и страшная сделка не обагрили его руки первым в истории убийством. Обречённый на вечное проклятие, он ушёл скитаться по земле, неся на себе печать бесконечного кровопролития.</TMM_BS_cain_child.description>
+
+  <TMM_BS_cain_adult.title>отец Рыцарей на покое</TMM_BS_cain_adult.title>
+  <TMM_BS_cain_adult.titleShort>пасечник</TMM_BS_cain_adult.titleShort>
+  <TMM_BS_cain_adult.description>Воспитав смертоносных Рыцарей Ада и вырезав целые армии Первым Клинком, [PAWN_nameDef] попытался искупить грехи в тихом уединении. Теперь он ухаживает за пчёлами и садом, из последних сил сдерживая жажду убийства, горящую в правой руке.</TMM_BS_cain_adult.description>
+
+  <!-- Мег Мастерс -->
+  <TMM_BS_meg_child.title>похищенный сосуд</TMM_BS_meg_child.title>
+  <TMM_BS_meg_child.titleShort>сосуд</TMM_BS_meg_child.titleShort>
+  <TMM_BS_meg_child.description>До того как хитрый демон захватил её тело, [PAWN_nameDef] жила обычной жизнью со скромными мечтами и привычными заботами. Всё рухнуло в ту ночь, когда она стала безмолвной пленницей жестокого оперативника из преисподней.</TMM_BS_meg_child.description>
+
+  <TMM_BS_meg_adult.title>циничный оперативник</TMM_BS_meg_adult.title>
+  <TMM_BS_meg_adult.titleShort>оперативник</TMM_BS_meg_adult.titleShort>
+  <TMM_BS_meg_adult.description>Острая на язык и своенравная, [PAWN_nameDef] верно служила князьям Ада, пока на неё саму не открыли охоту свои же. Вынужденная заключить шаткое перемирие с охотниками и ангелами, она прячет неожиданную преданность за слоями едкого сарказма.</TMM_BS_meg_adult.description>
+
+  <!-- Руби -->
+  <TMM_BS_ruby_child.title>ведьма эпохи чумы</TMM_BS_ruby_child.title>
+  <TMM_BS_ruby_child.titleShort>ведьма</TMM_BS_ruby_child.titleShort>
+  <TMM_BS_ruby_child.description>Рождённая в разгар Чёрной смерти, [PAWN_nameDef] обратилась к чёрному колдовству, чтобы выжить в мире, гниющем от болезней и жестокости. Одержимость запретной магией в итоге стоила ей души и превратила в расчётливого демона.</TMM_BS_ruby_child.description>
+
+  <TMM_BS_ruby_adult.title>манипулятор с клинком</TMM_BS_ruby_adult.title>
+  <TMM_BS_ruby_adult.titleShort>манипулятор</TMM_BS_ruby_adult.titleShort>
+  <TMM_BS_ruby_adult.description>Вооружённая древним зачарованным ножом, способным окончательно убивать демонов, [PAWN_nameDef] притворяется союзницей, втираясь в доверие к охотникам. Под маской бескорыстной помощницы скрывается искусная интриганка, незаметно подводящая свою цель к роковому предательству.</TMM_BS_ruby_adult.description>
+</LanguageData>

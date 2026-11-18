@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AlmostThereHours_Title>«Почти дошли»: {0} ч</AlmostThereHours_Title>
+  <AlmostThereHours_Description>За сколько часов до цели караван должен переходить в режим «Почти дошли».</AlmostThereHours_Description>
+  <AlmostThereDesc0>Давайте, мы почти дошли! В этом режиме караван не останавливается на ночлег, если до цели осталось меньше {0} ч. Порог времени можно изменить в настройках мода.</AlmostThereDesc0>
+  <AlmostThereDesc1>Караван не останавливается на ночлег. Следите за усталостью путешественников!</AlmostThereDesc1>
+  <AlmostThereDesc2>Обычный режим: караван идёт днём и отдыхает ночью.</AlmostThereDesc2>
+  <AlmostThereLabel0>Почти дошли!</AlmostThereLabel0>
+  <AlmostThereLabel1>Без ночлега</AlmostThereLabel1>
+  <AlmostThereLabel2>Обычный режим</AlmostThereLabel2>
+  <AT_AlmostThereHours_Title>Порог времени для режима «Почти дошли»</AT_AlmostThereHours_Title>
+  <AT_AlmostThereHours_Description>За сколько часов до цели караван должен переходить в режим «Почти дошли».</AT_AlmostThereHours_Description>
+  <AT_Command_DontRest_Label>Без ночлега</AT_Command_DontRest_Label>
+  <AT_Command_DontRest_Description>Караван не будет останавливаться на отдых. Следите за усталостью путешественников!</AT_Command_DontRest_Description>
+  <AT_Command_AlmostThere_Label>Почти дошли!</AT_Command_AlmostThere_Label>
+  <AT_Command_AlmostThere_Description>Давайте, мы почти дошли! В этом режиме караван не останавливается на ночлег, если до цели осталось меньше {0} ч. Порог времени можно изменить в настройках мода.</AT_Command_AlmostThere_Description>
+  <AT_Command_ForceRest_Title>Принудительный сон</AT_Command_ForceRest_Title>
+  <AT_Command_ForceRest_Description>Персонажи в караване будут спать. Обычная остановка каравана вместо этого позволяет им собирать ягоды и заниматься другими делами.</AT_Command_ForceRest_Description>
+</LanguageData>

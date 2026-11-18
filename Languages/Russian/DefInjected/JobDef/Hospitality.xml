@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <CharmGuest.reportString>налаживает отношения с TargetA</CharmGuest.reportString>
+  <GuestImproveRelationship.reportString>пытается улучшить отношения с фракцией TargetA</GuestImproveRelationship.reportString>
+  <BuyItem.reportString>оценивает TargetA</BuyItem.reportString>
+  <BrowseItems.reportString>просматривает товары</BrowseItems.reportString>
+  <ClaimGuestBed.reportString>занимает спальное место</ClaimGuestBed.reportString>
+  <VendingMachine_EmptyVendingMachine.reportString>опустошает торговый автомат</VendingMachine_EmptyVendingMachine.reportString>
+  <ScroungeFood.reportString>выпрашивает еду у TargetA</ScroungeFood.reportString>
+  <SwipeFood.reportString>крадёт еду у TargetA</SwipeFood.reportString>
+</LanguageData>

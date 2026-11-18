@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_VipRoom.stages.0.label>разочарование номером VIP</TMM_VipRoom.stages.0.label>
+  <TMM_VipRoom.stages.0.description>Я ожидал отдельный впечатляющий номер.</TMM_VipRoom.stages.0.description>
+  <TMM_VipRoom.stages.1.label>достойный номер VIP</TMM_VipRoom.stages.1.label>
+  <TMM_VipRoom.stages.1.description>Этот отдельный номер соответствует моим ожиданиям.</TMM_VipRoom.stages.1.description>
+  <TMM_VipFood.stages.0.label>обычная еда в ресторане</TMM_VipFood.stages.0.label>
+  <TMM_VipFood.stages.0.description>Я ожидал более изысканную еду в ресторане.</TMM_VipFood.stages.0.description>
+  <TMM_VipFood.stages.1.label>изысканное обслуживание</TMM_VipFood.stages.1.label>
+  <TMM_VipFood.stages.1.description>В ресторане мне подали достойное блюдо.</TMM_VipFood.stages.1.description>
+  <TMM_RegularGuest.stages.0.label>знакомое гостеприимство</TMM_RegularGuest.stages.0.label>
+  <TMM_RegularGuest.stages.0.description>Я знаю это место. Приятно вернуться.</TMM_RegularGuest.stages.0.description>
+</LanguageData>

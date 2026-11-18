@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_alphonse_almodovar</defName>
+    <childhood>TMM_BS_alphonse_almodovar_child</childhood>
+    <adulthood>TMM_BS_alphonse_almodovar_adult</adulthood>
+    <label>Overseer Alphonse Almodovar</label>
+    <factionDef>TMM_VaultTecFaction</factionDef>
+    <rank>4</rank>
+    <councilMember>true</councilMember>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Alphonse</nameFirst><nameNick>Overseer Almodovar</nameNick><nameLast>Almodovar</nameLast>
+    <gender>Male</gender>
+    <ageRange>46~54</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Intellectual</skill><level>13</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_gwen_mcnamara</defName>
+    <childhood>TMM_BS_gwen_mcnamara_child</childhood>
+    <adulthood>TMM_BS_gwen_mcnamara_adult</adulthood>
+    <label>Overseer Gwen McNamara</label>
+    <factionDef>TMM_VaultTecFaction</factionDef>
+    <rank>4</rank>
+    <councilMember>true</councilMember>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Gwen</nameFirst><nameNick>Overseer McNamara</nameNick><nameLast>McNamara</nameLast>
+    <gender>Female</gender>
+    <ageRange>42~50</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Medicine</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_stanislaus_braun</defName>
+    <childhood>TMM_BS_stanislaus_braun_child</childhood>
+    <adulthood>TMM_BS_stanislaus_braun_adult</adulthood>
+    <label>Dr. Stanislaus Braun</label>
+    <factionDef>TMM_VaultTecFaction</factionDef>
+    <rank>4</rank>
+    <councilMember>true</councilMember>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Stanislaus</nameFirst><nameNick>Dr. Braun</nameNick><nameLast>Braun</nameLast>
+    <gender>Male</gender>
+    <ageRange>55~65</ageRange>
+    <skills>
+      <li><skill>Intellectual</skill><level>16</level></li>
+      <li><skill>Crafting</skill><level>14</level></li>
+      <li><skill>Social</skill><level>12</level></li>
+    </skills>
+    <weapon>Gun_Autopistol</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_vaulttec_rep</defName>
+    <childhood>TMM_BS_vaulttec_rep_child</childhood>
+    <adulthood>TMM_BS_vaulttec_rep_adult</adulthood>
+    <label>Vault-Tec Rep</label>
+    <factionDef>TMM_VaultTecFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Vault-Tec</nameFirst><nameNick>Rep</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>40~50</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+      <li><skill>Shooting</skill><level>8</level></li>
+    </skills>
+    <weapon>Gun_Revolver</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_security_chief_kendall</defName>
+    <childhood>TMM_BS_security_chief_kendall_child</childhood>
+    <adulthood>TMM_BS_security_chief_kendall_adult</adulthood>
+    <label>Security Chief Kendall</label>
+    <factionDef>TMM_VaultTecFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Kendall</nameFirst><nameNick>Chief Kendall</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>38~46</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Social</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_PumpShotgun</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

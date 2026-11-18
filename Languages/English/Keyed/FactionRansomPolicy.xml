@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Ransom.OfferWithChance>Offer ransom to original faction ({0} silver, {1}% chance)</TMM.Ransom.OfferWithChance>
+  <TMM.Ransom.OfferTipDynamic>One-time offer to slave's original faction for ransom ({0}% acceptance chance). If accepted, faction delivers silver to colony. Terms and decision are permanent.</TMM.Ransom.OfferTipDynamic>
+  <TMM.RansomPolicy.Title>Faction Ransom Policies</TMM.RansomPolicy.Title>
+  <TMM.RansomPolicy.SettingsButton>Policy settings</TMM.RansomPolicy.SettingsButton>
+  <TMM.RansomPolicy.OpenButton>Configure policies</TMM.RansomPolicy.OpenButton>
+  <TMM.RansomPolicy.Note>Settings define the chance factions will accept ransom offers. Applies ONLY to new offers; already resolved offers, payments, and history are immutable.</TMM.RansomPolicy.Note>
+  <TMM.RansomPolicy.DefaultChance>Default acceptance chance: {0}%</TMM.RansomPolicy.DefaultChance>
+  <TMM.RansomPolicy.SearchLabel>Search faction:</TMM.RansomPolicy.SearchLabel>
+  <TMM.RansomPolicy.FactionsListHeader>Individual faction overrides:</TMM.RansomPolicy.FactionsListHeader>
+  <TMM.RansomPolicy.CurrentDefault>{0}% (default)</TMM.RansomPolicy.CurrentDefault>
+  <TMM.RansomPolicy.CurrentOverride>{0}% (override)</TMM.RansomPolicy.CurrentOverride>
+  <TMM.RansomPolicy.ResetOverride>Reset</TMM.RansomPolicy.ResetOverride>
+  <TMM.RansomPolicy.Defeated>defeated</TMM.RansomPolicy.Defeated>
+  <TMM.RansomPolicy.NoFactionsFound>No factions found</TMM.RansomPolicy.NoFactionsFound>
+  <TMM.RansomPolicy.PresetAlwaysRefuse>0% (always refuse)</TMM.RansomPolicy.PresetAlwaysRefuse>
+  <TMM.RansomPolicy.PresetAlwaysAccept>100% (always accept)</TMM.RansomPolicy.PresetAlwaysAccept>
+</LanguageData>

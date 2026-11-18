@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_Skill_GaeBulg.description>Сложный и эффектный приём, подбрасывающий одну цель в воздух.
+Всегда убивает цель.</AM_Skill_GaeBulg.description>
+  <AM_Skill_GaeBulg.label>Смертоносное копьё</AM_Skill_GaeBulg.label>
+  <AM_Skill_Gilgamesh.description>Призывает множество клинков неизвестного происхождения, чтобы пронзить цель.
+Не требует прямой видимости и гарантированно убивает жертву.
+Однако такое психическое усилие погружает призывателя в психическую кому примерно на 2 дня.</AM_Skill_Gilgamesh.description>
+  <AM_Skill_Gilgamesh.label>Призыв мистического оружия</AM_Skill_Gilgamesh.label>
+  <AM_Skill_Weebstick.description>Молниеносный удар «Алым клинком», мгновенно убивающий одного противника.</AM_Skill_Weebstick.description>
+  <AM_Skill_Weebstick.label>Алый клинок</AM_Skill_Weebstick.label>
+</LanguageData>

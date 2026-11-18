@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Restaurant.Tables>Область столов</TMM.Restaurant.Tables>
+  <TMM.Restaurant.Stock>Область продуктов</TMM.Restaurant.Stock>
+  <TMM.Restaurant.Unassigned>Не назначена</TMM.Restaurant.Unassigned>
+  <TMM.Restaurant.AreasHelp>Создайте разрешённые области обычным инструментом зон и отдельно назначьте места для гостей и запасы еды. Нужны обе области. Место за столом также должно входить в разрешённую гостю область.</TMM.Restaurant.AreasHelp>
+  <TMM.Restaurant.Open>Принимать заказы ресторана</TMM.Restaurant.Open>
+  <TMM.Restaurant.OpenHelp>Закрытие отменяет ещё не доставленные заказы без оплаты.</TMM.Restaurant.OpenHelp>
+  <TMM.Restaurant.Meal>Блюдо</TMM.Restaurant.Meal>
+  <TMM.Restaurant.MenuHelp>Выберите один вид готовых блюд для этой стойки. Проверяются пищевые ограничения гостя и ингредиенты конкретной порции.</TMM.Restaurant.MenuHelp>
+  <TMM.Restaurant.Price>Цена блюда: {0}%</TMM.Restaurant.Price>
+  <TMM.Restaurant.PriceHelp>Процент рыночной стоимости с округлением вверх до целого серебра. Принятый заказ сохраняет цену. Если в Hospitality включено бесплатное питание, блюда ресторана тоже бесплатны.</TMM.Restaurant.PriceHelp>
+  <TMM.Restaurant.Inspect>Доход от блюд: {0} серебра. Ожидают обслуживания: {1}.</TMM.Restaurant.Inspect>
+</LanguageData>

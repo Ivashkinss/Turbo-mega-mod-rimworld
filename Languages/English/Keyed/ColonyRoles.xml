@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Roles.Gizmo>Role</TMM.Roles.Gizmo>
+  <TMM.Roles.GizmoDesc>Assign this colonist a role. The role sets the profession's work to top priority; ranks, promotion and rank gear come with it.</TMM.Roles.GizmoDesc>
+  <TMM.Roles.None>none</TMM.Roles.None>
+  <TMM.Roles.Clear>Clear role</TMM.Roles.Clear>
+  <TMM.Roles.Civil>Civil</TMM.Roles.Civil>
+  <TMM.Roles.Military>Military</TMM.Roles.Military>
+  <TMM.Roles.Group>Group</TMM.Roles.Group>
+  <TMM.Roles.ShowAll>Show all</TMM.Roles.ShowAll>
+  <TMM.Roles.NoRoleGroup>No role</TMM.Roles.NoRoleGroup>
+  <TMM.Roles.RankBonus>Rank</TMM.Roles.RankBonus>
+  <TMM.Roles.AuraBonus>Commander nearby</TMM.Roles.AuraBonus>
+  <TMM.Roles.ProudOfRank>proud to be {0}</TMM.Roles.ProudOfRank>
+  <TMM.Roles.GroupToggleTip>Group colonists by role: civil, military, no role.</TMM.Roles.GroupToggleTip>
+</LanguageData>

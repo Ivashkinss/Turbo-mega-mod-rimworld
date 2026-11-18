@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ResearchTabDef>
+    <defName>TMM_StrategicIndustry</defName>
+    <label>outpost industry</label>
+  </ResearchTabDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_SyntheticTextiles</defName>
+    <label>synthread synthesis</label>
+    <description>Develop a process to synthesize one unit of synthread from one cloth and one chemfuel at a fabrication bench. This is a new industrial process added by Turbo mega mod.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Fabrication</li>
+    </prerequisites>
+    <researchViewX>0</researchViewX>
+    <researchViewY>0</researchViewY>
+    <tab>TMM_StrategicIndustry</tab>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_AdvancedTextiles</defName>
+    <label>hyperweave synthesis</label>
+    <description>Develop a precise weaving process to produce one unit of hyperweave from one synthread and one chemfuel at a fabrication bench.</description>
+    <baseCost>1800</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>TMM_SyntheticTextiles</li>
+      <li>AdvancedFabrication</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>0</researchViewY>
+    <tab>TMM_StrategicIndustry</tab>
+  </ResearchProjectDef>
+
+  <RecipeDef>
+    <defName>TMM_MakeSynthread</defName>
+    <label>synthesize synthread</label>
+    <description>Synthesize one synthread from one cloth and one chemfuel.</description>
+    <jobString>Synthesizing synthread.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>300</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cloth</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Cloth</li>
+        <li>Chemfuel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Synthread>1</Synthread>
+    </products>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+    <researchPrerequisite>TMM_SyntheticTextiles</researchPrerequisite>
+    <recipeUsers>
+      <li>FabricationBench</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>TMM_MakeHyperweave</defName>
+    <label>synthesize hyperweave</label>
+    <description>Synthesize one hyperweave from one synthread and one chemfuel.</description>
+    <jobString>Synthesizing hyperweave.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>600</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Synthread</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Chemfuel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Hyperweave>1</Hyperweave>
+    </products>
+    <skillRequirements>
+      <Crafting>12</Crafting>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+    <researchPrerequisite>TMM_AdvancedTextiles</researchPrerequisite>
+    <recipeUsers>
+      <li>FabricationBench</li>
+    </recipeUsers>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <TMM_MinutemenReliefQuest_Title>Сигнал ополчения: полевое снабжение</TMM_MinutemenReliefQuest_Title>
+  <TMM_MinutemenReliefQuest_Description>Ополченцы-минитмены и охотники на нечисть сообщают о недавнем нападении стаи мутировавших тварей на дальний патруль. Их полевые запасы истощены. Они просят ваше поселение выделить гуманитарную помощь в размере {0} ед. {1}.\n\nПередача груза укрепит союзнические отношения с фракцией и откроет доступ к координатам полевых архивов.</TMM_MinutemenReliefQuest_Description>
+
+  <TMM_MinutemenArchiveQuest_Title>Полевой архив заброшенного поста</TMM_MinutemenArchiveQuest_Title>
+  <TMM_MinutemenArchiveQuest_Description>Командование минитменов передало координаты укреплённого радиопоста, покинутого после столкновения с аномальными сущностями. В архивной комнате остался ценный полевой архив с описанием оберегов и анатомических уязвимостей чудовищ.\n\nОтправьте экспедицию к форпосту, проникните в архивную комнату и доставьте полевой архив на базу колонии.</TMM_MinutemenArchiveQuest_Description>
+
+  <TMM_MinutemenOutpost_Inspect>Аванпост минитменов и охотников</TMM_MinutemenOutpost_Inspect>
+  <TMM_MinutemenOutpost_ArchiveFound>Полевой архив оберегов обнаружен</TMM_MinutemenOutpost_ArchiveFound>
+
+</LanguageData>

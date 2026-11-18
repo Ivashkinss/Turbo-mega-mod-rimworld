@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_GunnersFaction.label>Стрелки</TMM_GunnersFaction.label>
+  <TMM_GunnersFaction.description>Армия наёмников, продающая свои стволы тому, кто платит. Дисциплинированные, хорошо вооружённые и напрочь лишённые морали.</TMM_GunnersFaction.description>
+  <TMM_GunnersFaction.pawnSingular>стрелок</TMM_GunnersFaction.pawnSingular>
+  <TMM_GunnersFaction.pawnsPlural>стрелки</TMM_GunnersFaction.pawnsPlural>
+  <TMM_GunnersFaction.leaderTitle>командир</TMM_GunnersFaction.leaderTitle>
+  <TMM_GunnersFaction.fixedName>Стрелки</TMM_GunnersFaction.fixedName>
+  <TMM_EnclaveFaction.label>Анклав</TMM_EnclaveFaction.label>
+  <TMM_EnclaveFaction.description>Наследники довоенного правительства в силовой броне: безжалостные и убеждённые, что будущее принадлежит только «чистым» людям.</TMM_EnclaveFaction.description>
+  <TMM_EnclaveFaction.pawnSingular>солдат Анклава</TMM_EnclaveFaction.pawnSingular>
+  <TMM_EnclaveFaction.pawnsPlural>солдаты Анклава</TMM_EnclaveFaction.pawnsPlural>
+  <TMM_EnclaveFaction.leaderTitle>полковник</TMM_EnclaveFaction.leaderTitle>
+  <TMM_EnclaveFaction.fixedName>Анклав</TMM_EnclaveFaction.fixedName>
+  <TMM_InstituteFaction.label>Институт</TMM_InstituteFaction.label>
+  <TMM_InstituteFaction.description>Скрытый подземный орден учёных, создающих синтетических людей и считающих поверхность безнадёжной.</TMM_InstituteFaction.description>
+  <TMM_InstituteFaction.pawnSingular>учёный</TMM_InstituteFaction.pawnSingular>
+  <TMM_InstituteFaction.pawnsPlural>учёные</TMM_InstituteFaction.pawnsPlural>
+  <TMM_InstituteFaction.leaderTitle>директор</TMM_InstituteFaction.leaderTitle>
+  <TMM_InstituteFaction.fixedName>Институт</TMM_InstituteFaction.fixedName>
+  <TMM_RailroadFaction.label>Подземка</TMM_RailroadFaction.label>
+  <TMM_RailroadFaction.description>Тайная сеть агентов, переправляющих беглых синтов на свободу. Её преследует Институт и не доверяет никто.</TMM_RailroadFaction.description>
+  <TMM_RailroadFaction.pawnSingular>агент</TMM_RailroadFaction.pawnSingular>
+  <TMM_RailroadFaction.pawnsPlural>агенты</TMM_RailroadFaction.pawnsPlural>
+  <TMM_RailroadFaction.leaderTitle>лидер</TMM_RailroadFaction.leaderTitle>
+  <TMM_RailroadFaction.fixedName>Подземка</TMM_RailroadFaction.fixedName>
+  <TMM_VaultTecFaction.label>Волт-Тек</TMM_VaultTecFaction.label>
+  <TMM_VaultTecFaction.description>Корпорация, построившая Убежища. Ею по-прежнему правит совет смотрителей, для которых выжившие — подопытные и клиенты.</TMM_VaultTecFaction.description>
+  <TMM_VaultTecFaction.pawnSingular>житель Убежища</TMM_VaultTecFaction.pawnSingular>
+  <TMM_VaultTecFaction.pawnsPlural>жители Убежищ</TMM_VaultTecFaction.pawnsPlural>
+  <TMM_VaultTecFaction.leaderTitle>смотритель</TMM_VaultTecFaction.leaderTitle>
+  <TMM_VaultTecFaction.fixedName>Волт-Тек</TMM_VaultTecFaction.fixedName>
+  <TMM_MenOfLettersFaction.label>Британские Просвещённые</TMM_MenOfLettersFaction.label>
+  <TMM_MenOfLettersFaction.description>Старый британский орден учёных и охотников, держащий чудовищ мира под контролем — безжалостно эффективно и без терпимости к любителям.</TMM_MenOfLettersFaction.description>
+  <TMM_MenOfLettersFaction.pawnSingular>просвещённый</TMM_MenOfLettersFaction.pawnSingular>
+  <TMM_MenOfLettersFaction.pawnsPlural>просвещённые</TMM_MenOfLettersFaction.pawnsPlural>
+  <TMM_MenOfLettersFaction.leaderTitle>глава ордена</TMM_MenOfLettersFaction.leaderTitle>
+  <TMM_MenOfLettersFaction.fixedName>Британские Просвещённые</TMM_MenOfLettersFaction.fixedName>
+  <TMM_GhoulsFaction.label>разумные гули</TMM_GhoulsFaction.label>
+  <TMM_GhoulsFaction.description>Гули, сохранившие рассудок: торговцы, бродяги и вольнолюбивые проходимцы, которые помнят мир до бомб и не любят «гладкокожих», что их боятся.</TMM_GhoulsFaction.description>
+  <TMM_GhoulsFaction.pawnSingular>гуль</TMM_GhoulsFaction.pawnSingular>
+  <TMM_GhoulsFaction.pawnsPlural>гули</TMM_GhoulsFaction.pawnsPlural>
+  <TMM_GhoulsFaction.leaderTitle>мэр</TMM_GhoulsFaction.leaderTitle>
+  <TMM_GhoulsFaction.fixedName>Разумные гули</TMM_GhoulsFaction.fixedName>
+  <TMM_MonsterClansFaction.label>кланы нечисти</TMM_MonsterClansFaction.label>
+  <TMM_MonsterClansFaction.description>Гнёзда вампиров и стаи левиафанов, охотящиеся на людей из тени. Подчиняются своим Альфам и древним существам, которые их породили.</TMM_MonsterClansFaction.description>
+  <TMM_MonsterClansFaction.pawnSingular>чудовище</TMM_MonsterClansFaction.pawnSingular>
+  <TMM_MonsterClansFaction.pawnsPlural>чудовища</TMM_MonsterClansFaction.pawnsPlural>
+  <TMM_MonsterClansFaction.leaderTitle>альфа</TMM_MonsterClansFaction.leaderTitle>
+  <TMM_MonsterClansFaction.fixedName>Кланы нечисти</TMM_MonsterClansFaction.fixedName>
+</LanguageData>

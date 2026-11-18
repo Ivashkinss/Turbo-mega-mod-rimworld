@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_desdemona</defName>
+    <childhood>TMM_BS_desdemona_child</childhood>
+    <adulthood>TMM_BS_desdemona_adult</adulthood>
+    <label>Desdemona</label>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Desdemona</nameFirst><nameNick>Desdemona</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>42~50</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Shooting</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>13</level></li>
+    </skills>
+    <weapon>Gun_ChargeRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_deacon</defName>
+    <childhood>TMM_BS_deacon_child</childhood>
+    <adulthood>TMM_BS_deacon_adult</adulthood>
+    <label>Deacon</label>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Deacon</nameFirst><nameNick>Deacon</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>34~42</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Social</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_SniperRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_tinker_tom</defName>
+    <childhood>TMM_BS_tinker_tom_child</childhood>
+    <adulthood>TMM_BS_tinker_tom_adult</adulthood>
+    <label>Tinker Tom</label>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Tom</nameFirst><nameNick>Tinker Tom</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>32~40</ageRange>
+    <skills>
+      <li><skill>Crafting</skill><level>16</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_HeavySMG</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_glory</defName>
+    <childhood>TMM_BS_glory_child</childhood>
+    <adulthood>TMM_BS_glory_adult</adulthood>
+    <label>Glory</label>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Glory</nameFirst><nameNick>Glory</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>28~36</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>14</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_Minigun</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

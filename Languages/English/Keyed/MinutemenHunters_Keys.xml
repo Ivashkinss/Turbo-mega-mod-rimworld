@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <TMM_MinutemenReliefQuest_Title>Militia Distress: Field Relief</TMM_MinutemenReliefQuest_Title>
+  <TMM_MinutemenReliefQuest_Description>Minutemen militiamen and monster hunters report a recent assault by mutated beasts against an outlying patrol. Their field supplies are depleted. They ask your colony to deliver humanitarian relief consisting of {0}x {1}.\n\nFulfilling this request will strengthen alliance ties with the faction and unlock coordinates to their field research archives.</TMM_MinutemenReliefQuest_Description>
+
+  <TMM_MinutemenArchiveQuest_Title>Field Archive of the Abandoned Post</TMM_MinutemenArchiveQuest_Title>
+  <TMM_MinutemenArchiveQuest_Description>Minutemen command has shared coordinates of a fortified listening post abandoned after an encounter with anomalous entities. The archive chamber contains a valuable field data core detailing protective warding circles and beast vulnerabilities.\n\nSend an expedition to the outpost, secure the archive chamber, and bring the field archive safely back to your colony.</TMM_MinutemenArchiveQuest_Description>
+
+  <TMM_MinutemenOutpost_Inspect>Minutemen &amp; Hunters Outpost</TMM_MinutemenOutpost_Inspect>
+  <TMM_MinutemenOutpost_ArchiveFound>Field Archive Discovered</TMM_MinutemenOutpost_ArchiveFound>
+
+</LanguageData>

@@ -1,0 +1,105 @@
+using System.Collections.Generic;
+using Hospitality.Utilities;
+using RimWorld;
+using Verse;
+using Verse.AI;
+
+namespace Hospitality
+{
+    public class JobDriver_ScroungeFood : JobDriver
+    {
+        private Pawn OtherPawn => job.GetTarget(TargetIndex.A).Pawn;
+
+        //public override bool TryMakePreToilReservations(bool errorOnFailed) => true;
+
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            // Reserve the target pawn (A) if needed
+            //if (!pawn.Reserve(job.GetTarget(TargetIndex.A), job, 1, -1, null, errorOnFailed))
+            //    return false;
+
+            // PR #12: a default-layer reservation prevents the owner's own Ingest job from
+            // starting. A separate layer excludes competing guests without blocking that meal.
+            if (job.GetTarget(TargetIndex.B).IsValid)
+            {
+                if (!pawn.Reserve(job.GetTarget(TargetIndex.B), job, 1, job.count, InternalDefOf.Scrounge, errorOnFailed))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public override IEnumerable<Toil> MakeNewToils()
+        {
+            this.FailOnDespawnedOrNull(TargetIndex.A);
+            this.FailOnAggroMentalState(TargetIndex.A);
+            this.FailOnIncapable(PawnCapacityDefOf.Manipulation);
+            Toil toil = Toils_Goto.Goto(TargetIndex.A, PathEndMode.Touch);
+            toil.socialMode = RandomSocialMode.Off;
+            yield return toil;
+            Toil finalGoto = Toils_Goto.Goto(TargetIndex.A, PathEndMode.Touch);
+            yield return Toils_Jump.JumpIf(finalGoto, () => !OtherPawn.Awake());
+            Toil toil2 = Toils_Interpersonal.WaitToBeAbleToInteract(pawn);
+            toil2.socialMode = RandomSocialMode.Off;
+            yield return toil2;
+            finalGoto.socialMode = RandomSocialMode.Off;
+            yield return finalGoto;
+            yield return AskForFood(TargetIndex.A, TargetIndex.B);
+            yield return ItemUtility.TakeFromPawn(job.targetB.Thing, job.targetA.Pawn.inventory.innerContainer, job.count, TargetIndex.B);
+            // PR #12: TakeFromPawn now transfers directly into the carry container.
+            yield return Toils_General.Wait(80);
+            yield return ItemUtility.TakeToInventory(TargetIndex.B);
+
+        }
+        
+        public static Toil AskForFood(TargetIndex targetInd, TargetIndex foodInd)
+        {
+            var toil = ToilMaker.MakeToil("Scrounge food interaction"); ;
+            toil.defaultDuration = 100;
+            toil.defaultCompleteMode = ToilCompleteMode.Delay;
+            toil.socialMode = RandomSocialMode.Off;
+            toil.activeSkill = () => SkillDefOf.Social;
+            toil.tickAction = TickAction;
+            toil.initAction = InitAction;
+            return toil;
+
+            void InitAction()
+            {
+                Pawn actor = toil.actor;
+                Job curJob = actor.CurJob;
+                LocalTargetInfo target = curJob.GetTarget(targetInd);
+                LocalTargetInfo targetFood = curJob.GetTarget(foodInd);
+
+                var targetPawn = target.Pawn;
+                if (!target.HasThing || targetPawn == null)
+                {
+                    Log.Warning($"Can't scrounge, no target.");
+                    actor.jobs.EndCurrentJob(JobCondition.Incompletable);
+                    return;
+                }
+
+                var food = targetFood.Thing;
+                if (!targetFood.HasThing || food == null)
+                {
+                    Log.Warning($"Can't scrounge, no food.");
+                    actor.jobs.EndCurrentJob(JobCondition.Incompletable);
+                    return;
+                }
+
+                var symbol = food.def.uiIcon;
+                if (symbol != null) GenericUtility.TryCreateBubble(actor, targetPawn, symbol);
+                var intDef = DefDatabase<InteractionDef>.GetNamed("ScroungeFoodAttempt");
+                actor.interactions.lastInteractionTime = Find.TickManager.TicksGame;
+                actor.interactions.lastInteraction = intDef.defName;
+                var list = new List<RulePackDef>();
+                intDef.Worker.Interacted(actor, targetPawn, list, out _, out _, out _, out _);
+                Find.PlayLog.Add(new PlayLogEntry_Interaction(intDef, actor, targetPawn, list));
+            }
+
+            void TickAction()
+            {
+                toil.actor.rotationTracker.FaceCell(toil.actor.CurJob.GetTarget(targetInd).Cell);
+            }
+        }
+    }
+}

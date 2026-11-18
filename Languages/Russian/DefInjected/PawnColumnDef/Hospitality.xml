@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <Hospitality_Faction.label>фракция</Hospitality_Faction.label>
+  <MakeFriends.headerTip>Пытаться подружиться</MakeFriends.headerTip>
+  <AccommodationArea.label>доступная гостям область</AccommodationArea.label>
+  <ShoppingArea.label>область покупок</ShoppingArea.label>
+  <FriendsForRecruiting.headerTip>Друзей в поселении</FriendsForRecruiting.headerTip>
+  <Entertain.headerTip>Развлекать</Entertain.headerTip>
+  <Hospitality.headerTip>Довольство гостеприимством</Hospitality.headerTip>
+</LanguageData>

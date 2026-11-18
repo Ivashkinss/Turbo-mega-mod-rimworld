@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]</xpath>
+    <value>
+      <tKey>TMM.Walls.Menu</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[1]</xpath>
+    <value>
+      <tKey>TMM.Walls.0.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[3]</xpath>
+    <value>
+      <tKey>TMM.Walls.2.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[4]</xpath>
+    <value>
+      <tKey>TMM.Walls.3.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[5]</xpath>
+    <value>
+      <tKey>TMM.Walls.4.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[6]</xpath>
+    <value>
+      <tKey>TMM.Walls.5.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[7]</xpath>
+    <value>
+      <tKey>TMM.Walls.6.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[8]</xpath>
+    <value>
+      <tKey>TMM.Walls.7.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[9]</xpath>
+    <value>
+      <tKey>TMM.Walls.8.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[10]</xpath>
+    <value>
+      <tKey>TMM.Walls.9.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[11]</xpath>
+    <value>
+      <tKey>TMM.Walls.10.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[12]</xpath>
+    <value>
+      <tKey>TMM.Walls.11.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[13]</xpath>
+    <value>
+      <tKey>TMM.Walls.12.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[14]</xpath>
+    <value>
+      <tKey>TMM.Walls.13.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[15]</xpath>
+    <value>
+      <tKey>TMM.Walls.14.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[16]</xpath>
+    <value>
+      <tKey>TMM.Walls.15.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[17]</xpath>
+    <value>
+      <tKey>TMM.Walls.16.text</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[19]</xpath>
+    <value>
+      <tKey>TMM.Walls.18.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[19]</xpath>
+    <value>
+      <tKeyTip>TMM.Walls.18.tooltip</tKeyTip>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[20]</xpath>
+    <value>
+      <tKey>TMM.Walls.19.label</tKey>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/XmlExtensions.SettingsMenuDef[defName="Victor.WallsAreSolid.Settings"]/settings/li[20]</xpath>
+    <value>
+      <tKeyTip>TMM.Walls.19.tooltip</tKeyTip>
+    </value>
+  </Operation>
+</Patch>

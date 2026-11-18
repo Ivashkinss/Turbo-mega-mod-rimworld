@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demon xenotype, stage 1: appearance plus a few vanilla stat genes. Biotech only. -->
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Demon</defName>
+    <label>demon</label>
+    <description>Beings from below wearing human flesh: horned, tailed, with black or burning eyes. They shrug off fire and heat and are quick to violence.</description>
+    <descriptionShort>Horned and tailed beings from below. Resistant to fire and heat, aggressive.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/Impid</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.2</combatPowerFactor>
+    <genes>
+      <li>Skin_DeepRed</li>
+      <li>Skin_InkBlack</li>
+      <li>TMM_Headbone_DemonHorns</li>
+      <li>TMM_Tail_Demon</li>
+      <li>TMM_Eyes_DemonBlack</li>
+      <li>FireResistant</li>
+      <li>MaxTemp_LargeIncrease</li>
+      <li>Aggression_Aggressive</li>
+    </genes>
+  </XenotypeDef>
+</Defs>

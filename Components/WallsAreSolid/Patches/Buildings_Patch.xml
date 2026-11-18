@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+<Operation Class="XmlExtensions.OptionalPatch">
+<modId>Victor.WallsAreSolid</modId>
+<key>Buildings_Toggle</key>
+<defaultValue>true</defaultValue>
+<caseTrue>
+	<Operation Class="XmlExtensions.PatchOperationSafeAdd">
+	<xpath>Defs/ThingDef[(building or passability or @ParentName="MechBuildingBase" or @ParentName="ConditionCauserBase" or
+						@ParentName="LWD_Base_Shootable" or @ParentName="LWD_Base_Climbable" or @ParentName="LWD_Base_Rubble") and
+						not(@Abstract="True")]</xpath>
+		<value>
+			<damageMultipliers Inherit="False"> </damageMultipliers>
+		</value>
+	</Operation>
+
+	<Operation Class="XmlExtensions.UseSettings">
+	<modId>Victor.WallsAreSolid</modId>
+	<keys>
+		<li>SharpMeleePassable</li>
+		<li>SharpMeleeImpassable</li>
+		<li>BluntPassable</li>
+		<li>BluntImpassable</li>
+		<li>SharpRangedPassable</li>
+		<li>SharpRangedImpassable</li>
+		<li>BombPassable</li>
+		<li>BombImpassable</li>
+	</keys>
+	<defaultValues>
+		<li>0.4</li>
+		<li>0.1</li>
+		<li>0.5</li>
+		<li>0.3</li>
+		<li>0.2</li>
+		<li>0.2</li>
+		<li>0.8</li>
+		<li>1</li>
+	</defaultValues>
+		<apply>
+		<Operation Class="XmlExtensions.AggregateValues">
+			<valueOperations>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{SharpMeleePassable}</value2>
+					<operation>/</operation>
+					<storeIn>SharpMeleePassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{SharpMeleeImpassable}</value2>
+					<operation>/</operation>
+					<storeIn>SharpMeleeImpassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{BluntPassable}</value2>
+					<operation>/</operation>
+					<storeIn>BluntPassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{BluntImpassable}</value2>
+					<operation>/</operation>
+					<storeIn>BluntImpassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{SharpRangedPassable}</value2>
+					<operation>/</operation>
+					<storeIn>SharpRangedPassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>1</value>
+					<value2>{SharpRangedImpassable}</value2>
+					<operation>/</operation>
+					<storeIn>SharpRangedImpassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>2</value>
+					<value2>{BombPassable}</value2>
+					<operation>/</operation>
+					<storeIn>BombPassableDiv</storeIn>
+				</Operation>
+				<Operation Class="XmlExtensions.CreateVariable">
+					<value>4</value>
+					<value2>{BombImpassable}</value2>
+					<operation>/</operation>
+					<storeIn>BombImpassableDiv</storeIn>
+				</Operation>
+			</valueOperations>
+			<apply>
+			<Operation Class="XmlExtensions.HybridPatch">
+			<xpath>Defs/ThingDef[(building[claimable="false"] or @ParentName="ConditionCauserBase" or isMechClusterThreat or passability="Impassable") and not(@Abstract="True" or drawStyleCategory="Walls")]/damageMultipliers</xpath>
+			<value>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Stab</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleeImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Cut</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleeImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Poke</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleeImpassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Blunt</damageDef>
+					<multiplier Operation="AddOrReplace">{BluntImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Crush</damageDef>
+					<multiplier Operation="AddOrReplace">{BluntImpassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">RangedStab</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Arrow</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">ArrowHighVelocity</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedImpassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Bullet</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedImpassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Bomb</damageDef>
+					<multiplier Operation="AddOrReplace">{BombImpassableDiv}</multiplier>
+				</li>
+			</value>
+			</Operation>
+			<Operation Class="XmlExtensions.HybridPatch">
+			<xpath>Defs/ThingDef[(statBases/ShootingAccuracyTurret or passability="PassThroughOnly" or passability="Standable" or @ParentName="MechBuildingBase") and not(@Abstract="True")]/damageMultipliers</xpath>
+			<value>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Stab</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleePassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Cut</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleePassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Poke</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpMeleePassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Blunt</damageDef>
+					<multiplier Operation="AddOrReplace">{BluntPassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Crush</damageDef>
+					<multiplier Operation="AddOrReplace">{BluntPassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">RangedStab</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedPassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Arrow</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedPassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">ArrowHighVelocity</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedPassableDiv}</multiplier>
+				</li>
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Bullet</damageDef>
+					<multiplier Operation="AddOrReplace">{SharpRangedPassableDiv}</multiplier>
+				</li>
+
+				<li Operation="Safe" Compare="InnerText" XPathLocal="damageDef">
+					<damageDef Operation="SafeAdd">Bomb</damageDef>
+					<multiplier Operation="AddOrReplace">{BombPassableDiv}</multiplier>
+				</li>
+			</value>
+			</Operation>
+			</apply>
+		</Operation>
+		</apply>
+	</Operation>
+</caseTrue>
+</Operation>
+
+
+<Operation Class="XmlExtensions.OptionalPatch">
+<modId>Victor.WallsAreSolid</modId>
+<key>Resistant_Stone</key>
+<defaultValue>false</defaultValue>
+<caseTrue>
+	<Operation Class="XmlExtensions.HybridPatch">
+		<xpath>Defs/ThingDef[@Name="RockBase"]/damageMultipliers</xpath>
+		<value>
+			<li Operation="AddOrReplace" Compare="InnerText" XPathLocal="damageDef">
+				<damageDef Operation="SafeAdd">RangedStab</damageDef>
+				<multiplier Operation="AddOrReplace">0</multiplier>
+			</li>
+			<li Operation="AddOrReplace" Compare="InnerText" XPathLocal="damageDef">
+				<damageDef Operation="SafeAdd">Arrow</damageDef>
+				<multiplier Operation="AddOrReplace">0</multiplier>
+			</li>
+			<li Operation="AddOrReplace" Compare="InnerText" XPathLocal="damageDef">
+				<damageDef Operation="SafeAdd">ArrowHighVelocity</damageDef>
+				<multiplier Operation="AddOrReplace">0</multiplier>
+			</li>
+			<li Operation="AddOrReplace" Compare="InnerText" XPathLocal="damageDef">
+				<damageDef Operation="SafeAdd">Bullet</damageDef>
+				<multiplier Operation="AddOrReplace">0</multiplier>
+			</li>
+		</value>
+	</Operation>
+</caseTrue>
+</Operation>
+
+<!-- This makes it so even if walls are mined, they take twice as long to break -->
+<Operation Class="XmlExtensions.PatchOperationSafeAdd">
+<xpath>Defs/ThingDef[passability="Impassable"][category="Building"][statBases]</xpath>
+	<value>
+		<damageMultipliers Inherit="False"> </damageMultipliers>
+	</value>
+</Operation>
+<Operation Class="XmlExtensions.PatchOperationSafeAdd">
+<xpath>Defs/ThingDef[passability="Impassable"][category="Building"][statBases]/damageMultipliers[not(li/damageDef="Mining")]</xpath>
+	<value>
+		<li>
+			<damageDef>Mining</damageDef>
+			<multiplier>0.5</multiplier>
+		</li>
+	</value>
+</Operation>
+
+<Operation Class="PatchOperationFindMod"> <mods> <li>Combat Extended</li> </mods>
+<match Class="XmlExtensions.Log">
+	<warning>Walls Are Solid - Combat Extended already patches many buildings to take less damage from bullets, so it's recommended to adjust the multipliers in the settings.</warning>
+</match>
+</Operation>
+<Operation Class="PatchOperationFindMod"> <mods> <li>[1.5-1.4] CAI 5000 - Advanced AI + Fog Of War</li> </mods>
+<match Class="XmlExtensions.Log">
+	<warning>Walls Are Solid - CAI 5000 reported that this mod confuses their raider logic, as they don't take into account the damage reduction against walls added by this mod.</warning>
+</match>
+</Operation>
+
+<!-- <Operation Class="XmlExtensions.Log">
+	<xpath>Defs/ThingDef[thingClass="Hive"]</xpath>
+</Operation>
+<Operation Class="XmlExtensions.Log">
+	<xpath>Defs/ThingDef[defName="ClimateAdjuster"]</xpath>
+</Operation>
+<Operation Class="XmlExtensions.Log">
+	<xpath>Defs/ThingDef[defName="Turret_AutoMiniTurret"]</xpath>
+</Operation>
+<Operation Class="XmlExtensions.Log">
+	<xpath>Defs/ThingDef[defName="BroadshieldProjector"]</xpath>
+</Operation> -->
+</Patch>

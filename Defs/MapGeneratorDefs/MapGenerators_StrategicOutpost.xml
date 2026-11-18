@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>TMM_StrategicOutpostMapGenerator</defName>
+    <genSteps>
+      <li>TMM_GenStep_StrategicOutpostBase</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+  <GenStepDef>
+    <defName>TMM_GenStep_StrategicOutpostBase</defName>
+    <order>1650</order>
+    <genStep Class="TurboMegaMod.GenStep_StrategicOutpostBase" />
+  </GenStepDef>
+</Defs>

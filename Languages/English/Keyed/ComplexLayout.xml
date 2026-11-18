@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Complex.StaffArea>Staff-only rooms</TMM.Complex.StaffArea>
+  <TMM.Complex.StaffAreaHelp>Optional area inside the overall complex territory. Create a normal allowed area, paint entire staff rooms such as kitchens, restricted stores and staff bedrooms, then select it here. These cells are excluded from guest access. Staff may work and rest elsewhere. Leave guest bedrooms, dining and visitor wards outside it. Unassigned means there is no separate staff-only area.</TMM.Complex.StaffAreaHelp>
+  <TMM.Complex.AutoGuests>Complex guests (automatic)</TMM.Complex.AutoGuests>
+  <TMM.Complex.Services>Complex service settings</TMM.Complex.Services>
+  <TMM.Complex.ServicesHelp>Configure all complex services here. General selects territory and staff-only rooms; Hotel controls guests and room rates; Clinic controls patient admission and opening hours; Restaurant selects the meal and price; Staff manages jobs, housing, conversations and work-buyout accounting.</TMM.Complex.ServicesHelp>
+  <TMM.Complex.RoomRate>Room rate: {0} silver per day</TMM.Complex.RoomRate>
+  <TMM.Complex.MedicalHelp>The medical setting applies to the whole enclosed room within the complex. No separate clinic area or Hospital bed flags are required. Staff-only and colony wards outside guest access remain for the colony.</TMM.Complex.MedicalHelp>
+  <TMM.Complex.Surgery>Allow surgery in complex wards</TMM.Complex.Surgery>
+  <TMM.Complex.ClinicSettings>Patient admission: schedule and rules</TMM.Complex.ClinicSettings>
+</LanguageData>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.HUD.Health>Health</TMM.HUD.Health>
+  <TMM.HUD.Bleeding>Bleeding! See the Health tab for details.</TMM.HUD.Bleeding>
+  <TMM.HUD.HealthTip>Overall health. See the Health tab for conditions and treatment.</TMM.HUD.HealthTip>
+  <TMM.HUD.Idle>No current job</TMM.HUD.Idle>
+  <TMM.HUD.Enabled>Compact pawn overview</TMM.HUD.Enabled>
+  <TMM.HUD.Help>Shows health, all visible needs, skills and the current job for the selected pawn. Long need lists scroll. Standard tabs and buttons remain available.</TMM.HUD.Help>
+  <TMM.HUD.External>A separate RimHUD is active: the built-in overview yields to it.</TMM.HUD.External>
+  <TMM.HUD.FoodPolicy>Food: {0}</TMM.HUD.FoodPolicy>
+  <TMM.HUD.Apparel>Apparel: {0}</TMM.HUD.Apparel>
+  <TMM.HUD.Schedule>Schedule: {0}</TMM.HUD.Schedule>
+  <TMM.HUD.Area>Area: {0}</TMM.HUD.Area>
+  <TMM.HUD.Bio>{0}, age: {1}</TMM.HUD.Bio>
+  <TMM.HUD.Medical>Medical care: {0}</TMM.HUD.Medical>
+  <TMM.HUD.SelfTend>Self-tending: {0}. Unavailable if doctor work is disabled.</TMM.HUD.SelfTend>
+  <TMM.HUD.Unrestricted>Unrestricted</TMM.HUD.Unrestricted>
+</LanguageData>

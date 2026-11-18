@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Contract.Offer>Self-ransom: offer the slave a contract (works until ransomed)</TMM.Contract.Offer>
+  <TMM.Contract.Accepted>{0} accepts the labour contract and now works as a free employee.</TMM.Contract.Accepted>
+  <TMM.Contract.JoinRequested>{0} declines the contract and asks to join the colony permanently. The decision is yours.</TMM.Contract.JoinRequested>
+  <TMM.Contract.AcceptPermanent>Accept into the colony without a contract</TMM.Contract.AcceptPermanent>
+  <TMM.Contract.Permanent>Permanent colonist — no active contract</TMM.Contract.Permanent>
+  <TMM.Contract.FreeWorker>On self-ransom: free worker under contract</TMM.Contract.FreeWorker>
+  <TMM.Contract.Completed>Contract fulfilled — employee released</TMM.Contract.Completed>
+  <TMM.Contract.JoinPending>Requests permanent colony membership</TMM.Contract.JoinPending>
+  <TMM.Contract.CannotLeave>The pawn cannot leave now. Check the map exit route, the pawn's condition and pending operations.</TMM.Contract.CannotLeave>
+  <TMM.Contract.Help>A labour offer has one saved response: 90% accept work toward release, 10% request permanent colony membership. Loading does not reroll it. Acceptance removes slave status while preserving belongings and work priorities. Once the target is earned, the worker can return to the original faction. Deception after faction ransom payment is recorded separately; raids and story consequences are not enabled.</TMM.Contract.Help>
+  <TMM.Contract.Unavailable>Complete or cancel queued operations before changing status.</TMM.Contract.Unavailable>
+</LanguageData>

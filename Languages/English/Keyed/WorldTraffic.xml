@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.WorldTraffic.Patrol>Patrol</TMM.WorldTraffic.Patrol>
+  <TMM.WorldTraffic.Convoy>Trade caravan</TMM.WorldTraffic.Convoy>
+  <TMM.WorldTraffic.Unknown>unknown settlement</TMM.WorldTraffic.Unknown>
+  <TMM.WorldTraffic.Route>{0}. Destination: {1}</TMM.WorldTraffic.Route>
+  <TMM.WorldTraffic.Stranded>Route interrupted. The group is seeking a way home.</TMM.WorldTraffic.Stranded>
+  <TMM.WorldTraffic.TradeHelp>Trade with this group. Your caravan must be on the same world tile.</TMM.WorldTraffic.TradeHelp>
+  <TMM.WorldTraffic.Trade>Trade</TMM.WorldTraffic.Trade>
+  <TMM.WorldTraffic.AbandonedCargo>Abandoned cargo: {0} units</TMM.WorldTraffic.AbandonedCargo>
+  <TMM.WorldTraffic.Recover>Collect cargo</TMM.WorldTraffic.Recover>
+  <TMM.WorldTraffic.RecoverHelp>Move as much abandoned cargo into your caravan as it can carry. The remainder stays on this tile.</TMM.WorldTraffic.RecoverHelp>
+  <TMM.WorldTraffic.Crew>Group members: {0}</TMM.WorldTraffic.Crew>
+</LanguageData>

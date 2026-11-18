@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<XmlExtensions.SettingsMenuDef>
+		<defName>Victor.WallsAreSolid.Settings</defName>
+		<modId>Victor.WallsAreSolid</modId>
+		<label>Walls Are Solid</label>
+		<settings>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>CHANGES REQUIRE RESTART</text>
+				<font>Medium</font>
+				<anchor>Middle</anchor>
+			</li>
+			<li Class="XmlExtensions.Setting.GapLine"/>
+
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Damage values against buildings will be multiplied by these factors: \nSolid means impassable structures, typically walls.</text>
+				<font>Small</font>
+				<anchor>Left</anchor>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>SharpMeleePassable</key>
+				<label>Melee Sharp {SharpMeleePassable} [Default: 0.4]</label>
+				<defaultValue>0.4</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>SharpMeleeImpassable</key>
+				<label>Melee Sharp vs Solid {SharpMeleeImpassable} [Default: 0.1]</label>
+				<defaultValue>0.1</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>BluntPassable</key>
+				<label>Blunt {BluntPassable} [Default: 0.5]</label>
+				<defaultValue>0.5</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>BluntImpassable</key>
+				<label>Blunt vs Solid {BluntImpassable} [Default: 0.3]</label>
+				<defaultValue>0.3</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>SharpRangedPassable</key>
+				<label>Ranged Sharp {SharpRangedPassable} [Default: 0.2]</label>
+				<defaultValue>0.2</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>SharpRangedImpassable</key>
+				<label>Ranged Sharp vs Solid {SharpRangedImpassable} [Default: 0.2]</label>
+				<defaultValue>0.2</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>BombPassable</key>
+				<label>Explosion {BombPassable} [Default: 0.8]</label>
+				<defaultValue>0.8</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Slider">
+				<key>BombImpassable</key>
+				<label>Explosion vs Solid {BombImpassable} [Default: 1]</label>
+				<defaultValue>1</defaultValue>
+				<min>0</min>
+				<max>3</max>
+				<decimals>2</decimals>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Actual defnames for each category:</text>
+				<font>Tiny</font>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Melee Sharp: Cut, Poke, Stab, Scratch, Bite</text>
+				<font>Tiny</font>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Blunt: Blunt, Crush</text>
+				<font>Tiny</font>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Ranged Sharp: RangedStab, Bullet, Arrow</text>
+				<font>Tiny</font>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Explosion: Bomb</text>
+				<font>Tiny</font>
+			</li>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>"Bomb" is the only one of these which already had both factors, being 2 and 4, respectively</text>
+				<font>Tiny</font>
+			</li>
+
+			<li Class="XmlExtensions.Setting.GapLine"/>
+
+			<li Class="XmlExtensions.Setting.Checkbox">
+				<label>Revert Changes on Turrets/Hives/Chunks/Mech Cluster buildings?</label>
+				<tooltip>Disabling this will make the game harder, as you will have to constantly carry a breaching axe to break stuff, but your turrets will be stronger.</tooltip>
+				<key>Buildings_Toggle</key>
+				<defaultValue>true</defaultValue>
+			</li>
+
+			<li Class="XmlExtensions.Setting.Checkbox">
+				<label>Natural stone resists ranged damage.</label>
+				<tooltip>Multiply ranged damage types against natural walls by zero.</tooltip>
+				<key>Resistant_Stone</key>
+				<defaultValue>false</defaultValue>
+			</li>
+		</settings>
+	</XmlExtensions.SettingsMenuDef>
+</Defs>

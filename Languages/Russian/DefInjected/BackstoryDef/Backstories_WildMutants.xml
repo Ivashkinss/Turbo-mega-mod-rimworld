@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Лебедь -->
+  <TMM_BS_swan_child.title>жертва тайного эксперимента</TMM_BS_swan_child.title>
+  <TMM_BS_swan_child.titleShort>подопытный</TMM_BS_swan_child.titleShort>
+  <TMM_BS_swan_child.description>Некогда мелкий уборщик, пойманный на краже припасов в секретном довоенном комплексе, [PAWN_nameDef] стал подопытным в жестоком эксперименте с мутагенами. Когда его разум помутился, а тело раздулось до чудовищных размеров, он разорвал оковы и скрылся в руинах.</TMM_BS_swan_child.description>
+
+  <TMM_BS_swan_adult.title>бегемот из глубин</TMM_BS_swan_adult.title>
+  <TMM_BS_swan_adult.titleShort>бегемот</TMM_BS_swan_adult.titleShort>
+  <TMM_BS_swan_adult.description>Огромный мутант, о котором по всей Пустоши ходят мрачные легенды: [PAWN_nameDef] дремлет в мутных водах и затопленных развалинах, пока чужаки не потревожат его владения. Охваченный первобытной яростью и презрением к хрупким людям, он сокрушает целые отряды исполинской силой.</TMM_BS_swan_adult.description>
+
+  <!-- Кувалда -->
+  <TMM_BS_fist_child.title>боец из ямы мутантов</TMM_BS_fist_child.title>
+  <TMM_BS_fist_child.titleShort>драчун</TMM_BS_fist_child.titleShort>
+  <TMM_BS_fist_child.description>Выросший в жестокой иерархии дикой стаи супермутантов, [PAWN_nameDef] рано усвоил, что уважение здесь добывается лишь самым громким рёвом и тяжёлым кулаком. В юности он крушил валуны и вколачивал в землю сородичей послабее.</TMM_BS_fist_child.description>
+
+  <TMM_BS_fist_adult.title>вожак-берсерк</TMM_BS_fist_adult.title>
+  <TMM_BS_fist_adult.titleShort>вожак</TMM_BS_fist_adult.titleShort>
+  <TMM_BS_fist_adult.description>Захватив власть в укреплённой башне после того, как разорвал прежнего главаря на куски, [PAWN_nameDef] ведёт свою орду в бой под ревущий грохот тяжёлого ствола. Он презирает людей как слабых, суетливых букашек, годных лишь на то, чтобы хрустеть под сапогами мутантов.</TMM_BS_fist_adult.description>
+
+  <!-- Мёртвый Глаз -->
+  <TMM_BS_dead_eye_child.title>охотник с развалин</TMM_BS_dead_eye_child.title>
+  <TMM_BS_dead_eye_child.titleShort>наблюдатель</TMM_BS_dead_eye_child.titleShort>
+  <TMM_BS_dead_eye_child.description>В отличие от шумных и безрассудных сородичей, [PAWN_nameDef] любил забираться на обрушенные эстакады и издалека высматривать бродяг. Он часами отстреливал мутировавших птиц и дальние мишени из трофейных винтовок, пока не перестал промахиваться.</TMM_BS_dead_eye_child.description>
+
+  <TMM_BS_dead_eye_adult.title>мутант-снайпер</TMM_BS_dead_eye_adult.title>
+  <TMM_BS_dead_eye_adult.titleShort>снайпер</TMM_BS_dead_eye_adult.titleShort>
+  <TMM_BS_dead_eye_adult.description>Необычайно терпеливый для дикого супермутанта, [PAWN_nameDef] командует стрелками стаи с высоких укрытий. Он с холодным злорадством прижимает людские патрули метким огнём, расчищая дорогу для натиска берсерков.</TMM_BS_dead_eye_adult.description>
+
+  <!-- Безумный Гонщик -->
+  <TMM_BS_mad_racer_child.title>собиратель автохлама</TMM_BS_mad_racer_child.title>
+  <TMM_BS_mad_racer_child.titleShort>мародёр</TMM_BS_mad_racer_child.titleShort>
+  <TMM_BS_mad_racer_child.description>Одержимый ржавыми остовами машин, дырявыми бочками с топливом и грохотом взрывов, [PAWN_nameDef] таскал в лагерь мутантов обломки с довоенных трасс. Громкий рёв и яркое пламя радовали его куда больше любых разговоров.</TMM_BS_mad_racer_child.description>
+
+  <TMM_BS_mad_racer_adult.title>безумный штурмовик</TMM_BS_mad_racer_adult.title>
+  <TMM_BS_mad_racer_adult.titleShort>безумец</TMM_BS_mad_racer_adult.titleShort>
+  <TMM_BS_mad_racer_adult.description>Движимый маниакальной страстью к скорости, дыму и оглушительным взрывам, [PAWN_nameDef] возглавляет безрассудные лобовые атаки на вражеские баррикады. Он дико хохочет под плотным обстрелом, жаждая разнести людские укрепления в щепки.</TMM_BS_mad_racer_adult.description>
+
+  <!-- Мастер-мясник -->
+  <TMM_BS_master_butcher_child.title>подмастерье у мясных мешков</TMM_BS_master_butcher_child.title>
+  <TMM_BS_master_butcher_child.titleShort>живодёр</TMM_BS_master_butcher_child.titleShort>
+  <TMM_BS_master_butcher_child.description>Приставленный следить за жуткими мясными мешками и кучами трофеев в логове мутантов, [PAWN_nameDef] вырос по локоть в крови и ржавом железе. У него рано появилась мрачная гордость за свои грубые, но всегда остро наточенные тесаки.</TMM_BS_master_butcher_child.description>
+
+  <TMM_BS_master_butcher_adult.title>дикий потрошитель</TMM_BS_master_butcher_adult.title>
+  <TMM_BS_master_butcher_adult.titleShort>мясник</TMM_BS_master_butcher_adult.titleShort>
+  <TMM_BS_master_butcher_adult.description>Возвышаясь над залитыми кровью колодами в лагере стаи, [PAWN_nameDef] с равным азартом разделывает тварей Пустоши и несчастных пленников. В бою он врывается в гущу схватки с тяжёлым клинком, глядя на людей как на обычный скот.</TMM_BS_master_butcher_adult.description>
+</LanguageData>

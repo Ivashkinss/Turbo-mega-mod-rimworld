@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Deathrest.Enabled>Allow guest deathrest</TMM.Deathrest.Enabled>
+  <TMM.Deathrest.Help>A guest with an active deathrest gene may rest in their paid roofed room. Before starting, they need enough silver for normal daily accommodation over a full cycle (usually 4 days). Their group waits until they wake. A guest casket provides its native speed bonus if temporary binding is available; other equipment keeps its existing bindings. Completed guests wake automatically. Nonpayment, an unsafe/lost room or ending the visit interrupts sleep with the native consequence. Disabling this option prevents new cycles and preserves current ones.</TMM.Deathrest.Help>
+  <TMM.Deathrest.Manage>Manage guest deathrest</TMM.Deathrest.Manage>
+  <TMM.Deathrest.None>No hotel guest is currently deathresting.</TMM.Deathrest.None>
+  <TMM.Deathrest.Interrupt>Interrupt deathrest for {0}? An incomplete cycle causes the normal Interrupted deathrest effect and resets cycle progress.</TMM.Deathrest.Interrupt>
+  <TMM.Deathrest.Active>Deathrest in room: {0}%. The group is waiting.</TMM.Deathrest.Active>
+  <TMM.Deathrest.Ready>Deathrest: room and accommodation budget are ready.</TMM.Deathrest.Ready>
+  <TMM.Deathrest.Waiting>Deathrest: starts at low need with a safe paid room and sufficient silver. Food and medical care come first.</TMM.Deathrest.Waiting>
+</LanguageData>

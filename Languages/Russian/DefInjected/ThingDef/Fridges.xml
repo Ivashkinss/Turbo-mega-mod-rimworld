@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <sbz_CorpseFridge.description>Вместимость: до 20 трупов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C.</sbz_CorpseFridge.description>
+  <sbz_CorpseFridge.label>холодильник для трупов</sbz_CorpseFridge.label>
+  <sbz_DoubleChestFridge.description>Вместимость: до 6 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C.</sbz_DoubleChestFridge.description>
+  <sbz_DoubleChestFridge.label>двойной сундук-холодильник</sbz_DoubleChestFridge.label>
+  <sbz_DoubleWallFridge.description>Вместимость: до 6 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C. Встраивается в стену. Не поддерживает крышу.</sbz_DoubleWallFridge.description>
+  <sbz_DoubleWallFridge.label>двойной настенный холодильник</sbz_DoubleWallFridge.label>
+  <sbz_Fridge.description>Вместимость: до 2 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C.</sbz_Fridge.description>
+  <sbz_Fridge.label>холодильник</sbz_Fridge.label>
+  <sbz_LargeFridge.description>Вместимость: до 30 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C.</sbz_LargeFridge.description>
+  <sbz_LargeFridge.label>большой холодильник</sbz_LargeFridge.label>
+  <sbz_SingleChestFridge.description>Вместимость: до 3 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C.</sbz_SingleChestFridge.description>
+  <sbz_SingleChestFridge.label>одинарный сундук-холодильник</sbz_SingleChestFridge.label>
+  <sbz_SingleWallFridge.description>Вместимость: до 3 стопок предметов. Охлаждает содержимое; не работает при температуре окружающей среды выше 100 °C. Встраивается в стену. Не поддерживает крышу.</sbz_SingleWallFridge.description>
+  <sbz_SingleWallFridge.label>настенный холодильник</sbz_SingleWallFridge.label>
+</LanguageData>

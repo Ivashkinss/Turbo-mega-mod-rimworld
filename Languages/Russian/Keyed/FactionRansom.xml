@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM.Ransom.Offer>Предложить выкуп исходной фракции ({0} сер.)</TMM.Ransom.Offer>
+  <TMM.Ransom.OfferTip>Разовая попытка предложить выкуп исходной фракции раба (шанс 50%). При согласии фракция переводит серебро колонии. Сумма и решение фиксируются навсегда.</TMM.Ransom.OfferTip>
+  <TMM.Ransom.Accepted>{0}: фракция {1} приняла условия выкупа и перевела {2} серебра колонии.</TMM.Ransom.Accepted>
+  <TMM.Ransom.Refused>{0}: фракция {1} отказалась от выкупа. Раб остаётся в колонии и может быть переведён на обычный трудовой договор.</TMM.Ransom.Refused>
+  <TMM.Ransom.NoValidFaction>{0}: исходная фракция отсутствует, разбита или принадлежит колонии. Выкуп невозможен.</TMM.Ransom.NoValidFaction>
+  <TMM.Ransom.ContractExists>{0}: для этого персонажа уже оформлен свободный договор или постоянное вступление.</TMM.Ransom.ContractExists>
+  <TMM.Ransom.StatusRefused>Фракция отказалась от выкупа ({0} сер.). Доступен обычный трудовой договор.</TMM.Ransom.StatusRefused>
+  <TMM.Ransom.StatusPaidPending>Выкуп фракцией оплачен ({0} сер.). Ожидает освобождения.</TMM.Ransom.StatusPaidPending>
+  <TMM.Ransom.StatusDeceived>Обман: удержан в колонии после получения выкупа ({0} сер.).</TMM.Ransom.StatusDeceived>
+  <TMM.Ransom.StatusReleased>Отпущен во фракцию по выкупу ({0} сер.).</TMM.Ransom.StatusReleased>
+  <TMM.Ransom.StatusReleasedDeceived>Отпущен во фракцию после обмана (ранее получен выкуп {0} сер.).</TMM.Ransom.StatusReleasedDeceived>
+  <TMM.Ransom.StatusEscrowPending>Выкуп согласован ({0} сер.): серебро доставляется на ресепшен ({1}/{0}).</TMM.Ransom.StatusEscrowPending>
+  <TMM.Ransom.Release>Отпустить во фракцию по выкупу</TMM.Ransom.Release>
+  <TMM.Ransom.ReleaseTip>Отпустить персонажа в исходную фракцию. Персонаж оставит переносимые предметы на карте и покинет поселение.</TMM.Ransom.ReleaseTip>
+  <TMM.Ransom.Deceive>Обмануть: удержать после выкупа</TMM.Ransom.Deceive>
+  <TMM.Ransom.DeceiveTip>Нарушить договорённость: оставить раба в колонии и не возвращать полученное серебро. Внимание: это сознательный обман, последствия которого проявятся в будущем сюжете.</TMM.Ransom.DeceiveTip>
+  <TMM.Ransom.DeceivedWarning>{0}: колония удержала раба после получения выкупа от фракции {1}. Серебро сохранено, факт обмана зафиксирован.</TMM.Ransom.DeceivedWarning>
+</LanguageData>

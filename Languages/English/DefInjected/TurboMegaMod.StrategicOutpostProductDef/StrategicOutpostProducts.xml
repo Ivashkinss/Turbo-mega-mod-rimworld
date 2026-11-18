@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Outpost_Mining_Steel.label>steel extraction</TMM_Outpost_Mining_Steel.label>
+  <TMM_Outpost_Mining_Steel.description>Extracts raw iron and smelts crude steel blocks from surrounding rock formations.</TMM_Outpost_Mining_Steel.description>
+
+  <TMM_Outpost_Mining_Plasteel.label>plasteel extraction</TMM_Outpost_Mining_Plasteel.label>
+  <TMM_Outpost_Mining_Plasteel.description>Extracts rare subterranean plasteel deposits from deep mineral veins.</TMM_Outpost_Mining_Plasteel.description>
+
+  <TMM_Outpost_Mining_Gold.label>gold extraction</TMM_Outpost_Mining_Gold.label>
+  <TMM_Outpost_Mining_Gold.description>Extracts precious gold nuggets from surrounding alluvial deposits.</TMM_Outpost_Mining_Gold.description>
+
+  <TMM_Outpost_Mining_Uranium.label>uranium extraction</TMM_Outpost_Mining_Uranium.label>
+  <TMM_Outpost_Mining_Uranium.description>Mines radioactive uranium ore from dense subterranean veins.</TMM_Outpost_Mining_Uranium.description>
+
+  <TMM_Outpost_Logging_Wood.label>timber logging</TMM_Outpost_Logging_Wood.label>
+  <TMM_Outpost_Logging_Wood.description>Harvests and processes local trees into building timber logs.</TMM_Outpost_Logging_Wood.description>
+
+  <TMM_Outpost_Farming_Potatoes.label>potato cultivation</TMM_Outpost_Farming_Potatoes.label>
+  <TMM_Outpost_Farming_Potatoes.description>Cultivates and harvests hardy raw potatoes in local fertile soils.</TMM_Outpost_Farming_Potatoes.description>
+
+  <TMM_Outpost_Farming_Rice.label>rice cultivation</TMM_Outpost_Farming_Rice.label>
+  <TMM_Outpost_Farming_Rice.description>Cultivates and harvests fast-growing raw rice crops.</TMM_Outpost_Farming_Rice.description>
+
+  <TMM_Outpost_Farming_Cloth.label>cotton growing</TMM_Outpost_Farming_Cloth.label>
+  <TMM_Outpost_Farming_Cloth.description>Grows cotton plants and weaves organic fiber cloth.</TMM_Outpost_Farming_Cloth.description>
+
+  <TMM_Outpost_Farming_Smokeleaf.label>smokeleaf cultivation</TMM_Outpost_Farming_Smokeleaf.label>
+  <TMM_Outpost_Farming_Smokeleaf.description>Grows aromatic smokeleaf plants and gathers raw leaves.</TMM_Outpost_Farming_Smokeleaf.description>
+
+  <TMM_Outpost_Farming_Devilstrand.label>devilstrand cultivation</TMM_Outpost_Farming_Devilstrand.label>
+  <TMM_Outpost_Farming_Devilstrand.description>Grows slow-maturing devilstrand red mushrooms to produce tough red fabric.</TMM_Outpost_Farming_Devilstrand.description>
+
+  <TMM_Outpost_Factory_ComponentIndustrial.label>industrial component fabrication</TMM_Outpost_Factory_ComponentIndustrial.label>
+  <TMM_Outpost_Factory_ComponentIndustrial.description>Machines raw steel into standardized industrial electronic components.</TMM_Outpost_Factory_ComponentIndustrial.description>
+
+  <TMM_Outpost_Factory_ComponentSpacer.label>advanced component fabrication</TMM_Outpost_Factory_ComponentSpacer.label>
+  <TMM_Outpost_Factory_ComponentSpacer.description>Assembles high-tech advanced components using industrial components, plasteel, and gold.</TMM_Outpost_Factory_ComponentSpacer.description>
+
+  <TMM_Outpost_Factory_Synthread.label>synthread synthesis</TMM_Outpost_Factory_Synthread.label>
+  <TMM_Outpost_Factory_Synthread.description>Produces synthread using the researched Turbo mega mod synthesis recipe and real ingredients.</TMM_Outpost_Factory_Synthread.description>
+
+  <TMM_Outpost_Factory_Hyperweave.label>hyperweave synthesis</TMM_Outpost_Factory_Hyperweave.label>
+  <TMM_Outpost_Factory_Hyperweave.description>Produces hyperweave using the researched Turbo mega mod synthesis recipe and real ingredients.</TMM_Outpost_Factory_Hyperweave.description>
+</LanguageData>

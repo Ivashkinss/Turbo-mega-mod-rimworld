@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM_GreenhouseLight.label>тепличная подсветка растений</TMM_GreenhouseLight.label>
+  <TMM_LitHydroponicsBasin.label>гидропоника со встроенным светильником</TMM_LitHydroponicsBasin.label>
+  <TMM_LitHydroponicsBasin.description>Гидропонная ванна со своим светильником над растениями. Подключается к обычной электросети. Насос и освещение потребляют на 15% больше энергии, чем обычная гидропоника и её доля солнечной лампы. Подсветка учитывает обычный ночной отдых растений. В помещении нужна подходящая температура: эта установка его не обогревает.</TMM_LitHydroponicsBasin.description>
+  <TMM_GreenhouseGlassWall.label>стеклянная стена теплицы</TMM_GreenhouseGlassWall.label>
+  <TMM_GreenhouseGlassWall.description>Хрупкая несущая стеклянная панель теплицы. Отделяет помещение для посевов от улицы и поддерживает стеклянную крышу. Защищайте теплицу отдельным оборонительным периметром.</TMM_GreenhouseGlassWall.description>
+  <TMM_GreenhouseGlassDoor.label>стеклянная дверь теплицы</TMM_GreenhouseGlassDoor.label>
+  <TMM_GreenhouseGlassDoor.description>Хрупкая стеклянная дверь теплицы с ручным открыванием. Закрывайте её, чтобы удерживать тепло. Дополнительные двери можно ставить обычным инструментом строительства.</TMM_GreenhouseGlassDoor.description>
+  <TMM_GreenhouseClimateUnit.label>климатическая панель теплицы</TMM_GreenhouseClimateUnit.label>
+  <TMM_GreenhouseClimateUnit.description>Встроенная в стену климатическая система. Тепличная зона управляет температурой, подсветкой и потреблением энергии. Подведите кабель к периметру теплицы. Климат-контроль нагревает или охлаждает закрытое помещение. Чем больше разница между текущей и заданной температурой, тем выше расход энергии.</TMM_GreenhouseClimateUnit.description>
+</LanguageData>

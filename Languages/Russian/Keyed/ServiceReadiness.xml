@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.ServiceReadiness.Title>Состояние служб комплекса</TMM.ServiceReadiness.Title>
+  <TMM.ServiceReadiness.Help>Справочная сводка инфраструктуры и настроек служб комплекса. Значения обновляются при открытии и по кнопке «Обновить».</TMM.ServiceReadiness.Help>
+  <TMM.ServiceReadiness.Refresh>Обновить</TMM.ServiceReadiness.Refresh>
+  <TMM.ServiceReadiness.SectionGeneral>Общее состояние комплекса</TMM.ServiceReadiness.SectionGeneral>
+  <TMM.ServiceReadiness.DeskStatusLabel>Статус ресепшена комплекса:</TMM.ServiceReadiness.DeskStatusLabel>
+  <TMM.ServiceReadiness.ActiveDesk>активен и привязан к карте</TMM.ServiceReadiness.ActiveDesk>
+  <TMM.ServiceReadiness.InactiveDesk>не активен (требуется общая территория)</TMM.ServiceReadiness.InactiveDesk>
+  <TMM.ServiceReadiness.InactiveDeskWarning>Ресепшен не активен! Службы комплекса не могут функционировать без назначенной общей территории.</TMM.ServiceReadiness.InactiveDeskWarning>
+  <TMM.ServiceReadiness.Area>Общая территория комплекса:</TMM.ServiceReadiness.Area>
+  <TMM.ServiceReadiness.AreaCells>{0} ({1} кл.)</TMM.ServiceReadiness.AreaCells>
+  <TMM.ServiceReadiness.NoArea>не назначена</TMM.ServiceReadiness.NoArea>
+  <TMM.ServiceReadiness.StaffArea>Служебная территория (персонал):</TMM.ServiceReadiness.StaffArea>
+  <TMM.ServiceReadiness.AutoServices>Автоматическое управление комнатами:</TMM.ServiceReadiness.AutoServices>
+  <TMM.ServiceReadiness.Enabled>включено</TMM.ServiceReadiness.Enabled>
+  <TMM.ServiceReadiness.Disabled>выключено</TMM.ServiceReadiness.Disabled>
+  <TMM.ServiceReadiness.HospitalityModule>Служба гостиницы:</TMM.ServiceReadiness.HospitalityModule>
+  <TMM.ServiceReadiness.HospitalModule>Служба клиники:</TMM.ServiceReadiness.HospitalModule>
+  <TMM.ServiceReadiness.ModuleDetected>подключена</TMM.ServiceReadiness.ModuleDetected>
+  <TMM.ServiceReadiness.ModuleMissing>не обнаружена</TMM.ServiceReadiness.ModuleMissing>
+  <TMM.ServiceReadiness.SectionHotel>Гостиница</TMM.ServiceReadiness.SectionHotel>
+  <TMM.ServiceReadiness.GuestsWelcomeLabel>Приём гостей в поселении:</TMM.ServiceReadiness.GuestsWelcomeLabel>
+  <TMM.ServiceReadiness.RefuseUntilBedsLabel>Отказывать гостям при нехватке кроватей:</TMM.ServiceReadiness.RefuseUntilBedsLabel>
+  <TMM.ServiceReadiness.GuestsWelcomeDisabledWarning>Приём гостей выключен. Включить его можно на ресепшене: «Настройки служб комплекса» → «Гостиница».</TMM.ServiceReadiness.GuestsWelcomeDisabledWarning>
+  <TMM.ServiceReadiness.Yes>да</TMM.ServiceReadiness.Yes>
+  <TMM.ServiceReadiness.No>нет</TMM.ServiceReadiness.No>
+  <TMM.ServiceReadiness.Allowed>разрешено</TMM.ServiceReadiness.Allowed>
+  <TMM.ServiceReadiness.Forbidden>запрещено</TMM.ServiceReadiness.Forbidden>
+  <TMM.ServiceReadiness.RoomRate>Базовый тариф за номер:</TMM.ServiceReadiness.RoomRate>
+  <TMM.ServiceReadiness.RoomRateValue>{0} сер./сутки</TMM.ServiceReadiness.RoomRateValue>
+  <TMM.ServiceReadiness.GuestBeds>Гостевые кровати (управляемые):</TMM.ServiceReadiness.GuestBeds>
+  <TMM.ServiceReadiness.GuestBedsValue>{0} шт. (всего мест: {1})</TMM.ServiceReadiness.GuestBedsValue>
+  <TMM.ServiceReadiness.GuestSlotsOccupied>Занято мест (постояльцы и владельцы):</TMM.ServiceReadiness.GuestSlotsOccupied>
+  <TMM.ServiceReadiness.GuestSlotsAvailable>Не занято спальных мест:</TMM.ServiceReadiness.GuestSlotsAvailable>
+  <TMM.ServiceReadiness.GuestBedsFullyFree>Полностью свободных кроватей:</TMM.ServiceReadiness.GuestBedsFullyFree>
+  <TMM.ServiceReadiness.StaffBedsInArea>Кроватей персонала в комплексе:</TMM.ServiceReadiness.StaffBedsInArea>
+  <TMM.ServiceReadiness.ActiveHotelStays>Активных зарегистрированных проживаний:</TMM.ServiceReadiness.ActiveHotelStays>
+  <TMM.ServiceReadiness.NextVisitHours>по очереди — примерно через {0} ч.</TMM.ServiceReadiness.NextVisitHours>
+  <TMM.ServiceReadiness.NoPlannedVisits>В очереди Hospitality нет запланированных визитов.</TMM.ServiceReadiness.NoPlannedVisits>
+  <TMM.ServiceReadiness.HotelNote>Готовые гостевые места не гарантируют немедленного визита: частота прибытия караванов и гостей регулируется Рассказчиком (Storyteller). В двуспальной кровати второе место может быть занято только партнёром постояльца.</TMM.ServiceReadiness.HotelNote>
+  <TMM.ServiceReadiness.NoGuestBedsWarning>В комплексе нет свободных гостевых кроватей! Посетители не смогут заселиться.</TMM.ServiceReadiness.NoGuestBedsWarning>
+  <TMM.ServiceReadiness.SectionClinic>Клиника</TMM.ServiceReadiness.SectionClinic>
+  <TMM.ServiceReadiness.NativeIsOpenLabel>Фактический приём пациентов:</TMM.ServiceReadiness.NativeIsOpenLabel>
+  <TMM.ServiceReadiness.OpenNow>открыт</TMM.ServiceReadiness.OpenNow>
+  <TMM.ServiceReadiness.ClosedNow>закрыт</TMM.ServiceReadiness.ClosedNow>
+  <TMM.ServiceReadiness.ScheduleHoursLabel>Часы приёма по расписанию:</TMM.ServiceReadiness.ScheduleHoursLabel>
+  <TMM.ServiceReadiness.ScheduleHoursValue>{0} из 24 ч. (текущий час: {1})</TMM.ServiceReadiness.ScheduleHoursValue>
+  <TMM.ServiceReadiness.HourAllowed>разрешён</TMM.ServiceReadiness.HourAllowed>
+  <TMM.ServiceReadiness.HourClosed>закрыт</TMM.ServiceReadiness.HourClosed>
+  <TMM.ServiceReadiness.SurgeryStatus>Проведение операций гостям:</TMM.ServiceReadiness.SurgeryStatus>
+  <TMM.ServiceReadiness.ClinicBeds>Палатные койки клиники:</TMM.ServiceReadiness.ClinicBeds>
+  <TMM.ServiceReadiness.ClinicBedsValue>{0} шт. (всего мест: {1})</TMM.ServiceReadiness.ClinicBedsValue>
+  <TMM.ServiceReadiness.ClinicOccupied>Занято мест в палатах (все пешки):</TMM.ServiceReadiness.ClinicOccupied>
+  <TMM.ServiceReadiness.ClinicAvailable>Свободно мест в палатах клиники:</TMM.ServiceReadiness.ClinicAvailable>
+  <TMM.ServiceReadiness.ReadyDoctors>Сотрудников со включённой работой врача:</TMM.ServiceReadiness.ReadyDoctors>
+  <TMM.ServiceReadiness.NoDoctorsWarning>В поселении нет дееспособных сотрудников со включённой работой врача!</TMM.ServiceReadiness.NoDoctorsWarning>
+  <TMM.ServiceReadiness.NoClinicBedsWarning>В клинике нет медицинских коек в закрытых палатах!</TMM.ServiceReadiness.NoClinicBedsWarning>
+  <TMM.ServiceReadiness.ClinicNote>Пациенты обращаются в клинику только в часы открытого приёма при наличии подходящих травм, болезней или направлений на операции.</TMM.ServiceReadiness.ClinicNote>
+  <TMM.ServiceReadiness.SectionRestaurant>Ресторан</TMM.ServiceReadiness.SectionRestaurant>
+  <TMM.ServiceReadiness.RestaurantOrders>Приём заказов ресторана:</TMM.ServiceReadiness.RestaurantOrders>
+  <TMM.ServiceReadiness.PricePercent>Тарифная наценка на блюда:</TMM.ServiceReadiness.PricePercent>
+  <TMM.ServiceReadiness.ServiceCounters>Раздаточные пункты («Стойка ресторана»):</TMM.ServiceReadiness.ServiceCounters>
+  <TMM.ServiceReadiness.MenuItems>Видов блюд в меню:</TMM.ServiceReadiness.MenuItems>
+  <TMM.ServiceReadiness.FridgesFound>Холодильников и холодных складов:</TMM.ServiceReadiness.FridgesFound>
+  <TMM.ServiceReadiness.ReadyMealsStock>Физический запас блюд из меню:</TMM.ServiceReadiness.ReadyMealsStock>
+  <TMM.ServiceReadiness.Pieces>{0} шт.</TMM.ServiceReadiness.Pieces>
+  <TMM.ServiceReadiness.ReadyWaiters>Сотрудников с работой «Обслуживание ресторана»:</TMM.ServiceReadiness.ReadyWaiters>
+  <TMM.ServiceReadiness.NoCountersWarning>В комплексе не построена «Стойка ресторана»! Заказы не могут приниматься.</TMM.ServiceReadiness.NoCountersWarning>
+  <TMM.ServiceReadiness.EmptyMenuWarning>Меню ресторана пусто! Гости не смогут сделать заказ.</TMM.ServiceReadiness.EmptyMenuWarning>
+  <TMM.ServiceReadiness.NoMealsWarning>В доступных холодильниках нет готовых порций блюд из меню!</TMM.ServiceReadiness.NoMealsWarning>
+  <TMM.ServiceReadiness.NoWaitersWarning>Нет дееспособных сотрудников со включённой работой «Обслуживание ресторана»!</TMM.ServiceReadiness.NoWaitersWarning>
+  <TMM.ServiceReadiness.RestaurantClosedWarning>Приём заказов ресторана выключен в настройках служб.</TMM.ServiceReadiness.RestaurantClosedWarning>
+  <TMM.ServiceReadiness.RestaurantNote>Физическое наличие порций на складе не гарантирует доступность любому гостю: проверяются личная диета, рацион, ингредиенты блюда и личный бюджет гостя.</TMM.ServiceReadiness.RestaurantNote>
+  <TMM.ServiceReadiness.SectionSales>Розничные продажи</TMM.ServiceReadiness.SectionSales>
+  <TMM.ServiceReadiness.StoresTotal>Активных полок и витрин «На продажу»:</TMM.ServiceReadiness.StoresTotal>
+  <TMM.ServiceReadiness.StoresPublic>Публичных (самообслуживание гостей):</TMM.ServiceReadiness.StoresPublic>
+  <TMM.ServiceReadiness.StoresStaffOnly>Служебных (выдача через персонал):</TMM.ServiceReadiness.StoresStaffOnly>
+  <TMM.ServiceReadiness.SaleItemsTotal>Торговых предметов на витринах:</TMM.ServiceReadiness.SaleItemsTotal>
+  <TMM.ServiceReadiness.SaleItemsSummary>{0} стопок ({1} шт.)</TMM.ServiceReadiness.SaleItemsSummary>
+  <TMM.ServiceReadiness.ReadySellers>Сотрудников с работой «Продажи»:</TMM.ServiceReadiness.ReadySellers>
+  <TMM.ServiceReadiness.NoStoresWarning>В комплексе нет ни одной полки или витрины со статусом «На продажу»!</TMM.ServiceReadiness.NoStoresWarning>
+  <TMM.ServiceReadiness.NoSellersWarning>Для служебных хранилищ нет дееспособных сотрудников с включённой работой продаж!</TMM.ServiceReadiness.NoSellersWarning>
+  <TMM.ServiceReadiness.SalesNote>В публичной части комплекса гости покупают товары самостоятельно. Из служебных хранилищ товары доставляют исключительно сотрудники поселения (покупатели и оптовые караваны ожидают в публичной зоне).</TMM.ServiceReadiness.SalesNote>
+  <TMM.ServiceReadiness.SectionStaff>Персонал комплекса</TMM.ServiceReadiness.SectionStaff>
+  <TMM.ServiceReadiness.TotalEmployees>Сотрудников привязано к комплексу:</TMM.ServiceReadiness.TotalEmployees>
+  <TMM.ServiceReadiness.ResidentEmployees>Проживает в комплексе (резиденты):</TMM.ServiceReadiness.ResidentEmployees>
+  <TMM.ServiceReadiness.CompanyEmployees>Участвует в общении (компания):</TMM.ServiceReadiness.CompanyEmployees>
+  <TMM.ServiceReadiness.ReadyCleaners>Сотрудников со включённой работой «Уборка»:</TMM.ServiceReadiness.ReadyCleaners>
+  <TMM.ServiceReadiness.ReadyHosts>Сотрудников со включённой работой «Общение»:</TMM.ServiceReadiness.ReadyHosts>
+  <TMM.ServiceReadiness.ReadyCooks>Сотрудников со включённой работой «Кулинария»:</TMM.ServiceReadiness.ReadyCooks>
+  <TMM.ServiceReadiness.StaffNote>Показаны включённые работы с учётом режима и основных способностей. Занятость, расписание пешек, путь и резервации здесь не проверяются. Режим «Только комплекс» допускает снабженческие выходы к складам колонии; собственные нужды и экстренные действия не ограничиваются.</TMM.ServiceReadiness.StaffNote>
+  <TMM.ServiceReadiness.NextVisitLabel>Плановый визит гостей:</TMM.ServiceReadiness.NextVisitLabel>
+  <TMM.ServiceReadiness.ClinicAdmissionLabel>Приём пациентов включён:</TMM.ServiceReadiness.ClinicAdmissionLabel>
+</LanguageData>

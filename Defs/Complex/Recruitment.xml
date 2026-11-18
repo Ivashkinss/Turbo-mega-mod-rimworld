@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThoughtDef>
+    <defName>TMM_ComplexRecruitWaiting</defName>
+    <workerClass>TurboMegaMod.ThoughtWorker_ComplexRecruitWaiting</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li Class="ThoughtStage">
+        <label>Awaiting complex assignment</label>
+        <description>I was promised steady work in the complex, but I still have not been assigned a suitable role. I feel deceived and useless.</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>TMM_ComplexRecruitAdaptation</defName>
+    <workerClass>TurboMegaMod.ThoughtWorker_ComplexRecruitAdaptation</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li Class="ThoughtStage">
+        <label>Started complex work</label>
+        <description>I was assigned work in the complex, just as promised. It feels great to be occupied and needed in my new home.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+      <li Class="ThoughtStage">
+        <label>Settling into the complex</label>
+        <description>I am getting used to my duties and the routine of the complex. Work is proceeding smoothly.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li Class="ThoughtStage">
+        <label>Finalizing adaptation</label>
+        <description>Working in the complex has become a familiar part of everyday colony life for me.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <QuestScriptDef>
+    <defName>TMM_ComplexRecruit</defName>
+    <autoAccept>false</autoAccept>
+    <defaultHidden>false</defaultHidden>
+    <randomlySelectable>false</randomlySelectable>
+    <rootIncreasesPopulation>true</rootIncreasesPopulation>
+    <sendAvailableLetter>true</sendAvailableLetter>
+    <expireDaysRange>3~3</expireDaysRange>
+    <root Class="TurboMegaMod.QuestNode_Root_ComplexRecruit" />
+  </QuestScriptDef>
+  <IncidentDef>
+    <defName>TMM_ComplexRecruitOffer</defName>
+    <label>applicant for complex employment</label>
+    <category>Misc</category>
+    <workerClass>TurboMegaMod.IncidentWorker_ComplexRecruit</workerClass>
+    <baseChance>0.2</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+  </IncidentDef>
+</Defs>

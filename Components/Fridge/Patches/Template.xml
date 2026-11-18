@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!--Template-->
+	<!--
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>ModName</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>			
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name = "sbzFridgeBase"]/building/fixedStorageSettings/filter/categories</xpath>
+					<value>
+						<li>ThingCategoryDef</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name = "sbzFridgeBase"]/building/fixedStorageSettings/filter/thingDefs</xpath>
+					<value>
+						<li>ThingDef</li>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+	-->
+</Patch>

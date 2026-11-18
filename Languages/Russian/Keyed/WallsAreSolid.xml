@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Walls.Menu>Прочные стены</TMM.Walls.Menu>
+  <TMM.Walls.0.text>ИЗМЕНЕНИЯ ТРЕБУЮТ ПЕРЕЗАПУСКА</TMM.Walls.0.text>
+  <TMM.Walls.2.text>Урон зданиям умножается на указанные коэффициенты. \nНепроходимые сооружения — это прежде всего стены.</TMM.Walls.2.text>
+  <TMM.Walls.3.label>Режущие атаки в ближнем бою: {SharpMeleePassable} [по умолчанию: 0.4]</TMM.Walls.3.label>
+  <TMM.Walls.4.label>Режущие атаки по непроходимым сооружениям: {SharpMeleeImpassable} [по умолчанию: 0.1]</TMM.Walls.4.label>
+  <TMM.Walls.5.label>Дробящий урон: {BluntPassable} [по умолчанию: 0.5]</TMM.Walls.5.label>
+  <TMM.Walls.6.label>Дробящий урон непроходимым сооружениям: {BluntImpassable} [по умолчанию: 0.3]</TMM.Walls.6.label>
+  <TMM.Walls.7.label>Режущие атаки на расстоянии: {SharpRangedPassable} [по умолчанию: 0.2]</TMM.Walls.7.label>
+  <TMM.Walls.8.label>Режущие атаки на расстоянии по непроходимым сооружениям: {SharpRangedImpassable} [по умолчанию: 0.2]</TMM.Walls.8.label>
+  <TMM.Walls.9.label>Взрывы: {BombPassable} [по умолчанию: 0.8]</TMM.Walls.9.label>
+  <TMM.Walls.10.label>Взрывы по непроходимым сооружениям: {BombImpassable} [по умолчанию: 1]</TMM.Walls.10.label>
+  <TMM.Walls.11.text>Служебные имена типов урона в каждой категории:</TMM.Walls.11.text>
+  <TMM.Walls.12.text>Режущий урон в ближнем бою: Cut, Poke, Stab, Scratch, Bite</TMM.Walls.12.text>
+  <TMM.Walls.13.text>Дробящий урон: Blunt, Crush</TMM.Walls.13.text>
+  <TMM.Walls.14.text>Режущий урон на расстоянии: RangedStab, Bullet, Arrow</TMM.Walls.14.text>
+  <TMM.Walls.15.text>Взрыв: Bomb</TMM.Walls.15.text>
+  <TMM.Walls.16.text>Только у Bomb оба коэффициента уже были заданы: 2 для проходимых и 4 для непроходимых сооружений.</TMM.Walls.16.text>
+  <TMM.Walls.18.label>Отменить изменения для турелей, ульев, обломков и зданий мехкластеров</TMM.Walls.18.label>
+  <TMM.Walls.18.tooltip>При отключении для разрушения таких объектов чаще потребуется штурмовой топор, зато ваши турели станут прочнее.</TMM.Walls.18.tooltip>
+  <TMM.Walls.19.label>Природный камень не получает урон от дальнобойного оружия</TMM.Walls.19.label>
+  <TMM.Walls.19.tooltip>Умножать урон природным каменным стенам от дальнобойных атак на ноль.</TMM.Walls.19.tooltip>
+</LanguageData>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Monster clans: vampires and leviathans, a permanent enemy. Biotech only. -->
+<Defs>
+  <FactionDef ParentName="PirateBandBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_MonsterClansFaction</defName>
+    <label>monster clans</label>
+    <description>Vampire nests and leviathan packs that prey on humans from the shadows, answering to their Alphas and to the ancient things that made them.</description>
+    <pawnSingular>monster</pawnSingular>
+    <pawnsPlural>monsters</pawnsPlural>
+    <leaderTitle>alpha</leaderTitle>
+    <fixedName>Monster Clans</fixedName>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.3</settlementGenerationWeight>
+    <listOrderPriority>23</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.3, 0.05, 0.1)</li>
+      <li>(0.15, 0.15, 0.2)</li>
+    </colorSpectrum>
+    <xenotypeSet Inherit="False">
+      <xenotypeChances>
+        <Sanguophage>0.6</Sanguophage>
+        <TMM_Leviathan>0.4</TMM_Leviathan>
+      </xenotypeChances>
+    </xenotypeSet>
+  </FactionDef>
+</Defs>

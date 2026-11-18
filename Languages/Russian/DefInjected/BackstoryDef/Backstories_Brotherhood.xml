@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Артур Мэксон -->
+  <TMM_BS_arthur_maxson_child.title>оруженосец Цитадели</TMM_BS_arthur_maxson_child.title>
+  <TMM_BS_arthur_maxson_child.titleShort>оруженосец</TMM_BS_arthur_maxson_child.titleShort>
+  <TMM_BS_arthur_maxson_child.description>Прямой потомок основателя Братства Стали, [PAWN_nameDef] ещё мальчишкой был отправлен на восток, чтобы расти в стенах укреплённого бункера. С ранних лет изучая боевой устав и кодексы ордена, он с суровой серьёзностью нёс груз своей фамилии.</TMM_BS_arthur_maxson_child.description>
+
+  <TMM_BS_arthur_maxson_adult.title>верховный старейшина</TMM_BS_arthur_maxson_adult.title>
+  <TMM_BS_arthur_maxson_adult.titleShort>старейшина</TMM_BS_arthur_maxson_adult.titleShort>
+  <TMM_BS_arthur_maxson_adult.description>Став самым молодым старейшиной в истории Братства после победы над вожаком супермутантов, [PAWN_nameDef] вновь сплотил разрозненные отделения под единым знаменем. Харизматичный, непреклонный и убеждённый в своей миссии, он ведёт крестовый поход против бесконтрольных технологий.</TMM_BS_arthur_maxson_adult.description>
+
+  <!-- Оуэн Лайонс -->
+  <TMM_BS_owen_lyons_child.title>послушник бункера</TMM_BS_owen_lyons_child.title>
+  <TMM_BS_owen_lyons_child.titleShort>послушник</TMM_BS_owen_lyons_child.titleShort>
+  <TMM_BS_owen_lyons_child.description>Воспитанный в строгой монашеской дисциплине западного бункера Братства, [PAWN_nameDef] изучал довоенные архивы и военную историю, пока сверстники думали лишь о стрельбе. Уже в юности он задумывался о том, что спасение людей важнее простого накопительства технологий.</TMM_BS_owen_lyons_child.description>
+
+  <TMM_BS_owen_lyons_adult.title>ветеран-наставник Братства</TMM_BS_owen_lyons_adult.title>
+  <TMM_BS_owen_lyons_adult.titleShort>ветеран</TMM_BS_owen_lyons_adult.titleShort>
+  <TMM_BS_owen_lyons_adult.description>Возглавив экспедицию в руинах Столичной Пустоши, [PAWN_nameDef] отступил от жёстких догм, чтобы защитить мирных жителей от супермутантов и дать региону чистую воду. Ныне пожилой советник под началом Артура Мэксона, он уравновешивает пыл молодых крестоносцев опытом прожитых лет.</TMM_BS_owen_lyons_adult.description>
+
+  <!-- Сара Лайонс -->
+  <TMM_BS_sarah_lyons_child.title>дочь командира</TMM_BS_sarah_lyons_child.title>
+  <TMM_BS_sarah_lyons_child.titleShort>кадет</TMM_BS_sarah_lyons_child.titleShort>
+  <TMM_BS_sarah_lyons_child.description>Решив во что бы то ни стало доказать, что не пользуется поблажками отца, [PAWN_nameDef] выкладывалась на полигоне сильнее любого новобранца. Каждую нашивку она заслужила сбитыми в кровь костяшками, меткой стрельбой и упрямым характером.</TMM_BS_sarah_lyons_child.description>
+
+  <TMM_BS_sarah_lyons_adult.title>страж авангарда</TMM_BS_sarah_lyons_adult.title>
+  <TMM_BS_sarah_lyons_adult.titleShort>страж</TMM_BS_sarah_lyons_adult.titleShort>
+  <TMM_BS_sarah_lyons_adult.description>Командир элитного штурмового отряда, [PAWN_nameDef] годами сражалась на самых кровопролитных рубежах Пустоши. Дерзкая, язвительная и беззаветно преданная своим бойцам, она никогда не пошлёт солдата туда, куда не пойдёт первой сама.</TMM_BS_sarah_lyons_adult.description>
+
+  <!-- Паладин Данс -->
+  <TMM_BS_paladin_danse_child.title>сирота с ржавого авианосца</TMM_BS_paladin_danse_child.title>
+  <TMM_BS_paladin_danse_child.titleShort>сирота</TMM_BS_paladin_danse_child.titleShort>
+  <TMM_BS_paladin_danse_child.description>Выросший в одиночку в поселении, построенном внутри севшего на мель авианосца, [PAWN_nameDef] выживал за счёт сбора и починки старого хлама. Когда в город прибыли вербовщики Братства, он вступил в их ряды, ни разу не оглянувшись назад.</TMM_BS_paladin_danse_child.description>
+
+  <TMM_BS_paladin_danse_adult.title>образцовый полевой паладин</TMM_BS_paladin_danse_adult.title>
+  <TMM_BS_paladin_danse_adult.titleShort>паладин</TMM_BS_paladin_danse_adult.titleShort>
+  <TMM_BS_paladin_danse_adult.description>Закалённый в долгих кампаниях, [PAWN_nameDef] живёт уставом и воинской субординацией Братства. Невозмутимый, благородный и неумолимый в бою, он ведёт разведывательные отряды в глубь вражеских земель с непоколебимой решимостью.</TMM_BS_paladin_danse_adult.description>
+
+  <!-- Капитан Келлс -->
+  <TMM_BS_captain_kells_child.title>стратег академии</TMM_BS_captain_kells_child.title>
+  <TMM_BS_captain_kells_child.titleShort>курсант</TMM_BS_captain_kells_child.titleShort>
+  <TMM_BS_captain_kells_child.description>Воспитанный в строгих залах крепости Братства, [PAWN_nameDef] с юности блистал в навигации, логистике и штабных играх. Он рано понял, что исход битвы зависит от линий снабжения и точного расчёта не меньше, чем от огневой мощи.</TMM_BS_captain_kells_child.description>
+
+  <TMM_BS_captain_kells_adult.title>капитан воздушного флагмана</TMM_BS_captain_kells_adult.title>
+  <TMM_BS_captain_kells_adult.titleShort>капитан</TMM_BS_captain_kells_adult.titleShort>
+  <TMM_BS_captain_kells_adult.description>Командуя флагманским дирижаблем Братства, [PAWN_nameDef] руководит воздушными десантами, разведкой и дисциплиной экипажа с холодной точностью. Хладнокровный и лишённый сентиментальности, он исполняет приказы до мельчайших деталей.</TMM_BS_captain_kells_adult.description>
+
+  <!-- Проктор Ингрэм -->
+  <TMM_BS_proctor_ingram_child.title>ученица писцов</TMM_BS_proctor_ingram_child.title>
+  <TMM_BS_proctor_ingram_child.titleShort>писец</TMM_BS_proctor_ingram_child.titleShort>
+  <TMM_BS_proctor_ingram_child.description>Окружённая диагностическими терминалами и разобранными сервоприводами с самого детства, [PAWN_nameDef] обладала врождённым чутьём на довоенную технику. Перемазанные маслом гаечные ключи и чертежи всегда интересовали её куда больше парадных построений.</TMM_BS_proctor_ingram_child.description>
+
+  <TMM_BS_proctor_ingram_adult.title>главный инженер бронекорпуса</TMM_BS_proctor_ingram_adult.title>
+  <TMM_BS_proctor_ingram_adult.titleShort>проктор</TMM_BS_proctor_ingram_adult.titleShort>
+  <TMM_BS_proctor_ingram_adult.description>Лишившись обеих ног при обвале скалы во время боя, [PAWN_nameDef] наотрез отказалась уходить в отставку и переделала каркас силовой брони, чтобы остаться в строю. Неутомимая, острая на язык и гениальная, она поддерживает на ходу всю технику и реакторы экспедиции.</TMM_BS_proctor_ingram_adult.description>
+</LanguageData>

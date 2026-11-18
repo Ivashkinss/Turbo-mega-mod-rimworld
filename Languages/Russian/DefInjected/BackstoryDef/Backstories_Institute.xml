@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Отец (Шон) -->
+  <TMM_BS_father_shaun_child.title>образец из Убежища</TMM_BS_father_shaun_child.title>
+  <TMM_BS_father_shaun_child.titleShort>образец</TMM_BS_father_shaun_child.titleShort>
+  <TMM_BS_father_shaun_child.description>Похищенный младенцем из криогенного Убежища, [PAWN_nameDef] вырос глубоко под землёй в стерильных залах научного комплекса. Окружённый учёными, видевшими в его чистой ДНК будущее человечества, он никогда не знал жизни на разрушенной поверхности.</TMM_BS_father_shaun_child.description>
+
+  <TMM_BS_father_shaun_adult.title>директор Института</TMM_BS_father_shaun_adult.title>
+  <TMM_BS_father_shaun_adult.titleShort>директор</TMM_BS_father_shaun_adult.titleShort>
+  <TMM_BS_father_shaun_adult.description>Возглавив Институт после десятилетий закрытых исследований, [PAWN_nameDef] считает радиоактивную Пустошь наверху обречённым пережитком прошлого. Спокойный, отечески снисходительный и безжалостно прагматичный, он убеждён, что спасти человечество способна только подземная наука.</TMM_BS_father_shaun_adult.description>
+
+  <!-- Джастин Айо -->
+  <TMM_BS_justin_ayo_child.title>подземный ревнитель порядка</TMM_BS_justin_ayo_child.title>
+  <TMM_BS_justin_ayo_child.titleShort>надзиратель</TMM_BS_justin_ayo_child.titleShort>
+  <TMM_BS_justin_ayo_child.description>Выросший в безупречных коридорах Института, [PAWN_nameDef] всегда относился к правилам, допускам и журналам слежки куда серьёзнее сверстников. Он обожал ловить одноклассников, пытавшихся пробраться в закрытые лаборатории.</TMM_BS_justin_ayo_child.description>
+
+  <TMM_BS_justin_ayo_adult.title>глава Бюро возврата</TMM_BS_justin_ayo_adult.title>
+  <TMM_BS_justin_ayo_adult.titleShort>глава бюро</TMM_BS_justin_ayo_adult.titleShort>
+  <TMM_BS_justin_ayo_adult.description>Исполняя обязанности главы Бюро возврата синтов, [PAWN_nameDef] считает беглых синтов украденным имуществом, а жителей поверхности — опасными дикарями. Подозрительный, высокомерный и помешанный на безопасности, он без колебаний отправляет охотников за каждым беглецом.</TMM_BS_justin_ayo_adult.description>
+
+  <!-- X6-88 -->
+  <TMM_BS_x6_88_child.title>курсант программы охотников</TMM_BS_x6_88_child.title>
+  <TMM_BS_x6_88_child.titleShort>курсант</TMM_BS_x6_88_child.titleShort>
+  <TMM_BS_x6_88_child.description>С первых дней после активации в стерильных тренировочных залах [PAWN_nameDef] приучался подавлять страх, сомнения и сочувствие. Каждый час его подготовки был посвящён ближнему бою, скрытному проникновению и выслеживанию целей.</TMM_BS_x6_88_child.description>
+
+  <TMM_BS_x6_88_adult.title>элитный охотник Института</TMM_BS_x6_88_adult.title>
+  <TMM_BS_x6_88_adult.titleShort>охотник</TMM_BS_x6_88_adult.titleShort>
+  <TMM_BS_x6_88_adult.description>Бесстрастный оперативник Бюро возврата в чёрном плаще, [PAWN_nameDef] выслеживает беглых синтов и устраняет угрозы Институту со смертоносной точностью. Холодный, расчётливый и неумолимый, он решает любую задачу без тени жалости.</TMM_BS_x6_88_adult.description>
+
+  <!-- Доктор Мэдисон Ли -->
+  <TMM_BS_madison_li_child.title>честолюбивая студентка-физик</TMM_BS_madison_li_child.title>
+  <TMM_BS_madison_li_child.titleShort>студентка</TMM_BS_madison_li_child.titleShort>
+  <TMM_BS_madison_li_child.description>Одержимая довоенной инженерией и теорией энергетики, [PAWN_nameDef] провела юность, разбирая уцелевшие ядерные блоки и схемы реакторов. У неё никогда не хватало терпения на пустую болтовню и людей, мешающих её работе.</TMM_BS_madison_li_child.description>
+
+  <TMM_BS_madison_li_adult.title>глава отдела передовых систем</TMM_BS_madison_li_adult.title>
+  <TMM_BS_madison_li_adult.titleShort>физик</TMM_BS_madison_li_adult.titleShort>
+  <TMM_BS_madison_li_adult.description>Подарив Столичной Пустоши чистую воду и разочаровавшись в армейских порядках, [PAWN_nameDef] перешла в Институт, где возглавила отдел передовых систем. Резкая на язык и фанатично преданная чистой науке, она двигает вперёд самые смелые энергетические проекты.</TMM_BS_madison_li_adult.description>
+
+  <!-- Келлог -->
+  <TMM_BS_kellogg_child.title>суровый бродяга с Запада</TMM_BS_kellogg_child.title>
+  <TMM_BS_kellogg_child.titleShort>бродяга</TMM_BS_kellogg_child.titleShort>
+  <TMM_BS_kellogg_child.description>Выросший в неблагополучной семье на западном побережье, [PAWN_nameDef] рано усвоил, что сильные забирают своё, а слабые ложатся в землю. Взяв в руки тяжёлый револьвер ещё в юности, он двинулся на восток, живя кровавыми наёмничьими контрактами.</TMM_BS_kellogg_child.description>
+
+  <TMM_BS_kellogg_adult.title>кибернетический наёмник Института</TMM_BS_kellogg_adult.title>
+  <TMM_BS_kellogg_adult.titleShort>наёмник</TMM_BS_kellogg_adult.titleShort>
+  <TMM_BS_kellogg_adult.description>Потеряв всех, кого когда-либо любил, [PAWN_nameDef] продал остатки совести Институту в обмен на продлевающие жизнь кибернетические импланты. Холодный, фаталистичный и смертельно меткий со своим револьвером, он выполняет самую грязную работу Института на поверхности.</TMM_BS_kellogg_adult.description>
+
+  <!-- Алан Бине -->
+  <TMM_BS_alan_binet_child.title>любознательный изобретатель</TMM_BS_alan_binet_child.title>
+  <TMM_BS_alan_binet_child.titleShort>изобретатель</TMM_BS_alan_binet_child.titleShort>
+  <TMM_BS_alan_binet_child.description>Выросший в тихих жилых секторах Института, [PAWN_nameDef] часами собирал сложные механические игрушки и изучал синтетические мышечные волокна. В отличие от многих коллег, он с детства испытывал искреннюю теплоту ко всему, что создавал своими руками.</TMM_BS_alan_binet_child.description>
+
+  <TMM_BS_alan_binet_adult.title>глава отдела робототехники</TMM_BS_alan_binet_adult.title>
+  <TMM_BS_alan_binet_adult.titleShort>робототехник</TMM_BS_alan_binet_adult.titleShort>
+  <TMM_BS_alan_binet_adult.description>Возглавляя отдел робототехники, [PAWN_nameDef] руководит сборкой и совершенствованием синтетических людей с тихой гордостью и растущими сомнениями. Мягкий, вдумчивый и талантливый, он втайне убеждён, что синты третьего поколения заслуживают права считаться живыми людьми.</TMM_BS_alan_binet_adult.description>
+</LanguageData>

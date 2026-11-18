@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_WaitForMeal.reportString>Ждёт заказанное блюдо.</TMM_WaitForMeal.reportString>
+  <TMM_ServeMeal.reportString>Доставляет блюдо гостю ресторана.</TMM_ServeMeal.reportString>
+</LanguageData>

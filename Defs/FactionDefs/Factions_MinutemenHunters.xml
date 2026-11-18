@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TMM_MinutemenHuntersFaction</defName>
+    <label>minutemen and hunters</label>
+    <description>An alliance of frontier civil minutemen and wandering monster hunters. Organized around mutual community aid ("ready in a minute") and equipped to protect distant outposts from wild beasts and supernatural threats. They maintain archives of protective wards and stand ready to answer distress signals.</description>
+    <colorSpectrum>
+      <li>(0.20, 0.35, 0.55)</li>
+      <li>(0.15, 0.25, 0.45)</li>
+    </colorSpectrum>
+    <pawnSingular>hunter-militiaman</pawnSingular>
+    <pawnsPlural>minutemen and hunters</pawnsPlural>
+    <leaderTitle>general commander</leaderTitle>
+    <settlementGenerationWeight>0.6</settlementGenerationWeight>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canStageAttacks>true</canStageAttacks>
+    <naturalEnemy>false</naturalEnemy>
+    <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <pawnGroupMakers>
+      <li>
+        <!-- Mixed combat defense group -->
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <TMM_HuntersMilitiaman>10</TMM_HuntersMilitiaman>
+          <TMM_HuntersHunter>6</TMM_HuntersHunter>
+          <TMM_HuntersMedic>4</TMM_HuntersMedic>
+          <Town_Guard>3</Town_Guard>
+        </options>
+      </li>
+      <li>
+        <!-- Peaceful visitors -->
+        <kindDef>Peaceful</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <TMM_HuntersMilitiaman>10</TMM_HuntersMilitiaman>
+          <TMM_HuntersHunter>5</TMM_HuntersHunter>
+          <TMM_HuntersMedic>3</TMM_HuntersMedic>
+          <Villager>4</Villager>
+        </options>
+      </li>
+      <li>
+        <!-- Trade caravan -->
+        <kindDef>Trader</kindDef>
+        <commonality>100</commonality>
+        <traders>
+          <Town_Trader>1</Town_Trader>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>5</Dromedary>
+        </carriers>
+        <guards>
+          <TMM_HuntersMilitiaman>10</TMM_HuntersMilitiaman>
+          <TMM_HuntersHunter>6</TMM_HuntersHunter>
+          <TMM_HuntersMedic>4</TMM_HuntersMedic>
+        </guards>
+      </li>
+      <li>
+        <!-- Settlement population -->
+        <kindDef>Settlement</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <TMM_HuntersMilitiaman>12</TMM_HuntersMilitiaman>
+          <TMM_HuntersHunter>8</TMM_HuntersHunter>
+          <TMM_HuntersMedic>5</TMM_HuntersMedic>
+          <Town_Guard>5</Town_Guard>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+</Defs>

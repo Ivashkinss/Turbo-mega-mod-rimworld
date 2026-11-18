@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM_ComplexRecruitWaiting.stages.0.label>Ожидание работы в комплексе</TMM_ComplexRecruitWaiting.stages.0.label>
+  <TMM_ComplexRecruitWaiting.stages.0.description>Мне обещали постоянную работу в комплексе, но до сих пор не назначили подходящую роль. Я чувствую себя обманутым и бесполезным.</TMM_ComplexRecruitWaiting.stages.0.description>
+  <TMM_ComplexRecruitAdaptation.stages.0.label>Начало работы в комплексе</TMM_ComplexRecruitAdaptation.stages.0.label>
+  <TMM_ComplexRecruitAdaptation.stages.0.description>Мне назначили работу в комплексе, как и обещали. Приятно заниматься делом и быть нужным новому дому.</TMM_ComplexRecruitAdaptation.stages.0.description>
+  <TMM_ComplexRecruitAdaptation.stages.1.label>Освоение в комплексе</TMM_ComplexRecruitAdaptation.stages.1.label>
+  <TMM_ComplexRecruitAdaptation.stages.1.description>Я привыкаю к своим обязанностям и распорядку комплекса. Работа идёт своим чередом.</TMM_ComplexRecruitAdaptation.stages.1.description>
+  <TMM_ComplexRecruitAdaptation.stages.2.label>Завершение адаптации</TMM_ComplexRecruitAdaptation.stages.2.label>
+  <TMM_ComplexRecruitAdaptation.stages.2.description>Работа в комплексе стала для меня привычной частью повседневной жизни колонии.</TMM_ComplexRecruitAdaptation.stages.2.description>
+</LanguageData>

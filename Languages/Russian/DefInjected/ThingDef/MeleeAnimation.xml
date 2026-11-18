@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_DuelSpot.description>Место для дружеских поединков. Два поселенца с подходящим оружием ближнего боя могут сражаться здесь ради развлечения и тренировки.</AM_DuelSpot.description>
+  <AM_DuelSpot.label>место для поединков</AM_DuelSpot.label>
+  <AM_LassoCloth.description>Тканевое лассо, позволяющее притягивать противников в ближний бой с расстояния или вытаскивать союзников из опасности.</AM_LassoCloth.description>
+  <AM_LassoCloth.label>лассо</AM_LassoCloth.label>
+  <AM_LassoDevilstrand.description>Лассо из дьявлоткани, позволяющее притягивать противников в ближний бой или вытаскивать союзников из опасности.
+Дальность действия больше, чем у обычного лассо.</AM_LassoDevilstrand.description>
+  <AM_LassoDevilstrand.label>лассо из дьявлоткани</AM_LassoDevilstrand.label>
+  <AM_LassoHyperwave.description>Лассо из гиперткани, позволяющее притягивать противников в ближний бой или вытаскивать союзников из опасности.
+Дальность действия больше, чем у лассо из дьявлоткани.</AM_LassoHyperwave.description>
+  <AM_LassoHyperwave.label>лассо из гиперткани</AM_LassoHyperwave.label>
+  <AM_Weebstick.description>Легендарное оружие неизвестного происхождения.
+Его обладателя неудержимо тянет носить тёмный плащ и отвечать на вопросы хмыканьем. Кого-то это настораживает, но эффективность клинка в бою неоспорима.
+Открывает уникальный смертоносный особый приём.</AM_Weebstick.description>
+  <AM_Weebstick.label>Алый клинок</AM_Weebstick.label>
+  <AM_Weebstick.tools.0.label>остриё</AM_Weebstick.tools.0.label>
+  <AM_Weebstick.tools.1.label>лезвие</AM_Weebstick.tools.1.label>
+</LanguageData>

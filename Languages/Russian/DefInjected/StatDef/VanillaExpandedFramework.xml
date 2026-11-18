@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <VEF_BodySize_Multiplier.description>Умножает текущий размер пешки на заданный коэффициент</VEF_BodySize_Multiplier.description>
+  <VEF_BodySize_Multiplier.label>множитель размера тела</VEF_BodySize_Multiplier.label>
+  <VEF_BodySize_Offset.description>Увеличивает размер пешки относительно её текущего размера</VEF_BodySize_Offset.description>
+  <VEF_BodySize_Offset.label>прибавка к размеру тела</VEF_BodySize_Offset.label>
+  <VEF_BuildingLearningRateOffset.description>Множитель скорости обучения детей на занятиях с использованием этого объекта.</VEF_BuildingLearningRateOffset.description>
+  <VEF_BuildingLearningRateOffset.label>скорость обучения</VEF_BuildingLearningRateOffset.label>
+  <VEF_CosmeticBodySize_Multiplier.description>Умножает текущий размер пешки на заданный коэффициент</VEF_CosmeticBodySize_Multiplier.description>
+  <VEF_CosmeticBodySize_Multiplier.label>множитель видимого размера тела</VEF_CosmeticBodySize_Multiplier.label>
+  <VEF_CosmeticBodySize_Offset.description>Увеличивает размер пешки относительно её текущего размера</VEF_CosmeticBodySize_Offset.description>
+  <VEF_CosmeticBodySize_Offset.label>прибавка к видимому размеру тела</VEF_CosmeticBodySize_Offset.label>
+  <VEF_EnergyShieldEnergyMaxFactor.description>Множитель максимального запаса энергии щита, который владелец может повышать разными способами.</VEF_EnergyShieldEnergyMaxFactor.description>
+  <VEF_EnergyShieldEnergyMaxFactor.label>множитель максимальной энергии щита</VEF_EnergyShieldEnergyMaxFactor.label>
+  <VEF_EnergyShieldEnergyMaxOffset.description>Прибавка к максимальному запасу энергии щита, которую владелец может повышать разными способами.</VEF_EnergyShieldEnergyMaxOffset.description>
+  <VEF_EnergyShieldEnergyMaxOffset.label>прибавка к максимальной энергии щита</VEF_EnergyShieldEnergyMaxOffset.label>
+  <VEF_EnergyShieldRadiusApparel.description>Область, которую защищает включённый энергетический щит.</VEF_EnergyShieldRadiusApparel.description>
+  <VEF_EnergyShieldRadiusApparel.label>радиус щита</VEF_EnergyShieldRadiusApparel.label>
+  <VEF_FoodCapacityMultiplier.description>Увеличивает запас сытости пешки. Не влияет на скорость появления голода</VEF_FoodCapacityMultiplier.description>
+  <VEF_FoodCapacityMultiplier.label>множитель запаса сытости</VEF_FoodCapacityMultiplier.label>
+  <VEF_GrowthPointMultiplier.description>Увеличивает количество очков развития, которые дети получают при обучении</VEF_GrowthPointMultiplier.description>
+  <VEF_GrowthPointMultiplier.label>множитель очков развития</VEF_GrowthPointMultiplier.label>
+  <VEF_HeadSize_Cosmetic.label>множитель размера головы</VEF_HeadSize_Cosmetic.label>
+  <VEF_MTBLovinFactor.description>Множитель среднего интервала между попытками этого персонажа заняться любовью.</VEF_MTBLovinFactor.description>
+  <VEF_MTBLovinFactor.label>Множитель интервала между занятиями любовью</VEF_MTBLovinFactor.label>
+  <VEF_MassCarryCapacity.description>Общая масса груза, которую пешка может переносить в караванах.</VEF_MassCarryCapacity.description>
+  <VEF_MassCarryCapacity.label>Грузоподъёмность</VEF_MassCarryCapacity.label>
+  <VEF_MeleeAttackDamageFactor.description>Множитель урона атак в ближнем бою.</VEF_MeleeAttackDamageFactor.description>
+  <VEF_MeleeAttackDamageFactor.label>множитель урона ближних атак</VEF_MeleeAttackDamageFactor.label>
+  <VEF_MeleeAttackSpeedFactor.description>Множитель скорости атак в ближнем бою.</VEF_MeleeAttackSpeedFactor.description>
+  <VEF_MeleeAttackSpeedFactor.label>множитель скорости ближних атак</VEF_MeleeAttackSpeedFactor.label>
+  <VEF_MeleeWeaponRange.description>Дальность этого оружия ближнего боя.</VEF_MeleeWeaponRange.description>
+  <VEF_MeleeWeaponRange.label>дальность оружия ближнего боя</VEF_MeleeWeaponRange.label>
+  <VEF_NegativeThoughtDurationFactor.description>Длительность отрицательных мыслей умножается на это значение.</VEF_NegativeThoughtDurationFactor.description>
+  <VEF_NegativeThoughtDurationFactor.label>множитель длительности мыслей: отрицательные</VEF_NegativeThoughtDurationFactor.label>
+  <VEF_NeutralThoughtDurationFactor.description>Длительность нейтральных мыслей умножается на это значение.</VEF_NeutralThoughtDurationFactor.description>
+  <VEF_NeutralThoughtDurationFactor.label>множитель длительности мыслей: нейтральные</VEF_NeutralThoughtDurationFactor.label>
+  <VEF_PawnRenderPosOffset.description>Изменяет положение изображения пешки по оси Y.</VEF_PawnRenderPosOffset.description>
+  <VEF_PawnRenderPosOffset.label>смещение изображения пешки</VEF_PawnRenderPosOffset.label>
+  <VEF_PositiveThoughtDurationFactor.description>Длительность положительных мыслей умножается на это значение.</VEF_PositiveThoughtDurationFactor.description>
+  <VEF_PositiveThoughtDurationFactor.label>множитель длительности мыслей: положительные</VEF_PositiveThoughtDurationFactor.label>
+  <VEF_RangeAttackDamageFactor.description>Множитель урона атак на расстоянии.</VEF_RangeAttackDamageFactor.description>
+  <VEF_RangeAttackDamageFactor.label>множитель урона дальних атак</VEF_RangeAttackDamageFactor.label>
+  <VEF_RangeAttackSpeedFactor.description>Множитель скорости атак на расстоянии.</VEF_RangeAttackSpeedFactor.description>
+  <VEF_RangeAttackSpeedFactor.label>множитель скорости дальних атак</VEF_RangeAttackSpeedFactor.label>
+  <VEF_RangedCooldownFactor.description>Задержка между выстрелами оружия владельца умножается на это значение.</VEF_RangedCooldownFactor.description>
+  <VEF_RangedCooldownFactor.label>множитель задержки стрельбы</VEF_RangedCooldownFactor.label>
+  <VEF_RangedDodgeChance.description>Шанс уклониться от дальнобойной атаки, которая иначе попала бы в цель.</VEF_RangedDodgeChance.description>
+  <VEF_RangedDodgeChance.label>шанс уклонения от дальних атак</VEF_RangedDodgeChance.label>
+  <VEF_VerbCooldownFactor.description>Задержка между атаками оружия умножается на это значение.</VEF_VerbCooldownFactor.description>
+  <VEF_VerbCooldownFactor.label>множитель задержки дальнобойного оружия</VEF_VerbCooldownFactor.label>
+  <VEF_VerbRangeFactor.description>Дальность оружия умножается на это значение.</VEF_VerbRangeFactor.description>
+  <VEF_VerbRangeFactor.label>множитель дальности оружия</VEF_VerbRangeFactor.label>
+</LanguageData>

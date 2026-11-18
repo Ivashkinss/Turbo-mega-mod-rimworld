@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>More Planning (Continued)</name>
+  <packageId>Mlie.MorePlanning</packageId>
+  <author>Alan Dariva, Usagirei</author>
+  <url>https://github.com/emipa606/MorePlanning</url>
+  <supportedVersions>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependenciesByVersion>
+    <v1.3>
+      <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+      </li>
+      <li>
+        <packageId>UnlimitedHugs.HugsLib</packageId>
+        <displayName>HugsLib</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+        <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+      </li>
+    </v1.3>
+    <v1.4>
+      <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+      </li>
+      <li>
+        <packageId>UnlimitedHugs.HugsLib</packageId>
+        <displayName>HugsLib</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+        <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+      </li>
+    </v1.4>
+    <v1.5>
+      <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+      </li>
+      <li>
+        <packageId>UnlimitedHugs.HugsLib</packageId>
+        <displayName>HugsLib</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+        <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+      </li>
+    </v1.5>
+    <v1.6>
+      <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+      </li>
+    </v1.6>
+  </modDependenciesByVersion>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>UnlimitedHugs.HugsLib</li>
+  </loadAfter>
+  <description>[img]https://img.litet.net/logos/Info.png[/img]
+Update of Alan Dariva, Usagireis mod https://steamcommunity.com/sharedfiles/filedetails/?id=2551225702
+
+- As of 1.6 the mod no longer needs HugsLib, thanks to Zaljerem!
+
+[img]https://img.litet.net/logos/Notice.png[/img]
+
+[table]
+    [tr][td][url=https://discord.gg/h5TY6DA][img]https://img.litet.net/logos/Discord.png[/img][/url][/td] [td][url=https://github.com/emipa606/MorePlanning][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://img.litet.net/logos/SafeToAdd.png[/img][/td]
+        [td][img]https://img.litet.net/logos/RemoveMayWork.png[/img][/td]
+    [/tr]
+[/table]
+
+[img]https://img.litet.net/logos/OriginalDescription.png[/img]
+
+        This mod creates a new option in the "Architect" menu, called "Planning", with more options for planning.
+
+        Features:
+        - 10 customizable planning designations;
+        - Show/hide planning designations;
+        - Control planning opacity;
+        - Cut/copy/paste planning designations;
+        - An option for control if planning designations should be removed when something is built or deconstructed on top of it.
+        - Holding shift you can override others planning designations.
+
+        [b]This mod uses HugsLib and Harmony.[/b]
+
+        Contributors:
+        - 53N4 - Spanish translation
+        - Dango998 - Chinese Simplified translation
+        - alextd - Option to reverse shift key usage
+
+[img]https://img.litet.net/logos/ReportingIssues.png[/img]
+[list]
+[*] See if the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
+[/list]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3554743746][img]https://img.shields.io/github/v/release/emipa606/MorePlanning?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  planning options</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.4</modVersion>
+</ModMetaData>

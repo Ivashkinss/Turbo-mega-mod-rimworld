@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TMM_MenOfLettersFaction</defName>
+    <label>British Men of Letters</label>
+    <description>An old British order of scholars and hunters who keep the world's monsters under control — with ruthless efficiency and no tolerance for amateurs.</description>
+    <pawnSingular>man of letters</pawnSingular>
+    <pawnsPlural>men of letters</pawnsPlural>
+    <leaderTitle>head of the order</leaderTitle>
+    <fixedName>British Men of Letters</fixedName>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.4</settlementGenerationWeight>
+    <listOrderPriority>21</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.3, 0.2, 0.35)</li>
+      <li>(0.75, 0.7, 0.6)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

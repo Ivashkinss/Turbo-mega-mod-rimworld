@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <HeadTypeDef ParentName="AverageBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_LeviathanHead</defName>
+    <graphicPath>Things/TMM/Xenotypes/Leviathan/LeviathanHead</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>None</gender>
+    <requiredGenes>
+      <li>TMM_Head_Leviathan</li>
+    </requiredGenes>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+</Defs>

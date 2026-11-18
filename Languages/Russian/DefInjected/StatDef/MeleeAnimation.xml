@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <AM_DuelAbility.description>Эффективность персонажа в поединках ближнего боя. Этот показатель сравнивается с показателем соперника и влияет на исход поединка.</AM_DuelAbility.description>
+  <AM_DuelAbility.label>Мастерство поединка</AM_DuelAbility.label>
+  <AM_ExecutionCooldown.description>Время в секундах между добиваниями в ближнем бою. Зависит от навыка ближнего боя персонажа и других факторов.</AM_ExecutionCooldown.description>
+  <AM_ExecutionCooldown.label>Восстановление добивания</AM_ExecutionCooldown.label>
+  <AM_GrappleCooldown.description>Время в секундах между применениями лассо. Зависит от типа лассо и состояния здоровья персонажа.</AM_GrappleCooldown.description>
+  <AM_GrappleCooldown.label>Восстановление лассо</AM_GrappleCooldown.label>
+  <AM_GrappleRadius.description>Максимальное расстояние, с которого персонаж может притянуть противника лассо.
+Зависит от типа надетого лассо.</AM_GrappleRadius.description>
+  <AM_GrappleRadius.label>Дальность лассо</AM_GrappleRadius.label>
+  <AM_GrappleSpeed.description>Скорость захвата и притягивания противника с помощью лассо.
+Чем выше значение, тем меньше времени требуется, чтобы подтянуть цель в ближний бой.
+Это НЕ время восстановления лассо.</AM_GrappleSpeed.description>
+  <AM_GrappleSpeed.label>Скорость притягивания лассо</AM_GrappleSpeed.label>
+  <AM_Lethality.description>Летальность добиваний персонажа. Показатель отражает вероятность убить цель во время добивания, в том числе после победы в поединке.</AM_Lethality.description>
+  <AM_Lethality.label>Летальность ближнего боя</AM_Lethality.label>
+</LanguageData>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <TMM_MinutemenReliefQuest.questNameRules.rulesStrings>
+    <li>questName->Militia Distress: Field Relief</li>
+  </TMM_MinutemenReliefQuest.questNameRules.rulesStrings>
+  <TMM_MinutemenReliefQuest.questDescriptionRules.rulesStrings>
+    <li>questDescription->The minutemen and monster hunters have requested emergency humanitarian relief supplies.</li>
+  </TMM_MinutemenReliefQuest.questDescriptionRules.rulesStrings>
+
+  <TMM_MinutemenArchiveQuest.questNameRules.rulesStrings>
+    <li>questName->Field Archive of the Abandoned Post</li>
+  </TMM_MinutemenArchiveQuest.questNameRules.rulesStrings>
+  <TMM_MinutemenArchiveQuest.questDescriptionRules.rulesStrings>
+    <li>questDescription->An abandoned minutemen listening post holds valuable monster defense archives.</li>
+  </TMM_MinutemenArchiveQuest.questDescriptionRules.rulesStrings>
+
+</LanguageData>

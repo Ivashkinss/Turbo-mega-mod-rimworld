@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ghoul look: own gaunt, noseless, lipless head. Biotech only. -->
+<Defs>
+  <GeneDef ParentName="GeneJawBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Head_Ghoul</defName>
+    <label>ghoul skull</label>
+    <description>Carriers of this gene have a gaunt, radiation-ravaged head: no nose, no lips over the teeth, sunken eyes and patches of peeling skin.</description>
+    <iconPath>UI/Icons/Genes/Gene_GauntHead</iconPath>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <forcedHeadTypes>
+      <li>TMM_GhoulHead</li>
+    </forcedHeadTypes>
+  </GeneDef>
+</Defs>

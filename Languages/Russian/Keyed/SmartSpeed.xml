@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <SS_EventSpeed>Скорость при событиях</SS_EventSpeed>
+  <EventSpeedLabel>Изменить скорость при событиях</EventSpeedLabel>
+  <SS_Slow>Медленно (половина обычной скорости)</SS_Slow>
+  <SS_Normal>Обычная</SS_Normal>
+  <SS_Fast>Быстро (вдвое быстрее обычной)</SS_Fast>
+  <SS_Half>Половина текущей скорости</SS_Half>
+  <SS_Ignore>Игнорировать (без замедления)</SS_Ignore>
+  <SS_normalSpeed>Обычная скорость (режим 1)</SS_normalSpeed>
+  <SS_normalSpeedTooltip>Множитель обычной скорости. По умолчанию — 1, то есть 60 тиков в секунду.</SS_normalSpeedTooltip>
+  <SS_fastSpeed>Высокая скорость (режим 2)</SS_fastSpeed>
+  <SS_fastSpeedTooltip>Множитель высокой скорости. По умолчанию — 3, то есть 180 тиков в секунду.</SS_fastSpeedTooltip>
+  <SS_superfastSpeed>Очень высокая скорость (режим 3)</SS_superfastSpeed>
+  <SS_superfastSpeedTooltip>Множитель очень высокой скорости. По умолчанию — 6, то есть 360 тиков в секунду.</SS_superfastSpeedTooltip>
+  <SS_ultrafastSpeed>Предельная скорость (режим 4)</SS_ultrafastSpeed>
+  <SS_ultrafastSpeedTooltip>Множитель предельной скорости. По умолчанию — 15, то есть 900 тиков в секунду. Реальная скорость зависит от компьютера: игра использует доступную производительность, но не сможет превысить её предел.</SS_ultrafastSpeedTooltip>
+  <SS_Reset>Сбросить</SS_Reset>
+</LanguageData>

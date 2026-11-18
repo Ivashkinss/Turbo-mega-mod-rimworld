@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DamageDef ParentName="BluntBase">
+		<defName>BluntCrushing</defName>
+			<buildingDamageFactorImpassable>1.5</buildingDamageFactorImpassable>
+			<buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+	</DamageDef>
+</Defs>

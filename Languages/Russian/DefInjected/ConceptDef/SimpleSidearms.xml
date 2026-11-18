@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <Concept_SimpleSidearmsBasic.label>SS: Вспомогательное оружие</Concept_SimpleSidearmsBasic.label>
+  <Concept_SimpleSidearmsBasic.helpText>Simple Sidearms\n\nЧтобы экипировать оружие как вспомогательное, нажмите на него правой кнопкой мыши и выберите «Экипировать как вспомогательное».\n\nПо умолчанию колонисты выбирают тип оружия, соответствующий их лучшему навыку или увлечению. Стрелки также переходят на оружие ближнего боя при вступлении в рукопашную схватку. Это поведение можно изменить в настройках мода.</Concept_SimpleSidearmsBasic.helpText>
+  <Concept_SidearmsDropping.label>SS: Выбрасывание оружия</Concept_SidearmsDropping.label>
+  <Concept_SidearmsDropping.helpText>Оружие на сером фоне находится в инвентаре колониста и готово к использованию. Щёлкните правой кнопкой мыши, чтобы выбросить его.</Concept_SidearmsDropping.helpText>
+  <Concept_SidearmsMissing.label>SS: Утерянное оружие</Concept_SidearmsMissing.label>
+  <Concept_SidearmsMissing.helpText>Оружие на тёмно-фиолетовом фоне отсутствует в снаряжении колониста. Он попытается найти замену при первой возможности. Щёлкните правой кнопкой мыши, чтобы забыть об этом оружии.</Concept_SidearmsMissing.helpText>
+  <Concept_SimpleSidearmsPreference.label>SS: Предпочтения в оружии</Concept_SimpleSidearmsPreference.label>
+  <Concept_SimpleSidearmsPreference.helpText>Каждому колонисту можно назначить предпочтительный тип оружия. Варианты:\nИспользовать дальнобойное оружие\nВыбирать оружие по навыку или увлечению\nИспользовать оружие ближнего боя</Concept_SimpleSidearmsPreference.helpText>
+  <Concept_SimpleSidearmsAdvancedRanged.label>SS: Управление дальнобойным оружием</Concept_SimpleSidearmsAdvancedRanged.label>
+  <Concept_SimpleSidearmsAdvancedRanged.helpText>Щёлкните левой кнопкой мыши по переносимому дальнобойному оружию, чтобы назначить его основным. Если колонист предпочитает дальнобойное оружие либо выбирает по навыку и лучше владеет стрельбой, он будет брать это оружие вне активного боя. Оно также используется на охоте.\n\nПовторный щелчок закрепляет оружие независимо от дистанции и урона.\n\nПравый щелчок снимает закрепление или назначение основным.</Concept_SimpleSidearmsAdvancedRanged.helpText>
+  <Concept_SimpleSidearmsAdvancedMelee.label>SS: Управление оружием ближнего боя</Concept_SimpleSidearmsAdvancedMelee.label>
+  <Concept_SimpleSidearmsAdvancedMelee.helpText>Щёлкните левой кнопкой мыши по переносимому оружию ближнего боя, чтобы сделать его предпочтительным. Колонист будет использовать его, если предпочитает ближний бой либо выбирает по навыку и лучше владеет ближним боем, а также при вступлении в рукопашную схватку.\n\nПовторный щелчок закрепляет постоянное использование оружия.\n\nПравый щелчок снимает закрепление или предпочтение.</Concept_SimpleSidearmsAdvancedMelee.helpText>
+  <Concept_SimpleSidearmsAdvancedDrafted.label>SS: Оружие призванного колониста</Concept_SimpleSidearmsAdvancedDrafted.label>
+  <Concept_SimpleSidearmsAdvancedDrafted.helpText>Щёлкните левой кнопкой мыши по переносимому оружию призванного колониста, чтобы закрепить его до конца боя.\n\nБольшинство изменений набора оружия доступны только после отмены призыва.</Concept_SimpleSidearmsAdvancedDrafted.helpText>
+  <Concept_SimpleSidearmsLosingWeapons.label>SS: Потеря оружия</Concept_SimpleSidearmsLosingWeapons.label>
+  <Concept_SimpleSidearmsLosingWeapons.helpText>В зависимости от настроек Simple Sidearms колонисты могут бросать оружие в различных ситуациях — по умолчанию при атаках в ближнем бою. После боя они снова подберут его.\n\nЭто поведение можно изменить в настройках мода.</Concept_SimpleSidearmsLosingWeapons.helpText>
+  <Concept_CEOverride.label>SS: Патч для CE</Concept_CEOverride.label>
+  <Concept_CEOverride.helpText>Загружен Combat Extended. Управление инвентарём Simple Sidearms отключено.</Concept_CEOverride.helpText>
+</LanguageData>

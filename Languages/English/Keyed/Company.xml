@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Company.Open>Conversation sessions</TMM.Company.Open>
+  <TMM.Company.Help>A guest may invite an employee to an ordinary one-hour conversation in their enclosed private room. The employee may decline or stop without penalty. No beds or intimate actions. Payment is reserved from the guest; a completed session pays physical silver to the colony at reception. Cancellation is fully refunded. An active ordinary work buyout account receives credit for 100% of actual receipts.</TMM.Company.Help>
+  <TMM.Company.Enabled>Conversation: enabled</TMM.Company.Enabled>
+  <TMM.Company.Disabled>Conversation: disabled</TMM.Company.Disabled>
+  <TMM.Company.ParticipationHelp>Offer conversation work without changing other jobs. Agreement to each session depends on mood, rest and traits. Combine it with other jobs or enable only conversation in the work tab. Colony-only mode excludes sessions in the complex. Refusal has no mood or release consequences.</TMM.Company.ParticipationHelp>
+  <TMM.Company.Price>Conversation rate: {0}%</TMM.Company.Price>
+  <TMM.Company.PriceHelp>Base price: 40 silver + 3 per Social level + 10 per Beauty point, minimum 20, then the rate multiplier. Quotes are fixed at booking. All actual receipts belong to the colony; 100% is credited to an active ordinary work buyout account.</TMM.Company.PriceHelp>
+  <TMM.Company.Accounts>Conversation: receipts and buyout credit</TMM.Company.Accounts>
+  <TMM.Company.AccountsHelp>Shows each employee’s actual conversation receipts for the colony and ordinary work buyout progress. Payments are not held in a personal wallet.</TMM.Company.AccountsHelp>
+  <TMM.Company.Balance>{0}: colony receipts {1}; {2}</TMM.Company.Balance>
+  <TMM.Company.Empty>No completed, paid conversations yet.</TMM.Company.Empty>
+  <TMM.Company.Stop>Stop a conversation</TMM.Company.Stop>
+  <TMM.Company.StopHelp>Stop a selected session without penalty and refund the guest's full reserved payment.</TMM.Company.StopHelp>
+  <TMM.Company.NoSessions>No active conversation sessions.</TMM.Company.NoSessions>
+  <TMM.Company.Chat>Chatting</TMM.Company.Chat>
+</LanguageData>

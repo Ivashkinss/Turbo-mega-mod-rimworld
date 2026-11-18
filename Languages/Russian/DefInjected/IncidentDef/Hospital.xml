@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PatientArrives.label>прибытие пациента</PatientArrives.label>
+  <PatientArrives.letterLabel>{PAWN_nameDef} прибывает</PatientArrives.letterLabel>
+  <PatientArrives.letterText>{PAWN_nameDef} просит принять {PAWN_objective} в вашу больницу для лечения.\n\nДиагноз: {1}</PatientArrives.letterText>
+  <MassCasualtyEvent.label>массовое бедствие</MassCasualtyEvent.label>
+  <MassCasualtyEvent.letterLabel>Массовое бедствие</MassCasualtyEvent.letterLabel>
+  <MassCasualtyEvent.letterText>В нашу больницу поступил сигнал бедствия: неподалёку произошло бедствие ({0}), и ожидается прибытие раненых пациентов (около {1} чел.).</MassCasualtyEvent.letterText>
+</LanguageData>

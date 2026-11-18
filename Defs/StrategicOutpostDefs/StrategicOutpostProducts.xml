@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Mining & Timber Specialization Products -->
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Mining_Steel</defName>
+    <label>steel extraction</label>
+    <description>Extracts raw iron and smelts crude steel blocks from surrounding rock formations.</description>
+    <specialization>Mining</specialization>
+    <producedThingDef>Steel</producedThingDef>
+    <relevantSkill>Mining</relevantSkill>
+    <baseDailyYieldPerPawn>18.75</baseDailyYieldPerPawn>
+    <workType>Mining</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Mining_Plasteel</defName>
+    <label>plasteel extraction</label>
+    <description>Extracts rare subterranean plasteel deposits from deep mineral veins.</description>
+    <specialization>Mining</specialization>
+    <producedThingDef>Plasteel</producedThingDef>
+    <relevantSkill>Mining</relevantSkill>
+    <baseDailyYieldPerPawn>4.0</baseDailyYieldPerPawn>
+    <workType>Mining</workType>
+    <yieldPerSkill>0.4</yieldPerSkill>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Mining_Gold</defName>
+    <label>gold extraction</label>
+    <description>Extracts precious gold nuggets from surrounding alluvial deposits.</description>
+    <specialization>Mining</specialization>
+    <producedThingDef>Gold</producedThingDef>
+    <relevantSkill>Mining</relevantSkill>
+    <baseDailyYieldPerPawn>3.5</baseDailyYieldPerPawn>
+    <workType>Mining</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Mining_Uranium</defName>
+    <label>uranium extraction</label>
+    <description>Mines radioactive uranium ore from dense subterranean veins.</description>
+    <specialization>Mining</specialization>
+    <producedThingDef>Uranium</producedThingDef>
+    <relevantSkill>Mining</relevantSkill>
+    <baseDailyYieldPerPawn>5.0</baseDailyYieldPerPawn>
+    <workType>Mining</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Logging_Wood</defName>
+    <label>timber logging</label>
+    <description>Harvests and processes local trees into building timber logs.</description>
+    <specialization>Mining</specialization>
+    <producedThingDef>WoodLog</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <baseDailyYieldPerPawn>40.0</baseDailyYieldPerPawn>
+    <yieldPerSkill>4.0</yieldPerSkill>
+    <workType>PlantCutting</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <!-- Farming / Agriculture Specialization Products -->
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Farming_Potatoes</defName>
+    <label>potato cultivation</label>
+    <description>Cultivates and harvests hardy raw potatoes in local fertile soils.</description>
+    <specialization>Farming</specialization>
+    <producedThingDef>RawPotatoes</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <baseDailyYieldPerPawn>22.5</baseDailyYieldPerPawn>
+    <workType>Growing</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Farming_Rice</defName>
+    <label>rice cultivation</label>
+    <description>Cultivates and harvests fast-growing raw rice crops.</description>
+    <specialization>Farming</specialization>
+    <producedThingDef>RawRice</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <baseDailyYieldPerPawn>22.5</baseDailyYieldPerPawn>
+    <workType>Growing</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Farming_Cloth</defName>
+    <label>cotton growing</label>
+    <description>Grows cotton plants and weaves organic fiber cloth.</description>
+    <specialization>Farming</specialization>
+    <producedThingDef>Cloth</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <baseDailyYieldPerPawn>18.0</baseDailyYieldPerPawn>
+    <workType>Growing</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Farming_Smokeleaf</defName>
+    <label>smokeleaf cultivation</label>
+    <description>Grows aromatic smokeleaf plants and gathers raw leaves.</description>
+    <specialization>Farming</specialization>
+    <producedThingDef>SmokeleafLeaves</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <baseDailyYieldPerPawn>14.0</baseDailyYieldPerPawn>
+    <workType>Growing</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Farming_Devilstrand</defName>
+    <label>devilstrand cultivation</label>
+    <description>Grows slow-maturing devilstrand red mushrooms to produce tough red fabric.</description>
+    <specialization>Farming</specialization>
+    <producedThingDef>DevilstrandCloth</producedThingDef>
+    <relevantSkill>Plants</relevantSkill>
+    <requiredResearch>Devilstrand</requiredResearch>
+    <baseDailyYieldPerPawn>4.0</baseDailyYieldPerPawn>
+    <workType>Growing</workType>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <!-- Factory Specialization Products -->
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Factory_ComponentIndustrial</defName>
+    <label>industrial component fabrication</label>
+    <description>Machines raw steel into standardized industrial electronic components.</description>
+    <specialization>Factory</specialization>
+    <producedThingDef>ComponentIndustrial</producedThingDef>
+    <relevantSkill>Crafting</relevantSkill>
+    <requiredResearch>Fabrication</requiredResearch>
+    <baseDailyYieldPerPawn>1.25</baseDailyYieldPerPawn>
+    <workType>Smithing</workType>
+    <recipe>Make_ComponentIndustrial</recipe>
+    <workstation>FabricationBench</workstation>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Factory_ComponentSpacer</defName>
+    <label>advanced component fabrication</label>
+    <description>Assembles high-tech advanced components using industrial components, plasteel, and gold.</description>
+    <specialization>Factory</specialization>
+    <producedThingDef>ComponentSpacer</producedThingDef>
+    <relevantSkill>Crafting</relevantSkill>
+    <requiredResearch>AdvancedFabrication</requiredResearch>
+    <baseDailyYieldPerPawn>0.6</baseDailyYieldPerPawn>
+    <yieldPerSkill>0.06</yieldPerSkill>
+    <workType>Smithing</workType>
+    <recipe>Make_ComponentSpacer</recipe>
+    <workstation>FabricationBench</workstation>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Factory_Synthread</defName>
+    <label>synthread synthesis</label>
+    <description>Produces synthread using the researched Turbo mega mod synthesis recipe and real ingredients.</description>
+    <specialization>Factory</specialization>
+    <producedThingDef>Synthread</producedThingDef>
+    <relevantSkill>Crafting</relevantSkill>
+    <workType>Smithing</workType>
+    <baseDailyYieldPerPawn>10.0</baseDailyYieldPerPawn>
+    <yieldPerSkill>1.0</yieldPerSkill>
+    <requiredResearch>TMM_SyntheticTextiles</requiredResearch>
+    <recipe>TMM_MakeSynthread</recipe>
+    <workstation>FabricationBench</workstation>
+  </TurboMegaMod.StrategicOutpostProductDef>
+
+  <TurboMegaMod.StrategicOutpostProductDef>
+    <defName>TMM_Outpost_Factory_Hyperweave</defName>
+    <label>hyperweave synthesis</label>
+    <description>Produces hyperweave using the researched Turbo mega mod synthesis recipe and real ingredients.</description>
+    <specialization>Factory</specialization>
+    <producedThingDef>Hyperweave</producedThingDef>
+    <relevantSkill>Crafting</relevantSkill>
+    <workType>Smithing</workType>
+    <baseDailyYieldPerPawn>3.5</baseDailyYieldPerPawn>
+    <yieldPerSkill>0.35</yieldPerSkill>
+    <requiredResearch>TMM_AdvancedTextiles</requiredResearch>
+    <recipe>TMM_MakeHyperweave</recipe>
+    <workstation>FabricationBench</workstation>
+  </TurboMegaMod.StrategicOutpostProductDef>
+</Defs>

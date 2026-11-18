@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <Sentence_CharmAttemptAccepted.rulePack.rulesStrings>
+    <li>sent-&gt;[RECIPIENT_nameDef] восторженно аплодирует.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] улыбается.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] одобрительно кивает.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] польщённо принимает похвалу.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] с явным удовольствием слушает собеседника.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] слушает с видимым одобрением.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] с восхищением смотрит на [INITIATOR_nameDef].</li>
+  </Sentence_CharmAttemptAccepted.rulePack.rulesStrings>
+  <Sentence_CharmAttemptRejected.rulePack.rulesStrings>
+    <li>sent-&gt;[RECIPIENT_nameDef] не проявляет никакого интереса.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] недовольно качает головой.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] остаётся абсолютно равнодушным.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] больше не хочет слышать об этом.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef], скучая, смотрит по сторонам.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] говорит, что [RECIPIENT_objective] пора идти.</li>
+    <li>sent-&gt;[RECIPIENT_nameDef] закатывает глаза.</li>
+  </Sentence_CharmAttemptRejected.rulePack.rulesStrings>
+</LanguageData>

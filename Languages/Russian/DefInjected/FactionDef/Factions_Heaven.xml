@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_HeavenFaction.label>воинство Небес</TMM_HeavenFaction.label>
+  <TMM_HeavenFaction.description>Ангелы в человеческих сосудах: солдаты и клерки Небес, чей Отец давно замолчал. Они подчиняются архангелам и «плану» и смотрят на людей как на инструмент — хотя некоторые из них научились сострадать.</TMM_HeavenFaction.description>
+  <TMM_HeavenFaction.pawnSingular>ангел</TMM_HeavenFaction.pawnSingular>
+  <TMM_HeavenFaction.pawnsPlural>ангелы</TMM_HeavenFaction.pawnsPlural>
+  <TMM_HeavenFaction.leaderTitle>архангел-командующий</TMM_HeavenFaction.leaderTitle>
+  <TMM_HeavenFaction.fixedName>Воинство Небес</TMM_HeavenFaction.fixedName>
+</LanguageData>

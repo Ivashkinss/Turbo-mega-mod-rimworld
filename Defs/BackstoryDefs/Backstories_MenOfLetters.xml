@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dr. Hess -->
+  <BackstoryDef>
+    <defName>TMM_BS_dr_hess_child</defName>
+    <slot>Childhood</slot>
+    <title>boarding academy scholar</title>
+    <titleShort>scholar</titleShort>
+    <description>Educated inside a centuries-old occult boarding school, [PAWN_nameDef] learned that emotion is a liability and ancient sigils are instruments of control. [PAWN_pronoun] excelled at dissecting forbidden texts with icy detachment.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Caring, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_dr_hess_adult</defName>
+    <slot>Adulthood</slot>
+    <title>high elder of london</title>
+    <titleShort>elder</titleShort>
+    <description>A senior council member of the British Men of Letters, [PAWN_nameDef] views foreign hunters as reckless amateurs who must either submit to British oversight or be eliminated. Ruthless, aristocratic, and utterly uncompromising, [PAWN_pronoun] enforces absolute secrecy.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>3</Social>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>Caring, ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Arthur Ketch -->
+  <BackstoryDef>
+    <defName>TMM_BS_arthur_ketch_child</defName>
+    <slot>Childhood</slot>
+    <title>kendricks academy prodigy</title>
+    <titleShort>trainee</titleShort>
+    <description>Stripped of sentiment in the brutal halls of the order's private academy, [PAWN_nameDef] was conditioned to become the ultimate clean-up specialist. [PAWN_pronoun] mastered firearms, blades, and arcane ward-breakers before leaving adolescence.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_arthur_ketch_adult</defName>
+    <slot>Adulthood</slot>
+    <title>black-ops occult assassin</title>
+    <titleShort>assassin</titleShort>
+    <description>Dressed in a bespoke suit with a briefcase full of enchanted weapons, [PAWN_nameDef] eliminates monsters and rogue humans with polite, sociopathic precision. Though [PAWN_pronoun] occasionally develops twisted respect for worthy adversaries, [PAWN_pronoun] rarely leaves witnesses behind.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Mick Davies -->
+  <BackstoryDef>
+    <defName>TMM_BS_mick_davies_child</defName>
+    <slot>Childhood</slot>
+    <title>london street recruit</title>
+    <titleShort>street kid</titleShort>
+    <description>Picked off the gritty streets of London by recruiters of the secret order, [PAWN_nameDef] was forced to endure harsh tests of loyalty to earn a place among aristocratic scholars. [PAWN_pronoun] survived by keeping [PAWN_possessive] wits sharp and reading people's intentions.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_mick_davies_adult</defName>
+    <slot>Adulthood</slot>
+    <title>field liaison operative</title>
+    <titleShort>liaison</titleShort>
+    <description>Dispatched overseas to recruit local hunters into the British Men of Letters, [PAWN_nameDef] relies on diplomacy, resources, and modern occult gadgets rather than brute force. Beneath [PAWN_possessive] polished manners lies a genuine conscience that clashes with London's ruthless code.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>3</Intellectual>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Antonia Bevell -->
+  <BackstoryDef>
+    <defName>TMM_BS_antonia_bevell_child</defName>
+    <slot>Childhood</slot>
+    <title>arcane academy prefect</title>
+    <titleShort>prefect</titleShort>
+    <description>Raised in the strict discipline of an ancient British coven-turned-academy, [PAWN_nameDef] memorized Enochian wards and psychological interrogation methods from childhood. [PAWN_pronoun] believed unyielding control was the only barrier against supernatural chaos.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_antonia_bevell_adult</defName>
+    <slot>Adulthood</slot>
+    <title>occult inquisitor</title>
+    <titleShort>inquisitor</titleShort>
+    <description>An elite field agent and master of arcane mind-breaking, [PAWN_nameDef] extracts secrets through ritual torture and chemical elixirs. Cold, proud, and fanatically devoted to the order's mission, [PAWN_pronoun] treats resistance as a flaw to be corrected.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Melee>2</Melee>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Mr. Kendricks -->
+  <BackstoryDef>
+    <defName>TMM_BS_kendricks_child</defName>
+    <slot>Childhood</slot>
+    <title>order garrison trainee</title>
+    <titleShort>cadet</titleShort>
+    <description>Trained behind the high walls of a remote British estate, [PAWN_nameDef] drilled endlessly in close-quarters combat, marksmanship, and monster containment. [PAWN_pronoun] learned early that hesitation in the dark meant certain death.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_kendricks_adult</defName>
+    <slot>Adulthood</slot>
+    <title>tactical strike commander</title>
+    <titleShort>commander</titleShort>
+    <description>Leading the heavy tactical squads of the British Men of Letters, [PAWN_nameDef] executes containment sweeps with military precision and enchanted weaponry. Stoic, disciplined, and merciless toward supernatural threats, [PAWN_pronoun] cleanses entire strongholds without a word wasted.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>2</Melee>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

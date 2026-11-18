@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkTypeDef>
+    <defName>TMM_Company</defName><labelShort>conversation</labelShort><pawnLabel>conversation host</pawnLabel><gerundLabel>chatting with guests</gerundLabel>
+    <description>Hold a voluntary conversation in a guest's private room. Each invitation can be declined. Physical silver is paid to the colony only after a completed session; an active ordinary work buyout account receives 100% credit. No beds or intimate actions are involved.</description>
+    <naturalPriority>570</naturalPriority><workTags>None</workTags><relevantSkills><li>Social</li></relevantSkills>
+  </WorkTypeDef>
+  <WorkGiverDef>
+    <defName>TMM_CompanyService</defName><label>talk with a guest</label><giverClass>TurboMegaMod.WorkGiver_Company</giverClass>
+    <workType>TMM_Company</workType><priorityInType>100</priorityInType><verb>talk</verb><gerund>talking with a guest</gerund>
+    <requiredCapacities><li>Moving</li><li>Talking</li></requiredCapacities>
+  </WorkGiverDef>
+  <JobDef><defName>TMM_CompanyGuest</defName><driverClass>TurboMegaMod.JobDriver_CompanyGuest</driverClass><reportString>meeting for a conversation.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+  <JobDef><defName>TMM_CompanyEmployee</defName><driverClass>TurboMegaMod.JobDriver_CompanyEmployee</driverClass><reportString>talking with a guest.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+  <ThoughtDef>
+    <defName>TMM_GoodCompany</defName><durationDays>1</durationDays><stackLimit>1</stackLimit>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages><li><label>good company</label><description>That was a pleasant conversation.</description><baseMoodEffect>6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

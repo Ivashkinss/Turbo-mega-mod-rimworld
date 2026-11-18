@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Outpost_Mining_Steel.label>добыча стали</TMM_Outpost_Mining_Steel.label>
+  <TMM_Outpost_Mining_Steel.description>Добыча необработанного железа и выплавка слитков стали из окружающих горных пород.</TMM_Outpost_Mining_Steel.description>
+
+  <TMM_Outpost_Mining_Plasteel.label>добыча пластстали</TMM_Outpost_Mining_Plasteel.label>
+  <TMM_Outpost_Mining_Plasteel.description>Добыча редких подземных месторождений пластстали из глубоких минеральных жил.</TMM_Outpost_Mining_Plasteel.description>
+
+  <TMM_Outpost_Mining_Gold.label>добыча золота</TMM_Outpost_Mining_Gold.label>
+  <TMM_Outpost_Mining_Gold.description>Добыча драгоценных золотых самородков из окрестных аллювиальных отложений.</TMM_Outpost_Mining_Gold.description>
+
+  <TMM_Outpost_Mining_Uranium.label>добыча урана</TMM_Outpost_Mining_Uranium.label>
+  <TMM_Outpost_Mining_Uranium.description>Добыча радиоактивной урановой руды из плотных подземных пластов.</TMM_Outpost_Mining_Uranium.description>
+
+  <TMM_Outpost_Logging_Wood.label>заготовка древесины</TMM_Outpost_Logging_Wood.label>
+  <TMM_Outpost_Logging_Wood.description>Валка и обработка местных деревьев на строительные бревна.</TMM_Outpost_Logging_Wood.description>
+
+  <TMM_Outpost_Farming_Potatoes.label>выращивание картофеля</TMM_Outpost_Farming_Potatoes.label>
+  <TMM_Outpost_Farming_Potatoes.description>Культивация и сбор урожая выносливого сырого картофеля на плодородной почве.</TMM_Outpost_Farming_Potatoes.description>
+
+  <TMM_Outpost_Farming_Rice.label>выращивание риса</TMM_Outpost_Farming_Rice.label>
+  <TMM_Outpost_Farming_Rice.description>Культивация и сбор урожая быстрорастущего сырого риса.</TMM_Outpost_Farming_Rice.description>
+
+  <TMM_Outpost_Farming_Cloth.label>выращивание хлопка</TMM_Outpost_Farming_Cloth.label>
+  <TMM_Outpost_Farming_Cloth.description>Выращивание хлопчатника и изготовление органической ткани.</TMM_Outpost_Farming_Cloth.description>
+
+  <TMM_Outpost_Farming_Smokeleaf.label>выращивание дымолиста</TMM_Outpost_Farming_Smokeleaf.label>
+  <TMM_Outpost_Farming_Smokeleaf.description>Выращивание ароматного дымолиста и сбор сырых листьев.</TMM_Outpost_Farming_Smokeleaf.description>
+
+  <TMM_Outpost_Farming_Devilstrand.label>выращивание дьяволонитника</TMM_Outpost_Farming_Devilstrand.label>
+  <TMM_Outpost_Farming_Devilstrand.description>Выращивание медленно созревающих красных грибов для производства сверхпрочной красной ткани.</TMM_Outpost_Farming_Devilstrand.description>
+
+  <TMM_Outpost_Factory_ComponentIndustrial.label>производство компонентов</TMM_Outpost_Factory_ComponentIndustrial.label>
+  <TMM_Outpost_Factory_ComponentIndustrial.description>Обработка стали на станках для изготовления стандартных промышленных электронных компонентов.</TMM_Outpost_Factory_ComponentIndustrial.description>
+
+  <TMM_Outpost_Factory_ComponentSpacer.label>производство продвинутых компонентов</TMM_Outpost_Factory_ComponentSpacer.label>
+  <TMM_Outpost_Factory_ComponentSpacer.description>Сборка высокотехнологичных продвинутых компонентов из простых компонентов, пластстали и золота.</TMM_Outpost_Factory_ComponentSpacer.description>
+
+  <TMM_Outpost_Factory_Synthread.label>синтез синтткани</TMM_Outpost_Factory_Synthread.label>
+  <TMM_Outpost_Factory_Synthread.description>Производство синтткани по исследованной технологии Turbo mega mod из реальных материалов.</TMM_Outpost_Factory_Synthread.description>
+
+  <TMM_Outpost_Factory_Hyperweave.label>синтез гиперткани</TMM_Outpost_Factory_Hyperweave.label>
+  <TMM_Outpost_Factory_Hyperweave.description>Производство гиперткани по исследованной технологии Turbo mega mod из реальных материалов.</TMM_Outpost_Factory_Hyperweave.description>
+</LanguageData>

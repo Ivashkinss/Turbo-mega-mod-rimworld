@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Preston Garvey -->
+  <BackstoryDef>
+    <defName>TMM_BS_preston_garvey_child</defName>
+    <slot>Childhood</slot>
+    <title>commonwealth idealist</title>
+    <titleShort>idealist</titleShort>
+    <description>[PAWN_nameDef] grew up listening to old tales of citizen militias defending helpless towns from raiders and mutants. While other youths scavenged only for themselves, [PAWN_pronoun] spent [PAWN_possessive] days repairing perimeter fences and patching up neighbors.</description>
+    <skillGains>
+      <Shooting>2</Shooting>
+      <Construction>2</Construction>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_preston_garvey_adult</defName>
+    <slot>Adulthood</slot>
+    <title>minutemen general</title>
+    <titleShort>general</titleShort>
+    <description>After surviving the betrayal and slaughter at Quincy, [PAWN_nameDef] refused to let the militia's ideals die out. Carrying [PAWN_possessive] trusty laser musket, [PAWN_pronoun] rallied scattered settlements into a unified defense network, always ready to march wherever help was needed.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Social>3</Social>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Dean Winchester -->
+  <BackstoryDef>
+    <defName>TMM_BS_dean_winchester_child</defName>
+    <slot>Childhood</slot>
+    <title>motel-raised hunter</title>
+    <titleShort>road kid</titleShort>
+    <description>[PAWN_nameDef] never knew a permanent home, growing up in the backseat of a classic black muscle car and cheap roadside motels. Taught to clean shotguns before learning algebra, [PAWN_pronoun] spent [PAWN_possessive] youth watching over [PAWN_possessive] younger brother while their father hunted monsters in the dark.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Intellectual</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_dean_winchester_adult</defName>
+    <slot>Adulthood</slot>
+    <title>veteran demon hunter</title>
+    <titleShort>hunter</titleShort>
+    <description>Hardened by countless battles against vampires, ghosts, and demons, [PAWN_nameDef] relies on silver blades, rock salt, and sheer grit to survive. Though [PAWN_pronoun] hides behind dark humor and stubborn pride, [PAWN_pronoun] will gladly walk through hell itself to protect the people [PAWN_pronoun] considers family.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>3</Melee>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Sam Winchester -->
+  <BackstoryDef>
+    <defName>TMM_BS_sam_winchester_child</defName>
+    <slot>Childhood</slot>
+    <title>reluctant hunter</title>
+    <titleShort>bookworm</titleShort>
+    <description>Dragged from town to town on endless monster hunts, [PAWN_nameDef] craved a normal life away from blood and gunpowder. [PAWN_pronoun] buried [PAWN_objective]self in dusty lore books and schoolwork, determined to escape the family business through sheer intellect.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Melee>1</Melee>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_sam_winchester_adult</defName>
+    <slot>Adulthood</slot>
+    <title>occult scholar</title>
+    <titleShort>scholar</titleShort>
+    <description>Tragedy pulled [PAWN_nameDef] away from a promising law career at Stanford and back onto the road. Combining sharp analytical skills with deep knowledge of ancient rituals and demonology, [PAWN_pronoun] tracks down obscure weaknesses to banish entities that brute force cannot stop.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Shooting>2</Shooting>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Crowley -->
+  <BackstoryDef>
+    <defName>TMM_BS_crowley_child</defName>
+    <slot>Childhood</slot>
+    <title>seventeenth-century tailor</title>
+    <titleShort>tailor</titleShort>
+    <description>Long before [PAWN_possessive] soul was twisted in the pit, [PAWN_nameDef] was a bitter, ambitious tailor scraping by in seventeenth-century Scotland. Even then, [PAWN_pronoun] possessed a silver tongue and a sharp eye for measuring people's hidden desires and weaknesses.</description>
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Social>3</Social>
+    </skillGains>
+    <workDisables>ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_crowley_adult</defName>
+    <slot>Adulthood</slot>
+    <title>king of hell</title>
+    <titleShort>king of hell</titleShort>
+    <description>Rising from a slick crossroads dealmaker to the ruler of the underworld, [PAWN_nameDef] treats damnation like a corporate merger. Sarcastic, pragmatic, and endlessly manipulative, [PAWN_pronoun] prefers sealing binding contracts over messy brawls, though [PAWN_pronoun] always keeps an ace up [PAWN_possessive] tailored sleeve.</description>
+    <skillGains>
+      <Social>5</Social>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb, PlantWork</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Azazel -->
+  <BackstoryDef>
+    <defName>TMM_BS_azazel_child</defName>
+    <slot>Childhood</slot>
+    <title>primordial acolyte</title>
+    <titleShort>acolyte</titleShort>
+    <description>Forged in the earliest days of corruption, [PAWN_nameDef] learned patience and fanatic devotion long before humanity built its first cities. In the shadows of ancient temples, [PAWN_pronoun] studied bloodlines and forbidden prophecies with cold, yellow-eyed obsession.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_azazel_adult</defName>
+    <slot>Adulthood</slot>
+    <title>yellow-eyed schemer</title>
+    <titleShort>schemer</titleShort>
+    <description>A terrifying Prince of Hell, [PAWN_nameDef] spent decades orchestrating a sinister bloodline experiment across generations of unsuspecting families. Ruthless and theatrical, [PAWN_pronoun] delights in pitting chosen vessels against one another to unlock the gates of the pit.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>3</Social>
+      <Melee>1</Melee>
+    </skillGains>
+    <workDisables>Caring, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Lilith -->
+  <BackstoryDef>
+    <defName>TMM_BS_lilith_child</defName>
+    <slot>Childhood</slot>
+    <title>first corrupted soul</title>
+    <titleShort>firstborn</titleShort>
+    <description>Stripped of mortal grace at the dawn of humanity, [PAWN_nameDef] was the very first soul twisted into a demon. Centuries of torment burned away every trace of empathy, leaving behind a cruel, childlike curiosity toward human suffering.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_lilith_adult</defName>
+    <slot>Adulthood</slot>
+    <title>breaker of seals</title>
+    <titleShort>seal breaker</titleShort>
+    <description>Feared even among high-ranking demons, [PAWN_nameDef] commands vast legions with a sadistic smile and terrifying destructive power. Driven by absolute devotion to [PAWN_possessive] creator, [PAWN_pronoun] systematically shatters the sixty-six mystical seals holding back the apocalypse.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Social>3</Social>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>Caring, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Abaddon -->
+  <BackstoryDef>
+    <defName>TMM_BS_abaddon_child</defName>
+    <slot>Childhood</slot>
+    <title>ruthless zealot</title>
+    <titleShort>zealot</titleShort>
+    <description>In [PAWN_possessive] brief mortal existence before being handpicked for corruption, [PAWN_nameDef] despised weakness and mercy. [PAWN_pronoun] thrived in brutal environments where only the sharpest blade and strongest will survived.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_abaddon_adult</defName>
+    <slot>Adulthood</slot>
+    <title>knight of hell</title>
+    <titleShort>hell knight</titleShort>
+    <description>One of the original Knights of Hell, [PAWN_nameDef] scoffs at bureaucratic dealmakers and rules through sheer terror and bloodshed. Near-impervious to conventional weapons, [PAWN_pronoun] charges headfirst into battle, tearing apart hunters and rival demons alike.</description>
+    <skillGains>
+      <Melee>5</Melee>
+      <Social>2</Social>
+      <Shooting>1</Shooting>
+    </skillGains>
+    <workDisables>Caring, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Cain -->
+  <BackstoryDef>
+    <defName>TMM_BS_cain_child</defName>
+    <slot>Childhood</slot>
+    <title>cursed firstborn</title>
+    <titleShort>firstborn</titleShort>
+    <description>[PAWN_nameDef] tilled the soil at the dawn of the world until jealousy and a terrible bargain stained [PAWN_possessive] hands with the very first murder. Bound to an eternal curse, [PAWN_pronoun] was cast out to wander the earth carrying a mark of endless violence.</description>
+    <skillGains>
+      <Plants>3</Plants>
+      <Melee>3</Melee>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_cain_adult</defName>
+    <slot>Adulthood</slot>
+    <title>retired father of knights</title>
+    <titleShort>beekeeper</titleShort>
+    <description>After training the deadliest Knights of Hell and slaughtering armies with the First Blade, [PAWN_nameDef] sought redemption in quiet isolation. Now [PAWN_pronoun] tends to peaceful beehives and gardens, desperately restraining the murderous urge burning inside [PAWN_possessive] right arm.</description>
+    <skillGains>
+      <Melee>5</Melee>
+      <Animals>2</Animals>
+      <Plants>1</Plants>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Meg Masters -->
+  <BackstoryDef>
+    <defName>TMM_BS_meg_child</defName>
+    <slot>Childhood</slot>
+    <title>stolen vessel</title>
+    <titleShort>vessel</titleShort>
+    <description>Before a cunning demon claimed [PAWN_possessive] body, [PAWN_nameDef] lived an ordinary life full of quiet routines and modest dreams. All of that was shattered the night [PAWN_pronoun] became an unwilling passenger to a ruthless operative from the pit.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_meg_adult</defName>
+    <slot>Adulthood</slot>
+    <title>cynical operative</title>
+    <titleShort>operative</titleShort>
+    <description>Sharp-tongued and fiercely independent, [PAWN_nameDef] served as a loyal enforcer before finding [PAWN_objective]self hunted by [PAWN_possessive] own kind. Forced into an uneasy truce with hunters and angels, [PAWN_pronoun] masks surprising loyalty behind layers of biting sarcasm.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Ruby -->
+  <BackstoryDef>
+    <defName>TMM_BS_ruby_child</defName>
+    <slot>Childhood</slot>
+    <title>plague-era witch</title>
+    <titleShort>witch</titleShort>
+    <description>Born during the height of the Black Death, [PAWN_nameDef] dabbled in dark sorcery to survive a world rotting from disease and cruelty. [PAWN_possessive] obsession with forbidden magic eventually cost [PAWN_objective] [PAWN_possessive] soul and forged [PAWN_objective] into a calculating demon.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_ruby_adult</defName>
+    <slot>Adulthood</slot>
+    <title>blade-wielding manipulator</title>
+    <titleShort>manipulator</titleShort>
+    <description>Armed with an ancient enchanted knife capable of slaying demons permanently, [PAWN_nameDef] poses as a rogue ally to gain a hunter's trust. Beneath [PAWN_possessive] helpful facade, [PAWN_pronoun] is a master deceiver, subtly steering [PAWN_possessive] targets toward a catastrophic betrayal.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>3</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

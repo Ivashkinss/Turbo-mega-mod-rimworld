@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_michael</defName>
+    <childhood>TMM_BS_michael_child</childhood>
+    <adulthood>TMM_BS_michael_adult</adulthood>
+    <label>Michael</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <pawnKind>PirateBoss</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Michael</nameFirst><nameNick>Michael</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>36~44</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>18</level></li>
+      <li><skill>Social</skill><level>16</level></li>
+      <li><skill>Intellectual</skill><level>15</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_lucifer</defName>
+    <childhood>TMM_BS_lucifer_child</childhood>
+    <adulthood>TMM_BS_lucifer_adult</adulthood>
+    <label>Lucifer</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Lucifer</nameFirst><nameNick>Nick</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>38~46</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>17</level></li>
+      <li><skill>Social</skill><level>18</level></li>
+      <li><skill>Intellectual</skill><level>17</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_castiel</defName>
+    <childhood>TMM_BS_castiel_child</childhood>
+    <adulthood>TMM_BS_castiel_adult</adulthood>
+    <label>Castiel</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Castiel</nameFirst><nameNick>Cas</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>35~42</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>14</level></li>
+      <li><skill>Medicine</skill><level>11</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_gabriel</defName>
+    <childhood>TMM_BS_gabriel_child</childhood>
+    <adulthood>TMM_BS_gabriel_adult</adulthood>
+    <label>Gabriel</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Gabriel</nameFirst><nameNick>Loki</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>32~40</ageRange>
+    <skills>
+      <li><skill>Melee</skill><level>16</level></li>
+      <li><skill>Social</skill><level>16</level></li>
+      <li><skill>Cooking</skill><level>14</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_zachariah</defName>
+    <childhood>TMM_BS_zachariah_child</childhood>
+    <adulthood>TMM_BS_zachariah_adult</adulthood>
+    <label>Zachariah</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Zachariah</nameFirst><nameNick>Zach</nameNick><nameLast></nameLast>
+    <gender>Male</gender>
+    <ageRange>45~54</ageRange>
+    <skills>
+      <li><skill>Social</skill><level>14</level></li>
+      <li><skill>Intellectual</skill><level>13</level></li>
+      <li><skill>Melee</skill><level>9</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hero_naomi</defName>
+    <childhood>TMM_BS_naomi_child</childhood>
+    <adulthood>TMM_BS_naomi_adult</adulthood>
+    <label>Naomi</label>
+    <factionDef>TMM_HeavenFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <xenotype>TMM_Angel</xenotype>
+    <nameFirst>Naomi</nameFirst><nameNick>Naomi</nameNick><nameLast></nameLast>
+    <gender>Female</gender>
+    <ageRange>40~48</ageRange>
+    <skills>
+      <li><skill>Intellectual</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>12</level></li>
+      <li><skill>Social</skill><level>11</level></li>
+    </skills>
+  </TurboMegaMod.HeroDef>
+</Defs>

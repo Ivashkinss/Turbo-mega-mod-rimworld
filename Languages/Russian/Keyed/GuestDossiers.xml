@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Dossier.Title>Гости и чёрный список</TMM.Dossier.Title>
+  <TMM.Dossier.Help>Наблюдаемые визиты и полученные платежи. Личные траты показаны отдельно от вознаграждения фракции за лечение. Чёрный список запрещает последующие гостиничные визиты во всех комплексах колонии; медицинская помощь не блокируется.</TMM.Dossier.Help>
+  <TMM.Dossier.Search>Поиск:</TMM.Dossier.Search>
+  <TMM.Dossier.All>Все</TMM.Dossier.All>
+  <TMM.Dossier.Present>Присутствуют</TMM.Dossier.Present>
+  <TMM.Dossier.Blocked>Запрещённые</TMM.Dossier.Blocked>
+  <TMM.Dossier.Empty>Гости не найдены</TMM.Dossier.Empty>
+  <TMM.Dossier.Select>Выберите гостя из списка</TMM.Dossier.Select>
+  <TMM.Dossier.Faction>Фракция: {0}</TMM.Dossier.Faction>
+  <TMM.Dossier.Visits>Зарегистрировано визитов: {0}</TMM.Dossier.Visits>
+  <TMM.Dossier.FirstSeen>Первое появление: {0}</TMM.Dossier.FirstSeen>
+  <TMM.Dossier.LastSeen>Последнее появление: {0}</TMM.Dossier.LastSeen>
+  <TMM.Dossier.StatePresent>Присутствует</TMM.Dossier.StatePresent>
+  <TMM.Dossier.StateLeaving>Покидает карту</TMM.Dossier.StateLeaving>
+  <TMM.Dossier.StateAway>Вне карты</TMM.Dossier.StateAway>
+  <TMM.Dossier.StateBlocked>Запрещён приём</TMM.Dossier.StateBlocked>
+  <TMM.Dossier.SpendTotal>Личные траты гостя: {0}</TMM.Dossier.SpendTotal>
+  <TMM.Dossier.Hotel>Проживание в отеле</TMM.Dossier.Hotel>
+  <TMM.Dossier.Restaurant>Ресторан</TMM.Dossier.Restaurant>
+  <TMM.Dossier.Company>Оплаченные беседы</TMM.Dossier.Company>
+  <TMM.Dossier.Sales>Покупка товаров</TMM.Dossier.Sales>
+  <TMM.Dossier.Clinic>Вознаграждение за лечение (от фракции)</TMM.Dossier.Clinic>
+  <TMM.Dossier.VisitsHeading>История посещений</TMM.Dossier.VisitsHeading>
+  <TMM.Dossier.PaymentsHeading>Оплаты по службам</TMM.Dossier.PaymentsHeading>
+  <TMM.Dossier.Day>День колонии {0}</TMM.Dossier.Day>
+  <TMM.Dossier.Ongoing>Текущий визит продолжается</TMM.Dossier.Ongoing>
+  <TMM.Dossier.Legacy>Находился на карте при включении журнала (начало неизвестно)</TMM.Dossier.Legacy>
+  <TMM.Dossier.Died>Подтверждена смерть на карте</TMM.Dossier.Died>
+  <TMM.Dossier.Lost>Контакт потерян (нет подтверждения смерти)</TMM.Dossier.Lost>
+  <TMM.Dossier.Departed>Покинул территорию карты</TMM.Dossier.Departed>
+  <TMM.Dossier.Block>Внести в чёрный список</TMM.Dossier.Block>
+  <TMM.Dossier.Unblock>Исключить из чёрного списка</TMM.Dossier.Unblock>
+  <TMM.Dossier.Reason>Причина запрета</TMM.Dossier.Reason>
+  <TMM.Dossier.ReasonHelp>Укажите краткую причину запрета. Причину можно изменить в любое время, сняв запрет и добавив гостя заново.</TMM.Dossier.ReasonHelp>
+  <TMM.Dossier.Since>В чёрном списке с: {0}</TMM.Dossier.Since>
+  <TMM.Dossier.DefaultReason>По решению администрации колонии</TMM.Dossier.DefaultReason>
+  <TMM.Dossier.Denied>{0} в чёрном списке: в новом заселении в отель отказано.</TMM.Dossier.Denied>
+  <TMM.Dossier.Focus>Показать на карте</TMM.Dossier.Focus>
+  <TMM.Dossier.NoHistory>Записей пока нет</TMM.Dossier.NoHistory>
+  <TMM.Dossier.TypeMedical>Медицинская помощь</TMM.Dossier.TypeMedical>
+  <TMM.Dossier.Amount>{0} сер.</TMM.Dossier.Amount>
+  <TMM.Dossier.CurrentVisitAllowed>Принятому гостю разрешено завершить текущий визит и лечение. Запрет действует только на новые заселения.</TMM.Dossier.CurrentVisitAllowed>
+</LanguageData>

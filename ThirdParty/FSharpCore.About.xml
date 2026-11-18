@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>latta.fsharp.core</packageId>
+  <name>FSharp.Core</name>
+  <author>latta</author>
+  <url>https://www.nuget.org/packages/FSharp.Core/</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>FSharp.Core is a base mod for F# assemblies.</description>
+</ModMetaData>

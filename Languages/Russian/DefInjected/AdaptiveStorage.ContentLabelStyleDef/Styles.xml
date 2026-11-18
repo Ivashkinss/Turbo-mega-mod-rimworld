@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Automatic.label>Автоматически</Automatic.label>
+  <Automatic.description>Автоматически выбирать между названиями с количеством для скрытого содержимого и общим количеством для видимого содержимого или хранилища с одним разрешённым видом предметов.</Automatic.description>
+  <TotalCount.label>Общее количество</TotalCount.label>
+  <TotalCount.description>Показывать общее количество предметов в хранилище в квадратных скобках.</TotalCount.description>
+  <NamesWithCount.label>Названия и количество</NamesWithCount.label>
+  <NamesWithCount.description>Показывать названия и количество предметов в формате «Предмет ×N», по одному виду в строке.</NamesWithCount.description>
+  <NamesWithCountOrTotalCount.label>Названия с количеством или общий итог</NamesWithCountOrTotalCount.label>
+  <NamesWithCountOrTotalCount.description>Показывать до трёх названий с количеством, по одному в строке. Если видов больше, показывать общее количество предметов.</NamesWithCountOrTotalCount.description>
+  <Names.label>Названия предметов</Names.label>
+  <Names.description>Показывать названия хранящихся предметов, по одному виду в строке.</Names.description>
+  <NamesOrTotalCount.label>Названия или общее количество</NamesOrTotalCount.label>
+  <NamesOrTotalCount.description>Показывать до трёх названий, по одному в строке. Если видов больше, показывать общее количество предметов.</NamesOrTotalCount.description>
+  <NamesOrNameCount.label>Названия или число видов</NamesOrNameCount.label>
+  <NamesOrNameCount.description>Показывать до трёх названий, по одному в строке. Если видов больше, показывать число различных видов предметов.</NamesOrNameCount.description>
+  <None.label>Без подписей</None.label>
+  <None.description>Не показывать подписи над хранилищем.</None.description>
+  <Vanilla.label>Стандартный</Vanilla.label>
+  <Vanilla.description>Показывать количество отдельно над каждой стопкой предметов.</Vanilla.description>
+</LanguageData>

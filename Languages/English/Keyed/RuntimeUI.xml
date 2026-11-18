@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LanguageData>
+  <TMM.Literal.904b53c2eb35>Enabled: </TMM.Literal.904b53c2eb35>
+  <TMM.Literal.e6df483f30a8>Relative Probability: {0:F0}%</TMM.Literal.e6df483f30a8>
+  <TMM.Literal.f5ab5f2a27ad>&lt;i&gt;No description&lt;/i&gt;</TMM.Literal.f5ab5f2a27ad>
+  <TMM.Literal.89f5e3178c87>&lt;color=grey&gt;&lt;i&gt;Default value: &lt;/i&gt;</TMM.Literal.89f5e3178c87>
+  <TMM.Literal.5b51f5b36b69>
+
+Right-click to reset to default.&lt;/color&gt;</TMM.Literal.5b51f5b36b69>
+  <TMM.Literal.47d2a515ef2f>Loading...</TMM.Literal.47d2a515ef2f>
+  <TMM.Literal.0ba4719b1186>{0} available for trading.{1}{2} total on map.</TMM.Literal.0ba4719b1186>
+  <TMM.Literal.163c4d1b4cb8>{0}/{1} projects researched.</TMM.Literal.163c4d1b4cb8>
+  <TMM.Literal.8caceb0e58e8>Dynamic trade interface</TMM.Literal.8caceb0e58e8>
+  <TMM.Literal.d4fcd5db6145>Smart Speed</TMM.Literal.d4fcd5db6145>
+  <TMM.Literal.ad7987cbbecf>Interaction Bubbles</TMM.Literal.ad7987cbbecf>
+  <TMM.Literal.b149831f04ee>&lt;b&gt;Interaction Bubbles&lt;/b&gt;</TMM.Literal.b149831f04ee>
+  <TMM.Literal.b4ead0a744a9> (Experimental)</TMM.Literal.b4ead0a744a9>
+  <TMM.Literal.3910b09b3783>Almost There!</TMM.Literal.3910b09b3783>
+  <TMM.Literal.457bb31496b0>{0}: {1:F1}h</TMM.Literal.457bb31496b0>
+  <TMM.Literal.310691d88b37>Pick Up And Haul</TMM.Literal.310691d88b37>
+  <TMM.Literal.8427a2144b7f>Nice Bill Tab</TMM.Literal.8427a2144b7f>
+  <TMM.Literal.b7dddca9e13f>Show Me Your Hands</TMM.Literal.b7dddca9e13f>
+  <TMM.Literal.dce9e8c811b6>Animal Behaviours</TMM.Literal.dce9e8c811b6>
+  <TMM.Literal.5ceb45edca0b>Animal Toggles</TMM.Literal.5ceb45edca0b>
+  <TMM.Literal.0953e0d5167d>Reset to Defaults</TMM.Literal.0953e0d5167d>
+  <TMM.Literal.a011afe42172>This bed type is not assignable to pawns.</TMM.Literal.a011afe42172>
+  <TMM.CorpseOffset.None>None</TMM.CorpseOffset.None>
+  <TMM.CorpseOffset.InterpolateToCorrect>InterpolateToCorrect</TMM.CorpseOffset.InterpolateToCorrect>
+  <TMM.CorpseOffset.KeepOffset>KeepOffset</TMM.CorpseOffset.KeepOffset>
+</LanguageData>

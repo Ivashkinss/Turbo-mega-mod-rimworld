@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Wholesale.ArrivalLabel>Оптовые покупатели</TMM.Wholesale.ArrivalLabel>
+  <TMM.Wholesale.ArrivalText>Группа фракции {0} прибыла для покупки отмеченных товаров комплекса с запасом {1} серебра. Оптовики не занимают гостиничные номера. Объём покупок зависит от свободного ассортимента и вместимости группы. Товары со служебных складов выдаются только сотрудниками комплекса.</TMM.Wholesale.ArrivalText>
+  <TMM.Wholesale.Approaching>Идут за покупками</TMM.Wholesale.Approaching>
+  <TMM.Wholesale.Shopping>Покупают товары</TMM.Wholesale.Shopping>
+  <TMM.Wholesale.Leaving>Покидают комплекс</TMM.Wholesale.Leaving>
+  <TMM.Wholesale.Aborted>Визит отменён</TMM.Wholesale.Aborted>
+  <TMM.Wholesale.WaitingStock>Нет доступных товаров или подходящей доставки.</TMM.Wholesale.WaitingStock>
+  <TMM.Wholesale.Inspect>Остаток серебра: {0}, потрачено на покупки: {1}</TMM.Wholesale.Inspect>
+  <TMM.Wholesale.VisitReport>Группа фракции {0} завершила визит. Оплачено {1} серебра за покупки.</TMM.Wholesale.VisitReport>
+  <TMM.Wholesale.NoRoute>Визит отменён: нет доступного пути к публичной точке комплекса.</TMM.Wholesale.NoRoute>
+</LanguageData>

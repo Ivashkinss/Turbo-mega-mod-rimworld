@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Role_doctor.label>врач</TMM_Role_doctor.label>
+  <TMM_Role_doctor.ranks.0.label>санитар</TMM_Role_doctor.ranks.0.label>
+  <TMM_Role_doctor.ranks.0.description>Уверенно накладывает повязки и останавливает кровотечение даже под обстрелом.</TMM_Role_doctor.ranks.0.description>
+  <TMM_Role_doctor.ranks.1.label>полевой врач</TMM_Role_doctor.ranks.1.label>
+  <TMM_Role_doctor.ranks.1.description>Вытаскивает колонистов с того света и спас уже не одну десятку жизней.</TMM_Role_doctor.ranks.1.description>
+  <TMM_Role_doctor.ranks.2.label>главный хирург</TMM_Role_doctor.ranks.2.label>
+  <TMM_Role_doctor.ranks.2.description>Легенда лазарета, чьи руки не дрожат при самых безнадёжных операциях.</TMM_Role_doctor.ranks.2.description>
+  <TMM_Role_builder.label>строитель</TMM_Role_builder.label>
+  <TMM_Role_builder.ranks.0.label>подмастерье</TMM_Role_builder.ranks.0.label>
+  <TMM_Role_builder.ranks.0.description>Быстро возводит стены и укрепления из любого подручного лома.</TMM_Role_builder.ranks.0.description>
+  <TMM_Role_builder.ranks.1.label>прораб</TMM_Role_builder.ranks.1.label>
+  <TMM_Role_builder.ranks.1.description>Знает каждый стык и балку в поселении, строя на века без единого брака.</TMM_Role_builder.ranks.1.description>
+  <TMM_Role_builder.ranks.2.label>главный инженер</TMM_Role_builder.ranks.2.label>
+  <TMM_Role_builder.ranks.2.description>Превращает руины Пустоши в неприступные бастионы довоенного уровня.</TMM_Role_builder.ranks.2.description>
+  <TMM_Role_crafter.label>ремесленник</TMM_Role_crafter.label>
+  <TMM_Role_crafter.ranks.0.label>механик</TMM_Role_crafter.ranks.0.label>
+  <TMM_Role_crafter.ranks.0.description>Уверенно обращается со станком, наковальней и швейной иглой.</TMM_Role_crafter.ranks.0.description>
+  <TMM_Role_crafter.ranks.1.label>мастер-оружейник</TMM_Role_crafter.ranks.1.label>
+  <TMM_Role_crafter.ranks.1.description>Выпускает из мастерской броню и стволы, которым доверяют жизнь в бою.</TMM_Role_crafter.ranks.1.description>
+  <TMM_Role_crafter.ranks.2.label>мастер-технолог</TMM_Role_crafter.ranks.2.label>
+  <TMM_Role_crafter.ranks.2.description>Гений верстака, способный собрать шедевр из ржавого хлама и биоферрита.</TMM_Role_crafter.ranks.2.description>
+  <TMM_Role_handler.label>животновод</TMM_Role_handler.label>
+  <TMM_Role_handler.ranks.0.label>пастух</TMM_Role_handler.ranks.0.label>
+  <TMM_Role_handler.ranks.0.description>Знает повадки зверей Пустоши и умеет успокоить даже пугливый скот.</TMM_Role_handler.ranks.0.description>
+  <TMM_Role_handler.ranks.1.label>дрессировщик</TMM_Role_handler.ranks.1.label>
+  <TMM_Role_handler.ranks.1.description>Превращает диких хищников в верных защитников и добытчиков колонии.</TMM_Role_handler.ranks.1.description>
+  <TMM_Role_handler.ranks.2.label>вожак стаи</TMM_Role_handler.ranks.2.label>
+  <TMM_Role_handler.ranks.2.description>Понимает язык любого зверя и ведёт за собой целую свору приручённых чудовищ.</TMM_Role_handler.ranks.2.description>
+  <TMM_Role_farmer.label>фермер</TMM_Role_farmer.label>
+  <TMM_Role_farmer.ranks.0.label>земледелец</TMM_Role_farmer.ranks.0.label>
+  <TMM_Role_farmer.ranks.0.description>Умеет выжать урожай даже из отравленной пеплом земли.</TMM_Role_farmer.ranks.0.description>
+  <TMM_Role_farmer.ranks.1.label>агроном</TMM_Role_farmer.ranks.1.label>
+  <TMM_Role_farmer.ranks.1.description>Заботится о каждом ростке, обеспечивая колонию стабильным запасом провизии.</TMM_Role_farmer.ranks.1.description>
+  <TMM_Role_farmer.ranks.2.label>главный агроном</TMM_Role_farmer.ranks.2.label>
+  <TMM_Role_farmer.ranks.2.description>Под его присмотром цветут даже самые капризные культуры в суровом климате.</TMM_Role_farmer.ranks.2.description>
+  <TMM_Role_cook.label>повар</TMM_Role_cook.label>
+  <TMM_Role_cook.ranks.0.label>помощник повара</TMM_Role_cook.ranks.0.label>
+  <TMM_Role_cook.ranks.0.description>Быстро чистит овощи, разделывает туши и следит, чтобы котёл не пустовал.</TMM_Role_cook.ranks.0.description>
+  <TMM_Role_cook.ranks.1.label>полевой повар</TMM_Role_cook.ranks.1.label>
+  <TMM_Role_cook.ranks.1.description>Способен приготовить сытный ужин даже из сомнительного мяса мутантов.</TMM_Role_cook.ranks.1.description>
+  <TMM_Role_cook.ranks.2.label>шеф-повар</TMM_Role_cook.ranks.2.label>
+  <TMM_Role_cook.ranks.2.description>Его блюда поднимают боевой дух всей колонии лучше любого довоенного деликатеса.</TMM_Role_cook.ranks.2.description>
+  <TMM_Role_trooper.label>штурмовик</TMM_Role_trooper.label>
+  <TMM_Role_trooper.ranks.0.label>рядовой</TMM_Role_trooper.ranks.0.label>
+  <TMM_Role_trooper.ranks.0.description>Прошёл базовую строевую подготовку и держит строй под первым огнём.</TMM_Role_trooper.ranks.0.description>
+  <TMM_Role_trooper.ranks.1.label>сержант</TMM_Role_trooper.ranks.1.label>
+  <TMM_Role_trooper.ranks.1.description>Закалённый в стычках боец, знающий цену укрытию и вовремя перезаряженному магазину.</TMM_Role_trooper.ranks.1.description>
+  <TMM_Role_trooper.ranks.2.label>лейтенант</TMM_Role_trooper.ranks.2.label>
+  <TMM_Role_trooper.ranks.2.description>Младший командир отряда, своим примером удерживающий бойцов от паники.</TMM_Role_trooper.ranks.2.description>
+  <TMM_Role_trooper.ranks.3.label>майор</TMM_Role_trooper.ranks.3.label>
+  <TMM_Role_trooper.ranks.3.description>Опытный тактик, превращающий разношёрстный отряд в слаженную боевую единицу.</TMM_Role_trooper.ranks.3.description>
+  <TMM_Role_trooper.ranks.4.label>полковник</TMM_Role_trooper.ranks.4.label>
+  <TMM_Role_trooper.ranks.4.description>Грозный полевой командир, чей голос заставляет солдат сражаться до последнего патрона.</TMM_Role_trooper.ranks.4.description>
+  <TMM_Role_trooper.ranks.5.label>генерал</TMM_Role_trooper.ranks.5.label>
+  <TMM_Role_trooper.ranks.5.description>Живая легенда Пустоши, одно присутствие которой на передовой вселяет в отряд непоколебимую ярость.</TMM_Role_trooper.ranks.5.description>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Profile.Vip>VIP guest</TMM.Profile.Vip>
+  <TMM.Profile.Regular>Regular guest</TMM.Profile.Regular>
+  <TMM.Profile.Help>VIPs are rare wealthy visitors carrying real silver. They prefer a private impressive room and fine meals. A guest becomes a regular after three stays of at least six hours each, including two well-rated visits. Unobserved past stays do not count.</TMM.Profile.Help>
+  <TMM.Profile.Chance>VIP chance for new adult guests: {0}%</TMM.Profile.Chance>
+  <TMM.Profile.PreferRegulars>Prefer regular guests on returning visits</TMM.Profile.PreferRegulars>
+  <TMM.Profile.Stays>Confirmed stays: {0}; good ratings: {1}</TMM.Profile.Stays>
+  <TMM.Profile.Score>Last stay rating: {0}%</TMM.Profile.Score>
+  <TMM.Profile.Preferences>VIP preferences: a private enclosed room with impressiveness of at least 85; fine or lavish restaurant meals. Ascetics do not demand luxury.</TMM.Profile.Preferences>
+</LanguageData>

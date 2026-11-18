@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<loadFolders>
+  <v1.6>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony/1.6</li>
+    <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
+    <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
+    <li>/</li>
+    <li>Components/NeatStorage</li>
+    <li>Components/Fridge</li>
+    <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
+    <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
+    <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
+    <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
+    <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
+    <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
+    <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
+    <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
+    <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
+    <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
+    <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
+    <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
+    <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
+    <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
+    <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
+    <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
+    <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
+    <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
+    <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
+    <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation">Components/MeleeAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="nals.facialanimation">Components/MeleeAnimation/Optional/Patch_FacialAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="projectjedi.lightsabers">Components/MeleeAnimation/Optional/Patch_Lightsabers</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="erdelf.humanoidalienraces">Components/MeleeAnimation/Optional/Patch_AlienRaces</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="krkr.rule56">Components/MeleeAnimation/Optional/Patch_CAI5000</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="ceteam.combatextended">Components/MeleeAnimation/Optional/Patch_CombatExtended</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="taranchuk.performanceoptimizer">Components/MeleeAnimation/Optional/Patch_PerformanceOptimizer</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="owlchemist.tacticowl">Components/MeleeAnimation/Optional/Patch_Tacticowl</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="smashphil.vehicleframework">Components/MeleeAnimation/Optional/Patch_Vehicles</li>
+    <li IfModNotActive="void.charactereditor">Components/CharacterEditor</li>
+    <li IfModNotActive="void.charactereditor" IfModActive="automatic.gradienthair">Components/CharacterEditor/Gradients</li>
+    <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.6</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital</li>
+    <li IfModNotActive="orion.hospitality">Components/Hospitality/1.6</li>
+    <li IfModNotActive="orion.hospitality" IfModActive="ludeon.rimworld.royalty">Components/Hospitality/1.6/Compat/Royalty</li>
+    <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.6/Compat/VNPE</li>
+    <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital/1.6</li>
+  </v1.6>
+  <v1.7>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
+    <li IfModNotActive="brrainz.harmony">Components/Harmony/1.7</li>
+    <li IfModNotActive="unlimitedhugs.hugslib">Components/HugsLib</li>
+    <li IfModNotActive="adaptive.storage.framework">Components/AdaptiveStorage</li>
+    <li>/</li>
+    <li>Components/NeatStorage</li>
+    <li>Components/Fridge</li>
+    <li IfModNotActive="sarg.smartspeed">Components/SmartSpeed</li>
+    <li IfModNotActive="dhultgren.smarterconstruction">Components/SmarterConstruction</li>
+    <li IfModNotActive="jaxe.bubbles">Components/InteractionBubbles</li>
+    <li IfModNotActive="lucifer.realisticrooms">Components/RealisticRooms</li>
+    <li IfModNotActive="duz.almosttherefork">Components/AlmostThere</li>
+    <li IfModNotActive="duz.almosttherefork,smashphil.vehicleframework">Components/AlmostThere/Standard</li>
+    <li IfModNotActive="duz.almosttherefork" IfModActive="smashphil.vehicleframework">Components/AlmostThere/Vehicles</li>
+    <li IfModNotActive="latta.devl10n">Components/DevInYourLanguage</li>
+    <li IfModNotActive="weilbyte.snapout">Components/SnapOut</li>
+    <li IfModNotActive="avilmask.commonsense">Components/CommonSense</li>
+    <li IfModNotActive="roolo.runandgun.kotobike">Components/RunAndGun</li>
+    <li IfModNotActive="petetimessix.simplesidearms">Components/SimpleSidearms</li>
+    <li IfModNotActive="mehni.pickupandhaul">Components/PickUpAndHaul</li>
+    <li IfModNotActive="andromeda.nicebilltab">Components/NiceBillTab</li>
+    <li IfModNotActive="mlie.moreplanning">Components/MorePlanning</li>
+    <li IfModNotActive="mlie.showmeyourhands">Components/ShowMeYourHands</li>
+    <li IfModNotActive="andromeda.usefulmarks">Components/UsefulMarks</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface">Components/DynamicTradeInterface</li>
+    <li IfModNotActive="zeracronius.dynamictradeinterface" IfModActive="vanillaexpanded.vpsycastse">Components/DynamicTradeInterface/VPE</li>
+    <li IfModNotActive="latta.fsharp.core">Components/FSharpCore</li>
+    <li IfModNotActive="victor.wallsaresolid">Components/WallsAreSolid</li>
+    <li IfModNotActive="imranfish.xmlextensions">Components/XmlExtensions</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation">Components/MeleeAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="nals.facialanimation">Components/MeleeAnimation/Optional/Patch_FacialAnimation</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="projectjedi.lightsabers">Components/MeleeAnimation/Optional/Patch_Lightsabers</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="erdelf.humanoidalienraces">Components/MeleeAnimation/Optional/Patch_AlienRaces</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="krkr.rule56">Components/MeleeAnimation/Optional/Patch_CAI5000</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="ceteam.combatextended">Components/MeleeAnimation/Optional/Patch_CombatExtended</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="taranchuk.performanceoptimizer">Components/MeleeAnimation/Optional/Patch_PerformanceOptimizer</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="owlchemist.tacticowl">Components/MeleeAnimation/Optional/Patch_Tacticowl</li>
+    <li IfModNotActive="co.uk.epicguru.meleeanimation" IfModActive="smashphil.vehicleframework">Components/MeleeAnimation/Optional/Patch_Vehicles</li>
+    <li IfModNotActive="void.charactereditor">Components/CharacterEditor</li>
+    <li IfModNotActive="void.charactereditor" IfModActive="automatic.gradienthair">Components/CharacterEditor/Gradients</li>
+    <li IfModNotActive="m00nl1ght.mappreview">Components/MapPreview</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework</li>
+    <li IfModNotActive="oskarpotocki.vanillafactionsexpanded.core">Components/VanillaExpandedFramework/1.7</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital</li>
+    <li IfModNotActive="orion.hospitality">Components/Hospitality/1.7</li>
+    <li IfModNotActive="orion.hospitality" IfModActive="ludeon.rimworld.royalty">Components/Hospitality/1.7/Compat/Royalty</li>
+    <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.7/Compat/VNPE</li>
+    <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
+    <li IfModNotActive="adamas.hospital">Components/Hospital/1.7</li>
+  </v1.7>
+</loadFolders>

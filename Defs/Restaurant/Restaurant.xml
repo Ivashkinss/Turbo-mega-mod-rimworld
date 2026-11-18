@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>TMM_ServiceCounter</defName>
+    <label>restaurant service counter</label>
+    <description>Assign dining and food-stock areas, choose a meal and price, and assign a colonist to restaurant service. Visiting Hospitality guests can order a real meal delivered to their table. Silver is paid on delivery. Requires a chair next to a dining table inside the dining area.</description>
+    <thingClass>TurboMegaMod.Building_ServiceCounter</thingClass>
+    <graphicData><texPath>Things/Restaurant/ServiceCounter</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <size>(1,1)</size><rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer><passability>PassThroughOnly</passability><pathCost>30</pathCost><fillPercent>0.5</fillPercent>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>1800</WorkToBuild><Flammability>0.5</Flammability><Beauty>2</Beauty></statBases>
+    <costList><WoodLog>60</WoodLog><Steel>20</Steel></costList>
+    <building><isEdifice>false</isEdifice></building>
+    <designationCategory>Production</designationCategory><terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+  </ThingDef>
+  <WorkTypeDef>
+    <defName>TMM_RestaurantService</defName><labelShort>restaurant</labelShort><pawnLabel>waiter</pawnLabel><gerundLabel>serving guests</gerundLabel>
+    <description>Deliver prepared meals from a restaurant's assigned stock area to visiting guests at their tables.</description>
+    <naturalPriority>580</naturalPriority><workTags>ManualDumb</workTags>
+    <relevantSkills><li>Social</li></relevantSkills>
+  </WorkTypeDef>
+  <WorkGiverDef>
+    <defName>TMM_ServeRestaurant</defName><label>serve restaurant guests</label><giverClass>TurboMegaMod.WorkGiver_Restaurant</giverClass>
+    <workType>TMM_RestaurantService</workType><priorityInType>100</priorityInType><verb>serve</verb><gerund>serving restaurant guests</gerund>
+    <requiredCapacities><li>Manipulation</li><li>Moving</li></requiredCapacities>
+  </WorkGiverDef>
+  <JobDef><defName>TMM_WaitForMeal</defName><driverClass>TurboMegaMod.JobDriver_WaitForMeal</driverClass><reportString>waiting for a meal.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+  <JobDef><defName>TMM_ServeMeal</defName><driverClass>TurboMegaMod.JobDriver_ServeMeal</driverClass><reportString>serving a restaurant meal.</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+</Defs>

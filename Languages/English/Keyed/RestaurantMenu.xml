@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Restaurant.MenuTitle>Complex Restaurant Menu</TMM.Restaurant.MenuTitle>
+  <TMM.Restaurant.MenuDialogHelp>Select dishes allowed to be served at the complex restaurant. Guests choose portions matching their dietary restrictions and personal budget. Accepted orders retain their locked meal type and price.</TMM.Restaurant.MenuDialogHelp>
+  <TMM.Restaurant.Search>Search:</TMM.Restaurant.Search>
+  <TMM.Restaurant.SelectAll>Select all</TMM.Restaurant.SelectAll>
+  <TMM.Restaurant.ClearAll>Clear all</TMM.Restaurant.ClearAll>
+  <TMM.Restaurant.MenuEmptyWarning>Warning: menu is empty! Guests will not be able to order at the complex restaurant.</TMM.Restaurant.MenuEmptyWarning>
+  <TMM.Restaurant.SelectedCount>Selected meal types: {0}</TMM.Restaurant.SelectedCount>
+  <TMM.Restaurant.StockTooltip>{0}
+
+Physical count in refrigerators: {1}.
+(Actual availability to a guest depends on personal diet, ingredients, and budget).</TMM.Restaurant.StockTooltip>
+  <TMM.Restaurant.NoStockTooltip>{0}
+
+No prepared portions in complex or colony refrigerators.</TMM.Restaurant.NoStockTooltip>
+  <TMM.Restaurant.EditMenu>Edit menu</TMM.Restaurant.EditMenu>
+  <TMM.Restaurant.MenuEmptySummary>empty</TMM.Restaurant.MenuEmptySummary>
+  <TMM.Restaurant.MenuSelectedSummary>types: {0}</TMM.Restaurant.MenuSelectedSummary>
+</LanguageData>

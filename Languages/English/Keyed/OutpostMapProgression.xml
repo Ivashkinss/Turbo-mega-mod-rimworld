@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_Outpost_GeneratorUnfueled>Outpost generator installed and wired to the local power grid. Requires manual wood refueling (0/75).</TMM_Outpost_GeneratorUnfueled>
+  <TMM_Outpost_TechLevelLocked>Technology {0} not yet researched: pavilion built with basic equipment.</TMM_Outpost_TechLevelLocked>
+  <TMM_Outpost_TechLevelUnlocked>Technology {0} available: pavilion equipped with advanced specialized apparatus.</TMM_Outpost_TechLevelUnlocked>
+  <TMM_Outpost_FarmingZoneDesignated>Growing zone designated for {0} cultivation on adjacent fertile soil.</TMM_Outpost_FarmingZoneDesignated>
+  <TMM_Outpost_BedCapacityReport>Outpost sleeping capacity: {0} regular bed slots (level {1}).</TMM_Outpost_BedCapacityReport>
+  <TMM_Outpost_MedicalCotAdded>Added reserve infirmary cot (does not substitute for colonist capacity).</TMM_Outpost_MedicalCotAdded>
+  <TMM_Outpost_UpgradeBlockedProtected>Expansion blocked: protected entity ({0}) is present in the construction zone.</TMM_Outpost_UpgradeBlockedProtected>
+  <TMM_Outpost_ModuleBuilt>Pavilion module {0} constructed (level {1}).</TMM_Outpost_ModuleBuilt>
+</LanguageData>

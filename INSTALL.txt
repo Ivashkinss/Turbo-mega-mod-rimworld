@@ -1,0 +1,12 @@
+﻿Turbo mega mod 0.10 (RimWorld 1.7)
+
+1. Распакуйте эту папку в папку Mods игры, например:
+   C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods
+   Внутри папки мода должны лежать About, Defs, Textures и другие.
+2. Отключите все остальные моды: Harmony, HugsLib, VEF и прочее уже встроено.
+   Официальные DLC оставьте включёнными. Turbo mega mod — последним.
+3. Начните новую игру.
+
+Баги и идеи: https://vk.ru/tvoydubrovski
+Поддержать автора: https://music.yandex.ru/artist/22932524 (Твой Дубровский)
+Страница мода: https://github.com/Ivashkinss/Turbo-mega-mod-rimworld

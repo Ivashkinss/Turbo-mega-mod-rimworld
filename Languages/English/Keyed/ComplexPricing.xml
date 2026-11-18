@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Prices.Title>Shop and bed prices</TMM.Prices.Title>
+  <TMM.Prices.Sales>Goods price, % of market value</TMM.Prices.Sales>
+  <TMM.Prices.Markup>Difference from market: {0}%</TMM.Prices.Markup>
+  <TMM.Prices.BaseBed>Default whole-bed daily rate</TMM.Prices.BaseBed>
+  <TMM.Prices.Help>The rate covers the whole bed per day, not each guest. An individual rate survives changes to the default. Room applies the rate to each current guest bed in that room, not one total for the room. New prices apply to new orders and future days; accepted orders and paid periods are preserved. Zero makes a bed free. One guest may rent a double bed alone; a second guest needs a current spouse, fiance or lover relationship and native willingness to share.</TMM.Prices.Help>
+  <TMM.Prices.Bed>{0}, slots: {1}
+{2} · {3}</TMM.Prices.Bed>
+  <TMM.Prices.Common>Default</TMM.Prices.Common>
+  <TMM.Prices.Custom>Custom</TMM.Prices.Custom>
+  <TMM.Prices.Reset>Use default</TMM.Prices.Reset>
+  <TMM.Prices.Room>Room</TMM.Prices.Room>
+  <TMM.Prices.RoomHelp>Apply this bed rate to every current guest bed in its enclosed room.</TMM.Prices.RoomHelp>
+  <TMM.Prices.NoBeds>No configurable beds in the complex guest area.</TMM.Prices.NoBeds>
+  <TMM.Prices.BedDaily>Whole bed per day: {0} silver</TMM.Prices.BedDaily>
+</LanguageData>

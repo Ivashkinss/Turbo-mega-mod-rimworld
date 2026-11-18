@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Michael -->
+  <BackstoryDef>
+    <defName>TMM_BS_michael_child</defName>
+    <slot>Childhood</slot>
+    <title>firstborn archangel</title>
+    <titleShort>firstborn</titleShort>
+    <description>Created at the very dawn of existence, [PAWN_nameDef] was shaped to be the unwavering pillar of order in the cosmos. From [PAWN_possessive] earliest moments, [PAWN_pronoun] placed obedience and duty above all personal feeling.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_michael_adult</defName>
+    <slot>Adulthood</slot>
+    <title>commander of the host</title>
+    <titleShort>commander</titleShort>
+    <description>As supreme general of the heavenly armies, [PAWN_nameDef] cast down rebellious kin and enforced the grand design without hesitation. Cold, disciplined, and relentless, [PAWN_pronoun] views every battle as a sacred obligation that must be seen through to the bitter end.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Social>2</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Lucifer -->
+  <BackstoryDef>
+    <defName>TMM_BS_lucifer_child</defName>
+    <slot>Childhood</slot>
+    <title>morning star</title>
+    <titleShort>lightbringer</titleShort>
+    <description>Once the brightest and most favored among the archangels, [PAWN_nameDef] possessed unmatched radiance and sharp wit. Yet beneath [PAWN_possessive] golden charm grew a deep resentment toward the flawed mortals [PAWN_pronoun] was ordered to revere.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_lucifer_adult</defName>
+    <slot>Adulthood</slot>
+    <title>fallen archangel</title>
+    <titleShort>fallen</titleShort>
+    <description>Cast out for defying creation and forging the first demons, [PAWN_nameDef] spent eons nursing a bitter grudge behind ancient bars. Now walking the earth in a borrowed vessel, [PAWN_pronoun] masks apocalyptic malice behind dark humor, theatrical charm, and deadly precision.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Melee>3</Melee>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Caring, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Castiel -->
+  <BackstoryDef>
+    <defName>TMM_BS_castiel_child</defName>
+    <slot>Childhood</slot>
+    <title>soldier of the garrison</title>
+    <titleShort>soldier</titleShort>
+    <description>Forged as an obedient foot soldier of the celestial host, [PAWN_nameDef] spent millennia following orders without question. [PAWN_pronoun] watched humanity rise from the mud, bound by strict rules never to interfere directly in mortal affairs.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_castiel_adult</defName>
+    <slot>Adulthood</slot>
+    <title>rebel angel</title>
+    <titleShort>rebel</titleShort>
+    <description>Sent to pull a doomed hunter from the depths of perdition, [PAWN_nameDef] gradually discovered doubt, free will, and fierce loyalty to [PAWN_possessive] mortal friends. Though often baffled by human customs and humor, [PAWN_pronoun] repeatedly defies heaven itself to protect those [PAWN_pronoun] cares for.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Medicine>3</Medicine>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Gabriel -->
+  <BackstoryDef>
+    <defName>TMM_BS_gabriel_child</defName>
+    <slot>Childhood</slot>
+    <title>celestial messenger</title>
+    <titleShort>messenger</titleShort>
+    <description>Born as the youngest of the great archangels, [PAWN_nameDef] loved laughter and clever tricks far more than endless celestial politics. When [PAWN_possessive] older brothers began tearing each other apart, [PAWN_pronoun] slipped away rather than choose a side.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Artistic>2</Artistic>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_gabriel_adult</defName>
+    <slot>Adulthood</slot>
+    <title>archangel trickster</title>
+    <titleShort>trickster</titleShort>
+    <description>Hiding among mortals under the guise of a pagan trickster god, [PAWN_nameDef] indulged in junk food, elaborate pranks, and twisted moral lessons. Beneath [PAWN_possessive] carefree grin lies the terrifying power of an archangel who still quietly hopes humanity can prove itself worthy.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Melee>3</Melee>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <workDisables>None</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Zachariah -->
+  <BackstoryDef>
+    <defName>TMM_BS_zachariah_child</defName>
+    <slot>Childhood</slot>
+    <title>celestial clerk</title>
+    <titleShort>clerk</titleShort>
+    <description>Even in the earliest ages of heaven, [PAWN_nameDef] preferred ledgers, hierarchies, and strict protocol over frontline combat. [PAWN_pronoun] quickly mastered the art of pleasing superiors while shifting blame onto lower ranks.</description>
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb, Hauling</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_zachariah_adult</defName>
+    <slot>Adulthood</slot>
+    <title>heavenly bureaucrat</title>
+    <titleShort>bureaucrat</titleShort>
+    <description>Wearing the face of a smug corporate executive, [PAWN_nameDef] treats the apocalypse like a high-stakes management project. Cynical and ruthless, [PAWN_pronoun] manipulates mortal pawns with false promises and cruel ultimatums to force them into fulfilling destiny.</description>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <workDisables>ManualDumb, Cleaning, PlantWork</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Naomi -->
+  <BackstoryDef>
+    <defName>TMM_BS_naomi_child</defName>
+    <slot>Childhood</slot>
+    <title>watcher in the dark</title>
+    <titleShort>watcher</titleShort>
+    <description>Trained in the silent corridors of heaven's secret archives, [PAWN_nameDef] learned early that information is sharper than any blade. [PAWN_pronoun] observed both angels and mortals from the shadows, cataloging every weakness and stray thought.</description>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_naomi_adult</defName>
+    <slot>Adulthood</slot>
+    <title>intelligence director</title>
+    <titleShort>spymaster</titleShort>
+    <description>As the cold, calculating head of celestial intelligence, [PAWN_nameDef] maintains order through surveillance, interrogation, and mental conditioning. Emotionless and pragmatic, [PAWN_pronoun] believes free will is a dangerous flaw that must be carefully pruned for heaven's survival.</description>
+    <skillGains>
+      <Intellectual>4</Intellectual>
+      <Melee>2</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Artistic, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

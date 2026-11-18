@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <TMM.Services.General>General</TMM.Services.General>
+  <TMM.Services.Hotel>Hotel</TMM.Services.Hotel>
+  <TMM.Services.Clinic>Clinic</TMM.Services.Clinic>
+  <TMM.Services.Restaurant>Restaurant</TMM.Services.Restaurant>
+  <TMM.Services.Staff>Staff</TMM.Services.Staff>
+  <TMM.Services.AutoAreas>Automatic management needs only the overall territory and optional staff-only rooms. Guest access is derived automatically. An enclosed room becomes a ward when a bed is marked Medical; keep visitor wards outside staff-only rooms.</TMM.Services.AutoAreas>
+  <TMM.Services.HotelHelp>Set the daily room rate and guest admission rules here. These switches permit visits; they do not immediately summon a group. Visits are scheduled in advance and depend on conditions. The list below covers visitors on this map. Select territory and staff rooms under General.</TMM.Services.HotelHelp>
+  <TMM.Services.ClinicHelp>Admission requires an enclosed ward with medical beds inside the complex, a doctor and patient admission enabled. Check the hours below: new patients can arrive during open hours, with a random chance. Allowing surgery does not itself open admission. Existing patients continue treatment after admission closes.</TMM.Services.ClinicHelp>
+  <TMM.Services.RestaurantHelp>Build a service counter inside the complex and assign a waiter under Staff. A cook prepares the selected meal in advance. Waiters check complex fridges first, then accessible colony fridges. Separate seating and stock areas are not required.</TMM.Services.RestaurantHelp>
+  <TMM.Services.GuestList>Guest list</TMM.Services.GuestList>
+  <TMM.Services.PatientList>Patient list</TMM.Services.PatientList>
+  <TMM.Services.ClinicAdvanced>Treatment: diets, hazards and restrictions</TMM.Services.ClinicAdvanced>
+  <TMM.Services.ClinicStatus>Admission now: {0}. Free clinic beds: {1}.</TMM.Services.ClinicStatus>
+  <TMM.Services.OpenNow>open</TMM.Services.OpenNow>
+  <TMM.Services.ClosedNow>closed</TMM.Services.ClosedNow>
+  <TMM.Services.HoursHelp>New-patient admission hours. Green is open; grey is closed. Click an hour to toggle it.</TMM.Services.HoursHelp>
+  <TMM.Services.HourTip>Local time {0}:00–{1}:00. Click to allow or block new-patient arrival during this hour.</TMM.Services.HourTip>
+  <TMM.Services.AllDay>Open admission around the clock</TMM.Services.AllDay>
+  <TMM.Services.NextGuest>Next scheduled guest visit: approximately {0} hours. Arrival depends on map access and admission rules.</TMM.Services.NextGuest>
+  <TMM.Services.NoGuestVisit>No scheduled guest visits are queued yet. The game checks scheduling periodically; enabling admission does not immediately summon a group.</TMM.Services.NoGuestVisit>
+</LanguageData>

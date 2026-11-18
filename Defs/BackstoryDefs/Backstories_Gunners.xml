@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Captain Wes -->
+  <BackstoryDef>
+    <defName>TMM_BS_captain_wes_child</defName>
+    <slot>Childhood</slot>
+    <title>mercenary camp cadet</title>
+    <titleShort>cadet</titleShort>
+    <description>Raised in a fortified compound run by ruthless sellswords, [PAWN_nameDef] learned early that loyalty is bought with caps and bullets. While other youths farmed meager crops, [PAWN_pronoun] drilled with pre-war rifles and studied military tactics.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_captain_wes_adult</defName>
+    <slot>Adulthood</slot>
+    <title>gunner syndicate commander</title>
+    <titleShort>commander</titleShort>
+    <description>Rising through blood and iron to command the main headquarters of the Gunners, [PAWN_nameDef] runs [PAWN_possessive] mercenary army with cold corporate efficiency. Calculating and utterly amoral, [PAWN_pronoun] takes any contract that pays well and crushes anyone in the way.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Social>3</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Artistic, Caring, ManualDumb</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Clint -->
+  <BackstoryDef>
+    <defName>TMM_BS_clint_child</defName>
+    <slot>Childhood</slot>
+    <title>ambitious militia recruit</title>
+    <titleShort>recruit</titleShort>
+    <description>Growing up in a struggling frontier town, [PAWN_nameDef] resented watching neighbors share scarce supplies with freeloaders. [PAWN_pronoun] joined the local militia not out of charity, but to gain weapons, training, and leverage over weaker settlers.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>2</Melee>
+    </skillGains>
+    <workDisables>Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_clint_adult</defName>
+    <slot>Adulthood</slot>
+    <title>turncoat mercenary officer</title>
+    <titleShort>turncoat</titleShort>
+    <description>Once a trusted officer among the Minutemen, [PAWN_nameDef] sold out [PAWN_possessive] own comrades at Quincy for a lucrative rank with the Gunners. Cynical and opportunistic, [PAWN_pronoun] now leads brutal assault squads from the ruins [PAWN_pronoun] helped conquer.</description>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Caring, Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Tessa -->
+  <BackstoryDef>
+    <defName>TMM_BS_tessa_child</defName>
+    <slot>Childhood</slot>
+    <title>scrapyard brawler</title>
+    <titleShort>brawler</titleShort>
+    <description>Orphaned in the lawless outskirts of a ruined city, [PAWN_nameDef] survived by picking fights over salvaged armor plates and welding tools. [PAWN_pronoun] quickly discovered a knack for bolting heavy scrap onto makeshift frames and breaking bones up close.</description>
+    <skillGains>
+      <Melee>3</Melee>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_tessa_adult</defName>
+    <slot>Adulthood</slot>
+    <title>armored shock lieutenant</title>
+    <titleShort>enforcer</titleShort>
+    <description>Clad in heavily modified power armor, [PAWN_nameDef] delights in charging straight into enemy lines to smash defenders apart at close quarters. Fierce and merciless, [PAWN_pronoun] treats every raid as a chance to test new armor reinforcements in blood.</description>
+    <skillGains>
+      <Melee>4</Melee>
+      <Shooting>2</Shooting>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Captain Bridget -->
+  <BackstoryDef>
+    <defName>TMM_BS_captain_bridget_child</defName>
+    <slot>Childhood</slot>
+    <title>overpass scavenger</title>
+    <titleShort>scavenger</titleShort>
+    <description>Raised amidst tangled highway wrecks and rusted shipping containers, [PAWN_nameDef] learned how to turn junkyards into fortified labyrinths. [PAWN_pronoun] mastered heavy weapons early to drive off rival gangs eyeing [PAWN_possessive] territory.</description>
+    <skillGains>
+      <Construction>3</Construction>
+      <Shooting>2</Shooting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_captain_bridget_adult</defName>
+    <slot>Adulthood</slot>
+    <title>stronghold artillery captain</title>
+    <titleShort>captain</titleShort>
+    <description>Commanding a heavily fortified auto-wrecker bastion, [PAWN_nameDef] enforces iron discipline with heavy machine guns and zero tolerance for failure. Pragmatic and ruthless, [PAWN_pronoun] turns every approach to [PAWN_possessive] outpost into a lethal killzone.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Construction>2</Construction>
+      <Social>2</Social>
+    </skillGains>
+    <workDisables>Artistic, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!-- Baker -->
+  <BackstoryDef>
+    <defName>TMM_BS_baker_child</defName>
+    <slot>Childhood</slot>
+    <title>rooftop watchman</title>
+    <titleShort>spotter</titleShort>
+    <description>Quiet and patient from a young age, [PAWN_nameDef] spent hours perched on crumbling rooftops tracking radstags and passing caravans through cracked binoculars. [PAWN_pronoun] learned to control [PAWN_possessive] breathing and make every scarce round count.</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Animals>2</Animals>
+    </skillGains>
+    <workDisables>Social</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>TMM_BS_baker_adult</defName>
+    <slot>Adulthood</slot>
+    <title>mercenary overwatch sniper</title>
+    <titleShort>sniper</titleShort>
+    <description>Stationed on high catwalks and church steeples, [PAWN_nameDef] serves as the Gunners' deadliest long-range marksman. Detached and methodical, [PAWN_pronoun] picks off officers and medics from afar without a flicker of remorse.</description>
+    <skillGains>
+      <Shooting>5</Shooting>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Social, Caring</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

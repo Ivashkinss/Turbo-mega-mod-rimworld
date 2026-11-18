@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_bobby_singer</defName>
+    <childhood>TMM_BS_bobby_singer_child</childhood>
+    <adulthood>TMM_BS_bobby_singer_adult</adulthood>
+    <label>Bobby Singer</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>TMM_HuntersHunter</pawnKind>
+    <nameFirst>Robert</nameFirst><nameNick>Bobby</nameNick><nameLast>Singer</nameLast>
+    <gender>Male</gender>
+    <ageRange>55~62</ageRange>
+    <skills>
+      <li><skill>Crafting</skill><level>15</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_PumpShotgun</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_ronnie_shaw</defName>
+    <childhood>TMM_BS_ronnie_shaw_child</childhood>
+    <adulthood>TMM_BS_ronnie_shaw_adult</adulthood>
+    <label>Ronnie Shaw</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>TMM_HuntersMilitiaman</pawnKind>
+    <nameFirst>Ronnie</nameFirst><nameNick>Ronnie</nameNick><nameLast>Shaw</nameLast>
+    <gender>Female</gender>
+    <ageRange>52~60</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Construction</skill><level>13</level></li>
+      <li><skill>Melee</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_AssaultRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_rufus_turner</defName>
+    <childhood>TMM_BS_rufus_turner_child</childhood>
+    <adulthood>TMM_BS_rufus_turner_adult</adulthood>
+    <label>Rufus Turner</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>TMM_HuntersHunter</pawnKind>
+    <nameFirst>Rufus</nameFirst><nameNick>Rufus</nameNick><nameLast>Turner</nameLast>
+    <gender>Male</gender>
+    <ageRange>56~64</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>13</level></li>
+      <li><skill>Crafting</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_BoltActionRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_ellen_harvelle</defName>
+    <childhood>TMM_BS_ellen_harvelle_child</childhood>
+    <adulthood>TMM_BS_ellen_harvelle_adult</adulthood>
+    <label>Ellen Harvelle</label>
+    <factionDef>TMM_MinutemenHuntersFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>TMM_HuntersHunter</pawnKind>
+    <nameFirst>Ellen</nameFirst><nameNick>Ellen</nameNick><nameLast>Harvelle</nameLast>
+    <gender>Female</gender>
+    <ageRange>46~53</ageRange>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Social</skill><level>13</level></li>
+      <li><skill>Cooking</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_ChainShotgun</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

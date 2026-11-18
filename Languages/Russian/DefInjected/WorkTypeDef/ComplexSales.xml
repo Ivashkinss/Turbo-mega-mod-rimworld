@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_SalesService.labelShort>Продажи</TMM_SalesService.labelShort>
+  <TMM_SalesService.pawnLabel>продавец</TMM_SalesService.pawnLabel>
+  <TMM_SalesService.gerundLabel>выдаёт покупки</TMM_SalesService.gerundLabel>
+  <TMM_SalesService.description>Приносить товары со служебных складов покупателям, ожидающим в гостевой части комплекса.</TMM_SalesService.description>
+</LanguageData>

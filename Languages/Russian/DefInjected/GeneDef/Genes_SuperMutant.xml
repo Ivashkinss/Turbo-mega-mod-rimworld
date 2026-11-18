@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Head_SuperMutant.label>череп мутанта</TMM_Head_SuperMutant.label>
+  <TMM_Head_SuperMutant.description>У носителей этого гена массивный череп с тяжёлым надбровьем, лицо без носа, грубый неправильный прикус и похожие на клыки нижние зубы.</TMM_Head_SuperMutant.description>
+  <TMM_Body_Giant.label>телосложение гиганта</TMM_Body_Giant.label>
+  <TMM_Body_Giant.description>Носители этого гена вырастают намного крупнее обычных людей и возвышаются над всеми вокруг.</TMM_Body_Giant.description>
+  <TMM_Body_SuperMutant.label>телосложение мутанта</TMM_Body_SuperMutant.label>
+  <TMM_Body_SuperMutant.description>У носителей этого гена сгорбленное, чудовищно мускулистое тело с огромными плечами и почти без шеи.</TMM_Body_SuperMutant.description>
+</LanguageData>
