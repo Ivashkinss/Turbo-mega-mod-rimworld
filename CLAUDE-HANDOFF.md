@@ -171,3 +171,8 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - Фракция «Разумные гули» (переселенцы), 6 героев Hydrogen: Хэнкок (лидер), Коннолли, Харон, Диган, Дейзи, Гоб.
 - Прогоны: GhoulXenotype 18/18, HeroRegistry 134/134 + reload (75 записей), ERROR 0. Портреты: `Documentation/Images/GhoulXenotype-ingame.png`.
 - Решение «гули — отдельный ксенотип Biotech» Claude принял сам по образцу остальных рас; пользователь может пересмотреть.
+## 18.11.2026 вечер — левиафан (Claude)
+- Ксенотип TMM_Leviathan (Biotech): своя голова `TMM_LeviathanHead` — чёрные прожилки, пасть игольчатых зубов от уха до уха, свои глаза в текстуре (без отдельного гена глаз, иначе глаза двоятся).
+- Гены: кожа LightGray/SlateGray, без бороды, короткие волосы, WoundHealing_SuperFast, MeleeDamage_Strong, Robust, ToxResist_Total, Aggression_HyperAggressive.
+- Прогон: LeviathanXenotype 17/17, ERROR 0. Портреты: `Documentation/Images/LeviathanXenotype-ingame.png`.
+- Неуязвимость Дика Романа без буры — отдельная механика, не сделана.

@@ -50,7 +50,7 @@ public sealed class DemonXenotypeProbe : MapComponent
     public override void MapComponentUpdate()
     {
         string[] a = Environment.GetCommandLineArgs();
-        if (done || !map.IsPlayerHome || !(a.Contains("-tmm-demon-xenotype-probe") || a.Contains("-tmm-angel-xenotype-probe") || a.Contains("-tmm-supermutant-xenotype-probe") || a.Contains("-tmm-ghoul-xenotype-probe"))) return;
+        if (done || !map.IsPlayerHome || !(a.Contains("-tmm-demon-xenotype-probe") || a.Contains("-tmm-angel-xenotype-probe") || a.Contains("-tmm-supermutant-xenotype-probe") || a.Contains("-tmm-ghoul-xenotype-probe") || a.Contains("-tmm-leviathan-xenotype-probe"))) return;
         try
         {
             if (stage == 0) { Prepare(); stage = 1; return; }
@@ -67,6 +67,12 @@ public sealed class DemonXenotypeProbe : MapComponent
             XenoName = "TMM_Angel";
             AppearanceGenes = new[] { "TMM_Wings_Angel", "TMM_Eyes_Angel" };
             AllTextures = new[] { "Things/TMM/Xenotypes/Angel/AngelWings", "Things/TMM/Xenotypes/Angel/AngelEye" };
+        }
+        else if (args.Contains("-tmm-leviathan-xenotype-probe"))
+        {
+            XenoName = "TMM_Leviathan";
+            AppearanceGenes = new[] { "TMM_Head_Leviathan", "WoundHealing_SuperFast" };
+            AllTextures = new[] { "Things/TMM/Xenotypes/Leviathan/LeviathanHead" };
         }
         else if (args.Contains("-tmm-ghoul-xenotype-probe"))
         {

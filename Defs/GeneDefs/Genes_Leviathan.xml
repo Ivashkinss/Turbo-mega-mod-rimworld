@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Leviathan look: a human vessel with black veins and an ear-to-ear maw of needle teeth. Biotech only. -->
+<Defs>
+  <GeneDef ParentName="GeneJawBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Head_Leviathan</defName>
+    <label>leviathan maw</label>
+    <description>Carriers of this gene have black veins under the skin and a mouth that splits from ear to ear into rows of needle teeth.</description>
+    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <forcedHeadTypes>
+      <li>TMM_LeviathanHead</li>
+    </forcedHeadTypes>
+  </GeneDef>
+</Defs>

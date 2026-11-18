@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Leviathan: primordial devourers wearing human vessels. Biotech only. -->
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Leviathan</defName>
+    <label>leviathan</label>
+    <description>Primordial creatures of black ooze, older than angels and demons, that wear human vessels. They heal almost anything, hunger constantly and open their faces into maws full of teeth.</description>
+    <descriptionShort>Primordial devourers in human vessels. Regenerate fast, hit hard, always hungry.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/Sanguophage</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.4</combatPowerFactor>
+    <genes>
+      <li>Skin_LightGray</li>
+      <li>Skin_SlateGray</li>
+      <li>TMM_Head_Leviathan</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>Hair_ShortOnly</li>
+      <li>WoundHealing_SuperFast</li>
+      <li>MeleeDamage_Strong</li>
+      <li>Robust</li>
+      <li>ToxResist_Total</li>
+      <li>Aggression_HyperAggressive</li>
+    </genes>
+  </XenotypeDef>
+</Defs>
