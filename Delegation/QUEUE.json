@@ -1327,7 +1327,7 @@
     },
     {
       "id": "XenotypeArtPilot",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "MinutemenRebaseRun",
@@ -1394,6 +1394,21 @@
       ],
       "createdUtc": "2026-11-18T14:30:00Z",
       "note": "Integrate accepted Minutemen faction into root, bind heroes (Preston becomes faction leader), adapt hero probe absent-faction checks; Minutemen + HeroRegistry + Outposts runs with 0 ERROR lines."
+    },
+    {
+      "id": "DemonArtSet",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "MinutemenIntegrate",
+      "taskFile": "Delegation/DemonArtSet/TASK.md",
+      "outputDir": "Tools/Build/GeminiDemonArtSet",
+      "expectedOutputs": [
+        "REPORT.md",
+        "CONTACT_SHEET.png"
+      ],
+      "createdUtc": "2026-11-18T14:40:00Z",
+      "note": "Full demon xenotype texture set by code in the accepted pilot style: 2 more horn shapes, revised tail, black eyes, skin marks overlay. No root changes."
     },
     {
       "id": "OutpostShipmentCycles",
