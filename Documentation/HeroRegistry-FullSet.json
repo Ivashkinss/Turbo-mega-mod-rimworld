@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3271,
-                         "scalarFields":  846,
+                         "scalarFields":  891,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3165,
-                        "ticksAdvanced":  14296,
+                        "framesAdvanced":  3956,
+                        "ticksAdvanced":  14707,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,15 +42,15 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "2abe1c24c48d91ffc2606b6dff7cef01e3b67215e90acf5764ccd690108629e4",
+    "productionAssemblySha256":  "2e39da312c07689de46471cb937b2b148442f0173af0612850d8ba9673c84a45",
     "heroRegistry":  {
                          "passed":  true,
-                         "checksCount":  47,
+                         "checksCount":  55,
                          "stage":  1,
                          "facts":  [
-                                       "leaderLetter=РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР° СѓРјРµСЂ РЈРјРµСЂ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ.",
-                                       "secondId=Human36271",
-                                       "thirdId=Human36277"
+                                       "leaderLetter=Р’РµР»РёРєРёР№ РљРёР°Рё С„СЂР°РєС†РёРё Р®Р¶РЅС‹Р№ РЎРѕРІРµС‚ СѓРјРµСЂ РЈРјРµСЂ Р’РµР»РёРєРёР№ РљРёР°Рё С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР®Р¶РЅС‹Р№ РЎРѕРІРµС‚\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ Р’РµР»РёРєРёР№ РљРёР°Рё.",
+                                       "secondId=Human38168",
+                                       "thirdId=Human38176"
                                    ],
                          "checks":  [
                                         {
@@ -63,7 +63,7 @@
                                             "name":  "TestFactionPresent",
                                             "passed":  true,
                                             "expected":  "OutlanderCivil",
-                                            "actual":  "Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°"
+                                            "actual":  "Р®Р¶РЅС‹Р№ РЎРѕРІРµС‚"
                                         },
                                         {
                                             "name":  "MinutemenHeroesLoadedFromXml",
@@ -92,8 +92,8 @@
                                         {
                                             "name":  "PrestonFactionMatches",
                                             "passed":  true,
-                                            "expected":  "Р‘РµР»Р°СЏ Р¤РµРґРµСЂР°С†РёСЏ",
-                                            "actual":  "Р‘РµР»Р°СЏ Р¤РµРґРµСЂР°С†РёСЏ"
+                                            "expected":  "РќС‚РµСЂСѓРј",
+                                            "actual":  "РќС‚РµСЂСѓРј"
                                         },
                                         {
                                             "name":  "PrestonIsFactionLeader",
@@ -162,6 +162,54 @@
                                             "actual":  "TMM_BS_crowley_child/TMM_BS_crowley_adult | РљРѕСЂРѕР»СЊ РђРґР°"
                                         },
                                         {
+                                            "name":  "HeavenFactionPresent",
+                                            "passed":  true,
+                                            "expected":  "TMM_HeavenFaction, not permanent enemy",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_michael",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_michael_adult"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_lucifer",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_lucifer_adult"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_castiel",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_castiel_adult"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_gabriel",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_gabriel_adult"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_zachariah",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_zachariah_adult"
+                                        },
+                                        {
+                                            "name":  "HeavenHero_naomi",
+                                            "passed":  true,
+                                            "expected":  "angel of Heaven with own backstory",
+                                            "actual":  "Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ/TMM_Angel/TMM_BS_naomi_adult"
+                                        },
+                                        {
+                                            "name":  "MichaelLeadsHeaven",
+                                            "passed":  true,
+                                            "expected":  "Michael",
+                                            "actual":  "Michael"
+                                        },
+                                        {
                                             "name":  "CrowleyIsKingOfHell",
                                             "passed":  true,
                                             "expected":  "Crowley",
@@ -182,8 +230,8 @@
                                         {
                                             "name":  "SecondCallSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human36265",
-                                            "actual":  "Human36265"
+                                            "expected":  "Human38161",
+                                            "actual":  "Human38161"
                                         },
                                         {
                                             "name":  "NameApplied",
@@ -201,7 +249,7 @@
                                             "name":  "LeaderInFactionAndWorld",
                                             "passed":  true,
                                             "expected":  "faction+world",
-                                            "actual":  "Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°/True"
+                                            "actual":  "Р®Р¶РЅС‹Р№ РЎРѕРІРµС‚/True"
                                         },
                                         {
                                             "name":  "FactionLeaderIsHero",
@@ -210,10 +258,10 @@
                                             "actual":  "Lead"
                                         },
                                         {
-                                            "name":  "FourteenRecords",
+                                            "name":  "TwentyRecords",
                                             "passed":  true,
-                                            "expected":  "14",
-                                            "actual":  "14"
+                                            "expected":  "20",
+                                            "actual":  "20"
                                         },
                                         {
                                             "name":  "FiveDistinctPawns",
@@ -237,7 +285,7 @@
                                             "name":  "FifthAcceptedByCasket",
                                             "passed":  true,
                                             "expected":  "True",
-                                            "actual":  "CryptosleepCasket36304"
+                                            "actual":  "CryptosleepCasket38203"
                                         },
                                         {
                                             "name":  "SixthInFlightHolder",
@@ -261,7 +309,7 @@
                                             "name":  "LeaderLetterNamesSuccessor",
                                             "passed":  true,
                                             "expected":  "letter about Lead Probe naming Second Probe",
-                                            "actual":  "РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР° СѓРјРµСЂ РЈРјРµСЂ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР’РёС‚РІР°СЃР»РµСЂ-"
+                                            "actual":  "Р’РµР»РёРєРёР№ РљРёР°Рё С„СЂР°РєС†РёРё Р®Р¶РЅС‹Р№ РЎРѕРІРµС‚ СѓРјРµСЂ РЈРјРµСЂ Р’РµР»РёРєРёР№ РљРёР°Рё С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР®Р¶РЅС‹Р№ РЎРѕРІРµС‚\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eL"
                                         },
                                         {
                                             "name":  "DeadLeaderStateDead",
@@ -296,7 +344,7 @@
                                         {
                                             "name":  "CapturedHeroSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human36277",
+                                            "expected":  "Human38176",
                                             "actual":  "checked"
                                         },
                                         {

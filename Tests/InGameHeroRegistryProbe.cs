@@ -151,7 +151,17 @@ public sealed class HeroRegistryProbe : MapComponent
             }
             Pawn crowley = reg.GetOrCreate(H("TMM_Hero_crowley"));
             C("CrowleyBackstories", crowleyBs(reg), "TMM_BS_crowley_child/TMM_BS_crowley_adult", crowleyBsText(reg));
-            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
+            FactionDef heavenDef = DefDatabase<FactionDef>.GetNamedSilentFail("TMM_HeavenFaction");
+            Faction heaven = heavenDef == null ? null : Find.FactionManager.FirstFactionOfDef(heavenDef);
+            C("HeavenFactionPresent", heaven != null && !heaven.def.permanentEnemy, "TMM_HeavenFaction, not permanent enemy", heaven);
+            foreach (string an in new[] { "michael", "lucifer", "castiel", "gabriel", "zachariah", "naomi" })
+            {
+                Pawn ap = reg.GetOrCreate(H("TMM_Hero_" + an));
+                bool aok = ap != null && ap.Faction == heaven && ap.genes != null && ap.genes.Xenotype != null && ap.genes.Xenotype.defName == "TMM_Angel" && ap.story.Adulthood != null && ap.story.Adulthood.defName == "TMM_BS_" + an + "_adult";
+                C("HeavenHero_" + an, aok, "angel of Heaven with own backstory", ap == null ? "null" : (ap.Faction + "/" + (ap.genes == null || ap.genes.Xenotype == null ? "no xeno" : ap.genes.Xenotype.defName) + "/" + (ap.story.Adulthood == null ? "none" : ap.story.Adulthood.defName)));
+            }
+            Pawn michael = reg.GetOrCreate(H("TMM_Hero_michael"));
+            C("MichaelLeadsHeaven", heaven != null && michael != null && heaven.leader == michael, "Michael", heaven == null ? null : heaven.leader);            C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
             Pawn azazel = reg.GetOrCreate(H("TMM_Hero_azazel"));
             bool yellow = azazel != null && azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_Devil" && x.Active);
             bool blackOff = azazel != null && !azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_DemonBlack" && x.Active);
@@ -176,7 +186,7 @@ public sealed class HeroRegistryProbe : MapComponent
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
-            C("FourteenRecords", reg.Records.Count() == 14, 14, reg.Records.Count());
+            C("TwentyRecords", reg.Records.Count() == 20, 20, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -262,7 +272,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 14, 14, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 20, 20, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));

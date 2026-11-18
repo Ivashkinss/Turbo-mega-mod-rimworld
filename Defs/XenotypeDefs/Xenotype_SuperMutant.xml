@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Super mutant xenotype: huge green mutants created by the FEV virus. Biotech only. -->
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SuperMutant</defName>
+    <label>super mutant</label>
+    <description>Huge green mutants created by the Forced Evolutionary Virus (FEV). Exceptionally strong, tough and immune to toxins, though simple-minded and slow to learn.</description>
+    <descriptionShort>Huge green mutants created by the FEV virus. Exceptionally strong, robust and toxic-immune, but slow to learn.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/Neanderthal</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.4</combatPowerFactor>
+    <genes>
+      <!-- Appearance & Body -->
+      <li>Skin_Green</li>
+      <li>Body_Hulk</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <!-- TMM_Body_Giant will be added here by Claude -->
+      <!-- Physical Prowess & Durability -->
+      <li>MeleeDamage_Strong</li>
+      <li>Robust</li>
+      <li>ToxResist_Total</li>
+      <li>ToxicEnvironmentResistance_Total</li>
+      <li>Pain_Reduced</li>
+      <!-- Mental / Learning -->
+      <li>Learning_Slow</li>
+    </genes>
+  </XenotypeDef>
+</Defs>

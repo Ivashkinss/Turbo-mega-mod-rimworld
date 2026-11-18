@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Heaven (angels), stage 1: an outlander-based faction of angel xenotype pawns. Not a permanent enemy:
+     relations with Heaven can change. Biotech only (user decision 18.11.2026). -->
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_HeavenFaction</defName>
+    <label>host of Heaven</label>
+    <description>Angels in human vessels, soldiers and clerks of a Heaven whose Father has gone silent. They follow the archangels' orders and "the plan", and look down on humans as tools — though some of them have learned to care.</description>
+    <pawnSingular>angel</pawnSingular>
+    <pawnsPlural>angels</pawnsPlural>
+    <leaderTitle>archangel commander</leaderTitle>
+    <fixedName>Host of Heaven</fixedName>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.3</settlementGenerationWeight>
+    <listOrderPriority>12</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.85, 0.88, 0.95)</li>
+      <li>(0.95, 0.85, 0.55)</li>
+    </colorSpectrum>
+    <xenotypeSet Inherit="False">
+      <xenotypeChances>
+        <TMM_Angel>1</TMM_Angel>
+      </xenotypeChances>
+    </xenotypeSet>
+  </FactionDef>
+</Defs>

@@ -1425,7 +1425,7 @@
     },
     {
       "id": "SuperMutantXenotype",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/SuperMutantXenotype/TASK.md",

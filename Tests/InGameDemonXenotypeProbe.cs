@@ -50,7 +50,7 @@ public sealed class DemonXenotypeProbe : MapComponent
     public override void MapComponentUpdate()
     {
         string[] a = Environment.GetCommandLineArgs();
-        if (done || !map.IsPlayerHome || !(a.Contains("-tmm-demon-xenotype-probe") || a.Contains("-tmm-angel-xenotype-probe"))) return;
+        if (done || !map.IsPlayerHome || !(a.Contains("-tmm-demon-xenotype-probe") || a.Contains("-tmm-angel-xenotype-probe") || a.Contains("-tmm-supermutant-xenotype-probe"))) return;
         try
         {
             if (stage == 0) { Prepare(); stage = 1; return; }
@@ -61,11 +61,18 @@ public sealed class DemonXenotypeProbe : MapComponent
 
     private void Prepare()
     {
-        if (Environment.GetCommandLineArgs().Contains("-tmm-angel-xenotype-probe"))
+        string[] args = Environment.GetCommandLineArgs();
+        if (args.Contains("-tmm-angel-xenotype-probe"))
         {
             XenoName = "TMM_Angel";
             AppearanceGenes = new[] { "TMM_Wings_Angel", "TMM_Eyes_Angel" };
             AllTextures = new[] { "Things/TMM/Xenotypes/Angel/AngelWings", "Things/TMM/Xenotypes/Angel/AngelEye" };
+        }
+        else if (args.Contains("-tmm-supermutant-xenotype-probe"))
+        {
+            XenoName = "TMM_SuperMutant";
+            AppearanceGenes = new[] { "Skin_Green", "Body_Hulk", "Hair_BaldOnly" };
+            AllTextures = new string[0];
         }
         C("BiotechActive", ModsConfig.BiotechActive, true, ModsConfig.BiotechActive);
         XenotypeDef xeno = DefDatabase<XenotypeDef>.GetNamedSilentFail(XenoName);
@@ -97,6 +104,11 @@ public sealed class DemonXenotypeProbe : MapComponent
         Gene skin = demon.genes.GenesListForReading.FirstOrDefault(x => x.Active && x.def.skinColorOverride != null);
         facts.Add("xenotype=" + XenoName + " skinGene=" + (skin == null ? "none" : skin.def.defName));
         if (XenoName == "TMM_Demon") C("DemonSkinGene", skin != null && (skin.def.defName == "Skin_DeepRed" || skin.def.defName == "Skin_InkBlack"), "Skin_DeepRed|Skin_InkBlack", skin == null ? "none" : skin.def.defName);
+        else if (XenoName == "TMM_SuperMutant")
+        {
+            C("SuperMutantSkinGene", skin != null && skin.def.defName == "Skin_Green", "Skin_Green", skin == null ? "none" : skin.def.defName);
+            C("SuperMutantBodyTypeHulk", demon.story != null && demon.story.bodyType == BodyTypeDefOf.Hulk, "Hulk", demon.story == null || demon.story.bodyType == null ? "null" : demon.story.bodyType.defName);
+        }
 
         // Portraits without apparel so horns, eyes and tail are visible; saved for human review.
         int saved = 0;

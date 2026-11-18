@@ -94,6 +94,7 @@ namespace TurboMegaMod
                 allowDead: false,
                 allowDowned: false,
                 canGeneratePawnRelations: false,
+                mustBeCapableOfViolence: true,
                 fixedGender: def.gender == Gender.None ? (Gender?)null : def.gender,
                 fixedBiologicalAge: def.ageRange.RandomInRange,
                 forcedXenotype: xeno,

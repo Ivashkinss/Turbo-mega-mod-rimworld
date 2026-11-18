@@ -140,3 +140,9 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - `HeroDef.childhood`/`adulthood` применяются при создании героя.
 - Формат `skillGains` в 1.7: `<Shooting>2</Shooting>`, а не key/value. Промпт исправлен.
 - Прогоны: HeroRegistry 47/47 + reload, ERROR 0.
+## 18.11.2026 — фракция «Небеса» и 6 героев-ангелов; ксенотип супермутанта
+- `Factions_Heaven.xml`: TMM_HeavenFaction на базе OutlanderFactionBase, не вечный враг. Все пешки — TMM_Angel. Имя «Воинство Небес». Только при Biotech.
+- Герои Hydrogen (промпт 02): Михаил (лидер), Люцифер, Кастиэль, Гавриил, Захария, Наоми, со своими предысториями.
+- Герои создаются с `mustBeCapableOfViolence`: случайная предыстория обнуляла навык стрельбы.
+- Прогоны: HeroRegistry 55/55 + reload, ERROR 0.
+- Ксенотип TMM_SuperMutant сделал Gemini (SuperMutantXenotype, 17/17, ERROR 0): 10 ванильных генов. Уникальная голова и размер — следующий шаг Claude.
