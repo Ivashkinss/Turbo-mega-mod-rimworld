@@ -134,3 +134,9 @@ DLL 05177ace…; 7/7 прогонов чистые, включая Tier10 reload
 - `HeroDef.extraGenes`: новое поле, дополнительные гены поверх ксенотипа.
 - Прогоны: HeroRegistry 46/46 + reload 10/10, Outposts 34, ERROR 0. Прошлые ошибки с чертежами теплицы — от ручных кликов пользователя в тестовой игре.
 - Найденный баг теплиц: автоматическая обычная крыша и цикл «строить/разбирать». Исправление — следующая задача Claude.
+## 18.11.2026 — уникальные предыстории 10 героев (Hydrogen + Claude)
+- Тексты написал Hydrogen по промпту `Delegation/Hydrogen/01-HeroBackstories-PROMPT.md`, средний уровень рассуждений, качество хорошее.
+- `Defs/BackstoryDefs/Backstories_Heroes.xml` и RU DefInjected: 20 BackstoryDef.
+- `HeroDef.childhood`/`adulthood` применяются при создании героя.
+- Формат `skillGains` в 1.7: `<Shooting>2</Shooting>`, а не key/value. Промпт исправлен.
+- Прогоны: HeroRegistry 47/47 + reload, ERROR 0.

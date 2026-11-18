@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3271,
-                         "scalarFields":  786,
+                         "scalarFields":  846,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3917,
-                        "ticksAdvanced":  14558,
+                        "framesAdvanced":  3165,
+                        "ticksAdvanced":  14296,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,15 +42,15 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "22b641bb11abe60af2110c11658c75b76d4a9736ba14b2a4da59fc5f9a41ae50",
+    "productionAssemblySha256":  "2abe1c24c48d91ffc2606b6dff7cef01e3b67215e90acf5764ccd690108629e4",
     "heroRegistry":  {
                          "passed":  true,
-                         "checksCount":  46,
+                         "checksCount":  47,
                          "stage":  1,
                          "facts":  [
-                                       "leaderLetter=РЎРІСЏС‚РѕР№ РџСЂРµРґСЃРµРґР°С‚РµР»СЊ С„СЂР°РєС†РёРё Р”РѕРіРѕРІРѕСЂ РСЃРѕСЂР° СѓРјРµСЂ РЈРјРµСЂ РЎРІСЏС‚РѕР№ РџСЂРµРґСЃРµРґР°С‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР”РѕРіРѕРІРѕСЂ РСЃРѕСЂР°\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ РЎРІСЏС‚РѕР№ РџСЂРµРґСЃРµРґР°С‚РµР»СЊ.",
-                                       "secondId=Human24333",
-                                       "thirdId=Human24342"
+                                       "leaderLetter=РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР° СѓРјРµСЂ РЈРјРµСЂ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ.",
+                                       "secondId=Human36271",
+                                       "thirdId=Human36277"
                                    ],
                          "checks":  [
                                         {
@@ -63,7 +63,7 @@
                                             "name":  "TestFactionPresent",
                                             "passed":  true,
                                             "expected":  "OutlanderCivil",
-                                            "actual":  "Р”РѕРіРѕРІРѕСЂ РСЃРѕСЂР°"
+                                            "actual":  "Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°"
                                         },
                                         {
                                             "name":  "MinutemenHeroesLoadedFromXml",
@@ -92,8 +92,8 @@
                                         {
                                             "name":  "PrestonFactionMatches",
                                             "passed":  true,
-                                            "expected":  "РљСЂР°СЃРЅРѕРµ РЎРѕРґСЂСѓР¶РµСЃС‚РІРѕ",
-                                            "actual":  "РљСЂР°СЃРЅРѕРµ РЎРѕРґСЂСѓР¶РµСЃС‚РІРѕ"
+                                            "expected":  "Р‘РµР»Р°СЏ Р¤РµРґРµСЂР°С†РёСЏ",
+                                            "actual":  "Р‘РµР»Р°СЏ Р¤РµРґРµСЂР°С†РёСЏ"
                                         },
                                         {
                                             "name":  "PrestonIsFactionLeader",
@@ -156,6 +156,12 @@
                                             "actual":  "Р”РµРјРѕРЅС‹ РђРґР°/TMM_Demon"
                                         },
                                         {
+                                            "name":  "CrowleyBackstories",
+                                            "passed":  true,
+                                            "expected":  "TMM_BS_crowley_child/TMM_BS_crowley_adult",
+                                            "actual":  "TMM_BS_crowley_child/TMM_BS_crowley_adult | РљРѕСЂРѕР»СЊ РђРґР°"
+                                        },
+                                        {
                                             "name":  "CrowleyIsKingOfHell",
                                             "passed":  true,
                                             "expected":  "Crowley",
@@ -176,8 +182,8 @@
                                         {
                                             "name":  "SecondCallSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human24327",
-                                            "actual":  "Human24327"
+                                            "expected":  "Human36265",
+                                            "actual":  "Human36265"
                                         },
                                         {
                                             "name":  "NameApplied",
@@ -195,7 +201,7 @@
                                             "name":  "LeaderInFactionAndWorld",
                                             "passed":  true,
                                             "expected":  "faction+world",
-                                            "actual":  "Р”РѕРіРѕРІРѕСЂ РСЃРѕСЂР°/True"
+                                            "actual":  "Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР°/True"
                                         },
                                         {
                                             "name":  "FactionLeaderIsHero",
@@ -231,7 +237,7 @@
                                             "name":  "FifthAcceptedByCasket",
                                             "passed":  true,
                                             "expected":  "True",
-                                            "actual":  "CryptosleepCasket24365"
+                                            "actual":  "CryptosleepCasket36304"
                                         },
                                         {
                                             "name":  "SixthInFlightHolder",
@@ -255,7 +261,7 @@
                                             "name":  "LeaderLetterNamesSuccessor",
                                             "passed":  true,
                                             "expected":  "letter about Lead Probe naming Second Probe",
-                                            "actual":  "РЎРІСЏС‚РѕР№ РџСЂРµРґСЃРµРґР°С‚РµР»СЊ С„СЂР°РєС†РёРё Р”РѕРіРѕРІРѕСЂ РСЃРѕСЂР° СѓРјРµСЂ РЈРјРµСЂ РЎРІСЏС‚РѕР№ РџСЂРµРґСЃРµРґР°С‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР”РѕРіРѕРІРѕСЂ РСЃРѕСЂР°\u003c/color\u003e, "
+                                            "actual":  "РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё Р’РёС‚РІР°СЃР»РµСЂ-РўРµРЅР° СѓРјРµСЂ РЈРјРµСЂ РџСЂРѕР±СѓР¶РґС‘РЅРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР’РёС‚РІР°СЃР»РµСЂ-"
                                         },
                                         {
                                             "name":  "DeadLeaderStateDead",
@@ -290,7 +296,7 @@
                                         {
                                             "name":  "CapturedHeroSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human24342",
+                                            "expected":  "Human36277",
                                             "actual":  "checked"
                                         },
                                         {

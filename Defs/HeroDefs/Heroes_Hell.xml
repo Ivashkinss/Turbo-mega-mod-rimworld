@@ -3,6 +3,8 @@
 <Defs>
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_crowley</defName>
+    <childhood>TMM_BS_crowley_child</childhood>
+    <adulthood>TMM_BS_crowley_adult</adulthood>
     <label>Crowley</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>4</rank>
@@ -20,6 +22,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_azazel</defName>
+    <childhood>TMM_BS_azazel_child</childhood>
+    <adulthood>TMM_BS_azazel_adult</adulthood>
     <label>Azazel</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>
@@ -37,6 +41,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_lilith</defName>
+    <childhood>TMM_BS_lilith_child</childhood>
+    <adulthood>TMM_BS_lilith_adult</adulthood>
     <label>Lilith</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>
@@ -53,6 +59,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_abaddon</defName>
+    <childhood>TMM_BS_abaddon_child</childhood>
+    <adulthood>TMM_BS_abaddon_adult</adulthood>
     <label>Abaddon</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>
@@ -69,6 +77,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_cain</defName>
+    <childhood>TMM_BS_cain_child</childhood>
+    <adulthood>TMM_BS_cain_adult</adulthood>
     <label>Cain</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>
@@ -85,6 +95,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_meg</defName>
+    <childhood>TMM_BS_meg_child</childhood>
+    <adulthood>TMM_BS_meg_adult</adulthood>
     <label>Meg</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>
@@ -102,6 +114,8 @@
 
   <TurboMegaMod.HeroDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Hero_ruby</defName>
+    <childhood>TMM_BS_ruby_child</childhood>
+    <adulthood>TMM_BS_ruby_adult</adulthood>
     <label>Ruby</label>
     <factionDef>TMM_HellFaction</factionDef>
     <rank>3</rank>

@@ -4,6 +4,8 @@
        HeroRegistry.GetOrCreate returns null for these until TMM_MinutemenHuntersFaction is integrated. -->
   <TurboMegaMod.HeroDef>
     <defName>TMM_Hero_preston_garvey</defName>
+    <childhood>TMM_BS_preston_garvey_child</childhood>
+    <adulthood>TMM_BS_preston_garvey_adult</adulthood>
     <label>Preston Garvey</label>
     <factionDef>TMM_MinutemenHuntersFaction</factionDef>
     <rank>4</rank>
@@ -24,6 +26,8 @@
 
   <TurboMegaMod.HeroDef>
     <defName>TMM_Hero_dean_winchester</defName>
+    <childhood>TMM_BS_dean_winchester_child</childhood>
+    <adulthood>TMM_BS_dean_winchester_adult</adulthood>
     <label>Dean Winchester</label>
     <factionDef>TMM_MinutemenHuntersFaction</factionDef>
     <rank>3</rank>
@@ -42,6 +46,8 @@
 
   <TurboMegaMod.HeroDef>
     <defName>TMM_Hero_sam_winchester</defName>
+    <childhood>TMM_BS_sam_winchester_child</childhood>
+    <adulthood>TMM_BS_sam_winchester_adult</adulthood>
     <label>Sam Winchester</label>
     <factionDef>TMM_MinutemenHuntersFaction</factionDef>
     <rank>3</rank>

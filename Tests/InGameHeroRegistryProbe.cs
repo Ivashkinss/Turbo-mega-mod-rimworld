@@ -86,6 +86,8 @@ public sealed class HeroRegistryProbe : MapComponent
         return fd == null ? null : Find.FactionManager.FirstFactionOfDef(fd);
     }
 
+    private static bool crowleyBs(HeroRegistry reg) { Pawn p = reg.GetOrCreate(H("TMM_Hero_crowley")); return p != null && p.story.Childhood != null && p.story.Childhood.defName == "TMM_BS_crowley_child" && p.story.Adulthood != null && p.story.Adulthood.defName == "TMM_BS_crowley_adult"; }
+    private static string crowleyBsText(HeroRegistry reg) { Pawn p = reg.GetOrCreate(H("TMM_Hero_crowley")); return p == null ? "null" : (p.story.Childhood == null ? "none" : p.story.Childhood.defName) + "/" + (p.story.Adulthood == null ? "none" : p.story.Adulthood.defName) + " | " + p.story.Adulthood.TitleCapFor(p.gender); }
     private static string CriticalReasonOf(Pawn p)
     {
         var m = AccessTools.Method(typeof(WorldPawnGC), "GetCriticalPawnReason");
@@ -148,6 +150,7 @@ public sealed class HeroRegistryProbe : MapComponent
                 C("HellHero_" + hn, ok, "demon of Hell", hp == null ? "null" : (hp.Faction + "/" + (hp.genes == null || hp.genes.Xenotype == null ? "no xeno" : hp.genes.Xenotype.defName)));
             }
             Pawn crowley = reg.GetOrCreate(H("TMM_Hero_crowley"));
+            C("CrowleyBackstories", crowleyBs(reg), "TMM_BS_crowley_child/TMM_BS_crowley_adult", crowleyBsText(reg));
             C("CrowleyIsKingOfHell", hell != null && crowley != null && hell.leader == crowley, "Crowley", hell == null ? null : hell.leader);
             Pawn azazel = reg.GetOrCreate(H("TMM_Hero_azazel"));
             bool yellow = azazel != null && azazel.genes.GenesListForReading.Any(x => x.def.defName == "TMM_Eyes_Devil" && x.Active);

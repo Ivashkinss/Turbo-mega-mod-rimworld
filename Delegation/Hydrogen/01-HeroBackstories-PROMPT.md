@@ -28,7 +28,7 @@
     <titleShort>apprentice</titleShort>
     <description>[PAWN_nameDef] ... (2–4 предложения, грамматика RimWorld: [PAWN_nameDef], [PAWN_pronoun], [PAWN_possessive], [PAWN_objective])</description>
     <skillGains>
-      <li><key>Social</key><value>3</value></li>
+      <Social>3</Social>
     </skillGains>
     <workDisables>None</workDisables>
     <spawnCategories><li>TMM_Heroes</li></spawnCategories>

@@ -36,6 +36,9 @@ namespace TurboMegaMod
         public ThingDef weapon;
         /// Extra Biotech genes on top of the xenotype (xenogenes), e.g. a hero-specific eye colour.
         public List<GeneDef> extraGenes = new List<GeneDef>();
+        /// Unique backstories (Defs/BackstoryDefs/Backstories_Heroes.xml); null keeps the generated one.
+        public BackstoryDef childhood;
+        public BackstoryDef adulthood;
         public bool uniqueWeaponOneShot;
 
         public override IEnumerable<string> ConfigErrors()

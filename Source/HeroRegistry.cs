@@ -99,6 +99,12 @@ namespace TurboMegaMod
                 forcedXenotype: xeno,
                 developmentalStages: DevelopmentalStage.Adult));
             pawn.Name = new NameTriple(def.nameFirst, def.nameNick.NullOrEmpty() ? def.nameFirst : def.nameNick, def.nameLast ?? "");
+            if (pawn.story != null)
+            {
+                if (def.childhood != null) pawn.story.Childhood = def.childhood;
+                if (def.adulthood != null) pawn.story.Adulthood = def.adulthood;
+                pawn.Notify_DisabledWorkTypesChanged();
+            }
             if (pawn.story != null && pawn.story.traits != null)
                 foreach (TraitDef t in def.forcedTraits)
                     if (t != null && !pawn.story.traits.HasTrait(t)) pawn.story.traits.GainTrait(new Trait(t, 0, true));
