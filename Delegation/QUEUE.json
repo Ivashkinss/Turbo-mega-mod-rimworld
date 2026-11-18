@@ -1342,7 +1342,7 @@
     },
     {
       "id": "MinutemenFixes",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "XenotypeArtPilot",
@@ -1352,7 +1352,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T12:20:00Z",
-      "note": "Fix the 3 defects found by MinutemenRebaseRun (hunter weaponMoney, RU quest DefInjected, clinic medical beds) in the candidate; one in-game run."
+      "note": "Accepted by Claude: third run TestRuns/MinutemenRebase-FullSet-20261118-171817 36/36 with 0 ERROR lines (second run had questName grammar error, fixed); root clean, DLL matches HEAD."
     },
     {
       "id": "OutpostsProbeFlakyLevel2",
@@ -1380,6 +1380,20 @@
       ],
       "createdUtc": "2026-11-18T12:35:00Z",
       "note": "Codex: accept with fixes F1 (holders), F2 (succession before vanilla letter), F3 (GC postfix untested). Fixed by Claude; in game fresh 28/28 + reload 10/10 (2 days), vanilla letter names the hero successor."
+    },
+    {
+      "id": "MinutemenIntegrate",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "integrate",
+      "afterTask": "OutpostsProbeFlakyLevel2",
+      "taskFile": "Delegation/MinutemenIntegrate/TASK.md",
+      "outputDir": "Tools/Build/GeminiMinutemenIntegrate",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T14:30:00Z",
+      "note": "Integrate accepted Minutemen faction into root, bind heroes (Preston becomes faction leader), adapt hero probe absent-faction checks; Minutemen + HeroRegistry + Outposts runs with 0 ERROR lines."
     },
     {
       "id": "OutpostShipmentCycles",
