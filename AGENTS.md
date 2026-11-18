@@ -7,6 +7,8 @@ Current user decision (18.11.2026): commit locally after accepted revisions. Sta
 
 Do not commit logs, saves, user configuration, credentials, or temporary game-test data. Preserve existing work in the remote repository. Run checks relevant to changed behavior before committing.
 
+Versioning (user decision 19.11.2026): the build published on 19.11 is 0.10. Every push of a major update to GitHub raises the version by one hundredth: 0.11, 0.12 and so on. On each such push, bump `<modVersion>` in About/About.xml, the two `v0.xx` mentions in README.md (badge and the "Ранняя версия" note) and the description's first line. Commit, push main, then run `./Tools/publish_release_branch.ps1 -Version 0.xx -Push`. That rebuilds the player-only `release` branch, which the README download button serves as a zip, and tags `v0.xx`. The repository is public: README.md is the player-facing page, so keep internal process notes out of it (they belong in Documentation/DEVELOPMENT-NOTES.md and Delegation/).
+
 The display name is Turbo mega mod. Preserve the technical packageId colonyproject.integrated to keep the existing enabled-mod configuration valid.
 
 The user authorizes removing original mod folders after their components have been fully integrated and checked. Keep external dependencies and originals that are not yet integrated. Preserve a local ignored backup and the relative order of all remaining active mods when removing the retired originals from the active list. Do not treat this authorization as permission to remove unrelated mods.
