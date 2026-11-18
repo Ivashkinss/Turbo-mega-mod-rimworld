@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +21,8 @@ namespace TurboMegaMod
             if (!string.Equals(Path.GetFullPath(loader.Assembly.Location), Path.GetFullPath(Path.Combine(component, "Assemblies", "LunarLoader.dll")), StringComparison.OrdinalIgnoreCase)) return;
             root = component;
             PatchVersion(loader);
+            var mAdd = AccessTools.Method(typeof(Verse.WindowStack), "Add", new[] { typeof(Verse.Window) });
+            if (mAdd != null) Harmony.Patch(mAdd, prefix: new HarmonyMethod(typeof(MapPreviewCompatibility), "BlockToolbarAdd"));
             AppDomain.CurrentDomain.AssemblyLoad -= OnAssembly;
             AppDomain.CurrentDomain.AssemblyLoad += OnAssembly;
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) PatchModule(assembly);
@@ -34,6 +37,13 @@ namespace TurboMegaMod
                 var target = AccessTools.Method(assembly.GetType("MapPreview.MapPreviewMod", true), "SettingsCategory");
                 var info = HarmonyLib.Harmony.GetPatchInfo(target);
                 if (info == null || !info.Owners.Contains(Harmony.Id)) Harmony.Patch(target, postfix: new HarmonyMethod(typeof(MapPreviewCompatibility), "SettingsTitle"));
+
+                var settingsType = assembly.GetType("MapPreview.MapPreviewSettings", false);
+                if (settingsType != null)
+                {
+                    var toolbarProp = AccessTools.PropertyGetter(settingsType, "ToolbarEnabledNow");
+                    if (toolbarProp != null) Harmony.Patch(toolbarProp, prefix: new HarmonyMethod(typeof(MapPreviewCompatibility), "DisableToolbarInPlay"));
+                }
             }
         }
         private static void PatchVersion(Type type)
@@ -50,6 +60,23 @@ namespace TurboMegaMod
         private static void SettingsTitle(Mod __instance, ref string __result)
         {
             if (__instance.Content.PackageId == "colonyproject.integrated") __result = Translator.Translate("TMM.MapPreviewSettings").RawText;
+        }
+        private static bool DisableToolbarInPlay(ref bool __result)
+        {
+            if (Current.ProgramState != ProgramState.Entry)
+            {
+                __result = false;
+                return false;
+            }
+            return true;
+        }
+        private static bool BlockToolbarAdd(Window window)
+        {
+            if (window != null && window.GetType().FullName == "MapPreview.MapPreviewToolbar" && Current.ProgramState != ProgramState.Entry)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

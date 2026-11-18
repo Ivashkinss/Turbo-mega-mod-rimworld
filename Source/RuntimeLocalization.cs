@@ -20,6 +20,7 @@ namespace TurboMegaMod
             RuntimeLocalization.Apply();
             MeleeCompatibility.Apply();
             HugsLibCompatibility.Apply();
+            PickUpAndHaulCompatibility.Apply();
         }
         public override string SettingsCategory(){return "Turbo mega mod";}
         public override void DoSettingsWindowContents(UnityEngine.Rect rect)

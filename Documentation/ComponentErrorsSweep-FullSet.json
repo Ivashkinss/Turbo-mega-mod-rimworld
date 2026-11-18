@@ -1,0 +1,227 @@
+﻿{
+    "component":  "ComponentErrorsSweep",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3292,
+                         "scalarFields":  1408,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4249,
+                        "ticksAdvanced":  1785,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "note":  "ComponentErrorsSweep verified"
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "a36725fa8f6ee580003a0657fdd0033bfa2f047ee983693dda3222d16858c13c",
+    "componentErrorsSweep":  {
+                                 "passed":  true,
+                                 "checksCount":  24,
+                                 "facts":  [
+                                               "VEF Blueprints: HasJobOnThing=False, JobOnThing=null",
+                                               "PUAH testJob.count adjusted from 0 to 75",
+                                               "Faction Р“РёР»СЊРґРёСЏ Р­РІРµРёСЃС‚Р°РЅ (OutlanderCivil): 13 settlements",
+                                               "Faction РћСЂР°РЅР¶РµРІРѕРµ РџР»РµРјСЏ (TribeCivil): 10 settlements",
+                                               "Faction Р”РѕРјРёРЅРёРѕРЅ Р‘РѕРіР° (Empire): 5 settlements",
+                                               "Faction Р‘Сѓ\u0027СЃСѓР»РІСѓ (TribeRoughNeanderthal): 9 settlements",
+                                               "Faction РљРёРЅРІРѕ (PirateYttakin): 5 settlements",
+                                               "Faction Р›РёРіР° Р¦СЂРµ (TribeSavageImpid): 10 settlements",
+                                               "Faction РљРѕСЂРїРѕСЂР°С†РёСЏ РњРѕР»РјРµ-Р›РѕРј (OutlanderRoughPig): 5 settlements",
+                                               "Faction РЈРґСѓС€Р»РёРІС‹Рµ Р”СѓС€РёС‚РµР»Рё (PirateWaster): 7 settlements",
+                                               "Faction Р‘СЂР°С‚СЃС‚РІРѕ РЎС‚Р°Р»Рё (TMM_BrotherhoodFaction): 6 settlements",
+                                               "Faction РђРЅРєР»Р°РІ (TMM_EnclaveFaction): 2 settlements",
+                                               "Faction Р”СЂСѓР¶РµР»СЋР±РЅС‹Рµ СЃСѓРїРµСЂРјСѓС‚Р°РЅС‚С‹ (TMM_FriendlyMutantsFaction): 4 settlements",
+                                               "Faction Р Р°Р·СѓРјРЅС‹Рµ РіСѓР»Рё (TMM_GhoulsFaction): 2 settlements",
+                                               "Faction РЎС‚СЂРµР»РєРё (TMM_GunnersFaction): 2 settlements",
+                                               "Faction Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ (TMM_HeavenFaction): 2 settlements",
+                                               "Faction Р”РµРјРѕРЅС‹ РђРґР° (TMM_HellFaction): 2 settlements",
+                                               "Faction РРЅСЃС‚РёС‚СѓС‚ (TMM_InstituteFaction): 3 settlements",
+                                               "Faction Р‘СЂРёС‚Р°РЅСЃРєРёРµ РџСЂРѕСЃРІРµС‰С‘РЅРЅС‹Рµ (TMM_MenOfLettersFaction): 5 settlements",
+                                               "Faction РљРѕРЅРІРµРЅС†РёСЏ РўС…РІР°СЃСѓСЏ (TMM_MinutemenHuntersFaction): 4 settlements",
+                                               "Faction РљР»Р°РЅС‹ РЅРµС‡РёСЃС‚Рё (TMM_MonsterClansFaction): 2 settlements",
+                                               "Faction РџРѕРґР·РµРјРєР° (TMM_RailroadFaction): 2 settlements",
+                                               "Faction Р’РѕР»С‚-РўРµРє (TMM_VaultTecFaction): 3 settlements",
+                                               "Faction Р”РёРєРёРµ СЃСѓРїРµСЂРјСѓС‚Р°РЅС‚С‹ (TMM_WildMutantsFaction): 3 settlements",
+                                               "RegionalWorld: 106 settlements total, 22 capitals across 22 factions"
+                                           ],
+                                 "checks":  [
+                                                {
+                                                    "name":  "VEF_TypesLoaded",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "BlueprintSpawned",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "VEF_Blueprints_HasJobOnThing_False",
+                                                    "passed":  true,
+                                                    "expected":  "False",
+                                                    "actual":  "False"
+                                                },
+                                                {
+                                                    "name":  "VEF_Blueprints_JobOnThing_Null",
+                                                    "passed":  true,
+                                                    "expected":  "null",
+                                                    "actual":  "null"
+                                                },
+                                                {
+                                                    "name":  "VEF_Blueprints_Synchronized",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "FrameSpawned",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "VEF_Frames_HasJobOnThing_False",
+                                                    "passed":  true,
+                                                    "expected":  "False",
+                                                    "actual":  "False"
+                                                },
+                                                {
+                                                    "name":  "VEF_Frames_JobOnThing_Null",
+                                                    "passed":  true,
+                                                    "expected":  "null",
+                                                    "actual":  "null"
+                                                },
+                                                {
+                                                    "name":  "VEF_Frames_Synchronized",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "VEF_Finish_HasJobOnThing_False",
+                                                    "passed":  true,
+                                                    "expected":  "False",
+                                                    "actual":  "False"
+                                                },
+                                                {
+                                                    "name":  "VEF_Finish_JobOnThing_Null",
+                                                    "passed":  true,
+                                                    "expected":  "null",
+                                                    "actual":  "null"
+                                                },
+                                                {
+                                                    "name":  "VEF_Finish_Synchronized",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "Vanilla_ConstructDeliverResources_Unbroken",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "PUAH_CarryCountCorrected",
+                                                    "passed":  true,
+                                                    "expected":  "\u003e=1",
+                                                    "actual":  "75"
+                                                },
+                                                {
+                                                    "name":  "PUAH_ErrorCheck_Handled",
+                                                    "passed":  true,
+                                                    "expected":  "False",
+                                                    "actual":  "False"
+                                                },
+                                                {
+                                                    "name":  "ProgramState_IsPlaying",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "MapPreview_TypesLoaded",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "MapPreview_WIM_ToolbarEnabledNow_FalseInPlay",
+                                                    "passed":  true,
+                                                    "expected":  "False",
+                                                    "actual":  "False"
+                                                },
+                                                {
+                                                    "name":  "MapPreview_ToolbarNotInWindowStack",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "MapPreview_ToolbarBlockedFromOpen",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "VisibleFactions_Present",
+                                                    "passed":  true,
+                                                    "expected":  "\u003e=5",
+                                                    "actual":  "22"
+                                                },
+                                                {
+                                                    "name":  "AllVisibleFactions_Min2Settlements",
+                                                    "passed":  true,
+                                                    "expected":  "0",
+                                                    "actual":  "0"
+                                                },
+                                                {
+                                                    "name":  "RegionalWorld_Clustered",
+                                                    "passed":  true,
+                                                    "expected":  "True",
+                                                    "actual":  "True"
+                                                },
+                                                {
+                                                    "name":  "CapitalsCount_MatchesFactions",
+                                                    "passed":  true,
+                                                    "expected":  "22",
+                                                    "actual":  "22"
+                                                }
+                                            ],
+                                 "errors":  [
+
+                                            ]
+                             },
+    "passed":  true
+}

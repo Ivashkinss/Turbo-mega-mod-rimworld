@@ -68,10 +68,19 @@ public sealed class ColonyRolesProbe : MapComponent
         C("LieutenantHasAura", R("trooper").ranks[2].aura != null && R("trooper").ranks[2].aura.radius > 0, "aura", R("trooper").ranks[2].aura == null ? "none" : R("trooper").ranks[2].aura.radius.ToString());
         C("ChefLabelTranslated", !R("cook").ranks[2].label.NullOrEmpty(), "label", R("cook").ranks[2].label);
 
-        var colonists = map.mapPawns.FreeColonistsSpawned.ToList();
-        Pawn cook = colonists.FirstOrDefault(p => !p.WorkTypeIsDisabled(CookingWork) && !p.WorkTypeIsDisabled(WorkTypeDefOf.Hauling));
-        Pawn trooper = colonists.FirstOrDefault(p => p != cook && !p.WorkTypeIsDisabled(WorkTypeDefOf.Hunting));
-        Pawn third = colonists.FirstOrDefault(p => p != cook && p != trooper);
+        List<Pawn> colonists = null;
+        Pawn cook = null, trooper = null, third = null;
+        // Random starting colonists may be incapable of the needed work; add capable ones instead of failing.
+        for (int attempt = 0; attempt < 6; attempt++)
+        {
+            colonists = map.mapPawns.FreeColonistsSpawned.ToList();
+            cook = colonists.FirstOrDefault(p => !p.WorkTypeIsDisabled(CookingWork) && !p.WorkTypeIsDisabled(WorkTypeDefOf.Hauling));
+            trooper = colonists.FirstOrDefault(p => p != cook && !p.WorkTypeIsDisabled(WorkTypeDefOf.Hunting) && !p.WorkTagIsDisabled(WorkTags.Violent));
+            third = colonists.FirstOrDefault(p => p != cook && p != trooper && !p.WorkTagIsDisabled(WorkTags.Violent));
+            if (cook != null && trooper != null && third != null) break;
+            Pawn extra = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, mustBeCapableOfViolence: true));
+            GenSpawn.Spawn(extra, CellFinder.RandomClosewalkCellNear(map.Center, map, 8), map);
+        }
         if (cook == null || trooper == null || third == null) throw new Exception("need 3 suitable colonists, have " + colonists.Count);
 
         cook.workSettings.EnableAndInitialize();
@@ -131,6 +140,24 @@ public sealed class ColonyRolesProbe : MapComponent
         C("NoAuraForCommanderHimself", ColonyRankEffects.AuraFor(trooper) == null, "none", ColonyRankEffects.AuraFor(trooper) == null ? "none" : "aura");
         roles.Assign(third, null);
         roles.For(trooper).rank = 0;
+        // Stage 3a: promotion requirements and the promote gizmo.
+        SkillRecord cookSkill = cook.skills.GetSkill(SkillDefOf.Cooking);
+        RecordDef meals = DefDatabase<RecordDef>.GetNamed("MealsCooked");
+        cookSkill.Level = 5;
+        Command_Action notReady = cook.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.defaultLabel != null && g.defaultLabel.Contains(R("cook").ranks[1].label));
+        C("PromoteGizmoDisabledWhenNotReady", notReady != null && notReady.Disabled, "disabled", notReady == null ? "none" : notReady.Disabled.ToString());
+        cookSkill.Level = 15;
+        float needMeals = R("cook").ranks[1].recordMin - cook.records.GetValue(meals);
+        if (needMeals > 0) cook.records.AddTo(meals, needMeals);
+        C("ReadyWhenRequirementsMet", ColonyPromotion.Ready(cook, roles.For(cook)), true, ColonyPromotion.MissingFor(cook, roles.For(cook)) ?? "ready");
+        Command_Action ready = cook.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.defaultLabel != null && g.defaultLabel.Contains(R("cook").ranks[1].label));
+        C("PromoteGizmoEnabledWhenReady", ready != null && !ready.Disabled, "enabled", ready == null ? "none" : ready.Disabled.ToString());
+        if (ready != null) ready.action();
+        C("PromotedToRank1", roles.For(cook).rank == 1, 1, roles.For(cook).rank);
+        C("PromotedThoughtGained", cook.needs.mood.thoughts.memories.GetFirstMemoryOfDef(DefDatabase<ThoughtDef>.GetNamed("TMM_PromotedCivil")) != null, "memory", "checked");
+        Pawn witness = colonists.FirstOrDefault(p => p != cook);
+        C("WitnessThoughtGained", witness != null && witness.needs.mood.thoughts.memories.GetFirstMemoryOfDef(DefDatabase<ThoughtDef>.GetNamed("TMM_WitnessedPromotion")) != null, "memory", "checked");
+        roles.For(cook).rank = 0;
         Command_Action giz = cook.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.defaultLabel != null && g.defaultLabel.Contains(R("cook").LabelCap));
         C("RoleGizmoShowsRole", giz != null, "gizmo with role label", giz == null ? "none" : giz.defaultLabel);
 

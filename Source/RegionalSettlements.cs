@@ -100,9 +100,36 @@ namespace TurboMegaMod
         {
             return members.Count <= 1 ? 0 : members.Where(s => s != anchor).Average(s => Distance(s.Tile, anchor.Tile));
         }
+        public static void EnsureMinimumSettlements(PlanetLayer layer)
+        {
+            if (layer == null || layer != Find.WorldGrid.Surface) return;
+            var def = layer.Def.SettlementWorldObjectDef;
+            if (def == null) return;
+            var factions = Find.FactionManager.AllFactionsListForReading
+                .Where(f => f != null && !f.IsPlayer && !f.defeated && !f.Hidden && f.def != null && f.def.settlementGenerationWeight > 0 &&
+                    (f.def.layerWhitelist.NullOrEmpty() || f.def.layerWhitelist.Contains(layer.Def)))
+                .OrderBy(f => f.loadID)
+                .ToList();
+            foreach (var faction in factions)
+            {
+                int current = Find.WorldObjects.Settlements.Count(s => s.Faction == faction && s.Tile.Layer == layer);
+                int needed = 2 - current;
+                for (int i = 0; i < needed; i++)
+                {
+                    var tile = TileFinder.RandomSettlementTileFor(layer, faction, false, null);
+                    if (!tile.Valid) break;
+                    var settlement = (Settlement)WorldObjectMaker.MakeWorldObject(def);
+                    settlement.SetFaction(faction);
+                    settlement.Tile = tile;
+                    settlement.Name = SettlementNameGenerator.GenerateSettlementName(settlement, null);
+                    Find.WorldObjects.Add(settlement);
+                }
+            }
+        }
         public static void Generate(PlanetLayer layer, RegionalWorld state)
         {
             if (state.clustered || layer != Find.WorldGrid.Surface) return;
+            EnsureMinimumSettlements(layer);
             var groups = Find.WorldObjects.Settlements.Where(s => s.Faction != null && !s.Faction.IsPlayer &&
                 !s.HasMap && s.Tile.Layer == layer).GroupBy(s => s.Faction).OrderBy(g => g.Key.loadID)
                 .Select(g => g.OrderBy(s => s.ID).ToList()).ToList();

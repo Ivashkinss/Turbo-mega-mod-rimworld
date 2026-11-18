@@ -35,8 +35,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4250,
-                        "ticksAdvanced":  1785,
+                        "framesAdvanced":  4230,
+                        "ticksAdvanced":  1787,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -45,7 +45,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "6cf73e580c805012cd4c96be16279d57248c1dca85528fb3d5b10a19504104a7",
-    "productionAssemblySha256":  "6cf73e580c805012cd4c96be16279d57248c1dca85528fb3d5b10a19504104a7",
+    "freshAssemblySha256":  "a36725fa8f6ee580003a0657fdd0033bfa2f047ee983693dda3222d16858c13c",
+    "productionAssemblySha256":  "a36725fa8f6ee580003a0657fdd0033bfa2f047ee983693dda3222d16858c13c",
     "passed":  true
 }

@@ -1452,7 +1452,7 @@
     },
     {
       "id": "ComponentErrorsSweep",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/ComponentErrorsSweep/TASK.md",
@@ -1461,7 +1461,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-18T21:25:00Z",
-      "note": "User session errors: VEF blueprint job desync, PickUpAndHaul invalid count, MapPreview panel left on world map, factions without settlements."
+      "note": "User session errors: VEF blueprint job desync, PickUpAndHaul invalid count, MapPreview panel left on world map, factions without settlements. ROOT 19.11 00:45: your in-progress VefCompatibility.cs crashes the mod constructor (ArgumentException: You can only patch implemented methods... WorkGiver_Scanner.HasJobOnThing). Use AccessTools.DeclaredMethod and skip the patch when it returns null. Then run any FullSet: LocalizationProbe must pass again. ROOT 00:49: VEF fixed; now PickUpAndHaulCompatibility crashes the constructor: Parameter \"t\" not found in WorkGiver_HaulToInventory.JobOnThing(pawn, thing, forced). Use __1 or the name thing. Also: check stdout.log for \"Error while instantiating a mod\" before calling a run passed. ACCEPTED 19.11 01:50 by Claude after fixing the VEF prefix target (patch the declaring HasJobOnThing; the earlier pass was luck): sweep 24/24 twice, roles fresh+reload, RegionalWorld, Hospitality, Angel clean."
     },
     {
       "id": "OutpostUxAudit",

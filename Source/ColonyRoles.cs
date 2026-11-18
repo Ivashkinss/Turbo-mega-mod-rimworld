@@ -50,6 +50,7 @@ namespace TurboMegaMod
         public Pawn pawn;
         public ColonyRoleDef role;
         public int rank;
+        public int readyNotifiedFor = -1;
 
         public ColonyRank Rank { get { return role == null || role.ranks.NullOrEmpty() ? null : role.ranks[UnityEngine.Mathf.Clamp(rank, 0, role.ranks.Count - 1)]; } }
 
@@ -58,6 +59,7 @@ namespace TurboMegaMod
             Scribe_References.Look(ref pawn, "pawn");
             Scribe_Defs.Look(ref role, "role");
             Scribe_Values.Look(ref rank, "rank");
+            Scribe_Values.Look(ref readyNotifiedFor, "readyNotifiedFor", -1);
         }
     }
 
@@ -97,6 +99,11 @@ namespace TurboMegaMod
             }
         }
 
+        public override void GameComponentTick()
+        {
+            if (Find.TickManager.TicksGame % 2500 == 0) ColonyPromotion.NotifyReady(this);
+        }
+
         public override void ExposeData()
         {
             Scribe_Collections.Look(ref assignments, "TMM_colonyRoles", LookMode.Deep);
@@ -122,7 +129,12 @@ namespace TurboMegaMod
         public static void AddGizmo(Pawn __instance, ref IEnumerable<Gizmo> __result)
         {
             if (__instance == null || !__instance.IsFreeColonist || __instance.Dead) return;
-            __result = __result.Concat(new[] { Make(__instance) });
+            var extra = new List<Gizmo> { Make(__instance) };
+            ColonyRoles cr = ColonyRoles.Instance;
+            ColonyRoleAssignment ca = cr == null ? null : cr.For(__instance);
+            Gizmo promote = ca == null ? null : ColonyPromotion.PromoteGizmo(__instance, ca);
+            if (promote != null) extra.Add(promote);
+            __result = __result.Concat(extra);
         }
 
         private static Gizmo Make(Pawn p)
