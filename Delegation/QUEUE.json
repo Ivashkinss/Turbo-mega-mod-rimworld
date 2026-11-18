@@ -1439,7 +1439,7 @@
     },
     {
       "id": "WorldTrafficBackstoryFlake",
-      "state": "pending",
+      "state": "deferred",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/WorldTrafficBackstoryFlake/TASK.md",
