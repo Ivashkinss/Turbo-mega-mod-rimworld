@@ -1451,6 +1451,32 @@
       "note": "Rare 'No shuffled Adulthood' error from WorldTraffic.MakePawn; find cause, fix request, prove with 300 generations. For 19.11."
     },
     {
+      "id": "ComponentErrorsSweep",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/ComponentErrorsSweep/TASK.md",
+      "outputDir": "Tools/Build/GeminiComponentErrorsSweep",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T21:25:00Z",
+      "note": "User session errors: VEF blueprint job desync, PickUpAndHaul invalid count, MapPreview panel left on world map, factions without settlements."
+    },
+    {
+      "id": "OutpostUxAudit",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/OutpostUxAudit/TASK.md",
+      "outputDir": "Tools/Build/CodexOutpostUxAudit",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-18T21:25:00Z",
+      "note": "Read-only audit of how the player founds, funds, upgrades, visits and recalls an outpost; bed ownership leak. User feedback 18.11."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",

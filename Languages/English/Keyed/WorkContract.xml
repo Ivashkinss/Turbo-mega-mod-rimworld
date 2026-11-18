@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
-  <TMM.Contract.Offer>Offer a free labour contract</TMM.Contract.Offer>
+  <TMM.Contract.Offer>Self-ransom: offer the slave a contract (works until ransomed)</TMM.Contract.Offer>
   <TMM.Contract.Accepted>{0} accepts the labour contract and now works as a free employee.</TMM.Contract.Accepted>
   <TMM.Contract.JoinRequested>{0} declines the contract and asks to join the colony permanently. The decision is yours.</TMM.Contract.JoinRequested>
   <TMM.Contract.AcceptPermanent>Accept into the colony without a contract</TMM.Contract.AcceptPermanent>
   <TMM.Contract.Permanent>Permanent colonist — no active contract</TMM.Contract.Permanent>
-  <TMM.Contract.FreeWorker>Free employee on a labour contract</TMM.Contract.FreeWorker>
+  <TMM.Contract.FreeWorker>On self-ransom: free worker under contract</TMM.Contract.FreeWorker>
   <TMM.Contract.Completed>Contract fulfilled — employee released</TMM.Contract.Completed>
   <TMM.Contract.JoinPending>Requests permanent colony membership</TMM.Contract.JoinPending>
   <TMM.Contract.CannotLeave>The pawn cannot leave now. Check the map exit route, the pawn's condition and pending operations.</TMM.Contract.CannotLeave>
