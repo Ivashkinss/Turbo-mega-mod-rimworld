@@ -64,6 +64,7 @@ public sealed class OutpostCalendarProbe : MapComponent
     private readonly List<CheckResult> checks = new List<CheckResult>();
     private readonly List<string> errors = new List<string>();
     private readonly List<string> dayTable = new List<string>();
+    private readonly List<string> facts = new List<string>();
     private bool reloadInitialChecked = false;
     private int lastLoggedTick = -1;
 
@@ -462,6 +463,28 @@ public sealed class OutpostCalendarProbe : MapComponent
                     }
                 }
             }
+            var allOutposts = (Find.WorldObjects != null) ? Find.WorldObjects.AllWorldObjects.OfType<StrategicOutpost>().ToList() : new List<StrategicOutpost>();
+            var outpostAndPlayerPawns = new HashSet<Pawn>();
+            foreach (var post in allOutposts)
+            {
+                if (post.Workers != null) foreach (var p in post.Workers) if (p != null) outpostAndPlayerPawns.Add(p);
+                if (post.Animals != null) foreach (var p in post.Animals) if (p != null) outpostAndPlayerPawns.Add(p);
+                if (post.AllPawns != null) foreach (var p in post.AllPawns) if (p != null) outpostAndPlayerPawns.Add(p);
+            }
+            if (farmP1 != null) outpostAndPlayerPawns.Add(farmP1);
+            if (farmP2 != null) outpostAndPlayerPawns.Add(farmP2);
+            if (farmAnimal != null) outpostAndPlayerPawns.Add(farmAnimal);
+            if (factP1 != null) outpostAndPlayerPawns.Add(factP1);
+            if (factP2 != null) outpostAndPlayerPawns.Add(factP2);
+            if (factAnimal != null) outpostAndPlayerPawns.Add(factAnimal);
+            if (watchP1 != null) outpostAndPlayerPawns.Add(watchP1);
+            if (watchP2 != null) outpostAndPlayerPawns.Add(watchP2);
+            if (watchAnimal != null) outpostAndPlayerPawns.Add(watchAnimal);
+            foreach (var p in allKnownPawns)
+            {
+                if (p != null && (p.Faction == Faction.OfPlayer || p.IsColonist)) outpostAndPlayerPawns.Add(p);
+            }
+
             foreach (var p in allKnownPawns)
             {
                 if (p.relations != null && p.relations.DirectRelations != null)
@@ -470,27 +493,36 @@ public sealed class OutpostCalendarProbe : MapComponent
                     for (int i = rels.Count - 1; i >= 0; i--)
                     {
                         var rel = rels[i];
-                        if (rel == null || rel.otherPawn == null || !allKnownPawns.Contains(rel.otherPawn))
+                        if (rel == null) continue;
+                        Pawn target = rel.otherPawn;
+                        if (target == null || !allKnownPawns.Contains(target))
                         {
-                            p.relations.RemoveDirectRelation(rel);
+                            bool targetIsOutpostOrPlayer = (target != null && (outpostAndPlayerPawns.Contains(target) || target.Faction == Faction.OfPlayer || target.IsColonist));
+                            if (targetIsOutpostOrPlayer)
+                            {
+                                string tName = target != null ? (target.Name != null ? target.Name.ToStringFull : target.LabelShort) : "null";
+                                string tId = target != null ? target.ThingID : "null";
+                                Check("DanglingRelation_TargetIsOutpostOrPlayer", false, "no dangling relation to outpost/player pawn",
+                                    string.Format("Dangling relation {0} from owner {1} to outpost/player target {2} ({3})",
+                                        (rel.def != null ? rel.def.defName : "null"), p.ThingID, tName, tId));
+                            }
+                            else
+                            {
+                                p.relations.RemoveDirectRelation(rel);
+                                string relName = rel.def != null ? rel.def.defName : "null";
+                                string ownerName = p.Name != null ? p.Name.ToStringFull : p.LabelShort;
+                                string targetName = target != null ? (target.Name != null ? target.Name.ToStringFull : target.LabelShort) : "null";
+                                string targetFaction = (target != null && target.Faction != null) ? target.Faction.Name : "null";
+                                string factEntry = string.Format("Sanitized foreign relation: {0} | owner={1} ({2}) | target={3} ({4}) | targetFaction={5}",
+                                    relName, ownerName, p.ThingID, targetName, (target != null ? target.ThingID : "null"), targetFaction);
+                                facts.Add(factEntry);
+                                dayTable.Add(factEntry);
+                                Log.Message("[OutpostSanitizerNarrow] " + factEntry);
+                            }
                         }
                     }
                 }
             }
-
-            try
-            {
-                if (Current.Game != null && Current.Game.relationshipRecords != null)
-                {
-                    var recordsField = HarmonyLib.AccessTools.Field(typeof(RelationshipRecords), "records");
-                    if (recordsField != null)
-                    {
-                        var dict = recordsField.GetValue(Current.Game.relationshipRecords) as System.Collections.IDictionary;
-                        if (dict != null) dict.Clear();
-                    }
-                }
-            }
-            catch {}
 
             stage = 2;
             GameDataSaveLoader.SaveGame("TMM-OutpostCalendar");
@@ -798,12 +830,19 @@ public sealed class OutpostCalendarProbe : MapComponent
             tableJsonEntries.Add("\"" + EscapeJson(row) + "\"");
         }
 
+        var factJsonEntries = new List<string>();
+        foreach (var f in facts)
+        {
+            factJsonEntries.Add("\"" + EscapeJson(f) + "\"");
+        }
+
         string jsonReport = string.Format(
-            "{{\n  \"passed\": {0},\n  \"checksCount\": {1},\n  \"stage\": {2},\n  \"calendarTable\": [\n    {3}\n  ],\n  \"checks\": [\n    {4}\n  ],\n  \"errors\": [\n    {5}\n  ]\n}}",
+            "{{\n  \"passed\": {0},\n  \"checksCount\": {1},\n  \"stage\": {2},\n  \"calendarTable\": [\n    {3}\n  ],\n  \"facts\": [\n    {4}\n  ],\n  \"checks\": [\n    {5}\n  ],\n  \"errors\": [\n    {6}\n  ]\n}}",
             overallPassed ? "true" : "false",
             checks.Count,
             stage,
             string.Join(",\n    ", tableJsonEntries.ToArray()),
+            string.Join(",\n    ", factJsonEntries.ToArray()),
             string.Join(",\n    ", checkJsonEntries.ToArray()),
             string.Join(",\n    ", errorJsonEntries.ToArray())
         );

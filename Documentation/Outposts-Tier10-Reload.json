@@ -5,10 +5,10 @@
                                  "stage":  4,
                                  "tier10Stage":  2,
                                  "facts":  [
-                                               "loadTick=60026",
-                                               "deadline=120025",
+                                               "loadTick=60029",
+                                               "deadline=120028",
                                                "baseOutput=12",
-                                               "productionTick=120025",
+                                               "productionTick=120028",
                                                "produced=60",
                                                "ordinaryBeds=12"
                                            ],
@@ -19,8 +19,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1283,
-                        "ticksAdvanced":  9884,
+                        "framesAdvanced":  3677,
+                        "ticksAdvanced":  11884,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -29,8 +29,8 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "fixtureSave":  "TMM-OutpostTier10.rws",
-    "fixtureSaveSha256":  "6a1d4aca4ce86834560d0a110ee345f4a007a0bb8b5772fa06b866f104e028f9",
-    "fixtureWriterAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
-    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "fixtureSaveSha256":  "91584efd131669fdfe208fe79793ad8036c967e0d618179e5c601b213983d2c5",
+    "fixtureWriterAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
+    "productionAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
     "passed":  true
 }

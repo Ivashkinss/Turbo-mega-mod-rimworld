@@ -61,8 +61,8 @@
                                              {
                                                  "name":  "Reload_GeneratorFuelPreserved",
                                                  "passed":  true,
-                                                 "expected":  "49.4",
-                                                 "actual":  "49.4"
+                                                 "expected":  "49.5",
+                                                 "actual":  "49.5"
                                              },
                                              {
                                                  "name":  "Reload_FactoryBuildingDefsPreserved",
@@ -102,8 +102,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1273,
-                        "ticksAdvanced":  8848,
+                        "framesAdvanced":  3089,
+                        "ticksAdvanced":  9051,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -112,7 +112,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
-    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "freshAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
+    "productionAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
     "passed":  true
 }

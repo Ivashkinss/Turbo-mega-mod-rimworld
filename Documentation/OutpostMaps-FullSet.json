@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1072,
-                        "ticksAdvanced":  7400,
+                        "framesAdvanced":  2877,
+                        "ticksAdvanced":  8076,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,7 +42,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "productionAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
     "outpostMaps":  {
                         "passed":  true,
                         "checksCount":  53,
@@ -148,7 +148,7 @@
                                            "name":  "Factory_L3_WoodFuelConsumedOverTime",
                                            "passed":  true,
                                            "expected":  "\u003c50.0",
-                                           "actual":  "49.450"
+                                           "actual":  "49.451"
                                        },
                                        {
                                            "name":  "Factory_UpgradeLevel6_Success",
@@ -202,7 +202,7 @@
                                            "name":  "Farming_L1_RiceGrowingZoneCreated",
                                            "passed":  true,
                                            "expected":  "true",
-                                           "actual":  "36"
+                                           "actual":  "22"
                                        },
                                        {
                                            "name":  "Farming_L1_GrowingZoneNoRoof",
@@ -220,19 +220,19 @@
                                            "name":  "Farming_PlayerZoneCreated",
                                            "passed":  true,
                                            "expected":  "\u003e0",
-                                           "actual":  "14"
+                                           "actual":  "16"
                                        },
                                        {
                                            "name":  "Farming_L3_PotatoGrowingZoneCreated",
                                            "passed":  true,
                                            "expected":  "true",
-                                           "actual":  "36"
+                                           "actual":  "18"
                                        },
                                        {
                                            "name":  "Farming_PlayerZonePreservedAcrossUpgrades",
                                            "passed":  true,
-                                           "expected":  "14",
-                                           "actual":  "14"
+                                           "expected":  "16",
+                                           "actual":  "16"
                                        },
                                        {
                                            "name":  "Farming_ReachedLevel10",

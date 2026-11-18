@@ -6,6 +6,9 @@
                                   "calendarTable":  [
 
                                                     ],
+                                  "facts":  [
+
+                                            ],
                                   "checks":  [
                                                  {
                                                      "name":  "Reload_SaveState_StageIsTwo",
@@ -35,19 +38,19 @@
                                                      "name":  "Reload_FarmP1_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Human28293"
+                                                     "actual":  "Human38431"
                                                  },
                                                  {
                                                      "name":  "Reload_FactP1_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Human28300"
+                                                     "actual":  "Human38438"
                                                  },
                                                  {
                                                      "name":  "Reload_WatchAnimal_Preserved",
                                                      "passed":  true,
                                                      "expected":  "true",
-                                                     "actual":  "Muffalo28314"
+                                                     "actual":  "Muffalo38455"
                                                  },
                                                  {
                                                      "name":  "Reload_Farm_Day1_Potatoes",
@@ -111,8 +114,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1639,
-                        "ticksAdvanced":  10294,
+                        "framesAdvanced":  2988,
+                        "ticksAdvanced":  10128,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -121,7 +124,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
-    "productionAssemblySha256":  "05177acefa537ddde73130ec4e5db9c2a991e3e28d82c37ca888e27eecc406fe",
+    "freshAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
+    "productionAssemblySha256":  "aac4da7b461e609724f7f7493e522a8552be1b8e88267aa0040dd67d93f15e46",
     "passed":  true
 }

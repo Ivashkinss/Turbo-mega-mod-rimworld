@@ -1300,7 +1300,7 @@
     },
     {
       "id": "OutpostSanitizerNarrow",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/OutpostSanitizerNarrow/TASK.md",

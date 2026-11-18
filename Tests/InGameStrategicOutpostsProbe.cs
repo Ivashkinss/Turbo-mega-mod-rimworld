@@ -79,16 +79,30 @@ public sealed class OutpostAcceptanceProbe : MapComponent
         {
             foreach (var p in Find.WorldPawns.AllPawnsAliveOrDead) if (p != null) allKnown.Add(p);
         }
-        if (Find.WorldObjects != null)
+        var allOutposts = (Find.WorldObjects != null) ? Find.WorldObjects.AllWorldObjects.OfType<StrategicOutpost>().ToList() : new List<StrategicOutpost>();
+        foreach (var post in allOutposts)
         {
-            foreach (var post in Find.WorldObjects.AllWorldObjects.OfType<StrategicOutpost>())
+            if (post.AllPawns != null)
             {
-                if (post.AllPawns != null)
-                {
-                    foreach (var p in post.AllPawns) if (p != null) allKnown.Add(p);
-                }
+                foreach (var p in post.AllPawns) if (p != null) allKnown.Add(p);
             }
         }
+
+        var outpostAndPlayerPawns = new HashSet<Pawn>();
+        foreach (var post in allOutposts)
+        {
+            if (post.Workers != null) foreach (var p in post.Workers) if (p != null) outpostAndPlayerPawns.Add(p);
+            if (post.Animals != null) foreach (var p in post.Animals) if (p != null) outpostAndPlayerPawns.Add(p);
+            if (post.AllPawns != null) foreach (var p in post.AllPawns) if (p != null) outpostAndPlayerPawns.Add(p);
+        }
+        if (first != null) outpostAndPlayerPawns.Add(first);
+        if (second != null) outpostAndPlayerPawns.Add(second);
+        if (animal != null) outpostAndPlayerPawns.Add(animal);
+        foreach (var p in allKnown)
+        {
+            if (p != null && (p.Faction == Faction.OfPlayer || p.IsColonist)) outpostAndPlayerPawns.Add(p);
+        }
+
         foreach (var p in allKnown)
         {
             if (p.relations != null && p.relations.DirectRelations != null)
@@ -97,26 +111,32 @@ public sealed class OutpostAcceptanceProbe : MapComponent
                 for (int i = rels.Count - 1; i >= 0; i--)
                 {
                     var rel = rels[i];
-                    if (rel == null || rel.otherPawn == null || !allKnown.Contains(rel.otherPawn))
+                    if (rel == null) continue;
+                    Pawn target = rel.otherPawn;
+                    if (target == null || !allKnown.Contains(target))
                     {
-                        p.relations.RemoveDirectRelation(rel);
+                        bool targetIsOutpostOrPlayer = (target != null && (outpostAndPlayerPawns.Contains(target) || target.Faction == Faction.OfPlayer || target.IsColonist));
+                        if (targetIsOutpostOrPlayer)
+                        {
+                            string tName = target != null ? target.LabelShort : "null";
+                            string tId = target != null ? target.ThingID : "null";
+                            Check(false, "Dangling relation " + (rel.def != null ? rel.def.defName : "null") + " to outpost/player pawn " + tName + " (" + tId + ")");
+                        }
+                        else
+                        {
+                            p.relations.RemoveDirectRelation(rel);
+                            string relName = rel.def != null ? rel.def.defName : "null";
+                            string ownerName = p.LabelShort;
+                            string targetName = target != null ? target.LabelShort : "null";
+                            string targetFaction = (target != null && target.Faction != null) ? target.Faction.Name : "null";
+                            string factEntry = "Sanitized foreign relation: " + relName + " | owner=" + ownerName + " (" + p.ThingID + ") | target=" + targetName + " (" + (target != null ? target.ThingID : "null") + ") | targetFaction=" + targetFaction;
+                            facts.Add(factEntry);
+                            Log.Message("[OutpostSanitizerNarrow] " + factEntry);
+                        }
                     }
                 }
             }
         }
-        try
-        {
-            if (Current.Game != null && Current.Game.relationshipRecords != null)
-            {
-                var recordsField = HarmonyLib.AccessTools.Field(typeof(RelationshipRecords), "records");
-                if (recordsField != null)
-                {
-                    var dict = recordsField.GetValue(Current.Game.relationshipRecords) as System.Collections.IDictionary;
-                    if (dict != null) dict.Clear();
-                }
-            }
-        }
-        catch {}
     }
     private int Output { get { return station.ProducedGoods.TotalStackCountOfDef(ThingDefOf.Plasteel); } }
     private void Fresh()
@@ -224,17 +244,17 @@ public sealed class OutpostAcceptanceProbe : MapComponent
     private void UpperLevels()
     {
         var component=station.Map.GetComponent<StrategicOutpostMapComponent>();
+        int cx = component.baseCenter.IsValid ? component.baseCenter.x : station.Map.Center.x;
+        int cz = component.baseCenter.IsValid ? component.baseCenter.z : station.Map.Center.z;
+        var compound = new CellRect(cx - 26, cz - 26, 53, 53);
+        foreach(var cell in compound) {
+            if(!cell.InBounds(station.Map)) continue;
+            foreach(var thing in cell.GetThingList(station.Map).ToArray())
+                if(thing is Plant || thing is Mineable || (thing.def.thingCategories!=null&&thing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks)))thing.Destroy(DestroyMode.Vanish);
+            var terrain=station.Map.terrainGrid.TerrainAt(cell);
+            if(terrain.passability==Traversability.Impassable||!terrain.affordances.Contains(TerrainAffordanceDefOf.Light))station.Map.terrainGrid.SetTerrain(cell,TerrainDefOf.Soil);
+        }
         for(int desired=3;desired<=10;desired++) {
-            var plot=component.GetDefaultModuleRect(desired).ExpandedBy(2);
-            // Controlled native construction plots: clear only natural obstacles, never the
-            // existing player base. Production's blocked-item check was exercised separately.
-            foreach(var cell in plot) {
-                if(!cell.InBounds(station.Map)) continue;
-                foreach(var thing in cell.GetThingList(station.Map).ToArray())
-                    if(thing is Plant || thing is Mineable || (thing.def.thingCategories!=null&&thing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks)))thing.Destroy(DestroyMode.Vanish);
-                var terrain=station.Map.terrainGrid.TerrainAt(cell);
-                if(terrain.passability==Traversability.Impassable||!terrain.affordances.Contains(TerrainAffordanceDefOf.Light))station.Map.terrainGrid.SetTerrain(cell,TerrainDefOf.Soil);
-            }
             int cost=station.NextUpgradeCost,remaining=cost;
             while(remaining>0) {var money=ThingMaker.MakeThing(ThingDefOf.Silver);money.stackCount=Math.Min(remaining,ThingDefOf.Silver.stackLimit);int count=money.stackCount;if(!station.RawMaterials.TryAdd(money,false))throw new Exception("Fixture upgrade money rejected");remaining-=count;}
             int before=station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver);string reason;
@@ -282,6 +302,7 @@ public sealed class OutpostAcceptanceProbe : MapComponent
     // fixture written by UpperLevels().
     private int t10Stage, t10BaseOutput, t10Deadline, t10LoadTick;
     private string[] t10Workers;
+    private readonly List<string> facts = new List<string>();
     private readonly List<string> t10Facts = new List<string>();
     private StrategicOutpostProductDef Plasteel { get { return DefDatabase<StrategicOutpostProductDef>.GetNamed("TMM_Outpost_Mining_Plasteel"); } }
     private void Tier10Reload()
@@ -347,7 +368,7 @@ public sealed class OutpostAcceptanceProbe : MapComponent
     private void Finish(Exception e,bool reload,string reportName=null)
     {
         done=true;if(e!=null)errors.Add(e.ToString());
-        string report="{\"passed\":"+(e==null?"true":"false")+",\"checks\":"+checks+",\"stage\":"+stage+",\"tier10Stage\":"+t10Stage+",\"facts\":["+string.Join(",",t10Facts.Select(Q))+"],\"errors\":["+string.Join(",",errors.Select(Q))+"]}";
+        string report="{\"passed\":"+(e==null?"true":"false")+",\"checks\":"+checks+",\"stage\":"+stage+",\"tier10Stage\":"+t10Stage+",\"facts\":["+string.Join(",",facts.Concat(t10Facts).Select(Q))+"],\"errors\":["+string.Join(",",errors.Select(Q))+"]}";
         File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,reportName??(reload?"OutpostReloadProbe.json":"OutpostProbe.json")),report);
         if(!reload)File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"OutpostUiProbe.json"),"{\"passed\":true,\"visualLayoutInspected\":false,\"error\":null}");
     }
