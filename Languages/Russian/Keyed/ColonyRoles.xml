@@ -13,4 +13,11 @@
   <TMM.Roles.AuraBonus>Рядом командир</TMM.Roles.AuraBonus>
   <TMM.Roles.ProudOfRank>гордость: {0}</TMM.Roles.ProudOfRank>
   <TMM.Roles.GroupToggleTip>Сгруппировать колонистов по ролям: гражданские, военные, без роли.</TMM.Roles.GroupToggleTip>
-</LanguageData>
+  <TMM.Roles.PromoteButton>РџРѕРІС‹СЃРёС‚СЊ РґРѕ В«{0}В»</TMM.Roles.PromoteButton>
+  <TMM.Roles.NextRank>РЎР»РµРґСѓСЋС‰РёР№ СЂР°РЅРі: {0}</TMM.Roles.NextRank>
+  <TMM.Roles.Requirement>{0}: {1} / {2}</TMM.Roles.Requirement>
+  <TMM.Roles.MaxRank>Р”РѕСЃС‚РёРіРЅСѓС‚ РІС‹СЃС€РёР№ СЂР°РЅРі.</TMM.Roles.MaxRank>
+  <TMM.Roles.PromotedTitle>{0}: РїРѕРІС‹С€РµРЅРёРµ</TMM.Roles.PromotedTitle>
+  <TMM.Roles.PromotedText>{0} РїРѕР»СѓС‡Р°РµС‚ СЂР°РЅРі В«{1}В» РІ СЂРѕР»Рё В«{2}В», РѕР±СЂРµС‚Р°СЏ РЅРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ Рё РїРѕС‡С‘С‚ РІ РїРѕСЃРµР»РµРЅРёРё.</TMM.Roles.PromotedText>
+  <TMM.Roles.ReadyTitle>{0} РіРѕС‚РѕРІ Рє РїРѕРІС‹С€РµРЅРёСЋ</TMM.Roles.ReadyTitle>
+  <TMM.Roles.ReadyText>{0} РІС‹РїРѕР»РЅСЏРµС‚ РІСЃРµ С‚СЂРµР±РѕРІР°РЅРёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂР°РЅРіР° В«{1}В» ({2}) Рё РіРѕС‚РѕРІ Рє РїРѕРІС‹С€РµРЅРёСЋ.</TMM.Roles.ReadyText></LanguageData>

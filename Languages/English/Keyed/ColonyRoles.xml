@@ -13,4 +13,11 @@
   <TMM.Roles.AuraBonus>Commander nearby</TMM.Roles.AuraBonus>
   <TMM.Roles.ProudOfRank>proud to be {0}</TMM.Roles.ProudOfRank>
   <TMM.Roles.GroupToggleTip>Group colonists by role: civil, military, no role.</TMM.Roles.GroupToggleTip>
-</LanguageData>
+  <TMM.Roles.PromoteButton>Promote to {0}</TMM.Roles.PromoteButton>
+  <TMM.Roles.NextRank>Next rank: {0}</TMM.Roles.NextRank>
+  <TMM.Roles.Requirement>{0}: {1} / {2}</TMM.Roles.Requirement>
+  <TMM.Roles.MaxRank>Highest rank reached.</TMM.Roles.MaxRank>
+  <TMM.Roles.PromotedTitle>{0} promoted</TMM.Roles.PromotedTitle>
+  <TMM.Roles.PromotedText>{0} has been promoted to {1} in the {2} role, gaining new duties and prestige.</TMM.Roles.PromotedText>
+  <TMM.Roles.ReadyTitle>{0} ready for promotion</TMM.Roles.ReadyTitle>
+  <TMM.Roles.ReadyText>{0} has met all requirements for the rank of {1} ({2}) and is ready for promotion.</TMM.Roles.ReadyText></LanguageData>

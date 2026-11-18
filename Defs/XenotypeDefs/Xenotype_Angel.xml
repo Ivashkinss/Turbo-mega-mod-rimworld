@@ -3,7 +3,7 @@
 <Defs>
   <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_Angel</defName>
-    <label>angel</label>
+    <label>heavenly angel</label>
     <description>Soldiers of Heaven inhabiting human vessels: winged, with eyes of cold light. Calm to the point of coldness, hard to wound and quick to heal, keenly attuned to psychic currents.</description>
     <descriptionShort>Winged soldiers of Heaven with radiant eyes. Calm, resilient, fast-healing, psychically sensitive.</descriptionShort>
     <iconPath>UI/Icons/Xenotypes/Baseliner</iconPath>
@@ -18,6 +18,7 @@
       <li>Pain_Reduced</li>
       <li>PsychicAbility_Enhanced</li>
       <li>Beauty_Pretty</li>
+      <li>TMM_Metabolism_Angelic</li>
     </genes>
   </XenotypeDef>
 </Defs>

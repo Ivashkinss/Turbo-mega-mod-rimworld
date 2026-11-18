@@ -18,6 +18,7 @@
       <li>FireResistant</li>
       <li>MaxTemp_LargeIncrease</li>
       <li>Aggression_Aggressive</li>
+      <li>TMM_Metabolism_Demonic</li>
     </genes>
   </XenotypeDef>
 </Defs>

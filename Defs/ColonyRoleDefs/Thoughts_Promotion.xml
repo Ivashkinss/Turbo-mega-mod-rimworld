@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Promotion thoughts; texts by Gemini (Documentation/ColonyRoles-Promotion-Texts.json). -->
+<Defs>
+  <ThoughtDef>
+    <defName>TMM_PromotedCivil</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>certified mastery</label>
+        <description>The colony officially recognized my hard work and skill. It feels good to know my craft truly matters here.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>TMM_PromotedMilitary</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>promoted</label>
+        <description>I earned my new rank in blood and sweat. I won't let the squad down.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>TMM_WitnessedPromotion</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>witnessed promotion</label>
+        <description>Seeing one of our own rise through the ranks reminds me that hard work pays off.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

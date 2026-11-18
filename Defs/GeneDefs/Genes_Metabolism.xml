@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Metabolism genes that cancel the metabolic cost of our supernatural xenotypes (sums of vanilla biostatMet). Biotech only. -->
+<Defs>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Angelic</defName>
+    <label>angelic metabolism</label>
+    <description>Carriers of this gene draw sustenance from a divine source. It fully pays for the metabolic cost of the other angelic genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>9</biostatMet>
+  </GeneDef>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Demonic</defName>
+    <label>demonic metabolism</label>
+    <description>Carriers of this gene are fueled by hellfire. It fully pays for the metabolic cost of the other demonic genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>2</biostatMet>
+  </GeneDef>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Mutant</defName>
+    <label>mutant metabolism</label>
+    <description>The forced evolutionary virus rebuilt this body to burn anything. It fully pays for the metabolic cost of the other super mutant genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>10</biostatMet>
+  </GeneDef>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Ghoul</defName>
+    <label>ghoul metabolism</label>
+    <description>Radiation-soaked cells of this carrier need almost nothing to keep going. It fully pays for the metabolic cost of the other ghoul genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>8</biostatMet>
+  </GeneDef>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Leviathan</defName>
+    <label>leviathan metabolism</label>
+    <description>A primordial hunger turns every meal into raw strength. It fully pays for the metabolic cost of the other leviathan genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>8</biostatMet>
+  </GeneDef>
+</Defs>
