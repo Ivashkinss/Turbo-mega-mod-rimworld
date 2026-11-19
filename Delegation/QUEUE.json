@@ -1628,6 +1628,20 @@
       "note": "Integrate Neon's equipment system: paper-doll tab, weapon and apparel mod slots, backpacks, power armor layer, Colt silver bullets."
     },
     {
+      "id": "VehicleFramework",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "EquipmentSlots",
+      "taskFile": "Delegation/VehicleFramework/TASK.md",
+      "outputDir": "Tools/Build/GeminiVehicleFramework",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T00:00:00Z",
+      "note": "Integrate Vehicle Framework v1.6.2144 (MIT, already downloaded) as a component; stop and report if 1.6 DLLs fail on 1.7."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
