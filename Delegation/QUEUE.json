@@ -1642,6 +1642,33 @@
       "note": "Integrate Vehicle Framework v1.6.2144 (MIT, already downloaded) as a component; stop and report if 1.6 DLLs fail on 1.7."
     },
     {
+      "id": "FactionApparel",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "VehicleFramework",
+      "taskFile": "Delegation/FactionApparel/TASK.md",
+      "outputDir": "Tools/Build/GeminiFactionApparel",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T01:30:00Z",
+      "note": "Integrate Neon's faction apparel (31) and hero signature gear (31)."
+    },
+    {
+      "id": "StoryStageSiteReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/StoryStageSiteReview/TASK.md",
+      "outputDir": "Tools/Build/CodexStoryStageSiteReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T01:30:00Z",
+      "note": "Read-only acceptance of E2 world-site and colony-raid stages: save/load, objectives, raid hostility rollback."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",

@@ -1,0 +1,1230 @@
+**Режим: Canvas. Модель: Neon. Уровень рассуждений — высокий.**
+
+Задача по коду мода RimWorld 1.7: **31 предмет фракционной одежды и 10 исследований** по каталогу Hydrogen (JSON ниже).
+
+## Жёсткие правила
+- **Только C# 5:** без `?.`, `=>` у членов класса, `nameof`, `is X x`, `$""""`, `out var`. API — RimWorld 1.7. Где не уверен, ставь `// CHECK API`.
+- Пространство имён `TurboMegaMod`, префикс defName `TMM_`. DLC-материалы (биоферрит — Anomaly, гены — Biotech) помечай `MayRequire`, без DLC предмет должен грузиться.
+- **Слои одежды из нашей системы снаряжения:** `TMM_PowerArmor` — вся силовая броня (T-60, T-45, X-01, панцирь кланов) и `TMM_Backpack`. Модули одежды: `CompApparelMods`, 1 слот на плащах, куртках и дастерах.
+- **Ограничение по расе:** `angel_only` — с прорезями под крылья, носят только ангелы `TMM_Angel`; `super_mutant_only` — только супермутанты `TMM_SuperMutant`, у них тело `TMM_SuperMutant`. Сделай это через `CompProperties` или Harmony на `ApparelUtility.HasPartsToWear`/`PawnApparelGenerator` — так, чтобы чужая раса не могла надеть предмет, а сгенерированные NPC не получали его.
+- **Открытие:** `research` — свои ResearchProjectDef из каталога; `quest` — рецепт требует флага сюжета `unlock.<id>=true`. Сделай `RecipeDef` с проверкой флага через свой `RecipeWorker` или `researchPrerequisite` на скрытый проект, который открывает `SparkStory`. Флаг ставит сюжет, механику опиши в комментарии.
+- **Текстуры пока ванильные** (`graphicData` базового предмета), `<!-- TODO art -->`.
+- Особые эффекты (`special_ru`) — XML, где можно, иначе C#.
+## Решения Claude по балансу (обязательно)
+- `Leather_Heavy` не существует — используй `stuffCategories` Leathery.
+- Плащ ночного клана: `MoveSpeed` **+0.08** (не +0.15).
+
+## Каталог (Hydrogen)
+```json
+{
+  "apparel": [
+    {
+      "id": "demon_crossroads_suit",
+      "faction": "hell_demons",
+      "label_en": "crossroads tailored suit",
+      "label_ru": "деловой костюм перекрёстка",
+      "desc_en": "An immaculate black three-piece suit with subtle crimson silk lining and silver cufflinks. Worn by dealmakers who prefer sealing contracts over brawling, its fabric is unnaturally resistant to scorching heat.",
+      "desc_ru": "Безупречный чёрный костюм-тройка с тёмно-алой шёлковой подкладкой и серебряными запонками. Одежда демонов-дельцов, предпочитающих контракты дракам; ткань неестественно устойчива к жару и огню.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.18,
+        "ArmorRating_Blunt": 0.10,
+        "ArmorRating_Heat": 0.85,
+        "Insulation_Cold": 12,
+        "Insulation_Heat": 24,
+        "Mass": 1.4,
+        "MarketValue": 650
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.20,
+        "TradePriceImprovement": 0.10
+      },
+      "cost": {
+        "Synthread": 75,
+        "DevilstrandCloth": 25
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 4200,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Оккультное портняжное дело» (TMM_OccultTailoring)",
+      "special_ru": "Ванильный XML: высокая термозащита и бонус к торговле и социальному влиянию.",
+      "forRace": "any"
+    },
+    {
+      "id": "demon_infernal_trenchcoat",
+      "faction": "hell_demons",
+      "label_en": "infernal operative coat",
+      "label_ru": "плащ адского оперативника",
+      "desc_en": "A heavy charcoal-black leather trenchcoat stitched with dark crimson thread along the lapels. Designed for long nights on the road, it turns aside blades and shrugs off flames.",
+      "desc_ru": "Тяжёлый угольно-чёрный кожаный плащ, простроченный тёмно-алой нитью вдоль лацканов. Создан для долгих ночных вылазок, хорошо держит удары клинков и открытое пламя.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.42,
+        "ArmorRating_Blunt": 0.22,
+        "ArmorRating_Heat": 0.90,
+        "Insulation_Cold": 18,
+        "Insulation_Heat": 20,
+        "Mass": 2.6,
+        "MarketValue": 920
+      },
+      "equippedStatOffsets": {
+        "PainShockThreshold": 0.08
+      },
+      "cost": {
+        "DevilstrandCloth": 65,
+        "Plasteel": 15
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 5800,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда за союз с Адом или выполнение контракта Кроули",
+      "special_ru": "Ванильный XML: повышенная огнестойкость и +8% к болевому порогу.",
+      "forRace": "any"
+    },
+    {
+      "id": "angel_vessel_trenchcoat",
+      "faction": "heaven_angels",
+      "label_en": "seraphic rumpled trenchcoat",
+      "label_ru": "бежевый плащ сосуда",
+      "desc_en": "A weathered beige cotton trenchcoat worn over a dark suit and loose tie, tailored with reinforced vertical slits across the upper back to accommodate manifestation of celestial wings.",
+      "desc_ru": "Потрёпанный бежевый хлопковый плащ поверх тёмного костюма и слегка ослабленного галстука, скроенный с усиленными прорезями на спине для раскрытия небесных крыльев.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.36,
+        "ArmorRating_Blunt": 0.20,
+        "ArmorRating_Heat": 0.45,
+        "Insulation_Cold": 20,
+        "Insulation_Heat": 16,
+        "Mass": 2.2,
+        "MarketValue": 780
+      },
+      "equippedStatOffsets": {
+        "PsychicSensitivity": 0.15,
+        "SocialImpact": 0.10
+      },
+      "cost": {
+        "Synthread": 85,
+        "Gold": 5
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 4800,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Оккультное портняжное дело» (TMM_OccultTailoring)",
+      "special_ru": "Свой C# / XML: специальный крой под крылья ангела (не блокирует визуал крыльев и не даёт штрафа к скорости полёта/рывка).",
+      "forRace": "angel_only"
+    },
+    {
+      "id": "angel_celestial_raiment",
+      "faction": "heaven_angels",
+      "label_en": "celestial host vestment",
+      "label_ru": "облачение небесного воинства",
+      "desc_en": "Gleaming white-and-gold layered armor plates worn over a tailored tunic, open across the shoulder blades for angelic wings. Etched with Enochian script, it deflects demonic curses and heavy blows.",
+      "desc_ru": "Сияющие бело-золотые пластинчатые латы поверх туники с открытыми прорезями на лопатках для крыльев. Покрыты енохианской вязью, отражающей демонические проклятия и тяжёлые удары.",
+      "baseOn": "Apparel_FlakVest",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.08,
+        "ArmorRating_Blunt": 0.54,
+        "ArmorRating_Heat": 0.85,
+        "Insulation_Cold": 22,
+        "Insulation_Heat": 22,
+        "Mass": 6.5,
+        "MarketValue": 2900
+      },
+      "equippedStatOffsets": {
+        "MeleeDodgeChance": 0.08,
+        "ToxicResistance": 0.30
+      },
+      "cost": {
+        "Plasteel": 75,
+        "Gold": 20,
+        "Synthread": 50
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 14000,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда Михаила или Кастиэля за союз с Небесами",
+      "special_ru": "Свой C# (CompApparel): снижает входящий урон от демонических способностей и аномалий на 35%.",
+      "forRace": "angel_only"
+    },
+    {
+      "id": "bos_scribe_fatigues",
+      "faction": "brotherhood",
+      "label_en": "brotherhood scribe fatigues",
+      "label_ru": "форма писца Братства",
+      "desc_en": "A practical crimson-and-tan canvas tunic fitted with leather tool pouches, brass buckles, and an embroidered gear-and-sword emblem on the shoulder.",
+      "desc_ru": "Практичная красно-песочная туника из плотной парусины с кожаными подсумками для инструментов, латунными пряжками и нашивкой шестерни с мечом на плече.",
+      "baseOn": "Apparel_CollarShirt",
+      "layers": ["OnSkin", "Middle"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.24,
+        "ArmorRating_Blunt": 0.14,
+        "ArmorRating_Heat": 0.25,
+        "Insulation_Cold": 14,
+        "Insulation_Heat": 14,
+        "Mass": 1.8,
+        "MarketValue": 520
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.12,
+        "GeneralLaborSpeed": 0.08
+      },
+      "cost": {
+        "Synthread": 65,
+        "Steel": 15
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 3600,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Снаряжение Братства Стали» (TMM_BrotherhoodGear)",
+      "special_ru": "Ванильный XML: ускоряет исследования и общую работу на верстаках.",
+      "forRace": "any"
+    },
+    {
+      "id": "bos_t60_power_armor",
+      "faction": "brotherhood",
+      "label_en": "T-60 Brotherhood power armor",
+      "label_ru": "силовая броня T-60 Братства",
+      "desc_en": "Heavy steel-grey hydraulic power armor stamped with the Brotherhood of Steel crest on the chestplate. Massive pauldrons and servomotors turn an ordinary soldier into a walking tank.",
+      "desc_ru": "Тяжёлая стально-серая гидравлическая силовая броня с гербом Братства Стали на нагруднике. Массивные наплечники и сервоприводы превращают бойца в шагающий танк.",
+      "baseOn": "Apparel_PowerArmor",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.24,
+        "ArmorRating_Blunt": 0.58,
+        "ArmorRating_Heat": 0.72,
+        "Insulation_Cold": 36,
+        "Insulation_Heat": 18,
+        "Mass": 15.0,
+        "MarketValue": 3900
+      },
+      "equippedStatOffsets": {
+        "CarryingCapacity": 65,
+        "ToxicEnvironmentResistance": 0.50
+      },
+      "cost": {
+        "Plasteel": 110,
+        "Uranium": 25,
+        "ComponentIndustrial": 8,
+        "ComponentSpacer": 2
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 24000,
+      "unlock": "quest",
+      "unlock_detail_ru": "Чертёж выдаётся старейшиной Мэксоном после заключения союза с Братством Стали (требует также изучения ядерного реактора)",
+      "special_ru": "Ванильный XML + кастомный слой мода: надевается поверх обычной одежды полным комплектом, требует уран при создании.",
+      "forRace": "any"
+    },
+    {
+      "id": "bos_t60_helmet",
+      "faction": "brotherhood",
+      "label_en": "T-60 power armor helmet",
+      "label_ru": "шлем силовой брони T-60",
+      "desc_en": "An angular steel-grey armored helmet with a built-in tactical headlamp, rebreather filters, and armored glass visor.",
+      "desc_ru": "Угловатый стально-серый бронешлем со встроенным налобным фонарём, фильтрами респиратора и визором из бронестекла.",
+      "baseOn": "Apparel_PowerArmorHelmet",
+      "layers": ["Overhead"],
+      "bodyParts": ["FullHead"],
+      "stats": {
+        "ArmorRating_Sharp": 1.18,
+        "ArmorRating_Blunt": 0.52,
+        "ArmorRating_Heat": 0.65,
+        "Insulation_Cold": 16,
+        "Insulation_Heat": 10,
+        "Mass": 3.2,
+        "MarketValue": 1250
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.06,
+        "ToxicEnvironmentResistance": 0.50
+      },
+      "cost": {
+        "Plasteel": 40,
+        "Uranium": 5,
+        "ComponentIndustrial": 4
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 8500,
+      "unlock": "quest",
+      "unlock_detail_ru": "Открывается вместе с чертежом силовой брони T-60 Братства Стали",
+      "special_ru": "Ванильный XML: полный комплект T-60 (броня + шлем) даёт 100% защиту от токсичных осадков.",
+      "forRace": "any"
+    },
+    {
+      "id": "outcast_recon_underarmor",
+      "faction": "outcasts",
+      "label_en": "Outcast recon bodysuit",
+      "label_ru": "разведкостюм Изгоев",
+      "desc_en": "A form-fitting dark charcoal and crimson ballistic undersuit fitted with reinforced elbow pads and power-armor interface ports.",
+      "desc_ru": "Облегающий тёмно-угольный с алыми вставками баллистический поддоспешник с усиленными налокотниками и разъёмами для стыковки с силовой бронёй.",
+      "baseOn": "Apparel_FlakPants",
+      "layers": ["OnSkin"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.34,
+        "ArmorRating_Blunt": 0.18,
+        "ArmorRating_Heat": 0.30,
+        "Insulation_Cold": 16,
+        "Insulation_Heat": 14,
+        "Mass": 2.0,
+        "MarketValue": 680
+      },
+      "equippedStatOffsets": {
+        "MoveSpeed": 0.12
+      },
+      "cost": {
+        "Synthread": 70,
+        "Plasteel": 15
+      },
+      "workbench": "TableMachining",
+      "workToMake": 4500,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Снаряжение Братства Стали» (TMM_BrotherhoodGear)",
+      "special_ru": "Ванильный XML: лёгкая поддевка под силовую броню, слегка повышающая скорость движения.",
+      "forRace": "any"
+    },
+    {
+      "id": "outcast_power_armor",
+      "faction": "outcasts",
+      "label_en": "Outcast T-45d power armor",
+      "label_ru": "силовая броня Изгоев",
+      "desc_en": "Refurbished T-45d power armor painted matte black with stark blood-red trim and shoulder plates. Built for relentless tech-recovery sweeps.",
+      "desc_ru": "Модернизированная силовая броня T-45d, выкрашенная в матовый чёрный цвет с контрастными кроваво-красными наплечниками и окантовкой. Создана для жёстких рейдов за довоенными технологиями.",
+      "baseOn": "Apparel_PowerArmor",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.18,
+        "ArmorRating_Blunt": 0.56,
+        "ArmorRating_Heat": 0.78,
+        "Insulation_Cold": 34,
+        "Insulation_Heat": 18,
+        "Mass": 14.5,
+        "MarketValue": 3600
+      },
+      "equippedStatOffsets": {
+        "CarryingCapacity": 55,
+        "ToxicEnvironmentResistance": 0.50
+      },
+      "cost": {
+        "Plasteel": 95,
+        "Uranium": 20,
+        "ComponentIndustrial": 8,
+        "ComponentSpacer": 1
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 21000,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда защитника Генри Касдина за сдачу партии довоенных технологий Изгоям",
+      "special_ru": "Ванильный XML: надевается поверх одежды, чуть легче T-60 и лучше держит энергетический/тепловой урон.",
+      "forRace": "any"
+    },
+    {
+      "id": "enclave_officer_uniform",
+      "faction": "enclave",
+      "label_en": "Enclave officer uniform",
+      "label_ru": "офицерский мундир Анклава",
+      "desc_en": "A crisp black-and-slate double-breasted military uniform with silver shoulder boards and an eagle-and-stars insignia. Radiates cold authoritarian discipline.",
+      "desc_ru": "Безупречный чёрно-грифельный двубортный военный мундир с серебряными погонами и эмблемой со звёздами. Внушает холодную авторитарную дисциплину.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.28,
+        "ArmorRating_Blunt": 0.16,
+        "ArmorRating_Heat": 0.25,
+        "Insulation_Cold": 16,
+        "Insulation_Heat": 12,
+        "Mass": 1.9,
+        "MarketValue": 740
+      },
+      "equippedStatOffsets": {
+        "SuppressionPower": 0.25,
+        "SocialImpact": 0.15
+      },
+      "cost": {
+        "Synthread": 80,
+        "Plasteel": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 4600,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Военная форма Пустоши» (TMM_WastelandMilitaryGear)",
+      "special_ru": "Ванильный XML: усиливает подавление рабов/пленников и социальное влияние.",
+      "forRace": "any"
+    },
+    {
+      "id": "enclave_x01_power_armor",
+      "faction": "enclave",
+      "label_en": "Enclave X-01 power armor",
+      "label_ru": "силовая броня X-01 Анклава",
+      "desc_en": "Sleek, sloped composite power armor in jet-black finish with a towering neck guard. Engineered after the Great War, its curved plates deflect high-velocity rounds and plasma blasts.",
+      "desc_ru": "Обтекаемая композитная силовая броня угольно-чёрного цвета с высоким воротником-щитком. Разработанная после Великой войны, её наклонная броня рикошетит бронебойные пули и плазму.",
+      "baseOn": "Apparel_PowerArmor",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.32,
+        "ArmorRating_Blunt": 0.64,
+        "ArmorRating_Heat": 0.92,
+        "Insulation_Cold": 40,
+        "Insulation_Heat": 24,
+        "Mass": 14.0,
+        "MarketValue": 4800
+      },
+      "equippedStatOffsets": {
+        "CarryingCapacity": 75,
+        "ToxicEnvironmentResistance": 0.60
+      },
+      "cost": {
+        "Plasteel": 135,
+        "Uranium": 30,
+        "ComponentIndustrial": 10,
+        "ComponentSpacer": 3
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 28000,
+      "unlock": "quest",
+      "unlock_detail_ru": "Секретный чертёж из бункера Анклава (награда полковника Отема или трофей со штурма базы)",
+      "special_ru": "Ванильный XML: лучшая серийная силовая броня в моде, надевается поверх одежды.",
+      "forRace": "any"
+    },
+    {
+      "id": "enclave_x01_helmet",
+      "faction": "enclave",
+      "label_en": "X-01 insectoid helmet",
+      "label_ru": "шлем силовой брони X-01",
+      "desc_en": "An intimidating black armored helmet shaped like a predatory insect head, featuring glowing amber optical lenses and dual filtration canisters.",
+      "desc_ru": "Устрашающий чёрный бронешлем, напоминающий голову хищного насекомого, со светящимися янтарными окулярами и двойными фильтрами очистки воздуха.",
+      "baseOn": "Apparel_PowerArmorHelmet",
+      "layers": ["Overhead"],
+      "bodyParts": ["FullHead"],
+      "stats": {
+        "ArmorRating_Sharp": 1.25,
+        "ArmorRating_Blunt": 0.58,
+        "ArmorRating_Heat": 0.80,
+        "Insulation_Cold": 18,
+        "Insulation_Heat": 12,
+        "Mass": 3.0,
+        "MarketValue": 1550
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.08,
+        "ToxicEnvironmentResistance": 0.40
+      },
+      "cost": {
+        "Plasteel": 45,
+        "Uranium": 8,
+        "ComponentSpacer": 1
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 9500,
+      "unlock": "quest",
+      "unlock_detail_ru": "Открывается вместе с чертежом силовой брони X-01 Анклава",
+      "special_ru": "Ванильный XML: повышенная точность стрельбы и полная герметичность в паре с броней X-01.",
+      "forRace": "any"
+    },
+    {
+      "id": "institute_lab_coat",
+      "faction": "institute",
+      "label_en": "Institute division lab coat",
+      "label_ru": "халат учёного Института",
+      "desc_en": "A pristine, sterile white synthetic coat with clean geometric seams and colored division stripes along the sleeves. Keeps its wearer comfortable in sterile subterranean labs.",
+      "desc_ru": "Безупречно белый стерильный синтетический халат с геометрическими швами и цветными полосами отделов на рукавах.",
+      "baseOn": "Apparel_CollarShirt",
+      "layers": ["OnSkin", "Middle"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.16,
+        "ArmorRating_Blunt": 0.08,
+        "ArmorRating_Heat": 0.25,
+        "Insulation_Cold": 10,
+        "Insulation_Heat": 18,
+        "Mass": 1.2,
+        "MarketValue": 580
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.16,
+        "MedicalTendQuality": 0.08
+      },
+      "cost": {
+        "Synthread": 75,
+        "Hyperweave": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 3800,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Синтетические ткани Института» (TMM_InstituteTextiles)",
+      "special_ru": "Ванильный XML: значительный бонус к скорости исследований и качеству лечения.",
+      "forRace": "any"
+    },
+    {
+      "id": "institute_synth_armor",
+      "faction": "institute",
+      "label_en": "Institute ceramic synth armor",
+      "label_ru": "керамическая броня синтов",
+      "desc_en": "Lightweight white ceramic-polymer plates strapped over a dark grey bodysuit. Mass-produced for synth strike teams, it offers crisp protection against energy weapons.",
+      "desc_ru": "Лёгкие белые керамико-полимерные пластины поверх тёмно-серого комбинезона. Серийная броня штурмовых отрядов синтов, отлично рассеивающая энергетический огонь.",
+      "baseOn": "Apparel_FlakVest",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.88,
+        "ArmorRating_Blunt": 0.42,
+        "ArmorRating_Heat": 0.95,
+        "Insulation_Cold": 18,
+        "Insulation_Heat": 22,
+        "Mass": 5.2,
+        "MarketValue": 1650
+      },
+      "equippedStatOffsets": {
+        "AimingDelayFactor": -0.06
+      },
+      "cost": {
+        "Plasteel": 55,
+        "Synthread": 45,
+        "ComponentIndustrial": 4
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 11500,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Синтетические ткани Института» (TMM_InstituteTextiles)",
+      "special_ru": "Ванильный XML: лёгкая спайсер-броня с высокой защитой от лазеров и плазмы и ускоренным прицеливанием.",
+      "forRace": "any"
+    },
+    {
+      "id": "institute_courser_uniform",
+      "faction": "institute",
+      "label_en": "Institute Courser coat",
+      "label_ru": "плащ Охотника Института",
+      "desc_en": "A sleek, matte-black armored leather trenchcoat reinforced with woven carbon fibers and internal ceramic trauma plates. Worn by the Institute's deadliest synth retrievers.",
+      "desc_ru": "Гладкий матово-чёрный бронированный кожаный плащ, усиленный углеволокном и скрытыми керамическими пластинами. Униформа самых смертоносных ликвидаторов Института.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.02,
+        "ArmorRating_Blunt": 0.50,
+        "ArmorRating_Heat": 0.85,
+        "Insulation_Cold": 24,
+        "Insulation_Heat": 20,
+        "Mass": 4.4,
+        "MarketValue": 2400
+      },
+      "equippedStatOffsets": {
+        "MoveSpeed": 0.18,
+        "MeleeDodgeChance": 0.08
+      },
+      "cost": {
+        "Hyperweave": 45,
+        "Plasteel": 40,
+        "ComponentSpacer": 1
+      },
+      "workbench": "FabricationBench",
+      "workToMake": 15000,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда Отца или Джастина Айо за поимку беглых синтов",
+      "special_ru": "Ванильный XML: сочетает защиту тяжёлой брони со скоростью и уклонением лёгкого плаща.",
+      "forRace": "any"
+    },
+    {
+      "id": "railroad_armored_coat",
+      "faction": "railroad",
+      "label_en": "ballistic-weave heavy coat",
+      "label_ru": "бронеплащ Подземки",
+      "desc_en": "A patched, unassuming brown wasteland coat secretly lined with ultra-dense ballistic weave fibers. Looks like ordinary civilian clothing while stopping rifle rounds.",
+      "desc_ru": "Поношенный на вид коричневый плащ путника, изнутри прошитый сверхпрочным баллистическим волокном. Выглядит как обычная одежда, но держит винтовочные пули.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.94,
+        "ArmorRating_Blunt": 0.48,
+        "ArmorRating_Heat": 0.55,
+        "Insulation_Cold": 24,
+        "Insulation_Heat": 18,
+        "Mass": 3.4,
+        "MarketValue": 1750
+      },
+      "equippedStatOffsets": {
+        "MoveSpeed": 0.10
+      },
+      "cost": {
+        "Synthread": 85,
+        "Plasteel": 30,
+        "ComponentIndustrial": 3
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 9800,
+      "unlock": "quest",
+      "unlock_detail_ru": "Технология «Баллистическое волокно» от Техника Тома за помощь Подземке",
+      "special_ru": "Ванильный XML: высокая баллистическая защита без штрафа к скорости передвижения.",
+      "forRace": "any"
+    },
+    {
+      "id": "railroad_tinker_headgear",
+      "faction": "railroad",
+      "label_en": "signal-tracker beanie & goggles",
+      "label_ru": "шапка и очки конспиролога",
+      "desc_en": "A knitted wool beanie wired with copper antennae and paired with tinted brass welding goggles. Built to spot stealth fields and block stray psychic noise.",
+      "desc_ru": "Вязаная шерстяная шапка с вплетёнными медными антеннами в комплекте с затемнёнными сварочными очками. Помогает выслеживать стелс-поля и глушит психический шум.",
+      "baseOn": "Apparel_Tuque",
+      "layers": ["Overhead"],
+      "bodyParts": ["UpperHead"],
+      "stats": {
+        "ArmorRating_Sharp": 0.22,
+        "ArmorRating_Blunt": 0.14,
+        "ArmorRating_Heat": 0.20,
+        "Insulation_Cold": 18,
+        "Insulation_Heat": 4,
+        "Mass": 0.6,
+        "MarketValue": 490
+      },
+      "equippedStatOffsets": {
+        "ShootingAccuracyPawn": 0.05,
+        "PsychicSensitivity": -0.25
+      },
+      "cost": {
+        "Cloth": 45,
+        "Steel": 20,
+        "ComponentIndustrial": 2
+      },
+      "workbench": "TableMachining",
+      "workToMake": 3400,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Подпольная электроника» (TMM_UndergroundElectronics)",
+      "special_ru": "Ванильный XML: снижает психочувствительность на 25% и слегка повышает точность стрельбы.",
+      "forRace": "any"
+    },
+    {
+      "id": "gunner_combat_armor",
+      "faction": "gunners",
+      "label_en": "Gunner reinforced combat armor",
+      "label_ru": "боевая броня Стрелков",
+      "desc_en": "Olive-drab modular military armor plates strapped over dark green fatigues, stenciled with a white skull emblem on the shoulder guard. Built for professional wasteland mercenaries.",
+      "desc_ru": "Оливковые модульные армейские бронепластины поверх тёмно-зелёной формы с белым трафаретным черепом на наплечнике. Надёжная экипировка профессиональных наёмников.",
+      "baseOn": "Apparel_FlakVest",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.92,
+        "ArmorRating_Blunt": 0.45,
+        "ArmorRating_Heat": 0.42,
+        "Insulation_Cold": 16,
+        "Insulation_Heat": 12,
+        "Mass": 7.5,
+        "MarketValue": 1350
+      },
+      "equippedStatOffsets": {
+        "AimingDelayFactor": -0.05
+      },
+      "cost": {
+        "Steel": 85,
+        "Plasteel": 25,
+        "ComponentIndustrial": 3
+      },
+      "workbench": "TableMachining",
+      "workToMake": 9200,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Военная форма Пустоши» (TMM_WastelandMilitaryGear)",
+      "special_ru": "Ванильный XML: добротная индустриальная броня с хорошим соотношением цены и защиты.",
+      "forRace": "any"
+    },
+    {
+      "id": "gunner_skull_helmet",
+      "faction": "gunners",
+      "label_en": "Gunner helmet with skull bandana",
+      "label_ru": "каска Стрелков с банданой",
+      "desc_en": "An olive-green army combat helmet paired with a lower-face bandana printed with a skeletal jaw. Protects against shrapnel and dusty wasteland winds.",
+      "desc_ru": "Оливковая армейская каска в паре с банданой, на которой напечатана челюсть черепа. Защищает от осколков, пыли и токсичных ветров.",
+      "baseOn": "Apparel_AdvancedHelmet",
+      "layers": ["Overhead"],
+      "bodyParts": ["FullHead"],
+      "stats": {
+        "ArmorRating_Sharp": 0.78,
+        "ArmorRating_Blunt": 0.38,
+        "ArmorRating_Heat": 0.30,
+        "Insulation_Cold": 10,
+        "Insulation_Heat": 6,
+        "Mass": 1.6,
+        "MarketValue": 540
+      },
+      "equippedStatOffsets": {
+        "ToxicEnvironmentResistance": 0.20
+      },
+      "cost": {
+        "Steel": 40,
+        "Cloth": 25
+      },
+      "workbench": "TableMachining",
+      "workToMake": 3800,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Военная форма Пустоши» (TMM_WastelandMilitaryGear)",
+      "special_ru": "Ванильный XML: закрывает всю голову и даёт 20% защиты от токсичной среды.",
+      "forRace": "any"
+    },
+    {
+      "id": "vault_tec_jumpsuit",
+      "faction": "vault_tec",
+      "label_en": "Vault-Tec ribbed jumpsuit",
+      "label_ru": "комбинезон Убежища",
+      "desc_en": "A form-fitting cobalt-blue synthetic jumpsuit accented with bright yellow trim, brass zippers, and bold vault numerals across the back. Comfortable, durable, and iconic.",
+      "desc_ru": "Облегающий кобальтово-синий синтетический комбинезон с ярко-жёлтой отделкой, латунными молниями и крупным номером Убежища на спине.",
+      "baseOn": "Apparel_CollarShirt",
+      "layers": ["OnSkin"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.22,
+        "ArmorRating_Blunt": 0.14,
+        "ArmorRating_Heat": 0.35,
+        "Insulation_Cold": 16,
+        "Insulation_Heat": 16,
+        "Mass": 1.3,
+        "MarketValue": 460
+      },
+      "equippedStatOffsets": {
+        "WorkSpeedGlobal": 0.08,
+        "ToxicEnvironmentResistance": 0.15
+      },
+      "cost": {
+        "Synthread": 65
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 3200,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Стандарты Убежищ Волт-Тек» (TMM_VaultTecStandards)",
+      "special_ru": "Ванильный XML: универсальная нательная одежда, повышающая общую скорость работы на 8%.",
+      "forRace": "any"
+    },
+    {
+      "id": "vault_security_armor",
+      "faction": "vault_tec",
+      "label_en": "Vault security vest & riot helmet",
+      "label_ru": "броня службы безопасности Убежища",
+      "desc_en": "A dark navy padded ballistic vest stenciled with 'SECURITY' in crisp white block letters, built to quell underground riots and hold airlock chokepoints.",
+      "desc_ru": "Тёмно-синий стёганый баллистический бронежилет с чёткой белой надписью «SECURITY» на груди и спине, созданный для подавления бунтов и обороны шлюзов.",
+      "baseOn": "Apparel_FlakVest",
+      "layers": ["Middle"],
+      "bodyParts": ["Torso"],
+      "stats": {
+        "ArmorRating_Sharp": 0.86,
+        "ArmorRating_Blunt": 0.52,
+        "ArmorRating_Heat": 0.32,
+        "Insulation_Cold": 12,
+        "Insulation_Heat": 8,
+        "Mass": 4.8,
+        "MarketValue": 820
+      },
+      "equippedStatOffsets": {
+        "SuppressionPower": 0.15
+      },
+      "cost": {
+        "Steel": 55,
+        "Synthread": 35,
+        "ComponentIndustrial": 1
+      },
+      "workbench": "TableMachining",
+      "workToMake": 6400,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Стандарты Убежищ Волт-Тек» (TMM_VaultTecStandards)",
+      "special_ru": "Ванильный XML: отличная защита торса от дробящего урона в ближнем бою.",
+      "forRace": "any"
+    },
+    {
+      "id": "hunter_leather_duster",
+      "faction": "minutemen_hunters",
+      "label_en": "weathered monster-hunter duster",
+      "label_ru": "потёртый плащ охотника на нечисть",
+      "desc_en": "A heavy, road-worn brown leather duster layered over a red-and-black flannel shirt, with hidden inner holsters and silver-stitched cuffs to fend off claws and fangs.",
+      "desc_ru": "Тяжёлый потёртый в дороге коричневый кожаный плащ поверх красно-чёрной фланелевой рубахи, со скрытыми внутренними кобурами и простроченными серебряной нитью манжетами.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.54,
+        "ArmorRating_Blunt": 0.30,
+        "ArmorRating_Heat": 0.38,
+        "Insulation_Cold": 24,
+        "Insulation_Heat": 18,
+        "Mass": 2.8,
+        "MarketValue": 890
+      },
+      "equippedStatOffsets": {
+        "MeleeDodgeChance": 0.06,
+        "AimingDelayFactor": -0.05
+      },
+      "cost": {
+        "Leather_Heavy": 85,
+        "Silver": 15
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 5400,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Ремесло охотников и ополчения» (TMM_HuntersMilitiaCraft)",
+      "special_ru": "Ванильный XML: высокая защита от режущих/рваных атак (когтей и укусов) и отличная терморегуляция.",
+      "forRace": "any"
+    },
+    {
+      "id": "minutemen_general_uniform",
+      "faction": "minutemen_hunters",
+      "label_en": "Minutemen colonial duster",
+      "label_ru": "мундир генерала Минитменов",
+      "desc_en": "A weathered navy-blue colonial frock coat reinforced with boiled leather shoulder plates, crossed bandoliers, and brass buttons. Inspires settlers to stand their ground.",
+      "desc_ru": "Потрёпанный тёмно-синий колониальный сюртук с наплечниками из вываренной кожи, перекрещенными патронташами и латунными пуговицами. Вдохновляет поселенцев стоять до конца.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.68,
+        "ArmorRating_Blunt": 0.34,
+        "ArmorRating_Heat": 0.35,
+        "Insulation_Cold": 22,
+        "Insulation_Heat": 16,
+        "Mass": 3.5,
+        "MarketValue": 1280
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.22,
+        "NegotiationAbility": 0.15
+      },
+      "cost": {
+        "Synthread": 65,
+        "Leather_Heavy": 45,
+        "Steel": 25
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 7600,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда Престона Гарви за союз с Минитменами и охотниками",
+      "special_ru": "Ванильный XML: сочетает защиту и мощный бонус к лидерству и переговорам.",
+      "forRace": "any"
+    },
+    {
+      "id": "minutemen_tricorn_hat",
+      "faction": "minutemen_hunters",
+      "label_en": "Minutemen tricorn hat",
+      "label_ru": "треуголка Минитменов",
+      "desc_en": "A sturdy dark felt tricorn hat pinned with a brass musket-and-lightning badge. Shields the wearer from harsh sun and rain while projecting frontier authority.",
+      "desc_ru": "Прочная тёмная фетровая треуголка с латунной кокардой в виде скрещённых мушкетов и молнии. Защищает от солнца и дождя и подчёркивает авторитет командира.",
+      "baseOn": "Apparel_CowboyHat",
+      "layers": ["Overhead"],
+      "bodyParts": ["UpperHead"],
+      "stats": {
+        "ArmorRating_Sharp": 0.18,
+        "ArmorRating_Blunt": 0.12,
+        "ArmorRating_Heat": 0.20,
+        "Insulation_Cold": 10,
+        "Insulation_Heat": 16,
+        "Mass": 0.4,
+        "MarketValue": 340
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.12,
+        "ShootingAccuracyPawn": 0.03
+      },
+      "cost": {
+        "Leather_Plain": 35,
+        "Steel": 5
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 2200,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Ремесло охотников и ополчения» (TMM_HuntersMilitiaCraft)",
+      "special_ru": "Ванильный XML: лёгкий головной убор с бонусом к социальному влиянию.",
+      "forRace": "any"
+    },
+    {
+      "id": "mol_arcane_tweed_suit",
+      "faction": "men_of_letters",
+      "label_en": "Men of Letters warded suit",
+      "label_ru": "рунический костюм Просвещённых",
+      "desc_en": "A bespoke British tweed three-piece suit interwoven with fine silver-alloy filaments and concealed Enochian wards sewn into the waistcoat.",
+      "desc_ru": "Сшитый на заказ британский твидовый костюм-тройка, пронизанный тончайшими серебряными нитями и скрытыми енохианскими оберегами в подкладке жилета.",
+      "baseOn": "Apparel_ShirtButton",
+      "layers": ["OnSkin", "Middle"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.46,
+        "ArmorRating_Blunt": 0.24,
+        "ArmorRating_Heat": 0.45,
+        "Insulation_Cold": 20,
+        "Insulation_Heat": 12,
+        "Mass": 2.1,
+        "MarketValue": 1150
+      },
+      "equippedStatOffsets": {
+        "ResearchSpeed": 0.12,
+        "PsychicSensitivity": -0.35
+      },
+      "cost": {
+        "Synthread": 70,
+        "Silver": 35
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 6800,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Оккультное портняжное дело» (TMM_OccultTailoring)",
+      "special_ru": "Ванильный XML: надёжно защищает разум от ментальных атак и ускоряет оккультные исследования.",
+      "forRace": "any"
+    },
+    {
+      "id": "mol_covert_trenchcoat",
+      "faction": "men_of_letters",
+      "label_en": "London black-ops trenchcoat",
+      "label_ru": "тактический плащ лондонского ордена",
+      "desc_en": "A tailored navy-black waterproof trenchcoat fitted with concealed kevlar panels and brass ward-plates etched with binding sigils against demons and monsters.",
+      "desc_ru": "Строгий тёмно-синий непромокаемый плащ со скрытыми кевларовыми пластинами и латунными медальонами, покрытыми связывающими печатями против демонов и нечисти.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.84,
+        "ArmorRating_Blunt": 0.40,
+        "ArmorRating_Heat": 0.65,
+        "Insulation_Cold": 24,
+        "Insulation_Heat": 16,
+        "Mass": 3.6,
+        "MarketValue": 1950
+      },
+      "equippedStatOffsets": {
+        "PsychicSensitivity": -0.50,
+        "ShootingAccuracyPawn": 0.05
+      },
+      "cost": {
+        "Synthread": 75,
+        "Plasteel": 25,
+        "Silver": 30,
+        "Gold": 5
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 10500,
+      "unlock": "quest",
+      "unlock_detail_ru": "Награда доктора Хесс или Артура Кетча за сотрудничество с Британскими Просвещёнными",
+      "special_ru": "Свой C# (CompApparel): снижает входящий урон от сверхъестественных способностей (демонов, ангелов, нечисти) на 25%.",
+      "forRace": "any"
+    },
+    {
+      "id": "ghoul_revolutionary_frockcoat",
+      "faction": "ghouls",
+      "label_en": "crimson revolutionary coat",
+      "label_ru": "алый революционный сюртук",
+      "desc_en": "A faded, bullet-nicked crimson colonial frock coat worn over a battered waistcoat. Popularized by Goodneighbor's ghoul mayor, it commands respect among wasteland outcasts.",
+      "desc_ru": "Выцветший, пробитый пулями алый колониальный сюртук поверх потрёпанного жилета. Прославленный мэром Добрососедства, он внушает уважение среди изгоев Пустоши.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.44,
+        "ArmorRating_Blunt": 0.24,
+        "ArmorRating_Heat": 0.30,
+        "Insulation_Cold": 18,
+        "Insulation_Heat": 16,
+        "Mass": 2.4,
+        "MarketValue": 720
+      },
+      "equippedStatOffsets": {
+        "SocialImpact": 0.20,
+        "TradePriceImprovement": 0.08
+      },
+      "cost": {
+        "Cloth": 75,
+        "DevilstrandCloth": 25
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 4400,
+      "unlock": "quest",
+      "unlock_detail_ru": "Подарок Джона Хэнкока за дружбу и помощь общине разумных гулей",
+      "special_ru": "Ванильный XML: компенсирует штраф к красоте у гулей при переговорах и торговле.",
+      "forRace": "any"
+    },
+    {
+      "id": "ghoul_lead_lined_poncho",
+      "faction": "ghouls",
+      "label_en": "patched lead-lined poncho",
+      "label_ru": "прорезиненное пончо Пустоши",
+      "desc_en": "A heavy wasteland poncho stitched from rubberized canvas, scrap leather, and thin lead foil strips. Built to endure toxic storms and acid rain.",
+      "desc_ru": "Тяжёлое пончо скитальца Пустоши, сшитое из прорезиненного брезента, обрезков кожи и тонких свинцовых пластин. Надёжно укрывает от токсичных бурь и кислотных дождей.",
+      "baseOn": "Apparel_Parka",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.38,
+        "ArmorRating_Blunt": 0.22,
+        "ArmorRating_Heat": 0.45,
+        "Insulation_Cold": 28,
+        "Insulation_Heat": 14,
+        "Mass": 3.2,
+        "MarketValue": 510
+      },
+      "equippedStatOffsets": {
+        "ToxicEnvironmentResistance": 0.45
+      },
+      "cost": {
+        "Leather_Plain": 65,
+        "Steel": 20
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 3600,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Выживание в радиоактивной зоне» (TMM_RadSurvivalGear)",
+      "special_ru": "Ванильный XML: даёт 45% защиты от токсичных осадков людям и отлично греет в холода.",
+      "forRace": "any"
+    },
+    {
+      "id": "mutant_scrap_harness",
+      "faction": "super_mutants",
+      "label_en": "super mutant scrap harness",
+      "label_ru": "нагрудник супермутанта из лома",
+      "desc_en": "Massive, crudely welded steel plates, rusted highway signs, and heavy iron chains bolted together to fit the hulking torso of a super mutant.",
+      "desc_ru": "Массивные грубо сваренные стальные листы, ржавые дорожные знаки и тяжёлые цепи, скреплённые болтами по меркам исполинского торса супермутанта.",
+      "baseOn": "Apparel_PlateArmor",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.96,
+        "ArmorRating_Blunt": 0.55,
+        "ArmorRating_Heat": 0.40,
+        "Insulation_Cold": 20,
+        "Insulation_Heat": 14,
+        "Mass": 16.0,
+        "MarketValue": 1100
+      },
+      "equippedStatOffsets": {
+        "MeleeDamageFactor": 0.10
+      },
+      "cost": {
+        "Steel": 140,
+        "Leather_Heavy": 40
+      },
+      "workbench": "TableMachining",
+      "workToMake": 8800,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Броня титанов Пустоши» (TMM_SuperMutantArmor)",
+      "special_ru": "Свой C# / XML: единственная броня, подходящая огромному телу супермутанта (люди надеть не могут).",
+      "forRace": "super_mutant_only"
+    },
+    {
+      "id": "mutant_rebar_cage_helmet",
+      "faction": "super_mutants",
+      "label_en": "super mutant rebar cage helmet",
+      "label_ru": "шлем-клетка супермутанта",
+      "desc_en": "A brutal iron cage welded from thick rebar rods and bolted steel scrap, sized to protect a super mutant's massive skull in melee brawls.",
+      "desc_ru": "Грубая железная клетка, сваренная из толстой арматуры и стальных обрезков по размеру массивного черепа супермутанта для рукопашных схваток.",
+      "baseOn": "Apparel_SimpleHelmet",
+      "layers": ["Overhead"],
+      "bodyParts": ["FullHead"],
+      "stats": {
+        "ArmorRating_Sharp": 0.76,
+        "ArmorRating_Blunt": 0.48,
+        "ArmorRating_Heat": 0.25,
+        "Insulation_Cold": 8,
+        "Insulation_Heat": 8,
+        "Mass": 4.2,
+        "MarketValue": 480
+      },
+      "equippedStatOffsets": {
+        "PainShockThreshold": 0.10
+      },
+      "cost": {
+        "Steel": 60
+      },
+      "workbench": "TableMachining",
+      "workToMake": 3500,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Броня титанов Пустоши» (TMM_SuperMutantArmor)",
+      "special_ru": "Свой C# / XML: головной убор строго для ксенотипа TMM_SuperMutant.",
+      "forRace": "super_mutant_only"
+    },
+    {
+      "id": "clan_nocturnal_aristocrat_coat",
+      "faction": "monster_clans",
+      "label_en": "nocturnal clan velvet coat",
+      "label_ru": "бархатный плащ ночного клана",
+      "desc_en": "A long, high-collared midnight-black velvet and leather coat worn by ancient vampire elders. Tailored for silent movement and intimidating presence.",
+      "desc_ru": "Длинный полуночно-чёрный плащ из плотного бархата и кожи с высоким воротником, который носят старейшины вампиров. Скроен для бесшумного движения и внушения трепета.",
+      "baseOn": "Apparel_Duster",
+      "layers": ["Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 0.48,
+        "ArmorRating_Blunt": 0.24,
+        "ArmorRating_Heat": 0.20,
+        "Insulation_Cold": 26,
+        "Insulation_Heat": 10,
+        "Mass": 2.3,
+        "MarketValue": 950
+      },
+      "equippedStatOffsets": {
+        "MoveSpeed": 0.15,
+        "SocialImpact": 0.18
+      },
+      "cost": {
+        "DevilstrandCloth": 75,
+        "Silver": 10
+      },
+      "workbench": "ElectricTailoringBench",
+      "workToMake": 5600,
+      "unlock": "research",
+      "unlock_detail_ru": "Исследование «Биоферритная алхимия кланов» (TMM_ClanBioferriteCraft)",
+      "special_ru": "Ванильный XML: повышает скорость передвижения и социальное влияние.",
+      "forRace": "any"
+    },
+    {
+      "id": "clan_bioferrite_carapace",
+      "faction": "monster_clans",
+      "label_en": "living bioferrite carapace",
+      "label_ru": "живой биоферритовый панцирь",
+      "desc_en": "Organic crimson-black chitinous plates grown from hardened bioferrite and monster blood. The living armor pulses faintly and knits surface scratches back together.",
+      "desc_ru": "Органические багрово-чёрные хитиновые пластины, выращенные из закалённого биоферрита и крови тварей. Живая броня слабо пульсирует и сама затягивает повреждения.",
+      "baseOn": "Apparel_PowerArmor",
+      "layers": ["Middle", "Shell"],
+      "bodyParts": ["Torso", "Legs", "Arms"],
+      "stats": {
+        "ArmorRating_Sharp": 1.16,
+        "ArmorRating_Blunt": 0.62,
+        "ArmorRating_Heat": 0.35,
+        "Insulation_Cold": 28,
+        "Insulation_Heat": 18,
+        "Mass": 8.5,
+        "MarketValue": 3400
+      },
+      "equippedStatOffsets": {
+        "MeleeDamageFactor": 0.15,
+        "InjuryHealingFactor": 0.25
+      },
+      "cost": {
+        "Bioferrite": 110,
+        "Plasteel": 35,
+        "DevilstrandCloth": 40
+      },
+      "workbench": "BioferriteShaper",
+      "workToMake": 18500,
+      "unlock": "quest",
+      "unlock_detail_ru": "Секретный рецепт Альфа-вампира и Евы за союз с Кланами нечисти (требует DLC Anomaly для биоферрита; без DLC крафтится на верстаке из пластали и дьяволоткани)",
+      "special_ru": "Ванильный XML + свой C# (CompApparel): ускоряет заживление ран носителя на 25% и медленно чинит собственную прочность.",
+      "forRace": "any"
+    }
+  ],
+  "research": [
+    {
+      "id": "TMM_WastelandMilitaryGear",
+      "label_en": "wasteland military tailoring",
+      "label_ru": "военная экипировка Пустоши",
+      "desc_en": "Techniques for manufacturing standardized mercenary combat armor, tactical helmets, and authoritarian officer uniforms.",
+      "desc_ru": "Технологии пошива и штамповки армейской брони наёмников, тактических шлемов и офицерской формы.",
+      "cost": 1600,
+      "techLevel": "Industrial",
+      "prerequisites": ["FlakArmor"]
+    },
+    {
+      "id": "TMM_VaultTecStandards",
+      "label_en": "Vault-Tec protective gear",
+      "label_ru": "стандарты снаряжения Волт-Тек",
+      "desc_en": "Pre-war blueprints for durable synthetic vault jumpsuits and heavy riot-control security vests.",
+      "desc_ru": "Довоенные чертежи износостойких синтетических комбинезонов Убежищ и брони службы безопасности.",
+      "cost": 1400,
+      "techLevel": "Industrial",
+      "prerequisites": ["ComplexClothing", "FlakArmor"]
+    },
+    {
+      "id": "TMM_RadSurvivalGear",
+      "label_en": "radiation survival garments",
+      "label_ru": "противорадиационная одежда Пустоши",
+      "desc_en": "Methods of lining heavy coats with rubberized canvas and lead strips to endure toxic fallout.",
+      "desc_ru": "Методы пропитки и обшивки тяжёлых плащей прорезиненной тканью и свинцом для защиты от токсичных осадков.",
+      "cost": 1200,
+      "techLevel": "Industrial",
+      "prerequisites": ["ComplexClothing"]
+    },
+    {
+      "id": "TMM_HuntersMilitiaCraft",
+      "label_en": "hunter and militia outfitting",
+      "label_ru": "снаряжение охотников и ополчения",
+      "desc_en": "Craft rugged leather dusters reinforced with silver stitching alongside iconic colonial militia headgear.",
+      "desc_ru": "Пошив прочных кожаных плащей с серебряной прострочкой для охоты на нечисть и парадных головных уборов ополчения.",
+      "cost": 1500,
+      "techLevel": "Industrial",
+      "prerequisites": ["ComplexClothing"]
+    },
+    {
+      "id": "TMM_OccultTailoring",
+      "label_en": "occult garment weaving",
+      "label_ru": "оккультное портняжное дело",
+      "desc_en": "Incorporate silver filaments, flame-resistant linings, and Enochian wards into tailored suits and coats.",
+      "desc_ru": "Вплетение серебряных нитей, огнеупорной подкладки и енохианских оберегов в костюмы и плащи.",
+      "cost": 2200,
+      "techLevel": "Industrial",
+      "prerequisites": ["ComplexClothing"]
+    },
+    {
+      "id": "TMM_SuperMutantArmor",
+      "label_en": "titan scrap armoring",
+      "label_ru": "броня титанов Пустоши",
+      "desc_en": "Heavy welding techniques required to forge oversized plate harnesses and cage helmets for super mutants.",
+      "desc_ru": "Методы тяжёлой сварки для создания негабаритных бронеплит и шлемов-клеток под исполинское тело супермутанта.",
+      "cost": 1800,
+      "techLevel": "Industrial",
+      "prerequisites": ["PlateArmor", "Machining"]
+    },
+    {
+      "id": "TMM_UndergroundElectronics",
+      "label_en": "covert signal gear",
+      "label_ru": "подпольная электроника",
+      "desc_en": "Assemble improvised frequency-jamming headgear and sensor goggles favored by underground operatives.",
+      "desc_ru": "Сборка кустарных глушителей сигналов и сенсорных очков, используемых подпольными агентами.",
+      "cost": 1800,
+      "techLevel": "Industrial",
+      "prerequisites": ["MicroelectronicsBasics"]
+    },
+    {
+      "id": "TMM_BrotherhoodGear",
+      "label_en": "Brotherhood field equipment",
+      "label_ru": "полевое снаряжение Братства Стали",
+      "desc_en": "Produce reinforced scribe fatigues and ballistic power-armor undersuits used by Brotherhood chapters.",
+      "desc_ru": "Производство усиленной формы писцов и баллистических поддоспешников для силовой брони.",
+      "cost": 2600,
+      "techLevel": "Spacer",
+      "prerequisites": ["FlakArmor", "Fabrication"]
+    },
+    {
+      "id": "TMM_InstituteTextiles",
+      "label_en": "Institute polymer weaving",
+      "label_ru": "синтетические ткани Института",
+      "desc_en": "Synthesize sterile lab coats and lightweight ceramic-polymer armor plates modeled on Institute designs.",
+      "desc_ru": "Синтез стерильных лабораторных халатов и лёгкой керамико-полимерной брони по образцам Института.",
+      "cost": 3200,
+      "techLevel": "Spacer",
+      "prerequisites": ["ReconArmor", "Fabrication"]
+    },
+    {
+      "id": "TMM_ClanBioferriteCraft",
+      "label_en": "nocturnal clan alchemy",
+      "label_ru": "алхимия ночных кланов",
+      "desc_en": "Treat heavy velvet and leather with alchemical preservatives to craft aristocratic nocturnal garments.",
+      "desc_ru": "Обработка плотного бархата и кожи алхимическими составами для создания одежды ночных кланов.",
+      "cost": 2400,
+      "techLevel": "Industrial",
+      "prerequisites": ["ComplexClothing"]
+    }
+  ]
+}
+```
+
+## Сдать
+- `Defs/ThingDefs/Apparel_Factions.xml`
+- `Defs/ResearchProjectDefs/Research_FactionApparel.xml`
+- `Defs/RecipeDefs/Recipes_FactionApparel.xml`, если рецепты не встроены в ThingDef
+- `Source/FactionApparel.cs` — ограничение по расе, открытие по флагу, особые эффекты
+- RU `Languages/Russian/DefInjected/ThingDef/Apparel_Factions.xml`, `ResearchProjectDef/…`
+- `Tests/InGameFactionApparelProbe.cs`, флаг `-tmm-faction-apparel-probe`, JSON `FactionApparelProbe.json` в обычном формате. **Реальные действия:** надеть по одному предмету каждой фракции и проверить броню и статы; ангельский плащ не надевается на человека и надевается на ангела; броня мутанта — только на мутанта; квестовый рецепт недоступен без флага и доступен после `SparkStory.Instance.SetFlag("unlock.<id>","true")`; силовая броня садится в слой `TMM_PowerArmor`.
+
+В конце перечисли строки с `// CHECK API`.
