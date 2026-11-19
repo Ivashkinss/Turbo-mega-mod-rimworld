@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Легендарное оружие -->
+  <TMM_Legendary_Experiment18A.label>«Эксперимент 18-А»</TMM_Legendary_Experiment18A.label>
+  <TMM_Legendary_Experiment18A.description>Разогнанный прототип плазменной винтовки Института с нестабильными магнитными катушками. Выпускает сгустки перегретой плазмы с невероятной скоростью, периодически дезинтегрируя цель в кучку пепла.</TMM_Legendary_Experiment18A.description>
+
+  <TMM_Legendary_FinalJudgment.label>«Последний суд»</TMM_Legendary_FinalJudgment.label>
+  <TMM_Legendary_FinalJudgment.description>Реликтовый гатлинг-лазер старейшин Братства Стали со встроенным микроядерным реактором. Обрушивает на врагов бесконечный шквал лазерных лучей, но при долгой стрельбе раскаляет броню и обжигает самого стрелка.</TMM_Legendary_FinalJudgment.description>
+
+  <TMM_Legendary_TheColt.label>револьвер «Кольт»</TMM_Legendary_TheColt.label>
+  <TMM_Legendary_TheColt.description>Богато украшенный револьвер Colt Paterson 1851 года, выкованный самим Сэмюэлем Кольтом во время прохождения кометы. Заряженный 13 зачарованными серебряными пулями, он способен одним выстрелом сразить почти любую сверхъестественную тварь.</TMM_Legendary_TheColt.description>
+
+  <TMM_Legendary_LorenzosArtifact.label>гамма-пушка «Артефакт Лоренцо»</TMM_Legendary_LorenzosArtifact.label>
+  <TMM_Legendary_LorenzosArtifact.description>Глубоко модифицированная гамма-пушка со встроенным излучателем из древней инопланетной короны. Вместо радиации она выпускает мощные телекинетические импульсы, отбрасывающие врагов и крушащие стены и укрытия.</TMM_Legendary_LorenzosArtifact.description>
+
+  <TMM_Legendary_AtomsJudgement.label>суперкувалда «Крушитель Атома»</TMM_Legendary_AtomsJudgement.label>
+  <TMM_Legendary_AtomsJudgement.description>Исполинская суперкувалда, к бойку которой приварены четыре фонящих ядерных блока. Каждый удар обрушивает на врага сокрушительную кинетическую мощь и обжигающую радиационную волну по площади.</TMM_Legendary_AtomsJudgement.description>
+
+  <TMM_Legendary_TeslaCannon.label>пушка Теслы Анклава</TMM_Legendary_TeslaCannon.label>
+  <TMM_Legendary_TeslaCannon.description>Плечевое энергетическое орудие, созданное учёными Анклава для уничтожения бронетехники и роботов. Высоковольтная дуга перескакивает между ближайшими целями, выжигая электронику и намертво парализуя механоидов и синтов.</TMM_Legendary_TeslaCannon.description>
+
+  <TMM_Legendary_OverseersGuardian.label>карабин «Страж Смотрителя»</TMM_Legendary_OverseersGuardian.label>
+  <TMM_Legendary_OverseersGuardian.description>Модифицированный боевой карабин со сдвоенным затворным механизмом. При каждом нажатии на спуск он выпускает две синхронные пули по единой траектории, удваивая убойную силу без потери точности.</TMM_Legendary_OverseersGuardian.description>
+
+  <TMM_Legendary_RailwayRifle.label>гвоздемёт «Железнодорожная винтовка»</TMM_Legendary_RailwayRifle.label>
+  <TMM_Legendary_RailwayRifle.description>Пневматическое орудие инженеров Подземки, стреляющее раскалёнными стальными железнодорожными костылями. Тяжёлые снаряды прошивают силовую броню навылет и буквально пригвождают врагов к земле.</TMM_Legendary_RailwayRifle.description>
+
+  <TMM_Legendary_BigBoy.label>ядерный гранатомёт «Большой мальчик»</TMM_Legendary_BigBoy.label>
+  <TMM_Legendary_BigBoy.description>Чудовищно переделанная тактическая ядерная катапульта, которую таскают вожаки диких супермутантов. Сдвоенный механизм запускает сразу два мини-ядерных заряда за один выстрел, превращая поле боя в выжженный кратер.</TMM_Legendary_BigBoy.description>
+
+  <TMM_Legendary_TheEqualizer.label>пистолет «Уравнитель»</TMM_Legendary_TheEqualizer.label>
+  <TMM_Legendary_TheEqualizer.description>Оккультный межпространственный пистолет, созданный в тайных лабораториях Британских Просвещённых. Он стреляет квантово-связанными зарядами, способными ранить даже архангелов и древних сущностей, но каждый выстрел наносит ответный урон самому стрелку.</TMM_Legendary_TheEqualizer.description>
+
+  <TMM_Legendary_FirstBlade.label>Первый Клинок</TMM_Legendary_FirstBlade.label>
+  <TMM_Legendary_FirstBlade.description>Первородный клинок из челюстной кости, которым Каин совершил первое в истории убийство. Связанный с Меткой Каина, он убивает любого врага (кроме высших боссов) с одного удара, но в мирное время терзает владельца неутолимой жаждой крови и приступами ярости.</TMM_Legendary_FirstBlade.description>
+
+  <TMM_Legendary_ArchangelBlade.label>Клинок Архангела</TMM_Legendary_ArchangelBlade.label>
+  <TMM_Legendary_ArchangelBlade.description>Золотой витой клинок, выкованный в высших чертогах Небес. Он без труда рассекает любую броню, убивает обычных врагов с одного удара, воспламеняет цели святым огнём и защищает владельца от демонических проклятий.</TMM_Legendary_ArchangelBlade.description>
+
+  <TMM_Legendary_AlphaPredator.label>живой клинок «Альфа-хищник»</TMM_Legendary_AlphaPredator.label>
+  <TMM_Legendary_AlphaPredator.description>Жуткий живой клинок, выращенный из крови Альфа-вампира и закалённого биоферрита. Его зазубренное лезвие пьёт жизненную силу врагов при каждом ударе, мгновенно затягивая раны самого владельца.</TMM_Legendary_AlphaPredator.description>
+
+  <!-- Легендарная броня и аксессуары -->
+  <TMM_Legendary_ProtectorArmor.label>силовая броня «Протектор»</TMM_Legendary_ProtectorArmor.label>
+  <TMM_Legendary_ProtectorArmor.description>Уникальный чёрно-красный комплект силовой брони, собранный лучшими техниками Изгоев. Надевается поверх обычной одежды; в нагрудник встроен медицинский автоинъектор, мгновенно впрыскивающий стимуляторы при падении здоровья ниже 30%.</TMM_Legendary_ProtectorArmor.description>
+
+  <TMM_Legendary_GoldenPipBoy.label>Золотой Пип-Бой 3000 Mark IV</TMM_Legendary_GoldenPipBoy.label>
+  <TMM_Legendary_GoldenPipBoy.description>Юбилейный позолоченный наручный компьютер, созданный для высшего руководства Волт-Тек. Улучшенный тактический сопроцессор повышает меткость, ускоряет работу и защищает носителя от паники.</TMM_Legendary_GoldenPipBoy.description>
+
+  <!-- Оружие и турель с бурой -->
+  <TMM_Gun_BoraxSprayer.label>распылитель буры</TMM_Gun_BoraxSprayer.label>
+  <TMM_Gun_BoraxSprayer.description>Химический распылитель под давлением, заправленный концентрированным раствором тетрабората натрия (буры). Безвредный для людей, этот едкий белый туман разъедает неуязвимую плоть левиафанов и лишает Дика Романа его сверхъестественной защиты.</TMM_Gun_BoraxSprayer.description>
+
+  <TMM_Turret_Borax.label>автоматическая турель с бурой</TMM_Turret_Borax.label>
+  <TMM_Turret_Borax.description>Стационарная оборонительная турель, распыляющая концентрированный раствор буры на дистанцию до 18 клеток. Безвредна для людей, но разъедает левиафанов и снимает неуязвимость Дика Романа.</TMM_Turret_Borax.description>
+
+  <TMM_Gun_BoraxTurret.label>форсунка турели с бурой</TMM_Gun_BoraxTurret.label>
+  <TMM_Gun_BoraxTurret.description>Автоматический распылитель буры высокого давления, установленный на турели.</TMM_Gun_BoraxTurret.description>
+
+</LanguageData>
