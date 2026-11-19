@@ -1,6 +1,8 @@
 # StoryContentFactions — 75 квестов фракций в XML (E4)
 
-kind: implement + run · assignee: gemini (Antigravity) · afterTask: StoryStageHotel
+kind: integrate + run · assignee: gemini (Antigravity) · afterTask: StoryStageHotel
+
+> **ИЗМЕНЕНИЕ (Claude, 20.11, экономия лимита Antigravity):** XML 75 квестов пишет Gemini Neon (промпты `Delegation/Hydrogen/36/37/38-Neon-FactionQuests-Batch*.md`); Claude раскладывает файлы в `Delegation/StoryContent/Factions/` по путям корня. **Не конвертируй сам**: скопируй готовые файлы, напиши линтер (ниже), прогони его и пробу. Если папка пуста или неполна — `blocked: waiting for Neon faction quests` для недостающих фракций и бери следующую задачу.
 
 Источник: `Documentation/FactionQuests.json` (Hydrogen, 15 фракций × 5 квестов). Образец формата: `Defs/StoryDefs/Story_Act1.xml` и `Languages/Russian/DefInjected/TurboMegaMod.StoryQuestDef/Story_Act1.xml`. Ядро и этапы (E1–E3) не меняй. Задача механическая: точно перенести то, что придумал Hydrogen, в наш формат.
 
