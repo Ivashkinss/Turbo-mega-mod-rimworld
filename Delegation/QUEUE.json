@@ -1518,6 +1518,19 @@
       "note": "Bottom-menu Factions tab: all factions, leader and hero hierarchy tree with states, successor mark, unknown heroes until met (saved known flag). Real probe plus reload."
     },
     {
+      "id": "OutpostTabStageB",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "taskFile": "Delegation/OutpostTabStageB/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostTabStageB",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T16:50:00Z",
+      "note": "Walking caravan from the Outposts tab: auto-formed caravan, delivery on the outpost tile, carriers walk home, food for the round trip, mid-trip reload. Use Tools/cecil_methods.ps1 for API lookup (never powershell -Command). Max 2 attempts per step."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
