@@ -1519,7 +1519,7 @@
     },
     {
       "id": "OutpostTabStageB",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/OutpostTabStageB/TASK.md",
@@ -1570,6 +1570,20 @@
       ],
       "createdUtc": "2026-11-19T19:30:00Z",
       "note": "Story E3: hotel visit and deliver stages; install Hydrogen act 1 content."
+    },
+    {
+      "id": "StoryStagesCoverage",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "run",
+      "afterTask": "StoryStageHotel",
+      "taskFile": "Delegation/StoryStagesCoverage/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryStagesCoverage",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T01:45:00Z",
+      "note": "E2 acceptance follow-up: probe Rescue/Retrieve/Hold/KillHero; reload on the same DLL without -CompatibilityReload."
     },
     {
       "id": "StoryContentFactions",
