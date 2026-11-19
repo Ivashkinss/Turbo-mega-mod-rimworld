@@ -1559,7 +1559,7 @@
     },
     {
       "id": "StoryStageHotel",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "StoryStageSite",
@@ -1573,7 +1573,7 @@
     },
     {
       "id": "StoryStagesCoverage",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "gemini",
       "kind": "run",
       "afterTask": "StoryStageHotel",
@@ -1587,7 +1587,7 @@
     },
     {
       "id": "StoryContentFactions",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "claude",
       "kind": "implement",
       "afterTask": "StoryStageHotel",
@@ -1614,11 +1614,25 @@
       "note": "Integrate Neon's 18 supernatural genes (XML + C#), metabolism stays 0, in-game probe and xenotype regressions."
     },
     {
-      "id": "LegendaryItems",
+      "id": "StoryStageSiteFix",
       "state": "pending",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "SupernaturalGenes",
+      "taskFile": "Delegation/StoryStageSiteFix/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryStageSiteFix",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T02:15:00Z",
+      "note": "PRIORITY: integrate Neon's fixes for Codex E2 review (Delegation/StoryContent/E2fix), keep objective coverage scenarios, one DLL."
+    },
+    {
+      "id": "LegendaryItems",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "StoryStageSiteFix",
       "taskFile": "Delegation/LegendaryItems/TASK.md",
       "outputDir": "Tools/Build/GeminiLegendaryItems",
       "expectedOutputs": [
