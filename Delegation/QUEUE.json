@@ -1697,6 +1697,32 @@
       "note": "Read-only acceptance of E2 world-site and colony-raid stages: save/load, objectives, raid hostility rollback."
     },
     {
+      "id": "StoryStageHotelReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/StoryStageHotelReview/TASK.md",
+      "outputDir": "Tools/Build/CodexStoryStageHotelReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T02:30:00Z",
+      "note": "Read-only acceptance of E3 hotel-visit and deliver stages."
+    },
+    {
+      "id": "OutpostCaravanReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/OutpostCaravanReview/TASK.md",
+      "outputDir": "Tools/Build/CodexOutpostCaravanReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T02:30:00Z",
+      "note": "Read-only acceptance of outpost walking caravans (pawn lifecycle, silver, save mid-route)."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
