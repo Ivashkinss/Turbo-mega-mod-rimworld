@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_A4_BloodEclipse -->
+  <TMM_Story_A4_BloodEclipse.label>кровавое затмение</TMM_Story_A4_BloodEclipse.label>
+  <TMM_Story_A4_BloodEclipse.stages.0.label>Багровое небо над Пустошью</TMM_Story_A4_BloodEclipse.stages.0.label>
+  <TMM_Story_A4_BloodEclipse.stages.0.text>Под кроваво-красным солнцем Затмения Разлом над континентом стонет словно разрываемая сталь. Вокруг Резонатора Искр пляшет гравитация, стрелки компасов бешено крутятся, а лидеры всех фракций Пустоши движутся к {COLONY} на последние переговоры перед запуском машины.</TMM_Story_A4_BloodEclipse.stages.0.text>
+  <TMM_Story_A4_BloodEclipse.stages.1.label>Канун решающего совета</TMM_Story_A4_BloodEclipse.stages.1.label>
+  <TMM_Story_A4_BloodEclipse.stages.1.text>Резонатор Искр гудит на критической частоте, пока вооружённые делегации подходят к периметру. Опираясь на помощь перебежчиков или собственных опытных инженеров, вы уже подготовили защиту с бурой и обереги. Как вы встретите прибывающих вождей?</TMM_Story_A4_BloodEclipse.stages.1.text>
+  <TMM_Story_A4_BloodEclipse.stages.1.choices.0.label>Встать рядом с Нулевым Синтом у пульта и усилить енохианские печати</TMM_Story_A4_BloodEclipse.stages.1.choices.0.label>
+  <TMM_Story_A4_BloodEclipse.stages.1.choices.0.resultText>Голубой свет в кристалле Резонатора выравнивается, а Нулевой Синт спокойно дышит рядом с вами. За воротами сквозь багровую мглу спускаются первые винтокрылы и кортежи.</TMM_Story_A4_BloodEclipse.stages.1.choices.0.resultText>
+  <TMM_Story_A4_BloodEclipse.stages.1.choices.1.label>Зарядить распылители буры, взвести турели и поднять гарнизон по тревоге</TMM_Story_A4_BloodEclipse.stages.1.choices.1.label>
+  <TMM_Story_A4_BloodEclipse.stages.1.choices.1.resultText>На стенах лязгают затворы. Каждый лидер, переступивший порог {COLONY}, сразу поймёт, что вы намерены говорить с позиции силы.</TMM_Story_A4_BloodEclipse.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Summit_Protect -->
+  <TMM_Story_A4_Summit_Protect.label>совет под кровавым солнцем: защитники</TMM_Story_A4_Summit_Protect.label>
+  <TMM_Story_A4_Summit_Protect.stages.1.label>Совет защитников</TMM_Story_A4_Summit_Protect.stages.1.label>
+  <TMM_Story_A4_Summit_Protect.stages.1.text>Престон Гарви, Дездемона и братья Винчестеры собираются в зале вашей гостиницы в окружении настороженных наблюдателей Братства Стали и Волт-Тек. Престон кладёт шляпу на стол: «Мы пришли, потому что вы поклялись защищать живых. Назовите союз, который встанет у этого пульта, когда Разлом распахнётся».</TMM_Story_A4_Summit_Protect.stages.1.text>
+  <TMM_Story_A4_Summit_Protect.stages.1.choices.0.label>Пообещать объединить Минитменов, охотников и Подземку вокруг Искры</TMM_Story_A4_Summit_Protect.stages.1.choices.0.label>
+  <TMM_Story_A4_Summit_Protect.stages.1.choices.0.resultText>Дездемона и Престон обмениваются твёрдым кивком. Коалиция Свободной Пустоши готова выступить по вашему слову.</TMM_Story_A4_Summit_Protect.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Summit_Protect.stages.1.choices.1.label>Выслушать также предложения Братства и Волт-Тек перед блокировкой пульта</TMM_Story_A4_Summit_Protect.stages.1.choices.1.label>
+  <TMM_Story_A4_Summit_Protect.stages.1.choices.1.resultText>Вы молча выслушиваете все доводы. Лидеры фракций занимают места вокруг зала Резонатора перед необратимым решением.</TMM_Story_A4_Summit_Protect.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Summit_Purify -->
+  <TMM_Story_A4_Summit_Purify.label>совет под кровавым солнцем: сталь и пепел</TMM_Story_A4_Summit_Purify.label>
+  <TMM_Story_A4_Summit_Purify.stages.1.label>Вожди в зале</TMM_Story_A4_Summit_Purify.stages.1.label>
+  <TMM_Story_A4_Summit_Purify.stages.1.text>Силовая броня Артура Мэксона сотрясает половицы, пока он смотрит через стол на полковника Отема и Генри Касдина, а в тени у двери затаился связной Подземки. Мэксон бьёт латной перчаткой по столу: «Час расплаты настал. Вы очистите этот мир сталью — или ядом Анклава?»</TMM_Story_A4_Summit_Purify.stages.1.text>
+  <TMM_Story_A4_Summit_Purify.stages.1.choices.0.label>Подтвердить, что {COLONY} готова выжечь скверну из Пустоши раз и навсегда</TMM_Story_A4_Summit_Purify.stages.1.choices.0.label>
+  <TMM_Story_A4_Summit_Purify.stages.1.choices.0.resultText>Мэксон и Отем коротко кивают, каждый рассчитывая, что у пульта Резонатора вы выберете именно его путь.</TMM_Story_A4_Summit_Purify.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Summit_Purify.stages.1.choices.1.label>Потребовать гарантий, что мирных жителей и Нулевого Синта не пустят под нож</TMM_Story_A4_Summit_Purify.stages.1.choices.1.label>
+  <TMM_Story_A4_Summit_Purify.stages.1.choices.1.resultText>Мэксон холодно хмурится, а связной Подземки в тени ловит ваш взгляд — оставляя шанс на резкий разворот в последнюю секунду.</TMM_Story_A4_Summit_Purify.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Summit_Order -->
+  <TMM_Story_A4_Summit_Order.label>совет под кровавым солнцем: архитекторы</TMM_Story_A4_Summit_Order.label>
+  <TMM_Story_A4_Summit_Order.stages.1.label>Небеса и Архитекторы</TMM_Story_A4_Summit_Order.stages.1.label>
+  <TMM_Story_A4_Summit_Order.stages.1.text>Ослепительный небесный свет затмевает лампы, когда архангел Михаил входит в гостиницу рядом с доктором Хесс, а у терминала связи ждут Отец и доктор Брон. Михаил говорит с ледяной твёрдостью: «Земля два века истекала кровью в хаосе. Отдайте Искры небесному воинству, и мы установим вечный покой».</TMM_Story_A4_Summit_Order.stages.1.text>
+  <TMM_Story_A4_Summit_Order.stages.1.choices.0.label>Признать, что лишь абсолютная высшая власть спасёт этот сломанный мир</TMM_Story_A4_Summit_Order.stages.1.choices.0.label>
+  <TMM_Story_A4_Summit_Order.stages.1.choices.0.resultText>Михаил торжественно склоняет голову, и делегации направляются к залу Резонатора Искр.</TMM_Story_A4_Summit_Order.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Summit_Order.stages.1.choices.1.label>Сравнить условия Небес с предложениями Института и Волт-Тек</TMM_Story_A4_Summit_Order.stages.1.choices.1.label>
+  <TMM_Story_A4_Summit_Order.stages.1.choices.1.resultText>Доктор Брон тонко улыбается из угла, а глаза Михаила сужаются. Всё решится у пульта.</TMM_Story_A4_Summit_Order.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Summit_Abyss -->
+  <TMM_Story_A4_Summit_Abyss.label>совет под кровавым солнцем: владыки ночи</TMM_Story_A4_Summit_Abyss.label>
+  <TMM_Story_A4_Summit_Abyss.stages.1.label>Бокалы на краю бездны</TMM_Story_A4_Summit_Abyss.stages.1.label>
+  <TMM_Story_A4_Summit_Abyss.stages.1.text>Воздух в гостинице пропитан серой и дорогим одеколоном: Кроули вращает бокал виски напротив Дика Романа и Альфа-вампира. Кроули хищно ухмыляется: «Ангелы дохнут с голоду, люди в ужасе, а Резонатор прогрет. Скажи, солнышко — мы сегодня вскрываем винный погреб Ада или подписываем корпоративный контракт?»</TMM_Story_A4_Summit_Abyss.stages.1.text>
+  <TMM_Story_A4_Summit_Abyss.stages.1.choices.0.label>Поднять бокал за крушение Клетки и торжество Тёмного Завета</TMM_Story_A4_Summit_Abyss.stages.1.choices.0.label>
+  <TMM_Story_A4_Summit_Abyss.stages.1.choices.0.resultText>Кроули со звоном чокается с вами и торжествующе смеётся, пока свита движется к Резонатору.</TMM_Story_A4_Summit_Abyss.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Summit_Abyss.stages.1.choices.1.label>Напомнить всем, что рубильник в руках {COLONY} — и потребовать максимальную цену</TMM_Story_A4_Summit_Abyss.stages.1.choices.1.label>
+  <TMM_Story_A4_Summit_Abyss.stages.1.choices.1.resultText>Дик Роман одобрительно усмехается вашей деловой хватке. Теперь всё решится у пульта.</TMM_Story_A4_Summit_Abyss.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_ResonatorConsole -->
+  <TMM_Story_A4_ResonatorConsole.label>выбор у пульта</TMM_Story_A4_ResonatorConsole.label>
+  <TMM_Story_A4_ResonatorConsole.stages.0.label>Пик Кровавого затмения</TMM_Story_A4_ResonatorConsole.stages.0.label>
+  <TMM_Story_A4_ResonatorConsole.stages.0.text>Багровое солнце замирает точно над {COLONY}. Молнии бьют между золотыми нитями Резонатора Искр и грозовыми тучами в небе. Тянуть больше нельзя — стоит вам запустить протокол выбранной коалиции на главном пульте, и расклад сил в мире закрепится навсегда.</TMM_Story_A4_ResonatorConsole.stages.0.text>
+  <TMM_Story_A4_ResonatorConsole.stages.1.label>Точка невозврата №2: Выберите финальную коалицию</TMM_Story_A4_ResonatorConsole.stages.1.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.text>Все взгляды в зале прикованы к вашим рукам над рычагами Резонатора Искр. Этот выбор АБСОЛЮТЕН И НЕОБРАТИМ: выбранная коалиция станет вашими вечными союзниками до конца войны, а все враждебные блоки превратятся в смертельных врагов без шанса на примирение.\n\nКакая коалиция определит судьбу Земли?</TMM_Story_A4_ResonatorConsole.stages.1.text>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.0.label>[Свободная Пустошь] Союз с Минитменами и охотниками + Подземкой — запечатать Разлом и защитить все Искры (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.0.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.0.resultText>Вы запускаете Протокол Гармонического Сдерживания! Престон Гарви, братья Винчестеры и Дездемона занимают посты рядом с Нулевым Синтом — а Небеса, Ад, Анклав и Институт объявляют {COLONY} тотальную войну!</TMM_Story_A4_ResonatorConsole.stages.1.choices.0.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.1.label>[Свободная Пустошь] Порвать с чистильщиками и встать на сторону Минитменов и охотников + Подземки (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.1.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.1.resultText>В последний миг отвернувшись от вождей зачистки, вы включаете Протокол Гармонического Сдерживания! Дездемона и Престон Гарви встают на защиту Нулевого Синта, пока Анклав и Братство в ярости покидают зал!</TMM_Story_A4_ResonatorConsole.stages.1.choices.1.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.2.label>[Стерильная Империя] Союз с Анклавом + Институтом — выжечь мутации и вернуть Землю людям (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.2.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.2.resultText>Вы запускаете Матрицу Стерилизации! Полковник Отем и Отец скрепляют союз рукопожатием над пультом, а плазменные отряды и штурмовики синтов начинают зачистку Пустоши!</TMM_Story_A4_ResonatorConsole.stages.1.choices.2.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.3.label>[Стерильная Империя] Союз с Анклавом + Институтом — установить человеческую технократию (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.3.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.3.resultText>Отвергнув небесных владык, вы запускаете Матрицу Стерилизации вместе с полковником Отемом и Отцом! Легионы синтов и отряды «Адского пламени» стягиваются к {COLONY}, а ангелы и охотники объявляют войну!</TMM_Story_A4_ResonatorConsole.stages.1.choices.3.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.4.label>[Железный Крестовый Поход] Союз с Братством + Изгоями — подавить магию и опасные технологии (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.4.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.4.resultText>Артур Мэксон и Генри Касдин забывают старый раскол у вашего пульта! Резонатор переходит в режим континентального подавителя, а объединённый орден стали выступает в поход против аномалий, синтов и демонов!</TMM_Story_A4_ResonatorConsole.stages.1.choices.4.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.5.label>[Железный Крестовый Поход] Союз с Братством + Изгоями — укрыть человечество за стеной стали (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.5.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.5.resultText>Решив, что только железная дисциплина сдержит Разлом, вы объединяете Артура Мэксона и Генри Касдина под знаменем Железного Крестового Похода! Институт, Небеса и Ад поднимают армии против {COLONY}!</TMM_Story_A4_ResonatorConsole.stages.1.choices.5.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.6.label>[Небесный Порядок] Союз с Небесами + Британскими Просвещёнными — возродить благодать и установить мир (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.6.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.6.resultText>Ослепительный золотой огонь бьёт из Резонатора! Архангел Михаил и доктор Хесс берут под контроль сеть небесных маяков, а Ад, Братство и повстанцы клянутся сжечь {COLONY} дотла!</TMM_Story_A4_ResonatorConsole.stages.1.choices.6.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.7.label>[Небесный Порядок] Отвернуться от бездны в последний час и заключить союз с Небесами + Просвещёнными (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.7.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.7.resultText>Отказавшись погружать Землю в серу и пепел, вы передаёте управление Искрой архангелу Михаилу и доктору Хесс! Демоны воют от ярости, а небесное воинство спускается к вашим стенам!</TMM_Story_A4_ResonatorConsole.stages.1.choices.7.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.8.label>[Тёмный Завет] Союз с Адом + Кланами нечисти — напитаться Искрой и править вечными сумерками (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.8.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.8.resultText>Багровые молнии разрывают потолок зала! Владыки Ада и ночные кланы скрепляют кровавый пакт на Резонаторе {COLONY}, погружая Пустошь в вечные сумерки, пока Небеса и люди собирают крестовый поход!</TMM_Story_A4_ResonatorConsole.stages.1.choices.8.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.9.label>[Теневой Консорциум] Союз с Волт-Тек + Стрелками — монополизировать Резонатор и купить Пустошь (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.9.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.9.resultText>Доктор Брон и капитан Уэс подписывают устав прямо на корпусе Резонатора! Батальоны наёмников и охрана Убежищ занимают рубежи вокруг {COLONY}, пока фанатики и повстанцы готовят штурм!</TMM_Story_A4_ResonatorConsole.stages.1.choices.9.resultText>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.10.label>[Теневой Консорциум] Заключить холодный контракт с Волт-Тек + Стрелками ради выживания (НЕОБРАТИМО)</TMM_Story_A4_ResonatorConsole.stages.1.choices.10.label>
+  <TMM_Story_A4_ResonatorConsole.stages.1.choices.10.resultText>Предпочтя жёсткие контракты и наёмные штыки идеализму, вы запускаете протокол Теневого Консорциума с доктором Броном и капитаном Уэсом! Половина Пустоши объявляет вас предателями!</TMM_Story_A4_ResonatorConsole.stages.1.choices.10.resultText>
+  <TMM_Story_A4_ResonatorConsole.onComplete.1.label>Жребий брошен</TMM_Story_A4_ResonatorConsole.onComplete.1.label>
+  <TMM_Story_A4_ResonatorConsole.onComplete.1.text>Луч Резонатора Искр зафиксирован на частоте вашей коалиции. По всей Пустоши во вражеских фракциях вспыхивают перевороты, а неперебежавшие герои обнажают клинки — началась Ночь длинных клинков.</TMM_Story_A4_ResonatorConsole.onComplete.1.text>
+
+  <!-- TMM_Story_A4_NightOfLongKnives_Coups -->
+  <TMM_Story_A4_NightOfLongKnives_Coups.label>ночь длинных клинков: перевороты</TMM_Story_A4_NightOfLongKnives_Coups.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.0.label>Ударная волна по фракциям</TMM_Story_A4_NightOfLongKnives_Coups.stages.0.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.0.text>Спустя считанные часы после вашего выбора у пульта Резонатора закрытые аварийные частоты взрываются сообщениями о кровавых переворотах в штабах сверхдержав региона.</TMM_Story_A4_NightOfLongKnives_Coups.stages.0.text>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.label>Новые владыки на тронах</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.text>В Институте всю силовую власть захватывает безжалостный Джастин Айо, отдавая приказ на тотальное истребление синтов поверхности. А в глубинах Ада ослабление контроля приводит к катастрофическому взлому Клетки Люцифера!</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.text>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.0.label>[Кроули перебежал] Приготовиться к ярости Люцифера, захватившего трон Ада</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.0.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.0.resultText>Кроули наливает себе полный стакан виски в вашей столовой, побледнев под привычной ухмылкой: «Что ж, солнышко... мои бывшие подчинённые только что выпустили босса из подвала. Теперь Адом правит Люцифер, и он идёт прямо по нашу душу».</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.0.resultText>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.1.label>[Кроули в Аду] Записать перехваты о Джастине Айо и военном совете преисподней</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.1.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.1.resultText>Связист фиксирует новые частоты противника: Джастин Айо бросает в бой легионы синтов, а Кроули поднимает демонов перекрёстка на тотальную войну.</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.1.resultText>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.2.label>[Тёмный Завет] Согласовать удары с Адом, пока Михаил и Мэксон объединяются против вас</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.2.label>
+  <TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.2.resultText>Разведчики преисподней доносят, что архангел Михаил и старейшина Мэксон заключили временный крестовый союз ради уничтожения вашего Резонатора.</TMM_Story_A4_NightOfLongKnives_Coups.stages.1.choices.2.resultText>
+
+  <!-- TMM_Story_A4_Challenge_TechVanguard -->
+  <TMM_Story_A4_Challenge_TechVanguard.label>месть в стали</TMM_Story_A4_Challenge_TechVanguard.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.0.label>Засечён импульс телепортации</TMM_Story_A4_Challenge_TechVanguard.stages.0.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.0.text>Джастин Айо не теряет ни минуты: охотники Института и тяжёлые ударные синты наводятся прямо на двор {COLONY}, пытаясь обезглавить поселение до прибытия ваших новых союзников.</TMM_Story_A4_Challenge_TechVanguard.stages.0.text>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.0.effects.1.label>Авангард охотников разбит</TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.0.effects.1.text>Гарнизон перебил элитный отряд Института прямо во дворе, доказав, что ваша оборона выдержит высокотехнологичные удары.</TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.1.effects.1.label>Тяжёлый урон от налёта синтов</TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.1.effects.1.text>Ударная группа охотников нанесла серьёзный урон перед телепортацией назад, заставив механиков срочно латать периметр.</TMM_Story_A4_Challenge_TechVanguard.stages.1.outcomes.1.effects.1.text>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.label>Разбор поля боя</TMM_Story_A4_Challenge_TechVanguard.stages.2.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.text>Дымящиеся остовы синтов и разбитые излучатели усеивают двор. Техники могут разобрать павших охотников на редкие сплавы или передать послание об их разгроме по частоте Института.</TMM_Story_A4_Challenge_TechVanguard.stages.2.text>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.0.label>Разобрать павших охотников на пласталь и передовые компоненты</TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.0.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.0.resultText>Инженеры извлекают ценные довоенные сплавы из обломков для укрепления обороны.</TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.0.resultText>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.1.label>Передать предупреждение Джастину Айо через передатчик его же охотника</TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.1.label>
+  <TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.1.resultText>Нулевой Синт с тихой гордостью смотрит, как уходит сигнал — {COLONY} не склонится перед Институтом.</TMM_Story_A4_Challenge_TechVanguard.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Challenge_RebelAmbush -->
+  <TMM_Story_A4_Challenge_RebelAmbush.label>цена предательства</TMM_Story_A4_Challenge_RebelAmbush.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.0.label>Засада на дороге снабжения</TMM_Story_A4_Challenge_RebelAmbush.stages.0.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.0.text>Разъярённая вашим союзом с чистильщиками, тяжёлый боец Подземки Глория вместе с ветеранами ополчения захватила ключевую развязку у {COLONY}, вызывая ваших командиров на открытый бой.</TMM_Story_A4_Challenge_RebelAmbush.stages.0.text>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.0.effects.1.label>Развязка зачищена</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.0.effects.1.text>В ожесточённой перестрелке у развязки Глория пала, сражаясь до последнего патрона — блокада ваших путей снабжения прорвана.</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.1.effects.0.label>Блокада снята</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.1.effects.0.text>До подхода ваших основных сил отряд Глории заминировал перекрёсток и растворился в подземной сети.</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.2.effects.0.label>Кровавая ничья</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.2.effects.0.text>Ударной группе пришлось отойти под огнём минигана Глории, хотя подошедшие союзники вскоре отбросили повстанцев от трассы.</TMM_Story_A4_Challenge_RebelAmbush.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.2.label>Подсчёт потерь</TMM_Story_A4_Challenge_RebelAmbush.stages.2.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.2.text>Над выжженной развязкой повисает тишина. Даже закалённые офицеры понимают суровую правду Ночи длинных клинков: вчерашние друзья стали заклятыми врагами.</TMM_Story_A4_Challenge_RebelAmbush.stages.2.text>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.2.choices.0.label>Собрать трофейное оружие повстанцев и вернуться в {COLONY}</TMM_Story_A4_Challenge_RebelAmbush.stages.2.choices.0.label>
+  <TMM_Story_A4_Challenge_RebelAmbush.stages.2.choices.0.resultText>Бойцы забирают тяжёлые боеприпасы и возвращаются за стены, готовясь к решающей войне.</TMM_Story_A4_Challenge_RebelAmbush.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A4_Reckoning_AbyssalStrike -->
+  <TMM_Story_A4_Reckoning_AbyssalStrike.label>челюсти в кровавом тумане</TMM_Story_A4_Reckoning_AbyssalStrike.label>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.0.label>Чёрный ихор у ворот</TMM_Story_A4_Reckoning_AbyssalStrike.stages.0.label>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.0.text>Не желая позволить {COLONY} сорвать их многовековую жатву, штурмовики левиафанов и ночные твари вырываются из багрового тумана — проверяя, готова ли ваша оборона с бурой к последней войне.</TMM_Story_A4_Reckoning_AbyssalStrike.stages.0.text>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.0.effects.2.label>Удар левиафанов отбит</TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.0.effects.2.text>Шипящие облака белой буры разъели неуязвимость левиафанов, позволив защитникам перебить тварей на подступах к Резонатору!</TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.1.effects.1.label>Яростная ночная схватка</TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.1.effects.1.text>Стая левиафанов проломила внешние баррикады перед отступлением на рассвете — обязательно вооружите отряды распылителями буры перед финальной осадой!</TMM_Story_A4_Reckoning_AbyssalStrike.stages.1.outcomes.1.effects.1.text>
+
+  <!-- TMM_Story_A4_Reckoning_CelestialStrike -->
+  <TMM_Story_A4_Reckoning_CelestialStrike.label>кара небесного воинства</TMM_Story_A4_Reckoning_CelestialStrike.label>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.0.label>Столпы испепеляющего света</TMM_Story_A4_Reckoning_CelestialStrike.stages.0.label>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.0.text>Разгневанный союзом {COLONY} с преисподней или Советом Консорциума, Захария ведёт карательный отряд ангелов сквозь багровые тучи, чтобы покарать ваш зал Резонатора.</TMM_Story_A4_Reckoning_CelestialStrike.stages.0.text>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.0.effects.2.label>Небесный десант отбит</TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.0.effects.2.text>Енохианские обереги и тяжёлый огонь отбросили карателей Небес, оставив во дворе опалённые перья и осколки небесной стали.</TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.1.effects.1.label>Опалённые укрепления</TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.1.effects.1.text>Отряд Небес сжёг половину внешних укреплений перед отходом — усильте енохианские обереги до подхода главных армий!</TMM_Story_A4_Reckoning_CelestialStrike.stages.1.outcomes.1.effects.1.text>
+
+  <!-- TMM_Story_A4_Interlude_FinalVigil -->
+  <TMM_Story_A4_Interlude_FinalVigil.label>бдение под багровым солнцем</TMM_Story_A4_Interlude_FinalVigil.label>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.0.label>Затишье перед бурей</TMM_Story_A4_Interlude_FinalVigil.stages.0.label>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.0.text>После Ночи длинных клинков над {COLONY} опускается тяжёлое, неестественное затишье. Колонисты точат клинки, проверяют уплотнители силовой брони и тихо переговариваются в столовой под ровный гул Резонатора Искр.</TMM_Story_A4_Interlude_FinalVigil.stages.0.text>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.label>Последние слова перед войной</TMM_Story_A4_Interlude_FinalVigil.stages.1.label>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.text>Вы застаёте Нулевого Синта у Резонатора — он молча всматривается в синий кристалл. Связанный с вами глубоким доверием или суровой необходимостью, он знает, что финальный акт вот-вот начнётся.</TMM_Story_A4_Interlude_FinalVigil.stages.1.text>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.0.label>Поднять тихий тост с защитниками и укрепить боевой дух</TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.0.label>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.0.resultText>В полумраке звенят кружки. Что бы ни принёс завтрашний день, {COLONY} встретит его не дрогнув.</TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.1.label>Проверить оружейную и раздать бойцам передовые аптечки</TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.1.label>
+  <TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.1.resultText>Каждый отряд получает свежие медпакеты и боекомплект. Поселение готово к тотальной войне.</TMM_Story_A4_Interlude_FinalVigil.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A4_Prep_FreeWasteland -->
+  <TMM_Story_A4_Prep_FreeWasteland.label>знамя свободной пустоши</TMM_Story_A4_Prep_FreeWasteland.label>
+  <TMM_Story_A4_Prep_FreeWasteland.stages.1.label>Прибытие союзного авангарда</TMM_Story_A4_Prep_FreeWasteland.stages.1.label>
+  <TMM_Story_A4_Prep_FreeWasteland.stages.1.text>В {COLONY} прибывают грузовые капсулы и разведчики Минитменов, охотников и Подземки с боеприпасами и соляными оберегами. Престон Гарви чётко отдаёт честь: «Свободная Пустошь с вами, генерал. Разведка засекла точки для первых енохианских маяков — дайте приказ, и мы начинаем кампанию!»</TMM_Story_A4_Prep_FreeWasteland.stages.1.text>
+  <TMM_Story_A4_Prep_FreeWasteland.stages.1.choices.0.label>Принять припасы союзников и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_FreeWasteland.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_FreeWasteland.stages.1.choices.0.resultText>Сигнальные ракеты взмывают над союзными поселениями. Финальная битва за свободную Пустошь начинается!</TMM_Story_A4_Prep_FreeWasteland.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_FreeWasteland.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_FreeWasteland.onComplete.2.label>
+  <TMM_Story_A4_Prep_FreeWasteland.onComplete.2.text>Престон Гарви вступил в ваш гарнизон вместе с военными припасами Свободной Пустоши! Открыт первый финальный квест вашей коалиции — «Щит из соли и стали».</TMM_Story_A4_Prep_FreeWasteland.onComplete.2.text>
+
+  <!-- TMM_Story_A4_Prep_SterileEmpire -->
+  <TMM_Story_A4_Prep_SterileEmpire.label>директива стерильной империи</TMM_Story_A4_Prep_SterileEmpire.label>
+  <TMM_Story_A4_Prep_SterileEmpire.stages.1.label>Прибытие ударной группы Анклава и Института</TMM_Story_A4_Prep_SterileEmpire.stages.1.label>
+  <TMM_Story_A4_Prep_SterileEmpire.stages.1.text>Чёрный винтокрыл Анклава садится в сполохах молний телепортации Института, доставляя плазменное снаряжение и капитана Ричардса для усиления вашего штаба. Ричардс вытягивается по струнке: «Полковник Отем и Отец синхронизировали сеть распыления. Отдайте приказ — и мы начнём очистку Пустоши!»</TMM_Story_A4_Prep_SterileEmpire.stages.1.text>
+  <TMM_Story_A4_Prep_SterileEmpire.stages.1.choices.0.label>Принять имперские резервы и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_SterileEmpire.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_SterileEmpire.stages.1.choices.0.resultText>Орбитальные ретрансляторы наводятся на базы сопротивления. Кампания Стерильной Империи начинается!</TMM_Story_A4_Prep_SterileEmpire.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_SterileEmpire.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_SterileEmpire.onComplete.2.label>
+  <TMM_Story_A4_Prep_SterileEmpire.onComplete.2.text>Капитан Ричардс вступил в ваш гарнизон вместе с припасами Анклава и Института! Открыта первая финальная операция вашей коалиции — «Токсичный горизонт».</TMM_Story_A4_Prep_SterileEmpire.onComplete.2.text>
+
+  <!-- TMM_Story_A4_Prep_IronCrusade -->
+  <TMM_Story_A4_Prep_IronCrusade.label>авангард железного крестового похода</TMM_Story_A4_Prep_IronCrusade.label>
+  <TMM_Story_A4_Prep_IronCrusade.stages.1.label>Прибытие объединённого стального корпуса</TMM_Story_A4_Prep_IronCrusade.stages.1.label>
+  <TMM_Story_A4_Prep_IronCrusade.stages.1.text>Тяжёлые десантные капсулы Братства Стали и Изгоев врезаются в посадочную зону, доставляя урановые стержни, пласталь и главного квартирмейстера специалиста Олин. Олин поправляет сварочные очки с мрачной ухмылкой: «Мэксон и Касдин наконец перестали спорить и прислали тяжёлое железо. Укажите, где Институт и чудовища!»</TMM_Story_A4_Prep_IronCrusade.stages.1.text>
+  <TMM_Story_A4_Prep_IronCrusade.stages.1.choices.0.label>Принять арсенал ордена и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_IronCrusade.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_IronCrusade.stages.1.choices.0.resultText>Винтокрылы с рёвом поднимаются в багровое небо. Ad Victoriam — Железный Крестовый Поход выступает в бой!</TMM_Story_A4_Prep_IronCrusade.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_IronCrusade.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_IronCrusade.onComplete.2.label>
+  <TMM_Story_A4_Prep_IronCrusade.onComplete.2.text>Специалист Олин вступила в ваш гарнизон вместе с припасами Братства и Изгоев! Открыта первая финальная операция вашей коалиции — «Молот и наковальня».</TMM_Story_A4_Prep_IronCrusade.onComplete.2.text>
+
+  <!-- TMM_Story_A4_Prep_CelestialOrder -->
+  <TMM_Story_A4_Prep_CelestialOrder.label>вестники небесного порядка</TMM_Story_A4_Prep_CelestialOrder.label>
+  <TMM_Story_A4_Prep_CelestialOrder.stages.1.label>Прибытие связной Небес и арсенала Лондона</TMM_Story_A4_Prep_CelestialOrder.stages.1.label>
+  <TMM_Story_A4_Prep_CelestialOrder.stages.1.text>Во вспышке ослепительного белого света появляется офицер разведки Небес Наоми рядом с контейнерами, помеченными гербом Британских Просвещённых. Наоми спокойно складывает руки: «Архангел Михаил и доктор Хесс санкционировали полную поддержку вашего гарнизона. Вместе мы соберём Искры и принесём на Землю вечный порядок».</TMM_Story_A4_Prep_CelestialOrder.stages.1.text>
+  <TMM_Story_A4_Prep_CelestialOrder.stages.1.choices.0.label>Принять небесные реликвии и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_CelestialOrder.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_CelestialOrder.stages.1.choices.0.resultText>Енохианские маяки вспыхивают вдоль горизонта. Кампания Небесного Порядка начинается!</TMM_Story_A4_Prep_CelestialOrder.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_CelestialOrder.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_CelestialOrder.onComplete.2.label>
+  <TMM_Story_A4_Prep_CelestialOrder.onComplete.2.text>Наоми вступила в ваш гарнизон вместе с припасами Небес и Просвещённых! Открыта первая финальная миссия вашей коалиции — «Жатва Искр».</TMM_Story_A4_Prep_CelestialOrder.onComplete.2.text>
+
+  <!-- TMM_Story_A4_Prep_DarkCovenant -->
+  <TMM_Story_A4_Prep_DarkCovenant.label>легион тёмного завета</TMM_Story_A4_Prep_DarkCovenant.label>
+  <TMM_Story_A4_Prep_DarkCovenant.stages.1.label>Прибытие посланников бездны и ночи</TMM_Story_A4_Prep_DarkCovenant.stages.1.label>
+  <TMM_Story_A4_Prep_DarkCovenant.stages.1.text>Чёрный дым стелется по двору, когда вперёд выходит Мэг с пакетами крови, довоенным золотом и военными сундуками Ада и Кланов нечисти. Мэг мрачно усмехается: «Надеюсь, ты готов испачкать руки, босс. Преисподняя и стаи Альфы на взводе — пойдём сожжём Небесные врата».</TMM_Story_A4_Prep_DarkCovenant.stages.1.text>
+  <TMM_Story_A4_Prep_DarkCovenant.stages.1.choices.0.label>Принять дары бездны и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_DarkCovenant.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_DarkCovenant.stages.1.choices.0.resultText>Серные ветры воют над багровой Пустошью. Тёмный Завет выступает в поход!</TMM_Story_A4_Prep_DarkCovenant.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_DarkCovenant.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_DarkCovenant.onComplete.2.label>
+  <TMM_Story_A4_Prep_DarkCovenant.onComplete.2.text>Мэг вступила в ваш гарнизон вместе с дарами Ада и Кланов нечисти! Открыта первая финальная миссия вашей коалиции — «Кровавая десятина».</TMM_Story_A4_Prep_DarkCovenant.onComplete.2.text>
+
+  <!-- TMM_Story_A4_Prep_ShadowConsortium -->
+  <TMM_Story_A4_Prep_ShadowConsortium.label>наёмники теневого консорциума</TMM_Story_A4_Prep_ShadowConsortium.label>
+  <TMM_Story_A4_Prep_ShadowConsortium.stages.1.label>Прибытие грузовых капсул и элитного снайпера</TMM_Story_A4_Prep_ShadowConsortium.stages.1.label>
+  <TMM_Story_A4_Prep_ShadowConsortium.stages.1.text>Тяжёлые грузовые контейнеры Волт-Тек опускаются во двор вместе со снайпером Стрелков Бейкером, доставляя слитки золота, пласталь и довоенные компоненты. Бейкер спокойно проверяет оптику: «Перевод доктора Брона прошёл, а капитан Уэс уже вывел батальоны на хребет. Укажите, кого из конкурентов ликвидировать первым».</TMM_Story_A4_Prep_ShadowConsortium.stages.1.text>
+  <TMM_Story_A4_Prep_ShadowConsortium.stages.1.choices.0.label>Принять капитал Консорциума и начать Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_ShadowConsortium.stages.1.choices.0.label>
+  <TMM_Story_A4_Prep_ShadowConsortium.stages.1.choices.0.resultText>Приказы на зачистку разлетаются по частотам наёмников. Враждебное поглощение Пустоши начинается!</TMM_Story_A4_Prep_ShadowConsortium.stages.1.choices.0.resultText>
+  <TMM_Story_A4_Prep_ShadowConsortium.onComplete.2.label>Акт V: Армагеддон Пустоши</TMM_Story_A4_Prep_ShadowConsortium.onComplete.2.label>
+  <TMM_Story_A4_Prep_ShadowConsortium.onComplete.2.text>Бейкер вступил в ваш гарнизон вместе с военным капиталом Волт-Тек и Стрелков! Открыта первая финальная операция вашей коалиции — «Враждебное поглощение».</TMM_Story_A4_Prep_ShadowConsortium.onComplete.2.text>
+
+</LanguageData>
