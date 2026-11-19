@@ -1583,7 +1583,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-20T01:45:00Z",
-      "note": "E2 acceptance follow-up: probe Rescue/Retrieve/Hold/KillHero; reload on the same DLL without -CompatibilityReload."
+      "note": "Integrate Neon fixes for Codex E2 review (5 P1, 2 P2), full probe, one DLL, no -CompatibilityReload."
     },
     {
       "id": "StoryContentFactions",
@@ -1671,7 +1671,7 @@
     },
     {
       "id": "StoryStageSiteReview",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/StoryStageSiteReview/TASK.md",
