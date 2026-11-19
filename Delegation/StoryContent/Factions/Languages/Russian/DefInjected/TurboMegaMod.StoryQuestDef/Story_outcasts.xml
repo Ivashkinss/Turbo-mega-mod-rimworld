@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_outcasts_Q1 -->
+  <TMM_Story_outcasts_Q1.label>сбор металлолома</TMM_Story_outcasts_Q1.label>
+  <TMM_Story_outcasts_Q1.letterLabel>Сбор металлолома</TMM_Story_outcasts_Q1.letterLabel>
+  <TMM_Story_outcasts_Q1.letterText>Житель Пустоши. В отличие от мягкотелых глупцов Лайонса, Изгои помнят нашу истинную миссию: не давать опасные довоенные технологии в руки невежд. Расчистите завал в нижнем архиве форта Индепенденс и принесите три уцелевших сервомодуля силовой брони.</TMM_Story_outcasts_Q1.letterText>
+  <TMM_Story_outcasts_Q1.stages.0.label>Добыть сервомодули в обрушенном архиве</TMM_Story_outcasts_Q1.stages.0.label>
+  <TMM_Story_outcasts_Q1.stages.0.text>Расчистите нижний архив форта Индепенденс и вынесите уцелевшие сервомодули силовой брони из довоенных залов.</TMM_Story_outcasts_Q1.stages.0.text>
+  <TMM_Story_outcasts_Q1.stages.1.label>Передача модулей специалисту Олин</TMM_Story_outcasts_Q1.stages.1.label>
+  <TMM_Story_outcasts_Q1.stages.1.text>Внутри бункера обнаружились следы довоенной инспекции Волт-Тек, проверявшей радиационную защиту брони. Специалист Олин встречает разведчиков на границе карты.</TMM_Story_outcasts_Q1.stages.1.text>
+  <TMM_Story_outcasts_Q1.stages.1.choices.0.label>Передать все три модуля специалисту Олин</TMM_Story_outcasts_Q1.stages.1.choices.0.label>
+  <TMM_Story_outcasts_Q1.stages.1.choices.0.resultText>Чётко и без лишних вопросов. Вот твоя доля припасов.</TMM_Story_outcasts_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_outcasts_Q2 -->
+  <TMM_Story_outcasts_Q2.label>холодный расчёт</TMM_Story_outcasts_Q2.label>
+  <TMM_Story_outcasts_Q2.letterLabel>Холодный расчёт</TMM_Story_outcasts_Q2.letterLabel>
+  <TMM_Story_outcasts_Q2.letterText>Наёмники Стрелков устроили засаду на наш конвой и украли три энергоячейки высокой ёмкости для нашей сети сдерживания. Перехватите их курьера, пока он не добрался до штаба — и постарайтесь вернуть ячейки целыми.</TMM_Story_outcasts_Q2.letterText>
+  <TMM_Story_outcasts_Q2.stages.0.label>Перехватить курьера Стрелков</TMM_Story_outcasts_Q2.stages.0.label>
+  <TMM_Story_outcasts_Q2.stages.0.text>Устройте засаду на караван Стрелков, везущий украденные энергоячейки Изгоев, прежде чем они доберутся до своего штаба.</TMM_Story_outcasts_Q2.stages.0.text>
+  <TMM_Story_outcasts_Q2.stages.1.label>Уцелевшие энергоячейки</TMM_Story_outcasts_Q2.stages.1.label>
+  <TMM_Story_outcasts_Q2.stages.1.text>Если не считать оплавленной вмятины от лома, которым курьер Стрелков пытался вскрыть корпус, все три энергоячейки целы. Молодой писец Сайлас ждёт груз.</TMM_Story_outcasts_Q2.stages.1.text>
+  <TMM_Story_outcasts_Q2.stages.1.choices.0.label>Вернуть энергоячейки писцу Сайласу</TMM_Story_outcasts_Q2.stages.1.choices.0.label>
+  <TMM_Story_outcasts_Q2.stages.1.choices.0.resultText>Ни единой царапины на корпусах! Защитник Касдин будет впечатлён.</TMM_Story_outcasts_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_outcasts_Q3 -->
+  <TMM_Story_outcasts_Q3.label>клетка для тени</TMM_Story_outcasts_Q3.label>
+  <TMM_Story_outcasts_Q3.letterLabel>Клетка для тени</TMM_Story_outcasts_Q3.letterLabel>
+  <TMM_Story_outcasts_Q3.letterText>Все эти «аномалии» и демоны, просачивающиеся в наш мир, — не более чем неуправляемые энергетические феномены. Мы собрали стазис-резонатор и нуждаемся в живом образце. Заманите теневую сущность в нашу ловушку и удерживайте её, пока поле не замкнётся.</TMM_Story_outcasts_Q3.letterText>
+  <TMM_Story_outcasts_Q3.stages.0.label>Удержать стазис-ловушку от приманенных тварей</TMM_Story_outcasts_Q3.stages.0.label>
+  <TMM_Story_outcasts_Q3.stages.0.text>Стазис-резонатор Изгоев на окраине {COLONY} испускает пронзительный зов, притягивая ночных тварей прямо на ваши укрепления! Продержитесь, пока капсула не захлопнется!</TMM_Story_outcasts_Q3.stages.0.text>
+  <TMM_Story_outcasts_Q3.stages.1.label>Изморозь на стекле капсулы</TMM_Story_outcasts_Q3.stages.1.label>
+  <TMM_Story_outcasts_Q3.stages.1.text>Запертая в гудящей капсуле тень выводит изморозью на стекле точные координаты подземного госпиталя гулей, прежде чем затихнуть.</TMM_Story_outcasts_Q3.stages.1.text>
+  <TMM_Story_outcasts_Q3.stages.1.choices.0.label>Передать захваченную сущность в капсуле Изгоям</TMM_Story_outcasts_Q3.stages.1.choices.0.label>
+  <TMM_Story_outcasts_Q3.stages.1.choices.0.resultText>Великолепно. Теперь у нас есть источник данных, который перевернёт понимание этого Разлома.</TMM_Story_outcasts_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_outcasts_Q4 -->
+  <TMM_Story_outcasts_Q4.label>склеп под госпиталем</TMM_Story_outcasts_Q4.label>
+  <TMM_Story_outcasts_Q4.letterLabel>Склеп под госпиталем</TMM_Story_outcasts_Q4.letterLabel>
+  <TMM_Story_outcasts_Q4.letterText>Наши сенсоры обнаружили довоенное ядро сдерживания под старой клиникой, которую заняли гули Пустоши. Без этого ядра щиты нашего бункера откажут через пару дней. Извлеките ядро — не позволяйте жалости к мутировавшим трупам встать на пути настоящих людей.</TMM_Story_outcasts_Q4.letterText>
+  <TMM_Story_outcasts_Q4.stages.0.label>Противостояние в подземном госпитале гулей</TMM_Story_outcasts_Q4.stages.0.label>
+  <TMM_Story_outcasts_Q4.stages.0.text>Под клиникой старый реактор с клеймом «Проект Чистилище — Сектор 4» поддерживает жизнь десятков больных гулей. Удержите зал, когда в него ворвётся отряд Касдина.</TMM_Story_outcasts_Q4.stages.0.text>
+  <TMM_Story_outcasts_Q4.stages.1.label>Ядро реактора Сектора 4</TMM_Story_outcasts_Q4.stages.1.label>
+  <TMM_Story_outcasts_Q4.stages.1.text>Лазерная винтовка Касдина гудит, пока испуганные врачи-гули заслоняют пациентов. За спиной Касдина молодой писец Сайлас с ужасом смотрит на жестокость командира. Решите судьбу ядра.</TMM_Story_outcasts_Q4.stages.1.text>
+  <TMM_Story_outcasts_Q4.stages.1.choices.0.label>Вырвать ядро и отдать Касдину (за Изгоев)</TMM_Story_outcasts_Q4.stages.1.choices.0.label>
+  <TMM_Story_outcasts_Q4.stages.1.choices.0.resultText>Жестоко, но эффективно. С такими союзниками мы переживём любой конец света.</TMM_Story_outcasts_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_outcasts_Q4.stages.1.choices.1.label>Защитить госпиталь от Изгоев и сохранить реактор (за людей и Искру)</TMM_Story_outcasts_Q4.stages.1.choices.1.label>
+  <TMM_Story_outcasts_Q4.stages.1.choices.1.resultText>Вы выбрали кучку гниющих гулей вместо спасения технологии?! Вы пожалеете об этом!</TMM_Story_outcasts_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_outcasts_Q5 -->
+  <TMM_Story_outcasts_Q5.label>украденные чертежи</TMM_Story_outcasts_Q5.label>
+  <TMM_Story_outcasts_Q5.letterLabel>Украденные чертежи</TMM_Story_outcasts_Q5.letterLabel>
+  <TMM_Story_outcasts_Q5.letterText>Касдин окончательно слетел с катушек — он готовит налёты на нейтральные поселения ради каждой крохи технологий! Я скопировал его главные чертежи брони на голодиск и сбежал. Я бегу к вашим воротам, а за мной по пятам идут два карательных отряда Изгоев!</TMM_Story_outcasts_Q5.letterText>
+  <TMM_Story_outcasts_Q5.stages.0.label>Отбить погоню Изгоев за писцом Сайласом</TMM_Story_outcasts_Q5.stages.0.label>
+  <TMM_Story_outcasts_Q5.stages.0.text>Измотанный писец Сайлас со спасённым медицинским сканером из госпиталя вбегает в ворота {COLONY}, а следом рвутся каратели Изгоев в чёрно-красной силовой броне!</TMM_Story_outcasts_Q5.stages.0.text>
+  <TMM_Story_outcasts_Q5.stages.1.label>Писец с совестью</TMM_Story_outcasts_Q5.stages.1.label>
+  <TMM_Story_outcasts_Q5.stages.1.text>Когда карательный отряд Изгоев разбит у ваших стен, писец Сайлас кладёт на верстак голодиск с главными чертежами силовой брони Касдина.</TMM_Story_outcasts_Q5.stages.1.text>
+  <TMM_Story_outcasts_Q5.stages.1.choices.0.label>Укрыть Сайласа и принять его в колонию</TMM_Story_outcasts_Q5.stages.1.choices.0.label>
+  <TMM_Story_outcasts_Q5.stages.1.choices.0.resultText>Спасибо, что не выдали. С этими чертежами мы соберём броню не хуже их хвалёных комплектов.</TMM_Story_outcasts_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

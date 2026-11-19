@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- OUTCASTS Q1: SALVAGE PROTOCOL                                         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_outcasts_Q1</defName>
+    <label>salvage protocol</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_OutcastsFaction</faction>
+    <giver>TMM_Hero_specialist_olin</giver>
+    <fallbackGiver>TMM_Hero_henry_casdin</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Salvage Protocol</letterLabel>
+    <letterText>Wastelander. Unlike Lyons' soft-hearted fools, the Outcasts remember our true mission: keeping dangerous pre-war tech out of ignorant hands. Clear the cave-in at the Fort Independence sub-archive and bring us three intact power armor servo-modules.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>sub_archive</key>
+        <label>Recover servo-modules from the collapsed sub-archive</label>
+        <text>Clear the Fort Independence sub-archive and retrieve intact power-armor servo components from the pre-war vaults.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>ComponentIndustrial</thing>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>olin_handover</key>
+        <label>Handover to Specialist Olin</label>
+        <text>Inside the archive, your team also spotted pre-war Vault-Tec inspection logs checking the armor's radiation shielding. Specialist Olin meets your scouts at the perimeter to claim the three servo-modules.</text>
+        <choices>
+          <li>
+            <outcome>delivered</outcome>
+            <label>Hand all three servo-modules over to Specialist Olin</label>
+            <resultText>Clean work and no foolish questions. Here is your share of supplies.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.out_q1</flag>
+                <value>delivered</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>4</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.outcasts_recon_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- OUTCASTS Q2: COLD CALCULATION                                         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_outcasts_Q2</defName>
+    <label>cold calculation</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_OutcastsFaction</faction>
+    <giver>TMM_Hero_scribe_silas</giver>
+    <fallbackGiver>TMM_Hero_henry_casdin</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_outcasts_Q1</li>
+    </requires>
+    <letterLabel>Cold Calculation</letterLabel>
+    <letterText>Gunner mercenaries ambushed our supply convoy and stole three high-capacity fusion cells meant for our containment grid. Intercept their courier before he reaches their stronghold—and please, try to recover the cells intact.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>gunner_ambush</key>
+        <label>Intercept the Gunner courier convoy</label>
+        <text>Ambush the Gunner mercenaries hauling the stolen Outcast fusion cells before they reach their stronghold.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>silas_return</key>
+        <label>Intact fusion cells</label>
+        <text>Apart from a scorched crowbar dent where a Gunner courier tried prying a casing open, all three high-capacity fusion cells are intact. Young Scribe Silas awaits delivery.</text>
+        <choices>
+          <li>
+            <outcome>returned</outcome>
+            <label>Return the recovered fusion cells to Scribe Silas</label>
+            <resultText>Not a single ruptured seal! Defender Casdin will be impressed.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.out_q2</flag>
+                <value>returned</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>650</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentSpacer</thing>
+                <count>3</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- OUTCASTS Q3: CAGE FOR A SHADOW                                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_outcasts_Q3</defName>
+    <label>cage for a shadow</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_OutcastsFaction</faction>
+    <giver>TMM_Hero_henry_casdin</giver>
+    <fallbackGiver>TMM_Hero_specialist_olin</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_outcasts_Q2</li>
+    </requires>
+    <letterLabel>Cage for a Shadow</letterLabel>
+    <letterText>These 'anomalies' and demons bleeding into our world are nothing more than uncontained energy phenomena. We have built a stasis resonator, and we need a live subject. Lure a Shadow Entity into our trap and hold the line until the containment field locks.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>stasis_lure</key>
+        <label>Hold the stasis resonator against lured entities</label>
+        <text>The Outcast stasis trap on the edge of {COLONY} emits a shrill pulse, drawing nocturnal horrors straight into your killzone! Hold until the containment cylinder locks!</text>
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>1.1</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>deliver_specimen</key>
+        <label>Frost on the containment glass</label>
+        <text>Trapped inside the humming Outcast cylinder, the shadow entity traces frost across the glass—spelling out the exact coordinates of an underground ghoul hospital before going still.</text>
+        <choices>
+          <li>
+            <outcome>captured</outcome>
+            <label>Transfer the sealed containment pod to Defender Henry Casdin</label>
+            <resultText>Magnificent. Now we possess raw telemetry that will overturn everything we thought we knew about this Rift.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.out_q3</flag>
+                <value>captured</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>800</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.casdin_helmet</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- OUTCASTS Q4 (FACTION POINT): CRYPT UNDER THE HOSPITAL                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_outcasts_Q4</defName>
+    <label>crypt under the hospital</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_OutcastsFaction</faction>
+    <giver>TMM_Hero_henry_casdin</giver>
+    <fallbackGiver>TMM_Hero_specialist_olin</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_outcasts_Q3</li>
+    </requires>
+    <letterLabel>Crypt Under the Hospital</letterLabel>
+    <letterText>Our sensors located a pre-war micro-containment core beneath an old clinic run by wasteland ghouls. Without that core, our bunker's anomaly shields will fail within days. Extract the core—do not let sentiment for mutated corpses stand in the way of real humans.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>ghoul_hospital</key>
+        <label>Standoff at the underground ghoul hospital</label>
+        <text>Beneath the clinic, a pre-war reactor stamped "Project Purgatory — Sector 4" keeps dozens of sick ghoul patients alive. Hold the basement chamber as Henry Casdin's armored breach squad arrives to rip the core out.</text>
+        <enemyFaction>TMM_OutcastsFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>4</holdHours>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>hospital_choice</key>
+        <label>The reactor core of Sector 4</label>
+        <text>Casdin's laser rifle hums as frightened ghoul doctors shield their patients. Behind Casdin, young Scribe Silas looks sickened by his commander's ruthlessness. Decide who gets the reactor core.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Rip out the containment core and hand it to Casdin (Side with the Outcasts)</label>
+            <resultText>Brutal, yet effective. With allies like you, we will outlast any apocalypse.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.outcasts</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_protector_armor</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.outcasts_t45d_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Drive off Casdin's squad and save the hospital's patients (Protect the Living)</label>
+            <resultText>You chose a ward full of rotting ghouls over securing vital technology?! You will regret this!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.outcasts</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>45</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1000</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineUltratech</thing>
+                <count>3</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.outcasts</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- OUTCASTS Q5 (DEFECTOR QUEST): STOLEN BLUEPRINTS                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_outcasts_Q5</defName>
+    <label>stolen blueprints</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_OutcastsFaction</faction>
+    <giver>TMM_Hero_scribe_silas</giver>
+    <fallbackGiver>TMM_Hero_specialist_olin</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_outcasts_Q4</li>
+      <li>choice.outcasts=pro_spark</li>
+    </requires>
+    <letterLabel>Stolen Blueprints</letterLabel>
+    <letterText>Casdin has gone completely off the rails—he's planning to raid neutral settlements for every last scrap of tech! I copied his master armor schematics onto a holotape and ran. I'm heading for your gates, and two Outcast hit squads are right behind me!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>outcast_pursuit</key>
+        <label>Repel the Outcast hit squads chasing Scribe Silas</label>
+        <text>Exhausted and clutching a salvaged hospital scanner, Scribe Silas sprints through your gates with black-and-red power-armored Outcast squads right on his heels!</text>
+        <faction>TMM_OutcastsFaction</faction>
+        <pointsFactor>1.25</pointsFactor>
+        <delayHours>2</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>accept_silas</key>
+        <label>A scribe with a conscience</label>
+        <text>With the pursuing Outcast strike force defeated at your walls, Scribe Silas sets Casdin's master armor holotape on your workbench.</text>
+        <choices>
+          <li>
+            <outcome>recruit_silas</outcome>
+            <label>Shelter Scribe Silas and welcome him into {COLONY}</label>
+            <resultText>Thank you for not turning me over. With these schematics, we'll forge armor every bit as tough as theirs.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_scribe_silas</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_scribe_silas</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_OutcastsFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.outcasts_t45d_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

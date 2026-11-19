@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_minutemen_hunters_Q1 -->
+  <TMM_Story_minutemen_hunters_Q1.label>соль и дробовик</TMM_Story_minutemen_hunters_Q1.label>
+  <TMM_Story_minutemen_hunters_Q1.letterLabel>Соль и дробовик</TMM_Story_minutemen_hunters_Q1.letterLabel>
+  <TMM_Story_minutemen_hunters_Q1.letterText>Эй, сосед. Меня зовут Дин. Мы с братом Сэмом идём по следу одной мерзкой твари — вендиго, который вырезает караваны в вашем секторе и прикидывается раненым торговцем. Если к вам в гостиницу прихромает парень и попросит сырого мяса и тёмную комнату — не угощай его пирогом, зови нас.</TMM_Story_minutemen_hunters_Q1.letterText>
+  <TMM_Story_minutemen_hunters_Q1.stages.0.label>Опросить раненых караванщиков в гостинице</TMM_Story_minutemen_hunters_Q1.stages.0.label>
+  <TMM_Story_minutemen_hunters_Q1.stages.0.text>В гостиницу {COLONY} прихромала группа израненных торговцев — один из них замаскированный вендиго. Присмотритесь к постояльцам до наступления ночи.</TMM_Story_minutemen_hunters_Q1.stages.0.text>
+  <TMM_Story_minutemen_hunters_Q1.stages.1.label>Добить разоблачённого вендиго</TMM_Story_minutemen_hunters_Q1.stages.1.label>
+  <TMM_Story_minutemen_hunters_Q1.stages.1.text>Загнанный в угол в полночь вендиго сбрасывает человеческую личину и скликает ночных тварей из темноты! Сражайтесь плечом к плечу с Винчестерами!</TMM_Story_minutemen_hunters_Q1.stages.1.text>
+  <TMM_Story_minutemen_hunters_Q1.stages.2.label>После охоты</TMM_Story_minutemen_hunters_Q1.stages.2.label>
+  <TMM_Story_minutemen_hunters_Q1.stages.2.text>Едва вендиго догорает дотла, Дин Винчестер тут же проверяет кладовку в поисках вишнёвого пирога и оставляет за него горсть серебра на стойке.</TMM_Story_minutemen_hunters_Q1.stages.2.text>
+  <TMM_Story_minutemen_hunters_Q1.stages.2.choices.0.label>Вычислить вендиго без жертв среди мирных и добить его с Винчестерами</TMM_Story_minutemen_hunters_Q1.stages.2.choices.0.label>
+  <TMM_Story_minutemen_hunters_Q1.stages.2.choices.0.resultText>Неплохо сработано! Настоящие охотники. Держи выкройку нормальной куртки и пару пачек соли.</TMM_Story_minutemen_hunters_Q1.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_minutemen_hunters_Q2 -->
+  <TMM_Story_minutemen_hunters_Q2.label>гримуар с автосвалки</TMM_Story_minutemen_hunters_Q2.label>
+  <TMM_Story_minutemen_hunters_Q2.letterLabel>Гримуар с автосвалки</TMM_Story_minutemen_hunters_Q2.letterLabel>
+  <TMM_Story_minutemen_hunters_Q2.letterText>Слушайте сюда, балбесы! Сэм откопал довоенный оккультный гроссбух под тремя тоннами ржавых «Бьюиков» на моей свалке, и там упоминается ваш «Нулевой Якорь». Проблема в том, что половина чертей с перекрёстка учуяла чернила и лезет через забор. Тащите сюда свои задницы и держите периметр, пока Сэм не закончит перевод!</TMM_Story_minutemen_hunters_Q2.letterText>
+  <TMM_Story_minutemen_hunters_Q2.stages.0.label>Удержать автосвалку Бобби Сингера</TMM_Story_minutemen_hunters_Q2.stages.0.label>
+  <TMM_Story_minutemen_hunters_Q2.stages.0.text>Обороняйте укреплённую автосвалку Бобби Сингера от волн демонов в течение 6 часов, пока Сэм переводит книгу Шестидесяти Шести Печатей, а Бобби заманивает командира демонов в железную комнату-ловушку.</TMM_Story_minutemen_hunters_Q2.stages.0.text>
+  <TMM_Story_minutemen_hunters_Q2.stages.1.label>Связь с 66 Печатями расшифрована</TMM_Story_minutemen_hunters_Q2.stages.1.label>
+  <TMM_Story_minutemen_hunters_Q2.stages.1.text>Сэм захлопывает древний гроссбух, когда последний демон сгорает у забора, подтверждая прямую связь между Шестьюдесятью Шестью Печатями и ядерным ударом 2077 года.</TMM_Story_minutemen_hunters_Q2.stages.1.text>
+  <TMM_Story_minutemen_hunters_Q2.stages.1.choices.0.label>Удержать дом Бобби до завершения перевода Сэма</TMM_Story_minutemen_hunters_Q2.stages.1.choices.0.label>
+  <TMM_Story_minutemen_hunters_Q2.stages.1.choices.0.resultText>Ну, хоть кто-то в этом мире не совсем безнадёжен. Забирайте копию перевода и мою запасную кепку.</TMM_Story_minutemen_hunters_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_minutemen_hunters_Q3 -->
+  <TMM_Story_minutemen_hunters_Q3.label>орудия замка</TMM_Story_minutemen_hunters_Q3.label>
+  <TMM_Story_minutemen_hunters_Q3.letterLabel>Орудия Замка</TMM_Story_minutemen_hunters_Q3.letterLabel>
+  <TMM_Story_minutemen_hunters_Q3.letterText>Генерал в тебя верит, так что обойдёмся без речей. Дикая банда супермутантов собирается у южного хребта и готова раскатать три фермерских поселения. Помоги подтащить снаряды, починить старые мортиры Замка и разнести их боевой маяк к чертям.</TMM_Story_minutemen_hunters_Q3.letterText>
+  <TMM_Story_minutemen_hunters_Q3.stages.0.label>Поставить миномётные снаряды для Замка</TMM_Story_minutemen_hunters_Q3.stages.0.label>
+  <TMM_Story_minutemen_hunters_Q3.stages.0.text>Передайте 6 фугасных снарядов со складов {COLONY}, чтобы Ронни Шоу зарядила старую батарею Замка — вместе с бочкой освящённой соли против нечисти.</TMM_Story_minutemen_hunters_Q3.stages.0.text>
+  <TMM_Story_minutemen_hunters_Q3.stages.1.label>Удержать батарею Замка от прорыва мутантов</TMM_Story_minutemen_hunters_Q3.stages.1.label>
+  <TMM_Story_minutemen_hunters_Q3.stages.1.text>Первый залп разнёс боевой маяк мутантов, вызвав яростный ответный прорыв на артиллерийский аванпост! Удерживайте позицию 5 часов!</TMM_Story_minutemen_hunters_Q3.stages.1.text>
+  <TMM_Story_minutemen_hunters_Q3.stages.2.label>Южный хребет зачищен</TMM_Story_minutemen_hunters_Q3.stages.2.label>
+  <TMM_Story_minutemen_hunters_Q3.stages.2.text>Над разгромленным лагерем супермутантов поднимается дым, а фермерские поселения дают сигнал отбоя.</TMM_Story_minutemen_hunters_Q3.stages.2.text>
+  <TMM_Story_minutemen_hunters_Q3.stages.2.choices.0.label>Уничтожить лагерь мутантов и защитить фермеров</TMM_Story_minutemen_hunters_Q3.stages.2.choices.0.label>
+  <TMM_Story_minutemen_hunters_Q3.stages.2.choices.0.resultText>Отличная работа, солдат. С такой огневой поддержкой Пустошь снова может дышать свободно.</TMM_Story_minutemen_hunters_Q3.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_minutemen_hunters_Q4 -->
+  <TMM_Story_minutemen_hunters_Q4.label>ночь в дорожном доме</TMM_Story_minutemen_hunters_Q4.label>
+  <TMM_Story_minutemen_hunters_Q4.letterLabel>Ночь в Дорожном доме</TMM_Story_minutemen_hunters_Q4.letterLabel>
+  <TMM_Story_minutemen_hunters_Q4.letterText>Бросай всё и дуй в «Дорожный дом» Харвелл! Чёрная буря налетела из ниоткуда, одержимые рейдеры окружили бар, а хуже того — один из путников, которых мы впустили, одержим и стирает линии соли изнутри. До рассвета нам в одиночку не продержаться!</TMM_Story_minutemen_hunters_Q4.letterText>
+  <TMM_Story_minutemen_hunters_Q4.stages.0.label>Оборонять «Дорожный дом» Харвелл</TMM_Story_minutemen_hunters_Q4.stages.0.label>
+  <TMM_Story_minutemen_hunters_Q4.stages.0.text>Обороняйте придорожный бар Эллен Харвелл 6 часов от волн одержимых рейдеров и адских гончих, пока старый музыкальный автомат в углу крутит рок-н-ролл 70-х.</TMM_Story_minutemen_hunters_Q4.stages.0.text>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.label>Демон внутри бара</TMM_Story_minutemen_hunters_Q4.stages.1.label>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.text>В перерыве между атаками полоса соли у порога оказывается стёрта изнутри. У автомата жмутся пятеро напуганных путников — у одного из них под маской страха скрываются чёрные глаза.</TMM_Story_minutemen_hunters_Q4.stages.1.text>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.choices.0.label>Вычислить одержимого, изгнать демона и спасти всех постояльцев (за людей и Искру)</TMM_Story_minutemen_hunters_Q4.stages.1.choices.0.label>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.choices.0.resultText>Вы спасли мой дом и моих людей. Винчестеры решили, что вы достойны владеть главным козырем охотников — держите «Кольт».</TMM_Story_minutemen_hunters_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.choices.1.label>Зачистить зал огнём без разбора, чтобы гарантированно убить демона (жёсткий путь)</TMM_Story_minutemen_hunters_Q4.stages.1.choices.1.label>
+  <TMM_Story_minutemen_hunters_Q4.stages.1.choices.1.resultText>Демон мёртв... но ты перестрелял невинных людей прямо у моей стойки. Убирайся из моего бара!</TMM_Story_minutemen_hunters_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_minutemen_hunters_Q5 -->
+  <TMM_Story_minutemen_hunters_Q5.label>холодный прагматизм</TMM_Story_minutemen_hunters_Q5.label>
+  <TMM_Story_minutemen_hunters_Q5.letterLabel>Холодный прагматизм</TMM_Story_minutemen_hunters_Q5.letterLabel>
+  <TMM_Story_minutemen_hunters_Q5.letterText>Винчестер и Гарви хотят играть в благородство с синтами и «добрыми» монстрами — может, они и правы, а может, мы все сгорим. Так или иначе, старый капканщик вроде меня чует, откуда дует ветер. Давай окончательно решим, по пути ли нам.</TMM_Story_minutemen_hunters_Q5.letterText>
+  <TMM_Story_minutemen_hunters_Q5.stages.0.label>Зачистить засаду охотников за головами с Руфусом Тёрнером</TMM_Story_minutemen_hunters_Q5.stages.0.label>
+  <TMM_Story_minutemen_hunters_Q5.stages.0.text>Встретьте ветерана Руфуса Тёрнера в холмах, чтобы накрыть засаду наёмников Стрелков и окончательно решить, по пути ли вам.</TMM_Story_minutemen_hunters_Q5.stages.0.text>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.label>Верность старого капканщика</TMM_Story_minutemen_hunters_Q5.stages.1.label>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.text>Когда дым над хребтом рассеивается, Руфус Тёрнер проверяет винтовку и оценивает курс, который выбрала {COLONY}.</TMM_Story_minutemen_hunters_Q5.stages.1.text>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.choices.0.label>Принять Руфуса Тёрнера в гарнизон колонии</TMM_Story_minutemen_hunters_Q5.stages.1.choices.0.label>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.choices.0.resultText>Ладно, только чур мою комнату без спроса не минировать. Я сам заминирую подходы.</TMM_Story_minutemen_hunters_Q5.stages.1.choices.0.resultText>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.choices.1.label>[Путь Бездны] Проводить Руфуса Тёрнера и Ронни Шоу, уходящих к Братству Стали</TMM_Story_minutemen_hunters_Q5.stages.1.choices.1.label>
+  <TMM_Story_minutemen_hunters_Q5.stages.1.choices.1.resultText>Крутишь сделки с демонами и ждёшь, что старые охотники возьмут под козырёк? Без нас — дальше мы идём со сталью.</TMM_Story_minutemen_hunters_Q5.stages.1.choices.1.resultText>
+
+</LanguageData>
