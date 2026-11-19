@@ -218,15 +218,15 @@
 
   <!-- 12. Defender Henry Casdin -->
   <Operation Class="PatchOperationConditional">
-    <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
+    <xpath>Defs/*[defName="TMM_Hero_henry_casdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
     <match Class="PatchOperationConditional">
-      <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
+      <xpath>Defs/*[defName="TMM_Hero_henry_casdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
       <match Class="PatchOperationAdd">
-        <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
+        <xpath>Defs/*[defName="TMM_Hero_henry_casdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
         <value><li>TMM_Sig_casdin_protector_helm</li></value>
       </match>
       <nomatch Class="PatchOperationAdd">
-        <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
+        <xpath>Defs/*[defName="TMM_Hero_henry_casdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
         <value><apparel><li>TMM_Sig_casdin_protector_helm</li></apparel></value>
       </nomatch>
     </match>
@@ -425,15 +425,15 @@
 
   <!-- 24. Fawkes -->
   <Operation Class="PatchOperationConditional">
-    <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]</xpath>
+    <xpath>Defs/*[defName="TMM_Hero_fox" or heroId="fawkes"]</xpath>
     <match Class="PatchOperationConditional">
-      <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]/apparel</xpath>
+      <xpath>Defs/*[defName="TMM_Hero_fox" or heroId="fawkes"]/apparel</xpath>
       <match Class="PatchOperationAdd">
-        <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]/apparel</xpath>
+        <xpath>Defs/*[defName="TMM_Hero_fox" or heroId="fawkes"]/apparel</xpath>
         <value><li>TMM_Sig_fawkes_vault87_harness</li></value>
       </match>
       <nomatch Class="PatchOperationAdd">
-        <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]</xpath>
+        <xpath>Defs/*[defName="TMM_Hero_fox" or heroId="fawkes"]</xpath>
         <value><apparel><li>TMM_Sig_fawkes_vault87_harness</li></apparel></value>
       </nomatch>
     </match>
