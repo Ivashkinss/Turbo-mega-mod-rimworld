@@ -1,0 +1,1792 @@
+{
+  "factions": [
+    {
+      "faction": "institute",
+      "quests": [
+        {
+          "n": 1,
+          "id": "inst_cold_scanner",
+          "title_en": "Cold Scanner",
+          "title_ru": "Холодный сканер",
+          "giver": "Justin Ayo",
+          "fallbackGiver": "X6-88",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Surface dweller. Our telemetry indicates an unregistered synthetic unit has taken shelter among the refugees at your settlement's waystation. The Synth Retention Bureau expects your full cooperation in identifying and securing Institute property. Comply, and you will be compensated; interfere, and we will consider your outpost hostile.",
+          "letter_ru": "Житель поверхности. Наша телеметрия указывает, что незарегистрированный синтетический образец укрылся среди беженцев в гостинице вашего поселения. Бюро возврата синтов ожидает вашего полного содействия в опознании и передаче собственности Института. Подчинитесь — и получите награду; помешаете — мы сочтём ваш аванпост враждебным.",
+          "stages": [
+            { "n": 1, "what_ru": "В гостиницу колонии прибывают трое беженцев, один из которых — скрытый синт третьего поколения; игрок проводит медицинский или диалоговый опрос.", "where": "hotel", "mechanic": "расследование / диалог", "minutes": 15 },
+            { "n": 2, "what_ru": "На границе карты телепортируется охотник X6-88 с отрядом синтов, требуя выдать беглеца.", "where": "colony", "mechanic": "переговоры / ультиматум", "minutes": 10 }
+          ],
+          "choices": [
+            { "option_ru": "Выдать синта охотнику X6-88", "letter_ru": "Разумное решение. Бюро возврата ценит дисциплину и пунктуальность.", "consequences_ru": "Синт забран в Институт; Подземка теряет доверие, Институт открывает торговлю.", "setsFlags": ["TMM_Inst_Q1=handed_over"], "goodwill": { "institute": 20, "railroad": -25 } },
+            { "option_ru": "Скрыть беглеца и откупиться фальшивым маячком", "letter_ru": "Что ж, сигнал оборвался. Но мы продолжим наблюдать за вашим сектором.", "consequences_ru": "Синт остаётся в колонии или уходит в Подземку; Алан Бине тайно выходит на связь.", "setsFlags": ["TMM_Inst_Q1=saved"], "goodwill": { "institute": -10, "railroad": 20 } }
+          ],
+          "reward_ru": "При выдаче: 600 серебра и чертёж халата учёного Института. При спасении: +15 к доверию Нулевого Синта и письмо от Алана Бине.",
+          "failure_ru": "Если беженец погибнет в перестрелке, Институт замораживает контакты на 5 дней, а X6-88 забирает компонент из трупа.",
+          "echoes_ru": "Спасённый синт позже поможет Алану Бине организовать побег в Акте 3 и передаст координаты тайника Подземки.",
+          "implementation_ru": "Ванильный QuestScriptDef с спавном 3 гостей через Hospitality/QuestPart_SpawnPawn + выбор в DiaNode.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "inst_firmware_glitch",
+          "title_en": "Firmware Glitch",
+          "title_ru": "Сбой в прошивке",
+          "giver": "Alan Binet",
+          "fallbackGiver": "Dr. Madison Li",
+          "unlock_ru": "Акт 2, завершён квест inst_cold_scanner.",
+          "letter_en": "Please, keep this transmission off the main Bureau frequencies. One of my experimental third-generation units suffered a quantum cascade during a surface relay test—she is hurt, frightened, and displaying true emotional resonance. Patch her neural link before Ayo's trackers triangulate her signal.",
+          "letter_ru": "Прошу, держите этот канал в тайне от частот Бюро возврата. Один из моих экспериментальных образцов третьего поколения пережил квантовый сбой при выбросе на поверхность — она ранена, напугана и проявляет настоящий эмоциональный резонанс. Стабилизируйте её нейросеть, пока ищейки Айо не запеленговали сигнал.",
+          "stages": [
+            { "n": 1, "what_ru": "Колонисты находят раненую синт-ассистентку Ив в разбитой капсуле телепортации и доставляют в лазарет.", "where": "world_site", "mechanic": "спасение / эвакуация", "minutes": 15 },
+            { "n": 2, "what_ru": "Проведение сложной операции на нейроинтерфейсе в лазарете колонии до прихода поискового дрона.", "where": "colony", "mechanic": "медицина / операция", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Восстановить личность и стереть маячок Бюро", "letter_ru": "Вы дали ей право чувствовать. Я этого не забуду, когда придет время платить по счетам.", "consequences_ru": "Алан Бине становится тайным союзником; в синтах подтверждается рождение Искры.", "setsFlags": ["TMM_Inst_Q2=preserved"], "goodwill": { "institute": 5, "railroad": 15 } },
+            { "option_ru": "Сбросить прошивку до заводской и вернуть Отцу", "letter_ru": "Жаль... ещё одна искра погасла. Но Отец оценит вашу лояльность.", "consequences_ru": "Институт присылает компоненты и керамическую броню синтов.", "setsFlags": ["TMM_Inst_Q2=wiped"], "goodwill": { "institute": 25, "railroad": -20 } }
+          ],
+          "reward_ru": "Чертёж керамической брони синтов, 4 передовых компонента и личное расположение Алана Бине.",
+          "failure_ru": "При провале операции нейросеть сгорает, а Джастин Айо начинает подозревать колонию в укрывательстве.",
+          "echoes_ru": "Яркая деталь: во время операции синт напевает старую колыбельную, которую знает только Нулевой Синт.",
+          "implementation_ru": "RecipeDef уникальной операции на пешке с Hediff_NeuralCascade + проверка навыка Medicine/Intellectual.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "inst_reactor_brink",
+          "title_en": "Reactor on the Brink",
+          "title_ru": "Реактор на грани",
+          "giver": "Dr. Madison Li",
+          "fallbackGiver": "Father",
+          "unlock_ru": "Акт 2, завершён квест inst_firmware_glitch.",
+          "letter_en": "I do not care for surface politics, and I certainly do not care for Father's philosophical games, but our main fusion agitator is losing containment. Only one pre-war beryllium amplifier survived in the flooded Mass Fusion sub-levels. Retrieve it before the entire sector experiences a thermal meltdown.",
+          "letter_ru": "Меня не интересует политика поверхности и философские игры Отца, но наш главный термоядерный реактор теряет стабильность. Единственный уцелевший бериллиевый усилитель находится на затопленных уровнях «Масс Фьюжн». Достаньте его, пока весь сектор не накрыло тепловым выбросом.",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка на особую карту довоенного комплекса «Масс Фьюжн» с высоким радиационным фоном и турелями.", "where": "special_map", "mechanic": "особая карта / бой с роботами", "minutes": 30 },
+            { "n": 2, "what_ru": "Запуск аварийного лифта и отражение десанта Братства Стали, также охотящегося за усилителем.", "where": "special_map", "mechanic": "оборона точки", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Передать бериллиевый усилитель доктору Мэдисон Ли", "letter_ru": "Наконец-то хоть кто-то на поверхности умеет работать руками. Реактор стабилизирован.", "consequences_ru": "Институт получает полную мощность; отношения с Братством ухудшаются.", "setsFlags": ["TMM_Inst_Q3=institute"], "goodwill": { "institute": 30, "brotherhood": -25 } },
+            { "option_ru": "Оставить усилитель для ядерного реактора своей колонии", "letter_ru": "Вы украли будущее науки ради своего жалкого генератора! Я этого так не оставлю.", "consequences_ru": "Колония получает уникальный модуль реактора; Институт замораживает помощь.", "setsFlags": ["TMM_Inst_Q3=kept"], "goodwill": { "institute": -30, "brotherhood": 10 } }
+          ],
+          "reward_ru": "При передаче: 1200 серебра, импульсные гранаты и доступ к синтетическим имплантам. При оставлении: модуль +4000 Вт к реактору колонии.",
+          "failure_ru": "Если отряд отступит без усилителя, комплекс обрушивается, и Институт переходит в режим жёсткой экономии.",
+          "echoes_ru": "Яркая деталь: в центральном зале реактора находят скелет довоенного инженера с запиской о тайных поставках урана для Волт-Тек.",
+          "implementation_ru": "SitePartDef с радиационными зонами (ToxicFallout/PollutedTerrain) и волной подкрепления Братства через DropPod.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "inst_ghost_in_machine",
+          "title_en": "Ghost in the Machine",
+          "title_ru": "Призрак в машине",
+          "giver": "Father",
+          "fallbackGiver": "Justin Ayo",
+          "unlock_ru": "Акт 2, завершён квест inst_reactor_brink (Точка фракции Института).",
+          "letter_en": "You have proven yourself remarkably capable, my friend. Now we face a critical anomaly: a prototype synth has developed a self-sustaining spiritual resonance—a 'Spark'—that is attracting both angels and demons to our relay frequencies. Help X6-88 bring this specimen home so we may study and contain this flaw.",
+          "letter_ru": "Вы показали себя удивительно способным союзником, мой друг. Теперь перед нами критическая аномалия: в прототипе синта возник устойчивый духовный резонанс — «Искра», притягивающая к нашим частотам и ангелов, и демонов. Помогите X6-88 вернуть образец домой, чтобы мы могли изучить и устранить этот сбой.",
+          "stages": [
+            { "n": 1, "what_ru": "Перехват синта-прототипа в заброшенной часовне, куда одновременно врываются ангел-наблюдатель и охотник X6-88.", "where": "special_map", "mechanic": "трёхсторонний бой / засада", "minutes": 25 },
+            { "n": 2, "what_ru": "Решающий разговор у телепортационного маяка: Алан Бине по радио умоляет пощадить синта, а Отец требует извлечь ядро.", "where": "special_map", "mechanic": "моральный выбор / диалог", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Выдать синта Отцу для извлечения Искры (за Институт)", "letter_ru": "Тяжёлые решения определяют будущее человечества. Данные Искры теперь в наших руках.", "consequences_ru": "Институт получает технологию сбора Искр; Алан Бине впадает в отчаяние; открывается «Эксперимент 18-А».", "setsFlags": ["TMM_FactionArcStage_institute=4", "TMM_FactionChoice_institute=pro_faction"], "goodwill": { "institute": 40, "railroad": -50, "minutemen_hunters": -15 } },
+            { "option_ru": "Уничтожить маяк Института и спасти синта (за Искру)", "letter_ru": "Вы предали доверие Института ради бракованной машины. Отныне Бюро возврата не знает пощады.", "consequences_ru": "Синт спасён и передан Подземке; +25 к доверию Нулевого Синта; Институт становится враждебным.", "setsFlags": ["TMM_FactionArcStage_institute=4", "TMM_FactionChoice_institute=pro_spark"], "goodwill": { "institute": -60, "railroad": 40, "minutemen_hunters": 20 } }
+          ],
+          "reward_ru": "При выборе Института: легендарная плазменная винтовка «Эксперимент 18-А» и чертёж белого халата Отца. При спасении: чертёж плаща Охотника Института с тела X6-88 и +25 доверия Нулевого Синта.",
+          "failure_ru": "Если синт погибнет в перекрёстном огне, обе стороны обвиняют игрока, но точка фракции засчитывается как провал.",
+          "echoes_ru": "Яркая деталь: перед телепортацией синт смотрит на ангела и произносит его истинное енохианское имя, заставляя того отступить.",
+          "implementation_ru": "Кастомный SitePartDef часовни с 3 фракциями (Игрок, Институт, Небеса) и финальным DiaNode у маяка.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "inst_escape_underground",
+          "title_en": "Escape from Below",
+          "title_ru": "Побег из-под земли",
+          "giver": "Alan Binet",
+          "fallbackGiver": "Dr. Madison Li",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок встал на защиту Искр).",
+          "letter_en": "Father has handed full security control to Justin Ayo, and they are preparing to purge every third-generation synth in Robotics! Madison Li and I have rigged an emergency relay to your coordinates, but Coursers are already breaching our blast doors. Hold the perimeter!",
+          "letter_ru": "Отец передал всю власть Джастину Айо, и они готовят полную зачистку отдела робототехники! Мы с Мэдисон Ли настроили аварийный телепорт на ваши координаты, но охотники уже режут гермодвери. Удержите периметр!",
+          "stages": [
+            { "n": 1, "what_ru": "Установка приёмного ретранслятора в колонии и защита его от двух волн телепортирующихся охотников Института.", "where": "colony", "mechanic": "оборона точки / телепорт-рейды", "minutes": 30 },
+            { "n": 2, "what_ru": "Допрос захваченного координатора телепортации для блокировки частот Института над базой.", "where": "colony", "mechanic": "переговоры / взлом", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Алана Бине и Мэдисон Ли в колонию", "letter_ru": "Мы свободны... и мы поможем вам построить Резонатор Искр, чтобы защитить каждого из них.", "consequences_ru": "Алан Бине и доктор Мэдисон Ли присоединяются к колонии как полноправные герои; власть в Институте окончательно захватывает Джастин Айо.", "setsFlags": ["TMM_DefectorRecruited_alan_binet=true", "TMM_DefectorRecruited_madison_li=true"], "goodwill": { "institute": -100, "railroad": 30 } }
+          ],
+          "reward_ru": "Герои Алан Бине и доктор Мэдисон Ли в колонию, технология молекулярного ретранслятора и коды доступа к Резонатору.",
+          "failure_ru": "Если ретранслятор уничтожен, Алан Бине гибнет при прорыве, а Мэдисон Ли попадает в карцер Института.",
+          "echoes_ru": "Яркая деталь: вместе с учёными из телепорта вываливается домашний кот Алана, переживший квантовый перенос.",
+          "implementation_ru": "QuestPart_DropPods / кастомный спавн молний телепортации в радиусе 15 клеток от ретранслятора.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "brotherhood",
+      "quests": [
+        {
+          "n": 1,
+          "id": "bos_lost_beacon",
+          "title_en": "The Lost Beacon",
+          "title_ru": "Потерянный маяк",
+          "giver": "Paladin Danse",
+          "fallbackGiver": "Captain Kells",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Civilian. My recon squad 'Gladius' went dark near an old satellite array three clicks from your position. High Command demands their holotags and field logs recovered immediately. Assist the Brotherhood in securing the perimeter, and you will earn the respect of the steel.",
+          "letter_ru": "Гражданский. Мой разведвзвод «Гладиус» перестал выходить на связь у старого спутникового узла в трёх километрах от вашей позиции. Командование требует немедленно вернуть их жетоны и полевые журналы. Помогите Братству зачистить периметр, и вы заслужите уважение стали.",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка на карту старой станции слежения, окружённой дикими гулями и фонящими воронками.", "where": "world_site", "mechanic": "спасение / зачистка", "minutes": 25 },
+            { "n": 2, "what_ru": "Эвакуация раненого писца Братства до прилёта винтокрыла под прикрытием паладина Данса.", "where": "world_site", "mechanic": "сопровождение", "minutes": 10 }
+          ],
+          "choices": [
+            { "option_ru": "Вернуть все жетоны и секретные голодиски Дансу", "letter_ru": "Вы действовали как настоящий солдат. Братство Стали не забывает тех, кто прикрывает спину.", "consequences_ru": "Данс становится другом колонии; открывается чертёж подшлемника паладина Данса.", "setsFlags": ["TMM_BoS_Q1=honorable"], "goodwill": { "brotherhood": 25 } },
+            { "option_ru": "Скопировать данные с голодисков перед передачей", "letter_ru": "Жетоны на месте, но в логах видны следы взлома... Я буду следить за вами.", "consequences_ru": "Игрок получает раннюю наводку на синтетические коды Института.", "setsFlags": ["TMM_BoS_Q1=copied"], "goodwill": { "brotherhood": 10, "railroad": 10 } }
+          ],
+          "reward_ru": "450 серебра, чертёж формы писца Братства и подшлемника паладина Данса.",
+          "failure_ru": "Если писец погибнет, Данс сухо заберёт жетоны, а репутация Братства снизится.",
+          "echoes_ru": "Яркая деталь: на стене станции выцарапана енохианская печать, отпугивающая диких гулей от бункера.",
+          "implementation_ru": "Ванильный SitePartDef с союзным NPC-паладином Дансом (LordJob_DefendPoint) и прилётом транспортного челнока.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "bos_armor_for_assault",
+          "title_en": "Armor for the Assault",
+          "title_ru": "Броня для штурма",
+          "giver": "Proctor Ingram",
+          "fallbackGiver": "Paladin Danse",
+          "unlock_ru": "Акт 2, завершён квест bos_lost_beacon.",
+          "letter_en": "Listen up, wastelander. My field repair gantry took a mortar hit, and half our T-60 hydraulic frames are locked up tighter than a vault door. Bring your best mechanics and keep the Gunners off my back while I weld these coolant lines.",
+          "letter_ru": "Слушай сюда, житель Пустоши. Мой полевой ремонтный док накрыло миномётом, и половину наших каркасов T-60 заклинило намертво. Присылай лучших механиков и прикрой мне спину от Стрелков, пока я завариваю магистрали охлаждения.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие на полевой аванпост Братства; колонисты с высоким Crafting помогают Ингрэм чинить 3 повреждённых каркаса силовой брони.", "where": "outpost", "mechanic": "ремонт / крафт на время", "minutes": 20 },
+            { "n": 2, "what_ru": "Отражение двух волн наёмников Стрелков при поддержке одного отремонтированного паладина.", "where": "outpost", "mechanic": "оборона точки", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Завершить ремонт всех трёх комплектов без потерь", "letter_ru": "Чёрт возьми, у твоих ребят руки растут откуда надо! Держи пару энергоячеек за выручку.", "consequences_ru": "Проктор Ингрэм открывает доступ к ремонту силовой брони.", "setsFlags": ["TMM_BoS_Q2=success"], "goodwill": { "brotherhood": 25, "gunners": -15 } }
+          ],
+          "reward_ru": "Чертёж разведкостюма Братства, 2 урановых стержня и 500 серебра.",
+          "failure_ru": "При уничтожении дока Ингрэм эвакуируется на винтокрыле, а Братство требует компенсацию.",
+          "echoes_ru": "Яркая деталь: Ингрэм работает в модифицированном каркасе силовой брони без ног, отпуская саркастичные шутки под обстрелом.",
+          "implementation_ru": "Кастомный CompUsable на 3 остовах силовой брони, требующий работы Crafting, + спавн рейда Стрелков.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "bos_old_elder_lessons",
+          "title_en": "Lessons of the Old Elder",
+          "title_ru": "Уроки старого старейшины",
+          "giver": "Owen Lyons",
+          "fallbackGiver": "Sarah Lyons",
+          "unlock_ru": "Акт 2, завершён квест bos_armor_for_assault.",
+          "letter_en": "Arthur Maxson speaks of steel and fire, and he is not wrong about the darkness gathering over this land. Yet if we crush the very people we swore to protect, what remains worth saving? Meet me at the crossroads settlement and help me broker peace before Kells orders an artillery strike.",
+          "letter_ru": "Артур Мэксон говорит о стали и огне, и он прав насчёт тьмы, сгущающейся над этой землёй. Но если мы раздавим тех, кого поклялись защищать, что останется спасать? Встреть меня в поселении на перекрёстке и помоги договориться миром, пока Келлс не отдал приказ об артобстреле.",
+          "stages": [
+            { "n": 1, "what_ru": "Встреча с Оуэном Лайонсом в нейтральном поселении, где местные жители укрывают раненого разумного гуля от патруля Братства.", "where": "world_site", "mechanic": "переговоры / социальная проверка", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Убедить командира патруля отступить и защитить поселенцев (путь Лайонса)", "letter_ru": "Ты напомнил им, что значит быть щитом человечества. Спасибо, друг.", "consequences_ru": "Оуэн и Сара Лайонс прониклись глубоким уважением к игроку; Мэксон недоволен мягкостью.", "setsFlags": ["TMM_BoS_Q3=mercy"], "goodwill": { "brotherhood": 15, "ghouls": 25, "minutemen_hunters": 20 } },
+            { "option_ru": "Поддержать устав Мэксона и зачистить поселение от гулей", "letter_ru": "Ты выбрал суровую необходимость... Молюсь, чтобы наши души выдержали этот груз.", "consequences_ru": "Отношения с Мэксоном растут, но гули и Минитмены осуждают жестокость.", "setsFlags": ["TMM_BoS_Q3=purge"], "goodwill": { "brotherhood": 30, "ghouls": -40, "minutemen_hunters": -25 } }
+          ],
+          "reward_ru": "При милосердии: чертёж парадного плаща Сары Лайонс и 400 серебра. При зачистке: лазерная винтовка и 700 серебра.",
+          "failure_ru": "Если переговоры сорвутся в хаотичную бойню, погибают мирные жители, а Оуэн Лайонс уходит в тяжёлом молчании.",
+          "echoes_ru": "Яркая деталь: старый Оуэн Лайонс достаёт потрёпанную флягу с чистой водой из проекта «Чистота».",
+          "implementation_ru": "DiaNode с проверкой навыка Social >= 12 или репутации у Минитменов/Гулей.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "bos_blind_betrayal",
+          "title_en": "Blind Betrayal",
+          "title_ru": "Слепой предатель",
+          "giver": "Arthur Maxson",
+          "fallbackGiver": "Captain Kells",
+          "unlock_ru": "Акт 2, завершён квест bos_old_elder_lessons (Точка фракции Братства Стали).",
+          "letter_en": "Decrypted Institute records have revealed a vile truth: Paladin Danse is not a man, but a synthetic infiltrator carrying an anomalous 'Spark' in his neural core. He has fled to Listening Post Bravo. Find him and execute the sentence—humanity cannot allow machines to wear our skin.",
+          "letter_ru": "Расшифрованные архивы Института раскрыли мерзкую правду: паладин Данс не человек, а синтетический лазутчик с аномальной «Искрой» в нейроядре. Он бежал на пост прослушивания «Браво». Найдите его и приведите приговор в исполнение — человечество не позволит машинам носить нашу кожу.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в старый бункер «Браво», где безоружный Данс готов принять смерть ради устава Братства.", "where": "special_map", "mechanic": "диалог / личная драма", "minutes": 20 },
+            { "n": 2, "what_ru": "На выходе из бункера игрока встречает сам Артур Мэксон в боевом плаще с отрядом паладинов.", "where": "special_map", "mechanic": "ультиматум / дуэль или убеждение", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Казнить паладина Данса по приказу Мэксона (за Братство)", "letter_ru": "Ты сделал то, на что у многих не хватило бы духа. Сталь очищена от скверны.", "consequences_ru": "Данс мёртв; Мэксон дарит игроку легендарный гатлинг-лазер «Последний суд» и чертёж T-60; Сара Лайонс разрывает отношения с Мэксоном.", "setsFlags": ["TMM_FactionArcStage_brotherhood=4", "TMM_FactionChoice_brotherhood=pro_faction", "TMM_DanseDead=true"], "goodwill": { "brotherhood": 50, "railroad": -40 } },
+            { "option_ru": "Укрыть Данса и убедить Мэксона (или отбить его боем) (за Искру)", "letter_ru": "Отныне он мёртв для Братства! Если он снова попадётся нам на глаза — я лично сотру его в пыль!", "consequences_ru": "Данс спасён и тайно скрывается; Мэксон в ярости, но Сара Лайонс готова помочь в Акте 3.", "setsFlags": ["TMM_FactionArcStage_brotherhood=4", "TMM_FactionChoice_brotherhood=pro_spark", "TMM_DanseSaved=true"], "goodwill": { "brotherhood": -35, "railroad": 35, "minutemen_hunters": 20 } }
+          ],
+          "reward_ru": "При казни: легендарный гатлинг-лазер «Последний суд» и чертёж силовой брони T-60. При спасении: боевой плащ Мэксона (если побеждён) или уникальный комплект брони Данса и +20 доверия Нулевого Синта.",
+          "failure_ru": "Если проигнорировать квест, Келлс сам казнит Данса, а Братство теряет уважение к колонии.",
+          "echoes_ru": "Яркая деталь: Данс сам снимает свои жетоны Братства и протягивает их игроку со словами «Ad Victoriam».",
+          "implementation_ru": "SitePartDef бункера с диалогом высокой сложности Social (>= 15) для мирного убеждения Мэксона или спавном элитного отряда.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "bos_sentinel_mutiny",
+          "title_en": "Mutiny of the Sentinel",
+          "title_ru": "Мятеж Стража",
+          "giver": "Sarah Lyons",
+          "fallbackGiver": "Paladin Danse",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если Данс был спасён в квесте bos_blind_betrayal).",
+          "letter_en": "Maxson has lost his mind—he's preparing an orbital and vertibird strike on every settlement sheltering synths or ghouls. My father and I won't be part of a slaughter. Danse and I are breaking through the cordon to your colony; cover our landing zone!",
+          "letter_ru": "Мэксон окончательно потерял рассудок — он готовит удар винтокрылов по всем поселениям, укрывающим синтов и гулей. Мы с отцом не станем участвовать в бойне. Мы с Дансом прорываемся к вашей колонии — прикройте зону посадки!",
+          "stages": [
+            { "n": 1, "what_ru": "Аварийная посадка угнанного винтокрыла Сары Лайонс и паладина Данса на карту колонии.", "where": "colony", "mechanic": "десант / оборона", "minutes": 20 },
+            { "n": 2, "what_ru": "Отражение карательного штурма капитана Келлса и паладинов в силовой броне T-60.", "where": "colony", "mechanic": "тяжёлый бой", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Сару Лайонс и паладина Данса в ряды колонии", "letter_ru": "Наши доспехи всё ещё служат людям — просто теперь мы сами выбираем, кого защищать.", "consequences_ru": "Паладин Данс и Сара Лайонс присоединяются к колонии как герои; Братство Стали переходит под жёсткий контроль Мэксона и Келлса.", "setsFlags": ["TMM_DefectorRecruited_paladin_danse=true", "TMM_DefectorRecruited_sarah_lyons=true"], "goodwill": { "brotherhood": -80, "minutemen_hunters": 30 } }
+          ],
+          "reward_ru": "Герои Паладин Данс и Сара Лайонс в колонию, трофейные комплекты T-60 с убитых штурмовиков.",
+          "failure_ru": "Если десант уничтожен, Данс и Сара погибают в бою, а Мэксон усиливает давление на регион.",
+          "echoes_ru": "Яркая деталь: старый Оуэн Лайонс остаётся на флагмане, чтобы задержать запуск основных сил и дать дочери уйти.",
+          "implementation_ru": "Анимация аварийной посадки челнока + рейд элитных бойцов в T-60.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "outcasts",
+      "quests": [
+        {
+          "n": 1,
+          "id": "out_scrap_collection",
+          "title_en": "Salvage Protocol",
+          "title_ru": "Сбор металлолома",
+          "giver": "Specialist Olin",
+          "fallbackGiver": "Defender Henry Casdin",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Wastelander. Unlike Lyons' soft-hearted fools, the Outcasts remember our true mission: keeping dangerous pre-war tech out of ignorant hands. Clear the cave-in at the Fort Independence sub-archive and bring us three intact power armor servo-modules.",
+          "letter_ru": "Житель Пустоши. В отличие от мягкотелых глупцов Лайонса, Изгои помнят нашу истинную миссию: не давать опасные довоенные технологии в руки невежд. Расчистите завал в нижнем архиве форта Индепенденс и принесите три уцелевших сервомодуля силовой брони.",
+          "stages": [
+            { "n": 1, "what_ru": "Экспедиция в обрушенный подземный бункер, расчистка завалов (Mining) и сбор 3 сервомодулей.", "where": "world_site", "mechanic": "раскопки / исследование", "minutes": 20 },
+            { "n": 2, "what_ru": "Передача модулей специалисту Олин на границе карты.", "where": "colony", "mechanic": "обмен / торговля", "minutes": 10 }
+          ],
+          "choices": [
+            { "option_ru": "Передать все три модуля специалисту Олин", "letter_ru": "Чётко и без лишних вопросов. Вот твоя доля припасов.", "consequences_ru": "Изгои открывают торговлю боеприпасами и чертежами разведкостюма.", "setsFlags": ["TMM_Out_Q1=delivered"], "goodwill": { "outcasts": 25 } }
+          ],
+          "reward_ru": "500 серебра, стимуляторы и чертёж разведкостюма Изгоев.",
+          "failure_ru": "При провале Изгои считают колонистов бесполезными мародёрами.",
+          "echoes_ru": "Яркая деталь: внутри бункера обнаруживаются следы довоенной инспекции Волт-Тек, проверявшей радиационную защиту брони.",
+          "implementation_ru": "SitePartDef с завалами пород (Mineable) и 3 квестовыми предметами.",
+          "newHeroes": [
+            { "name": "Specialist Olin", "faction": "outcasts", "rank": 3, "role_ru": "главный техник и квартирмейстер Изгоев", "look_ru": "Женщина средних лет в чёрно-красном разведкостюме Изгоев с перемазанным маслом лицом и сварочными очками на лбу." }
+          ]
+        },
+        {
+          "n": 2,
+          "id": "out_cold_calculation",
+          "title_en": "Cold Calculation",
+          "title_ru": "Холодный расчёт",
+          "giver": "Scribe Silas",
+          "fallbackGiver": "Defender Henry Casdin",
+          "unlock_ru": "Акт 2, завершён квест out_scrap_collection.",
+          "letter_en": "Gunner mercenaries ambushed our supply convoy and stole three high-capacity fusion cells meant for our containment grid. Intercept their courier before he reaches their stronghold—and please, try to recover the cells intact.",
+          "letter_ru": "Наёмники Стрелков устроили засаду на наш конвой и украли три энергоячейки высокой ёмкости для нашей сети сдерживания. Перехватите их курьера, пока он не добрался до штаба — и постарайтесь вернуть ячейки целыми.",
+          "stages": [
+            { "n": 1, "what_ru": "Перехват каравана Стрелков на карте мира: быстрый штурм с запретом на использование взрывчатки рядом с грузом.", "where": "world_site", "mechanic": "тактическая засада", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Вернуть энергоячейки писцу Сайласу", "letter_ru": "Ни единой царапины на корпусах! Защитник Касдин будет впечатлён.", "consequences_ru": "Сайлас начинает доверять игроку и делится наблюдениями об аномалиях.", "setsFlags": ["TMM_Out_Q2=returned"], "goodwill": { "outcasts": 25, "gunners": -20 } }
+          ],
+          "reward_ru": "650 серебра, энергоячейки и 3 передовых компонента.",
+          "failure_ru": "Если ячейки взорвутся в бою, Касдин оштрафует колонию по репутации.",
+          "echoes_ru": "Яркая деталь: курьер Стрелков пытался вскрыть ячейку ломом, оставив на ней оплавленную вмятину.",
+          "implementation_ru": "WorldObject каравана на карте мира с хрупкими контейнерами (низкий HP у квестовых предметов).",
+          "newHeroes": [
+            { "name": "Scribe Silas", "faction": "outcasts", "rank": 3, "role_ru": "молодой писец-аналитик Изгоев", "look_ru": "Худощавый юноша в тёмно-алой тунике писца с переносным терминалом на ремне и нервным взглядом." }
+          ]
+        },
+        {
+          "n": 3,
+          "id": "out_cage_for_shadow",
+          "title_en": "Cage for a Shadow",
+          "title_ru": "Клетка для тени",
+          "giver": "Defender Henry Casdin",
+          "fallbackGiver": "Specialist Olin",
+          "unlock_ru": "Акт 2, завершён квест out_cold_calculation.",
+          "letter_en": "These 'anomalies' and demons bleeding into our world are nothing more than uncontained energy phenomena. We have built a stasis resonator, and we need a live subject. Lure a Shadow Entity into our trap and hold the line until the containment field locks.",
+          "letter_ru": "Все эти «аномалии» и демоны, просачивающиеся в наш мир, — не более чем неуправляемые энергетические феномены. Мы собрали стазис-резонатор и нуждаемся в живом образце. Заманите теневую сущность в нашу ловушку и удерживайте её, пока поле не замкнётся.",
+          "stages": [
+            { "n": 1, "what_ru": "Установка стазис-ловушки Изгоев на окраине колонии и приманивание аномалии.", "where": "colony", "mechanic": "охота / ловушки", "minutes": 25 },
+            { "n": 2, "what_ru": "Удержание аномалии внутри круга на протяжении 4 часов игрового времени под атаками призраков.", "where": "colony", "mechanic": "оборона точки", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Передать захваченную сущность в капсуле Изгоям", "letter_ru": "Великолепно. Теперь у нас есть источник данных, который перевернёт понимание этого Разлома.", "consequences_ru": "Изгои получают образец для изучения; повышается риск аномальных импульсов.", "setsFlags": ["TMM_Out_Q3=captured"], "goodwill": { "outcasts": 30, "heaven_angels": -15 } }
+          ],
+          "reward_ru": "800 серебра, биоферрит и чертёж шлема Касдина.",
+          "failure_ru": "Если сущность вырвется и будет убита, Касдин выразит разочарование.",
+          "echoes_ru": "Яркая деталь: запертая в капсуле тень выводит на стекле изморозью координаты госпиталя гулей.",
+          "implementation_ru": "Кастомная постройка-ловушка (Building_StasisTrap) с таймером захвата при нахождении цели внутри радиуса.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "out_crypt_under_hospital",
+          "title_en": "Crypt Under the Hospital",
+          "title_ru": "Склеп под госпиталем",
+          "giver": "Defender Henry Casdin",
+          "fallbackGiver": "Specialist Olin",
+          "unlock_ru": "Акт 2, завершён квест out_cage_for_shadow (Точка фракции Изгоев).",
+          "letter_en": "Our sensors located a pre-war micro-containment core beneath an old clinic run by wasteland ghouls. Without that core, our bunker's anomaly shields will fail within days. Extract the core—do not let sentiment for mutated corpses stand in the way of real humans.",
+          "letter_ru": "Наши сенсоры обнаружили довоенное ядро сдерживания под старой клиникой, которую заняли гули Пустоши. Без этого ядра щиты нашего бункера откажут через пару дней. Извлеките ядро — не позволяйте жалости к мутировавшим трупам встать на пути настоящих людей.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в подземный госпиталь гулей, где старый реактор питает системы жизнеобеспечения десятков больных.", "where": "special_map", "mechanic": "исследование / диалог с врачами", "minutes": 20 },
+            { "n": 2, "what_ru": "В зал врывается отряд Изгоев во главе с Касдином, требуя немедленно вырвать ядро.", "where": "special_map", "mechanic": "моральный выбор / бой", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Вырвать ядро и отдать Касдину (за Изгоев)", "letter_ru": "Жестоко, но эффективно. С такими союзниками мы переживём любой конец света.", "consequences_ru": "Госпиталь обесточен и погибает; Касдин выдаёт броню «Протектор»; писец Сайлас в ужасе от жестокости командира.", "setsFlags": ["TMM_FactionArcStage_outcasts=4", "TMM_FactionChoice_outcasts=pro_faction"], "goodwill": { "outcasts": 50, "ghouls": -60, "minutemen_hunters": -30 } },
+            { "option_ru": "Защитить госпиталь от Изгоев и сохранить реактор (за людей и Искру)", "letter_ru": "Вы выбрали кучку гниющих гулей вместо спасения технологии?! Вы пожалеете об этом!", "consequences_ru": "Госпиталь спасён; гули и Минитмены прославляют колонию; писец Сайлас решает бежать к игроку.", "setsFlags": ["TMM_FactionArcStage_outcasts=4", "TMM_FactionChoice_outcasts=pro_spark"], "goodwill": { "outcasts": -60, "ghouls": 45, "minutemen_hunters": 30 } }
+          ],
+          "reward_ru": "При выборе Изгоев: легендарная силовая броня «Протектор» и чертёж T-45d Изгоев. При спасении госпиталя: 1000 серебра от гулей, передовые медикаменты и тайное письмо от писца Сайласа.",
+          "failure_ru": "Если ядро взорвётся в бою, погибают и пациенты, и отряд Касдина.",
+          "echoes_ru": "Яркая деталь: на корпусе реактора госпиталя выбито клеймо «Проект Чистилище — Сектор 4».",
+          "implementation_ru": "SitePartDef госпиталя с NPC-пациентами и триггером переключения враждебности отряда Касдина.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "out_stolen_blueprints",
+          "title_en": "Stolen Blueprints",
+          "title_ru": "Украденные чертежи",
+          "giver": "Scribe Silas",
+          "fallbackGiver": "Specialist Olin",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок спас госпиталь в квесте out_crypt_under_hospital).",
+          "letter_en": "Casdin has gone completely off the rails—he's planning to raid neutral settlements for every last scrap of tech! I copied his master armor schematics onto a holotape and ran. I'm heading for your gates, and two Outcast hit squads are right behind me!",
+          "letter_ru": "Касдин окончательно слетел с катушек — он готовит налёты на нейтральные поселения ради каждой крохи технологий! Я скопировал его главные чертежи брони на голодиск и сбежал. Я бегу к вашим воротам, а за мной по пятам идут два карательных отряда Изгоев!",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие измотанного писца Сайласа в колонию и отражение погони Изгоев в чёрно-красной силовой броне.", "where": "colony", "mechanic": "оборона колонии", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Укрыть Сайласа и принять его в колонию", "letter_ru": "Спасибо, что не выдали. С этими чертежами мы соберём броню не хуже их хвалёных комплектов.", "consequences_ru": "Писец Сайлас присоединяется к колонии; игрок получает чертежи силовой брони Изгоев без союза с Касдином.", "setsFlags": ["TMM_DefectorRecruited_scribe_silas=true"], "goodwill": { "outcasts": -80, "brotherhood": 15 } }
+          ],
+          "reward_ru": "Герой Писец Сайлас в колонию и чертёж силовой брони Изгоев.",
+          "failure_ru": "Если Сайлас погибнет при атаке, голодиск можно снять с его тела, но сам герой потерян.",
+          "echoes_ru": "Яркая деталь: Сайлас приносит с собой спасённый из госпиталя довоенный медицинский сканер.",
+          "implementation_ru": "Спавн преследуемого пешки-союзника + рейд враждебных Изгоев с задержкой в 2 игровых часа.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "vault_tec",
+      "quests": [
+        {
+          "n": 1,
+          "id": "vt_generous_offer",
+          "title_en": "A Generous Offer",
+          "title_ru": "Выгодное предложение",
+          "giver": "Vault-Tec Rep",
+          "fallbackGiver": "Overseer Gwen McNamara",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Good morning! Vault-Tec calling! You won't believe the luck—even after two hundred years, your settlement qualifies for our Platinum Resilience Package! Let me stop by your hospitality lounge to sign the forms—just watch out for some very rude raiders who want my briefcase.",
+          "letter_ru": "Доброе утро! Звонит Волт-Тек! Вы не поверите своей удаче — даже спустя двести лет ваше поселение подходит под наш Платиновый пакет выживания! Позвольте заглянуть в вашу гостиницу и оформить бумаги — только приглядите за парой грубых рейдеров, которым приглянулся мой чемоданчик.",
+          "stages": [
+            { "n": 1, "what_ru": "Представитель Волт-Тек заселяется в гостиницу колонии, раздаёт бланк регистрации и травит довоенные байки.", "where": "hotel", "mechanic": "гостиница / диалог", "minutes": 10 },
+            { "n": 2, "what_ru": "Отражение налёта рейдеров, пытающихся выкрасть довоенный кодовый чемодан агента.", "where": "colony", "mechanic": "оборона", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Подписать контракт и вернуть чемодан Представителю", "letter_ru": "Фантастика! Вы официально в программе! Вот вам фирменные комбинезоны — носите с гордостью!", "consequences_ru": "Открывается репутация с Волт-Тек и чертёж комбинезона Убежища.", "setsFlags": ["TMM_VT_Q1=signed"], "goodwill": { "vault_tec": 25 } }
+          ],
+          "reward_ru": "350 серебра, 2 комбинезона Убежища и чертёж комбинезона Убежища.",
+          "failure_ru": "Если агент погибнет или чемодан украдут, Волт-Тек долго не выходит на связь.",
+          "echoes_ru": "Яркая деталь: в квитанции на чемодане стоит подпись «Р. Роман, 2077 г.».",
+          "implementation_ru": "Визит гостя в гостиницу + триггер небольшого рейда через 6 игровых часов.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "vt_sector_three_leak",
+          "title_en": "Sector Three Leak",
+          "title_ru": "Утечка в третьем секторе",
+          "giver": "Overseer Gwen McNamara",
+          "fallbackGiver": "Security Chief Kendall",
+          "unlock_ru": "Акт 2, завершён квест vt_generous_offer.",
+          "letter_en": "This is Overseer McNamara. A seismic tremor ruptured the filtration seals in our lower hydroponics wing, flooding the sector with toxic coolant gas. Our engineers are trapped behind emergency bulkheads. Send a team with repair gear immediately!",
+          "letter_ru": "Говорит смотритель Макнамара. Подземный толчок разорвал уплотнители фильтрации в нижнем крыле гидропоники, затопив сектор токсичным газом. Наши инженеры заперты за аварийными переборками. Немедленно пришлите команду с ремонтным снаряжением!",
+          "stages": [
+            { "n": 1, "what_ru": "Спуск в задымлённое Убежище, ремонт 4 клапанов фильтрации под воздействием токсичного газа и спасение 3 инженеров.", "where": "special_map", "mechanic": "особая карта / ремонт и спасение", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Спасти всех инженеров и запечатать утечку", "letter_ru": "Вы спасли десятки жизней. Моё Убежище в неоплатном долгу перед вашей колонией.", "consequences_ru": "Гвен Макнамара становится близким союзником; открывается чертёж брони охраны Убежища.", "setsFlags": ["TMM_VT_Q2=saved"], "goodwill": { "vault_tec": 30 } }
+          ],
+          "reward_ru": "Чертёж брони службы безопасности Убежища, 600 серебра и медикаменты.",
+          "failure_ru": "При гибели инженеров Макнамара винит себя и закрывает доступ в жилые сектора.",
+          "echoes_ru": "Яркая деталь: на трубах фильтрации видны следы намеренного спила, сделанного изнутри по приказу доктора Брона.",
+          "implementation_ru": "SitePartDef Убежища с зонами токсичного газа (ToxGas) и таймером удушья у запертых NPC.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "vt_iron_order",
+          "title_en": "Iron Order",
+          "title_ru": "Железный порядок",
+          "giver": "Overseer Alphonse Almodovar",
+          "fallbackGiver": "Security Chief Kendall",
+          "unlock_ru": "Акт 2, завершён квест vt_sector_three_leak.",
+          "letter_en": "Order is the sole wall separating Vault-Tec from the savagery of the surface. Subversive elements in my mining wing are threatening to breach the main vault door. Assist Chief Kendall in restoring absolute discipline.",
+          "letter_ru": "Порядок — единственная стена, отделяющая Волт-Тек от дикости поверхности. Подрывные элементы в моём шахтёрском крыле угрожают вскрыть главную гермодверь. Помогите начальнику охраны Кендаллу восстановить абсолютную дисциплину.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие к шлюзу Убежища Альмодовара: выбор между силовым разгоном бастующих шахтёров с Кендаллом или тайными переговорами с лидерами бунта.", "where": "world_site", "mechanic": "переговоры / выбор стороны", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Поддержать Альмодовара и подавить бунт", "letter_ru": "Прекрасно. Каждый знает своё место, и воздух в фильтрах остаётся чистым.", "consequences_ru": "Совет Волт-Тек доволен; репутация у Минитменов слегка падает.", "setsFlags": ["TMM_VT_Q3=crackdown"], "goodwill": { "vault_tec": 25, "minutemen_hunters": -15 } },
+            { "option_ru": "Убедить Кендалла пойти на уступки без кровопролития", "letter_ru": "Неортодоксальный метод, но... двери остались закрыты, а добыча возобновилась.", "consequences_ru": "Бунт улажен мирно; Макнамара и Представитель Волт-Тек высоко ценят дипломатию игрока.", "setsFlags": ["TMM_VT_Q3=compromise"], "goodwill": { "vault_tec": 20, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "500 серебра, сталь и компоненты.",
+          "failure_ru": "Если в перестрелке погибнет Кендалл, Альмодовар разрывает контакты.",
+          "echoes_ru": "Яркая деталь: шахтёры бастовали, потому что прокопали стену и наткнулись на древний енохианский камень под Убежищем.",
+          "implementation_ru": "DiaNode с проверкой Social или небоевым разгоном (дубинки/оглушение).",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "vt_two_hundred_year_sleep",
+          "title_en": "A Two-Hundred-Year Sleep",
+          "title_ru": "Сон длиной в двести лет",
+          "giver": "Dr. Stanislaus Braun",
+          "fallbackGiver": "Overseer Alphonse Almodovar",
+          "unlock_ru": "Акт 2, завершён квест vt_iron_order (Точка фракции Волт-Тек).",
+          "letter_en": "Ah, my clever little surface anomaly! You have found the key to my grandest theater—Vault 112! Step into my Tranquility Loungers and experience perfection, or perhaps we can discuss a mutually beneficial exchange regarding your little 'Spark' problem.",
+          "letter_ru": "Ах, моя смышлёная поверхностная аномалия! Вы нашли ключ к моему величайшему театру — Убежищу 112! Лягте в мои шезлонги «Транквилити» и познайте совершенство, или же мы обсудим взаимовыгодный обмен насчёт вашей маленькой проблемы с «Искрой».",
+          "stages": [
+            { "n": 1, "what_ru": "Проникновение в зал капсул Убежища 112, где десятки довоенных жителей заперты в вечной виртуальной пытке доктора Брона.", "where": "special_map", "mechanic": "исследование / головоломка терминалов", "minutes": 25 },
+            { "n": 2, "what_ru": "Встреча с голограммой/воплощением доктора Брона у главного пульта: выдернуть рубильник симуляции или заключить сделку.", "where": "special_map", "mechanic": "моральный выбор / диалог", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Заключить сделку с Броном и оставить эксперимент в силе (за Волт-Тек)", "letter_ru": "Чудесно! Настоящий визионер! Вот ваш Золотой Пип-Бой — пользуйтесь на здоровье, ха-ха!", "consequences_ru": "Брон вручает Золотой Пип-Бой 3000 Mark IV и чертежи ГЭКК; Гвен Макнамара в ужасе от садизма Брона.", "setsFlags": ["TMM_FactionArcStage_vault_tec=4", "TMM_FactionChoice_vault_tec=pro_faction"], "goodwill": { "vault_tec": 50, "minutemen_hunters": -30, "railroad": -30 } },
+            { "option_ru": "Запустить аварийный сброс и освободить пленников смертью (за человечность)", "letter_ru": "Варвары! Вы разрушили мой шедевр! Я сотру ваше жалкое поселение с карты!", "consequences_ru": "Пленники обретают покой; раскрывается связь Брона с Диком Романом; Макнамара решает порвать с советом.", "setsFlags": ["TMM_FactionArcStage_vault_tec=4", "TMM_FactionChoice_vault_tec=pro_spark"], "goodwill": { "vault_tec": -50, "minutemen_hunters": 35, "railroad": 25 } }
+          ],
+          "reward_ru": "При сделке: легендарный Золотой Пип-Бой 3000 Mark IV и чертёж костюма симуляции Брона. При сбросе: архивы Консорциума, 1200 серебра и тайное письмо от Гвен Макнамары.",
+          "failure_ru": "Если отряд сбежит без решения, капсулы продолжают работать, а Брон блокирует двери.",
+          "echoes_ru": "Яркая деталь: в терминале Убежища 112 сохранена переписка Брона с «Р. Романом» о расчёте квоты душ с каждого Убежища.",
+          "implementation_ru": "SitePartDef Убежища 112 с рядом крио/симуляционных капсул и интерактивным терминалом аварийного сброса.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "vt_open_blast_doors",
+          "title_en": "Open Blast Doors",
+          "title_ru": "Открытые гермодвери",
+          "giver": "Overseer Gwen McNamara",
+          "fallbackGiver": "Vault-Tec Rep",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок раскрыл эксперименты Брона).",
+          "letter_en": "The records you uncovered in Vault 112 sickened us all. Braun and Almodovar have locked down the central council and hired Gunner mercenaries to silence anyone who speaks out. Help me and the Vault-Tec Rep break out of our lockdown and bring our engineers to your colony!",
+          "letter_ru": "Записи, которые вы вскрыли в Убежище 112, ужаснули нас всех. Брон и Альмодовар заблокировали центральный совет и наняли Стрелков, чтобы заткнуть рот каждому несогласному. Помогите мне и Представителю Волт-Тек прорвать блокаду и вывести инженеров в вашу колонию!",
+          "stages": [
+            { "n": 1, "what_ru": "Штурм внешнего периметра Убежища, где отряд Стрелков и охрана Кендалла держат в осаде сторонников Макнамары.", "where": "world_site", "mechanic": "штурм / спасение", "minutes": 30 },
+            { "n": 2, "what_ru": "Сопровождение Макнамары и Представителя Волт-Тек в колонию.", "where": "colony", "mechanic": "сопровождение", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Гвен Макнамару и Представителя Волт-Тек в колонию", "letter_ru": "Мы больше не прячемся за стальными дверями. Наши знания и технологии теперь служат вашей колонии.", "consequences_ru": "Смотритель Гвен Макнамара и Представитель Волт-Тек вступают в колонию; во главе Волт-Тек остаются Брон и Альмодовар.", "setsFlags": ["TMM_DefectorRecruited_gwen_mcnamara=true", "TMM_DefectorRecruited_vaulttec_rep=true"], "goodwill": { "vault_tec": -75, "minutemen_hunters": 25 } }
+          ],
+          "reward_ru": "Герои Смотритель Гвен Макнамара и Представитель Волт-Тек в колонию, плюс чертёж криокапсул Волт-Тек.",
+          "failure_ru": "Если Макнамара погибнет при прорыве, Представитель Волт-Тек всё равно доберётся до колонии с частью чертежей.",
+          "echoes_ru": "Яркая деталь: Представитель Волт-Тек наконец-то получает от колонистов собственную комнату с чистой постелью.",
+          "implementation_ru": "SitePartDef внешнего шлюза Убежища с боем против смешанного отряда охраны и Стрелков.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "minutemen_hunters",
+      "quests": [
+        {
+          "n": 1,
+          "id": "mh_salt_and_shotgun",
+          "title_en": "Salt and Shotgun",
+          "title_ru": "Соль и дробовик",
+          "giver": "Dean Winchester",
+          "fallbackGiver": "Sam Winchester",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Hey there, neighbor. Name's Dean. Me and my brother Sam are tracking a nasty son of a bitch—a wendigo that's been picking off caravans near your sector and wearing the face of a wounded trader. If a guy limps into your waystation asking for raw meat and a dark room, don't offer him pie—call us.",
+          "letter_ru": "Эй, сосед. Меня зовут Дин. Мы с братом Сэмом идём по следу одной мерзкой твари — вендиго, который вырезает караваны в вашем секторе и прикидывается раненым торговцем. Если к вам в гостиницу прихромает парень и попросит сырого мяса и тёмную комнату — не угощай его пирогом, зови нас.",
+          "stages": [
+            { "n": 1, "what_ru": "В гостиницу колонии прибывает группа раненых караванщиков; игрок проводит опрос и осмотр, чтобы вычислить монстра.", "where": "hotel", "mechanic": "расследование / детектив", "minutes": 15 },
+            { "n": 2, "what_ru": "Ночная схватка с разоблачённым вендиго при поддержке пришедших на помощь Дина и Сэма Винчестеров.", "where": "colony", "mechanic": "охота / бой", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Вычислить вендиго без жертв среди мирных и добить его с Винчестерами", "letter_ru": "Неплохо сработано! Настоящие охотники. Держи выкройку нормальной куртки и пару пачек соли.", "consequences_ru": "Винчестеры становятся друзьями колонии; открывается чертёж кожаной куртки Дина и обреза.", "setsFlags": ["TMM_MH_Q1=clean"], "goodwill": { "minutemen_hunters": 30 } }
+          ],
+          "reward_ru": "350 серебра, патронташ с каменной солью, чертёж кожаной куртки Дина и обреза дробовика.",
+          "failure_ru": "Если ошибиться с целью или затянуть расследование, вендиго ночью убьёт одного из постояльцев гостиницы.",
+          "echoes_ru": "Яркая деталь: Дин после боя проверяет кладовку колонии в поисках вишнёвого пирога и оставляет за него пару крышек.",
+          "implementation_ru": "Кастомный квест гостиницы с 3 подозреваемыми NPC (один скрытый мутант/аномалия с триггером превращения ночью).",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "mh_junkyard_grimoire",
+          "title_en": "The Salvage Yard Grimoire",
+          "title_ru": "Гримуар с автосвалки",
+          "giver": "Bobby Singer",
+          "fallbackGiver": "Sam Winchester",
+          "unlock_ru": "Акт 2, завершён квест mh_salt_and_shotgun.",
+          "letter_en": "Listen up, idjits! Sam found a pre-war occult ledger buried under three tons of rusted Buicks in my yard, and it mentions your 'Zero Anchor'. Problem is, half of Hell's crossroads lackeys smelled the ink and are swarming my perimeter. Get your boots over here and hold the line while Sam finishes the translation!",
+          "letter_ru": "Слушайте сюда, балбесы! Сэм откопал довоенный оккультный гроссбух под тремя тоннами ржавых «Бьюиков» на моей свалке, и там упоминается ваш «Нулевой Якорь». Проблема в том, что половина чертей с перекрёстка учуяла чернила и лезет через забор. Тащите сюда свои задницы и держите периметр, пока Сэм не закончит перевод!",
+          "stages": [
+            { "n": 1, "what_ru": "Оборона укреплённой автосвалки Бобби Сингера (с турелями, ловушками и пентаграммами) от двух волн демонов.", "where": "special_map", "mechanic": "оборона / ритуал", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Удержать дом Бобби до завершения перевода Сэма", "letter_ru": "Ну, хоть кто-то в этом мире не совсем безнадёжен. Забирайте копию перевода и мою запасную кепку.", "consequences_ru": "Игрок получает расшифровку связи между 66 Печатями и Великой войной; чертёж кепки Бобби.", "setsFlags": ["TMM_MH_Q2=translated"], "goodwill": { "minutemen_hunters": 30, "hell_demons": -20 } }
+          ],
+          "reward_ru": "500 серебра, чертёж кепки Бобби Сингера и многослойной куртки Сэма, плюс енохианские руны для оружия.",
+          "failure_ru": "Если демоны прорвутся в библиотеку, часть страниц сгорит, а Бобби покроет колонистов отборной бранью.",
+          "echoes_ru": "Яркая деталь: в подвале Бобби стоит железная комната-ловушка, куда во время боя заманивают командира демонов.",
+          "implementation_ru": "SitePartDef автосвалки с готовыми Дьявольскими ловушками (Building_Trap) и таймером работы Сэма за столом знаний.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "mh_guns_of_castle",
+          "title_en": "Guns of the Castle",
+          "title_ru": "Орудия Замка",
+          "giver": "Ronnie Shaw",
+          "fallbackGiver": "Preston Garvey",
+          "unlock_ru": "Акт 2, завершён квест mh_junkyard_grimoire.",
+          "letter_en": "General's got faith in you, so I'll skip the speeches. A feral super mutant warband is massing near the southern ridge, ready to flatten three farming settlements. Help us haul shells, repair the old Castle mortars, and blow their war-beacon to kingdom come.",
+          "letter_ru": "Генерал в тебя верит, так что обойдёмся без речей. Дикая банда супермутантов собирается у южного хребта и готова раскатать три фермерских поселения. Помоги подтащить снаряды, починить старые мортиры Замка и разнести их боевой маяк к чертям.",
+          "stages": [
+            { "n": 1, "what_ru": "Восстановление двух артиллерийских установок на карте Замка и пристрелка по координатам лагеря диких мутантов.", "where": "outpost", "mechanic": "строительство / арт-удар", "minutes": 20 },
+            { "n": 2, "what_ru": "Отражение ответного прорыва диких супермутантов вместе с Престоном Гарви и Ронни Шоу.", "where": "outpost", "mechanic": "оборона", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Уничтожить лагерь мутантов и защитить фермеров", "letter_ru": "Отличная работа, солдат. С такой огневой поддержкой Пустошь снова может дышать свободно.", "consequences_ru": "Минитмены открывают поддержку артиллерией на карте мира; чертёж шляпы Престона Гарви.", "setsFlags": ["TMM_MH_Q3=victory"], "goodwill": { "minutemen_hunters": 30, "wild_mutants": -25 } }
+          ],
+          "reward_ru": "Чертёж шляпы Престона Гарви, сигнальные шашки арт-удара и 600 серебра.",
+          "failure_ru": "При уничтожении батареи ополчение несёт потери, но отступает в порядок.",
+          "echoes_ru": "Яркая деталь: Ронни Шоу заряжает в одну из мортир бочку с освящённой солью против нечисти.",
+          "implementation_ru": "Outpost-карта с ванильными миномётами (Turret_Mortar) и скриптовым обстрелом соседнего лагеря.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "mh_night_at_roadhouse",
+          "title_en": "Night at the Roadhouse",
+          "title_ru": "Ночь в Дорожном доме",
+          "giver": "Ellen Harvelle",
+          "fallbackGiver": "Dean Winchester",
+          "unlock_ru": "Акт 2, завершён квест mh_guns_of_castle (Точка фракции Охотников и Минитменов).",
+          "letter_en": "Drop everything and get to Harvelle's Roadhouse! A black storm rolled in out of nowhere, demonic raiders have surrounded the bar, and worse—one of the travelers we let inside is possessed and sabotaging our salt lines from the inside. We can't hold out till dawn alone!",
+          "letter_ru": "Бросай всё и дуй в «Дорожный дом» Харвелл! Чёрная буря налетели из ниоткуда, одержимые рейдеры окружили бар, а хуже того — один из путников, которых мы впустили, одержим и стирает линии соли изнутри. До рассвета нам в одиночку не продержаться!",
+          "stages": [
+            { "n": 1, "what_ru": "Оборона придорожного бара Эллен Харвелл от волн одержимых рейдеров и адских гончих.", "where": "special_map", "mechanic": "оборона / осада", "minutes": 25 },
+            { "n": 2, "what_ru": "В перерыве между атаками игрок должен с помощью святой воды, серебра или диалога вычислить одержимого среди 5 посетителей бара, не убив невинных.", "where": "special_map", "mechanic": "детектив / моральный выбор", "minutes": 20 }
+          ],
+          "choices": [
+            { "option_ru": "Вычислить одержимого, изгнать демона и спасти всех постояльцев (за людей и Искру)", "letter_ru": "Вы спасли мой дом и моих людей. Винчестеры решили, что вы достойны владеть главным козырем охотников — держите «Кольт».", "consequences_ru": "Бар спасён без потерь; Дин и Сэм передают колонии легендарный револьвер «Кольт»; Минитмены и охотники готовы поддержать игрока в финале.", "setsFlags": ["TMM_FactionArcStage_minutemen_hunters=4", "TMM_FactionChoice_minutemen_hunters=pro_spark"], "goodwill": { "minutemen_hunters": 60, "hell_demons": -50 } },
+            { "option_ru": "Зачистить зал огнём без разбора, чтобы гарантированно убить демона (жёсткий путь)", "letter_ru": "Демон мёртв... но ты перестрелял невинных людей прямо у моей стойки. Убирайся из моего бара!", "consequences_ru": "Демон уничтожен, но погибли мирные жители; Эллен и Винчестеры возмущены, а ветераны Ронни Шоу и Руфус уважают жёсткость.", "setsFlags": ["TMM_FactionArcStage_minutemen_hunters=4", "TMM_FactionChoice_minutemen_hunters=pro_faction"], "goodwill": { "minutemen_hunters": -25, "hell_demons": -40, "brotherhood": 15 } }
+          ],
+          "reward_ru": "При спасении всех: легендарный револьвер «Кольт» (13 серебряных пуль) и чертёж мундира генерала Минитменов. При жёсткой зачистке: 900 серебра и рунические патроны.",
+          "failure_ru": "Если бар падёт, Эллен Харвелл получает тяжёлые ранения, а «Кольт» приходится добывать позже через сложный квест.",
+          "echoes_ru": "Яркая деталь: в углу бара стоит старый музыкальный автомат, который всю осаду крутит рок-н-ролл 70-х.",
+          "implementation_ru": "SitePartDef бара «Дорожный дом» с 5 нейтральными NPC (один имеет скрытый Hediff_DemonPossessed, реагирующий на святую воду/проверку Social).",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "mh_cold_pragmatism",
+          "title_en": "Cold Pragmatism",
+          "title_ru": "Холодный прагматизм",
+          "giver": "Rufus Turner",
+          "fallbackGiver": "Ronnie Shaw",
+          "unlock_ru": "Акт 3, после Точки невозврата №1.",
+          "letter_en": "Winchester and Garvey want to play nice with synths and friendly monsters, and maybe they're right—or maybe we're all gonna get burned. Either way, an old trapper like me knows which way the wind blows. Let's settle our business once and for all.",
+          "letter_ru": "Винчестер и Гарви хотят играть в благородство с синтами и «добрыми» монстрами — может, они и правы, а может, мы все сгорим. Так или иначе, старый капканщик вроде меня чует, откуда дует ветер. Давай окончательно решим, по пути ли нам.",
+          "stages": [
+            { "n": 1, "what_ru": "Если игрок защищает людей и Искру: совместная зачистка засады охотников за головами с Руфусом Тёрнером. Если игрок заключил сделку с Адом/нечистью: Руфус и Ронни Шоу вызывают колонию на честный бой и уходят к Братству Стали.", "where": "world_site", "mechanic": "тактический бой / раскол", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Руфуса Тёрнера в гарнизон колонии (на пути защиты людей)", "letter_ru": "Ладно, только чур мою комнату без спроса не минировать. Я сам заминирую подходы.", "consequences_ru": "Руфус Тёрнер присоединяется к колонии как мастер ловушек и разведчик.", "setsFlags": ["TMM_DefectorRecruited_rufus_turner=true"], "goodwill": { "minutemen_hunters": 25 } }
+          ],
+          "reward_ru": "Герой Руфус Тёрнер в колонию и чертежи продвинутых ловушек охотников (или раскол с уходом ветеранов на тёмных путях).",
+          "failure_ru": "Если Руфус погибнет в перестрелке, его дневник с картой тайников достаётся колонии.",
+          "echoes_ru": "Яркая деталь: Руфус немедленно расставляет вокруг своей койки три растяжки с банками и святой водой.",
+          "implementation_ru": "Ветвление QuestScriptDef по флагу TMM_PointOfNoReturn1_Choice (союзный бой или враждебная дуэль).",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "ghouls",
+      "quests": [
+        {
+          "n": 1,
+          "id": "ghoul_silver_shroud",
+          "title_en": "The Silver Shroud Returns",
+          "title_ru": "Серебряный Плащ выходит в эфир",
+          "giver": "Kent Connolly",
+          "fallbackGiver": "Daisy",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Citizens of the wasteland! Evil lurks in the shadows, and Goodneighbor needs a hero! Actually, uh, it's just me, Kent Connolly. Raiders took over the old Hubris Comics archive where my authentic Silver Shroud radio scripts and costume patterns are locked. Please help me get them back—people need hope right now!",
+          "letter_ru": "Граждане Пустоши! Зло таится во тьме, и Добрососедству нужен герой! То есть, э-э, это просто я, Кент Коннолли. Рейдеры захватили старый архив «Хьюбрис Комикс», где заперты мои подлинные радиосценарии Серебряного Плаща и выкройки костюма. Пожалуйста, помогите их вернуть — людям сейчас нужна надежда!",
+          "stages": [
+            { "n": 1, "what_ru": "Зачистка довоенного издательства «Хьюбрис Комикс» от банды рейдеров и поиск катушек с радиопьесами.", "where": "world_site", "mechanic": "зачистка / поиск предметов", "minutes": 20 },
+            { "n": 2, "what_ru": "Сопровождение Кента Коннолли к радиовышке для запуска первой передачи Серебряного Плаща.", "where": "world_site", "mechanic": "сопровождение / оборона", "minutes": 10 }
+          ],
+          "choices": [
+            { "option_ru": "Передать катушки и выкройки Кенту Коннолли", "letter_ru": "Да! Вы слышите этот сигнал?! Справедливость снова звучит в эфире! Вот, возьмите копию выкройки плаща!", "consequences_ru": "Радио Серебряного Плаща начинает вещание в регионе (даёт лёгкий бонус настроения поселенцам); открывается чертёж плаща Серебряного Плаща.", "setsFlags": ["TMM_Ghoul_Q1=broadcasting"], "goodwill": { "ghouls": 30, "minutemen_hunters": 10 } }
+          ],
+          "reward_ru": "350 серебра, чертёж плаща Серебряного Плаща и прорезиненного пончо Пустоши.",
+          "failure_ru": "Если Кент получит тяжёлые ранения или катушки сгорят, вещание срывается, а гули впадают в уныние.",
+          "echoes_ru": "Яркая деталь: в подвале издательства обнаруживается потайной сейф с довоенными счетами на имя «Р. Романа», скупавшего радиостанции перед войной.",
+          "implementation_ru": "SitePartDef офиса комиксов + глобальный GameCondition/ThoughtWorker «Радио Серебряного Плаща» (+2 к настроению).",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "ghoul_contract_conscience",
+          "title_en": "Contract of Conscience",
+          "title_ru": "Контракт на совесть",
+          "giver": "Edward Deegan",
+          "fallbackGiver": "John Hancock",
+          "unlock_ru": "Акт 2, завершён квест ghoul_silver_shroud (учитывает исход квеста Изгоев out_crypt_under_hospital).",
+          "letter_en": "Listen up, smoothskin. A crew of Gunner-backed slavers has been snatching peaceful ghouls off the trade roads and selling them to fight in feral pit arenas. Hancock wants their compound burned to the ground, and I need a reliable gun at my side. Are you in?",
+          "letter_ru": "Слушай сюда, гладкокожий. Банда работорговцев под крышей Стрелков вылавливает мирных гулей на торговых трактах и продаёт их в гладиаторские ямы к одичавшим. Хэнкок хочет сжечь их базу дотла, и мне нужен надёжный ствол рядом. Ты в деле?",
+          "stages": [
+            { "n": 1, "what_ru": "Ночной штурм укреплённого лагеря работорговцев и вскрытие клеток с пленными гулями до начала травли.", "where": "special_map", "mechanic": "штурм лагеря / спасение", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Освободить всех пленных гулей и казнить главаря работорговцев", "letter_ru": "Двести лет живу, а редко встречаю людей, у которых слово не расходится с делом. Добрососедство этого не забудет.", "consequences_ru": "Освобождённые гули присылают караваны с довоенными медикаментами; Эдвард Диган становится другом колонии.", "setsFlags": ["TMM_Ghoul_Q2=liberated"], "goodwill": { "ghouls": 35, "gunners": -25 } }
+          ],
+          "reward_ru": "650 серебра, антирадин, стимуляторы и +15 репутации с Подземкой.",
+          "failure_ru": "Если пленники погибнут в клетках от диких гулей, Диган уходит молча и замораживает контакты.",
+          "echoes_ru": "Яркая деталь: среди спасённых гулей оказывается врач из госпиталя, который с благодарностью вспоминает игрока, если тот защитил клинику от Изгоев в Пакте 1.",
+          "implementation_ru": "SitePartDef арены с клетками (Building_Door с замком) и таймером выпуска диких гулей.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "ghoul_decay_recipe",
+          "title_en": "Recipe Against Decay",
+          "title_ru": "Рецепт против распада",
+          "giver": "Gob",
+          "fallbackGiver": "Daisy",
+          "unlock_ru": "Акт 2, завершён квест ghoul_contract_conscience.",
+          "letter_en": "H-hello... I'm Gob. Daisy told me you're actually decent to folks like us. Some of our oldest pre-war residents are starting to hear whispers and lose their minds—the feral rot is setting in. I found an old medical formula for a neural stabilizer, but the glowing fungus only grows inside a hot radiation crater. Could you gather it for me?",
+          "letter_ru": "П-привет... Я Гоб. Дейзи сказала, что вы по-настоящему порядочно относитесь к таким, как мы. Некоторые из наших старейших довоенных жителей начинают слышать шёпот и терять рассудок — подступает одичание. Я нашёл рецепт нейростабилизатора, но светящиеся грибы растут только в самом пекле радиационной воронки. Поможете собрать их?",
+          "stages": [
+            { "n": 1, "what_ru": "Экспедиция в сильно загрязнённый кратер (требуются костюмы химзащиты или гули/супермутанты в отряде) для сбора 12 светящихся грибов и защиты от светящегося гуля-альфы.", "where": "world_site", "mechanic": "экспедиция / сбор в радиации", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Доставить грибы Гобу для приготовления сыворотки", "letter_ru": "Получилось! Дымка в их глазах отступает! Спасибо... впервые за двести лет кто-то помог нам просто так.", "consequences_ru": "Гоб открывает для колонии рецепт «Стабилизатора гулей» (полностью снимает риск одичания у колонистов-гулей).", "setsFlags": ["TMM_Ghoul_Q3=stabilized"], "goodwill": { "ghouls": 30 } }
+          ],
+          "reward_ru": "Рецепт «Стабилизатора гулей», 500 серебра и партия лечебных настоек.",
+          "failure_ru": "Если отряд отступит без грибов, двое старейшин общины впадают в безумие.",
+          "echoes_ru": "Яркая деталь: на дне воронки торчит неразорвавшаяся боеголовка с нацарапанной на корпусе енохианской печатью сдерживания.",
+          "implementation_ru": "SitePartDef с максимальным загрязнением почвы (PollutedTerrain) и сбором растений (Harvestable).",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "ghoul_last_dawn",
+          "title_en": "The Last Dawn",
+          "title_ru": "Последний рассвет",
+          "giver": "John Hancock",
+          "fallbackGiver": "Daisy",
+          "unlock_ru": "Акт 2, завершён квест ghoul_decay_recipe (Точка фракции Разумных гулей).",
+          "letter_en": "Look, friend, I don't ask for favors lightly. My oldest pal—the guy who pulled me out of the gutter back when I first turned—has gone past what Gob's brew can fix. He's locked himself in the old observatory with an ancient alien crown relic we found, and his mind is slipping into feral rage. Help me end this right, one way or another.",
+          "letter_ru": "Слушай, друг, я редко прошу об одолжениях. Мой старейший товарищ — парень, вытащивший меня из канавы, когда я только обратился — перешёл черту, где помогает отвар Гоба. Он заперся в старой обсерватории с древней инопланетной короной-артефактом, которую мы нашли, и его разум тонет в звериной ярости. Помоги мне закончить это достойно, так или иначе.",
+          "stages": [
+            { "n": 1, "what_ru": "Подъём в полуразрушенную обсерваторию, где друг Хэнкока отбивается телекинетическими волнами от аномалий.", "where": "special_map", "mechanic": "исследование / прорыв", "minutes": 20 },
+            { "n": 2, "what_ru": "Решающий момент в куполе обсерватории: применить экспериментальный образец резонатора Искры/сыворотки Верджила для спасения его разума или помочь Хэнкоку даровать другу милосердную смерть.", "where": "special_map", "mechanic": "моральный выбор / личная драма", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Использовать резонанс Искры/сыворотку, чтобы вернуть ему разум (за Искру и надежду)", "letter_ru": "Он... он вспомнил моё имя. Чёрт побери, в этой проклятой Пустоши ещё случаются чудеса! Добрососедство с тобой до конца, брат!", "consequences_ru": "Друг Хэнкока спасён; Хэнкок передаёт колонии «Артефакт Лоренцо» и клянётся привести гулей на финальную битву.", "setsFlags": ["TMM_FactionArcStage_ghouls=4", "TMM_FactionChoice_ghouls=pro_spark"], "goodwill": { "ghouls": 60, "minutemen_hunters": 25 } },
+            { "option_ru": "Помочь Хэнкоку исполнить последний долг и забрать артефакт силой (суровый путь)", "letter_ru": "Он ушёл человеком, а не зверем. Спасибо, что не дал мне дрогнуть. Забирай эту штуку — от неё одни беды.", "consequences_ru": "Друг упокоен с честью; Хэнкок отдаёт «Артефакт Лоренцо» и чертёж своего красного сюртука, но уходит в глубокий траур.", "setsFlags": ["TMM_FactionArcStage_ghouls=4", "TMM_FactionChoice_ghouls=pro_faction"], "goodwill": { "ghouls": 40 } }
+          ],
+          "reward_ru": "Легендарная гамма-пушка «Артефакт Лоренцо» и чертёж красного сюртука Хэнкока (плюс гарантия поддержки гулей в финале при спасении).",
+          "failure_ru": "Если опоздать, друг Хэнкока окончательно дичает и нападает на всех без разбора.",
+          "echoes_ru": "Яркая деталь: Хэнкок снимает свою треуголку и кладёт её на грудь товарища перед прощальным залпом.",
+          "implementation_ru": "SitePartDef обсерватории с проверкой наличия флага сыворотки Верджила или резонанса Нулевого Синта.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "ghoul_new_master",
+          "title_en": "Holder of the Contract",
+          "title_ru": "Новый хозяин контракта",
+          "giver": "Charon",
+          "fallbackGiver": "Edward Deegan",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (доступен при любом выборе стороны).",
+          "letter_en": "I am Charon. My previous contract holder in the underworld has perished in the crossfire. The parchment of my binding has fallen into the hands of a Gunner lieutenant at the highway tollbooth. Reclaim my contract, and my shotgun belongs to your settlement—no matter who you fight.",
+          "letter_ru": "Я — Харон. Мой прежний держатель контракта погиб в перестрелке. Пергамент моей клятвы попал в руки лейтенанта Стрелков на блокпосту трассы. Верните мой контракт, и мой дробовик будет принадлежать вашему поселению — с кем бы вы ни воевали.",
+          "stages": [
+            { "n": 1, "what_ru": "Выкуп контракта за 1500 серебра или штурм блокпоста Стрелков для возврата древнего пергамента Харона.", "where": "world_site", "mechanic": "переговоры или штурм", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Передать контракт самому Харону и сделать его свободным бойцом колонии", "letter_ru": "Ты не стал держать меня на цепи. Я останусь рядом по своей воле. Укажи цель.", "consequences_ru": "Молчаливый гигант Харон присоединяется к колонии как элитный телохранитель и никогда не предаст игрока.", "setsFlags": ["TMM_DefectorRecruited_charon=true"], "goodwill": { "ghouls": 25 } }
+          ],
+          "reward_ru": "Герой Харон в колонию (нерушимая верность при любой финальной коалиции).",
+          "failure_ru": "Если Стрелки сожгут контракт в бою, Харон уходит в пустоши и исчезает.",
+          "echoes_ru": "Яркая деталь: получив свободу, Харон первым делом молча чистит свой боевой дробовик и встаёт на пост у ворот колонии.",
+          "implementation_ru": "Выбор в DiaNode на блокпосту: оплата серебром или немедленный бой.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "friendly_mutants",
+      "quests": [
+        {
+          "n": 1,
+          "id": "fm_wandering_storyteller",
+          "title_en": "The Wandering Storyteller",
+          "title_ru": "Бродячий сказочник",
+          "giver": "Uncle Leo",
+          "fallbackGiver": "Fawkes",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Hello, little human friends! My name is Uncle Leo! I was walking down the old highway with a bag of clean water and pre-war books for a struggling farmstead, but angry raiders with loud guns pinned me behind a rusted bus. I do not like hurting people—could you help me get through?",
+          "letter_ru": "Привет, маленькие друзья-люди! Меня зовут Дядя Лео! Я шёл по старому шоссе с мешком чистой воды и довоенных книг для бедной фермы, но злые рейдеры с громкими пушками прижали меня за ржавым автобусом. Я не люблю делать людям больно — поможете мне пройти?",
+          "stages": [
+            { "n": 1, "what_ru": "Сопровождение безоружного добродушного супермутанта Дяди Лео через засаду рейдеров к ферме поселенцев.", "where": "world_site", "mechanic": "сопровождение / защита мирного гиганта", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Довести Дядю Лео до фермы без гибели поселенцев", "letter_ru": "Видишь? Не все большие зелёные ребята плохие! Спасибо, друг, вот тебе немного припасов из моего мешка.", "consequences_ru": "Открывается репутация с Дружелюбными супермутантами и доверие Фокса.", "setsFlags": ["TMM_FM_Q1=escorted"], "goodwill": { "friendly_mutants": 30, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "400 серебра, довоенные книги навыков и 20 пакетов сухпайков.",
+          "failure_ru": "Если Дядя Лео получит тяжёлые ранения, он уходит в горы и долго не выходит на связь.",
+          "echoes_ru": "Яркая деталь: среди книг в мешке Дяди Лео находится томик Шекспира, который он позже подарит Силачу.",
+          "implementation_ru": "Сопровождение дружественного супермутанта с запретом на атаку (Pacifist AI) до точки выхода.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "fm_foggy_kennel",
+          "title_en": "The Foggy Kennel",
+          "title_ru": "Туманная псарня",
+          "giver": "Erickson",
+          "fallbackGiver": "Fawkes",
+          "unlock_ru": "Акт 2, завершён квест fm_wandering_storyteller.",
+          "letter_en": "You... you helped Leo. Good. My name is Erickson. I live in the fog near the crashed plane with my hounds. A group of trophy hunters from the Gunners set poisoned bear traps around my camp and wounded my best mutant hound. Bring medicine and help me clear their ambush.",
+          "letter_ru": "Ты... ты помог Лео. Хорошо. Меня зовут Эриксон. Я живу в тумане у разбитого самолёта со своими псами. Охотники за трофеями из Стрелков наставили вокруг лагеря отравленных капканов и ранили моего лучшего пса-мутанта. Принеси лекарства и помоги зачистить их засаду.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в туманный лагерь Эриксона, лечение раненых гончих-мутантов и обезвреживание капканов.", "where": "special_map", "mechanic": "лечение животных / разминирование", "minutes": 20 },
+            { "n": 2, "what_ru": "Отражение атаки снайперов Стрелков при поддержке Эриксона и его стаи.", "where": "special_map", "mechanic": "охота / бой", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Вылечить всех псов Эриксона и прогнать Стрелков", "letter_ru": "Псы дышат ровно. Ты не боишься нас, и мы это ценим. Возьми чертежи брони — она сшита под крупные плечи.", "consequences_ru": "Эриксон открывает торговлю приручёнными гончими-мутантами и чертежи брони супермутантов.", "setsFlags": ["TMM_FM_Q2=healed"], "goodwill": { "friendly_mutants": 30, "gunners": -20 } }
+          ],
+          "reward_ru": "Чертёж нагрудника супермутанта из лома, приручённая гончая-мутант и 500 серебра.",
+          "failure_ru": "Если псы погибнут от яда, Эриксон замыкается в себе и прекращает общение.",
+          "echoes_ru": "Яркая деталь: в фюзеляже разбитого самолёта Эриксон ведёт аккуратный лабораторный журнал наблюдений за туманными аномалиями.",
+          "implementation_ru": "SitePartDef с погодным эффектом Fog, капканами и ранеными животными (PawnKind мутантской гончей).",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "fm_milk_of_kindness",
+          "title_en": "Milk of Human Kindness",
+          "title_ru": "Молоко человеческой доброты",
+          "giver": "Strong",
+          "fallbackGiver": "Fawkes",
+          "unlock_ru": "Акт 2, завершён квест fm_foggy_kennel.",
+          "letter_en": "Strong need human friend! Wild brothers attack human traders on bridge. Strong smash wild brothers to show humans Strong is good! Come help Strong fight—maybe humans finally give Strong milk of human kindness!",
+          "letter_ru": "Силачу нужен друг-человек! Дикие братья напали на торговцев людей на мосту. Силач раздавит диких братьев, чтобы люди увидели — Силач хороший! Приходи помочь Силачу драться — может, люди наконец дадут Силачу молоко человеческой доброты!",
+          "stages": [
+            { "n": 1, "what_ru": "Бой на разрушенном мосту: игрок и Силач отбивают караван людей от орды диких супермутантов.", "where": "world_site", "mechanic": "бой / защита каравана", "minutes": 20 },
+            { "n": 2, "what_ru": "После победы напуганные охранники каравана наставляют стволы на самого Силача: игрок должен вовремя вмешаться и удержать Силача от слепой ярости.", "where": "world_site", "mechanic": "проверка дипломатии / умиротворение", "minutes": 15 }
+          ],
+          "choices": [
+            { "option_ru": "Успокоить обе стороны и убедить торговцев поблагодарить Силача", "letter_ru": "Ха! Люди не стрелять! Люди дать Силачу тёплый хлеб и сказать спасибо! Силач теперь уважать тебя!", "consequences_ru": "Силач учится сдерживать ярость; отношения между мутантами Фокса и людьми улучшаются.", "setsFlags": ["TMM_FM_Q3=peace"], "goodwill": { "friendly_mutants": 30, "wild_mutants": -25, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "600 серебра, чертёж шлема-клетки супермутанта и расположение Силача.",
+          "failure_ru": "Если в панике начнётся перестрелка с караваном, гибнут мирные торговцы, а Силач уходит разочарованным.",
+          "echoes_ru": "Яркая деталь: караванщик дарит Силачу бутылку довоенного браминьего молока, и Силач с гордостью носит её на поясе.",
+          "implementation_ru": "Двухфазный энкаунтер на мосту: после гибели диких мутантов запускается диалог предотвращения нервного срыва Berserk у Силача.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "fm_virgil_cure",
+          "title_en": "A Cure for Virgil",
+          "title_ru": "Лекарство для Верджила",
+          "giver": "Brian Virgil",
+          "fallbackGiver": "Fawkes",
+          "unlock_ru": "Акт 2, завершён квест fm_milk_of_kindness (Точка фракции Дружелюбных супермутантов).",
+          "letter_en": "I did it... by God, I actually synthesized it! Using the spiritual resonance readings from your Zero Spark, I stabilized a single dose of the FEV retro-virus! Come to my cave lab immediately—my mind is slipping every day, and this is my only chance to become human again!",
+          "letter_ru": "Я сделал это... боже, я правда её синтезировал! Используя данные резонанса вашей Нулевой Искры, я стабилизировал одну-единственную дозу ретровируса ВРЭ! Немедленно приходите в мою пещерную лабораторию — мой рассудок тает с каждым днём, и это мой единственный шанс снова стать человеком!",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в скальную пещеру Брайана Верджила в самый разгар налёта элитных охотников Института, пришедших за предателем.", "where": "special_map", "mechanic": "оборона лаборатории", "minutes": 25 },
+            { "n": 2, "what_ru": "У центрифуги осталась только одна уцелевшая ампула сыворотки: отдать её самому Верджилу или использовать для спасения умирающего от острой лучевой мутации молодого колониста/ребёнка поселенцев (или стабилизации старейшины гулей).", "where": "special_map", "mechanic": "моральный выбор / личная драма", "minutes": 20 }
+          ],
+          "choices": [
+            { "option_ru": "Отдать единственную дозу Брайану Верджилу (за науку и союз с Фоксом)", "letter_ru": "Оно работает... я снова чувствую свои пальцы, свои мысли! Я никогда не забуду этого долга. Фокс и я будем с вами до конца!", "consequences_ru": "Верджил постепенно возвращает человеческий облик (или сохраняет гениальный интеллект) и передаёт колонии «Крушитель Атома»; Фокс обещает поддержку в финале.", "setsFlags": ["TMM_FactionArcStage_friendly_mutants=4", "TMM_FactionChoice_friendly_mutants=pro_faction", "TMM_VirgilCured=true"], "goodwill": { "friendly_mutants": 60, "institute": -30 } },
+            { "option_ru": "Забрать сыворотку для спасения умирающего человека (жертвенный выбор)", "letter_ru": "Я... я понимаю. Я сам создал это чудовище, мне и нести этот крест. Возьмите ампулу... и уходите, пока я ещё помню своё имя.", "consequences_ru": "Человек спасён, +25 к доверию Нулевого Синта; Фокс с уважением передаёт «Крушитель Атома», но Верджил остаётся мутантом в изоляции.", "setsFlags": ["TMM_FactionArcStage_friendly_mutants=4", "TMM_FactionChoice_friendly_mutants=pro_spark", "TMM_VirgilCured=false"], "goodwill": { "friendly_mutants": 35, "minutemen_hunters": 25 } }
+          ],
+          "reward_ru": "Легендарная суперкувалда «Крушитель Атома» и чертёж комбинезона Убежища 87 Фокса.",
+          "failure_ru": "Если центрифуга разрушена в бою, ампула разбивается, и обе стороны терпят трагедию.",
+          "echoes_ru": "Яркая деталь: Фокс стоит у входа в пещеру с миниганом, отказываясь сам принимать лекарство, потому что его сила нужна для защиты слабых.",
+          "implementation_ru": "SitePartDef пещеры Верджила с разрушаемой центрифугой и предметом-сывороткой.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "fm_lab_of_hope",
+          "title_en": "Laboratory of Hope",
+          "title_ru": "Лаборатория надежды",
+          "giver": "Brian Virgil",
+          "fallbackGiver": "Fawkes",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если Верджил остался жив в квесте fm_virgil_cure).",
+          "letter_en": "With the Consortium and the Enclave mobilizing, my cave is no longer safe—and your Zero Anchor has the exact energy signature I need to synthesize a mass-produced cure for both FEV and ghoul degeneration. Help me relocate my equipment to your colony!",
+          "letter_ru": "Теперь, когда Консорциум и Анклав подняли армии, моя пещера больше не безопасна — а у вашего Нулевого Якоря есть именно та энергетическая сигнатура, которая нужна для массового лекарства от ВРЭ и одичания гулей. Помогите перевезти оборудование в вашу колонию!",
+          "stages": [
+            { "n": 1, "what_ru": "Эвакуация Брайана Верджила и трёх ящиков лабораторного оборудования под прикрытием Фокса через засаду Анклава.", "where": "world_site", "mechanic": "эвакуация / бой", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Брайана Верджила в научный штаб колонии", "letter_ru": "Наконец-то настоящая лаборатория. Дайте мне время — и мы исцелим эту проклятую Пустошь.", "consequences_ru": "Брайан Верджил присоединяется к колонии как гениальный учёный и медик.", "setsFlags": ["TMM_DefectorRecruited_virgil=true"], "goodwill": { "friendly_mutants": 30, "ghouls": 20, "enclave": -40 } }
+          ],
+          "reward_ru": "Герой Брайан Верджил в колонию и уникальный исследовательский стол ВРЭ (+25% к скорости биоисследований).",
+          "failure_ru": "При гибели Верджила его записи достаются Фоксу, но разработка массовой вакцины замедляется.",
+          "echoes_ru": "Яркая деталь: если Верджил был исцелён в квесте 4, он прибывает уже в облике человека в халате, но с огромным шрамом от мутации.",
+          "implementation_ru": "Динамическая смена ксенотипа Верджила при флаге TMM_VirgilCured=true и спавн в колонию.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "enclave",
+      "quests": [
+        {
+          "n": 1,
+          "id": "enc_restoring_comms",
+          "title_en": "Restoring the Grid",
+          "title_ru": "Восстановление связи",
+          "giver": "Captain Richards",
+          "fallbackGiver": "Colonel Autumn",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Attention, local settlement. This is Captain Richards of the Enclave Expeditionary Force. Pre-war automated defense platforms have locked onto our orbital relay frequencies. Assist our Hellfire squad in securing Relay Tower 09, and the rightful government of America will reward your loyalty.",
+          "letter_ru": "Внимание, местное поселение. Говорит капитан Ричардс из экспедиционного корпуса Анклава. Довоенные автоматические системы обороны заблокировали наши орбитальные частоты. Помогите нашему отряду «Адское пламя» зачистить ретранслятор 09, и законное правительство Америки вознаградит вашу лояльность.",
+          "stages": [
+            { "n": 1, "what_ru": "Совместный штурм довоенной радиолокационной станции, защищённой турелями и боевыми роботами, вместе с отрядом капитана Ричардса.", "where": "world_site", "mechanic": "особая карта / совместный штурм", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Передать управление ретранслятором капитану Ричардсу", "letter_ru": "Отличная выучка для гражданских. Анклав запомнит ваше содействие.", "consequences_ru": "Открывается репутация с Анклавом и чертёж офицерского мундира Анклава.", "setsFlags": ["TMM_Enc_Q1=secured"], "goodwill": { "enclave": 25, "brotherhood": -15 } }
+          ],
+          "reward_ru": "550 серебра, энергоячейки и чертёж офицерского мундира Анклава.",
+          "failure_ru": "Если Ричардс вынужден отступить, Анклав записывает колонию в список неблагонадёжных.",
+          "echoes_ru": "Яркая деталь: на главном мониторе станции всплывает старая заставка президента Эдема с помехами.",
+          "implementation_ru": "SitePartDef с союзным взводом Анклава в силовой броне против механоидов/турелей.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "enc_regulation_and_fist",
+          "title_en": "Regulation and Fist",
+          "title_ru": "Устав и кулак",
+          "giver": "Sergeant Dornan",
+          "fallbackGiver": "Captain Richards",
+          "unlock_ru": "Акт 2, завершён квест enc_restoring_comms.",
+          "letter_en": "Listen up, maggots! Colonel Autumn thinks your little dirt-farm has potential, which means you are now under my personal inspection! My field training camp is about to be hit by a pack of wasteland raiders—get over here, stand at attention, and show me you don't fold like wet paper!",
+          "letter_ru": "Слушать сюда, салаги! Полковник Отем считает, что у вашей грязной фермы есть потенциал, а значит, теперь вы под моей личной инспекцией! На мой учебный лагерь вот-вот накатят рейдеры Пустоши — тащите сюда свои задницы, встать смирно и покажите, что вы не раскиснете как мокрая бумага!",
+          "stages": [
+            { "n": 1, "what_ru": "Строевая проверка снаряжения в лагере сержанта Дорнана (бонус к боевому духу при наличии военной формы) и отражение двух волн штурма.", "where": "outpost", "mechanic": "испытание / оборона", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Выдержать натиск и не потерять ни одного бойца Дорнана", "letter_ru": "Неплохо, солдат! Чёрт побери, из тебя ещё можно выбить толк! Держи пару ящиков патронов и не смей терять форму!", "consequences_ru": "Сержант Дорнан начинает уважать командира колонии; бойцы получают временный бафф «Муштра Дорнана».", "setsFlags": ["TMM_Enc_Q2=passed"], "goodwill": { "enclave": 30 } }
+          ],
+          "reward_ru": "700 серебра, плазменные гранаты и боевой бафф «Муштра Дорнана» (+10% к точности на 5 дней).",
+          "failure_ru": "При провале Дорнан разносит колонистов трёхэтажной тирадой и отзывает награду.",
+          "echoes_ru": "Яркая деталь: Дорнан орёт на одного из рейдеров за то, что тот напал без уставного шлема.",
+          "implementation_ru": "Outpost-карта с NPC-сержантом Дорнаном и скриптовыми боевыми выкриками в виде текстовых всплывающих сообщений.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "enc_purity_samples",
+          "title_en": "Samples of Purity",
+          "title_ru": "Образцы чистоты",
+          "giver": "Dr. Charles Curling",
+          "fallbackGiver": "Colonel Autumn",
+          "unlock_ru": "Акт 2, завершён квест enc_regulation_and_fist.",
+          "letter_en": "Greetings. I am Dr. Charles Curling, head of the Enclave Chemical Corps. To ensure the survival of uncorrupted humanity, I require tissue samples from both a mutated super mutant behemoth and a supernatural anomaly. Collect them quietly, and you will be compensated handsomely.",
+          "letter_ru": "Приветствую. Я доктор Чарльз Керлинг, глава химического корпуса Анклава. Чтобы обеспечить выживание чистокровного человечества, мне требуются образцы тканей супермутанта и сверхъестественной аномалии. Соберите их без лишнего шума, и вы будете щедро вознаграждены.",
+          "stages": [
+            { "n": 1, "what_ru": "Охота на особой карте болота: взятие биопроб с поверженного дикого супермутанта и теневой аномалии.", "where": "world_site", "mechanic": "охота / сбор образцов", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Передать образцы доктору Керлингу", "letter_ru": "Идеальная сохранность. Скоро у нас будет средство, способное исправить все ошибки эволюции.", "consequences_ru": "Керлинг синтезирует модифицированный вирус; гули и мутанты начинают подозревать неладное.", "setsFlags": ["TMM_Enc_Q3=delivered"], "goodwill": { "enclave": 30, "ghouls": -15, "friendly_mutants": -15 } },
+            { "option_ru": "Передать копию образцов Брайану Верджилу", "letter_ru": "Образцы доставлены, но в отчётах видны нестыковки... Будьте осторожны, гражданский.", "consequences_ru": "Верджил получает данные о биологическом оружии Анклава.", "setsFlags": ["TMM_Enc_Q3=leaked"], "goodwill": { "enclave": 10, "friendly_mutants": 25 } }
+          ],
+          "reward_ru": "850 серебра, стимуляторы и антирадин.",
+          "failure_ru": "Если отряд не добудет пробы в срок, Керлинг списывает колонию со счетов.",
+          "echoes_ru": "Яркая деталь: на колбах Керлинга стоит старая маркировка «Проект Чистота / Штамм ФЭВ-2».",
+          "implementation_ru": "Специальный предмет-пробоотборник (CompTargetable) для применения на трупах заданных ксенотипов.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "enc_clean_slate",
+          "title_en": "Clean Slate",
+          "title_ru": "Чистый лист",
+          "giver": "Colonel Autumn",
+          "fallbackGiver": "Dr. Charles Curling",
+          "unlock_ru": "Акт 2, завершён квест enc_purity_samples (Точка фракции Анклава).",
+          "letter_en": "The time for half-measures is over. Dr. Curling's modified aerosol is loaded into our mobile crawler's dispersal tanks—once released, it will cleanse the region of every mutant, ghoul, synth, and occult parasite in one stroke. Join me at the crawler to authorize the launch, and secure your place in the new America.",
+          "letter_ru": "Время полумер прошло. Модифицированный аэрозоль доктора Керлинга загружен в баки нашего мобильного краулера — стоит его распылить, и регион одним ударом очистится от всех мутантов, гулей, синтов и оккультных паразитов. Присоединяйтесь ко мне на краулере для запуска и займите своё место в новой Америке.",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка на палубу гигантской мобильной базы-краулера Анклава и проход к главному пусковому терминалу.", "where": "special_map", "mechanic": "особая карта / инфильтрация", "minutes": 25 },
+            { "n": 2, "what_ru": "Решающий выбор у пульта распыления: запустить токсин, перенастроить его только против демонов/левиафанов (нужен Intellectual >= 14) или взорвать баки.", "where": "special_map", "mechanic": "моральный выбор / взлом или бой", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Авторизовать полный запуск токсина (за Анклав)", "letter_ru": "История запомнит этот день как начало возрождения. Вот Пушка Теслы — достойное оружие для верного союзника.", "consequences_ru": "По региону проходит волна токсичных осадков, губящая диких мутантов и ослабляющая гулей; Анклав дарит Пушку Теслы и чертёж брони X-01; сержант Дорнан потрясён бойней.", "setsFlags": ["TMM_FactionArcStage_enclave=4", "TMM_FactionChoice_enclave=pro_faction"], "goodwill": { "enclave": 60, "ghouls": -80, "friendly_mutants": -80, "minutemen_hunters": -50 } },
+            { "option_ru": "Перенастроить формулу только против демонов и левиафанов (компромисс учёного)", "letter_ru": "Дерзко... Вы самовольно изменили приказ! Но если это выжжет нечисть — я приму такой результат.", "consequences_ru": "Мирные жители, гули и мутанты спасены; по логовам нечисти нанесён удар; Отем впечатлён дерзостью игрока.", "setsFlags": ["TMM_FactionArcStage_enclave=4", "TMM_FactionChoice_enclave=compromise"], "goodwill": { "enclave": 30, "hell_demons": -50, "monster_clans": -50 } },
+            { "option_ru": "Подорвать баки с токсином и прорваться с боем (за Искру и Пустошь)", "letter_ru": "Предатель! Вы пожертвовали будущим человечества ради кучки мутантов! Уничтожить их!", "consequences_ru": "Краулер выведен из строя; Анклав становится враждебным, но весь остальной мир благодарен игроку.", "setsFlags": ["TMM_FactionArcStage_enclave=4", "TMM_FactionChoice_enclave=pro_spark"], "goodwill": { "enclave": -70, "ghouls": 40, "friendly_mutants": 40, "minutemen_hunters": 35 } }
+          ],
+          "reward_ru": "При запуске/компромиссе: легендарная Пушка Теслы Анклава и чертёж силовой брони X-01. При подрыве: кожаная шинель полковника Отема (снимается с него в бою) и 1500 серебра от союзников.",
+          "failure_ru": "Если отряд погибнет на краулере, Керлинг запускает сокращённый выброс газа.",
+          "echoes_ru": "Яркая деталь: на центральной консоли краулера лежит секретная директива Консорциума об устранении самого полковника Отема после зачистки.",
+          "implementation_ru": "Крупный SitePartDef мобильной базы с 3 вариантами взаимодействия на главном терминале.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "enc_staff_treason",
+          "title_en": "Treason at Headquarters",
+          "title_ru": "Измена штаба",
+          "giver": "Sergeant Dornan",
+          "fallbackGiver": "Captain Richards",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок не поддержал полный геноцид Анклава или Отем пошёл на сговор с Институтом).",
+          "letter_en": "Soldier! High Command has lost its damn mind! Autumn is cutting backroom deals with Institute lab-rats and occult freaks, and he just ordered Richards' squad to execute my platoon for 'insubordination'! We are breaking out—open your gates and give a real soldier a place to stand!",
+          "letter_ru": "Солдат! Высшее командование окончательно рехнулось! Отем крутит тайные сделки с крысами из Института и оккультными уродами, а только что приказал отряду Ричардса расстрелять мой взвод за «неподчинение»! Мы идём на прорыв — открывайте ворота и дайте настоящему солдату место в строю!",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие сержанта Дорнана на границу карты и отражение погони штурмовиков «Адского пламени» капитана Ричардса.", "where": "colony", "mechanic": "оборона колонии", "minutes": 45 }
+          ],
+          "choices": [
+            { "option_ru": "Принять сержанта Дорнана в гарнизон колонии", "letter_ru": "Наконец-то командир с хребтом! А теперь построились, салаги — я научу вас, как нужно держать оборону!", "consequences_ru": "Сержант Дорнан присоединяется к колонии как грозный боец и инструктор (ускоряет рост военных званий колонистов).", "setsFlags": ["TMM_DefectorRecruited_sergeant_dornan=true"], "goodwill": { "enclave": -80, "brotherhood": 20 } }
+          ],
+          "reward_ru": "Герой Сержант Дорнан в колонию и трофейный миниган.",
+          "failure_ru": "Если Дорнан погибнет, его жетон и записи о кодах доступа Анклава можно забрать с поля боя.",
+          "echoes_ru": "Яркая деталь: Дорнан тут же начинает проверять у колонистов наличие уставных комплектов силовой брони.",
+          "implementation_ru": "Спавн союзного героя + элитный рейд Анклава через 2 игровых часа.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "gunners",
+      "quests": [
+        {
+          "n": 1,
+          "id": "gun_caps_first",
+          "title_en": "Caps Up Front",
+          "title_ru": "Крышки вперёд",
+          "giver": "Baker",
+          "fallbackGiver": "Captain Bridget",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Nothing personal, settler—just business. A pack of feral raiders set up roadblocks on our supply route, and Captain Wes wants the lane cleared before sunset. Spot for me from the ridge while I pick off their heavies, and we'll split the loot fifty-fifty.",
+          "letter_ru": "Ничего личного, поселенец — просто бизнес. Шайка диких рейдеров перекрыла наш маршрут снабжения, и капитан Уэс хочет расчистить дорогу до заката. Прикрой меня с хребта, пока я буду снимать их пулемётчиков, и поделим добычу пятьдесят на пятьдесят.",
+          "stages": [
+            { "n": 1, "what_ru": "Тактический бой на трассе: отряд игрока связывает рейдеров боем внизу, пока снайпер Бейкер ведёт огонь с эстакады.", "where": "world_site", "mechanic": "тактический бой", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Зачистить блокпост и честно разделить трофеи с Бейкером", "letter_ru": "Чистая работа. С вами приятно иметь дело — без лишних соплей. Передам Уэсу, что вы держите слово.", "consequences_ru": "Открывается репутация со Стрелками и чертёж боевой брони Стрелков.", "setsFlags": ["TMM_Gun_Q1=honest"], "goodwill": { "gunners": 25 } }
+          ],
+          "reward_ru": "600 серебра, снайперские патроны и чертёж боевой брони Стрелков.",
+          "failure_ru": "Если забрать всю добычу и сбежать, Стрелки объявляют колонию должником.",
+          "echoes_ru": "Яркая деталь: Бейкер отмечает каждую цель зарубкой на прикладе и молча кивает командиру отряда.",
+          "implementation_ru": "SitePartDef разрушенной эстакады с союзным снайпером на возвышенности.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "gun_quincy_debt",
+          "title_en": "Debt of Quincy",
+          "title_ru": "Долг Квинси",
+          "giver": "Clint",
+          "fallbackGiver": "Captain Bridget",
+          "unlock_ru": "Акт 2, завершён квест gun_caps_first.",
+          "letter_en": "Some stubborn Minutemen holdouts haven't learned when they're beaten—they're gathering for a midnight strike on my outpost at Quincy. Help me hold the walls and wipe them out, and I'll make sure the Gunners open their heavy armory to your traders.",
+          "letter_ru": "Упёртые недобитки из Минитменов так и не поняли, что проиграли — они собираются на ночной штурм моего аванпоста в Квинси. Помоги удержать стены и перебить их, и я открою для твоих торговцев тяжёлый арсенал Стрелков.",
+          "stages": [
+            { "n": 1, "what_ru": "Ночной бой в руинах Квинси: можно сражаться на стороне Клинта против мстителей или тайно предупредить ополченцев о засаде.", "where": "special_map", "mechanic": "ночная оборона / выбор стороны", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Отбить атаку и защитить Клинта (за Стрелков)", "letter_ru": "Вот так! Пусть знают, кто теперь хозяин в Квинси. Держи свою долю и чертёж наших касок.", "consequences_ru": "Стрелки открывают торговлю тяжёлым оружием; Минитмены осуждают помощь предателю.", "setsFlags": ["TMM_Gun_Q2=clint"], "goodwill": { "gunners": 30, "minutemen_hunters": -30 } },
+            { "option_ru": "Встать на сторону ополченцев и разгромить отряд Клинта (за Минитменов)", "letter_ru": "Предательская крыса! Я сдеру с тебя шкуру!", "consequences_ru": "Аванпост Квинси освобождён; Престон Гарви и Ронни Шоу в восторге, но Стрелки в ярости.", "setsFlags": ["TMM_Gun_Q2=minutemen"], "goodwill": { "gunners": -35, "minutemen_hunters": 35 } }
+          ],
+          "reward_ru": "При выборе Стрелков: 900 серебра и чертёж каски Стрелков с банданой. При освобождении Квинси: 600 серебра от ополчения и трофейный карабин Клинта.",
+          "failure_ru": "При бегстве с поля боя обе стороны считают колонию трусами.",
+          "echoes_ru": "Яркая деталь: на стене церкви в Квинси сохранились старые рисунки ополченцев и сломанный лазерный мушкет.",
+          "implementation_ru": "SitePartDef руин Квинси с возможностью сменить сторону конфликта в начале боя.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "gun_armor_trial",
+          "title_en": "Trial by Iron",
+          "title_ru": "Испытание брони",
+          "giver": "Tessa",
+          "fallbackGiver": "Captain Bridget",
+          "unlock_ru": "Акт 2, завершён квест gun_quincy_debt.",
+          "letter_en": "Hey, tough guy! I've been welding new reinforced plates onto my power armor frame, and I need someone with real guts to test if they hold up in a brawl. Bring your best melee fighters to my scrapyard arena—first one knocked down buys the drinks!",
+          "letter_ru": "Эй, здоровяк! Я тут наварила новые бронепластины на свою силовую броню и ищу ребят с характером, чтобы проверить их в драке. Приводи лучших рукопашников на арену моей автосвалки — кто первый упадёт, тот ставит выпивку!",
+          "stages": [
+            { "n": 1, "what_ru": "Честный поединок на арене автосвалки против Тессы и двух её бойцов (нелетальный бой до нокаута).", "where": "world_site", "mechanic": "дуэль / арена", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Одолеть Тессу на арене и пожать ей руку", "letter_ru": "Ха-ха! Вот это был удар! Броня выдержала, а ты дрался как зверь. Уважаю!", "consequences_ru": "Тесса проникается личным уважением к командиру колонии, что откроет путь к её вербовке в Акте 3.", "setsFlags": ["TMM_Gun_Q3=won"], "goodwill": { "gunners": 25 } }
+          ],
+          "reward_ru": "750 серебра, стимуляторы и личное уважение Тессы.",
+          "failure_ru": "Если бойцы игрока проиграют, Тесса смеётся, забирает ставку в 300 серебра, но всё равно уважает смелость.",
+          "echoes_ru": "Яркая деталь: зрители-наёмники вокруг арены делают ставки в крышках и бросают на песок гаечные ключи.",
+          "implementation_ru": "Арена с правилом прекращения боя при падении HP ниже 20% (без добивания).",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "gun_double_contract",
+          "title_en": "Double Contract",
+          "title_ru": "Двойной контракт",
+          "giver": "Captain Wes",
+          "fallbackGiver": "Captain Bridget",
+          "unlock_ru": "Акт 2, завершён квест gun_armor_trial (Точка фракции Стрелков).",
+          "letter_en": "You've earned a seat at the big table. An anonymous client—paying in pre-war gold and Vault-Tec bearer bonds—wants a senior liaison of the British Men of Letters eliminated during a secret meeting. Handle the hit cleanly, and I'll hand you my own modified combat rifle, Overseer's Guardian.",
+          "letter_ru": "Вы заслужили место за большим столом. Анонимный заказчик — платящий довоенным золотом и облигациями Волт-Тек — хочет убрать высокопоставленного связного Британских Просвещённых во время тайной встречи. Сработайте чисто, и я отдам вам свой модифицированный карабин — «Страж Смотрителя».",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие на заброшенную станцию метро, где связной Просвещённых (с документами о финансировании Стрелков Консорциумом) предлагает тройную плату за инсценировку своей смерти и передачу улик.", "where": "special_map", "mechanic": "выбор / обман или убийство", "minutes": 45 }
+          ],
+          "choices": [
+            { "option_ru": "Выполнить контракт капитана Уэса и устранить цель (за Стрелков)", "letter_ru": "Никаких вопросов, никаких свидетелей. Вот это профессионализм. Карабин твой, партнёр.", "consequences_ru": "Уэс передаёт легендарный карабин «Страж Смотрителя» и чертёж своего плаща; Просвещённые теряют связного.", "setsFlags": ["TMM_FactionArcStage_gunners=4", "TMM_FactionChoice_gunners=pro_faction"], "goodwill": { "gunners": 60, "men_of_letters": -50 } },
+            { "option_ru": "Инсценировать смерть связного, забрать компромат Консорциума и переиграть Уэса (за правду)", "letter_ru": "Ты кинул Стрелков ради этих британских снобов?! Отныне за твою голову назначена награда в каждом лагере!", "consequences_ru": "Игрок получает компромат на сговор Волт-Тек и Стрелков + 2000 серебра от связного; Стрелки становятся враждебными, но Тесса готова переметнуться.", "setsFlags": ["TMM_FactionArcStage_gunners=4", "TMM_FactionChoice_gunners=pro_spark"], "goodwill": { "gunners": -60, "men_of_letters": 30, "railroad": 20 } }
+          ],
+          "reward_ru": "При выполнении контракта: легендарный карабин «Страж Смотрителя» и чертёж командирского плаща Уэса. При обмане: 2000 серебра, улики Консорциума и уважение Тессы.",
+          "failure_ru": "Если в перестрелке погибнут и связной, и охрана без подтверждения, Уэс урезает награду вдвое.",
+          "echoes_ru": "Яркая деталь: в портфеле связного лежит чек на закупку Стрелками клеток для похищения синтов по заказу Дика Романа.",
+          "implementation_ru": "SitePartDef станции метро с диалогом сделки у цели и проверкой Social/Intimidation.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "gun_new_employer",
+          "title_en": "New Employer",
+          "title_ru": "Новый наниматель",
+          "giver": "Tessa",
+          "fallbackGiver": "Baker",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок победил Тессу на арене в квесте 3).",
+          "letter_en": "Wes is taking suicidal contracts from Vault-Tec suits and throwing our squads into meat grinders against angels and mutants. Screw that. You beat me fair on the arena and you actually pay on time. Cover my exit from the Quincy overpass, and my armor is yours!",
+          "letter_ru": "Уэс берёт самоубийственные контракты у пиджаков из Волт-Тек и бросает наши отряды в мясорубку против ангелов и мутантов. К чёрту это. Ты честно побил меня на арене и платишь вовремя. Прикрой мой отход с эстакады Квинси, и моя броня твоя!",
+          "stages": [
+            { "n": 1, "what_ru": "Прорыв из окружения на эстакаде вместе с Тессой против карательного отряда капитана Бриджит.", "where": "world_site", "mechanic": "прорыв / бой", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Нанять Тессу в постоянный гарнизон колонии", "letter_ru": "Договорились! Только выдели мне нормальный верстак — надо подлатать наплечник после этой заварушки.", "consequences_ru": "Тесса в своей уникальной силовой броне присоединяется к колонии как элитный штурмовик.", "setsFlags": ["TMM_DefectorRecruited_tessa=true"], "goodwill": { "gunners": -50 } }
+          ],
+          "reward_ru": "Герой Тесса в колонию вместе с её модифицированной силовой бронёй.",
+          "failure_ru": "Если Тесса погибнет при отходе, её броню можно снять с поля боя.",
+          "echoes_ru": "Яркая деталь: Тесса тут же вызывает на спарринг самого сильного рукопашника колонии.",
+          "implementation_ru": "SitePartDef эстакады с союзной Тессой в тяжёлой броне против отряда Стрелков.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "railroad",
+      "quests": [
+        {
+          "n": 1,
+          "id": "rr_safe_house",
+          "title_en": "Mercer Safehouse",
+          "title_ru": "Безопасный дом",
+          "giver": "Deacon",
+          "fallbackGiver": "Desdemona",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа (учитывает выбор в квесте Института inst_cold_scanner).",
+          "letter_en": "Hey, pal—don't look behind you, I'm the guy in the terrible disguise three bushes over. Look, your waystation has great vibes and terrible security, which makes it the perfect blind spot for three runaway synths we need to stash for forty-eight hours. Keep the Gunners and Institute trackers off their scent, okay?",
+          "letter_ru": "Эй, приятель — не оборачивайся, я тот парень в дурацкой маскировке в трёх кустах от ворот. Слушай, у твоей гостиницы отличная атмосфера и никакая охрана, что делает её идеальной слепой зоной для трёх беглых синтов на сорок восемь часов. Отведи от них Стрелков и ищеек Института, лады?",
+          "stages": [
+            { "n": 1, "what_ru": "Размещение трёх беглых синтов в гостинице колонии на 2 игровых дня и скрытное улаживание визита патруля Стрелков, ищущих беглецов.", "where": "hotel", "mechanic": "стелс / гостиница", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Укрыть синтов и отвести подозрения патруля", "letter_ru": "Гладкая работа, босс! Дездемона уже в курсе — жди от нас вестей и пару крутых игрушек.", "consequences_ru": "Открывается репутация с Подземкой и чертёж шапки и очков конспиролога.", "setsFlags": ["TMM_RR_Q1=sheltered"], "goodwill": { "railroad": 30, "institute": -15 } }
+          ],
+          "reward_ru": "400 серебра, Стелс-Бой и чертёж шапки и очков конспиролога.",
+          "failure_ru": "Если синтов выдадут или они погибнут, Подземка уходит в глубокую тень.",
+          "echoes_ru": "Яркая деталь: Дьякон за время квеста трижды меняет внешность в гостинице — от бродяги до караванного охранника.",
+          "implementation_ru": "Временные гости-синт-беженцы в гостинице + визит-проверка патруля с диалогом Social/обмана.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "rr_radio_static",
+          "title_en": "Static on the Line",
+          "title_ru": "Помехи в эфире",
+          "giver": "Tinker Tom",
+          "fallbackGiver": "Deacon",
+          "unlock_ru": "Акт 2, завершён квест rr_safe_house.",
+          "letter_en": "Yo, listen close! The Institute and those creepy sky-guys are bouncing quantum tracking pulses off the ionosphere! I rigged a ballistic-encrypted MILA relay that'll scramble their frequencies around your sector—plant it on the highest roof and blast any Coursers that drop in!",
+          "letter_ru": "Йо, слушай внимательно! Институт и эти жуткие парни с небес гоняют квантовые пеленги через ионосферу! Я собрал ретранслятор МИЛА с баллистическим шифрованием, который заглушит их частоты вокруг твоего сектора — ставь его на самую высокую крышу и гаси любых охотников, что телепортируются!",
+          "stages": [
+            { "n": 1, "what_ru": "Постройка ретранслятора Подземки в колонии и отражение засады охотников Института (и одного разведывательного ангела).", "where": "colony", "mechanic": "строительство / оборона", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Запустить ретранслятор и удержать сигнал", "letter_ru": "Бум! Частоты чисты как слеза! В знак благодарности держи выкройки нашего баллистического волокна — пули отскакивают как горох!", "consequences_ru": "Открывается технология и чертёж бронеплаща Подземки; в секторе снижается частота внезапных телепорт-рейдов.", "setsFlags": ["TMM_RR_Q2=active"], "goodwill": { "railroad": 30, "institute": -20 } }
+          ],
+          "reward_ru": "Чертёж бронеплаща Подземки (баллистическое волокно), 500 серебра и Стелс-Бой.",
+          "failure_ru": "При разрушении ретранслятора Техник Том присылает запасную схему за 300 серебра.",
+          "echoes_ru": "Яркая деталь: Техник Том уверяет, что ретранслятор заодно защищает мозги колонистов от «орбитальных лучей Волт-Тек» — и частично оказывается прав.",
+          "implementation_ru": "Постройка Building_MILA с аурой подавления телепортации и скриптовым рейдом.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "rr_heavy_breakthrough",
+          "title_en": "Heavy Breakthrough",
+          "title_ru": "Тяжёлый прорыв",
+          "giver": "Glory",
+          "fallbackGiver": "Desdemona",
+          "unlock_ru": "Акт 2, завершён квест rr_radio_static.",
+          "letter_en": "No time for stealth, friend. Retention Bureau heavies intercepted a Railroad runner carrying three third-generation synths toward the coast. I'm taking my minigun to hit their armored convoy at the tunnel mouth—bring your best shooters and help me crack their line open!",
+          "letter_ru": "Времени на скрытность нет, друг. Тяжёлые отряды Бюро возврата перехватили нашего проводника с тремя синтами третьего поколения у побережья. Я беру свой миниган и ударю по их бронеконвою у въезда в туннель — бери лучших стрелков и помоги проломить их строй!",
+          "stages": [
+            { "n": 1, "what_ru": "Динамичный штурм бронеконвоя Института на карте автострады вместе с Глорией и спасение 3 пленных синтов.", "where": "special_map", "mechanic": "штурм конвоя", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Прорвать оцепление и вывести всех синтов с Глорией", "letter_ru": "Мы вытащили их всех. Ты сражался как один из наших. Подземка этого не забудет.", "consequences_ru": "Глория становится верным боевым товарищем; у спасённых синтов фиксируется слабый резонанс Искры.", "setsFlags": ["TMM_RR_Q3=rescued"], "goodwill": { "railroad": 35, "institute": -35 } }
+          ],
+          "reward_ru": "750 серебра, имплант подкожной брони и благодарность Подземки.",
+          "failure_ru": "Если конвой прорвётся, синтов телепортируют обратно в Институт.",
+          "echoes_ru": "Яркая деталь: один из спасённых синтов просит оставить ему старый солдатский жетон как напоминание о том, что он сам выбрал своё имя.",
+          "implementation_ru": "SitePartDef туннеля с колонной вражеских синтов-охранников и 3 нейтральными пленниками.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "rr_memory_wipe",
+          "title_en": "Memory Wipe",
+          "title_ru": "Стирание памяти",
+          "giver": "Desdemona",
+          "fallbackGiver": "Deacon",
+          "unlock_ru": "Акт 2, завершён квест rr_heavy_breakthrough (Точка фракции Подземки).",
+          "letter_en": "We have a crisis that cuts to the very soul of what we fight for. A synth carrying a bright, newly awakened 'Spark' reached our safehouse—but Tinker Tom found an active quantum tracker woven directly into his neural matrix. We can wipe his memories and extinguish his Spark to hide him forever, or leave him intact and risk an all-out Institute and angel assault. Tell me what is right.",
+          "letter_ru": "У нас кризис, затрагивающий саму суть того, за что мы сражаемся. Синт с яркой, только что пробудившейся «Искрой» добрался до нашего убежища — но Техник Том нашёл активный квантовый маячок, вплетённый прямо в его нейроматрицу. Мы можем стереть ему память и погасить Искру, чтобы спрятать его навсегда, или оставить личность нетронутой и рискнуть штурмом Института и ангелов. Скажи, как поступить правильно.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в тайные катакомбы Подземки, где сам синт просит не убивать его новую душу и личность.", "where": "special_map", "mechanic": "моральный выбор / диалог", "minutes": 20 },
+            { "n": 2, "what_ru": "Если выбран путь сохранения Искры: отражение внезапного прорыва охотников Института и разведчиков Небес в катакомбы.", "where": "special_map", "mechanic": "оборона убежища", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Сохранить личность и Искру синта и отбить штурм катакомб (за Искру и свободу)", "letter_ru": "Ты защитил не просто машину — ты отстоял живую душу. Подземка с тобой до последнего патрона. Возьми «Железнодорожную винтовку»!", "consequences_ru": "Синт сохраняет Искру и память; +30 к доверию Нулевого Синта; Дездемона вручает легендарную «Железнодорожную винтовку» и клянётся поддержать игрока в финале.", "setsFlags": ["TMM_FactionArcStage_railroad=4", "TMM_FactionChoice_railroad=pro_spark"], "goodwill": { "railroad": 60, "institute": -50, "heaven_angels": -25 } },
+            { "option_ru": "Провести полное стирание памяти и погасить Искру ради безопасности сети (за выживание Подземки)", "letter_ru": "Он в безопасности... но глядя в его пустые глаза, я спрашиваю себя, какую цену мы заплатили. Вот наше оружие — используй его с умом.", "consequences_ru": "Штаб Подземки остаётся в тайне, но Искра уничтожена; -15 к доверию Нулевого Синта; Дездемона выдаёт «Железнодорожную винтовку».", "setsFlags": ["TMM_FactionArcStage_railroad=4", "TMM_FactionChoice_railroad=pro_faction"], "goodwill": { "railroad": 40 } }
+          ],
+          "reward_ru": "Легендарный гвоздемёт «Железнодорожная винтовка» и чертёж бронекуртки Дездемоны.",
+          "failure_ru": "Если штаб падёт при штурме, Глория прикрывает отход, но убежище приходится эвакуировать.",
+          "echoes_ru": "Яркая деталь: перед креслом стирания памяти на стене записаны имена всех синтов, которые предпочли рискнуть жизнью ради сохранения своей души.",
+          "implementation_ru": "SitePartDef катакомб Подземки с креслом памяти (Building_MemoryLounger) и ветвлением на оборону.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "rr_faked_death",
+          "title_en": "Faked Death",
+          "title_ru": "Инсценировка смерти",
+          "giver": "Deacon",
+          "fallbackGiver": "Tinker Tom",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (особенно актуален на жёстких путях — Братство, Анклав или Консорциум).",
+          "letter_en": "Look, things are getting real ugly out there, and Desdemona is going full scorched-earth. Somebody needs to stay inside your camp and keep a cool head so the surviving synths don't get wiped off the map. Help me stage a convincing 'ambush' at the old bridge so the Railroad thinks I'm dead, and I'm all yours.",
+          "letter_ru": "Слушай, дела снаружи принимают совсем скверный оборот, и Дездемона уходит в глухое подполье. Кто-то должен остаться в твоём лагере с холодной головой, чтобы уцелевших синтов не стёрли с карты. Помоги мне подстроить убедительную «засаду» у старого моста, чтобы Подземка сочла меня погибшим — и я весь твой.",
+          "stages": [
+            { "n": 1, "what_ru": "Разыгрывание фальшивой перестрелки у старого моста с оставлением очков Дьякона и поддельного жетона для наблюдателей Подземки.", "where": "world_site", "mechanic": "обман / инсценировка", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Завершить инсценировку и принять Дьякона в колонию под новым именем", "letter_ru": "Покойся с миром, старый Дьякон. Привет, новый парень в вашей колонии! Кстати, вот чертёж моих очков.", "consequences_ru": "Дьякон присоединяется к колонии как элитный разведчик и снайпер (даже если Подземка враждебна игроку).", "setsFlags": ["TMM_DefectorRecruited_deacon=true"], "goodwill": { "railroad": 0 } }
+          ],
+          "reward_ru": "Герой Дьякон в колонию и чертёж тёмных очков Дьякона.",
+          "failure_ru": "Если в зону инсценировки случайно вмешается настоящий патруль Стрелков, Дьякон уходит в бега.",
+          "echoes_ru": "Яркая деталь: присоединившись к колонии, Дьякон каждый день меняет причёску и одежду в гардеробе.",
+          "implementation_ru": "Специальный сценарий на карте моста без реального урона Дьякону со спавном улик.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "wild_mutants",
+      "quests": [
+        {
+          "n": 1,
+          "id": "wm_meat_bags",
+          "title_en": "Gore Bags",
+          "title_ru": "Мясные мешки",
+          "giver": "Master Butcher",
+          "fallbackGiver": "Fist",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Little meat-bags send signals! Master Butcher got three soft human traders hanging in cages at old slaughterhouse. Come bring shiny scrap or sharp knives—or come become dinner! Haha!",
+          "letter_ru": "Маленькие мясные мешки шлют сигналы! У Мастера-мясника три мягких торговца людей висят в клетках на старой скотобойне. Приходите нести блестящий лом или острые ножи — или сами станете ужином! Ха-ха!",
+          "stages": [
+            { "n": 1, "what_ru": "Ночная вылазка на старую скотобойню диких супермутантов: скрытное освобождение пленных караванщиков или прорыв с боем до рассвета.", "where": "world_site", "mechanic": "стелс / спасение", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Тихо взломать клетки и увести всех пленников без потерь", "letter_ru": "Гррр! Хитрые маленькие крысы украли ужин Мясника! В следующий раз раздавим!", "consequences_ru": "Освобождённые караванщики щедро платят серебром и рассказывают о тропах дикой стаи.", "setsFlags": ["TMM_WM_Q1=rescued"], "goodwill": { "wild_mutants": -15, "minutemen_hunters": 20 } },
+            { "option_ru": "Перебить охрану скотобойни в лобовом бою", "letter_ru": "Сильные руки у мелких людей! Кувалда запомнит ваш запах!", "consequences_ru": "Дикие мутанты начинают уважать боевую силу колонии.", "setsFlags": ["TMM_WM_Q1=slaughtered"], "goodwill": { "wild_mutants": 10, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "500 серебра от спасённых торговцев, сухпайки и трофейный тесак мутантов.",
+          "failure_ru": "Если не успеть до рассвета, пленники погибают, а дикие мутанты совершают набег на колонию.",
+          "echoes_ru": "Яркая деталь: над воротами скотобойни висит ржавая вывеска «Берегитесь Лебедя».",
+          "implementation_ru": "SitePartDef скотобойни с патрулями (LordJob_Patrol) и клетками с пленниками.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "wm_mad_convoy",
+          "title_en": "Mad Convoy",
+          "title_ru": "Безумный конвой",
+          "giver": "Mad Racer",
+          "fallbackGiver": "Fist",
+          "unlock_ru": "Акт 2, завершён квест wm_meat_bags.",
+          "letter_en": "VROOM! BOOM! Mad Racer found shiny ticking footballs! Fast brothers strap mini-nukes to chests and run straight at your walls! Catch us if you can, little ants!",
+          "letter_ru": "ВРУМ! БУМ! Безумный Гонщик нашёл блестящие тикающие мячики! Быстрые братья привязали мини-заряды к груди и бегут прямо к вашим стенам! Ловите нас, мелкие муравьи!",
+          "stages": [
+            { "n": 1, "what_ru": "Экстремальная оборона периметра колонии от волны смертников-камикадзе диких мутантов под прикрытием огня Безумного Гонщика.", "where": "colony", "mechanic": "экстремальная оборона", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Отстрелять камикадзе на дальних подступах и отбить атаку", "letter_ru": "Ха-ха! Громкий фейерверк! Твои стрелки быстрые, как пули!", "consequences_ru": "Колония получает трофейные неразорвавшиеся ядерные боеголовки; Мёртвый Глаз начинает присматриваться к поселению.", "setsFlags": ["TMM_WM_Q2=survived"], "goodwill": { "wild_mutants": 15 } }
+          ],
+          "reward_ru": "2 мини-ядерных заряда (или артиллерийских снаряда), 400 серебра и сталь.",
+          "failure_ru": "При прорыве камикадзе разрушают внешние укрепления колонии.",
+          "echoes_ru": "Яркая деталь: перед атакой камикадзе издают характерный нарастающий писк ядерного заряда.",
+          "implementation_ru": "Рейд с юнитами-камикадзе (взрыв при сближении в радиусе 2 клеток).",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "wm_rage_beacon",
+          "title_en": "Beacon of Rage",
+          "title_ru": "Маяк ярости",
+          "giver": "Dead Eye",
+          "fallbackGiver": "Fist",
+          "unlock_ru": "Акт 2, завершён квест wm_mad_convoy.",
+          "letter_en": "Human leader. I am Dead Eye. Unlike loud brothers, I watch and think. An old pre-war tower on the hill screams a high sound that burns our heads and makes brothers blind with rage. Break the tower—or make it scream at our enemies.",
+          "letter_ru": "Вожак людей. Я — Мёртвый Глаз. В отличие от шумных братьев, я смотрю и думаю. Старая довоенная вышка на холме кричит высоким звуком, который жжёт головы и сводит братьев с ума от ярости. Сломай вышку — или заставь её кричать на наших врагов.",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка к довоенному ультразвуковому излучателю Консорциума: прорыв мимо обезумевших мутантов к пульту управления.", "where": "special_map", "mechanic": "особая карта / саботаж или взлом", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Уничтожить ультразвуковую вышку и облегчить боль мутантов", "letter_ru": "Тишина... Впервые за долгие годы в голове тихо. Я запомню этот долг, вожак людей.", "consequences_ru": "Ярость диких мутантов в регионе снижается; Мёртвый Глаз становится тайным союзником игрока.", "setsFlags": ["TMM_WM_Q3=destroyed"], "goodwill": { "wild_mutants": 30, "friendly_mutants": 20 } },
+            { "option_ru": "Перенастроить частоту вышки как оружие против врагов колонии", "letter_ru": "Ты хитрый, как когтистый зверь. Пусть теперь враги сходят с ума от этого воя.", "consequences_ru": "Колония получает возможность вызывать приступ берсерка у враждебных рейдеров раз в 10 дней.", "setsFlags": ["TMM_WM_Q3=weaponized"], "goodwill": { "wild_mutants": 10, "vault_tec": 15 } }
+          ],
+          "reward_ru": "При уничтожении: 700 серебра и уважение Мёртвого Глаза. При перенастройке: пульт ультразвукового подавления.",
+          "failure_ru": "Если отряд отступит, вышка продолжает сводить мутантов с ума.",
+          "echoes_ru": "Яркая деталь: на щитке вышки стоит логотип «Волт-Тек — Эксперимент контроля агрессии».",
+          "implementation_ru": "SitePartDef радиовышки с постоянным Hediff «Ультразвуковая боль» на мутантах и двумя опциями на терминале.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "wm_roar_from_deep",
+          "title_en": "Roar from the Deep",
+          "title_ru": "Рёв из глубины",
+          "giver": "Fist",
+          "fallbackGiver": "Dead Eye",
+          "unlock_ru": "Акт 2, завершён квест wm_rage_beacon (Точка фракции Диких супермутантов).",
+          "letter_en": "Little leader! Swan wakes from deep dark water! Ground shakes, trees snap! Fist says: if you are strong, come to sunken park and fight the King of Behemoths! Beat Swan, and wild horde bows to your strength—or gets crushed beneath his anchor!",
+          "letter_ru": "Мелкий вожак! Лебедь проснулся в глубокой тёмной воде! Земля дрожит, деревья ломаются! Кувалда говорит: если ты сильный, приходи в затопленный парк и сразись с Королём Бегемотов! Победишь Лебедя — дикая орда признает твою силу, или сгинет под его якорем!",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка в затопленный довоенный парк с беседкой и прудом, где из воды поднимается исполинский Лебедь с корабельным якорем и сдвоенным ядерным гранатомётом.", "where": "special_map", "mechanic": "босс-файт", "minutes": 50 }
+          ],
+          "choices": [
+            { "option_ru": "Одолеть гиганта Лебедя в бою и заявить право сильного", "letter_ru": "Оооо... Гора упала... Кувалда и братья видят: мелкий вожак сильнее бегемота! Забирай большую пушку и якорь — мы уходим в глушь!", "consequences_ru": "Лебедь повержен (`TMM_SwanDefeated=true`), орда диких мутантов не нападёт в спину в финальной осаде; колония получает «Большой мальчик» и якорь Лебедя.", "setsFlags": ["TMM_FactionArcStage_wild_mutants=4", "TMM_FactionChoice_wild_mutants=pro_faction", "TMM_SwanDefeated=true"], "goodwill": { "wild_mutants": 40, "minutemen_hunters": 30, "brotherhood": 25 } }
+          ],
+          "reward_ru": "Легендарный ядерный гранатомёт «Большой мальчик» и именной корабельный якорь Лебедя.",
+          "failure_ru": "Если отряд отступит или проиграет, Лебедь остаётся на свободе и ворвётся на карту колонии во время финальной осады Акта 5.",
+          "echoes_ru": "Яркая деталь: на шее Лебедя висит старый бейдж уборщика с именем «Эдгар Свонн» и обрывок дневника, где с каждым днём буквы становятся всё крупнее и бессвязнее.",
+          "implementation_ru": "SitePartDef затопленного парка с уникальным боссом-бегемотом (огромный запас HP, иммунитет к оглушению, скриптовый выход из воды).",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "wm_sniper_respect",
+          "title_en": "The Marksman's Respect",
+          "title_ru": "Уважение снайпера",
+          "giver": "Dead Eye",
+          "fallbackGiver": "Fist",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если Лебедь побеждён или вышка в квесте 3 уничтожена).",
+          "letter_en": "Swan is gone, and Fist wants to throw the tribe into a mindless slaughter against men in power armor. I am tired of dying for loud fools. Let me test my rifle beside your sharpshooters—if you hit the mark, I stand on your walls.",
+          "letter_ru": "Лебедя больше нет, и Кувалда хочет бросить племя на бессмысленную бойню против людей в силовой броне. Я устал умирать за крикливых дураков. Позволь мне проверить винтовку рядом с твоими стрелками — если попадёшь в цель, я встану на твои стены.",
+          "stages": [
+            { "n": 1, "what_ru": "Совместная охота на стаю рад-скорпионов и когтя смерти вместе с Мёртвым Глазом как испытание меткости.", "where": "world_site", "mechanic": "испытание меткости / охота", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Мёртвого Глаза в гарнизон колонии", "letter_ru": "Хороший выстрел, вожак. Дай мне высокую башню и патроны — ни один враг не подойдёт к воротам живым.", "consequences_ru": "Рассудительный супермутант-снайпер Мёртвый Глаз присоединяется к колонии.", "setsFlags": ["TMM_DefectorRecruited_dead_eye=true"], "goodwill": { "wild_mutants": -20, "friendly_mutants": 15 } }
+          ],
+          "reward_ru": "Герой Мёртвый Глаз в колонию и снайперская винтовка.",
+          "failure_ru": "Если в испытании погибнут бойцы игрока, Мёртвый Глаз молча уходит в пустоши.",
+          "echoes_ru": "Яркая деталь: Мёртвый Глаз единственный из дикой стаи носит аккуратно протёртый оптический прицел в кожаном чехле.",
+          "implementation_ru": "Охотничий энкаунтер с подсчётом убитых целей игроком и Мёртвым Глазом.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "men_of_letters",
+      "quests": [
+        {
+          "n": 1,
+          "id": "mol_polite_offer",
+          "title_en": "A Polite Proposition",
+          "title_ru": "Вежливое предложение",
+          "giver": "Mick Davies",
+          "fallbackGiver": "Lady Antonia Bevell",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Good day to you. My name is Mick Davies, representing the British Men of Letters. We've observed your settlement's rather impressive resilience against supernatural incursions. Allow me to visit your waystation—I've brought an Enochian suppression beacon that could make your perimeter entirely invisible to angels and demons alike.",
+          "letter_ru": "Добрый день. Меня зовут Мик Дэвис, я представляю Британских Просвещённых. Мы наблюдали за впечатляющей стойкостью вашего поселения перед лицом сверхъестественных вторжений. Позвольте нанести визит в вашу гостиницу — я привёз енохианский подавитель, способный скрыть ваш периметр от ангелов и демонов.",
+          "stages": [
+            { "n": 1, "what_ru": "Визит Мика Дэвиса в гостиницу колонии, установка пробного енохианского маяка и полевое испытание на привлечённой аномалии.", "where": "hotel", "mechanic": "гостиница / тест устройства", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Провести испытания маяка и подписать соглашение об обмене данными", "letter_ru": "Splendid! Потрясающе! Лондон будет в восторге. Вот наши выкройки рунических костюмов — носите на здоровье.", "consequences_ru": "Открывается репутация с Британскими Просвещёнными и чертёж рунического костюма Просвещённых.", "setsFlags": ["TMM_MoL_Q1=tested"], "goodwill": { "men_of_letters": 25 } }
+          ],
+          "reward_ru": "500 серебра, серебряные слитки и чертёж рунического костюма Просвещённых.",
+          "failure_ru": "Если маяк разрушен во время теста, Мик вежливо извиняется и уезжает.",
+          "echoes_ru": "Яркая деталь: Мик Дэвис привозит в гостиницу настоящий британский чай и вежливо морщится от пойла Пустоши.",
+          "implementation_ru": "Визит дипломата в гостиницу + спавн слабой аномалии для проверки работы маяка.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "mol_clean_sweep",
+          "title_en": "Clean Sweep",
+          "title_ru": "Чистая зачистка",
+          "giver": "Mr. Kendricks",
+          "fallbackGiver": "Arthur Ketch",
+          "unlock_ru": "Акт 2, завершён квест mol_polite_offer.",
+          "letter_en": "Attention. A nest of feral vampires has established itself in an abandoned railway depot six miles from your border. London requires absolute containment—no survivors, no witnesses, no messy local hunting methods. Accompany my tactical unit and execute a textbook sweep.",
+          "letter_ru": "Внимание. Гнездо одичавших вампиров обосновалось в заброшенном железнодорожном депо в шести милях от вашей границы. Лондон требует абсолютной зачистки — никаких выживших, никаких свидетелей, никакой кустарщины. Присоединяйтесь к моему тактическому отряду и проведите образцовую операцию.",
+          "stages": [
+            { "n": 1, "what_ru": "Ночной тактический штурм депо вместе с отрядом мистера Кендрикса с использованием енохианских гранат и серебра.", "where": "special_map", "mechanic": "тактический штурм", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Зачистить депо точно по протоколу Кендрикса", "letter_ru": "Дисциплинированно и без лишних эмоций. Редкость для этого континента. Вы заслужили награду.", "consequences_ru": "Кендрикс открывает доступ к зачарованным боеприпасам ордена.", "setsFlags": ["TMM_MoL_Q2=swept"], "goodwill": { "men_of_letters": 30, "monster_clans": -25 } }
+          ],
+          "reward_ru": "750 серебра, енохианские гранаты и рунические патроны.",
+          "failure_ru": "Если часть вампиров сбежит в ночь, Кендрикс критикует непрофессионализм колонистов.",
+          "echoes_ru": "Яркая деталь: в депо обнаруживается ящик с довоенным штампом «Ричард Роман Энтерпрайзис», полный пачек консервированной крови.",
+          "implementation_ru": "SitePartDef депо с ночным освещением и союзным отрядом оперативников Просвещённых.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "mol_interrogation_room",
+          "title_en": "The Interrogation Room",
+          "title_ru": "Комната допросов",
+          "giver": "Lady Antonia Bevell",
+          "fallbackGiver": "Dr. Hess",
+          "unlock_ru": "Акт 2, завершён квест mol_clean_sweep.",
+          "letter_en": "We have captured a high-ranking crossroads demon who knows the exact frequency of the Zero Anchor's containment seals. However, he is stubborn, and my colleagues in London require results tonight. Assist me at our field black-site—whether by arcane extraction or psychological pressure.",
+          "letter_ru": "Мы захватили высокопоставленного демона перекрёстка, знающего точную частоту печатей Нулевого Якоря. Однако он упрям, а моим коллегам в Лондоне нужен результат уже сегодня ночью. Помогите мне на нашем полевом объекте — оккультным извлечением или психологическим давлением.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в тайную камеру допросов, где Антония Бевелл готовит ритуальные пытки над пленным демоном; игрок может поддержать её или провести собственный перекрёстный допрос (Social/Intellectual).", "where": "world_site", "mechanic": "допрос / моральный выбор", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Позволить Антонии Бевелл провести жёсткий оккультный допрос", "letter_ru": "Боль открывает любые замки. Координаты у нас, а вы доказали, что не боитесь испачкать руки.", "consequences_ru": "Координаты получены; Бевелл довольна, но Мик Дэвис в ужасе от жестокости методов.", "setsFlags": ["TMM_MoL_Q3=torture"], "goodwill": { "men_of_letters": 30, "minutemen_hunters": -20 } },
+            { "option_ru": "Остановить пытки и вытянуть правду хитростью и сделкой", "letter_ru": "Хм... Неожиданно эффективно, пусть и слишком мягко для моего вкуса. Информация верна.", "consequences_ru": "Демон проговаривается о сговоре Консорциума и просит передать привет Кроули; Мик Дэвис восхищён.", "setsFlags": ["TMM_MoL_Q3=persuaded"], "goodwill": { "men_of_letters": 20, "hell_demons": 10 } }
+          ],
+          "reward_ru": "800 серебра, оккультные фолианты и данные о печатях.",
+          "failure_ru": "Если демон вырвется из дьявольской ловушки и устроит бойню, квест провален.",
+          "echoes_ru": "Яркая деталь: перед смертью/изгнанием демон смеётся в лицо Бевелл и говорит, что её собственные начальники в Лондоне работают на левиафанов.",
+          "implementation_ru": "SitePartDef камеры с демоном в пентаграмме и ветвлением диалога с Бевелл.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "mol_kendricks_code",
+          "title_en": "The Kendricks Code",
+          "title_ru": "Кодекс Кендрикса",
+          "giver": "Dr. Hess",
+          "fallbackGiver": "Arthur Ketch",
+          "unlock_ru": "Акт 2, завершён квест mol_interrogation_room (Точка фракции Британских Просвещённых).",
+          "letter_en": "It has come to my attention that a settlement of mutated ghouls—including an archivist named Kent Connolly—possesses pre-war shipping ledgers linking our order to certain... unfortunate architectural projects. London demands total operational security. Liquidate the settlement and retrieve those ledgers, and I shall entrust you with our ultimate deterrent: The Equalizer.",
+          "letter_ru": "До моего сведения дошло, что поселение мутировавших гулей — включая некоего архивариуса Кента Коннолли — владеет довоенными накладными, связывающими наш орден с кое-какими... нежелательными проектами. Лондон требует абсолютной секретности. Ликвидируйте поселение и верните бумаги, и я доверю вам наше высшее оружие: «Уравнитель».",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка у мирного лагеря гулей вместе с Артуром Кетчем и отрядом зачистки Просвещённых.", "where": "special_map", "mechanic": "моральный выбор / засада", "minutes": 20 },
+            { "n": 2, "what_ru": "Решающий выбор: перебить гулей по приказу доктора Хесс или развернуть оружие против Артура Кетча и спасти архивы Консорциума.", "where": "special_map", "mechanic": "тяжёлый бой / предательство", "minutes": 25 }
+          ],
+          "choices": [
+            { "option_ru": "Выполнить приказ доктора Хесс и уничтожить свидетелей (за Просвещённых)", "letter_ru": "Безупречная дисциплина. Континент в надёжных руках. Примите «Уравнитель» — используйте его только в крайнем случае.", "consequences_ru": "Гули в лагере погибают (Кент Коннолли мёртв); доктор Хесс дарит легендарный пистолет «Уравнитель» и свой монокль; Мик Дэвис решает бежать от ордена.", "setsFlags": ["TMM_FactionArcStage_men_of_letters=4", "TMM_FactionChoice_men_of_letters=pro_faction"], "goodwill": { "men_of_letters": 60, "ghouls": -80, "minutemen_hunters": -50 } },
+            { "option_ru": "Защитить гулей и разгромить карательный отряд Просвещённых (за Искру и правду)", "letter_ru": "Вы осмелились поднять руку на британских оперативников?! Отныне каждый охотник в регионе станет нашей мишенью!", "consequences_ru": "Гули спасены; игрок получает прямые доказательства сговора доктора Хесс и Дика Романа; орден объявляет колонии войну.", "setsFlags": ["TMM_FactionArcStage_men_of_letters=4", "TMM_FactionChoice_men_of_letters=pro_spark"], "goodwill": { "men_of_letters": -70, "ghouls": 50, "minutemen_hunters": 35 } }
+          ],
+          "reward_ru": "При выполнении приказа: легендарный пистолет «Уравнитель» и оккультный монокль доктора Хесс. При спасении гулей: костюм ликвидатора Артура Кетча (с боя) и +30 доверия Нулевого Синта.",
+          "failure_ru": "Если в хаосе сгорят и архивы, и отряд, обе стороны считают операцию проваленной.",
+          "echoes_ru": "Яркая деталь: среди спасённых накладных лежит контракт 2052 года на строительство Нулевых Якорей, подписанный доктором Хесс и Диком Романом.",
+          "implementation_ru": "SitePartDef лагеря гулей с возможностью немедленно атаковать союзный отряд Кетча.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "mol_london_escape",
+          "title_en": "Escape from the London Compound",
+          "title_ru": "Побег из лондонского штаба",
+          "giver": "Mick Davies",
+          "fallbackGiver": "Dr. Hess",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок не поддержал геноцид Просвещённых).",
+          "letter_en": "Bloody hell, they've completely lost it! Dr. Hess ordered Arthur Ketch to liquidate me for questioning the Consortium files! I've nicked the master schematics for our Enochian suppression pylons and bolted for your border—please tell me your gates are open, because Ketch is right on my heels!",
+          "letter_ru": "Чёрт побери, они окончательно спятили! Доктор Хесс приказала Артуру Кетчу ликвидировать меня за вопросы о файлах Консорциума! Я стащил главные чертежи наших енохианских глушителей и рванул к вашей границе — скажите, что ваши ворота открыты, потому что Кетч висит у меня на хвосте!",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие Мика Дэвиса в колонию и дуэль/отражение элитной группы ликвидации во главе с Артуром Кетчем и Антонией Бевелл.", "where": "colony", "mechanic": "дуэль с боссом / оборона", "minutes": 45 }
+          ],
+          "choices": [
+            { "option_ru": "Укрыть Мика Дэвиса и принять его в колонию", "letter_ru": "Я в долгу перед вами по гроб жизни. Давайте соберём эти глушители и покажем Лондону, что такое настоящая охота!", "consequences_ru": "Мик Дэвис присоединяется к колонии как дипломат и специалист по оккультным технологиям; открывается чертёж енохианской глушилки.", "setsFlags": ["TMM_DefectorRecruited_mick_davies=true"], "goodwill": { "men_of_letters": -90, "minutemen_hunters": 30 } }
+          ],
+          "reward_ru": "Герой Мик Дэвис в колонию и технология енохианских подавителей (блокируют телепортацию и способности нечисти).",
+          "failure_ru": "Если Мик погибнет в бою, чертежи можно снять с его тела, но сам герой потерян.",
+          "echoes_ru": "Яркая деталь: в финальном столкновении Артур Кетч вежливо приподнимает шляпу перед боем, даже если ранее был повержен.",
+          "implementation_ru": "Спавн преследуемого Мика Дэвиса + рейд элитного босса Артура Кетча с зачарованным оружием.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "hell_demons",
+      "quests": [
+        {
+          "n": 1,
+          "id": "hell_fine_print",
+          "title_en": "The Fine Print",
+          "title_ru": "Мелкий шрифт",
+          "giver": "Crowley",
+          "fallbackGiver": "Meg",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Hello, darling. Don't reach for the rock salt just yet—I'm here on strictly professional business. One of my overzealous crossroads middlemen tricked a poor settler into signing a soul contract using a forged clause, and that sort of sloppy paperwork ruins Hell's reputation. Come settle the dispute, and I'll make it worth your while.",
+          "letter_ru": "Привет, солнышко. Не хватайся сразу за каменную соль — я здесь исключительно по делу. Один из моих чересчур ретивых чертей на перекрёстке обманом заставил бедного поселенца подписать контракт на душу с поддельным пунктом, а такая халтура портит репутацию Ада. Помоги уладить спор, и я в долгу не останусь.",
+          "stages": [
+            { "n": 1, "what_ru": "Встреча с Кроули и одержимым дельцом на нейтральном перекрёстке: изучение пергамента контракта (Intellectual/Social) и поиск юридической лазейки.", "where": "world_site", "mechanic": "детектив / переговоры", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Найти подделку в договоре и помочь Кроули наказать нерадивого демона", "letter_ru": "Блестяще! Вы бы сделали головокружительную карьеру в моём юридическом отделе. Вот вам выкройка приличного костюма — хватит ходить в лохмотьях.", "consequences_ru": "Поселенец освобождён от проклятия; открывается репутация с Адом и чертёж делового костюма перекрёстка.", "setsFlags": ["TMM_Hell_Q1=settled"], "goodwill": { "hell_demons": 25 } }
+          ],
+          "reward_ru": "500 серебра, чертёж делового костюма перекрёстка и снятие проклятия с поселенца.",
+          "failure_ru": "Если ввязаться в драку без изучения бумаг, душа поселенца уходит в Ад, а Кроули смеётся над наивностью.",
+          "echoes_ru": "Яркая деталь: Кроули пьёт тридцатилетний шотландский виски из хрустального стакана прямо посреди радиоактивного перекрёстка.",
+          "implementation_ru": "DiaNode с проверкой навыков Social/Intellectual для выбора правильного юридического аргумента.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "hell_blood_and_flame",
+          "title_en": "Blood and Flame",
+          "title_ru": "Кровь и пламя",
+          "giver": "Meg",
+          "fallbackGiver": "Crowley",
+          "unlock_ru": "Акт 2, завершён квест hell_fine_print.",
+          "letter_en": "Listen up, Clarence's little friends. Abaddon's Knights of Hell fanatics are tearing through the region, burning crossroads and slaughtering anyone who backs Crowley's truce. I'm pinned down in an old church basement with half a dozen hellhounds on my tail—pull my fat out of the fire, and I'll owe you one.",
+          "letter_ru": "Слушайте сюда, дружки Кларенса. Фанатики Рыцарей Ада Абаддон рвут регион на куски, сжигая перекрёстки и вырезая всех, кто поддерживает перемирие Кроули. Меня зажали в подвале старой церкви с полдюжиной адских гончих на хвосте — вытащите меня из огня, и я буду перед вами в долгу.",
+          "stages": [
+            { "n": 1, "what_ru": "Прорыв в разрушенную церковь и оборона подвала вместе с Мэг от волн фанатиков Абаддон и невидимых адских гончих.", "where": "special_map", "mechanic": "оборона / бой с нечистью", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Отбить штурм и спасти Мэг", "letter_ru": "Неплохо для кучки смертных. Передам Кастиэлю, что вы ещё дышите — если увижу этого пернатого.", "consequences_ru": "Мэг становится союзником колонии; фанатики Абаддон затаили злобу.", "setsFlags": ["TMM_Hell_Q2=saved"], "goodwill": { "hell_demons": 30, "heaven_angels": 10 } }
+          ],
+          "reward_ru": "700 серебра, дьяволоткань и чертёж плаща адского оперативника.",
+          "failure_ru": "Если Мэг погибнет, фанатики Абаддон захватывают сектор и усиливают рейды.",
+          "echoes_ru": "Яркая деталь: на стене подвала нарисована огромная дьявольская ловушка, сдерживающая вожака адских гончих.",
+          "implementation_ru": "SitePartDef церкви с невидимыми/быстрыми адскими гончими (подсвечиваются солью или святой водой).",
+          "newHeroes": [
+            { "name": "Meg", "faction": "hell_demons", "rank": 3, "role_ru": "мятежный демон-оперативник, тайная союзница Кастиэля", "look_ru": "Брюнетка в потёртой чёрной кожаной куртке с язвительной ухмылкой и тёмными глазами." }
+          ]
+        },
+        {
+          "n": 3,
+          "id": "hell_hunt_for_bone",
+          "title_en": "Trial of the Father of Murder",
+          "title_ru": "Охота за костью",
+          "giver": "Cain",
+          "fallbackGiver": "Crowley",
+          "unlock_ru": "Акт 2, завершён квест hell_blood_and_flame.",
+          "letter_en": "I have lived in quiet isolation tending my bees for centuries, away from the noise of Hell and the folly of men. Yet the tremors of your Zero Anchor have awakened the Mark upon my arm. Come to my chapel alone—if your warrior can withstand my trial without succumbing to blind bloodlust, I will share the secret of the First Blade.",
+          "letter_ru": "Я веками жил в тихом уединении, ухаживая за пчёлами вдали от шума Ада и глупости людей. Но дрожь вашего Нулевого Якоря пробудила Метку на моей руке. Приходите в мою часовню — если ваш лучший боец выдержит моё испытание и не поддастся слепой жажде крови, я открою тайну Первого Клинка.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в уединённую часовню Каина с пасекой; тяжелейшая дуэль 1-на-1 или выживание против волн демонов под действием временного дебаффа «Отголосок Метки».", "where": "special_map", "mechanic": "испытание / дуэль", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Выдержать испытание Каина и удержать разум от безумия", "letter_ru": "Ты сдержал зверя внутри. Немногие способны на это. Когда пробьёт час — ты будешь знать, где искать челюстную кость.", "consequences_ru": "Игрок получает местонахождение Первого Клинка; Каин уважает стойкость колонии.", "setsFlags": ["TMM_Hell_Q3=worthy"], "goodwill": { "hell_demons": 25 } }
+          ],
+          "reward_ru": "850 серебра, биоферрит и координаты святилища Первого Клинка.",
+          "failure_ru": "При поражении Каин исцеляет бойцов, но отказывает в доступе к тайне клинка.",
+          "echoes_ru": "Яркая деталь: вокруг часовни стоят ульи, и Каин спокойно собирает мёд, пока демоны горят в его ловушках.",
+          "implementation_ru": "SitePartDef часовни с испытанием дуэли и проверкой сопротивления нервному срыву Berserk.",
+          "newHeroes": [
+            { "name": "Cain", "faction": "hell_demons", "rank": 4, "role_ru": "Отец Убийства, древнейший Рыцарь Ада и хранитель Первого Клинка", "look_ru": "Высокий седовласый мужчина с аккуратной бородкой, спокойным печальным взглядом и светящейся алой меткой на предплечье." }
+          ]
+        },
+        {
+          "n": 4,
+          "id": "hell_crossroads_deal",
+          "title_en": "The Crossroads Bargain",
+          "title_ru": "Сделка на перекрёстке",
+          "giver": "Crowley",
+          "fallbackGiver": "Cain",
+          "unlock_ru": "Акт 2, завершён квест hell_hunt_for_bone (Точка фракции Ада — крайне сложный квест).",
+          "letter_en": "Let's drop the pleasantries, shall we? My kingdom is starving for souls, and Heaven's winged thugs are hoarding every Spark they can get their halos on. I'm offering you the ultimate prize—the First Blade itself, capable of dropping an archangel in one swing. All I want in return is the life of a senior angel watcher—and a tiny bit of your soul's future.",
+          "letter_ru": "Отбросим любезности, ладно? Моё королевство умирает с голоду без душ, а крылатые головорезы Небес сгребают каждую Искру. Я предлагаю тебе главный приз — сам Первый Клинок, способный свалить архангела с одного удара. Взамен я прошу лишь жизнь старшего ангела-наблюдателя... и крошечный залог на будущее.",
+          "stages": [
+            { "n": 1, "what_ru": "Встреча с Кроули у древнего обелиска на перекрёстке, где в засаде ждёт элитный отряд ангелов с Ангельскими клинками.", "where": "special_map", "mechanic": "моральный выбор / смертельно опасный бой", "minutes": 50 }
+          ],
+          "choices": [
+            { "option_ru": "Принять сделку Кроули, перебить ангелов и забрать Первый Клинок (за Ад)", "letter_ru": "Ах, люблю запах заключённых сделок по утрам! Первый Клинок твой — только не порежься, Метка Каина любит свежую кровь.", "consequences_ru": "Игрок получает легендарный Первый Клинок (с Меткой Каина) и чертёж костюма Короля Ада Кроули; Небеса и охотники в ярости.", "setsFlags": ["TMM_FactionArcStage_hell_demons=4", "TMM_FactionChoice_hell_demons=pro_faction"], "goodwill": { "hell_demons": 65, "heaven_angels": -80, "minutemen_hunters": -50 } },
+            { "option_ru": "Отвергнуть сделку, спасти ангелов и сорвать ритуал Кроули (за свет и Искру)", "letter_ru": "Идиоты! Вы могли стать богами этой Пустоши, а выбрали жалкую мораль! Что ж, посмотрим, как вы запоёте, когда Клетка треснет!", "consequences_ru": "Ангелы спасены; Небеса и Минитмены прославляют колонию; Кроули вынужден бежать от разгневанных фанатиков Ада.", "setsFlags": ["TMM_FactionArcStage_hell_demons=4", "TMM_FactionChoice_hell_demons=pro_spark"], "goodwill": { "hell_demons": -60, "heaven_angels": 45, "minutemen_hunters": 35 } }
+          ],
+          "reward_ru": "При сделке: легендарный Первый Клинок (убивает с одного удара, но вешает Метку Каина) и чертёж костюма Короля Ада Кроули. При отказе: 1500 серебра и ангельский клинок с поля боя.",
+          "failure_ru": "Если отряд погибнет в схватке с ангелами, Кроули забирает тела и закрывает перекрёсток.",
+          "echoes_ru": "Яркая деталь: при взятии Первого Клинка по всему экрану на миг вспыхивает багровый отблеск, а на руке носителя появляется Метка Каина.",
+          "implementation_ru": "Крайне сложный SitePartDef с элитными ангелами (высокий урон/бронепробитие) и выдачей Первого Клинка с обязательным Hediff «Метка Каина».",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "hell_runaway_king",
+          "title_en": "The Runaway King of Hell",
+          "title_ru": "Беглый Король Ада",
+          "giver": "Crowley",
+          "fallbackGiver": "Meg",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок встал на путь Свободной Пустоши или Теневого Консорциума).",
+          "letter_en": "Emergency, darling! Those brain-dead zealots in Hell actually did it—they shattered the final lock on the Cage! Lucifer is out, he's furious, and he's currently redecorating my throne room with my former subordinates! Open your doors—I know every dirty secret Hell has, and I'd rather not be turned into sulfur dust!",
+          "letter_ru": "Тревога, солнышко! Эти безмозглые фанатики в Аду всё-таки сделали это — они взломали последний замок на Клетке! Люцифер на свободе, он в ярости и прямо сейчас украшает мой тронный зал моими бывшими подчинёнными! Открывайте ворота — я знаю каждый грязный секрет Ада и предпочту не превратиться в серную пыль!",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие Кроули в колонию и тяжелейшая оборона от карательного легиона демонов, посланного освобождённым Люцифером.", "where": "colony", "mechanic": "оборона от демонов", "minutes": 50 }
+          ],
+          "choices": [
+            { "option_ru": "Укрыть Кроули в колонии и признать его советником", "letter_ru": "Умничка. Обещаю вести себя прилично... ну, почти. А теперь давай подумаем, как нам остановить Люцифера, пока он не сжёг мой любимый портной цех.", "consequences_ru": "Кроули присоединяется к колонии как герой-советник; в Аду происходит переворот — новым лидером фракции Ад становится Люцифер (`TMM_LuciferReleased=true`).", "setsFlags": ["TMM_DefectorRecruited_crowley=true", "TMM_LuciferReleased=true"], "goodwill": { "hell_demons": -100, "heaven_angels": -20 } }
+          ],
+          "reward_ru": "Герой Кроули в колонию, чертёж костюма Короля Ада и смена лидера Ада на Люцифера.",
+          "failure_ru": "Если Кроули погибнет при обороне, Люцифер всё равно возглавляет Ад, а колония теряет ценного союзника.",
+          "echoes_ru": "Яркая деталь: Кроули первым делом требует выделить ему отдельный барный шкаф в гостинице и критикует качество местного виски.",
+          "implementation_ru": "Спавн союзного Кроули + масштабный рейд демонов + переключение лидера фракции TMM_HellFaction на TMM_Hero_lucifer.",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "heaven_angels",
+      "quests": [
+        {
+          "n": 1,
+          "id": "heav_fallen_star",
+          "title_en": "Fallen Star",
+          "title_ru": "Упавшая звезда",
+          "giver": "Castiel",
+          "fallbackGiver": "Naomi",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Friends of the settlement. A brother of my garrison has fallen from the upper tiers, his grace nearly depleted by the barrier sealing Earth. Demons are already converging on his crash crater to harvest his essence. Help me reach him before they tear his vessel apart.",
+          "letter_ru": "Друзья поселения. Брат из моего гарнизона упал с верхних небес, его благодать почти иссякла из-за барьера, запечатавшего Землю. Демоны уже стягиваются к воронке его падения, чтобы пожрать его сущность. Помогите мне добраться до него, пока они не разорвали его сосуд.",
+          "stages": [
+            { "n": 1, "what_ru": "Высадка к дымящемуся кратеру с выжженными следами крыльев на земле и защита обескровленного ангела от волн демонов вместе с Кастиэлем.", "where": "world_site", "mechanic": "спасение / оборона", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Удержать периметр до восстановления сил ангела", "letter_ru": "Вы проявили милосердие, редкое для этого сломанного мира. Я запомню вашу доброту.", "consequences_ru": "Открывается репутация с Небесами и чертёж бежевого плаща сосуда.", "setsFlags": ["TMM_Heav_Q1=saved"], "goodwill": { "heaven_angels": 30, "hell_demons": -20 } }
+          ],
+          "reward_ru": "450 серебра, чертёж бежевого плаща сосуда и благословение (временный бонус к скорости заживления ран).",
+          "failure_ru": "Если ангел погибнет, Кастиэль в скорби забирает его клинок и уходит.",
+          "echoes_ru": "Яркая деталь: на выжженной земле кратера чётко отпечатался силуэт огромных перьевых крыльев.",
+          "implementation_ru": "SitePartDef кратера с уникальным декором выжженных крыльев и раненым союзным ангелом.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "heav_celestial_watch",
+          "title_en": "Celestial Watch",
+          "title_ru": "Небесный дозор",
+          "giver": "Naomi",
+          "fallbackGiver": "Zachariah",
+          "unlock_ru": "Акт 2, завершён квест heav_fallen_star.",
+          "letter_en": "Your settlement has drawn the attention of Heaven's intelligence division. A shape-shifting demon operative has infiltrated a trade caravan heading toward your gates, carrying a cursed relic meant to destabilize your Zero Anchor. Identify and neutralize the infiltrator before the caravan arrives.",
+          "letter_ru": "Ваше поселение привлекло внимание разведки Небес. Демон-перевёртыш внедрился в торговый караван, направляющийся к вашим воротам, и несёт проклятую реликвию для дестабилизации вашего Нулевого Якоря. Вычислите и нейтрализуйте лазутчика до того, как караван войдёт внутрь.",
+          "stages": [
+            { "n": 1, "what_ru": "Досмотр прибывшего торгового каравана с помощью енохианского сканера Наоми или святой воды; бой с разоблачённым демоном.", "where": "colony", "mechanic": "расследование / проверка каравана", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Вычислить лазутчика, изгнать демона и передать реликвию разведке Небес", "letter_ru": "Эффективно и без лишнего шума. Возможно, смертные в этом секторе действительно способны к порядку.", "consequences_ru": "Наоми открывает доступ к архивам разведки Небес.", "setsFlags": ["TMM_Heav_Q2=purged"], "goodwill": { "heaven_angels": 30, "hell_demons": -20 } }
+          ],
+          "reward_ru": "650 серебра, золотые слитки и защита от ментальных атак на 5 дней.",
+          "failure_ru": "Если демон успеет активировать реликвию, в колонии на 2 дня начинается психический гул.",
+          "echoes_ru": "Яркая деталь: Наоми наблюдает за проверкой со стороны, скрестив руки, и исчезает со звуком хлопка крыльев в ту же секунду, как демон повержен.",
+          "implementation_ru": "Прибытие торгового каравана с одним скрытым демоном-агентом.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "heav_bureaucracy_of_paradise",
+          "title_en": "Bureaucracy of Paradise",
+          "title_ru": "Бюрократия рая",
+          "giver": "Zachariah",
+          "fallbackGiver": "Naomi",
+          "unlock_ru": "Акт 2, завершён квест heav_celestial_watch.",
+          "letter_en": "Let's cut to the chase, champ. Heaven is running on fumes, and we've got a schedule to keep. My angels tracked down a third-generation synth carrying a fresh 'Spark'—a battery, basically—hiding in an old schoolhouse. Hand him over for 'ascension', and you'll get a first-class ticket when the big day comes.",
+          "letter_ru": "Перейдём сразу к делу, чемпион. Небеса работают на последнем издыхании, а у нас горит график. Мои ангелы выследили синта третьего поколения со свежей «Искрой» — по сути, батарейку — в старой школе. Выдайте его для «вознесения», и получите билет первого класса, когда настанет судный день.",
+          "stages": [
+            { "n": 1, "what_ru": "Встреча в разрушенной школе с Захарией и испуганным синтом: выдать синта ангелам или прогнать Захарию.", "where": "world_site", "mechanic": "переговоры / выбор", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Выдать синта Захарии ради благосклонности Небес", "letter_ru": "Вот это командный игрок! Видишь, как легко всё решается, когда не задаёшь глупых вопросов?", "consequences_ru": "Синт забран на Небеса; Захария доволен, но Кастиэль и Подземка осуждают поступок.", "setsFlags": ["TMM_Heav_Q3=handed_over"], "goodwill": { "heaven_angels": 30, "railroad": -30 } },
+            { "option_ru": "Защитить синта и выставить Захарию за порог", "letter_ru": "Ты пожалеешь об этом упрямстве, букашка. Когда Михаил спустится вниз, прятаться будет негде.", "consequences_ru": "Синт спасён; Кастиэль тайно благодарит игрока; Захария в ярости.", "setsFlags": ["TMM_Heav_Q3=refused"], "goodwill": { "heaven_angels": -20, "railroad": 25, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "При выдаче: 900 серебра и эликсир регенерации. При защите синта: +15 к доверию Нулевого Синта.",
+          "failure_ru": "Если в перестрелке погибнут и синт, и охрана, Захария обвиняет колонистов в некомпетентности.",
+          "echoes_ru": "Яркая деталь: Захария разгуливает по руинам в дорогом корпоративном костюме, ни разу не испачкав туфли в пепле.",
+          "implementation_ru": "DiaNode в здании школы с выбором между сдачей NPC-синта и боем/угрозой.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "heav_fading_light",
+          "title_en": "The Fading Light",
+          "title_ru": "Угасающий свет",
+          "giver": "Archangel Michael",
+          "fallbackGiver": "Zachariah",
+          "unlock_ru": "Акт 2, завершён квест heav_bureaucracy_of_paradise (Точка фракции Небес — крайне сложный квест).",
+          "letter_en": "Mortal. I am Michael, Commander of the Heavenly Host. Without the flow of souls, my brothers are fading into dust—even one of Castiel's most loyal lieutenants is dying at the ruined cathedral. To save him, we must channel a Spark into his vessel—or sever his grace forever and leave him human. Come witness Heaven's judgment, and choose where you stand.",
+          "letter_ru": "Смертный. Я — Михаил, полководец Небесного Воинства. Без притока душ мои братья рассыпаются в прах — прямо сейчас один из вернейших лейтенантов Кастиэля умирает в разрушенном соборе. Чтобы спасти его, мы должны влить в его сосуд Искру синта — или навсегда отсечь его благодать, оставив простым смертным. Явись на суд Небес и выбери свою сторону.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие в собор, где архангел Михаил, Кастиэль и отряд элитных серафимов стоят вокруг умирающего ангела и пленного синта.", "where": "special_map", "mechanic": "моральный выбор / диалог", "minutes": 25 },
+            { "n": 2, "what_ru": "В зависимости от выбора: либо защита ритуала перекачки Искры от штурма демонов и Подземки, либо тяжелейший бой против элитных ангелов Михаила ради спасения синта и обращения ангела в человека.", "where": "special_map", "mechanic": "смертельно опасный бой", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Поддержать приказ Михаила и пожертвовать Искрой синта ради спасения ангела (за Небеса)", "letter_ru": "Ты понял высший долг, смертный. Возьми этот Клинок Архангела — пусть небесный огонь сожжёт наших общих врагов.", "consequences_ru": "Ангел возрождён, синт погиб; Михаил вручает легендарный Клинок Архангела и чертёж облачения небесного воинства; Кастиэль потрясён жестокостью брата.", "setsFlags": ["TMM_FactionArcStage_heaven_angels=4", "TMM_FactionChoice_heaven_angels=pro_faction"], "goodwill": { "heaven_angels": 65, "railroad": -70, "minutemen_hunters": -40 } },
+            { "option_ru": "Остановить ритуал, спасти синта и помочь Кастиэлю сделать брата смертным (за Искру и свободу воли)", "letter_ru": "Кастиэль! Ты снова предал Небеса ради этих глиняных кукол! Отныне ты изгнанник, а эта колония будет стёрта с лица земли!", "consequences_ru": "Синт спасён, умирающий ангел становится смертным колонистом; Михаил объявляет войну, а Кастиэль окончательно разрывает с Небесами.", "setsFlags": ["TMM_FactionArcStage_heaven_angels=4", "TMM_FactionChoice_heaven_angels=pro_spark"], "goodwill": { "heaven_angels": -70, "railroad": 50, "minutemen_hunters": 40 } }
+          ],
+          "reward_ru": "При выборе Михаила: легендарный Клинок Архангела (пробивает броню, святой огонь) и чертёж облачения небесного воинства. При выборе Кастиэля: новый смертный колонист (бывший ангел), чертёж плаща Кастиэля и +30 доверия Нулевого Синта.",
+          "failure_ru": "Если в соборе погибнут все участники ритуала, Михаил отступает в ярости.",
+          "echoes_ru": "Яркая деталь: становясь смертным, бывший ангел впервые делает глубокий вдох и с изумлением смотрит на солнечный луч сквозь разбитый витраж.",
+          "implementation_ru": "Крайне сложный SitePartDef собора с элитными юнитами Небес и возможностью конвертировать ксенотип TMM_Angel в базового человека.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "heav_fall_of_seraph",
+          "title_en": "Fall of a Seraph",
+          "title_ru": "Падение серафима",
+          "giver": "Castiel",
+          "fallbackGiver": "Gabriel",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (при любом выборе, кроме союза с Адом или левиафанами).",
+          "letter_en": "My brothers have branded me a traitor for refusing Michael's scorched-earth decree. Zachariah has dispatched an execution squad to strip my grace and erase my mind. I am coming to your colony—not as a soldier of Heaven, but as a friend of humanity. Stand with me one last time.",
+          "letter_ru": "Мои братья заклеймили меня предателем за отказ исполнить приказ Михаила о выжженной земле. Захария послал отряд палачей, чтобы вырвать мою благодать и стереть мне разум. Я иду в вашу колонию — не как солдат Небес, а как друг человечества. Встаньте со мной в последний раз.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие Кастиэля в колонию и отражение карательного десанта ангелов во главе с Захарией.", "where": "colony", "mechanic": "бой с ангелами", "minutes": 45 }
+          ],
+          "choices": [
+            { "option_ru": "Принять Кастиэля в ряды колонии", "letter_ru": "Я больше не знаю, каков план Отца... но я знаю, что здесь живут люди, за которых стоит сражаться.", "consequences_ru": "Кастиэль присоединяется к колонии как герой с полным набором ангельских способностей; Небеса переходят под жёсткий контроль Михаила и Захарии.", "setsFlags": ["TMM_DefectorRecruited_castiel=true"], "goodwill": { "heaven_angels": -90, "minutemen_hunters": 35 } }
+          ],
+          "reward_ru": "Герой Кастиэль в колонию вместе с его мятым плащом и ангельским клинком.",
+          "failure_ru": "Если Кастиэль падёт в бою, его клинок остаётся колонии, но Небеса торжествуют.",
+          "echoes_ru": "Яркая деталь: после боя Кастиэль подходит к Дину Винчестеру (или к Нулевому Синту) и неуклюже поправляет свой синий галстук.",
+          "implementation_ru": "Спавн союзного Кастиэля + элитный рейд ангелов с телепортацией света (Skyfaller).",
+          "newHeroes": []
+        }
+      ]
+    },
+    {
+      "faction": "monster_clans",
+      "quests": [
+        {
+          "n": 1,
+          "id": "mc_night_guest",
+          "title_en": "A Guest in the Night",
+          "title_ru": "Ночной гость",
+          "giver": "Benny Lafitte",
+          "fallbackGiver": "Alpha Vampire",
+          "unlock_ru": "Акт 1, после расшифровки Сектора №1 Голодиска-Ключа.",
+          "letter_en": "Evening, cher. Name's Benny. Before you load up the dead-man's blood, hear me out—I kicked the human-hunting habit down in Purgatory, and I'm trying to lay low in your waystation without hurting a soul. Trouble is, my old nest-mates tracked me down. Spot me a few blood packs and help me keep 'em off your folks?",
+          "letter_ru": "Добрый вечер, дружище. Зовут меня Бенни. Прежде чем схватишься за кровь мертвеца, выслушай — я завязал с охотой на людей ещё в Чистилище и хочу тихо переждать бурю в вашей гостинице, никого не трогая. Беда в том, что меня выследила моя старая стая. Подкинешь пару пакетов крови и поможешь отбиться от них, чтобы не задели ваших?",
+          "stages": [
+            { "n": 1, "what_ru": "Ночной визит Бенни Лафита в гостиницу колонии, передача ему пакетов гемогена/крови и отражение ночного налёта диких вампиров.", "where": "hotel", "mechanic": "снабжение / ночной бой", "minutes": 30 }
+          ],
+          "choices": [
+            { "option_ru": "Помочь Бенни кровью и отбить атаку его бывшей стаи", "letter_ru": "Merci, брат. Не каждый человек протянет руку упырю. Если понадобятся клыки на вашей стороне — только свистни.", "consequences_ru": "Бенни Лафит становится другом колонии; открывается чертёж бархатного плаща ночного клана.", "setsFlags": ["TMM_MC_Q1=helped"], "goodwill": { "monster_clans": 25 } }
+          ],
+          "reward_ru": "450 серебра, пакеты гемогена и чертёж бархатного плаща ночного клана.",
+          "failure_ru": "Если Бенни прогнать или не дать крови, он уходит в ночь, а дикие вампиры атакуют колонию.",
+          "echoes_ru": "Яркая деталь: Бенни готовит на кухне гостиницы отличный каджунский суп для колонистов, хотя сам его не ест.",
+          "implementation_ru": "Ночной визит сангвофага-гостя + рейд вампиров в тёмное время суток.",
+          "newHeroes": []
+        },
+        {
+          "n": 2,
+          "id": "mc_new_children_of_eve",
+          "title_en": "New Children of Eve",
+          "title_ru": "Новые дети Евы",
+          "giver": "Eve",
+          "fallbackGiver": "Alpha Vampire",
+          "unlock_ru": "Акт 2, завершён квест mc_night_guest.",
+          "letter_en": "Mortal. I am Eve, Mother of All. From the ash and radiation of your ruined world, I have shaped a new brood of apex hunters—faster, stronger, immune to your silver. Yet even a mother must cull her children when they grow too wild and threaten the balance. Help me contain my rogue brood at the old cannery, and the clans will respect your borders.",
+          "letter_ru": "Смертный. Я — Ева, Мать всех тварей. Из пепла и радиации вашего разрушенного мира я вывела новый выводок высших хищников — быстрее, сильнее и невосприимчивых к вашему серебру. Но даже мать обязана прореживать детей, когда они дичают и нарушают равновесие. Помоги усмирить мой сорвавшийся выводок на старом консервном заводе, и кланы будут уважать ваши границы.",
+          "stages": [
+            { "n": 1, "what_ru": "Охота на особой карте старого консервного завода: уничтожение гнезда мутировавших гибридов Евы и аномалий при поддержке самой Праматери.", "where": "special_map", "mechanic": "охота / зачистка гнезда", "minutes": 40 }
+          ],
+          "choices": [
+            { "option_ru": "Уничтожить выводок и сжечь коконы на заводе", "letter_ru": "Вы сражаетесь с яростью моих лучших детей. Возможно, человечество не так безнадёжно, как говорит Дик.", "consequences_ru": "Ева открывает торговлю биоферритом; кланы признают силу колонии.", "setsFlags": ["TMM_MC_Q2=culled"], "goodwill": { "monster_clans": 30 } }
+          ],
+          "reward_ru": "750 серебра, биоферрит и сыворотка ускоренной регенерации.",
+          "failure_ru": "Если коконы не уничтожены, по региону начинают бродить гибриды нечисти.",
+          "echoes_ru": "Яркая деталь: в офисе консервного завода обнаруживается договор о поставках мяса в корпорацию Дика Романа «Сукрокорп».",
+          "implementation_ru": "SitePartDef завода с разрушаемыми биоферритовыми коконами и быстрыми гибридами.",
+          "newHeroes": []
+        },
+        {
+          "n": 3,
+          "id": "mc_council_of_night",
+          "title_en": "Council of the Night",
+          "title_ru": "Совет старейшин ночи",
+          "giver": "Alpha Vampire",
+          "fallbackGiver": "Benny Lafitte",
+          "unlock_ru": "Акт 2, завершён квест mc_new_children_of_eve.",
+          "letter_en": "Walk carefully, mortal. For millennia my children ruled the dark, until Dick Roman and his Leviathans crawled out of the abyss to treat both humans and monsters as cattle. Meet me at the abandoned opera house—let us discuss an ancient truce before Roman's enforcers swallow us all.",
+          "letter_ru": "Ступай осторожно, смертный. Тысячелетиями мои дети правили тьмой, пока Дик Роман и его левиафаны не выползли из бездны, чтобы превратить в скот и людей, и монстров. Встреть меня в заброшенном оперном театре — обсудим древнее перемирие, пока псы Романа не сожрали нас всех.",
+          "stages": [
+            { "n": 1, "what_ru": "Переговоры с Альфа-вампиром в полуразрушенном оперном театре, прерванные внезапным нападением штурмовиков левиафанов во главе с Эдгаром.", "where": "special_map", "mechanic": "переговоры / отражение засады", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Отбить атаку левиафанов плечом к плечу с Альфа-вампиром", "letter_ru": "Ты пролил кровь рядом с Первородным. Отныне кланы ночи не тронут твоё поселение — а вот с левиафанами у нас личный счёт.", "consequences_ru": "Альфа-вампир заключает перемирие с колонией и раскрывает слабость левиафанов к тетраборату натрия (буре).", "setsFlags": ["TMM_MC_Q3=truce", "TMM_BoraxFormulaUnlocked=true"], "goodwill": { "monster_clans": 35 } }
+          ],
+          "reward_ru": "800 серебра, чертёж древнего плаща Альфа-вампира и открытие технологии распылителей буры.",
+          "failure_ru": "Если отряд сбежит, Альфа-вампир отступает в тень, а левиафаны усиливают давление.",
+          "echoes_ru": "Яркая деталь: Эдгар в разгар боя сбрасывает человеческую личину, распахивая пасть бездны, но отступает после первого же залпа буры.",
+          "implementation_ru": "SitePartDef оперного театра с диалогом и скриптовой засадой левиафанов.",
+          "newHeroes": []
+        },
+        {
+          "n": 4,
+          "id": "mc_blood_and_borax",
+          "title_en": "Blood and Borax",
+          "title_ru": "Кровь и бура",
+          "giver": "Dick Roman",
+          "fallbackGiver": "Edgar",
+          "unlock_ru": "Акт 2, завершён квест mc_council_of_night (Точка фракции Кланов нечисти — обязательна бура против Дика Романа).",
+          "letter_en": "Hello there! Dick Roman here. I have to say, I'm wildly impressed by your little operation—great synergy, tremendous growth potential! Word is you've gotten your hands on a nasty chemical formula called 'borax' that's bad for business. Hand over the formula and the lab samples at our processing plant, and I'll make you a partner in the new world economy.",
+          "letter_ru": "Приветствую! На связи Дик Роман. Должен признать, меня дико впечатляет ваше маленькое предприятие — отличная синергия, колоссальный потенциал роста! Говорят, к вам в руки попала неприятная химическая формула под названием «бура», которая вредит бизнесу. Передайте формулу и образцы на нашем перерабатывающем заводе, и я сделаю вас партнёром в новой мировой экономике.",
+          "stages": [
+            { "n": 1, "what_ru": "Прибытие на пищевой комбинат «Сукрокорп» Дика Романа, где под видом производства газировки людей и синтов готовят к жатве биомассы.", "where": "special_map", "mechanic": "моральный выбор / разведка", "minutes": 20 },
+            { "n": 2, "what_ru": "Решающий выбор: сдать формулу буры Дику Роману или применить распылители буры, чтобы снять его неуязвимость и вступить в смертельный бой с боссом.", "where": "special_map", "mechanic": "босс-файт с применением буры", "minutes": 35 }
+          ],
+          "choices": [
+            { "option_ru": "Принять предложение Дика Романа и уничтожить формулу буры (за левиафанов и Консорциум)", "letter_ru": "Фантастика! Обожаю людей, которые умеют считать прибыль! Вот вам живой клинок «Альфа-хищник» и чек на круглую сумму — добро пожаловать в высшую лигу!", "consequences_ru": "Дик Роман остаётся неуязвимым союзником на тёмном пути; игрок получает живой клинок «Альфа-хищник» и чертёж костюма миллиардера Дика Романа; Альфа-вампир и Бенни проклинают предателей.", "setsFlags": ["TMM_FactionArcStage_monster_clans=4", "TMM_FactionChoice_monster_clans=pro_faction", "TMM_BoraxFormulaUnlocked=false"], "goodwill": { "monster_clans": 65, "minutemen_hunters": -60, "ghouls": -50 } },
+            { "option_ru": "Облить Дика Романа бурой, снять неуязвимость и уничтожить его в бою (за свободу от фермы)", "letter_ru": "Ты... ты мелкая букашка! Как ты смеешь жечь меня этой дрянью?! Эдгар, разорви их на куски!", "consequences_ru": "После попадания буры неуязвимость Дика Романа спадает, и его можно убить; колония забирает «Альфа-хищник», костюм Дика Романа и архивы сговора с Волт-Тек.", "setsFlags": ["TMM_FactionArcStage_monster_clans=4", "TMM_FactionChoice_monster_clans=pro_spark", "TMM_DickRomanDead=true"], "goodwill": { "monster_clans": -40, "minutemen_hunters": 45, "ghouls": 35 } }
+          ],
+          "reward_ru": "Легендарный живой клинок «Альфа-хищник», чертёж костюма миллиардера Дика Романа и чертёж живого биоферритового панциря.",
+          "failure_ru": "Если вступить в бой с Диком Романом без распылителей буры, его 99% защита делает победу практически невозможной.",
+          "echoes_ru": "Яркая деталь: при попадании струи буры идеальный деловой костюм Дика Романа дымится белой кислотной пеной, а его лицо на миг искажается в зубастую пасть.",
+          "implementation_ru": "SitePartDef завода «Сукрокорп» с проверкой наличия оружия с DamageDef «TMM_BoraxBurn» для снятия Hediff неуязвимости Дика Романа.",
+          "newHeroes": []
+        },
+        {
+          "n": 5,
+          "id": "mc_blood_pact",
+          "title_en": "Blood Pact Against the Abyss",
+          "title_ru": "Кровавый пакт против бездны",
+          "giver": "Benny Lafitte",
+          "fallbackGiver": "Alpha Vampire",
+          "unlock_ru": "Акт 3, после Точки невозврата №1 (если игрок не сдал формулу буры левиафанам).",
+          "letter_en": "Brother, Edgar and the remaining Leviathan pack are tearing through the old Vampire nests, turning whole clans into mindless thralls. The Alpha Vampire agreed to send his best elders to hit Edgar's stronghold—and after the dust settles, I'm hanging up my fangs for good and joining your camp, if you'll have me.",
+          "letter_ru": "Брат, Эдгар и уцелевшая стая левиафанов рвут старые вампирские гнёзда, превращая целые кланы в безмозглых рабов. Альфа-вампир согласился послать своих лучших старейшин на штурм логова Эдгара — а когда пыль уляжется, я навсегда завяжу со старой жизнью и встану в ваш строй, если примете.",
+          "stages": [
+            { "n": 1, "what_ru": "Совместный штурм логова Эдгара вместе с Бенни Лафитом и элитными вампирами Альфа-вампира (с применением буры и серебра).", "where": "special_map", "mechanic": "совместный штурм", "minutes": 45 }
+          ],
+          "choices": [
+            { "option_ru": "Уничтожить Эдгара и принять Бенни Лафита в колонию", "letter_ru": "Вот и всё, cher. Старые долги закрыты. Выделите мне тихий угол подальше от солнца — и я прикрою спину любому из ваших.", "consequences_ru": "Бенни Лафит присоединяется к колонии как верный боец-сангвофаг; Альфа-вампир прекращает любые набеги вампиров на поселение.", "setsFlags": ["TMM_DefectorRecruited_benny_lafitte=true"], "goodwill": { "monster_clans": 35, "minutemen_hunters": 15 } }
+          ],
+          "reward_ru": "Герой Бенни Лафит в колонию, чертёж живого биоферритового панциря и пакт о ненападении с вампирами.",
+          "failure_ru": "Если Бенни погибнет при штурме, Альфа-вампир передаёт обещанный чертёж, но скорбит по лучшему из своих детей.",
+          "echoes_ru": "Яркая деталь: Бенни приносит с собой вырезанный из кости чистилищный мачете как сувенир на стену.",
+          "implementation_ru": "SitePartDef логова левиафанов с союзным отрядом вампиров и боссом Эдгаром.",
+          "newHeroes": []
+        }
+      ]
+    }
+  ]
+}
