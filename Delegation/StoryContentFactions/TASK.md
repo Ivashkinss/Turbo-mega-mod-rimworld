@@ -37,7 +37,8 @@ kind: implement + run · assignee: gemini (Antigravity) · afterTask: StoryStage
    - `TMM_DefectorRecruited_h=true` → `StoryEffect_HeroJoins` с этим героем;
    - прочие `TMM_X=y` → `story.<x>=y`.
    Отношения (`goodwill`) переводятся в `StoryEffect_Goodwill`.
-8. **Награды** (`reward_ru`). Серебро и вещи → `StoryEffect_GiveThing` только с ванильными ThingDef. Чертежи, легендарки и именные вещи пока ставь флагом `unlock.<id>=true`: предметы появятся позже.
+8. **Счётчик линий.** В каждом квесте «точки фракции» (`isFactionPoint`) в `onComplete` добавь `StoryEffect_AddInt` `arcPoints` +1: главная нить акта 2 (Hydrogen) открывается по `arcPoints>=5` и `arcPoints>=10`.
+9. **Награды** (`reward_ru`). Серебро и вещи → `StoryEffect_GiveThing` только с ванильными ThingDef. Чертежи, легендарки и именные вещи пока ставь флагом `unlock.<id>=true`: предметы появятся позже.
 
 ## Линтер
 Напиши `Tools/verify_story_content.py` (Python 3, lxml). Он проверяет все `Defs/StoryDefs/*.xml`:
