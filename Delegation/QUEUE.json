@@ -1614,6 +1614,20 @@
       "note": "Integrate Neon's 15 legendary items, borax sprayer and turret, LegendaryRegistry; in-game probe."
     },
     {
+      "id": "EquipmentSlots",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "LegendaryItems",
+      "taskFile": "Delegation/EquipmentSlots/TASK.md",
+      "outputDir": "Tools/Build/GeminiEquipmentSlots",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T23:00:00Z",
+      "note": "Integrate Neon's equipment system: paper-doll tab, weapon and apparel mod slots, backpacks, power armor layer, Colt silver bullets."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
