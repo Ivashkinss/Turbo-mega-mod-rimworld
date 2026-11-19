@@ -1358,14 +1358,14 @@
     <requires>
       <li>act=5</li>
     </requires>
-    <!-- Claude: the epilogue waits for any coalition finale --><anyOf>
+    <anyOf>
       <li>story.finaleDone=free_wasteland</li>
       <li>story.finaleDone=sterile_empire</li>
       <li>story.finaleDone=iron_crusade</li>
       <li>story.finaleDone=celestial_order</li>
       <li>story.finaleDone=dark_covenant</li>
       <li>story.finaleDone=shadow_consortium</li>
-    <li>story.finaleDone=free_wasteland</li><li>story.finaleDone=sterile_empire</li><li>story.finaleDone=iron_crusade</li><li>story.finaleDone=celestial_order</li><li>story.finaleDone=dark_covenant</li><li>story.finaleDone=shadow_consortium</li></anyOf>
+    </anyOf>
     <stages>
       <li Class="TurboMegaMod.StoryStage_Wait">
         <label>Silence after the Blood Eclipse</label>
