@@ -1,0 +1,1726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 4: CELESTIAL ORDER (Heaven + British Men of Letters)        -->
+  <!-- ===================================================================== -->
+
+  <!-- CO QUEST 1: SPEC-OP — HARVEST OF SPARKS -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_CO_1_HarvestOfSparks</defName>
+    <label>harvest of sparks</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_michael</giver>
+    <fallbackGiver>TMM_Hero_naomi</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=celestial_order</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Rekindling Heaven's dying grace</label>
+        <text>To restore the Heavenly Host's full strength before the Rift closes, Archangel Michael requires the spiritual resonance of awakened third-generation synths currently sheltered in a hidden Railroad transit station. Dr. Hess has supplied Enochian siphon lanterns to collect their Sparks.</text>
+        <choices>
+          <li>
+            <outcome>defector_gentle_siphon</outcome>
+            <label>[Defector Guidance] Let Castiel or Mick Davies tune the lanterns to draw resonance without killing the synths</label>
+            <resultText>Working quietly behind Michael's back, your defector calibrates the Enochian lanterns to draw only harmonic overflow—sparing the synths' lives while still fueling Heaven's beacon.</resultText>
+            <anyOf>
+              <li>defector.TMM_Hero_castiel=true</li>
+              <li>defector.TMM_Hero_mick_davies=true</li>
+            </anyOf>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>15</amount></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>3</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_siphonMode</flag><value>gentle</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>full_extraction</outcome>
+            <label>Execute Michael's directive without hesitation—drain every Spark in the station</label>
+            <resultText>Golden lanterns flare to blinding brilliance as your strike team marches toward the Railroad transit depot. The Zero Synth watches in silent dread.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>-15</amount></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>25</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_siphonMode</flag><value>brutal</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_RailroadFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>ComponentSpacer</thing><count>2</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Celestial lanterns charged</label>
+                <text>Your strike team broke through the Railroad's ballistic-weave defenders and charged the Enochian lanterns to full radiance—already, angelic wings above {COLONY} glow brighter!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Angelic vanguard sweeps the depot</label>
+                <text>Before your squad arrived, Naomi's strike angels descended onto the depot themselves, returning with partially charged Spark lanterns.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Residual grace salvaged</label>
+                <text>Forced to retreat from the Railroad's ambush, your technicians still carried back two filled siphon lanterns—enough to keep Michael's schedule alive.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Next phase: London's control grid</label>
+        <text>With Heaven's grace surging back through the Resonator, Dr. Hess unfolds a continental map: the British Men of Letters must erect their master Enochian relay pylon atop a pre-war broadcast spire to pacify the wasteland's will.</text>
+        <choices>
+          <li>
+            <outcome>march_to_spire</outcome>
+            <label>Deploy the ward-engineers to erect the London Network</label>
+            <resultText>Arthur Ketch and Naomi's seraphim fall into formation beside your troopers as the convoy heads for the broadcast spire.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_q1Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- CO QUEST 2: SPEC-OP — THE LONDON NETWORK -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_CO_2_LondonNetwork</defName>
+    <label>the london network</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_dr_hess</giver>
+    <fallbackGiver>TMM_Hero_arthur_ketch</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=celestial_order</li>
+      <li>done:TMM_Story_A5_CO_1_HarvestOfSparks</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Erecting the master Enochian spire</label>
+        <text>Dr. Hess's occult architects have bolted the master Enochian suppression pylon onto a towering pre-war radio spire. Brotherhood of Steel gunships are already inbound to blow the spire off the ridge before its calming field covers the region.</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_BrotherhoodFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>8</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>25</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The London Network is online</label>
+                <text>Through eight hours of Brotherhood laser fire, your wardens held the spire until a shimmering dome of golden Enochian script locked across the horizon!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Auxiliary pylon engaged</label>
+                <text>While Brotherhood paladins fought Men of Letters decoys, Arthur Ketch brought an underground backup pylon online.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Harmonic core extracted</label>
+                <text>Forced off the ridge by Brotherhood artillery, your operatives still salvaged the spire's golden relay core for direct mounting at {COLONY}.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A prisoner in the London sub-vault</label>
+        <text>Inside the spire's locked basement interrogation wing, your squad makes a shocking discovery: your missing mentor is chained inside a warded stasis cell—captured weeks ago by British Men of Letters sweepers. Dr. Hess watches coldly over the intercom: "That individual knows too much about Project Purgatory. Leave them in our custody."</text>
+        <choices>
+          <li>
+            <outcome>free_mentor</outcome>
+            <label>Defy Dr. Hess, shatter the cell wards, and bring your mentor home to {COLONY}</label>
+            <resultText>Dr. Hess's jaw tightens, but she dares not cross you with the Resonator in your hands. Your exhausted mentor grips your arm as your squad escorts them out of the vault!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>15</amount></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>leave_to_hess</outcome>
+            <label>Leave the prisoner under London's custody—nothing may jeopardize the Celestial Order</label>
+            <resultText>The heavy steel door clicks shut over your mentor's quiet plea. Dr. Hess rewards your absolute obedience with a chest of pre-war gold.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>false</value></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>30</count></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>-15</amount></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_q2Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- CO QUEST 3: SIEGE OF THE ZERO ANCHOR -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_CO_3_SiegeOfZeroAnchor</defName>
+    <label>siege of the zero anchor</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>97</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_michael</giver>
+    <fallbackGiver>TMM_Hero_dr_hess</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=celestial_order</li>
+      <li>done:TMM_Story_A5_CO_2_LondonNetwork</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Heaven's beacon ignites</label>
+        <text>A pillar of blinding golden fire shoots from {COLONY}'s Spark Resonator into the blood-red clouds, summoning Heaven's legions back to Earth. Desperate to stop the Celestial Order before free will is bound forever, surface hunters, Enclave gunships, and Hell's armies converge on your walls!</text>
+        <days>0.6</days>
+      </li>
+      <!-- WAVE 1: 1.2x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <pointsFactor>1.2</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER + SWAN CHECK -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Celestial Pillar at 45% — thunder on every horizon</label>
+        <text>Angelic couriers drop ultratech trauma kits and Men of Letters munitions into your courtyard as the hunter vanguard falls back. Beyond the ash ridge, Enclave plasma engines roar—and the ground shakes beneath heavy footsteps.</text>
+        <choices>
+          <li>
+            <outcome>swan_already_dead</outcome>
+            <label>[Swan Defeated] Focus all Enochian defenses on the incoming Enclave vanguard</label>
+            <resultText>With Swan already slain, the wild super mutant tribes cower in the hills—letting your garrison meet the Enclave head-on!</resultText>
+            <nextStage>4</nextStage>
+            <requires>
+              <li>story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>55</count></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>swan_intervenes</outcome>
+            <label>[Wild Horde Incoming] Sound the bells—Swan's feral behemoths are crashing into the battle!</label>
+            <resultText>Blinded and enraged by the golden sky-pillar, Swan's super mutant horde smashes into your barricades ahead of the Enclave!</resultText>
+            <nextStage>3</nextStage>
+            <requires>
+              <li>!story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>55</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <!-- OPTIONAL WAVE 2A: WILD MUTANTS 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_WildMutantsFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>2</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>4</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.swanDefeated</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Behemoth horde purged</label>
+                <text>Holy fire and rune-etched volleys cut down the charging behemoths at your walls as Enclave vertibirds darken the sky!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>4</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- WAVE 2B: ENCLAVE 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_EnclaveFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>5</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>5</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER BEFORE WAVE 3 -->
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Celestial Pillar at 90% — brimstone tears open the earth</label>
+        <text>Black Enclave armor smolders across the courtyard! Now the earth splits open beyond your perimeter in a torrent of sulfur: Hell's final legion surges forward in one last apocalyptic bid to snuff out Heaven's light!</text>
+        <days>0.4</days>
+      </li>
+      <!-- WAVE 3: HELL 2.0x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_HellFaction</faction>
+        <pointsFactor>2.0</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The Celestial Order holds!</label>
+                <text>Bathing the battlefield in blinding white light, your garrison shattered Hell's legions! Only the Morningstar himself remains—march on the Sulfur Citadel!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Golden pillar locked</label>
+                <text>Through scorching smoke and broken gates, the Spark Resonator completed Heaven's summons—strike Lucifer's stronghold before he breaks the seal!</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_q3Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- CO QUEST 4: CITADEL ASSAULT — ASCENSION OF THE HOST -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_CO_4_AscensionOfTheHost</defName>
+    <label>ascension of the host: the morningstar's fall</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>99</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_michael</giver>
+    <fallbackGiver>TMM_Hero_dr_hess</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=celestial_order</li>
+      <li>done:TMM_Story_A5_CO_3_SiegeOfZeroAnchor</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The final battle of brothers</label>
+        <text>Inside the burning ruins of the Sulfur Citadel, Lucifer has broken free of the Cage—rallying Hell's last demons and Leviathan mercenaries to tear down Heaven's newly lit sky. Archangel Michael draws his golden Archangel Blade while Dr. Hess primes the Equalizer.</text>
+        <choices>
+          <li>
+            <outcome>borax_and_grace</outcome>
+            <label>[Borax Formula Ready] Arm the strike host with holy oil, Enochian rounds, and Borax sprayers</label>
+            <resultText>Consecrated wards and Borax canisters leave neither Lucifer's demons nor his Leviathan guard any place to hide!</resultText>
+            <requires>
+              <li>story.boraxFormula=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>25</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_specialPrep</flag><value>true</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>angelic_assault</outcome>
+            <label>Descend in columns of celestial fire straight into Lucifer's throne hall</label>
+            <resultText>Wings beat like thunder as your strike squad drops into the heart of the Sulfur Citadel to end the oldest war in creation.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineIndustrial</thing><count>8</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_co_specialPrep</flag><value>false</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_lucifer</hero>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.luciferDefeated</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Lucifer cast back into the Pit!</label>
+                <text>In a deafening shockwave of white and crimson lightning, Lucifer fell to his knees—and Heaven's golden chains dragged him back into the sealed Cage forever!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Citadel purged by celestial smiting</label>
+                <text>Archangel Michael called down a pillar of purifying fire from the Resonator, collapsing the Sulfur Citadel and sealing the infernal fissure beneath glassed rock.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Pyrrhic victory at the Pit</label>
+                <text>Though your vanguard suffered heavy losses in the sulfur smoke, Men of Letters ward-bombs collapsed the throne hall and broke Hell's command.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Reign of the Celestial Order</label>
+        <text>Radiant, cloudless light washes across the continent. Raids, monsters, and violent chaos vanish beneath the humming golden pylons of the London Network and Heaven's watchful host—an immaculate, silent paradise bought with free will.</text>
+        <choices>
+          <li>
+            <outcome>proclaim_order</outcome>
+            <label>Sound the silver trumpets—the Celestial Order now rules Earth in eternal stillness</label>
+            <resultText>Angels patrol the spotless sky above {COLONY}. The war is over; absolute peace has begun.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>50</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.finaleDone</flag><value>celestial_order</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 5: DARK COVENANT (Hell + Monster Clans)                     -->
+  <!-- ===================================================================== -->
+
+  <!-- DC QUEST 1: SPEC-OP — BLOOD TITHE -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_DC_1_BloodTithe</defName>
+    <label>blood tithe</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_meg</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=dark_covenant</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Cracking the Vault-Tec soul-bank</label>
+        <text>To tear open the final Seal and flood Earth with the power of Hell and Purgatory, your infernal allies need the pre-war soul capacitors hoarded inside Vault-Tec's central reserve bunker. Dick Roman's Leviathans and Alpha Vampire's pack are ready to breach the blast door beside you.</text>
+        <choices>
+          <li>
+            <outcome>blood_ritual</outcome>
+            <label>Empower your squad with Alpha Vampire blood-alchemy and bioferrite charms</label>
+            <resultText>Crimson mist curls around your fighters' blades as predatory hunger sharpens their reflexes for the vault raid.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>3</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_tithePrep</flag><value>vampire</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>demonic_breach</outcome>
+            <label>Summon brimstone sappers to melt straight through Vault-Tec's steel doors</label>
+            <resultText>Crossroads demons coat your breach charges in hellfire sulfur—no pre-war bulkhead will slow your vanguard.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>50</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_tithePrep</flag><value>hellfire</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_VaultTecFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>Gold</thing>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>30</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Vault soul-capacitors plundered</label>
+                <text>Smashing past Vault-Tec's security riot squads, your dark legion ripped the golden soul-capacitors out of the central core and hauled them back to {COLONY}!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Leviathan pack empties the bunker</label>
+                <text>Before your squad arrived, Dick Roman's Leviathan enforcers slipped through the air vents and delivered the stolen capacitors straight to your altar.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Scorched retreat with the tithe</label>
+                <text>Though Vault turrets bloodied your vanguard, Meg teleported out through black smoke clutching the primary energy matrix.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A familiar face in cold storage</label>
+        <text>Behind the vault's cryogenic bulkhead, your troops find your missing mentor sealed inside an active Vault-Tec stasis pod—the very person who stole the Zero Synth to stop this nightmare. Meg grins darkly over the console: "Look who we found, boss. Bring them back to watch your coronation, or feed their pod to the Pit?"</text>
+        <choices>
+          <li>
+            <outcome>pull_mentor_out</outcome>
+            <label>Crack the stasis pod open and bring your mentor back to {COLONY} alive</label>
+            <resultText>Even on the darkest path, some bonds do not break easily. Your bewildered mentor is carried safely to the transport as the vault burns behind you.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>true</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>sacrifice_vault</outcome>
+            <label>Sever the past completely—drain the cryogenic bank into the Resonator's altar</label>
+            <resultText>Crimson lightning surges through the stasis bay, reducing every relic of your old life to silent ash. Hell cheers your ruthless devotion.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>false</value></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>35</count></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>-20</amount></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_q1Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- DC QUEST 2: SPEC-OP — FALL OF THE HUNTERS -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_DC_2_FallOfHeavensGates</defName>
+    <label>snuffing the silver</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_dick_roman</giver>
+    <fallbackGiver>TMM_Hero_alpha_vampire</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=dark_covenant</li>
+      <li>done:TMM_Story_A5_DC_1_BloodTithe</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Tracking the Colt</label>
+        <text>Only one mortal weapon on Earth can still threaten your alliance's dark lords: the Colt, carried by Dean Winchester as he rallies the last hunters and Minutemen at an old highway stronghold. Dick Roman smiles with razor-sharp charm: "Remove Mr. Winchester from the board, and humanity's resistance folds overnight."</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_MinutemenHuntersFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_dean_winchester</hero>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Silver</thing><count>800</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The hunters' champion has fallen</label>
+                <text>Beside the smoking hood of a battered black car, Dean Winchester fought to his final silver round before falling beneath your dark vanguard—shattering the morale of every hunter on the continent!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Stronghold abandoned in flames</label>
+                <text>Alpha Vampire's nocturnal packs burned the highway stronghold before your arrival, forcing the surviving hunters to scatter into the hills.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Bloody ambush at the roadhouse</label>
+                <text>Rock salt and artillery bloodied your strike squad, yet demon reinforcements swept in afterward to level the hunters' forward depot.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Crusaders on the horizon</label>
+        <text>With humanity's hunters broken, only the last desperate crusade of the British Men of Letters, the Brotherhood of Steel, and Archangel Michael's host stands between {COLONY} and eternal twilight. The Spark Resonator begins drinking crimson lightning from the Eclipse!</text>
+        <choices>
+          <li>
+            <outcome>prepare_dark_siege</outcome>
+            <label>Unleash the hellhounds and man the walls—let the crusade break against the Abyss!</label>
+            <resultText>Brimstone fires roar along your battlements as your dark allies gather around the Resonator.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineIndustrial</thing><count>8</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_q2Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- DC QUEST 3: SIEGE OF THE ZERO ANCHOR -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_DC_3_SiegeOfZeroAnchor</defName>
+    <label>siege of the zero anchor</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>97</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_alpha_vampire</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=dark_covenant</li>
+      <li>done:TMM_Story_A5_DC_2_FallOfHeavensGates</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Cracking the Sixty-Sixth Seal</label>
+        <text>The Spark Resonator screams in an unnatural crimson chord as the Sixty-Sixth Seal begins to fracture! Sensing the end of mortal dominion, the Men of Letters, the Brotherhood of Steel, and Heaven's last host launch a combined crusade against {COLONY}!</text>
+        <days>0.6</days>
+      </li>
+      <!-- WAVE 1: 1.2x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_MenOfLettersFaction</faction>
+        <pointsFactor>1.2</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER + SWAN CHECK -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Seal Fracture at 45% — steel and roar on the ridge</label>
+        <text>Vampire elders and crossroads demons resupply your battlements with salvaged ammo and blood-packs over the fallen British operatives. Through the crimson smog, Brotherhood vertibirds swoop low—and thunderous footsteps rattle the gatehouse.</text>
+        <choices>
+          <li>
+            <outcome>swan_already_dead</outcome>
+            <label>[Swan Defeated] Meet the Brotherhood paladins with hellfire and claws</label>
+            <resultText>With Swan already dead, the wild super mutants leave the field to you—turn every gun onto the descending Brotherhood knights!</resultText>
+            <nextStage>4</nextStage>
+            <requires>
+              <li>story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>55</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>swan_intervenes</outcome>
+            <label>[Wild Horde Incoming] Unleash the pack—Swan's feral behemoths are crashing the ritual!</label>
+            <resultText>Driven berserk by the smell of brimstone, Swan's wild super mutants charge straight into your outer walls ahead of the Brotherhood!</resultText>
+            <nextStage>3</nextStage>
+            <requires>
+              <li>!story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>55</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <!-- OPTIONAL WAVE 2A: WILD MUTANTS 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_WildMutantsFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>2</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>4</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.swanDefeated</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Feral mutants devoured by the night</label>
+                <text>Your demons and nocturnal clans tore through the berserk super mutants before pivoting to face the Brotherhood's armored drop!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>4</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- WAVE 2B: BROTHERHOOD 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_BrotherhoodFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>5</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>5</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER BEFORE WAVE 3 -->
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Seal Fracture at 90% — Heaven's last trumpet sounds</label>
+        <text>Shattered Brotherhood power armor cools in pools of black ichor! Now blinding white bolts split the crimson dome as Heaven commits its last remaining seraphim to burn {COLONY} off the face of the Earth!</text>
+        <days>0.4</days>
+      </li>
+      <!-- WAVE 3: HEAVEN 2.0x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_HeavenFaction</faction>
+        <pointsFactor>2.0</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The crusade is broken!</label>
+                <text>Scorched feathers drift like snow across your courtyard—Heaven's final assault has failed! Now march into the Celestial Cathedral and cut down Archangel Michael!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The Abyss widens</label>
+                <text>Though angelic fire scarred your inner walls, the Sixty-Sixth Seal has cracked wide open—finish Archangel Michael before Heaven can seal the wound!</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_q3Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- DC QUEST 4: CITADEL ASSAULT — SHATTERED ABYSS -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_DC_4_ShatteredAbyss</defName>
+    <label>the shattered abyss: fall of the archangel</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>99</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_dick_roman</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=dark_covenant</li>
+      <li>done:TMM_Story_A5_DC_3_SiegeOfZeroAnchor</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Storming the Celestial Cathedral</label>
+        <text>Archangel Michael stands alone inside the ruined Celestial Cathedral, channeling the last embers of Heaven's grace to hold the Rift together. Slay him, and the barrier between Earth, Hell, and Purgatory will dissolve forever under the Dark Covenant.</text>
+        <choices>
+          <li>
+            <outcome>first_blade_wrath</outcome>
+            <label>[Mark of Cain Awakened] Channel the First Blade's primordial fury into your vanguard</label>
+            <resultText>The Mark of Cain blazes scarlet along your champion's arm as dark power floods your strike squad—even an Archangel will bleed before this edge!</resultText>
+            <requires>
+              <li>choice.hell_demons=pro_faction</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>30</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_firstBlade</flag><value>true</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>abyssal_horde</outcome>
+            <label>Unleash the full combined might of Hell's demons and the nocturnal clans</label>
+            <resultText>Black smoke and predatory howls sweep through the cathedral doors as your dark coalition storms Michael's last sanctuary.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineIndustrial</thing><count>8</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_dc_firstBlade</flag><value>false</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_HeavenFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_michael</hero>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.michaelDefeated</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The Archangel has fallen!</label>
+                <text>With a thunderclap that shattered every stained-glass window for miles, Archangel Michael fell beneath your dark vanguard—and the sky above Earth turned permanently twilight crimson!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Cathedral swallowed by sulfur</label>
+                <text>Infernal fissures opened beneath the cathedral floor, swallowing Michael's sanctuary in hellfire and severing Heaven's last tether to Earth.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Darkness claims the ruins</label>
+                <text>Though Michael's blade took a terrible toll on your vanguard, Alpha Vampire's elders and demonic shock troops overwhelmed the exhausted archangel moments later.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Lords of the Eternal Twilight</label>
+        <text>The last Seal shatters in a roar of joyful hellfire. Sulfur mist and eternal twilight embrace the continent as demons, vampires, and Leviathans bow to {COLONY}—new princes of a dark, immortal empire built upon the ashes of the old world.</text>
+        <choices>
+          <li>
+            <outcome>claim_twilight</outcome>
+            <label>Ascend the throne of ash—the Dark Covenant rules the wasteland forever</label>
+            <resultText>Crimson fires burn brightly across the horizon. Heaven is gone; the night belongs to you.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>60</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.finaleDone</flag><value>dark_covenant</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 6: SHADOW CONSORTIUM (Vault-Tec + Gunners)                  -->
+  <!-- ===================================================================== -->
+
+  <!-- SC QUEST 1: SPEC-OP — HOSTILE TAKEOVER -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_SC_1_HostileTakeover</defName>
+    <label>hostile takeover</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_stanislaus_braun</giver>
+    <fallbackGiver>TMM_Hero_captain_wes</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=shadow_consortium</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Monopolizing the regional power grid</label>
+        <text>To turn {COLONY}'s Spark Resonator into an uncontested commercial power monopoly, Dr. Braun needs the Brotherhood of Steel's forward fusion relay depot seized intact. Captain Wes has Gunner combat teams standing by to lock down the perimeter.</text>
+        <choices>
+          <li>
+            <outcome>corporate_bribe</outcome>
+            <label>Deploy pre-war override codes and Vault-Tec security drones to hijack the depot's turrets</label>
+            <resultText>Dr. Braun giggles as Brotherhood perimeter turrets briefly glitch on legacy Vault-Tec maintenance keys, giving your troops a clean approach.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>ComponentIndustrial</thing><count>5</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_takeoverPrep</flag><value>hack</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>mercenary_blitz</outcome>
+            <label>Pay Captain Wes's heavy artillery crews to hammer the depot before assault</label>
+            <resultText>Gunner rocket teams soften up the Brotherhood's sandbags and drop heavy armor plates for your squad.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>50</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_takeoverPrep</flag><value>artillery</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_BrotherhoodFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>8</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Uranium</thing><count>25</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Fusion depot acquired</label>
+                <text>Holding the relay depot through eight hours of Brotherhood counter-attacks, your mercenaries transferred full grid control to Vault-Tec's central ledger!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Gunner reserve squad closes the deal</label>
+                <text>Captain Wes's reserve battalion stormed the depot's back tunnel and rerouted its uranium buses straight to {COLONY}.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Grid tapped remotely</label>
+                <text>Forced off the surface by Brotherhood knights, Vault-Tec technicians still clamped an underground siphon onto the depot's main conduit.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Next target: surface competitors</label>
+        <text>With the regional energy grid under your thumb, Captain Wes lays out the next contract: wiping out the Minutemen and Hunters' central logistics hub before they can rally the free settlements against your monopoly.</text>
+        <choices>
+          <li>
+            <outcome>sign_liquidation_order</outcome>
+            <label>Sign the liquidation order and deploy Gunner assault teams</label>
+            <resultText>Mercenary radios click in cold acknowledgment as your strike force rolls toward the resistance hub.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_q1Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- SC QUEST 2: SPEC-OP — LIQUIDATION CONTRACT -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_SC_2_LiquidationContract</defName>
+    <label>liquidation contract</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_captain_wes</giver>
+    <fallbackGiver>TMM_Hero_baker</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=shadow_consortium</li>
+      <li>done:TMM_Story_A5_SC_1_HostileTakeover</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Locking down the resistance hub</label>
+        <text>Baker's recon team has surrounded the Minutemen and Hunters' fortified crossroads depot—and spotted a surprise inside their infirmary: your missing mentor, recently rescued from a Consortium transport by Preston Garvey's scouts.</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_MinutemenHuntersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Silver</thing><count>900</count></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Resistance depot liquidated</label>
+                <text>Gunner crossfire and precision sniping broke the militia barricades, leaving the crossroads hub firmly in Shadow Consortium hands!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Militia forces driven out</label>
+                <text>Captain Wes's main column swept the crossroads ahead of schedule, seizing the hunters' supply crates as the militia retreated.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Depot leveled by mortars</label>
+                <text>Repulsed by fierce hunter resistance, Gunner mortar crews flattened the crossroads walls from long range instead.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Asset recovery in the infirmary</label>
+        <text>Amid the smoke of the captured crossroads depot, your missing mentor stands unarmed inside the infirmary, staring at your mercenary insignia in disbelief. Captain Wes checks his rifle: "Your call, boss. Extract the VIP back to {COLONY}, or torch the building and leave no loose ends?"</text>
+        <choices>
+          <li>
+            <outcome>extract_mentor</outcome>
+            <label>Order Wes to stand down and escort your mentor safely back to {COLONY}</label>
+            <resultText>"Understood—VIP extraction it is." Though your mentor glares in bitter disappointment at your corporate allies, they live to see the dawn.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>5</amount></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>torch_hub</outcome>
+            <label>No loose ends—seal the depot and burn every ledger inside</label>
+            <resultText>Incendiary grenades roar through the timber walls. Dr. Braun wires a handsome bonus directly into your account.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.mentorRescued</flag><value>false</value></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Silver</thing><count>1000</count></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>-20</amount></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_q2Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- SC QUEST 3: SIEGE OF THE ZERO ANCHOR -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_SC_3_SiegeOfZeroAnchor</defName>
+    <label>siege of the zero anchor</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>97</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_stanislaus_braun</giver>
+    <fallbackGiver>TMM_Hero_captain_wes</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=shadow_consortium</li>
+      <li>done:TMM_Story_A5_SC_2_LiquidationContract</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Stabilizing the perpetual power dome</label>
+        <text>Dr. Braun locks the Spark Resonator into its commercial siphon loop, drawing ambient energy from the Rift to power Vault-Tec's global vault network forever! Enraged by your brazen theft of cosmic power, the Railroad, Hell's demons, and Heaven's angels descend upon {COLONY}!</text>
+        <days>0.6</days>
+      </li>
+      <!-- WAVE 1: 1.2x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_RailroadFaction</faction>
+        <pointsFactor>1.2</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER + SWAN CHECK -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Power Loop at 45% — mercenaries hold the line</label>
+        <text>Vault-Tec cargo pods drop fresh medical supplies and plasteel plates into your courtyard as Captain Wes reloads his rifle: "Railroad saboteurs are down—now watch the black smoke rolling in from the south!"</text>
+        <choices>
+          <li>
+            <outcome>swan_already_dead</outcome>
+            <label>[Swan Defeated] Lock all Gunner heavy turrets onto Hell's advancing demons</label>
+            <resultText>With Swan already neutralized, no wild super mutants interfere—your mercenaries pour concentrated fire into the approaching demons!</resultText>
+            <nextStage>4</nextStage>
+            <requires>
+              <li>story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>60</count></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>swan_intervenes</outcome>
+            <label>[Wild Horde Incoming] Emergency perimeter—Swan's feral behemoths are smashing the outer fences!</label>
+            <resultText>Attracted by the Resonator's massive energy draw, Swan's wild super mutants storm your walls ahead of Hell's legion!</resultText>
+            <nextStage>3</nextStage>
+            <requires>
+              <li>!story.swanDefeated=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Plasteel</thing><count>60</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <!-- OPTIONAL WAVE 2A: WILD MUTANTS 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_WildMutantsFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>2</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>4</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.swanDefeated</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Wild mutants gunned down</label>
+                <text>Gunner rocket batteries and heavy rifles shredded Swan's behemoths at the perimeter just before the demons struck!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>4</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- WAVE 2B: HELL 1.6x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_HellFaction</faction>
+        <pointsFactor>1.6</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>5</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>5</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <!-- BREATHER BEFORE WAVE 3 -->
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Power Loop at 90% — Heaven tries to pull the plug</label>
+        <text>Sulfurous ash settles over spent Gunner shell casings! Now blinding shafts of light pierce the sky as Heaven's final strike team drops straight toward your server core to terminate the Consortium's siphon!</text>
+        <days>0.4</days>
+      </li>
+      <!-- WAVE 3: HEAVEN 2.0x -->
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_HeavenFaction</faction>
+        <pointsFactor>2.0</pointsFactor>
+        <delayHours>3</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>The Shadow Consortium holds!</label>
+                <text>Mercenary firepower and Vault-Tec shields broke Heaven's strike team! Only one rival board member remains—time for a hostile buyout of Dick Roman!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Perpetual loop stabilized</label>
+                <text>Despite scorched turrets, the Resonator's commercial loop locked in—strike Dick Roman's headquarters before he seizes controlling shares!</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_q3Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- SC QUEST 4: CITADEL ASSAULT — PERPETUAL CYCLE -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_SC_4_PerpetualCycle</defName>
+    <label>perpetual cycle: executive buyout</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>99</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_stanislaus_braun</giver>
+    <fallbackGiver>TMM_Hero_captain_wes</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>ponr2=shadow_consortium</li>
+      <li>done:TMM_Story_A5_SC_3_SiegeOfZeroAnchor</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Removing the Chairman of the Board</label>
+        <text>Only one obstacle keeps {COLONY}, Vault-Tec, and the Gunners from owning 100% of Earth's new energy empire: Leviathan CEO Dick Roman refuses to step down and has fortified the Consortium Master Server Spire. Dr. Braun smiles brightly: "Be a dear and terminate Mr. Roman's contract permanently!"</text>
+        <choices>
+          <li>
+            <outcome>borax_hostile_buyout</outcome>
+            <label>[Borax Formula Unlocked] Issue industrial Borax sprayers to every Gunner stormtrooper</label>
+            <resultText>Vault-Tec chemical canisters lock onto your squad's harnesses—Dick Roman's invulnerability will dissolve on contact!</resultText>
+            <requires>
+              <li>story.boraxFormula=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineUltratech</thing><count>4</count></li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Silver</thing><count>800</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_boraxBuyout</flag><value>true</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>gunner_firepower</outcome>
+            <label>Storm the Master Server Spire with heavy mercenary firepower and explosives</label>
+            <resultText>Captain Wes's elite squads breach the executive elevators. Remember: hit Roman with Borax to strip his supernatural armor!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>MedicineIndustrial</thing><count>8</count></li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_sc_boraxBuyout</flag><value>false</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_dick_roman</hero>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.dickRomanDead</flag><value>true</value></li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Hostile buyout complete!</label>
+                <text>Screaming in a cloud of white Borax mist, Dick Roman collapsed across the mahogany boardroom table—transferring sole ownership of the Consortium network to {COLONY}!</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Executive floor purged</label>
+                <text>Vault-Tec remotely vented the Spire's halon and borax fire-suppression tanks, neutralizing Roman's boardroom before Gunner troops secured the servers.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Costly restructuring</label>
+                <text>Though your initial strike took heavy casualties, Captain Wes's sniper teams locked down the penthouse until Roman's Leviathan guard folded.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Headquarters of the New World</label>
+        <text>The fanatics, angels, demons, and monsters have all been priced out of existence. Hummed to life by the perpetual Spark Resonator, {COLONY} stands as the gleaming corporate capital of the Shadow Consortium—ruling the wasteland through Vaults, mercenary contracts, and an unbreakable monopoly on power.</text>
+        <choices>
+          <li>
+            <outcome>launch_monopoly</outcome>
+            <label>Ring the opening bell—the Shadow Consortium owns the future</label>
+            <resultText>Golden bullion and trade caravans flow steadily toward {COLONY}'s gates. Business has never been better.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Silver</thing><count>1500</count></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.finaleDone</flag><value>shadow_consortium</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+
+  <!-- ===================================================================== -->
+  <!-- SHARED EPILOGUE PART 1: A NEW DAWN — FATE OF THE SPARK & MENTOR       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_Epilogue_EchoesOfTheSpark</defName>
+    <label>a new dawn: fate of the spark</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>100</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_sam_winchester</giver>
+    <fallbackGiver>TMM_Hero_castiel</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+    </requires>
+    <!-- Claude: the epilogue waits for any coalition finale --><anyOf>
+      <li>story.finaleDone=free_wasteland</li>
+      <li>story.finaleDone=sterile_empire</li>
+      <li>story.finaleDone=iron_crusade</li>
+      <li>story.finaleDone=celestial_order</li>
+      <li>story.finaleDone=dark_covenant</li>
+      <li>story.finaleDone=shadow_consortium</li>
+    <li>story.finaleDone=free_wasteland</li><li>story.finaleDone=sterile_empire</li><li>story.finaleDone=iron_crusade</li><li>story.finaleDone=celestial_order</li><li>story.finaleDone=dark_covenant</li><li>story.finaleDone=shadow_consortium</li></anyOf>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Silence after the Blood Eclipse</label>
+        <text>Slowly, the blood-red shadow slips from the sun—or hardens into a permanent new sky—as the Spark Resonator completes its final planetary cycle. Across {COLONY}, weary survivors lay down their rifles and gather around the humming Zero Anchor to see the true price of victory.</text>
+        <days>0.6</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The Fate of the Zero Synth</label>
+        <text>The central crystal of the Spark Resonator cools from blinding glare to a quiet glow. At the heart of everything—from the first night you opened the hatch beneath {COLONY} to the final siege—stood one impossible soul born in white corridors: the Zero Synth.</text>
+        <choices>
+          <li>
+            <outcome>keeper_of_rift</outcome>
+            <label>[Free Wasteland &amp; High Trust] Stand beside the Zero Synth—now the living Keeper of the Sealed Rift</label>
+            <resultText>Warm blue light settles gently inside the Zero Synth's chest as the planetary barrier locks without harming their soul. They smile up at the clear sky: "We kept our promise. No cages, no masters—just a home worth fighting for." The Zero Synth remains forever at {COLONY}'s heart.</resultText>
+            <requires>
+              <li>ponr2=free_wasteland</li>
+              <li>zeroSynth.trust&gt;=30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_zeroSynthFate</flag><value>keeper</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>free_wasteland_wanderer</outcome>
+            <label>[Free Wasteland &amp; Fractured Trust] Watch the Zero Synth pack a rucksack and head for the open road</label>
+            <resultText>The Rift is sealed and the Zero Synth survives with their soul intact—yet the doubts between you never fully healed. Pausing at {COLONY}'s gate, they nod once: "Thank you for saving the world. Now I need to find out who I am beyond that machine."</resultText>
+            <requires>
+              <li>ponr2=free_wasteland</li>
+              <li>zeroSynth.trust&lt;30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_zeroSynthFate</flag><value>wanderer</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>voluntary_sacrifice</outcome>
+            <label>[High Trust on Harsh Path] Honor the Zero Synth's voluntary sacrifice to shield your colonists from the surge</label>
+            <resultText>Even knowing what your coalition demanded, the Zero Synth stepped willingly into the Resonator's beam so its feedback wouldn't kill the friends they made in {COLONY}. Their last words echo softly in the blue light: "Make the world I bought worth the cost." Only a warm, silent crystal remains.</resultText>
+            <requires>
+              <li>zeroSynth.trust&gt;=20</li>
+              <li>!ponr2=free_wasteland</li>
+              <li>!ponr2=dark_covenant</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_zeroSynthFate</flag><value>sacrifice</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>consumed_by_order</outcome>
+            <label>[Low Trust on Harsh Path] Record the expenditure of Subject Zero in the Resonator's log</label>
+            <resultText>With no love lost between you, the Resonator drained the Zero Synth's Spark down to the last ember to lock your coalition's new order into place. Their eyes dimmed without a word, leaving behind an empty shell beside the roaring machine.</resultText>
+            <requires>
+              <li>zeroSynth.trust&lt;20</li>
+              <li>!ponr2=free_wasteland</li>
+              <li>!ponr2=dark_covenant</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_zeroSynthFate</flag><value>consumed</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>dark_covenant_ash</outcome>
+            <label>[Dark Covenant] Watch the Abyss devour the purest Spark ever born on Earth</label>
+            <resultText>Chained above the fractured Seal, the Zero Synth's radiant soul flared once like a dying star before the Pit swallowed it whole—turning the Spark Resonator's crystal permanently blood-red in tribute to your dark empire.</resultText>
+            <requires>
+              <li>ponr2=dark_covenant</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_zeroSynthFate</flag><value>devoured</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The Missing Mentor</label>
+        <text>From the very first day, one personal thread pulled {COLONY} into the heart of Project Purgatory: the mentor who vanished down the Zero Anchor shaft with the Holodisk-Key in 2287.</text>
+        <choices>
+          <li>
+            <outcome>mentor_home</outcome>
+            <label>[Mentor Rescued] Welcome your scarred, exhausted mentor back to {COLONY}'s hearth</label>
+            <resultText>Greyer and lined by months inside Consortium stasis, your mentor sits quietly beside the dining room fire, setting a worn pre-war brass key onto the table. "I stole that disk hoping someone would finish what I couldn't," they say softly, looking around at your fortified settlement. "You actually survived the whole storm. I'm home."</resultText>
+            <requires>
+              <li>story.mentorRescued=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_epilogueMentor</flag><value>returned</value></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>mentor_memorial</outcome>
+            <label>[Mentor Lost] Lay your mentor's cracked Pip-Boy and ash-stained journal upon a memorial stone</label>
+            <resultText>Though your mentor never lived to walk through {COLONY}'s gates again, their courage broke a two-hundred-year conspiracy wide open. You carve their name beside the Zero Anchor hatch—a quiet reminder of the debt that started it all.</resultText>
+            <requires>
+              <li>!story.mentorRescued=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_epilogueMentor</flag><value>memorial</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.a5_epiloguePart1Done</flag><value>true</value></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- SHARED EPILOGUE PART 2: A NEW DAWN — HEROES, WORLD & POSTGAME         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A5_Epilogue_NewDawn</defName>
+    <label>a new dawn: what became of the world</label>
+    <act>5</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>100</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_sam_winchester</giver>
+    <fallbackGiver>TMM_Hero_castiel</fallbackGiver>
+    <requires>
+      <li>act=5</li>
+      <li>done:TMM_Story_A5_Epilogue_EchoesOfTheSpark</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Dispatches from a remade world</label>
+        <text>Weeks pass after the final battle. Caravan couriers, long-range radio relays, and passing travelers carry stories back to {COLONY}—telling what became of the heroes, rivals, and factions whose fates collided around your Zero Anchor.</text>
+        <days>0.6</days>
+      </li>
+
+      <!-- SLIDE 1: PALADIN DANSE -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Chronicle of Heroes: Paladin Danse</label>
+        <text>Among the veterans who bled in the war for the Spark, few embodied the clash between steel and soul like Paladin Danse.</text>
+        <choices>
+          <li>
+            <outcome>danse_defector</outcome>
+            <label>[Recruited] Paladin Danse trains {COLONY}'s new generation of defenders</label>
+            <resultText>Hanging up his old Brotherhood dog tags for good, Paladin Danse becomes the granite backbone of {COLONY}'s garrison—proving every day that honor is forged by choices, never by blood or circuitry.</resultText>
+            <requires>
+              <li>defector.TMM_Hero_paladin_danse=true</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>danse_wanderer</outcome>
+            <label>[Spared] Rumors speak of a lone knight in scarred T-60 armor protecting frontier farms</label>
+            <resultText>Though Danse never marched permanently under your banner, caravan guards still whisper of a quiet knight in battered power armor who appears out of the fog whenever raiders threaten defenseless settlers.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_paladin_danse=true</li>
+              <li>choice.brotherhood=pro_spark</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>danse_fallen</outcome>
+            <label>[Struck from the Rolls] Paladin Danse's name remains erased in Brotherhood archives</label>
+            <resultText>In the cold vaults of the Brotherhood of Steel, Danse's service record stays sealed behind black ink—a stark monument to an order that feared its own humanity.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_paladin_danse=true</li>
+              <li>!choice.brotherhood=pro_spark</li>
+            </requires>
+          </li>
+        </choices>
+      </li>
+
+      <!-- SLIDE 2: CASTIEL -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Chronicle of Heroes: Castiel</label>
+        <text>He was the first celestial messenger to knock at your gate when the Anchor awoke, wearing a rumpled beige trenchcoat and carrying the weight of a dying Heaven.</text>
+        <choices>
+          <li>
+            <outcome>castiel_defector</outcome>
+            <label>[Recruited] Castiel walks freely among {COLONY}'s settlers as guardian and friend</label>
+            <resultText>Having chosen stubborn mortals over blind obedience, Castiel remains at {COLONY}—awkwardly tending beehives, straightening his crooked blue tie, and marveling at the messy resilience of free will.</resultText>
+            <requires>
+              <li>defector.TMM_Hero_castiel=true</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>castiel_celestial</outcome>
+            <label>[Celestial Order] Castiel serves Heaven's silent peace with shadowed eyes</label>
+            <resultText>Restored to full grace beneath Archangel Michael's reign, Castiel patrols the spotless skies in dutiful silence, forever haunted by the mortal warmth lost to perfection.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_castiel=true</li>
+              <li>ponr2=celestial_order</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>castiel_legend</outcome>
+            <label>[Faded into Legend] Sightings of an angel in a beige coat become campfire folklore</label>
+            <resultText>With the Rift forever altered, Castiel vanishes into the vast quiet beyond the ash wastes—remembered only in quiet stories told by hunters beside the fire.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_castiel=true</li>
+              <li>!ponr2=celestial_order</li>
+            </requires>
+          </li>
+        </choices>
+      </li>
+
+      <!-- SLIDE 3: CROWLEY -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Chronicle of Heroes: Crowley</label>
+        <text>Whether scheming over fine print or pouring thirty-year scotch in the middle of a shootout, the former King of the Crossroads always landed on his feet—almost.</text>
+        <choices>
+          <li>
+            <outcome>crowley_defector</outcome>
+            <label>[Recruited] Crowley runs an overpriced lounge in {COLONY} and takes credit for saving the world</label>
+            <resultText>Having survived Lucifer's wrath behind your walls, Crowley settles into {COLONY}'s finest guest suite, criticizing the local whiskey and insisting to every trader that he single-handedly orchestrated your victory.</resultText>
+            <requires>
+              <li>defector.TMM_Hero_crowley=true</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>crowley_dark_lord</outcome>
+            <label>[Dark Covenant] Crowley raises a crystal glass from a throne of ash and brimstone</label>
+            <resultText>With the Dark Covenant triumphant, Crowley presides over a booming underworld empire of soul contracts and twilight trade, forever raising a toast to his favorite mortal partners.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_crowley=true</li>
+              <li>ponr2=dark_covenant</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>crowley_exiled</outcome>
+            <label>[Cut Off] Starved of fresh deals, Crowley slips into the forgotten crossroads</label>
+            <resultText>Without access to Earth's souls or the Spark Resonator, the King of Hell vanishes into the dim margins of the wasteland, muttering creative curses at meddlesome settlers.</resultText>
+            <requires>
+              <li>!defector.TMM_Hero_crowley=true</li>
+              <li>!ponr2=dark_covenant</li>
+            </requires>
+          </li>
+        </choices>
+      </li>
+
+      <!-- SLIDE 4: JOHN HANCOCK & PRESTON GARVEY -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Chronicle of Heroes: John Hancock &amp; Preston Garvey</label>
+        <text>From the neon alleys of Goodneighbor to the stone ramparts of the Castle, ordinary survivors looked to John Hancock and Preston Garvey to see what tomorrow would bring.</text>
+        <choices>
+          <li>
+            <outcome>surface_free</outcome>
+            <label>[Free Wasteland] Hancock and Garvey unite humans, ghouls, synths, and mutants under one banner</label>
+            <resultText>In Goodneighbor, John Hancock pours drinks on the house while Brian Virgil's stabilizer saves generations of ghouls. Across the frontier, Preston Garvey raises the Minutemen flag over thriving free towns—for the first time, no settlement stands alone.</resultText>
+            <requires>
+              <li>ponr2=free_wasteland</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>surface_sterile</outcome>
+            <label>[Sterile Empire] Goodneighbor lies empty beneath white mist, and the frontier militia is dissolved</label>
+            <resultText>The Sterilization Matrix swept away radiation and mutants alike. John Hancock's red coat rests in the ash of Goodneighbor, while Preston Garvey's battered colonial hat hangs behind glass in an Enclave museum of the "pacified wastes".</resultText>
+            <requires>
+              <li>ponr2=sterile_empire</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>surface_iron</outcome>
+            <label>[Iron Crusade] Goodneighbor keeps its shutters drawn beneath the shadow of Brotherhood airships</label>
+            <resultText>Hancock quietly bars Goodneighbor's alleys against passing steel patrols, while Preston Garvey trades militia independence for Brotherhood protection—grateful the monsters are gone, yet wary of the price in freedom.</resultText>
+            <requires>
+              <li>ponr2=iron_crusade</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>surface_celestial</outcome>
+            <label>[Celestial Order] Rebel songs grow quiet under the hum of golden Enochian pylons</label>
+            <resultText>Under Heaven's immaculate rule, Hancock's defiant speeches fade to whispers, and Preston Garvey watches peaceful, compliant townsfolk walk beneath angelic wings—praying this silent paradise is worth the chains.</resultText>
+            <requires>
+              <li>ponr2=celestial_order</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>surface_dark</outcome>
+            <label>[Dark Covenant] Goodneighbor burns in twilight, while Preston Garvey leads the last guerrilla hunters</label>
+            <resultText>As nocturnal packs claim the ruins of Goodneighbor, Preston Garvey vanishes into the northern mountains with a handful of stubborn hunters—swearing that as long as one campfire burns, humanity has not surrendered.</resultText>
+            <requires>
+              <li>ponr2=dark_covenant</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>surface_consortium</outcome>
+            <label>[Shadow Consortium] Goodneighbor becomes a taxed trade franchise, and Garvey turns in his badge</label>
+            <resultText>Hancock grimly signs a Vault-Tec franchise lease to keep Goodneighbor's doors open under Gunner security, while Preston Garvey hangs up his colonial hat rather than police corporate tollbooths.</resultText>
+            <requires>
+              <li>ponr2=shadow_consortium</li>
+            </requires>
+          </li>
+        </choices>
+      </li>
+
+      <!-- SLIDE 5: WHAT BECAME OF THE WORLD -->
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>What Became of the World</label>
+        <text>Two hundred years after October's nuclear ritual shattered the Sixty-Six Seals, the long night of Project Purgatory has finally reached its end. Look out from the walls of {COLONY} upon the new era your choices have forged.</text>
+        <choices>
+          <li>
+            <outcome>world_free</outcome>
+            <label>[Ending: The Free Wasteland] Clear skies over a hard-won, unbroken frontier</label>
+            <resultText>The Rift is sealed forever. Heaven and Hell fade beyond reach, the Consortium lies in ruin, and humans, synths, ghouls, and friendly mutants share a rough but honest dawn—with {COLONY} celebrated as the beacon that set Earth free.</resultText>
+            <requires>
+              <li>ponr2=free_wasteland</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>world_sterile</outcome>
+            <label>[Ending: The Sterile Empire] Clean air, white laboratories, and iron human supremacy</label>
+            <resultText>Radiation, mutations, and occult horrors have been scoured from the continent. Under the joint banners of the Enclave and the Institute, disciplined cities rise from the ruins—with {COLONY} standing at the apex of the new imperial order.</resultText>
+            <requires>
+              <li>ponr2=sterile_empire</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>world_iron</outcome>
+            <label>[Ending: The Iron Crusade] Magic extinguished behind walls of power armor and steel</label>
+            <resultText>The continental dampener hums silently beneath {COLONY}, snuffing out supernatural rifts and rogue machines alike. Mankind marches into an austere century of steel under the reunited Brotherhood of Steel and Outcasts.</resultText>
+            <requires>
+              <li>ponr2=iron_crusade</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>world_celestial</outcome>
+            <label>[Ending: The Celestial Order] An immaculate, motionless paradise beneath golden wings</label>
+            <resultText>War, monsters, and crime vanish beneath the combined dominion of Heaven's Host and the British Men of Letters. {COLONY} shines as the earthly seat of an eternal, unyielding peace.</resultText>
+            <requires>
+              <li>ponr2=celestial_order</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>world_dark</outcome>
+            <label>[Ending: The Dark Covenant] Eternal twilight and immortal dominion over the ash</label>
+            <resultText>Earth merges with the shadows of Hell and Purgatory. Clad in dark power and immortal blood, the rulers of {COLONY} reign unchallenged as princes of an endless crimson night.</resultText>
+            <requires>
+              <li>ponr2=dark_covenant</li>
+            </requires>
+          </li>
+          <li>
+            <outcome>world_consortium</outcome>
+            <label>[Ending: The Shadow Consortium] Vaults, contracts, and an unbreakable energy monopoly</label>
+            <resultText>Zealots and monsters alike have been liquidated from the ledger. Powered by the perpetual Spark Resonator, {COLONY} rules the wasteland as the gleaming corporate capital of Vault-Tec and the Gunners.</resultText>
+            <requires>
+              <li>ponr2=shadow_consortium</li>
+            </requires>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.storyComplete</flag><value>true</value></li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>act</flag><value>6</value></li>
+      <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>Gold</thing><count>100</count></li>
+      <li Class="TurboMegaMod.StoryEffect_GiveThing"><thing>ComponentSpacer</thing><count>5</count></li>
+      <li Class="TurboMegaMod.StoryEffect_Letter">
+        <label>The Chronicle Concludes</label>
+        <text>Congratulations! You have completed the main chronicle of "Price of a Spark: Ash, Brimstone, and Conspiracy".\n\n{COLONY} now enters Act VI — Postgame! You are free to continue building your capital, promoting colonists through the ranks, crafting signature hero gear, and wielding your legendary arsenal in the new world you forged.</text>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
