@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- HELL Q1: THE FINE PRINT                                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_hell_demons_Q1</defName>
+    <label>the fine print</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_lucifer</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>The Fine Print</letterLabel>
+    <letterText>Hello, darling. Don't reach for the rock salt just yet—I'm here on strictly professional business. One of my overzealous crossroads middlemen tricked a poor settler into signing a soul contract using a forged clause, and that sort of sloppy paperwork ruins Hell's reputation. Come settle the dispute, and I'll make it worth your while.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>crossroads_audit</key>
+        <label>Auditing the soul contract at the crossroads</label>
+        <text>Standing calmly in the middle of a radioactive crossroads sipping thirty-year scotch from a crystal tumbler, Crowley hands you the glowing parchment of the forged soul contract.</text>
+        <days>0.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>contract_loophole</key>
+        <label>A forged Latin footnote</label>
+        <text>Spotting the illegal sub-clause buried in microscopic sulfur ink, you lay out the legal breach in front of the sweating crossroads demon while Crowley smiles coldly.</text>
+        <choices>
+          <li>
+            <outcome>settled</outcome>
+            <label>Expose the forged clause and let Crowley discipline his sloppy broker</label>
+            <resultText>Brilliant! You'd make a meteoric rise in my legal department. Here is the pattern for a proper suit—stop wandering around in rags.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.hell_q1</flag>
+                <value>settled</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.crossroads_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HELL Q2: BLOOD AND FLAME                                              -->
+  <!-- Note: Meg is a newHero (not yet in base HeroDefs); giver omitted.     -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_hell_demons_Q2</defName>
+    <label>blood and flame</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HellFaction</faction>
+    <fallbackGiver>TMM_Hero_crowley</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_hell_demons_Q1</li>
+    </requires>
+    <letterLabel>Blood and Flame</letterLabel>
+    <letterText>Listen up, Clarence's little friends. Meg here. Abaddon's Knights of Hell fanatics are tearing through the region, burning crossroads and slaughtering anyone who backs Crowley's truce. I'm pinned down in an old church basement with half a dozen hellhounds on my tail—pull my fat out of the fire, and I'll owe you one.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>church_basement</key>
+        <label>Hold the ruined church basement with Meg</label>
+        <text>Fight through Abaddon's fanatic Knights of Hell and hold the church cellar—where a huge painted Devil's Trap pins the alpha hellhound—for 5 hours.</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>meg_saved</key>
+        <label>A rebel demon's debt</label>
+        <text>Wiping demon ichor off her battered leather jacket, Meg grins sharply over the broken Devil's Trap.</text>
+        <choices>
+          <li>
+            <outcome>saved</outcome>
+            <label>Accept Meg's devilstrand and hell-operative coat schematics</label>
+            <resultText>Not bad for a bunch of meat-suits. I'll tell Castiel you're still breathing—if I ever see the feathered idiot.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.hell_q2</flag>
+                <value>saved</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>700</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>DevilstrandCloth</thing>
+                <count>40</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.hell_operative_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HELL Q3: TRIAL OF THE FATHER OF MURDER                                -->
+  <!-- Note: Cain is a newHero (not yet in base HeroDefs); giver omitted.    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_hell_demons_Q3</defName>
+    <label>trial of the father of murder</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HellFaction</faction>
+    <fallbackGiver>TMM_Hero_crowley</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_hell_demons_Q2</li>
+    </requires>
+    <letterLabel>Trial of the Father of Murder</letterLabel>
+    <letterText>I am Cain. I have lived in quiet isolation tending my bees for centuries, away from the noise of Hell and the folly of men. Yet the tremors of your Zero Anchor have awakened the Mark upon my arm. Come to my chapel—if your warriors can withstand my trial without succumbing to blind bloodlust, I will share the secret of the First Blade.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>cains_chapel</key>
+        <label>Endure Cain's trial at the secluded chapel</label>
+        <text>Survive waves of demonic challengers for 6 hours beside Cain's quiet beehives while the Father of Murder calmly harvests honey and watches whether your warriors can master their rage.</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>6</holdHours>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>cain_verdict</key>
+        <label>Master of the beast within</label>
+        <text>The scarlet mark on Cain's forearm dims as the last challenger turns to ash. He sets down his wooden bee smoker and studies your champions with quiet sorrow.</text>
+        <choices>
+          <li>
+            <outcome>worthy</outcome>
+            <label>Accept Cain's coordinates to the shrine of the First Blade</label>
+            <resultText>You restrained the beast inside. Few ever manage that. When the hour strikes, you will know where the jawbone waits.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.hell_q3</flag>
+                <value>worthy</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>850</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.first_blade_shrine</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HELL Q4 (FACTION POINT): THE CROSSROADS BARGAIN (FIRST BLADE)         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_hell_demons_Q4</defName>
+    <label>the crossroads bargain</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_lucifer</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_hell_demons_Q3</li>
+    </requires>
+    <letterLabel>The Crossroads Bargain</letterLabel>
+    <letterText>Let's drop the pleasantries, shall we? My kingdom is starving for souls, and Heaven's winged thugs are hoarding every Spark they can get their halos on. I'm offering you the ultimate prize—the First Blade itself, capable of dropping an archangel in one swing. All I want in return is the life of a senior angel watcher—and a tiny bit of your soul's future.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>obelisk_bargain</key>
+        <label>The jawbone upon the crossroads obelisk</label>
+        <text>Beneath a bruised twilight sky, the primordial First Blade pulses with crimson light on the ancient obelisk while elite angelic watchers close in. Seal Crowley's bloody pact and cut down Heaven's elite for the First Blade, or shatter Crowley's ritual and fight Hell's vanguard?</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Accept Crowley's bargain, slay the elite angels, and claim The First Blade (Side with Hell)</label>
+            <resultText>Ah, I love the smell of signed contracts in the morning! The First Blade is yours—mind the edge, the Mark of Cain craves fresh blood.</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.hell_demons</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>65</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_first_blade</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.crowley_king_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Reject the bargain, break Crowley's ritual, and defend the angels (Light &amp; Spark)</label>
+            <resultText>Idiots! You could have been gods of this wasteland, and you chose petty morality! Let's see how you sing when the Cage cracks open!</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.hell_demons</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>45</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.angel_blade</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>slay_angel_watchers</key>
+        <label>Cut down the elite angelic ambush at the obelisk</label>
+        <text>Survive a brutal battle against heavily armed angelic watchers descending upon the obelisk to claim the First Blade!</text>
+        <enemyFaction>TMM_HeavenFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>shatter_hell_ritual</key>
+        <label>Crush Crowley's ritual guard at the obelisk</label>
+        <text>Break through Hell's elite crossroads demons to dismantle the blood-obelisk before the angelic watchers are slaughtered!</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>crimson_aftermath</key>
+        <label>Crimson flash over the crossroads</label>
+        <text>The blood-lit sky clears over the cracked obelisk. Whether bound to the Mark of Cain or marked as an enemy of Hell's throne, {COLONY} has drawn the gaze of the Pit.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.hell_demons</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HELL Q5 (DEFECTOR QUEST): THE RUNAWAY KING OF HELL (LUCIFER FREED)    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_hell_demons_Q5</defName>
+    <label>the runaway king of hell</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_HellFaction</faction>
+    <giver>TMM_Hero_crowley</giver>
+    <fallbackGiver>TMM_Hero_lucifer</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_hell_demons_Q4</li>
+    </requires>
+    <anyOf>
+      <li>ponr1=protect</li>
+      <li>ponr1=order</li>
+      <li>choice.hell_demons=pro_spark</li>
+    </anyOf>
+    <letterLabel>The Runaway King of Hell</letterLabel>
+    <letterText>Emergency, darling! Those brain-dead zealots in Hell actually did it—they shattered the final lock on the Cage! Lucifer is out, he's furious, and he's currently redecorating my throne room with my former subordinates! Open your doors—I know every dirty secret Hell has, and I'd rather not be turned into sulfur dust!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>lucifer_vanguard</key>
+        <label>Repel Lucifer's punitive demon legion</label>
+        <text>Crowley teleports straight into {COLONY}'s courtyard with Lucifer's furious hellfire legion storming your perimeter right behind him!</text>
+        <faction>TMM_HellFaction</faction>
+        <pointsFactor>1.5</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_crowley</key>
+        <label>An exiled King at the bar</label>
+        <text>Already demanding his own liquor cabinet in your waystation and insulting your local whiskey, Crowley offers his unmatched knowledge of Hell's secrets as Lucifer claims the infernal throne.</text>
+        <choices>
+          <li>
+            <outcome>recruit_crowley</outcome>
+            <label>Shelter Crowley in {COLONY} and accept him as advisor</label>
+            <resultText>Clever darling. I promise to behave... mostly. Now let's figure out how to stop Lucifer before he burns down my favorite tailor.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_crowley</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_crowley</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.luciferReleased</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-100</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.crowley_king_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVEN Q1: FALLEN STAR                                                -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_heaven_angels_Q1</defName>
+    <label>fallen star</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_naomi</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Fallen Star</letterLabel>
+    <letterText>Friends of the settlement. A brother of my garrison has fallen from the upper tiers, his grace nearly depleted by the barrier sealing Earth. Demons are already converging on his crash crater to harvest his essence. Help me reach him before they tear his vessel apart.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>winged_crater</key>
+        <label>Defend the fallen angel at the scorched crater</label>
+        <text>Hold the smoking crater—where two giant scorched wing-prints burn into the earth—for 5 hours alongside Castiel against demons trying to devour the weakened angel.</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>castiel_gratitude</key>
+        <label>Wings etched in ash</label>
+        <text>The last demon vanishes into sulfur smoke as the fallen angel rises steadily beside Castiel.</text>
+        <choices>
+          <li>
+            <outcome>saved</outcome>
+            <label>Accept Castiel's blessing and beige vessel trenchcoat pattern</label>
+            <resultText>You have shown mercy rare in this broken world. I will remember your kindness.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.heav_q1</flag>
+                <value>saved</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>450</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.vessel_trenchcoat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVEN Q2: CELESTIAL WATCH                                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_heaven_angels_Q2</defName>
+    <label>celestial watch</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_naomi</giver>
+    <fallbackGiver>TMM_Hero_zachariah</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_heaven_angels_Q1</li>
+    </requires>
+    <letterLabel>Celestial Watch</letterLabel>
+    <letterText>Your settlement has drawn the attention of Heaven's intelligence division. A shape-shifting demon operative has infiltrated a trade caravan heading toward your gates, carrying a cursed relic meant to destabilize your Zero Anchor. Identify and neutralize the infiltrator before the caravan arrives.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>inspect_caravan</key>
+        <label>Screen the arriving caravan guests</label>
+        <text>Question the trade caravan guests stopping at {COLONY}'s waystation using Naomi's Enochian scanner and holy water to flush out the hidden demon operative.</text>
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <groupSize>3</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Investigate</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>exposed_infiltrator</key>
+        <label>Banish the exposed demon infiltrator</label>
+        <text>Flushed out by holy water, the demon drops its disguise and summons crossroads backup right at {COLONY}'s gate!</text>
+        <faction>TMM_HellFaction</faction>
+        <pointsFactor>1.0</pointsFactor>
+        <delayHours>2</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>naomi_handover</key>
+        <label>Flutter of unseen wings</label>
+        <text>Watching quietly from the corner with folded arms, Naomi steps forward the moment the demon falls to claim the cursed relic—ready to vanish with a sharp flutter of wings.</text>
+        <choices>
+          <li>
+            <outcome>purged</outcome>
+            <label>Surrender the cursed relic to Naomi and Heaven's intelligence</label>
+            <resultText>Efficient and quiet. Perhaps mortals in this sector are capable of order after all.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.heav_q2</flag>
+                <value>purged</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>650</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gold</thing>
+                <count>15</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVEN Q3: BUREAUCRACY OF PARADISE                                    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_heaven_angels_Q3</defName>
+    <label>bureaucracy of paradise</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_zachariah</giver>
+    <fallbackGiver>TMM_Hero_naomi</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_heaven_angels_Q2</li>
+    </requires>
+    <letterLabel>Bureaucracy of Paradise</letterLabel>
+    <letterText>Let's cut to the chase, champ. Heaven is running on fumes, and we've got a schedule to keep. My angels tracked down a third-generation synth carrying a fresh 'Spark'—a battery, basically—hiding in an old schoolhouse. Hand him over for 'ascension', and you'll get a first-class ticket when the big day comes.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>schoolhouse_meeting</key>
+        <label>Meeting Zachariah at the ruined schoolhouse</label>
+        <text>Strolling through the ash-filled schoolhouse in an immaculate corporate suit without a single speck of dust on his shoes, Zachariah taps his wristwatch beside a trembling third-generation synth.</text>
+        <days>0.6</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>zachariah_demand</key>
+        <label>A battery or a soul</label>
+        <text>Zachariah smiles like a middle manager closing a merger: surrender the runaway synth for "ascension", or throw the angel out the door.</text>
+        <choices>
+          <li>
+            <outcome>handed_over</outcome>
+            <label>Hand the synth over to Zachariah for Heaven's favor</label>
+            <resultText>Now THAT'S a team player! See how smooth things go when nobody asks silly questions?</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.heav_q3</flag>
+                <value>handed_over</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>900</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineUltratech</thing>
+                <count>2</count>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>refused</outcome>
+            <label>Protect the synth and order Zachariah off the premises</label>
+            <resultText>You'll regret that stubbornness, bug. When Michael comes down here, there won't be anywhere left to hide.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.heav_q3</flag>
+                <value>refused</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVEN Q4 (FACTION POINT): THE FADING LIGHT (ARCHANGEL BLADE)         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_heaven_angels_Q4</defName>
+    <label>the fading light</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_michael</giver>
+    <fallbackGiver>TMM_Hero_zachariah</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_heaven_angels_Q3</li>
+    </requires>
+    <letterLabel>The Fading Light</letterLabel>
+    <letterText>Mortal. I am Michael, Commander of the Heavenly Host. Without the flow of souls, my brothers are fading into dust—even one of Castiel's most loyal lieutenants is dying at the ruined cathedral. To save him, we must channel a Spark into his vessel—or sever his grace forever and leave him human. Come witness Heaven's judgment, and choose where you stand.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>cathedral_judgment</key>
+        <label>Judgment beneath the broken stained glass</label>
+        <text>Inside the ruined cathedral, Archangel Michael and his elite seraphim stand over Castiel's dying lieutenant and a bound synth whose Spark shines like blue fire. Back Michael's ritual for the Archangel Blade, or stand with Castiel to spare the synth and let the dying angel become mortal?</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Support Michael's decree and siphon the synth's Spark to save the angel (Side with Heaven)</label>
+            <resultText>You understand higher duty, mortal. Take this Archangel Blade—let celestial fire burn our common enemies.</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.heaven_angels</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>65</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-70</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_archangel_blade</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.celestial_vestments</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Halt the ritual, save the synth, and help Castiel make his brother human (Spark &amp; Free Will)</label>
+            <resultText>Castiel! You betray Heaven again for these clay puppets! You are an outcast, and this colony will be erased from the earth!</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.heaven_angels</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.angelMadeHuman</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-70</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.castiel_trenchcoat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>guard_transfer</key>
+        <label>Guard Michael's Spark ritual against demon attackers</label>
+        <text>Hold the cathedral nave for 6 hours against furious demonic raiders trying to disrupt Archangel Michael's Spark-channeling ritual!</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>6</holdHours>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>fight_seraphim</key>
+        <label>Fight Michael's seraphim guard in the cathedral</label>
+        <text>Survive a deadly clash against Archangel Michael's elite seraphim guard while Castiel severs his dying brother's grace and escorts the synth clear!</text>
+        <enemyFaction>TMM_HeavenFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>cathedral_sunlight</key>
+        <label>Sunlight through shattered glass</label>
+        <text>Golden dust motes drift through the cathedral's broken stained glass as the battle ends—leaving either a reborn warrior of Heaven or a newly mortal man taking his first astonished breath of air.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.heaven_angels</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVEN Q5 (DEFECTOR QUEST): FALL OF A SERAPH (CASTIEL JOINS)          -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_heaven_angels_Q5</defName>
+    <label>fall of a seraph</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_gabriel</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_heaven_angels_Q4</li>
+      <li>!ponr1=abyss</li>
+    </requires>
+    <letterLabel>Fall of a Seraph</letterLabel>
+    <letterText>My brothers have branded me a traitor for refusing Michael's scorched-earth decree. Zachariah has dispatched an execution squad to strip my grace and erase my mind. I am coming to your colony—not as a soldier of Heaven, but as a friend of humanity. Stand with me one last time.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>zachariah_executioners</key>
+        <label>Repel Zachariah's angelic execution squad</label>
+        <text>Blinding shafts of white light strike {COLONY}'s perimeter as Zachariah's execution squad descends to strip Castiel's grace! Stand beside your friend!</text>
+        <faction>TMM_HeavenFaction</faction>
+        <pointsFactor>1.45</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_castiel</key>
+        <label>A crooked blue tie</label>
+        <text>With the execution squad driven back to the clouds, Castiel walks over to the Zero Synth, awkwardly straightens his crooked blue tie, and looks to you.</text>
+        <choices>
+          <li>
+            <outcome>recruit_castiel</outcome>
+            <label>Welcome Castiel into {COLONY}'s ranks</label>
+            <resultText>I no longer know what Father's plan is... but I know the people living here are worth fighting for.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_castiel</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_castiel</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-90</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.castiel_trenchcoat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

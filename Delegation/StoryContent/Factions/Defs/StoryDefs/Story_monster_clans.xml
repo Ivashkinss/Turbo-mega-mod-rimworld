@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- MONSTER CLANS Q1: A GUEST IN THE NIGHT                                -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_monster_clans_Q1</defName>
+    <label>a guest in the night</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_benny_lafitte</giver>
+    <fallbackGiver>TMM_Hero_alpha_vampire</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>A Guest in the Night</letterLabel>
+    <letterText>Evening, cher. Name's Benny. Before you load up the dead-man's blood, hear me out—I kicked the human-hunting habit down in Purgatory, and I'm trying to lay low in your waystation without hurting a soul. Trouble is, my old nest-mates tracked me down. Spot me a few supplies and help me keep 'em off your folks?</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>benny_visit</key>
+        <label>Shelter Benny Lafitte in the waystation</label>
+        <text>Benny Lafitte quietly checks into {COLONY}'s waystation for the night—even cooking a surprisingly great Cajun stew in your kitchen for your colonists though he cannot touch it himself.</text>
+        <faction>TMM_MonsterClansFaction</faction>
+        <hero>TMM_Hero_benny_lafitte</hero>
+        <groupSize>1</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>feral_vampire_pack</key>
+        <label>Repel Benny's feral former nest-mates</label>
+        <text>Feral vampires from Benny's old nest emerge out of the dark to tear him apart—help him hold the porch!</text>
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>0.95</pointsFactor>
+        <delayHours>4</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>benny_thanks</key>
+        <label>A vampire's gratitude</label>
+        <text>With his feral former nest-mates turned to ash before dawn, Benny cleans his blade and tips his chin in sincere thanks.</text>
+        <choices>
+          <li>
+            <outcome>helped</outcome>
+            <label>Accept Benny's friendship and velvet cloak schematics</label>
+            <resultText>Merci, brother. Not many humans reach out a hand to a vamp. If you ever need fangs on your side—just whistle.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mc_q1</flag>
+                <value>helped</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>450</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.night_clan_velvet_cloak</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MONSTER CLANS Q2: NEW CHILDREN OF EVE                                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_monster_clans_Q2</defName>
+    <label>new children of eve</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_eve</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_alpha_vampire</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_monster_clans_Q1</li>
+    </requires>
+    <letterLabel>New Children of Eve</letterLabel>
+    <letterText>Mortal. I am Eve, Mother of All. From the ash and radiation of your ruined world, I have shaped a new brood of apex hunters—faster, stronger, immune to your silver. Yet even a mother must cull her children when they grow too wild and threaten the balance. Help me contain my rogue brood at the old cannery, and the clans will respect your borders.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>old_cannery</key>
+        <label>Cull Eve's rogue hybrid brood at the old cannery</label>
+        <text>Sweep the old cannery complex and wipe out the feral mutated hybrids and anomalous cocoons threatening the balance.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>cannery_office</key>
+        <label>SucroCorp supply contracts</label>
+        <text>In the cannery's bloodstained manager office, your team uncovers a fresh meat-supply contract signed with Dick Roman's corporation, "SucroCorp". Eve watches calmly from the catwalk as the last cocoon burns.</text>
+        <choices>
+          <li>
+            <outcome>culled</outcome>
+            <label>Burn the remaining cocoons and accept Eve's bioferrite trade</label>
+            <resultText>You fight with the ferocity of my finest children. Perhaps humanity is not as hopeless as Dick claims.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mc_q2</flag>
+                <value>culled</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.sucrocorpMeatContractFound</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>750</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineUltratech</thing>
+                <count>3</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bioferrite_trade</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MONSTER CLANS Q3: COUNCIL OF THE NIGHT (UNLOCKS BORAX FORMULA)        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_monster_clans_Q3</defName>
+    <label>council of the night</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_alpha_vampire</giver>
+    <fallbackGiver>TMM_Hero_benny_lafitte</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_monster_clans_Q2</li>
+    </requires>
+    <letterLabel>Council of the Night</letterLabel>
+    <letterText>Walk carefully, mortal. For millennia my children ruled the dark, until Dick Roman and his Leviathans crawled out of the abyss to treat both humans and monsters as cattle. Meet me at the abandoned opera house—let us discuss an ancient truce before Roman's enforcers swallow us all.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>opera_ambush</key>
+        <label>Survive Edgar's Leviathan ambush at the opera house</label>
+        <text>The truce talks are shattered as Edgar—unhinging his human disguise into a cavernous Leviathan maw—storms the abandoned opera house! Hold the stage for 5 hours beside the Alpha Vampire until a splash of sodium borate drives Edgar back!</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>borax_revelation</key>
+        <label>The secret of sodium borate</label>
+        <text>As Edgar flees howling through the opera balcony, the Alpha Vampire dips a gloved finger into the spilled white cleaning powder that burned the Leviathan like acid: sodium borate—borax.</text>
+        <choices>
+          <li>
+            <outcome>truce</outcome>
+            <label>Seal the truce with the Alpha Vampire and claim the Borax formula</label>
+            <resultText>You shed blood beside the Firstborn. From tonight on, the clans of night spare your settlement—while the Leviathans owe us a blood debt.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mc_q3</flag>
+                <value>truce</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.boraxFormula</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>800</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.alpha_vampire_cloak</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MONSTER CLANS Q4 (FACTION POINT): BLOOD AND BORAX (DICK ROMAN)        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_monster_clans_Q4</defName>
+    <label>blood and borax</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_dick_roman</giver>
+    <fallbackGiver>TMM_Hero_edgar</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_monster_clans_Q3</li>
+    </requires>
+    <letterLabel>Blood and Borax</letterLabel>
+    <letterText>Hello there! Dick Roman here. I have to say, I'm wildly impressed by your little operation—great synergy, tremendous growth potential! Word is you've gotten your hands on a nasty chemical formula called 'borax' that's bad for business. Hand over the formula and the lab samples at our processing plant, and I'll make you a partner in the new world economy.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>sucrocorp_deal</key>
+        <label>Inside the SucroCorp bottling plant</label>
+        <text>Behind gleaming soda-bottling conveyors, rows of sedated humans and synths await biomass harvesting. Dick Roman extends a manicured hand with a dazzling smile—surrender the Borax formula to join the Leviathan economy, or spray him with Borax to strip his 99% invulnerability and fight him to the death!</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Accept Dick Roman's partnership and destroy the Borax formula (Side with Leviathans)</label>
+            <resultText>Fantastic! Love people who understand profit margins! Here is the living blade Alpha Predator and a generous check—welcome to the big leagues!</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.monster_clans</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.boraxFormula</flag>
+                <value>false</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>65</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_alpha_predator</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.dick_roman_suit</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.living_bioferrite_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Hit Dick Roman with Borax, strip his invulnerability, and fight him to the death! (Freedom)</label>
+            <resultText>You... you tiny insect! How dare you burn me with that filth?! Edgar, tear them to pieces!</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.monster_clans</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>45</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_alpha_predator</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.dick_roman_suit</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.living_bioferrite_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>kill_dick_roman</key>
+        <label>Slay Dick Roman at the SucroCorp plant (Bring Borax!)</label>
+        <text>Dick Roman's tailored suit hisses with caustic white foam as his human face distorts into a tooth-lined maw! Hit him with Borax sprayers or Borax weapon mods to strip his 99% invulnerability and bring him down!</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_dick_roman</hero>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.dickRomanDead</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>sucrocorp_aftermath</key>
+        <label>Aftermath at SucroCorp</label>
+        <text>The bottling lines grind to a halt. Whether partnered with the Leviathan board or standing over the smoking Vault-Tec conspiracy files, {COLONY} has seized the living blade Alpha Predator.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.monster_clans</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MONSTER CLANS Q5 (DEFECTOR QUEST): BLOOD PACT AGAINST THE ABYSS       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_monster_clans_Q5</defName>
+    <label>blood pact against the abyss</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_benny_lafitte</giver>
+    <fallbackGiver>TMM_Hero_alpha_vampire</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_monster_clans_Q4</li>
+      <li>!choice.monster_clans=pro_faction</li>
+    </requires>
+    <letterLabel>Blood Pact Against the Abyss</letterLabel>
+    <letterText>Brother, Edgar and the remaining Leviathan pack are tearing through the old Vampire nests, turning whole clans into mindless thralls. The Alpha Vampire agreed to send his best elders to hit Edgar's stronghold—and after the dust settles, I'm hanging up my fangs for good and joining your camp, if you'll have me.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>edgar_stronghold</key>
+        <label>Storm Edgar's Leviathan stronghold</label>
+        <text>Lead a joint assault with Benny Lafitte and the Alpha Vampire's elders—armed with Borax and silver—to eliminate Leviathan enforcer Edgar once and for all!</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_edgar</hero>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_benny</key>
+        <label>A bone machete from Purgatory</label>
+        <text>Carrying a carved Purgatory bone machete as a keepsake for his wall, Benny Lafitte steps through {COLONY}'s gate with the Alpha Vampire's non-aggression pact sealed.</text>
+        <choices>
+          <li>
+            <outcome>recruit_benny</outcome>
+            <label>Welcome Benny Lafitte into {COLONY}'s ranks</label>
+            <resultText>That's it, cher. Old debts are settled. Find me a quiet corner out of the sun—and I've got the back of anyone under your roof.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_benny_lafitte</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_benny_lafitte</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.living_bioferrite_armor</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.benny_bone_machete</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- WILD MUTANTS Q1: GORE BAGS                                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_wild_mutants_Q1</defName>
+    <label>gore bags</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_WildMutantsFaction</faction>
+    <giver>TMM_Hero_master_butcher</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_fist</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Gore Bags</letterLabel>
+    <letterText>Little meat-bags send signals! Master Butcher got three soft human traders hanging in cages at old slaughterhouse. Come bring shiny scrap or sharp knives—or come become dinner! Haha!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>slaughterhouse</key>
+        <label>Raid the wild super mutant slaughterhouse</label>
+        <text>Strike the old slaughterhouse under a rusted sign warning "Beware of Swan" and clear the mutant guards before the caged traders become dinner.</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>slaughterhouse_aftermath</key>
+        <label>Beneath the "Beware of Swan" sign</label>
+        <text>The cages hang open inside the reeking slaughterhouse. Decide how your scouts close the operation before sunrise.</text>
+        <choices>
+          <li>
+            <outcome>rescued</outcome>
+            <label>Quietly slip the freed traders out before the main pack returns</label>
+            <resultText>Grrr! Sneaky little rats stole Butcher's dinner! Next time we smash you flat!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.wm_q1</flag>
+                <value>rescued</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MealSurvivalPack</thing>
+                <count>15</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mutant_cleaver</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>slaughtered</outcome>
+            <label>Cut down every last guard head-on and claim the slaughterhouse spoils</label>
+            <resultText>Strong arms on little humans! Fist will remember your scent!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.wm_q1</flag>
+                <value>slaughtered</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MealSurvivalPack</thing>
+                <count>15</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mutant_cleaver</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WILD MUTANTS Q2: MAD CONVOY                                           -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_wild_mutants_Q2</defName>
+    <label>mad convoy</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_WildMutantsFaction</faction>
+    <giver>TMM_Hero_mad_racer</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_fist</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_wild_mutants_Q1</li>
+    </requires>
+    <letterLabel>Mad Convoy</letterLabel>
+    <letterText>VROOM! BOOM! Mad Racer found shiny ticking footballs! Fast brothers strap mini-nukes to chests and run straight at your walls! Catch us if you can, little ants!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>suicider_rush</key>
+        <label>Survive Mad Racer's explosive mutant rush</label>
+        <text>The unmistakable rising beep of armed mini-nukes echoes across the valley—shoot down Mad Racer's charging wild super mutants before they reach {COLONY}'s walls!</text>
+        <faction>TMM_WildMutantsFaction</faction>
+        <pointsFactor>1.15</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>salvage_warheads</key>
+        <label>Unexploded ordnance at the gates</label>
+        <text>Smoking craters scar the approaches to {COLONY}, yet your sharpshooters dropped two runners cleanly before detonation—leaving intact high-explosive shells and catching Dead Eye's quiet notice.</text>
+        <choices>
+          <li>
+            <outcome>survived</outcome>
+            <label>Disarm the intact shells and salvage the scrap steel</label>
+            <resultText>Haha! Loud fireworks! Your shooters are fast as bullets!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.wm_q2</flag>
+                <value>survived</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Shell_HighExplosive</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Steel</thing>
+                <count>100</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WILD MUTANTS Q3: BEACON OF RAGE                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_wild_mutants_Q3</defName>
+    <label>beacon of rage</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_WildMutantsFaction</faction>
+    <giver>TMM_Hero_dead_eye</giver>
+    <fallbackGiver>TMM_Hero_fist</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_wild_mutants_Q2</li>
+    </requires>
+    <letterLabel>Beacon of Rage</letterLabel>
+    <letterText>Human leader. I am Dead Eye. Unlike loud brothers, I watch and think. An old pre-war tower on the hill screams a high sound that burns our heads and makes brothers blind with rage. Break the tower—or make it scream at our enemies.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>ultrasonic_tower</key>
+        <label>Reach the pre-war ultrasonic emitter tower</label>
+        <text>Fight past frenzied super mutants surrounding the screaming hilltop tower to reach the control panel.</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>tower_panel</key>
+        <label>Vault-Tec Aggression Control Experiment</label>
+        <text>The steel control box carries an unmistakable pre-war crest: "Vault-Tec — Aggression Control Experiment." Smash the ultrasonic emitter to end the mutants' torment, or retune its frequency into a weapon for {COLONY}?</text>
+        <choices>
+          <li>
+            <outcome>destroyed</outcome>
+            <label>Smash the ultrasonic tower and end the mutants' agony</label>
+            <resultText>Silence... For the first time in long years, my head is quiet. I will remember this debt, human leader.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.wm_q3</flag>
+                <value>destroyed</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>700</count>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>weaponized</outcome>
+            <label>Retune the tower's frequency as a berserk pulse against {COLONY}'s enemies</label>
+            <resultText>You are sly as a deathclaw. Let your enemies go mad from that howl now.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.wm_q3</flag>
+                <value>weaponized</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.ultrasonic_suppressor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WILD MUTANTS Q4 (FACTION POINT): ROAR FROM THE DEEP (BOSS: SWAN)      -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_wild_mutants_Q4</defName>
+    <label>roar from the deep</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_WildMutantsFaction</faction>
+    <giver>TMM_Hero_fist</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_dead_eye</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_wild_mutants_Q3</li>
+    </requires>
+    <letterLabel>Roar from the Deep</letterLabel>
+    <letterText>Little leader! Swan wakes from deep dark water! Ground shakes, trees snap! Fist says: if you are strong, come to sunken park and fight the King of Behemoths! Beat Swan, and wild horde bows to your strength—or gets crushed beneath his anchor!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>swan_pond</key>
+        <label>Slay the Behemoth King Swan in the sunken park</label>
+        <text>Enter the flooded pre-war park and bring down the colossal behemoth Swan—wielding a ship's anchor and a twin-barrel nuclear catapult—to stop the wild horde from crashing the final siege.</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_swan</hero> <!-- check id -->
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.swanKilledAtPond</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.swanKilledAtPond</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.swanKilledAtPond</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>swans_legacy</key>
+        <label>Edgar Swann's faded badge</label>
+        <text>Around the sunken park gazebo lie torn pages of an old janitor's diary belonging to "Edgar Swann", the handwriting growing larger and more frantic day by day until only rage remained.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>[Swan Slain] Claim the Right of Strength, The Big Boy, and Swan's anchor</label>
+            <resultText>Oooooh... The mountain fell... Fist and brothers see: little leader is stronger than Behemoth! Take big boom-gun and anchor—we pull back into the deep wilds!</resultText>
+            <requires>
+              <li>story.swanKilledAtPond=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.wild_mutants</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.swanDefeated</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_big_boy</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.swan_anchor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>swan_lives</outcome>
+            <label>[Swan Still Loose] Fall back—the King of Behemoths still roams the wasteland</label>
+            <resultText>Fist laughs wildly from the ruins as Swan's roar shakes the ground. When the final siege begins, the wild horde will come crashing down on everyone!</resultText>
+            <requires>
+              <li>!story.swanKilledAtPond=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.wild_mutants</flag>
+                <value>compromise</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.swanDefeated</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.wild_mutants</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WILD MUTANTS Q5 (DEFECTOR QUEST): THE MARKSMAN'S RESPECT              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_wild_mutants_Q5</defName>
+    <label>the marksman's respect</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_WildMutantsFaction</faction>
+    <giver>TMM_Hero_dead_eye</giver>
+    <fallbackGiver>TMM_Hero_fist</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_wild_mutants_Q4</li>
+    </requires>
+    <anyOf>
+      <li>story.swanDefeated=true</li>
+      <li>story.wm_q3=destroyed</li>
+    </anyOf>
+    <letterLabel>The Marksman's Respect</letterLabel>
+    <letterText>Swan is gone, and Fist wants to throw the tribe into a mindless slaughter against men in power armor. I am tired of dying for loud fools. Let me test my rifle beside your sharpshooters—if you hit the mark, I stand on your walls.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>hunting_trial</key>
+        <label>Pass Dead Eye's hunting trial</label>
+        <text>Clear a den of apex wasteland beasts alongside Dead Eye to prove your colony's marksmanship.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>recruit_dead_eye</key>
+        <label>A polished sniper scope</label>
+        <text>Dead Eye—the only mutant in the wild pack who keeps his rifle scope spotless inside a leather pouch—nods once in calm approval.</text>
+        <choices>
+          <li>
+            <outcome>accept_dead_eye</outcome>
+            <label>Welcome Dead Eye onto {COLONY}'s watchtowers</label>
+            <resultText>Good shot, leader. Give me a high tower and clean ammo—no enemy will reach your gate alive.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_dead_eye</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_dead_eye</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gun_SniperRifle</thing>
+                <count>1</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
