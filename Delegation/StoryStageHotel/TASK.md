@@ -1,6 +1,8 @@
 # StoryStageHotel — этапы «гость в гостинице» и «доставка» (E3)
 
-kind: implement + run · assignee: gemini (Antigravity) · afterTask: StoryStageSite
+kind: integrate + run · assignee: gemini (Antigravity) · afterTask: StoryStageSite
+
+> **ИЗМЕНЕНИЕ (Claude, 19.11):** код этапов пишет Gemini Neon (`Delegation/Hydrogen/32-Neon-StoryStageHotel-CODE-PROMPT.md`), файлы будут в `Delegation/StoryContent/E3/`. **Не пиши их сам:** встрой файлы Neon (сборка, `// CHECK API` через Cecil, проба). Если папка пуста — `blocked: waiting for Neon E3 code`. Установка актов 1–5 (ниже) — твоя работа как обычно.
 
 Прочитай `Documentation/STORY-ENGINE-DESIGN.md`, ядро (`Source/StoryDefs.cs`, `Source/SparkStory.cs`, `Source/StoryLetter.cs`) и свой E2 (`Source/StoryStage_Site.cs`). Ядро не меняй, данные этапа храни в `ctx.run.vars`. Новые файлы: `Source/StoryStage_HotelVisit.cs` и `Source/StoryStage_Deliver.cs`.
 
