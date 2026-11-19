@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_InstallEquipmentMod.reportString>устанавливает модуль на TargetA.</TMM_InstallEquipmentMod.reportString>
+  <TMM_RemoveEquipmentMod.reportString>снимает модуль с TargetA.</TMM_RemoveEquipmentMod.reportString>
+  <TMM_ReloadColt.reportString>перезаряжает «Кольт» серебряными пулями.</TMM_ReloadColt.reportString>
+
+</LanguageData>

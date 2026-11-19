@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!--
+    Universal CompWeaponMods (all ranged & melee weapons) and CompApparelMods (all Shell coats/jackets/dusters)
+    plus TMM_PowerArmor layer migration are injected cleanly in C# at [StaticConstructorOnStartup]
+    (EquipmentDefsInjector) so every vanilla and modded ThingDef is covered regardless of ParentName.
+    Below are declarative XML patches for Human ITab, Protector Power Armor layer, and The Colt ammo comp.
+  -->
+
+  <!-- 1. Add additional Warcraft-style Equipment ITab to Human pawns (keeping vanilla ITab_Pawn_Gear intact) -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Human"]/inspectorTabs</xpath>
+    <value>
+      <li>TurboMegaMod.ITab_TMM_Equipment</li>
+    </value>
+  </Operation>
+
+  <!-- 2. Move Protector Power Armor (if loaded) onto the dedicated TMM_PowerArmor layer -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="TMM_Legendary_ProtectorArmor"]/apparel/layers</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="TMM_Legendary_ProtectorArmor"]/apparel/layers</xpath>
+      <value>
+        <layers>
+          <li>TMM_PowerArmor</li>
+        </layers>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- 3. Attach CompProperties_ColtAmmo (13 rounds, reloadable with silver bullets) onto The Colt if loaded -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="TMM_Legendary_TheColt"]/comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName="TMM_Legendary_TheColt"]/comps</xpath>
+      <value>
+        <li Class="TurboMegaMod.CompProperties_ColtAmmo">
+          <maxCharges>13</maxCharges>
+          <ammoDefName>TMM_Ammo_ColtSilverBullet</ammoDefName>
+        </li>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>
