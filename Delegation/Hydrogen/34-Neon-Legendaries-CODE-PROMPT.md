@@ -1,0 +1,450 @@
+**Режим: Canvas. Модель: Neon. Уровень рассуждений — высокий.**
+
+Новая задача по коду мода RimWorld **1.7**: **15 легендарных наград фракций и распылитель буры**. Дизайн придумал Hydrogen, он ниже в JSON. Нужны рабочий XML и C#, код соберёт и проверит в игре наш агент.
+
+## Жёсткие правила
+- **Только C# 5:** без `?.`, `=>` у членов класса, `nameof`, `is X x`, `$""""`, `out var`.
+- API — RimWorld 1.7. Где не уверен, ставь `// CHECK API`.
+- Пространство имён `TurboMegaMod`, префикс defName `TMM_Legendary_`. Всё, что зависит от DLC (биоферрит — Anomaly, гены — Biotech), помечай `MayRequire`. Без DLC предмет должен грузиться без ошибок: замени материал или отключи эффект.
+- Где эффект делается ванильным XML (verbs, tools, `equippedStatOffsets`, `damageDef`, `extraDamages`, `CompProperties_...`), используй XML. C# — только там, где без него нельзя.
+- **Текстуры пока не рисуем:** используй `graphicData` базового ванильного предмета из `baseOn` и добавь `<!-- TODO art -->`. Наш художник нарисует позже.
+
+## Правила игры (решения автора — обязательно)
+1. **Единственный экземпляр на мир.** Легендарки нельзя крафтить, у них нет рецептов. Нужен `LegendaryRegistry` (WorldComponent): какие легендарки уже существуют в мире, и сохранение. Если предмет уничтожен, он может снова стать наградой. Метод `LegendaryRegistry.TryGrant(ThingDef, Map)` создаёт предмет и сбрасывает его капсулой в колонию, только если его ещё нет. Через этот метод сюжет будет выдавать награды.
+2. **Убивают с одного удара только Первый Клинок и Клинок Архангела.** Это сделано не уроном 999, а кодом: попадание по живой пешке убивает её (`Kill`). Исключения: Люцифер (`TMM_Hero_lucifer`), Михаил (`TMM_Hero_michael`), Дик Роман (`TMM_Hero_dick_roman`). Против них — обычный высокий урон.
+3. **Кольт** — 13 патронов. Перезарядки нет, пока нет серебряных пуль, но счётчик зарядов должен быть: `CompProperties_ApparelReloadable`/`CompEquippableAbilityReloadable` или свой компонент, проверь, что есть в 1.7. Попадание по «нечисти» убивает: демоны `TMM_Demon`, ангелы `TMM_Angel`, левиафаны `TMM_Leviathan`, гули `TMM_Ghoul` и существа Anomaly. Исключения — те же трое боссов.
+4. **Метка Каина** (Первый Клинок): при экипировке вешается неснимаемый Hediff с бонусами. Если носитель 3 дня никого не убивал, копится «жажда крови», на максимуме — срыв Berserk.
+5. **Дик Роман неуязвим.** Его пешка (герой `TMM_Hero_dick_roman`) получает постоянный Hediff, который режет весь входящий урон на 99%. Исключение — когда на нём Hediff «ожог бурой» от урона `TMM_BoraxBurn`. Hediff вешай патчем или при генерации героя, так, чтобы это работало и для уже существующей пешки. Флаг сюжета `story.boraxFormula` пока ни на что не влияет.
+6. **Бура:** распылитель (оружие) и турель (постройка) с уроном `TMM_BoraxBurn`. По левиафанам — сильный урон и «ожог бурой». По людям урон почти нулевой. У турели рецепт строительства есть, а **исследование нужно отдельное** (`TMM_BoraxResearch`) с предпосылкой. Рецепт распылителя тоже открывается этим исследованием.
+
+**Типы урона уже есть в моде** (из генов): `TMM_HolyWater`, `TMM_RockSalt`, `TMM_Enochian`, `TMM_BoraxBurn`. Не создавай их заново, только ссылайся. Клинок Архангела может наносить `TMM_Enochian` как дополнительный урон, а «Уравнитель» и Кольт — `TMM_HolyWater`.
+
+## Дизайн (от Hydrogen)
+```json
+{
+  "rewards": [
+    {
+      "id": "experiment_18a",
+      "faction": "institute",
+      "type": "ranged",
+      "label_en": "Experiment 18-A",
+      "label_ru": "«Эксперимент 18-А»",
+      "desc_en": "An overclocked Institute plasma rifle prototype with unstable magnetic containment coils. It fires superheated plasma bolts at a blistering rate, occasionally reducing targets to a pile of glowing ash.",
+      "desc_ru": "Разогнанный прототип плазменной винтовки Института с нестабильными магнитными катушками. Выпускает сгустки перегретой плазмы с невероятной скоростью, периодически дезинтегрируя цель в кучку пепла.",
+      "baseOn": "Gun_ChargeRifle",
+      "stats": {
+        "MarketValue": 4800,
+        "Mass": 3.8
+      },
+      "combat": {
+        "damage": 22,
+        "armorPenetration": 0.48,
+        "cooldown": 1.1,
+        "range": 28,
+        "burst": 4
+      },
+      "mechanics": [
+        "Ванильный XML: повышенная скорострельность (cooldown 1.1, burst 4) и кастомный DamageDef с уроном огнём/ожогом.",
+        "Свой C# (подкласс Bullet): при летальном уроне с шансом 25% удаляет труп (Destroy) и спавнит кучку пепла (ThingDef), как при дезинтеграции."
+      ],
+      "acquisition_ru": "Финальная награда за союз с Институтом или трофей из личной лаборатории Отца после штурма."
+    },
+    {
+      "id": "final_judgment",
+      "faction": "brotherhood",
+      "type": "ranged",
+      "label_en": "Final Judgment",
+      "label_ru": "«Последний суд»",
+      "desc_en": "A relic Gatling laser handed down by Brotherhood Elders, fitted with a self-sustaining micro-fusion core. It unleashes an endless torrent of high-energy beams, though its cooling vents scorch the wielder during prolonged bursts.",
+      "desc_ru": "Реликтовый гатлинг-лазер старейшин Братства Стали со встроенным микроядерным реактором. Обрушивает на врагов бесконечный шквал лазерных лучей, но при долгой стрельбе раскаляет броню и обжигает самого стрелка.",
+      "baseOn": "Gun_Minigun",
+      "stats": {
+        "MarketValue": 5500,
+        "Mass": 9.5
+      },
+      "combat": {
+        "damage": 14,
+        "armorPenetration": 0.40,
+        "cooldown": 0.8,
+        "range": 32,
+        "burst": 16
+      },
+      "mechanics": [
+        "Ванильный XML: высокий burst (16) и низкий cooldown (0.8) с лазерным типом урона.",
+        "Свой C# (ThingComp на оружии): каждый залп добавляет носителю накапливающийся Hediff перегрева (снижает скорость движения и при 100% наносит лёгкие ожоги, постепенно спадает вне боя)."
+      ],
+      "acquisition_ru": "Награда старейшины Мэксона за полное уничтожение Института или трофей с его тела при штурме флагмана Братства."
+    },
+    {
+      "id": "protector_armor",
+      "faction": "outcasts",
+      "type": "apparel",
+      "label_en": "Protector Power Armor",
+      "label_ru": "Силовая броня «Протектор»",
+      "desc_en": "A custom black-and-crimson power armor suit forged by Brotherhood Outcast master technicians. Built into its chestplate is a medical auto-injector that floods the wearer's bloodstream with stimpaks the moment vitals turn critical.",
+      "desc_ru": "Уникальный чёрно-красный комплект силовой брони, собранный лучшими техниками Изгоев. В нагрудник встроен медицинский автоинъектор, мгновенно впрыскивающий стимуляторы при критическом падении здоровья владельца.",
+      "baseOn": "Apparel_PowerArmor",
+      "stats": {
+        "MarketValue": 6200,
+        "Mass": 14.0
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0,
+        "burst": 0
+      },
+      "mechanics": [
+        "Ванильный XML: повышенные показатели защиты (Sharp 1.35, Blunt 0.65, Heat 1.10) и слот поверх обычной одежды.",
+        "Свой C# (CompApparel / Harmony-патч на PostApplyDamage): при падении здоровья (SummaryHealthPercent) ниже 30% автоматически срабатывает раз в 12 часов — лечит свежие кровотечения и накладывает Hediff стимулятора (ускорение регенерации и подавление боли)."
+      ],
+      "acquisition_ru": "Выдаётся защитником Генри Касдином за выполнение цепочки квестов по сбору довоенных технологий или снимается с него в бою."
+    },
+    {
+      "id": "golden_pipboy",
+      "faction": "vault_tec",
+      "type": "utility",
+      "label_en": "Golden Pip-Boy 3000 Mark IV",
+      "label_ru": "Золотой Пип-Бой 3000 Mark IV",
+      "desc_en": "A commemorative gold-plated wrist computer crafted for senior Vault-Tec executives. Its upgraded tactical V.A.T.S. co-processor sharpens aim, accelerates complex tasks, and plays soothing pre-war tunes to steady the wearer's nerves.",
+      "desc_ru": "Юбилейный позолоченный наручный компьютер, созданный для высшего руководства Волт-Тек. Улучшенный тактический сопроцессор повышает меткость, ускоряет работу и транслирует успокаивающие довоенные мелодии, защищая носителя от паники.",
+      "baseOn": "Apparel_ShieldBelt",
+      "stats": {
+        "MarketValue": 4500,
+        "Mass": 0.9
+      },
+      "combat": {
+        "damage": 0,
+        "armorPenetration": 0,
+        "cooldown": 0,
+        "range": 0,
+        "burst": 0
+      },
+      "mechanics": [
+        "Ванильный XML (equippedStatOffsets): +20% к общей скорости работы, +5 к точности стрельбы, -30% к порогу нервного срыва.",
+        "Свой C# (ThingComp): блокирует панические нервные срывы (MentalStateDefOf.PanicFlee и бегство от страха/аномалий)."
+      ],
+      "acquisition_ru": "Награда совета Смотрителей Волт-Тек за спасение Убежища или трофей из личного сейфа доктора Брона."
+    },
+    {
+      "id": "the_colt",
+      "faction": "minutemen_hunters",
+      "type": "ranged",
+      "label_en": "The Colt",
+      "label_ru": "Револьвер «Кольт»",
+      "desc_en": "An ornate 1851 Colt Paterson revolver forged by Samuel Colt himself during the passing of a comet. Loaded with enchanted silver bullets, this legendary firearm can permanently slay almost any supernatural entity with a single shot.",
+      "desc_ru": "Богато украшенный револьвер Colt Paterson 1851 года, выкованный самим Сэмюэлем Кольтом во время прохождения кометы. Заряженный зачарованными серебряными пулями, он способен одним выстрелом сразить почти любую сверхъестественную тварь.",
+      "baseOn": "Gun_Revolver",
+      "stats": {
+        "MarketValue": 8500,
+        "Mass": 1.4
+      },
+      "combat": {
+        "damage": 45,
+        "armorPenetration": 0.90,
+        "cooldown": 1.4,
+        "range": 26,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: высокий базовый урон (45) и бронепробитие (90%) против обычных врагов.",
+        "Свой C# (CompApparelReloadable или кастомный счётчик 13 патронов + Bullet): при попадании в существ с тегом/ксенотипом нечисти (демоны, ангелы, вампиры, аномалии, кроме Люцифера/Михаила и Дика Романа) вызывает мгновенную смерть (Kill); перезарядка редкими серебряными пулями на столе охотников."
+      ],
+      "acquisition_ru": "Финальная награда от Дина и Сэма Винчестеров за зачистку главных логов нечисти и защиту поселений."
+    },
+    {
+      "id": "lorenzos_artifact",
+      "faction": "ghouls",
+      "type": "ranged",
+      "label_en": "Lorenzo's Artifact Gun",
+      "label_ru": "Гамма-пушка «Артефакт Лоренцо»",
+      "desc_en": "A heavily modified gamma gun fitted with an ancient, alien crown emitter. Instead of radiation, it unleashes concentrated telekinetic shockwaves that hurl enemies backward and shatter fortified cover.",
+      "desc_ru": "Глубоко модифицированная гамма-пушка со встроенным излучателем из древней инопланетной короны. Вместо радиации она выпускает мощные телекинетические импульсы, отбрасывающие врагов и крушащие стены и укрытия.",
+      "baseOn": "Gun_ChargeLance",
+      "stats": {
+        "MarketValue": 5200,
+        "Mass": 3.2
+      },
+      "combat": {
+        "damage": 34,
+        "armorPenetration": 0.65,
+        "cooldown": 2.1,
+        "range": 27,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: взрывной/ударный урон по малому радиусу (1.9 клетки) с высоким уроном по постройкам (buildingDamageFactor = 4.0).",
+        "Свой C# (Bullet): при попадании физически отбрасывает цель на 3–5 клеток назад и накладывает оглушение (Stun) на 2 секунды."
+      ],
+      "acquisition_ru": "Выдаётся Джоном Хэнкоком за помощь поселениям гулей или забирается из хранилища Добрососедства."
+    },
+    {
+      "id": "atoms_judgement",
+      "faction": "friendly_mutants",
+      "type": "melee",
+      "label_en": "Atom's Judgement",
+      "label_ru": "Суперкувалда «Крушитель Атома»",
+      "desc_en": "A colossal super sledge welded with four leaking fusion cores onto its striking head. Every swing delivers bone-crushing kinetic force followed by a localized burst of searing radiation.",
+      "desc_ru": "Исполинская суперкувалда, к бойку которой приварены четыре фонящих ядерных блока. Каждый удар обрушивает на врага сокрушительную кинетическую мощь и обжигающую радиационную волну по площади.",
+      "baseOn": "MeleeWeapon_Warhammer",
+      "stats": {
+        "MarketValue": 4900,
+        "Mass": 11.0
+      },
+      "combat": {
+        "damage": 38,
+        "armorPenetration": 0.70,
+        "cooldown": 2.4,
+        "range": 1.5,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: огромный дробящий урон (38) и бронепробитие (70%).",
+        "Свой C# (Verb_MeleeAttack / HediffComp): при попадании создаёт вспышку радиации в радиусе 2.5 клеток (накладывает ToxicBuildup людям, но слегка лечит гулей и супермутантов)."
+      ],
+      "acquisition_ru": "Подарок от Фокса за укрепление союза с разумными супермутантами или трофей после их разгрома."
+    },
+    {
+      "id": "tesla_cannon",
+      "faction": "enclave",
+      "type": "ranged",
+      "label_en": "Enclave Tesla Cannon",
+      "label_ru": "Пушка Теслы Анклава",
+      "desc_en": "A shoulder-mounted directed-energy weapon developed by Enclave scientists to neutralize armored vehicles and rogue machines. Its high-voltage arc leaps between nearby targets, frying circuits and paralyzing synths.",
+      "desc_ru": "Плечевое энергетическое орудие, созданное учёными Анклава для уничтожения бронетехники и роботов. Высоковольтная дуга перескакивает между ближайшими целями, выжигая электронику и намертво парализуя механоидов и синтов.",
+      "baseOn": "Gun_ChargeLance",
+      "stats": {
+        "MarketValue": 6000,
+        "Mass": 8.0
+      },
+      "combat": {
+        "damage": 32,
+        "armorPenetration": 0.60,
+        "cooldown": 2.5,
+        "range": 34,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: урон типа EMP/электричество с высоким уроном по механоидам.",
+        "Свой C# (Bullet): при попадании ищет до 3 ближайших целей в радиусе 4 клеток, наносит им цепной урон (с коэффициентом 0.7) с отрисовкой молнии (Fleck/Mote) и гарантированно оглушает роботов и синтов."
+      ],
+      "acquisition_ru": "Захватывается при штурме мобильной базы Анклава или выдаётся полковником Отемом за выполнение секретной операции."
+    },
+    {
+      "id": "overseers_guardian",
+      "faction": "gunners",
+      "type": "ranged",
+      "label_en": "Overseer's Guardian",
+      "label_ru": "Карабин «Страж Смотрителя»",
+      "desc_en": "A precision-machined combat rifle with a twin-chambered receiver. Every pull of the trigger fires two synchronized rounds along nearly identical trajectories, doubling stopping power without sacrificing accuracy.",
+      "desc_ru": "Модифицированный боевой карабин со сдвоенным затворным механизмом. При каждом нажатии на спуск он выпускает две синхронные пули по единой траектории, удваивая убойную силу без потери точности.",
+      "baseOn": "Gun_AssaultRifle",
+      "stats": {
+        "MarketValue": 4400,
+        "Mass": 4.2
+      },
+      "combat": {
+        "damage": 16,
+        "armorPenetration": 0.35,
+        "cooldown": 1.5,
+        "range": 31,
+        "burst": 2
+      },
+      "mechanics": [
+        "Ванильный XML: burst = 2 с минимальной задержкой между выстрелами (ticksBetweenBurstShots = 2) и повышенной точностью на всех дистанциях — полностью реализуется без C#."
+      ],
+      "acquisition_ru": "Трофей с тела капитана Уэса при зачистке штаба Стрелков или награда за крупный наёмничий контракт."
+    },
+    {
+      "id": "railway_rifle",
+      "faction": "railroad",
+      "type": "ranged",
+      "label_en": "Heavy Railway Rifle",
+      "label_ru": "Гвоздемёт «Железнодорожная винтовка»",
+      "desc_en": "A pneumatic contraption cobbled together by Railroad engineers that fires superheated steel railway spikes. The heavy projectiles punch straight through power armor plates and pin victims to the ground.",
+      "desc_ru": "Пневматическое орудие инженеров Подземки, стреляющее раскалёнными стальными железнодорожными костылями. Тяжёлые снаряды прошивают силовую броню навылет и буквально пригвождают врагов к земле.",
+      "baseOn": "Gun_SniperRifle",
+      "stats": {
+        "MarketValue": 4300,
+        "Mass": 6.5
+      },
+      "combat": {
+        "damage": 36,
+        "armorPenetration": 0.78,
+        "cooldown": 2.3,
+        "range": 38,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: высокое бронепробитие (78%) и большой разовый проникающий урон (36), плюс характерный звук гудка поезда при выстреле.",
+        "Свой C# / XML (DamageDef с additionalHediffs): при попадании накладывает на цель Hediff «Пригвождён» (снижает скорость передвижения на 70% на 5 секунд или оглушает)."
+      ],
+      "acquisition_ru": "Награда Дездемоны и Техника Тома за освобождение синтов или трофей из штаба Подземки."
+    },
+    {
+      "id": "big_boy",
+      "faction": "wild_mutants",
+      "type": "ranged",
+      "label_en": "The Big Boy",
+      "label_ru": "Ядерный гранатомёт «Большой мальчик»",
+      "desc_en": "A monstrously modified tactical nuclear catapult lugged around by wild super mutant warlords. Its twin-barrel mechanism launches two mini-nukes simultaneously, turning entire battlefields into irradiated craters.",
+      "desc_ru": "Чудовищно переделанная тактическая ядерная катапульта, которую таскают вожаки диких супермутантов. Сдвоенный механизм запускает сразу два мини-ядерных заряда за один выстрел, превращая поле боя в выжженный кратер.",
+      "baseOn": "Gun_TripleRocket",
+      "stats": {
+        "MarketValue": 7800,
+        "Mass": 15.0
+      },
+      "combat": {
+        "damage": 150,
+        "armorPenetration": 1.0,
+        "cooldown": 5.5,
+        "range": 36,
+        "burst": 2
+      },
+      "mechanics": [
+        "Ванильный XML: burst = 2, взрывной радиус 6.9 клеток с ядерным DamageDef (огонь + взрыв + радиация), перезарядка мини-ядерными зарядами через CompApparelReloadable (чтобы не ломал баланс бесконечными залпами)."
+      ],
+      "acquisition_ru": "Добывается только боем при разгроме главного логова диких супермутантов и победе над Лебедем."
+    },
+    {
+      "id": "the_equalizer",
+      "faction": "men_of_letters",
+      "type": "ranged",
+      "label_en": "The Equalizer",
+      "label_ru": "Пистолет «Уравнитель»",
+      "desc_en": "An arcane dimensional firearm forged in the vaults of the British Men of Letters. It fires quantum-entangled rounds capable of wounding even archangels and primordial entities, though the recoil mirrors a fraction of the agony back onto the shooter.",
+      "desc_ru": "Оккультный межпространственный пистолет, созданный в тайных лабораториях Британских Просвещённых. Он стреляет квантово-связанными зарядами, способными ранить даже архангелов и древних сущностей, но каждый выстрел наносит ответный урон самому стрелку.",
+      "baseOn": "Gun_Autopistol",
+      "stats": {
+        "MarketValue": 7500,
+        "Mass": 1.6
+      },
+      "combat": {
+        "damage": 65,
+        "armorPenetration": 1.0,
+        "cooldown": 1.8,
+        "range": 25,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: 100% бронепробитие и огромный урон (65).",
+        "Свой C# (Bullet / Verb_Shoot): игнорирует пассивное снижение урона боссов (архангелов, князей Ада, левиафанов), но при каждом выстреле наносит стрелку 12 единиц психического/внутреннего урона (может сбить с ног при ранениях)."
+      ],
+      "acquisition_ru": "Выдаётся доктором Хесс за полное подчинение местной охоты британскому ордену или захватывается в их штабе."
+    },
+    {
+      "id": "first_blade",
+      "faction": "hell_demons",
+      "type": "melee",
+      "label_en": "The First Blade",
+      "label_ru": "Первый Клинок",
+      "desc_en": "The primordial jawbone blade wielded by Cain in the world's first murder. Bound to the Mark of Cain, it slays any mortal or demon in a single strike, but fills its bearer with an insatiable bloodlust during times of peace.",
+      "desc_ru": "Первородный клинок из челюстной кости, которым Каин совершил первое в истории убийство. Связанный с Меткой Каина, он убивает любого врага с одного удара, но в мирное время терзает владельца неутолимой жаждой крови и приступами ярости.",
+      "baseOn": "MeleeWeapon_Knife",
+      "stats": {
+        "MarketValue": 12000,
+        "Mass": 1.2
+      },
+      "combat": {
+        "damage": 999,
+        "armorPenetration": 2.0,
+        "cooldown": 1.3,
+        "range": 1.5,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: урон 999 и бронепробитие 200% — гарантированно убивает с одного удара.",
+        "Свой C# (CompEquippable + кастомный Hediff «Метка Каина»): при экипировке вешает неотключаемый Hediff (+35% скорость движения, -80% боль, +50% урон в ближнем бою), который накапливает счётчик «Жажда крови», если пешка не убивала 3 дня — на максимуме гарантированно запускает срыв Berserk."
+      ],
+      "acquisition_ru": "Крайне сложный финальный сюжетный квест Ада (сделка с Кроули и испытание Каина) или штурм цитадели Ада."
+    },
+    {
+      "id": "archangel_blade",
+      "faction": "heaven_angels",
+      "type": "melee",
+      "label_en": "Archangel Blade",
+      "label_ru": "Клинок Архангела",
+      "desc_en": "A golden, twisted-metal blade forged in the highest tier of Heaven. It slices effortlessly through any armor, ignites wicked foes with blinding celestial fire, and shields its wielder from demonic curses.",
+      "desc_ru": "Золотой витой клинок, выкованный в высших чертогах Небес. Он без труда рассекает любую броню, воспламеняет врагов ослепительным святым огнём и полностью защищает владельца от демонических проклятий.",
+      "baseOn": "MeleeWeapon_Gladius",
+      "stats": {
+        "MarketValue": 11000,
+        "Mass": 1.5
+      },
+      "combat": {
+        "damage": 999,
+        "armorPenetration": 2.0,
+        "cooldown": 1.4,
+        "range": 1.5,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: урон 999 и бронепробитие 200% (убийство с одного удара по решению пользователя), при ударе поджигает клетку святым огнём.",
+        "Свой C# (CompEquippable): даёт носителю иммунитет к ментальному дурману, снижению сознания и проклятиям демонов/аномалий."
+      ],
+      "acquisition_ru": "Тяжёлый сюжетный квест Небес от Михаила/Кастиэля или трофей после победы над архангелом."
+    },
+    {
+      "id": "alpha_predator",
+      "faction": "monster_clans",
+      "type": "melee",
+      "label_en": "Alpha Predator",
+      "label_ru": "Живой клинок «Альфа-хищник»",
+      "desc_en": "A grotesque, living sword grown from Alpha Vampire blood and hardened bioferrite. Its serrated edge drinks the lifeblood of victims with every slash, rapidly knitting the wielder's own wounds closed.",
+      "desc_ru": "Жуткий живой клинок, выращенный из крови Альфа-вампира и закалённого биоферрита. Его зазубренное лезвие пьёт жизненную силу врагов при каждом ударе, мгновенно затягивая раны самого владельца.",
+      "baseOn": "MeleeWeapon_LongSword",
+      "stats": {
+        "MarketValue": 6800,
+        "Mass": 2.1
+      },
+      "combat": {
+        "damage": 30,
+        "armorPenetration": 0.68,
+        "cooldown": 1.5,
+        "range": 1.5,
+        "burst": 1
+      },
+      "mechanics": [
+        "Ванильный XML: высокий режущий урон (30) и бронепробитие (68%), привязка к биоферриту (Anomaly).",
+        "Свой C# (Verb_MeleeAttack / Harmony-патч): при нанесении урона живой цели мгновенно лечит случайную рану (Hediff_Injury) владельца на 8–12 единиц и восполняет гемоген (если носитель — сангвофаг)."
+      ],
+      "acquisition_ru": "Награда Альфа-вампира и Евы за союз с Кланами нечисти или трофей за уничтожение их главного логова."
+    }
+  ],
+  "borax": {
+    "label_en": "Borax Sprayer",
+    "label_ru": "Распылитель буры",
+    "desc_en": "A pressurized chemical sprayer filled with concentrated sodium borate solution. Harmless to humans, this caustic white mist dissolves the indestructible flesh of Leviathans and strips Dick Roman of his supernatural invulnerability.",
+    "desc_ru": "Химический распылитель под давлением, заправленный концентрированным раствором тетрабората натрия (буры). Безвредный для людей, этот едкий белый туман разъедает неуязвимую плоть левиафанов и лишает Дика Романа его сверхъестественной защиты.",
+    "variants": [
+      "Распылитель буры (ручное оружие ближней/средней дистанции на базе огнемёта/токсичного распылителя)",
+      "Автоматическая турель с распылителем буры (стационарная оборонительная постройка)"
+    ],
+    "mechanics": [
+      "Ванильный XML: стреляет облаком/струёй (дальность 12 клеток для ручного варианта и 18 для турели) с кастомным DamageDef «TMM_BoraxBurn».",
+      "Свой C# (HediffComp на левиафанах и Дике Романе): у Дика Романа стоит постоянный Hediff неуязвимости, блокирующий 99% входящего урона; попадание буры накладывает Hediff «Ожог бурой» на 30 секунд, который отключает неуязвимость и наносит сильный периодический кислотный урон всем левиафанам."
+    ]
+  }
+}
+```
+
+## Что сдать
+Файлы с путём над каждым блоком:
+1. `Defs/ThingDefs/Legendary_Weapons.xml` — оружие.
+2. `Defs/ThingDefs/Legendary_Apparel.xml` — Протектор, Золотой Пип-Бой.
+3. `Defs/ThingDefs/Borax.xml` — распылитель, турель, снаряды.
+4. `Defs/HediffDefs/Hediffs_Legendary.xml`.
+5. `Defs/ResearchProjectDefs/Research_Borax.xml`.
+6. `Source/LegendaryItems.cs` — `LegendaryRegistry`, компоненты, Verb'ы и снаряды, Harmony-патчи. Регистрация в `[StaticConstructorOnStartup]` через `new Harmony("colonyproject.integrated.legendary")`.
+7. RU: `Languages/Russian/DefInjected/ThingDef/Legendary.xml`, `HediffDef/…`, `ResearchProjectDef/…` — из `*_ru`.
+8. `Tests/InGameLegendaryProbe.cs`. Флаг `-tmm-legendary-probe`, JSON `LegendaryProbe.json` в обычном формате `{""passed"",""checksCount"",""checks"":[{""name"",""passed"",""expected"",""actual""}],""errors""}`. Проверки должны совершать **реальные действия**:
+   - `TryGrant` дважды для одного предмета: второй раз отказ;
+   - Первый Клинок бьёт обычную пешку — смерть с одного удара; бьёт Дика Романа — не смерть;
+   - Кольт по демону — смерть, по человеку — обычный урон, 13 выстрелов → заряды кончились;
+   - Дик Роман теряет меньше 1% здоровья от обычного урона и полный урон после буры;
+   - бура по левиафану сильно, по человеку почти 0;
+   - у каждой легендарки один реальный выстрел или удар без исключений;
+   - Метка Каина вешается при экипировке.
+
+В конце перечисли строки с `// CHECK API` и что пришлось упростить.

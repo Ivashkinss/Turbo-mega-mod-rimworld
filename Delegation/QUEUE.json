@@ -1600,6 +1600,20 @@
       "note": "Integrate Neon's 18 supernatural genes (XML + C#), metabolism stays 0, in-game probe and xenotype regressions."
     },
     {
+      "id": "LegendaryItems",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "SupernaturalGenes",
+      "taskFile": "Delegation/LegendaryItems/TASK.md",
+      "outputDir": "Tools/Build/GeminiLegendaryItems",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T22:30:00Z",
+      "note": "Integrate Neon's 15 legendary items, borax sprayer and turret, LegendaryRegistry; in-game probe."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
