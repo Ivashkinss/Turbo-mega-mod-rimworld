@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site</defName>
+    <label>sample outpost sweep</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>50</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Outpost Sweep</letterLabel>
+    <letterText>Scouts near {COLONY} spotted a hostile field camp. Send a caravan to clear the camp and report back.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Clear the hostile camp</label>
+        <text>A hostile field camp has been marked on the world map near {COLONY}. Send a caravan to eliminate all hostile fighters at the camp.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Clear</objective>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_siteCleared</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage> <!-- CHECK: -1 ends quest -->
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_siteTimeout</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Outpost secured</label>
+        <text>The hostile camp has been cleared. Decide how to log the operation in {COLONY}'s records.</text>
+        <choices>
+          <li>
+            <outcome>claim_supplies</outcome>
+            <label>Log victory and collect a small salvage bonus</label>
+            <resultText>Your scouts cataloged the cleared camp and brought back a pouch of silver.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>150</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Raid</defName>
+    <label>sample perimeter probe</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>49</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Perimeter Probe</letterLabel>
+    <letterText>Hostile raiders are mobilizing to test {COLONY}'s defenses. Accept to trigger a controlled defensive engagement.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>raid</key>
+        <label>Repel the probing raid</label>
+        <text>Raiders have been sighted approaching {COLONY}. Prepare your perimeter defenses.</text>
+        <pointsFactor>1.0</pointsFactor>
+        <delayHours>2</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <restoreRelations>true</restoreRelations>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_raidRepelled</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_raidTimeout</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

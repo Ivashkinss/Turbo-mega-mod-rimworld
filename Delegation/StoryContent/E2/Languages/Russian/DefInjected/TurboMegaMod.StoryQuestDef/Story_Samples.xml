@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_Sample_Site -->
+  <TMM_Story_Sample_Site.label>пробная зачистка лагеря</TMM_Story_Sample_Site.label>
+  <TMM_Story_Sample_Site.letterLabel>Пробная зачистка лагеря</TMM_Story_Sample_Site.letterLabel>
+  <TMM_Story_Sample_Site.letterText>Разведчики неподалёку от {COLONY} заметили враждебный полевой лагерь. Отправьте караван, зачистите лагерь и доложите о результате.</TMM_Story_Sample_Site.letterText>
+  <TMM_Story_Sample_Site.stages.0.label>Зачистить вражеский лагерь</TMM_Story_Sample_Site.stages.0.label>
+  <TMM_Story_Sample_Site.stages.0.text>Враждебный полевой лагерь отмечен на карте мира рядом с {COLONY}. Отправьте караван и уничтожьте всех противников в лагере.</TMM_Story_Sample_Site.stages.0.text>
+  <TMM_Story_Sample_Site.stages.1.label>Лагерь зачищен</TMM_Story_Sample_Site.stages.1.label>
+  <TMM_Story_Sample_Site.stages.1.text>Вражеский лагерь полностью зачищен. Решите, как оформить итог операции в архивах {COLONY}.</TMM_Story_Sample_Site.stages.1.text>
+  <TMM_Story_Sample_Site.stages.1.choices.0.label>Зафиксировать победу и забрать скромные трофеи</TMM_Story_Sample_Site.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site.stages.1.choices.0.resultText>Разведчики описали зачищенный лагерь и принесли мешочек серебра.</TMM_Story_Sample_Site.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Raid -->
+  <TMM_Story_Sample_Raid.label>пробная атака на периметр</TMM_Story_Sample_Raid.label>
+  <TMM_Story_Sample_Raid.letterLabel>Пробная атака на периметр</TMM_Story_Sample_Raid.letterLabel>
+  <TMM_Story_Sample_Raid.letterText>Враждебные налётчики готовятся проверить оборону {COLONY}. Примите вызов, чтобы провести учебное отражение рейда.</TMM_Story_Sample_Raid.letterText>
+  <TMM_Story_Sample_Raid.stages.0.label>Отразить пробный рейд</TMM_Story_Sample_Raid.stages.0.label>
+  <TMM_Story_Sample_Raid.stages.0.text>К {COLONY} приближаются налётчики. Подготовьте оборону периметра.</TMM_Story_Sample_Raid.stages.0.text>
+
+</LanguageData>
