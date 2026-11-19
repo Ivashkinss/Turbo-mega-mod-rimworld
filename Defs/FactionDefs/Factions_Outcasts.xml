@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brotherhood Outcasts: a splinter order hoarding pre-war technology at any cost. Heroes: Defs/HeroDefs/Heroes_Outcasts.xml. -->
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TMM_OutcastsFaction</defName>
+    <label>Brotherhood Outcasts</label>
+    <description>A schism of the Brotherhood of Steel that rejected charity for the wasteland. In black-and-red power armor they seize pre-war technology wherever it lies, even if a settlement or a hospital stands in the way.</description>
+    <pawnSingular>outcast</pawnSingular>
+    <pawnsPlural>outcasts</pawnsPlural>
+    <leaderTitle>protector</leaderTitle>
+    <fixedName>Brotherhood Outcasts</fixedName>
+    <techLevel>Spacer</techLevel>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>0.3</settlementGenerationWeight>
+    <listOrderPriority>15</listOrderPriority>
+    <colorSpectrum Inherit="False">
+      <li>(0.12, 0.12, 0.13)</li>
+      <li>(0.6, 0.1, 0.1)</li>
+    </colorSpectrum>
+  </FactionDef>
+</Defs>

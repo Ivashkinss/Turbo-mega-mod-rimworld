@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_FactionHierarchy_Title>Фракции и иерархия</TMM_FactionHierarchy_Title>
+  <TMM_FactionHierarchy_Relations>Отношения: {0} ({1})</TMM_FactionHierarchy_Relations>
+  <TMM_FactionHierarchy_Leader>Лидер: {0}</TMM_FactionHierarchy_Leader>
+  <TMM_FactionHierarchy_SettlementsCount>Поселений: {0}</TMM_FactionHierarchy_SettlementsCount>
+  <TMM_FactionHierarchy_HierarchyUnknown>Иерархия неизвестна</TMM_FactionHierarchy_HierarchyUnknown>
+  <TMM_FactionHierarchy_Council>Совет фракции</TMM_FactionHierarchy_Council>
+  <TMM_FactionHierarchy_CouncilMember>Член совета</TMM_FactionHierarchy_CouncilMember>
+  <TMM_FactionHierarchy_LeaderTag>Лидер</TMM_FactionHierarchy_LeaderTag>
+  <TMM_FactionHierarchy_SuccessorTag>Наследник</TMM_FactionHierarchy_SuccessorTag>
+  <TMM_FactionHierarchy_RankTag>Ранг {0}</TMM_FactionHierarchy_RankTag>
+  <TMM_FactionHierarchy_Rank4Section>Герои 4-го ранга</TMM_FactionHierarchy_Rank4Section>
+  <TMM_FactionHierarchy_Rank3Section>Герои 3-го ранга</TMM_FactionHierarchy_Rank3Section>
+  <TMM_FactionHierarchy_UnknownHero>Неизвестный герой (ранг {0})</TMM_FactionHierarchy_UnknownHero>
+  <TMM_FactionHierarchy_UnknownHeroDesc>Сведения отсутствуют</TMM_FactionHierarchy_UnknownHeroDesc>
+  <TMM_FactionHierarchy_UnknownHeroTip>Герой ещё не был встречен вашей колонией.</TMM_FactionHierarchy_UnknownHeroTip>
+  <TMM_FactionHierarchy_State_Unspawned>Не появлялся</TMM_FactionHierarchy_State_Unspawned>
+  <TMM_FactionHierarchy_State_AtHome>В поселении</TMM_FactionHierarchy_State_AtHome>
+  <TMM_FactionHierarchy_State_InCaravan>В караване</TMM_FactionHierarchy_State_InCaravan>
+  <TMM_FactionHierarchy_State_OnMap>На карте: {0}</TMM_FactionHierarchy_State_OnMap>
+  <TMM_FactionHierarchy_State_Away>В пути</TMM_FactionHierarchy_State_Away>
+  <TMM_FactionHierarchy_State_Captive>В плену ({0})</TMM_FactionHierarchy_State_Captive>
+  <TMM_FactionHierarchy_State_Dead>Погиб</TMM_FactionHierarchy_State_Dead>
+  <TMM_FactionHierarchy_State_Joined>В нашей колонии</TMM_FactionHierarchy_State_Joined>
+  <TMM_FactionHierarchy_State_Missing>Пропал без вести</TMM_FactionHierarchy_State_Missing>
+  <TMM_FactionHierarchy_ViewOnMap>Показать</TMM_FactionHierarchy_ViewOnMap>
+  <TMM_FactionHierarchy_None>Отсутствует</TMM_FactionHierarchy_None>
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_OutcastsFaction.label>Изгои Братства</TMM_OutcastsFaction.label>
+  <TMM_OutcastsFaction.description>Раскольники Братства Стали, отвергшие помощь жителям Пустоши. В чёрно-красной силовой броне они забирают довоенные технологии, где бы те ни лежали, даже если на пути стоит поселение или госпиталь.</TMM_OutcastsFaction.description>
+  <TMM_OutcastsFaction.pawnSingular>изгой</TMM_OutcastsFaction.pawnSingular>
+  <TMM_OutcastsFaction.pawnsPlural>изгои</TMM_OutcastsFaction.pawnsPlural>
+  <TMM_OutcastsFaction.leaderTitle>защитник</TMM_OutcastsFaction.leaderTitle>
+  <TMM_OutcastsFaction.fixedName>Изгои Братства</TMM_OutcastsFaction.fixedName>
+</LanguageData>

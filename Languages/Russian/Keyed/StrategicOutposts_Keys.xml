@@ -13,17 +13,17 @@
   <StrategicOutpost_ManageOutpost_Label>Управление аванпостом</StrategicOutpost_ManageOutpost_Label>
   <StrategicOutpost_ManageOutpost_Desc>Открыть интерфейс управления аванпостом для распределения персонала, выбора производства и настройки логистики.</StrategicOutpost_ManageOutpost_Desc>
   <StrategicOutpost_FoundOutpost_Label>Основать аванпост</StrategicOutpost_FoundOutpost_Label>
-  <StrategicOutpost_FoundOutpost_Desc>Основать постоянный стратегический аванпост на этой клетке, используя людей и припасы экспедиции.</StrategicOutpost_FoundOutpost_Desc>
+  <StrategicOutpost_FoundOutpost_Desc>Основать постоянный стратегический аванпост. Остановите караван на свободной клетке; первые два подходящих колониста останутся работниками аванпоста.</StrategicOutpost_FoundOutpost_Desc>
   <StrategicOutpost_ViewMap_Label>Просмотр карты</StrategicOutpost_ViewMap_Label>
   <StrategicOutpost_ViewMap_Desc>Переместить камеру к активному базовому лагерю аванпоста на этой клетке.</StrategicOutpost_ViewMap_Desc>
   <StrategicOutpost_EnterMap_Label>Войти на аванпост</StrategicOutpost_EnterMap_Label>
-  <StrategicOutpost_EnterMap_Desc>Направить караван непосредственно на карту аванпоста.</StrategicOutpost_EnterMap_Desc>
+  <StrategicOutpost_EnterMap_Desc>Направить караван на карту аванпоста. На карту зайдут только посетители из каравана; работники остаются в автономном режиме. Чтобы высадить работников на карту, используйте команду «Развернуть персонал».</StrategicOutpost_EnterMap_Desc>
   <StrategicOutpost_DeployPersonnel_Label>Развернуть персонал</StrategicOutpost_DeployPersonnel_Label>
   <StrategicOutpost_DeployPersonnel_Desc>Высадить персонал аванпоста из абстрактного хранилища на физическую карту для работы, строительства и обороны.</StrategicOutpost_DeployPersonnel_Desc>
-  <StrategicOutpost_RecallPersonnel_Label>Отозвать персонал</StrategicOutpost_RecallPersonnel_Label>
-  <StrategicOutpost_RecallPersonnel_Desc>Отозвать развёрнутый персонал обратно в автономный режим аванпоста. Запрещено во время боя или нервных срывов.</StrategicOutpost_RecallPersonnel_Desc>
+  <StrategicOutpost_RecallPersonnel_Label>Вернуть в автономный режим</StrategicOutpost_RecallPersonnel_Label>
+  <StrategicOutpost_RecallPersonnel_Desc>Вернуть развёрнутый персонал обратно в автономный режим аванпоста. Запрещено во время боя или нервных срывов.</StrategicOutpost_RecallPersonnel_Desc>
   <StrategicOutpost_UpgradeAction_Label>Улучшить аванпост (Уровень {0})</StrategicOutpost_UpgradeAction_Label>
-  <StrategicOutpost_UpgradeAction_Desc>Расширить и модернизировать инфраструктуру аванпоста. Стоимость: {0} серебра.</StrategicOutpost_UpgradeAction_Desc>
+  <StrategicOutpost_UpgradeAction_Desc>Расширить и модернизировать инфраструктуру аванпоста. Стоимость: {0} серебра.\n\nСеребро на складе аванпоста: {1}\nСеребро в караване на клетке: {2}\n\nЧтобы пополнить склад вручную: Логистика → Положить припасы.</StrategicOutpost_UpgradeAction_Desc>
   <StrategicOutpost_UnloadCargoPrompt>Выгрузить накопленные ресурсы аванпоста на склад карты:</StrategicOutpost_UnloadCargoPrompt>
   <StrategicOutpost_UnloadCargo_Label>Выгрузить груз на карту</StrategicOutpost_UnloadCargo_Label>
 
@@ -65,7 +65,10 @@
   <StrategicOutpost_CaravanColonists>Персонал каравана</StrategicOutpost_CaravanColonists>
   <StrategicOutpost_ToCaravanBtn>В караван</StrategicOutpost_ToCaravanBtn>
   <StrategicOutpost_ToOutpostBtn>На аванпост</StrategicOutpost_ToOutpostBtn>
-  <StrategicOutpost_NoCaravanPresentForTransfer>На этой клетке нет каравана игрока для перевода персонала.</StrategicOutpost_NoCaravanPresentForTransfer>
+  <StrategicOutpost_NoCaravanPresentForTransfer>На этой клетке нет каравана игрока для перевода персонала. Чтобы забрать работников, поставьте караван на клетку аванпоста и откройте управление с каравана.</StrategicOutpost_NoCaravanPresentForTransfer>
+  <StrategicOutpost_MustReturnToAutonomousFirst>Сначала верните в автономный режим.</StrategicOutpost_MustReturnToAutonomousFirst>
+  <StrategicOutpost_FailedToAddPawnToCaravan>Не удалось перевести персонажа в караван.</StrategicOutpost_FailedToAddPawnToCaravan>
+  <StrategicOutpost_SpecOptionWithFounders>{0} (Основатели: {1})</StrategicOutpost_SpecOptionWithFounders>
 
   <!-- Logistics Tab UI -->
   <StrategicOutpost_RawMaterialsTitle>Склад сырья ({0})</StrategicOutpost_RawMaterialsTitle>
@@ -134,4 +137,40 @@
   <StrategicOutpost_EvacuateOverloaded>Эвакуация не завершена: достигнут предел грузоподъёмности каравана. Оставшиеся припасы сохранены на аванпосте.</StrategicOutpost_EvacuateOverloaded>
   <StrategicOutpost_RosterUnavailable>Часть штатного состава находится вне карты аванпоста. Верните её перед переходом в автономный режим.</StrategicOutpost_RosterUnavailable>
   <StrategicOutpost_MapRetained>Персонал и доступный груз эвакуированы. Посещённая карта с постройками сохранена.</StrategicOutpost_MapRetained>
+
+  <!-- Outposts Tab & Pod Logistics -->
+  <StrategicOutpost_TabTitle>Стратегические аванпосты</StrategicOutpost_TabTitle>
+  <StrategicOutpost_HomeColonyBalance>Колония: {0} | Химтопливо на складе: {1} | Серебро: {2}</StrategicOutpost_HomeColonyBalance>
+  <StrategicOutpost_NoOutpostsFound>Активные аванпосты не найдены</StrategicOutpost_NoOutpostsFound>
+  <StrategicOutpost_EmptyGuideText>Чтобы основать свой первый аванпост:&#10;1. Сформируйте караван в колонии с минимум двумя подходящими колонистами.&#10;2. Направьте караван на свободную клетку карты мира и остановите его.&#10;3. Выберите караван и нажмите «Основать аванпост» в нижнем меню каравана.&#10;&#10;После основания управляйте производством, отправляйте и отзывайте персонал через эту вкладку с помощью транспортных капсул.</StrategicOutpost_EmptyGuideText>
+  <StrategicOutpost_InspectLevelShort>Ур. {0}/{1}</StrategicOutpost_InspectLevelShort>
+  <StrategicOutpost_DistanceInfo>Расстояние: {0} кл. (~{1} дн.)</StrategicOutpost_DistanceInfo>
+  <StrategicOutpost_SilverCount>Серебро: {0}</StrategicOutpost_SilverCount>
+  <StrategicOutpost_ManageBtn>Управление</StrategicOutpost_ManageBtn>
+  <StrategicOutpost_ViewMapBtnShort>На карте</StrategicOutpost_ViewMapBtnShort>
+  <StrategicOutpost_RecallBtn>Отозвать</StrategicOutpost_RecallBtn>
+  <StrategicOutpost_SendWorkerBtn>Отправить людей</StrategicOutpost_SendWorkerBtn>
+  <StrategicOutpost_SendSilverBtn>Отправить серебро</StrategicOutpost_SendSilverBtn>
+  <StrategicOutpost_UpgradeNowBtn>Улучшить</StrategicOutpost_UpgradeNowBtn>
+  <StrategicOutpost_PodTopUpBtn>Капсула с серебром</StrategicOutpost_PodTopUpBtn>
+  <StrategicOutpost_MaxLevelShort>Макс. ур.</StrategicOutpost_MaxLevelShort>
+  <StrategicOutpost_PodTopUpTip>Не хватает {0} серебра.&#10;Доставка капсулой: {1} химтоплива и {2} серебра.&#10;Всего спишется со складов колонии: {3} серебра.</StrategicOutpost_PodTopUpTip>
+  <StrategicOutpost_NoHomeMapAvailable>Нет доступной домашней карты колонии.</StrategicOutpost_NoHomeMapAvailable>
+  <StrategicOutpost_PodCostWithSilver>{0} топл. ({1} есть, доплата: {2} сер.; склад: {3} топл., {4} сер.)</StrategicOutpost_PodCostWithSilver>
+  <StrategicOutpost_PodCostFuelOnly>{0} химтоплива (на складе: {1})</StrategicOutpost_PodCostFuelOnly>
+  <StrategicOutpost_PodDestinationMissing>Целевой аванпост более недоступен.</StrategicOutpost_PodDestinationMissing>
+  <StrategicOutpost_HomeColonyMissing>Домашняя колония недоступна для посадки капсулы.</StrategicOutpost_HomeColonyMissing>
+  <StrategicOutpost_PodsDeliveredToOutpost>Капсулы прибыли на аванпост {0}. Доставлено работников: {1}, серебра: {2}.</StrategicOutpost_PodsDeliveredToOutpost>
+  <StrategicOutpost_PodsArrivedAtColony>Транспортные капсулы с аванпоста благополучно приземлились в колонии.</StrategicOutpost_PodsArrivedAtColony>
+  <StrategicOutpost_WorkerRecalledHomeSuccess>Работник благополучно вернулся с аванпоста в колонию.</StrategicOutpost_WorkerRecalledHomeSuccess>
+  <StrategicOutpost_WorkerRecalledPodLaunched>Работник {0} отправлен капсулой в колонию с аванпоста {1}.</StrategicOutpost_WorkerRecalledPodLaunched>
+  <StrategicOutpost_WorkerSentPodLaunched>Колонист {0} отправлен капсулой на аванпост {1}.</StrategicOutpost_WorkerSentPodLaunched>
+  <StrategicOutpost_SilverSentPodLaunched>Груз в {0} серебра отправлен капсулой на аванпост {1}.</StrategicOutpost_SilverSentPodLaunched>
+  <StrategicOutpost_TopUpPodLaunched>Отправлена капсула с {0} серебра для улучшения аванпоста {1}.</StrategicOutpost_TopUpPodLaunched>
+  <StrategicOutpost_NoEligibleColonists>Нет свободных подходящих колонистов в колонии.</StrategicOutpost_NoEligibleColonists>
+  <StrategicOutpost_SilverLabelShort>серебра</StrategicOutpost_SilverLabelShort>
+  <StrategicOutpost_PodCostSummaryBrief>Топливо: {0}, Серебро: {1}</StrategicOutpost_PodCostSummaryBrief>
+  <StrategicOutpost_NotEnoughSilverToSend>В колонии недостаточно серебра для отправки (требуется: {0}).</StrategicOutpost_NotEnoughSilverToSend>
+  <StrategicOutpost_NotEnoughSilverForTopUp>В колонии недостаточно серебра для пополнения (требуется: {0}, доступно: {1}).</StrategicOutpost_NotEnoughSilverForTopUp>
+  <StrategicOutpost_PodsReturnedOutpostGone>Аванпоста больше нет: капсулы вернулись в колонию вместе с грузом.</StrategicOutpost_PodsReturnedOutpostGone>
 </LanguageData>
