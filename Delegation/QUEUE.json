@@ -1531,6 +1531,19 @@
       "note": "Walking caravan from the Outposts tab: auto-formed caravan, delivery on the outpost tile, carriers walk home, food for the round trip, mid-trip reload. Use Tools/cecil_methods.ps1 for API lookup (never powershell -Command). Max 2 attempts per step."
     },
     {
+      "id": "StoryEngineReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/StoryEngineReview/TASK.md",
+      "outputDir": "Tools/Build/CodexStoryEngineReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T18:45:00Z",
+      "note": "Read-only acceptance of the story engine core: save format, letter lifecycle, director, conditions, E2/E3 extension points."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
