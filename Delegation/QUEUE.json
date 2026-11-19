@@ -1588,7 +1588,7 @@
     {
       "id": "StoryContentFactions",
       "state": "pending",
-      "assignee": "gemini",
+      "assignee": "claude",
       "kind": "implement",
       "afterTask": "StoryStageHotel",
       "taskFile": "Delegation/StoryContentFactions/TASK.md",
@@ -1597,7 +1597,7 @@
         "REPORT.md"
       ],
       "createdUtc": "2026-11-19T19:30:00Z",
-      "note": "Story E4: 75 faction quests to XML with RU, content linter."
+      "note": "Story E4: install Neon faction quests, content linter. Taken over by Claude 20.11 to save Antigravity limit; Antigravity skips this task."
     },
     {
       "id": "SupernaturalGenes",
