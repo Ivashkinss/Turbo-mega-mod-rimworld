@@ -1586,6 +1586,20 @@
       "note": "Story E4: 75 faction quests to XML with RU, content linter."
     },
     {
+      "id": "SupernaturalGenes",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "StoryContentFactions",
+      "taskFile": "Delegation/SupernaturalGenes/TASK.md",
+      "outputDir": "Tools/Build/GeminiSupernaturalGenes",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T21:00:00Z",
+      "note": "Integrate Neon's 18 supernatural genes (XML + C#), metabolism stays 0, in-game probe and xenotype regressions."
+    },
+    {
       "id": "OutpostShipmentCycles",
       "state": "accepted",
       "assignee": "gemini",
