@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_MentalState_FeralGhoul.label>приступ одичания</TMM_MentalState_FeralGhoul.label>
+  <TMM_MentalState_FeralGhoul.beginLetter>{0} впал в приступ одичания и в слепой ярости бросается на ближайших людей!</TMM_MentalState_FeralGhoul.beginLetter>
+  <TMM_MentalState_FeralGhoul.recoveryMessage>{0} сумел удержать рассудок и выйти из приступа одичания.</TMM_MentalState_FeralGhoul.recoveryMessage>
+  <TMM_MentalState_FeralGhoul.baseInspectLine>Психическое состояние: Приступ одичания</TMM_MentalState_FeralGhoul.baseInspectLine>
+
+</LanguageData>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_HolyWater.label>ожог святой водой</TMM_HolyWater.label>
+  <TMM_HolyWater.deathMessage>{0} испепелён святой водой.</TMM_HolyWater.deathMessage>
+
+  <TMM_RockSalt.label>залп каменной соли</TMM_RockSalt.label>
+  <TMM_RockSalt.deathMessage>{0} разорван залпом каменной соли.</TMM_RockSalt.deathMessage>
+
+  <TMM_Enochian.label>енохианский удар</TMM_Enochian.label>
+  <TMM_Enochian.deathMessage>{0} сражён енохианским оружием.</TMM_Enochian.deathMessage>
+
+  <TMM_BoraxBurn.label>ожог едкой бурой</TMM_BoraxBurn.label>
+  <TMM_BoraxBurn.deathMessage>{0} растворился под действием едкой буры.</TMM_BoraxBurn.deathMessage>
+
+</LanguageData>

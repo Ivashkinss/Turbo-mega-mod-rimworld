@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Metabolism genes that cancel the total metabolic cost of our supernatural xenotypes (existing + 18 supernatural genes -> net 0). Biotech only. -->
+<Defs>
+
+  <!-- TMM_Angel: base (-9) + new (-4 -2 -3 +3 = -6) = -15 -> +15 -->
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Angelic</defName>
+    <label>angelic metabolism</label>
+    <description>Carriers of this gene draw sustenance from a divine source. It fully pays for the metabolic cost of the other angelic genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>15</biostatMet>
+  </GeneDef>
+
+  <!-- TMM_Demon: base (-2) + new (-3 -2 -2 +4 = -3) = -5 -> +5 -->
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Demonic</defName>
+    <label>demonic metabolism</label>
+    <description>Carriers of this gene sustain their mortal vessels with infernal energy. It fully pays for the metabolic cost of the other demonic genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>5</biostatMet>
+  </GeneDef>
+
+  <!-- TMM_SuperMutant: base (-10) + new (-3 -2 -2 +3 = -4) = -14 -> +14 -->
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Mutant</defName>
+    <label>FEV mutant metabolism</label>
+    <description>Hyper-efficient FEV biochemistry balances the baseline metabolic cost of the super mutant xenotype, leaving only the extra caloric demand of bulky physiology.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>14</biostatMet>
+  </GeneDef>
+
+  <!-- TMM_Ghoul: base (-8) + new (-3 -2 +3 = -2) = -10 -> +10 -->
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Ghoul</defName>
+    <label>ghoul metabolism</label>
+    <description>Irradiated necrotic tissue operates on minimal baseline nutrition, fully offsetting the metabolic cost of other ghoul genes.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>10</biostatMet>
+  </GeneDef>
+
+  <!-- TMM_Leviathan: base (-8) + new (-3 -3 +4 = -2) = -10 -> +10 -->
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Metabolism_Leviathan</defName>
+    <label>leviathan metabolism</label>
+    <description>Primordial Purgatory physiology offsets the baseline metabolic cost of Leviathan genetic traits.</description>
+    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>10</biostatMet>
+  </GeneDef>
+
+</Defs>

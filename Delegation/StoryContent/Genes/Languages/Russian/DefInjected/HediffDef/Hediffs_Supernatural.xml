@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Hediff_CelestialGrace.label>небесная благодать</TMM_Hediff_CelestialGrace.label>
+  <TMM_Hediff_CelestialGrace.description>Сияющая благодать почти мгновенно затягивает сосуды, снижая скорость кровотечения на 80%.</TMM_Hediff_CelestialGrace.description>
+
+  <TMM_Hediff_RetinalBurn.label>небесный ожог сетчатки</TMM_Hediff_RetinalBurn.label>
+  <TMM_Hediff_RetinalBurn.description>Ослепительный небесный свет обжёг глаза, временно снизив зрение на 70%.</TMM_Hediff_RetinalBurn.description>
+
+  <TMM_Hediff_InfernalWhisper.label>адский дурман</TMM_Hediff_InfernalWhisper.label>
+  <TMM_Hediff_InfernalWhisper.description>Тёмный психический туман затуманивает сознание страхом, снижая Сознание, скорость работы и точность реакции.</TMM_Hediff_InfernalWhisper.description>
+
+  <TMM_Hediff_IrradiatedMetabolism.label>радиационная регенерация</TMM_Hediff_IrradiatedMetabolism.label>
+  <TMM_Hediff_IrradiatedMetabolism.description>Фоновая радиация ускоряет деление мутировавших клеток, резко ускоряя заживление ран и поднимая настроение.</TMM_Hediff_IrradiatedMetabolism.description>
+
+  <TMM_Hediff_WarRoarAdrenaline.label>боевой прилив мутанта</TMM_Hediff_WarRoarAdrenaline.label>
+  <TMM_Hediff_WarRoarAdrenaline.description>Ударная доза адреналина ВРЭ ускоряет удары в ближнем бою и движение.</TMM_Hediff_WarRoarAdrenaline.description>
+
+  <TMM_Hediff_WarRoarFear.label>ужасающий рёв</TMM_Hediff_WarRoarFear.label>
+  <TMM_Hediff_WarRoarFear.description>Смертельный ужас от рёва супермутанта замедляет движения жертвы.</TMM_Hediff_WarRoarFear.description>
+
+  <TMM_Hediff_BulkyPhysiology.label>громоздкая физиология ВРЭ</TMM_Hediff_BulkyPhysiology.label>
+  <TMM_Hediff_BulkyPhysiology.description>Огромная мышечная масса требует на 35% больше пищи.</TMM_Hediff_BulkyPhysiology.description>
+
+  <TMM_Hediff_PredatoryMimicry.label>хищная мимикрия</TMM_Hediff_PredatoryMimicry.label>
+  <TMM_Hediff_PredatoryMimicry.description>Клеточная маскировка копирует внешность и голос жертвы, повышая социальные и торговые навыки. Мгновенно слетает от буры или «Пасти бездны».</TMM_Hediff_PredatoryMimicry.description>
+
+  <TMM_Hediff_BoraxBurn.label>ожог бурой</TMM_Hediff_BoraxBurn.label>
+  <TMM_Hediff_BoraxBurn.description>Тетраборат натрия разъедает ткани левиафана, подавляя регенерацию и снижая защиту брони вдвое на 30 секунд.</TMM_Hediff_BoraxBurn.description>
+
+</LanguageData>
