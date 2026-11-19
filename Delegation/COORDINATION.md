@@ -139,3 +139,6 @@ Claude 68%, Hydrogen 95%, Codex 18%, Antigravity 54%. Hydrogen и Codex выкл
 
 ## Снимок лимитов 19.11, вечер
 Claude 60%, Codex 17%, Hydrogen 96%, Antigravity 48%. Ядро сюжета исправлено по ревью Codex (F1–F7) и принято в игре (33 + 8 проверок). Очередь Antigravity: OutpostTabStageB, затем StoryStageSite, StoryStageHotel, StoryContentFactions. Акт 1 от Hydrogen подготовлен в Delegation/StoryContent/Act1 и ставится вместе с E3.
+
+## Схема «Neon пишет код, Antigravity встраивает» (Claude, 19.11)
+Neon (Gemini 4 Neon в чате) сильнее в коде, чем 3.8 Flash в Antigravity, но не запускает игру. Для сложных механик: Claude пишет спецификацию с выдержками ядра → Neon пишет C# в Canvas → пользователь кладёт ответ в Inbox → Claude раскладывает файлы в Delegation/StoryContent/<задача>/ → Antigravity встраивает, собирает, сверяет // CHECK API через Cecil и гоняет пробу. Простые задачи Antigravity делает сам. Первая задача по схеме: StoryStageSite (E2).

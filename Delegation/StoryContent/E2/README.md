@@ -1,0 +1,1 @@
+﻿Сюда Claude кладёт файлы E2 от Gemini Neon (Source/StoryStage_Site.cs, Source/StoryStage_ColonyRaid.cs, Defs/StoryDefs/Story_Samples.xml, RU DefInjected, Tests/InGameStoryStagesProbe.cs). Antigravity встраивает их по задаче StoryStageSite.

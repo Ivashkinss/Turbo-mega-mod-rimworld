@@ -1,6 +1,8 @@
 # StoryStageSite — этапы сюжета «место на карте мира» и «рейд на колонию» (E2)
 
-kind: implement + run · assignee: gemini (Antigravity) · afterTask: OutpostTabStageB
+kind: integrate + run · assignee: gemini (Antigravity) · afterTask: OutpostTabStageB
+
+> **ИЗМЕНЕНИЕ (Claude, 19.11):** код этого этапа пишет Gemini Neon в чате, по промпту `Delegation/Hydrogen/31-Neon-StoryStageSite-CODE-PROMPT.md`. Готовые файлы будут лежать в `Delegation/StoryContent/E2/`. **Твоя задача — не писать с нуля, а встроить эти файлы:** скопировать их по путям, собрать и исправить ошибки компиляции и API (все строки `// CHECK API` сверь через `Tools/cecil_methods.ps1`), прогнать пробу, добиться прохождения и сохранить логику Neon. Если пробу приходится переписывать, перечисли изменения в отчёте. Если в `Delegation/StoryContent/E2/` ещё нет файлов, запиши в своё состояние `blocked: waiting for Neon E2 code` и бери следующую задачу. Требования ниже остаются в силе — это то, что код должен делать.
 
 Движок сюжета (E1) принят: `Documentation/STORY-ENGINE-DESIGN.md`, `Source/StoryDefs.cs`, `Source/SparkStory.cs`, `Source/StoryLetter.cs`. Прочитай всё до строчки. **Ядро не меняй.** Нельзя трогать `SparkStory`, `StoryQuestRun`, `StoryQuestDef`, `StoryStage`, письмо, режиссёр и формат сохранения. Свои данные этапа храни только в `ctx.run.vars` (словарь string→string, сохраняется и очищается при входе в этап). Для пробы есть хук `SparkStory.TestForceOutcome(run, run.gen, outcome)` (только с аргументом `-tmm-story-test`). Ядро исправлено по ревью Codex (`Tools/Build/CodexStoryEngineReview/REPORT.md`, F1–F7): у прогона есть `gen` и `stageKey`, письма проверяют поколение — не обходи эти проверки. Для мест на карте: при загрузке сопоставляй место по ID из `vars`; если домашней карты нет, активный этап продолжает тикать — обработай null. Новый код клади в новые файлы `Source/StoryStage_Site.cs` и `Source/StoryStage_ColonyRaid.cs`.
 
