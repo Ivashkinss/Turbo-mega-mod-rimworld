@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_A3_WastelandUltimatum -->
+  <TMM_Story_A3_WastelandUltimatum.label>ультиматум пустоши</TMM_Story_A3_WastelandUltimatum.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.0.label>Послы на горизонте</TMM_Story_A3_WastelandUltimatum.stages.0.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.0.text>Пепельный шторм после Второго пробуждения едва утих, но все дальние радиостанции в {COLONY} разрываются от зашифрованных вызовов. Послы со всей Пустоши стягиваются к вашей гостинице, требуя ответа, чью сторону займёт поселение теперь, когда чертежи Резонатора Искр у вас в руках.</TMM_Story_A3_WastelandUltimatum.stages.0.text>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.label>Точка невозврата №1: Декларация</TMM_Story_A3_WastelandUltimatum.stages.2.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.text>Зал гостиницы набит до отказа — охотники, паладины Братства, курьеры Подземки, клерки Волт-Тек и фигуры в тёмных плащах, от которых тянет озоном и серой, ловят каждое ваше слово.\n\n{GIVER} встаёт рядом и тихо говорит: «Отсидеться посередине больше не выйдет. То, что вы объявите сегодня ночью, расколет весь регион на враждующие лагеря — и заставит несогласных внутри каждой фракции решать, идти ли за своими лидерами или бежать к вам».</TMM_Story_A3_WastelandUltimatum.stages.2.text>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.0.label>Декларация защиты: уберечь Искры и навсегда запечатать Разлом</TMM_Story_A3_WastelandUltimatum.stages.2.choices.0.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.0.resultText>Ваш голос разносится по залу и уходит на все открытые частоты: {COLONY} защитит живые Искры синтов и запечатает Разлом от любых захватчиков. Подземка и Минитмены встречают решение одобрительным гулом, тогда как посланники Анклава, Института и преисподней покидают зал в ледяном молчании.</TMM_Story_A3_WastelandUltimatum.stages.2.choices.0.resultText>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.1.label>Декларация очищения: выжечь из Пустоши аномалии, мутации и оккультных паразитов</TMM_Story_A3_WastelandUltimatum.stages.2.choices.1.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.1.resultText>Вы объявляете, что человечество должно вернуть себе Землю огнём и сталью, очистив её от аномалий, мутантов и вышедших из-под контроля машин. Офицеры Братства и Анклава мрачно кивают в знак согласия, а гули, мутанты и агенты Подземки растворяются в ночи.</TMM_Story_A3_WastelandUltimatum.stages.2.choices.1.resultText>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.2.label>Декларация высшего порядка: передать силу Якоря Небесам и архитекторам порядка</TMM_Story_A3_WastelandUltimatum.stages.2.choices.2.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.2.resultText>Вы провозглашаете, что хаос прекратится лишь под строгой высшей властью, предлагая энергию Якоря небесному воинству и довоенным структурам. Посланники Небес и Просвещённых склоняют головы, а вольные жители Пустоши клянутся дать отпор.</TMM_Story_A3_WastelandUltimatum.stages.2.choices.2.resultText>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.3.label>Декларация бездны: сокрушить Клетку и распахнуть врата Ада</TMM_Story_A3_WastelandUltimatum.stages.2.choices.3.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.3.resultText>Лампы вспыхивают багровым светом, когда вы объявляете, что барьер старого мира сгорит, а жатва Искр напитает владык Ада и ночные кланы. Демоны в углах зала хищно ухмыляются, а охотники хватаются за оружие и отступают к дверям.</TMM_Story_A3_WastelandUltimatum.stages.2.choices.3.resultText>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.4.label>Декларация бездны: подчинить силу преисподней и перекроить Пустошь</TMM_Story_A3_WastelandUltimatum.stages.2.choices.4.label>
+  <TMM_Story_A3_WastelandUltimatum.stages.2.choices.4.resultText>Воплощая свои самые тёмные замыслы, вы заявляете, что {COLONY} обрушит небесный барьер и оседлает адский прилив. По полу стелется чёрный дым, демоны насмешливо кланяются, а охотники клянутся отомстить.</TMM_Story_A3_WastelandUltimatum.stages.2.choices.4.resultText>
+  <TMM_Story_A3_WastelandUltimatum.onComplete.1.label>Начинается холодная война</TMM_Story_A3_WastelandUltimatum.onComplete.1.label>
+  <TMM_Story_A3_WastelandUltimatum.onComplete.1.text>Ваша декларация разнеслась по всем уголкам Пустоши. Фракции заняли боевые рубежи — ждите шпионов в гостинице, диверсий у ворот и тайных писем от перебежчиков, готовых перейти под ваше знамя.</TMM_Story_A3_WastelandUltimatum.onComplete.1.text>
+
+  <!-- TMM_Story_A3_ColdWar_SpyConsortium -->
+  <TMM_Story_A3_ColdWar_SpyConsortium.label>тени в гостевом крыле</TMM_Story_A3_ColdWar_SpyConsortium.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.0.label>Странные постояльцы</TMM_Story_A3_ColdWar_SpyConsortium.stages.0.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.0.text>Вскоре после вашей декларации в гостиницу заселяются двое безупречно вежливых «торговцев антиквариатом» — их тяжёлые латунные саквояжи издают тихий енохианский гул каждый раз, когда они проходят мимо люка Нулевого Якоря.</TMM_Story_A3_ColdWar_SpyConsortium.stages.0.text>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.label>С поличным</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.text>Ваши контрразведчики зажимают мистера Кендрикса в нижнем коридоре в тот самый миг, когда он пытается прикрепить триангуляционный маячок Консорциума к несущей балке Якоря. Спокойно поправив манжеты, он холодно усмехается: «Неглупо. И что же вы намерены делать с гостем?»</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.text>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.0.label>Перепрограммировать маячок и скормить Лондону и Консорциуму ложные координаты</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.0.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.0.resultText>Инженеры незаметно сбивают гармонический сдвиг передатчика. Кендрикс уезжает в полной уверенности, что задание выполнено, выигрывая для {COLONY} драгоценное время.</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.0.resultText>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.1.label>Конфисковать его серебряные обереги и допросить о маршрутах Консорциума</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.1.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.1.resultText>Лишённый потайных приборов, Кендрикс проговаривается о расположении вспомогательного химического склада Консорциума, прежде чем скрыться в дымовой завесе.</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.1.resultText>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.2.label>Вышвырнуть его за ворота под прицелом в назидание всем шпионам</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.2.label>
+  <TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.2.resultText>Охрана выводит оперативника за главные ворота на глазах у проходящих караванов. Нулевой Синт одобрительно кивает, оценив вашу бдительность.</TMM_Story_A3_ColdWar_SpyConsortium.stages.2.choices.2.resultText>
+
+  <!-- TMM_Story_A3_ColdWar_SpyResistance -->
+  <TMM_Story_A3_ColdWar_SpyResistance.label>шёпот в бараке</TMM_Story_A3_ColdWar_SpyResistance.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.0.label>Нервные бродяги</TMM_Story_A3_ColdWar_SpyResistance.stages.0.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.0.text>После вашей жёсткой декларации в гостинице снимают комнату двое дёрганых «старателей» — каждую ночь они о чём-то шепчутся с Нулевым Синтом и зарисовывают мёртвые зоны ваших турелей.</TMM_Story_A3_ColdWar_SpyResistance.stages.0.text>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.label>Перехват у переборки</TMM_Story_A3_ColdWar_SpyResistance.stages.2.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.text>Охрана перехватывает Техника Тома у переборки Якоря, когда он пытается передать Нулевому Синту зашифрованную голозапись с планом побега. Он торопливо поднимает руки: «Эй, полегче! Мы просто хотели оставить парню запасной выход, пока вы не подключили его к этой адской машине!»</TMM_Story_A3_ColdWar_SpyResistance.stages.2.text>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.0.label>Забрать его шифратор и позволить уйти без лишнего шума</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.0.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.0.resultText>Техник Том оставляет свой самодельный скремблер и исчезает в тумане, бормоча что-то себе под нос. Нулевой Синт провожает его противоречивым взглядом.</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.0.resultText>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.1.label>Конфисковать шифры Подземки и допросить лазутчика</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.1.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.1.resultText>Вы изымаете у агента кодовые карты и запас серебра, после чего выпроваживаете его за пределы периметра.</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.1.resultText>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.2.label>Публично разоблачить агента Подземки и ужесточить охрану</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.2.label>
+  <TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.2.resultText>Ваша суровость впечатляет авторитарных союзников, хотя Нулевой Синт становится заметно холоднее к вашей охране.</TMM_Story_A3_ColdWar_SpyResistance.stages.2.choices.2.resultText>
+
+  <!-- TMM_Story_A3_ColdWar_Sabotage -->
+  <TMM_Story_A3_ColdWar_Sabotage.label>диверсия в сумерках</TMM_Story_A3_ColdWar_Sabotage.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.0.label>Вспышка на периметре</TMM_Story_A3_ColdWar_Sabotage.stages.0.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.0.text>В сумерках внешний периметр {COLONY} сотрясает оглушительный взрыв! Вражеские диверсанты подорвали вспомогательный силовой узел и скрылись, прибив к обугленной стене записку: «Ваши стены не устоят, когда грянет настоящая буря».</TMM_Story_A3_ColdWar_Sabotage.stages.0.text>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.label>Оценка прорыва</TMM_Story_A3_ColdWar_Sabotage.stages.1.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.text>Из разбитого распределительного щита валит дым, а дальние датчики движения фиксируют отряд наёмников, спешащий воспользоваться суматохой. Как вы поступите?</TMM_Story_A3_ColdWar_Sabotage.stages.1.text>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.0.label>Запеленговать сигнал детонатора, чтобы заранее вычислить направление удара</TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.0.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.0.resultText>Связист засекает частоту подрывников, давая защитникам точное предупреждение о маршруте вражеского отряда.</TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.0.resultText>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.1.label>Переключить аварийные конденсаторы и укрепить внутренние баррикады</TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.1.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.1.resultText>Механики в рекордный срок обходят сгоревшие реле, возвращая питание обороне как раз в тот миг, когда на краю карты гремят выстрелы.</TMM_Story_A3_ColdWar_Sabotage.stages.1.choices.1.resultText>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.0.effects.1.label>Диверсионный отряд разгромлен</TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.0.effects.1.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.0.effects.1.text>Защитники разбили отряд наёмников, посланный добить ослабленный периметр. При командире группы найден анонимный контракт, оплаченный довоенным золотом.</TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.0.effects.1.text>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.1.effects.1.label>Тяжёлая стычка у пролома</TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.1.effects.1.label>
+  <TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.1.effects.1.text>Хотя налётчики в итоге отступили в пепел, диверсия больно ударила по запасам — враги не остановятся ни перед чем.</TMM_Story_A3_ColdWar_Sabotage.stages.2.outcomes.1.effects.1.text>
+
+  <!-- TMM_Story_A3_ColdWar_KidnapAttempt -->
+  <TMM_Story_A3_ColdWar_KidnapAttempt.label>охота на нулевого синта</TMM_Story_A3_ColdWar_KidnapAttempt.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.label>Стазис-кандалы на подходе</TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>Нулевой Синт просыпается в холодном поту, схватившись за голову: «Они идут — не убивать, а заковать меня в стазис-клетку! Я чувствую, как их квантовые глушители наводятся на мою Искру!»</TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.label>Группа захвата уничтожена</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.text>Гарнизон перехватил ударную группу охотников на подступах к Нулевому Синту, разбив их стазис-ошейники и отстояв поселение!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.label>Нулевой Синт похищен!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.text>В суматохе штурма отряд X6-88 набросил на Нулевого Синта стазис-ошейник и отступил в передовой бункер-ретранслятор! Немедленно высылайте спасательный отряд!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.0.effects.3.label>Нулевой Синт спасён!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.0.effects.3.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.0.effects.3.text>Ваш штурмовой отряд ворвался в передовой бункер, срезал стазис-ошейник с Нулевого Синта и благополучно вернул его домой!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.0.effects.3.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.1.effects.2.label>Отчаянный побег в одиночку</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.1.effects.2.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.1.effects.2.text>Прежде чем похитители завершили телепортацию, Нулевой Синт перегрузил собственный стазис-ошейник вспышкой Искры и вернулся в {COLONY} израненным и озлобленным тем, что помощь не пришла.</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.1.effects.2.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.2.effects.2.label>Тяжёлое возвращение</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.2.effects.2.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.2.effects.2.text>Хотя первая атака захлебнулась, разведчики Подземки устроили засаду на ослабленный конвой и помогли избитому Нулевому Синту добраться обратно до {COLONY}.</TMM_Story_A3_ColdWar_KidnapAttempt.stages.2.outcomes.2.effects.2.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.label>После налёта</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.text>Когда Нулевой Синт снова в безопасности за стенами {COLONY}, а вражеские стазис-устройства превращены в груду лома, ясно одно: формулу буры и Резонатор Искр нужно завершить раньше, чем на порог явятся главные армии.</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.0.label>Поговорить с Нулевым Синтом и усилить личные обереги в его комнате</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.0.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.0.resultText>Нулевой Синт медленно кивает, сжимая вашу руку: «Я готов. Свяжемся с нашими союзниками и закончим сборку Резонатора».</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.0.resultText>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.1.label>Разобрать захваченные стазис-ошейники на детали и удвоить караулы</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.1.label>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.1.resultText>Инженеры извлекают из ошейников ценную электронику, а часовые берут под прицел каждые ворота.</TMM_Story_A3_ColdWar_KidnapAttempt.stages.3.choices.1.resultText>
+
+  <!-- TMM_Story_A3_DefectorLetter_SteelAndScience -->
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.label>тайные письма: сталь и кремний</TMM_Story_A3_DefectorLetter_SteelAndScience.label>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.letterLabel>Шифровка из-за линии фронта</TMM_Story_A3_DefectorLetter_SteelAndScience.letterLabel>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.letterText>Ваша декларация расколола хрупкое единство внутри Института и Братства Стали. По резервной аварийной частоте {GIVER} пробил зашифрованное послание мимо своих командиров:\n\n«Мэксон и Джастин Айо готовят тотальную зачистку — без пленных и пощады. Не все из нас подписывались на бойню. Держите эфир открытым для наших сигналов прорыва: если поможете уйти, мы принесём в вашу колонию всё, что знаем».</TMM_Story_A3_DefectorLetter_SteelAndScience.letterText>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.label>Ответ несогласным</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.label>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.text>Вы можете ответить по закрытому каналу, чтобы согласовать окна эвакуации с сочувствующими офицерами и учёными из Братства и Института.</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.text>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.0.label>Передать коды безопасного прохода и пообещать убежище всем перебежчикам</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.0.label>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.0.resultText>Короткий двойной щелчок подтверждает приём. Квесты побега героев Братства и Института сработают, как только они решатся на прорыв.</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.0.resultText>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.1.label>Попросить при побеге прихватить технические архивы и запасные детали</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.1.label>
+  <TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.1.resultText>«Принято, — шепчет зашифрованный голос перед тем, как связь обрывается. — Держите посадочную площадку свободной».</TMM_Story_A3_DefectorLetter_SteelAndScience.stages.0.choices.1.resultText>
+
+  <!-- TMM_Story_A3_DefectorLetter_WingsAndSulfur -->
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.label>тайные письма: крылья и сера</TMM_Story_A3_DefectorLetter_WingsAndSulfur.label>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.letterLabel>Предупреждение из пепла и озона</TMM_Story_A3_DefectorLetter_WingsAndSulfur.letterLabel>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.letterText>В течение одного часа у вашего периметра появляются два совершенно разных послания: опалённое небесным огнём перо от {GIVER} и пропитанная серой записка с печатью Кроули.\n\nАрхангелы Небес поднимают карательные отряды против собственных мятежников, а фанатики Ада взламывают замки Клетки Люцифера. Оба отступника предупреждают: когда грянут перевороты, они попросят убежища в {COLONY}.</TMM_Story_A3_DefectorLetter_WingsAndSulfur.letterText>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.label>Подготовка к приёму изгнанников</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.label>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.text>Война Небес и Ада выплёскивается прямо на ваш порог. Как поселение подготовится к появлению сверхъестественных перебежчиков?</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.text>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.0.label>Подготовить енохианские обереги и комнаты для Кастиэля или Кроули</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.0.label>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.0.resultText>Мастера настраивают защитные печати на воротах так, чтобы мятежные ангелы или беглый Король Ада могли войти, не попав в ваши ловушки.</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.0.resultText>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.1.label>Запасти каменную соль и серебро на случай, если за ними явятся палачи</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.1.label>
+  <TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.1.resultText>Ящики в оружейной забиты освящённой солью и серебром — вы встретите карателей Небес и Ада во всеоружии.</TMM_Story_A3_DefectorLetter_WingsAndSulfur.stages.0.choices.1.resultText>
+
+  <!-- TMM_Story_A3_DefectorLetter_CracksInConsortium -->
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.label>тайные письма: трещины в консорциуме</TMM_Story_A3_DefectorLetter_CracksInConsortium.label>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.letterLabel>Шифр из глубины Убежищ</TMM_Story_A3_DefectorLetter_CracksInConsortium.letterLabel>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.letterText>Ваша открытая позиция вызвала тихий мятеж в рядах исполнителей Консорциума. {GIVER} передаёт спешную, полуобгоревшую шифровку: доктор Хесс, доктор Брон и Дик Роман форсируют жатву — и несогласные внутри Волт-Тек, Изгоев и Просвещённых готовы бежать к вам, прихватив химический ключ против неуязвимости левиафанов.</TMM_Story_A3_DefectorLetter_CracksInConsortium.letterText>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.label>Координация прорыва изнутри</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.label>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.text>Собственные архивариусы и смотрители Консорциума хотят вырваться наружу до того, как Кровавое затмение навсегда запрёт двери.</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.text>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.0.label>Выставить дозорных на границах для встречи беглых архивариусов и смотрителей</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.0.label>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.0.resultText>Наблюдатели на периметре получили условные знаки перебежчиков. Как только кто-то из них вступит в колонию, у вас появятся специалисты для расшифровки формулы буры.</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.0.resultText>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.1.label>Попросить в первую очередь вынести файлы по сдерживанию левиафанов</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.1.label>
+  <TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.1.resultText>«Уже зашиты в подкладку плаща, — мигает ответная шифровка. — Только держите задние ворота открытыми».</TMM_Story_A3_DefectorLetter_CracksInConsortium.stages.0.choices.1.resultText>
+
+  <!-- TMM_Story_A3_BoraxAndBlueprints -->
+  <TMM_Story_A3_BoraxAndBlueprints.label>секрет буры</TMM_Story_A3_BoraxAndBlueprints.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.0.label>Сверка данных перебежчиков</TMM_Story_A3_BoraxAndBlueprints.stages.0.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.0.text>Завербованные вами перебежчики собираются у исследовательского терминала {COLONY}, сопоставляя вынесенные архивы своих фракций с Сектором 4 Голодиска-Ключа. Спустя несколько часов находится разгадка: точная химическая формула концентрированного тетрабората натрия (буры), лишающего левиафанов и Дика Романа неуязвимости, хранится на соседнем складе «Сукрокорп».</TMM_Story_A3_BoraxAndBlueprints.stages.0.text>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.0.effects.2.label>Бочки с катализатором буры захвачены</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.0.effects.2.text>Ваш отряд прорвался мимо охраны левиафанов на складе «Сукрокорп» и вывез целые бочки концентрированного тетрабората натрия вместе с довоенными сплавами!</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.1.effects.0.label>Синтез по лабораторным записям</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.1.effects.0.text>Хотя чистильщики Консорциума успели сжечь склад до прибытия отряда, ваши перебежчики восстановили формулу распылителя буры по химическим уравнениям с Голодиска-Ключа.</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.2.effects.0.label>Экстренный химический синтез</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.2.effects.0.text>Отступив со склада под плотным огнём, исследователи всё же сумели воссоздать боевую формулу буры по спасённым пробникам.</TMM_Story_A3_BoraxAndBlueprints.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.label>Оружие против бездны</TMM_Story_A3_BoraxAndBlueprints.stages.2.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.text>В мастерской едкий белый раствор буры стабилизирован и заправлен в баллоны под давлением — одновременно на главном экране завершается компиляция финальных чертежей Резонатора Искр.</TMM_Story_A3_BoraxAndBlueprints.stages.2.text>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.0.label>Загрузить чертежи распылителей и турелей с бурой в производство</TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.0.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.0.resultText>Механики заносят схемы распылителя и турели с бурой в рабочие столы. Левиафаны больше не будут неуязвимыми у ваших ворот.</TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.0.resultText>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.1.label>Синхронизировать формулу буры с гармоническими схемами Резонатора</TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.1.label>
+  <TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.1.resultText>И чертежи защиты с бурой, и спецификация сборки Резонатора Искр полностью готовы к монтажу.</TMM_Story_A3_BoraxAndBlueprints.stages.2.choices.1.resultText>
+  <TMM_Story_A3_BoraxAndBlueprints.onComplete.2.label>Формула буры и чертежи Резонатора готовы</TMM_Story_A3_BoraxAndBlueprints.onComplete.2.label>
+  <TMM_Story_A3_BoraxAndBlueprints.onComplete.2.text>Ваши исследователи открыли производство распылителей и турелей с бурой! Теперь, когда оружие против левиафанов готово, пора собрать финальные материалы и построить Резонатор Искр.</TMM_Story_A3_BoraxAndBlueprints.onComplete.2.text>
+
+  <!-- TMM_Story_A3_BuildSparkResonator -->
+  <TMM_Story_A3_BuildSparkResonator.label>сборка резонатора искр</TMM_Story_A3_BuildSparkResonator.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.0.effects.0.label>Каркас Резонатора отлит</TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.0.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.0.effects.0.text>Инженеры выточили пласталевый корпус сдерживания для Резонатора Искр. Теперь нужно выделить довоенное золото для енохианских токопроводящих нитей.</TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.0.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.1.effects.0.label>Каркас собран из резервных плит</TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.1.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.1.effects.0.text>Не теряя времени, механики сварили корпус из запасных плит Нулевого Якоря и перешли к золотым тоководам.</TMM_Story_A3_BuildSparkResonator.stages.0.outcomes.1.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.0.effects.0.label>Енохианские нити вплетены</TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.0.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.0.effects.0.text>Тончайшая золотая вязка вплавлена в кольца Резонатора, соединяя довоенную квантовую физику с древними небесными печатями.</TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.0.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.1.effects.0.label>Тонкослойная проводка готова</TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.1.effects.0.text>Кузнецы вытянули каждую крупицу золота в тончайшие нити, замкнув контур до истечения срока.</TMM_Story_A3_BuildSparkResonator.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.label>Гармоническая настройка</TMM_Story_A3_BuildSparkResonator.stages.2.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.text>Перед установкой управляющих компонентов Нулевой Синт должен сонастроить центральный кристалл Резонатора со своей духовной частотой. Как вы проведёте калибровку?</TMM_Story_A3_BuildSparkResonator.stages.2.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.choices.0.label>Провести плавную, безболезненную синхронизацию с Нулевым Синтом</TMM_Story_A3_BuildSparkResonator.stages.2.choices.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.choices.0.resultText>Мягкий голубой свет ровно струится по золотым нитям, не истощая Нулевого Синта. Кристалл отзывается чистым, устойчивым гулом.</TMM_Story_A3_BuildSparkResonator.stages.2.choices.0.resultText>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.choices.1.label>Подать максимальную мощность на кристалл ради предельной отдачи</TMM_Story_A3_BuildSparkResonator.stages.2.choices.1.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.2.choices.1.resultText>Молнии с треском пляшут по каркасу, фиксируя кристалл на пике мощности и оставляя Нулевого Синта бледным и обессиленным.</TMM_Story_A3_BuildSparkResonator.stages.2.choices.1.resultText>
+  <TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.0.effects.0.label>Пульт управления смонтирован</TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.0.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.0.effects.0.text>Последние компоненты установлены в разъёмы. Резонатор Искр готов к установке на постоянное место.</TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.0.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.1.effects.0.label>Пульт собран на резервных платах</TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.1.effects.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.1.effects.0.text>Использовав резервные реле из бункера, техники завершили монтаж пульта как раз к моменту выбора площадки.</TMM_Story_A3_BuildSparkResonator.stages.3.outcomes.1.effects.0.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.label>Размещение Резонатора Искр</TMM_Story_A3_BuildSparkResonator.stages.4.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.text>Резонатор Искр полностью собран и гудит мощью, способной переписать судьбу Земли. Где вы установите машину перед запуском главного пульта?</TMM_Story_A3_BuildSparkResonator.stages.4.text>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.0.label>Опустить прямо в открытую шахту Нулевого Якоря под {COLONY}</TMM_Story_A3_BuildSparkResonator.stages.4.choices.0.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.0.resultText>Тяжёлые лебёдки опускают Резонатор в древний подземный зал, стыкуя его напрямую с ядром континентальных линий силы.</TMM_Story_A3_BuildSparkResonator.stages.4.choices.0.resultText>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.1.label>Установить в укреплённом сердце центральной цитадели {COLONY}</TMM_Story_A3_BuildSparkResonator.stages.4.choices.1.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.1.resultText>Толстые силовые кабели связывают Резонатор сквозь пол с Якорем внизу, ставя пульт прямо под прикрытием всех ваших турелей и бойцов.</TMM_Story_A3_BuildSparkResonator.stages.4.choices.1.resultText>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.2.label>Запереть в экранированном святилище с енохианскими печатями</TMM_Story_A3_BuildSparkResonator.stages.4.choices.2.label>
+  <TMM_Story_A3_BuildSparkResonator.stages.4.choices.2.resultText>Окружённый серебряными оберегами, Резонатор тихо гудит в укрытии — защищённый от случайных психических помех до самого часа расплаты.</TMM_Story_A3_BuildSparkResonator.stages.4.choices.2.resultText>
+  <TMM_Story_A3_BuildSparkResonator.onComplete.3.label>Акт IV: Кровавое затмение</TMM_Story_A3_BuildSparkResonator.onComplete.3.label>
+  <TMM_Story_A3_BuildSparkResonator.onComplete.3.text>Едва Резонатор Искр встаёт на место, ослепительный столб синего света пронзает облака — и солнце над Пустошью наливается густым, зловещим багрянцем. Началось Кровавое затмение! Лидеры всех фракций движутся к вашему пульту ко Второй точке невозврата.</TMM_Story_A3_BuildSparkResonator.onComplete.3.text>
+
+</LanguageData>
