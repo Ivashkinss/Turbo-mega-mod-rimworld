@@ -1532,7 +1532,7 @@
     },
     {
       "id": "StoryEngineReview",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/StoryEngineReview/TASK.md",
@@ -1542,6 +1542,48 @@
       ],
       "createdUtc": "2026-11-19T18:45:00Z",
       "note": "Read-only acceptance of the story engine core: save format, letter lifecycle, director, conditions, E2/E3 extension points."
+    },
+    {
+      "id": "StoryStageSite",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "OutpostTabStageB",
+      "taskFile": "Delegation/StoryStageSite/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryStageSite",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T19:30:00Z",
+      "note": "Story E2: world-site and colony-raid stages; core is frozen, use run.vars and TestForceOutcome."
+    },
+    {
+      "id": "StoryStageHotel",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "StoryStageSite",
+      "taskFile": "Delegation/StoryStageHotel/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryStageHotel",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T19:30:00Z",
+      "note": "Story E3: hotel visit and deliver stages; install Hydrogen act 1 content."
+    },
+    {
+      "id": "StoryContentFactions",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "StoryStageHotel",
+      "taskFile": "Delegation/StoryContentFactions/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryContentFactions",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-19T19:30:00Z",
+      "note": "Story E4: 75 faction quests to XML with RU, content linter."
     },
     {
       "id": "OutpostShipmentCycles",

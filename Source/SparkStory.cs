@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
@@ -6,7 +7,8 @@ using Verse;
 
 namespace TurboMegaMod
 {
-    public enum StoryQuestStatus { Offered, Active, Completed, Failed, Declined }
+    // Appended values only: saves store the enum by name.
+    public enum StoryQuestStatus { Offered, Active, Completed, Failed, Declined, Disabled }
 
     /// Runtime record of one quest. Saved by defName so a removed StoryQuestDef never breaks a save.
     public sealed class StoryQuestRun : IExposable
@@ -14,14 +16,18 @@ namespace TurboMegaMod
         public string quest;
         public StoryQuestStatus status;
         public int stage = -1;
+        public string stageKey;          // stable key of the current stage (StoryStage.key or its index); survives reordered XML
+        public int gen;                  // generation: bumped on every offer and stage entry; letters carry it to reject stale clicks
         public string outcome;
         public string chosenOutcome;     // set by the choice letter, consumed by StoryStage_Choice.Tick
         public bool pendingChoice;
+        public bool needsLetter;         // a lost offer/choice letter must be re-sent once by the director
         public int stageUntilTick = -1;
         public int offeredTick = -1;
         public int cooldownUntilTick = -1;
         public int finishedTick = -1;
         public List<string> history = new List<string>(); // "stage:outcome" for the Chronicle log
+        public Dictionary<string, string> vars = new Dictionary<string, string>(); // per-stage worker data (E2/E3)
 
         public StoryQuestDef Def { get { return DefDatabase<StoryQuestDef>.GetNamedSilentFail(quest); } }
 
@@ -30,15 +36,23 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref quest, "quest");
             Scribe_Values.Look(ref status, "status", StoryQuestStatus.Offered);
             Scribe_Values.Look(ref stage, "stage", -1);
+            Scribe_Values.Look(ref stageKey, "stageKey");
+            Scribe_Values.Look(ref gen, "gen", 0);
             Scribe_Values.Look(ref outcome, "outcome");
             Scribe_Values.Look(ref chosenOutcome, "chosenOutcome");
             Scribe_Values.Look(ref pendingChoice, "pendingChoice", false);
+            Scribe_Values.Look(ref needsLetter, "needsLetter", false);
             Scribe_Values.Look(ref stageUntilTick, "stageUntilTick", -1);
             Scribe_Values.Look(ref offeredTick, "offeredTick", -1);
             Scribe_Values.Look(ref cooldownUntilTick, "cooldownUntilTick", -1);
             Scribe_Values.Look(ref finishedTick, "finishedTick", -1);
             Scribe_Collections.Look(ref history, "history", LookMode.Value);
-            if (Scribe.mode == LoadSaveMode.PostLoadInit && history == null) history = new List<string>();
+            Scribe_Collections.Look(ref vars, "vars", LookMode.Value, LookMode.Value);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (history == null) history = new List<string>();
+                if (vars == null) vars = new Dictionary<string, string>();
+            }
         }
     }
 
@@ -46,13 +60,14 @@ namespace TurboMegaMod
     public sealed class SparkStory : WorldComponent
     {
         public const int TickInterval = 250;
-        public static int MaxActive = 2;                 // faction quests at once; main quests are extra
+        public static int MaxActive = 2;                 // non-main quests at once (offered faction quests and non-main autoStart)
         public static int MinOfferGapTicks = 30000;      // half a day between offers
 
         private Dictionary<string, string> flags = new Dictionary<string, string>();
         private List<StoryQuestRun> runs = new List<StoryQuestRun>();
         public int lastOfferTick = -999999;
         public string lastMechanic = "";
+        private bool reconciled;                         // transient: reconcile once after load/start
 
         public SparkStory(World world) : base(world) { }
 
@@ -75,13 +90,18 @@ namespace TurboMegaMod
             StoryQuestRun r = RunFor(d.defName);
             if (r != null && r.status != StoryQuestStatus.Declined) return false;
             if (r != null && Find.TickManager.TicksGame < r.cooldownUntilTick) return false;
-            if (GetInt("act") < 1 && d.act > 1) return false;
-            if (GetInt("act") > 0 && d.act > GetInt("act")) return false;
+            int act = Math.Max(1, GetInt("act"));
+            if (d.act > act) return false;
             if (!d.faction.NullOrEmpty() && StoryUtil.FactionOf(d.faction) == null) return false;
             return StoryConditions.Holds(this, d.requires, d.anyOf);
         }
 
         public StoryContext Context(StoryQuestRun r) { return new StoryContext { state = this, run = r, def = r.Def }; }
+
+        private int NonMainBusy()
+        {
+            return runs.Count(x => (x.status == StoryQuestStatus.Active || x.status == StoryQuestStatus.Offered) && x.Def != null && !x.Def.main);
+        }
 
         // ------------------------------------------------ lifecycle
         public StoryQuestRun Offer(StoryQuestDef d)
@@ -89,40 +109,52 @@ namespace TurboMegaMod
             StoryQuestRun r = RunFor(d.defName);
             if (r == null) { r = new StoryQuestRun { quest = d.defName }; runs.Add(r); }
             r.status = StoryQuestStatus.Offered;
+            r.gen++;
             r.offeredTick = Find.TickManager.TicksGame;
+            r.needsLetter = false;
             lastOfferTick = r.offeredTick;
             StoryChoiceLetter.Send(Context(r), -1, StoryChoiceLetter.KindOffer);
             return r;
         }
 
-        public void Accept(StoryQuestRun r)
+        /// Accept/Decline/Choose take the letter's generation and refuse stale or repeated clicks.
+        public bool Accept(StoryQuestRun r, int letterGen)
         {
-            if (r == null || r.status != StoryQuestStatus.Offered) return;
+            if (r == null || r.status != StoryQuestStatus.Offered || r.gen != letterGen || r.Def == null) return false;
             r.status = StoryQuestStatus.Active;
             StartStage(r, 0);
+            return true;
         }
 
-        public void Decline(StoryQuestRun r)
+        public bool Decline(StoryQuestRun r, int letterGen)
         {
-            if (r == null || r.status != StoryQuestStatus.Offered) return;
+            if (r == null || r.status != StoryQuestStatus.Offered || r.gen != letterGen) return false;
             StoryQuestDef d = r.Def;
             r.status = StoryQuestStatus.Declined;
+            r.gen++;
             r.cooldownUntilTick = Find.TickManager.TicksGame + (int)((d == null ? 3f : d.offerCooldownDays) * GenDate.TicksPerDay);
+            return true;
         }
 
-        /// Called by the choice letter.
-        public void Choose(StoryQuestRun r, int stage, string outcome)
+        public bool Choose(StoryQuestRun r, int stage, int letterGen, string outcome)
         {
-            if (r == null || r.status != StoryQuestStatus.Active || r.stage != stage || !r.pendingChoice) return;
+            if (r == null || r.status != StoryQuestStatus.Active || r.stage != stage || r.gen != letterGen || !r.pendingChoice) return false;
+            StoryQuestDef d = r.Def;
+            var st = d == null || stage < 0 || stage >= d.stages.Count ? null : d.stages[stage] as StoryStage_Choice;
+            StoryChoice c = st == null ? null : st.ChoiceFor(outcome);
+            if (c == null || !StoryConditions.Holds(this, c.requires, null)) return false; // re-check requires at click time
             r.chosenOutcome = outcome;
-            TickRun(r); // resolve immediately so the player sees the consequence at once
+            SafeTick(r); // resolve immediately so the player sees the consequence at once
+            return true;
         }
 
-        /// The choice letter was dismissed unanswered: re-send it so the quest never gets stuck.
-        public void Notify_ChoiceLetterLost(StoryQuestRun r, int stage)
+        /// A letter of the current generation was dismissed unanswered: an offer counts as "later",
+        /// a choice letter is re-sent once by the director (deduplicated by generation).
+        public void Notify_LetterLost(StoryQuestRun r, string kind, int letterGen)
         {
-            if (r == null || r.status != StoryQuestStatus.Active || r.stage != stage || !r.pendingChoice) return;
-            StoryChoiceLetter.Send(Context(r), stage, StoryChoiceLetter.KindChoice);
+            if (r == null || r.gen != letterGen) return;
+            if (kind == StoryChoiceLetter.KindOffer) { Decline(r, letterGen); return; }
+            if (r.status == StoryQuestStatus.Active && r.pendingChoice) r.needsLetter = true;
         }
 
         private void StartQuestDirect(StoryQuestDef d)
@@ -136,41 +168,128 @@ namespace TurboMegaMod
         private void StartStage(StoryQuestRun r, int index)
         {
             StoryQuestDef d = r.Def;
-            if (d == null) return;
+            if (d == null) { Disable(r, "def missing"); return; }
             if (index < 0 || index >= d.stages.Count) { Finish(r, StoryQuestStatus.Completed); return; }
             r.stage = index;
+            r.stageKey = d.stages[index].Key(index);
+            r.gen++;
             r.stageUntilTick = -1;
             r.pendingChoice = false;
+            r.needsLetter = false;
             r.chosenOutcome = null;
+            r.vars.Clear();
             StoryStage st = d.stages[index];
             lastMechanic = st.Mechanic;
             st.Start(Context(r));
         }
 
+        /// One stage tick with a single transition point: the outcome is recorded before any effect runs,
+        /// each effect is isolated, so a failing effect can never make earlier effects run twice.
         private void TickRun(StoryQuestRun r)
         {
             StoryQuestDef d = r.Def;
-            if (d == null || r.stage < 0 || r.stage >= d.stages.Count) return;
+            if (d == null || r.stage < 0 || r.stage >= d.stages.Count) { Disable(r, "stage missing"); return; }
             StoryStage st = d.stages[r.stage];
             StoryContext ctx = Context(r);
-            string o = st.Tick(ctx);
+            string o, forced;
+            if (r.vars.TryGetValue("forceOutcome", out forced)) { r.vars.Remove("forceOutcome"); o = forced; }
+            else o = st.Tick(ctx);
             if (o == null) return;
+            int from = r.stage;
             r.outcome = o;
-            r.history.Add(r.stage + ":" + o);
-            foreach (StoryEffect e in st.EffectsFor(o)) if (e != null) e.Apply(ctx);
+            r.history.Add(from + ":" + o);
+            r.stage = -1; // transition boundary: nothing re-enters this stage
+            foreach (StoryEffect e in st.EffectsFor(o).ToList()) ApplySafe(e, ctx);
             if (o == "failed") { Finish(r, StoryQuestStatus.Failed); return; }
             int next = st.NextFor(o);
-            StartStage(r, next == -2 ? r.stage + 1 : next);
+            StartStage(r, next == -2 ? from + 1 : next);
+        }
+
+        private void SafeTick(StoryQuestRun r)
+        {
+            try { TickRun(r); }
+            catch (Exception ex)
+            {
+                Log.ErrorOnce("[TMM] Story: quest " + r.quest + " failed in stage " + r.stage + ": " + ex, ("TMMStory" + r.quest).GetHashCode());
+                Disable(r, "exception");
+            }
+        }
+
+        private static void ApplySafe(StoryEffect e, StoryContext ctx)
+        {
+            if (e == null) return;
+            try { e.Apply(ctx); }
+            catch (Exception ex) { Log.Error("[TMM] Story: effect " + e.GetType().Name + " in " + ctx.run.quest + " failed: " + ex); }
         }
 
         private void Finish(StoryQuestRun r, StoryQuestStatus status)
         {
             StoryQuestDef d = r.Def;
             r.status = status;
+            r.stage = -1;
+            r.pendingChoice = false;
+            r.needsLetter = false;
             r.finishedTick = Find.TickManager.TicksGame;
             SetFlag("q." + r.quest, r.outcome ?? (status == StoryQuestStatus.Failed ? "failed" : "done"));
             if (d != null && status == StoryQuestStatus.Completed)
-                foreach (StoryEffect e in d.onComplete) if (e != null) e.Apply(Context(r));
+                foreach (StoryEffect e in d.onComplete) ApplySafe(e, Context(r));
+        }
+
+        /// A quest whose Def or stage disappeared (mod update): keep history and flags, give no rewards, free all limits.
+        private void Disable(StoryQuestRun r, string why)
+        {
+            if (r.status == StoryQuestStatus.Disabled) return;
+            r.status = StoryQuestStatus.Disabled;
+            r.pendingChoice = false;
+            r.needsLetter = false;
+            r.gen++;
+            r.finishedTick = Find.TickManager.TicksGame;
+            r.history.Add("disabled:" + why);
+        }
+
+        /// Once after load: drop runs of removed Defs, remap stages by stable key, resend exactly one letter
+        /// for a valid pending offer/choice that has no live letter.
+        private void Reconcile()
+        {
+            reconciled = true;
+            var live = Find.LetterStack == null ? new List<StoryChoiceLetter>() : Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().ToList();
+            foreach (StoryQuestRun r in runs.ToList())
+            {
+                if (r.status != StoryQuestStatus.Offered && r.status != StoryQuestStatus.Active) continue;
+                StoryQuestDef d = r.Def;
+                if (d == null) { Disable(r, "def missing"); continue; }
+                if (r.status == StoryQuestStatus.Active)
+                {
+                    int byKey = r.stageKey.NullOrEmpty() ? r.stage : d.stages.FindIndex(s => s.Key(d.stages.IndexOf(s)) == r.stageKey);
+                    if (byKey < 0) { Disable(r, "stage missing"); continue; }
+                    r.stage = byKey;
+                    if (r.pendingChoice && !live.Any(l => l.storyQuest == r.quest && l.gen == r.gen)) r.needsLetter = true;
+                }
+                else if (!live.Any(l => l.storyQuest == r.quest && l.gen == r.gen)) r.needsLetter = true;
+            }
+        }
+
+        private void ResendLostLetters()
+        {
+            foreach (StoryQuestRun r in runs.Where(x => x.needsLetter).ToList())
+            {
+                r.needsLetter = false;
+                if (r.Def == null) continue;
+                if (r.status == StoryQuestStatus.Offered) StoryChoiceLetter.Send(Context(r), -1, StoryChoiceLetter.KindOffer);
+                else if (r.status == StoryQuestStatus.Active && r.pendingChoice) StoryChoiceLetter.Send(Context(r), r.stage, StoryChoiceLetter.KindChoice);
+            }
+        }
+
+        // ------------------------------------------------ test hook
+        /// Test-only: finish the current stage of an Active quest with a declared outcome, through the normal transition.
+        /// Refused unless the game runs with -tmm-story-test and the generation matches.
+        public bool TestForceOutcome(StoryQuestRun r, int expectedGen, string outcome)
+        {
+            if (!Environment.GetCommandLineArgs().Contains("-tmm-story-test")) return false;
+            if (r == null || r.status != StoryQuestStatus.Active || r.gen != expectedGen || outcome.NullOrEmpty()) return false;
+            r.vars["forceOutcome"] = outcome;
+            SafeTick(r);
+            return true;
         }
 
         // ------------------------------------------------ director
@@ -182,18 +301,25 @@ namespace TurboMegaMod
 
         public void DirectorTick()
         {
-            if (Find.AnyPlayerHomeMap == null) return;
+            if (!reconciled) Reconcile();
             if (GetFlag("act").NullOrEmpty()) SetFlag("act", "1");
-            foreach (StoryQuestRun r in runs.Where(x => x.status == StoryQuestStatus.Active).ToList()) TickRun(r);
+            foreach (StoryQuestRun r in runs.Where(x => x.status == StoryQuestStatus.Active).ToList()) SafeTick(r);
+            ResendLostLetters();
+            if (Find.AnyPlayerHomeMap == null) return; // new quests need a home; active ones keep running
 
             foreach (StoryQuestDef d in DefDatabase<StoryQuestDef>.AllDefs.Where(x => x.autoStart).OrderBy(x => x.act).ThenByDescending(x => x.priority).ToList())
-                if (IsAvailable(d)) StartQuestDirect(d);
+            {
+                if (!IsAvailable(d)) continue;
+                if (!d.main && NonMainBusy() >= MaxActive) continue;
+                StartQuestDirect(d);
+            }
 
-            if (runs.Any(x => x.status == StoryQuestStatus.Offered)) return; // one open offer at a time
             if (Find.TickManager.TicksGame - lastOfferTick < MinOfferGapTicks) return;
-            int activeFaction = runs.Count(x => x.status == StoryQuestStatus.Active && x.Def != null && !x.Def.main);
+            bool mainOfferOpen = runs.Any(x => x.status == StoryQuestStatus.Offered && x.Def != null && x.Def.main);
+            bool factionOfferOpen = runs.Any(x => x.status == StoryQuestStatus.Offered && x.Def != null && !x.Def.main);
+            int busy = NonMainBusy();
             StoryQuestDef pick = DefDatabase<StoryQuestDef>.AllDefs
-                .Where(x => !x.autoStart && IsAvailable(x) && (x.main || activeFaction < MaxActive))
+                .Where(x => !x.autoStart && IsAvailable(x) && (x.main ? !mainOfferOpen : !factionOfferOpen && busy < MaxActive))
                 .OrderByDescending(x => x.FirstMechanic != lastMechanic)
                 .ThenByDescending(x => x.main)
                 .ThenByDescending(x => x.priority)
@@ -215,6 +341,7 @@ namespace TurboMegaMod
                 if (flags == null) flags = new Dictionary<string, string>();
                 if (runs == null) runs = new List<StoryQuestRun>();
                 runs.RemoveAll(r => r == null || r.quest.NullOrEmpty());
+                reconciled = false;
             }
         }
     }

@@ -2,7 +2,7 @@
 
 kind: implement + run · assignee: gemini (Antigravity) · afterTask: OutpostTabStageB
 
-Движок сюжета (E1) принят: `Documentation/STORY-ENGINE-DESIGN.md`, `Source/StoryDefs.cs`, `Source/SparkStory.cs`, `Source/StoryLetter.cs`. Прочитай всё до строчки. **Ядро не меняй.** Нельзя трогать `SparkStory`, `StoryQuestRun`, `StoryQuestDef`, `StoryStage`, письмо, режиссёр и формат сохранения. Свои данные этапа храни только в `ctx.run.vars` (словарь string→string, уже сохраняется). Новый код клади в новые файлы `Source/StoryStage_Site.cs` и `Source/StoryStage_ColonyRaid.cs`.
+Движок сюжета (E1) принят: `Documentation/STORY-ENGINE-DESIGN.md`, `Source/StoryDefs.cs`, `Source/SparkStory.cs`, `Source/StoryLetter.cs`. Прочитай всё до строчки. **Ядро не меняй.** Нельзя трогать `SparkStory`, `StoryQuestRun`, `StoryQuestDef`, `StoryStage`, письмо, режиссёр и формат сохранения. Свои данные этапа храни только в `ctx.run.vars` (словарь string→string, сохраняется и очищается при входе в этап). Для пробы есть хук `SparkStory.TestForceOutcome(run, run.gen, outcome)` (только с аргументом `-tmm-story-test`). Ядро исправлено по ревью Codex (`Tools/Build/CodexStoryEngineReview/REPORT.md`, F1–F7): у прогона есть `gen` и `stageKey`, письма проверяют поколение — не обходи эти проверки. Для мест на карте: при загрузке сопоставляй место по ID из `vars`; если домашней карты нет, активный этап продолжает тикать — обработай null. Новый код клади в новые файлы `Source/StoryStage_Site.cs` и `Source/StoryStage_ColonyRaid.cs`.
 
 ## 1. `StoryStage_Site : StoryStage` (Mechanic = "site")
 Этап создаёт место на карте мира и ждёт, пока цель будет выполнена. Поля XML:

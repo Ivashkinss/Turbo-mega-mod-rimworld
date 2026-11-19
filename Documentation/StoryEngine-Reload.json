@@ -1,37 +1,55 @@
 ﻿{
     "storyEngineReload":  {
                               "passed":  true,
-                              "checksCount":  5,
+                              "checksCount":  8,
                               "facts":  [
 
                                         ],
                               "checks":  [
                                              {
-                                                 "name":  "RunSurvivedLoad",
+                                                 "name":  "OpeningStillCompleted",
                                                  "passed":  true,
-                                                 "expected":  "Active/1",
-                                                 "actual":  "Active/1"
+                                                 "expected":  "Completed, 2 entries",
+                                                 "actual":  "Completed/2"
                                              },
                                              {
-                                                 "name":  "FlagSurvivedLoad",
+                                                 "name":  "PendingChoiceSurvived",
                                                  "passed":  true,
-                                                 "expected":  "true",
-                                                 "actual":  "true"
+                                                 "expected":  "Active + pending",
+                                                 "actual":  "Active/True"
                                              },
                                              {
-                                                 "name":  "HistorySurvivedLoad",
+                                                 "name":  "ExactlyOneChoiceLetter",
                                                  "passed":  true,
-                                                 "expected":  "0:opened",
-                                                 "actual":  "0:opened"
+                                                 "expected":  "1",
+                                                 "actual":  "1"
                                              },
                                              {
-                                                 "name":  "CompletedOnceAfterLoad",
+                                                 "name":  "LetterGenMatches",
                                                  "passed":  true,
-                                                 "expected":  "2 history, 1 run",
-                                                 "actual":  "2/1"
+                                                 "expected":  "4",
+                                                 "actual":  "4"
                                              },
                                              {
-                                                 "name":  "CastielOfferedOnceAfterLoad",
+                                                 "name":  "GhostStillDisabled",
+                                                 "passed":  true,
+                                                 "expected":  "Disabled",
+                                                 "actual":  "checked"
+                                             },
+                                             {
+                                                 "name":  "ChoiceAppliedOnceAfterLoad",
+                                                 "passed":  true,
+                                                 "expected":  "+15 once",
+                                                 "actual":  "15/0"
+                                             },
+                                             {
+                                                 "name":  "CastielCompletedAfterLoad",
+                                                 "passed":  true,
+                                                 "expected":  "trust",
+                                                 "actual":  "trust"
+                                             },
+                                             {
+                                                 "name":  "HolodiskOneAfterLoad",
                                                  "passed":  true,
                                                  "expected":  "1",
                                                  "actual":  "1"
@@ -44,8 +62,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1675,
-                        "ticksAdvanced":  20783,
+                        "framesAdvanced":  1124,
+                        "ticksAdvanced":  19301,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -54,7 +72,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
-    "productionAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
+    "freshAssemblySha256":  "2c035ef1daf820cfc16bdc7e168aebd4f2a8a304e94c46f1c41da4cc002f89ce",
+    "productionAssemblySha256":  "2c035ef1daf820cfc16bdc7e168aebd4f2a8a304e94c46f1c41da4cc002f89ce",
     "passed":  true
 }

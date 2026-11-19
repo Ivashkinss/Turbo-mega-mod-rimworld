@@ -31,4 +31,6 @@ kind: implement + run · assignee: gemini (Antigravity) · afterTask: StoryStage
 - **Deliver colony:** 50 стали на складе → после отдачи склад −50, `success`.
 - **Reload:** сохранение во время проживания, после загрузки этап завершается ровно один раз.
 
-Затем прогони `StoryEngine`, `StoryStages`, `Hospitality` и `HotelVisit`. Правила те же: 0 ERROR, не больше 2 попыток на шаг, Cecil только из файла, C# 5, .ps1 только с BOM. Не коммитить. Сдача: `Tools/Build/GeminiStoryStageHotel/REPORT.md`.
+Затем прогони `StoryEngine`, `StoryStages`, `Hospitality` и `HotelVisit`. Правила те же: 0 ERROR, не больше 2 попыток на шаг, Cecil только из файла, C# 5, .ps1 только с BOM. Дополнительно: установи готовый остаток акта 1 от Hydrogen — `Delegation/StoryContent/Act1/Story_Act1_Main.xml` → `Defs/StoryDefs/`, `Story_Act1_Main.ru.xml` → `Languages/Russian/DefInjected/TurboMegaMod.StoryQuestDef/Story_Act1_Main.xml` (он использует твои этапы Site/ColonyRaid/HotelVisit; в квесте `TMM_Story_A1_Interlude_StaticBroadcast` подставь ванильный `sitePart`). Игра должна грузиться без ошибок конфигурации, и проба `StoryEngine` должна по-прежнему проходить (новые квесты требуют `done:TMM_Story_A1_Castiel` — допиши в её проверки, что после Кастиэля открылся `TMM_Story_A1_UninvitedGuests`).
+
+Не коммитить. Сдача: `Tools/Build/GeminiStoryStageHotel/REPORT.md`.

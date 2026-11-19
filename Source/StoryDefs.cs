@@ -36,6 +36,14 @@ namespace TurboMegaMod
             for (int i = 0; i < stages.Count; i++)
                 if (stages[i] == null) yield return "stage " + i + " is null (bad Class?)";
             if (!autoStart && letterText.NullOrEmpty()) yield return "offered quest needs letterText";
+            var keys = new HashSet<string>();
+            for (int i = 0; i < stages.Count; i++)
+                if (stages[i] != null && !keys.Add(stages[i].Key(i))) yield return "duplicate stage key " + stages[i].Key(i);
+            foreach (string c in requires.Concat(anyOf))
+            {
+                string err = StoryConditions.SyntaxError(c);
+                if (err != null) yield return "condition '" + c + "': " + err;
+            }
         }
     }
 
@@ -53,8 +61,11 @@ namespace TurboMegaMod
 
     public abstract class StoryStage
     {
+        public string key;                  // optional stable id; saves follow it if stages are reordered
         [MustTranslate] public string label;
         [MustTranslate] public string text;
+
+        public string Key(int index) { return key.NullOrEmpty() ? "#" + index : key; }
 
         /// Short mechanic id used by the director to avoid two identical mechanics in a row.
         public abstract string Mechanic { get; }
@@ -140,16 +151,16 @@ namespace TurboMegaMod
     }
 
     /// A hero joins the colony by drop pod at the home map (defectors, rescued heroes).
+    /// Outcomes: "joined" (arrived, or already the player's), "unavailable" (dead, held by someone, on a map or in a caravan).
     public sealed class StoryStage_HeroJoins : StoryStage
     {
         public HeroDef hero;
+        public List<StoryChoice> outcomes = new List<StoryChoice>();
         public override string Mechanic { get { return "heroJoins"; } }
 
-        public override string Tick(StoryContext ctx)
-        {
-            new StoryEffect_HeroJoins { hero = hero }.Apply(ctx);
-            return "joined";
-        }
+        public override string Tick(StoryContext ctx) { return StoryEffect_HeroJoins.TryJoin(hero, ctx) ? "joined" : "unavailable"; }
+        public override int NextFor(string outcome) { StoryChoice c = outcomes.FirstOrDefault(x => x.outcome == outcome); return c == null ? -2 : c.nextStage; }
+        public override IEnumerable<StoryEffect> EffectsFor(string outcome) { StoryChoice c = outcomes.FirstOrDefault(x => x.outcome == outcome); return c == null ? Enumerable.Empty<StoryEffect>() : c.effects; }
     }
 
     // ---------------------------------------------------------------- effects
@@ -208,17 +219,45 @@ namespace TurboMegaMod
     public sealed class StoryEffect_HeroJoins : StoryEffect
     {
         public HeroDef hero;
-        public override void Apply(StoryContext ctx)
+        public override void Apply(StoryContext ctx) { TryJoin(hero, ctx); }
+
+        /// Safe ownership transfer: only a free living world pawn is moved; the drop pod must really take it, otherwise
+        /// everything is rolled back. A hero who already belongs to the player counts as joined (idempotent).
+        public static bool TryJoin(HeroDef hero, StoryContext ctx)
         {
             Map map = ctx.Home;
             HeroRegistry reg = HeroRegistry.Instance;
-            if (map == null || reg == null || hero == null) return;
+            if (map == null || reg == null || hero == null) return false;
             Pawn p = reg.GetOrCreate(hero);
-            if (p == null || p.Dead) return;
-            if (p.Spawned) p.DeSpawn();
-            if (Find.WorldPawns.Contains(p)) Find.WorldPawns.RemovePawn(p);
-            if (p.Faction != Faction.OfPlayer) p.SetFaction(Faction.OfPlayer);
+            if (p == null || p.Dead || p.Destroyed) return false;
+            if (p.Faction == Faction.OfPlayer && !p.IsPrisoner) { MarkJoined(hero, p, ctx, reg); return true; }
+            if (p.Spawned || p.IsPrisoner || p.IsSlave || p.holdingOwner != null || p.GetCaravan() != null || !Find.WorldPawns.Contains(p)) return false;
+
+            Faction oldFaction = p.Faction;
+            bool wasLeader = oldFaction != null && oldFaction.leader == p;
+            Find.WorldPawns.RemovePawn(p);
+            p.SetFaction(Faction.OfPlayer);
             DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map), map, new List<Thing> { p }, 110, false, false, true, false);
+            if (p.holdingOwner == null && !p.Spawned)
+            {
+                // The pod did not accept the pawn: restore everything.
+                if (oldFaction != null) p.SetFaction(oldFaction);
+                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
+                if (wasLeader) oldFaction.leader = p;
+                return false;
+            }
+            if (wasLeader)
+            {
+                Pawn next = reg.SuccessorForVacantLeadership(oldFaction);
+                oldFaction.leader = next;
+                if (next == null) oldFaction.TryGenerateNewLeader();
+            }
+            MarkJoined(hero, p, ctx, reg);
+            return true;
+        }
+
+        private static void MarkJoined(HeroDef hero, Pawn p, StoryContext ctx, HeroRegistry reg)
+        {
             reg.NotifyEncountered(p);
             ctx.state.SetFlag("defector." + hero.defName, "true");
         }
@@ -246,39 +285,70 @@ namespace TurboMegaMod
             return true;
         }
 
-        public static bool Eval(SparkStory s, string cond)
+        public static bool Eval(SparkStory s, string cond) { return EvalCore(s, cond) == 1; }
+
+        private static readonly string[] Prefixes = { "done", "active", "heroAlive", "factionExists" };
+
+        /// 1 true, 0 false, -1 syntax error (an error stays false even under negation).
+        private static int EvalCore(SparkStory s, string cond)
         {
-            if (cond.NullOrEmpty()) return true;
+            if (cond == null) return 1;
             cond = cond.Trim();
-            if (cond.StartsWith("!")) return !Eval(s, cond.Substring(1));
+            if (cond.Length == 0) return -1;
+            if (cond[0] == '!') { int inner = EvalCore(s, cond.Substring(1)); return inner < 0 ? -1 : 1 - inner; }
+            string flag, op, val, kind, arg;
+            int parsed = Parse(cond, out flag, out op, out val, out kind, out arg);
+            if (parsed < 0) { Log.ErrorOnce("[TMM] Story: bad condition '" + cond + "'", cond.GetHashCode()); return -1; }
+            if (kind != null)
+            {
+                if (kind == "done") return s.IsDone(arg) ? 1 : 0;
+                if (kind == "active") return s.IsActive(arg) ? 1 : 0;
+                if (kind == "heroAlive") return StoryUtil.HeroAlive(arg) ? 1 : 0;
+                return StoryUtil.FactionOf(arg) != null ? 1 : 0;
+            }
+            if (op == null) return s.GetFlag(flag) == "true" ? 1 : 0; // bare flag: boolean
+            string have = s.GetFlag(flag);
+            if (op == "=" || op == "==") return have == val ? 1 : 0;
+            if (op == "!=") return have != val ? 1 : 0;
+            int a = s.GetInt(flag), b = int.Parse(val);
+            if (op == ">=") return a >= b ? 1 : 0;
+            if (op == "<=") return a <= b ? 1 : 0;
+            if (op == ">") return a > b ? 1 : 0;
+            return a < b ? 1 : 0;
+        }
+
+        /// Splits at the FIRST operator character from the left (longest operator there), so values may contain = ! &lt; &gt;.
+        private static int Parse(string cond, out string flag, out string op, out string val, out string kind, out string arg)
+        {
+            flag = op = val = kind = arg = null;
+            int i = cond.IndexOfAny(new[] { '=', '!', '<', '>' });
             int colon = cond.IndexOf(':');
-            if (colon > 0 && cond.IndexOfAny(new[] { '=', '<', '>' }) < 0)
+            if (colon > 0 && (i < 0 || colon < i))
             {
-                string kind = cond.Substring(0, colon), arg = cond.Substring(colon + 1);
-                if (kind == "done") return s.IsDone(arg);
-                if (kind == "active") return s.IsActive(arg);
-                if (kind == "heroAlive") return StoryUtil.HeroAlive(arg);
-                if (kind == "factionExists") return StoryUtil.FactionOf(arg) != null;
-                Log.ErrorOnce("[TMM] Story: unknown condition '" + cond + "'", cond.GetHashCode());
-                return false;
+                kind = cond.Substring(0, colon).Trim();
+                arg = cond.Substring(colon + 1).Trim();
+                return Prefixes.Contains(kind) && arg.Length > 0 ? 0 : -1;
             }
-            string[] ops = { ">=", "<=", "!=", "==", ">", "<", "=" };
-            foreach (string op in ops)
-            {
-                int i = cond.IndexOf(op, StringComparison.Ordinal);
-                if (i <= 0) continue;
-                string flag = cond.Substring(0, i).Trim(), val = cond.Substring(i + op.Length).Trim();
-                string have = s.GetFlag(flag);
-                if (op == "==" || op == "=") return have == val;
-                if (op == "!=") return have != val;
-                int a = s.GetInt(flag), b;
-                if (!int.TryParse(val, out b)) return false;
-                if (op == ">=") return a >= b;
-                if (op == "<=") return a <= b;
-                if (op == ">") return a > b;
-                return a < b;
-            }
-            return s.GetFlag(cond) == "true"; // bare flag name: boolean
+            if (i < 0) { flag = cond; return 0; }
+            if (i == 0) return -1;
+            string two = i + 1 < cond.Length ? cond.Substring(i, 2) : "";
+            op = two == ">=" || two == "<=" || two == "!=" || two == "==" ? two : cond.Substring(i, 1);
+            if (op == "!") return -1;
+            flag = cond.Substring(0, i).Trim();
+            val = cond.Substring(i + op.Length).Trim();
+            int n;
+            if ((op == ">=" || op == "<=" || op == ">" || op == "<") && !int.TryParse(val, out n)) return -1;
+            return flag.Length > 0 ? 0 : -1;
+        }
+
+        /// Load-time validation used by StoryQuestDef.ConfigErrors.
+        public static string SyntaxError(string cond)
+        {
+            if (cond == null) return "null";
+            string c = cond.Trim();
+            while (c.StartsWith("!")) c = c.Substring(1).Trim();
+            string flag, op, val, kind, arg;
+            return c.Length == 0 || Parse(c, out flag, out op, out val, out kind, out arg) < 0 ? "unknown prefix, empty part or non-numeric comparison" : null;
         }
     }
 

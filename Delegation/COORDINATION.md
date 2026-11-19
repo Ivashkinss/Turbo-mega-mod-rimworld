@@ -136,3 +136,6 @@ Claude не опрашивает очередь сам. Он видит резу
 
 ## Снимок лимитов 19.11, около 3:20
 Claude 68%, Hydrogen 95%, Codex 18%, Antigravity 54%. Hydrogen и Codex выключены на ночь. Antigravity доделывает очередь (OutpostTabStageA, затем FactionHierarchyTab) и после этого перестаёт дежурить. Завтра: фракция Изгоев с героями (Касдин, Сайлас, Олин и newHeroes из квестов); Claude проверяет OutpostUxFixes и OutpostTabStageA; проектирование сюжетного движка; версия 0.12.
+
+## Снимок лимитов 19.11, вечер
+Claude 60%, Codex 17%, Hydrogen 96%, Antigravity 48%. Ядро сюжета исправлено по ревью Codex (F1–F7) и принято в игре (33 + 8 проверок). Очередь Antigravity: OutpostTabStageB, затем StoryStageSite, StoryStageHotel, StoryContentFactions. Акт 1 от Hydrogen подготовлен в Delegation/StoryContent/Act1 и ставится вместе с E3.

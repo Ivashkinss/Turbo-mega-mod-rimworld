@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, STEP 2: UNINVITED GUESTS AT THE GATE (act1_s2)                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_UninvitedGuests</defName>
+    <label>uninvited guests at the gate</label>
+    <act>1</act>
+    <main>true</main>
+    <priority>88</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_preston_garvey</giver>
+    <fallbackGiver>TMM_Hero_dean_winchester</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_Castiel</li>
+    </requires>
+    <letterLabel>Smoke on the horizon</letterLabel>
+    <letterText>Word travels fast across the ash wastes. Ever since that strange blue tremor shook the ground beneath {COLONY}, distant radios have been crackling with static—and now scouts from the Minutemen and Hunters are approaching your perimeter to see who is poking around pre-war ruins.\n\n{GIVER} requests permission to send a small recon delegation to stay at your waystation and assess whether your settlement is friend or foe.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <hero>TMM_Hero_preston_garvey</hero>
+        <groupSize>3</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_minutemenHosted</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_minutemenHosted</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A stranger smelling of sulfur</label>
+        <text>Just as the Minutemen scouts pack their bedrolls at dusk, a lone traveler in an immaculate black suit steps out of the ash fog. He smiles too widely, smelling faintly of ozone and brimstone.\n\n"Charming little dirt-patch you have here," the crossroads broker purrs, glancing toward the ground beneath your boots. "I happen to trade in pre-war hardware and miracles—all for a tiny peek at what sleeps under your floor."</text>
+        <choices>
+          <li>
+            <outcome>let_him_look</outcome>
+            <label>Unbolt the hatch and let him peer inside for pre-war supplies</label>
+            <resultText>The broker leans over the open shaft, his eyes flashing pitch-black in the blue glow. "Fascinating... a genuine Zero Anchor, still humming after two centuries." He tosses a heavy satchel of components at your feet and vanishes into thin air, leaving the Zero Synth shivering in disgust.</resultText>
+            <requires>
+              <li>story.anchorOpened=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>4</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>300</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_demonSawAnchor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>mock_welded_hatch</outcome>
+            <label>Point to the welded steel floor and tell him to get lost</label>
+            <resultText>The demon's smile falters as his gaze hits the thick welded bulkhead sealing the shaft. "Stubborn apes," he hisses, kicking up a puff of sulfur ash. "Weld it all you like—when the eclipse comes, the floor will melt right under your boots." He vanishes in a swirl of black smoke.</resultText>
+            <requires>
+              <li>!story.anchorOpened</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_demonMocked</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>drive_off_with_salt</outcome>
+            <label>Draw a line of rock salt and drive him out at gunpoint</label>
+            <resultText>The moment coarse salt hits the dirt between you, the stranger recoils as if burned by acid. "Touchy, aren't we? Crowley will hear about your hospitality." He dissolves into black smoke, while the Zero Synth watches you with newfound respect.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_demonRefused</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>question_for_clues</outcome>
+            <label>Press him on who built the Anchor before the bombs fell</label>
+            <resultText>The demon chuckles darkly. "You don't even know whose cage you're squatting on, do you? Ask Vault-Tec and their corporate friends in white suits—they signed the deed in 2052." Before you can ask more, he steps backward into a shadow and is gone.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_demonClue</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, INTERLUDE 1: MARGIN NOTES IN ASH                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_Interlude_MentorJournal</defName>
+    <label>margin notes in ash</label>
+    <act>1</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>75</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_vaulttec_rep</giver>
+    <fallbackGiver>TMM_Hero_preston_garvey</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_Castiel</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Cleaning the mentor's pack</label>
+        <text>While sorting through the scorched field pack your missing mentor left behind near the Anchor hatch, a colonist discovers a false bottom concealing a water-stained leather notebook and a cracked holotape.</text>
+        <days>1.3</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The mentor's final warning</label>
+        <text>Most of the ink is smeared by ash and rain, but the last page is legible:\n\n"October's fire wasn't an accident. Dick Roman, Braun, and London locked the sky so they could harvest the whole continent. Keep the Zero Synth alive—they are the only soul the Consortium didn't account for. Whatever happens, don't trust anyone wearing a clean pre-war tie."</text>
+        <choices>
+          <li>
+            <outcome>share_with_synth</outcome>
+            <label>Show the journal to the Zero Synth and promise to find your mentor</label>
+            <resultText>The Zero Synth traces the familiar handwriting with trembling fingers. "They risked everything to get me out of the white rooms... I won't let their sacrifice be for nothing." Your bond grows noticeably stronger.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_journalShared</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>lock_in_safe</outcome>
+            <label>Lock the journal away to avoid panicking the settlement</label>
+            <resultText>You seal the notebook inside a reinforced strongbox. The Zero Synth notices you hiding the pack and quietly withdraws for the evening, lost in thought.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_journalHidden</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, STEP 3: DREAMS OF WHITE WALLS (act1_s3)                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_ZeroSynthDreams</defName>
+    <label>dreams of white walls</label>
+    <act>1</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>85</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_deacon</giver>
+    <fallbackGiver>TMM_Hero_desdemona</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_UninvitedGuests</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Restless resonance</label>
+        <text>For three nights running, the Zero Synth wakes gasping from vivid nightmares of sterile white corridors, humming surgical lasers, and a voice whispering "Subject Zero". Strangely, whenever these dreams strike, a soft blue static blankets {COLONY}, calming agitated animals and dulling psychic noise.</text>
+        <days>1.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <faction>TMM_RailroadFaction</faction>
+        <hero>TMM_Hero_deacon</hero>
+        <groupSize>2</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Investigate</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-10</amount>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A whisper behind dark shades</label>
+        <text>The quiet traveler in dark sunglasses corners you behind the waystation kitchen, dropping his goofy caravan-guard act in an instant.\n\n"Name's Deacon. Our radio rigs picked up a spiritual flare coming straight out of your camp—the kind that makes both Institute Coursers and winged choirboys drool. Tell me straight: is the kid with the Spark a person to you, or just a battery?"</text>
+        <choices>
+          <li>
+            <outcome>protect_as_person</outcome>
+            <label>Declare that the Zero Synth is a free member of {COLONY}</label>
+            <resultText>Deacon grins and adjusts his sunglasses. "Music to my ears, boss. Desdemona's gonna like you. Keep your heads down—we'll help keep the Institute's trackers off your frequency."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_synthPromise</flag>
+                <value>protect</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>mask_signature</outcome>
+            <label>Ask Deacon for scrambler parts to hide the Spark's signal</label>
+            <resultText>"Smart. Pragmatic. I can work with pragmatic." Deacon slips two pre-war frequency modulators into your coat pocket before blending into the crowd.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_synthPromise</flag>
+                <value>masked</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>treat_as_asset</outcome>
+            <label>Reply coldly that survival comes first—everyone is an asset</label>
+            <resultText>Deacon's smile vanishes. "Yeah... heard that speech from guys in white lab coats before. Don't do anything you can't wash off your hands." He walks out without looking back.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_synthPromise</flag>
+                <value>asset</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, INTERLUDE 2: GHOST FREQUENCY 104.7                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_Interlude_StaticBroadcast</defName>
+    <label>ghost frequency 104.7</label>
+    <act>1</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>72</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_dean_winchester</giver>
+    <fallbackGiver>TMM_Hero_preston_garvey</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_ZeroSynthDreams</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Midnight signal</label>
+        <text>At midnight, every vacuum tube and radio receiver in {COLONY} crackles to life on an abandoned pre-war emergency band—playing a distorted loop of Enochian chanting layered over Vault-Tec telemetry pings.</text>
+        <days>1.4</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Triangulating the echo</label>
+        <text>The signal is bouncing off a half-collapsed relay bunker two miles away, resonating in sync with the Zero Anchor under your base. You can send a squad to raid the relay cache before scavengers find it, or jam the frequency to keep a low profile.</text>
+        <choices>
+          <li>
+            <outcome>raid_relay</outcome>
+            <label>Dispatch an expedition to secure the relay bunker</label>
+            <resultText>Your scouts lock onto the coordinates and prepare to move out before feral ghouls overrun the bunker.</resultText>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>jam_frequency</outcome>
+            <label>Burn out the receiver coils and jam the local band</label>
+            <resultText>The eerie chanting dies in a shower of sparks. Your settlement stays hidden in the dark for a little longer, though whatever waited inside that bunker remains a mystery.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_relayJammed</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <!-- sitePart: E2 picks a vanilla relay/ruin site part --> 
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>ComponentIndustrial</thing>
+        <timeoutDays>5</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>6</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_relayFound</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Relay cache secured</label>
+                <text>Inside the relay bunker, your team found pre-war silver, medical supplies, and an intact maintenance log proving the Zero Anchor network spans the entire continent.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_relayJammed</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_relayJammed</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, STEP 4: FIRST PULSE OF THE ANCHOR (act1_s4)                    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_AnchorPulse</defName>
+    <label>first pulse of the anchor</label>
+    <act>1</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>90</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_dean_winchester</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_ZeroSynthDreams</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Subterranean tremor</label>
+        <text>A deep, metallic groan rolls up from beneath {COLONY}, rattling cups off tables and making hair stand on end. The Zero Anchor is waking up—and its spiritual shockwave is tearing a temporary pinhole into Purgatory's borderlands.</text>
+        <days>1.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>1.0</pointsFactor>
+        <delayHours>4</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Calming the resonance</label>
+        <text>With the last shambling horror gunned down at your barricades, the Zero Anchor still hums dangerously beneath the floor. The Zero Synth kneels over the vibrating metal, offering to channel their Spark to steady the core—while your engineers suggest venting the excess charge into the colony's power conduits.</text>
+        <choices>
+          <li>
+            <outcome>channel_spark</outcome>
+            <label>Let the Zero Synth harmonize with the Anchor to quiet the Rift</label>
+            <resultText>Pale blue light flows from the Zero Synth's palms into the ancient Enochian engravings. The deafening hum softens into a steady heartbeat, and the Holodisk-Key hums in answer.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_pulseStabilized</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>vent_into_grid</outcome>
+            <label>Bleed the Anchor's surge into salvageable power cells and steel</label>
+            <resultText>Arcs of blue lightning snap across your conduits, overloading two relays before settling into usable industrial salvage. The Zero Synth gasps in pain from the feedback, rubbing their temples.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Steel</thing>
+                <count>150</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_pulseVented</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>cut_welded_hatch_now</outcome>
+            <label>Use the thermal surge to cut open the welded Anchor hatch</label>
+            <resultText>Superheated energy weakens the fused steel seams, allowing your mechanics to pry open the hatch at last. A cold draft rises from the ancient stairwell below.</resultText>
+            <requires>
+              <li>!story.anchorOpened</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.anchorOpened</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_pulseStabilized</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, INTERLUDE 3: WHISPERS IN THE ASH                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_Interlude_WhispersInTheAsh</defName>
+    <label>whispers in the ash</label>
+    <act>1</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>78</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_paladin_danse</giver>
+    <fallbackGiver>TMM_Hero_mick_davies</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_AnchorPulse</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Echoes across the region</label>
+        <text>The energy spike from {COLONY} lit up every long-range sensor in the sector. Within hours, three encrypted priority hails arrive simultaneously on your comms console.</text>
+        <days>1.0</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Three hails in the static</label>
+        <text>Paladin Danse of the Brotherhood demands an immediate technical briefing on the energy spike; Mick Davies of the British Men of Letters politely offers anti-anomaly wards; and a cheerful Vault-Tec Representative promises "priority shelter consultation". Whom do you answer first?</text>
+        <choices>
+          <li>
+            <outcome>answer_brotherhood</outcome>
+            <label>Respond to Paladin Danse and share sanitized sensor readings</label>
+            <resultText>"Acknowledged, civilian. Your cooperation is noted—expect a Brotherhood recon unit in your sector soon." Paladin Danse marks your settlement as cooperative.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_firstContact</flag>
+                <value>brotherhood</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>answer_mol</outcome>
+            <label>Reply to Mick Davies of the British Men of Letters</label>
+            <resultText>"Splendid! A settlement with common sense. I shall arrange a visit to your waystation at once." Mick Davies opens an encrypted diplomatic channel.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_firstContact</flag>
+                <value>mol</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>answer_vault_tec</outcome>
+            <label>Accept the Vault-Tec Representative's urgent call</label>
+            <resultText>"Wonderful! Simply wonderful! You're at the very top of our Platinum Resilience list!" The pre-war salesman eagerly schedules a visit.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_firstContact</flag>
+                <value>vault_tec</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 1, STEP 5: CONVERSATION BENEATH THE ASH (act1_s5 - FINALE OF ACT 1)-->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_TalkUnderAsh</defName>
+    <label>conversation beneath the ash</label>
+    <act>1</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>95</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_naomi</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_AnchorPulse</li>
+      <li>done:TMM_Story_A1_Interlude_WhispersInTheAsh</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>The first sector unlocks</label>
+        <text>With the Anchor steady and the telemetry decrypted, the Holodisk-Key projects a ghostly map of fifteen rival factions across the wasteland. At twilight, the familiar flutter of wings heralds {GIVER}'s return.</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The war for the Spark begins</label>
+        <text>{GIVER} stands in the falling ash, looking graver than before. "The pulse confirmed my worst fears. Heaven and Hell are starving behind the sealed Rift, and every faction on that map will soon realize what lives inside your Zero Synth.\n\nTo unlock the remaining sectors of your Holodisk-Key and reach the Anchor's core, you must walk among all fifteen powers of this broken world. Tell me—what future will you fight for?"</text>
+        <choices>
+          <li>
+            <outcome>swear_protection</outcome>
+            <label>Swear to seal the Rift and protect the Zero Synth's soul</label>
+            <resultText>{GIVER} inclines his head slightly. "Then we share the same burden. Be careful who you trust—even angels can lose their way in the dark." He vanishes with a soft rustle of wings.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_endingStance</flag>
+                <value>protector</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>keep_options_open</outcome>
+            <label>Say that humanity's survival comes first—you will keep all options open</label>
+            <resultText>"Pragmatism is a double-edged blade," {GIVER} replies quietly. "See that it does not cut the innocent." In the blink of an eye, the courtyard is empty.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_endingStance</flag>
+                <value>pragmatist</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>harness_power</outcome>
+            <label>Ask how the Anchor and the Spark can be harnessed to rule the wastes</label>
+            <resultText>{GIVER}'s eyes narrow with celestial cold. "That is the same arrogance that burned this world in 2077. Do not force me to stand against you." He disappears into the ash wind.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a1_endingStance</flag>
+                <value>ambitious</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>act</flag>
+        <value>2</value>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_GiveThing">
+        <thing>ComponentIndustrial</thing>
+        <count>4</count>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_Letter">
+        <label>Act II: Threads of the Puppeteers</label>
+        <text>The regional map on the Holodisk-Key has opened! You can now pursue the storylines of all 15 wasteland and supernatural factions to uncover the truth behind Project Purgatory and unlock the remaining sectors of the Key.</text>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
