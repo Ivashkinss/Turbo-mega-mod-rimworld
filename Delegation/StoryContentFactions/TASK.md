@@ -46,7 +46,7 @@ kind: implement + run · assignee: gemini (Antigravity) · afterTask: StoryStage
 - `giver` существует;
 - у каждого `Choice` от 1 до 3 вариантов;
 - для каждого EN-текста есть RU-ключ;
-- нет `{GIVER}` в квесте без giver.
+- нет `{GIVER}` в квесте без giver; флаг из `requires`/`anyOf`, который ставится только внутри исходов этапа (`outcomes`), должен ставиться во ВСЕХ возможных исходах этого этапа (Site: success/timeout/failed, ColonyRaid: success/timeout, HotelVisit: success/failed/noHotel) или в `onComplete` — иначе сюжет может застрять; линтер проверяет все `Defs/StoryDefs/*.xml`, включая акты 1–4.
 
 Выход ненулевой при ошибке.
 
