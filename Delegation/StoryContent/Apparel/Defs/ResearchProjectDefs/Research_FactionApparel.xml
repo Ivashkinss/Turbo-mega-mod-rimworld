@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>TMM_WastelandMilitaryGear</defName>
+    <label>wasteland military tailoring</label>
+    <description>Techniques for manufacturing standardized mercenary combat armor, tactical helmets, and authoritarian officer uniforms.</description>
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>FlakArmor</li>
+    </prerequisites>
+    <researchViewX>6.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_VaultTecStandards</defName>
+    <label>Vault-Tec protective gear</label>
+    <description>Pre-war blueprints for durable synthetic vault jumpsuits and heavy riot-control security vests.</description>
+    <baseCost>1400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+      <li>FlakArmor</li>
+    </prerequisites>
+    <researchViewX>6.0</researchViewX>
+    <researchViewY>6.3</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_RadSurvivalGear</defName>
+    <label>radiation survival garments</label>
+    <description>Methods of lining heavy coats with rubberized canvas and lead strips to endure toxic fallout.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+    </prerequisites>
+    <researchViewX>5.0</researchViewX>
+    <researchViewY>6.3</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_HuntersMilitiaCraft</defName>
+    <label>hunter and militia outfitting</label>
+    <description>Craft rugged leather dusters reinforced with silver stitching alongside iconic colonial militia headgear.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+    </prerequisites>
+    <researchViewX>5.0</researchViewX>
+    <researchViewY>7.0</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_OccultTailoring</defName>
+    <label>occult garment weaving</label>
+    <description>Incorporate silver filaments, flame-resistant linings, and Enochian wards into tailored suits and coats.</description>
+    <baseCost>2200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+    </prerequisites>
+    <researchViewX>6.0</researchViewX>
+    <researchViewY>7.0</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_SuperMutantArmor</defName>
+    <label>titan scrap armoring</label>
+    <description>Heavy welding techniques required to forge oversized plate harnesses and cage helmets for super mutants.</description>
+    <baseCost>1800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>PlateArmor</li>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>7.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_UndergroundElectronics</defName>
+    <label>covert signal gear</label>
+    <description>Assemble improvised frequency-jamming headgear and sensor goggles favored by underground operatives.</description>
+    <baseCost>1800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>MicroelectronicsBasics</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <researchViewX>7.0</researchViewX>
+    <researchViewY>6.3</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_BrotherhoodGear</defName>
+    <label>Brotherhood field equipment</label>
+    <description>Produce reinforced scribe fatigues and ballistic power-armor undersuits used by Brotherhood chapters.</description>
+    <baseCost>2600</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>FlakArmor</li>
+      <li>Fabrication</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <researchViewX>11.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_InstituteTextiles</defName>
+    <label>Institute polymer weaving</label>
+    <description>Synthesize sterile lab coats and lightweight ceramic-polymer armor plates modeled on Institute designs.</description>
+    <baseCost>3200</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>ReconArmor</li> <!-- CHECK API: verify ReconArmor is Core in 1.7 (else PoweredArmor) -->
+      <li>Fabrication</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <researchViewX>11.0</researchViewX>
+    <researchViewY>6.3</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>TMM_ClanBioferriteCraft</defName>
+    <label>nocturnal clan alchemy</label>
+    <description>Treat heavy velvet and leather with alchemical preservatives to craft aristocratic nocturnal garments.</description>
+    <baseCost>2400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+    </prerequisites>
+    <researchViewX>7.0</researchViewX>
+    <researchViewY>7.0</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>
