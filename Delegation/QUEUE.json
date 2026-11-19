@@ -1642,11 +1642,39 @@
       "note": "Integrate Neon's 15 legendary items, borax sprayer and turret, LegendaryRegistry; in-game probe."
     },
     {
-      "id": "EquipmentSlots",
+      "id": "StoryHotelFix",
       "state": "pending",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "LegendaryItems",
+      "taskFile": "Delegation/StoryHotelFix/TASK.md",
+      "outputDir": "Tools/Build/GeminiStoryHotelFix",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T03:00:00Z",
+      "note": "Integrate Neon's fixes for Codex E3 review (Delegation/StoryContent/E3fix); blocked if folder empty."
+    },
+    {
+      "id": "OutpostCaravanFix",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "StoryHotelFix",
+      "taskFile": "Delegation/OutpostCaravanFix/TASK.md",
+      "outputDir": "Tools/Build/GeminiOutpostCaravanFix",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T03:00:00Z",
+      "note": "Integrate Neon's fixes for Codex walking-caravan review (Delegation/StoryContent/CaravanFix); blocked if folder empty."
+    },
+    {
+      "id": "EquipmentSlots",
+      "state": "pending",
+      "assignee": "gemini",
+      "kind": "implement",
+      "afterTask": "OutpostCaravanFix",
       "taskFile": "Delegation/EquipmentSlots/TASK.md",
       "outputDir": "Tools/Build/GeminiEquipmentSlots",
       "expectedOutputs": [
