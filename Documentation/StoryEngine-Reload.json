@@ -1,0 +1,60 @@
+﻿{
+    "storyEngineReload":  {
+                              "passed":  true,
+                              "checksCount":  5,
+                              "facts":  [
+
+                                        ],
+                              "checks":  [
+                                             {
+                                                 "name":  "RunSurvivedLoad",
+                                                 "passed":  true,
+                                                 "expected":  "Active/1",
+                                                 "actual":  "Active/1"
+                                             },
+                                             {
+                                                 "name":  "FlagSurvivedLoad",
+                                                 "passed":  true,
+                                                 "expected":  "true",
+                                                 "actual":  "true"
+                                             },
+                                             {
+                                                 "name":  "HistorySurvivedLoad",
+                                                 "passed":  true,
+                                                 "expected":  "0:opened",
+                                                 "actual":  "0:opened"
+                                             },
+                                             {
+                                                 "name":  "CompletedOnceAfterLoad",
+                                                 "passed":  true,
+                                                 "expected":  "2 history, 1 run",
+                                                 "actual":  "2/1"
+                                             },
+                                             {
+                                                 "name":  "CastielOfferedOnceAfterLoad",
+                                                 "passed":  true,
+                                                 "expected":  "1",
+                                                 "actual":  "1"
+                                             }
+                                         ],
+                              "errors":  [
+
+                                         ]
+                          },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1675,
+                        "ticksAdvanced":  20783,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
+    "productionAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
+    "passed":  true
+}

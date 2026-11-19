@@ -1,0 +1,220 @@
+﻿{
+    "component":  "StoryEngine",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3368,
+                         "scalarFields":  1474,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1911,
+                        "ticksAdvanced":  22237,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
+    "storyEngine":  {
+                        "passed":  true,
+                        "checksCount":  27,
+                        "facts":  [
+
+                                  ],
+                        "checks":  [
+                                       {
+                                           "name":  "StateExists",
+                                           "passed":  true,
+                                           "expected":  "True",
+                                           "actual":  "True"
+                                       },
+                                       {
+                                           "name":  "OpeningAutoStarted",
+                                           "passed":  true,
+                                           "expected":  "Active/0",
+                                           "actual":  "Active/0"
+                                       },
+                                       {
+                                           "name":  "ActIsOne",
+                                           "passed":  true,
+                                           "expected":  "1",
+                                           "actual":  "1"
+                                       },
+                                       {
+                                           "name":  "ChoiceLetterInStack",
+                                           "passed":  true,
+                                           "expected":  "letter",
+                                           "actual":  "РЎРёРіРЅР°Р» РїРѕРґ С„СѓРЅРґР°РјРµРЅС‚РѕРј"
+                                       },
+                                       {
+                                           "name":  "ColonyNameSubstituted",
+                                           "passed":  true,
+                                           "expected":  "no placeholder",
+                                           "actual":  "checked"
+                                       },
+                                       {
+                                           "name":  "TwoChoices",
+                                           "passed":  true,
+                                           "expected":  "2",
+                                           "actual":  "2"
+                                       },
+                                       {
+                                           "name":  "ChoiceFlagSet",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "ChoiceLetterRemoved",
+                                           "passed":  true,
+                                           "expected":  "removed",
+                                           "actual":  "removed"
+                                       },
+                                       {
+                                           "name":  "AdvancedToWait",
+                                           "passed":  true,
+                                           "expected":  "stage 1 with deadline",
+                                           "actual":  "1/60733"
+                                       },
+                                       {
+                                           "name":  "ChronicleShowsActive",
+                                           "passed":  true,
+                                           "expected":  "active quest line",
+                                           "actual":  "5"
+                                       },
+                                       {
+                                           "name":  "SaveWritten",
+                                           "passed":  true,
+                                           "expected":  "True",
+                                           "actual":  "checked"
+                                       },
+                                       {
+                                           "name":  "OpeningCompleted",
+                                           "passed":  true,
+                                           "expected":  "done",
+                                           "actual":  "done"
+                                       },
+                                       {
+                                           "name":  "OnCompleteFlag",
+                                           "passed":  true,
+                                           "expected":  "true",
+                                           "actual":  "true"
+                                       },
+                                       {
+                                           "name":  "CastielOffered",
+                                           "passed":  true,
+                                           "expected":  "offer letter",
+                                           "actual":  "ok"
+                                       },
+                                       {
+                                           "name":  "GiverNameInText",
+                                           "passed":  true,
+                                           "expected":  "Castiel",
+                                           "actual":  "РќР° РєСЂР°СЋ РџРѕСЃРµР»РµРЅРёРµ СЃС‚РѕРёС‚ С‡РµР»РѕРІРµРє РІ РјСЏС‚РѕРј Р±РµР¶РµРІРѕРј РїР»Р°С‰Рµ Рё СЃРјРѕС‚СЂРёС‚ РІ Р·РµРјР»СЋ, Р±СѓРґС‚Рѕ Рї"
+                                       },
+                                       {
+                                           "name":  "DeclinedWithCooldown",
+                                           "passed":  true,
+                                           "expected":  "Declined",
+                                           "actual":  "Declined/180000"
+                                       },
+                                       {
+                                           "name":  "NotReofferedDuringCooldown",
+                                           "passed":  true,
+                                           "expected":  "no offer",
+                                           "actual":  "no offer"
+                                       },
+                                       {
+                                           "name":  "ReofferedAfterCooldown",
+                                           "passed":  true,
+                                           "expected":  "Offered",
+                                           "actual":  "Offered"
+                                       },
+                                       {
+                                           "name":  "Accepted",
+                                           "passed":  true,
+                                           "expected":  "Active/0",
+                                           "actual":  "Active/0"
+                                       },
+                                       {
+                                           "name":  "CastielChoiceLetter",
+                                           "passed":  true,
+                                           "expected":  "letter",
+                                           "actual":  "ok"
+                                       },
+                                       {
+                                           "name":  "HeavenGoodwillPlus15",
+                                           "passed":  true,
+                                           "expected":  "+15",
+                                           "actual":  "15"
+                                       },
+                                       {
+                                           "name":  "TrustRaised",
+                                           "passed":  true,
+                                           "expected":  "10",
+                                           "actual":  "10"
+                                       },
+                                       {
+                                           "name":  "HolodiskOne",
+                                           "passed":  true,
+                                           "expected":  "1",
+                                           "actual":  "1"
+                                       },
+                                       {
+                                           "name":  "CastielCompleted",
+                                           "passed":  true,
+                                           "expected":  "trust",
+                                           "actual":  "trust"
+                                       },
+                                       {
+                                           "name":  "ReplyLetterSent",
+                                           "passed":  true,
+                                           "expected":  "reply",
+                                           "actual":  "(*Name)Pam(/Name) Р±РµСЂРµРјРµРЅРЅР° | РЎРёРіРЅР°Р» РїРѕРґ С„СѓРЅРґР°РјРµРЅС‚РѕРј | РЎРЅС‹ РїРѕРґ РїРµРїР»РѕРј | Р“РѕСЃС‚СЊ РІ Р±РµР¶РµРІРѕРј РїР»Р°С‰Рµ"
+                                       },
+                                       {
+                                           "name":  "ChronicleLogsDecisions",
+                                           "passed":  true,
+                                           "expected":  "two log lines",
+                                           "actual":  "## РђРєС‚ 1 | Р“РѕР»РѕРґРёСЃРє-РљР»СЋС‡: Р Р°СЃС€РёС„СЂРѕРІР°РЅРѕ СЃРµРєС‚РѕСЂРѕРІ 1 РёР· 4 | ## РђРєС‚РёРІРЅС‹Рµ Р·Р°РґР°РЅРёСЏ (0) | ## РџСЂРёРЅСЏС‚С‹Рµ СЂРµС€РµРЅРёСЏ (2) | вЂў Р“РѕСЃС‚СЊ РІ Р±РµР¶РµРІРѕРј РїР»Р°С‰Рµ в†’ trust | вЂў РЎРёРіРЅР°Р» РїРѕРґ С„СѓРЅРґР°РјРµРЅС‚РѕРј в†’ done"
+                                       },
+                                       {
+                                           "name":  "ChronicleDrawsClean",
+                                           "passed":  true,
+                                           "expected":  "null",
+                                           "actual":  ""
+                                       }
+                                   ],
+                        "errors":  [
+
+                                   ]
+                    },
+    "passed":  true
+}

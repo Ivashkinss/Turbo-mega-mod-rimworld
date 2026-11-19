@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Story.Accept>Принять</TMM.Story.Accept>
+  <TMM.Story.Later>Позже</TMM.Story.Later>
+  <TMM.Story.ChoiceLocked>Сейчас недоступно.</TMM.Story.ChoiceLocked>
+  <TMM.Story.DaysLeft>осталось дней: {0}</TMM.Story.DaysLeft>
+  <TMM.Story.NoStory>История ещё не началась.</TMM.Story.NoStory>
+  <TMM.Story.Title>Хроника Искры</TMM.Story.Title>
+  <TMM.Story.ActHeader>Акт {0}</TMM.Story.ActHeader>
+  <TMM.Story.Holodisk>Голодиск-Ключ: расшифровано секторов {0} из {1}</TMM.Story.Holodisk>
+  <TMM.Story.ActiveHeader>Активные задания ({0})</TMM.Story.ActiveHeader>
+  <TMM.Story.OfferedHeader>Ждут вашего ответа</TMM.Story.OfferedHeader>
+  <TMM.Story.ArcsHeader>Линии фракций</TMM.Story.ArcsHeader>
+  <TMM.Story.LogHeader>Принятые решения ({0})</TMM.Story.LogHeader>
+  <TMM.Story.Failed>провалено</TMM.Story.Failed>
+</LanguageData>
