@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!--
+    Equips all 27 catalog heroes in Defs/HeroDefs/*.xml with their signature apparel & weapons.
+    Uses PatchOperationConditional so missing HeroDefs or absent <apparel>/<weapon> elements
+    never produce load errors.
+    CHECK API: Verify exact HeroDef root XML tag name (e.g. TurboMegaMod.HeroDef vs TMM.HeroDef)
+    and whether HeroDef exposes <apparel> list. SignatureGearHeroHook in SignatureGear.cs also
+    acts as a runtime guarantee on HeroRegistry.GetOrCreate.
+  -->
+
+  <!-- 1. Dean Winchester: Jacket + Sawed-Off Shotgun -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]/apparel</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]/apparel</xpath>
+            <value><li>TMM_Sig_dean_leather_jacket</li></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]</xpath>
+            <value><apparel><li>TMM_Sig_dean_leather_jacket</li></apparel></value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]/weapon</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]/weapon</xpath>
+            <value><weapon>TMM_Sig_dean_sawed_off_shotgun</weapon></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_dean_winchester" or heroId="dean_winchester"]</xpath>
+            <value><weapon>TMM_Sig_dean_sawed_off_shotgun</weapon></value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- 2. Sam Winchester -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_sam_winchester" or heroId="sam_winchester"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_sam_winchester" or heroId="sam_winchester"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_sam_winchester" or heroId="sam_winchester"]/apparel</xpath>
+        <value><li>TMM_Sig_sam_hunting_flannel</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_sam_winchester" or heroId="sam_winchester"]</xpath>
+        <value><apparel><li>TMM_Sig_sam_hunting_flannel</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 3. Preston Garvey -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_preston_garvey" or heroId="preston_garvey"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_preston_garvey" or heroId="preston_garvey"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_preston_garvey" or heroId="preston_garvey"]/apparel</xpath>
+        <value><li>TMM_Sig_preston_garvey_hat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_preston_garvey" or heroId="preston_garvey"]</xpath>
+        <value><apparel><li>TMM_Sig_preston_garvey_hat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 4. Bobby Singer -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_bobby_singer" or heroId="bobby_singer"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_bobby_singer" or heroId="bobby_singer"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_bobby_singer" or heroId="bobby_singer"]/apparel</xpath>
+        <value><li>TMM_Sig_bobby_singer_cap_vest</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_bobby_singer" or heroId="bobby_singer"]</xpath>
+        <value><apparel><li>TMM_Sig_bobby_singer_cap_vest</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 5. Castiel: Trenchcoat + Angel Blade -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]/apparel</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]/apparel</xpath>
+            <value><li>TMM_Sig_castiel_trenchcoat</li></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]</xpath>
+            <value><apparel><li>TMM_Sig_castiel_trenchcoat</li></apparel></value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]/weapon</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]/weapon</xpath>
+            <value><weapon>TMM_Sig_castiel_angel_blade</weapon></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_castiel" or heroId="castiel"]</xpath>
+            <value><weapon>TMM_Sig_castiel_angel_blade</weapon></value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- 6. Michael -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_michael" or heroId="michael"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_michael" or heroId="michael"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_michael" or heroId="michael"]/apparel</xpath>
+        <value><li>TMM_Sig_michael_archangel_plate</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_michael" or heroId="michael"]</xpath>
+        <value><apparel><li>TMM_Sig_michael_archangel_plate</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 7. Lucifer -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_lucifer" or heroId="lucifer"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_lucifer" or heroId="lucifer"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_lucifer" or heroId="lucifer"]/apparel</xpath>
+        <value><li>TMM_Sig_lucifer_white_suit</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_lucifer" or heroId="lucifer"]</xpath>
+        <value><apparel><li>TMM_Sig_lucifer_white_suit</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 8. Crowley -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_crowley" or heroId="crowley"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_crowley" or heroId="crowley"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_crowley" or heroId="crowley"]/apparel</xpath>
+        <value><li>TMM_Sig_crowley_king_suit</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_crowley" or heroId="crowley"]</xpath>
+        <value><apparel><li>TMM_Sig_crowley_king_suit</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 9. Ruby -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_ruby" or heroId="ruby"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_ruby" or heroId="ruby"]/weapon</xpath>
+      <match Class="PatchOperationReplace">
+        <xpath>Defs/*[defName="TMM_Hero_ruby" or heroId="ruby"]/weapon</xpath>
+        <value><weapon>TMM_Sig_ruby_demon_knife</weapon></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_ruby" or heroId="ruby"]</xpath>
+        <value><weapon>TMM_Sig_ruby_demon_knife</weapon></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 10. Arthur Maxson -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_arthur_maxson" or heroId="arthur_maxson"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_arthur_maxson" or heroId="arthur_maxson"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_arthur_maxson" or heroId="arthur_maxson"]/apparel</xpath>
+        <value><li>TMM_Sig_maxson_battlecoat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_arthur_maxson" or heroId="arthur_maxson"]</xpath>
+        <value><apparel><li>TMM_Sig_maxson_battlecoat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 11. Paladin Danse -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_paladin_danse" or heroId="paladin_danse"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_paladin_danse" or heroId="paladin_danse"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_paladin_danse" or heroId="paladin_danse"]/apparel</xpath>
+        <value><li>TMM_Sig_danse_recon_hood</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_paladin_danse" or heroId="paladin_danse"]</xpath>
+        <value><apparel><li>TMM_Sig_danse_recon_hood</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 12. Defender Henry Casdin -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]/apparel</xpath>
+        <value><li>TMM_Sig_casdin_protector_helm</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_HenryCasdin" or defName="TMM_Hero_henry_casdin" or heroId="henry_casdin"]</xpath>
+        <value><apparel><li>TMM_Sig_casdin_protector_helm</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 13. Colonel Autumn -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_colonel_autumn" or heroId="colonel_autumn"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_colonel_autumn" or heroId="colonel_autumn"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_colonel_autumn" or heroId="colonel_autumn"]/apparel</xpath>
+        <value><li>TMM_Sig_autumn_enclave_greatcoat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_colonel_autumn" or heroId="colonel_autumn"]</xpath>
+        <value><apparel><li>TMM_Sig_autumn_enclave_greatcoat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 14. Father (Shaun) -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_father_shaun" or heroId="father_shaun"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_father_shaun" or heroId="father_shaun"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_father_shaun" or heroId="father_shaun"]/apparel</xpath>
+        <value><li>TMM_Sig_father_director_coat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_father_shaun" or heroId="father_shaun"]</xpath>
+        <value><apparel><li>TMM_Sig_father_director_coat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 15. Kellogg: Outfit + Revolver -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]/apparel</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]/apparel</xpath>
+            <value><li>TMM_Sig_kellogg_cyber_jacket</li></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]</xpath>
+            <value><apparel><li>TMM_Sig_kellogg_cyber_jacket</li></apparel></value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]/weapon</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]/weapon</xpath>
+            <value><weapon>TMM_Sig_kellogg_revolver</weapon></value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/*[defName="TMM_Hero_kellogg" or heroId="kellogg"]</xpath>
+            <value><weapon>TMM_Sig_kellogg_revolver</weapon></value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- 16. Desdemona -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_desdemona" or heroId="desdemona"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_desdemona" or heroId="desdemona"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_desdemona" or heroId="desdemona"]/apparel</xpath>
+        <value><li>TMM_Sig_desdemona_railroad_coat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_desdemona" or heroId="desdemona"]</xpath>
+        <value><apparel><li>TMM_Sig_desdemona_railroad_coat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 17. Deacon -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_deacon" or heroId="deacon"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_deacon" or heroId="deacon"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_deacon" or heroId="deacon"]/apparel</xpath>
+        <value><li>TMM_Sig_deacon_sunglasses</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_deacon" or heroId="deacon"]</xpath>
+        <value><apparel><li>TMM_Sig_deacon_sunglasses</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 18. Captain Wes -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_captain_wes" or heroId="captain_wes"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_captain_wes" or heroId="captain_wes"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_captain_wes" or heroId="captain_wes"]/apparel</xpath>
+        <value><li>TMM_Sig_wes_gunner_coat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_captain_wes" or heroId="captain_wes"]</xpath>
+        <value><apparel><li>TMM_Sig_wes_gunner_coat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 19. Dr. Stanislaus Braun -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_stanislaus_braun" or heroId="stanislaus_braun"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_stanislaus_braun" or heroId="stanislaus_braun"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_stanislaus_braun" or heroId="stanislaus_braun"]/apparel</xpath>
+        <value><li>TMM_Sig_braun_white_suit</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_stanislaus_braun" or heroId="stanislaus_braun"]</xpath>
+        <value><apparel><li>TMM_Sig_braun_white_suit</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 20. Dr. Hess -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_dr_hess" or heroId="dr_hess"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_dr_hess" or heroId="dr_hess"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_dr_hess" or heroId="dr_hess"]/apparel</xpath>
+        <value><li>TMM_Sig_dr_hess_monocle</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_dr_hess" or heroId="dr_hess"]</xpath>
+        <value><apparel><li>TMM_Sig_dr_hess_monocle</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 21. Arthur Ketch -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_arthur_ketch" or heroId="arthur_ketch"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_arthur_ketch" or heroId="arthur_ketch"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_arthur_ketch" or heroId="arthur_ketch"]/apparel</xpath>
+        <value><li>TMM_Sig_ketch_arsenal_briefcase_coat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_arthur_ketch" or heroId="arthur_ketch"]</xpath>
+        <value><apparel><li>TMM_Sig_ketch_arsenal_briefcase_coat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 22. John Hancock -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_john_hancock" or heroId="john_hancock"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_john_hancock" or heroId="john_hancock"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_john_hancock" or heroId="john_hancock"]/apparel</xpath>
+        <value><li>TMM_Sig_hancock_tricorn_coat</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_john_hancock" or heroId="john_hancock"]</xpath>
+        <value><apparel><li>TMM_Sig_hancock_tricorn_coat</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 23. Kent Connolly -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_kent_connolly" or heroId="kent_connolly"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_kent_connolly" or heroId="kent_connolly"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_kent_connolly" or heroId="kent_connolly"]/apparel</xpath>
+        <value><li>TMM_Sig_silver_shroud_costume</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_kent_connolly" or heroId="kent_connolly"]</xpath>
+        <value><apparel><li>TMM_Sig_silver_shroud_costume</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 24. Fawkes -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]/apparel</xpath>
+        <value><li>TMM_Sig_fawkes_vault87_harness</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_fawkes" or heroId="fawkes"]</xpath>
+        <value><apparel><li>TMM_Sig_fawkes_vault87_harness</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 25. Swan -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_swan" or heroId="swan"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_swan" or heroId="swan"]/weapon</xpath>
+      <match Class="PatchOperationReplace">
+        <xpath>Defs/*[defName="TMM_Hero_swan" or heroId="swan"]/weapon</xpath>
+        <value><weapon>TMM_Sig_swan_anchor_club</weapon></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_swan" or heroId="swan"]</xpath>
+        <value><weapon>TMM_Sig_swan_anchor_club</weapon></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 26. Alpha Vampire -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_alpha_vampire" or heroId="alpha_vampire"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_alpha_vampire" or heroId="alpha_vampire"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_alpha_vampire" or heroId="alpha_vampire"]/apparel</xpath>
+        <value><li>TMM_Sig_alpha_vampire_cloak</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_alpha_vampire" or heroId="alpha_vampire"]</xpath>
+        <value><apparel><li>TMM_Sig_alpha_vampire_cloak</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+  <!-- 27. Dick Roman -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*[defName="TMM_Hero_dick_roman" or heroId="dick_roman"]</xpath>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/*[defName="TMM_Hero_dick_roman" or heroId="dick_roman"]/apparel</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_dick_roman" or heroId="dick_roman"]/apparel</xpath>
+        <value><li>TMM_Sig_dick_roman_corporate_suit</li></value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/*[defName="TMM_Hero_dick_roman" or heroId="dick_roman"]</xpath>
+        <value><apparel><li>TMM_Sig_dick_roman_corporate_suit</li></apparel></value>
+      </nomatch>
+    </match>
+  </Operation>
+
+</Patch>

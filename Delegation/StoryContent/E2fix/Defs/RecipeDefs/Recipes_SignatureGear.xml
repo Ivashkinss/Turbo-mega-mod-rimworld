@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Story-gated recipes for all 30 signature hero items.
+    SignatureGearHarmony.Postfix_RecipeDef_AvailableNow checks SparkStory for
+    requiredStoryFlag ("unlock.<id>=true") OR any alias in altStoryFlags (set by Story_<faction>.xml).
+  -->
+
+  <!-- 1. Dean's worn leather jacket -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_dean_leather_jacket</defName>
+    <label>craft Dean's worn leather jacket</label>
+    <description>Tailor a rugged dark-brown cowhide car coat lined with rock-salt pockets.</description>
+    <jobString>Tailoring Dean's leather jacket.</jobString>
+    <workAmount>6200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>85</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_dean_leather_jacket>1</TMM_Sig_dean_leather_jacket></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.dean_leather_jacket</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 2. Dean's sawed-off double-barrel -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_dean_sawed_off_shotgun</defName>
+    <label>craft Dean's sawed-off double-barrel</label>
+    <description>Assemble a compact 12-gauge double-barrel shotgun loaded with rock-salt shells.</description>
+    <jobString>Machining Dean's shotgun.</jobString>
+    <workAmount>5800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>55</count></li>
+      <li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_dean_sawed_off_shotgun>1</TMM_Sig_dean_sawed_off_shotgun></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.dean_sawed_off_shotgun</requiredStoryFlag>
+        <altStoryFlags><li>unlock.dean_leather_jacket</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 3. Sam's layered hunter parka -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_sam_hunting_flannel</defName>
+    <label>craft Sam's layered hunter parka</label>
+    <description>Tailor a practical layered olive field parka with concealed lore pockets.</description>
+    <jobString>Tailoring Sam's parka.</jobString>
+    <workAmount>5800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>55</count></li>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>40</count></li>
+    </ingredients>
+    <products><TMM_Sig_sam_hunting_flannel>1</TMM_Sig_sam_hunting_flannel></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.sam_hunting_flannel</requiredStoryFlag>
+        <altStoryFlags><li>unlock.sam_jacket</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 4. Preston Garvey's colonial hat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_preston_garvey_hat</defName>
+    <label>craft Preston Garvey's colonial hat</label>
+    <description>Tailor a wide-brimmed colonial felt hat pinned with a brass Minutemen badge.</description>
+    <jobString>Tailoring Preston's hat.</jobString>
+    <workAmount>3200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>5</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <products><TMM_Sig_preston_garvey_hat>1</TMM_Sig_preston_garvey_hat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.preston_garvey_hat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.preston_hat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 5. Bobby Singer's trucker cap -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_bobby_singer_cap_vest</defName>
+    <label>craft Bobby Singer's trucker cap</label>
+    <description>Stitch a sturdy navy-blue mesh trucker cap in Bobby Singer's trademark style.</description>
+    <jobString>Tailoring Bobby's cap.</jobString>
+    <workAmount>2400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>4</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>40</count></li>
+    </ingredients>
+    <products><TMM_Sig_bobby_singer_cap_vest>1</TMM_Sig_bobby_singer_cap_vest></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.bobby_singer_cap_vest</requiredStoryFlag>
+        <altStoryFlags><li>unlock.bobby_cap</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 6. Castiel's rumpled trenchcoat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_castiel_trenchcoat</defName>
+    <label>craft Castiel's rumpled trenchcoat</label>
+    <description>Tailor a wing-slotted beige trenchcoat reinforced with subtle celestial thread.</description>
+    <jobString>Tailoring Castiel's trenchcoat.</jobString>
+    <workAmount>7600</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>90</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_castiel_trenchcoat>1</TMM_Sig_castiel_trenchcoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.castiel_trenchcoat</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 7. Castiel's angel blade -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_castiel_angel_blade</defName>
+    <label>forge Castiel's angel blade</label>
+    <description>Fabricate a triangular silver-steel angel blade capable of slaying regular demons and angels in one thrust.</description>
+    <jobString>Forging angel blade.</jobString>
+    <workAmount>12000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>15</count></li>
+    </ingredients>
+    <products><TMM_Sig_castiel_angel_blade>1</TMM_Sig_castiel_angel_blade></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.castiel_angel_blade</requiredStoryFlag>
+        <altStoryFlags><li>unlock.angel_blade</li><li>unlock.castiel_trenchcoat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 8. Michael's radiant cuirass -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_michael_archangel_plate</defName>
+    <label>forge Michael's radiant cuirass</label>
+    <description>Fabricate white-gold archangel commander armor tailored for celestial wings.</description>
+    <jobString>Forging Michael's cuirass.</jobString>
+    <workAmount>18000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>9</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>95</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <products><TMM_Sig_michael_archangel_plate>1</TMM_Sig_michael_archangel_plate></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.michael_archangel_plate</requiredStoryFlag>
+        <altStoryFlags><li>unlock.celestial_vestments</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 9. Lucifer's immaculate white suit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_lucifer_white_suit</defName>
+    <label>craft Lucifer's immaculate white suit</label>
+    <description>Tailor a flameproof hyperweave white suit threaded with silver pinstripes.</description>
+    <jobString>Tailoring Lucifer's white suit.</jobString>
+    <workAmount>11000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>60</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_lucifer_white_suit>1</TMM_Sig_lucifer_white_suit></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.lucifer_white_suit</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 10. Crowley's King of Hell suit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_crowley_king_suit</defName>
+    <label>craft Crowley's King of Hell suit</label>
+    <description>Tailor a bespoke Savile Row demon-lord suit lined with devilstrand and silver wards.</description>
+    <jobString>Tailoring Crowley's suit.</jobString>
+    <workAmount>10500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>65</count></li>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <products><TMM_Sig_crowley_king_suit>1</TMM_Sig_crowley_king_suit></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.crowley_king_suit</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 11A. Ruby's demon-killing knife (Core fallback without Anomaly DLC) -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_ruby_demon_knife</defName>
+    <label>forge Ruby's demon-killing knife</label>
+    <description>Forge an ancient rune-etched demon-killing dagger from plasteel, silver, and gold.</description>
+    <jobString>Forging Ruby's knife.</jobString>
+    <workAmount>10000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>FueledSmithy</li><li>ElectricSmithy</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_ruby_demon_knife>1</TMM_Sig_ruby_demon_knife></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.ruby_demon_knife</requiredStoryFlag>
+        <hideWhenAnomalyActive>true</hideWhenAnomalyActive>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 11B. Ruby's demon-killing knife (Anomaly DLC Bioferrite version) -->
+  <RecipeDef MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>TMM_Make_Sig_ruby_demon_knife_Anomaly</defName>
+    <label>forge Ruby's demon-killing knife</label>
+    <description>Forge an ancient rune-etched demon-killing dagger from plasteel, silver, and bioferrite.</description>
+    <jobString>Forging Ruby's knife.</jobString>
+    <workAmount>10000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>FueledSmithy</li><li>ElectricSmithy</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>Bioferrite</li></thingDefs></filter><count>15</count></li>
+    </ingredients>
+    <products><TMM_Sig_ruby_demon_knife>1</TMM_Sig_ruby_demon_knife></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.ruby_demon_knife</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 12. Maxson's Elder battlecoat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_maxson_battlecoat</defName>
+    <label>craft Maxson's Elder battlecoat</label>
+    <description>Tailor a heavy sheepskin-lined armored Brotherhood command battlecoat.</description>
+    <jobString>Tailoring Maxson's battlecoat.</jobString>
+    <workAmount>11500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>110</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <products><TMM_Sig_maxson_battlecoat>1</TMM_Sig_maxson_battlecoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.maxson_battlecoat</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 13. Paladin Danse's recon hood -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_danse_recon_hood</defName>
+    <label>craft Paladin Danse's recon hood</label>
+    <description>Tailor an olive ballistic recon skullcap for power-armor operators.</description>
+    <jobString>Tailoring Danse's recon hood.</jobString>
+    <workAmount>4200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>5</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_danse_recon_hood>1</TMM_Sig_danse_recon_hood></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.danse_recon_hood</requiredStoryFlag>
+        <altStoryFlags><li>unlock.danse_hood</li><li>unlock.danse_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 14. Casdin's Outcast command helmet -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_casdin_protector_helm</defName>
+    <label>fabricate Casdin's Outcast command helmet</label>
+    <description>Assemble a matte-black and crimson Outcast T-45d power armor command helmet.</description>
+    <jobString>Fabricating Casdin's helmet.</jobString>
+    <workAmount>9200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>6</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>4</count></li>
+    </ingredients>
+    <products><TMM_Sig_casdin_protector_helm>1</TMM_Sig_casdin_protector_helm></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.casdin_protector_helm</requiredStoryFlag>
+        <altStoryFlags><li>unlock.casdin_helmet</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 15. Colonel Autumn's leather greatcoat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_autumn_enclave_greatcoat</defName>
+    <label>craft Colonel Autumn's leather greatcoat</label>
+    <description>Tailor a dark-slate armored Enclave command greatcoat with red piping.</description>
+    <jobString>Tailoring Autumn's greatcoat.</jobString>
+    <workAmount>12000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>100</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_autumn_enclave_greatcoat>1</TMM_Sig_autumn_enclave_greatcoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.autumn_enclave_greatcoat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.autumn_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 16. Father's Director lab coat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_father_director_coat</defName>
+    <label>craft Father's Director lab coat</label>
+    <description>Weave an immaculate white Director lab coat from hyperweave and synthread.</description>
+    <jobString>Tailoring Father's lab coat.</jobString>
+    <workAmount>9500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>55</count></li>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <products><TMM_Sig_father_director_coat>1</TMM_Sig_father_director_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.father_director_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.father_white_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 17. Kellogg's armored mercenary outfit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_kellogg_cyber_jacket</defName>
+    <label>craft Kellogg's armored mercenary outfit</label>
+    <description>Assemble a heavy leather mercenary jacket with a bolted metal pauldron.</description>
+    <jobString>Crafting Kellogg's outfit.</jobString>
+    <workAmount>10200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>90</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_kellogg_cyber_jacket>1</TMM_Sig_kellogg_cyber_jacket></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.kellogg_cyber_jacket</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 18. Kellogg's .44 revolver -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_kellogg_revolver</defName>
+    <label>craft Kellogg's .44 revolver</label>
+    <description>Machine a heavy nickel-plated .44 magnum hair-trigger revolver.</description>
+    <jobString>Machining Kellogg's revolver.</jobString>
+    <workAmount>9000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>3</count></li>
+    </ingredients>
+    <products><TMM_Sig_kellogg_revolver>1</TMM_Sig_kellogg_revolver></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.kellogg_revolver</requiredStoryFlag>
+        <altStoryFlags><li>unlock.kellogg_cyber_jacket</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 19. Desdemona's ballistic fatigues -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_desdemona_railroad_coat</defName>
+    <label>craft Desdemona's ballistic fatigues</label>
+    <description>Tailor a dark olive-grey Railroad command coat lined with dense ballistic weave.</description>
+    <jobString>Tailoring Desdemona's fatigues.</jobString>
+    <workAmount>10200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>85</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_desdemona_railroad_coat>1</TMM_Sig_desdemona_railroad_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.desdemona_railroad_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.desdemona_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 20. Deacon's undercover shades -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_deacon_sunglasses</defName>
+    <label>craft Deacon's undercover shades</label>
+    <description>Assemble tinted spy sunglasses with a concealed micro-transceiver earpiece.</description>
+    <jobString>Crafting Deacon's shades.</jobString>
+    <workAmount>3800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>15</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_deacon_sunglasses>1</TMM_Sig_deacon_sunglasses></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.deacon_sunglasses</requiredStoryFlag>
+        <altStoryFlags><li>unlock.deacon_shades</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 21. Captain Wes's command coat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_wes_gunner_coat</defName>
+    <label>craft Captain Wes's command coat</label>
+    <description>Assemble a reinforced olive Gunner command greatcoat over heavy combat plates.</description>
+    <jobString>Crafting Captain Wes's coat.</jobString>
+    <workAmount>10800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>80</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>45</count></li>
+    </ingredients>
+    <products><TMM_Sig_wes_gunner_coat>1</TMM_Sig_wes_gunner_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.wes_gunner_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.wes_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 22. Dr. Braun's simulation suit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_braun_white_suit</defName>
+    <label>craft Dr. Braun's simulation suit</label>
+    <description>Tailor a cream-white pre-war executive suit fitted with hidden neural sensors.</description>
+    <jobString>Tailoring Dr. Braun's suit.</jobString>
+    <workAmount>9200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>75</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>15</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <products><TMM_Sig_braun_white_suit>1</TMM_Sig_braun_white_suit></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.braun_white_suit</requiredStoryFlag>
+        <altStoryFlags><li>unlock.braun_sim_suit</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 23. Dr. Hess's arcane monocle -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_dr_hess_monocle</defName>
+    <label>fabricate Dr. Hess's arcane monocle</label>
+    <description>Etch Enochian optical sigils into a gold-rimmed crystal monocle.</description>
+    <jobString>Fabricating Dr. Hess's monocle.</jobString>
+    <workAmount>8500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Sig_dr_hess_monocle>1</TMM_Sig_dr_hess_monocle></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.dr_hess_monocle</requiredStoryFlag>
+        <altStoryFlags><li>unlock.hess_monocle</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 24. Arthur Ketch's bespoke assassin suit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_ketch_arsenal_briefcase_coat</defName>
+    <label>craft Arthur Ketch's bespoke assassin suit</label>
+    <description>Tailor a charcoal British ballistic suit fitted with concealed weapon holsters.</description>
+    <jobString>Tailoring Arthur Ketch's suit.</jobString>
+    <workAmount>10500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>80</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <products><TMM_Sig_ketch_arsenal_briefcase_coat>1</TMM_Sig_ketch_arsenal_briefcase_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.ketch_arsenal_briefcase_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.ketch_suit</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 25. Hancock's red frock coat -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_hancock_tricorn_coat</defName>
+    <label>craft Hancock's red frock coat</label>
+    <description>Tailor a gold-trimmed crimson colonial frock coat in Goodneighbor's iconic style.</description>
+    <jobString>Tailoring Hancock's frock coat.</jobString>
+    <workAmount>7800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>65</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <products><TMM_Sig_hancock_tricorn_coat>1</TMM_Sig_hancock_tricorn_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.hancock_tricorn_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.hancock_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 26. Silver Shroud trenchcoat & fedora -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_silver_shroud_costume</defName>
+    <label>craft Silver Shroud trenchcoat &amp; fedora</label>
+    <description>Tailor a ballistic-padded silver-grey trenchcoat inspired by Hubris Comics' radio vigilante.</description>
+    <jobString>Tailoring Silver Shroud costume.</jobString>
+    <workAmount>8600</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>80</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>15</count></li>
+    </ingredients>
+    <products><TMM_Sig_silver_shroud_costume>1</TMM_Sig_silver_shroud_costume></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.silver_shroud_costume</requiredStoryFlag>
+        <altStoryFlags><li>unlock.silver_shroud_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 27. Fawkes's torn Vault 87 jumpsuit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_fawkes_vault87_harness</defName>
+    <label>craft Fawkes's torn Vault 87 jumpsuit</label>
+    <description>Reinforce an oversized blue-and-yellow Vault 87 jumpsuit with steel plates for a Super Mutant.</description>
+    <jobString>Crafting Fawkes's harness.</jobString>
+    <workAmount>9800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>TableMachining</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>90</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>65</count></li>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>50</count></li>
+    </ingredients>
+    <products><TMM_Sig_fawkes_vault87_harness>1</TMM_Sig_fawkes_vault87_harness></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.fawkes_vault87_harness</requiredStoryFlag>
+        <altStoryFlags><li>unlock.fawkes_vault87_suit</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 28. Swan's rusted ship anchor -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_swan_anchor_club</defName>
+    <label>forge Swan's rusted ship anchor</label>
+    <description>Weld and reinforce an 18 kg ship anchor club fit for a Super Mutant or power-armored juggernaut.</description>
+    <jobString>Forging Swan's anchor club.</jobString>
+    <workAmount>12500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>FueledSmithy</li><li>ElectricSmithy</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>180</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <products><TMM_Sig_swan_anchor_club>1</TMM_Sig_swan_anchor_club></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.swan_anchor_club</requiredStoryFlag>
+        <altStoryFlags><li>unlock.swan_anchor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 29. Alpha Vampire's ancient cloak -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_alpha_vampire_cloak</defName>
+    <label>craft Alpha Vampire's ancient cloak</label>
+    <description>Tailor a floor-length obsidian silk and devilstrand cloak lined with crimson velvet.</description>
+    <jobString>Tailoring Alpha Vampire's cloak.</jobString>
+    <workAmount>11200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>95</count></li>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <products><TMM_Sig_alpha_vampire_cloak>1</TMM_Sig_alpha_vampire_cloak></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.alpha_vampire_cloak</requiredStoryFlag>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 30. Dick Roman's billionaire suit -->
+  <RecipeDef>
+    <defName>TMM_Make_Sig_dick_roman_corporate_suit</defName>
+    <label>craft Dick Roman's billionaire suit</label>
+    <description>Tailor a bespoke navy-blue hyperweave corporate suit accented with gold and silver.</description>
+    <jobString>Tailoring Dick Roman's suit.</jobString>
+    <workAmount>12500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>65</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <products><TMM_Sig_dick_roman_corporate_suit>1</TMM_Sig_dick_roman_corporate_suit></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearRecipeExtension">
+        <requiredStoryFlag>unlock.dick_roman_corporate_suit</requiredStoryFlag>
+        <altStoryFlags><li>unlock.dick_roman_suit</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Sig_dean_leather_jacket.label>потёртая кожаная куртка Дина</TMM_Sig_dean_leather_jacket.label>
+  <TMM_Sig_dean_leather_jacket.description>Потёртая в дорогах тёмно-коричневая кожаная куртка со старыми швами, латунными кнопками и глубокими карманами под патроны с солью и амулет. Часть комплекта «Старший брат».</TMM_Sig_dean_leather_jacket.description>
+
+  <TMM_Sig_dean_sawed_off_shotgun.label>обрез дробовика Дина</TMM_Sig_dean_sawed_off_shotgun.label>
+  <TMM_Sig_dean_sawed_off_shotgun.description>Короткоствольная двустволка 12-го калибра с тёмным ореховым прикладом из багажника «Импалы», заряженная крупной каменной солью, сбивающей с ног и оглушающей демонов и аномалий вблизи. Часть комплекта «Старший брат».</TMM_Sig_dean_sawed_off_shotgun.description>
+
+  <TMM_Sig_sam_hunting_flannel.label>многослойная куртка Сэма</TMM_Sig_sam_hunting_flannel.label>
+  <TMM_Sig_sam_hunting_flannel.description>Практичная оливковая полевая куртка поверх клетчатой фланелевой рубахи и тёмной толстовки со скрытыми карманами для записных книжек и свитков с ритуалами.</TMM_Sig_sam_hunting_flannel.description>
+
+  <TMM_Sig_preston_garvey_hat.label>шляпа Престона Гарви</TMM_Sig_preston_garvey_hat.label>
+  <TMM_Sig_preston_garvey_hat.description>Широкополая песочная фетровая шляпа с загнутым полем и потускневшей латунной кокардой Минитменов. Символ надежды для разрозненных поселений.</TMM_Sig_preston_garvey_hat.description>
+
+  <TMM_Sig_bobby_singer_cap_vest.label>кепка Бобби Сингера</TMM_Sig_bobby_singer_cap_vest.label>
+  <TMM_Sig_bobby_singer_cap_vest.description>Выцветшая тёмно-синяя кепка дальнобойщика со следами машинного масла — бессменный головной убор самого ворчливого хранителя знаний.</TMM_Sig_bobby_singer_cap_vest.description>
+
+  <TMM_Sig_castiel_trenchcoat.label>мятый плащ Кастиэля</TMM_Sig_castiel_trenchcoat.label>
+  <TMM_Sig_castiel_trenchcoat.description>Потрёпанный бежевый плащ поверх тёмного костюма и криво повязанного синего галстука, слегка опалённый по краям небесным огнём и скроенный под крылья ангела. Подходит только ангелам. Часть комплекта «Мятежный серафим».</TMM_Sig_castiel_trenchcoat.description>
+
+  <TMM_Sig_castiel_angel_blade.label>ангельский клинок Кастиэля</TMM_Sig_castiel_angel_blade.label>
+  <TMM_Sig_castiel_angel_blade.description>Гладкий трёхгранный серебристый стилет, который мятежный ангел прячет в рукаве. Убивает рядовых демонов и ангелов с одного удара, нанося высокий урон именным героям. Часть комплекта «Мятежный серафим».</TMM_Sig_castiel_angel_blade.description>
+
+  <TMM_Sig_michael_archangel_plate.label>сияющая кираса Михаила</TMM_Sig_michael_archangel_plate.label>
+  <TMM_Sig_michael_archangel_plate.description>Парадная бело-золотая кираса полководца Небес с пылающими енохианскими рунами и прорезями на лопатках для крыльев архангела. Подходит только ангелам.</TMM_Sig_michael_archangel_plate.description>
+
+  <TMM_Sig_lucifer_white_suit.label>белоснежный костюм Люцифера</TMM_Sig_lucifer_white_suit.label>
+  <TMM_Sig_lucifer_white_suit.description>Безупречно скроенный белоснежный костюм в тонкую серебристую полоску, излучающий пугающую харизму и холодное высокомерие.</TMM_Sig_lucifer_white_suit.description>
+
+  <TMM_Sig_crowley_king_suit.label>костюм Короля Ада Кроули</TMM_Sig_crowley_king_suit.label>
+  <TMM_Sig_crowley_king_suit.description>Сшитый на заказ угольно-чёрный костюм с алым нагрудным платком и потайными печатями в швах — идеальный наряд для торговли душами.</TMM_Sig_crowley_king_suit.description>
+
+  <TMM_Sig_ruby_demon_knife.label>нож Руби</TMM_Sig_ruby_demon_knife.label>
+  <TMM_Sig_ruby_demon_knife.description>Древний изогнутый охотничий кинжал с рукоятью из оленьего рога и клинком, покрытым стёртыми рунами. Один точный удар убивает рядовых демонов, нанося высокий урон именным героям-демонам.</TMM_Sig_ruby_demon_knife.description>
+
+  <TMM_Sig_maxson_battlecoat.label>боевой плащ старейшины Мэксона</TMM_Sig_maxson_battlecoat.label>
+  <TMM_Sig_maxson_battlecoat.description>Тяжёлый коричневый кожаный плащ на овчине поверх боевой формы Братства Стали с нашивкой верховного старейшины.</TMM_Sig_maxson_battlecoat.description>
+
+  <TMM_Sig_danse_recon_hood.label>подшлемник паладина Данса</TMM_Sig_danse_recon_hood.label>
+  <TMM_Sig_danse_recon_hood.description>Плотный оливковый баллистический подшлемник с мягкими накладками, гасящий вибрацию внутри тяжёлого шлема T-60.</TMM_Sig_danse_recon_hood.description>
+
+  <TMM_Sig_casdin_protector_helm.label>командирский шлем Касдина</TMM_Sig_casdin_protector_helm.label>
+  <TMM_Sig_casdin_protector_helm.description>Матово-чёрный шлем силовой брони T-45d с алой полосой на лбу и модернизированной оптикой наведения.</TMM_Sig_casdin_protector_helm.description>
+
+  <TMM_Sig_autumn_enclave_greatcoat.label>кожаная шинель полковника Отема</TMM_Sig_autumn_enclave_greatcoat.label>
+  <TMM_Sig_autumn_enclave_greatcoat.description>Тяжёлая тёмно-серая кожаная командирская шинель с красной окантовкой, латунными пуговицами и скрытой баллистической подкладкой.</TMM_Sig_autumn_enclave_greatcoat.description>
+
+  <TMM_Sig_father_director_coat.label>белый халат Отца</TMM_Sig_father_director_coat.label>
+  <TMM_Sig_father_director_coat.description>Безупречно белый синтетический халат с тонкой серебристой отделкой — одеяние верховного директора Института.</TMM_Sig_father_director_coat.description>
+
+  <TMM_Sig_kellogg_cyber_jacket.label>бронекуртка Келлога</TMM_Sig_kellogg_cyber_jacket.label>
+  <TMM_Sig_kellogg_cyber_jacket.description>Грубая коричневая кожаная куртка с одним прикрученным болтами стальным наплечником и ремнями для кибернетических имплантов. Часть комплекта «Наёмник Института».</TMM_Sig_kellogg_cyber_jacket.description>
+
+  <TMM_Sig_kellogg_revolver.label>револьвер Келлога</TMM_Sig_kellogg_revolver.label>
+  <TMM_Sig_kellogg_revolver.description>Тяжёлый никелированный револьвер 44-го калибра с тёмной деревянной рукоятью и облегчённым спуском, печально известный на всю Пустошь. Часть комплекта «Наёмник Института».</TMM_Sig_kellogg_revolver.description>
+
+  <TMM_Sig_desdemona_railroad_coat.label>бронекуртка Дездемоны</TMM_Sig_desdemona_railroad_coat.label>
+  <TMM_Sig_desdemona_railroad_coat.description>Тёмная оливково-серая полевая куртка, прошитая плотным баллистическим волокном со скрытыми карманами для шифров и голозаписей.</TMM_Sig_desdemona_railroad_coat.description>
+
+  <TMM_Sig_deacon_sunglasses.label>тёмные очки Дьякона</TMM_Sig_deacon_sunglasses.label>
+  <TMM_Sig_deacon_sunglasses.description>Классические тёмные очки в чёрной оправе со скрытым микропередатчиком. Помогают сохранять невозмутимый вид при любой легенде.</TMM_Sig_deacon_sunglasses.description>
+
+  <TMM_Sig_wes_gunner_coat.label>командирский плащ капитана Уэса</TMM_Sig_wes_gunner_coat.label>
+  <TMM_Sig_wes_gunner_coat.description>Тёмно-оливковый наёмничий плащ поверх усиленных армейских бронепластин с серебряными знаками капитана и эмблемой Стрелков.</TMM_Sig_wes_gunner_coat.description>
+
+  <TMM_Sig_braun_white_suit.label>костюм симуляции доктора Брона</TMM_Sig_braun_white_suit.label>
+  <TMM_Sig_braun_white_suit.description>Безупречный довоенный кремово-белый костюм с золотыми запонками и скрытыми под воротником датчиками нейроинтерфейса.</TMM_Sig_braun_white_suit.description>
+
+  <TMM_Sig_dr_hess_monocle.label>оккультный монокль доктора Хесс</TMM_Sig_dr_hess_monocle.label>
+  <TMM_Sig_dr_hess_monocle.description>Хрустальный монокль в золотой оправе с микроскопической енохианской гравировкой, позволяющий видеть следы магии и скрытые иллюзии.</TMM_Sig_dr_hess_monocle.description>
+
+  <TMM_Sig_ketch_arsenal_briefcase_coat.label>костюм ликвидатора Артура Кетча</TMM_Sig_ketch_arsenal_briefcase_coat.label>
+  <TMM_Sig_ketch_arsenal_briefcase_coat.description>Безупречно сидящий угольно-серый британский костюм с гибкой кевларовой подкладкой и потайными кобурами для зачарованных клинков и пистолетов.</TMM_Sig_ketch_arsenal_briefcase_coat.description>
+
+  <TMM_Sig_hancock_tricorn_coat.label>красный сюртук Хэнкока</TMM_Sig_hancock_tricorn_coat.label>
+  <TMM_Sig_hancock_tricorn_coat.description>Потрёпанный алый колониальный сюртук с золотым шитьём — легендарный наряд мэра Добрососедства, символизирующий свободу Пустоши.</TMM_Sig_hancock_tricorn_coat.description>
+
+  <TMM_Sig_silver_shroud_costume.label>плащ Серебряного Плаща</TMM_Sig_silver_shroud_costume.label>
+  <TMM_Sig_silver_shroud_costume.description>Эффектный серебристо-серый плащ в духе довоенного радиогероя, укреплённый современными баллистическими вставками.</TMM_Sig_silver_shroud_costume.description>
+
+  <TMM_Sig_fawkes_vault87_harness.label>комбинезон Убежища 87 Фокса</TMM_Sig_fawkes_vault87_harness.label>
+  <TMM_Sig_fawkes_vault87_harness.description>Сильно перешитый и укреплённый кожаными ремнями сине-жёлтый комбинезон Убежища 87, подогнанный под могучее тело Фокса. Подходит только супермутантам.</TMM_Sig_fawkes_vault87_harness.description>
+
+  <TMM_Sig_swan_anchor_club.label>корабельный якорь Лебедя</TMM_Sig_swan_anchor_club.label>
+  <TMM_Sig_swan_anchor_club.description>Огромный ржавый корабельный якорь, вырванный из затонувшего судна и используемый бегемотом Лебедем как сокрушительная дубина. Из-за веса (18 кг) подходит только супермутантам или бойцам в силовой броне.</TMM_Sig_swan_anchor_club.description>
+
+  <TMM_Sig_alpha_vampire_cloak.label>древний плащ Альфа-вампира</TMM_Sig_alpha_vampire_cloak.label>
+  <TMM_Sig_alpha_vampire_cloak.description>Царственный обсидиановый плащ до пят из плотного шёлка и кожи с тёмно-алой бархатной подкладкой, излучающий древнюю хищную власть.</TMM_Sig_alpha_vampire_cloak.description>
+
+  <TMM_Sig_dick_roman_corporate_suit.label>костюм миллиардера Дика Романа</TMM_Sig_dick_roman_corporate_suit.label>
+  <TMM_Sig_dick_roman_corporate_suit.description>Сверхдорогой тёмно-синий деловой костюм с безупречной белой сорочкой и шёлковым галстуком, излучающий безжалостную власть корпората.</TMM_Sig_dick_roman_corporate_suit.description>
+
+</LanguageData>

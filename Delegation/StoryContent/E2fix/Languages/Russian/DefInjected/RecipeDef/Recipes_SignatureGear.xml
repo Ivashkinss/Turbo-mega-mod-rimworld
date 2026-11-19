@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Make_Sig_dean_leather_jacket.label>сшить кожаную куртку Дина</TMM_Make_Sig_dean_leather_jacket.label>
+  <TMM_Make_Sig_dean_leather_jacket.jobString>Шьёт куртку Дина.</TMM_Make_Sig_dean_leather_jacket.jobString>
+
+  <TMM_Make_Sig_dean_sawed_off_shotgun.label>собрать обрез дробовика Дина</TMM_Make_Sig_dean_sawed_off_shotgun.label>
+  <TMM_Make_Sig_dean_sawed_off_shotgun.jobString>Собирает обрез Дина.</TMM_Make_Sig_dean_sawed_off_shotgun.jobString>
+
+  <TMM_Make_Sig_sam_hunting_flannel.label>сшить многослойную куртку Сэма</TMM_Make_Sig_sam_hunting_flannel.label>
+  <TMM_Make_Sig_sam_hunting_flannel.jobString>Шьёт куртку Сэма.</TMM_Make_Sig_sam_hunting_flannel.jobString>
+
+  <TMM_Make_Sig_preston_garvey_hat.label>сшить шляпу Престона Гарви</TMM_Make_Sig_preston_garvey_hat.label>
+  <TMM_Make_Sig_preston_garvey_hat.jobString>Шьёт шляпу Престона Гарви.</TMM_Make_Sig_preston_garvey_hat.jobString>
+
+  <TMM_Make_Sig_bobby_singer_cap_vest.label>сшить кепку Бобби Сингера</TMM_Make_Sig_bobby_singer_cap_vest.label>
+  <TMM_Make_Sig_bobby_singer_cap_vest.jobString>Шьёт кепку Бобби Сингера.</TMM_Make_Sig_bobby_singer_cap_vest.jobString>
+
+  <TMM_Make_Sig_castiel_trenchcoat.label>сшить мятый плащ Кастиэля</TMM_Make_Sig_castiel_trenchcoat.label>
+  <TMM_Make_Sig_castiel_trenchcoat.jobString>Шьёт плащ Кастиэля.</TMM_Make_Sig_castiel_trenchcoat.jobString>
+
+  <TMM_Make_Sig_castiel_angel_blade.label>выковать ангельский клинок Кастиэля</TMM_Make_Sig_castiel_angel_blade.label>
+  <TMM_Make_Sig_castiel_angel_blade.jobString>Куёт ангельский клинок.</TMM_Make_Sig_castiel_angel_blade.jobString>
+
+  <TMM_Make_Sig_michael_archangel_plate.label>выковать сияющую кирасу Михаила</TMM_Make_Sig_michael_archangel_plate.label>
+  <TMM_Make_Sig_michael_archangel_plate.jobString>Куёт кирасу Михаила.</TMM_Make_Sig_michael_archangel_plate.jobString>
+
+  <TMM_Make_Sig_lucifer_white_suit.label>сшить белоснежный костюм Люцифера</TMM_Make_Sig_lucifer_white_suit.label>
+  <TMM_Make_Sig_lucifer_white_suit.jobString>Шьёт костюм Люцифера.</TMM_Make_Sig_lucifer_white_suit.jobString>
+
+  <TMM_Make_Sig_crowley_king_suit.label>сшить костюм Короля Ада Кроули</TMM_Make_Sig_crowley_king_suit.label>
+  <TMM_Make_Sig_crowley_king_suit.jobString>Шьёт костюм Кроули.</TMM_Make_Sig_crowley_king_suit.jobString>
+
+  <TMM_Make_Sig_ruby_demon_knife.label>выковать нож Руби</TMM_Make_Sig_ruby_demon_knife.label>
+  <TMM_Make_Sig_ruby_demon_knife.jobString>Куёт нож Руби.</TMM_Make_Sig_ruby_demon_knife.jobString>
+
+  <TMM_Make_Sig_ruby_demon_knife_Anomaly.label>выковать нож Руби</TMM_Make_Sig_ruby_demon_knife_Anomaly.label>
+  <TMM_Make_Sig_ruby_demon_knife_Anomaly.jobString>Куёт нож Руби.</TMM_Make_Sig_ruby_demon_knife_Anomaly.jobString>
+
+  <TMM_Make_Sig_maxson_battlecoat.label>сшить боевой плащ старейшины Мэксона</TMM_Make_Sig_maxson_battlecoat.label>
+  <TMM_Make_Sig_maxson_battlecoat.jobString>Шьёт плащ Мэксона.</TMM_Make_Sig_maxson_battlecoat.jobString>
+
+  <TMM_Make_Sig_danse_recon_hood.label>сшить подшлемник паладина Данса</TMM_Make_Sig_danse_recon_hood.label>
+  <TMM_Make_Sig_danse_recon_hood.jobString>Шьёт подшлемник Данса.</TMM_Make_Sig_danse_recon_hood.jobString>
+
+  <TMM_Make_Sig_casdin_protector_helm.label>собрать командирский шлем Касдина</TMM_Make_Sig_casdin_protector_helm.label>
+  <TMM_Make_Sig_casdin_protector_helm.jobString>Собирает шлем Касдина.</TMM_Make_Sig_casdin_protector_helm.jobString>
+
+  <TMM_Make_Sig_autumn_enclave_greatcoat.label>сшить кожаную шинель полковника Отема</TMM_Make_Sig_autumn_enclave_greatcoat.label>
+  <TMM_Make_Sig_autumn_enclave_greatcoat.jobString>Шьёт шинель Отема.</TMM_Make_Sig_autumn_enclave_greatcoat.jobString>
+
+  <TMM_Make_Sig_father_director_coat.label>сшить белый халат Отца</TMM_Make_Sig_father_director_coat.label>
+  <TMM_Make_Sig_father_director_coat.jobString>Шьёт халат Отца.</TMM_Make_Sig_father_director_coat.jobString>
+
+  <TMM_Make_Sig_kellogg_cyber_jacket.label>собрать бронекуртку Келлога</TMM_Make_Sig_kellogg_cyber_jacket.label>
+  <TMM_Make_Sig_kellogg_cyber_jacket.jobString>Собирает бронекуртку Келлога.</TMM_Make_Sig_kellogg_cyber_jacket.jobString>
+
+  <TMM_Make_Sig_kellogg_revolver.label>собрать револьвер Келлога</TMM_Make_Sig_kellogg_revolver.label>
+  <TMM_Make_Sig_kellogg_revolver.jobString>Собирает револьвер Келлога.</TMM_Make_Sig_kellogg_revolver.jobString>
+
+  <TMM_Make_Sig_desdemona_railroad_coat.label>сшить бронекуртку Дездемоны</TMM_Make_Sig_desdemona_railroad_coat.label>
+  <TMM_Make_Sig_desdemona_railroad_coat.jobString>Шьёт бронекуртку Дездемоны.</TMM_Make_Sig_desdemona_railroad_coat.jobString>
+
+  <TMM_Make_Sig_deacon_sunglasses.label>собрать тёмные очки Дьякона</TMM_Make_Sig_deacon_sunglasses.label>
+  <TMM_Make_Sig_deacon_sunglasses.jobString>Собирает очки Дьякона.</TMM_Make_Sig_deacon_sunglasses.jobString>
+
+  <TMM_Make_Sig_wes_gunner_coat.label>собрать командирский плащ капитана Уэса</TMM_Make_Sig_wes_gunner_coat.label>
+  <TMM_Make_Sig_wes_gunner_coat.jobString>Собирает плащ Уэса.</TMM_Make_Sig_wes_gunner_coat.jobString>
+
+  <TMM_Make_Sig_braun_white_suit.label>сшить костюм симуляции доктора Брона</TMM_Make_Sig_braun_white_suit.label>
+  <TMM_Make_Sig_braun_white_suit.jobString>Шьёт костюм Брона.</TMM_Make_Sig_braun_white_suit.jobString>
+
+  <TMM_Make_Sig_dr_hess_monocle.label>изготовить оккультный монокль доктора Хесс</TMM_Make_Sig_dr_hess_monocle.label>
+  <TMM_Make_Sig_dr_hess_monocle.jobString>Изготавливает монокль Хесс.</TMM_Make_Sig_dr_hess_monocle.jobString>
+
+  <TMM_Make_Sig_ketch_arsenal_briefcase_coat.label>сшить костюм ликвидатора Артура Кетча</TMM_Make_Sig_ketch_arsenal_briefcase_coat.label>
+  <TMM_Make_Sig_ketch_arsenal_briefcase_coat.jobString>Шьёт костюм Кетча.</TMM_Make_Sig_ketch_arsenal_briefcase_coat.jobString>
+
+  <TMM_Make_Sig_hancock_tricorn_coat.label>сшить красный сюртук Хэнкока</TMM_Make_Sig_hancock_tricorn_coat.label>
+  <TMM_Make_Sig_hancock_tricorn_coat.jobString>Шьёт сюртук Хэнкока.</TMM_Make_Sig_hancock_tricorn_coat.jobString>
+
+  <TMM_Make_Sig_silver_shroud_costume.label>сшить плащ Серебряного Плаща</TMM_Make_Sig_silver_shroud_costume.label>
+  <TMM_Make_Sig_silver_shroud_costume.jobString>Шьёт плащ Серебряного Плаща.</TMM_Make_Sig_silver_shroud_costume.jobString>
+
+  <TMM_Make_Sig_fawkes_vault87_harness.label>сшить комбинезон Убежища 87 Фокса</TMM_Make_Sig_fawkes_vault87_harness.label>
+  <TMM_Make_Sig_fawkes_vault87_harness.jobString>Шьёт комбинезон Фокса.</TMM_Make_Sig_fawkes_vault87_harness.jobString>
+
+  <TMM_Make_Sig_swan_anchor_club.label>выковать корабельный якорь Лебедя</TMM_Make_Sig_swan_anchor_club.label>
+  <TMM_Make_Sig_swan_anchor_club.jobString>Куёт якорь Лебедя.</TMM_Make_Sig_swan_anchor_club.jobString>
+
+  <TMM_Make_Sig_alpha_vampire_cloak.label>сшить древний плащ Альфа-вампира</TMM_Make_Sig_alpha_vampire_cloak.label>
+  <TMM_Make_Sig_alpha_vampire_cloak.jobString>Шьёт плащ Альфа-вампира.</TMM_Make_Sig_alpha_vampire_cloak.jobString>
+
+  <TMM_Make_Sig_dick_roman_corporate_suit.label>сшить костюм миллиардера Дика Романа</TMM_Make_Sig_dick_roman_corporate_suit.label>
+  <TMM_Make_Sig_dick_roman_corporate_suit.jobString>Шьёт костюм Дика Романа.</TMM_Make_Sig_dick_roman_corporate_suit.jobString>
+
+</LanguageData>

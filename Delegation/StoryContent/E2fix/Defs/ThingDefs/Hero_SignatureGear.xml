@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- PROJECTILES FOR SIGNATURE RANGED WEAPONS                              -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>TMM_Bullet_DeanShotgun</defName>
+    <label>rock-salt buckshot</label>
+    <thingClass>TurboMegaMod.Bullet_DeanRockSalt</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef MayRequire="Ludeon.RimWorld.Biotech">TMM_RockSalt</damageDef>
+      <damageDef MayRequire="!Ludeon.RimWorld.Biotech">Bullet</damageDef>
+      <damageAmountBase>24</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <stoppingPower>2.8</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>TMM_Bullet_KelloggRevolver</defName>
+    <label>.44 magnum round</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>26</damageAmountBase>
+      <armorPenetrationBase>0.45</armorPenetrationBase>
+      <stoppingPower>1.8</stoppingPower>
+      <speed>74</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 1. DEAN WINCHESTER: JACKET & SAWED-OFF SHOTGUN (SET: OLDER BROTHER)   -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_dean_leather_jacket</defName>
+    <label>Dean's worn leather jacket</label>
+    <description>A scuffed dark-brown cowhide car coat with faded seams, brass snaps, and deep pockets lined with rock-salt pouches and a hidden demon-trap charm. Part of the Older Brother set.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>260</MaxHitPoints>
+      <MarketValue>950</MarketValue>
+      <Mass>2.4</Mass>
+      <ArmorRating_Sharp>0.58</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.32</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.40</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+      <PainShockThreshold>0.08</PainShockThreshold>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseGun">
+    <defName>TMM_Sig_dean_sawed_off_shotgun</defName>
+    <label>Dean's sawed-off double-barrel</label>
+    <description>A short-barreled 12-gauge double-barrel shotgun with a dark walnut stock, kept in the trunk of a '67 Impala and loaded with coarse rock-salt shells that stagger and stun demons and anomalies at close range. Part of the Older Brother set.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Shotgun</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Shotgun</soundInteract>
+    <statBases>
+      <MarketValue>880</MarketValue>
+      <Mass>2.6</Mass>
+      <AccuracyTouch>0.86</AccuracyTouch>
+      <AccuracyShort>0.82</AccuracyShort>
+      <AccuracyMedium>0.64</AccuracyMedium>
+      <AccuracyLong>0.40</AccuracyLong>
+      <RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TMM_Bullet_DeanShotgun</defaultProjectile>
+        <warmupTime>0.75</warmupTime>
+        <range>14</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_Shotgun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>9</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>barrels</label>
+        <capacities><li>Blunt</li><li>Poke</li></capacities>
+        <power>9</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 3. SAM WINCHESTER: LAYERED HUNTER PARKA                               -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_sam_hunting_flannel</defName>
+    <label>Sam's layered hunter parka</label>
+    <description>A practical olive canvas field jacket worn over a plaid flannel shirt and dark hoodie, with inner pockets stuffed with lore notebooks and Enochian spell slips.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <MarketValue>920</MarketValue>
+      <Mass>2.2</Mass>
+      <ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.35</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.14</ResearchSpeed>
+      <MeleeDodgeChance>0.05</MeleeDodgeChance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 4. PRESTON GARVEY: COLONIAL HAT                                       -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_preston_garvey_hat</defName>
+    <label>Preston Garvey's colonial hat</label>
+    <description>A wide-brimmed tan felt colonial hat with one side pinned up by a tarnished brass Minutemen badge. A symbol of hope for struggling settlements.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <MarketValue>640</MarketValue>
+      <Mass>0.4</Mass>
+      <ArmorRating_Sharp>0.24</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.22</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>0.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.18</SocialImpact>
+      <NegotiationAbility>0.12</NegotiationAbility>
+    </equippedStatOffsets>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 5. BOBBY SINGER: TRUCKER CAP                                          -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_bobby_singer_cap_vest</defName>
+    <label>Bobby Singer's trucker cap</label>
+    <description>A faded navy-blue mesh trucker cap stained with motor oil and sweat, worn by the gruffest lorekeeper in the hunter network.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <MarketValue>520</MarketValue>
+      <Mass>0.2</Mass>
+      <ArmorRating_Sharp>0.14</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.18</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+      <EquipDelay>0.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.12</ResearchSpeed>
+      <GeneralLaborSpeed>0.08</GeneralLaborSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 6 & 7. CASTIEL: TRENCHCOAT (angel_only) & ANGEL BLADE (SET)           -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_castiel_trenchcoat</defName>
+    <label>Castiel's rumpled trenchcoat</label>
+    <description>A battered beige trenchcoat worn over a dark suit and crooked blue tie, subtly scorched along the hems by celestial fire and tailored with reinforced back slits for angelic wings. Can only be worn by Angels. Part of the Rebel Seraph set.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>290</MaxHitPoints>
+      <MarketValue>1450</MarketValue>
+      <Mass>2.3</Mass>
+      <ArmorRating_Sharp>0.62</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.34</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.70</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MedicalTendQuality>0.10</MedicalTendQuality>
+      <PsychicSensitivity>0.20</PsychicSensitivity>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li><li>TMM_AngelApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <requiredXenotype>TMM_Angel</requiredXenotype>
+        <wingFriendly>true</wingFriendly>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>TMM_Sig_castiel_angel_blade</defName>
+    <label>Castiel's angel blade</label>
+    <description>A sleek, triangular silver-steel stiletto carried inside the sleeve of a rebel angel. Forged in Heaven, it slays regular demons and angels in a single thrust, while inflicting heavy damage against powerful named heroes. Part of the Rebel Seraph set.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/Knife</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2600</MarketValue>
+      <Mass>0.9</Mass>
+    </statBases>
+    <tools>
+      <li>
+        <label>celestial point</label>
+        <capacities><li>Stab</li><li>Cut</li></capacities>
+        <power>32</power>
+        <armorPenetration>1.20</armorPenetration>
+        <cooldownTime>1.2</cooldownTime>
+        <extraMeleeDamages MayRequire="Ludeon.RimWorld.Biotech">
+          <li>
+            <def>TMM_Enochian</def>
+            <amount>8</amount>
+            <armorPenetration>1.20</armorPenetration>
+          </li>
+        </extraMeleeDamages>
+      </li>
+    </tools>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <slaysRegularDemons>true</slaysRegularDemons>
+        <slaysRegularAngels>true</slaysRegularAngels>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 8. MICHAEL: RADIANT CUIRASS (angel_only)                              -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_michael_archangel_plate</defName>
+    <label>Michael's radiant cuirass</label>
+    <description>Ornate white-gold commander armor etched with blazing celestial runes, leaving open vents along the shoulder blades for archangel wings. Can only be worn by Angels.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>440</MaxHitPoints>
+      <MarketValue>3800</MarketValue>
+      <Mass>7.5</Mass>
+      <Flammability>0.05</Flammability>
+      <ArmorRating_Sharp>1.22</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.60</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.95</ArmorRating_Heat>
+      <Insulation_Cold>26</Insulation_Cold>
+      <Insulation_Heat>26</Insulation_Heat>
+      <EquipDelay>5.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.25</SocialImpact>
+      <MeleeHitChance>0.08</MeleeHitChance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li><li>TMM_AngelApparel</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <requiredXenotype>TMM_Angel</requiredXenotype>
+        <wingFriendly>true</wingFriendly>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 9. LUCIFER: IMMACULATE WHITE SUIT                                     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_lucifer_white_suit</defName>
+    <label>Lucifer's immaculate white suit</label>
+    <description>A razor-sharp white tailored suit with subtle silver pinstripes, radiating unsettling charisma and cold, theatrical arrogance.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <MarketValue>2900</MarketValue>
+      <Mass>1.6</Mass>
+      <Flammability>0.05</Flammability>
+      <ArmorRating_Sharp>0.56</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.95</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>28</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.30</SocialImpact>
+      <PsychicSensitivity>0.25</PsychicSensitivity>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 10. CROWLEY: KING OF HELL SUIT                                        -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_crowley_king_suit</defName>
+    <label>Crowley's King of Hell suit</label>
+    <description>A bespoke charcoal-black Savile Row suit with a crimson pocket square and hidden sigil stitching. Built for negotiating souls in style.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>290</MaxHitPoints>
+      <MarketValue>2400</MarketValue>
+      <Mass>1.6</Mass>
+      <Flammability>0.05</Flammability>
+      <ArmorRating_Sharp>0.52</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.95</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>26</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <TradePriceImprovement>0.18</TradePriceImprovement>
+      <NegotiationAbility>0.22</NegotiationAbility>
+      <SocialImpact>0.20</SocialImpact>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 11. RUBY: DEMON-KILLING KNIFE                                         -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>TMM_Sig_ruby_demon_knife</defName>
+    <label>Ruby's demon-killing knife</label>
+    <description>An ancient curved hunting dagger with a stag-horn handle and a blade covered in worn, arcane engravings. One deep strike destroys regular demons permanently, while dealing heavy damage to named demon heroes.</description>
+    <techLevel>Medieval</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/Knife</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2700</MarketValue>
+      <Mass>0.8</Mass>
+    </statBases>
+    <tools>
+      <li>
+        <label>cursed edge</label>
+        <capacities><li>Stab</li><li>Cut</li></capacities>
+        <power>28</power>
+        <armorPenetration>1.15</armorPenetration>
+        <cooldownTime>1.1</cooldownTime>
+        <extraMeleeDamages MayRequire="Ludeon.RimWorld.Biotech">
+          <li>
+            <def>TMM_HolyWater</def>
+            <amount>6</amount>
+            <armorPenetration>1.15</armorPenetration>
+          </li>
+        </extraMeleeDamages>
+      </li>
+    </tools>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <slaysRegularDemons>true</slaysRegularDemons>
+        <slaysRegularAngels>false</slaysRegularAngels>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 12. ARTHUR MAXSON: ELDER BATTLECOAT                                   -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_maxson_battlecoat</defName>
+    <label>Maxson's Elder battlecoat</label>
+    <description>A heavy sheepskin-lined brown leather bomber trenchcoat worn over Brotherhood combat fatigues, emblazoned with the Elder's steel crest.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>340</MaxHitPoints>
+      <MarketValue>2300</MarketValue>
+      <Mass>3.8</Mass>
+      <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.46</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.55</ArmorRating_Heat>
+      <Insulation_Cold>30</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>3.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.25</SocialImpact>
+      <AimingDelayFactor>-0.06</AimingDelayFactor>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 13. PALADIN DANSE: RECON HOOD                                         -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_danse_recon_hood</defName>
+    <label>Paladin Danse's recon hood</label>
+    <description>A tight olive-drab ballistic skullcap with padded ear cups and a chin strap, designed to cushion the head inside heavy T-60 helmets.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <MarketValue>720</MarketValue>
+      <Mass>0.8</Mass>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.32</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.28</ArmorRating_Heat>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>6</Insulation_Heat>
+      <EquipDelay>1.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+      <PainShockThreshold>0.06</PainShockThreshold>
+    </equippedStatOffsets>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 14. HENRY CASDIN: OUTCAST COMMAND HELMET                              -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_casdin_protector_helm</defName>
+    <label>Casdin's Outcast command helmet</label>
+    <description>A matte-black T-45d power armor helmet painted with a crimson stripe across the brow and upgraded target-acquisition optics.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <MarketValue>1650</MarketValue>
+      <Mass>3.1</Mass>
+      <Flammability>0.1</Flammability>
+      <ArmorRating_Sharp>1.15</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.52</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.72</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.50</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 15. COLONEL AUTUMN: LEATHER GREATCOAT                                 -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_autumn_enclave_greatcoat</defName>
+    <label>Colonel Autumn's leather greatcoat</label>
+    <description>A heavy dark-slate leather command greatcoat with red piping, brass buttons, and concealed ballistic mesh lining.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <MarketValue>2450</MarketValue>
+      <Mass>3.6</Mass>
+      <ArmorRating_Sharp>0.90</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.60</ArmorRating_Heat>
+      <Insulation_Cold>24</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>3.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.22</SocialImpact>
+      <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.25</SuppressionPower>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 16. FATHER (SHAUN): DIRECTOR LAB COAT                                 -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_father_director_coat</defName>
+    <label>Father's Director lab coat</label>
+    <description>An immaculate white synthetic coat with subtle silver trim, worn by the supreme Director of the Institute.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <MarketValue>2100</MarketValue>
+      <Mass>1.3</Mass>
+      <ArmorRating_Sharp>0.34</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.40</ArmorRating_Heat>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>20</Insulation_Heat>
+      <EquipDelay>1.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.25</ResearchSpeed>
+      <SocialImpact>0.20</SocialImpact>
+      <MedicalTendQuality>0.12</MedicalTendQuality>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 17 & 18. KELLOGG: ARMORED OUTFIT & .44 REVOLVER (SET: MERCENARY)      -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_kellogg_cyber_jacket</defName>
+    <label>Kellogg's armored mercenary outfit</label>
+    <description>A rugged brown leather jacket with a single bolted metal shoulder pauldron and reinforced cybernetic interface straps. Part of the Institute Mercenary set.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>330</MaxHitPoints>
+      <MarketValue>1850</MarketValue>
+      <Mass>3.4</Mass>
+      <ArmorRating_Sharp>0.84</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.44</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>2.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>
+      <MeleeDamageFactor>0.12</MeleeDamageFactor>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseGun">
+    <defName>TMM_Sig_kellogg_revolver</defName>
+    <label>Kellogg's .44 revolver</label>
+    <description>A heavy nickel-plated .44 magnum revolver with a dark wood grip and hair-trigger mechanism, infamous across the wasteland. Part of the Institute Mercenary set.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Revolver</soundInteract>
+    <statBases>
+      <MarketValue>1650</MarketValue>
+      <Mass>1.8</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.86</AccuracyShort>
+      <AccuracyMedium>0.74</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>1.2</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TMM_Bullet_KelloggRevolver</defaultProjectile>
+        <warmupTime>0.30</warmupTime>
+        <range>25</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>grip</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>9</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities><li>Blunt</li><li>Poke</li></capacities>
+        <power>9</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 19. DESDEMONA: BALLISTIC FATIGUES                                     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_desdemona_railroad_coat</defName>
+    <label>Desdemona's ballistic fatigues</label>
+    <description>A dark olive-grey field jacket interwoven with dense ballistic weave and lined with hidden pockets for cipher keys and synth holotapes.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>330</MaxHitPoints>
+      <MarketValue>1950</MarketValue>
+      <Mass>3.1</Mass>
+      <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.46</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.52</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.6</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.20</SocialImpact>
+      <MoveSpeed>0.10</MoveSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 20. DEACON: UNDERCOVER SHADES (EyeCover w/ Ideology, Overhead w/o)    -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_deacon_sunglasses</defName>
+    <label>Deacon's undercover shades</label>
+    <description>Classic black-framed tinted sunglasses paired with a subtle micro-transceiver earpiece. Helps the wearer keep a stone-cold poker face.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <MarketValue>680</MarketValue>
+      <Mass>0.1</Mass>
+      <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.10</ArmorRating_Heat>
+      <EquipDelay>0.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.15</SocialImpact>
+      <NegotiationAbility>0.15</NegotiationAbility>
+      <ShootingAccuracyPawn>0.04</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Eyes</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <layers>
+        <li MayRequire="Ludeon.RimWorld.Ideology">EyeCover</li>
+        <li MayRequire="!Ludeon.RimWorld.Ideology">Overhead</li>
+      </layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 21. CAPTAIN WES: COMMAND COAT                                         -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_wes_gunner_coat</defName>
+    <label>Captain Wes's command coat</label>
+    <description>A dark olive mercenary greatcoat layered over reinforced combat armor plates, marked with silver captain bars and the Gunners' skull emblem.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>340</MaxHitPoints>
+      <MarketValue>1850</MarketValue>
+      <Mass>4.2</Mass>
+      <ArmorRating_Sharp>0.94</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.46</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>3.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+      <AimingDelayFactor>-0.06</AimingDelayFactor>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 22. DR. STANISLAUS BRAUN: SIMULATION SUIT                             -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_braun_white_suit</defName>
+    <label>Dr. Braun's simulation suit</label>
+    <description>A spotless pre-war cream-white suit fitted with gold cufflinks and neural-interface sensors hidden beneath the collar.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <MarketValue>1950</MarketValue>
+      <Mass>1.4</Mass>
+      <ArmorRating_Sharp>0.28</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.16</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>1.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.22</ResearchSpeed>
+      <GeneralLaborSpeed>0.10</GeneralLaborSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 23. DR. HESS: ARCANE MONOCLE (EyeCover w/ Ideology, Overhead w/o)     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_dr_hess_monocle</defName>
+    <label>Dr. Hess's arcane monocle</label>
+    <description>A gold-rimmed crystal monocle etched with microscopic Enochian sigils, allowing the wearer to read faint magical residues and spot hidden illusions.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>130</MaxHitPoints>
+      <MarketValue>1750</MarketValue>
+      <Mass>0.1</Mass>
+      <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.10</ArmorRating_Heat>
+      <EquipDelay>0.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.18</ResearchSpeed>
+      <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+      <PsychicSensitivity>-0.30</PsychicSensitivity>
+    </equippedStatOffsets>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Eyes</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <layers>
+        <li MayRequire="Ludeon.RimWorld.Ideology">EyeCover</li>
+        <li MayRequire="!Ludeon.RimWorld.Ideology">Overhead</li>
+      </layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 24. ARTHUR KETCH: BESPOKE ASSASSIN SUIT                               -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_ketch_arsenal_briefcase_coat</defName>
+    <label>Arthur Ketch's bespoke assassin suit</label>
+    <description>A razor-tailored charcoal British suit lined with flexible ballistic mesh and concealed holsters for enchanted blades and pistols.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>310</MaxHitPoints>
+      <MarketValue>2150</MarketValue>
+      <Mass>2.2</Mass>
+      <ArmorRating_Sharp>0.78</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.50</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.07</ShootingAccuracyPawn>
+      <MeleeHitChance>0.07</MeleeHitChance>
+      <MoveSpeed>0.12</MoveSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 25. JOHN HANCOCK: RED FROCK COAT                                      -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_hancock_tricorn_coat</defName>
+    <label>Hancock's red frock coat</label>
+    <description>A weathered, gold-trimmed crimson colonial frock coat worn with a matching tricorn hat, symbolizing Goodneighbor's fierce independence.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>280</MaxHitPoints>
+      <MarketValue>1450</MarketValue>
+      <Mass>2.5</Mass>
+      <ArmorRating_Sharp>0.56</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.35</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.25</SocialImpact>
+      <MeleeDodgeChance>0.06</MeleeDodgeChance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 26. KENT CONNOLLY: SILVER SHROUD TRENCHCOAT                           -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_silver_shroud_costume</defName>
+    <label>Silver Shroud trenchcoat &amp; fedora</label>
+    <description>A dramatic silver-grey trenchcoat and matching wide-brimmed fedora modeled after a pre-war radio vigilante, reinforced with modern ballistic padding.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <MarketValue>1600</MarketValue>
+      <Mass>2.9</Mass>
+      <ArmorRating_Sharp>0.76</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.40</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.20</SocialImpact>
+      <AimingDelayFactor>-0.05</AimingDelayFactor>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 27. FAWKES: VAULT 87 JUMPSUIT (super_mutant_only)                     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_fawkes_vault87_harness</defName>
+    <label>Fawkes's torn Vault 87 jumpsuit</label>
+    <description>A heavily patched, oversized blue-and-yellow Vault 87 jumpsuit reinforced with leather straps and steel plates to fit a super mutant leader. Can only be worn by Super Mutants.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>440</MaxHitPoints>
+      <MarketValue>1650</MarketValue>
+      <Mass>12.0</Mass>
+      <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.55</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>5.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.20</SocialImpact>
+      <ResearchSpeed>0.10</ResearchSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li><li>TMM_SuperMutantApparel</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <requiredXenotype>TMM_SuperMutant</requiredXenotype>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 28. SWAN: RUSTED SHIP ANCHOR (SUPER MUTANT OR POWER ARMOR ONLY)       -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>TMM_Sig_swan_anchor_club</defName>
+    <label>Swan's rusted ship anchor</label>
+    <description>A massive, barnacle-encrusted iron ship anchor ripped from a sunken hull and wielded as a devastating two-handed club. Too heavy (18 kg) for ordinary humans—can only be wielded by Super Mutants or soldiers wearing Power Armor.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/Mace</texPath> <!-- TODO art (vanilla Mace avoids Royalty dependency) -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2400</MarketValue>
+      <Mass>18.0</Mass>
+    </statBases>
+    <tools>
+      <li>
+        <label>anchor fluke</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>44</power>
+        <armorPenetration>0.72</armorPenetration>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+      <li>
+        <label>iron shank</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>24</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+    </tools>
+    <modExtensions>
+      <li Class="TurboMegaMod.SignatureGearExtension">
+        <requiresMutantOrPowerArmor>true</requiresMutantOrPowerArmor>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 29. ALPHA VAMPIRE: ANCIENT CLOAK (MoveSpeed +0.10 per Claude's rule)  -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_alpha_vampire_cloak</defName>
+    <label>Alpha Vampire's ancient cloak</label>
+    <description>A regal, floor-length obsidian silk and leather cloak lined with dark crimson velvet, radiating ancient predatory authority.</description>
+    <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>320</MaxHitPoints>
+      <MarketValue>2500</MarketValue>
+      <Mass>2.4</Mass>
+      <ArmorRating_Sharp>0.74</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+      <Insulation_Cold>28</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.10</MoveSpeed>
+      <MeleeDodgeChance>0.10</MeleeDodgeChance>
+      <SocialImpact>0.20</SocialImpact>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 30. DICK ROMAN: BILLIONAIRE SUIT                                      -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Sig_dick_roman_corporate_suit</defName>
+    <label>Dick Roman's billionaire suit</label>
+    <description>An ultra-expensive navy-blue bespoke corporate suit with a crisp white shirt and silk tie, exuding ruthless executive power.</description>
+    <techLevel>Spacer</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <MarketValue>3100</MarketValue>
+      <Mass>1.5</Mass>
+      <ArmorRating_Sharp>0.62</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.34</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <TradePriceImprovement>0.20</TradePriceImprovement>
+      <SocialImpact>0.25</SocialImpact>
+      <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.20</SuppressionPower>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_SignatureGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+</Defs>
