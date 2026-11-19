@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Генри Касдин -->
+  <TMM_BS_henry_casdin_child.title>послушник бункера</TMM_BS_henry_casdin_child.title>
+  <TMM_BS_henry_casdin_child.titleShort>послушник</TMM_BS_henry_casdin_child.titleShort>
+  <TMM_BS_henry_casdin_child.description>[PAWN_nameDef] вырос в подземном бункере Братства Стали, заучивая главы Кодекса и с закрытыми глазами разбирая лазерные винтовки ещё до совершеннолетия.</TMM_BS_henry_casdin_child.description>
+
+  <TMM_BS_henry_casdin_adult.title>защитник Изгоев</TMM_BS_henry_casdin_adult.title>
+  <TMM_BS_henry_casdin_adult.titleShort>защитник</TMM_BS_henry_casdin_adult.titleShort>
+  <TMM_BS_henry_casdin_adult.description>Возмущённый тем, что старейшина Лайонс предпочёл благотворительность сбору довоенных технологий, [PAWN_nameDef] возглавил раскол и основал Изгоев. [PAWN_pronoun] не пощадит даже целый госпиталь гулей, если его ядерный блок нужен для сдерживания Разлома.</TMM_BS_henry_casdin_adult.description>
+
+  <!-- Специалист Олин -->
+  <TMM_BS_specialist_olin_child.title>подмастерье оружейной</TMM_BS_specialist_olin_child.title>
+  <TMM_BS_specialist_olin_child.titleShort>подмастерье</TMM_BS_specialist_olin_child.titleShort>
+  <TMM_BS_specialist_olin_child.description>[PAWN_nameDef] провела детство среди сервоприводов и ядерных батарей в тесной мастерской, развив безошибочное чутьё на повреждённую силовую броню.</TMM_BS_specialist_olin_child.description>
+
+  <TMM_BS_specialist_olin_adult.title>квартирмейстер Изгоев</TMM_BS_specialist_olin_adult.title>
+  <TMM_BS_specialist_olin_adult.titleShort>специалист</TMM_BS_specialist_olin_adult.titleShort>
+  <TMM_BS_specialist_olin_adult.description>Уйдя за Касдином из Цитадели, [PAWN_nameDef] стала опорой форта Индепенденс, восстанавливая чёрно-красную броню T-45d и извлекая уцелевшие модули из заваленных довоенных архивов.</TMM_BS_specialist_olin_adult.description>
+
+  <!-- Писец Сайлас -->
+  <TMM_BS_scribe_silas_child.title>переписчик архива</TMM_BS_scribe_silas_child.title>
+  <TMM_BS_scribe_silas_child.titleShort>переписчик</TMM_BS_scribe_silas_child.titleShort>
+  <TMM_BS_scribe_silas_child.description>Слишком хрупкий для тяжёлой строевой муштры, юный [PAWN_nameDef] переписывал довоенные чертежи и расшифровывал военные голозаписи в полутёмных залах скрипториума.</TMM_BS_scribe_silas_child.description>
+
+  <TMM_BS_scribe_silas_adult.title>сомневающийся писец</TMM_BS_scribe_silas_adult.title>
+  <TMM_BS_scribe_silas_adult.titleShort>писец</TMM_BS_scribe_silas_adult.titleShort>
+  <TMM_BS_scribe_silas_adult.description>Порученный вести учёт аномалий и чертежей силовой брони Изгоев, [PAWN_nameDef] ужаснулся приказу Касдина вырвать реактор из работающей больницы гулей и втайне подготовил побег с ценнейшими схемами ордена.</TMM_BS_scribe_silas_adult.description>
+
+  <!-- Защитник Морриган -->
+  <TMM_BS_defender_morrigan_child.title>кадет учебки</TMM_BS_defender_morrigan_child.title>
+  <TMM_BS_defender_morrigan_child.titleShort>кадет</TMM_BS_defender_morrigan_child.titleShort>
+  <TMM_BS_defender_morrigan_child.description>[PAWN_nameDef] воспитывалась в жёсткой военной дисциплине и с ранних лет выделялась меткой стрельбой и тактической выучкой.</TMM_BS_defender_morrigan_child.description>
+
+  <TMM_BS_defender_morrigan_adult.title>железный заместитель</TMM_BS_defender_morrigan_adult.title>
+  <TMM_BS_defender_morrigan_adult.titleShort>заместитель</TMM_BS_defender_morrigan_adult.titleShort>
+  <TMM_BS_defender_morrigan_adult.description>Будучи самым беспощадным полевым командиром при Касдине, [PAWN_nameDef] держит Изгоев в ежовых рукавицах и готова возглавить орден, чтобы лично выследить любого перебежчика.</TMM_BS_defender_morrigan_adult.description>
+
+  <!-- Паладин Варгас -->
+  <TMM_BS_paladin_vargas_child.title>рабочий литейной</TMM_BS_paladin_vargas_child.title>
+  <TMM_BS_paladin_vargas_child.titleShort>литейщик</TMM_BS_paladin_vargas_child.titleShort>
+  <TMM_BS_paladin_vargas_child.description>[PAWN_nameDef] таскал металлолом в приграничной плавильне, пока не был принят в Братство за выдающуюся физическую выносливость.</TMM_BS_paladin_vargas_child.description>
+
+  <TMM_BS_paladin_vargas_adult.title>штурмовик авангарда</TMM_BS_paladin_vargas_adult.title>
+  <TMM_BS_paladin_vargas_adult.titleShort>штурмовик</TMM_BS_paladin_vargas_adult.titleShort>
+  <TMM_BS_paladin_vargas_adult.description>Закованный в побитую чёрно-красную силовую броню, [PAWN_nameDef] ведёт отряды Изгоев в заброшенные склепы и ставит стазис-ловушки на опасных аномалий.</TMM_BS_paladin_vargas_adult.description>
+
+  <!-- Разведчик Кесслер -->
+  <TMM_BS_scout_kessler_child.title>мусорщик руин</TMM_BS_scout_kessler_child.title>
+  <TMM_BS_scout_kessler_child.titleShort>мусорщик</TMM_BS_scout_kessler_child.titleShort>
+  <TMM_BS_scout_kessler_child.description>Осиротев на окраине Столичной Пустоши, [PAWN_nameDef] научился выслеживать патрули мутантов и находить довоенные тайники при свете луны.</TMM_BS_scout_kessler_child.description>
+
+  <TMM_BS_scout_kessler_adult.title>следопыт технологий</TMM_BS_scout_kessler_adult.title>
+  <TMM_BS_scout_kessler_adult.titleShort>разведчик</TMM_BS_scout_kessler_adult.titleShort>
+  <TMM_BS_scout_kessler_adult.description>[PAWN_nameDef] идёт далеко впереди ударных групп Изгоев, перехватывает курьеров Стрелков и помечает скрытые довоенные реакторы для немедленной конфискации.</TMM_BS_scout_kessler_adult.description>
+
+</LanguageData>

@@ -16,12 +16,14 @@ namespace TurboMegaMod
         public HeroState state = HeroState.Unspawned;
         public Pawn pawn;
         public int deathTick = -1;
+        public bool known = false;
 
         public void ExposeData()
         {
             Scribe_Values.Look(ref heroDefName, "hero");
             Scribe_Values.Look(ref state, "state", HeroState.Unspawned);
             Scribe_Values.Look(ref deathTick, "deathTick", -1);
+            Scribe_Values.Look(ref known, "known", false);
             // A discarded (Missing) pawn is not saved anywhere, so its reference is dropped to keep the save clean.
             if (Scribe.mode == LoadSaveMode.Saving && pawn != null && pawn.Discarded) pawn = null;
             Scribe_References.Look(ref pawn, "pawn");
@@ -48,6 +50,56 @@ namespace TurboMegaMod
         }
 
         public bool IsHero(Pawn pawn) { return pawn != null && records.Any(r => r.pawn == pawn); }
+
+        public bool IsKnown(HeroDef def, HeroRecord rec, Faction faction)
+        {
+            if (def == null) return false;
+            if (def.isLeader || def.councilMember) return true;
+            if (faction != null && faction.leader != null && rec != null && rec.pawn != null && faction.leader == rec.pawn) return true;
+            if (rec != null && rec.known) return true;
+            return false;
+        }
+
+        public void NotifyEncountered(Pawn p)
+        {
+            if (p == null) return;
+            for (int i = 0; i < records.Count; i++)
+            {
+                if (records[i].pawn == p)
+                {
+                    records[i].known = true;
+                    break;
+                }
+            }
+        }
+
+        public void EnsureLeadersInitialized()
+        {
+            if (Find.FactionManager == null) return;
+            List<HeroDef> leaders = DefDatabase<HeroDef>.AllDefs
+                .Where(d => d.isLeader || d.councilMember)
+                .OrderByDescending(d => d.isLeader)
+                .ToList();
+
+            for (int i = 0; i < leaders.Count; i++)
+            {
+                HeroDef d = leaders[i];
+                Faction f = FactionFor(d);
+                if (f != null && (f.leader == null || f.leader.Dead || !IsHero(f.leader) || d.councilMember))
+                {
+                    GetOrCreate(d);
+                }
+            }
+        }
+
+        public override void FinalizeInit(bool fromSave)
+        {
+            base.FinalizeInit(fromSave);
+            if (!fromSave)
+            {
+                EnsureLeadersInitialized();
+            }
+        }
 
         public static Faction FactionFor(HeroDef def)
         {
@@ -78,6 +130,7 @@ namespace TurboMegaMod
             if (rec == null) { rec = new HeroRecord { heroDefName = def.defName }; records.Add(rec); }
             rec.pawn = pawn;
             rec.state = HeroState.AtHome;
+            if (def.isLeader || def.councilMember) rec.known = true;
             Keep(pawn);
             // A council (Vault-Tec) has no single leader: the first living council member is the formal vanilla leader.
             if ((def.isLeader || def.councilMember) && (faction.leader == null || faction.leader.Dead || !IsHero(faction.leader))) faction.leader = pawn;
@@ -88,6 +141,9 @@ namespace TurboMegaMod
         {
             XenotypeDef xeno = def.xenotype.NullOrEmpty() ? null : DefDatabase<XenotypeDef>.GetNamedSilentFail(def.xenotype);
             if (!def.xenotype.NullOrEmpty() && xeno == null) return null;
+            // A hero without an explicit xenotype is a plain human: never a random faction xenotype
+            // (a Neanderthal Dean with a shooting penalty breaks the hero's skills and look).
+            if (xeno == null && ModsConfig.BiotechActive) xeno = XenotypeDefOf.Baseliner;
             Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
                 def.pawnKind,
                 faction,
@@ -166,13 +222,26 @@ namespace TurboMegaMod
             return HeroState.Away;
         }
 
-        private void Refresh(HeroRecord rec)
+        public void Refresh(HeroRecord rec)
         {
             if (rec.state == HeroState.Dead || rec.state == HeroState.Missing) return;
             HeroDef def = DefDatabase<HeroDef>.GetNamedSilentFail(rec.heroDefName);
             if (def == null) return;
             HeroState before = rec.state;
             rec.state = Classify(def, rec.pawn);
+
+            if (rec.pawn != null)
+            {
+                if (rec.state == HeroState.Captive || rec.state == HeroState.Joined)
+                {
+                    rec.known = true;
+                }
+                else if (rec.pawn.Spawned && rec.pawn.Map != null && rec.pawn.Map.IsPlayerHome)
+                {
+                    rec.known = true;
+                }
+            }
+
             if (rec.state == HeroState.Dead && before != HeroState.Dead)
             {
                 rec.deathTick = Find.TickManager.TicksGame;
@@ -199,7 +268,18 @@ namespace TurboMegaMod
             if (!wasLeader) return;
             if (faction.leader != null && !faction.leader.Dead && !faction.leader.Discarded && IsHero(faction.leader)) return;
             Pawn next = ChooseSuccessor(gone, faction);
-            if (next != null) faction.leader = next;
+            if (next != null)
+            {
+                faction.leader = next;
+                for (int i = 0; i < records.Count; i++)
+                {
+                    if (records[i].pawn == next)
+                    {
+                        records[i].known = true;
+                        break;
+                    }
+                }
+            }
         }
 
         /// Successor: explicit chain of the gone hero first, then the best living hero of the faction
@@ -281,6 +361,23 @@ namespace TurboMegaMod
             var lead = AccessTools.Method(typeof(Faction), "TryGenerateNewLeader");
             if (lead == null) Log.Error("[TMM] HeroRegistry: Faction.TryGenerateNewLeader not found; hero succession falls back to polling.");
             else harmony.Patch(lead, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "HeroSuccessor"));
+            // 1.7: ReceiveLetter(Letter let, string debugInfo, int delayTicks, bool playSound); the other overloads build a Letter and call it.
+            var letter = AccessTools.Method(typeof(LetterStack), "ReceiveLetter", new Type[] { typeof(Letter), typeof(string), typeof(int), typeof(bool) });
+            if (letter == null) Log.Error("[TMM] HeroRegistry: LetterStack.ReceiveLetter(Letter, string, int, bool) not found; heroes are not revealed by letters.");
+            else harmony.Patch(letter, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "NotifyLetter"));
+        }
+
+        public static void NotifyLetter(Letter let)
+        {
+            if (let == null || let.lookTargets == null || let.lookTargets.targets == null) return;
+            HeroRegistry reg = HeroRegistry.Instance;
+            if (reg == null) return;
+            for (int i = 0; i < let.lookTargets.targets.Count; i++)
+            {
+                GlobalTargetInfo target = let.lookTargets.targets[i];
+                Pawn p = target.Thing as Pawn;
+                if (p != null) reg.NotifyEncountered(p);
+            }
         }
 
         /// Vanilla Notify_LeaderDied calls TryGenerateNewLeader and then sends the letter and the

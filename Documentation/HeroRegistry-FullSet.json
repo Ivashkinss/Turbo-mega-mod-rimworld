@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3271,
-                         "scalarFields":  1333,
+                         "keyed":  3355,
+                         "scalarFields":  1454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3917,
-                        "ticksAdvanced":  14200,
+                        "framesAdvanced":  1596,
+                        "ticksAdvanced":  13507,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,15 +42,15 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "b89ba7f7c055a845de5a344d0ce24475ef9b9cd9b26aecabf8169e9660d988e7",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
     "heroRegistry":  {
                          "passed":  true,
-                         "checksCount":  140,
+                         "checksCount":  148,
                          "stage":  1,
                          "facts":  [
-                                       "leaderLetter=РђСЂС…РёС‡РµСЃРєРёР№ РђСЂС…РѕС‚РµС…РЅРёРє С„СЂР°РєС†РёРё РћР±СЉРµРґРёРЅРµРЅРёРµ РќРµСЃС‚СѓРј СѓРјРµСЂ РЈРјРµСЂ РђСЂС…РёС‡РµСЃРєРёР№ РђСЂС…РѕС‚РµС…РЅРёРє С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРћР±СЉРµРґРёРЅРµРЅРёРµ РќРµСЃС‚СѓРј\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ РђСЂС…РёС‡РµСЃРєРёР№ РђСЂС…РѕС‚РµС…РЅРёРє.",
-                                       "secondId=Human11747",
-                                       "thirdId=Human11753"
+                                       "leaderLetter=Р’С‹СЃС€РёР№ РњРёРЅРёСЃС‚СЂ С„СЂР°РєС†РёРё Р—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ СѓРјРµСЂ РЈРјРµСЂ Р’С‹СЃС€РёР№ РњРёРЅРёСЃС‚СЂ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ Р’С‹СЃС€РёР№ РњРёРЅРёСЃС‚СЂ.",
+                                       "secondId=Human12157",
+                                       "thirdId=Human12164"
                                    ],
                          "checks":  [
                                         {
@@ -63,7 +63,7 @@
                                             "name":  "TestFactionPresent",
                                             "passed":  true,
                                             "expected":  "OutlanderCivil",
-                                            "actual":  "РћР±СЉРµРґРёРЅРµРЅРёРµ РќРµСЃС‚СѓРј"
+                                            "actual":  "Р—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ"
                                         },
                                         {
                                             "name":  "MinutemenHeroesLoadedFromXml",
@@ -92,8 +92,8 @@
                                         {
                                             "name":  "PrestonFactionMatches",
                                             "passed":  true,
-                                            "expected":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ"
+                                            "expected":  "РҐРёРЅР±СѓРј",
+                                            "actual":  "РҐРёРЅР±СѓРј"
                                         },
                                         {
                                             "name":  "PrestonIsFactionLeader",
@@ -213,31 +213,31 @@
                                             "name":  "FactionPresent_TMM_MinutemenHuntersFaction",
                                             "passed":  true,
                                             "expected":  "TMM_MinutemenHuntersFaction",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ"
+                                            "actual":  "РҐРёРЅР±СѓРј"
                                         },
                                         {
                                             "name":  "Hero_bobby_singer",
                                             "passed":  true,
                                             "expected":  "TMM_MinutemenHuntersFaction/any/own backstory",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ/Dirtmole/True"
+                                            "actual":  "РҐРёРЅР±СѓРј/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_ronnie_shaw",
                                             "passed":  true,
                                             "expected":  "TMM_MinutemenHuntersFaction/any/own backstory",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ/Baseliner/True"
+                                            "actual":  "РҐРёРЅР±СѓРј/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_rufus_turner",
                                             "passed":  true,
                                             "expected":  "TMM_MinutemenHuntersFaction/any/own backstory",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ/Baseliner/True"
+                                            "actual":  "РҐРёРЅР±СѓРј/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_ellen_harvelle",
                                             "passed":  true,
                                             "expected":  "TMM_MinutemenHuntersFaction/any/own backstory",
-                                            "actual":  "РћСЂР°РЅР¶РµРІС‹Р№ РђР»СЊСЏРЅСЃ/Baseliner/True"
+                                            "actual":  "РҐРёРЅР±СѓРј/Baseliner/True"
                                         },
                                         {
                                             "name":  "FactionPresent_TMM_FriendlyMutantsFaction",
@@ -375,7 +375,7 @@
                                             "name":  "Hero_captain_bridget",
                                             "passed":  true,
                                             "expected":  "TMM_GunnersFaction/any/own backstory",
-                                            "actual":  "РЎС‚СЂРµР»РєРё/Hussar/True"
+                                            "actual":  "РЎС‚СЂРµР»РєРё/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_baker",
@@ -393,7 +393,7 @@
                                             "name":  "Hero_colonel_autumn",
                                             "passed":  true,
                                             "expected":  "TMM_EnclaveFaction/any/own backstory",
-                                            "actual":  "РђРЅРєР»Р°РІ/Genie/True"
+                                            "actual":  "РђРЅРєР»Р°РІ/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_dr_curling",
@@ -435,7 +435,7 @@
                                             "name":  "Hero_x6_88",
                                             "passed":  true,
                                             "expected":  "TMM_InstituteFaction/any/own backstory",
-                                            "actual":  "РРЅСЃС‚РёС‚СѓС‚/Neanderthal/True"
+                                            "actual":  "РРЅСЃС‚РёС‚СѓС‚/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_madison_li",
@@ -447,7 +447,7 @@
                                             "name":  "Hero_kellogg",
                                             "passed":  true,
                                             "expected":  "TMM_InstituteFaction/any/own backstory",
-                                            "actual":  "РРЅСЃС‚РёС‚СѓС‚/Hussar/True"
+                                            "actual":  "РРЅСЃС‚РёС‚СѓС‚/Baseliner/True"
                                         },
                                         {
                                             "name":  "Hero_alan_binet",
@@ -702,6 +702,48 @@
                                             "actual":  "2.2/TMM_SuperMutantHead"
                                         },
                                         {
+                                            "name":  "FactionPresent_TMM_OutcastsFaction",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°"
+                                        },
+                                        {
+                                            "name":  "Hero_henry_casdin",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
+                                            "name":  "Hero_specialist_olin",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
+                                            "name":  "Hero_scribe_silas",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
+                                            "name":  "Hero_defender_morrigan",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
+                                            "name":  "Hero_paladin_vargas",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
+                                            "name":  "Hero_scout_kessler",
+                                            "passed":  true,
+                                            "expected":  "TMM_OutcastsFaction/any/own backstory",
+                                            "actual":  "РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°/Baseliner/True"
+                                        },
+                                        {
                                             "name":  "FoxLeadsFriendlyMutants",
                                             "passed":  true,
                                             "expected":  "Fox",
@@ -740,8 +782,8 @@
                                         {
                                             "name":  "SecondCallSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human11741",
-                                            "actual":  "Human11741"
+                                            "expected":  "Human625",
+                                            "actual":  "Human625"
                                         },
                                         {
                                             "name":  "NameApplied",
@@ -759,7 +801,7 @@
                                             "name":  "LeaderInFactionAndWorld",
                                             "passed":  true,
                                             "expected":  "faction+world",
-                                            "actual":  "РћР±СЉРµРґРёРЅРµРЅРёРµ РќРµСЃС‚СѓРј/True"
+                                            "actual":  "Р—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ/True"
                                         },
                                         {
                                             "name":  "FactionLeaderIsHero",
@@ -768,10 +810,10 @@
                                             "actual":  "Lead"
                                         },
                                         {
-                                            "name":  "EightyRecords",
+                                            "name":  "AllHeroRecords",
                                             "passed":  true,
-                                            "expected":  "80",
-                                            "actual":  "80"
+                                            "expected":  "86",
+                                            "actual":  "86"
                                         },
                                         {
                                             "name":  "FiveDistinctPawns",
@@ -795,7 +837,7 @@
                                             "name":  "FifthAcceptedByCasket",
                                             "passed":  true,
                                             "expected":  "True",
-                                            "actual":  "CryptosleepCasket11779"
+                                            "actual":  "CryptosleepCasket12189"
                                         },
                                         {
                                             "name":  "SixthInFlightHolder",
@@ -819,7 +861,7 @@
                                             "name":  "LeaderLetterNamesSuccessor",
                                             "passed":  true,
                                             "expected":  "letter about Lead Probe naming Second Probe",
-                                            "actual":  "РђСЂС…РёС‡РµСЃРєРёР№ РђСЂС…РѕС‚РµС…РЅРёРє С„СЂР°РєС†РёРё РћР±СЉРµРґРёРЅРµРЅРёРµ РќРµСЃС‚СѓРј СѓРјРµСЂ РЈРјРµСЂ РђСЂС…РёС‡РµСЃРєРёР№ РђСЂС…РѕС‚РµС…РЅРёРє С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРћР±СЉРµРґРёРЅРµРЅРёРµ РќРµ"
+                                            "actual":  "Р’С‹СЃС€РёР№ РњРёРЅРёСЃС‚СЂ С„СЂР°РєС†РёРё Р—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ СѓРјРµСЂ РЈРјРµСЂ Р’С‹СЃС€РёР№ РњРёРЅРёСЃС‚СЂ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР—РµР»С‘РЅРѕРµ РћР±СЉРµРґРёРЅРµРЅРёРµ\u003c/color\u003e"
                                         },
                                         {
                                             "name":  "DeadLeaderStateDead",
@@ -854,7 +896,7 @@
                                         {
                                             "name":  "CapturedHeroSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human11753",
+                                            "expected":  "Human12164",
                                             "actual":  "checked"
                                         },
                                         {
@@ -886,6 +928,12 @@
                                             "passed":  true,
                                             "expected":  "kept",
                                             "actual":  "kept"
+                                        },
+                                        {
+                                            "name":  "NoDanglingRelationsOnHeroesOrPlayer",
+                                            "passed":  true,
+                                            "expected":  "0",
+                                            "actual":  "0 "
                                         },
                                         {
                                             "name":  "SaveWritten",

@@ -313,7 +313,8 @@ namespace TurboMegaMod
                 if (outpost.CanInteract(localCaravan))
                 {
                     Rect toCaravanBtn = new Rect(wRow.xMax - 100f, wRow.y + 4f, 96f, 28f);
-                    bool canRemove = outpost.Animals.Contains(w) || outpost.PawnCount > 1;
+                    bool isDeployed = outpost.operationalMode == OutpostOperationalMode.Physical || w.Spawned;
+                    bool canRemove = !isDeployed && (outpost.Animals.Contains(w) || outpost.PawnCount > 1);
                     if (Widgets.ButtonText(toCaravanBtn, "StrategicOutpost_ToCaravanBtn".Translate(), true, true, canRemove))
                     {
                         string removeError;
@@ -322,6 +323,14 @@ namespace TurboMegaMod
                             Messages.Message(removeError, outpost, MessageTypeDefOf.RejectInput, false);
                         }
                     }
+                    if (isDeployed)
+                    {
+                        TooltipHandler.TipRegion(toCaravanBtn, "StrategicOutpost_MustReturnToAutonomousFirst".Translate());
+                    }
+                }
+                else
+                {
+                    TooltipHandler.TipRegion(wRow, "StrategicOutpost_NoCaravanPresentForTransfer".Translate());
                 }
                 wy += 38f;
             }
@@ -364,7 +373,7 @@ namespace TurboMegaMod
             }
             else
             {
-                Widgets.Label(new Rect(rightInner.x, rightInner.y, rightInner.width, 80f), "StrategicOutpost_NoCaravanPresentForTransfer".Translate());
+                Widgets.Label(new Rect(rightInner.x, rightInner.y, rightInner.width, 120f), "StrategicOutpost_NoCaravanPresentForTransfer".Translate());
             }
         }
 

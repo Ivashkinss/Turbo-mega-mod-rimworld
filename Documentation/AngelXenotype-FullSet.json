@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3292,
-                         "scalarFields":  1408,
+                         "keyed":  3355,
+                         "scalarFields":  1454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4246,
-                        "ticksAdvanced":  1784,
+                        "framesAdvanced":  1674,
+                        "ticksAdvanced":  1778,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,7 +42,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "a36725fa8f6ee580003a0657fdd0033bfa2f047ee983693dda3222d16858c13c",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
     "angelXenotype":  {
                           "passed":  true,
                           "checksCount":  22,

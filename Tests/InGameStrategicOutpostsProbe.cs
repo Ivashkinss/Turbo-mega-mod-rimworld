@@ -151,10 +151,25 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             }
             Check(tile.Valid,"No legal nearby founding tile");
             first=Miner();second=Miner();animal=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDef.Named("Muffalo"),Faction.OfPlayer));
+            Building_Bed founderBed1 = (Building_Bed)ThingMaker.MakeThing(ThingDefOf.Bed, ThingDefOf.WoodLog);
+            GenSpawn.Spawn(founderBed1, map.Center, map);
+            founderBed1.SetFaction(Faction.OfPlayer);
+            first.ownership.ClaimBedIfNonMedical(founderBed1);
+            Check(first.ownership.OwnedBed == founderBed1, "First founder bed claim failed");
+            Building_Bed founderBed2 = (Building_Bed)ThingMaker.MakeThing(ThingDefOf.Bed, ThingDefOf.WoodLog);
+            GenSpawn.Spawn(founderBed2, map.Center + new IntVec3(2, 0, 0), map);
+            founderBed2.SetFaction(Faction.OfPlayer);
+            second.ownership.ClaimBedIfNonMedical(founderBed2);
+            Check(second.ownership.OwnedBed == founderBed2, "Second founder bed claim failed");
+
             var caravan=CaravanMaker.MakeCaravan(new[]{first,second,animal},Faction.OfPlayer,tile,true);
             Add(first.inventory.innerContainer,ThingDefOf.Silver,31);
             station=StrategicOutpostCaravanUtility.FoundOutpostFromCaravan(caravan,StrategicOutpostSpecialization.Mining);
             Check(station!=null&&station.Spawned,"Native caravan founding failed");
+            Check(first.ownership.OwnedBed == null, "Founding must unclaim first founder bed");
+            Check(second.ownership.OwnedBed == null, "Founding must unclaim second founder bed");
+            Check(founderBed1.OwnersForReading.Count == 0, "FounderBed1 must be free after founding");
+            Check(founderBed2.OwnersForReading.Count == 0, "FounderBed2 must be free after founding");
             Check(station.Workers.Contains(first)&&station.Workers.Contains(second)&&station.Animals.Contains(animal)&&station.MaxCapacity==2,"Founding changed workforce or animal capacity");
             Check(!caravan.Spawned&&station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver)>=31,"Empty founding caravan or real cargo lost");
             Check(new[]{first,second,animal}.All(p=>Find.WorldPawns.Contains(p)&&!p.Spawned),"Founders not registered/held");
@@ -184,24 +199,91 @@ public sealed class OutpostAcceptanceProbe : MapComponent
             string reason;Check(station.DeployPersonnelToMap(out reason),"Actual deploy failed: "+reason);
             Check(station.HasMap&&station.Map.GetComponent<StrategicOutpostMapComponent>().CountRealBeds()>=2,"Real level1 map/beds absent");
             Check(new[]{first,second,animal}.All(p=>p!=null&&p.Spawned&&p.Map==station.Map&&!station.Workers.Contains(p)&&!station.Animals.Contains(p)),"Deploy mismatch; stationMap="+station.Map.uniqueID+"; "+string.Join("; ",new[]{first,second,animal}.Select(p=>p==null?"null pawn":p.ThingID+" spawned="+p.Spawned+" map="+(p.Map==null?-1:p.Map.uniqueID)+" worker="+station.Workers.Contains(p)+" animal="+station.Animals.Contains(p))));
+
+            // Guard check: deployed pawn cannot be removed to caravan
+            var guardCaravan = CaravanMaker.MakeCaravan(new[]{Miner()}, Faction.OfPlayer, station.Tile, true);
+            string guardFail;
+            Check(!station.RemovePawnToCaravan(guardCaravan, first, out guardFail), "RemovePawnToCaravan must fail for deployed pawn");
+            Check(guardFail != null && guardFail.Length > 0, "RemovePawnToCaravan must provide non-empty failReason for deployed pawn");
+            bool deployedIsDeployed = station.operationalMode == OutpostOperationalMode.Physical || first.Spawned;
+            bool deployedCanRemove = !deployedIsDeployed && (station.Animals.Contains(first) || station.PawnCount > 1);
+            Check(!deployedCanRemove, "UI canRemove must be false for deployed pawn");
+            Find.WorldObjects.Remove(guardCaravan);
+
             int before=Output;station.DoDailyProduction();Check(Output==before,"Physical mode duplicated abstract output");
             Check(station.RecallPersonnelToAutonomous(out reason),"Actual recall failed: "+reason);
             Check(station.Workers.Contains(first)&&station.Workers.Contains(second)&&station.Animals.Contains(animal)&&new[]{first,second,animal}.All(p=>!p.Spawned&&Find.WorldPawns.Contains(p)),"Recall lost identity or WorldPawns ownership");
+            bool recalledIsDeployed = station.operationalMode == OutpostOperationalMode.Physical || first.Spawned;
+            bool recalledCanRemove = !recalledIsDeployed && (station.Animals.Contains(first) || station.PawnCount > 1);
+            Check(recalledCanRemove, "UI canRemove must be true for autonomous worker");
             Check(station.nextProductionTick>=Find.TickManager.TicksGame+59000,"Physical time retroactively counted");
             stage=3;return;
         }
         if(stage==3) {
-            Add(station.RawMaterials,ThingDefOf.Silver,1000);
+            // Remove any starting silver from outpost RawMaterials
+            var existingSilver = station.RawMaterials.Where(t => t.def == ThingDefOf.Silver).ToList();
+            for(int i=0; i<existingSilver.Count; i++)
+            {
+                station.RawMaterials.Remove(existingSilver[i]);
+                existingSilver[i].Destroy();
+            }
+            Check(station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver) == 0, "Outpost silver must be 0 for caravan upgrade test");
+
+            // Setup payer colonist with bed
+            Pawn payer = Miner();
+            Building_Bed payerBed = (Building_Bed)ThingMaker.MakeThing(ThingDefOf.Bed, ThingDefOf.WoodLog);
+            GenSpawn.Spawn(payerBed, map.Center + new IntVec3(4, 0, 0), map);
+            payerBed.SetFaction(Faction.OfPlayer);
+            payer.ownership.ClaimBedIfNonMedical(payerBed);
+            Check(payer.ownership.OwnedBed == payerBed, "Payer bed claim failed");
+
+            // Caravan with 700 silver on tile
+            var payCaravan = CaravanMaker.MakeCaravan(new[]{payer}, Faction.OfPlayer, station.Tile, true);
+            Add(payer.inventory.innerContainer, ThingDefOf.Silver, 700);
+            int paySilverBefore = CaravanInventoryUtility.AllInventoryItems(payCaravan).Where(t => t.def == ThingDefOf.Silver).Sum(t => t.stackCount);
+            Check(paySilverBefore == 700, "PayCaravan silver setup failed: " + paySilverBefore);
+
+            // Test failed transfer preserves bed (outpost capacity full at level 1: max 2, has 2)
+            string fullFail;
+            Check(!station.AddPawnFromCaravan(payCaravan, payer, out fullFail), "Transfer to full outpost must fail");
+            Check(payer.ownership.OwnedBed == payerBed, "Bed must remain claimed on failed transfer");
+            Check(payerBed.OwnersForReading.Contains(payer), "Payer bed must still belong to payer");
+
+            // Verify GetLocalCaravan finds caravan with silver
+            Caravan detectedCaravan = station.GetLocalCaravan();
+            Check(detectedCaravan == payCaravan, "GetLocalCaravan did not find payCaravan");
+
             var component=station.Map.GetComponent<StrategicOutpostMapComponent>();
             var rect=component.GetDefaultModuleRect(2);
             var coins=ThingMaker.MakeThing(ThingDefOf.Silver);coins.stackCount=37;GenSpawn.Spawn(coins,rect.CenterCell,station.Map);
-            string reason;int silver=station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver);
+            string reason;
             Check(!component.CanSafelyPlaceModule(rect,2)&&!coins.Destroyed&&coins.stackCount==37,"Planner wipes loose silver");
-            // A blocked default location may legitimately use a different free layout.
-            coins.DeSpawn();Check(station.RawMaterials.TryAdd(coins,false),"Cannot preserve fixture coins");silver+=37;
+            coins.DeSpawn();Check(station.RawMaterials.TryAdd(coins,false),"Cannot preserve fixture coins");
+            station.RawMaterials.Remove(coins); coins.Destroy();
+            Check(station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver) == 0, "Outpost silver must be 0 before upgrade");
+
             ClearCompound(component, station.Map);
-            Check(station.TryUpgrade(out reason),"Actual level2 upgrade failed: "+reason);
-            Check(station.level==2&&station.MaxCapacity==3&&station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver)==silver-500,"Upgrade cost/capacity incorrect");
+            Check(station.TryUpgrade(out reason, payCaravan),"Actual level2 upgrade using caravan silver failed: "+reason);
+            Check(station.level==2&&station.MaxCapacity==3,"Upgrade level/capacity incorrect");
+            int paySilverAfter = CaravanInventoryUtility.AllInventoryItems(payCaravan).Where(t => t.def == ThingDefOf.Silver).Sum(t => t.stackCount);
+            Check(paySilverAfter == 200, "PayCaravan silver after upgrade must be 200; got " + paySilverAfter);
+            Check(station.RawMaterials.TotalStackCountOfDef(ThingDefOf.Silver) == 0, "Outpost raw silver must remain 0");
+            Check(!station.Map.spawnedThings.Any(t => t.def == ThingDefOf.Silver), "No loose silver on map after upgrade");
+
+            // Successful transfer into upgraded outpost frees bed
+            string transferOk;
+            Check(station.AddPawnFromCaravan(payCaravan, payer, out transferOk), "Transfer after upgrade failed: " + transferOk);
+            Check(payer.ownership.OwnedBed == null, "Transfer to outpost must unclaim colonist bed in colony");
+            Check(payerBed.OwnersForReading.Count == 0, "Payer bed must be free after transfer");
+
+            // Return payer to caravan to keep outpost workforce at 2 founders for upper levels
+            string returnOk;
+            Check(station.RemovePawnToCaravan(payCaravan, payer, out returnOk), "RemovePawnToCaravan failed: " + returnOk);
+            Check(payCaravan.ContainsPawn(payer), "Payer not back in caravan");
+            Check(station.Workers.Count == 2, "Station workers count must be back to 2");
+            Find.WorldObjects.Remove(payCaravan);
+            payerBed.Destroy();
+
             Check(component.CountRealBeds()>=3,"Level2 real third bed absent");
             Check(station.DeployPersonnelToMap(out reason),"Second deploy failed: "+reason);
             foreach(var bed in station.Map.listerBuildings.allBuildingsColonist.OfType<Building_Bed>())
@@ -366,6 +448,10 @@ public sealed class OutpostAcceptanceProbe : MapComponent
         bool tier10=args.Contains("-tmm-outpost-tier10-reload");
         bool reload=args.Contains("-tmm-outpost-reload");
         if(done||map.Parent is StrategicOutpost||!map.IsPlayerHome||(!reload&&!tier10&&!args.Contains("-tmm-outpost-probe")))return;
+        // A random event can open a force-pause dialog during the multi-day production wait and freeze the run.
+        // Close such foreign dialogs in the test only; our own outpost windows stay under the probe's control.
+        foreach(Window w in Find.WindowStack.Windows.ToList())
+            if(w.forcePause&&w.GetType().Namespace!="TurboMegaMod")w.Close(false);
         try {Find.TickManager.CurTimeSpeed=TimeSpeed.Superfast; if(tier10)Tier10Reload();else if(reload)Reload();else Fresh();}
         catch(Exception e){if(tier10)Finish(e,true,"OutpostTier10ReloadProbe.json");else Finish(e,reload);}
     }

@@ -1,0 +1,110 @@
+﻿{
+    "factionHierarchyReload":  {
+                                   "passed":  true,
+                                   "checksCount":  13,
+                                   "stage":  1,
+                                   "facts":  [
+                                                 "Dean Winchester known status and pawn verified after reload",
+                                                 "Succession preserved cleanly across save/load"
+                                             ],
+                                   "checks":  [
+                                                  {
+                                                      "name":  "HeroRegistry instance exists after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Minutemen faction exists after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean record loaded from save",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean known flag is true after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean IsKnown is true after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean pawn loaded",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean pawn is spawned on home map after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Preston record loaded from save",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Preston remains Dead after reload",
+                                                      "passed":  true,
+                                                      "expected":  "Dead",
+                                                      "actual":  "Dead"
+                                                  },
+                                                  {
+                                                      "name":  "Dead Preston cannot be resurrected via GetOrCreate",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "Dean is still faction leader in reload",
+                                                      "passed":  true,
+                                                      "expected":  "Dean",
+                                                      "actual":  "Dean"
+                                                  },
+                                                  {
+                                                      "name":  "HeroRegistry instance exists after reload",
+                                                      "passed":  true,
+                                                      "expected":  "True",
+                                                      "actual":  "True"
+                                                  },
+                                                  {
+                                                      "name":  "UI window drawing clean without exceptions after reload",
+                                                      "passed":  true,
+                                                      "expected":  "null",
+                                                      "actual":  "True"
+                                                  }
+                                              ],
+                                   "errors":  [
+
+                                              ]
+                               },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1367,
+                        "ticksAdvanced":  24835,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "passed":  true
+}

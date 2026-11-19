@@ -1,0 +1,613 @@
+﻿{
+    "component":  "FactionHierarchy",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3355,
+                         "scalarFields":  1454,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1593,
+                        "ticksAdvanced":  24866,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  true,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "factionHierarchy":  {
+                             "passed":  true,
+                             "checksCount":  91,
+                             "stage":  2,
+                             "facts":  [
+                                           "Custom factions count: 15",
+                                           "Verified faction leader matching and tree node counts for all custom factions",
+                                           "Vault-Tec council members verified: 3",
+                                           "Unknown non-leader heroes count: 63",
+                                           "Dean Winchester encountered and registered as known",
+                                           "Leader death and succession to Dean Winchester verified cleanly",
+                                           "Save queued for TMM-FactionHierarchy",
+                                           "UI drawing verified for all factions in sequence"
+                                       ],
+                             "checks":  [
+                                            {
+                                                "name":  "HeroRegistry instance exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Visible factions exist",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "At least 10 custom factions with heroes present",
+                                                "passed":  true,
+                                                "expected":  "\u003e= 10",
+                                                "actual":  "15"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_EnclaveFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_EnclaveFaction",
+                                                "passed":  true,
+                                                "expected":  "Colonel Autumn",
+                                                "actual":  "Colonel Autumn"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_EnclaveFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_EnclaveFaction",
+                                                "passed":  true,
+                                                "expected":  "4",
+                                                "actual":  "4"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_BrotherhoodFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_BrotherhoodFaction",
+                                                "passed":  true,
+                                                "expected":  "Maxson",
+                                                "actual":  "Maxson"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_BrotherhoodFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_BrotherhoodFaction",
+                                                "passed":  true,
+                                                "expected":  "6",
+                                                "actual":  "6"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_MenOfLettersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_MenOfLettersFaction",
+                                                "passed":  true,
+                                                "expected":  "Dr. Hess",
+                                                "actual":  "Dr. Hess"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_MenOfLettersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_MenOfLettersFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_HeavenFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_HeavenFaction",
+                                                "passed":  true,
+                                                "expected":  "Michael",
+                                                "actual":  "Michael"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_HeavenFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_HeavenFaction",
+                                                "passed":  true,
+                                                "expected":  "6",
+                                                "actual":  "6"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_VaultTecFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_VaultTecFaction",
+                                                "passed":  true,
+                                                "expected":  "Overseer Almodovar",
+                                                "actual":  "Overseer Almodovar"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_VaultTecFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_VaultTecFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_HellFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_HellFaction",
+                                                "passed":  true,
+                                                "expected":  "Crowley",
+                                                "actual":  "Crowley"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_HellFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_HellFaction",
+                                                "passed":  true,
+                                                "expected":  "7",
+                                                "actual":  "7"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_WildMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_WildMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "Swan",
+                                                "actual":  "Swan"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_WildMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_WildMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_FriendlyMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_FriendlyMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "Fox",
+                                                "actual":  "Fox"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_FriendlyMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_FriendlyMutantsFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_OutcastsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_OutcastsFaction",
+                                                "passed":  true,
+                                                "expected":  "Casdin",
+                                                "actual":  "Casdin"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_OutcastsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_OutcastsFaction",
+                                                "passed":  true,
+                                                "expected":  "6",
+                                                "actual":  "6"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_InstituteFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_InstituteFaction",
+                                                "passed":  true,
+                                                "expected":  "Father",
+                                                "actual":  "Father"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_InstituteFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_InstituteFaction",
+                                                "passed":  true,
+                                                "expected":  "6",
+                                                "actual":  "6"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_MonsterClansFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_MonsterClansFaction",
+                                                "passed":  true,
+                                                "expected":  "Alpha",
+                                                "actual":  "Alpha"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_MonsterClansFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_MonsterClansFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_RailroadFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_RailroadFaction",
+                                                "passed":  true,
+                                                "expected":  "Desdemona",
+                                                "actual":  "Desdemona"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_RailroadFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_RailroadFaction",
+                                                "passed":  true,
+                                                "expected":  "4",
+                                                "actual":  "4"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_GhoulsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_GhoulsFaction",
+                                                "passed":  true,
+                                                "expected":  "Hancock",
+                                                "actual":  "Hancock"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_GhoulsFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_GhoulsFaction",
+                                                "passed":  true,
+                                                "expected":  "6",
+                                                "actual":  "6"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "Garvey",
+                                                "actual":  "Garvey"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "7",
+                                                "actual":  "7"
+                                            },
+                                            {
+                                                "name":  "Leader not null for TMM_GunnersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_GunnersFaction",
+                                                "passed":  true,
+                                                "expected":  "Captain Wes",
+                                                "actual":  "Captain Wes"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_GunnersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_GunnersFaction",
+                                                "passed":  true,
+                                                "expected":  "5",
+                                                "actual":  "5"
+                                            },
+                                            {
+                                                "name":  "Minutemen faction exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Preston record exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Preston (leader) is known immediately",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Dean (rank 3) is unknown before encounter",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Sam (rank 3) is unknown before encounter",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Vault-Tec faction exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Vault-Tec has at least 3 council members",
+                                                "passed":  true,
+                                                "expected":  "\u003e= 3",
+                                                "actual":  "3"
+                                            },
+                                            {
+                                                "name":  "Council member TMM_Hero_alphonse_almodovar is known immediately",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Council member TMM_Hero_gwen_mcnamara is known immediately",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Council member TMM_Hero_stanislaus_braun is known immediately",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Non-leader heroes are unknown before contact",
+                                                "passed":  true,
+                                                "expected":  "\u003e 0",
+                                                "actual":  "63"
+                                            },
+                                            {
+                                                "name":  "HeroRegistry instance exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Dean pawn created",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Dean spawned on player home map",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Dean record known flag set to true after spawn on player map",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Dean IsKnown returns true after encounter",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Sam exists off-map and is still unknown before the letter",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Sam is known after a letter pointing at him",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Minutemen leader Preston is not null",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Preston initially AtHome",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Preston state is Dead after kill",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Successor Dean Winchester became new faction leader",
+                                                "passed":  true,
+                                                "expected":  "Dean",
+                                                "actual":  "Dean"
+                                            },
+                                            {
+                                                "name":  "New leader Dean is known",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "IsKnown is true for new leader Dean",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Window model reflects Dean as current leader",
+                                                "passed":  true,
+                                                "expected":  "Dean",
+                                                "actual":  "Dean"
+                                            },
+                                            {
+                                                "name":  "HeroRegistry instance exists",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Save file TMM-FactionHierarchy.rws written to disk",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "UI window drawing clean without exceptions",
+                                                "passed":  true,
+                                                "expected":  "null",
+                                                "actual":  "True"
+                                            }
+                                        ],
+                             "errors":  [
+
+                                        ]
+                         },
+    "passed":  true
+}

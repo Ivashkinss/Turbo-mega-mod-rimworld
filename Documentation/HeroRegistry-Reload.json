@@ -4,14 +4,14 @@
                                "checksCount":  10,
                                "stage":  1,
                                "facts":  [
-
+                                             "forcePauseDialogsClosed=1"
                                          ],
                                "checks":  [
                                               {
                                                   "name":  "RegistryLoaded",
                                                   "passed":  true,
-                                                  "expected":  "80",
-                                                  "actual":  "80"
+                                                  "expected":  "86",
+                                                  "actual":  "86"
                                               },
                                               {
                                                   "name":  "LeaderStillDead",
@@ -46,26 +46,26 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human11747",
-                                                  "actual":  "Human11747"
+                                                  "expected":  "Human12157",
+                                                  "actual":  "Human12157"
                                               },
                                               {
                                                   "name":  "FourthSurvivesTwoDays",
                                                   "passed":  true,
                                                   "expected":  "alive record",
-                                                  "actual":  "Human11758"
+                                                  "actual":  "Human12168"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human11747",
-                                                  "actual":  "Human11747"
+                                                  "expected":  "Human12157",
+                                                  "actual":  "Human12157"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
                                                   "passed":  true,
                                                   "expected":  "distinct",
-                                                  "actual":  "80"
+                                                  "actual":  "86"
                                               }
                                           ],
                                "errors":  [
@@ -75,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2555,
-                        "ticksAdvanced":  22530,
+                        "framesAdvanced":  1282,
+                        "ticksAdvanced":  22343,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -85,7 +85,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "b89ba7f7c055a845de5a344d0ce24475ef9b9cd9b26aecabf8169e9660d988e7",
-    "productionAssemblySha256":  "b89ba7f7c055a845de5a344d0ce24475ef9b9cd9b26aecabf8169e9660d988e7",
+    "freshAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
     "passed":  true
 }

@@ -167,7 +167,7 @@ namespace TurboMegaMod
             foreach (var pawn in selectedColonists.Concat(animals))
             {
                 string error;
-                if (outpost.AddPawnFromCaravan(caravan, pawn, out error))
+                if (outpost.AddPawnFromCaravan(caravan, pawn, out error, false))
                 {
                     addedPawns.Add(pawn);
                     continue;
@@ -181,6 +181,15 @@ namespace TurboMegaMod
                 Find.WorldObjects.Remove(outpost);
                 Messages.Message("StrategicOutpost_FoundingRollback".Translate(), caravan, MessageTypeDefOf.RejectInput, false);
                 return null;
+            }
+
+            // Transfer succeeded for entire group; unclaim colony beds
+            foreach (var pawn in addedPawns)
+            {
+                if (pawn.ownership != null)
+                {
+                    pawn.ownership.UnclaimBed();
+                }
             }
 
             // Transfer physical carried inventory into outpost supply depot storage
@@ -208,6 +217,11 @@ namespace TurboMegaMod
         {
             List<FloatMenuOption> options = new List<FloatMenuOption>();
 
+            List<Pawn> founders = caravan != null
+                ? caravan.PawnsListForReading.Where(IsSuitableColonist).Take(2).ToList()
+                : new List<Pawn>();
+            string founderNames = string.Join(", ", founders.Select(p => p.LabelShort).ToArray());
+
             var specs = new[]
             {
                 StrategicOutpostSpecialization.Mining,
@@ -220,7 +234,9 @@ namespace TurboMegaMod
             {
                 StrategicOutpostSpecialization localSpec = spec;
                 string labelKey = "StrategicOutpost_Spec_" + localSpec.ToString();
-                options.Add(new FloatMenuOption(labelKey.Translate(), delegate
+                TaggedString baseLabel = labelKey.Translate();
+                TaggedString fullLabel = founders.Count > 0 ? "StrategicOutpost_SpecOptionWithFounders".Translate(baseLabel, founderNames) : baseLabel;
+                options.Add(new FloatMenuOption(fullLabel, delegate
                 {
                     FoundOutpostFromCaravan(caravan, localSpec);
                 }));
@@ -265,7 +281,12 @@ namespace TurboMegaMod
 
                 Command_Action foundCmd = new Command_Action();
                 foundCmd.defaultLabel = "StrategicOutpost_FoundOutpost_Label".Translate();
-                foundCmd.defaultDesc = "StrategicOutpost_FoundOutpost_Desc".Translate();
+                string desc = "StrategicOutpost_FoundOutpost_Desc".Translate();
+                if (!canFound && !string.IsNullOrEmpty(cantReason))
+                {
+                    desc += "\n\n" + cantReason;
+                }
+                foundCmd.defaultDesc = desc;
                 foundCmd.icon = ContentFinder<Texture2D>.Get("UI/Commands/FoundOutpost", false) ?? TexCommand.ClearPrioritizedWork;
                 foundCmd.action = delegate
                 {

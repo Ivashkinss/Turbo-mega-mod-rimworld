@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3271,
-                         "scalarFields":  1333,
+                         "keyed":  3355,
+                         "scalarFields":  1454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4099,
-                        "ticksAdvanced":  10608,
+                        "framesAdvanced":  1653,
+                        "ticksAdvanced":  10347,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,14 +42,14 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "b89ba7f7c055a845de5a344d0ce24475ef9b9cd9b26aecabf8169e9660d988e7",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
     "outposts":  {
                      "passed":  true,
-                     "checks":  34,
+                     "checks":  61,
                      "stage":  4,
                      "tier10Stage":  0,
                      "facts":  [
-                                   "Sanitized foreign relation: Lover | owner=Rin (Human290) | target=РљРёСЃРѕС€ (Human25507) | targetFaction=Р‘СЂРёРіР°РґР° Р“СЂСЏР·Рё"
+                                   "Sanitized foreign relation: ExLover | owner=Р РѕСЃРѕ (Human6053) | target=Agent (Human49350) | targetFaction=Р‘СЂРёРіР°РґР° Р—Р°СЂР°Р·С‹"
                                ],
                      "errors":  [
 

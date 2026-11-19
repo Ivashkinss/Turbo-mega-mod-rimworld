@@ -13,17 +13,17 @@
   <StrategicOutpost_ManageOutpost_Label>Manage outpost</StrategicOutpost_ManageOutpost_Label>
   <StrategicOutpost_ManageOutpost_Desc>Open the strategic outpost management interface to assign personnel, set production, and configure logistics.</StrategicOutpost_ManageOutpost_Desc>
   <StrategicOutpost_FoundOutpost_Label>Found outpost</StrategicOutpost_FoundOutpost_Label>
-  <StrategicOutpost_FoundOutpost_Desc>Establish a permanent strategic outpost on this tile using expedition personnel and supplies.</StrategicOutpost_FoundOutpost_Desc>
+  <StrategicOutpost_FoundOutpost_Desc>Found a permanent strategic outpost. Stop the caravan on an unoccupied tile; the first two eligible colonists will remain as outpost workers.</StrategicOutpost_FoundOutpost_Desc>
   <StrategicOutpost_ViewMap_Label>View map</StrategicOutpost_ViewMap_Label>
   <StrategicOutpost_ViewMap_Desc>Pan camera to the active outpost base camp on this tile.</StrategicOutpost_ViewMap_Desc>
   <StrategicOutpost_EnterMap_Label>Enter outpost</StrategicOutpost_EnterMap_Label>
-  <StrategicOutpost_EnterMap_Desc>Move the caravan directly into the outpost map.</StrategicOutpost_EnterMap_Desc>
+  <StrategicOutpost_EnterMap_Desc>Direct the caravan onto the outpost map. Only visitors from the caravan will enter the map; permanent workers remain in autonomous mode. To deploy workers onto the map, use the "Deploy Personnel" command.</StrategicOutpost_EnterMap_Desc>
   <StrategicOutpost_DeployPersonnel_Label>Deploy personnel</StrategicOutpost_DeployPersonnel_Label>
   <StrategicOutpost_DeployPersonnel_Desc>Deploy outpost staff from abstract storage onto the physical map to work, build, and defend.</StrategicOutpost_DeployPersonnel_Desc>
-  <StrategicOutpost_RecallPersonnel_Label>Recall personnel</StrategicOutpost_RecallPersonnel_Label>
-  <StrategicOutpost_RecallPersonnel_Desc>Recall deployed personnel back into abstract outpost duty. Prohibited during combat or mental breaks.</StrategicOutpost_RecallPersonnel_Desc>
+  <StrategicOutpost_RecallPersonnel_Label>Return to autonomous mode</StrategicOutpost_RecallPersonnel_Label>
+  <StrategicOutpost_RecallPersonnel_Desc>Return deployed personnel back into outpost autonomous mode. Blocked during combat or mental breaks.</StrategicOutpost_RecallPersonnel_Desc>
   <StrategicOutpost_UpgradeAction_Label>Upgrade outpost (Level {0})</StrategicOutpost_UpgradeAction_Label>
-  <StrategicOutpost_UpgradeAction_Desc>Expand and upgrade outpost infrastructure. Costs {0} silver.</StrategicOutpost_UpgradeAction_Desc>
+  <StrategicOutpost_UpgradeAction_Desc>Expand and upgrade outpost infrastructure. Cost: {0} silver.\n\nSilver in outpost storage: {1}\nSilver in caravan on this tile: {2}\n\nTo replenish storage manually: Logistics → Deposit supplies.</StrategicOutpost_UpgradeAction_Desc>
   <StrategicOutpost_UnloadCargoPrompt>Unload stored outpost cargo onto the map depot floor:</StrategicOutpost_UnloadCargoPrompt>
   <StrategicOutpost_UnloadCargo_Label>Unload cargo to map</StrategicOutpost_UnloadCargo_Label>
 
@@ -65,7 +65,10 @@
   <StrategicOutpost_CaravanColonists>Caravan Personnel</StrategicOutpost_CaravanColonists>
   <StrategicOutpost_ToCaravanBtn>To Caravan</StrategicOutpost_ToCaravanBtn>
   <StrategicOutpost_ToOutpostBtn>To Outpost</StrategicOutpost_ToOutpostBtn>
-  <StrategicOutpost_NoCaravanPresentForTransfer>No player caravan present at this tile to transfer personnel.</StrategicOutpost_NoCaravanPresentForTransfer>
+  <StrategicOutpost_NoCaravanPresentForTransfer>There is no player caravan on this tile for personnel transfer. To take workers, place a caravan on the outpost tile and open management from the caravan.</StrategicOutpost_NoCaravanPresentForTransfer>
+  <StrategicOutpost_MustReturnToAutonomousFirst>First return to autonomous mode.</StrategicOutpost_MustReturnToAutonomousFirst>
+  <StrategicOutpost_FailedToAddPawnToCaravan>Failed to transfer pawn to caravan.</StrategicOutpost_FailedToAddPawnToCaravan>
+  <StrategicOutpost_SpecOptionWithFounders>{0} (Founders: {1})</StrategicOutpost_SpecOptionWithFounders>
 
   <!-- Logistics Tab UI -->
   <StrategicOutpost_RawMaterialsTitle>Raw Materials Storage ({0})</StrategicOutpost_RawMaterialsTitle>
@@ -134,4 +137,40 @@
   <StrategicOutpost_EvacuateOverloaded>Evacuation incomplete: caravan mass capacity reached. Remaining supplies left at outpost.</StrategicOutpost_EvacuateOverloaded>
   <StrategicOutpost_RosterUnavailable>Some stationed personnel are away from the outpost map. Return them before switching to autonomous mode.</StrategicOutpost_RosterUnavailable>
   <StrategicOutpost_MapRetained>Personnel and available cargo evacuated. The visited map and its buildings are retained.</StrategicOutpost_MapRetained>
+
+  <!-- Outposts Tab & Pod Logistics -->
+  <StrategicOutpost_TabTitle>Strategic Outposts</StrategicOutpost_TabTitle>
+  <StrategicOutpost_HomeColonyBalance>Colony: {0} | Stored Chemfuel: {1} | Silver: {2}</StrategicOutpost_HomeColonyBalance>
+  <StrategicOutpost_NoOutpostsFound>No active outposts found</StrategicOutpost_NoOutpostsFound>
+  <StrategicOutpost_EmptyGuideText>To found your first outpost:&#10;1. Form a caravan at your colony with at least two capable colonists.&#10;2. Move the caravan to an unoccupied world tile and halt it.&#10;3. Select the caravan and click "Found Outpost" on the caravan gizmo bar.&#10;&#10;Once founded, manage production, send resources, and recall staff via transport pods directly from this tab.</StrategicOutpost_EmptyGuideText>
+  <StrategicOutpost_InspectLevelShort>Lvl {0}/{1}</StrategicOutpost_InspectLevelShort>
+  <StrategicOutpost_DistanceInfo>Distance: {0} tiles (~{1} days)</StrategicOutpost_DistanceInfo>
+  <StrategicOutpost_SilverCount>Silver: {0}</StrategicOutpost_SilverCount>
+  <StrategicOutpost_ManageBtn>Manage</StrategicOutpost_ManageBtn>
+  <StrategicOutpost_ViewMapBtnShort>View map</StrategicOutpost_ViewMapBtnShort>
+  <StrategicOutpost_RecallBtn>Recall</StrategicOutpost_RecallBtn>
+  <StrategicOutpost_SendWorkerBtn>Send staff</StrategicOutpost_SendWorkerBtn>
+  <StrategicOutpost_SendSilverBtn>Send silver</StrategicOutpost_SendSilverBtn>
+  <StrategicOutpost_UpgradeNowBtn>Upgrade</StrategicOutpost_UpgradeNowBtn>
+  <StrategicOutpost_PodTopUpBtn>Pod delivery</StrategicOutpost_PodTopUpBtn>
+  <StrategicOutpost_MaxLevelShort>Max lvl</StrategicOutpost_MaxLevelShort>
+  <StrategicOutpost_PodTopUpTip>Needs {0} silver.&#10;Pod delivery fee: {1} chemfuel and {2} silver.&#10;Total deducted from colony: {3} silver.</StrategicOutpost_PodTopUpTip>
+  <StrategicOutpost_NoHomeMapAvailable>No home colony map available.</StrategicOutpost_NoHomeMapAvailable>
+  <StrategicOutpost_PodCostWithSilver>{0} fuel ({1} available, fallback: {2} silver; stored: {3} fuel, {4} silver)</StrategicOutpost_PodCostWithSilver>
+  <StrategicOutpost_PodCostFuelOnly>{0} chemfuel (stored: {1})</StrategicOutpost_PodCostFuelOnly>
+  <StrategicOutpost_PodDestinationMissing>Target outpost is no longer available.</StrategicOutpost_PodDestinationMissing>
+  <StrategicOutpost_HomeColonyMissing>Home colony unavailable for pod landing.</StrategicOutpost_HomeColonyMissing>
+  <StrategicOutpost_PodsDeliveredToOutpost>Transport pods arrived at outpost {0}. Delivered workers: {1}, silver: {2}.</StrategicOutpost_PodsDeliveredToOutpost>
+  <StrategicOutpost_PodsArrivedAtColony>Transport pods from outpost landed safely at the colony.</StrategicOutpost_PodsArrivedAtColony>
+  <StrategicOutpost_WorkerRecalledHomeSuccess>Worker successfully returned home from outpost.</StrategicOutpost_WorkerRecalledHomeSuccess>
+  <StrategicOutpost_WorkerRecalledPodLaunched>Worker {0} launched via transport pod to colony from {1}.</StrategicOutpost_WorkerRecalledPodLaunched>
+  <StrategicOutpost_WorkerSentPodLaunched>Colonist {0} launched via transport pod to outpost {1}.</StrategicOutpost_WorkerSentPodLaunched>
+  <StrategicOutpost_SilverSentPodLaunched>Cargo of {0} silver launched via transport pod to outpost {1}.</StrategicOutpost_SilverSentPodLaunched>
+  <StrategicOutpost_TopUpPodLaunched>Transport pod with {0} silver launched for upgrading outpost {1}.</StrategicOutpost_TopUpPodLaunched>
+  <StrategicOutpost_NoEligibleColonists>No eligible free colonists in the colony.</StrategicOutpost_NoEligibleColonists>
+  <StrategicOutpost_SilverLabelShort>silver</StrategicOutpost_SilverLabelShort>
+  <StrategicOutpost_PodCostSummaryBrief>Fuel: {0}, Silver: {1}</StrategicOutpost_PodCostSummaryBrief>
+  <StrategicOutpost_NotEnoughSilverToSend>Not enough silver in colony to send (requires: {0}).</StrategicOutpost_NotEnoughSilverToSend>
+  <StrategicOutpost_NotEnoughSilverForTopUp>Not enough silver in colony for top-up (requires: {0}, available: {1}).</StrategicOutpost_NotEnoughSilverForTopUp>
+  <StrategicOutpost_PodsReturnedOutpostGone>The outpost no longer exists; the pods landed back at the colony with their cargo.</StrategicOutpost_PodsReturnedOutpostGone>
 </LanguageData>

@@ -851,6 +851,23 @@ namespace TurboMegaMod
             return caravan != null && caravan.Spawned && caravan.Tile == this.Tile && caravan.Faction == Faction.OfPlayer;
         }
 
+        public Caravan GetLocalCaravan()
+        {
+            if (Find.WorldObjects == null) return null;
+            List<WorldObject> objs = Find.WorldObjects.AllWorldObjects;
+            Caravan first = null;
+            for (int i = 0; i < objs.Count; i++)
+            {
+                Caravan c = objs[i] as Caravan;
+                if (c != null && CanInteract(c))
+                {
+                    if (GetTotalSilver(c) > 0) return c;
+                    if (first == null) first = c;
+                }
+            }
+            return first;
+        }
+
         public int DepositFromCaravan(Caravan caravan, Thing item)
         {
             if (!CanInteract(caravan) || item == null || item.def.category != ThingCategory.Item || item.holdingOwner == null || !CaravanInventoryUtility.AllInventoryItems(caravan).Contains(item)) return 0;
@@ -926,7 +943,11 @@ namespace TurboMegaMod
                 if (t.def == ThingDefOf.Silver)
                 {
                     int take = Mathf.Min(remaining, t.stackCount);
-                    t.SplitOff(take);
+                    Thing split = t.SplitOff(take);
+                    if (split != null && !split.Destroyed)
+                    {
+                        split.Destroy(DestroyMode.Vanish);
+                    }
                     remaining -= take;
                     if (remaining <= 0) break;
                 }
@@ -934,7 +955,7 @@ namespace TurboMegaMod
             return count - remaining;
         }
 
-        internal static void SetStoredPawnProtection(Pawn pawn, bool stored)
+        public static void SetStoredPawnProtection(Pawn pawn, bool stored)
         {
             if (pawn == null || pawn.Spawned || pawn.Destroyed) return;
             // Caravan membership is a vanilla GC root; our independent animal holder is not.
@@ -944,6 +965,11 @@ namespace TurboMegaMod
         }
 
         public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason)
+        {
+            return AddPawnFromCaravan(caravan, pawn, out failReason, true);
+        }
+
+        public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason, bool unclaimBed)
         {
             if (!CanInteract(caravan) || pawn == null)
             {
@@ -1035,6 +1061,11 @@ namespace TurboMegaMod
                 return false;
             }
 
+            if (unclaimBed && pawn.ownership != null)
+            {
+                pawn.ownership.UnclaimBed();
+            }
+
             SetStoredPawnProtection(pawn, true);
             failReason = null;
             return true;
@@ -1045,6 +1076,12 @@ namespace TurboMegaMod
             if (!CanInteract(caravan) || pawn == null)
             {
                 failReason = "StrategicOutpost_InvalidCaravanOrPawn".Translate();
+                return false;
+            }
+
+            if (operationalMode == OutpostOperationalMode.Physical || pawn.Spawned)
+            {
+                failReason = "StrategicOutpost_MustReturnToAutonomousFirst".Translate();
                 return false;
             }
 
@@ -1063,17 +1100,18 @@ namespace TurboMegaMod
                 return false;
             }
 
-            if (inWorkers)
-            {
-                Workers.Remove(pawn);
-            }
-            else
-            {
-                Animals.Remove(pawn);
-            }
+            ThingOwner<Pawn> owner = inWorkers ? Workers : Animals;
+            owner.Remove(pawn);
 
             caravan.AddPawn(pawn, false);
-            if (caravan.ContainsPawn(pawn)) SetStoredPawnProtection(pawn, false);
+            if (!caravan.ContainsPawn(pawn))
+            {
+                owner.TryAdd(pawn, false);
+                failReason = "StrategicOutpost_FailedToAddPawnToCaravan".Translate();
+                return false;
+            }
+
+            SetStoredPawnProtection(pawn, false);
             failReason = null;
             return true;
         }
@@ -1261,12 +1299,16 @@ namespace TurboMegaMod
             {
                 Command_Action upgradeAction = new Command_Action();
                 upgradeAction.defaultLabel = "StrategicOutpost_UpgradeAction_Label".Translate(level + 1);
-                upgradeAction.defaultDesc = "StrategicOutpost_UpgradeAction_Desc".Translate(NextUpgradeCost);
+                Caravan localCaravan = GetLocalCaravan();
+                int cost = NextUpgradeCost;
+                int outpostSilver = GetTotalSilver(RawMaterials);
+                int caravanSilver = localCaravan != null ? GetTotalSilver(localCaravan) : 0;
+                upgradeAction.defaultDesc = "StrategicOutpost_UpgradeAction_Desc".Translate(cost, outpostSilver, caravanSilver);
                 upgradeAction.icon = ContentFinder<Texture2D>.Get("UI/Commands/UpgradeOutpost", false) ?? TexCommand.ClearPrioritizedWork;
                 upgradeAction.action = delegate
                 {
                     string failReason;
-                    if (!TryUpgrade(out failReason, null))
+                    if (!TryUpgrade(out failReason, GetLocalCaravan()))
                     {
                         Messages.Message(failReason, this, MessageTypeDefOf.RejectInput, false);
                     }

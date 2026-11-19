@@ -1478,7 +1478,7 @@
     },
     {
       "id": "OutpostUxFixes",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "taskFile": "Delegation/OutpostUxFixes/TASK.md",
@@ -1491,7 +1491,7 @@
     },
     {
       "id": "OutpostTabStageA",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "OutpostUxFixes",
@@ -1505,7 +1505,7 @@
     },
     {
       "id": "FactionHierarchyTab",
-      "state": "pending",
+      "state": "accepted",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "OutpostTabStageA",

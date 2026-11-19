@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3292,
-                         "scalarFields":  1408,
+                         "keyed":  3355,
+                         "scalarFields":  1454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4128,
-                        "ticksAdvanced":  1738,
+                        "framesAdvanced":  1638,
+                        "ticksAdvanced":  1751,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -41,7 +41,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "a36725fa8f6ee580003a0657fdd0033bfa2f047ee983693dda3222d16858c13c",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
     "colonyRoles":  {
                         "passed":  true,
                         "checksCount":  34,
@@ -128,7 +128,7 @@
                                            "name":  "CivilSortedByRank",
                                            "passed":  true,
                                            "expected":  "chef first",
-                                           "actual":  "Dogruer"
+                                           "actual":  "Cassie"
                                        },
                                        {
                                            "name":  "MilitaryGroupOnlyTrooper",
@@ -164,13 +164,13 @@
                                            "name":  "DiagExplanation",
                                            "passed":  true,
                                            "expected":  "",
-                                           "actual":  "Р¤Р°РєС‚РѕСЂС‹ РЅР°РІС‹РєРѕРІ |     РљСѓР»РёРЅР°СЂРёСЏ (1): +1.0 | Р¤Р°РєС‚РѕСЂС‹ Р·РґРѕСЂРѕРІСЊСЏ |     Р Р°Р±РѕС‚Р°: +0.0 (100%, РІР»РёСЏРЅРёРµ 16x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |     Р—СЂРµРЅРёРµ: +0.0 (100%, РІР»РёСЏРЅРёРµ 4x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |  | Р—РІР°РЅРёРµ: +5% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°: 1.0 =\u003e 46% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°В вЂ” РґСЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹ |     РћР±С‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹: x97% |  | РС‚РѕРіРѕ: 49%"
+                                           "actual":  "Р¤Р°РєС‚РѕСЂС‹ РЅР°РІС‹РєРѕРІ |     РљСѓР»РёРЅР°СЂРёСЏ (1): +1.0 | Р¤Р°РєС‚РѕСЂС‹ Р·РґРѕСЂРѕРІСЊСЏ |     Р Р°Р±РѕС‚Р°: +0.0 (100%, РІР»РёСЏРЅРёРµ 16x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |     Р—СЂРµРЅРёРµ: +0.0 (100%, РІР»РёСЏРЅРёРµ 4x, РјР°РєСЃРёРјР°Р»СЊРЅРѕ 150%) |  | Р—РІР°РЅРёРµ: +5% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°: 1.0 =\u003e 46% | РџРѕСЃС‚РѕР±СЂР°Р±РѕС‚РєР°В вЂ” РґСЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹ |     РћР±С‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹: x100% |  | РС‚РѕРіРѕ: 51%"
                                        },
                                        {
                                            "name":  "RankAddsCookSpeed",
                                            "passed":  true,
                                            "expected":  "+0.05",
-                                           "actual":  "0.05000001"
+                                           "actual":  "0.04999998"
                                        },
                                        {
                                            "name":  "PrideThoughtActive",
@@ -188,7 +188,7 @@
                                            "name":  "AuraAddsAccuracy",
                                            "passed":  true,
                                            "expected":  "+0.03",
-                                           "actual":  "0.03000003"
+                                           "actual":  "0.02999997"
                                        },
                                        {
                                            "name":  "CommanderThoughtActive",

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <TMM_FactionHierarchy_Title>Factions and Hierarchy</TMM_FactionHierarchy_Title>
+  <TMM_FactionHierarchy_Relations>Relations: {0} ({1})</TMM_FactionHierarchy_Relations>
+  <TMM_FactionHierarchy_Leader>Leader: {0}</TMM_FactionHierarchy_Leader>
+  <TMM_FactionHierarchy_SettlementsCount>Settlements: {0}</TMM_FactionHierarchy_SettlementsCount>
+  <TMM_FactionHierarchy_HierarchyUnknown>Hierarchy unknown</TMM_FactionHierarchy_HierarchyUnknown>
+  <TMM_FactionHierarchy_Council>Faction Council</TMM_FactionHierarchy_Council>
+  <TMM_FactionHierarchy_CouncilMember>Council Member</TMM_FactionHierarchy_CouncilMember>
+  <TMM_FactionHierarchy_LeaderTag>Leader</TMM_FactionHierarchy_LeaderTag>
+  <TMM_FactionHierarchy_SuccessorTag>Successor</TMM_FactionHierarchy_SuccessorTag>
+  <TMM_FactionHierarchy_RankTag>Rank {0}</TMM_FactionHierarchy_RankTag>
+  <TMM_FactionHierarchy_Rank4Section>Rank 4 Heroes</TMM_FactionHierarchy_Rank4Section>
+  <TMM_FactionHierarchy_Rank3Section>Rank 3 Heroes</TMM_FactionHierarchy_Rank3Section>
+  <TMM_FactionHierarchy_UnknownHero>Unknown Hero (Rank {0})</TMM_FactionHierarchy_UnknownHero>
+  <TMM_FactionHierarchy_UnknownHeroDesc>No intelligence available</TMM_FactionHierarchy_UnknownHeroDesc>
+  <TMM_FactionHierarchy_UnknownHeroTip>This hero has not yet been encountered by your colony.</TMM_FactionHierarchy_UnknownHeroTip>
+  <TMM_FactionHierarchy_State_Unspawned>Unspawned</TMM_FactionHierarchy_State_Unspawned>
+  <TMM_FactionHierarchy_State_AtHome>At home</TMM_FactionHierarchy_State_AtHome>
+  <TMM_FactionHierarchy_State_InCaravan>In caravan</TMM_FactionHierarchy_State_InCaravan>
+  <TMM_FactionHierarchy_State_OnMap>On map: {0}</TMM_FactionHierarchy_State_OnMap>
+  <TMM_FactionHierarchy_State_Away>Traveling</TMM_FactionHierarchy_State_Away>
+  <TMM_FactionHierarchy_State_Captive>Captive ({0})</TMM_FactionHierarchy_State_Captive>
+  <TMM_FactionHierarchy_State_Dead>Deceased</TMM_FactionHierarchy_State_Dead>
+  <TMM_FactionHierarchy_State_Joined>Joined our colony</TMM_FactionHierarchy_State_Joined>
+  <TMM_FactionHierarchy_State_Missing>Missing</TMM_FactionHierarchy_State_Missing>
+  <TMM_FactionHierarchy_ViewOnMap>View</TMM_FactionHierarchy_ViewOnMap>
+  <TMM_FactionHierarchy_None>None</TMM_FactionHierarchy_None>
+</LanguageData>

@@ -1,0 +1,56 @@
+﻿{
+    "outpostTabReload":  {
+                             "passed":  true,
+                             "checksCount":  4,
+                             "stage":  1,
+                             "facts":  [
+                                           "Reload mid-flight state verified: destinationTile=95978,0",
+                                           "Pod delivered contents cleanly after reload without duplicates"
+                                       ],
+                             "checks":  [
+                                            {
+                                                "name":  "Exactly one TravellingTransporters object mid-flight upon reload",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "TravellingTransporters destination tile matches station",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Worker arrived at outpost after reload exactly ONCE (count=1)",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Silver cargo arrived at outpost after reload (count=100)",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            }
+                                        ],
+                             "errors":  [
+
+                                        ]
+                         },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1680,
+                        "ticksAdvanced":  1759,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "passed":  true
+}

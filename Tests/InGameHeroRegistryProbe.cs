@@ -68,6 +68,7 @@ public sealed class HeroRegistryProbe : MapComponent
     private bool done;
     private int stage;
     private int waitUntil = -1;
+    private int dialogsClosed;
     private Pawn leader, second, third, fourth, fifth, sixth;
     private ActiveTransporterInfo flight;
 
@@ -109,6 +110,10 @@ public sealed class HeroRegistryProbe : MapComponent
         bool fresh = args.Contains("-tmm-hero-registry-probe");
         if (done || !map.IsPlayerHome || (!reload && !fresh)) return;
         if (Find.TickManager.Paused || Find.TickManager.CurTimeSpeed != TimeSpeed.Ultrafast) Find.TickManager.CurTimeSpeed = TimeSpeed.Ultrafast;
+        // During the two-day wait a random event can open a force-pause dialog (quest offer, ideology prompt),
+        // which stops ticking and made the reload run time out. Close such dialogs in the test only.
+        foreach (Window w in Find.WindowStack.Windows.ToList())
+            if (w.forcePause) { w.Close(false); dialogsClosed++; }
         int now = Find.TickManager.TicksGame;
         if (waitUntil >= 0 && now < waitUntil) return;
         try
@@ -173,7 +178,8 @@ public sealed class HeroRegistryProbe : MapComponent
                 new { fac = "TMM_MenOfLettersFaction", xeno = (string)null, ids = new[] { "dr_hess", "arthur_ketch", "mick_davies", "antonia_bevell", "kendricks" } },
                 new { fac = "TMM_GhoulsFaction", xeno = "TMM_Ghoul", ids = new[] { "john_hancock", "kent_connolly", "charon", "edward_deegan", "daisy", "gob" } },
                 new { fac = "TMM_MonsterClansFaction", xeno = (string)null, ids = new[] { "alpha_vampire", "dick_roman", "eve", "benny_lafitte", "edgar" } },
-                new { fac = "TMM_WildMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "swan", "fist", "dead_eye", "mad_racer", "master_butcher" } } };
+                new { fac = "TMM_WildMutantsFaction", xeno = "TMM_SuperMutant", ids = new[] { "swan", "fist", "dead_eye", "mad_racer", "master_butcher" } },
+                new { fac = "TMM_OutcastsFaction", xeno = (string)null, ids = new[] { "henry_casdin", "specialist_olin", "scribe_silas", "defender_morrigan", "paladin_vargas", "scout_kessler" } } };
             foreach (var grp in groups)
             {
                 FactionDef gd = DefDatabase<FactionDef>.GetNamedSilentFail(grp.fac);
@@ -220,7 +226,7 @@ public sealed class HeroRegistryProbe : MapComponent
             fourth = reg.GetOrCreate(H("TMMTest_Fourth"));
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
-            C("EightyRecords", reg.Records.Count() == 80, 80, reg.Records.Count());
+            C("AllHeroRecords", reg.Records.Count() == 86, 86, reg.Records.Count());
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -292,6 +298,10 @@ public sealed class HeroRegistryProbe : MapComponent
             C("SecondSurvivesGC", !second.Discarded && Find.WorldPawns.Contains(second), "kept", second.Discarded ? "discarded" : (Find.WorldPawns.Contains(second) ? "kept" : "not world pawn"));
             facts.Add("secondId=" + second.ThingID);
             facts.Add("thirdId=" + third.ThingID);
+            // World generation in this mod set can leave relations of random world pawns pointing at discarded pawns.
+            // Remove those before saving (they are not ours), but fail if a hero or a player pawn has one.
+            int ownDangling = CleanDanglingRelations(reg);
+            C("NoDanglingRelationsOnHeroesOrPlayer", ownDangling == 0, 0, ownDangling + " " + string.Join("; ", ownDanglingNames.ToArray()));
             GameDataSaveLoader.SaveGame("TMM-HeroRegistry");
             C("SaveWritten", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-HeroRegistry.rws")), true, "checked");
             Finish(null, false);
@@ -306,7 +316,7 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 80, 80, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 86, 86, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));
@@ -329,8 +339,31 @@ public sealed class HeroRegistryProbe : MapComponent
             C("FourthSurvivesTwoDays", r4 != null && r4.pawn != null && !r4.pawn.Discarded, "alive record", r4 == null || r4.pawn == null ? "null" : r4.pawn.ThingID);
             C("SecondSurvivesDayAndGC", rs != null && rs.pawn != null && !rs.pawn.Discarded && rs.pawn.ThingID == savedSecondId, savedSecondId, rs == null || rs.pawn == null ? "null" : rs.pawn.ThingID);
             C("NoDuplicateRecords", reg.Records.Select(r => r.heroDefName).Distinct().Count() == reg.Records.Count(), "distinct", reg.Records.Count());
+            facts.Add("forcePauseDialogsClosed=" + dialogsClosed);
             Finish(null, true);
         }
+    }
+
+    private static readonly List<string> ownDanglingNames = new List<string>();
+
+    private static int CleanDanglingRelations(HeroRegistry reg)
+    {
+        var known = new HashSet<Pawn>();
+        foreach (Map m in Find.Maps) foreach (Pawn p in m.mapPawns.AllPawns) known.Add(p);
+        foreach (Pawn p in Find.WorldPawns.AllPawnsAliveOrDead) known.Add(p);
+        var heroes = new HashSet<Pawn>(reg.Records.Where(r => r.pawn != null).Select(r => r.pawn));
+        int own = 0;
+        foreach (Pawn p in known.ToList())
+        {
+            if (p.relations == null) continue;
+            foreach (DirectPawnRelation rel in p.relations.DirectRelations.ToList())
+            {
+                if (rel.otherPawn != null && known.Contains(rel.otherPawn)) continue;
+                if (heroes.Contains(p) || p.Faction == Faction.OfPlayer) { own++; ownDanglingNames.Add(p.LabelShort + "(" + (p.Faction == null ? "no faction" : p.Faction.def.defName) + ", hero=" + heroes.Contains(p) + ") -> " + rel.def.defName); }
+                p.relations.RemoveDirectRelation(rel);
+            }
+        }
+        return own;
     }
 
     private static string J(string s) { return (s ?? "").Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", ""); }

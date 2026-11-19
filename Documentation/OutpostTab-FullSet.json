@@ -1,0 +1,296 @@
+﻿{
+    "component":  "OutpostTab",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3355,
+                         "scalarFields":  1454,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  1688,
+                        "ticksAdvanced":  1754,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false,
+                       "error":  null
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "outpostTab":  {
+                       "passed":  true,
+                       "checksCount":  38,
+                       "stage":  2,
+                       "facts":  [
+                                     "Verified empty state layout",
+                                     "Outpost successfully founded at tile 95978,0",
+                                     "Zero resource cost rejection verified: 5 С‚РѕРїР». (0 РµСЃС‚СЊ, РґРѕРїР»Р°С‚Р°: 12 СЃРµСЂ.; СЃРєР»Р°Рґ: 0 С‚РѕРїР»., 0 СЃРµСЂ.)",
+                                     "Silver fallback verified: silverDeduct=12",
+                                     "Pod launched with worker and 100 silver",
+                                     "Mid-flight game state saved as TMM-OutpostTabFlight",
+                                     "Pod successfully delivered worker and silver to outpost",
+                                     "Worker p3 recalled via pod to colony",
+                                     "Recalled worker safely landed at home colony"
+                                 ],
+                       "checks":  [
+                                      {
+                                          "name":  "Window instantiated",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Found valid nearby outpost tile",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "First founder bed claimed",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Second founder bed claimed",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost founded and spawned",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Founding freed first founder bed",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Founding freed second founder bed",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Bed 1 has 0 owners",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Bed 2 has 0 owners",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost workers count is 2",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost animals count is 1",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Cannot afford launch with 0 chemfuel and 0 silver",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Cost summary explanation is present",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Can afford launch with silver fallback",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Zero chemfuel available to deduct",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Silver fallback deduction calculated \u003e 0",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost level 2 has max capacity \u003e= 3",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "PawnCount \u003c MaxCapacity allows sending new worker",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "P3 claimed bed before launch",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Launch payment succeeded: ",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Chemfuel deducted exactly calculated amount: before=150 after=145 expected=5",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Deducted 100 silver for cargo",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "P3 bed unclaimed upon pod launch",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Bed3 has 0 owners",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "TravellingTransporters world object spawned",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "WorldObjects contains TravellingTransporters",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Worker p3 is now registered in outpost workers",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Worker p3 bed remains unclaimed in outpost",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost raw materials received 100 silver",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost has multiple workers (can recall)",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Outpost is in autonomous mode",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recall pod payment succeeded: ",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recall TravellingTransporters spawned",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recalled worker is spawned",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recalled worker is on home map",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recalled worker belongs to player faction (actual=РџРѕСЃРµР»РµРЅРёРµ)",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recalled worker is player colonist",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      },
+                                      {
+                                          "name":  "Recalled worker is no longer in outpost workers",
+                                          "passed":  true,
+                                          "expected":  "True",
+                                          "actual":  "True"
+                                      }
+                                  ],
+                       "errors":  [
+
+                                  ]
+                   },
+    "passed":  true
+}

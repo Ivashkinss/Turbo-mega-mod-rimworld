@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brotherhood Outcasts heroes (Hydrogen, prompt 23), converted by Claude to the HeroDef format. -->
+<Defs>
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_henry_casdin</defName>
+    <childhood>TMM_BS_henry_casdin_child</childhood>
+    <adulthood>TMM_BS_henry_casdin_adult</adulthood>
+    <label>Henry Casdin</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>4</rank>
+    <isLeader>true</isLeader>
+    <successor>TMM_Hero_defender_morrigan</successor>
+    <pawnKind>PirateBoss</pawnKind>
+    <nameFirst>Henry</nameFirst><nameNick>Casdin</nameNick><nameLast>Casdin</nameLast>
+    <gender>Male</gender>
+    <ageRange>44~48</ageRange>
+    <forcedTraits><li>Bloodlust</li></forcedTraits>
+    <skills>
+      <li><skill>Shooting</skill><level>15</level></li>
+      <li><skill>Melee</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>12</level></li>
+      <li><skill>Social</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_ChargeRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_specialist_olin</defName>
+    <childhood>TMM_BS_specialist_olin_child</childhood>
+    <adulthood>TMM_BS_specialist_olin_adult</adulthood>
+    <label>Specialist Olin</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Miranda</nameFirst><nameNick>Olin</nameNick><nameLast>Olin</nameLast>
+    <gender>Female</gender>
+    <ageRange>39~43</ageRange>
+    <forcedTraits><li>TooSmart</li></forcedTraits>
+    <skills>
+      <li><skill>Crafting</skill><level>16</level></li>
+      <li><skill>Intellectual</skill><level>14</level></li>
+      <li><skill>Construction</skill><level>12</level></li>
+    </skills>
+    <weapon>Gun_HeavySMG</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_scribe_silas</defName>
+    <childhood>TMM_BS_scribe_silas_child</childhood>
+    <adulthood>TMM_BS_scribe_silas_adult</adulthood>
+    <label>Scribe Silas</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Silas</nameFirst><nameNick>Silas</nameNick><nameLast>Vance</nameLast>
+    <gender>Male</gender>
+    <ageRange>22~26</ageRange>
+    <forcedTraits><li>Kind</li><li>FastLearner</li></forcedTraits>
+    <skills>
+      <li><skill>Intellectual</skill><level>15</level></li>
+      <li><skill>Social</skill><level>13</level></li>
+      <li><skill>Crafting</skill><level>11</level></li>
+    </skills>
+    <weapon>Gun_AssaultRifle</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_defender_morrigan</defName>
+    <childhood>TMM_BS_defender_morrigan_child</childhood>
+    <adulthood>TMM_BS_defender_morrigan_adult</adulthood>
+    <label>Defender Morrigan</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Evelyn</nameFirst><nameNick>Morrigan</nameNick><nameLast>Morrigan</nameLast>
+    <gender>Female</gender>
+    <ageRange>36~40</ageRange>
+    <forcedTraits><li>Abrasive</li></forcedTraits>
+    <skills>
+      <li><skill>Shooting</skill><level>14</level></li>
+      <li><skill>Melee</skill><level>12</level></li>
+      <li><skill>Construction</skill><level>10</level></li>
+    </skills>
+    <weapon>Gun_ChargeLance</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_paladin_vargas</defName>
+    <childhood>TMM_BS_paladin_vargas_child</childhood>
+    <adulthood>TMM_BS_paladin_vargas_adult</adulthood>
+    <label>Paladin Vargas</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Elite</pawnKind>
+    <nameFirst>Marcus</nameFirst><nameNick>Vargas</nameNick><nameLast>Vargas</nameLast>
+    <gender>Male</gender>
+    <ageRange>33~37</ageRange>
+    <forcedTraits><li>Tough</li><li>Brawler</li></forcedTraits>
+    <skills>
+      <li><skill>Melee</skill><level>14</level></li>
+      <li><skill>Shooting</skill><level>13</level></li>
+      <li><skill>Crafting</skill><level>9</level></li>
+    </skills>
+    <weapon>Gun_Minigun</weapon>
+  </TurboMegaMod.HeroDef>
+
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_scout_kessler</defName>
+    <childhood>TMM_BS_scout_kessler_child</childhood>
+    <adulthood>TMM_BS_scout_kessler_adult</adulthood>
+    <label>Scout Kessler</label>
+    <factionDef>TMM_OutcastsFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Mercenary_Gunner</pawnKind>
+    <nameFirst>Julian</nameFirst><nameNick>Kessler</nameNick><nameLast>Kessler</nameLast>
+    <gender>Male</gender>
+    <ageRange>27~31</ageRange>
+    <forcedTraits><li>NightOwl</li><li>QuickSleeper</li></forcedTraits>
+    <skills>
+      <li><skill>Shooting</skill><level>13</level></li>
+      <li><skill>Intellectual</skill><level>10</level></li>
+      <li><skill>Animals</skill><level>9</level></li>
+    </skills>
+    <weapon>Gun_SniperRifle</weapon>
+  </TurboMegaMod.HeroDef>
+</Defs>

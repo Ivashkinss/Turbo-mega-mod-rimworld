@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MainButtonDef>
+    <defName>TMM_FactionHierarchy</defName>
+    <label>factions</label>
+    <description>View faction hierarchy, leaders, and legendary heroes.</description>
+    <tabWindowClass>TurboMegaMod.MainTabWindow_FactionHierarchy</tabWindowClass>
+    <order>74</order>
+    <validWithoutMap>true</validWithoutMap>
+  </MainButtonDef>
+</Defs>
