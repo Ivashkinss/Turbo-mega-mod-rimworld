@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_A2_WebOfThreads -->
+  <TMM_Story_A2_WebOfThreads.label>нити кукловодов</TMM_Story_A2_WebOfThreads.label>
+  <TMM_Story_A2_WebOfThreads.letterLabel>Узор в помехах</TMM_Story_A2_WebOfThreads.letterLabel>
+  <TMM_Story_A2_WebOfThreads.letterText>Мы сверили телеметрию с вашего Голодиска-Ключа со старыми довоенными архивами Бобби Сингера, и картина вырисовывается мрачная. Все пятнадцать сил этого региона — от Братства Стали и Института до ангелов и владык Ада — тянут за нити, ведущие к одному и тому же довоенному заговору.\n\n{GIVER} направляет к вам в гостиницу аналитика, чтобы составить карту расследования, пока главные игроки не сделали свой ход.</TMM_Story_A2_WebOfThreads.letterText>
+  <TMM_Story_A2_WebOfThreads.stages.0.label>Подготовка штабной</TMM_Story_A2_WebOfThreads.stages.0.label>
+  <TMM_Story_A2_WebOfThreads.stages.0.text>Колонисты расчищают стол рядом с узлом связи и прикалывают карту довоенных координат бункеров из Сектора 1 в ожидании связного охотников.</TMM_Story_A2_WebOfThreads.stages.0.text>
+  <TMM_Story_A2_WebOfThreads.stages.2.label>По следу заговора</TMM_Story_A2_WebOfThreads.stages.2.label>
+  <TMM_Story_A2_WebOfThreads.stages.2.text>{GIVER} раскладывает выцветшие довоенные чертежи рядом с Голодиском-Ключом: «Чтобы взломать Сектора 2 и 3 диска вашего наставника, нам нужны настоящие ключи шифрования — а они заперты в Убежищах, храмах и штабах окружающих фракций. Как вы намерены действовать?»</TMM_Story_A2_WebOfThreads.stages.2.text>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.0.label>Завоёвывать доверие фракций и вскрывать их тайны изнутри</TMM_Story_A2_WebOfThreads.stages.2.choices.0.label>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.0.resultText>{GIVER} одобрительно кивает: «Разумно. Люди болтают, когда верят, что вы на их стороне — главное, не запутайтесь в их лжи». Он оставляет вам мешочек довоенного серебра на взятки и припасы.</TMM_Story_A2_WebOfThreads.stages.2.choices.0.resultText>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.1.label>Считать подозреваемым каждого — брать нужное и никому не верить</TMM_Story_A2_WebOfThreads.stages.2.choices.1.label>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.1.resultText>«Прямо как Дин говорит, — со вздохом усмехается {GIVER}. — Держите соль сухой, а винтовки заряженными. Война будет долгой».</TMM_Story_A2_WebOfThreads.stages.2.choices.1.resultText>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.2.label>Использовать наводку демона о купчей Волт-Тек 2052 года, чтобы ускорить поиск</TMM_Story_A2_WebOfThreads.stages.2.choices.2.label>
+  <TMM_Story_A2_WebOfThreads.stages.2.choices.2.resultText>Брови {GIVER} взлетают вверх, когда вы повторяете обмолвку серного незнакомца: «2052-й? Это за двадцать пять лет до Великой войны! Это резко сужает круг поиска».</TMM_Story_A2_WebOfThreads.stages.2.choices.2.resultText>
+
+  <!-- TMM_Story_A2_SynthResonanceOne -->
+  <TMM_Story_A2_SynthResonanceOne.label>эхо в нейросети</TMM_Story_A2_SynthResonanceOne.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.0.label>Гармоническая статика</TMM_Story_A2_SynthResonanceOne.stages.0.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.0.text>По мере того как влияние вашего поселения растёт, Нулевой Синт начинает переживать короткие ослепительные вспышки ясности — он слышит слабый шёпот довоенных подземных магистралей и чувствует приближение психических возмущений ещё до срабатывания сканеров.</TMM_Story_A2_SynthResonanceOne.stages.0.text>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.label>Душа учится дышать</TMM_Story_A2_SynthResonanceOne.stages.1.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.text>Вы застаёте Нулевого Синта у терминала связи: его глаза мягко светятся в полумраке, а по кончикам пальцев безвредно пробегают синие искры. Он поднимает взгляд, и его реакция зависит от всего, что вы сделали с момента открытия люка.</TMM_Story_A2_SynthResonanceOne.stages.1.text>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.0.label>[Высокое доверие] Попросить поделиться тем, что он видит в статике</TMM_Story_A2_SynthResonanceOne.stages.1.choices.0.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.0.resultText>Нулевой Синт тепло улыбается: «Я чувствую старую сеть ретрансляторов Волт-Тек под пеплом... и нашёл поблизости засыпанный тайник, которого нет ни на одной карте. А ещё я вспомнил голос вашего наставника — перед тем как завыли сирены, он сказал „Чистилище“».</TMM_Story_A2_SynthResonanceOne.stages.1.choices.0.resultText>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.1.label>[Среднее доверие] Помочь ему выровнять дыхание и записать показания</TMM_Story_A2_SynthResonanceOne.stages.1.choices.1.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.1.resultText>Нулевой Синт медленно кивает, опуская руки: «Когда кто-то рядом, это не так больно. Я начинаю вспоминать белые лаборатории... и человека в порванном плаще, который рискнул жизнью, чтобы меня вытащить».</TMM_Story_A2_SynthResonanceOne.stages.1.choices.1.resultText>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.2.label>[Низкое доверие] Успокоить его, пока нестабильная Искра не сожгла энергосеть</TMM_Story_A2_SynthResonanceOne.stages.1.choices.2.label>
+  <TMM_Story_A2_SynthResonanceOne.stages.1.choices.2.resultText>Нулевой Синт отшатывается от вас, с его ладоней срываются искры и сжигают ближайшее реле: «Вы смотрите на меня точно так же, как те люди в белых халатах! Не подходите, пока я сам не пойму, кто я!»</TMM_Story_A2_SynthResonanceOne.stages.1.choices.2.resultText>
+
+  <!-- TMM_Story_A2_HolodiskSector2 -->
+  <TMM_Story_A2_HolodiskSector2.label>сектор голодиска 2: чёрная бухгалтерия</TMM_Story_A2_HolodiskSector2.label>
+  <TMM_Story_A2_HolodiskSector2.letterLabel>Заголовок Сектора 2 взломан</TMM_Story_A2_HolodiskSector2.letterLabel>
+  <TMM_Story_A2_HolodiskSector2.letterText>Ваши дела в Пустоши принесли плоды — Голодиск-Ключ сопоставил пять региональных сигнатур и открыл заголовок Сектора 2: «ПРОЕКТ „ЧИСТИЛИЩЕ“ — ФИНАНСОВЫЙ РЕЕСТР».\n\nОднако для полной расшифровки нужен подлинный довоенный корпоративный ключ, хранящийся в заброшенном хранилище подставной фирмы. {GIVER} вычислил координаты и советует ударить раньше, чем чистильщики Консорциума сотрут диски.</TMM_Story_A2_HolodiskSector2.letterText>
+  <TMM_Story_A2_HolodiskSector2.stages.0.label>Выбор ключа дешифровки</TMM_Story_A2_HolodiskSector2.stages.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.0.text>Перед отправкой экспедиции в хранилище подставной компании вы можете запросить вспомогательный дешифратор у одного из ваших контактов, чтобы ускорить взлом.</TMM_Story_A2_HolodiskSector2.stages.0.text>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.0.label>Запросить старые коды допуска руководства Волт-Тек</TMM_Story_A2_HolodiskSector2.stages.0.choices.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.0.resultText>Терминал Волт-Тек жизнерадостно пиликает и выдаёт корпоративный ключ доступа 2077 года, который откроет внутренний сейф за считанные секунды.</TMM_Story_A2_HolodiskSector2.stages.0.choices.0.resultText>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.1.label>Одолжить енохианскую линзу у Британских Просвещённых</TMM_Story_A2_HolodiskSector2.stages.0.choices.1.label>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.1.resultText>Мик Дэвис присылает оптический кристалл в серебряной оправе, способный проявлять скрытые оккультные водяные знаки в бухгалтерских документах.</TMM_Story_A2_HolodiskSector2.stages.0.choices.1.resultText>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.2.label>Использовать кустарный взломщик Техника Тома из Подземки</TMM_Story_A2_HolodiskSector2.stages.0.choices.2.label>
+  <TMM_Story_A2_HolodiskSector2.stages.0.choices.2.resultText>Собранный на коленке модуль Техника Тома сыплет искрами, но обещает вскрыть любой терминал без корпоративного следа.</TMM_Story_A2_HolodiskSector2.stages.0.choices.2.resultText>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.0.effects.1.label>Корпоративный ключ захвачен</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.0.effects.1.text>Ваш отряд пробился сквозь наёмников Стрелков, охранявших хранилище подставной фирмы, и вынес довоенный ключ шифрования целым и невредимым.</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.label>Восстановлены обрывки данных</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.label>Восстановлены обрывки данных</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.text>Стрелки вывезли золотой запас хранилища до вашего прихода, но техникам удалось считать остаточные фрагменты шифра с оплавленного мейнфрейма.</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.2.effects.0.label>Аварийная дешифровка через Искру</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.1.outcomes.2.effects.0.text>Хотя отряду пришлось отступить, Нулевой Синт на базе вошёл в резонанс с Голодиском-Ключом и восстановил недостающие сектора ценой сильного истощения.</TMM_Story_A2_HolodiskSector2.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A2_HolodiskSector2.stages.2.label>Чёрная бухгалтерия раскрыта</TMM_Story_A2_HolodiskSector2.stages.2.label>
+  <TMM_Story_A2_HolodiskSector2.stages.2.text>Файлы Сектора 2 разворачиваются на экране с пугающей ясностью. За десятилетия до 2077 года глава корпорации левиафанов Дик Роман, архитектор Убежищ доктор Станислас Брон и старейшины Британских Просвещённых влили миллиарды в строительство Нулевых Якорей и Убежищ — задумав Великую войну как управляемый ритуал, запирающий души Земли под куполом для жатвы.</TMM_Story_A2_HolodiskSector2.stages.2.text>
+  <TMM_Story_A2_HolodiskSector2.stages.2.choices.0.label>Открыто показать Чёрную бухгалтерию Нулевому Синту и совету колонии</TMM_Story_A2_HolodiskSector2.stages.2.choices.0.label>
+  <TMM_Story_A2_HolodiskSector2.stages.2.choices.0.resultText>Нулевой Синт потрясённо смотрит на довоенные подписи: «Они не просто сожгли мир... они построили клетку для всех, кто остался внутри. Мы обязаны найти вашего наставника и остановить их».</TMM_Story_A2_HolodiskSector2.stages.2.choices.0.resultText>
+  <TMM_Story_A2_HolodiskSector2.stages.2.choices.1.label>Зашифровать реестр личным кодом как политический козырь</TMM_Story_A2_HolodiskSector2.stages.2.choices.1.label>
+  <TMM_Story_A2_HolodiskSector2.stages.2.choices.1.resultText>Вы запираете убийственные финансовые документы под личным паролем. Такие знания способны покупать империи — или развязывать войны — когда пробьёт час.</TMM_Story_A2_HolodiskSector2.stages.2.choices.1.resultText>
+  <TMM_Story_A2_HolodiskSector2.onComplete.2.label>Голодиск-Ключ: Сектор 2 расшифрован</TMM_Story_A2_HolodiskSector2.onComplete.2.label>
+  <TMM_Story_A2_HolodiskSector2.onComplete.2.text>Сектор 2 открыт! Вы раскрыли довоенный финансовый сговор Дика Романа, доктора Брона и Британских Просвещённых. Продолжайте сюжетные линии фракций, чтобы открыть Сектор 3.</TMM_Story_A2_HolodiskSector2.onComplete.2.text>
+
+  <!-- TMM_Story_A2_SynthMemoryFragment -->
+  <TMM_Story_A2_SynthMemoryFragment.label>ночь побега</TMM_Story_A2_SynthMemoryFragment.label>
+  <TMM_Story_A2_SynthMemoryFragment.stages.0.label>Разблокировка закрытых секторов</TMM_Story_A2_SynthMemoryFragment.stages.0.label>
+  <TMM_Story_A2_SynthMemoryFragment.stages.0.text>Откровения Сектора 2 запускают каскад в памяти Нулевого Синта. Перед его глазами всплывают обрывки подземного зала телепортации Института и отчаянная перестрелка.</TMM_Story_A2_SynthMemoryFragment.stages.0.text>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.label>Пароль наставника</TMM_Story_A2_SynthMemoryFragment.stages.2.label>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.text>Пока диагностический прибор Техника Тома тихо гудит у кровати, Нулевой Синт открывает глаза — он вспомнил ту самую ночь, когда ваш пропавший наставник вывел его в бункер Якоря перед тем, как исчезнуть в пепле.</TMM_Story_A2_SynthMemoryFragment.stages.2.text>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.choices.0.label>[Высокое доверие] Выслушать Нулевого Синта, доверяющего вам пароль наставника</TMM_Story_A2_SynthMemoryFragment.stages.2.choices.0.label>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.choices.0.resultText>«Ваш наставник прошептал кодовую фразу в мой аудиомодуль прямо перед тем, как задраить люк: „Пепел помнит первое пламя“. Он сказал, что её должен услышать только тот, кому я по-настоящему верю — она снимает ручную блокировку Нулевого Якоря».</TMM_Story_A2_SynthMemoryFragment.stages.2.choices.0.resultText>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.choices.1.label>[Низкое/среднее доверие] Спросить, что наставник оставил в бункере</TMM_Story_A2_SynthMemoryFragment.stages.2.choices.1.label>
+  <TMM_Story_A2_SynthMemoryFragment.stages.2.choices.1.resultText>Нулевой Синт медлит, оберегая свои мысли: «Он сказал мне, как защитить Якорь... и предупредил не отдавать ключи никому, пока я не пойму, чего на самом деле хотят от моей души».</TMM_Story_A2_SynthMemoryFragment.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_A2_SynthConfrontation -->
+  <TMM_Story_A2_SynthConfrontation.label>цена одной души</TMM_Story_A2_SynthConfrontation.label>
+  <TMM_Story_A2_SynthConfrontation.stages.0.label>Сгущающаяся буря</TMM_Story_A2_SynthConfrontation.stages.0.label>
+  <TMM_Story_A2_SynthConfrontation.stages.0.text>Слухи о живой Искре Нулевого Синта разнеслись по всей Пустоши. Ангелы, демоны, учёные и полевые командиры стягиваются к {COLONY} — и Нулевой Синт уже догадывается, что случится, если кто-то попытается выкачать его Искру для запуска Резонатора.</TMM_Story_A2_SynthConfrontation.stages.0.text>
+  <TMM_Story_A2_SynthConfrontation.stages.1.label>Вопрос в полночь</TMM_Story_A2_SynthConfrontation.stages.1.label>
+  <TMM_Story_A2_SynthConfrontation.stages.1.text>Стоя над гудящим полом Нулевого Якоря, Нулевой Синт поворачивается к вам лицом: «Мы почти дошли до конца следа. Когда настанет Затмение и каждая фракция потребует включить эту машину... что станет со мной?»</TMM_Story_A2_SynthConfrontation.stages.1.text>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.0.label>[Высокое доверие] Поклясться, что {COLONY} никогда не пустит его в расход как топливо</TMM_Story_A2_SynthConfrontation.stages.1.choices.0.label>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.0.resultText>Нулевой Синт делает долгий спокойный вдох, и синий свет в его глазах горит ровно и ярко: «Я верю вам. Что бы ни случилось у пульта, я буду стоять рядом — не как инструмент, а как ваш друг».</TMM_Story_A2_SynthConfrontation.stages.1.choices.0.resultText>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.1.label>[Среднее доверие] Сказать, что вы найдёте способ выжить вместе</TMM_Story_A2_SynthConfrontation.stages.1.choices.1.label>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.1.resultText>«Надеюсь, вы правы, — тихо отвечает Нулевой Синт, глядя на древние руны под ногами. — Я не просил рождать меня с душой, но без боя я её не отдам».</TMM_Story_A2_SynthConfrontation.stages.1.choices.1.resultText>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.2.label>[Низкое доверие] Предупредить, чтобы он не мешал, когда придёт время тяжёлых решений</TMM_Story_A2_SynthConfrontation.stages.1.choices.2.label>
+  <TMM_Story_A2_SynthConfrontation.stages.1.choices.2.resultText>Нулевой Синт отступает в тень, и его взгляд становится ледяным: «Тогда запомните: если попытаетесь запереть меня в клетку или выкачать досуха, я сожгу этот пульт вместе с нами обоими».</TMM_Story_A2_SynthConfrontation.stages.1.choices.2.resultText>
+
+  <!-- TMM_Story_A2_HolodiskSector3 -->
+  <TMM_Story_A2_HolodiskSector3.label>сектор голодиска 3: голос наставника</TMM_Story_A2_HolodiskSector3.label>
+  <TMM_Story_A2_HolodiskSector3.stages.0.label>Всплеск сигнала</TMM_Story_A2_HolodiskSector3.stages.0.label>
+  <TMM_Story_A2_HolodiskSector3.stages.0.text>Когда десять региональных сюжетных арок подошли к развязке, Голодиск-Ключ завершил сверку резонансных узлов континента — и уловил слабый ответный импульс от побитого довоенного маячка Пип-Боя, приближающегося к вашей гостинице.</TMM_Story_A2_HolodiskSector3.stages.0.text>
+  <TMM_Story_A2_HolodiskSector3.stages.2.label>Запись из 2286 года</TMM_Story_A2_HolodiskSector3.stages.2.label>
+  <TMM_Story_A2_HolodiskSector3.stages.2.text>{GIVER} подключает спасённый усилитель сигнала к вашему терминалу, и Сектор 3 наконец воспроизводит из динамиков голос вашего пропавшего наставника:\n\n«Если вы это слышите, значит, я не выбрался с секретного объекта Консорциума. Слушайте внимательно: октябрьские бомбы 2077 года были оккультным ритуалом, чтобы взломать Шестьдесят Шесть Печатей и запереть человеческие души под планетарным барьером. Небеса и Ад умирают от голода — и Искра внутри Нулевого Синта осталась единственным ключом, способным либо навсегда запечатать Разлом, либо распахнуть клетку настежь. Не отдавайте пульт Роману и фанатикам!»</TMM_Story_A2_HolodiskSector3.stages.2.text>
+  <TMM_Story_A2_HolodiskSector3.stages.2.choices.0.label>Записать координаты секретного объекта и поклясться найти наставника живым</TMM_Story_A2_HolodiskSector3.stages.2.choices.0.label>
+  <TMM_Story_A2_HolodiskSector3.stages.2.choices.0.resultText>{GIVER} мрачно поправляет кепку: «Вот это настрой. Кто бы ни держал вашего наставника в том бункере Консорциума, он ещё пожалеет, что проснулся сегодня утром».</TMM_Story_A2_HolodiskSector3.stages.2.choices.0.resultText>
+  <TMM_Story_A2_HolodiskSector3.stages.2.choices.1.label>Сосредоточиться на извлечении чертежей Резонатора Искр с диска</TMM_Story_A2_HolodiskSector3.stages.2.choices.1.label>
+  <TMM_Story_A2_HolodiskSector3.stages.2.choices.1.resultText>«Холодно, практично и сразу к делу, — бормочет {GIVER}, копируя схемы на ваш рабочий терминал. — Только будьте готовы, когда небо покраснеет».</TMM_Story_A2_HolodiskSector3.stages.2.choices.1.resultText>
+  <TMM_Story_A2_HolodiskSector3.onComplete.2.label>Голодиск-Ключ: Сектор 3 расшифрован</TMM_Story_A2_HolodiskSector3.onComplete.2.label>
+  <TMM_Story_A2_HolodiskSector3.onComplete.2.text>Сектор 3 расшифрован! Последняя запись вашего наставника раскрыла истинную суть ядерного ритуала 2077 года и указала путь к финальным чертежам Сектора 4 внутри Нулевого Якоря.</TMM_Story_A2_HolodiskSector3.onComplete.2.text>
+
+  <!-- TMM_Story_A2_React_BrotherhoodSchism -->
+  <TMM_Story_A2_React_BrotherhoodSchism.label>холод с «придвена»</TMM_Story_A2_React_BrotherhoodSchism.label>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.0.label>Зашифрованная передача Братства</TMM_Story_A2_React_BrotherhoodSchism.stages.0.label>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.0.text>Спустя несколько дней после вашего решения о судьбе паладина Данса сквозь помехи прорывается приоритетный канал Братства Стали — в нём звучит ледяной баритон старейшины Артура Мэксона и скрытый подканал Сары Лайонс.</TMM_Story_A2_React_BrotherhoodSchism.stages.0.text>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.label>Два голоса в стали</TMM_Story_A2_React_BrotherhoodSchism.stages.1.label>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.text>Послание Мэксона холодно как зимняя сталь: «Вы выбрали машину вместо выживания человечества. Держите этого предателя подальше от наших глаз, иначе Братство выжжет ваши руины дотла». Под его передачей мигает короткий шифр от Сары Лайонс: «Держитесь. Не все из нас забыли, кого должен защищать щит».</TMM_Story_A2_React_BrotherhoodSchism.stages.1.text>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.0.label>Передать твёрдый ответ Мэксону и отправить сигнал благодарности Саре Лайонс</TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.0.label>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.0.resultText>Мэксон обрывает связь без единого слова, а Сара Лайонс незаметно сбрасывает ящик медикаментов у вашего внешнего маяка.</TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.0.resultText>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.1.label>Сохранить радиомолчание, чтобы не провоцировать удар винтокрылов</TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.1.label>
+  <TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.1.resultText>Ваш связист молча записывает частоты. Скрытность даёт поселению драгоценное время перед грядущей бурей.</TMM_Story_A2_React_BrotherhoodSchism.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A2_React_RailroadReprisal -->
+  <TMM_Story_A2_React_RailroadReprisal.label>знаки мелом на стене</TMM_Story_A2_React_RailroadReprisal.label>
+  <TMM_Story_A2_React_RailroadReprisal.stages.0.label>Предупреждение у ворот</TMM_Story_A2_React_RailroadReprisal.stages.0.label>
+  <TMM_Story_A2_React_RailroadReprisal.stages.0.text>Утренний патруль находит на столбе ворот {COLONY} нарисованный мелом знак опасности Подземки — а безымянный курьер оставляет на стойке гостиницы тяжёлый конверт и исчезает в тумане.</TMM_Story_A2_React_RailroadReprisal.stages.0.text>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.label>Письмо из теней</TMM_Story_A2_React_RailroadReprisal.stages.1.label>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.text>Почерк Дездемоны резок и беспощаден: «До катакомб дошла весть, что вы отдали живую, чувствующую душу обратно на разделочный стол Института. Наши убежища для вас закрыты — и если вы тронете Нулевого Синта, мы сами придём за вами».</TMM_Story_A2_React_RailroadReprisal.stages.1.text>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.choices.0.label>Оставить в тайнике серебро и зашифрованное обещание беречь Нулевого Синта</TMM_Story_A2_React_RailroadReprisal.stages.1.choices.0.label>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.choices.0.resultText>На следующее утро серебро исчезает, а на его месте лежит короткая записка почерком Дьякона: «Дела говорят громче крышек, босс. Докажите».</TMM_Story_A2_React_RailroadReprisal.stages.1.choices.0.resultText>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.choices.1.label>Стереть знак мелом с ворот и усилить патрули по периметру</TMM_Story_A2_React_RailroadReprisal.stages.1.choices.1.label>
+  <TMM_Story_A2_React_RailroadReprisal.stages.1.choices.1.resultText>Вы не ищете оправданий. Подземка официально записывает {COLONY} в пособники Института, а Нулевой Синт становится заметно молчаливее.</TMM_Story_A2_React_RailroadReprisal.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A2_React_CelestialRift -->
+  <TMM_Story_A2_React_CelestialRift.label>охотники на перекрёстке</TMM_Story_A2_React_CelestialRift.label>
+  <TMM_Story_A2_React_CelestialRift.stages.0.label>Слухи в сети охотников</TMM_Story_A2_React_CelestialRift.stages.0.label>
+  <TMM_Story_A2_React_CelestialRift.stages.0.text>Весть о вашей кровавой сделке с верхними или нижними силами мгновенно разлетелась по всем придорожным барам и частотам охотников в секторе.</TMM_Story_A2_React_CelestialRift.stages.0.text>
+  <TMM_Story_A2_React_CelestialRift.stages.1.label>Ультиматум Дина Винчестера</TMM_Story_A2_React_CelestialRift.stages.1.label>
+  <TMM_Story_A2_React_CelestialRift.stages.1.text>Дин Винчестер выходит на связь без тени привычных шуток: «Скажи мне, что слухи врут. Скажи, что вы не легли под ангелов или чертей с перекрёстка ради резни невинных. Потому что если это правда — у нас с Сэмми появятся очень большие вопросы к вашему поселению».</TMM_Story_A2_React_CelestialRift.stages.1.text>
+  <TMM_Story_A2_React_CelestialRift.stages.1.choices.0.label>Ответить Дину, что вы забрали их оружие, чтобы ударить по настоящим чудовищам</TMM_Story_A2_React_CelestialRift.stages.1.choices.0.label>
+  <TMM_Story_A2_React_CelestialRift.stages.1.choices.0.resultText>Дин на секунду замолкает и горько выдыхает: «Да уж... дорога в Ад вымощена ребятами, которые думали, что перехитрят дьявола. Не вынуждайте нас заглянуть к вам в гости».</TMM_Story_A2_React_CelestialRift.stages.1.choices.0.resultText>
+  <TMM_Story_A2_React_CelestialRift.stages.1.choices.1.label>Предупредить охотников, чтобы не лезли в дела {COLONY}</TMM_Story_A2_React_CelestialRift.stages.1.choices.1.label>
+  <TMM_Story_A2_React_CelestialRift.stages.1.choices.1.resultText>«Понял тебя громко и чётко», — холодно бросает Дин и обрывает связь. Патрули охотников в регионе теперь смотрят на ваше поселение с открытой враждебностью.</TMM_Story_A2_React_CelestialRift.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A2_React_ConsortiumShadow -->
+  <TMM_Story_A2_React_ConsortiumShadow.label>золотой слиток без клейма</TMM_Story_A2_React_ConsortiumShadow.label>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.0.label>Тихая доставка</TMM_Story_A2_React_ConsortiumShadow.stages.0.label>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.0.text>На рассвете во двор колонии бесшумно опускается беспилотный довоенный дрон, сбрасывает бархатный футляр с эмблемой из трёх переплетённых колец и самоуничтожается в облачке синего дыма.</TMM_Story_A2_React_ConsortiumShadow.stages.0.text>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.label>С уважением от Совета Директоров</TMM_Story_A2_React_ConsortiumShadow.stages.1.label>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.text>Внутри футляра лежит тяжёлый слиток довоенного золота и карточка: «Ваш прагматичный подход к недавним региональным проблемам отмечен Советом Консорциума. Берегите Нулевой Якорь — место за столом ждёт тех, кто понимает цену порядка».</TMM_Story_A2_React_ConsortiumShadow.stages.1.text>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.0.label>Оставить золото в казне и убрать карточку для будущих торгов</TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.0.label>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.0.resultText>Вы отправляете слиток на склад. Нулевой Синт бросает на эмблему из трёх колец взгляд, полный нескрываемой тревоги.</TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.0.resultText>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.1.label>Сжечь карточку на глазах у Нулевого Синта и пустить золото на обереги</TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.1.label>
+  <TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.1.resultText>Бархатный футляр превращается в пепел в жаровне. Нулевой Синт провожает дым взглядом с явным облегчением от того, что вы отвергли наживку Консорциума.</TMM_Story_A2_React_ConsortiumShadow.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A2_SecondAwakening -->
+  <TMM_Story_A2_SecondAwakening.label>второе пробуждение якоря</TMM_Story_A2_SecondAwakening.label>
+  <TMM_Story_A2_SecondAwakening.stages.0.label>Пепельный шторм на горизонте</TMM_Story_A2_SecondAwakening.stages.0.label>
+  <TMM_Story_A2_SecondAwakening.stages.0.text>Небо над {COLONY} наливается цветом старого железа, и на регион обрушивается плотный наэлектризованный пепельный шторм. Глубоко под полом Нулевой Якорь входит в полный резонанс — заливая Голодиск-Ключ финальным потоком данных Сектора 4 и засвечивая ваши координаты для ударных групп Консорциума.</TMM_Story_A2_SecondAwakening.stages.0.text>
+  <TMM_Story_A2_SecondAwakening.stages.1.outcomes.0.effects.1.label>Ударная группа Консорциума отбита</TMM_Story_A2_SecondAwakening.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A2_SecondAwakening.stages.1.outcomes.0.effects.1.text>Ваши защитники разгромили авангард левиафанов и чёрных оперативников Консорциума до того, как они прорвались в шахту Якоря! Сборка Сектора 4 на терминале завершена.</TMM_Story_A2_SecondAwakening.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A2_SecondAwakening.stages.1.outcomes.1.effects.1.label>Тяжёлая оборона Якоря</TMM_Story_A2_SecondAwakening.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A2_SecondAwakening.stages.1.outcomes.1.effects.1.text>Хотя рейдеры Консорциума нанесли серьёзный урон перед отступлением в пепельный шторм, ядро Нулевого Якоря устояло — и Сектор 4 успел расшифроваться.</TMM_Story_A2_SecondAwakening.stages.1.outcomes.1.effects.1.text>
+  <TMM_Story_A2_SecondAwakening.stages.2.label>Чертежи Резонатора Искр</TMM_Story_A2_SecondAwakening.stages.2.label>
+  <TMM_Story_A2_SecondAwakening.stages.2.text>Едва пепельный шторм рассеивается, на Голодиске-Ключе открывается Сектор 4, проецируя полные чертежи Резонатора Искр — машины, способной запечатать Разлом, выкачать Искры или переписать барьер над Землёй. Импульс почувствовала каждая фракция в Пустоши. Как {COLONY} подготовится к развязке?</TMM_Story_A2_SecondAwakening.stages.2.text>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.0.label>Выйти в открытый эфир, созвать возможных союзников и готовиться защищать Искру</TMM_Story_A2_SecondAwakening.stages.2.choices.0.label>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.0.resultText>Ваш маяк прорезает частоты Пустоши. По всей карте несогласные герои и верные союзники начинают готовиться порвать со своими лидерами и встать под ваше знамя.</TMM_Story_A2_SecondAwakening.stages.2.choices.0.resultText>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.1.label>Поднять енохианские обереги, заглушить эфир и превратить {COLONY} в крепость</TMM_Story_A2_SecondAwakening.stages.2.choices.1.label>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.1.resultText>Инженеры усиливают гермодвери и готовят мастерские. Пусть фракции рвут друг другу глотки — у ваших ворот их встретят стены из стали и соли.</TMM_Story_A2_SecondAwakening.stages.2.choices.1.resultText>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.2.label>Разослать шифрованные приглашения главам блоков, чтобы вести торг с позиции силы</TMM_Story_A2_SecondAwakening.stages.2.choices.2.label>
+  <TMM_Story_A2_SecondAwakening.stages.2.choices.2.resultText>Ваши дипломатические каналы раскаляются от сообщений. Теперь каждый лидер в регионе знает, что ключ к будущему находится внутри вашей колонии.</TMM_Story_A2_SecondAwakening.stages.2.choices.2.resultText>
+  <TMM_Story_A2_SecondAwakening.onComplete.5.label>Акт III: Срыв масок</TMM_Story_A2_SecondAwakening.onComplete.5.label>
+  <TMM_Story_A2_SecondAwakening.onComplete.5.text>Сектор 4 Голодиска-Ключа расшифрован, открывая чертежи Резонатора Искр! Маски в Пустоши сброшены — готовьтесь к Первой точке невозврата и тайным квестам перебежчиков, пока фракции раскалываются изнутри.</TMM_Story_A2_SecondAwakening.onComplete.5.text>
+
+</LanguageData>

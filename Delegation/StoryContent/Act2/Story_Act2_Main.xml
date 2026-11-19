@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 2, STEP 1: WEB OF THREADS (OPENER OF ACT 2)                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_WebOfThreads</defName>
+    <label>threads of the puppeteers</label>
+    <act>2</act>
+    <main>true</main>
+    <priority>90</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_sam_winchester</giver>
+    <fallbackGiver>TMM_Hero_preston_garvey</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>done:TMM_Story_A1_TalkUnderAsh</li>
+    </requires>
+    <letterLabel>A pattern in the static</letterLabel>
+    <letterText>We cross-referenced the telemetry from your Holodisk-Key against Bobby Singer's old pre-war archives, and the picture isn't pretty. All fifteen powers in this region—from the Brotherhood and the Institute to the angels and demon lords—are pulling on threads tied to the exact same pre-war conspiracy.\n\n{GIVER} is sending an analyst to your waystation to help map out your investigation before the major players make their move.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Preparing the war room</label>
+        <text>Your colonists clear a table near the comms console, pinning up Sector 1's map of pre-war bunker coordinates while awaiting the hunter liaison.</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <hero>TMM_Hero_sam_winchester</hero>
+        <groupSize>2</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-10</amount>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Tracing the conspiracy</label>
+        <text>{GIVER} spreads faded pre-war blueprints beside your Holodisk-Key. "To crack Sectors 2 and 3 of your mentor's disk, we need real-world cipher keys—and those are locked inside the vaults, temples, and headquarters of the factions around us. How do you want to play this?"</text>
+        <choices>
+          <li>
+            <outcome>diplomatic_web</outcome>
+            <label>Build trust with the factions and uncover their secrets from within</label>
+            <resultText>{GIVER} nods approvingly. "Smart. People talk when they think you're on their side—just don't lose yourself in their lies." He leaves you a pouch of pre-war silver for bribes and supplies.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_approach</flag>
+                <value>diplomatic</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>shadow_hunt</outcome>
+            <label>Treat every faction as a suspect—take what we need and trust no one</label>
+            <resultText>"That's how Dean talks," {GIVER} says with a wry sigh. "Keep your salt dry and your rifles loaded. It's going to be a long war."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_approach</flag>
+                <value>ruthless</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>leverage_demon_clue</outcome>
+            <label>Use the crossroads demon's 2052 Vault-Tec tip to jumpstart the search</label>
+            <resultText>{GIVER}'s eyebrows shoot up as you repeat what the sulfur-scented stranger let slip. "2052? That predates the Great War by twenty-five years! That narrows our search dramatically."</resultText>
+            <requires>
+              <li>story.a1_demonClue=true</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>300</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_approach</flag>
+                <value>insider</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ZERO SYNTH GROWTH 1: FIRST AWAKENING OF THE SPARK (arcPoints >= 2)    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_SynthResonanceOne</defName>
+    <label>echoes in the neural lace</label>
+    <act>2</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>85</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_alan_binet</giver>
+    <fallbackGiver>TMM_Hero_desdemona</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=2</li>
+      <li>done:TMM_Story_A2_WebOfThreads</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Harmonic static</label>
+        <text>As your settlement's influence spreads across the region, the Zero Synth begins experiencing brief, blinding flashes of clarity—hearing faint whispers from underground pre-war conduits and sensing nearby psychic disturbances before they appear on sensors.</text>
+        <days>1.4</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A soul learning to breathe</label>
+        <text>You find the Zero Synth sitting beside the comms terminal, eyes glowing softly in the dim light as blue arcs dance harmlessly across their fingertips. They look up as you enter, their reaction shaped by everything you have done since opening the hatch.</text>
+        <choices>
+          <li>
+            <outcome>trusting_gift</outcome>
+            <label>[High Trust] Encourage them to share what they see in the static</label>
+            <resultText>The Zero Synth smiles warmly. "I can feel the old Vault-Tec relay grid beneath the ash... and I found a buried supply cache nearby that wasn't on any map. More than that—I remember your mentor's voice saying 'Purgatory' before the alarms went off."</resultText>
+            <requires>
+              <li>zeroSynth.trust>=30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentSpacer</thing>
+                <count>1</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineUltratech</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthGrowth1</flag>
+                <value>bonded</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>cautious_cooperation</outcome>
+            <label>[Neutral Trust] Help them steady their breathing and log the readings</label>
+            <resultText>The Zero Synth nods slowly, lowering their hands. "It hurts less when someone is watching. I'm starting to remember white labs... and a man in a torn coat who risked his life to get me out."</resultText>
+            <requires>
+              <li>zeroSynth.trust>=0</li>
+              <li>zeroSynth.trust&lt;30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthGrowth1</flag>
+                <value>steady</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>bitter_surge</outcome>
+            <label>[Low Trust] Calm them down before the unstable Spark shorts out the grid</label>
+            <resultText>The Zero Synth recoils from your approach, sparks snapping violently from their palms and frying a nearby relay. "You look at me just like the people in the white coats! Stay away until I figure out what I am!"</resultText>
+            <requires>
+              <li>zeroSynth.trust&lt;0</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthGrowth1</flag>
+                <value>fractured</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HOLODISK SECTOR 2: THE BLACK LEDGER (arcPoints >= 5)                  -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_HolodiskSector2</defName>
+    <label>holodisk sector 2: the black ledger</label>
+    <act>2</act>
+    <main>true</main>
+    <priority>92</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_mick_davies</giver>
+    <fallbackGiver>TMM_Hero_deacon</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=5</li>
+      <li>holodisk>=1</li>
+    </requires>
+    <letterLabel>Sector 2 encryption cracked</letterLabel>
+    <letterText>Your dealings across the wasteland have paid off—the Holodisk-Key just matched five regional telemetry signatures and unlocked the file header for Sector 2: "PROJECT PURGATORY — FINANCIAL LEDGER".\n\nHowever, the decryption cipher requires an original pre-war corporate clearing key stored inside an abandoned shell-company vault. {GIVER} has pinpointed the site and urges you to strike before Consortium sweepers wipe the drives.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Choosing an decryption angle</label>
+        <text>Before dispatching your expedition to the shell-company vault, you can ping one of your active faction contacts for specialized decryption keys to speed up the breach.</text>
+        <choices>
+          <li>
+            <outcome>use_vault_codes</outcome>
+            <label>Request legacy Vault-Tec executive clearance codes</label>
+            <resultText>The Vault-Tec terminal chimes cheerfully, spitting out a 2077 corporate override key that will open the vault's inner safe in seconds.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_s2Helper</flag>
+                <value>vault_tec</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>use_occult_lens</outcome>
+            <label>Borrow an Enochian cipher lens from the Men of Letters</label>
+            <resultText>Mick Davies sends over a silver-rimmed reading crystal capable of translating hidden occult watermarks embedded in the accounting files.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_s2Helper</flag>
+                <value>mol</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>use_railroad_bypass</outcome>
+            <label>Use Tinker Tom's brute-force holotape bypass</label>
+            <resultText>Tinker Tom's jury-rigged module sparks wildly but promises to crack any terminal without leaving a corporate trace.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_s2Helper</flag>
+                <value>railroad</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>ComponentIndustrial</thing>
+        <timeoutDays>6</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gold</thing>
+                <count>15</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Corporate cipher key recovered</label>
+                <text>Your team fought through Gunner mercenaries guarding the shell-company vault and extracted the pre-war clearing key intact.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Partial data salvaged</label>
+                <text>Gunners stripped the vault's gold reserves before you arrived, though your tech specialists managed to scrape the residual cipher fragments from the melted mainframe.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Emergency backup decryption</label>
+                <text>Though forced to retreat from the vault, the Zero Synth resonated with the Holodisk-Key back at base, reconstructing the missing cipher sectors at the cost of severe exhaustion.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The Black Ledger revealed</label>
+        <text>Sector 2's files scroll across your screen in damning clarity. Decades before 2077, billionaire Leviathan CEO Dick Roman, Vault-Tec architect Dr. Stanislaus Braun, and elders of the British Men of Letters funneled billions into building the Zero Anchors and Vaults—designing the Great War as a controlled ritual to lock Earth's souls inside a harvestable dome.</text>
+        <choices>
+          <li>
+            <outcome>share_with_synth_and_allies</outcome>
+            <label>Share the Black Ledger openly with the Zero Synth and your council</label>
+            <resultText>The Zero Synth stares at the pre-war signatures in stunned silence. "They didn't just burn the world... they built a cage for everyone inside it. We have to find your mentor and stop them."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_ledgerShared</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>keep_as_leverage</outcome>
+            <label>Encrypt the ledger under your personal command code as political leverage</label>
+            <resultText>You lock the damning financial records behind a private cipher. Knowledge like this can buy empires—or start wars—when the time is right.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_ledgerShared</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>holodisk</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>story.a2_blackLedgerDecrypted</flag>
+        <value>true</value>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_Letter">
+        <label>Holodisk-Key: Sector 2 Decrypted</label>
+        <text>Sector 2 is now open! You have uncovered the pre-war financial pact between Dick Roman, Dr. Braun, and the British Men of Letters. Continue advancing faction storylines to unlock Sector 3.</text>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ZERO SYNTH GROWTH 2: MEMORY OF THE ESCAPE (arcPoints >= 6)            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_SynthMemoryFragment</defName>
+    <label>the night of the escape</label>
+    <act>2</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>84</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_alan_binet</giver>
+    <fallbackGiver>TMM_Hero_deacon</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=6</li>
+      <li>done:TMM_Story_A2_SynthResonanceOne</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Unblocking locked sectors</label>
+        <text>The revelations from Sector 2 trigger a cascade in the Zero Synth's memory core. Fragmented images of an underground Institute relay room and a desperate firefight flood their mind.</text>
+        <days>1.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <faction>TMM_RailroadFaction</faction>
+        <hero>TMM_Hero_tinker_tom</hero>
+        <groupSize>1</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Investigate</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>10</amount>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The mentor's passphrase</label>
+        <text>With Tinker Tom's diagnostic rig humming quietly beside the bed, the Zero Synth opens their eyes, remembering the exact moment your missing mentor smuggled them into the Anchor bunker before vanishing into the ash.</text>
+        <choices>
+          <li>
+            <outcome>reveal_passphrase</outcome>
+            <label>[High Trust] Listen closely as the Zero Synth entrusts you with the mentor's override code</label>
+            <resultText>"Your mentor whispered a passphrase into my audio buffer right before sealing the hatch: 'Ashes remember the first flame.' They said only someone I truly trust should ever hear it—it unlocks the Zero Anchor's manual failsafe."</resultText>
+            <requires>
+              <li>zeroSynth.trust>=30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_mentorPassphrase</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>withhold_passphrase</outcome>
+            <label>[Low/Uncertain Trust] Ask what your mentor left behind in the bunker</label>
+            <resultText>The Zero Synth hesitates, guarding their thoughts. "They told me how to protect the Anchor... and warned me not to hand the keys to anyone until I know what they really want from my soul."</resultText>
+            <requires>
+              <li>zeroSynth.trust&lt;30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_mentorPassphrase</flag>
+                <value>false</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ZERO SYNTH GROWTH 3: THE CONFRONTATION (arcPoints >= 9)               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_SynthConfrontation</defName>
+    <label>the weight of a soul</label>
+    <act>2</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>86</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_sam_winchester</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=9</li>
+      <li>done:TMM_Story_A2_SynthMemoryFragment</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Gathering storm</label>
+        <text>Word of the Zero Synth's living Spark has spread across the wasteland. Angels, demons, scientists, and warlords are all converging on {COLONY}—and the Zero Synth knows what happens if someone tries to drain their Spark to power the Resonator.</text>
+        <days>1.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A question at midnight</label>
+        <text>Standing above the humming floor of the Zero Anchor, the Zero Synth turns to face you directly. "We're almost at the end of the trail. When the Eclipse comes and every faction demands you turn on that machine... what is going to happen to me?"</text>
+        <choices>
+          <li>
+            <outcome>loyal_bond</outcome>
+            <label>[High Trust] Promise that {COLONY} will never sacrifice them as fuel</label>
+            <resultText>The Zero Synth exhales a long, steady breath, the blue light in their eyes shining calm and bright. "I believe you. Whatever happens at that console, I'm standing with you—not as a tool, but as your friend."</resultText>
+            <requires>
+              <li>zeroSynth.trust>=30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthPledge</flag>
+                <value>loyal</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>cautious_truce</outcome>
+            <label>[Neutral Trust] Tell them we will find a way to survive together</label>
+            <resultText>"I hope you're right," the Zero Synth says quietly, glancing down at the ancient runes beneath your feet. "I didn't ask to be born with a soul—but I'm not giving it up without a fight."</resultText>
+            <requires>
+              <li>zeroSynth.trust>=0</li>
+              <li>zeroSynth.trust&lt;30</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthPledge</flag>
+                <value>cautious</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>wary_defiance</outcome>
+            <label>[Low Trust] Warn them not to interfere when the time comes to make hard choices</label>
+            <resultText>The Zero Synth steps back into the shadows, their expression hardening into cold resolve. "Then remember this: if you try to put me in a cage or drain me dry, I'll burn that console down with both of us inside."</resultText>
+            <requires>
+              <li>zeroSynth.trust&lt;0</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_synthPledge</flag>
+                <value>wary</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HOLODISK SECTOR 3: VOICE OF THE MENTOR (arcPoints >= 10)              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_HolodiskSector3</defName>
+    <label>holodisk sector 3: voice of the mentor</label>
+    <act>2</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>93</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_bobby_singer</giver>
+    <fallbackGiver>TMM_Hero_dean_winchester</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=10</li>
+      <li>done:TMM_Story_A2_HolodiskSector2</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Signal spike</label>
+        <text>With ten regional faction arcs resolved, the Holodisk-Key finishes cross-referencing the continent's resonance nodes—and detects a weak return ping from a battered pre-war Pip-Boy beacon moving toward your waystation.</text>
+        <days>1.0</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <hero>TMM_Hero_bobby_singer</hero>
+        <groupSize>2</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The recording from 2286</label>
+        <text>{GIVER} plugs a salvaged signal booster into your terminal, and Sector 3 finally plays your missing mentor's voice through the speakers:\n\n"If you're hearing this, I didn't make it back from the Consortium's black-site. Listen carefully: the October 2077 bombs were an occult ritual to shatter the Sixty-Six Seals and bottle up human souls under a planetary barrier. Heaven and Hell are starving—and the Spark inside the Zero Synth is the only key that can either seal the Rift forever or blow the cage wide open. Don't let Roman or the zealots take the console!"</text>
+        <choices>
+          <li>
+            <outcome>vow_rescue_and_truth</outcome>
+            <label>Log the black-site coordinates and vow to find your mentor alive</label>
+            <resultText>{GIVER} tips his cap grimly. "That's the spirit. Whoever's holding your mentor in that Consortium bunker is going to regret waking up this morning."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_mentorSearchActive</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>focus_on_resonator</outcome>
+            <label>Prioritize extracting the Spark Resonator blueprints from the disk</label>
+            <resultText>"Cold, practical, and straight to business," {GIVER} mutters, copying the schematics onto your workstation drive. "Just make sure you're ready when the sky turns red."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_mentorSearchActive</flag>
+                <value>secondary</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>holodisk</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>story.a2_mentorVoiceHeard</flag>
+        <value>true</value>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_Letter">
+        <label>Holodisk-Key: Sector 3 Decrypted</label>
+        <text>Sector 3 is decrypted! Your mentor's final recording has revealed the true nature of the 2077 nuclear ritual and pinpointed the final Sector 4 blueprints inside the Zero Anchor.</text>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WORLD REACTION 1: BROTHERHOOD SCHISM (choice.brotherhood=pro_spark)   -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_React_BrotherhoodSchism</defName>
+    <label>ice from the prydwen</label>
+    <act>2</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>78</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_arthur_maxson</giver>
+    <fallbackGiver>TMM_Hero_paladin_danse</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>choice.brotherhood=pro_spark</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Encrypted Brotherhood transmission</label>
+        <text>Days after your confrontation over Paladin Danse's fate, a high-priority Brotherhood channel cuts through the static—carrying Elder Arthur Maxson's unmistakable baritone alongside a hidden sub-frequency from Sarah Lyons.</text>
+        <days>1.2</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Two voices in the steel</label>
+        <text>Maxson's message is cold as winter iron: "You chose a machine over the survival of mankind. Keep that traitor out of my sight, or the Brotherhood will cleanse your ruins." Beneath his transmission, a brief coded blink from Sarah Lyons reads: "Hold fast. Not all of us have forgotten what the shield stands for."</text>
+        <choices>
+          <li>
+            <outcome>defy_maxson</outcome>
+            <label>Broadcast a firm warning to Maxson and signal gratitude to Sarah Lyons</label>
+            <resultText>Maxson cuts the channel without a word, while Sarah Lyons quietly drops a crate of medical supplies near your perimeter beacon.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>5</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_bos</flag>
+                <value>defiant</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>stay_silent</outcome>
+            <label>Maintain radio silence to avoid provoking an immediate vertibird strike</label>
+            <resultText>Your comms officer logs the frequencies quietly. Keeping a low profile buys your settlement precious time before the coming storm.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_bos</flag>
+                <value>silent</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WORLD REACTION 2: RAILROAD REPRISAL (choice.institute=pro_faction)    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_React_RailroadReprisal</defName>
+    <label>chalk marks on the wall</label>
+    <act>2</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>78</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_desdemona</giver>
+    <fallbackGiver>TMM_Hero_deacon</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>choice.institute=pro_faction</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Warning signs at the gate</label>
+        <text>Morning patrols find a Railroad danger-sign chalked onto the gatepost of {COLONY}—and a courier drops a heavy, unmarked envelope at the reception desk before vanishing into the mist.</text>
+        <days>1.2</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>A letter from the shadows</label>
+        <text>Desdemona's handwriting is sharp and unforgiving: "Word reached the catacombs that you handed a living, feeling soul back to the Institute's butcher table. Our safehouses are closed to you—and if you touch the Zero Synth, we will come for you ourselves."</text>
+        <choices>
+          <li>
+            <outcome>send_apology_and_silver</outcome>
+            <label>Leave silver and a coded promise at the dead-drop to protect the Zero Synth</label>
+            <resultText>The next morning, the silver is gone—replaced by a single cryptic note in Deacon's handwriting: "Actions speak louder than caps, boss. Prove it."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_rr</flag>
+                <value>contrite</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>accept_enmity</outcome>
+            <label>Scrub the chalk mark off the gate and tighten perimeter patrols</label>
+            <resultText>You make no excuses. The Railroad officially marks {COLONY} as an Institute collaborator, while the Zero Synth grows noticeably quieter around your colonists.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_rr</flag>
+                <value>hardline</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WORLD REACTION 3: CELESTIAL / INFERNAL PACT                           -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_React_CelestialRift</defName>
+    <label>hunters at the crossroads</label>
+    <act>2</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>79</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_dean_winchester</giver>
+    <fallbackGiver>TMM_Hero_bobby_singer</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+    </requires>
+    <anyOf>
+      <li>choice.hell_demons=pro_faction</li>
+      <li>choice.heaven_angels=pro_faction</li>
+    </anyOf>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Rumors in the hunter network</label>
+        <text>News of your bloody bargain with the upper or lower realms has spread like wildfire through every roadhouse and hunter frequency in the sector.</text>
+        <days>1.3</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Dean Winchester's ultimatum</label>
+        <text>Dean Winchester hails your radio with zero humor in his voice: "Tell me the rumors are wrong. Tell me you didn't just get in bed with angels or crossroads demons to butcher innocents. Because if you did, Sammy and I are gonna have a real problem with your zip code."</text>
+        <choices>
+          <li>
+            <outcome>claim_greater_good</outcome>
+            <label>Tell Dean you took their weapons to use against the real monsters</label>
+            <resultText>Dean pauses on the line, letting out a bitter breath. "Yeah, well—the road to Hell is paved with folks who thought they could outsmart the devil. Don't make us come over there."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_hunters</flag>
+                <value>tense</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>double_down_power</outcome>
+            <label>Warn the hunters to stay out of {COLONY}'s affairs</label>
+            <resultText>"Message received loud and clear," Dean says coldly before killing the transmission. Hunter patrols across the region now view your settlement with open hostility.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_hunters</flag>
+                <value>hostile</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- WORLD REACTION 4: CONSORTIUM SHADOW INVITATION                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_React_ConsortiumShadow</defName>
+    <label>an unmarked gold ingot</label>
+    <act>2</act>
+    <main>false</main>
+    <autoStart>true</autoStart>
+    <priority>79</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_dr_hess</giver>
+    <fallbackGiver>TMM_Hero_dick_roman</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+    </requires>
+    <anyOf>
+      <li>choice.vault_tec=pro_faction</li>
+      <li>choice.monster_clans=pro_faction</li>
+      <li>choice.men_of_letters=pro_faction</li>
+    </anyOf>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>A discreet delivery</label>
+        <text>An unmanned pre-war courier drone lands softly in your courtyard at dawn, dropping a velvet-lined case stamped with an interlocking three-ring emblem before self-destructing in a puff of blue smoke.</text>
+        <days>1.2</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Compliments of the Board</label>
+        <text>Inside the case rests a heavy bar of pre-war bullion and a crisp card: "Your pragmatic handling of recent regional liabilities has been noted by the Consortium Board. Keep your eyes on the Zero Anchor—a seat at the table awaits those who understand order."</text>
+        <choices>
+          <li>
+            <outcome>pocket_gold</outcome>
+            <label>Keep the gold and file the card away for future negotiations</label>
+            <resultText>You add the bullion to your treasury. Meanwhile, the Zero Synth glances at the three-ring emblem with unmistakable unease.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gold</thing>
+                <count>25</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_consortium</flag>
+                <value>accepted</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>melt_and_reject</outcome>
+            <label>Burn the card in front of the Zero Synth and melt the gold for wards</label>
+            <resultText>The velvet case turns to ash in the brazier. The Zero Synth watches the smoke rise, visibly relieved that you refused the Consortium's bait.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gold</thing>
+                <count>15</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_react_consortium</flag>
+                <value>rejected</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 2 FINALE: SECOND AWAKENING OF THE ANCHOR                          -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A2_SecondAwakening</defName>
+    <label>second awakening of the anchor</label>
+    <act>2</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>98</priority>
+    <faction>TMM_MonsterClansFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_sam_winchester</fallbackGiver>
+    <requires>
+      <li>act=2</li>
+      <li>arcPoints>=10</li>
+      <li>holodisk>=3</li>
+      <li>done:TMM_Story_A2_SynthConfrontation</li>
+    </requires>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Ash storm on the horizon</label>
+        <text>The sky above {COLONY} turns the color of bruised iron as a dense, static-charged ash storm rolls across the region. Deep beneath your floors, the Zero Anchor awakens to full resonance—flooding the Holodisk-Key with the final encryption stream for Sector 4 and broadcasting your location to Consortium strike teams.</text>
+        <days>1.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>1.35</pointsFactor>
+        <delayHours>6</delayHours>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Consortium strike team repelled</label>
+                <text>Your defenders shattered the Consortium's vanguard of Leviathan enforcers and black-ops operatives before they could breach the Anchor chamber! Sector 4's compilation finishes on your terminal.</text>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Letter">
+                <label>Costly defense of the Anchor</label>
+                <text>Though the Consortium raiders inflicted heavy damage before withdrawing into the ash storm, the Zero Anchor's core held—and Sector 4 finished decrypting just in time.</text>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The Spark Resonator blueprints</label>
+        <text>As the ash storm clears, Sector 4 unlocks on the Holodisk-Key, projecting the complete schematics for the Spark Resonator—the machine capable of sealing the Rift, draining the Sparks, or rewriting the barrier over Earth. Every faction in the wasteland has felt the pulse. How does {COLONY} prepare for the reckoning?</text>
+        <choices>
+          <li>
+            <outcome>rally_defenders</outcome>
+            <label>Broadcast an open signal to potential allies and prepare to defend the Spark</label>
+            <resultText>Your beacon cuts across the wasteland frequencies. Across the map, dissenting heroes and loyal allies begin preparing to break ranks and rally to your banner.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_awakeningChoice</flag>
+                <value>open</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>fortify_in_silence</outcome>
+            <label>Raise Enochian wards, seal the comms, and fortify {COLONY} for a siege</label>
+            <resultText>Your engineers reinforce the blast doors and prep the workshops. Let the factions tear at each other's throats—when they arrive at your gates, they will meet walls of steel and salt.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_awakeningChoice</flag>
+                <value>fortify</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>signal_power_brokers</outcome>
+            <label>Send coded invitations to the major power brokers to negotiate from strength</label>
+            <resultText>Your diplomatic channels hum with high-stakes traffic. Every faction leader now knows that the key to the future rests inside your colony.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.a2_awakeningChoice</flag>
+                <value>broker</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>act</flag>
+        <value>3</value>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>holodisk</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>story.a2_resonatorBlueprintUnlocked</flag>
+        <value>true</value>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_GiveThing">
+        <thing>ComponentSpacer</thing>
+        <count>2</count>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_GiveThing">
+        <thing>Plasteel</thing>
+        <count>60</count>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_Letter">
+        <label>Act III: Dropping the Masks</label>
+        <text>Sector 4 of the Holodisk-Key is decrypted, unlocking the Spark Resonator blueprints! The masks are off across the wasteland—prepare for Point of No Return #1 and secret defector quests as factions fracture from within.</text>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
