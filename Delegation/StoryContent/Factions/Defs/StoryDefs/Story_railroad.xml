@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- RAILROAD Q1: MERCER SAFEHOUSE                                         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_railroad_Q1</defName>
+    <label>mercer safehouse</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_deacon</giver>
+    <fallbackGiver>TMM_Hero_desdemona</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Mercer Safehouse</letterLabel>
+    <letterText>Hey, pal—don't look behind you, I'm the guy in the terrible disguise three bushes over. Look, your waystation has great vibes and terrible security, which makes it the perfect blind spot for three runaway synths we need to stash for forty-eight hours. Keep the Gunners and Institute trackers off their scent, okay?</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>shelter_synths</key>
+        <label>Shelter three runaway synths in the waystation</label>
+        <text>Hide Deacon—who swaps disguises three times between drifter and caravan guard—and three runaway synths in {COLONY}'s hotel for 2 days while keeping Gunner hunters away.</text>
+        <faction>TMM_RailroadFaction</faction>
+        <hero>TMM_Hero_deacon</hero>
+        <groupSize>3</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Hide</objective>
+        <hunterFaction>TMM_GunnersFaction</hunterFaction>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>safehouse_cleared</key>
+        <label>Clean extraction</label>
+        <text>The Gunner patrol moves on empty-handed as all three runaway synths slip safely out the back road toward the coast.</text>
+        <choices>
+          <li>
+            <outcome>sheltered</outcome>
+            <label>Accept Deacon's payment and conspiracist disguise blueprints</label>
+            <resultText>Smooth work, boss! Desdemona already knows—expect word from us soon, along with a few fun toys.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.rr_q1</flag>
+                <value>sheltered</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.stealth_boy</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.conspiracist_hat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RAILROAD Q2: STATIC ON THE LINE (UNLOCKS BALLISTIC WEAVE)             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_railroad_Q2</defName>
+    <label>static on the line</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_tinker_tom</giver>
+    <fallbackGiver>TMM_Hero_deacon</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_railroad_Q1</li>
+    </requires>
+    <letterLabel>Static on the Line</letterLabel>
+    <letterText>Yo, listen close! The Institute and those creepy sky-guys are bouncing quantum tracking pulses off the ionosphere! I rigged a ballistic-encrypted MILA relay that'll scramble their frequencies around your sector—plant it on the highest roof and blast any Coursers that drop in!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>mila_parts</key>
+        <label>Assemble Tinker Tom's MILA scrambler relay</label>
+        <text>Allocate 4 industrial components from {COLONY}'s stockpiles to mount Tinker Tom's ballistic-encrypted MILA relay on your roof.</text>
+        <thing>ComponentIndustrial</thing>
+        <count>4</count>
+        <to>colony</to>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>courser_jam_raid</key>
+        <label>Defend the MILA relay against Institute hunters</label>
+        <text>The MILA relay sparks to life—instantly drawing an Institute Courser strike team teleporting straight at {COLONY}!</text>
+        <faction>TMM_InstituteFaction</faction>
+        <pointsFactor>1.15</pointsFactor>
+        <delayHours>4</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>ballistic_weave_unlock</key>
+        <label>Clear frequencies &amp; ballistic weave</label>
+        <text>With the Courser hunters neutralized, Tinker Tom's MILA relay hums steadily overhead—he insists it also blocks "Vault-Tec orbital brain beams," and looking at the telemetry, he's weirdly not wrong.</text>
+        <choices>
+          <li>
+            <outcome>active</outcome>
+            <label>Accept Tinker Tom's Railroad ballistic weave schematics</label>
+            <resultText>Boom! Frequencies clean as glass! Take our ballistic weave patterns—bullets bounce off like peas!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.rr_q2</flag>
+                <value>active</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.railroad_ballistic</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.railroad_armored_coat</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.stealth_boy</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RAILROAD Q3: HEAVY BREAKTHROUGH                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_railroad_Q3</defName>
+    <label>heavy breakthrough</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_glory</giver>
+    <fallbackGiver>TMM_Hero_desdemona</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_railroad_Q2</li>
+    </requires>
+    <letterLabel>Heavy Breakthrough</letterLabel>
+    <letterText>No time for stealth, friend. Retention Bureau heavies intercepted a Railroad runner carrying three third-generation synths toward the coast. I'm taking my minigun to hit their armored convoy at the tunnel mouth—bring your best shooters and help me crack their line open!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>tunnel_convoy</key>
+        <label>Crack open the Retention Bureau convoy at the tunnel</label>
+        <text>Fight alongside Glory at the highway tunnel mouth to wipe out the Institute escort and free three captured third-generation synths.</text>
+        <enemyFaction>TMM_InstituteFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>chosen_name</key>
+        <label>Freedom at the tunnel mouth</label>
+        <text>Glory's minigun barrels glow orange in the tunnel smoke as the three freed synths emerge—one quietly asking to keep an old soldier's dog tag as a reminder that he chose his own name.</text>
+        <choices>
+          <li>
+            <outcome>rescued</outcome>
+            <label>Escort the freed synths clear with Glory</label>
+            <resultText>We pulled every single one of them out. You fought like one of ours. The Railroad won't forget it.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.rr_q3</flag>
+                <value>rescued</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>750</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentSpacer</thing>
+                <count>1</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.subdermal_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RAILROAD Q4 (FACTION POINT): MEMORY WIPE                              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_railroad_Q4</defName>
+    <label>memory wipe</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_desdemona</giver>
+    <fallbackGiver>TMM_Hero_deacon</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_railroad_Q3</li>
+    </requires>
+    <letterLabel>Memory Wipe</letterLabel>
+    <letterText>We have a crisis that cuts to the very soul of what we fight for. A synth carrying a bright, newly awakened 'Spark' reached our safehouse—but Tinker Tom found an active quantum tracker woven directly into his neural matrix. We can wipe his memories and extinguish his Spark to hide him forever, or leave him intact and risk an all-out Institute and angel assault. Tell me what is right.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>memory_lounger</key>
+        <label>Names carved beside the Memory Lounger</label>
+        <text>In the Railroad catacombs, the wall beside the Memory Lounger is covered with the carved names of synths who risked death to keep their souls. The trembling synth looks straight at you and begs you not to erase who he is.</text>
+        <choices>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Preserve his soul and Spark, and stand ready to defend the catacombs (Spark &amp; Freedom)</label>
+            <resultText>You didn't just defend a machine—you stood up for a living soul. The Railroad is with you to the last round. Take the Heavy Railway Rifle!</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.railroad</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HeavenFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_railway_rifle</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.desdemona_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Run a complete memory wipe to extinguish the tracker and keep HQ hidden (Network Survival)</label>
+            <resultText>He is safe... yet staring into his empty eyes, I wonder what price we just paid. Take our rifle—use it wisely.</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.railroad</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_railway_rifle</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.desdemona_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>catacomb_defense</key>
+        <label>Defend the Railroad catacombs from Institute Coursers</label>
+        <text>The active quantum tracker brought Institute Coursers straight down into the catacombs! Hold the safehouse for 5 hours until Tinker Tom burns out the signal!</text>
+        <enemyFaction>TMM_InstituteFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>catacomb_silence</key>
+        <label>Quiet returns to the catacombs</label>
+        <text>Whether defended in blood or hidden behind an erased mind, the Railroad safehouse endures—and Desdemona honors her pledge with the Heavy Railway Rifle schematics.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.railroad</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RAILROAD Q5 (DEFECTOR QUEST): FAKED DEATH                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_railroad_Q5</defName>
+    <label>faked death</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_RailroadFaction</faction>
+    <giver>TMM_Hero_deacon</giver>
+    <fallbackGiver>TMM_Hero_tinker_tom</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_railroad_Q4</li>
+    </requires>
+    <letterLabel>Faked Death</letterLabel>
+    <letterText>Look, things are getting real ugly out there, and Desdemona is going full scorched-earth. Somebody needs to stay inside your camp and keep a cool head so the surviving synths don't get wiped off the map. Help me stage a convincing 'ambush' at the old bridge so the Railroad thinks I'm dead, and I'm all yours.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>bridge_staging</key>
+        <label>Staging the ambush at the old bridge</label>
+        <text>Under cover of fog, your scouts fire blanks into the bridge rails, leaving behind Deacon's cracked dark shades and a scorched dog tag where Railroad lookouts will be sure to spot them.</text>
+        <days>0.8</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_deacon</key>
+        <label>Rest in peace, old Deacon</label>
+        <text>An hour later, a cheerful stranger with a brand-new haircut strolls through {COLONY}'s gate carrying a spare pair of sunglasses—ready to serve under a fresh alias regardless of how hostile the Railroad becomes.</text>
+        <choices>
+          <li>
+            <outcome>recruit_deacon</outcome>
+            <label>Finish the ruse and welcome Deacon into {COLONY}</label>
+            <resultText>Rest in peace, old Deacon. Say hello to the new guy in your colony! Oh, and here's the pattern for my shades.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_deacon</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_deacon</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.deacon_shades</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

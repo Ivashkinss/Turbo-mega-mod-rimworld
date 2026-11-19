@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_ghouls_Q1 -->
+  <TMM_Story_ghouls_Q1.label>серебряный плащ выходит в эфир</TMM_Story_ghouls_Q1.label>
+  <TMM_Story_ghouls_Q1.letterLabel>Серебряный Плащ выходит в эфир</TMM_Story_ghouls_Q1.letterLabel>
+  <TMM_Story_ghouls_Q1.letterText>Граждане Пустоши! Зло таится во тьме, и Добрососедству нужен герой! То есть, э-э, это просто я, Кент Коннолли. Рейдеры захватили старый архив «Хьюбрис Комикс», где заперты мои подлинные радиосценарии Серебряного Плаща и выкройки костюма. Пожалуйста, помогите их вернуть — людям сейчас нужна надежда!</TMM_Story_ghouls_Q1.letterText>
+  <TMM_Story_ghouls_Q1.stages.0.label>Зачистить «Хьюбрис Комикс» и вернуть катушки</TMM_Story_ghouls_Q1.stages.0.label>
+  <TMM_Story_ghouls_Q1.stages.0.text>Выбейте рейдеров из архива «Хьюбрис Комикс» и вынесите довоенные радиокатушки и выкройки костюма для Кента Коннолли.</TMM_Story_ghouls_Q1.stages.0.text>
+  <TMM_Story_ghouls_Q1.stages.1.label>Голос справедливости в эфире</TMM_Story_ghouls_Q1.stages.1.label>
+  <TMM_Story_ghouls_Q1.stages.1.text>В подвале издательства обнаружился потайной сейф с довоенными счетами на имя «Р. Романа», скупавшего радиостанции перед самой войной. На радиовышке Кент Коннолли с нетерпением ждёт катушки.</TMM_Story_ghouls_Q1.stages.1.text>
+  <TMM_Story_ghouls_Q1.stages.1.choices.0.label>Передать катушки и выкройки Кенту Коннолли</TMM_Story_ghouls_Q1.stages.1.choices.0.label>
+  <TMM_Story_ghouls_Q1.stages.1.choices.0.resultText>Да! Вы слышите этот сигнал?! Справедливость снова звучит в эфире! Вот, возьмите копию выкройки плаща!</TMM_Story_ghouls_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_ghouls_Q2 -->
+  <TMM_Story_ghouls_Q2.label>контракт на совесть</TMM_Story_ghouls_Q2.label>
+  <TMM_Story_ghouls_Q2.letterLabel>Контракт на совесть</TMM_Story_ghouls_Q2.letterLabel>
+  <TMM_Story_ghouls_Q2.letterText>Слушай сюда, гладкокожий. Банда работорговцев под крышей Стрелков вылавливает мирных гулей на торговых трактах и продаёт их в гладиаторские ямы к одичавшим. Хэнкок хочет сжечь их базу дотла, и мне нужен надёжный ствол рядом. Ты в деле?</TMM_Story_ghouls_Q2.letterText>
+  <TMM_Story_ghouls_Q2.stages.0.label>Штурмовать гладиаторский лагерь работорговцев</TMM_Story_ghouls_Q2.stages.0.label>
+  <TMM_Story_ghouls_Q2.stages.0.text>Совершите ночной штурм укреплённой арены под крышей Стрелков и перебейте охрану до того, как пленных гулей бросят на растерзание одичавшим.</TMM_Story_ghouls_Q2.stages.0.text>
+  <TMM_Story_ghouls_Q2.stages.1.label>Сорванные цепи в пыли</TMM_Story_ghouls_Q2.stages.1.label>
+  <TMM_Story_ghouls_Q2.stages.1.text>Когда Эдвард Диган взламывает последнюю клетку, из неё выходит врач-гуль из подпольного госпиталя и с благодарностью узнаёт знаки {COLONY}.</TMM_Story_ghouls_Q2.stages.1.text>
+  <TMM_Story_ghouls_Q2.stages.1.choices.0.label>Освободить всех пленных гулей и казнить главаря работорговцев</TMM_Story_ghouls_Q2.stages.1.choices.0.label>
+  <TMM_Story_ghouls_Q2.stages.1.choices.0.resultText>Двести лет живу, а редко встречаю людей, у которых слово не расходится с делом. Добрососедство этого не забудет.</TMM_Story_ghouls_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_ghouls_Q3 -->
+  <TMM_Story_ghouls_Q3.label>рецепт против распада</TMM_Story_ghouls_Q3.label>
+  <TMM_Story_ghouls_Q3.letterLabel>Рецепт против распада</TMM_Story_ghouls_Q3.letterLabel>
+  <TMM_Story_ghouls_Q3.letterText>П-привет... Я Гоб. Дейзи сказала, что вы по-настоящему порядочно относитесь к таким, как мы. Некоторые из наших старейших довоенных жителей начинают слышать шёпот и терять рассудок — подступает одичание. Я нашёл рецепт нейростабилизатора, но светящиеся грибы растут только в самом пекле радиационной воронки. Поможете собрать их?</TMM_Story_ghouls_Q3.letterText>
+  <TMM_Story_ghouls_Q3.stages.0.label>Собрать светящиеся грибы в радиационной воронке</TMM_Story_ghouls_Q3.stages.0.label>
+  <TMM_Story_ghouls_Q3.stages.0.text>Пробейтесь сквозь тварей в заражённой воронке и соберите светящиеся грибы для нейростабилизатора Гоба.</TMM_Story_ghouls_Q3.stages.0.text>
+  <TMM_Story_ghouls_Q3.stages.1.label>Неразорвавшаяся боеголовка</TMM_Story_ghouls_Q3.stages.1.label>
+  <TMM_Story_ghouls_Q3.stages.1.text>На самом дне воронки торчит неразорвавшаяся боеголовка 2077 года с нацарапанной на стальном корпусе енохианской печатью сдерживания. В лаборатории Гоб уже ждёт собранные грибы.</TMM_Story_ghouls_Q3.stages.1.text>
+  <TMM_Story_ghouls_Q3.stages.1.choices.0.label>Доставить грибы Гобу для приготовления сыворотки</TMM_Story_ghouls_Q3.stages.1.choices.0.label>
+  <TMM_Story_ghouls_Q3.stages.1.choices.0.resultText>Получилось! Дымка в их глазах отступает! Спасибо... впервые за двести лет кто-то помог нам просто так.</TMM_Story_ghouls_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_ghouls_Q4 -->
+  <TMM_Story_ghouls_Q4.label>последний рассвет</TMM_Story_ghouls_Q4.label>
+  <TMM_Story_ghouls_Q4.letterLabel>Последний рассвет</TMM_Story_ghouls_Q4.letterLabel>
+  <TMM_Story_ghouls_Q4.letterText>Слушай, друг, я редко прошу об одолжениях. Мой старейший товарищ — парень, вытащивший меня из канавы, когда я только обратился — перешёл черту, где помогает отвар Гоба. Он заперся в старой обсерватории с древней инопланетной короной-артефактом, которую мы нашли, и его разум тонет в звериной ярости. Помоги мне закончить это достойно, так или иначе.</TMM_Story_ghouls_Q4.letterText>
+  <TMM_Story_ghouls_Q4.stages.0.label>Прорваться к куполу разрушенной обсерватории</TMM_Story_ghouls_Q4.stages.0.label>
+  <TMM_Story_ghouls_Q4.stages.0.text>Пробейтесь сквозь ночных аномалий, стянувшихся на телекинетические волны из купола старой обсерватории.</TMM_Story_ghouls_Q4.stages.0.text>
+  <TMM_Story_ghouls_Q4.stages.1.label>Под треснувшим куполом</TMM_Story_ghouls_Q4.stages.1.label>
+  <TMM_Story_ghouls_Q4.stages.1.text>Внутри купола Джон Хэнкок медленно снимает треуголку, пока его старейший друг дрожит над гудящим артефактом, сдерживая последний приступ безумия. Вы можете рискнуть применить резонанс Искры и сыворотку, чтобы вернуть ему разум, или помочь Хэнкоку исполнить прощальный долг.</TMM_Story_ghouls_Q4.stages.1.text>
+  <TMM_Story_ghouls_Q4.stages.1.choices.0.label>Использовать резонанс Искры и сыворотку, чтобы вернуть ему разум (за Искру и надежду)</TMM_Story_ghouls_Q4.stages.1.choices.0.label>
+  <TMM_Story_ghouls_Q4.stages.1.choices.0.resultText>Он... он вспомнил моё имя. Чёрт побери, в этой проклятой Пустоши ещё случаются чудеса! Добрососедство с тобой до конца, брат!</TMM_Story_ghouls_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_ghouls_Q4.stages.1.choices.1.label>Помочь Хэнкоку исполнить последний долг и забрать артефакт силой (суровый путь)</TMM_Story_ghouls_Q4.stages.1.choices.1.label>
+  <TMM_Story_ghouls_Q4.stages.1.choices.1.resultText>Он ушёл человеком, а не зверем. Спасибо, что не дал мне дрогнуть. Забирай эту штуку — от неё одни беды.</TMM_Story_ghouls_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_ghouls_Q5 -->
+  <TMM_Story_ghouls_Q5.label>новый хозяин контракта</TMM_Story_ghouls_Q5.label>
+  <TMM_Story_ghouls_Q5.letterLabel>Новый хозяин контракта</TMM_Story_ghouls_Q5.letterLabel>
+  <TMM_Story_ghouls_Q5.letterText>Я — Харон. Мой прежний держатель контракта погиб в перестрелке. Пергамент моей клятвы попал в руки лейтенанта Стрелков на блокпосту трассы. Верните мой контракт, и мой дробовик будет принадлежать вашему поселению — с кем бы вы ни воевали.</TMM_Story_ghouls_Q5.letterText>
+  <TMM_Story_ghouls_Q5.stages.0.label>Возвращение пергамента Харона</TMM_Story_ghouls_Q5.stages.0.label>
+  <TMM_Story_ghouls_Q5.stages.0.text>Лейтенант Стрелков готов продать контракт Харона за 1500 серебра — либо вы можете взять блокпост на трассе штурмом и забрать пергамент с боем.</TMM_Story_ghouls_Q5.stages.0.text>
+  <TMM_Story_ghouls_Q5.stages.0.choices.0.label>Выкупить контракт за 1500 серебра со складов {COLONY}</TMM_Story_ghouls_Q5.stages.0.choices.0.label>
+  <TMM_Story_ghouls_Q5.stages.0.choices.0.resultText>Лейтенант Стрелков усмехается в рацию и высылает курьера за серебром.</TMM_Story_ghouls_Q5.stages.0.choices.0.resultText>
+  <TMM_Story_ghouls_Q5.stages.0.choices.1.label>Взять блокпост Стрелков штурмом и отбить контракт силой</TMM_Story_ghouls_Q5.stages.0.choices.1.label>
+  <TMM_Story_ghouls_Q5.stages.0.choices.1.resultText>Харон проверяет патроны в своём боевом дробовике и молча кивает. Выступаем.</TMM_Story_ghouls_Q5.stages.0.choices.1.resultText>
+  <TMM_Story_ghouls_Q5.stages.1.label>Передать 1500 серебра за контракт Харона</TMM_Story_ghouls_Q5.stages.1.label>
+  <TMM_Story_ghouls_Q5.stages.1.text>Спишите 1500 серебра со складов {COLONY}, чтобы выкупить пергамент Харона у Стрелков.</TMM_Story_ghouls_Q5.stages.1.text>
+  <TMM_Story_ghouls_Q5.stages.2.label>Штурмовать блокпост Стрелков на трассе</TMM_Story_ghouls_Q5.stages.2.label>
+  <TMM_Story_ghouls_Q5.stages.2.text>Зачистите блокпост наёмников на трассе и заберите древний пергамент контракта Харона.</TMM_Story_ghouls_Q5.stages.2.text>
+  <TMM_Story_ghouls_Q5.stages.3.label>Разорванная цепь</TMM_Story_ghouls_Q5.stages.3.label>
+  <TMM_Story_ghouls_Q5.stages.3.text>Потрёпанный пергамент у вас в руках. Молчаливый гигант Харон стоит у ворот {COLONY}, ожидая приказов нового хозяина.</TMM_Story_ghouls_Q5.stages.3.text>
+  <TMM_Story_ghouls_Q5.stages.3.choices.0.label>Передать контракт самому Харону и сделать его свободным бойцом колонии</TMM_Story_ghouls_Q5.stages.3.choices.0.label>
+  <TMM_Story_ghouls_Q5.stages.3.choices.0.resultText>Ты не стал держать меня на цепи. Я останусь рядом по своей воле. Укажи цель.</TMM_Story_ghouls_Q5.stages.3.choices.0.resultText>
+
+</LanguageData>

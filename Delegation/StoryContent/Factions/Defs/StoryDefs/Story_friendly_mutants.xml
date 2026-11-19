@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- FRIENDLY MUTANTS Q1: THE WANDERING STORYTELLER                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_friendly_mutants_Q1</defName>
+    <label>the wandering storyteller</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_FriendlyMutantsFaction</faction>
+    <giver>TMM_Hero_uncle_leo</giver>
+    <fallbackGiver>TMM_Hero_fox</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>The Wandering Storyteller</letterLabel>
+    <letterText>Hello, little human friends! My name is Uncle Leo! I was walking down the old highway with a bag of clean water and pre-war books for a struggling farmstead, but angry raiders with loud guns pinned me behind a rusted bus. I do not like hurting people—could you help me get through?</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>highway_bus</key>
+        <label>Clear the raiders pinning down Uncle Leo</label>
+        <text>Eliminate the raiders ambushing the old highway bus so the unarmed super mutant Uncle Leo can safely deliver supplies to the nearby farmstead.</text>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>leos_bag</key>
+        <label>A gentle giant on the highway</label>
+        <text>The raiders scatter as Uncle Leo steps out from behind the rusted bus, clutching a canvas sack filled with clean water, survival rations, and a battered volume of Shakespeare he plans to gift Strong.</text>
+        <choices>
+          <li>
+            <outcome>escorted</outcome>
+            <label>Escort Uncle Leo safely to the farmstead</label>
+            <resultText>See? Not all big green guys are bad! Thank you, friend—here are some supplies from my bag.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.fm_q1</flag>
+                <value>escorted</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MealSurvivalPack</thing>
+                <count>20</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- FRIENDLY MUTANTS Q2: THE FOGGY KENNEL                                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_friendly_mutants_Q2</defName>
+    <label>the foggy kennel</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_FriendlyMutantsFaction</faction>
+    <giver>TMM_Hero_erickson</giver>
+    <fallbackGiver>TMM_Hero_fox</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_friendly_mutants_Q1</li>
+    </requires>
+    <letterLabel>The Foggy Kennel</letterLabel>
+    <letterText>You... you helped Leo. Good. My name is Erickson. I live in the fog near the crashed plane with my hounds. A group of trophy hunters from the Gunners set poisoned bear traps around my camp and wounded my best mutant hound. Bring medicine and help me clear their ambush.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>hound_medicine</key>
+        <label>Prepare medicine for Erickson's wounded hounds</label>
+        <text>Allocate 4 industrial medicine from {COLONY}'s stockpiles to treat Erickson's poisoned mutant hounds.</text>
+        <thing>MedicineIndustrial</thing>
+        <count>4</count>
+        <to>colony</to>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>crashed_plane</key>
+        <label>Clear Gunner trophy hunters at the crashed plane</label>
+        <text>Drive the Gunner snipers out of the fog around Erickson's crashed-plane kennel.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>fog_journal</key>
+        <label>Quiet inside the fuselage</label>
+        <text>Inside the crashed fuselage—where Erickson keeps a remarkably neat laboratory journal tracking fog anomalies—the mutant hounds breathe calmly again.</text>
+        <choices>
+          <li>
+            <outcome>healed</outcome>
+            <label>Accept Erickson's mutant armor schematics and trade offer</label>
+            <resultText>The hounds breathe steady. You do not fear us, and we value that. Take these armor blueprints—cut for broad shoulders.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.fm_q2</flag>
+                <value>healed</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mutant_scrap_armor</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mutant_hounds</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- FRIENDLY MUTANTS Q3: MILK OF HUMAN KINDNESS                           -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_friendly_mutants_Q3</defName>
+    <label>milk of human kindness</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_FriendlyMutantsFaction</faction>
+    <giver>TMM_Hero_strong</giver>
+    <fallbackGiver>TMM_Hero_fox</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_friendly_mutants_Q2</li>
+    </requires>
+    <letterLabel>Milk of Human Kindness</letterLabel>
+    <letterText>Strong need human friend! Wild brothers attack human traders on bridge. Strong smash wild brothers to show humans Strong is good! Come help Strong fight—maybe humans finally give Strong milk of human kindness!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>bridge_clash</key>
+        <label>Defend the bridge caravan with Strong</label>
+        <text>Fight alongside Strong on the shattered bridge to crush the wild super mutant warband attacking a human trade caravan.</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>bridge_standoff</key>
+        <label>Rifles aimed at a savior</label>
+        <text>As the last wild mutant falls, the terrified caravan guards panic and swing their rifles straight onto Strong! Strong's shoulders heave as rage builds—step between them before blood spills.</text>
+        <choices>
+          <li>
+            <outcome>peace</outcome>
+            <label>Calm both sides and persuade the traders to thank Strong</label>
+            <resultText>Ha! Humans not shoot! Humans give Strong warm bread, bottle of brahmin milk, and say thank you! Strong respect you now!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.fm_q3</flag>
+                <value>peace</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mutant_cage_helmet</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- FRIENDLY MUTANTS Q4 (FACTION POINT): A CURE FOR VIRGIL                -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_friendly_mutants_Q4</defName>
+    <label>a cure for virgil</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_FriendlyMutantsFaction</faction>
+    <giver>TMM_Hero_virgil</giver>
+    <fallbackGiver>TMM_Hero_fox</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_friendly_mutants_Q3</li>
+    </requires>
+    <letterLabel>A Cure for Virgil</letterLabel>
+    <letterText>I did it... by God, I actually synthesized it! Using the spiritual resonance readings from your Zero Spark, I stabilized a single dose of the FEV retro-virus! Come to my cave lab immediately—my mind is slipping every day, and this is my only chance to become human again!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>virgil_cave</key>
+        <label>Defend Brian Virgil's cave laboratory</label>
+        <text>Hold the mouth of Brian Virgil's rocky cave alongside Fawkes for 5 hours while elite Institute Coursers attempt to destroy the centrifuge.</text>
+        <enemyFaction>TMM_InstituteFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>single_vial</key>
+        <label>One surviving vial</label>
+        <text>Fawkes lowers his minigun at the cave mouth—refusing the cure for himself because his strength is needed to shield the weak. Inside, only a single intact vial of FEV retro-virus survived the battle. You can hand it to Virgil to restore his humanity, or take it to save a settler child dying of acute radiation mutation.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Give the only vial to Brian Virgil (Science &amp; Alliance with Fawkes)</label>
+            <resultText>It's working... I can feel my fingers, my own thoughts again! I will never forget this debt. Fawkes and I stand with you to the end!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.friendly_mutants</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.virgilCured</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_atoms_judgement</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.fawkes_vault87_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Take the serum to save the dying settler child (Sacrificial Choice)</label>
+            <resultText>I... I understand. I built that monster myself; it's my cross to bear. Take the vial... and go, while I still remember my name.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.friendly_mutants</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.virgilCured</flag>
+                <value>false</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_atoms_judgement</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.fawkes_vault87_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.friendly_mutants</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- FRIENDLY MUTANTS Q5 (DEFECTOR QUEST): LABORATORY OF HOPE              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_friendly_mutants_Q5</defName>
+    <label>laboratory of hope</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_FriendlyMutantsFaction</faction>
+    <giver>TMM_Hero_virgil</giver>
+    <fallbackGiver>TMM_Hero_fox</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_friendly_mutants_Q4</li>
+    </requires>
+    <letterLabel>Laboratory of Hope</letterLabel>
+    <letterText>With the Consortium and the Enclave mobilizing, my cave is no longer safe—and your Zero Anchor has the exact energy signature I need to synthesize a mass-produced cure for both FEV and ghoul degeneration. Help me relocate my equipment to your colony!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>enclave_ambush</key>
+        <label>Break the Enclave ambush on Virgil's evacuation</label>
+        <text>Clear the Enclave ambush pinning Brian Virgil and his lab crates on the ridge so he can safely relocate to {COLONY}.</text>
+        <enemyFaction>TMM_EnclaveFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_virgil</key>
+        <label>A proper lab at last</label>
+        <text>With the Enclave troopers defeated, Brian Virgil arrives safely at {COLONY}'s gates with three crates of biological equipment—ready to synthesize a cure for the entire wasteland.</text>
+        <choices>
+          <li>
+            <outcome>recruit_virgil</outcome>
+            <label>Welcome Brian Virgil into {COLONY}'s scientific staff</label>
+            <resultText>A real laboratory at last. Give me time—and we will heal this cursed wasteland.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_virgil</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_virgil</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.fev_research_bench</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

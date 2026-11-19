@@ -12,7 +12,7 @@ foreach ($file in Get-ChildItem (Join-Path $Path 'Defs\StoryDefs') -Filter *.xml
     $t = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
     $t = [regex]::Replace($t, '(<li>[^<>]*?)<(=?\s*-?\d)', '$1&lt;$2')
     $t = [regex]::Replace($t, 'Class="Story(Effect|Stage)_', 'Class="TurboMegaMod.Story$1_')
-    $t = $t.Replace('>TMM_MinutemenFaction<', '>TMM_MinutemenHuntersFaction<').Replace('TMM_Hero_brian_virgil', 'TMM_Hero_virgil').Replace('TMM_Hero_mr_kendricks', 'TMM_Hero_kendricks')
+    $t = $t.Replace('>TMM_MinutemenFaction<', '>TMM_MinutemenHuntersFaction<').Replace('TMM_Hero_brian_virgil', 'TMM_Hero_virgil').Replace('TMM_Hero_mr_kendricks', 'TMM_Hero_kendricks').Replace('TMM_Hero_charles_curling', 'TMM_Hero_dr_curling').Replace('TMM_Hero_fawkes', 'TMM_Hero_fox')
     [IO.File]::WriteAllText($file.FullName, $t, $u)
     $d = New-Object Xml.XmlDocument; $d.LoadXml($t)
     $qs = $d.SelectNodes('/Defs/TurboMegaMod.StoryQuestDef')

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- GHOULS Q1: THE SILVER SHROUD RETURNS                                  -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_ghouls_Q1</defName>
+    <label>the silver shroud returns</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GhoulsFaction</faction>
+    <giver>TMM_Hero_kent_connolly</giver>
+    <fallbackGiver>TMM_Hero_daisy</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>The Silver Shroud Returns</letterLabel>
+    <letterText>Citizens of the wasteland! Evil lurks in the shadows, and Goodneighbor needs a hero! Actually, uh, it's just me, Kent Connolly. Raiders took over the old Hubris Comics archive where my authentic Silver Shroud radio scripts and costume patterns are locked. Please help me get them back—people need hope right now!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>hubris_comics</key>
+        <label>Clear Hubris Comics and recover the radio reels</label>
+        <text>Assault the raider-occupied Hubris Comics archive and retrieve Kent Connolly's pre-war transmitter reels and Silver Shroud costume patterns.</text>
+        <objective>Retrieve</objective>
+        <thing>ComponentIndustrial</thing>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>shroud_broadcast</key>
+        <label>Voice of justice on the airwaves</label>
+        <text>In the Hubris Comics basement, your squad also cracked a hidden safe filled with pre-war invoices signed by "R. Roman", who bought up local radio stations right before the bombs fell. Up on the ridge tower, Kent Connolly waits breathlessly for the reels.</text>
+        <choices>
+          <li>
+            <outcome>broadcasting</outcome>
+            <label>Hand the radio reels and costume patterns to Kent Connolly</label>
+            <resultText>Yes! Do you hear that signal?! Justice rides the airwaves once more! Here—take a copy of the Shroud's coat pattern!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.ghoul_q1</flag>
+                <value>broadcasting</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>350</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.silver_shroud_coat</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.wasteland_poncho</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GHOULS Q2: CONTRACT OF CONSCIENCE                                     -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_ghouls_Q2</defName>
+    <label>contract of conscience</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GhoulsFaction</faction>
+    <giver>TMM_Hero_edward_deegan</giver>
+    <fallbackGiver>TMM_Hero_john_hancock</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_ghouls_Q1</li>
+    </requires>
+    <letterLabel>Contract of Conscience</letterLabel>
+    <letterText>Listen up, smoothskin. A crew of Gunner-backed slavers has been snatching peaceful ghouls off the trade roads and selling them to fight in feral pit arenas. Hancock wants their compound burned to the ground, and I need a reliable gun at my side. Are you in?</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>slaver_pits</key>
+        <label>Storm the Gunner slaver pit compound</label>
+        <text>Launch a night assault on the fortified slaver arena backed by the Gunners and eliminate the guards before the caged ghouls are fed to ferals.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>cages_opened</key>
+        <label>Chains broken in the dust</label>
+        <text>As Edward Deegan kicks open the last iron cage, one of the freed ghoul doctors steps forward in relief—recognizing {COLONY}'s colors from the stories spreading through Goodneighbor's clinics.</text>
+        <choices>
+          <li>
+            <outcome>liberated</outcome>
+            <label>Free all captive ghouls and finish the slaver boss</label>
+            <resultText>Lived two hundred years, and it's rare I meet smoothskins whose word holds weight. Goodneighbor won't forget this.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.ghoul_q2</flag>
+                <value>liberated</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>650</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>4</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GHOULS Q3: RECIPE AGAINST DECAY                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_ghouls_Q3</defName>
+    <label>recipe against decay</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GhoulsFaction</faction>
+    <giver>TMM_Hero_gob</giver>
+    <fallbackGiver>TMM_Hero_daisy</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_ghouls_Q2</li>
+    </requires>
+    <letterLabel>Recipe Against Decay</letterLabel>
+    <letterText>H-hello... I'm Gob. Daisy told me you're actually decent to folks like us. Some of our oldest pre-war residents are starting to hear whispers and lose their minds—the feral rot is setting in. I found an old medical formula for a neural stabilizer, but the glowing fungus only grows inside a hot radiation crater. Could you gather it for me?</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>glowing_crater</key>
+        <label>Gather glowing fungus from the radiation crater</label>
+        <text>Fight through the irradiated crater's guardians and harvest the glowing medicinal fungus needed for Gob's neural stabilizer.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>MedicineHerbal</thing>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>stabilizer_brew</key>
+        <label>The unexploded warhead</label>
+        <text>At the center of the glowing crater, your team noticed an unexploded 2077 warhead etched with an Enochian containment sigil along its steel casing. Back at the lab, Gob eagerly awaits the glowing fungal samples.</text>
+        <choices>
+          <li>
+            <outcome>stabilized</outcome>
+            <label>Deliver the glowing fungus to Gob to brew the neural stabilizer</label>
+            <resultText>It worked! The haze in their eyes is clearing! Thank you... for the first time in two centuries, someone helped us just because it was right.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.ghoul_q3</flag>
+                <value>stabilized</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineHerbal</thing>
+                <count>10</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.ghoul_stabilizer</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GHOULS Q4 (FACTION POINT): THE LAST DAWN                              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_ghouls_Q4</defName>
+    <label>the last dawn</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_GhoulsFaction</faction>
+    <giver>TMM_Hero_john_hancock</giver>
+    <fallbackGiver>TMM_Hero_daisy</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_ghouls_Q3</li>
+    </requires>
+    <letterLabel>The Last Dawn</letterLabel>
+    <letterText>Look, friend, I don't ask for favors lightly. My oldest pal—the guy who pulled me out of the gutter back when I first turned—has gone past what Gob's brew can fix. He's locked himself in the old observatory with an ancient alien crown relic we found, and his mind is slipping into feral rage. Help me end this right, one way or another.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>observatory_climb</key>
+        <label>Break through to the ruined observatory dome</label>
+        <text>Fight past nocturnal anomalies converging on the telekinetic waves pouring out of the old observatory dome.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>observatory_mercy</key>
+        <label>Beneath the cracked dome</label>
+        <text>Inside the dome, John Hancock slowly removes his tricorne hat as his oldest friend trembles over the humming alien artifact, fighting off the last tide of feral madness. You can attempt an experimental Spark-resonance stabilization to bring his mind back, or help Hancock grant his friend a dignified farewell.</text>
+        <choices>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Channel the Zero Spark resonance / Virgil's serum to restore his mind (Hope &amp; the Spark)</label>
+            <resultText>He... he remembered my name. Damn it all, miracles really do happen out in this cursed wasteland! Goodneighbor rides with you to the very end, brother!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.ghouls</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_lorenzos_artifact</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.hancock_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Stand with Hancock through his final duty and claim the artifact (Harsh Mercy)</label>
+            <resultText>He went out a man, not a beast. Thanks for keeping my hand steady. Take that cursed thing—it only brings trouble.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.ghouls</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_lorenzos_artifact</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.hancock_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.ghouls</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GHOULS Q5 (DEFECTOR QUEST): HOLDER OF THE CONTRACT                    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_ghouls_Q5</defName>
+    <label>holder of the contract</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_GhoulsFaction</faction>
+    <giver>TMM_Hero_charon</giver>
+    <fallbackGiver>TMM_Hero_edward_deegan</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_ghouls_Q4</li>
+    </requires>
+    <letterLabel>Holder of the Contract</letterLabel>
+    <letterText>I am Charon. My previous contract holder in the underworld has perished in the crossfire. The parchment of my binding has fallen into the hands of a Gunner lieutenant at the highway tollbooth. Reclaim my contract, and my shotgun belongs to your settlement—no matter who you fight.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>contract_approach</key>
+        <label>Reclaiming Charon's parchment</label>
+        <text>The Gunner lieutenant holding Charon's binding parchment is willing to sell it for 1500 silver—or you can storm the highway tollbooth and take it off his corpse.</text>
+        <choices>
+          <li>
+            <outcome>buy_contract</outcome>
+            <label>Pay the 1500 silver buyout from {COLONY}'s stockpiles</label>
+            <resultText>The Gunner lieutenant smirks over the radio and sends a courier to collect the silver.</resultText>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>storm_tollbooth</outcome>
+            <label>Storm the Gunner highway tollbooth and take the contract by force</label>
+            <resultText>Charon checks the shells in his combat shotgun and nods once. Move out.</resultText>
+            <nextStage>2</nextStage>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>pay_silver</key>
+        <label>Deliver 1500 silver for Charon's contract</label>
+        <text>Transfer 1500 silver from {COLONY}'s stockpiles to buy out Charon's binding contract.</text>
+        <thing>Silver</thing>
+        <count>1500</count>
+        <to>colony</to>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>tollbooth_raid</key>
+        <label>Assault the Gunner highway tollbooth</label>
+        <text>Clear the Gunner mercenaries at the highway tollbooth and seize Charon's binding parchment.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>free_charon</key>
+        <label>A contract torn in two</label>
+        <text>The weathered parchment rests in your hands. Standing tall and silent before {COLONY}'s gate, Charon awaits your command—expecting a new master.</text>
+        <choices>
+          <li>
+            <outcome>recruit_charon</outcome>
+            <label>Hand the parchment directly to Charon and welcome him as a free defender of {COLONY}</label>
+            <resultText>You did not keep me on a chain. I will stand beside you by my own will. Point the target.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_charon</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_charon</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>25</amount>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
