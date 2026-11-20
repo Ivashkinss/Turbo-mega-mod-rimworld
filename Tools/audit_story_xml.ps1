@@ -7,7 +7,7 @@ Set-Location $root
 $u = New-Object Text.UTF8Encoding $false
 $knownF = Get-ChildItem Defs\FactionDefs -Recurse -Filter *.xml | Select-String -Pattern '<defName>(\w+)</defName>' | ForEach-Object { $_.Matches[0].Groups[1].Value }
 $knownH = Select-String Defs\HeroDefs\*.xml -Pattern '<defName>(\w+)</defName>' | ForEach-Object { $_.Matches[0].Groups[1].Value }
-$all = @{ 'Site' = @('success', 'timeout', 'failed'); 'ColonyRaid' = @('success', 'timeout'); 'HotelVisit' = @('success', 'failed', 'noHotel'); 'Deliver' = @('success', 'timeout') }
+$all = @{ 'Site' = @('success', 'timeout', 'failed'); 'ColonyRaid' = @('success', 'timeout'); 'HotelVisit' = @('success', 'failed', 'noHotel'); 'Deliver' = @('success', 'timeout', 'failed') }
 foreach ($file in Get-ChildItem (Join-Path $Path 'Defs\StoryDefs') -Filter *.xml) {
     $t = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
     $t = [regex]::Replace($t, '(<li>[^<>]*?)<(=?\s*-?\d)', '$1&lt;$2')

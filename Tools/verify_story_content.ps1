@@ -21,7 +21,7 @@ foreach ($dir in $Ru) { foreach ($f in Get-ChildItem $dir -Filter *.xml -ErrorAc
 # flags that are set anywhere
 $setFlags = @{ 'act' = 1; 'holodisk' = 1; 'arcPoints' = 1; 'zeroSynth.trust' = 1 }
 foreach ($q in $quests.Values) { foreach ($s in $q.SelectNodes('.//li[flag]')) { $setFlags[$s.flag] = 1 } }
-$outcomesOf = @{ 'Site' = @('success', 'timeout', 'failed'); 'ColonyRaid' = @('success', 'timeout'); 'HotelVisit' = @('success', 'failed', 'noHotel'); 'Deliver' = @('success', 'timeout') }
+$outcomesOf = @{ 'Site' = @('success', 'timeout', 'failed'); 'ColonyRaid' = @('success', 'timeout'); 'HotelVisit' = @('success', 'failed', 'noHotel'); 'Deliver' = @('success', 'timeout', 'failed') }
 function Check-Cond($qname, $c) {
     $x = $c.Trim().TrimStart('!')
     if ($x -match '^(done|active):(.+)$') { if (!$quests.ContainsKey($Matches[2].Trim())) { $errors.Add("${qname}: condition '$c' refers to unknown quest") }; return }

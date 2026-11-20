@@ -21,3 +21,13 @@ Codex не принял E3 (`Tools/Build/CodexStoryStageHotelReview/REPORT.md`):
 - Правила: 0 ERROR, не больше 2 попыток на шаг, `.ps1` только с BOM.
 
 Не коммитить. Сдача: `Tools/Build/GeminiStoryHotelFix/REPORT.md`. В отчёте укажи SHA256 итоговой DLL; он должен совпадать с Result.json всех прогонов.
+
+## Замечания Claude к ответу Neon (20.11)
+- Neon прислал все 6 файлов: Restorer, StoryPayment, OutpostPodLogistics, HotelVisit, Deliver, проба. Скобки сбалансированы, конструкций новее C# 5 нет, строк `// CHECK API` — 57.
+- Публичный API `StoryRelationRestorer` из E2fix сохранён. Новое:
+  - аренда перемирия (`AcquireTruceLease`);
+  - учёт гостей;
+  - Harmony-префикс `Prefix_Pawn_ExitMap`, ставится в статическом конструкторе `StoryRetrieveStackPatch`.
+  Проверь, что этот конструктор вызывается при старте мода: в логе патч должен быть виден, иначе пойманный уход гостя не сработает.
+- Deliver теперь может завершиться исходом `failed`: поселение исчезло, или оплата отклонена атомарно. Ядро закрывает квест как Failed, условие `done:` считает его выполненным, поэтому сюжет не блокируется. Это ожидаемо.
+- Публичный API `OutpostPodLogistics` не изменился, но проверь `Outposts` fresh, потому что списание теперь атомарное.
