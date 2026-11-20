@@ -1,1 +1,2 @@
 Neon round 2 (prompts 44-47). 44 = shared core: StoryRelationRestorer, StoryPayment, OutpostPodLogistics, StoryPawnTransfer, TestMode. Raw answers: neon-raw-NN.md.
+Integration note (46): probe Investigate test still inserts PlayLogEntry_Interaction by hand (InGameStoryHotelProbe.cs ~586); replace with talker.interactions.TryInteractWith(invGuest, InteractionDefOf.Chitchat) so a real vanilla interaction is logged.
