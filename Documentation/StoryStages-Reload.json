@@ -1,6 +1,7 @@
 ﻿{
     "storyStagesReload":  {
                               "passed":  true,
+                              "testModeEnabled":  true,
                               "checksCount":  4,
                               "checks":  [
                                              {
@@ -25,7 +26,7 @@
                                                  "name":  "Reload_PartialHoldCompletesOnce",
                                                  "passed":  true,
                                                  "expected":  "restored\u003e=5000, successCount=1",
-                                                 "actual":  "restored=5030, count=1"
+                                                 "actual":  "restored=5530, count=1"
                                              }
                                          ],
                               "errors":  [
@@ -35,8 +36,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4019,
-                        "ticksAdvanced":  7014,
+                        "framesAdvanced":  4132,
+                        "ticksAdvanced":  7509,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -45,7 +46,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "841ff81f62e92bc15be1550b7c9c4246f3ab27701f5f72dd1306d40aa1df27ed",
-    "productionAssemblySha256":  "841ff81f62e92bc15be1550b7c9c4246f3ab27701f5f72dd1306d40aa1df27ed",
+    "freshAssemblySha256":  "a989f43e9b1a0ac6bd46255a704f9068e7543960acee11c32be5c6451a197705",
+    "productionAssemblySha256":  "a989f43e9b1a0ac6bd46255a704f9068e7543960acee11c32be5c6451a197705",
     "passed":  true
 }

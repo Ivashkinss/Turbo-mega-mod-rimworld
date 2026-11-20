@@ -17,13 +17,22 @@ namespace TurboMegaMod
         Returning,
         Completed,
         Cancelled,
-        Failed
+        Failed,
+        RetryDelivery
     }
 
     /// <summary>
-    /// Arrival action for a walking caravan delivering workers and silver to a strategic outpost.
-    /// Idempotent, checks outpost faction/state, transfers mission silver atomically with full rollback,
-    /// preserves returning carriers' food and mobility, and transitions mission to Returning state.
+    /// Arrival action for a walking caravan delivering workers and tracked mission silver
+    /// to a strategic outpost.
+    ///
+    /// Round 2 invariants:
+    /// - Strictly requires an existing OutpostCaravanMission matching missionId, caravan, and outpost;
+    ///   missing/mismatched mission refuses and deducts nothing.
+    /// - Delegates delivery to OutpostCaravanManager.ExecuteMissionArrival so both initial vanilla
+    ///   arrival (where vanilla clears arrivalAction BEFORE calling Arrived) and the explicit
+    ///   RetryDelivery gizmo run the exact same journaled logic.
+    /// - Legacy actions without missionId or with incomplete migrated state return the caravan home
+    ///   without deducting any silver.
     /// </summary>
     public class CaravanArrivalAction_OutpostDelivery : CaravanArrivalAction
     {
@@ -72,6 +81,16 @@ namespace TurboMegaMod
             this.alreadyHandled = false;
         }
 
+        internal void BindMigratedMissionId(string id)
+        {
+            missionId = id;
+        }
+
+        internal void MarkHandled()
+        {
+            alreadyHandled = true;
+        }
+
         public override FloatMenuAcceptanceReport StillValid(Caravan caravan, PlanetTile destinationTile)
         {
             FloatMenuAcceptanceReport baseReport = base.StillValid(caravan, destinationTile);
@@ -81,14 +100,27 @@ namespace TurboMegaMod
             {
                 return FloatMenuAcceptanceReport.WithFailReason("TMM_OutpostCaravan_OutpostGone".Translate());
             }
+
             OutpostCaravanManager mgr = OutpostCaravanManager.Instance;
-            if (mgr != null && !missionId.NullOrEmpty())
+            if (mgr == null || missionId.NullOrEmpty())
             {
-                OutpostCaravanMission m = mgr.GetMissionById(missionId);
-                if (m != null && (m.delivered || m.cancelled || (m.state != OutpostMissionState.Outbound && m.state != OutpostMissionState.Forming)))
-                {
-                    return false;
-                }
+                return false;
+            }
+
+            OutpostCaravanMission m = mgr.GetMissionById(missionId);
+            if (m == null || m.caravan != caravan || m.outpost != outpost)
+            {
+                return false;
+            }
+            if (m.delivered || m.cancelled)
+            {
+                return false;
+            }
+            if (m.state != OutpostMissionState.Outbound &&
+                m.state != OutpostMissionState.Forming &&
+                m.state != OutpostMissionState.RetryDelivery)
+            {
+                return false;
             }
             return true;
         }
@@ -97,76 +129,515 @@ namespace TurboMegaMod
         {
             if (caravan == null || caravan.Destroyed) return;
             if (alreadyHandled) return;
+            alreadyHandled = true;
 
             OutpostCaravanManager mgr = OutpostCaravanManager.Instance;
-            OutpostCaravanMission mission = null;
-            if (mgr != null)
+            if (mgr == null || missionId.NullOrEmpty())
             {
-                mission = !missionId.NullOrEmpty() ? mgr.GetMissionById(missionId) : mgr.GetMissionForCaravan(caravan);
-            }
-
-            // 1. Guard against duplicate delivery or inactive mission
-            if (mission != null && (mission.delivered || mission.cancelled || mission.state != OutpostMissionState.Outbound))
-            {
-                alreadyHandled = true;
+                // Orphaned / legacy action without verified mission -> return home safely, NEVER deduct
+                Messages.Message("TMM_OutpostCaravan_InvalidMissionReturning".Translate(caravan.Name), caravan, MessageTypeDefOf.CautionInput, false);
+                OutpostCaravanManager.TryStartReturnPath(caravan, originMap);
                 return;
             }
 
-            // 2. Verify outpost still exists, is spawned, and belongs to the player
+            OutpostCaravanMission mission = mgr.GetMissionById(missionId);
+            if (mission == null || mission.caravan != caravan || mission.outpost != outpost)
+            {
+                // Missing mission or caravan/outpost mismatch -> refuse, deduct nothing
+                Messages.Message("TMM_OutpostCaravan_InvalidMissionReturning".Translate(caravan.Name), caravan, MessageTypeDefOf.CautionInput, false);
+                OutpostCaravanManager.TryStartReturnPath(caravan, originMap);
+                return;
+            }
+
+            mgr.ExecuteMissionArrival(mission, caravan);
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref missionId, "missionId");
+            Scribe_References.Look(ref outpost, "outpost");
+            Scribe_Collections.Look(ref stayPawns, "stayPawns", LookMode.Reference);
+            Scribe_Values.Look(ref silverAmount, "silverAmount", 0);
+            Scribe_References.Look(ref originMap, "originMap");
+            Scribe_Values.Look(ref alreadyHandled, "alreadyHandled", false);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (stayPawns == null) stayPawns = new List<Pawn>();
+                stayPawns.RemoveAll(p => p == null);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Persistent mission record bound 1-to-1 to a specific formation Lord, its formed Caravan,
+    /// and the exact ThingIDs of colony silver stacks loaded for this mission.
+    /// </summary>
+    public class OutpostCaravanMission : IExposable
+    {
+        public const int CurrentSchemaVersion = 2;
+
+        public int schemaVersion = CurrentSchemaVersion;
+        public string missionId;
+        public OutpostMissionState state = OutpostMissionState.Forming;
+        public StrategicOutpost outpost;
+        public Map originMap;
+        public Caravan caravan;
+        public List<Pawn> pawns = new List<Pawn>();
+        public List<Pawn> stayPawns = new List<Pawn>();
+        public int silverAmount;
+        public int loadedSilver;
+        public List<string> missionSilverIds = new List<string>();
+        public List<int> transferredWorkerIds = new List<int>();
+        public int formationMapId = -1;
+        public int formationLordId = -1;
+        public bool everAttached;
+        public bool silverDelivered;
+        public bool delivered;
+        public bool cancelled;
+        public bool stranded;
+
+        // Legacy fields preserved strictly for clean Scribe deserialization of older saves
+        public int baselinePersonalSilverTotal;
+        public Dictionary<int, int> baselineSilverByPawn = new Dictionary<int, int>();
+
+        public void ExposeData()
+        {
+            Scribe_Values.Look(ref schemaVersion, "schemaVersion", 0);
+            Scribe_Values.Look(ref missionId, "missionId");
+            Scribe_Values.Look(ref state, "state", OutpostMissionState.Forming);
+            Scribe_References.Look(ref outpost, "outpost");
+            Scribe_References.Look(ref originMap, "originMap");
+            Scribe_References.Look(ref caravan, "caravan");
+            Scribe_Collections.Look(ref pawns, "pawns", LookMode.Reference);
+            Scribe_Collections.Look(ref stayPawns, "stayPawns", LookMode.Reference);
+            Scribe_Values.Look(ref silverAmount, "silverAmount", 0);
+            Scribe_Values.Look(ref loadedSilver, "loadedSilver", 0);
+            Scribe_Collections.Look(ref missionSilverIds, "missionSilverIds", LookMode.Value);
+            Scribe_Collections.Look(ref transferredWorkerIds, "transferredWorkerIds", LookMode.Value);
+            Scribe_Values.Look(ref formationMapId, "formationMapId", -1);
+            Scribe_Values.Look(ref formationLordId, "formationLordId", -1);
+            Scribe_Values.Look(ref everAttached, "everAttached", false);
+            Scribe_Values.Look(ref silverDelivered, "silverDelivered", false);
+            Scribe_Values.Look(ref delivered, "delivered", false);
+            Scribe_Values.Look(ref cancelled, "cancelled", false);
+            Scribe_Values.Look(ref stranded, "stranded", false);
+            Scribe_Values.Look(ref baselinePersonalSilverTotal, "baselinePersonalSilverTotal", 0);
+            Scribe_Collections.Look(ref baselineSilverByPawn, "baselineSilverByPawn", LookMode.Value, LookMode.Value);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (missionId.NullOrEmpty()) missionId = Guid.NewGuid().ToString("N");
+                if (pawns == null) pawns = new List<Pawn>();
+                if (stayPawns == null) stayPawns = new List<Pawn>();
+                if (missionSilverIds == null) missionSilverIds = new List<string>();
+                if (transferredWorkerIds == null) transferredWorkerIds = new List<int>();
+                if (baselineSilverByPawn == null) baselineSilverByPawn = new Dictionary<int, int>();
+                pawns.RemoveAll(p => p == null);
+                stayPawns.RemoveAll(p => p == null);
+                missionSilverIds.RemoveAll(id => id.NullOrEmpty());
+                if (caravan != null) everAttached = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// WorldComponent managing walking caravan missions to strategic outposts.
+    ///
+    /// Round 2 guarantees:
+    /// - Protects exact mission silver ThingIDs from merging with personal silver (and propagates
+    ///   IDs across partial SplitOff during hauling).
+    /// - Handles storage refusal via explicit RetryDelivery state (with Retry Delivery + Return Home
+    ///   gizmos) without leaving a stopped Outbound route after vanilla clears arrivalAction.
+    /// - Confirms silver delivery (mission.silverDelivered) independently of individual worker transfers.
+    /// - Checks StillValid before direct Enter.Arrived and falls back across all player home maps.
+    /// - Migrates legacy saves by inspecting each caravan's real ArrivalAction; incomplete legacy
+    ///   missions return home without deducting silver.
+    /// </summary>
+    public class OutpostCaravanManager : WorldComponent
+    {
+        private const int AuditIntervalTicks = 250;
+
+        private List<OutpostCaravanMission> missions = new List<OutpostCaravanMission>();
+        private bool legacyMigrationPending;
+
+        // Transient fast lookup: ThingID -> missionId for anti-stack-merge and SplitOff propagation
+        private static readonly Dictionary<string, string> ActiveMissionSilverToMissionId = new Dictionary<string, string>();
+
+        public List<OutpostCaravanMission> Missions
+        {
+            get { return missions; }
+        }
+
+        public static OutpostCaravanManager Instance
+        {
+            get { return Find.World == null ? null : Find.World.GetComponent<OutpostCaravanManager>(); }
+        }
+
+        public OutpostCaravanManager(World world) : base(world)
+        {
+        }
+
+        // =====================================================================
+        // MISSION SILVER IDENTITY PROTECTION (ANTI-MERGE & SPLIT PROPAGATION)
+        // =====================================================================
+
+        public static bool IsMissionSilverThing(Thing t)
+        {
+            if (ActiveMissionSilverToMissionId.Count == 0 || t == null || t.def != ThingDefOf.Silver) return false;
+            return ActiveMissionSilverToMissionId.ContainsKey(t.ThingID);
+        }
+
+        public static void RegisterTransientSilverProtection(string thingId, string missionId)
+        {
+            if (thingId.NullOrEmpty() || missionId.NullOrEmpty()) return;
+            ActiveMissionSilverToMissionId[thingId] = missionId;
+        }
+
+        public static void UnregisterTransientSilverProtection(string thingId)
+        {
+            if (thingId.NullOrEmpty()) return;
+            ActiveMissionSilverToMissionId.Remove(thingId);
+        }
+
+        public void PropagateMissionSilverSplit(string parentThingId, string childThingId)
+        {
+            if (parentThingId.NullOrEmpty() || childThingId.NullOrEmpty()) return;
+            string mId;
+            if (!ActiveMissionSilverToMissionId.TryGetValue(parentThingId, out mId)) return;
+
+            ActiveMissionSilverToMissionId[childThingId] = mId;
+
+            OutpostCaravanMission m = GetMissionById(mId);
+            if (m != null && !m.silverDelivered)
+            {
+                if (m.missionSilverIds == null) m.missionSilverIds = new List<string>();
+                if (!m.missionSilverIds.Contains(childThingId))
+                {
+                    m.missionSilverIds.Add(childThingId);
+                }
+            }
+        }
+
+        public void UnprotectMissionSilver(OutpostCaravanMission m)
+        {
+            if (m == null || m.missionSilverIds == null) return;
+            for (int i = 0; i < m.missionSilverIds.Count; i++)
+            {
+                string id = m.missionSilverIds[i];
+                if (!id.NullOrEmpty())
+                {
+                    ActiveMissionSilverToMissionId.Remove(id);
+                }
+            }
+            m.missionSilverIds.Clear();
+        }
+
+        private void RebuildMissionSilverCache()
+        {
+            ActiveMissionSilverToMissionId.Clear();
+            if (missions == null) return;
+            for (int i = 0; i < missions.Count; i++)
+            {
+                OutpostCaravanMission m = missions[i];
+                if (m == null || m.silverDelivered || m.missionSilverIds == null) continue;
+                if (m.state == OutpostMissionState.Completed || m.state == OutpostMissionState.Failed) continue;
+
+                for (int j = 0; j < m.missionSilverIds.Count; j++)
+                {
+                    string id = m.missionSilverIds[j];
+                    if (!id.NullOrEmpty())
+                    {
+                        ActiveMissionSilverToMissionId[id] = m.missionId;
+                    }
+                }
+            }
+        }
+
+        // =====================================================================
+        // REGISTRATION & LOOKUPS
+        // =====================================================================
+
+        public void RegisterMission(StrategicOutpost outpost, Map originMap, List<Pawn> pawns, List<Pawn> stayPawns, int silverAmount)
+        {
+            RegisterMissionBound(outpost, originMap, pawns, stayPawns, silverAmount,
+                originMap != null ? originMap.uniqueID : -1, -1, null, null, null);
+        }
+
+        public OutpostCaravanMission RegisterMissionBound(
+            StrategicOutpost outpost,
+            Map originMap,
+            List<Pawn> pawns,
+            List<Pawn> stayPawns,
+            int silverAmount,
+            int formationMapId,
+            int formationLordId,
+            Dictionary<int, int> baselineSilverByPawn)
+        {
+            return RegisterMissionBound(outpost, originMap, pawns, stayPawns, silverAmount,
+                formationMapId, formationLordId, baselineSilverByPawn, null, null);
+        }
+
+        public OutpostCaravanMission RegisterMissionBound(
+            StrategicOutpost outpost,
+            Map originMap,
+            List<Pawn> pawns,
+            List<Pawn> stayPawns,
+            int silverAmount,
+            int formationMapId,
+            int formationLordId,
+            Dictionary<int, int> baselineSilverByPawn,
+            List<string> missionSilverIds,
+            string preassignedMissionId)
+        {
+            if (outpost == null || pawns == null || pawns.Count == 0) return null;
+
+            OutpostCaravanMission mission = new OutpostCaravanMission();
+            mission.schemaVersion = OutpostCaravanMission.CurrentSchemaVersion;
+            mission.missionId = !preassignedMissionId.NullOrEmpty() ? preassignedMissionId : Guid.NewGuid().ToString("N");
+            mission.state = OutpostMissionState.Forming;
+            mission.outpost = outpost;
+            mission.originMap = originMap;
+            mission.pawns = pawns.Where(p => p != null).ToList();
+            mission.stayPawns = stayPawns != null ? stayPawns.Where(p => p != null).ToList() : new List<Pawn>();
+            mission.silverAmount = Mathf.Max(0, silverAmount);
+            mission.loadedSilver = 0;
+            mission.silverDelivered = (mission.silverAmount == 0);
+            mission.missionSilverIds = missionSilverIds != null ? new List<string>(missionSilverIds) : new List<string>();
+            mission.transferredWorkerIds = new List<int>();
+            mission.formationMapId = formationMapId;
+            mission.formationLordId = formationLordId;
+            mission.everAttached = false;
+            mission.delivered = false;
+            mission.cancelled = false;
+            mission.stranded = false;
+
+            int baselineTotal = 0;
+            mission.baselineSilverByPawn = new Dictionary<int, int>();
+            if (baselineSilverByPawn != null)
+            {
+                foreach (KeyValuePair<int, int> kv in baselineSilverByPawn)
+                {
+                    mission.baselineSilverByPawn[kv.Key] = kv.Value;
+                    baselineTotal += kv.Value;
+                }
+            }
+            mission.baselinePersonalSilverTotal = baselineTotal;
+
+            missions.Add(mission);
+            RebuildMissionSilverCache();
+            return mission;
+        }
+
+        public OutpostCaravanMission GetMissionById(string id)
+        {
+            if (id.NullOrEmpty() || missions == null) return null;
+            for (int i = 0; i < missions.Count; i++)
+            {
+                if (missions[i] != null && missions[i].missionId == id) return missions[i];
+            }
+            return null;
+        }
+
+        public OutpostCaravanMission GetMissionForCaravan(Caravan c)
+        {
+            if (c == null || missions == null) return null;
+            for (int i = 0; i < missions.Count; i++)
+            {
+                OutpostCaravanMission m = missions[i];
+                if (m != null && m.caravan == c &&
+                    (m.state == OutpostMissionState.Outbound ||
+                     m.state == OutpostMissionState.Returning ||
+                     m.state == OutpostMissionState.RetryDelivery))
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+        public void NotifyDelivered(Caravan c)
+        {
+            if (c == null || missions == null) return;
+            for (int i = 0; i < missions.Count; i++)
+            {
+                OutpostCaravanMission m = missions[i];
+                if (m != null && m.caravan == c)
+                {
+                    m.delivered = true;
+                    if (m.state == OutpostMissionState.Outbound || m.state == OutpostMissionState.RetryDelivery)
+                    {
+                        m.state = (c.Destroyed || c.PawnsListForReading.Count == 0)
+                            ? OutpostMissionState.Completed
+                            : OutpostMissionState.Returning;
+                    }
+                    break;
+                }
+            }
+        }
+
+        public void CancelMission(Caravan c)
+        {
+            TryCancelAndReturnHome(c);
+        }
+
+        /// <summary>
+        /// Cancels an Outbound, RetryDelivery, or stranded Returning mission and routes the caravan home.
+        /// Confirms cancellation ONLY after TryStartReturnPath succeeds.
+        /// </summary>
+        public bool TryCancelAndReturnHome(Caravan c)
+        {
+            if (c == null || c.Destroyed || !c.Spawned) return false;
+            OutpostCaravanMission m = GetMissionForCaravan(c);
+            Map prefHome = m != null ? m.originMap : null;
+            if (prefHome == null && c.pather != null)
+            {
+                CaravanArrivalAction_OutpostDelivery act = c.pather.ArrivalAction as CaravanArrivalAction_OutpostDelivery;
+                if (act != null) prefHome = act.OriginMap;
+            }
+
+            if (!TryStartReturnPath(c, prefHome))
+            {
+                if (m != null)
+                {
+                    m.stranded = true;
+                    if (m.state == OutpostMissionState.Outbound)
+                    {
+                        m.state = OutpostMissionState.Returning;
+                    }
+                }
+                Messages.Message("TMM_OutpostCaravan_HomeUnreachable".Translate(c.Name), c, MessageTypeDefOf.RejectInput, false);
+                return false;
+            }
+
+            if (m != null)
+            {
+                if (m.state == OutpostMissionState.Outbound || m.state == OutpostMissionState.RetryDelivery)
+                {
+                    m.cancelled = true;
+                }
+                m.state = OutpostMissionState.Returning;
+                m.stranded = false;
+            }
+            Messages.Message("TMM_OutpostCaravan_CancelledReturning".Translate(c.Name), c, MessageTypeDefOf.NeutralEvent, false);
+            return true;
+        }
+
+        /// <summary>
+        /// Invoked by the explicit "Retry Delivery" gizmo when mission.state == RetryDelivery.
+        /// If already on the outpost tile, executes delivery directly; otherwise restarts path to outpost.
+        /// </summary>
+        public bool TryRetryDelivery(Caravan car)
+        {
+            if (car == null || car.Destroyed || !car.Spawned) return false;
+            OutpostCaravanMission m = GetMissionForCaravan(car);
+            if (m == null || m.state != OutpostMissionState.RetryDelivery || m.delivered || m.cancelled)
+            {
+                return false;
+            }
+
+            if (m.outpost == null || !m.outpost.Spawned || m.outpost.Faction != Faction.OfPlayer)
+            {
+                Messages.Message("TMM_OutpostCaravan_OutpostGone".Translate(), car, MessageTypeDefOf.RejectInput, false);
+                TrySendMissionCaravanHome(m, car, false);
+                return false;
+            }
+
+            if (car.Tile == m.outpost.Tile)
+            {
+                ExecuteMissionArrival(m, car);
+                return m.delivered;
+            }
+
+            if (car.pather == null) return false;
+
+            CaravanArrivalAction_OutpostDelivery arrival = new CaravanArrivalAction_OutpostDelivery(
+                m.missionId, m.outpost, m.stayPawns, m.loadedSilver, m.originMap);
+            m.state = OutpostMissionState.Outbound;
+            car.pather.StartPath(m.outpost.Tile, arrival, true, true);
+            if (car.pather.Moving && car.pather.Destination == m.outpost.Tile && car.pather.ArrivalAction == arrival)
+            {
+                m.stranded = false;
+                return true;
+            }
+
+            m.state = OutpostMissionState.RetryDelivery;
+            Messages.Message("TMM_OutpostCaravan_PathUnreachableTip".Translate(), car, MessageTypeDefOf.RejectInput, false);
+            return false;
+        }
+
+        // =====================================================================
+        // UNIFIED DELIVERY EXECUTION (SILVER COMMIT SEPARATE FROM WORKER TRANSFERS)
+        // =====================================================================
+
+        internal void ExecuteMissionArrival(OutpostCaravanMission mission, Caravan caravan)
+        {
+            if (mission == null || caravan == null || caravan.Destroyed) return;
+            if (mission.caravan != caravan) return;
+            if (mission.delivered || mission.cancelled) return;
+            if (mission.state != OutpostMissionState.Outbound && mission.state != OutpostMissionState.RetryDelivery) return;
+
+            StrategicOutpost outpost = mission.outpost;
+
+            // 1. Verify outpost still exists, is spawned, and belongs to the player
             if (outpost == null || !outpost.Spawned || outpost.Faction != Faction.OfPlayer)
             {
-                alreadyHandled = true;
                 Messages.Message("TMM_OutpostCaravan_OutpostGone".Translate(), caravan, MessageTypeDefOf.RejectInput, false);
-                if (mgr != null && mission != null)
-                {
-                    mgr.TrySendMissionCaravanHome(mission, caravan, false);
-                }
-                else
-                {
-                    OutpostCaravanManager.TryStartReturnPath(caravan, originMap);
-                }
+                TrySendMissionCaravanHome(mission, caravan, false);
                 return;
             }
 
-            // 3. Determine exact mission silver (never raid personal silver beyond mission quota)
-            int targetSilver = mission != null ? mission.loadedSilver : silverAmount;
-            Dictionary<int, int> personalBaseline = mission != null ? mission.baselineSilverByPawn : null;
-
-            if (targetSilver > 0)
+            // 2. Step A: Atomic transfer of ONLY tracked mission silver stacks (separate from worker transfers!)
+            if (!mission.silverDelivered && mission.loadedSilver > 0)
             {
                 string silverFail;
-                if (!OutpostCaravanLogistics.TryTransferMissionSilverAtomically(caravan, outpost, targetSilver, personalBaseline, out silverFail))
+                bool silverOk = OutpostCaravanLogistics.TryTransferMissionSilverAtomically(
+                    caravan,
+                    outpost,
+                    mission.loadedSilver,
+                    mission.missionSilverIds,
+                    out silverFail);
+
+                if (!silverOk)
                 {
-                    // Atomic failure: all silver restored to original pawn inventories; NOT marked delivered
-                    Messages.Message(silverFail ?? "TMM_OutpostCaravan_OutpostGone".Translate(), caravan, MessageTypeDefOf.RejectInput, false);
+                    // Vanilla has already cleared caravan.pather.ArrivalAction before calling Arrived.
+                    // Transition explicitly to RetryDelivery so the caravan is NOT stranded in Outbound!
+                    mission.state = OutpostMissionState.RetryDelivery;
+                    mission.stranded = false;
+                    Messages.Message("TMM_OutpostCaravan_StorageTransferFailedRetry".Translate(outpost.Label), caravan, MessageTypeDefOf.RejectInput, false);
                     return;
                 }
+
+                // Silver payment is now CONFIRMED & IRREVERSIBLE — record independently of worker transfers!
+                mission.silverDelivered = true;
+                UnprotectMissionSilver(mission);
             }
 
-            // 4. Preserve return food for carriers BEFORE transferring staying workers
-            Map home = OutpostCaravanManager.ResolveHomeMap(originMap);
-            List<Pawn> stayingNow = CollectStayingPawns(caravan, stayPawns);
-            List<Pawn> returningNow = CollectReturningPawns(caravan, stayingNow);
+            // 3. Step B: Preserve edible return food (with diet & spoilage verification) BEFORE moving staying workers
+            Map home = ResolveHomeMap(mission.originMap);
+            List<Pawn> stayingNow = CollectStayingPawns(caravan, mission);
+            List<Pawn> expectedReturning = CollectReturningPawns(caravan, stayingNow);
 
-            if (returningNow.Count > 0 && stayingNow.Count > 0)
+            if (expectedReturning.Count > 0 && stayingNow.Count > 0)
             {
                 float returnDays = 0f;
                 if (home != null)
                 {
-                    float retCap = OutpostCaravanLogistics.ComputePawnsCapacity(returningNow);
-                    float retMass = OutpostCaravanLogistics.ComputeBaseMass(returningNow, 0);
-                    OutpostCaravanLogistics.CalculateLegDays(outpost.Tile, home.Tile, returningNow, retMass, retCap, out returnDays);
+                    float retCap = OutpostCaravanLogistics.ComputePawnsCapacity(expectedReturning);
+                    float retMass = OutpostCaravanLogistics.ComputeBaseMass(expectedReturning, 0);
+                    OutpostCaravanLogistics.CalculateLegDays(outpost.Tile, home.Tile, expectedReturning, retMass, retCap, out returnDays);
                 }
-                OutpostCaravanLogistics.EnsureCarriersHaveReturnFood(caravan, stayingNow, returningNow, outpost.Tile, Mathf.Max(0.5f, returnDays));
+                OutpostCaravanLogistics.EnsureCarriersHaveReturnFood(
+                    caravan, outpost, stayingNow, expectedReturning, outpost.Tile, Mathf.Max(0.5f, returnDays));
             }
 
-            // 5. Transfer staying workers safely (verifying at least one mobile carrier remains if others stay in caravan)
+            // 4. Step C: Transfer staying workers individually (isolated try/catch; failures NEVER roll back silver!)
             for (int i = stayingNow.Count - 1; i >= 0; i--)
             {
                 Pawn p = stayingNow[i];
-                if (p == null || !caravan.ContainsPawn(p)) continue;
+                if (p == null || p.Dead || !caravan.ContainsPawn(p)) continue;
+                if (mission.transferredWorkerIds.Contains(p.thingIDNumber)) continue;
 
-                // Ensure removing p does not strand remaining pawns without a mobile colonist carrier
                 if (caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, p))
                 {
                     string noCarrierMsg = "StrategicOutpost_NoMobileCarrierLeft".Translate();
@@ -174,57 +645,78 @@ namespace TurboMegaMod
                     continue;
                 }
 
-                string failReason;
-                if (!outpost.AddPawnFromCaravan(caravan, p, out failReason, true))
+                try
                 {
-                    Messages.Message("TMM_OutpostCaravan_WorkerRejected".Translate(p.LabelShort, failReason ?? ""), outpost, MessageTypeDefOf.CautionInput, false);
+                    string failReason;
+                    if (outpost.AddPawnFromCaravan(caravan, p, out failReason, true))
+                    {
+                        mission.transferredWorkerIds.Add(p.thingIDNumber);
+                    }
+                    else
+                    {
+                        Messages.Message("TMM_OutpostCaravan_WorkerRejected".Translate(p.LabelShort, failReason ?? ""), outpost, MessageTypeDefOf.CautionInput, false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TestMode.ReportException("[TMM] OutpostCaravanManager: exception transferring worker " + p.LabelShort + ": ", ex);
+                    Messages.Message("TMM_OutpostCaravan_WorkerRejected".Translate(p.LabelShort, ex.Message), outpost, MessageTypeDefOf.CautionInput, false);
                 }
             }
 
-            // 6. Mark delivery confirmed ONLY after silver & worker transfer succeeded
-            alreadyHandled = true;
-            if (mission != null)
-            {
-                mission.delivered = true;
-            }
+            // 5. Mark mission delivery complete
+            mission.delivered = true;
 
-            // 7. Return remaining carriers home (enter Returning state until colony entry)
+            // 6. Re-evaluate edible food (diets + spoilage) for the ACTUAL remaining caravan composition BEFORE sending home!
             bool hasCarriersLeft = !caravan.Destroyed && caravan.PawnsListForReading != null && caravan.PawnsListForReading.Count > 0;
             if (hasCarriersLeft)
             {
-                if (mgr != null && mission != null)
+                List<Pawn> actualReturning = new List<Pawn>(caravan.PawnsListForReading);
+                Map returnDest = FindBestValidHomeMap(caravan, mission.originMap);
+                if (returnDest != null)
                 {
-                    bool started = mgr.TrySendMissionCaravanHome(mission, caravan, true);
-                    if (started && home != null && home.Parent != null)
+                    float actualRetDays = 0f;
+                    float actualCap = OutpostCaravanLogistics.ComputePawnsCapacity(actualReturning);
+                    float actualMass = OutpostCaravanLogistics.ComputeBaseMass(actualReturning, 0);
+                    if (OutpostCaravanLogistics.CalculateLegDays(outpost.Tile, returnDest.Tile, actualReturning, actualMass, actualCap, out actualRetDays) &&
+                        actualRetDays > 0.05f)
                     {
-                        Messages.Message("TMM_OutpostCaravan_DeliveredReturning".Translate(outpost.Label, home.Parent.Label), caravan, MessageTypeDefOf.PositiveEvent, false);
+                        float actualFoodDays = OutpostCaravanLogistics.CalcPawnsActualFoodDays(actualReturning, outpost.Tile);
+                        if (actualFoodDays < actualRetDays)
+                        {
+                            Messages.Message(
+                                "TMM_OutpostCaravan_LowReturnFoodWarning".Translate(caravan.Name, actualFoodDays.ToString("F1"), actualRetDays.ToString("F1")),
+                                caravan,
+                                MessageTypeDefOf.CautionInput,
+                                false);
+                        }
                     }
                 }
-                else
+
+                bool started = TrySendMissionCaravanHome(mission, caravan, true);
+                if (started)
                 {
-                    if (OutpostCaravanManager.TryStartReturnPath(caravan, originMap) && home != null && home.Parent != null)
+                    Map chosenHome = FindMapByTile(caravan.pather != null ? caravan.pather.Destination : PlanetTile.Invalid) ?? returnDest;
+                    if (chosenHome != null && chosenHome.Parent != null)
                     {
-                        Messages.Message("TMM_OutpostCaravan_DeliveredReturning".Translate(outpost.Label, home.Parent.Label), caravan, MessageTypeDefOf.PositiveEvent, false);
+                        Messages.Message("TMM_OutpostCaravan_DeliveredReturning".Translate(outpost.Label, chosenHome.Parent.Label), caravan, MessageTypeDefOf.PositiveEvent, false);
                     }
                 }
             }
-            else if (mgr != null)
+            else
             {
-                mgr.NotifyDelivered(caravan);
-                if (mission != null)
-                {
-                    mission.state = OutpostMissionState.Completed;
-                }
+                mission.state = OutpostMissionState.Completed;
+                UnprotectMissionSilver(mission);
             }
         }
 
-        private static List<Pawn> CollectStayingPawns(Caravan caravan, List<Pawn> configuredStay)
+        private static List<Pawn> CollectStayingPawns(Caravan caravan, OutpostCaravanMission mission)
         {
             List<Pawn> list = new List<Pawn>();
-            if (caravan == null || configuredStay == null) return list;
-            for (int i = 0; i < configuredStay.Count; i++)
+            if (caravan == null || mission == null || mission.stayPawns == null) return list;
+            for (int i = 0; i < mission.stayPawns.Count; i++)
             {
-                Pawn p = configuredStay[i];
+                Pawn p = mission.stayPawns[i];
                 if (p != null && !p.Dead && caravan.ContainsPawn(p) && !list.Contains(p))
                 {
                     list.Add(p);
@@ -249,246 +741,10 @@ namespace TurboMegaMod
             return list;
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look(ref missionId, "missionId");
-            Scribe_References.Look(ref outpost, "outpost");
-            Scribe_Collections.Look(ref stayPawns, "stayPawns", LookMode.Reference);
-            Scribe_Values.Look(ref silverAmount, "silverAmount", 0);
-            Scribe_References.Look(ref originMap, "originMap");
-            Scribe_Values.Look(ref alreadyHandled, "alreadyHandled", false);
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                if (stayPawns == null) stayPawns = new List<Pawn>();
-                stayPawns.RemoveAll(p => p == null);
-            }
-        }
-    }
+        // =====================================================================
+        // FORMATION EXIT ATTACHMENT (1-TO-1 LORD BINDING + EXACT SILVER ID VERIFICATION)
+        // =====================================================================
 
-    /// <summary>
-    /// Persistent mission record bound 1-to-1 to a specific formation Lord and its formed Caravan.
-    /// </summary>
-    public class OutpostCaravanMission : IExposable
-    {
-        public string missionId;
-        public OutpostMissionState state = OutpostMissionState.Forming;
-        public StrategicOutpost outpost;
-        public Map originMap;
-        public Caravan caravan;
-        public List<Pawn> pawns = new List<Pawn>();
-        public List<Pawn> stayPawns = new List<Pawn>();
-        public int silverAmount;
-        public int loadedSilver;
-        public int formationMapId = -1;
-        public int formationLordId = -1;
-        public bool everAttached;
-        public bool delivered;
-        public bool cancelled;
-        public bool stranded;
-        public int baselinePersonalSilverTotal;
-        public Dictionary<int, int> baselineSilverByPawn = new Dictionary<int, int>();
-
-        public void ExposeData()
-        {
-            Scribe_Values.Look(ref missionId, "missionId");
-            Scribe_Values.Look(ref state, "state", OutpostMissionState.Forming);
-            Scribe_References.Look(ref outpost, "outpost");
-            Scribe_References.Look(ref originMap, "originMap");
-            Scribe_References.Look(ref caravan, "caravan");
-            Scribe_Collections.Look(ref pawns, "pawns", LookMode.Reference);
-            Scribe_Collections.Look(ref stayPawns, "stayPawns", LookMode.Reference);
-            Scribe_Values.Look(ref silverAmount, "silverAmount", 0);
-            Scribe_Values.Look(ref loadedSilver, "loadedSilver", 0);
-            Scribe_Values.Look(ref formationMapId, "formationMapId", -1);
-            Scribe_Values.Look(ref formationLordId, "formationLordId", -1);
-            Scribe_Values.Look(ref everAttached, "everAttached", false);
-            Scribe_Values.Look(ref delivered, "delivered", false);
-            Scribe_Values.Look(ref cancelled, "cancelled", false);
-            Scribe_Values.Look(ref stranded, "stranded", false);
-            Scribe_Values.Look(ref baselinePersonalSilverTotal, "baselinePersonalSilverTotal", 0);
-            Scribe_Collections.Look(ref baselineSilverByPawn, "baselineSilverByPawn", LookMode.Value, LookMode.Value);
-
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                if (missionId.NullOrEmpty()) missionId = Guid.NewGuid().ToString("N");
-                if (pawns == null) pawns = new List<Pawn>();
-                if (stayPawns == null) stayPawns = new List<Pawn>();
-                if (baselineSilverByPawn == null) baselineSilverByPawn = new Dictionary<int, int>();
-                pawns.RemoveAll(p => p == null);
-                stayPawns.RemoveAll(p => p == null);
-                // Legacy migration: if caravan already saved on older save, never allow re-attachment
-                if (caravan != null) everAttached = true;
-            }
-        }
-    }
-
-    /// <summary>
-    /// WorldComponent managing walking caravan missions to strategic outposts.
-    /// Attaches caravans strictly by formation Lord event, runs periodic audits every 250 ticks,
-    /// handles vanished outposts and unreachable homes cleanly, and cleans up before save / after load.
-    /// </summary>
-    public class OutpostCaravanManager : WorldComponent
-    {
-        private const int AuditIntervalTicks = 250;
-
-        private List<OutpostCaravanMission> missions = new List<OutpostCaravanMission>();
-
-        public List<OutpostCaravanMission> Missions
-        {
-            get { return missions; }
-        }
-
-        public static OutpostCaravanManager Instance
-        {
-            get { return Find.World == null ? null : Find.World.GetComponent<OutpostCaravanManager>(); }
-        }
-
-        public OutpostCaravanManager(World world) : base(world)
-        {
-        }
-
-        public void RegisterMission(StrategicOutpost outpost, Map originMap, List<Pawn> pawns, List<Pawn> stayPawns, int silverAmount)
-        {
-            RegisterMissionBound(outpost, originMap, pawns, stayPawns, silverAmount, originMap != null ? originMap.uniqueID : -1, -1, null);
-        }
-
-        public OutpostCaravanMission RegisterMissionBound(
-            StrategicOutpost outpost,
-            Map originMap,
-            List<Pawn> pawns,
-            List<Pawn> stayPawns,
-            int silverAmount,
-            int formationMapId,
-            int formationLordId,
-            Dictionary<int, int> baselineSilverByPawn)
-        {
-            if (outpost == null || pawns == null || pawns.Count == 0) return null;
-
-            OutpostCaravanMission mission = new OutpostCaravanMission();
-            mission.missionId = Guid.NewGuid().ToString("N");
-            mission.state = OutpostMissionState.Forming;
-            mission.outpost = outpost;
-            mission.originMap = originMap;
-            mission.pawns = pawns.Where(p => p != null).ToList();
-            mission.stayPawns = stayPawns != null ? stayPawns.Where(p => p != null).ToList() : new List<Pawn>();
-            mission.silverAmount = Mathf.Max(0, silverAmount);
-            mission.loadedSilver = 0;
-            mission.formationMapId = formationMapId;
-            mission.formationLordId = formationLordId;
-            mission.everAttached = false;
-            mission.delivered = false;
-            mission.cancelled = false;
-            mission.stranded = false;
-
-            int baselineTotal = 0;
-            mission.baselineSilverByPawn = new Dictionary<int, int>();
-            if (baselineSilverByPawn != null)
-            {
-                foreach (KeyValuePair<int, int> kv in baselineSilverByPawn)
-                {
-                    mission.baselineSilverByPawn[kv.Key] = kv.Value;
-                    baselineTotal += kv.Value;
-                }
-            }
-            mission.baselinePersonalSilverTotal = baselineTotal;
-
-            missions.Add(mission);
-            return mission;
-        }
-
-        public OutpostCaravanMission GetMissionById(string id)
-        {
-            if (id.NullOrEmpty() || missions == null) return null;
-            for (int i = 0; i < missions.Count; i++)
-            {
-                if (missions[i] != null && missions[i].missionId == id) return missions[i];
-            }
-            return null;
-        }
-
-        public OutpostCaravanMission GetMissionForCaravan(Caravan c)
-        {
-            if (c == null || missions == null) return null;
-            for (int i = 0; i < missions.Count; i++)
-            {
-                OutpostCaravanMission m = missions[i];
-                if (m != null && m.caravan == c && (m.state == OutpostMissionState.Outbound || m.state == OutpostMissionState.Returning))
-                {
-                    return m;
-                }
-            }
-            return null;
-        }
-
-        public void NotifyDelivered(Caravan c)
-        {
-            if (c == null || missions == null) return;
-            for (int i = 0; i < missions.Count; i++)
-            {
-                OutpostCaravanMission m = missions[i];
-                if (m != null && m.caravan == c)
-                {
-                    m.delivered = true;
-                    if (m.state == OutpostMissionState.Outbound)
-                    {
-                        m.state = (c.Destroyed || c.PawnsListForReading.Count == 0)
-                            ? OutpostMissionState.Completed
-                            : OutpostMissionState.Returning;
-                    }
-                    break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Kept for backward API compatibility. Cancels only if return path is confirmed.
-        /// </summary>
-        public void CancelMission(Caravan c)
-        {
-            TryCancelAndReturnHome(c);
-        }
-
-        /// <summary>
-        /// Attempts to reroute an Outbound or stranded Returning caravan back home.
-        /// Confirms cancellation ONLY after StartPath succeeds and updates pather destination.
-        /// </summary>
-        public bool TryCancelAndReturnHome(Caravan c)
-        {
-            if (c == null || c.Destroyed || !c.Spawned) return false;
-            OutpostCaravanMission m = GetMissionForCaravan(c);
-            Map prefHome = m != null ? m.originMap : null;
-            if (prefHome == null && c.pather != null)
-            {
-                CaravanArrivalAction_OutpostDelivery act = c.pather.ArrivalAction as CaravanArrivalAction_OutpostDelivery;
-                if (act != null) prefHome = act.OriginMap;
-            }
-
-            if (!TryStartReturnPath(c, prefHome))
-            {
-                if (m != null) m.stranded = true;
-                Messages.Message("TMM_OutpostCaravan_HomeUnreachable".Translate(c.Name), c, MessageTypeDefOf.RejectInput, false);
-                return false;
-            }
-
-            if (m != null)
-            {
-                if (m.state == OutpostMissionState.Outbound)
-                {
-                    m.cancelled = true;
-                }
-                m.state = OutpostMissionState.Returning;
-                m.stranded = false;
-            }
-            Messages.Message("TMM_OutpostCaravan_CancelledReturning".Translate(c.Name), c, MessageTypeDefOf.NeutralEvent, false);
-            return true;
-        }
-
-        /// <summary>
-        /// Strictly binds a newly exited Caravan ONLY to the Forming mission whose exact
-        /// formationMapId and formationLordId match. Never hijacks unrelated caravans and never
-        /// re-attaches an already-formed mission.
-        /// </summary>
         public bool AttachFormedCaravan(Caravan car, int formationMapId, int formationLordId)
         {
             if (car == null || car.Destroyed || !car.Spawned || car.Faction != Faction.OfPlayer) return false;
@@ -504,6 +760,22 @@ namespace TurboMegaMod
                 m.everAttached = true;
                 m.caravan = car;
 
+                // Filter missionSilverIds strictly to stacks ACTUALLY loaded inside this caravan's pawns!
+                // Unprotect any silver stacks that were left behind on the map so they can merge normally.
+                List<string> confirmedIds = new List<string>();
+                int actualLoaded = OutpostCaravanLogistics.CollectConfirmedMissionSilverInCaravan(car, m.missionSilverIds, confirmedIds);
+
+                for (int s = 0; s < m.missionSilverIds.Count; s++)
+                {
+                    string oldId = m.missionSilverIds[s];
+                    if (!oldId.NullOrEmpty() && !confirmedIds.Contains(oldId))
+                    {
+                        ActiveMissionSilverToMissionId.Remove(oldId);
+                    }
+                }
+                m.missionSilverIds = confirmedIds;
+                m.loadedSilver = actualLoaded;
+
                 // Verify outpost still exists at exact moment of exit
                 if (m.outpost == null || !m.outpost.Spawned || m.outpost.Faction != Faction.OfPlayer)
                 {
@@ -512,20 +784,20 @@ namespace TurboMegaMod
                     return true;
                 }
 
-                // Verify actual loaded mission silver (excluding pre-existing personal silver)
-                int totalSilverNow = OutpostCaravanLogistics.CountCaravanSilver(car);
-                int actualLoaded = Mathf.Max(0, totalSilverNow - m.baselinePersonalSilverTotal);
+                // Verify exact tracked mission silver was loaded (personal silver NEVER satisfies mission quota!)
                 if (m.silverAmount > 0 && actualLoaded < m.silverAmount)
                 {
-                    m.loadedSilver = actualLoaded;
                     m.cancelled = true;
                     Messages.Message("TMM_OutpostCaravan_MissingSilverAborted".Translate(actualLoaded, m.silverAmount), car, MessageTypeDefOf.RejectInput, false);
                     TrySendMissionCaravanHome(m, car, false);
                     return true;
                 }
-                m.loadedSilver = Mathf.Min(m.silverAmount, actualLoaded);
 
-                // Start outbound path with verified arrival action
+                if (m.silverAmount == 0)
+                {
+                    m.silverDelivered = true;
+                }
+
                 CaravanArrivalAction_OutpostDelivery arrival = new CaravanArrivalAction_OutpostDelivery(
                     m.missionId, m.outpost, m.stayPawns, m.loadedSilver, m.originMap);
 
@@ -544,7 +816,6 @@ namespace TurboMegaMod
                 }
                 else
                 {
-                    // Route to outpost failed immediately -> attempt return home
                     m.state = OutpostMissionState.Returning;
                     Messages.Message("TMM_OutpostCaravan_PathUnreachableTip".Translate(), car, MessageTypeDefOf.RejectInput, false);
                     TrySendMissionCaravanHome(m, car, false);
@@ -555,9 +826,6 @@ namespace TurboMegaMod
             return false;
         }
 
-        /// <summary>
-        /// Kept for signature compatibility only; refuses unverified global attachment to prevent hijacking.
-        /// </summary>
         public void TryAttachMissionToCaravan(Caravan car)
         {
             // Intentionally no-op: attachment requires verified (formationMapId, formationLordId) via AttachFormedCaravan.
@@ -580,41 +848,204 @@ namespace TurboMegaMod
             return false;
         }
 
+        // =====================================================================
+        // HOME MAP RESOLUTION (StillValid CHECK + ALTERNATIVE COLONY FALLBACK)
+        // =====================================================================
+
         public static Map ResolveHomeMap(Map preferred)
         {
-            if (preferred != null && Find.Maps != null && Find.Maps.Contains(preferred) && preferred.IsPlayerHome)
+            List<Map> candidates = CollectCandidateHomeMaps(preferred);
+            return candidates.Count > 0 ? candidates[0] : null;
+        }
+
+        private static List<Map> CollectCandidateHomeMaps(Map preferred)
+        {
+            List<Map> list = new List<Map>();
+            if (Find.Maps == null) return list;
+
+            if (preferred != null && Find.Maps.Contains(preferred) && preferred.IsPlayerHome &&
+                preferred.Parent != null && !preferred.Parent.Destroyed)
             {
-                return preferred;
+                list.Add(preferred);
             }
-            if (Find.Maps == null) return null;
+
             for (int i = 0; i < Find.Maps.Count; i++)
             {
                 Map m = Find.Maps[i];
-                if (m != null && m.IsPlayerHome) return m;
+                if (m != null && m != preferred && m.IsPlayerHome && m.Parent != null && !m.Parent.Destroyed)
+                {
+                    list.Add(m);
+                }
             }
-            return null;
+            return list;
         }
 
+        private static Map FindBestValidHomeMap(Caravan car, Map preferred)
+        {
+            if (car == null) return ResolveHomeMap(preferred);
+            List<Map> candidates = CollectCandidateHomeMaps(preferred);
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                Map home = candidates[i];
+                CaravanArrivalAction_Enter enter = new CaravanArrivalAction_Enter(home.Parent);
+                if (enter.StillValid(car, home.Tile))
+                {
+                    return home;
+                }
+            }
+            return candidates.Count > 0 ? candidates[0] : null;
+        }
+
+        /// <summary>
+        /// Checks StillValid before direct Enter.Arrived on the home tile AND before StartPath,
+        /// automatically falling back across all player home colonies if preferred home refuses.
+        /// If every colony refuses or is unreachable, leaves the caravan stopped and returns false.
+        /// </summary>
         public static bool TryStartReturnPath(Caravan car, Map preferredHome)
         {
             if (car == null || car.Destroyed || !car.Spawned || car.pather == null) return false;
-            Map home = ResolveHomeMap(preferredHome);
-            if (home == null || home.Parent == null) return false;
 
-            CaravanArrivalAction_Enter enter = new CaravanArrivalAction_Enter(home.Parent);
-            if (car.Tile == home.Tile)
+            List<Map> candidates = CollectCandidateHomeMaps(preferredHome);
+            for (int i = 0; i < candidates.Count; i++)
             {
-                enter.Arrived(car);
-                return car.Destroyed || !car.Spawned;
+                Map home = candidates[i];
+                if (home == null || home.Parent == null || home.Parent.Destroyed) continue;
+
+                CaravanArrivalAction_Enter enter = new CaravanArrivalAction_Enter(home.Parent);
+                FloatMenuAcceptanceReport validReport = enter.StillValid(car, home.Tile); // CHECK API
+                if (!validReport)
+                {
+                    continue;
+                }
+
+                if (car.Tile == home.Tile)
+                {
+                    // StopDead before direct entry so stale arrival actions cannot linger
+                    car.pather.StopDead();
+                    enter.Arrived(car);
+                    if (car.Destroyed || !car.Spawned)
+                    {
+                        return true;
+                    }
+                    // If Arrived did not consume the caravan, try next colony candidate
+                    continue;
+                }
+
+                car.pather.StartPath(home.Tile, enter, true, true); // CHECK API
+                if (car.pather.Moving && car.pather.Destination == home.Tile && car.pather.ArrivalAction is CaravanArrivalAction_Enter)
+                {
+                    return true;
+                }
             }
 
-            car.pather.StartPath(home.Tile, enter, true, true); // CHECK API
-            return car.pather.Moving && car.pather.Destination == home.Tile && car.pather.ArrivalAction is CaravanArrivalAction_Enter;
+            car.pather.StopDead();
+            return false;
+        }
+
+        // =====================================================================
+        // LEGACY SAVE MIGRATION & PERIODIC AUDIT
+        // =====================================================================
+
+        /// <summary>
+        /// Migrates pre-Round-2 saves by inspecting each caravan's real ArrivalAction.
+        /// Any legacy mission/action with incomplete state (e.g. missing tracked missionSilverIds)
+        /// returns the caravan home cleanly without deducting any silver.
+        /// </summary>
+        public void MigrateLegacyMissionsNow()
+        {
+            legacyMigrationPending = false;
+            if (missions == null) missions = new List<OutpostCaravanMission>();
+
+            // 1. Migrate legacy OutpostCaravanMission entries (schemaVersion < CurrentSchemaVersion)
+            for (int i = missions.Count - 1; i >= 0; i--)
+            {
+                OutpostCaravanMission m = missions[i];
+                if (m == null)
+                {
+                    missions.RemoveAt(i);
+                    continue;
+                }
+                if (m.schemaVersion >= OutpostCaravanMission.CurrentSchemaVersion) continue;
+
+                m.schemaVersion = OutpostCaravanMission.CurrentSchemaVersion;
+
+                if (m.caravan == null || m.caravan.Destroyed || !m.caravan.Spawned)
+                {
+                    if (m.formationLordId < 0 || m.everAttached)
+                    {
+                        m.state = OutpostMissionState.Failed;
+                        UnprotectMissionSilver(m);
+                        missions.RemoveAt(i);
+                    }
+                    continue;
+                }
+
+                m.everAttached = true;
+                Caravan car = m.caravan;
+                CaravanArrivalAction realAct = car.pather != null ? car.pather.ArrivalAction : null;
+
+                if (realAct is CaravanArrivalAction_Enter)
+                {
+                    m.state = OutpostMissionState.Returning;
+                    continue;
+                }
+
+                CaravanArrivalAction_OutpostDelivery delivAct = realAct as CaravanArrivalAction_OutpostDelivery;
+                bool outpostValid = m.outpost != null && m.outpost.Spawned && m.outpost.Faction == Faction.OfPlayer;
+                bool silverComplete = (m.silverAmount <= 0) || m.silverDelivered ||
+                                      (m.missionSilverIds != null && m.missionSilverIds.Count > 0);
+
+                if (delivAct != null && delivAct.Outpost == m.outpost && outpostValid && silverComplete)
+                {
+                    delivAct.BindMigratedMissionId(m.missionId);
+                    m.state = OutpostMissionState.Outbound;
+                    if (m.silverAmount <= 0) m.silverDelivered = true;
+                    continue;
+                }
+
+                // Incomplete legacy state -> mark old action handled and return caravan home WITHOUT deducting anything
+                if (delivAct != null) delivAct.MarkHandled();
+                UnprotectMissionSilver(m);
+                Messages.Message("TMM_OutpostCaravan_LegacyReturningHome".Translate(car.Name), car, MessageTypeDefOf.NeutralEvent, false);
+                TrySendMissionCaravanHome(m, car, false);
+            }
+
+            // 2. Scan all world player caravans for orphaned legacy CaravanArrivalAction_OutpostDelivery
+            if (Find.WorldObjects != null && Find.WorldObjects.Caravans != null)
+            {
+                List<Caravan> caravans = Find.WorldObjects.Caravans;
+                for (int i = 0; i < caravans.Count; i++)
+                {
+                    Caravan car = caravans[i];
+                    if (car == null || car.Destroyed || !car.Spawned || car.Faction != Faction.OfPlayer || car.pather == null) continue;
+
+                    CaravanArrivalAction_OutpostDelivery act = car.pather.ArrivalAction as CaravanArrivalAction_OutpostDelivery;
+                    if (act == null) continue;
+
+                    OutpostCaravanMission matched = !act.MissionId.NullOrEmpty() ? GetMissionById(act.MissionId) : null;
+                    if (matched != null && matched.caravan == car && matched.outpost == act.Outpost &&
+                        (matched.state == OutpostMissionState.Outbound || matched.state == OutpostMissionState.RetryDelivery))
+                    {
+                        continue;
+                    }
+
+                    // Orphaned legacy delivery action -> never deduct; return home cleanly
+                    act.MarkHandled();
+                    Messages.Message("TMM_OutpostCaravan_LegacyReturningHome".Translate(car.Name), car, MessageTypeDefOf.NeutralEvent, false);
+                    TryStartReturnPath(car, act.OriginMap);
+                }
+            }
+
+            RebuildMissionSilverCache();
         }
 
         public override void WorldComponentTick()
         {
             base.WorldComponentTick();
+            if (legacyMigrationPending)
+            {
+                MigrateLegacyMissionsNow();
+            }
             if (Find.TickManager.TicksGame % AuditIntervalTicks != 0) return;
             AuditAndCleanupMissions(false);
         }
@@ -624,8 +1055,16 @@ namespace TurboMegaMod
             if (missions == null)
             {
                 missions = new List<OutpostCaravanMission>();
+                RebuildMissionSilverCache();
                 return;
             }
+
+            if (!isScribeBoundary && legacyMigrationPending)
+            {
+                MigrateLegacyMissionsNow();
+            }
+
+            bool cacheDirty = false;
 
             for (int i = missions.Count - 1; i >= 0; i--)
             {
@@ -633,6 +1072,7 @@ namespace TurboMegaMod
                 if (m == null)
                 {
                     missions.RemoveAt(i);
+                    cacheDirty = true;
                     continue;
                 }
 
@@ -641,17 +1081,21 @@ namespace TurboMegaMod
 
                 if (m.state == OutpostMissionState.Completed || m.state == OutpostMissionState.Failed)
                 {
+                    UnprotectMissionSilver(m);
                     missions.RemoveAt(i);
+                    cacheDirty = true;
                     continue;
                 }
 
-                // 1. Forming state: check if formation lord is still alive on its origin map
+                // 1. Forming state
                 if (m.state == OutpostMissionState.Forming)
                 {
                     if (m.everAttached)
                     {
                         m.state = OutpostMissionState.Failed;
+                        UnprotectMissionSilver(m);
                         missions.RemoveAt(i);
+                        cacheDirty = true;
                         continue;
                     }
 
@@ -659,35 +1103,39 @@ namespace TurboMegaMod
                     Lord formLord = FindFormationLord(formMap, m.formationLordId);
                     if (formMap == null || formLord == null || m.pawns == null || m.pawns.Count == 0)
                     {
-                        // Formation aborted / failed without exiting -> remove mission cleanly
                         m.state = OutpostMissionState.Failed;
+                        UnprotectMissionSilver(m);
                         missions.RemoveAt(i);
+                        cacheDirty = true;
                         continue;
                     }
 
                     if (!isScribeBoundary && (m.outpost == null || !m.outpost.Spawned || m.outpost.Faction != Faction.OfPlayer))
                     {
-                        // Outpost disappeared before caravan left the map -> abort formation cleanly
                         formMap.lordManager.RemoveLord(formLord);
                         Messages.Message("TMM_OutpostCaravan_OutpostGone".Translate(), MessageTypeDefOf.CautionInput, false);
                         m.state = OutpostMissionState.Cancelled;
                         m.cancelled = true;
+                        UnprotectMissionSilver(m);
                         missions.RemoveAt(i);
+                        cacheDirty = true;
                         continue;
                     }
                     continue;
                 }
 
-                // 2. Outbound / Returning states: require live attached caravan
+                // 2. Outbound / RetryDelivery / Returning states: require live attached caravan
                 if (m.caravan == null || m.caravan.Destroyed || !m.caravan.Spawned)
                 {
                     m.state = (m.state == OutpostMissionState.Returning) ? OutpostMissionState.Completed : OutpostMissionState.Failed;
+                    UnprotectMissionSilver(m);
                     missions.RemoveAt(i);
+                    cacheDirty = true;
                     continue;
                 }
 
-                // 3. Outbound state: if outpost vanished en route, immediately turn caravan around with its cargo!
-                if (m.state == OutpostMissionState.Outbound)
+                // 3. Outbound or RetryDelivery: if outpost vanished, turn caravan around with its cargo!
+                if (m.state == OutpostMissionState.Outbound || m.state == OutpostMissionState.RetryDelivery)
                 {
                     if (m.outpost == null || !m.outpost.Spawned || m.outpost.Faction != Faction.OfPlayer)
                     {
@@ -700,7 +1148,7 @@ namespace TurboMegaMod
                     }
                 }
 
-                // 4. Returning state: if stranded earlier and a home map became available, stay marked so gizmo works
+                // 4. Returning state: mark stranded if pather stopped moving
                 if (m.state == OutpostMissionState.Returning && !isScribeBoundary)
                 {
                     if (m.caravan.pather != null && !m.caravan.pather.Moving)
@@ -708,6 +1156,11 @@ namespace TurboMegaMod
                         m.stranded = true;
                     }
                 }
+            }
+
+            if (cacheDirty)
+            {
+                RebuildMissionSilverCache();
             }
         }
 
@@ -717,6 +1170,16 @@ namespace TurboMegaMod
             for (int i = 0; i < Find.Maps.Count; i++)
             {
                 if (Find.Maps[i] != null && Find.Maps[i].uniqueID == mapId) return Find.Maps[i];
+            }
+            return null;
+        }
+
+        private static Map FindMapByTile(PlanetTile tile)
+        {
+            if (!tile.Valid || Find.Maps == null) return null;
+            for (int i = 0; i < Find.Maps.Count; i++)
+            {
+                if (Find.Maps[i] != null && Find.Maps[i].Tile == tile) return Find.Maps[i];
             }
             return null;
         }
@@ -747,22 +1210,60 @@ namespace TurboMegaMod
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (missions == null) missions = new List<OutpostCaravanMission>();
-                AuditAndCleanupMissions(true);
+                legacyMigrationPending = true;
+                RebuildMissionSilverCache();
             }
         }
     }
 
     /// <summary>
-    /// Static logistics calculations, atomic silver transfer, carrier food split,
-    /// and TransferableOneWay-based bidirectional food assessment.
+    /// Static logistics calculations, exact mission-silver stack tagging &amp; journaled transfer,
+    /// diet- and spoilage-aware return food redistribution, and TransferableOneWay food checks.
+    /// All test hooks are strictly gated behind TestMode.Enabled.
     /// </summary>
     public static class OutpostCaravanLogistics
     {
         /// <summary>
-        /// Test-only hook for InGameOutpostCaravanProbe to simulate RawMaterials storage refusal.
-        /// Always false in normal gameplay.
+        /// Test-only hook (ONLY active when TestMode.Enabled) that rejects all RawMaterials transfers.
         /// </summary>
         public static bool TestRejectRawMaterialsTransfer;
+
+        /// <summary>
+        /// Test-only hook (ONLY active when TestMode.Enabled) that rejects RawMaterials transfer on a
+        /// specific 0-based chunk index (e.g. 1 = allow first stack into RawMaterials, reject second stack).
+        /// Default -1 (inactive).
+        /// </summary>
+        public static int TestRejectRawMaterialsTransferOnStep = -1;
+
+        /// <summary>
+        /// Test-only hook (ONLY active when TestMode.Enabled) to simulate a pawn inventory refusing
+        /// TryAdd during rollback or food redistribution.
+        /// </summary>
+        public static Func<ThingOwner, Thing, bool> TestRejectInventoryTryAdd;
+
+        private sealed class CaravanStagingHolder : IThingHolder
+        {
+            public ThingOwner<Thing> innerContainer;
+
+            public CaravanStagingHolder()
+            {
+                innerContainer = new ThingOwner<Thing>(this, false, LookMode.Deep);
+            }
+
+            public IThingHolder ParentHolder
+            {
+                get { return null; }
+            }
+
+            public void GetChildHolders(List<IThingHolder> outChildren)
+            {
+            }
+
+            public ThingOwner GetDirectlyHeldThings()
+            {
+                return innerContainer;
+            }
+        }
 
         public static List<Thing> GetFormableColonyItems(Map map)
         {
@@ -778,7 +1279,8 @@ namespace TurboMegaMod
             for (int i = 0; i < items.Count; i++)
             {
                 Thing t = items[i];
-                if (t != null && !t.Destroyed && t.def == ThingDefOf.Silver && t.stackCount > 0 && !t.IsForbidden(Faction.OfPlayer))
+                if (t != null && !t.Destroyed && t.def == ThingDefOf.Silver && t.stackCount > 0 &&
+                    !t.IsForbidden(Faction.OfPlayer) && !OutpostCaravanManager.IsMissionSilverThing(t))
                 {
                     total += t.stackCount;
                 }
@@ -794,6 +1296,35 @@ namespace TurboMegaMod
             for (int i = 0; i < pawns.Count; i++)
             {
                 total += CountPawnInventoryThing(pawns[i], ThingDefOf.Silver);
+            }
+            return total;
+        }
+
+        public static int CollectConfirmedMissionSilverInCaravan(Caravan caravan, List<string> expectedSilverIds, List<string> outConfirmedIds)
+        {
+            if (outConfirmedIds != null) outConfirmedIds.Clear();
+            if (caravan == null || caravan.Destroyed || expectedSilverIds == null || expectedSilverIds.Count == 0) return 0;
+
+            HashSet<string> expectedSet = new HashSet<string>(expectedSilverIds);
+            int total = 0;
+            List<Pawn> pawns = caravan.PawnsListForReading;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn p = pawns[i];
+                if (p == null || p.Dead || p.Destroyed || p.inventory == null || p.inventory.innerContainer == null) continue;
+                ThingOwner<Thing> inv = p.inventory.innerContainer;
+                for (int j = 0; j < inv.Count; j++)
+                {
+                    Thing t = inv[j];
+                    if (t != null && !t.Destroyed && t.def == ThingDefOf.Silver && t.stackCount > 0 && expectedSet.Contains(t.ThingID))
+                    {
+                        total += t.stackCount;
+                        if (outConfirmedIds != null && !outConfirmedIds.Contains(t.ThingID))
+                        {
+                            outConfirmedIds.Add(t.ThingID);
+                        }
+                    }
+                }
             }
             return total;
         }
@@ -838,17 +1369,24 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // ATOMIC SILVER TRANSFER AT OUTPOST (WITH FULL ROLLBACK & BASELINE GUARD)
+        // JOURNALED ATOMIC MISSION SILVER TRANSFER (TRACKED STACK IDS ONLY)
         // =====================================================================
 
-        private sealed class SilverTransferChunk
+        private sealed class SilverJournalEntry
         {
             public Pawn origPawn;
             public Thing origStack;
+            public int origStackCount;
+            public int requestedTake;
+            public bool tookWhole;
             public Thing chunk;
-            public bool addedToOutpost;
+            public bool inStaging;
+            public bool inOutpost;
         }
 
+        /// <summary>
+        /// Kept for signature compatibility; refuses untagged transfers without confirmed missionSilverIds.
+        /// </summary>
         public static bool TryTransferMissionSilverAtomically(
             Caravan caravan,
             StrategicOutpost outpost,
@@ -856,33 +1394,65 @@ namespace TurboMegaMod
             Dictionary<int, int> personalBaselineByPawn,
             out string failReason)
         {
+            failReason = "TMM_OutpostCaravan_InvalidMissionReturning".Translate(caravan != null ? caravan.Name : "");
+            return false;
+        }
+
+        /// <summary>
+        /// Journaled, atomic transfer of ONLY tracked mission silver stacks (identified by exact ThingID
+        /// in missionSilverIds) from caravan into outpost.RawMaterials.
+        /// - Personal silver stacks are NEVER eligible.
+        /// - Every mutation (SplitOff, Remove, TryAddOrTransfer) is journaled BEFORE executing.
+        /// - Staged chunks are verified in full BEFORE moving any chunk into RawMaterials.
+        /// - Chunks enter RawMaterials with canMergeWithExistingStacks=false so failure on stack N
+        ///   rolls back stacks 0..N-1 cleanly.
+        /// - Every rollback TryAdd is verified, falling back across caravan pawns -> home map so no
+        ///   silver is ever left ownerless.
+        /// </summary>
+        public static bool TryTransferMissionSilverAtomically(
+            Caravan caravan,
+            StrategicOutpost outpost,
+            int targetSilver,
+            List<string> missionSilverIds,
+            out string failReason)
+        {
             failReason = null;
             if (targetSilver <= 0) return true;
-            if (caravan == null || caravan.Destroyed || outpost == null || !outpost.Spawned || outpost.RawMaterials == null)
+
+            if (caravan == null || caravan.Destroyed || caravan.Faction != Faction.OfPlayer ||
+                outpost == null || !outpost.Spawned || outpost.Faction != Faction.OfPlayer || outpost.RawMaterials == null)
             {
                 failReason = "TMM_OutpostCaravan_OutpostGone".Translate();
                 return false;
             }
 
-            // 1. Determine how much silver may be taken from each pawn (protecting pre-existing personal silver)
-            List<Pawn> pawns = caravan.PawnsListForReading;
+            if (missionSilverIds == null || missionSilverIds.Count == 0)
+            {
+                failReason = "StrategicOutpost_NotEnoughSilverToSend".Translate(targetSilver);
+                return false;
+            }
+
+            // Step 1: Collect ONLY confirmed mission silver stacks (never personal silver!)
+            HashSet<string> allowedIds = new HashSet<string>(missionSilverIds);
+            List<Pawn> owners = new List<Pawn>();
+            List<Thing> stacks = new List<Thing>();
             int totalEligible = 0;
-            Dictionary<int, int> allowanceByPawn = new Dictionary<int, int>();
+
+            List<Pawn> pawns = caravan.PawnsListForReading;
             for (int i = 0; i < pawns.Count; i++)
             {
                 Pawn p = pawns[i];
-                if (p == null || p.Dead) continue;
-                int have = CountPawnInventoryThing(p, ThingDefOf.Silver);
-                int keep = 0;
-                if (personalBaselineByPawn != null)
+                if (p == null || p.Dead || p.Destroyed || p.inventory == null || p.inventory.innerContainer == null) continue;
+                ThingOwner<Thing> inv = p.inventory.innerContainer;
+                for (int j = 0; j < inv.Count; j++)
                 {
-                    personalBaselineByPawn.TryGetValue(p.thingIDNumber, out keep);
-                }
-                int canTake = Mathf.Max(0, have - keep);
-                if (canTake > 0)
-                {
-                    allowanceByPawn[p.thingIDNumber] = canTake;
-                    totalEligible += canTake;
+                    Thing t = inv[j];
+                    if (t != null && !t.Destroyed && t.def == ThingDefOf.Silver && t.stackCount > 0 && allowedIds.Contains(t.ThingID))
+                    {
+                        owners.Add(p);
+                        stacks.Add(t);
+                        totalEligible += t.stackCount;
+                    }
                 }
             }
 
@@ -892,97 +1462,113 @@ namespace TurboMegaMod
                 return false;
             }
 
-            // 2. Stage splits and transfer with strict return-value checking & full rollback
-            List<SilverTransferChunk> chunks = new List<SilverTransferChunk>();
+            // Step 2: Journal & stage all mission silver chunks into StagingHolder BEFORE touching outpost.RawMaterials
+            CaravanStagingHolder staging = new CaravanStagingHolder();
+            List<SilverJournalEntry> journal = new List<SilverJournalEntry>();
             int remaining = targetSilver;
             bool ok = true;
 
             try
             {
-                for (int i = 0; i < pawns.Count && remaining > 0 && ok; i++)
+                for (int i = 0; i < stacks.Count && remaining > 0; i++)
                 {
-                    Pawn p = pawns[i];
-                    if (p == null || p.Dead || p.inventory == null || p.inventory.innerContainer == null) continue;
-                    int pawnLimit;
-                    if (!allowanceByPawn.TryGetValue(p.thingIDNumber, out pawnLimit) || pawnLimit <= 0) continue;
-
-                    List<Thing> snapshot = new List<Thing>();
-                    for (int j = 0; j < p.inventory.innerContainer.Count; j++)
+                    Pawn p = owners[i];
+                    Thing src = stacks[i];
+                    if (p == null || p.Dead || p.inventory == null || p.inventory.innerContainer == null ||
+                        src == null || src.Destroyed || src.stackCount <= 0 || !p.inventory.innerContainer.Contains(src))
                     {
-                        Thing t = p.inventory.innerContainer[j];
-                        if (t != null && !t.Destroyed && t.def == ThingDefOf.Silver && t.stackCount > 0)
-                        {
-                            snapshot.Add(t);
-                        }
+                        ok = false;
+                        break;
                     }
 
-                    for (int j = 0; j < snapshot.Count && remaining > 0 && pawnLimit > 0; j++)
+                    int take = Mathf.Min(remaining, src.stackCount);
+                    SilverJournalEntry entry = new SilverJournalEntry();
+                    entry.origPawn = p;
+                    entry.origStack = src;
+                    entry.origStackCount = src.stackCount;
+                    entry.requestedTake = take;
+                    entry.tookWhole = (take == src.stackCount);
+                    // Journal BEFORE SplitOff!
+                    journal.Add(entry);
+
+                    Thing split = src.SplitOff(take);
+                    entry.chunk = split;
+
+                    if (split == null || split.Destroyed || split.stackCount != take)
                     {
-                        Thing src = snapshot[j];
-                        if (src == null || src.Destroyed || !p.inventory.innerContainer.Contains(src))
-                        {
-                            ok = false;
-                            break;
-                        }
-
-                        int take = Mathf.Min(remaining, Mathf.Min(pawnLimit, src.stackCount));
-                        bool whole = (take == src.stackCount);
-                        Thing split = src.SplitOff(take);
-                        if (split == null || split.Destroyed || split.stackCount != take)
-                        {
-                            if (split != null && !split.Destroyed && split != src)
-                            {
-                                ReturnSilverChunkToPawn(split, src, p);
-                            }
-                            ok = false;
-                            break;
-                        }
-
-                        if (split.holdingOwner != null)
-                        {
-                            split.holdingOwner.Remove(split);
-                        }
-
-                        SilverTransferChunk rec = new SilverTransferChunk();
-                        rec.origPawn = p;
-                        rec.origStack = whole ? null : src;
-                        rec.chunk = split;
-                        rec.addedToOutpost = false;
-                        chunks.Add(rec);
-
-                        bool transferred = !TestRejectRawMaterialsTransfer && outpost.RawMaterials.TryAddOrTransfer(split, false);
-                        if (!transferred)
-                        {
-                            ok = false;
-                            break;
-                        }
-
-                        rec.addedToOutpost = true;
-                        remaining -= take;
-                        pawnLimit -= take;
+                        ok = false;
+                        break;
                     }
+
+                    if (split.holdingOwner != null && split.holdingOwner != staging.innerContainer)
+                    {
+                        split.holdingOwner.Remove(split);
+                    }
+
+                    if (!staging.innerContainer.TryAdd(split, false) || !staging.innerContainer.Contains(split))
+                    {
+                        ok = false;
+                        break;
+                    }
+
+                    entry.inStaging = true;
+                    remaining -= split.stackCount;
                 }
 
-                if (remaining > 0) ok = false;
+                // Verify complete staged amount before touching outpost.RawMaterials
+                int stagedSum = 0;
+                for (int i = 0; i < staging.innerContainer.Count; i++)
+                {
+                    Thing st = staging.innerContainer[i];
+                    if (st != null && !st.Destroyed && st.def == ThingDefOf.Silver) stagedSum += st.stackCount;
+                }
+                if (remaining > 0 || stagedSum != targetSilver)
+                {
+                    ok = false;
+                }
+
+                // Step 3: Move each staged chunk into outpost.RawMaterials (no merge until full batch succeeds)
+                if (ok)
+                {
+                    for (int i = 0; i < journal.Count; i++)
+                    {
+                        SilverJournalEntry entry = journal[i];
+                        Thing chunk = entry.chunk;
+                        if (chunk == null || chunk.Destroyed || !staging.innerContainer.Contains(chunk))
+                        {
+                            ok = false;
+                            break;
+                        }
+
+                        if (ShouldTestRejectRawMaterials(i))
+                        {
+                            ok = false;
+                            break;
+                        }
+
+                        staging.innerContainer.Remove(chunk);
+                        entry.inStaging = false;
+
+                        bool added = outpost.RawMaterials.TryAddOrTransfer(chunk, false) && outpost.RawMaterials.Contains(chunk);
+                        if (!added)
+                        {
+                            ok = false;
+                            break;
+                        }
+
+                        entry.inOutpost = true;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Log.Warning("[TMM] OutpostCaravanLogistics: silver transfer failed, rolling back: " + ex.Message);
+                Log.Warning("[TMM] OutpostCaravanLogistics: silver transfer failed, rolling back journal: " + ex.Message);
                 ok = false;
             }
 
             if (!ok)
             {
-                for (int i = chunks.Count - 1; i >= 0; i--)
-                {
-                    SilverTransferChunk rec = chunks[i];
-                    if (rec == null || rec.chunk == null || rec.chunk.Destroyed) continue;
-                    if (rec.addedToOutpost && outpost.RawMaterials.Contains(rec.chunk))
-                    {
-                        outpost.RawMaterials.Remove(rec.chunk);
-                    }
-                    ReturnSilverChunkToPawn(rec.chunk, rec.origStack, rec.origPawn);
-                }
+                RollbackSilverJournal(staging, journal, outpost, caravan);
                 failReason = "TMM_OutpostCaravan_StorageTransferFailed".Translate();
                 return false;
             }
@@ -990,96 +1576,294 @@ namespace TurboMegaMod
             return true;
         }
 
-        private static void ReturnSilverChunkToPawn(Thing chunk, Thing origStack, Pawn pawn)
+        private static bool ShouldTestRejectRawMaterials(int chunkIndex)
         {
-            if (chunk == null || chunk.Destroyed) return;
-            if (origStack != null && !origStack.Destroyed && origStack.TryAbsorbStack(chunk, false))
+            if (!TestMode.Enabled) return false;
+            if (TestRejectRawMaterialsTransfer) return true;
+            if (TestRejectRawMaterialsTransferOnStep >= 0 && chunkIndex == TestRejectRawMaterialsTransferOnStep) return true;
+            return false;
+        }
+
+        private static void RollbackSilverJournal(CaravanStagingHolder staging, List<SilverJournalEntry> journal, StrategicOutpost outpost, Caravan caravan)
+        {
+            for (int i = journal.Count - 1; i >= 0; i--)
             {
-                return;
+                SilverJournalEntry entry = journal[i];
+                if (entry == null) continue;
+                try
+                {
+                    Thing chunk = entry.chunk;
+                    if (chunk == null && entry.origStack != null && !entry.origStack.Destroyed &&
+                        !entry.origStack.Spawned && entry.origStack.holdingOwner == null)
+                    {
+                        chunk = entry.origStack;
+                    }
+                    if (chunk == null || chunk.Destroyed) continue;
+
+                    if (entry.inOutpost && outpost != null && outpost.RawMaterials != null && outpost.RawMaterials.Contains(chunk))
+                    {
+                        outpost.RawMaterials.Remove(chunk);
+                        entry.inOutpost = false;
+                    }
+                    if (entry.inStaging && staging != null && staging.innerContainer.Contains(chunk))
+                    {
+                        staging.innerContainer.Remove(chunk);
+                        entry.inStaging = false;
+                    }
+
+                    TryReturnThingToCaravanVerified(chunk, entry.tookWhole ? null : entry.origStack, entry.origPawn, caravan, null);
+                }
+                catch (Exception ex)
+                {
+                    TestMode.ReportException("[TMM] OutpostCaravanLogistics: error rolling back silver entry: ", ex);
+                }
             }
-            if (pawn != null && pawn.inventory != null && pawn.inventory.innerContainer != null)
+
+            // Defensive sweep of any leftover staging items
+            if (staging != null && staging.innerContainer.Count > 0)
             {
-                pawn.inventory.innerContainer.TryAdd(chunk, true);
+                List<Thing> leftovers = new List<Thing>();
+                for (int i = 0; i < staging.innerContainer.Count; i++)
+                {
+                    if (staging.innerContainer[i] != null) leftovers.Add(staging.innerContainer[i]);
+                }
+                for (int i = 0; i < leftovers.Count; i++)
+                {
+                    Thing t = leftovers[i];
+                    if (staging.innerContainer.Contains(t)) staging.innerContainer.Remove(t);
+                    TryReturnThingToCaravanVerified(t, null, null, caravan, null);
+                }
             }
         }
 
+        private static bool TryAddChecked(ThingOwner owner, Thing item, bool canMerge)
+        {
+            if (owner == null || item == null || item.Destroyed) return false;
+            if (TestMode.Enabled && TestRejectInventoryTryAdd != null && TestRejectInventoryTryAdd(owner, item))
+            {
+                return false;
+            }
+            bool added = owner.TryAdd(item, canMerge);
+            if (!added) return false;
+            if (canMerge)
+            {
+                return item.Destroyed || item.stackCount <= 0 || owner.Contains(item);
+            }
+            return owner.Contains(item);
+        }
+
+        /// <summary>
+        /// Verified return helper for caravan items (silver or food):
+        /// 1) Original stack absorb, 2) origPawn inventory, 3) any other living caravan pawn,
+        /// 4) optional outpost RawMaterials (only for food if requested), 5) player home map drop spot.
+        /// </summary>
+        private static bool TryReturnThingToCaravanVerified(Thing chunk, Thing origStack, Pawn origPawn, Caravan caravan, StrategicOutpost fallbackOutpost)
+        {
+            if (chunk == null || chunk.Destroyed || chunk.stackCount <= 0) return true;
+
+            if (chunk.holdingOwner != null)
+            {
+                chunk.holdingOwner.Remove(chunk);
+            }
+
+            if (origStack != null && origStack != chunk && !origStack.Destroyed &&
+                origPawn != null && !origPawn.Dead && origPawn.inventory != null &&
+                origPawn.inventory.innerContainer != null && origPawn.inventory.innerContainer.Contains(origStack))
+            {
+                if (origStack.TryAbsorbStack(chunk, false) && (chunk.Destroyed || chunk.stackCount <= 0))
+                {
+                    return true;
+                }
+            }
+
+            if (origPawn != null && !origPawn.Dead && origPawn.inventory != null && origPawn.inventory.innerContainer != null)
+            {
+                if (TryAddChecked(origPawn.inventory.innerContainer, chunk, true))
+                {
+                    return true;
+                }
+            }
+
+            if (caravan != null && !caravan.Destroyed && caravan.PawnsListForReading != null)
+            {
+                List<Pawn> members = caravan.PawnsListForReading;
+                for (int i = 0; i < members.Count; i++)
+                {
+                    Pawn other = members[i];
+                    if (other == null || other == origPawn || other.Dead || other.Destroyed) continue;
+                    if (other.inventory != null && other.inventory.innerContainer != null &&
+                        TryAddChecked(other.inventory.innerContainer, chunk, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if (fallbackOutpost != null && fallbackOutpost.Spawned && fallbackOutpost.RawMaterials != null)
+            {
+                if (TryAddChecked(fallbackOutpost.RawMaterials, chunk, true))
+                {
+                    return true;
+                }
+            }
+
+            Map home = OutpostCaravanManager.ResolveHomeMap(null);
+            if (home != null)
+            {
+                IntVec3 spot = DropCellFinder.TradeDropSpot(home);
+                if (!spot.IsValid || !spot.InBounds(home)) spot = home.Center;
+                Thing placed;
+                if (GenPlace.TryPlaceThing(chunk, spot, home, ThingPlaceMode.Near, out placed) &&
+                    (chunk.Destroyed || (placed != null && placed.Spawned)))
+                {
+                    return true;
+                }
+            }
+
+            Log.Error("[TMM] OutpostCaravanLogistics: failed to return item " + chunk.LabelShort + " to any holder!");
+            return false;
+        }
+
         // =====================================================================
-        // RETURN FOOD REDISTRIBUTION BEFORE WORKER HANDOVER
+        // DIET- & SPOILAGE-AWARE RETURN FOOD REDISTRIBUTION
         // =====================================================================
 
+        /// <summary>
+        /// Evaluates actual edible food days for the exact list of pawns using their real inventories,
+        /// honoring diets/food restrictions and CompRottable spoilage at tile temperature.
+        /// </summary>
+        public static float CalcPawnsActualFoodDays(List<Pawn> pawns, PlanetTile tile)
+        {
+            if (pawns == null || pawns.Count == 0) return 0f;
+
+            List<TransferableOneWay> list = new List<TransferableOneWay>();
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn p = pawns[i];
+                if (p == null || p.Dead) continue;
+                TransferableOneWay tp = new TransferableOneWay();
+                tp.things.Add(p);
+                tp.ForceTo(1);
+                list.Add(tp);
+            }
+
+            if (list.Count == 0) return 0f;
+
+            return DaysWorthOfFoodCalculator.ApproxDaysWorthOfFood(
+                list, tile, IgnorePawnsInventoryMode.DontIgnore, Faction.OfPlayer); // CHECK API
+        }
+
         public static void EnsureCarriersHaveReturnFood(Caravan caravan, List<Pawn> staying, List<Pawn> returning, PlanetTile tile, float returnDaysNeeded)
+        {
+            EnsureCarriersHaveReturnFood(caravan, null, staying, returning, tile, returnDaysNeeded);
+        }
+
+        public static void EnsureCarriersHaveReturnFood(
+            Caravan caravan,
+            StrategicOutpost outpost,
+            List<Pawn> staying,
+            List<Pawn> returning,
+            PlanetTile tile,
+            float returnDaysNeeded)
         {
             if (caravan == null || staying == null || returning == null || staying.Count == 0 || returning.Count == 0 || returnDaysNeeded <= 0f)
             {
                 return;
             }
 
-            float targetNutr = ComputeDailyNutrition(returning) * returnDaysNeeded * 1.15f;
-            float currentCarrierNutr = SumEdibleNutritionOnPawns(returning);
-            if (currentCarrierNutr >= targetNutr) return;
+            // Evaluate actual edible food days with diets & spoilage via DaysWorthOfFoodCalculator
+            float currentDays = CalcPawnsActualFoodDays(returning, tile);
+            if (currentDays >= returnDaysNeeded) return;
 
             int carrierIdx = 0;
-            for (int i = 0; i < staying.Count && currentCarrierNutr < targetNutr; i++)
+            for (int i = 0; i < staying.Count && currentDays < returnDaysNeeded; i++)
             {
                 Pawn worker = staying[i];
-                if (worker == null || worker.inventory == null || worker.inventory.innerContainer == null) continue;
+                if (worker == null || worker.Dead || worker.inventory == null || worker.inventory.innerContainer == null) continue;
 
                 List<Thing> foods = new List<Thing>();
                 for (int j = 0; j < worker.inventory.innerContainer.Count; j++)
                 {
                     Thing t = worker.inventory.innerContainer[j];
-                    if (IsCaravanFood(t)) foods.Add(t);
+                    if (IsCaravanFood(t) && AnyPawnWillEat(returning, t))
+                    {
+                        foods.Add(t);
+                    }
                 }
 
-                for (int j = 0; j < foods.Count && currentCarrierNutr < targetNutr; j++)
+                // Prefer non-perishable food first for the return leg
+                foods.Sort(delegate(Thing a, Thing b)
+                {
+                    bool aNonPerish = a.def.GetCompProperties<CompProperties_Rottable>() == null;
+                    bool bNonPerish = b.def.GetCompProperties<CompProperties_Rottable>() == null;
+                    if (aNonPerish != bNonPerish) return bNonPerish.CompareTo(aNonPerish);
+                    int aPref = a.def.ingestible != null ? (int)a.def.ingestible.preferability : 0;
+                    int bPref = b.def.ingestible != null ? (int)b.def.ingestible.preferability : 0;
+                    return bPref.CompareTo(aPref);
+                });
+
+                for (int j = 0; j < foods.Count && currentDays < returnDaysNeeded; j++)
                 {
                     Thing food = foods[j];
                     if (food == null || food.Destroyed || !worker.inventory.innerContainer.Contains(food)) continue;
+
                     float nutrPerUnit = food.GetStatValue(StatDefOf.Nutrition);
                     if (nutrPerUnit <= 0.01f) continue;
 
-                    int neededUnits = Mathf.CeilToInt((targetNutr - currentCarrierNutr) / nutrPerUnit);
+                    float missingDays = Mathf.Max(0.1f, returnDaysNeeded - currentDays);
+                    int neededUnits = Mathf.Max(1, Mathf.CeilToInt((ComputeDailyNutrition(returning) * missingDays * 1.15f) / nutrPerUnit));
                     int take = Mathf.Min(neededUnits, food.stackCount);
                     if (take <= 0) continue;
 
-                    Pawn targetCarrier = returning[carrierIdx % returning.Count];
-                    carrierIdx++;
-                    if (targetCarrier == null || targetCarrier.inventory == null || targetCarrier.inventory.innerContainer == null) continue;
+                    bool takingWhole = (take == food.stackCount);
+                    Thing split = null;
+                    bool movedToCarrier = false;
 
-                    Thing split = food.SplitOff(take);
-                    if (split == null || split.Destroyed) continue;
-                    if (split.holdingOwner != null) split.holdingOwner.Remove(split);
-
-                    if (targetCarrier.inventory.innerContainer.TryAdd(split, true))
+                    try
                     {
-                        currentCarrierNutr += (float)take * nutrPerUnit;
+                        split = food.SplitOff(take);
+                        if (split == null || split.Destroyed || split.stackCount <= 0)
+                        {
+                            continue;
+                        }
+                        if (split.holdingOwner != null)
+                        {
+                            split.holdingOwner.Remove(split);
+                        }
+
+                        // Try each returning carrier in round-robin order with verified TryAdd
+                        for (int attempt = 0; attempt < returning.Count; attempt++)
+                        {
+                            Pawn targetCarrier = returning[(carrierIdx + attempt) % returning.Count];
+                            if (targetCarrier == null || targetCarrier.Dead || targetCarrier.inventory == null || targetCarrier.inventory.innerContainer == null)
+                            {
+                                continue;
+                            }
+                            if (TryAddChecked(targetCarrier.inventory.innerContainer, split, true))
+                            {
+                                carrierIdx = (carrierIdx + attempt + 1) % returning.Count;
+                                movedToCarrier = true;
+                                break;
+                            }
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        worker.inventory.innerContainer.TryAdd(split, true);
+                        Log.Warning("[TMM] OutpostCaravanLogistics: food transfer error, returning portion safely: " + ex.Message);
+                        movedToCarrier = false;
+                    }
+
+                    if (!movedToCarrier && split != null && !split.Destroyed)
+                    {
+                        // Verified return: never leave split unowned!
+                        TryReturnThingToCaravanVerified(split, takingWhole ? null : food, worker, caravan, outpost);
+                    }
+                    else if (movedToCarrier)
+                    {
+                        currentDays = CalcPawnsActualFoodDays(returning, tile);
                     }
                 }
             }
-        }
-
-        private static float SumEdibleNutritionOnPawns(List<Pawn> pawns)
-        {
-            float sum = 0f;
-            for (int i = 0; i < pawns.Count; i++)
-            {
-                Pawn p = pawns[i];
-                if (p == null || p.inventory == null || p.inventory.innerContainer == null) continue;
-                ThingOwner<Thing> inv = p.inventory.innerContainer;
-                for (int j = 0; j < inv.Count; j++)
-                {
-                    Thing t = inv[j];
-                    if (IsCaravanFood(t))
-                    {
-                        sum += t.GetStatValue(StatDefOf.Nutrition) * t.stackCount;
-                    }
-                }
-            }
-            return sum;
         }
 
         // =====================================================================
@@ -1145,9 +1929,6 @@ namespace TurboMegaMod
             }
         }
 
-        /// <summary>
-        /// Kept for backward API compatibility.
-        /// </summary>
         public static bool CalculateTripDays(PlanetTile fromTile, PlanetTile toTile, List<Pawn> pawns, out float daysOneWay, out float daysRoundTrip)
         {
             daysOneWay = 0f;
@@ -1161,9 +1942,6 @@ namespace TurboMegaMod
             return true;
         }
 
-        /// <summary>
-        /// Kept for backward API compatibility (assumes all pawns return).
-        /// </summary>
         public static bool CheckCaravanFeasibility(StrategicOutpost outpost, Map map, List<Pawn> pawns, int silverAmount,
             out float daysOneWay, out float daysRoundTrip, out float foodDays, out bool canSend, out string cantSendReason)
         {
@@ -1194,7 +1972,6 @@ namespace TurboMegaMod
 
             List<Pawn> returningPawns = GetReturningPawns(pawns, stayPawns);
 
-            // If some pawns stay and others remain to return, ensure at least one returning pawn is a mobile carrier
             if (returningPawns.Count > 0)
             {
                 bool hasCarrier = false;
@@ -1213,7 +1990,6 @@ namespace TurboMegaMod
                 }
             }
 
-            // Check silver strictly from formable colony items (exact same set StartFormingCaravan loads)
             int availableSilver = CountFormableSilver(map);
             if (silverAmount > availableSilver)
             {
@@ -1248,7 +2024,6 @@ namespace TurboMegaMod
             }
             daysRoundTrip = daysOneWay + daysReturn;
 
-            // Collect exact TransferableOneWay food plan for BOTH outbound (all pawns) and return (returning pawns)
             Dictionary<Thing, int> foodPlan;
             float outFoodDays;
             float retFoodDays;
@@ -1261,7 +2036,6 @@ namespace TurboMegaMod
                 return false;
             }
 
-            // Check final outbound mass WITH selected food included
             float foodMass = 0f;
             foreach (KeyValuePair<Thing, int> kv in foodPlan)
             {
@@ -1277,9 +2051,6 @@ namespace TurboMegaMod
             return true;
         }
 
-        /// <summary>
-        /// Kept for backward API compatibility.
-        /// </summary>
         public static bool CollectFoodForTrip(Map map, List<Pawn> pawns, float daysRoundTrip, out Dictionary<Thing, int> foodToTake, out float gatheredDays)
         {
             float half = daysRoundTrip * 0.5f;
@@ -1289,11 +2060,6 @@ namespace TurboMegaMod
             return ok;
         }
 
-        /// <summary>
-        /// Selects exact food item quantities for outbound (allPawns) and return (returningPawns) legs,
-        /// verifying EVERY leg via DaysWorthOfFoodCalculator.ApproxDaysWorthOfFood on TransferableOneWay
-        /// lists with exact CountToTransfer (never passing full un-split stacks).
-        /// </summary>
         public static bool CollectFoodForTwoLegs(
             Map map,
             PlanetTile outpostTile,
@@ -1324,7 +2090,6 @@ namespace TurboMegaMod
                 remainingInStack[foodList[i]] = foodList[i].stackCount;
             }
 
-            // Leg 1: Reserve dedicated non-perishable-first return food for returningPawns
             Dictionary<Thing, int> returnFood = new Dictionary<Thing, int>();
             if (returningPawns != null && returningPawns.Count > 0 && daysReturn > 0.001f)
             {
@@ -1337,7 +2102,6 @@ namespace TurboMegaMod
                 }
             }
 
-            // Leg 2: Reserve outbound food for allPawns from the remaining stack amounts
             Dictionary<Thing, int> outboundFood = new Dictionary<Thing, int>();
             if (daysOutbound > 0.001f)
             {
@@ -1349,7 +2113,6 @@ namespace TurboMegaMod
                 }
             }
 
-            // Merge both legs into totalFoodToTake
             foreach (KeyValuePair<Thing, int> kv in returnFood)
             {
                 totalFoodToTake[kv.Key] = kv.Value;
@@ -1378,7 +2141,6 @@ namespace TurboMegaMod
             float requiredDays,
             Dictionary<Thing, int> legSelection)
         {
-            // Check if pawns' existing inventories already cover this leg
             float daysNow = CalcTransferableFoodDays(legPawns, legSelection, startTile);
             if (daysNow >= requiredDays) return daysNow;
 
@@ -1390,8 +2152,6 @@ namespace TurboMegaMod
                 Thing food = orderedFood[i];
                 int avail;
                 if (!remainingInStack.TryGetValue(food, out avail) || avail <= 0) continue;
-
-                // Skip food that none of the leg's pawns can eat
                 if (!AnyPawnWillEat(legPawns, food)) continue;
 
                 float nutr = food.GetStatValue(StatDefOf.Nutrition);
@@ -1410,7 +2170,6 @@ namespace TurboMegaMod
                 daysNow = CalcTransferableFoodDays(legPawns, legSelection, startTile);
                 if (daysNow >= requiredDays) return daysNow;
 
-                // If nutrition target reached but DaysWorthOfFood still short (e.g. rot or diet split), pull extra from remaining stacks
                 if (addedNutr >= targetNutr && remainingInStack[food] > 0)
                 {
                     int extra = Mathf.Min(Mathf.CeilToInt((requiredDays - daysNow + 0.3f) * ComputeDailyNutrition(legPawns) / nutr), remainingInStack[food]);
@@ -1427,10 +2186,6 @@ namespace TurboMegaMod
             return CalcTransferableFoodDays(legPawns, legSelection, startTile);
         }
 
-        /// <summary>
-        /// Evaluates days worth of food strictly via TransferableOneWay with exact CountToTransfer,
-        /// so leftover un-taken items in colony stacks NEVER mask a food shortage.
-        /// </summary>
         public static float CalcTransferableFoodDays(List<Pawn> legPawns, Dictionary<Thing, int> selectedFood, PlanetTile tile)
         {
             if (legPawns == null || legPawns.Count == 0) return 0f;
@@ -1513,8 +2268,17 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // START CARAVAN (EXACT LORD BINDING + SINGLE FORMABLE STACK SET)
+        // START CARAVAN (JOURNALED SILVER TAGGING + EXACT LORD BINDING)
         // =====================================================================
+
+        private sealed class SilverPrepJournalEntry
+        {
+            public Thing origStack;
+            public Thing missionStack;
+            public IntVec3 origPos;
+            public bool wasSplit;
+            public string protectedId;
+        }
 
         public static bool StartCaravan(StrategicOutpost outpost, Map map, List<Pawn> pawns, List<Pawn> stayPawns, int silverAmount, out string failReason)
         {
@@ -1541,10 +2305,13 @@ namespace TurboMegaMod
                 return false;
             }
 
+            string preMissionId = Guid.NewGuid().ToString("N");
             List<TransferableOneWay> transferables = new List<TransferableOneWay>();
-
-            // 1. Add pawns & snapshot their pre-existing personal silver
+            List<SilverPrepJournalEntry> silverPrepJournal = new List<SilverPrepJournalEntry>();
+            List<string> missionSilverIds = new List<string>();
             Dictionary<int, int> baselineSilver = new Dictionary<int, int>();
+
+            // 1. Add pawns
             for (int i = 0; i < pawns.Count; i++)
             {
                 Pawn p = pawns[i];
@@ -1555,31 +2322,87 @@ namespace TurboMegaMod
                 transferables.Add(t);
             }
 
-            // 2. Add silver strictly from AllReachableColonyItems and VERIFY exact total queued
+            // 2. Tag exact colony silver stacks for this mission (splitting partial stacks with journal + anti-merge!)
+            bool silverPrepOk = true;
             if (silverAmount > 0)
             {
-                List<Thing> colonyItems = GetFormableColonyItems(map);
-                int remainingSilver = silverAmount;
-                for (int i = 0; i < colonyItems.Count && remainingSilver > 0; i++)
+                try
                 {
-                    Thing s = colonyItems[i];
-                    if (s == null || s.Destroyed || s.def != ThingDefOf.Silver || s.IsForbidden(Faction.OfPlayer)) continue;
-                    int take = Mathf.Min(remainingSilver, s.stackCount);
-                    if (take > 0)
-                    {
-                        TransferableOneWay t = new TransferableOneWay();
-                        t.things.Add(s);
-                        t.ForceTo(take);
-                        transferables.Add(t);
-                        remainingSilver -= take;
-                    }
-                }
+                    List<Thing> colonyItems = GetFormableColonyItems(map);
+                    int remainingSilver = silverAmount;
 
-                if (remainingSilver > 0)
-                {
-                    failReason = "StrategicOutpost_NotEnoughSilverToSend".Translate(silverAmount);
-                    return false;
+                    for (int i = 0; i < colonyItems.Count && remainingSilver > 0; i++)
+                    {
+                        Thing s = colonyItems[i];
+                        if (s == null || s.Destroyed || !s.Spawned || s.Map != map || s.def != ThingDefOf.Silver ||
+                            s.stackCount <= 0 || s.IsForbidden(Faction.OfPlayer) || OutpostCaravanManager.IsMissionSilverThing(s))
+                        {
+                            continue;
+                        }
+
+                        int take = Mathf.Min(remainingSilver, s.stackCount);
+                        SilverPrepJournalEntry prep = new SilverPrepJournalEntry();
+                        prep.origStack = s;
+                        prep.origPos = s.Position;
+                        prep.wasSplit = (take < s.stackCount);
+                        silverPrepJournal.Add(prep);
+
+                        Thing missionStack;
+                        if (!prep.wasSplit)
+                        {
+                            missionStack = s;
+                            prep.missionStack = missionStack;
+                            prep.protectedId = missionStack.ThingID;
+                            OutpostCaravanManager.RegisterTransientSilverProtection(prep.protectedId, preMissionId);
+                        }
+                        else
+                        {
+                            Thing split = s.SplitOff(take);
+                            prep.missionStack = split;
+                            if (split == null || split.Destroyed || split.stackCount != take)
+                            {
+                                silverPrepOk = false;
+                                break;
+                            }
+
+                            // Protect BEFORE GenPlace so the split stack cannot merge back into origStack
+                            prep.protectedId = split.ThingID;
+                            OutpostCaravanManager.RegisterTransientSilverProtection(prep.protectedId, preMissionId);
+
+                            Thing placed;
+                            if (!GenPlace.TryPlaceThing(split, prep.origPos, map, ThingPlaceMode.Near, out placed) ||
+                                placed == null || placed.Destroyed || !placed.Spawned || placed.ThingID != split.ThingID)
+                            {
+                                silverPrepOk = false;
+                                break;
+                            }
+                            split.SetForbidden(false, false);
+                            missionStack = split;
+                        }
+
+                        missionSilverIds.Add(missionStack.ThingID);
+
+                        TransferableOneWay t = new TransferableOneWay();
+                        t.things.Add(missionStack);
+                        t.ForceTo(missionStack.stackCount);
+                        transferables.Add(t);
+                        remainingSilver -= missionStack.stackCount;
+                    }
+
+                    if (remainingSilver > 0) silverPrepOk = false;
                 }
+                catch (Exception ex)
+                {
+                    Log.Warning("[TMM] OutpostCaravanLogistics: failed preparing mission silver stacks: " + ex.Message);
+                    silverPrepOk = false;
+                }
+            }
+
+            if (!silverPrepOk)
+            {
+                RollbackSilverPrepJournal(map, silverPrepJournal);
+                failReason = "StrategicOutpost_NotEnoughSilverToSend".Translate(silverAmount);
+                return false;
             }
 
             // 3. Add food with exact TransferableOneWay counts
@@ -1614,7 +2437,7 @@ namespace TurboMegaMod
             PlanetTile startTile = CaravanExitMapUtility.BestExitTileToGoTo(outpost.Tile, map);
             if (!startTile.Valid) startTile = map.Tile;
 
-            // 5. Snapshot existing lords, launch vanilla formation, and capture the EXACT new formation Lord ID
+            // 5. Launch vanilla formation and capture exact formation Lord ID (rolling back silver prep on failure)
             HashSet<int> prevLordIds = new HashSet<int>();
             if (map.lordManager != null)
             {
@@ -1624,7 +2447,18 @@ namespace TurboMegaMod
                 }
             }
 
-            CaravanFormingUtility.StartFormingCaravan(pawns, new List<Pawn>(), Faction.OfPlayer, transferables, meetingPoint, exitSpot, startTile, outpost.Tile);
+            try
+            {
+                CaravanFormingUtility.StartFormingCaravan(
+                    pawns, new List<Pawn>(), Faction.OfPlayer, transferables, meetingPoint, exitSpot, startTile, outpost.Tile);
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] OutpostCaravanLogistics: StartFormingCaravan threw exception: ", ex);
+                RollbackSilverPrepJournal(map, silverPrepJournal);
+                failReason = "TMM_OutpostCaravan_FormationFailed".Translate();
+                return false;
+            }
 
             int formationLordId = -1;
             if (map.lordManager != null)
@@ -1644,24 +2478,65 @@ namespace TurboMegaMod
 
             if (formationLordId < 0)
             {
+                RollbackSilverPrepJournal(map, silverPrepJournal);
                 failReason = "TMM_OutpostCaravan_FormationFailed".Translate();
                 return false;
             }
 
-            // 6. Register mission bound 1-to-1 to this exact formation Lord
+            // 6. Register mission bound 1-to-1 to this formation Lord & exact missionSilverIds
             if (OutpostCaravanManager.Instance != null)
             {
                 OutpostCaravanManager.Instance.RegisterMissionBound(
-                    outpost, map, pawns, stayPawns, silverAmount, map.uniqueID, formationLordId, baselineSilver);
+                    outpost, map, pawns, stayPawns, silverAmount,
+                    map.uniqueID, formationLordId, baselineSilver, missionSilverIds, preMissionId);
             }
 
             Messages.Message("CaravanFormationProcessStarted".Translate(), pawns[0], MessageTypeDefOf.PositiveEvent, false);
             return true;
         }
+
+        private static void RollbackSilverPrepJournal(Map map, List<SilverPrepJournalEntry> journal)
+        {
+            if (journal == null) return;
+            for (int i = journal.Count - 1; i >= 0; i--)
+            {
+                SilverPrepJournalEntry entry = journal[i];
+                if (entry == null) continue;
+                try
+                {
+                    if (!entry.protectedId.NullOrEmpty())
+                    {
+                        OutpostCaravanManager.UnregisterTransientSilverProtection(entry.protectedId);
+                    }
+                    if (!entry.wasSplit || entry.missionStack == null || entry.missionStack.Destroyed) continue;
+
+                    Thing split = entry.missionStack;
+                    if (split.holdingOwner != null) split.holdingOwner.Remove(split);
+                    if (split.Spawned) split.DeSpawn(DestroyMode.Vanish);
+
+                    if (entry.origStack != null && !entry.origStack.Destroyed && entry.origStack.Spawned && entry.origStack.Map == map)
+                    {
+                        if (entry.origStack.TryAbsorbStack(split, false) && (split.Destroyed || split.stackCount <= 0))
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (map != null && entry.origPos.InBounds(map))
+                    {
+                        GenPlace.TryPlaceThing(split, entry.origPos, map, ThingPlaceMode.Near);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TestMode.ReportException("[TMM] OutpostCaravanLogistics: failed rolling back silver prep entry: ", ex);
+                }
+            }
+        }
     }
 
     // =========================================================================
-    // HARMONY PATCHES: RETURN HOME GIZMO & EXACT LORD-BOUND EXIT ATTACHMENT
+    // HARMONY PATCHES: GIZMOS (RETRY + RETURN HOME), EXIT BINDING, ANTI-MERGE
     // =========================================================================
 
     [HarmonyPatch(typeof(Caravan), "GetGizmos")]
@@ -1684,11 +2559,33 @@ namespace TurboMegaMod
             CaravanArrivalAction_OutpostDelivery delivery = __instance.pather != null
                 ? __instance.pather.ArrivalAction as CaravanArrivalAction_OutpostDelivery : null;
 
-            bool showButton = (delivery != null) ||
-                              (mission != null && (mission.state == OutpostMissionState.Outbound ||
-                                                   (mission.state == OutpostMissionState.Returning && (mission.stranded || (__instance.pather != null && !__instance.pather.Moving)))));
+            // 1. Explicit "Retry Delivery" gizmo when storage failed at the outpost
+            if (mission != null && mission.state == OutpostMissionState.RetryDelivery &&
+                !mission.delivered && !mission.cancelled &&
+                mission.outpost != null && mission.outpost.Spawned && mission.outpost.Faction == Faction.OfPlayer)
+            {
+                Command_Action retryCmd = new Command_Action();
+                retryCmd.defaultLabel = "TMM_OutpostCaravan_RetryDelivery".Translate();
+                retryCmd.defaultDesc = "TMM_OutpostCaravan_RetryDeliveryDesc".Translate(mission.outpost.Label);
+                retryCmd.icon = TexCommand.RearmTrap; // CHECK API
+                retryCmd.action = delegate
+                {
+                    if (OutpostCaravanManager.Instance != null)
+                    {
+                        OutpostCaravanManager.Instance.TryRetryDelivery(__instance);
+                    }
+                };
+                yield return retryCmd;
+            }
 
-            if (!showButton) yield break;
+            // 2. "Return Home" gizmo on Outbound, RetryDelivery, or stranded Returning
+            bool showReturnButton = (delivery != null) ||
+                                    (mission != null &&
+                                     (mission.state == OutpostMissionState.Outbound ||
+                                      mission.state == OutpostMissionState.RetryDelivery ||
+                                      (mission.state == OutpostMissionState.Returning && (mission.stranded || (__instance.pather != null && !__instance.pather.Moving)))));
+
+            if (!showReturnButton) yield break;
 
             Command_Action returnHome = new Command_Action();
             returnHome.defaultLabel = "TMM_OutpostCaravan_ReturnHome".Translate();
@@ -1719,10 +2616,6 @@ namespace TurboMegaMod
         public int lordId;
     }
 
-    /// <summary>
-    /// Captures the exact LordJob_FormAndSendCaravan lordID in Prefix before pawns exit the map,
-    /// then binds the newly created Caravan strictly to that formation's mission in Postfix.
-    /// </summary>
     [HarmonyPatch(typeof(CaravanExitMapUtility), "ExitMapAndCreateCaravan",
         new Type[] { typeof(IEnumerable<Pawn>), typeof(Faction), typeof(PlanetTile), typeof(PlanetTile), typeof(PlanetTile), typeof(bool) })]
     public static class Patch_CaravanExitMapUtility_ExitMapAndCreateCaravan
@@ -1758,6 +2651,41 @@ namespace TurboMegaMod
             if (mgr != null)
             {
                 mgr.AttachFormedCaravan(__result, __state.mapId, __state.lordId);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Prevents tagged mission silver stacks from merging into personal silver or colony silver stacks.
+    /// </summary>
+    [HarmonyPatch(typeof(Thing), "CanStackWith", new Type[] { typeof(Thing) })] // CHECK API
+    public static class Patch_Thing_CanStackWith_MissionSilver
+    {
+        public static void Postfix(Thing __instance, Thing other, ref bool __result)
+        {
+            if (!__result) return;
+            if (OutpostCaravanManager.IsMissionSilverThing(__instance) || OutpostCaravanManager.IsMissionSilverThing(other))
+            {
+                __result = false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Propagates mission silver identity if a pawn splits a tagged mission silver stack during hauling.
+    /// </summary>
+    [HarmonyPatch(typeof(Thing), "SplitOff", new Type[] { typeof(int) })] // CHECK API
+    public static class Patch_Thing_SplitOff_MissionSilver
+    {
+        public static void Postfix(Thing __instance, Thing __result)
+        {
+            if (__result == null || __result == __instance) return;
+            if (!OutpostCaravanManager.IsMissionSilverThing(__instance)) return;
+
+            OutpostCaravanManager mgr = OutpostCaravanManager.Instance;
+            if (mgr != null)
+            {
+                mgr.PropagateMissionSilverSplit(__instance.ThingID, __result.ThingID);
             }
         }
     }

@@ -25,58 +25,27 @@ namespace TurboMegaMod
         }
 
         /// <summary>
-        /// Counts unforbidden resources in colony stockpiles, falling back to all unforbidden on map.
+        /// Counts unforbidden spawned resources on map using the exact same selector policy
+        /// as DeductResource and TryPayLaunchCost (via StoryPayment).
         /// </summary>
         public static int CountResource(Map map, ThingDef def)
         {
-            if (map == null || def == null) return 0;
-            int count = StoryPayment.CountInColonyStockpiles(map, def);
-            if (count > 0) return count;
-
-            if (map.listerThings == null) return 0;
-            List<Thing> list = map.listerThings.ThingsOfDef(def);
-            int total = 0;
-            for (int i = 0; i < list.Count; i++)
-            {
-                Thing t = list[i];
-                if (t != null && !t.Destroyed && !t.IsForbidden(Faction.OfPlayer))
-                {
-                    total += t.stackCount;
-                }
-            }
-            return total;
+            return StoryPayment.CountOnMap(map, def, false);
         }
 
         /// <summary>
-        /// Atomically deducts from colony stockpiles, falling back to map items if not in storage.
+        /// Atomically deducts count of def from map via StoryPayment.
+        /// On any failure, rolls back completely and returns 0 — NO non-atomic fallback loop.
         /// </summary>
         public static int DeductResource(Map map, ThingDef def, int count)
         {
             if (map == null || def == null || count <= 0) return 0;
             int deducted;
-            if (StoryPayment.TryDeductFromColonyStockpiles(map, def, count, out deducted))
+            if (StoryPayment.TryDeductFromMap(map, def, count, false, out deducted))
             {
                 return deducted;
             }
-            if (map.listerThings == null) return 0;
-            int remaining = count;
-            List<Thing> list = map.listerThings.ThingsOfDef(def);
-            for (int i = 0; i < list.Count; i++)
-            {
-                Thing t = list[i];
-                if (t != null && !t.Destroyed && !t.IsForbidden(Faction.OfPlayer))
-                {
-                    int take = Mathf.Min(remaining, t.stackCount);
-                    Thing split = t.SplitOff(take);
-                    if (split != null && !split.Destroyed)
-                    {
-                        split.Destroy(DestroyMode.Vanish);
-                    }
-                    remaining -= take;
-                    if (remaining <= 0) break;
-                }
-            }
-            return count - remaining;
+            return 0;
         }
 
         public static int CalculatePodCount(float mass)
@@ -124,6 +93,10 @@ namespace TurboMegaMod
             }
         }
 
+        /// <summary>
+        /// Atomically pays both chemfuel and silver launch costs in a single StoryPayment transaction.
+        /// On any failure, deducts nothing and returns false with failReason.
+        /// </summary>
         public static bool TryPayLaunchCost(Map homeMap, int originTile, int destTile, float mass, out string failReason)
         {
             if (homeMap == null)
@@ -153,19 +126,10 @@ namespace TurboMegaMod
                 reqs.Add(new StoryPayment.ResourceRequirement(ThingDefOf.Silver, silverDeduct));
             }
 
-            if (reqs.Count > 0 && !StoryPayment.TryDeductMultipleFromColonyStockpiles(homeMap, reqs))
+            if (reqs.Count > 0 && !StoryPayment.TryDeductMultipleFromMap(homeMap, reqs, false))
             {
-                if (CountResource(homeMap, ThingDefOf.Chemfuel) >= fuelDeduct &&
-                    CountResource(homeMap, ThingDefOf.Silver) >= silverDeduct)
-                {
-                    if (fuelDeduct > 0) DeductResource(homeMap, ThingDefOf.Chemfuel, fuelDeduct);
-                    if (silverDeduct > 0) DeductResource(homeMap, ThingDefOf.Silver, silverDeduct);
-                }
-                else
-                {
-                    failReason = summary;
-                    return false;
-                }
+                failReason = summary;
+                return false;
             }
 
             failReason = null;
@@ -287,34 +251,52 @@ namespace TurboMegaMod
                 for (int j = 0; j < things.Count; j++)
                 {
                     Thing item = things[j];
-                    if (item == null) continue;
+                    if (item == null || item.Destroyed) continue;
 
                     info.innerContainer.Remove(item);
 
                     Pawn p = item as Pawn;
                     if (p != null)
                     {
-                        if (p.RaceProps.Animal)
+                        bool added = p.RaceProps.Animal
+                            ? outpost.Animals.TryAdd(p, false)
+                            : outpost.Workers.TryAdd(p, false);
+                        if (added)
                         {
-                            outpost.Animals.TryAdd(p, false);
+                            if (!p.RaceProps.Animal)
+                            {
+                                if (p.ownership != null) p.ownership.UnclaimBed();
+                                colonistsAdded++;
+                            }
+                            StrategicOutpost.SetStoredPawnProtection(p, true);
                         }
                         else
                         {
-                            outpost.Workers.TryAdd(p, false);
-                            if (p.ownership != null)
+                            // Never leave pawn unowned if outpost refused TryAdd
+                            Map fallbackHome = OutpostPodLogistics.GetHomeMap();
+                            if (fallbackHome != null)
                             {
-                                p.ownership.UnclaimBed();
+                                StoryPayment.TryReturnThingToMap(p, null, fallbackHome, DropCellFinder.TradeDropSpot(fallbackHome));
                             }
-                            colonistsAdded++;
+                            else if (Find.WorldPawns != null && !Find.WorldPawns.Contains(p))
+                            {
+                                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
+                            }
                         }
-                        StrategicOutpost.SetStoredPawnProtection(p, true);
                     }
                     else
                     {
-                        outpost.RawMaterials.TryAdd(item, false);
-                        if (item.def == ThingDefOf.Silver)
+                        if (outpost.RawMaterials.TryAdd(item, false))
                         {
-                            silverAdded += item.stackCount;
+                            if (item.def == ThingDefOf.Silver)
+                            {
+                                silverAdded += item.stackCount;
+                            }
+                        }
+                        else
+                        {
+                            Map fallbackHome = OutpostPodLogistics.GetHomeMap();
+                            StoryPayment.TryReturnThingToMap(item, null, fallbackHome, fallbackHome != null ? DropCellFinder.TradeDropSpot(fallbackHome) : IntVec3.Invalid);
                         }
                     }
                 }

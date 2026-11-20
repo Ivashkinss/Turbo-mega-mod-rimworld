@@ -20,15 +20,23 @@ namespace TurboMegaMod
         // Runtime probe quests (registered identically on fresh & reload so Scribe resolves Defs cleanly)
         public const string QNoHotel = "TMM_Probe_E3_NoHotel";
         public const string QHeroColonistSkip = "TMM_Probe_E3_HeroColonistSkip";
+        public const string QHeroCompanionException = "TMM_Probe_E3_HeroCompanionException";
         public const string QPermanentEnemy = "TMM_Probe_E3_PermanentEnemy";
-        public const string QTruceRestore = "TMM_Probe_E3_TruceRestore";
-        public const string QTruceDisabledRollback = "TMM_Probe_E3_TruceDisabledRollback";
+        public const string QTruceOverlapA = "TMM_Probe_E3_TruceOverlapA";
+        public const string QTruceOverlapB = "TMM_Probe_E3_TruceOverlapB";
+        public const string QTruceStageRemovedOrphan = "TMM_Probe_E3_TruceStageRemovedOrphan";
         public const string QHostKilled = "TMM_Probe_E3_HostKilled";
         public const string QHostImprisoned = "TMM_Probe_E3_HostImprisoned";
+        public const string QHostVanishedNoExit = "TMM_Probe_E3_HostVanishedNoExit";
         public const string QInvestigateStrict = "TMM_Probe_E3_InvestigateStrict";
-        public const string QHideNoRaidDeadline = "TMM_Probe_E3_HideNoRaidDeadline";
+        public const string QHideOwnedRaid = "TMM_Probe_E3_HideOwnedRaid";
+        public const string QHideFailedRaidDeadline = "TMM_Probe_E3_HideFailedRaidDeadline";
         public const string QDeliverExpiredClick = "TMM_Probe_E3_DeliverExpiredClick";
+        public const string QDeliverUnknownDeadline = "TMM_Probe_E3_DeliverUnknownDeadline";
+        public const string QDeliverImmutableContract = "TMM_Probe_E3_DeliverImmutableContract";
+        public const string QDeliverStageKeyRemoved = "TMM_Probe_E3_DeliverStageKeyRemoved";
         public const string QDeliverSecondStackFail = "TMM_Probe_E3_DeliverSecondStackFail";
+        public const string QDeliverCommitDestroyEx = "TMM_Probe_E3_DeliverCommitDestroyEx";
         public const string QDeliverCaravanSettlement = "TMM_Probe_E3_DeliverCaravanSettlement";
         public const string QReloadActiveVisit = "TMM_Probe_E3_ReloadActiveVisit";
         public const string QReloadPaidDeliver = "TMM_Probe_E3_ReloadPaidDeliver";
@@ -61,22 +69,31 @@ namespace TurboMegaMod
         {
             HeroDef heroA = PickHero(0);
             HeroDef heroB = PickHero(1) ?? heroA;
+            HeroDef heroC = PickHero(2) ?? heroB;
 
-            AddQuestDef(BuildHotelQuest(QNoHotel, "probe.e3.noHotel", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QHeroColonistSkip, "probe.e3.heroColonist", null, heroA, 2, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QPermanentEnemy, "probe.e3.permEnemy", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QTruceRestore, "probe.e3.truceRestore", null, null, 1, 1f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QTruceDisabledRollback, "probe.e3.truceDisabled", null, null, 1, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QHostKilled, "probe.e3.hostKilled", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QHostImprisoned, "probe.e3.hostImprisoned", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null));
-            AddQuestDef(BuildHotelQuest(QInvestigateStrict, "probe.e3.investigate", null, null, 1, 2f, 1f, StoryHotelObjective.Investigate, null));
-            AddQuestDef(BuildHotelQuest(QHideNoRaidDeadline, "probe.e3.hideNoRaid", null, null, 1, 0.5f, 0.25f, StoryHotelObjective.Hide, null));
+            AddQuestDef(BuildHotelQuest(QNoHotel, "probe.e3.noHotel", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHeroColonistSkip, "probe.e3.heroColonist", null, heroA, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHeroCompanionException, "probe.e3.heroCompEx", null, heroC, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QPermanentEnemy, "probe.e3.permEnemy", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QTruceOverlapA, "probe.e3.truceOverlapA", null, null, 1, 1f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QTruceOverlapB, "probe.e3.truceOverlapB", null, null, 1, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QTruceStageRemovedOrphan, "probe.e3.truceStageRemoved", null, null, 1, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHostKilled, "probe.e3.hostKilled", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHostImprisoned, "probe.e3.hostImprisoned", null, null, 2, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHostVanishedNoExit, "probe.e3.hostVanished", null, null, 1, 2f, 1f, StoryHotelObjective.Host, null, -1f));
+            AddQuestDef(BuildHotelQuest(QInvestigateStrict, "probe.e3.investigate", null, null, 1, 2f, 1f, StoryHotelObjective.Investigate, null, -1f));
+            AddQuestDef(BuildHotelQuest(QHideOwnedRaid, "probe.e3.hideOwned", null, null, 1, 1f, 1f, StoryHotelObjective.Hide, null, 2f));
+            AddQuestDef(BuildHotelQuest(QHideFailedRaidDeadline, "probe.e3.hideFailed", null, null, 1, 0.5f, 0.25f, StoryHotelObjective.Hide, null, 1f));
 
             AddQuestDef(BuildDeliverQuest(QDeliverExpiredClick, "probe.e3.deliverExpired", null, ThingDefOf.Steel, 30, StoryDeliverTarget.colony, 0.2f));
+            AddQuestDef(BuildDeliverQuest(QDeliverUnknownDeadline, "probe.e3.deliverUnknownDl", null, ThingDefOf.Steel, 25, StoryDeliverTarget.colony, 5f));
+            AddQuestDef(BuildDeliverQuest(QDeliverImmutableContract, "probe.e3.deliverImmutable", null, ThingDefOf.Steel, 30, StoryDeliverTarget.colony, 5f));
+            AddQuestDef(BuildDeliverQuest(QDeliverStageKeyRemoved, "probe.e3.deliverKeyRemoved", null, ThingDefOf.Steel, 30, StoryDeliverTarget.colony, 5f));
             AddQuestDef(BuildDeliverQuest(QDeliverSecondStackFail, "probe.e3.deliverAtomic", null, ThingDefOf.Steel, 50, StoryDeliverTarget.colony, 5f));
+            AddQuestDef(BuildDeliverQuest(QDeliverCommitDestroyEx, "probe.e3.deliverCommitEx", null, ThingDefOf.Steel, 20, StoryDeliverTarget.colony, 5f));
             AddQuestDef(BuildDeliverQuest(QDeliverCaravanSettlement, "probe.e3.deliverCaravan", null, ThingDefOf.Steel, 40, StoryDeliverTarget.giverSettlement, 10f));
 
-            AddQuestDef(BuildHotelQuest(QReloadActiveVisit, "probe.e3.reloadVisit", null, heroB, 2, 3f, 2f, StoryHotelObjective.Host, null));
+            AddQuestDef(BuildHotelQuest(QReloadActiveVisit, "probe.e3.reloadVisit", null, heroB, 2, 3f, 2f, StoryHotelObjective.Host, null, -1f));
             AddQuestDef(BuildDeliverQuest(QReloadPaidDeliver, "probe.e3.reloadPaid", null, ThingDefOf.Steel, 50, StoryDeliverTarget.colony, 10f));
         }
 
@@ -87,7 +104,17 @@ namespace TurboMegaMod
             return all[idx % all.Count];
         }
 
-        private static StoryQuestDef BuildHotelQuest(string defName, string flag, string facDef, HeroDef h, int groupSize, float stayDays, float overdueDays, StoryHotelObjective obj, string hunterFac)
+        private static StoryQuestDef BuildHotelQuest(
+            string defName,
+            string flag,
+            string facDef,
+            HeroDef h,
+            int groupSize,
+            float stayDays,
+            float overdueDays,
+            StoryHotelObjective obj,
+            string hunterFac,
+            float hunterDelayHours)
         {
             StoryQuestDef d = new StoryQuestDef();
             d.defName = defName;
@@ -111,6 +138,7 @@ namespace TurboMegaMod
             st.overdueDays = overdueDays;
             st.objective = obj;
             st.hunterFaction = hunterFac;
+            st.hunterRaidDelayHours = hunterDelayHours;
             st.outcomes = new List<StoryChoice>();
             d.stages.Add(st);
             return d;
@@ -160,19 +188,23 @@ namespace TurboMegaMod
     }
 
     /// <summary>
-    /// Comprehensive in-game verification probe for all E3 Codex review fixes (P1 &amp; P2):
-    /// - noHotel immediate resolution on Start;
-    /// - Hero-colonist NOT stolen by hotel delegation;
-    /// - Permanent enemy visit fails cleanly without spawning any guests;
-    /// - Hostile goodwill faction truce restores relations after exit AND when quest is Disabled;
-    /// - Killed or imprisoned guests NEVER count as success;
-    /// - Investigate ignores shared indoor room and requires a real PlayLogEntry_Interaction (colonist -> guest);
-    /// - Hide ignores unrelated enemies and fails/times out at hard deadline if hunter raid never arrives;
-    /// - Clicking expired Deliver letter deducts nothing;
-    /// - Atomic StoryPayment rollback on second-stack SplitOff failure leaves stockpiles intact and delivered=false;
-    /// - Passing-by caravan at giverSettlement is NOT deducted; arrived caravan via CaravanArrivalAction_StoryDeliver IS deducted;
-    /// - Save/reload preserves active visit lord &amp; guest composition without duplicating hero, and completes paid Deliver without double-deducting;
-    /// - Honest UI/report passed evaluation (never hardcoded true).
+    /// Round 2 in-game verification probe for E3 (StoryStage_HotelVisit &amp; StoryStage_Deliver).
+    /// Covers every Round 2 finding:
+    /// - Hero untouched in WorldPawns when companion generation throws (via TestMode hook);
+    /// - Overlapping truce visits on the SAME hostile faction keep Neutral until the LAST visit ends,
+    ///   then restore Hostile symmetrically on both FactionRelations;
+    /// - Orphan truce rollback via REAL stage removal on StoryQuestDef (not manual status mutation);
+    /// - Guest vanished without Pawn.ExitMap -> failed (never false success);
+    /// - Hide ignores unrelated hostile lords of hunterFaction and launches/tracks its OWN bound raid,
+    ///   reaching hard deadline (not success) when the hunter raid fails to spawn;
+    /// - Deliver refuses payment when deadlineTick is missing/unknown;
+    /// - Deliver enforces immutable contract terms even if letter fields are tampered with;
+    /// - Deliver refuses payment when stageKey was removed from def.stages (zero stale index fallback);
+    /// - Deliver atomic rollback on second-stack SplitOff failure AND commit-destroy exception safety;
+    /// - Passing-by caravan at giverSettlement ignored, explicit CaravanArrivalAction_StoryDeliver deducted;
+    /// - Save/reload preserves active HotelVisit (lord + hero without duplication + peaceful ExitMap)
+    ///   and completes paid Deliver without double deduction;
+    /// - Honest JSON &amp; UI reports (passed computed from checks/errors) and zero global relation sanitization.
     /// </summary>
     public sealed class InGameStoryHotelProbe : MapComponent
     {
@@ -222,15 +254,18 @@ namespace TurboMegaMod
             }
             finally
             {
+                StoryStage_HotelVisit.TestCompanionGenerateOverride = null;
+                StoryStage_HotelVisit.TestHunterRaidExecuteOverride = null;
                 StoryPayment.TestSplitOffOverride = null;
+                StoryPayment.TestBeforeDestroyOverride = null;
+                StoryPawnTransfer.TestSpawnOverride = null;
                 Application.logMessageReceived -= OnUnityLog;
-                WriteReport(StoryHotelProbeBootstrap.ReloadMode ? "StoryHotelReloadProbe.json" : "StoryHotelProbe.json");
-                try
+
+                bool allPassed = WriteReport(StoryHotelProbeBootstrap.ReloadMode ? "StoryHotelReloadProbe.json" : "StoryHotelProbe.json");
+                if (!StoryHotelProbeBootstrap.ReloadMode)
                 {
-                    string uiPath = Path.Combine(GenFilePaths.SaveDataFolderPath, "StoryHotelUiProbe.json");
-                    File.WriteAllText(uiPath, "{\"passed\":true,\"visualLayoutInspected\":false}");
+                    WriteUiReport(allPassed);
                 }
-                catch { }
             }
         }
 
@@ -238,12 +273,14 @@ namespace TurboMegaMod
         {
             if (type == LogType.Error || type == LogType.Exception)
             {
+                // Expected errors from deliberately injected test failures are not regressions.
+                if (condition != null && condition.Contains("Simulated ")) return;
                 m_errors.Add(type.ToString() + ": " + condition);
             }
         }
 
         // =====================================================================
-        // FRESH PROBE: REAL SCENARIOS FOR EVERY P1 & P2 FINDING
+        // FRESH PROBE
         // =====================================================================
 
         private void RunFreshProbe()
@@ -295,23 +332,66 @@ namespace TurboMegaMod
                 StoryQuestRun skipRun = story.RunFor(StoryHotelProbeBootstrap.QHeroColonistSkip);
 
                 bool heroSkipped = skipRun != null && GetVar(skipRun, "heroIncluded") == "false";
-                bool heroStillColonistUntouched = colonistHero.Faction == Faction.OfPlayer &&
-                                                  colonistHero.Spawned && colonistHero.Map == map &&
-                                                  colonistHero.Position == origCell &&
-                                                  !ParseIntList(GetVar(skipRun, "guestIds")).Contains(colonistHero.thingIDNumber);
-                AddCheck("P1_HeroColonistNotMoved", heroSkipped && heroStillColonistUntouched,
+                bool heroUntouched = colonistHero.Faction == Faction.OfPlayer &&
+                                     colonistHero.Spawned && colonistHero.Map == map &&
+                                     colonistHero.Position == origCell &&
+                                     !ParseIntList(GetVar(skipRun, "guestIds")).Contains(colonistHero.thingIDNumber);
+                AddCheck("P1_HeroColonistNotMoved", heroSkipped && heroUntouched,
                     "heroIncluded=false & colonist untouched",
-                    string.Format("skipped={0}, reason={1}, untouched={2}", heroSkipped, GetVar(skipRun, "heroSkipReason"), heroStillColonistUntouched));
+                    string.Format("skipped={0}, reason={1}, untouched={2}", heroSkipped, GetVar(skipRun, "heroSkipReason"), heroUntouched));
 
-                // Clean up this test visit cleanly
-                ForceAbortRunAndCleanupGuests(map, skipRun);
+                CleanupActiveHotelRun(story, heroSkipDef, skipRun);
             }
             else
             {
                 AddCheck("P1_HeroColonistNotMoved", false, "hero exists", "hero null");
             }
 
-            // ---------------- 3. PERMANENT ENEMY FACTION -> FAILED WITHOUT SPAWN ----------------
+            // ---------------- 3. HERO UNTOUCHED ON COMPANION GENERATION EXCEPTION (TestMode) ----------------
+            if (TestMode.Enabled)
+            {
+                StoryQuestDef compExDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QHeroCompanionException);
+                StoryStage_HotelVisit compExStage = compExDef != null ? compExDef.stages[0] as StoryStage_HotelVisit : null;
+                Pawn worldHero = (compExStage != null && compExStage.hero != null && HeroRegistry.Instance != null)
+                    ? HeroRegistry.Instance.GetOrCreate(compExStage.hero) : null;
+
+                if (worldHero != null && Find.WorldPawns.Contains(worldHero) && !worldHero.Spawned)
+                {
+                    Faction heroOrigFac = worldHero.Faction;
+                    if (heroOrigFac != null && !heroOrigFac.IsPlayer && !heroOrigFac.defeated &&
+                        (heroOrigFac.def == null || !heroOrigFac.def.permanentEnemy))
+                    {
+                        compExStage.faction = heroOrigFac.def.defName;
+                    }
+
+                    StoryStage_HotelVisit.TestCompanionGenerateOverride = delegate(PawnGenerationRequest req)
+                    {
+                        throw new InvalidOperationException("Simulated companion generation exception");
+                    };
+
+                    story.SetFlag("probe.e3.heroCompEx", "true");
+                    story.DirectorTick();
+                    StoryStage_HotelVisit.TestCompanionGenerateOverride = null;
+                    story.DirectorTick();
+
+                    StoryQuestRun exRun = story.RunFor(StoryHotelProbeBootstrap.QHeroCompanionException);
+                    bool heroStillInWorld = Find.WorldPawns.Contains(worldHero) && !worldHero.Spawned && worldHero.Faction == heroOrigFac;
+                    bool failedCleanly = exRun != null && HasOutcome(exRun, "failed") && GetVar(exRun, "arrived") == "false";
+
+                    AddCheck("R2_HotelCompanionException_HeroUntouchedInWorldPawns",
+                        heroStillInWorld && failedCleanly,
+                        "hero in WorldPawns with origFaction, outcome=failed",
+                        string.Format("inWorld={0}, facMatch={1}, hist={2}",
+                            Find.WorldPawns.Contains(worldHero), worldHero.Faction == heroOrigFac,
+                            exRun != null ? string.Join(",", exRun.history.ToArray()) : "null"));
+                }
+                else
+                {
+                    AddCheck("R2_HotelCompanionException_HeroUntouchedInWorldPawns", false, "free world hero exists", "not free");
+                }
+            }
+
+            // ---------------- 4. PERMANENT ENEMY FACTION -> FAILED WITHOUT SPAWN ----------------
             Faction permEnemy = FindPermanentEnemyHumanlikeFaction();
             StoryQuestDef permDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QPermanentEnemy);
             StoryStage_HotelVisit permStage = permDef != null ? permDef.stages[0] as StoryStage_HotelVisit : null;
@@ -339,88 +419,118 @@ namespace TurboMegaMod
                 AddCheck("P1_PermanentEnemyFailsWithoutSpawn", false, "permanentEnemy faction exists", "missing");
             }
 
-            // ---------------- 4. HOSTILE GOODWILL FACTION TRUCE & RESTORE AFTER DISABLED QUEST ----------------
+            // ---------------- 5. OVERLAPPING TRUCE VISITS ON THE SAME HOSTILE FACTION ----------------
             Faction goodwillFac = FindGoodwillHumanlikeFaction();
-            StoryQuestDef truceDisDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QTruceDisabledRollback);
-            StoryStage_HotelVisit truceDisStage = truceDisDef != null ? truceDisDef.stages[0] as StoryStage_HotelVisit : null;
-            if (goodwillFac != null && truceDisStage != null)
+            StoryQuestDef overlapADef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QTruceOverlapA);
+            StoryQuestDef overlapBDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QTruceOverlapB);
+            StoryStage_HotelVisit overlapAStage = overlapADef != null ? overlapADef.stages[0] as StoryStage_HotelVisit : null;
+            StoryStage_HotelVisit overlapBStage = overlapBDef != null ? overlapBDef.stages[0] as StoryStage_HotelVisit : null;
+
+            if (goodwillFac != null && overlapAStage != null && overlapBStage != null)
             {
                 ForceHostileWithGoodwill(goodwillFac, -85);
-                truceDisStage.faction = goodwillFac.def.defName;
+                overlapAStage.faction = goodwillFac.def.defName;
+                overlapBStage.faction = goodwillFac.def.defName;
 
-                story.SetFlag("probe.e3.truceDisabled", "true");
+                // Start Visit A -> faction enters truce (Neutral)
+                story.SetFlag("probe.e3.truceOverlapA", "true");
                 story.DirectorTick();
-                StoryQuestRun tdRun = story.RunFor(StoryHotelProbeBootstrap.QTruceDisabledRollback);
+                StoryQuestRun runA = story.RunFor(StoryHotelProbeBootstrap.QTruceOverlapA);
+                bool aTruceActive = !goodwillFac.HostileTo(Faction.OfPlayer) && !GetVar(runA, "truceLeaseId").NullOrEmpty();
 
-                bool enteredTruce = !goodwillFac.HostileTo(Faction.OfPlayer) && GetVar(tdRun, "arrived") == "true";
+                // Start Visit B while faction ALREADY appears Neutral -> MUST acquire its own counted lease!
+                story.SetFlag("probe.e3.truceOverlapB", "true");
+                story.DirectorTick();
+                StoryQuestRun runB = story.RunFor(StoryHotelProbeBootstrap.QTruceOverlapB);
+                bool bGotLease = runB != null && GetVar(runB, "arrived") == "true" && !GetVar(runB, "truceLeaseId").NullOrEmpty();
 
-                // Simulate quest disabled mid-visit (orphan rollback test)
-                List<int> tdGuests = ParseIntList(GetVar(tdRun, "guestIds"));
-                tdRun.status = StoryQuestStatus.Disabled;
-                tdRun.stage = -1;
-                StoryRelationRestorer.CheckOrphansIfPresent();
+                // End Visit A peacefully via real ExitMap -> faction MUST STILL BE NEUTRAL for Visit B!
+                List<int> guestsA = ParseIntList(GetVar(runA, "guestIds"));
+                ExitGuestsViaRealExitMap(map, guestsA);
+                story.DirectorTick();
+                bool aSucceeded = runA != null && HasOutcome(runA, "success");
+                bool stillNeutralAfterA = !goodwillFac.HostileTo(Faction.OfPlayer) && !Faction.OfPlayer.HostileTo(goodwillFac) &&
+                                          StoryRelationRestorer.Instance != null && StoryRelationRestorer.Instance.HasActiveTruceBackup(goodwillFac);
 
-                bool restoredHostile = goodwillFac.HostileTo(Faction.OfPlayer) &&
-                                       goodwillFac.PlayerGoodwill <= -80 && goodwillFac.PlayerGoodwill >= -90;
-                AddCheck("P1_TruceRestoredOnDisabledQuest", enteredTruce && restoredHostile,
-                    "truce->Disabled->Hostile(~-85)",
-                    string.Format("truce={0}, hostile={1}, gw={2}", enteredTruce, goodwillFac.HostileTo(Faction.OfPlayer), goodwillFac.PlayerGoodwill));
+                // Now end Visit B peacefully via real ExitMap -> faction MUST RESTORE HOSTILE symmetrically!
+                List<int> guestsB = ParseIntList(GetVar(runB, "guestIds"));
+                ExitGuestsViaRealExitMap(map, guestsB);
+                story.DirectorTick();
+                bool bSucceeded = runB != null && HasOutcome(runB, "success");
+                bool restoredSymHostile = goodwillFac.HostileTo(Faction.OfPlayer) && Faction.OfPlayer.HostileTo(goodwillFac) &&
+                                          goodwillFac.PlayerGoodwill <= -80 && goodwillFac.PlayerGoodwill >= -90 &&
+                                          Faction.OfPlayer.GoodwillWith(goodwillFac) == goodwillFac.PlayerGoodwill;
 
-                CleanupPawnsByIds(map, tdGuests);
+                AddCheck("R2_OverlappingTruceVisits_StaysNeutralUntilLastEnds",
+                    aTruceActive && bGotLease && aSucceeded && stillNeutralAfterA && bSucceeded && restoredSymHostile,
+                    "A+B leased, neutral after A, symmetric Hostile(~-85) after B",
+                    string.Format("aTruce={0}, bLease={1}, aSucc={2}, neutralAfterA={3}, bSucc={4}, symHostile={5}, gw={6}/{7}",
+                        aTruceActive, bGotLease, aSucceeded, stillNeutralAfterA, bSucceeded, restoredSymHostile,
+                        goodwillFac.PlayerGoodwill, Faction.OfPlayer.GoodwillWith(goodwillFac)));
             }
             else
             {
-                AddCheck("P1_TruceRestoredOnDisabledQuest", false, "goodwill faction exists", "missing");
+                AddCheck("R2_OverlappingTruceVisits_StaysNeutralUntilLastEnds", false, "goodwill faction & defs exist", "missing");
             }
 
-            // ---------------- 5. HOSTILE TRUCE RESTORED AFTER NORMAL FAILURE / EXIT ----------------
-            StoryQuestDef truceResDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QTruceRestore);
-            StoryStage_HotelVisit truceResStage = truceResDef != null ? truceResDef.stages[0] as StoryStage_HotelVisit : null;
-            if (goodwillFac != null && truceResStage != null)
+            // ---------------- 6. ORPHAN TRUCE ROLLBACK VIA REAL STAGE REMOVAL ----------------
+            StoryQuestDef orphanDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QTruceStageRemovedOrphan);
+            StoryStage_HotelVisit orphanStage = orphanDef != null && orphanDef.stages.Count > 0 ? orphanDef.stages[0] as StoryStage_HotelVisit : null;
+            if (goodwillFac != null && orphanDef != null && orphanStage != null)
             {
-                ForceHostileWithGoodwill(goodwillFac, -90);
-                truceResStage.faction = goodwillFac.def.defName;
+                ForceHostileWithGoodwill(goodwillFac, -88);
+                orphanStage.faction = goodwillFac.def.defName;
 
-                story.SetFlag("probe.e3.truceRestore", "true");
+                story.SetFlag("probe.e3.truceStageRemoved", "true");
                 story.DirectorTick();
-                StoryQuestRun trRun = story.RunFor(StoryHotelProbeBootstrap.QTruceRestore);
+                StoryQuestRun orphRun = story.RunFor(StoryHotelProbeBootstrap.QTruceStageRemovedOrphan);
+                bool enteredTruce = !goodwillFac.HostileTo(Faction.OfPlayer) && GetVar(orphRun, "arrived") == "true";
+                List<int> orphGuests = ParseIntList(GetVar(orphRun, "guestIds"));
 
-                bool enteredTruce = !goodwillFac.HostileTo(Faction.OfPlayer) && GetVar(trRun, "arrived") == "true";
-                // Kill the guest to end the stage via normal Finish("failed")
-                List<int> trGuests = ParseIntList(GetVar(trRun, "guestIds"));
-                KillFirstGuest(map, trGuests);
-                story.DirectorTick();
+                // REAL stage removal: empty orphanDef.stages and tick SparkStory!
+                try
+                {
+                    orphanDef.stages.Clear();
+                    story.DirectorTick();
+                }
+                finally
+                {
+                    orphanDef.stages.Add(orphanStage);
+                }
 
-                bool finishedFailed = trRun != null && HasOutcome(trRun, "failed");
-                bool restoredAfterEnd = goodwillFac.HostileTo(Faction.OfPlayer) &&
-                                        goodwillFac.PlayerGoodwill <= -85 && goodwillFac.PlayerGoodwill >= -95;
-                AddCheck("P1_TruceRestoredAfterStageEnd", enteredTruce && finishedFailed && restoredAfterEnd,
-                    "truce->end->Hostile(~-90)",
-                    string.Format("truce={0}, failed={1}, hostile={2}, gw={3}",
-                        enteredTruce, finishedFailed, goodwillFac.HostileTo(Faction.OfPlayer), goodwillFac.PlayerGoodwill));
+                bool disabledNaturally = orphRun != null && orphRun.status == StoryQuestStatus.Disabled &&
+                                         HasOutcome(orphRun, "stage missing");
+                bool restoredSym = goodwillFac.HostileTo(Faction.OfPlayer) && Faction.OfPlayer.HostileTo(goodwillFac) &&
+                                   goodwillFac.PlayerGoodwill <= -83 && goodwillFac.PlayerGoodwill >= -93;
 
-                CleanupPawnsByIds(map, trGuests);
-                // Restore goodwillFac to Neutral for subsequent friendly tests
+                AddCheck("R2_TruceOrphan_RealStageRemovalRollback",
+                    enteredTruce && disabledNaturally && restoredSym,
+                    "truce->Disable(stage missing)->Symmetric Hostile(~-88)",
+                    string.Format("truce={0}, disabled={1}, symHostile={2}, gw={3}",
+                        enteredTruce, disabledNaturally, restoredSym, goodwillFac.PlayerGoodwill));
+
+                CleanupPawnsByIds(map, orphGuests);
                 ForceNeutralWithGoodwill(goodwillFac, 10);
             }
             else
             {
-                AddCheck("P1_TruceRestoredAfterStageEnd", false, "goodwill faction exists", "missing");
+                AddCheck("R2_TruceOrphan_RealStageRemovalRollback", false, "goodwill faction & def exist", "missing");
             }
 
-            // ---------------- 6. GUEST KILLED -> FAILED (NOT SUCCESS) ----------------
+            // ---------------- 7. GUEST KILLED, IMPRISONED, OR VANISHED WITHOUT EXITMAP -> FAILED ----------------
+            // 7A. Killed
             story.SetFlag("probe.e3.hostKilled", "true");
             story.DirectorTick();
             StoryQuestRun killRun = story.RunFor(StoryHotelProbeBootstrap.QHostKilled);
             List<int> killGuests = ParseIntList(GetVar(killRun, "guestIds"));
             KillFirstGuest(map, killGuests);
             story.DirectorTick();
-            bool killFailed = killRun != null && HasOutcome(killRun, "failed") && !HasOutcome(killRun, "success");
-            AddCheck("P1_GuestKilled_NotSuccess", killFailed, "failed",
-                killRun != null ? string.Join(",", killRun.history.ToArray()) : "null");
+            AddCheck("P1_GuestKilled_NotSuccess",
+                killRun != null && HasOutcome(killRun, "failed") && !HasOutcome(killRun, "success"),
+                "failed", killRun != null ? string.Join(",", killRun.history.ToArray()) : "null");
             CleanupPawnsByIds(map, killGuests);
 
-            // ---------------- 7. GUEST IMPRISONED -> FAILED (NOT SUCCESS) ----------------
+            // 7B. Imprisoned
             story.SetFlag("probe.e3.hostImprisoned", "true");
             story.DirectorTick();
             StoryQuestRun prisRun = story.RunFor(StoryHotelProbeBootstrap.QHostImprisoned);
@@ -431,80 +541,150 @@ namespace TurboMegaMod
                 firstPrisGuest.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner); // CHECK API
             }
             story.DirectorTick();
-            bool prisFailed = prisRun != null && HasOutcome(prisRun, "failed") && !HasOutcome(prisRun, "success");
-            AddCheck("P1_GuestImprisoned_NotSuccess", prisFailed, "failed",
-                prisRun != null ? string.Join(",", prisRun.history.ToArray()) : "null");
+            AddCheck("P1_GuestImprisoned_NotSuccess",
+                prisRun != null && HasOutcome(prisRun, "failed") && !HasOutcome(prisRun, "success"),
+                "failed", prisRun != null ? string.Join(",", prisRun.history.ToArray()) : "null");
             CleanupPawnsByIds(map, prisGuests);
 
-            // ---------------- 8. INVESTIGATE WITHOUT CONVERSATION != SUCCESS; REAL INTERACTION SETS INVESTIGATED ----------------
+            // 7C. Vanished without Pawn.ExitMap -> MUST fail (guest_missing), NEVER success
+            story.SetFlag("probe.e3.hostVanished", "true");
+            story.DirectorTick();
+            StoryQuestRun vanRun = story.RunFor(StoryHotelProbeBootstrap.QHostVanishedNoExit);
+            List<int> vanGuests = ParseIntList(GetVar(vanRun, "guestIds"));
+            Pawn vanGuest = FindGuestOnMap(map, vanGuests);
+            if (vanGuest != null && vanGuest.Spawned)
+            {
+                vanGuest.DeSpawn(DestroyMode.Vanish);
+                if (!Find.WorldPawns.Contains(vanGuest)) Find.WorldPawns.PassToWorld(vanGuest, PawnDiscardDecideMode.Discard);
+            }
+            story.DirectorTick();
+            AddCheck("R2_GuestVanishedWithoutExitMap_FailedNotSuccess",
+                vanRun != null && HasOutcome(vanRun, "failed") && !HasOutcome(vanRun, "success") && GetVar(vanRun, "failReason") == "guest_missing",
+                "failed (guest_missing)",
+                string.Format("hist={0}, reason={1}", vanRun != null ? string.Join(",", vanRun.history.ToArray()) : "null", GetVar(vanRun, "failReason")));
+
+            // ---------------- 8. INVESTIGATE REQUIRES REAL PlayLogEntry_Interaction ----------------
+            StoryQuestDef invDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QInvestigateStrict);
             story.SetFlag("probe.e3.investigate", "true");
             story.DirectorTick();
             StoryQuestRun invRun = story.RunFor(StoryHotelProbeBootstrap.QInvestigateStrict);
             List<int> invGuests = ParseIntList(GetVar(invRun, "guestIds"));
             Pawn invGuest = FindGuestOnMap(map, invGuests);
 
-            // Place a Social=15 colonist right next to the guest (no PlayLogEntry_Interaction!) -> MUST remain investigated=false
-            Pawn talker = SpawnColonist(map);
+            Pawn talker = SpawnCleanColonist(map);
             if (talker.skills != null)
             {
                 SkillRecord soc = talker.skills.GetSkill(SkillDefOf.Social);
                 if (soc != null) soc.Level = 15;
             }
-            if (invGuest != null)
-            {
-                talker.Position = invGuest.Position;
-            }
+            if (invGuest != null) talker.Position = invGuest.Position;
             story.DirectorTick();
             bool notInvestigatedWithoutChat = GetVar(invRun, "investigated") == "false";
 
-            // Now add a real PlayLogEntry_Interaction (initiator = colonist, recipient = THIS visit's guest)
             bool realChatDetected = false;
             if (invGuest != null && Find.PlayLog != null)
             {
-                PlayLogEntry_Interaction entry = new PlayLogEntry_Interaction(InteractionDefOf.Chitchat, talker, invGuest, null); // CHECK API
-                Find.PlayLog.Add(entry);
+                // Real vanilla interaction: the game itself writes the PlayLogEntry_Interaction.
+                bool talked = talker.interactions != null && talker.interactions.TryInteractWith(invGuest, InteractionDefOf.Chitchat);
+                if (!talked) Log.Warning("[TMM] StoryHotel probe: TryInteractWith(Chitchat) returned false");
                 story.DirectorTick();
                 realChatDetected = GetVar(invRun, "investigated") == "true";
             }
             AddCheck("P1_InvestigateRequiresRealInteraction", notInvestigatedWithoutChat && realChatDetected,
                 "withoutChat=false, afterRealChat=true",
                 string.Format("noChatFalse={0}, afterChat={1}", notInvestigatedWithoutChat, realChatDetected));
-            ForceAbortRunAndCleanupGuests(map, invRun);
+            CleanupActiveHotelRun(story, invDef, invRun);
 
-            // ---------------- 9. HIDE WITHOUT BOUND HUNTER RAID -> REACHES DEADLINE (NOT SUCCESS) ----------------
-            Faction hunterFac = FindPermanentEnemyHumanlikeFaction() ?? goodwillFac;
-            StoryQuestDef hideDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QHideNoRaidDeadline);
-            StoryStage_HotelVisit hideStage = hideDef != null ? hideDef.stages[0] as StoryStage_HotelVisit : null;
-            if (hunterFac != null && hideStage != null)
+            // ---------------- 9. HIDE: STAGE-OWNED HUNTER RAID IGNORES UNRELATED HOSTILE LORDS ----------------
+            Faction hunterFac = permEnemy ?? FindAnotherHostileFaction(goodwillFac);
+            StoryQuestDef hideOwnedDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QHideOwnedRaid);
+            StoryStage_HotelVisit hideOwnedStage = hideOwnedDef != null ? hideOwnedDef.stages[0] as StoryStage_HotelVisit : null;
+            if (hunterFac != null && hideOwnedStage != null)
             {
-                hideStage.hunterFaction = hunterFac.def.defName;
-                story.SetFlag("probe.e3.hideNoRaid", "true");
+                hideOwnedStage.hunterFaction = hunterFac.def.defName;
+                story.SetFlag("probe.e3.hideOwned", "true");
                 story.DirectorTick();
-                StoryQuestRun hideRun = story.RunFor(StoryHotelProbeBootstrap.QHideNoRaidDeadline);
+                StoryQuestRun hideRun = story.RunFor(StoryHotelProbeBootstrap.QHideOwnedRaid);
                 List<int> hideGuests = ParseIntList(GetVar(hideRun, "guestIds"));
 
-                // Advance past stayDays + overdueDays WITHOUT any hunter raid arriving -> must hit hard deadline, NOT success
-                int hardDl = ParseInt(hideRun, "hardDeadlineTick", Find.TickManager.TicksGame + GenDate.TicksPerDay);
-                Find.TickManager.DebugSetTicksGame(hardDl + 100); // CHECK API
+                // Spawn an UNRELATED hostile lord of hunterFac BEFORE hunterRaidTick and kill it!
+                Pawn unrelatedRaider = SpawnCleanNpc(map, hunterFac);
+                Lord unrelatedLord = LordMaker.MakeNewLord(hunterFac, new LordJob_DefendPoint(unrelatedRaider.Position), map, new List<Pawn> { unrelatedRaider });
+                story.DirectorTick();
+                bool unrelatedNotBound = GetVar(hideRun, "hunterRaidBound") == "false" && GetVar(hideRun, "hunterRaidLaunched") == "false";
+                if (!unrelatedRaider.Dead) unrelatedRaider.Kill(null);
+                story.DirectorTick();
+                bool unrelatedKillNotCleared = GetVar(hideRun, "hunterRaidCleared") == "false";
+
+                // Advance to hunterRaidTick -> Hide launches and binds ITS OWN raid!
+                int raidTick = ParseInt(hideRun, "hunterRaidTick", Find.TickManager.TicksGame);
+                Find.TickManager.DebugSetTicksGame(raidTick + 10); // CHECK API
                 story.DirectorTick();
 
-                bool hitDeadlineNotSuccess = hideRun != null && !HasOutcome(hideRun, "success") &&
-                                             (HasOutcome(hideRun, "failed") || HasOutcome(hideRun, "timeout")) &&
-                                             GetVar(hideRun, "hunterRaidBound") == "false";
-                AddCheck("P1_HideWithoutRaid_ReachesDeadline", hitDeadlineNotSuccess,
-                    "not success & hunterRaidBound=false",
-                    string.Format("hist={0}, bound={1}, reason={2}",
-                        hideRun != null ? string.Join(",", hideRun.history.ToArray()) : "null",
-                        GetVar(hideRun, "hunterRaidBound"), GetVar(hideRun, "failReason")));
-                CleanupPawnsByIds(map, hideGuests);
+                bool ownRaidBound = GetVar(hideRun, "hunterRaidLaunched") == "true" &&
+                                    GetVar(hideRun, "hunterRaidBound") == "true" &&
+                                    ParseIntList(GetVar(hideRun, "hunterRaidPawnIds")).Count > 0;
+                List<int> boundRaiders = ParseIntList(GetVar(hideRun, "hunterRaidPawnIds"));
+
+                // Kill ONLY the stage's bound raiders -> hunterRaidCleared becomes true!
+                KillPawnsByIds(map, boundRaiders);
+                story.DirectorTick();
+                bool ownRaidCleared = GetVar(hideRun, "hunterRaidCleared") == "true";
+
+                // Now guests depart peacefully via ExitMap -> Hide succeeds!
+                ExitGuestsViaRealExitMap(map, hideGuests);
+                story.DirectorTick();
+                bool hideSucceeded = hideRun != null && HasOutcome(hideRun, "success");
+
+                AddCheck("R2_Hide_IgnoresUnrelatedAndOwnsItsHunterRaid",
+                    unrelatedNotBound && unrelatedKillNotCleared && ownRaidBound && ownRaidCleared && hideSucceeded,
+                    "unrelated ignored, own raid bound->cleared->success",
+                    string.Format("unrelIgnored={0}/{1}, ownBound={2}({3}), cleared={4}, succ={5}",
+                        unrelatedNotBound, unrelatedKillNotCleared, ownRaidBound, boundRaiders.Count, ownRaidCleared, hideSucceeded));
             }
             else
             {
-                AddCheck("P1_HideWithoutRaid_ReachesDeadline", false, "hunterFac exists", "missing");
+                AddCheck("R2_Hide_IgnoresUnrelatedAndOwnsItsHunterRaid", false, "hunterFac exists", "missing");
             }
 
-            // ---------------- 10. DELIVER: EXPIRED LETTER CLICK DEDUCTS NOTHING ----------------
-            ClearStockpileResources(map, stockpile, ThingDefOf.Steel);
+            // ---------------- 10. HIDE: FAILED HUNTER RAID REACHES HARD DEADLINE (TestMode) ----------------
+            if (TestMode.Enabled && hunterFac != null)
+            {
+                StoryQuestDef hideFailDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QHideFailedRaidDeadline);
+                StoryStage_HotelVisit hideFailStage = hideFailDef != null ? hideFailDef.stages[0] as StoryStage_HotelVisit : null;
+                if (hideFailStage != null)
+                {
+                    hideFailStage.hunterFaction = hunterFac.def.defName;
+                    StoryStage_HotelVisit.TestHunterRaidExecuteOverride = delegate(IncidentParms p) { return false; };
+
+                    story.SetFlag("probe.e3.hideFailed", "true");
+                    story.DirectorTick();
+                    StoryQuestRun hfRun = story.RunFor(StoryHotelProbeBootstrap.QHideFailedRaidDeadline);
+                    List<int> hfGuests = ParseIntList(GetVar(hfRun, "guestIds"));
+
+                    int rTick = ParseInt(hfRun, "hunterRaidTick", Find.TickManager.TicksGame);
+                    Find.TickManager.DebugSetTicksGame(rTick + 10);
+                    story.DirectorTick();
+                    StoryStage_HotelVisit.TestHunterRaidExecuteOverride = null;
+
+                    int hardDl = ParseInt(hfRun, "hardDeadlineTick", Find.TickManager.TicksGame + GenDate.TicksPerDay);
+                    Find.TickManager.DebugSetTicksGame(hardDl + 50);
+                    story.DirectorTick();
+
+                    bool failedAtDeadline = hfRun != null && !HasOutcome(hfRun, "success") &&
+                                            (HasOutcome(hfRun, "failed") || HasOutcome(hfRun, "timeout")) &&
+                                            GetVar(hfRun, "hunterRaidBound") == "false";
+                    AddCheck("R2_Hide_FailedRaidReachesDeadlineNotSuccess", failedAtDeadline,
+                        "failed/timeout & hunterRaidBound=false",
+                        string.Format("hist={0}, bound={1}, reason={2}",
+                            hfRun != null ? string.Join(",", hfRun.history.ToArray()) : "null",
+                            GetVar(hfRun, "hunterRaidBound"), GetVar(hfRun, "failReason")));
+                    CleanupPawnsByIds(map, hfGuests);
+                }
+            }
+
+            // ---------------- 11. DELIVER: EXPIRED LETTER CLICK DEDUCTS NOTHING ----------------
+            ClearStockpileResources(map, ThingDefOf.Steel);
             PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 40, 0);
             int steelBeforeExpired = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
 
@@ -513,57 +693,195 @@ namespace TurboMegaMod
             StoryQuestRun expRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverExpiredClick);
             ChoiceLetter_StoryDeliver expLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverExpiredClick);
 
-            // Advance past deadline BEFORE calling DirectorTick, then click the stale Deliver letter!
             int expDl = ParseInt(expRun, "deadlineTick", Find.TickManager.TicksGame + GenDate.TicksPerDay);
             Find.TickManager.DebugSetTicksGame(expDl + 50); // CHECK API
 
             bool uiExpiredRefused = false;
             if (expLetter != null)
             {
-                // Honest UI check: Choices should return Close only (no active Deliver deduction!)
-                ClickAllEnabledOptions(expLetter);
-                int steelAfterExpiredClick = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
-                uiExpiredRefused = steelAfterExpiredClick == steelBeforeExpired && GetVar(expRun, "delivered") != "true";
+                ClickFirstEnabledOption(expLetter);
+                uiExpiredRefused = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel) == steelBeforeExpired &&
+                                   GetVar(expRun, "delivered") != "true";
             }
             story.DirectorTick();
             bool expTimedOut = expRun != null && HasOutcome(expRun, "timeout");
             AddCheck("P1_DeliverExpiredClick_DeductsNothing",
                 expLetter != null && uiExpiredRefused && expTimedOut,
                 "steel unchanged, delivered!=true, timeout",
-                string.Format("letter={0}, refused={1}, timeout={2}, steel={3}->{4}",
-                    expLetter != null, uiExpiredRefused, expTimedOut, steelBeforeExpired, StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel)));
+                string.Format("letter={0}, refused={1}, timeout={2}", expLetter != null, uiExpiredRefused, expTimedOut));
 
-            // ---------------- 11. DELIVER: ATOMIC ROLLBACK ON SECOND STACK FAILURE ----------------
-            ClearStockpileResources(map, stockpile, ThingDefOf.Steel);
-            PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 30, 0);
-            PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 30, 1);
-            int steelBeforeAtomic = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
-
-            story.SetFlag("probe.e3.deliverAtomic", "true");
+            // ---------------- 12. DELIVER: UNKNOWN/MISSING deadlineTick ALWAYS REFUSES PAYMENT ----------------
+            ClearStockpileResources(map, ThingDefOf.Steel);
+            PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 40, 0);
+            story.SetFlag("probe.e3.deliverUnknownDl", "true");
             story.DirectorTick();
-            StoryQuestRun atomicRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverSecondStackFail);
-            ChoiceLetter_StoryDeliver atomicLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverSecondStackFail);
-
-            // Simulate second stack SplitOff failing (returns null on stepIndex == 1)
-            StoryPayment.TestSplitOffOverride = delegate(Thing src, int count, int stepIndex)
+            StoryQuestRun unkRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverUnknownDeadline);
+            ChoiceLetter_StoryDeliver unkLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverUnknownDeadline);
+            if (unkRun != null && unkLetter != null)
             {
-                if (stepIndex == 1) return null;
-                return src.SplitOff(count);
-            };
+                // Remove deadlineTick from run.vars while letter still carries a future deadlineTick!
+                unkRun.vars.Remove("deadlineTick");
+                unkLetter.deadlineTick = Find.TickManager.TicksGame + GenDate.TicksPerDay * 5;
 
-            bool clickedAtomic = atomicLetter != null && ClickFirstDeliverOption(atomicLetter);
-            StoryPayment.TestSplitOffOverride = null;
+                StoryQuestRun vRun;
+                Map vMap;
+                ThingDef vDef;
+                int vCount;
+                string vReason;
+                bool validated = StoryStage_Deliver.ValidateColonyHandIn(unkLetter, out vRun, out vMap, out vDef, out vCount, out vReason);
+                ClickFirstEnabledOption(unkLetter);
+                int steelAfter = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
+                story.DirectorTick();
 
-            int steelAfterAtomicFail = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
-            bool atomicRolledBack = clickedAtomic && steelBeforeAtomic == 60 && steelAfterAtomicFail == 60 &&
-                                    GetVar(atomicRun, "delivered") != "true" &&
-                                    atomicLetter != null && atomicLetter.IsInLetterStack;
-            AddCheck("P1_DeliverAtomicRollback_SecondStackFail", atomicRolledBack,
-                "steel=60->60, delivered!=true, letter stays",
-                string.Format("clicked={0}, steel={1}->{2}, delivered={3}",
-                    clickedAtomic, steelBeforeAtomic, steelAfterAtomicFail, GetVar(atomicRun, "delivered")));
+                bool refusedAndTimedOut = !validated && vReason == "deadline_missing_or_passed" &&
+                                          steelAfter == 40 && HasOutcome(unkRun, "timeout");
+                AddCheck("R2_Deliver_UnknownDeadlineAlwaysRefuses", refusedAndTimedOut,
+                    "validated=false(deadline_missing_or_passed), steel=40, timeout",
+                    string.Format("val={0}({1}), steel={2}, hist={3}",
+                        validated, vReason ?? "null", steelAfter, string.Join(",", unkRun.history.ToArray())));
+            }
+            else
+            {
+                AddCheck("R2_Deliver_UnknownDeadlineAlwaysRefuses", false, "run & letter created", "missing");
+            }
 
-            // ---------------- 12. DELIVER giverSettlement: PASSING CARAVAN IGNORED, ARRIVED CARAVAN DEDUCTED ----------------
+            // ---------------- 13. DELIVER: IMMUTABLE CONTRACT IGNORES TAMPERED LETTER FIELDS ----------------
+            ClearStockpileResources(map, ThingDefOf.Steel);
+            PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 50, 0);
+            story.SetFlag("probe.e3.deliverImmutable", "true");
+            story.DirectorTick();
+            StoryQuestRun immRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverImmutableContract);
+            ChoiceLetter_StoryDeliver immLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverImmutableContract);
+            if (immRun != null && immLetter != null)
+            {
+                // Tamper with letter fields (1 WoodLog instead of 30 Steel)
+                immLetter.requiredCount = 1;
+                immLetter.thingDefName = ThingDefOf.WoodLog.defName;
+                immLetter.deliverMapId = 999999;
+
+                bool clicked = ClickFirstEnabledOption(immLetter);
+                int steelAfter = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
+                story.DirectorTick();
+
+                bool enforcedContract = clicked && steelAfter == 20 && HasOutcome(immRun, "success");
+                AddCheck("R2_Deliver_ImmutableContractIgnoresLetterTamper", enforcedContract,
+                    "deducted 30 Steel (50->20), outcome=success",
+                    string.Format("clicked={0}, steelAfter={1}, hist={2}", clicked, steelAfter, string.Join(",", immRun.history.ToArray())));
+            }
+            else
+            {
+                AddCheck("R2_Deliver_ImmutableContractIgnoresLetterTamper", false, "run & letter created", "missing");
+            }
+
+            // ---------------- 14. DELIVER: REMOVED stageKey REFUSES (NO STALE INDEX FALLBACK) ----------------
+            ClearStockpileResources(map, ThingDefOf.Steel);
+            PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 50, 0);
+            StoryQuestDef keyRemDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QDeliverStageKeyRemoved);
+            StoryStage origDeliverStage = keyRemDef != null && keyRemDef.stages.Count > 0 ? keyRemDef.stages[0] : null;
+            story.SetFlag("probe.e3.deliverKeyRemoved", "true");
+            story.DirectorTick();
+            StoryQuestRun keyRemRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverStageKeyRemoved);
+            ChoiceLetter_StoryDeliver keyRemLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverStageKeyRemoved);
+            if (keyRemDef != null && origDeliverStage != null && keyRemRun != null && keyRemLetter != null)
+            {
+                StoryStage_Deliver replacement = new StoryStage_Deliver();
+                replacement.key = "different_stage_key";
+                replacement.thing = ThingDefOf.Steel;
+                replacement.count = 10;
+                replacement.to = StoryDeliverTarget.colony;
+
+                bool refusedOnRemovedKey = false;
+                string valReason = null;
+                int steelAfterClick = -1;
+                try
+                {
+                    // Replace index 0 with a DIFFERENT stageKey (run.stage is still 0, but "deliver" is gone!)
+                    keyRemDef.stages[0] = replacement;
+                    StoryQuestRun vRun;
+                    Map vMap;
+                    ThingDef vDef;
+                    int vCount;
+                    bool valid = StoryStage_Deliver.ValidateColonyHandIn(keyRemLetter, out vRun, out vMap, out vDef, out vCount, out valReason);
+                    ClickFirstEnabledOption(keyRemLetter);
+                    steelAfterClick = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
+                    refusedOnRemovedKey = !valid && valReason == "stage_key_removed" && steelAfterClick == 50 && GetVar(keyRemRun, "delivered") != "true";
+                }
+                finally
+                {
+                    keyRemDef.stages[0] = origDeliverStage;
+                    // End the test quest cleanly
+                    if (keyRemLetter.IsInLetterStack) Find.LetterStack.RemoveLetter(keyRemLetter);
+                    int dl = ParseInt(keyRemRun, "deadlineTick", Find.TickManager.TicksGame);
+                    Find.TickManager.DebugSetTicksGame(dl + 10);
+                    story.DirectorTick();
+                }
+
+                AddCheck("R2_Deliver_RemovedStageKeyRefusesWithoutIndexFallback", refusedOnRemovedKey,
+                    "valid=false(stage_key_removed), steel=50",
+                    string.Format("refused={0}, reason={1}, steel={2}", refusedOnRemovedKey, valReason ?? "null", steelAfterClick));
+            }
+            else
+            {
+                AddCheck("R2_Deliver_RemovedStageKeyRefusesWithoutIndexFallback", false, "def/run/letter exist", "missing");
+            }
+
+            // ---------------- 15. DELIVER: ATOMIC ROLLBACK ON SECOND STACK FAILURE (TestMode) ----------------
+            if (TestMode.Enabled)
+            {
+                ClearStockpileResources(map, ThingDefOf.Steel);
+                PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 30, 0);
+                PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 30, 1);
+                int steelBeforeAtomic = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
+
+                story.SetFlag("probe.e3.deliverAtomic", "true");
+                story.DirectorTick();
+                StoryQuestRun atomicRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverSecondStackFail);
+                ChoiceLetter_StoryDeliver atomicLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverSecondStackFail);
+
+                StoryPayment.TestSplitOffOverride = delegate(Thing src, int count, int stepIndex)
+                {
+                    if (stepIndex == 1) return null;
+                    return src.SplitOff(count);
+                };
+
+                bool clickedAtomic = atomicLetter != null && ClickFirstEnabledOption(atomicLetter);
+                StoryPayment.TestSplitOffOverride = null;
+
+                int steelAfterAtomicFail = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
+                bool atomicRolledBack = clickedAtomic && steelBeforeAtomic == 60 && steelAfterAtomicFail == 60 &&
+                                        GetVar(atomicRun, "delivered") != "true" &&
+                                        atomicLetter != null && atomicLetter.IsInLetterStack;
+                AddCheck("P1_DeliverAtomicRollback_SecondStackFail", atomicRolledBack,
+                    "steel=60->60, delivered!=true, letter stays",
+                    string.Format("clicked={0}, steel={1}->{2}, delivered={3}",
+                        clickedAtomic, steelBeforeAtomic, steelAfterAtomicFail, GetVar(atomicRun, "delivered")));
+
+                // Also test commit-phase Destroy exception safety (onPaymentSecured already recorded delivered=true)
+                ClearStockpileResources(map, ThingDefOf.Steel);
+                PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 40, 0);
+                story.SetFlag("probe.e3.deliverCommitEx", "true");
+                story.DirectorTick();
+                StoryQuestRun commitRun = story.RunFor(StoryHotelProbeBootstrap.QDeliverCommitDestroyEx);
+                ChoiceLetter_StoryDeliver commitLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QDeliverCommitDestroyEx);
+
+                StoryPayment.TestBeforeDestroyOverride = delegate(Thing t, int idx)
+                {
+                    throw new InvalidOperationException("Simulated Destroy exception after onPaymentSecured");
+                };
+                bool clickedCommit = commitLetter != null && ClickFirstEnabledOption(commitLetter);
+                StoryPayment.TestBeforeDestroyOverride = null;
+                story.DirectorTick();
+
+                bool commitSafe = clickedCommit && commitRun != null && HasOutcome(commitRun, "success") &&
+                                  StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel) == 20;
+                AddCheck("R2_Deliver_CommitDestroyExceptionKeepsRecordedPayment", commitSafe,
+                    "outcome=success, remaining steel=20",
+                    string.Format("clicked={0}, steel={1}, hist={2}",
+                        clickedCommit, StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel),
+                        commitRun != null ? string.Join(",", commitRun.history.ToArray()) : "null"));
+            }
+
+            // ---------------- 16. DELIVER giverSettlement: PASSING IGNORED, ARRIVAL ACTION DEDUCTED ----------------
             Settlement targetSettlement = FindAnyNonPlayerSettlement();
             StoryQuestDef carDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryHotelProbeBootstrap.QDeliverCaravanSettlement);
             if (targetSettlement != null && targetSettlement.Faction != null && carDef != null)
@@ -578,13 +896,12 @@ namespace TurboMegaMod
 
                 if (exactSettlement != null)
                 {
-                    Pawn carrier = SpawnColonist(map);
+                    Pawn carrier = SpawnCleanColonist(map);
                     Thing cargo = ThingMaker.MakeThing(ThingDefOf.Steel);
                     cargo.stackCount = 40;
                     carrier.inventory.innerContainer.TryAdd(cargo);
                     carrier.DeSpawn(DestroyMode.Vanish);
 
-                    // Spawn caravan ON the exact settlement tile WITHOUT arrival action (simulates passing through!)
                     Caravan car = CaravanMaker.MakeCaravan(new List<Pawn> { carrier }, Faction.OfPlayer, exactSettlement.Tile, true); // CHECK API
                     story.DirectorTick();
                     story.DirectorTick();
@@ -593,7 +910,6 @@ namespace TurboMegaMod
                     bool passingNotDeducted = cargoAfterPassing == 40 && carRun.status == StoryQuestStatus.Active &&
                                               GetVar(carRun, "delivered") != "true";
 
-                    // Now invoke explicit CaravanArrivalAction_StoryDeliver.Arrived(car)
                     CaravanArrivalAction_StoryDeliver action = new CaravanArrivalAction_StoryDeliver(
                         exactSettlement, carRun.quest, carRun.stageKey, carRun.gen);
                     bool stillValid = action.StillValid(car, exactSettlement.Tile);
@@ -609,22 +925,7 @@ namespace TurboMegaMod
                         string.Format("passingOk={0}(cargo={1}), valid={2}, afterCargo={3}, hist={4}",
                             passingNotDeducted, cargoAfterPassing, stillValid, cargoAfterArrival,
                             string.Join(",", carRun.history.ToArray())));
-                    if (car != null)
-                    {
-                        car.RemoveAllPawns();
-                        car.Destroy();
-                    }
-                    if (carrier != null)
-                    {
-                        if (Find.WorldPawns != null && Find.WorldPawns.Contains(carrier))
-                        {
-                            Find.WorldPawns.RemoveAndDiscardPawnViaGC(carrier);
-                        }
-                        if (!carrier.Destroyed)
-                        {
-                            carrier.Destroy(DestroyMode.Vanish);
-                        }
-                    }
+                    DestroyTestCaravanAndPawns(car);
                 }
                 else
                 {
@@ -636,8 +937,7 @@ namespace TurboMegaMod
                 AddCheck("P2_CaravanDeliver_PassingIgnoredArrivedDeducted", false, "non-player settlement exists", "missing");
             }
 
-            // ---------------- 13. PREPARE SAVE FOR RELOAD: ACTIVE VISIT + PAID DELIVER ----------------
-            // 13A. Active HotelVisit with registered free hero
+            // ---------------- 17. PREPARE SAVE FOR RELOAD: ACTIVE VISIT + PAID DELIVER ----------------
             story.SetFlag("probe.e3.reloadVisit", "true");
             story.DirectorTick();
             StoryQuestRun reloadVisitRun = story.RunFor(StoryHotelProbeBootstrap.QReloadActiveVisit);
@@ -648,27 +948,25 @@ namespace TurboMegaMod
                 string.Format("arrived={0}, lordId={1}, heroIncluded={2}",
                     GetVar(reloadVisitRun, "arrived"), GetVar(reloadVisitRun, "visitLordId"), GetVar(reloadVisitRun, "heroIncluded")));
 
-            // 13B. Paid Deliver saved BEFORE DirectorTick finishes the stage (tests no double deduction after reload)
-            ClearStockpileResources(map, stockpile, ThingDefOf.Steel);
+            ClearStockpileResources(map, ThingDefOf.Steel);
             PlaceInStockpile(map, stockpile, ThingDefOf.Steel, 100, 0);
             story.SetFlag("probe.e3.reloadPaid", "true");
             story.DirectorTick();
             StoryQuestRun reloadPaidRun = story.RunFor(StoryHotelProbeBootstrap.QReloadPaidDeliver);
             ChoiceLetter_StoryDeliver reloadPaidLetter = FindDeliverLetter(StoryHotelProbeBootstrap.QReloadPaidDeliver);
 
-            // Click Deliver (deducts 50, leaving 50, sets delivered=true) and DO NOT call DirectorTick before SaveGame!
-            bool paidBeforeSave = reloadPaidLetter != null && ClickFirstDeliverOption(reloadPaidLetter);
+            // Click Deliver (deducts 50 -> leaves 50, sets delivered=true) BEFORE DirectorTick and save!
+            bool paidBeforeSave = reloadPaidLetter != null && ClickFirstEnabledOption(reloadPaidLetter);
             int steelLeftAtSave = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
             bool paidSavedReady = paidBeforeSave && steelLeftAtSave == 50 && GetVar(reloadPaidRun, "delivered") == "true";
             AddCheck("ReloadPrep_PaidDeliverSavedBeforeTransition", paidSavedReady, "paid=true, steelLeft=50, delivered=true",
                 string.Format("paid={0}, steel={1}, delivered={2}", paidBeforeSave, steelLeftAtSave, GetVar(reloadPaidRun, "delivered")));
 
-            CleanDanglingRelations();
             GameDataSaveLoader.SaveGame(StoryHotelProbeBootstrap.SaveName); // CHECK API
         }
 
         // =====================================================================
-        // RELOAD PROBE: VERIFIES LORD/HERO IDENTITY & NO DOUBLE DEDUCTION
+        // RELOAD PROBE
         // =====================================================================
 
         private void RunReloadProbe()
@@ -677,7 +975,7 @@ namespace TurboMegaMod
             AddCheck("Reload_SparkStoryExists", story != null, "non-null", story != null ? "ok" : "null");
             if (story == null) return;
 
-            // ---------------- 1. ACTIVE HOTEL VISIT AFTER RELOAD ----------------
+            // ---------------- 1. ACTIVE HOTEL VISIT AFTER RELOAD -> PEACEFUL EXIT ONCE ----------------
             StoryQuestRun visitRun = story.RunFor(StoryHotelProbeBootstrap.QReloadActiveVisit);
             if (visitRun != null && visitRun.status == StoryQuestStatus.Active)
             {
@@ -691,7 +989,6 @@ namespace TurboMegaMod
                 bool lordRestored = restoredLord != null && restoredLord.ownedPawns != null &&
                                     restoredLord.ownedPawns.Count == savedGuestIds.Count;
 
-                // Verify hero is NOT duplicated anywhere on the map
                 int heroMatchesOnMap = 0;
                 if (!heroThingId.NullOrEmpty())
                 {
@@ -703,20 +1000,26 @@ namespace TurboMegaMod
                 }
                 bool heroNoDuplicate = heroThingId.NullOrEmpty() || heroMatchesOnMap == 1;
 
-                AddCheck("Reload_ActiveVisitLordAndHeroIntact",
-                    mapMatches && lordRestored && heroNoDuplicate,
-                    "mapMatches, lord & guest count match, hero count==1",
-                    string.Format("map={0}, lord={1}({2}/{3}), heroCount={4}",
+                // Complete the stay peacefully via real Pawn.ExitMap and verify single trigger
+                ExitGuestsViaRealExitMap(map, savedGuestIds);
+                story.DirectorTick();
+                story.DirectorTick();
+                bool completedOnce = CountOutcome(visitRun, "success") == 1;
+
+                AddCheck("Reload_ActiveVisitLordHeroAndPeacefulExit",
+                    mapMatches && lordRestored && heroNoDuplicate && completedOnce,
+                    "mapMatches, lord & guest count match, heroCount<=1, successCount=1",
+                    string.Format("map={0}, lord={1}({2}/{3}), heroCount={4}, succCount={5}",
                         mapMatches, restoredLord != null,
                         restoredLord != null && restoredLord.ownedPawns != null ? restoredLord.ownedPawns.Count : -1,
-                        savedGuestIds.Count, heroMatchesOnMap));
+                        savedGuestIds.Count, heroMatchesOnMap, CountOutcome(visitRun, "success")));
             }
             else
             {
-                AddCheck("Reload_ActiveVisitLordAndHeroIntact", false, "active visit restored", "missing");
+                AddCheck("Reload_ActiveVisitLordHeroAndPeacefulExit", false, "active visit restored", "missing");
             }
 
-            // ---------------- 2. PAID DELIVER COMPLETES WITHOUT DOUBLE DEDUCTION ----------------
+            // ---------------- 2. PAID DELIVER COMPLETES ONCE WITHOUT DOUBLE DEDUCTION ----------------
             StoryQuestRun paidRun = story.RunFor(StoryHotelProbeBootstrap.QReloadPaidDeliver);
             int steelBeforeTick = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
             story.DirectorTick();
@@ -839,7 +1142,7 @@ namespace TurboMegaMod
             return zone;
         }
 
-        private static void ClearStockpileResources(Map targetMap, Zone_Stockpile zone, ThingDef def)
+        private static void ClearStockpileResources(Map targetMap, ThingDef def)
         {
             if (targetMap == null || def == null) return;
             List<Thing> snapshot = new List<Thing>(targetMap.listerThings.ThingsOfDef(def));
@@ -884,42 +1187,54 @@ namespace TurboMegaMod
             return null;
         }
 
-        private static bool ClickFirstDeliverOption(ChoiceLetter_StoryDeliver letter)
+        private static bool ClickFirstEnabledOption(ChoiceLetter_StoryDeliver letter)
         {
             if (letter == null) return false;
-            foreach (DiaOption opt in letter.Choices)
-            {
-                if (opt != null && opt.action != null && !opt.disabled)
-                {
-                    opt.action();
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private static void ClickAllEnabledOptions(ChoiceLetter_StoryDeliver letter)
-        {
-            if (letter == null) return;
             List<DiaOption> opts = new List<DiaOption>(letter.Choices);
             for (int i = 0; i < opts.Count; i++)
             {
                 if (opts[i] != null && opts[i].action != null && !opts[i].disabled)
                 {
                     opts[i].action();
-                    break;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static void ExitGuestsViaRealExitMap(Map targetMap, List<int> guestIds)
+        {
+            if (targetMap == null || guestIds == null || guestIds.Count == 0) return;
+            HashSet<int> set = new HashSet<int>(guestIds);
+            List<Pawn> snapshot = new List<Pawn>(targetMap.mapPawns.AllPawnsSpawned);
+            for (int i = 0; i < snapshot.Count; i++)
+            {
+                Pawn p = snapshot[i];
+                if (p != null && set.Contains(p.thingIDNumber) && p.Spawned)
+                {
+                    p.ExitMap(false, Rot4.South); // CHECK API
                 }
             }
         }
 
-        private static void ForceAbortRunAndCleanupGuests(Map targetMap, StoryQuestRun run)
+        private void CleanupActiveHotelRun(SparkStory story, StoryQuestDef def, StoryQuestRun run)
         {
             if (run == null) return;
             List<int> ids = ParseIntList(GetVar(run, "guestIds"));
-            run.status = StoryQuestStatus.Disabled;
-            run.stage = -1;
-            StoryRelationRestorer.CheckOrphansIfPresent();
-            CleanupPawnsByIds(targetMap, ids);
+            if (def != null && def.stages != null && def.stages.Count > 0)
+            {
+                List<StoryStage> backup = new List<StoryStage>(def.stages);
+                try
+                {
+                    def.stages.Clear();
+                    story.DirectorTick();
+                }
+                finally
+                {
+                    def.stages.AddRange(backup);
+                }
+            }
+            CleanupPawnsByIds(map, ids);
         }
 
         private static void CleanupPawnsByIds(Map targetMap, List<int> ids)
@@ -934,6 +1249,21 @@ namespace TurboMegaMod
                 {
                     if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
                     if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
+                }
+            }
+        }
+
+        private static void KillPawnsByIds(Map targetMap, List<int> ids)
+        {
+            if (targetMap == null || ids == null || ids.Count == 0) return;
+            HashSet<int> set = new HashSet<int>(ids);
+            List<Pawn> snapshot = new List<Pawn>(targetMap.mapPawns.AllPawnsSpawned);
+            for (int i = 0; i < snapshot.Count; i++)
+            {
+                Pawn p = snapshot[i];
+                if (p != null && !p.Dead && set.Contains(p.thingIDNumber))
+                {
+                    p.Kill(null);
                 }
             }
         }
@@ -956,45 +1286,46 @@ namespace TurboMegaMod
             if (p != null && !p.Dead) p.Kill(null);
         }
 
-        private static Pawn SpawnColonist(Map targetMap)
+        private static Pawn SpawnCleanColonist(Map targetMap)
         {
-            PawnGenerationRequest req = new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer);
-            req.CanGeneratePawnRelations = false;
+            PawnGenerationRequest req = new PawnGenerationRequest(
+                PawnKindDefOf.Colonist,
+                Faction.OfPlayer,
+                PawnGenerationContext.NonPlayer,
+                canGeneratePawnRelations: false,
+                allowAddictions: false); // CHECK API
             Pawn p = PawnGenerator.GeneratePawn(req);
-            if (p != null && p.relations != null) p.relations.ClearAllRelations();
             GenSpawn.Spawn(p, FindStandable(targetMap), targetMap, WipeMode.Vanish);
             return p;
         }
 
-        private static void CleanDanglingRelations()
+        private static Pawn SpawnCleanNpc(Map targetMap, Faction fac)
         {
-            HashSet<Pawn> known = new HashSet<Pawn>(Find.WorldPawns.AllPawnsAliveOrDead);
-            if (Find.Maps != null)
+            PawnKindDef kind = fac != null ? (fac.RandomPawnKind() ?? PawnKindDefOf.SpaceRefugee) : PawnKindDefOf.SpaceRefugee;
+            PawnGenerationRequest req = new PawnGenerationRequest(
+                kind,
+                fac,
+                PawnGenerationContext.NonPlayer,
+                canGeneratePawnRelations: false,
+                allowAddictions: false); // CHECK API
+            Pawn p = PawnGenerator.GeneratePawn(req);
+            GenSpawn.Spawn(p, FindStandable(targetMap), targetMap, WipeMode.Vanish);
+            return p;
+        }
+
+        private static void DestroyTestCaravanAndPawns(Caravan car)
+        {
+            if (car == null) return;
+            List<Pawn> pawns = new List<Pawn>(car.PawnsListForReading);
+            car.RemoveAllPawns();
+            if (!car.Destroyed) car.Destroy();
+            for (int i = 0; i < pawns.Count; i++)
             {
-                for (int m = 0; m < Find.Maps.Count; m++)
-                {
-                    Map map = Find.Maps[m];
-                    if (map != null && map.mapPawns != null)
-                    {
-                        List<Pawn> all = map.mapPawns.AllPawns;
-                        for (int i = 0; i < all.Count; i++) known.Add(all[i]);
-                    }
-                }
-            }
-            List<Pawn> checkList = new List<Pawn>(known);
-            for (int i = 0; i < checkList.Count; i++)
-            {
-                Pawn p = checkList[i];
-                if (p == null || p.relations == null) continue;
-                List<DirectPawnRelation> rels = new List<DirectPawnRelation>(p.relations.DirectRelations);
-                for (int r = 0; r < rels.Count; r++)
-                {
-                    DirectPawnRelation rel = rels[r];
-                    if (rel.otherPawn == null || !known.Contains(rel.otherPawn))
-                    {
-                        p.relations.RemoveDirectRelation(rel);
-                    }
-                }
+                Pawn p = pawns[i];
+                if (p == null) continue;
+                if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
+                if (Find.WorldPawns != null && Find.WorldPawns.Contains(p)) Find.WorldPawns.RemovePawn(p);
+                if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
             }
         }
 
@@ -1020,6 +1351,20 @@ namespace TurboMegaMod
                 Faction f = all[i];
                 if (f != null && !f.IsPlayer && !f.defeated && !f.Hidden && f.HasGoodwill && f.def != null &&
                     !f.def.permanentEnemy && f.def.humanlikeFaction)
+                {
+                    return f;
+                }
+            }
+            return null;
+        }
+
+        private static Faction FindAnotherHostileFaction(Faction exclude)
+        {
+            List<Faction> all = Find.FactionManager.AllFactionsListForReading;
+            for (int i = 0; i < all.Count; i++)
+            {
+                Faction f = all[i];
+                if (f != null && f != exclude && !f.IsPlayer && !f.defeated && f.HostileTo(Faction.OfPlayer) && f.def != null && f.def.humanlikeFaction)
                 {
                     return f;
                 }
@@ -1151,9 +1496,8 @@ namespace TurboMegaMod
             m_checks.Add(item);
         }
 
-        private void WriteReport(string fileName)
+        private bool WriteReport(string fileName)
         {
-            // Honest evaluation: passed is true ONLY when 0 errors, >=1 check, and every check passed
             bool allPassed = m_errors.Count == 0 && m_checks.Count > 0;
             for (int i = 0; i < m_checks.Count; i++)
             {
@@ -1167,6 +1511,8 @@ namespace TurboMegaMod
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"passed\":");
             sb.Append(allPassed ? "true" : "false");
+            sb.Append(",\"testModeEnabled\":");
+            sb.Append(TestMode.Enabled ? "true" : "false");
             sb.Append(",\"checksCount\":");
             sb.Append(m_checks.Count);
             sb.Append(",\"checks\":[");
@@ -1196,6 +1542,24 @@ namespace TurboMegaMod
 
             string path = Path.Combine(GenFilePaths.SaveDataFolderPath, fileName);
             File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
+            return allPassed;
+        }
+
+        private void WriteUiReport(bool actualPassed)
+        {
+            try
+            {
+                string uiPath = Path.Combine(GenFilePaths.SaveDataFolderPath, "StoryHotelUiProbe.json");
+                string payload = string.Format(
+                    "{{\"passed\":{0},\"checksCount\":{1},\"errorsCount\":{2},\"visualLayoutInspected\":false}}",
+                    actualPassed ? "true" : "false",
+                    m_checks.Count,
+                    m_errors.Count);
+                File.WriteAllText(uiPath, payload, Encoding.UTF8);
+            }
+            catch
+            {
+            }
         }
 
         private static string EscapeJson(string s)
@@ -1209,3 +1573,4 @@ namespace TurboMegaMod
         }
     }
 }
+

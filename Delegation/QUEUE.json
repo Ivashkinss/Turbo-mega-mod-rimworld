@@ -1713,7 +1713,7 @@
     },
     {
       "id": "Round2Integration",
-      "state": "hold",
+      "state": "running",
       "assignee": "claude",
       "kind": "implement",
       "taskFile": "Delegation/Hydrogen/44-Neon-Round2-Core-FIX-PROMPT.md",
@@ -1721,6 +1721,19 @@
       "expectedOutputs": [],
       "createdUtc": "2026-11-20T14:00:00Z",
       "note": "Neon round 2 (prompts 44-47) for Codex rechecks of E2, E3, caravans; Claude stages, integrates, runs StoryStages/StoryHotel/OutpostCaravan/StoryEngine/Outposts on one DLL; Codex rechecks only the shared core (~2%)."
+    },
+    {
+      "id": "Round2CoreRecheck",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/Round2CoreRecheck/TASK.md",
+      "outputDir": "Tools/Build/CodexRound2CoreRecheck",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T23:35:00Z",
+      "note": "Read-only acceptance of the round-2 shared rollback core (restorer, payment, pawn transfer, test mode)."
     },
     {
       "id": "EquipmentSlots",

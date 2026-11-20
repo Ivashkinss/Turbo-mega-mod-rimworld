@@ -41,8 +41,8 @@ namespace TurboMegaMod
     /// <summary>
     /// Stores original faction goodwill &amp; relation kind before concurrent story raids (Hostile)
     /// or hotel visits (Neutral truce) altered relations. Restoration runs ONLY when the final
-    /// lease for that faction is released or orphaned (completion, failure, exception, disabled quest,
-    /// removed Def/stage, or save migration).
+    /// lease for that faction is released/aborted or orphaned, and the backup is removed ONLY
+    /// after symmetric restoration on both FactionRelations is verified.
     /// </summary>
     public sealed class StoryFactionBackup : IExposable
     {
@@ -52,6 +52,7 @@ namespace TurboMegaMod
         public bool origHasGoodwill;
         public int postForceGoodwill = -100;
         public bool restoreWanted;
+        public bool anyLeaseCompletedKeepHostile;
         public string activeMode = StoryHostilityLease.ModeHostile;
         public List<StoryHostilityLease> leases = new List<StoryHostilityLease>();
 
@@ -63,6 +64,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref origHasGoodwill, "origHasGoodwill", true);
             Scribe_Values.Look(ref postForceGoodwill, "postForceGoodwill", -100);
             Scribe_Values.Look(ref restoreWanted, "restoreWanted", false);
+            Scribe_Values.Look(ref anyLeaseCompletedKeepHostile, "anyLeaseCompletedKeepHostile", false);
             Scribe_Values.Look(ref activeMode, "activeMode", StoryHostilityLease.ModeHostile);
             Scribe_Collections.Look(ref leases, "leases", LookMode.Deep);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -95,7 +97,8 @@ namespace TurboMegaMod
 
     /// <summary>
     /// Tracks a registered hotel visit guest so Pawn.ExitMap can distinguish a genuine peaceful exit
-    /// from disappearance, container insertion, imprisonment, sentAway, or map deletion across reload.
+    /// (confirmed by actual despawn from the visit map) from disappearance, container insertion,
+    /// imprisonment, sentAway, or map deletion across reload.
     /// </summary>
     public sealed class StoryTrackedGuestRecord : IExposable
     {
@@ -126,17 +129,23 @@ namespace TurboMegaMod
     }
 
     /// <summary>
-    /// WorldComponent that guarantees:
-    /// 1) Temporary raid hostility AND temporary hotel-visit neutrality (truce) are rolled back properly
-    ///    (handling RimWorld's goodwill/kind hysteresis thresholds in both directions, permanentEnemy
-    ///    guards, concurrent raids/visits on the same faction, mid-stage goodwill deltas, exceptions,
-    ///    disabled quests, and removed Defs/stages).
-    /// 2) Retrieve quest items cannot merge into arbitrary stacks while active.
-    /// 3) Hotel visit guest departures via Pawn.ExitMap are tracked accurately across save/reload.
+    /// WorldComponent managing:
+    /// 1) Symmetric temporary raid hostility and hotel-visit truce (neutrality) leases with
+    ///    verified restoration (both NPC and player FactionRelations + vanilla notifications),
+    ///    retry on failed restoration, reference-counted overlapping visits/raids, and guaranteed
+    ///    rollback via AbortLease whenever a raid fails to spawn regardless of restoreRelations.
+    /// 2) Retrieve quest item anti-stack-merge protection.
+    /// 3) Confirmed hotel guest ExitMap tracking.
     /// </summary>
     public sealed class StoryRelationRestorer : WorldComponent
     {
         private const int CheckInterval = 250;
+
+        /// <summary>
+        /// Test-only hook (active ONLY when TestMode.Enabled) that simulates a blocked restoration
+        /// attempt to verify that StoryFactionBackup is retained and retried on subsequent audits.
+        /// </summary>
+        public static Func<Faction, bool> TestBlockRestoreOverride;
 
         private List<StoryFactionBackup> backups = new List<StoryFactionBackup>();
         private List<StoryProtectedItem> protectedItems = new List<StoryProtectedItem>();
@@ -166,29 +175,42 @@ namespace TurboMegaMod
             return string.Format("{0}|{1}|{2}", run.quest ?? string.Empty, run.stageKey ?? string.Empty, run.gen);
         }
 
+        public bool HasActiveTruceBackup(Faction fac)
+        {
+            if (fac == null) return false;
+            StoryFactionBackup b = FindBackup(fac.loadID);
+            return b != null && b.activeMode == StoryHostilityLease.ModeNeutral && b.leases != null && b.leases.Count > 0;
+        }
+
+        public bool HasPendingBackupForFaction(Faction fac)
+        {
+            if (fac == null) return false;
+            return FindBackup(fac.loadID) != null;
+        }
+
         // =====================================================================
-        // HOSTILITY LEASES (RAID API — PRESERVED FROM E2)
+        // HOSTILITY LEASES (COLONY RAID)
         // =====================================================================
 
         public bool AcquireHostilityLease(Faction fac, StoryQuestRun run, bool restoreRelations, out string leaseId)
         {
             leaseId = null;
-            if (fac == null || fac.IsPlayer || run == null) return false;
+            if (fac == null || fac.IsPlayer || fac.defeated || run == null) return false;
 
-            leaseId = MakeLeaseId(run);
-            StoryFactionBackup existing = FindBackup(fac.loadID);
+            StoryFactionBackup existing = ResolveOrRetryStaleBackup(fac.loadID);
 
             if (existing == null && fac.HostileTo(Faction.OfPlayer))
             {
                 return true;
             }
 
-            // Refuse conflicting concurrent override (e.g., active hotel truce on the same faction)
-            if (existing != null && existing.activeMode != StoryHostilityLease.ModeHostile)
+            // Refuse conflicting concurrent override (e.g. active hotel truce or unrecovered pending backup)
+            if (existing != null && (existing.activeMode != StoryHostilityLease.ModeHostile || existing.leases.Count == 0))
             {
-                leaseId = null;
                 return false;
             }
+
+            leaseId = MakeLeaseId(run);
 
             if (existing == null)
             {
@@ -198,6 +220,7 @@ namespace TurboMegaMod
                 existing.origKind = (int)fac.RelationKindWith(Faction.OfPlayer);
                 existing.origHasGoodwill = fac.HasGoodwill;
                 existing.restoreWanted = restoreRelations;
+                existing.anyLeaseCompletedKeepHostile = false;
                 existing.activeMode = StoryHostilityLease.ModeHostile;
                 backups.Add(existing);
 
@@ -205,8 +228,12 @@ namespace TurboMegaMod
 
                 if (!ForceFactionHostile(fac))
                 {
-                    backups.Remove(existing);
-                    RestoreFactionRelations(fac, existing);
+                    RemoveLease(existing, leaseId);
+                    existing.restoreWanted = true;
+                    if (FinalizeBackup(existing))
+                    {
+                        backups.Remove(existing);
+                    }
                     leaseId = null;
                     return false;
                 }
@@ -231,13 +258,9 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // TRUCE / TEMPORARY NEUTRALITY LEASES (HOTEL VISIT API — E3)
+        // TRUCE / TEMPORARY NEUTRALITY LEASES (HOTEL VISIT)
         // =====================================================================
 
-        /// <summary>
-        /// Checks whether a hostile faction can legally enter temporary neutrality without triggering
-        /// vanilla permanentEnemy or goodwill-faction SetRelationDirect errors.
-        /// </summary>
         public static bool CanFactionEnterTruce(Faction fac)
         {
             if (fac == null || fac.IsPlayer || fac.defeated) return false;
@@ -256,29 +279,32 @@ namespace TurboMegaMod
         }
 
         /// <summary>
-        /// Records original goodwill &amp; relation kind BEFORE mutating, moves a hostile faction to
-        /// temporary Neutrality (verifying !HostileTo(OfPlayer)), and supports overlapping visits
-        /// on the same faction (only the final lease restores hostility).
+        /// Safe to call unconditionally for every hotel visit faction:
+        /// - If the faction is naturally non-hostile and has NO active temporary truce backup,
+        ///   returns true with leaseId = null.
+        /// - If the faction is currently hostile OR ALREADY has an active temporary neutrality backup
+        ///   from an earlier overlapping visit, increments the lease list and returns a non-null leaseId.
+        ///   Hostility is restored ONLY when the final truce lease is released/aborted/orphaned.
         /// </summary>
         public bool AcquireTruceLease(Faction fac, StoryQuestRun run, out string leaseId)
         {
             leaseId = null;
             if (fac == null || fac.IsPlayer || fac.defeated || run == null) return false;
 
-            if (!CanFactionEnterTruce(fac))
-            {
-                return false;
-            }
-
-            StoryFactionBackup existing = FindBackup(fac.loadID);
+            StoryFactionBackup existing = ResolveOrRetryStaleBackup(fac.loadID);
 
             if (existing == null && !fac.HostileTo(Faction.OfPlayer))
             {
                 return true;
             }
 
-            // Refuse conflicting concurrent override (e.g., active colony raid lease on same faction)
-            if (existing != null && existing.activeMode != StoryHostilityLease.ModeNeutral)
+            // Refuse conflicting concurrent override (e.g. active colony raid lease or stuck backup)
+            if (existing != null && (existing.activeMode != StoryHostilityLease.ModeNeutral || existing.leases.Count == 0))
+            {
+                return false;
+            }
+
+            if (existing == null && !CanFactionEnterTruce(fac))
             {
                 return false;
             }
@@ -293,6 +319,7 @@ namespace TurboMegaMod
                 existing.origKind = (int)fac.RelationKindWith(Faction.OfPlayer);
                 existing.origHasGoodwill = fac.HasGoodwill;
                 existing.restoreWanted = true;
+                existing.anyLeaseCompletedKeepHostile = false;
                 existing.activeMode = StoryHostilityLease.ModeNeutral;
                 backups.Add(existing);
 
@@ -300,8 +327,12 @@ namespace TurboMegaMod
 
                 if (!ForceFactionNeutral(fac))
                 {
-                    backups.Remove(existing);
-                    RestoreFactionRelations(fac, existing);
+                    RemoveLease(existing, leaseId);
+                    existing.restoreWanted = true;
+                    if (FinalizeBackup(existing))
+                    {
+                        backups.Remove(existing);
+                    }
                     leaseId = null;
                     return false;
                 }
@@ -310,6 +341,8 @@ namespace TurboMegaMod
                 return true;
             }
 
+            // Second or subsequent overlapping visit on a temporarily-neutral faction:
+            // ALWAYS record a counted lease so the first visit cannot prematurely restore hostility.
             existing.restoreWanted = true;
             AddOrUpdateLease(existing, leaseId, run, true, StoryHostilityLease.ModeNeutral);
 
@@ -325,7 +358,26 @@ namespace TurboMegaMod
             return true;
         }
 
+        /// <summary>
+        /// Normal release when a raid or hotel visit finishes.
+        /// Respects each lease's restoreRelations flag; removes backup ONLY after verified restoration.
+        /// </summary>
         public void ReleaseLease(string leaseId)
+        {
+            ReleaseLeaseInternal(leaseId, false);
+        }
+
+        /// <summary>
+        /// Forced rollback release when a raid/visit failed to spawn or threw before starting.
+        /// ALWAYS restores forced hostility/truce when no other active lease remains and no prior
+        /// concurrent raid actually completed with restoreRelations=false.
+        /// </summary>
+        public void AbortLease(string leaseId)
+        {
+            ReleaseLeaseInternal(leaseId, true);
+        }
+
+        private void ReleaseLeaseInternal(string leaseId, bool abortedBeforeStart)
         {
             if (leaseId.NullOrEmpty() || backups == null) return;
 
@@ -338,13 +390,36 @@ namespace TurboMegaMod
                     continue;
                 }
 
-                if (RemoveLease(b, leaseId))
+                StoryHostilityLease removedLease;
+                if (!RemoveLease(b, leaseId, out removedLease)) continue;
+
+                if (abortedBeforeStart)
                 {
-                    if (b.leases.Count == 0)
+                    // Aborted raid/visit MUST roll back unless another raid actually completed keeping hostility
+                    if (!b.anyLeaseCompletedKeepHostile)
                     {
-                        FinalizeBackup(b);
+                        b.restoreWanted = true;
+                    }
+                }
+                else if (removedLease != null)
+                {
+                    if (removedLease.restoreRelations || removedLease.mode == StoryHostilityLease.ModeNeutral)
+                    {
+                        b.restoreWanted = true;
+                    }
+                    else
+                    {
+                        b.anyLeaseCompletedKeepHostile = true;
+                    }
+                }
+
+                if (b.leases.Count == 0)
+                {
+                    if (FinalizeBackup(b))
+                    {
                         backups.RemoveAt(i);
                     }
+                    // On failure, backup remains in backups and is retried on the next audit tick.
                 }
             }
         }
@@ -370,14 +445,20 @@ namespace TurboMegaMod
                         StoryHostilityLease lease = b.leases[l];
                         if (!IsLeaseStillActive(story, lease))
                         {
+                            if (lease != null && (lease.restoreRelations || lease.mode == StoryHostilityLease.ModeNeutral))
+                            {
+                                b.restoreWanted = true;
+                            }
                             b.leases.RemoveAt(l);
                         }
                     }
 
                     if (b.leases.Count == 0)
                     {
-                        FinalizeBackup(b);
-                        backups.RemoveAt(i);
+                        if (FinalizeBackup(b))
+                        {
+                            backups.RemoveAt(i);
+                        }
                     }
                 }
             }
@@ -411,6 +492,20 @@ namespace TurboMegaMod
                 }
                 if (changed) RebuildTrackedGuestCache();
             }
+        }
+
+        private StoryFactionBackup ResolveOrRetryStaleBackup(int factionId)
+        {
+            StoryFactionBackup b = FindBackup(factionId);
+            if (b != null && (b.leases == null || b.leases.Count == 0))
+            {
+                if (FinalizeBackup(b))
+                {
+                    backups.Remove(b);
+                    return null;
+                }
+            }
+            return b;
         }
 
         private static bool IsLeaseStillActive(SparkStory story, StoryHostilityLease lease)
@@ -457,60 +552,80 @@ namespace TurboMegaMod
             return def.stages[run.stage] is StoryStage_HotelVisit;
         }
 
-        private void FinalizeBackup(StoryFactionBackup b)
+        /// <summary>
+        /// Attempts to finalize a backup whose lease count reached 0.
+        /// Returns true ONLY if no restoration is needed, faction no longer exists,
+        /// or symmetric restoration was confirmed on BOTH FactionRelations.
+        /// </summary>
+        private bool FinalizeBackup(StoryFactionBackup b)
         {
-            if (b == null || !b.restoreWanted) return;
+            if (b == null) return true;
+            if (!b.restoreWanted) return true;
+
             Faction fac = FindFactionById(b.factionId);
-            if (fac == null || fac.defeated) return;
-            RestoreFactionRelations(fac, b);
+            if (fac == null || fac.defeated) return true;
+
+            if (TestMode.Enabled && TestBlockRestoreOverride != null && TestBlockRestoreOverride(fac))
+            {
+                return false;
+            }
+
+            return RestoreFactionRelations(fac, b);
         }
+
+        // =====================================================================
+        // SYMMETRIC RELATION MUTATION, NOTIFICATIONS & VERIFICATION
+        // =====================================================================
 
         private static bool ForceFactionHostile(Faction fac)
         {
-            if (fac == null || fac.IsPlayer) return false;
-            if (fac.HostileTo(Faction.OfPlayer)) return true;
+            Faction player = Faction.OfPlayer;
+            if (fac == null || player == null || fac.IsPlayer) return false;
+            if (fac.HostileTo(player) && player.HostileTo(fac)) return true;
 
             if (fac.HasGoodwill)
             {
                 int drop = -100 - fac.PlayerGoodwill;
-                if (drop < 0 && fac.CanChangeGoodwillFor(Faction.OfPlayer, drop)) // CHECK API
+                if (drop < 0 && fac.CanChangeGoodwillFor(player, drop)) // CHECK API
                 {
-                    fac.TryAffectGoodwillWith(Faction.OfPlayer, drop, false, false, null, null); // CHECK API
+                    fac.TryAffectGoodwillWith(player, drop, false, false, null, null); // CHECK API
                 }
             }
             else
             {
-                fac.SetRelationDirect(Faction.OfPlayer, FactionRelationKind.Hostile, false, null, GlobalTargetInfo.Invalid); // CHECK API
+                fac.SetRelationDirect(player, FactionRelationKind.Hostile, false, null, GlobalTargetInfo.Invalid); // CHECK API
             }
 
-            return fac.HostileTo(Faction.OfPlayer);
+            return fac.HostileTo(player) && player.HostileTo(fac);
         }
 
         private static bool ForceFactionNeutral(Faction fac)
         {
-            if (fac == null || fac.IsPlayer || fac.defeated) return false;
-            if (!fac.HostileTo(Faction.OfPlayer)) return true;
+            Faction player = Faction.OfPlayer;
+            if (fac == null || player == null || fac.IsPlayer || fac.defeated) return false;
+            if (!fac.HostileTo(player) && !player.HostileTo(fac)) return true;
             if (fac.def != null && fac.def.permanentEnemy) return false;
 
             if (fac.HasGoodwill)
             {
                 int lift = 0 - fac.PlayerGoodwill;
-                if (lift > 0 && fac.CanChangeGoodwillFor(Faction.OfPlayer, lift)) // CHECK API
+                if (lift > 0 && fac.CanChangeGoodwillFor(player, lift)) // CHECK API
                 {
-                    fac.TryAffectGoodwillWith(Faction.OfPlayer, lift, false, false, null, null); // CHECK API
+                    fac.TryAffectGoodwillWith(player, lift, false, false, null, null); // CHECK API
                 }
             }
             else
             {
-                fac.SetRelationDirect(Faction.OfPlayer, FactionRelationKind.Neutral, false, null, GlobalTargetInfo.Invalid); // CHECK API
+                fac.SetRelationDirect(player, FactionRelationKind.Neutral, false, null, GlobalTargetInfo.Invalid); // CHECK API
             }
 
-            return !fac.HostileTo(Faction.OfPlayer);
+            return !fac.HostileTo(player) && !player.HostileTo(fac);
         }
 
-        private static void RestoreFactionRelations(Faction fac, StoryFactionBackup b)
+        private static bool RestoreFactionRelations(Faction fac, StoryFactionBackup b)
         {
-            if (fac == null || b == null) return;
+            Faction player = Faction.OfPlayer;
+            if (fac == null || player == null || b == null) return false;
 
             FactionRelationKind origKind = (FactionRelationKind)b.origKind;
 
@@ -530,53 +645,122 @@ namespace TurboMegaMod
                 targetGoodwill = -1;
             }
 
-            if (fac.HasGoodwill)
+            try
             {
-                // Direction A: Hostile -> Neutral/Ally: cross >= 0 (or >= 75) first
-                if (fac.HostileTo(Faction.OfPlayer) && origKind != FactionRelationKind.Hostile)
+                if (fac.HasGoodwill)
                 {
-                    int liftTarget = origKind == FactionRelationKind.Ally ? Mathf.Max(75, targetGoodwill) : Mathf.Max(0, targetGoodwill);
-                    int liftDelta = liftTarget - fac.PlayerGoodwill;
-                    if (liftDelta > 0)
+                    // Step 1: Try vanilla TryAffectGoodwillWith with hysteresis threshold crossing
+                    if (fac.HostileTo(player) && origKind != FactionRelationKind.Hostile)
                     {
-                        fac.TryAffectGoodwillWith(Faction.OfPlayer, liftDelta, false, false, null, null); // CHECK API
+                        int liftTarget = origKind == FactionRelationKind.Ally ? Mathf.Max(75, targetGoodwill) : Mathf.Max(0, targetGoodwill);
+                        int liftDelta = liftTarget - fac.PlayerGoodwill;
+                        if (liftDelta > 0)
+                        {
+                            fac.TryAffectGoodwillWith(player, liftDelta, false, false, null, null); // CHECK API
+                        }
                     }
-                }
-                // Direction B: Neutral/Ally -> Hostile (ending truce): cross <= -75 first
-                else if (!fac.HostileTo(Faction.OfPlayer) && origKind == FactionRelationKind.Hostile)
-                {
-                    int dropTarget = Mathf.Min(-75, targetGoodwill);
-                    int dropDelta = dropTarget - fac.PlayerGoodwill;
-                    if (dropDelta < 0)
+                    else if (!fac.HostileTo(player) && origKind == FactionRelationKind.Hostile)
                     {
-                        fac.TryAffectGoodwillWith(Faction.OfPlayer, dropDelta, false, false, null, null); // CHECK API
+                        int dropTarget = Mathf.Min(-75, targetGoodwill);
+                        int dropDelta = dropTarget - fac.PlayerGoodwill;
+                        if (dropDelta < 0)
+                        {
+                            fac.TryAffectGoodwillWith(player, dropDelta, false, false, null, null); // CHECK API
+                        }
                     }
-                }
 
-                int finalDelta = targetGoodwill - fac.PlayerGoodwill;
-                if (finalDelta != 0)
-                {
-                    fac.TryAffectGoodwillWith(Faction.OfPlayer, finalDelta, false, false, null, null); // CHECK API
-                }
-
-                // Direct FactionRelation fallback (never calls SetRelationDirect on goodwill factions)
-                if (fac.PlayerGoodwill != targetGoodwill || fac.RelationKindWith(Faction.OfPlayer) != origKind)
-                {
-                    FactionRelation rel = fac.RelationWith(Faction.OfPlayer, true); // CHECK API
-                    if (rel != null)
+                    int finalDelta = targetGoodwill - fac.PlayerGoodwill;
+                    if (finalDelta != 0)
                     {
-                        rel.baseGoodwill = targetGoodwill; // CHECK API
-                        rel.kind = origKind; // CHECK API
+                        fac.TryAffectGoodwillWith(player, finalDelta, false, false, null, null); // CHECK API
                     }
+
+                    // Step 2: Symmetric fallback matching vanilla Faction.TryAffectGoodwillWith
+                    // (synchronizes BOTH NPC and player FactionRelations + fires vanilla notifications)
+                    if (!VerifyRestored(fac, player, origKind, targetGoodwill, true))
+                    {
+                        FactionRelationKind prevNpcKind = fac.RelationKindWith(player);
+                        FactionRelationKind prevPlayerKind = player.RelationKindWith(fac);
+
+                        FactionRelation relNpc = fac.RelationWith(player, true); // CHECK API
+                        FactionRelation relPlayer = player.RelationWith(fac, true); // CHECK API
+                        if (relNpc == null || relPlayer == null) return false;
+
+                        relNpc.baseGoodwill = targetGoodwill; // CHECK API
+                        relNpc.kind = origKind; // CHECK API
+                        relPlayer.baseGoodwill = targetGoodwill; // CHECK API
+                        relPlayer.kind = origKind; // CHECK API
+
+                        if (prevNpcKind != origKind || prevPlayerKind != origKind)
+                        {
+                            NotifyRelationKindChangedSymmetrically(fac, player, prevNpcKind, prevPlayerKind);
+                        }
+                    }
+
+                    return VerifyRestored(fac, player, origKind, targetGoodwill, true);
+                }
+                else
+                {
+                    if (!VerifyRestored(fac, player, origKind, 0, false))
+                    {
+                        FactionRelationKind prevNpcKind = fac.RelationKindWith(player);
+                        FactionRelationKind prevPlayerKind = player.RelationKindWith(fac);
+
+                        fac.SetRelationDirect(player, origKind, false, null, GlobalTargetInfo.Invalid); // CHECK API
+
+                        if (!VerifyRestored(fac, player, origKind, 0, false))
+                        {
+                            FactionRelation relNpc = fac.RelationWith(player, true); // CHECK API
+                            FactionRelation relPlayer = player.RelationWith(fac, true); // CHECK API
+                            if (relNpc == null || relPlayer == null) return false;
+
+                            relNpc.kind = origKind; // CHECK API
+                            relPlayer.kind = origKind; // CHECK API
+
+                            if (prevNpcKind != origKind || prevPlayerKind != origKind)
+                            {
+                                NotifyRelationKindChangedSymmetrically(fac, player, prevNpcKind, prevPlayerKind);
+                            }
+                        }
+                    }
+
+                    return VerifyRestored(fac, player, origKind, 0, false);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (fac.RelationKindWith(Faction.OfPlayer) != origKind)
-                {
-                    fac.SetRelationDirect(Faction.OfPlayer, origKind, false, null, GlobalTargetInfo.Invalid); // CHECK API
-                }
+                TestMode.ReportException("[TMM] StoryRelationRestorer: failed restoring relations for " + fac.Name + ": ", ex);
+                return false;
             }
+        }
+
+        private static void NotifyRelationKindChangedSymmetrically(Faction fac, Faction player, FactionRelationKind prevNpcKind, FactionRelationKind prevPlayerKind)
+        {
+            bool sentLetter;
+            // Mirrors vanilla TryAffectGoodwillWith / SetRelationDirect notifications on both factions
+            // (updates AttackTargetsCache, LordManager, Pawns, and Goodwill/Hostility state).
+            fac.Notify_RelationKindChanged(player, prevNpcKind, false, null, GlobalTargetInfo.Invalid, out sentLetter); // CHECK API
+            player.Notify_RelationKindChanged(fac, prevPlayerKind, false, null, GlobalTargetInfo.Invalid, out sentLetter); // CHECK API
+        }
+
+        private static bool VerifyRestored(Faction fac, Faction player, FactionRelationKind expectedKind, int expectedGoodwill, bool checkGoodwill)
+        {
+            if (fac == null || player == null) return false;
+
+            FactionRelation relNpc = fac.RelationWith(player, true); // CHECK API
+            FactionRelation relPlayer = player.RelationWith(fac, true); // CHECK API
+            if (relNpc == null || relPlayer == null) return false;
+
+            if (relNpc.kind != expectedKind || relPlayer.kind != expectedKind) return false;
+            if (fac.RelationKindWith(player) != expectedKind || player.RelationKindWith(fac) != expectedKind) return false;
+
+            if (checkGoodwill)
+            {
+                if (relNpc.baseGoodwill != expectedGoodwill || relPlayer.baseGoodwill != expectedGoodwill) return false;
+                if (fac.PlayerGoodwill != expectedGoodwill || player.GoodwillWith(fac) != expectedGoodwill) return false; // CHECK API
+            }
+
+            return true;
         }
 
         private StoryFactionBackup FindBackup(int factionId)
@@ -613,12 +797,20 @@ namespace TurboMegaMod
 
         private static bool RemoveLease(StoryFactionBackup b, string leaseId)
         {
+            StoryHostilityLease unused;
+            return RemoveLease(b, leaseId, out unused);
+        }
+
+        private static bool RemoveLease(StoryFactionBackup b, string leaseId, out StoryHostilityLease removedLease)
+        {
+            removedLease = null;
             if (b == null || b.leases == null) return false;
             bool removed = false;
             for (int i = b.leases.Count - 1; i >= 0; i--)
             {
                 if (b.leases[i] != null && b.leases[i].leaseId == leaseId)
                 {
+                    removedLease = b.leases[i];
                     b.leases.RemoveAt(i);
                     removed = true;
                 }
@@ -701,7 +893,7 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // TRACKED HOTEL VISIT GUESTS & REAL EXITMAP VERIFICATION
+        // TRACKED HOTEL VISIT GUESTS & CONFIRMED EXITMAP VERIFICATION
         // =====================================================================
 
         public void RegisterHotelGuests(StoryQuestRun run, int mapId, int visitLordId, List<int> pawnIds)
@@ -771,23 +963,16 @@ namespace TurboMegaMod
             return ActiveTrackedGuestPawnIds.Count > 0 && ActiveTrackedGuestPawnIds.Contains(pawnIdNum);
         }
 
-        internal void NotifyGuestExitingMap(Pawn pawn, Map map)
+        internal void NotifyGuestExitedMap(Pawn pawn, int mapId, int preExitLordId, bool badState)
         {
-            if (pawn == null || map == null || trackedGuests == null) return;
-
-            Lord curLord = pawn.GetLord();
-            int curLordId = curLord != null ? curLord.loadID : -1;
-            bool badState = pawn.Dead || pawn.Destroyed || pawn.Downed ||
-                            pawn.IsPrisonerOfColony || pawn.IsSlaveOfColony ||
-                            pawn.HostileTo(Faction.OfPlayer) || pawn.InMentalState ||
-                            StoryStage_HotelVisit.IsSentAwayByHospitality(pawn);
+            if (pawn == null || mapId < 0 || trackedGuests == null) return;
 
             for (int i = 0; i < trackedGuests.Count; i++)
             {
                 StoryTrackedGuestRecord rec = trackedGuests[i];
-                if (rec == null || rec.pawnIdNum != pawn.thingIDNumber || rec.mapId != map.uniqueID) continue;
+                if (rec == null || rec.pawnIdNum != pawn.thingIDNumber || rec.mapId != mapId) continue;
 
-                bool lordMatches = (curLordId >= 0 && (curLordId == rec.visitLordId || curLordId == rec.exitLordId));
+                bool lordMatches = (preExitLordId >= 0 && (preExitLordId == rec.visitLordId || preExitLordId == rec.exitLordId));
                 if (!badState && lordMatches)
                 {
                     rec.exitedPeacefully = true;
@@ -840,8 +1025,16 @@ namespace TurboMegaMod
         }
     }
 
+    public struct HotelExitCaptureState
+    {
+        public bool tracked;
+        public int mapId;
+        public int preExitLordId;
+        public bool badState;
+    }
+
     // =========================================================================
-    // HARMONY PATCHES: ANTI-STACK-MERGE & REAL HOTEL GUEST EXITMAP TRACKING
+    // HARMONY PATCHES: ANTI-STACK-MERGE & CONFIRMED HOTEL GUEST EXITMAP
     // =========================================================================
 
     [StaticConstructorOnStartup]
@@ -860,7 +1053,9 @@ namespace TurboMegaMod
             MethodInfo exitMap = AccessTools.Method(typeof(Pawn), "ExitMap", new Type[] { typeof(bool), typeof(Rot4) }); // CHECK API
             if (exitMap != null)
             {
-                harmony.Patch(exitMap, prefix: new HarmonyMethod(typeof(StoryRetrieveStackPatch), "Prefix_Pawn_ExitMap"));
+                harmony.Patch(exitMap,
+                    prefix: new HarmonyMethod(typeof(StoryRetrieveStackPatch), "Prefix_Pawn_ExitMap"),
+                    postfix: new HarmonyMethod(typeof(StoryRetrieveStackPatch), "Postfix_Pawn_ExitMap"));
             }
         }
 
@@ -873,15 +1068,36 @@ namespace TurboMegaMod
             }
         }
 
-        public static void Prefix_Pawn_ExitMap(Pawn __instance)
+        public static void Prefix_Pawn_ExitMap(Pawn __instance, out HotelExitCaptureState __state)
         {
+            __state = new HotelExitCaptureState();
+            __state.tracked = false;
+            __state.mapId = -1;
+            __state.preExitLordId = -1;
+
             if (__instance == null || !__instance.Spawned || __instance.Map == null) return;
             if (!StoryRelationRestorer.IsTrackedGuestPawn(__instance.thingIDNumber)) return;
+
+            Lord curLord = __instance.GetLord();
+            __state.tracked = true;
+            __state.mapId = __instance.Map.uniqueID;
+            __state.preExitLordId = curLord != null ? curLord.loadID : -1;
+            __state.badState = __instance.Dead || __instance.Destroyed || __instance.Downed ||
+                               __instance.IsPrisonerOfColony || __instance.IsSlaveOfColony ||
+                               __instance.HostileTo(Faction.OfPlayer) || __instance.InMentalState ||
+                               StoryStage_HotelVisit.IsSentAwayByHospitality(__instance);
+        }
+
+        public static void Postfix_Pawn_ExitMap(Pawn __instance, HotelExitCaptureState __state)
+        {
+            if (!__state.tracked || __instance == null) return;
+            // Confirm pawn actually left the map (in case another patch aborted ExitMap)
+            if (__instance.Spawned && __instance.Map != null && __instance.Map.uniqueID == __state.mapId) return;
 
             StoryRelationRestorer inst = StoryRelationRestorer.Instance;
             if (inst != null)
             {
-                inst.NotifyGuestExitingMap(__instance, __instance.Map);
+                inst.NotifyGuestExitedMap(__instance, __state.mapId, __state.preExitLordId, __state.badState);
             }
         }
     }

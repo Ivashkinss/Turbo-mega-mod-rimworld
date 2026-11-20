@@ -202,4 +202,10 @@
   <TMM_OutpostCaravan_MissingSilverAborted>Погружено только {0} серебра из {1}. Миссия отменена, груз остаётся у каравана.</TMM_OutpostCaravan_MissingSilverAborted>
   <TMM_OutpostCaravan_StorageTransferFailed>Склад аванпоста не принял груз. Всё возвращено в караван.</TMM_OutpostCaravan_StorageTransferFailed>
   <TMM_OutpostCaravan_FormationFailed>Не удалось сформировать караван.</TMM_OutpostCaravan_FormationFailed>
+  <TMM_OutpostCaravan_RetryDelivery>Сдать ещё раз</TMM_OutpostCaravan_RetryDelivery>
+  <TMM_OutpostCaravan_InvalidMissionReturning>{0}: миссия к аванпосту больше недействительна. Караван возвращается домой с грузом.</TMM_OutpostCaravan_InvalidMissionReturning>
+  <TMM_OutpostCaravan_LegacyReturningHome>{0}: миссию к аванпосту из старого сохранения восстановить не удалось. Караван возвращается домой, не сдав груз.</TMM_OutpostCaravan_LegacyReturningHome>
+  <TMM_OutpostCaravan_RetryDeliveryDesc>Повторить попытку сдать груз: {0}.</TMM_OutpostCaravan_RetryDeliveryDesc>
+  <TMM_OutpostCaravan_LowReturnFoodWarning>{0}: еды на обратный путь хватит на {1} дн., а дорога займёт {2} дн.</TMM_OutpostCaravan_LowReturnFoodWarning>
+  <TMM_OutpostCaravan_StorageTransferFailedRetry>{0}: груз не принят. Всё осталось в караване — сдайте ещё раз или отправьте караван домой.</TMM_OutpostCaravan_StorageTransferFailedRetry>
 </LanguageData>

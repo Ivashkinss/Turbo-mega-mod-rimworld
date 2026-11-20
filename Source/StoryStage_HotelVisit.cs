@@ -23,27 +23,33 @@ namespace TurboMegaMod
     /// Quest stage that brings a visiting delegation (optionally including a registered HeroDef)
     /// to the colony's Hospitality hotel on a pinned home map.
     ///
-    /// Fixes enforced:
-    /// - Safe hero transfer: only moves a free living world pawn of the visit faction; colonists,
-    ///   prisoners, caravan members, container-held, or spawned heroes are NEVER stolen (visit runs
-    ///   without them and records heroIncluded=false, or rolls back on spawn failure).
-    /// - Truce &amp; rollback: verifies CanFactionEnterTruce BEFORE spawning (permanentEnemy fails
-    ///   cleanly without spawning) and tracks temporary neutrality in StoryRelationRestorer.
-    /// - Host per-guest tracking: pins visitMapId, visitLordId, exitLordId, and classifies every
-    ///   guest on each poll (on_map / exited_peaceful / killed / imprisoned / sent_away / hostile /
-    ///   missing via Pawn.ExitMap tracking). Hard overdue deadline fails if the lord never leaves.
-    /// - Investigate: requires a real PlayLogEntry_Interaction (initiator = player colonist,
-    ///   recipient = guest of THIS visit, Tick >= startTick). No indoor-room fallback.
-    /// - Hide: requires a valid hunterFaction and binds to a specific hunter raid lord/cohort;
-    ///   unrelated enemies never count, and missing raid ends at deadline.
-    /// - Hospitality compatibility: caches and validates reflection signatures before creating
-    ///   groups, records visitMode ("hospitality" vs "vanilla_fallback"), and resolves noHotel
-    ///   immediately on Start without side effects.
-    /// - No custom forceOutcome reading (core SparkStory handles -tmm-story-test exclusively).
+    /// Round 2 invariants:
+    /// - Hero transfer goes EXCLUSIVELY through StoryPawnTransfer. Removal from WorldPawns occurs
+    ///   ONLY after the escort is generated/spawned and the visit Lord is ready. Any exception during
+    ///   companion generation, spawning, or Lord attachment leaves/rolls back the hero intact in WorldPawns.
+    /// - Temporary neutrality (truce) ALWAYS acquires a counted lease through StoryRelationRestorer,
+    ///   even when the faction is already temporarily neutral from another active visit.
+    /// - Hide launches and binds its OWN hunter raid incident (storing exact hunterRaidLordId and
+    ///   confirmed hunterRaidPawnIds); unrelated hostile lords of the same faction never count.
+    /// - Host counts a peaceful departure ONLY after Pawn.ExitMap prefix + postfix confirm actual
+    ///   removal from the visit map under our visit/exit lord in non-hostile, non-sentAway state.
+    /// - Investigate requires a genuine PlayLogEntry_Interaction (colonist -> guest of this visit).
     /// </summary>
     public sealed class StoryStage_HotelVisit : StoryStage
     {
         private const float DefaultHardOverdueDays = 2.0f;
+
+        /// <summary>
+        /// Test-only hook (active ONLY when TestMode.Enabled) allowing probes to simulate an exception
+        /// during escort companion generation to verify hero remains untouched in WorldPawns.
+        /// </summary>
+        public static Func<PawnGenerationRequest, Pawn> TestCompanionGenerateOverride;
+
+        /// <summary>
+        /// Test-only hook (active ONLY when TestMode.Enabled) allowing probes to simulate a failed
+        /// or custom Hide hunter raid execution.
+        /// </summary>
+        public static Func<IncidentParms, bool> TestHunterRaidExecuteOverride;
 
         // Cached Hospitality reflection state (resolved once safely via AccessTools)
         private static bool s_hospChecked;
@@ -72,6 +78,8 @@ namespace TurboMegaMod
         public float overdueDays = DefaultHardOverdueDays;
         public StoryHotelObjective objective = StoryHotelObjective.Host;
         public string hunterFaction;
+        public float hunterRaidDelayHours = -1f;
+        public float hunterRaidPointsFactor = 0.85f;
         public List<StoryChoice> outcomes = new List<StoryChoice>();
 
         public override string Mechanic
@@ -156,10 +164,6 @@ namespace TurboMegaMod
             }
         }
 
-        /// <summary>
-        /// Checks via cached reflection whether Hospitality is loaded, guests are welcomed,
-        /// and at least one guest bed exists on the given map. Never throws.
-        /// </summary>
         public static bool HasOpenHotel(Map map)
         {
             EnsureHospitalityReflection();
@@ -205,9 +209,11 @@ namespace TurboMegaMod
             ctx.run.vars["leaveTick"] = leaveTick.ToString();
             ctx.run.vars["hardDeadlineTick"] = hardDeadlineTick.ToString();
             ctx.run.vars["investigated"] = "false";
+            ctx.run.vars["hunterRaidLaunched"] = "false";
             ctx.run.vars["hunterRaidBound"] = "false";
             ctx.run.vars["hunterRaidCleared"] = "false";
             ctx.run.vars["hunterRaidLordId"] = "-1";
+            ctx.run.vars["hunterRaidPawnIds"] = string.Empty;
             ctx.run.vars["departureTriggered"] = "false";
             ctx.run.vars["arrived"] = "false";
             ctx.run.vars["heroIncluded"] = "false";
@@ -217,9 +223,7 @@ namespace TurboMegaMod
             ctx.run.vars["visitMapId"] = home != null ? home.uniqueID.ToString() : "-1";
             ctx.run.vars["visitMode"] = HasHospitalityLordSupport ? "hospitality" : "vanilla_fallback";
 
-            // 1. Immediate noHotel detection on Start (zero side effects: no spawns, no relation edits).
-            // Note: StoryStage.Start returns void in core SparkStory, so Start resolves noHotel cleanly
-            // here and marks immediateOutcome="noHotel" for instant completion on the first Tick.
+            // 1. Immediate noHotel detection on Start (zero side effects)
             if (!HasOpenHotel(home))
             {
                 ctx.run.vars["noHotel"] = "true";
@@ -228,10 +232,11 @@ namespace TurboMegaMod
                 return;
             }
 
-            // 2. For Hide objective, validate hunterFaction BEFORE spawning or mutating relations
+            // 2. For Hide objective, validate hunterFaction & schedule stage's own hunter raid BEFORE spawning
+            Faction hunterFac = null;
             if (objective == StoryHotelObjective.Hide)
             {
-                Faction hunterFac = !hunterFaction.NullOrEmpty() ? StoryUtil.FactionOf(hunterFaction) : null;
+                hunterFac = !hunterFaction.NullOrEmpty() ? StoryUtil.FactionOf(hunterFaction) : null;
                 if (hunterFac == null || hunterFac.defeated || hunterFac.IsPlayer)
                 {
                     Log.Warning("[TMM] StoryStage_HotelVisit: Hide objective failed to resolve hunterFaction '" + (hunterFaction ?? "null") + "'.");
@@ -239,8 +244,19 @@ namespace TurboMegaMod
                     ctx.run.vars["immediateOutcome"] = FindOutcome("unavailable") != null ? "unavailable" : "failed";
                     return;
                 }
+
+                int raidDelayTicks;
+                if (hunterRaidDelayHours >= 0f)
+                {
+                    raidDelayTicks = Mathf.RoundToInt(hunterRaidDelayHours * GenDate.TicksPerHour);
+                }
+                else
+                {
+                    raidDelayTicks = Mathf.Clamp(stayTicks / 2, GenDate.TicksPerHour, Mathf.Max(GenDate.TicksPerHour, stayTicks - GenDate.TicksPerHour));
+                }
+
                 ctx.run.vars["hunterFactionId"] = hunterFac.loadID.ToString();
-                ctx.run.vars["initialHunterLordIds"] = JoinInts(SnapshotFactionLords(home, hunterFac));
+                ctx.run.vars["hunterRaidTick"] = (now + raidDelayTicks).ToString();
             }
 
             // 3. Resolve visit faction
@@ -255,34 +271,62 @@ namespace TurboMegaMod
 
             ctx.run.vars["visitFactionId"] = visitFac.loadID.ToString();
 
-            // 4. Verify truce eligibility BEFORE creating any pawns or mutating relations
-            if (visitFac.HostileTo(Faction.OfPlayer))
+            // 4. ALWAYS request truce lease through StoryRelationRestorer (even if faction currently
+            // appears neutral due to another overlapping visit's temporary truce backup!).
+            StoryRelationRestorer restorer = StoryRelationRestorer.Instance;
+            if (visitFac.HostileTo(Faction.OfPlayer) && !StoryRelationRestorer.CanFactionEnterTruce(visitFac))
             {
-                if (!StoryRelationRestorer.CanFactionEnterTruce(visitFac))
-                {
-                    ctx.run.vars["failReason"] = "permanent_enemy_cannot_truce";
-                    ctx.run.vars["immediateOutcome"] = "failed";
-                    return;
-                }
+                ctx.run.vars["failReason"] = (visitFac.def != null && visitFac.def.permanentEnemy)
+                    ? "permanent_enemy_cannot_truce"
+                    : "truce_not_allowed";
+                ctx.run.vars["immediateOutcome"] = "failed";
+                return;
+            }
 
-                StoryRelationRestorer restorer = StoryRelationRestorer.Instance;
-                string truceLeaseId = null;
-                if (restorer == null || !restorer.AcquireTruceLease(visitFac, ctx.run, out truceLeaseId) || visitFac.HostileTo(Faction.OfPlayer))
+            string truceLeaseId = null;
+            if (restorer != null)
+            {
+                if (!restorer.AcquireTruceLease(visitFac, ctx.run, out truceLeaseId) || visitFac.HostileTo(Faction.OfPlayer))
                 {
-                    if (restorer != null && !truceLeaseId.NullOrEmpty())
+                    if (!truceLeaseId.NullOrEmpty())
                     {
-                        restorer.ReleaseLease(truceLeaseId);
+                        restorer.AbortLease(truceLeaseId);
                     }
                     ctx.run.vars["failReason"] = "truce_failed";
                     ctx.run.vars["immediateOutcome"] = "failed";
                     return;
                 }
-
                 if (!truceLeaseId.NullOrEmpty())
                 {
                     ctx.run.vars["truceLeaseId"] = truceLeaseId;
                 }
             }
+            else if (visitFac.HostileTo(Faction.OfPlayer))
+            {
+                ctx.run.vars["failReason"] = "truce_restorer_missing";
+                ctx.run.vars["immediateOutcome"] = "failed";
+                return;
+            }
+
+            // 5. Read-only pre-check of hero availability (NEVER mutates WorldPawns or Faction yet!)
+            Pawn heroCandidate = null;
+            if (hero != null && HeroRegistry.Instance != null)
+            {
+                Pawn candidate = HeroRegistry.Instance.GetOrCreate(hero);
+                string skipReason;
+                if (StoryPawnTransfer.IsFreeWorldPawn(candidate, visitFac, out skipReason))
+                {
+                    heroCandidate = candidate;
+                }
+                else
+                {
+                    ctx.run.vars["heroIncluded"] = "false";
+                    ctx.run.vars["heroSkipReason"] = skipReason ?? "unavailable";
+                }
+            }
+
+            int targetCount = Mathf.Clamp(groupSize, 1, 8);
+            int companionCount = heroCandidate != null ? Mathf.Max(0, targetCount - 1) : targetCount;
 
             IntVec3 entryCell;
             if (!RCellFinder.TryFindRandomPawnEntryCell(out entryCell, home, CellFinder.EdgeRoadChance_Friendly)) // CHECK API
@@ -290,171 +334,222 @@ namespace TurboMegaMod
                 entryCell = CellFinder.RandomEdgeCell(home);
             }
 
-            // 5. Safe hero transfer (only a free living world pawn of visitFac; never steal busy/colonist heroes)
-            List<Pawn> guests = new List<Pawn>();
-            Pawn heroPawn = null;
-            bool heroWasWorldPawn = false;
-            Faction heroOrigFaction = null;
-            bool heroWasLeader = false;
+            IntVec3 chillSpot = FindGuestBedCell(home);
+            if (chillSpot == IntVec3.Invalid) chillSpot = home.Center;
 
-            if (hero != null && HeroRegistry.Instance != null)
+            // 6. Generate companions, spawn them, and create the visit Lord BEFORE removing hero from WorldPawns.
+            List<Pawn> generatedCompanions = new List<Pawn>();
+            List<Pawn> spawnedCompanions = new List<Pawn>();
+            Lord visitLord = null;
+            string usedMode = "vanilla_fallback";
+            PawnTransferHandle heroHandle = null;
+
+            try
             {
-                Pawn candidate = HeroRegistry.Instance.GetOrCreate(hero);
-                string skipReason;
-                if (IsFreeWorldHeroForVisit(candidate, visitFac, out skipReason))
+                // 6A. Generate all accompanying regular guests
+                for (int i = 0; i < companionCount; i++)
                 {
-                    heroOrigFaction = candidate.Faction;
-                    heroWasLeader = heroOrigFaction != null && heroOrigFaction.leader == candidate;
-                    Find.WorldPawns.RemovePawn(candidate);
-                    if (candidate.Faction == null)
+                    PawnKindDef kind = visitFac.RandomPawnKind();
+                    if (kind == null) kind = PawnKindDefOf.SpaceRefugee;
+                    PawnGenerationRequest req = new PawnGenerationRequest(
+                        kind, visitFac, PawnGenerationContext.NonPlayer, home.Tile,
+                        false, false, false, true, false, 1f, false, true, false, true, true,
+                        false, false, false, false, 0f, 0f, null, 1f, null, null, null, null, null,
+                        null, null, null, null, null, null, null,
+                        false, false, false, false, null, null, null, null, null, 0f, DevelopmentalStage.Adult,
+                        null, null, null, false); // CHECK API
+
+                    Pawn guest = GenerateCompanionPawn(req);
+                    if (guest != null)
                     {
-                        candidate.SetFaction(visitFac);
+                        generatedCompanions.Add(guest);
                     }
-                    heroPawn = candidate;
-                    heroWasWorldPawn = true;
-                    guests.Add(heroPawn);
                 }
-                else
-                {
-                    // Explicit, safe omission: hero stays untouched in their current faction/map/holder
-                    ctx.run.vars["heroIncluded"] = "false";
-                    ctx.run.vars["heroSkipReason"] = skipReason ?? "unavailable";
-                }
-            }
 
-            // 6. Generate accompanying regular guests of visitFac
-            int targetCount = Mathf.Clamp(groupSize, 1, 8);
-            List<Pawn> generatedExtras = new List<Pawn>();
-            while (guests.Count < targetCount)
-            {
-                PawnKindDef kind = visitFac.RandomPawnKind();
-                if (kind == null) kind = PawnKindDefOf.SpaceRefugee;
-                PawnGenerationRequest req = new PawnGenerationRequest(
-                    kind, visitFac, PawnGenerationContext.NonPlayer, home.Tile,
-                    false, false, false, true, false, 1f, false, true, false, true, true,
-                    false, false, false, false, 0f, 0f, null, 1f, null, null, null, null, null,
-                    null, null, null, null, null, null, null,
-                    false, false, false, false, null, null, null, null, null, 0f, DevelopmentalStage.Adult,
-                    null, null, null, false); // CHECK API
-                Pawn guest = PawnGenerator.GeneratePawn(req);
-                if (guest != null)
+                // 6B. Spawn companions on home map
+                for (int i = 0; i < generatedCompanions.Count; i++)
                 {
-                    guests.Add(guest);
-                    generatedExtras.Add(guest);
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            if (guests.Count == 0)
-            {
-                Log.Warning("[TMM] StoryStage_HotelVisit: failed to create guest pawns.");
-                ReleaseTruceLease(ctx);
-                ctx.run.vars["failReason"] = "no_guests_created";
-                ctx.run.vars["immediateOutcome"] = "failed";
-                return;
-            }
-
-            // 7. Spawn all guests with strict verification and rollback on failure
-            List<Pawn> spawnedGuests = new List<Pawn>();
-            List<int> guestIdNums = new List<int>();
-            bool heroSpawnedOk = false;
-
-            for (int i = 0; i < guests.Count; i++)
-            {
-                Pawn p = guests[i];
-                IntVec3 spawnCell = CellFinder.RandomClosewalkCellNear(entryCell, home, 6, null);
-                Thing res = GenSpawn.Spawn(p, spawnCell, home, WipeMode.Vanish);
-                if (res != p || !p.Spawned || p.Map != home)
-                {
-                    if (p == heroPawn && heroWasWorldPawn)
+                    Pawn p = generatedCompanions[i];
+                    IntVec3 spawnCell = CellFinder.RandomClosewalkCellNear(entryCell, home, 6, null);
+                    Thing res = GenSpawn.Spawn(p, spawnCell, home, WipeMode.Vanish);
+                    if (res == p && p.Spawned && p.Map == home)
                     {
-                        RollbackHeroToWorld(heroPawn, heroOrigFaction, heroWasLeader);
-                        heroPawn = null;
-                        heroWasWorldPawn = false;
-                        ctx.run.vars["heroSkipReason"] = "spawn_failed";
+                        spawnedCompanions.Add(p);
                     }
-                    else if (!p.Destroyed)
+                    else
                     {
-                        p.Destroy(DestroyMode.Vanish);
+                        if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
+                        if (p.relations != null) p.relations.ClearAllRelations(); // no dangling DirectPawnRelation refs in saves
+                    if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
                     }
-                    continue;
                 }
 
-                if (p == heroPawn)
+                // 6C. Create the visit Lord BEFORE touching the hero (startingPawns may be empty if hero is solo guest)
+                visitLord = AttachVisitLord(home, visitFac, chillSpot, stayTicks, spawnedCompanions, out usedMode);
+                if (visitLord == null)
                 {
-                    heroSpawnedOk = true;
-                    HeroRegistry.Instance.NotifyEncountered(heroPawn);
-                    ctx.run.vars["heroThingId"] = heroPawn.ThingID;
-                    ctx.run.vars["heroIdNum"] = heroPawn.thingIDNumber.ToString();
+                    CleanupCompanionsAndLord(home, visitLord, generatedCompanions, spawnedCompanions);
+                    AbortTruceLease(ctx);
+                    ctx.run.vars["failReason"] = "lord_creation_failed";
+                    ctx.run.vars["immediateOutcome"] = "failed";
+                    return;
+                }
+
+                // 6D. NOW transfer the hero via StoryPawnTransfer (removes from WorldPawns last, right before GenSpawn,
+                //     and attaches hero to the already-ready visitLord inside postSpawnSetup).
+                bool heroTransferred = false;
+                if (heroCandidate != null)
+                {
+                    IntVec3 heroCell = CellFinder.RandomClosewalkCellNear(entryCell, home, 6, null);
+                    bool needSetFaction = (heroCandidate.Faction == null);
+                    string transferFail;
+                    Lord capturedLord = visitLord;
+
+                    heroTransferred = StoryPawnTransfer.TrySpawnFreeWorldPawn(
+                        heroCandidate,
+                        home,
+                        heroCell,
+                        visitFac,
+                        needSetFaction,
+                        null,
+                        visitFac,
+                        delegate(Pawn spawnedHero)
+                        {
+                            capturedLord.AddPawn(spawnedHero);
+                            return spawnedHero.GetLord() == capturedLord;
+                        },
+                        false,
+                        out heroHandle,
+                        out transferFail);
+
+                    if (!heroTransferred)
+                    {
+                        ctx.run.vars["heroIncluded"] = "false";
+                        ctx.run.vars["heroSkipReason"] = transferFail ?? "transfer_failed";
+                    }
+                }
+
+                // Build final confirmed guest list
+                List<Pawn> finalGuests = new List<Pawn>();
+                List<int> guestIdNums = new List<int>();
+                if (heroTransferred && heroHandle != null && heroHandle.Pawn != null)
+                {
+                    finalGuests.Add(heroHandle.Pawn);
+                    guestIdNums.Add(heroHandle.Pawn.thingIDNumber);
+                }
+                for (int i = 0; i < spawnedCompanions.Count; i++)
+                {
+                    finalGuests.Add(spawnedCompanions[i]);
+                    guestIdNums.Add(spawnedCompanions[i].thingIDNumber);
+                }
+
+                if (finalGuests.Count == 0)
+                {
+                    if (heroHandle != null) heroHandle.Rollback();
+                    CleanupCompanionsAndLord(home, visitLord, generatedCompanions, spawnedCompanions);
+                    AbortTruceLease(ctx);
+                    ctx.run.vars["failReason"] = "no_guests_spawned";
+                    ctx.run.vars["immediateOutcome"] = "failed";
+                    return;
+                }
+
+                if (usedMode == "hospitality")
+                {
+                    for (int i = 0; i < finalGuests.Count; i++)
+                    {
+                        TryNotifyHospitalityCompArrive(finalGuests[i]);
+                    }
+                }
+
+                if (heroHandle != null)
+                {
+                    heroHandle.FinalizeTransfer();
+                    ctx.run.vars["heroThingId"] = heroHandle.Pawn.ThingID;
+                    ctx.run.vars["heroIdNum"] = heroHandle.Pawn.thingIDNumber.ToString();
                     ctx.run.vars["heroIncluded"] = "true";
                     ctx.run.vars["heroSpawned"] = "true";
                 }
 
-                spawnedGuests.Add(p);
-                guestIdNums.Add(p.thingIDNumber);
-            }
+                ctx.run.vars["visitMode"] = usedMode;
+                ctx.run.vars["visitLordId"] = visitLord.loadID.ToString();
+                ctx.run.vars["guestIds"] = JoinInts(guestIdNums);
+                ctx.run.vars["arrived"] = "true";
 
-            if (spawnedGuests.Count == 0)
-            {
-                ReleaseTruceLease(ctx);
-                ctx.run.vars["failReason"] = "spawn_failed";
-                ctx.run.vars["immediateOutcome"] = "failed";
-                return;
-            }
-
-            // 8. Attach visit Lord (distinguishing real Hospitality vs vanilla fallback)
-            IntVec3 chillSpot = FindGuestBedCell(home);
-            if (chillSpot == IntVec3.Invalid) chillSpot = home.Center;
-
-            string usedMode;
-            Lord visitLord = AttachVisitLord(home, visitFac, chillSpot, stayTicks, spawnedGuests, out usedMode);
-            if (visitLord == null)
-            {
-                // Rollback everything if Lord creation failed
-                for (int i = 0; i < spawnedGuests.Count; i++)
+                if (restorer != null)
                 {
-                    Pawn p = spawnedGuests[i];
-                    if (p == heroPawn && heroWasWorldPawn)
+                    restorer.RegisterHotelGuests(ctx.run, home.uniqueID, visitLord.loadID, guestIdNums);
+                }
+
+                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Hotel Guests Arrived"), ctx);
+                string body = StoryUtil.Format(!text.NullOrEmpty() ? text : Objective(ctx), ctx);
+                LookTargets target = (heroHandle != null && heroHandle.Pawn != null) ? new LookTargets(heroHandle.Pawn) : new LookTargets(finalGuests[0]);
+                Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.NeutralEvent, target); // CHECK API
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] StoryStage_HotelVisit: exception during Start, rolling back completely: ", ex);
+                if (heroHandle != null) heroHandle.Rollback();
+                CleanupCompanionsAndLord(home, visitLord, generatedCompanions, spawnedCompanions);
+                AbortTruceLease(ctx);
+                ctx.run.vars["failReason"] = "start_exception";
+                ctx.run.vars["immediateOutcome"] = "failed";
+            }
+        }
+
+        private static Pawn GenerateCompanionPawn(PawnGenerationRequest req)
+        {
+            if (TestMode.Enabled && TestCompanionGenerateOverride != null)
+            {
+                return TestCompanionGenerateOverride(req);
+            }
+            return PawnGenerator.GeneratePawn(req);
+        }
+
+        private static void CleanupCompanionsAndLord(Map home, Lord visitLord, List<Pawn> generatedCompanions, List<Pawn> spawnedCompanions)
+        {
+            if (visitLord != null && home != null && home.lordManager != null)
+            {
+                try
+                {
+                    if (home.lordManager.lords.Contains(visitLord))
                     {
-                        RollbackHeroToWorld(heroPawn, heroOrigFaction, heroWasLeader);
-                    }
-                    else if (p != null && !p.Destroyed)
-                    {
-                        if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
-                        p.Destroy(DestroyMode.Vanish);
+                        home.lordManager.RemoveLord(visitLord);
                     }
                 }
-                ReleaseTruceLease(ctx);
-                ctx.run.vars["failReason"] = "lord_creation_failed";
-                ctx.run.vars["immediateOutcome"] = "failed";
-                return;
-            }
-
-            if (usedMode == "hospitality")
-            {
-                for (int i = 0; i < spawnedGuests.Count; i++)
+                catch
                 {
-                    TryNotifyHospitalityCompArrive(spawnedGuests[i]);
                 }
             }
 
-            ctx.run.vars["visitMode"] = usedMode;
-            ctx.run.vars["visitLordId"] = visitLord.loadID.ToString();
-            ctx.run.vars["guestIds"] = JoinInts(guestIdNums);
-            ctx.run.vars["arrived"] = "true";
-
-            if (StoryRelationRestorer.Instance != null)
+            HashSet<Pawn> toDestroy = new HashSet<Pawn>();
+            if (generatedCompanions != null)
             {
-                StoryRelationRestorer.Instance.RegisterHotelGuests(ctx.run, home.uniqueID, visitLord.loadID, guestIdNums);
+                for (int i = 0; i < generatedCompanions.Count; i++)
+                {
+                    if (generatedCompanions[i] != null) toDestroy.Add(generatedCompanions[i]);
+                }
+            }
+            if (spawnedCompanions != null)
+            {
+                for (int i = 0; i < spawnedCompanions.Count; i++)
+                {
+                    if (spawnedCompanions[i] != null) toDestroy.Add(spawnedCompanions[i]);
+                }
             }
 
-            string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Hotel Guests Arrived"), ctx);
-            string body = StoryUtil.Format(!text.NullOrEmpty() ? text : Objective(ctx), ctx);
-            LookTargets target = (heroSpawnedOk && heroPawn != null) ? new LookTargets(heroPawn) : new LookTargets(spawnedGuests[0]);
-            Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.NeutralEvent, target); // CHECK API
+            foreach (Pawn p in toDestroy)
+            {
+                try
+                {
+                    if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
+                    if (Find.WorldPawns != null && Find.WorldPawns.Contains(p)) Find.WorldPawns.RemovePawn(p);
+                    if (p.relations != null) p.relations.ClearAllRelations(); // no dangling DirectPawnRelation refs in saves
+                    if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
+                }
+                catch
+                {
+                }
+            }
         }
 
         // =====================================================================
@@ -466,7 +561,6 @@ namespace TurboMegaMod
             if (ctx == null || ctx.run == null) return null;
             if (ctx.run.vars.ContainsKey("finished")) return null;
 
-            // Immediate outcome determined cleanly during Start (e.g. noHotel, permanent_enemy, missing hunterFaction)
             string immediate = GetStr(ctx, "immediateOutcome");
             if (!immediate.NullOrEmpty())
             {
@@ -478,7 +572,6 @@ namespace TurboMegaMod
                 return Finish(ctx, "noHotel");
             }
 
-            // Pin strictly to the saved visit map (never silently swap to a second colony!)
             int visitMapId = GetInt(ctx, "visitMapId", -1);
             Map visitMap = FindMapByUniqueId(visitMapId);
             if (visitMap == null)
@@ -516,7 +609,6 @@ namespace TurboMegaMod
             int exitLordId = GetInt(ctx, "exitLordId", -1);
             string runKey = StoryRelationRestorer.MakeLeaseId(ctx.run);
 
-            // Single-pass lookup maps for spawned pawns, corpses, and holders on visitMap
             HashSet<int> guestIdSet = new HashSet<int>(guestIds);
             Dictionary<int, Pawn> spawnedMap = new Dictionary<int, Pawn>();
             HashSet<int> deadOnMap = new HashSet<int>();
@@ -588,14 +680,13 @@ namespace TurboMegaMod
                         ctx.run.vars["failReason"] = "guest_captured_or_dead_in_holder";
                         return Finish(ctx, "failed");
                     }
-                    // Inside a drop pod/casket/container on map — NEVER counts as peaceful departure!
                     stateLog.Append("in_holder");
                     ctx.run.vars["guestStates"] = stateLog.ToString();
                     ctx.run.vars["failReason"] = "guest_missing_in_holder";
                     return Finish(ctx, "failed");
                 }
 
-                // Not on visitMap: MUST have a confirmed peaceful exit via Pawn.ExitMap under our visit/exit lord
+                // Not on visitMap: MUST have confirmed peaceful exit via Prefix+Postfix Pawn.ExitMap
                 StoryTrackedGuestRecord rec = StoryRelationRestorer.Instance != null
                     ? StoryRelationRestorer.Instance.FindTrackedGuest(runKey, idNum)
                     : null;
@@ -623,7 +714,6 @@ namespace TurboMegaMod
                     continue;
                 }
 
-                // Guest vanished without peaceful ExitMap -> failed (never false success!)
                 stateLog.Append("missing");
                 ctx.run.vars["guestStates"] = stateLog.ToString();
                 ctx.run.vars["failReason"] = "guest_missing";
@@ -646,7 +736,7 @@ namespace TurboMegaMod
 
             if (objective == StoryHotelObjective.Hide)
             {
-                UpdateHideHunterRaidTracking(ctx, visitMap);
+                UpdateHideHunterRaidTracking(ctx, visitMap, now, hardDeadlineTick);
             }
 
             // ---------------- DEPARTURE & LORD HEALTH ----------------
@@ -656,13 +746,14 @@ namespace TurboMegaMod
 
             if (onMapGuests.Count > 0)
             {
-                // Hard overdue deadline if lord stalls or Hide hunter raid never arrives
                 if (now >= hardDeadlineTick)
                 {
                     if (objective == StoryHotelObjective.Hide && !GetBool(ctx, "hunterRaidCleared"))
                     {
                         ctx.run.vars["deadlineReached"] = "true";
-                        ctx.run.vars["failReason"] = GetBool(ctx, "hunterRaidBound") ? "hide_raid_not_cleared_deadline" : "hide_no_raid_deadline";
+                        ctx.run.vars["failReason"] = GetBool(ctx, "hunterRaidBound")
+                            ? "hide_raid_not_cleared_deadline"
+                            : "hide_no_raid_deadline";
                         return Finish(ctx, FindOutcome("timeout") != null ? "timeout" : "failed");
                     }
 
@@ -671,14 +762,12 @@ namespace TurboMegaMod
                     return Finish(ctx, "failed");
                 }
 
-                // Lord disappeared while guests are still stranded on map -> abnormal state -> failed
                 if (!visitLordAlive && !exitLordAlive)
                 {
                     ctx.run.vars["failReason"] = "lord_missing";
                     return Finish(ctx, "failed");
                 }
 
-                // Trigger graceful departure after stayDays once objective allows leaving
                 if (now >= leaveTick && !GetBool(ctx, "departureTriggered"))
                 {
                     bool canDepart = (objective != StoryHotelObjective.Hide) || GetBool(ctx, "hunterRaidCleared");
@@ -700,8 +789,7 @@ namespace TurboMegaMod
                 return null;
             }
 
-            // ---------------- ALL GUESTS HAVE LEFT THE MAP ----------------
-            // Require ALL guests to have confirmed peaceful exits
+            // ---------------- ALL GUESTS CONFIRMED OFF MAP ----------------
             if (peacefulExitCount < guestIds.Count)
             {
                 ctx.run.vars["failReason"] = "incomplete_peaceful_exit";
@@ -776,6 +864,7 @@ namespace TurboMegaMod
         private string Finish(StoryContext ctx, string outcome)
         {
             ReleaseTruceLease(ctx);
+            ReleaseHunterHostilityLease(ctx, false);
             if (ctx != null && ctx.run != null)
             {
                 string runKey = StoryRelationRestorer.MakeLeaseId(ctx.run);
@@ -799,44 +888,26 @@ namespace TurboMegaMod
             }
         }
 
-        // =====================================================================
-        // SAFE HERO TRANSFER & ROLLBACK
-        // =====================================================================
-
-        private static bool IsFreeWorldHeroForVisit(Pawn p, Faction visitFac, out string skipReason)
+        private static void AbortTruceLease(StoryContext ctx)
         {
-            skipReason = null;
-            if (p == null) { skipReason = "null"; return false; }
-            if (p.Dead || p.Destroyed) { skipReason = "dead"; return false; }
-            if (p.Faction == Faction.OfPlayer) { skipReason = "colonist"; return false; }
-            if (p.Spawned) { skipReason = "spawned_on_map"; return false; }
-            if (p.IsPrisoner || p.IsSlave) { skipReason = "prisoner_or_slave"; return false; }
-            if (p.holdingOwner != null) { skipReason = "in_container"; return false; }
-            if (p.GetCaravan() != null) { skipReason = "in_caravan"; return false; }
-            if (Find.WorldPawns == null || !Find.WorldPawns.Contains(p)) { skipReason = "not_in_world_pawns"; return false; }
-            if (p.Faction != null && visitFac != null && p.Faction != visitFac)
+            if (ctx == null || ctx.run == null) return;
+            string leaseId = GetStr(ctx, "truceLeaseId");
+            if (!leaseId.NullOrEmpty() && StoryRelationRestorer.Instance != null)
             {
-                skipReason = "wrong_faction";
-                return false;
+                StoryRelationRestorer.Instance.AbortLease(leaseId);
+                ctx.run.vars.Remove("truceLeaseId");
             }
-            return true;
         }
 
-        private static void RollbackHeroToWorld(Pawn p, Faction origFaction, bool wasLeader)
+        private static void ReleaseHunterHostilityLease(StoryContext ctx, bool aborted)
         {
-            if (p == null) return;
-            if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
-            if (origFaction != null && p.Faction != origFaction)
+            if (ctx == null || ctx.run == null) return;
+            string leaseId = GetStr(ctx, "hunterHostilityLeaseId");
+            if (!leaseId.NullOrEmpty() && StoryRelationRestorer.Instance != null)
             {
-                p.SetFaction(origFaction);
-            }
-            if (Find.WorldPawns != null && !Find.WorldPawns.Contains(p))
-            {
-                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
-            }
-            if (wasLeader && origFaction != null)
-            {
-                origFaction.leader = p;
+                if (aborted) StoryRelationRestorer.Instance.AbortLease(leaseId);
+                else StoryRelationRestorer.Instance.ReleaseLease(leaseId);
+                ctx.run.vars.Remove("hunterHostilityLeaseId");
             }
         }
 
@@ -855,7 +926,6 @@ namespace TurboMegaMod
             if (!s_playLogChecked)
             {
                 s_playLogChecked = true;
-                // CHECK API: PlayLogEntry_Interaction private fields initiator / recipient
                 s_playLogInitiatorField = AccessTools.Field(typeof(PlayLogEntry_Interaction), "initiator");
                 s_playLogRecipientField = AccessTools.Field(typeof(PlayLogEntry_Interaction), "recipient");
             }
@@ -892,66 +962,177 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // STRICT HIDE OBJECTIVE (BOUND HUNTER RAID LORD / COHORT)
+        // STRICT HIDE OBJECTIVE (STAGE-OWNED HUNTER RAID INCIDENT & COHORT)
         // =====================================================================
 
-        private void UpdateHideHunterRaidTracking(StoryContext ctx, Map visitMap)
+        /// <summary>
+        /// Hide launches its OWN RaidEnemy incident at hunterRaidTick and records ONLY the
+        /// resulting lord ID and confirmed raider pawn cohort. Unrelated hostile lords of the
+        /// same hunterFaction on the map are NEVER bound or counted as the Hide ambush.
+        /// </summary>
+        private void UpdateHideHunterRaidTracking(StoryContext ctx, Map visitMap, int now, int hardDeadlineTick)
         {
             if (GetBool(ctx, "hunterRaidCleared")) return;
 
             int hunterFacId = GetInt(ctx, "hunterFactionId", -1);
             Faction hunterFac = FindFactionById(hunterFacId);
-            if (hunterFac == null) return;
+            if (hunterFac == null || hunterFac.defeated) return;
 
-            // Step 1: Bind to a specific new hostile Lord of hunterFac on visitMap
-            if (!GetBool(ctx, "hunterRaidBound"))
+            // Step 1: Launch our own bound hunter raid once hunterRaidTick is reached (before hard deadline)
+            if (!GetBool(ctx, "hunterRaidLaunched"))
             {
-                HashSet<int> initialLords = new HashSet<int>(ParseInts(GetStr(ctx, "initialHunterLordIds")));
-                if (visitMap.lordManager != null)
-                {
-                    List<Lord> lords = visitMap.lordManager.lords;
-                    for (int i = 0; i < lords.Count; i++)
-                    {
-                        Lord l = lords[i];
-                        if (l == null || l.faction != hunterFac) continue;
-                        if (initialLords.Contains(l.loadID)) continue;
-                        if (!hunterFac.HostileTo(Faction.OfPlayer)) continue;
-                        if (l.ownedPawns == null || l.ownedPawns.Count == 0) continue;
+                int raidTick = GetInt(ctx, "hunterRaidTick", now);
+                if (now < raidTick || now >= hardDeadlineTick) return;
 
-                        List<int> hunterPawnIds = new List<int>();
-                        for (int pIdx = 0; pIdx < l.ownedPawns.Count; pIdx++)
-                        {
-                            Pawn hp = l.ownedPawns[pIdx];
-                            if (hp != null && !hunterPawnIds.Contains(hp.thingIDNumber))
-                            {
-                                hunterPawnIds.Add(hp.thingIDNumber);
-                            }
-                        }
-
-                        if (hunterPawnIds.Count > 0)
-                        {
-                            ctx.run.vars["hunterRaidBound"] = "true";
-                            ctx.run.vars["hunterRaidLordId"] = l.loadID.ToString();
-                            ctx.run.vars["hunterRaidPawnIds"] = JoinInts(hunterPawnIds);
-                            break;
-                        }
-                    }
-                }
+                ctx.run.vars["hunterRaidLaunched"] = "true";
+                TryLaunchStageHunterRaid(ctx, visitMap, hunterFac);
                 return;
             }
 
-            // Step 2: Check whether the bound hunter raid cohort is completely neutralized/fled
+            // Step 2: Only track the stage's own bound cohort (non-empty confirmed raiders)
+            if (!GetBool(ctx, "hunterRaidBound")) return;
+
             int boundLordId = GetInt(ctx, "hunterRaidLordId", -1);
             HashSet<int> boundPawnIds = new HashSet<int>(ParseInts(GetStr(ctx, "hunterRaidPawnIds")));
+            if (boundPawnIds.Count == 0) return;
+
             if (IsBoundHunterRaidCleared(visitMap, boundLordId, boundPawnIds))
             {
                 ctx.run.vars["hunterRaidCleared"] = "true";
+                ReleaseHunterHostilityLease(ctx, false);
             }
+        }
+
+        private bool TryLaunchStageHunterRaid(StoryContext ctx, Map visitMap, Faction hunterFac)
+        {
+            if (visitMap == null || hunterFac == null) return false;
+
+            int visitFacId = GetInt(ctx, "visitFactionId", -1);
+            if (hunterFac.loadID == visitFacId)
+            {
+                // Cannot turn the guests' own faction hostile mid-visit
+                return false;
+            }
+
+            // If hunterFac is not hostile, request a temporary hostility lease
+            if (!hunterFac.HostileTo(Faction.OfPlayer))
+            {
+                StoryRelationRestorer restorer = StoryRelationRestorer.Instance;
+                string hLeaseId = null;
+                if (restorer == null || !restorer.AcquireHostilityLease(hunterFac, ctx.run, true, out hLeaseId))
+                {
+                    if (restorer != null && !hLeaseId.NullOrEmpty()) restorer.AbortLease(hLeaseId);
+                    return false;
+                }
+                if (!hLeaseId.NullOrEmpty())
+                {
+                    ctx.run.vars["hunterHostilityLeaseId"] = hLeaseId;
+                }
+            }
+
+            HashSet<int> prevPawns = SnapshotAllFactionPawnsOnMap(visitMap, hunterFac);
+            HashSet<int> prevLords = new HashSet<int>(SnapshotFactionLords(visitMap, hunterFac));
+
+            float rawPoints = StorytellerUtility.DefaultThreatPointsNow(visitMap) * Mathf.Max(0.2f, hunterRaidPointsFactor);
+            float minPoints = 150f;
+            if (hunterFac.def != null)
+            {
+                float facMin = hunterFac.def.MinPointsToGeneratePawnGroup(PawnGroupKindDefOf.Combat, null); // CHECK API
+                if (facMin > minPoints) minPoints = facMin;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, visitMap);
+            parms.target = visitMap;
+            parms.faction = hunterFac;
+            parms.points = Mathf.Max(minPoints, rawPoints);
+            parms.forced = true;
+            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+
+            bool executed = false;
+            try
+            {
+                executed = ExecuteHunterRaidIncident(parms);
+                if (!executed)
+                {
+                    parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
+                    parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+                    executed = ExecuteHunterRaidIncident(parms);
+                }
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] StoryStage_HotelVisit: Hide hunter raid threw exception: ", ex);
+                ReleaseHunterHostilityLease(ctx, true);
+                return false;
+            }
+
+            if (!executed)
+            {
+                ReleaseHunterHostilityLease(ctx, true);
+                return false;
+            }
+
+            // Capture ONLY the lord and confirmed raider cohort spawned by THIS TryExecute call
+            int boundLordId = -1;
+            List<int> cohortIds = new List<int>();
+            HashSet<int> cohortUnique = new HashSet<int>();
+
+            if (visitMap.lordManager != null)
+            {
+                List<Lord> lords = visitMap.lordManager.lords;
+                for (int i = 0; i < lords.Count; i++)
+                {
+                    Lord l = lords[i];
+                    if (l == null || l.faction != hunterFac || prevLords.Contains(l.loadID)) continue;
+                    boundLordId = l.loadID;
+                    if (l.ownedPawns != null)
+                    {
+                        for (int pIdx = 0; pIdx < l.ownedPawns.Count; pIdx++)
+                        {
+                            Pawn hp = l.ownedPawns[pIdx];
+                            if (hp != null && cohortUnique.Add(hp.thingIDNumber))
+                            {
+                                cohortIds.Add(hp.thingIDNumber);
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+
+            HashSet<int> afterPawns = SnapshotAllFactionPawnsOnMap(visitMap, hunterFac);
+            foreach (int id in afterPawns)
+            {
+                if (!prevPawns.Contains(id) && cohortUnique.Add(id))
+                {
+                    cohortIds.Add(id);
+                }
+            }
+
+            if (cohortIds.Count == 0)
+            {
+                ReleaseHunterHostilityLease(ctx, true);
+                return false;
+            }
+
+            ctx.run.vars["hunterRaidBound"] = "true";
+            ctx.run.vars["hunterRaidLordId"] = boundLordId.ToString();
+            ctx.run.vars["hunterRaidPawnIds"] = JoinInts(cohortIds);
+            return true;
+        }
+
+        private static bool ExecuteHunterRaidIncident(IncidentParms parms)
+        {
+            if (TestMode.Enabled && TestHunterRaidExecuteOverride != null)
+            {
+                return TestHunterRaidExecuteOverride(parms);
+            }
+            return IncidentDefOf.RaidEnemy.Worker.TryExecute(parms); // CHECK API
         }
 
         private static bool IsBoundHunterRaidCleared(Map map, int boundLordId, HashSet<int> boundPawnIds)
         {
-            if (map == null) return false;
+            if (map == null || boundPawnIds == null || boundPawnIds.Count == 0) return false;
 
             if (boundLordId >= 0 && map.lordManager != null)
             {
@@ -965,7 +1146,7 @@ namespace TurboMegaMod
                 }
             }
 
-            if (boundPawnIds.Count > 0 && map.mapPawns != null)
+            if (map.mapPawns != null)
             {
                 IReadOnlyList<Pawn> spawned = map.mapPawns.AllPawnsSpawned;
                 for (int i = 0; i < spawned.Count; i++)
@@ -978,7 +1159,18 @@ namespace TurboMegaMod
                 }
             }
 
-            return boundLordId >= 0 || boundPawnIds.Count > 0;
+            if (map.listerThings != null)
+            {
+                List<Thing> holders = map.listerThings.ThingsInGroup(ThingRequestGroup.ThingHolder);
+                for (int i = 0; i < holders.Count; i++)
+                {
+                    Thing h = holders[i];
+                    if (h == null || h.Destroyed || h is Pawn) continue;
+                    if (ThingHasTrackedActiveRaider(h, boundPawnIds)) return false;
+                }
+            }
+
+            return true;
         }
 
         private static bool IsActiveRaiderOnMap(Pawn p, Map map)
@@ -996,6 +1188,48 @@ namespace TurboMegaMod
                 }
             }
             return true;
+        }
+
+        private static bool ThingHasTrackedActiveRaider(Thing h, HashSet<int> trackedIds)
+        {
+            IThingHolder direct = h as IThingHolder;
+            if (direct != null && HolderHasTrackedActiveRaider(direct, trackedIds)) return true;
+
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                for (int i = 0; i < twc.AllComps.Count; i++)
+                {
+                    IThingHolder ch = twc.AllComps[i] as IThingHolder;
+                    if (ch != null && HolderHasTrackedActiveRaider(ch, trackedIds)) return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool HolderHasTrackedActiveRaider(IThingHolder holder, HashSet<int> trackedIds)
+        {
+            if (holder == null) return false;
+            ThingOwner owner = holder.GetDirectlyHeldThings();
+            if (owner != null)
+            {
+                for (int i = 0; i < owner.Count; i++)
+                {
+                    Pawn p = owner[i] as Pawn;
+                    if (p != null && trackedIds.Contains(p.thingIDNumber) && !p.Dead && !p.Destroyed &&
+                        !p.IsPrisonerOfColony && !p.IsSlaveOfColony)
+                    {
+                        return true;
+                    }
+                }
+            }
+            List<IThingHolder> children = new List<IThingHolder>();
+            holder.GetChildHolders(children);
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (HolderHasTrackedActiveRaider(children[i], trackedIds)) return true;
+            }
+            return false;
         }
 
         // =====================================================================
@@ -1093,7 +1327,6 @@ namespace TurboMegaMod
             }
             catch
             {
-                // Ignore version mismatch on optional CompGuest.Arrive
             }
         }
 
@@ -1121,7 +1354,6 @@ namespace TurboMegaMod
             }
             catch
             {
-                // Ignore reflection errors
             }
             return false;
         }
@@ -1184,7 +1416,23 @@ namespace TurboMegaMod
                 {
                     Thing h = holders[i];
                     if (h == null || h.Destroyed || h is Pawn) continue;
-                    CollectGuestsInHolder(h as IThingHolder, guestIds, heldOnMap);
+                    CollectGuestsInThing(h, guestIds, heldOnMap);
+                }
+            }
+        }
+
+        private static void CollectGuestsInThing(Thing h, HashSet<int> guestIds, Dictionary<int, Pawn> heldOnMap)
+        {
+            IThingHolder direct = h as IThingHolder;
+            if (direct != null) CollectGuestsInHolder(direct, guestIds, heldOnMap);
+
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                for (int i = 0; i < twc.AllComps.Count; i++)
+                {
+                    IThingHolder ch = twc.AllComps[i] as IThingHolder;
+                    if (ch != null) CollectGuestsInHolder(ch, guestIds, heldOnMap);
                 }
             }
         }
@@ -1212,13 +1460,76 @@ namespace TurboMegaMod
             }
         }
 
+        private static HashSet<int> SnapshotAllFactionPawnsOnMap(Map map, Faction fac)
+        {
+            HashSet<int> ids = new HashSet<int>();
+            if (map == null || fac == null) return ids;
+
+            if (map.mapPawns != null)
+            {
+                IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+                for (int i = 0; i < pawns.Count; i++)
+                {
+                    if (pawns[i] != null && pawns[i].Faction == fac) ids.Add(pawns[i].thingIDNumber);
+                }
+            }
+
+            if (map.listerThings != null)
+            {
+                List<Thing> holders = map.listerThings.ThingsInGroup(ThingRequestGroup.ThingHolder);
+                for (int i = 0; i < holders.Count; i++)
+                {
+                    Thing h = holders[i];
+                    if (h == null || h.Destroyed || h is Pawn) continue;
+                    CollectFactionPawnsInThing(h, fac, ids);
+                }
+            }
+            return ids;
+        }
+
+        private static void CollectFactionPawnsInThing(Thing h, Faction fac, HashSet<int> ids)
+        {
+            IThingHolder direct = h as IThingHolder;
+            if (direct != null) CollectFactionPawnsInHolder(direct, fac, ids);
+
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                for (int i = 0; i < twc.AllComps.Count; i++)
+                {
+                    IThingHolder ch = twc.AllComps[i] as IThingHolder;
+                    if (ch != null) CollectFactionPawnsInHolder(ch, fac, ids);
+                }
+            }
+        }
+
+        private static void CollectFactionPawnsInHolder(IThingHolder holder, Faction fac, HashSet<int> ids)
+        {
+            if (holder == null) return;
+            ThingOwner owner = holder.GetDirectlyHeldThings();
+            if (owner != null)
+            {
+                for (int i = 0; i < owner.Count; i++)
+                {
+                    Pawn p = owner[i] as Pawn;
+                    if (p != null && p.Faction == fac) ids.Add(p.thingIDNumber);
+                }
+            }
+            List<IThingHolder> children = new List<IThingHolder>();
+            holder.GetChildHolders(children);
+            for (int i = 0; i < children.Count; i++)
+            {
+                CollectFactionPawnsInHolder(children[i], fac, ids);
+            }
+        }
+
         private Faction ResolveVisitFaction(StoryContext ctx)
         {
             if (!faction.NullOrEmpty())
             {
                 Faction f = StoryUtil.FactionOf(faction);
                 if (f != null && !f.defeated && !f.IsPlayer) return f;
-                return null; // Explicit faction missing/defeated -> do not silently substitute
+                return null;
             }
             if (ctx.Faction != null && !ctx.Faction.defeated && !ctx.Faction.IsPlayer)
             {
@@ -1357,3 +1668,4 @@ namespace TurboMegaMod
         }
     }
 }
+

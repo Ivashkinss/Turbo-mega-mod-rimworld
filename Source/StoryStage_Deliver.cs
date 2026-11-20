@@ -16,14 +16,21 @@ namespace TurboMegaMod
     }
 
     // =========================================================================
-    // COLONY HAND-IN CHOICE LETTER (VALIDATED & ATOMIC)
+    // COLONY HAND-IN CHOICE LETTER (VALIDATED AGAINST IMMUTABLE CONTRACT)
     // =========================================================================
 
     /// <summary>
     /// Reminder/hand-in ChoiceLetter for StoryStage_Deliver (to = colony).
-    /// Before EVERY deduction (including immediately after reload prior to first Reconcile),
-    /// verifies: active run, matching stageKey &amp; runGen, letter still in stack, pinned map
-    /// from vars (never a closure-captured map), deadline not elapsed, and atomic StoryPayment.
+    ///
+    /// Round 2 invariants:
+    /// - NEVER trusts letter.thingDefName, letter.requiredCount, letter.deadlineTick, or letter.deliverMapId
+    ///   as authoritative payment terms.
+    /// - Resolves the active stage STRICTLY by stageKey (if stageKey is present and missing from def.stages,
+    ///   refuses with zero fallback to stale run.stage index).
+    /// - Reads ThingDef, count, mapId, and deadlineTick from the verified stage &amp; immutable contract
+    ///   recorded in run.vars at Start; unknown/missing deadlineTick ALWAYS refuses payment.
+    /// - Deducts exclusively via atomic StoryPayment with onPaymentSecured recording delivered=true
+    ///   after 100% staging confirmation and before irreversible destruction.
     /// </summary>
     public sealed class ChoiceLetter_StoryDeliver : ChoiceLetter
     {
@@ -60,11 +67,12 @@ namespace TurboMegaMod
             {
                 StoryQuestRun run;
                 Map pinnedMap;
-                ThingDef def;
+                ThingDef contractDef;
+                int contractCount;
                 string invalidReason;
 
                 bool valid = StoryStage_Deliver.ValidateColonyHandIn(
-                    this, out run, out pinnedMap, out def, out invalidReason);
+                    this, out run, out pinnedMap, out contractDef, out contractCount, out invalidReason);
 
                 if (!valid)
                 {
@@ -79,26 +87,27 @@ namespace TurboMegaMod
                     yield break;
                 }
 
-                int have = StoryPayment.CountInColonyStockpiles(pinnedMap, def);
-                string itemLabel = def != null ? def.label : thingDefName;
-                string deliverLabel = string.Format("Deliver {0} x{1} ({2}/{3})", itemLabel, requiredCount, have, requiredCount);
+                int have = StoryPayment.CountInColonyStockpiles(pinnedMap, contractDef);
+                string itemLabel = contractDef.label;
+                string deliverLabel = string.Format("Deliver {0} x{1} ({2}/{3})", itemLabel, contractCount, have, contractCount);
                 DiaOption deliver = new DiaOption(deliverLabel);
 
-                if (have < requiredCount)
+                if (have < contractCount)
                 {
                     deliver.Disable(string.Format("Need {0} {1} in colony storage on {2} ({3}/{0})",
-                        requiredCount, itemLabel, pinnedMap.Parent != null ? pinnedMap.Parent.LabelCap.ToString() : "colony", have));
+                        contractCount, itemLabel, pinnedMap.Parent != null ? pinnedMap.Parent.LabelCap.ToString() : "colony", have));
                 }
                 else
                 {
                     deliver.action = delegate
                     {
-                        // Full re-validation at exact click time (no stale closures!)
+                        // Full re-validation at click time against verified stage & immutable vars contract
                         StoryQuestRun clickRun;
                         Map clickMap;
                         ThingDef clickDef;
+                        int clickCount;
                         string clickReason;
-                        if (!StoryStage_Deliver.ValidateColonyHandIn(this, out clickRun, out clickMap, out clickDef, out clickReason))
+                        if (!StoryStage_Deliver.ValidateColonyHandIn(this, out clickRun, out clickMap, out clickDef, out clickCount, out clickReason))
                         {
                             resolved = true;
                             if (InStack) Find.LetterStack.RemoveLetter(this);
@@ -106,10 +115,18 @@ namespace TurboMegaMod
                         }
 
                         int deducted;
-                        if (StoryPayment.TryDeductFromColonyStockpiles(clickMap, clickDef, requiredCount, out deducted) &&
-                            deducted == requiredCount)
+                        bool paid = StoryPayment.TryDeductFromColonyStockpiles(
+                            clickMap,
+                            clickDef,
+                            clickCount,
+                            out deducted,
+                            delegate
+                            {
+                                clickRun.vars["delivered"] = "true";
+                            });
+
+                        if (paid && deducted == clickCount)
                         {
-                            clickRun.vars["delivered"] = "true";
                             resolved = true;
                             if (InStack) Find.LetterStack.RemoveLetter(this);
                         }
@@ -150,11 +167,6 @@ namespace TurboMegaMod
     // CARAVAN ARRIVAL ACTION FOR giverSettlement (EXPLICIT ARRIVAL ONLY)
     // =========================================================================
 
-    /// <summary>
-    /// Explicit CaravanArrivalAction for StoryStage_Deliver (to = giverSettlement).
-    /// Passing caravans are NEVER deducted; cargo is only deducted when a caravan arrives
-    /// with this arrival action or when the player clicks the explicit Deliver gizmo at the settlement.
-    /// </summary>
     public sealed class CaravanArrivalAction_StoryDeliver : CaravanArrivalAction
     {
         public Settlement settlement;
@@ -266,6 +278,11 @@ namespace TurboMegaMod
                 return;
             }
 
+            // Record immutable payment contract in run.vars at Start
+            ctx.run.vars["contractThingDef"] = thing.defName;
+            ctx.run.vars["contractCount"] = count.ToString();
+            ctx.run.vars["contractTarget"] = to.ToString();
+
             if (to == StoryDeliverTarget.colony)
             {
                 Map home = ctx.Home;
@@ -280,7 +297,6 @@ namespace TurboMegaMod
             }
             else
             {
-                // Strict giverSettlement: ONLY a settlement belonging to the quest's exact faction (no fallback!)
                 Settlement target = FindNearestExactFactionSettlement(ctx);
                 if (target == null)
                 {
@@ -314,7 +330,7 @@ namespace TurboMegaMod
                 return immediate;
             }
 
-            // 1. If payment was already accepted on time (including across save/reload), finish cleanly without re-deducting!
+            // 1. If payment was already confirmed, finish cleanly without re-deducting
             if (GetBool(ctx.run, "delivered"))
             {
                 RemoveDeliverLetters(ctx);
@@ -322,15 +338,17 @@ namespace TurboMegaMod
                 return "success";
             }
 
+            // 2. Unknown/missing deadlineTick -> refuse to slide deadline forward; expire cleanly
             int now = Find.TickManager.TicksGame;
             int deadline;
-            if (!TryGetInt(ctx.run, "deadlineTick", out deadline))
+            if (!TryGetInt(ctx.run, "deadlineTick", out deadline) || deadline < 0)
             {
-                deadline = now + Mathf.Max(GenDate.TicksPerHour, Mathf.RoundToInt(timeoutDays * GenDate.TicksPerDay));
-                ctx.run.vars["deadlineTick"] = deadline.ToString();
+                RemoveDeliverLetters(ctx);
+                ctx.run.vars["failReason"] = "deadline_missing";
+                ctx.run.vars["finished"] = "timeout";
+                return "timeout";
             }
 
-            // 2. Check deadline FIRST
             if (now >= deadline)
             {
                 RemoveDeliverLetters(ctx);
@@ -357,9 +375,7 @@ namespace TurboMegaMod
                 return null;
             }
 
-            // 3. giverSettlement mode: verify target settlement still exists & still belongs to the required faction
-            // NOTE: Passing caravans are NEVER auto-deducted here! Delivery happens via CaravanArrivalAction_StoryDeliver
-            // or the explicit caravan Deliver gizmo.
+            // 3. giverSettlement mode: verify target settlement still exists & belongs to required faction
             int settlementId = GetInt(ctx.run, "settlementId", -1);
             int expectedFacId = GetInt(ctx.run, "settlementFactionId", -1);
             Settlement target = FindSettlementById(settlementId);
@@ -375,8 +391,21 @@ namespace TurboMegaMod
 
         public override string Objective(StoryContext ctx)
         {
-            string itemLabel = thing != null ? thing.label : "resources";
-            string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", itemLabel, count), ctx);
+            ThingDef displayDef = thing;
+            int displayCount = count;
+            if (ctx != null && ctx.run != null)
+            {
+                ThingDef cDef;
+                int cCount;
+                if (TryResolveImmutableContract(ctx.run, this, out cDef, out cCount))
+                {
+                    displayDef = cDef;
+                    displayCount = cCount;
+                }
+            }
+
+            string itemLabel = displayDef != null ? displayDef.label : "resources";
+            string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", itemLabel, displayCount), ctx);
 
             if (ctx == null || ctx.run == null) return baseText;
 
@@ -387,8 +416,8 @@ namespace TurboMegaMod
             if (to == StoryDeliverTarget.colony)
             {
                 Map pinnedMap = FindMapByUniqueId(GetInt(ctx.run, "deliverMapId", -1));
-                int have = (pinnedMap != null && thing != null) ? StoryPayment.CountInColonyStockpiles(pinnedMap, thing) : 0;
-                return string.Format("{0} ({1}/{2} {3}, {4:0.0}d left)", baseText, have, count, itemLabel, daysLeft);
+                int have = (pinnedMap != null && displayDef != null) ? StoryPayment.CountInColonyStockpiles(pinnedMap, displayDef) : 0;
+                return string.Format("{0} ({1}/{2} {3}, {4:0.0}d left)", baseText, have, displayCount, itemLabel, daysLeft);
             }
 
             string targetName = GetStr(ctx.run, "settlementName");
@@ -397,23 +426,22 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // SHARED VALIDATION FOR COLONY LETTER & CARAVAN HAND-IN
+        // STRICT VALIDATION (NO STALE INDEX FALLBACK, NO UNKNOWN DEADLINE,
+        // IMMUTABLE CONTRACT TERMS ONLY)
         // =====================================================================
 
-        /// <summary>
-        /// Validates every precondition for a colony letter click (safe even immediately after load
-        /// before SparkStory.Reconcile has run).
-        /// </summary>
-        internal static bool ValidateColonyHandIn(
+        public static bool ValidateColonyHandIn(
             ChoiceLetter_StoryDeliver letter,
             out StoryQuestRun run,
             out Map pinnedMap,
-            out ThingDef def,
+            out ThingDef contractDef,
+            out int contractCount,
             out string reason)
         {
             run = null;
             pinnedMap = null;
-            def = null;
+            contractDef = null;
+            contractCount = 0;
             reason = null;
 
             if (letter == null || letter.IsResolved || !letter.IsInLetterStack)
@@ -423,31 +451,41 @@ namespace TurboMegaMod
             }
 
             StoryStage_Deliver stageDef;
-            if (!ValidateActiveDeliverStage(letter.questDefName, letter.stageKey, letter.runGen, StoryDeliverTarget.colony, out run, out stageDef, out reason))
+            if (!ValidateActiveDeliverStage(
+                    letter.questDefName,
+                    letter.stageKey,
+                    letter.runGen,
+                    StoryDeliverTarget.colony,
+                    out run,
+                    out stageDef,
+                    out contractDef,
+                    out contractCount,
+                    out reason))
             {
                 return false;
             }
 
+            // Unknown/missing deadlineTick in run.vars ALWAYS refuses payment (never falls back to letter)
             int now = Find.TickManager.TicksGame;
-            int dl = GetInt(run, "deadlineTick", letter.deadlineTick);
-            if (dl >= 0 && now >= dl)
+            int dl;
+            if (!TryGetInt(run, "deadlineTick", out dl) || dl < 0 || now >= dl)
             {
-                reason = "deadline_passed";
+                reason = "deadline_missing_or_passed";
                 return false;
             }
 
-            int mapId = GetInt(run, "deliverMapId", letter.deliverMapId);
+            // Pinned map comes strictly from run.vars (never from letter)
+            int mapId;
+            if (!TryGetInt(run, "deliverMapId", out mapId) || mapId < 0)
+            {
+                reason = "deliver_map_missing";
+                return false;
+            }
+
             pinnedMap = FindMapByUniqueId(mapId);
             if (pinnedMap == null || !pinnedMap.IsPlayerHome)
             {
                 reason = "pinned_map_missing";
-                return false;
-            }
-
-            def = stageDef.thing ?? DefDatabase<ThingDef>.GetNamedSilentFail(letter.thingDefName);
-            if (def == null)
-            {
-                reason = "thing_def_missing";
                 return false;
             }
 
@@ -461,10 +499,14 @@ namespace TurboMegaMod
             StoryDeliverTarget expectedTarget,
             out StoryQuestRun run,
             out StoryStage_Deliver stageDef,
+            out ThingDef contractDef,
+            out int contractCount,
             out string reason)
         {
             run = null;
             stageDef = null;
+            contractDef = null;
+            contractCount = 0;
             reason = null;
 
             SparkStory story = SparkStory.Instance;
@@ -493,7 +535,7 @@ namespace TurboMegaMod
                 return false;
             }
 
-            if (run.vars.ContainsKey("finished") || GetBool(run, "delivered"))
+            if (run.vars == null || run.vars.ContainsKey("finished") || GetBool(run, "delivered"))
             {
                 reason = "already_delivered_or_finished";
                 return false;
@@ -506,21 +548,31 @@ namespace TurboMegaMod
                 return false;
             }
 
-            // Resolve stage by stable stageKey first so validation works even before Reconcile() remaps run.stage!
+            // STRICT stageKey RESOLUTION:
+            // If stageKey is set (either on the caller or on run.stageKey) and NO stage in def.stages
+            // matches that exact key -> REFUSE! Never fall back to the stale run.stage index!
+            string lookupKey = !expectedStageKey.NullOrEmpty() ? expectedStageKey : run.stageKey;
             StoryStage foundStage = null;
-            if (!run.stageKey.NullOrEmpty())
+
+            if (!lookupKey.NullOrEmpty())
             {
                 for (int i = 0; i < def.stages.Count; i++)
                 {
-                    if (def.stages[i] != null && def.stages[i].Key(i) == run.stageKey)
+                    if (def.stages[i] != null && def.stages[i].Key(i) == lookupKey)
                     {
                         foundStage = def.stages[i];
                         break;
                     }
                 }
+                if (foundStage == null)
+                {
+                    reason = "stage_key_removed";
+                    return false;
+                }
             }
-            if (foundStage == null && run.stage >= 0 && run.stage < def.stages.Count)
+            else if (run.stage >= 0 && run.stage < def.stages.Count)
             {
+                // Legacy migration only when neither letter nor run carried a stageKey
                 foundStage = def.stages[run.stage];
             }
 
@@ -531,6 +583,54 @@ namespace TurboMegaMod
                 return false;
             }
 
+            // Verify contract target matches expectedTarget if recorded
+            string recordedTarget = GetStr(run, "contractTarget");
+            if (!recordedTarget.NullOrEmpty() && !string.Equals(recordedTarget, expectedTarget.ToString(), StringComparison.Ordinal))
+            {
+                reason = "contract_target_mismatch";
+                return false;
+            }
+
+            // Resolve ThingDef and count strictly from immutable vars contract (or verified current stageDef),
+            // NEVER from letter fields!
+            if (!TryResolveImmutableContract(run, stageDef, out contractDef, out contractCount))
+            {
+                reason = "invalid_contract";
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool TryResolveImmutableContract(StoryQuestRun run, StoryStage_Deliver verifiedStage, out ThingDef resolvedDef, out int resolvedCount)
+        {
+            resolvedDef = null;
+            resolvedCount = 0;
+            if (verifiedStage == null) return false;
+
+            string rawDef = GetStr(run, "contractThingDef");
+            string rawCount = GetStr(run, "contractCount");
+
+            if (!rawDef.NullOrEmpty() || !rawCount.NullOrEmpty())
+            {
+                ThingDef d = DefDatabase<ThingDef>.GetNamedSilentFail(rawDef);
+                int c;
+                if (d == null || !int.TryParse(rawCount, out c) || c <= 0)
+                {
+                    return false;
+                }
+                resolvedDef = d;
+                resolvedCount = c;
+                return true;
+            }
+
+            // Legacy run created before immutable contract vars were added: use verified current stageDef
+            if (verifiedStage.thing == null || verifiedStage.count <= 0)
+            {
+                return false;
+            }
+            resolvedDef = verifiedStage.thing;
+            resolvedCount = verifiedStage.count;
             return true;
         }
 
@@ -541,23 +641,27 @@ namespace TurboMegaMod
 
             StoryQuestRun run;
             StoryStage_Deliver stageDef;
+            ThingDef contractDef;
+            int contractCount;
             string reason;
-            if (!ValidateActiveDeliverStage(questDefName, expectedStageKey, expectedGen, StoryDeliverTarget.giverSettlement, out run, out stageDef, out reason))
+            if (!ValidateActiveDeliverStage(
+                    questDefName, expectedStageKey, expectedGen, StoryDeliverTarget.giverSettlement,
+                    out run, out stageDef, out contractDef, out contractCount, out reason))
             {
                 return false;
             }
 
+            // Unknown/missing deadlineTick ALWAYS refuses
             int now = Find.TickManager.TicksGame;
-            int dl = GetInt(run, "deadlineTick", -1);
-            if (dl >= 0 && now >= dl) return false;
+            int dl;
+            if (!TryGetInt(run, "deadlineTick", out dl) || dl < 0 || now >= dl) return false;
 
             int expectedSettlementId = GetInt(run, "settlementId", -1);
             int expectedFacId = GetInt(run, "settlementFactionId", -1);
             if (settlement.ID != expectedSettlementId) return false;
             if (settlement.Faction == null || settlement.Faction.loadID != expectedFacId) return false;
 
-            if (stageDef.thing == null || stageDef.count <= 0) return false;
-            return StoryPayment.CountInCaravanDirectInventory(caravan, stageDef.thing) >= stageDef.count;
+            return StoryPayment.CountInCaravanDirectInventory(caravan, contractDef) >= contractCount;
         }
 
         public static bool TryCompleteCaravanHandIn(Caravan caravan, Settlement settlement, string questDefName, string expectedStageKey, int expectedGen)
@@ -567,16 +671,20 @@ namespace TurboMegaMod
 
             StoryQuestRun run;
             StoryStage_Deliver stageDef;
+            ThingDef contractDef;
+            int contractCount;
             string reason;
-            if (!ValidateActiveDeliverStage(questDefName, expectedStageKey, expectedGen, StoryDeliverTarget.giverSettlement, out run, out stageDef, out reason))
+            if (!ValidateActiveDeliverStage(
+                    questDefName, expectedStageKey, expectedGen, StoryDeliverTarget.giverSettlement,
+                    out run, out stageDef, out contractDef, out contractCount, out reason))
             {
                 return false;
             }
 
-            // Check deadline BEFORE touching any items
+            // Unknown/missing deadlineTick ALWAYS refuses before touching any items
             int now = Find.TickManager.TicksGame;
-            int dl = GetInt(run, "deadlineTick", -1);
-            if (dl >= 0 && now >= dl) return false;
+            int dl;
+            if (!TryGetInt(run, "deadlineTick", out dl) || dl < 0 || now >= dl) return false;
 
             int expectedSettlementId = GetInt(run, "settlementId", -1);
             int expectedFacId = GetInt(run, "settlementFactionId", -1);
@@ -585,30 +693,40 @@ namespace TurboMegaMod
                 return false;
             }
 
-            if (stageDef.thing == null || stageDef.count <= 0) return false;
-
             int deducted;
-            if (!StoryPayment.TryDeductFromCaravan(caravan, stageDef.thing, stageDef.count, out deducted) || deducted != stageDef.count)
+            bool paid = StoryPayment.TryDeductFromCaravan(
+                caravan,
+                contractDef,
+                contractCount,
+                out deducted,
+                delegate
+                {
+                    run.vars["delivered"] = "true";
+                });
+
+            if (!paid || deducted != contractCount)
             {
                 return false;
             }
 
-            run.vars["delivered"] = "true";
-
             string doneTitle = !stageDef.label.NullOrEmpty() ? stageDef.label : "Delivery Complete";
             string doneBody = string.Format("Your caravan delivered {0} x{1} to {2}.",
-                stageDef.thing.label, stageDef.count, settlement.LabelCap);
+                contractDef.label, contractCount, settlement.LabelCap);
             Find.LetterStack.ReceiveLetter(doneTitle, doneBody, LetterDefOf.PositiveEvent, new LookTargets(settlement)); // CHECK API
             return true;
         }
 
-        /// <summary>
-        /// Enumerates all active giverSettlement Deliver stages targeting the given settlement.
-        /// Used by the Settlement FloatMenu and Caravan Gizmo Harmony patches.
-        /// </summary>
-        internal static List<StoryQuestRun> FindActiveSettlementDeliveries(Settlement settlement)
+        internal sealed class ActiveSettlementDelivery
         {
-            List<StoryQuestRun> matches = new List<StoryQuestRun>();
+            public StoryQuestRun run;
+            public StoryStage_Deliver stage;
+            public ThingDef contractDef;
+            public int contractCount;
+        }
+
+        internal static List<ActiveSettlementDelivery> FindActiveSettlementDeliveries(Settlement settlement)
+        {
+            List<ActiveSettlementDelivery> matches = new List<ActiveSettlementDelivery>();
             SparkStory story = SparkStory.Instance;
             if (story == null || settlement == null || settlement.Destroyed || settlement.Faction == null) return matches;
 
@@ -620,16 +738,27 @@ namespace TurboMegaMod
                 if (GetInt(run, "settlementId", -1) != settlement.ID) continue;
                 if (GetInt(run, "settlementFactionId", -1) != settlement.Faction.loadID) continue;
 
-                int dl = GetInt(run, "deadlineTick", -1);
-                if (dl >= 0 && now >= dl) continue;
+                int dl;
+                if (!TryGetInt(run, "deadlineTick", out dl) || dl < 0 || now >= dl) continue;
 
-                StoryQuestDef def = run.Def;
-                if (def == null || run.stage < 0 || run.stage >= def.stages.Count) continue;
-                StoryStage_Deliver st = def.stages[run.stage] as StoryStage_Deliver;
-                if (st != null && st.to == StoryDeliverTarget.giverSettlement && st.thing != null)
+                StoryQuestRun verifiedRun;
+                StoryStage_Deliver st;
+                ThingDef cDef;
+                int cCount;
+                string reason;
+                if (!ValidateActiveDeliverStage(
+                        run.quest, run.stageKey, run.gen, StoryDeliverTarget.giverSettlement,
+                        out verifiedRun, out st, out cDef, out cCount, out reason))
                 {
-                    matches.Add(run);
+                    continue;
                 }
+
+                ActiveSettlementDelivery entry = new ActiveSettlementDelivery();
+                entry.run = verifiedRun;
+                entry.stage = st;
+                entry.contractDef = cDef;
+                entry.contractCount = cCount;
+                matches.Add(entry);
             }
             return matches;
         }
@@ -642,28 +771,36 @@ namespace TurboMegaMod
         {
             if (Find.LetterStack == null || thing == null || pinnedMap == null) return;
 
+            ThingDef displayDef;
+            int displayCount;
+            if (!TryResolveImmutableContract(ctx.run, this, out displayDef, out displayCount))
+            {
+                displayDef = thing;
+                displayCount = Mathf.Max(1, count);
+            }
+
             ChoiceLetter_StoryDeliver letter = new ChoiceLetter_StoryDeliver();
             letter.def = LetterDefOf.NeutralEvent;
-            letter.Label = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", thing.label, count), ctx);
-            letter.Text = BuildColonyLetterText(ctx);
+            letter.Label = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", displayDef.label, displayCount), ctx);
+            letter.Text = BuildColonyLetterText(ctx, displayDef, displayCount);
             letter.questDefName = ctx.def != null ? ctx.def.defName : string.Empty;
             letter.stageKey = ctx.run.stageKey;
             letter.runGen = ctx.run.gen;
             letter.deliverMapId = pinnedMap.uniqueID;
-            letter.thingDefName = thing.defName;
-            letter.requiredCount = Mathf.Max(1, count);
+            letter.thingDefName = displayDef.defName;
+            letter.requiredCount = displayCount;
             letter.deadlineTick = deadline;
             letter.lookTargets = new LookTargets(pinnedMap.Center, pinnedMap);
 
             Find.LetterStack.ReceiveLetter(letter); // CHECK API
         }
 
-        private string BuildColonyLetterText(StoryContext ctx)
+        private string BuildColonyLetterText(StoryContext ctx, ThingDef displayDef, int displayCount)
         {
             string custom = StoryUtil.Format(text, ctx);
-            string itemLabel = thing != null ? thing.label : "items";
+            string itemLabel = displayDef != null ? displayDef.label : "items";
             string instruction = string.Format("Gather {0} x{1} in {2}'s storage stockpiles within {3:0.0} days, then open this letter and click Deliver.",
-                itemLabel, count, "{COLONY}", timeoutDays);
+                itemLabel, displayCount, "{COLONY}", timeoutDays);
             instruction = StoryUtil.Format(instruction, ctx);
             if (custom.NullOrEmpty()) return instruction;
             return custom + "\n\n" + instruction;
@@ -709,10 +846,6 @@ namespace TurboMegaMod
             }
         }
 
-        /// <summary>
-        /// Strictly selects the nearest non-destroyed settlement belonging to ctx.Faction ONLY.
-        /// Never substitutes another faction's settlement.
-        /// </summary>
         private static Settlement FindNearestExactFactionSettlement(StoryContext ctx)
         {
             Faction targetFac = ctx.Faction;
@@ -848,25 +981,23 @@ namespace TurboMegaMod
 
             if (__instance == null || caravan == null || caravan.Faction != Faction.OfPlayer) yield break;
 
-            List<StoryQuestRun> runs = StoryStage_Deliver.FindActiveSettlementDeliveries(__instance);
-            for (int i = 0; i < runs.Count; i++)
+            List<StoryStage_Deliver.ActiveSettlementDelivery> deliveries = StoryStage_Deliver.FindActiveSettlementDeliveries(__instance);
+            for (int i = 0; i < deliveries.Count; i++)
             {
-                StoryQuestRun run = runs[i];
-                StoryQuestDef def = run.Def;
-                StoryStage_Deliver st = (def != null && run.stage >= 0 && run.stage < def.stages.Count) ? def.stages[run.stage] as StoryStage_Deliver : null;
-                if (st == null || st.thing == null) continue;
+                StoryStage_Deliver.ActiveSettlementDelivery d = deliveries[i];
+                if (d == null || d.run == null || d.contractDef == null) continue;
 
-                string capturedQuest = run.quest;
-                string capturedKey = run.stageKey;
-                int capturedGen = run.gen;
+                string capturedQuest = d.run.quest;
+                string capturedKey = d.run.stageKey;
+                int capturedGen = d.run.gen;
                 Settlement capturedSettlement = __instance;
                 Caravan capturedCaravan = caravan;
 
-                int have = StoryPayment.CountInCaravanDirectInventory(caravan, st.thing);
+                int have = StoryPayment.CountInCaravanDirectInventory(caravan, d.contractDef);
                 string optLabel = string.Format("Deliver {0} x{1} to {2} ({3}/{1})",
-                    st.thing.label, st.count, __instance.LabelCap, have);
+                    d.contractDef.label, d.contractCount, __instance.LabelCap, have);
 
-                if (have < st.count)
+                if (have < d.contractCount)
                 {
                     yield return new FloatMenuOption(optLabel + " (not enough cargo)", null);
                     continue;
@@ -904,29 +1035,28 @@ namespace TurboMegaMod
             Settlement here = Find.WorldObjects.SettlementAt(__instance.Tile); // CHECK API
             if (here == null || here.Destroyed) yield break;
 
-            List<StoryQuestRun> runs = StoryStage_Deliver.FindActiveSettlementDeliveries(here);
-            for (int i = 0; i < runs.Count; i++)
+            List<StoryStage_Deliver.ActiveSettlementDelivery> deliveries = StoryStage_Deliver.FindActiveSettlementDeliveries(here);
+            for (int i = 0; i < deliveries.Count; i++)
             {
-                StoryQuestRun run = runs[i];
-                StoryQuestDef def = run.Def;
-                StoryStage_Deliver st = (def != null && run.stage >= 0 && run.stage < def.stages.Count) ? def.stages[run.stage] as StoryStage_Deliver : null;
-                if (st == null || st.thing == null) continue;
+                StoryStage_Deliver.ActiveSettlementDelivery d = deliveries[i];
+                if (d == null || d.run == null || d.contractDef == null) continue;
 
-                int have = StoryPayment.CountInCaravanDirectInventory(__instance, st.thing);
-                string capturedQuest = run.quest;
-                string capturedKey = run.stageKey;
-                int capturedGen = run.gen;
+                StoryQuestDef qDef = d.run.Def;
+                int have = StoryPayment.CountInCaravanDirectInventory(__instance, d.contractDef);
+                string capturedQuest = d.run.quest;
+                string capturedKey = d.run.stageKey;
+                int capturedGen = d.run.gen;
                 Settlement capturedSettlement = here;
                 Caravan capturedCaravan = __instance;
 
                 Command_Action cmd = new Command_Action();
-                cmd.defaultLabel = string.Format("Deliver {0} x{1}", st.thing.label, st.count);
+                cmd.defaultLabel = string.Format("Deliver {0} x{1}", d.contractDef.label, d.contractCount);
                 cmd.defaultDesc = string.Format("Hand in {0} x{1} to {2} for quest '{3}' ({4}/{1} carried).",
-                    st.thing.label, st.count, here.LabelCap, def.LabelCap, have);
-                cmd.icon = st.thing.uiIcon; // CHECK API
-                if (have < st.count)
+                    d.contractDef.label, d.contractCount, here.LabelCap, qDef != null ? qDef.LabelCap.ToString() : d.run.quest, have);
+                cmd.icon = d.contractDef.uiIcon; // CHECK API
+                if (have < d.contractCount)
                 {
-                    cmd.Disable(string.Format("Caravan carries only {0}/{1} {2}.", have, st.count, st.thing.label));
+                    cmd.Disable(string.Format("Caravan carries only {0}/{1} {2}.", have, d.contractCount, d.contractDef.label));
                 }
                 cmd.action = delegate
                 {
@@ -937,3 +1067,4 @@ namespace TurboMegaMod
         }
     }
 }
+

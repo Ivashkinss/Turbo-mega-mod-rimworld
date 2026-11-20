@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -17,12 +15,18 @@ namespace TurboMegaMod
     {
         public const string SaveName = "TMM-StoryStages";
 
-        // Runtime probe quest defNames (registered only during probe runs so reload resolves cleanly)
+        // Runtime probe quest defNames (registered identically on fresh & reload)
         public const string QuestDownedTimeout = "TMM_Probe_Site_DownedTimeout";
         public const string QuestKillRecruited = "TMM_Probe_Site_KillRecruited";
+        public const string QuestKillTransferException = "TMM_Probe_Site_KillTransferException";
         public const string QuestRetrieveDestroyed = "TMM_Probe_Site_RetrieveDestroyed";
+        public const string QuestRetrieveTransitAndNpc = "TMM_Probe_Site_RetrieveTransitAndNpc";
         public const string QuestRaidNeutralTwoColonies = "TMM_Probe_Raid_NeutralTwoColonies";
-        public const string QuestRaidDisabledRollback = "TMM_Probe_Raid_DisabledRollback";
+        public const string QuestRaidStageRemovedOrphan = "TMM_Probe_Raid_StageRemovedOrphan";
+        public const string QuestRaidEmptyCohort = "TMM_Probe_Raid_EmptyCohort";
+        public const string QuestRaidFailedSpawnKeepHostile = "TMM_Probe_Raid_FailedSpawnKeepHostile";
+        public const string QuestForceOutcomeActive = "TMM_Probe_Site_ForceOutcomeActive";
+        public const string QuestHoldAbsenceGap = "TMM_Probe_Site_HoldAbsenceGap";
         public const string QuestReloadRescue = "TMM_Probe_Reload_Rescue";
         public const string QuestReloadRetrieve = "TMM_Probe_Reload_Retrieve";
         public const string QuestReloadHold = "TMM_Probe_Reload_Hold";
@@ -55,29 +59,23 @@ namespace TurboMegaMod
         {
             HeroDef heroA = PickAvailableHero(0);
             HeroDef heroB = PickAvailableHero(1) ?? heroA;
+            HeroDef heroC = PickAvailableHero(2) ?? heroB;
 
-            // 1. Timeout with downed colonist on map
             AddQuestDef(BuildSiteQuest(QuestDownedTimeout, "probe.downedTimeout", StorySiteObjective.Clear, null, null, 0.2f, 4f));
-
-            // 2. KillHero for hero already recruited by player
             AddQuestDef(BuildSiteQuest(QuestKillRecruited, "probe.killRecruited", StorySiteObjective.KillHero, heroA, null, 5f, 4f));
-
-            // 3. Retrieve where unique item is destroyed (no substitution)
+            AddQuestDef(BuildSiteQuest(QuestKillTransferException, "probe.killTransferEx", StorySiteObjective.KillHero, heroC, null, 5f, 4f));
             AddQuestDef(BuildSiteQuest(QuestRetrieveDestroyed, "probe.retrieveDestroyed", StorySiteObjective.Retrieve, null, ThingDefOf.ComponentIndustrial, 5f, 4f));
+            AddQuestDef(BuildSiteQuest(QuestRetrieveTransitAndNpc, "probe.retrieveTransitNpc", StorySiteObjective.Retrieve, null, ThingDefOf.ComponentIndustrial, 5f, 4f));
+            AddQuestDef(BuildSiteQuest(QuestForceOutcomeActive, "probe.forceOutcomeActive", StorySiteObjective.Clear, null, null, 5f, 4f));
+            AddQuestDef(BuildSiteQuest(QuestHoldAbsenceGap, "probe.holdAbsenceGap", StorySiteObjective.Hold, null, null, 5f, 4f));
 
-            // 4. Neutral raid with -50 goodwill + second home map
             AddQuestDef(BuildRaidQuest(QuestRaidNeutralTwoColonies, "probe.raidNeutral", true));
+            AddQuestDef(BuildRaidQuest(QuestRaidStageRemovedOrphan, "probe.raidStageRemoved", true));
+            AddQuestDef(BuildRaidQuest(QuestRaidEmptyCohort, "probe.raidEmptyCohort", true));
+            AddQuestDef(BuildRaidQuest(QuestRaidFailedSpawnKeepHostile, "probe.raidFailedKeepHostile", false));
 
-            // 5. Neutral raid disabled mid-raid -> rollback via StoryRelationRestorer
-            AddQuestDef(BuildRaidQuest(QuestRaidDisabledRollback, "probe.raidDisable", true));
-
-            // 6. Reload Rescue
             AddQuestDef(BuildSiteQuest(QuestReloadRescue, "probe.reloadRescue", StorySiteObjective.Rescue, heroB, null, 10f, 4f));
-
-            // 7. Reload Retrieve
             AddQuestDef(BuildSiteQuest(QuestReloadRetrieve, "probe.reloadRetrieve", StorySiteObjective.Retrieve, null, ThingDefOf.ComponentIndustrial, 10f, 4f));
-
-            // 8. Reload Hold (4h)
             AddQuestDef(BuildSiteQuest(QuestReloadHold, "probe.reloadHold", StorySiteObjective.Hold, null, null, 10f, 4f));
         }
 
@@ -160,8 +158,19 @@ namespace TurboMegaMod
     }
 
     /// <summary>
-    /// Comprehensive in-game verification probe covering every Codex review finding (P1 &amp; P2)
-    /// across fresh and save/reload runs. Reports honest pass/fail (never hardcoded true).
+    /// Round 2 in-game verification probe for E2 (StoryStage_Site &amp; StoryStage_ColonyRaid).
+    /// Covers all Round 2 findings:
+    /// - Hero mid-transfer exception (via TestMode hook) -> hero remains in WorldPawns with original faction;
+    /// - Raid with empty confirmed raiders -> timeout (NEVER success);
+    /// - Failed raid spawn with restoreRelations=false -> hostility rolled back via AbortLease;
+    /// - Orphan cleanup via REAL stage removal on StoryQuestDef (not manual status mutation);
+    /// - Symmetric relation restore verification + blocked-restore backup retention &amp; retry;
+    /// - Retrieve: NPC inventory on home map != delivered, flying TravellingTransporters == transit (not lost),
+    ///   player stockpile == delivered, and 250-tick scan throttle;
+    /// - Hold: absence/downed gap sampled by 60-tick monitor is NOT credited;
+    /// - forceOutcome &amp; legacy vars["forceOutcome"] tested on an ACTIVE run;
+    /// - Honest UI report passed value (computed from actual checks and errors, never hardcoded true);
+    /// - Clean probe pawn generation without global SanitizeDanglingPawnRelations before SaveGame.
     /// </summary>
     public sealed class InGameStoryStagesProbe : MapComponent
     {
@@ -211,16 +220,15 @@ namespace TurboMegaMod
             }
             finally
             {
+                StoryPawnTransfer.TestSpawnOverride = null;
+                StoryStage_ColonyRaid.TestRaidExecuteOverride = null;
+                StoryRelationRestorer.TestBlockRestoreOverride = null;
                 Application.logMessageReceived -= OnUnityLog;
-                WriteReport(StoryStagesProbeBootstrap.ReloadMode ? "StoryStagesReloadProbe.json" : "StoryStagesProbe.json");
+
+                bool allPassed = WriteReport(StoryStagesProbeBootstrap.ReloadMode ? "StoryStagesReloadProbe.json" : "StoryStagesProbe.json");
                 if (!StoryStagesProbeBootstrap.ReloadMode)
                 {
-                    try
-                    {
-                        string uiPath = Path.Combine(GenFilePaths.SaveDataFolderPath, "StoryStagesUiProbe.json");
-                        File.WriteAllText(uiPath, "{\"passed\":true,\"visualLayoutInspected\":false}");
-                    }
-                    catch { }
+                    WriteUiReport(allPassed);
                 }
             }
         }
@@ -234,7 +242,7 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // FRESH PROBE: TESTS EVERY CODEX FINDING + SAVES RELOAD SNAPSHOT
+        // FRESH PROBE
         // =====================================================================
 
         private void RunFreshProbe()
@@ -250,11 +258,10 @@ namespace TurboMegaMod
             Site downedSite = FindSite(ParseInt(downedRun, "siteId", -1));
             if (downedSite != null)
             {
-                Pawn scout = SpawnColonist(map);
+                Pawn scout = SpawnCleanColonist(map);
                 Caravan car = EnterSiteWithScout(scout, downedSite);
                 if (downedSite.HasMap && downedSite.Map != null)
                 {
-                    // Down the colonist via Anesthetic so they are alive & downed on site map
                     scout.health.AddHediff(HediffDefOf.Anesthetic);
                 }
                 AdvanceTicks(Mathf.CeilToInt(0.3f * GenDate.TicksPerDay));
@@ -268,7 +275,6 @@ namespace TurboMegaMod
                     "timeout=true, mapPreserved=true, pawnAliveDowned=true",
                     string.Format("timeout={0}, map={1}, pawn={2}", timedOut, mapPreserved, pawnAliveOnMap));
 
-                // Clean up test map/scout after verification
                 CleanupScoutAndSite(scout, car, downedSite);
             }
             else
@@ -306,52 +312,231 @@ namespace TurboMegaMod
                 AddCheck("P1_KillHeroRecruited_UnavailableAndUntouched", false, "hero exists", "hero null");
             }
 
-            // ---------------- 3. RETRIEVE DESTROYED ITEM -> FAILED (NO SUBSTITUTION) ----------------
+            // ---------------- 3. HERO MID-TRANSFER EXCEPTION ROLLBACK (TestMode) ----------------
+            if (TestMode.Enabled)
+            {
+                StoryQuestDef exDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestKillTransferException);
+                StoryStage_Site exStage = exDef != null ? exDef.stages[0] as StoryStage_Site : null;
+                Pawn exHero = (exStage != null && exStage.hero != null && HeroRegistry.Instance != null)
+                    ? HeroRegistry.Instance.GetOrCreate(exStage.hero) : null;
+
+                if (exHero != null)
+                {
+                    Faction origFac = exHero.Faction;
+                    bool origInWorld = Find.WorldPawns.Contains(exHero);
+
+                    story.SetFlag("probe.killTransferEx", "true");
+                    story.DirectorTick();
+                    StoryQuestRun exRun = story.RunFor(StoryStagesProbeBootstrap.QuestKillTransferException);
+                    Site exSite = FindSite(ParseInt(exRun, "siteId", -1));
+
+                    if (exSite != null && origInWorld)
+                    {
+                        Pawn scout = SpawnCleanColonist(map);
+                        Caravan car = EnterSiteWithScout(scout, exSite);
+
+                        // Inject exception AFTER StoryPawnTransfer has called SetFaction & RemovePawn!
+                        StoryPawnTransfer.TestSpawnOverride = delegate(Pawn p, Map m, IntVec3 c)
+                        {
+                            throw new InvalidOperationException("Simulated GenSpawn failure mid-transfer");
+                        };
+
+                        story.DirectorTick();
+                        StoryPawnTransfer.TestSpawnOverride = null;
+
+                        bool backInWorld = Find.WorldPawns.Contains(exHero) && !exHero.Spawned;
+                        bool origFacPreserved = exHero.Faction == origFac;
+                        bool endedUnavailable = exRun != null && HasOutcome(exRun, "unavailable");
+
+                        AddCheck("R2_HeroTransferException_FullRollbackToWorldPawns",
+                            backInWorld && origFacPreserved && endedUnavailable,
+                            "inWorldPawns=true, origFaction preserved, outcome=unavailable",
+                            string.Format("inWorld={0}, facMatch={1}, hist={2}",
+                                backInWorld, origFacPreserved, exRun != null ? string.Join(",", exRun.history.ToArray()) : "null"));
+
+                        CleanupScoutAndSite(scout, car, exSite);
+                    }
+                    else
+                    {
+                        AddCheck("R2_HeroTransferException_FullRollbackToWorldPawns", false, "free world hero & site created",
+                            string.Format("site={0}, inWorld={1}", exSite != null, origInWorld));
+                    }
+                }
+                else
+                {
+                    AddCheck("R2_HeroTransferException_FullRollbackToWorldPawns", false, "hero exists", "hero null");
+                }
+            }
+
+            // ---------------- 4. RETRIEVE: DESTROYED ITEM -> FAILED (NO SUBSTITUTION) ----------------
             story.SetFlag("probe.retrieveDestroyed", "true");
             story.DirectorTick();
             StoryQuestRun retDestRun = story.RunFor(StoryStagesProbeBootstrap.QuestRetrieveDestroyed);
             Site retDestSite = FindSite(ParseInt(retDestRun, "siteId", -1));
             if (retDestSite != null)
             {
-                Pawn scout = SpawnColonist(map);
+                Pawn scout = SpawnCleanColonist(map);
                 Caravan car = EnterSiteWithScout(scout, retDestSite);
                 story.DirectorTick();
 
                 string realId = GetVar(retDestRun, "targetThingId");
                 Thing realThing = FindThingOnMapById(retDestSite.Map, realId);
 
-                // Put a DECOY ComponentIndustrial into a separate player caravan on the world map
-                Pawn decoyPawn = SpawnColonist(map);
+                Pawn decoyPawn = SpawnCleanColonist(map);
                 Thing decoyItem = ThingMaker.MakeThing(ThingDefOf.ComponentIndustrial);
                 decoyPawn.inventory.innerContainer.TryAdd(decoyItem);
                 decoyPawn.DeSpawn(DestroyMode.Vanish);
                 Caravan decoyCaravan = CaravanMaker.MakeCaravan(new List<Pawn> { decoyPawn }, Faction.OfPlayer, map.Tile, true); // CHECK API
 
-                // Destroy the REAL quest item
                 if (realThing != null && !realThing.Destroyed) realThing.Destroy(DestroyMode.Vanish);
+
+                // Verify 250-tick throttle: ticking immediately (+50 ticks) does NOT rescan yet
+                AdvanceTicks(50);
+                story.DirectorTick();
+                bool throttledBefore250 = retDestRun != null && retDestRun.status == StoryQuestStatus.Active;
+
+                // After 250 ticks total: rescan runs and detects Lost -> failed
+                AdvanceTicks(250);
                 story.DirectorTick();
 
                 bool gotFailed = retDestRun != null && HasOutcome(retDestRun, "failed") && !HasOutcome(retDestRun, "success");
-                AddCheck("P1_RetrieveDestroyed_FailedNoSubstitution",
-                    realThing != null && gotFailed,
-                    "realFound=true, outcome=failed (not substituted by decoy)",
-                    string.Format("realFound={0}, history={1}", realThing != null, retDestRun != null ? string.Join(",", retDestRun.history.ToArray()) : "null"));
+                AddCheck("P1_RetrieveDestroyed_ThrottledAndFailedNoSubstitution",
+                    realThing != null && throttledBefore250 && gotFailed,
+                    "throttled=true, outcome=failed",
+                    string.Format("realFound={0}, throttled={1}, hist={2}",
+                        realThing != null, throttledBefore250, retDestRun != null ? string.Join(",", retDestRun.history.ToArray()) : "null"));
 
                 DestroyTestCaravanAndPawns(decoyCaravan);
                 CleanupScoutAndSite(scout, car, retDestSite);
             }
             else
             {
-                AddCheck("P1_RetrieveDestroyed_FailedNoSubstitution", false, "site created", "site null");
+                AddCheck("P1_RetrieveDestroyed_ThrottledAndFailedNoSubstitution", false, "site created", "site null");
             }
 
-            // ---------------- 4. RAID: NEUTRAL FACTION (-50) + SECOND HOME MAP ----------------
+            // ---------------- 5. RETRIEVE P2: NPC ON HOME MAP != DELIVERED, FLYING POD == TRANSIT, STOCKPILE == DELIVERED ----------------
             Faction neutralFac = FindNeutralHumanlikeFaction();
+            Zone_Stockpile stockpile = EnsureTestStockpile(map);
+            story.SetFlag("probe.retrieveTransitNpc", "true");
+            story.DirectorTick();
+            StoryQuestRun retNpcRun = story.RunFor(StoryStagesProbeBootstrap.QuestRetrieveTransitAndNpc);
+            Site retNpcSite = FindSite(ParseInt(retNpcRun, "siteId", -1));
+            if (retNpcSite != null && neutralFac != null && stockpile != null)
+            {
+                Pawn scout = SpawnCleanColonist(map);
+                Caravan car = EnterSiteWithScout(scout, retNpcSite);
+                story.DirectorTick();
+
+                string realId = GetVar(retNpcRun, "targetThingId");
+                Thing realItem = FindThingOnMapById(retNpcSite.Map, realId);
+                bool npcNotDelivered = false;
+                bool flyingPodIsTransit = false;
+                bool stockpileDelivered = false;
+
+                if (realItem != null)
+                {
+                    // Step 5A: Move exact item into an NPC's inventory on the home map -> MUST NOT complete!
+                    realItem.DeSpawn(DestroyMode.Vanish);
+                    Pawn npcOnHome = SpawnCleanNpc(map, neutralFac);
+                    npcOnHome.inventory.innerContainer.TryAdd(realItem, false);
+
+                    AdvanceTicks(StoryStage_Site.RetrieveScanInterval);
+                    story.DirectorTick();
+                    npcNotDelivered = retNpcRun.status == StoryQuestStatus.Active && !HasOutcome(retNpcRun, "success");
+
+                    // Step 5B: Move exact item into a flying player TravellingTransporters pod -> MUST stay Active (transit, NOT failed!)
+                    npcOnHome.inventory.innerContainer.Remove(realItem);
+                    CleanupCleanPawn(npcOnHome);
+
+                    TravellingTransporters flyingPods = LaunchTestFlyingPod(map.Tile, retNpcSite.Tile, realItem);
+                    AdvanceTicks(StoryStage_Site.RetrieveScanInterval);
+                    story.DirectorTick();
+                    flyingPodIsTransit = flyingPods != null && retNpcRun.status == StoryQuestStatus.Active &&
+                                         !HasOutcome(retNpcRun, "failed") && !HasOutcome(retNpcRun, "success");
+
+                    // Step 5C: Unload exact item into player stockpile on home map -> MUST complete with success!
+                    ExtractItemFromFlyingPod(flyingPods, realItem);
+                    if (flyingPods != null && !flyingPods.Destroyed) flyingPods.Destroy();
+
+                    IntVec3 stockCell = stockpile.cells[0];
+                    GenSpawn.Spawn(realItem, stockCell, map, WipeMode.Vanish);
+                    realItem.SetForbidden(false, false);
+
+                    AdvanceTicks(StoryStage_Site.RetrieveScanInterval);
+                    story.DirectorTick();
+                    stockpileDelivered = HasOutcome(retNpcRun, "success");
+                }
+
+                AddCheck("R2_Retrieve_NpcNotDelivered_FlyingPodTransit_StockpileSuccess",
+                    npcNotDelivered && flyingPodIsTransit && stockpileDelivered,
+                    "npcWait=true, podTransit=true, stockpileSuccess=true",
+                    string.Format("npcWait={0}, podTransit={1}, stockpile={2}", npcNotDelivered, flyingPodIsTransit, stockpileDelivered));
+
+                CleanupScoutAndSite(scout, car, retNpcSite);
+            }
+            else
+            {
+                AddCheck("R2_Retrieve_NpcNotDelivered_FlyingPodTransit_StockpileSuccess", false, "site, neutralFac & stockpile exist", "missing");
+            }
+
+            // ---------------- 6. HOLD P2: ABSENCE / DOWNED GAP NOT CREDITED (60-TICK MONITOR) ----------------
+            story.SetFlag("probe.holdAbsenceGap", "true");
+            story.DirectorTick();
+            StoryQuestRun gapRun = story.RunFor(StoryStagesProbeBootstrap.QuestHoldAbsenceGap);
+            Site gapSite = FindSite(ParseInt(gapRun, "siteId", -1));
+            if (gapSite != null)
+            {
+                Pawn scout = SpawnCleanColonist(map);
+                Caravan car = EnterSiteWithScout(scout, gapSite);
+                story.DirectorTick();
+                // Sample at entry (adds 0)
+                StoryStage_Site.SampleHoldPresenceForSiteMap(gapSite.Map, Find.TickManager.TicksGame);
+                int held0 = ParseInt(gapRun, "heldTicks", -1);
+
+                // Stand 1 hour -> 2500 ticks
+                AdvanceTicks(GenDate.TicksPerHour);
+                StoryStage_Site.SampleHoldPresenceForSiteMap(gapSite.Map, Find.TickManager.TicksGame);
+                int held1h = ParseInt(gapRun, "heldTicks", -1);
+
+                // Down the scout and sample 60 ticks later -> absence detected, holdActive=false
+                Hediff anesth = scout.health.AddHediff(HediffDefOf.Anesthetic);
+                AdvanceTicks(StoryStage_Site.HoldSampleInterval);
+                StoryStage_Site.SampleHoldPresenceForSiteMap(gapSite.Map, Find.TickManager.TicksGame);
+                bool markedInactive = GetVar(gapRun, "holdActive") == "false";
+
+                // 3 hours pass while downed
+                AdvanceTicks(3 * GenDate.TicksPerHour);
+
+                // Scout recovers and returns -> first sample marks active without crediting the 3h gap
+                if (anesth != null) scout.health.RemoveHediff(anesth);
+                StoryStage_Site.SampleHoldPresenceForSiteMap(gapSite.Map, Find.TickManager.TicksGame);
+                int heldAfterReturn = ParseInt(gapRun, "heldTicks", -1);
+
+                // Stand 1 more hour -> total 5000 ticks (2h, NOT 5h!)
+                AdvanceTicks(GenDate.TicksPerHour);
+                StoryStage_Site.SampleHoldPresenceForSiteMap(gapSite.Map, Find.TickManager.TicksGame);
+                int heldFinal = ParseInt(gapRun, "heldTicks", -1);
+
+                bool gapExcluded = held0 == 0 && held1h == GenDate.TicksPerHour && markedInactive &&
+                                   heldAfterReturn == GenDate.TicksPerHour && heldFinal == 2 * GenDate.TicksPerHour &&
+                                   gapRun.status == StoryQuestStatus.Active;
+                AddCheck("R2_Hold_AbsenceGapExcludedBy60TickSampler", gapExcluded,
+                    "0->2500->(3h absent)->2500->5000",
+                    string.Format("0={0}, 1h={1}, inactive={2}, afterGap={3}, final={4}",
+                        held0, held1h, markedInactive, heldAfterReturn, heldFinal));
+
+                CleanupScoutAndSite(scout, car, gapSite);
+            }
+            else
+            {
+                AddCheck("R2_Hold_AbsenceGapExcludedBy60TickSampler", false, "site created", "site null");
+            }
+
+            // ---------------- 7. RAID: NEUTRAL FACTION (-50) + SECOND HOME MAP + SYMMETRIC RESTORE ----------------
             StoryQuestDef raidNeutralDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestRaidNeutralTwoColonies);
             StoryStage_ColonyRaid raidNeutralStage = raidNeutralDef != null ? raidNeutralDef.stages[0] as StoryStage_ColonyRaid : null;
             if (neutralFac != null && raidNeutralStage != null)
             {
-                // Set exact Neutral goodwill -50 (inside RimWorld's -74..-1 hysteresis zone!)
                 ForceNeutralWithGoodwill(neutralFac, -50);
                 raidNeutralStage.faction = neutralFac.def.defName;
 
@@ -359,7 +544,6 @@ namespace TurboMegaMod
                 story.DirectorTick();
                 StoryQuestRun raidRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidNeutralTwoColonies);
 
-                // Spawn a SECOND player home map before raid resolves to ensure pinned raidMapId isn't confused
                 Settlement secondHomeObj = null;
                 Map secondHomeMap = CreateTemporarySecondHomeMap(out secondHomeObj);
 
@@ -370,76 +554,222 @@ namespace TurboMegaMod
                 int pinnedMapId = ParseInt(raidRun, "raidMapId", -1);
                 List<int> raidPawnIds = ParseIntList(GetVar(raidRun, "raidPawnIds"));
 
-                // Verify ticking while raiders are alive on map 1 does NOT falsely succeed due to secondHomeMap
                 story.DirectorTick();
                 bool stillActiveWithTwoHomes = raidRun != null && raidRun.status == StoryQuestStatus.Active && pinnedMapId == map.uniqueID;
 
-                // Kill ONLY the tracked raid pawns on map 1
                 int killed = KillTrackedPawns(map, raidPawnIds);
-                story.DirectorTick();
+
+                // In TestMode, also verify blocked-restore retention & retry before final symmetric verification
+                bool blockRetryVerified = true;
+                if (TestMode.Enabled)
+                {
+                    StoryRelationRestorer.TestBlockRestoreOverride = delegate(Faction f) { return f == neutralFac; };
+                    story.DirectorTick();
+                    bool retainedOnBlock = StoryRelationRestorer.Instance != null &&
+                                           StoryRelationRestorer.Instance.HasPendingBackupForFaction(neutralFac);
+                    StoryRelationRestorer.TestBlockRestoreOverride = null;
+                    StoryRelationRestorer.CheckOrphansIfPresent();
+                    bool clearedOnRetry = StoryRelationRestorer.Instance != null &&
+                                          !StoryRelationRestorer.Instance.HasPendingBackupForFaction(neutralFac);
+                    blockRetryVerified = retainedOnBlock && clearedOnRetry;
+                }
+                else
+                {
+                    story.DirectorTick();
+                }
 
                 bool raidSucceeded = raidRun != null && HasOutcome(raidRun, "success");
-                bool restoredNonHostile = !neutralFac.HostileTo(Faction.OfPlayer);
-                bool restoredGoodwill = neutralFac.PlayerGoodwill >= -55 && neutralFac.PlayerGoodwill <= -45;
+                bool symmetricNonHostile = !neutralFac.HostileTo(Faction.OfPlayer) && !Faction.OfPlayer.HostileTo(neutralFac);
+                bool symmetricGoodwill = neutralFac.PlayerGoodwill >= -65 && neutralFac.PlayerGoodwill <= -35 && // vanilla goodwill events during the raid may shift it
+                                         Faction.OfPlayer.GoodwillWith(neutralFac) == neutralFac.PlayerGoodwill;
 
-                AddCheck("P1_NeutralRaid_TwoHomesAndGoodwillRestored",
-                    hostileDuringRaid && stillActiveWithTwoHomes && killed > 0 && raidSucceeded && restoredNonHostile && restoredGoodwill,
-                    "hostile->success->Neutral(~-50) with 2 home maps",
-                    string.Format("hostile={0}, stillActive={1}, killed={2}, succ={3}, nonHostile={4}, gw={5}",
-                        hostileDuringRaid, stillActiveWithTwoHomes, killed, raidSucceeded, restoredNonHostile, neutralFac.PlayerGoodwill));
+                AddCheck("P1_NeutralRaid_TwoHomesAndSymmetricRestore",
+                    hostileDuringRaid && stillActiveWithTwoHomes && killed > 0 && raidSucceeded &&
+                    symmetricNonHostile && symmetricGoodwill && blockRetryVerified,
+                    "hostile->success->Symmetric Neutral(~-50)",
+                    string.Format("hostile={0}, active2={1}, killed={2}, succ={3}, symNonH={4}, gw={5}/{6}, retry={7}",
+                        hostileDuringRaid, stillActiveWithTwoHomes, killed, raidSucceeded, symmetricNonHostile,
+                        neutralFac.PlayerGoodwill, Faction.OfPlayer.GoodwillWith(neutralFac), blockRetryVerified));
 
                 CleanupSecondHomeMap(secondHomeMap, secondHomeObj);
             }
             else
             {
-                AddCheck("P1_NeutralRaid_TwoHomesAndGoodwillRestored", false, "neutral faction & def exist", "missing");
+                AddCheck("P1_NeutralRaid_TwoHomesAndSymmetricRestore", false, "neutral faction & def exist", "missing");
             }
 
-            // ---------------- 5. DISABLED QUEST MID-RAID -> RELATION ROLLBACK ----------------
-            StoryQuestDef raidDisableDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestRaidDisabledRollback);
-            StoryStage_ColonyRaid raidDisableStage = raidDisableDef != null ? raidDisableDef.stages[0] as StoryStage_ColonyRaid : null;
-            if (neutralFac != null && raidDisableStage != null)
+            // ---------------- 8. ORPHAN CLEANUP VIA REAL STAGE REMOVAL (NO DIRECT STATUS MUTATION) ----------------
+            StoryQuestDef orphanDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestRaidStageRemovedOrphan);
+            StoryStage_ColonyRaid orphanStage = orphanDef != null && orphanDef.stages.Count > 0 ? orphanDef.stages[0] as StoryStage_ColonyRaid : null;
+            if (neutralFac != null && orphanDef != null && orphanStage != null)
             {
                 ForceNeutralWithGoodwill(neutralFac, -40);
-                raidDisableStage.faction = neutralFac.def.defName;
+                orphanStage.faction = neutralFac.def.defName;
 
-                story.SetFlag("probe.raidDisable", "true");
+                story.SetFlag("probe.raidStageRemoved", "true");
                 story.DirectorTick();
-                StoryQuestRun disRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidDisabledRollback);
+                StoryQuestRun orphRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidStageRemovedOrphan);
 
                 AdvanceTicks(Mathf.CeilToInt(1.5f * GenDate.TicksPerHour));
                 story.DirectorTick();
                 bool becameHostile = neutralFac.HostileTo(Faction.OfPlayer);
+                List<int> orphPawnIds = ParseIntList(GetVar(orphRun, "raidPawnIds"));
 
-                // Simulate quest disabled mid-raid (e.g. removed Def/stage or exception)
-                List<int> disPawnIds = ParseIntList(GetVar(disRun, "raidPawnIds"));
-                disRun.status = StoryQuestStatus.Disabled;
-                disRun.stage = -1;
-                StoryRelationRestorer.CheckOrphansIfPresent();
+                // REAL stage removal: clear stages on the Def and let SparkStory.DirectorTick disable the quest naturally!
+                try
+                {
+                    orphanDef.stages.Clear();
+                    story.DirectorTick();
+                }
+                finally
+                {
+                    orphanDef.stages.Add(orphanStage);
+                }
 
-                bool rolledBack = !neutralFac.HostileTo(Faction.OfPlayer) && neutralFac.PlayerGoodwill >= -45 && neutralFac.PlayerGoodwill <= -35;
-                AddCheck("P1_DisabledQuestRaid_RelationsRolledBack",
-                    becameHostile && rolledBack,
-                    "hostile->rolledBack Neutral(~-40)",
-                    string.Format("hostile={0}, nonHostile={1}, gw={2}", becameHostile, !neutralFac.HostileTo(Faction.OfPlayer), neutralFac.PlayerGoodwill));
+                bool disabledNaturally = orphRun != null && orphRun.status == StoryQuestStatus.Disabled &&
+                                         HasOutcome(orphRun, "stage missing");
+                bool rolledBackSym = !neutralFac.HostileTo(Faction.OfPlayer) && !Faction.OfPlayer.HostileTo(neutralFac) &&
+                                     neutralFac.PlayerGoodwill >= -45 && neutralFac.PlayerGoodwill <= -35;
 
-                KillTrackedPawns(map, disPawnIds);
+                AddCheck("R2_OrphanCleanup_RealStageRemovalRollback",
+                    becameHostile && disabledNaturally && rolledBackSym,
+                    "hostile->SparkStory Disable(stage missing)->Symmetric Neutral(~-40)",
+                    string.Format("hostile={0}, disabled={1}, symNonH={2}, gw={3}",
+                        becameHostile, disabledNaturally, !neutralFac.HostileTo(Faction.OfPlayer), neutralFac.PlayerGoodwill));
+
+                KillTrackedPawns(map, orphPawnIds);
             }
             else
             {
-                AddCheck("P1_DisabledQuestRaid_RelationsRolledBack", false, "neutral faction & def exist", "missing");
+                AddCheck("R2_OrphanCleanup_RealStageRemovalRollback", false, "neutral faction & def exist", "missing");
             }
 
-            // ---------------- 6. FORCEOUTCOME IGNORED WITHOUT -tmm-story-test ----------------
-            if (!Environment.GetCommandLineArgs().Contains("-tmm-story-test"))
+            // ---------------- 9. RAID WITHOUT CONFIRMED RAIDERS -> TIMEOUT (NEVER SUCCESS) ----------------
+            StoryQuestDef emptyRaidDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestRaidEmptyCohort);
+            StoryStage_ColonyRaid emptyRaidStage = emptyRaidDef != null ? emptyRaidDef.stages[0] as StoryStage_ColonyRaid : null;
+            if (neutralFac != null && emptyRaidStage != null)
             {
-                // Verify SparkStory refuses TestForceOutcome when -tmm-story-test is absent
-                bool testRefused = !story.TestForceOutcome(downedRun, downedRun != null ? downedRun.gen : 0, "success");
-                AddCheck("P1_ForceOutcomeRefusedWithoutTestFlag", testRefused, "false", (!testRefused).ToString());
+                ForceNeutralWithGoodwill(neutralFac, -35);
+                emptyRaidStage.faction = neutralFac.def.defName;
+
+                if (TestMode.Enabled)
+                {
+                    // Simulate RaidEnemy returning true while spawning ZERO pawns
+                    StoryStage_ColonyRaid.TestRaidExecuteOverride = delegate(IncidentParms p) { return true; };
+                    story.SetFlag("probe.raidEmptyCohort", "true");
+                    story.DirectorTick();
+                    AdvanceTicks(Mathf.CeilToInt(1.5f * GenDate.TicksPerHour));
+                    story.DirectorTick();
+                    StoryStage_ColonyRaid.TestRaidExecuteOverride = null;
+
+                    StoryQuestRun emptyRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidEmptyCohort);
+                    bool endedTimeoutNotSuccess = emptyRun != null && HasOutcome(emptyRun, "timeout") && !HasOutcome(emptyRun, "success");
+                    bool rolledBack = !neutralFac.HostileTo(Faction.OfPlayer);
+                    AddCheck("R2_RaidZeroRaiders_TimeoutAndRollback",
+                        endedTimeoutNotSuccess && rolledBack,
+                        "timeout (not success) & hostility rolled back",
+                        string.Format("hist={0}, nonHostile={1}",
+                            emptyRun != null ? string.Join(",", emptyRun.history.ToArray()) : "null", rolledBack));
+                }
+                else
+                {
+                    // Without TestMode: test active spawned raid with empty raidPawnIds & vanished lordId -> MUST timeout, NEVER success
+                    story.SetFlag("probe.raidEmptyCohort", "true");
+                    story.DirectorTick();
+                    StoryQuestRun emptyRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidEmptyCohort);
+                    if (emptyRun != null)
+                    {
+                        emptyRun.vars["spawned"] = "true";
+                        emptyRun.vars["raidMapId"] = map.uniqueID.ToString();
+                        emptyRun.vars["raidLordId"] = "999999";
+                        emptyRun.vars["raidPawnIds"] = string.Empty;
+                        emptyRun.vars["confirmedRaiderCount"] = "0";
+                        story.DirectorTick();
+                    }
+                    bool endedTimeoutNotSuccess = emptyRun != null && HasOutcome(emptyRun, "timeout") && !HasOutcome(emptyRun, "success");
+                    AddCheck("R2_RaidEmptyCohortVanishedLord_TimeoutNotSuccess",
+                        endedTimeoutNotSuccess,
+                        "timeout (not success)",
+                        emptyRun != null ? string.Join(",", emptyRun.history.ToArray()) : "null");
+                }
             }
 
-            // ---------------- 7. PREPARE RELOAD SAVE: RESCUE + RETRIEVE + PARTIAL HOLD ----------------
-            // 7A. Rescue with captive hero on site map
+            // ---------------- 10. FAILED RAID SPAWN WITH restoreRelations=false -> STILL ROLLS BACK HOSTILITY (TestMode) ----------------
+            if (TestMode.Enabled && neutralFac != null)
+            {
+                StoryQuestDef keepHostileDef = DefDatabase<StoryQuestDef>.GetNamedSilentFail(StoryStagesProbeBootstrap.QuestRaidFailedSpawnKeepHostile);
+                StoryStage_ColonyRaid keepHostileStage = keepHostileDef != null ? keepHostileDef.stages[0] as StoryStage_ColonyRaid : null;
+                if (keepHostileStage != null)
+                {
+                    ForceNeutralWithGoodwill(neutralFac, -30);
+                    keepHostileStage.faction = neutralFac.def.defName;
+                    keepHostileStage.restoreRelations = false;
+
+                    StoryStage_ColonyRaid.TestRaidExecuteOverride = delegate(IncidentParms p) { return false; };
+                    story.SetFlag("probe.raidFailedKeepHostile", "true");
+                    story.DirectorTick();
+                    AdvanceTicks(Mathf.CeilToInt(1.5f * GenDate.TicksPerHour));
+                    story.DirectorTick();
+                    StoryStage_ColonyRaid.TestRaidExecuteOverride = null;
+
+                    StoryQuestRun failRun = story.RunFor(StoryStagesProbeBootstrap.QuestRaidFailedSpawnKeepHostile);
+                    bool rolledBackEvenWhenRestoreFalse = failRun != null && HasOutcome(failRun, "timeout") &&
+                                                          !neutralFac.HostileTo(Faction.OfPlayer) &&
+                                                          !Faction.OfPlayer.HostileTo(neutralFac) &&
+                                                          neutralFac.PlayerGoodwill >= -35 && neutralFac.PlayerGoodwill <= -25;
+                    AddCheck("R2_FailedRaidSpawn_RollsBackEvenWhenRestoreRelationsFalse",
+                        rolledBackEvenWhenRestoreFalse,
+                        "timeout & restored Neutral(~-30) despite restoreRelations=false",
+                        string.Format("hist={0}, nonHostile={1}, gw={2}",
+                            failRun != null ? string.Join(",", failRun.history.ToArray()) : "null",
+                            !neutralFac.HostileTo(Faction.OfPlayer), neutralFac.PlayerGoodwill));
+                }
+            }
+
+            // ---------------- 11. FORCEOUTCOME ON AN ACTIVE RUN + LEGACY VARS["forceOutcome"] TEST ----------------
+            story.SetFlag("probe.forceOutcomeActive", "true");
+            story.DirectorTick();
+            StoryQuestRun activeForceRun = story.RunFor(StoryStagesProbeBootstrap.QuestForceOutcomeActive);
+            Site activeForceSite = FindSite(ParseInt(activeForceRun, "siteId", -1));
+            bool wasActiveBefore = activeForceRun != null && activeForceRun.status == StoryQuestStatus.Active;
+
+            if (!TestMode.Enabled)
+            {
+                bool methodRefused = wasActiveBefore && !story.TestForceOutcome(activeForceRun, activeForceRun.gen, "success");
+                bool stillActiveAfterMethod = activeForceRun != null && activeForceRun.status == StoryQuestStatus.Active;
+
+                // Separate test of legacy vars["forceOutcome"] key on the ACTIVE run without -tmm-story-test
+                if (activeForceRun != null) activeForceRun.vars["forceOutcome"] = "success";
+                story.DirectorTick();
+                bool legacyRefusedAndCleaned = activeForceRun != null &&
+                                               activeForceRun.status == StoryQuestStatus.Active &&
+                                               !activeForceRun.vars.ContainsKey("forceOutcome");
+
+                AddCheck("R2_ForceOutcomeAndLegacyVarRefused_OnActiveRun",
+                    wasActiveBefore && methodRefused && stillActiveAfterMethod && legacyRefusedAndCleaned,
+                    "active=true, TestForceOutcome=false, legacyVar ignored & stripped",
+                    string.Format("wasActive={0}, methodRefused={1}, stillActive={2}, legacyCleaned={3}",
+                        wasActiveBefore, methodRefused, stillActiveAfterMethod, legacyRefusedAndCleaned));
+            }
+            else
+            {
+                // In TestMode: wrong generation must still be refused on an active run, matching generation works
+                bool wrongGenRefused = wasActiveBefore && !story.TestForceOutcome(activeForceRun, activeForceRun.gen + 99, "success") &&
+                                       activeForceRun.status == StoryQuestStatus.Active;
+                bool rightGenWorked = wasActiveBefore && story.TestForceOutcome(activeForceRun, activeForceRun.gen, "timeout") &&
+                                      HasOutcome(activeForceRun, "timeout");
+                AddCheck("R2_ForceOutcome_ActiveRunGenCheckedInTestMode",
+                    wrongGenRefused && rightGenWorked,
+                    "wrongGen=false(Active), rightGen=true(timeout)",
+                    string.Format("wrongGenRefused={0}, rightGenWorked={1}", wrongGenRefused, rightGenWorked));
+            }
+            if (activeForceSite != null && !activeForceSite.Destroyed && !activeForceSite.HasMap)
+            {
+                activeForceSite.Destroy();
+            }
+
+            // ---------------- 12. PREPARE RELOAD SAVE: RESCUE + RETRIEVE + PARTIAL HOLD ----------------
+            // 12A. Rescue
             story.SetFlag("probe.reloadRescue", "true");
             story.DirectorTick();
             StoryQuestRun rescueRun = story.RunFor(StoryStagesProbeBootstrap.QuestReloadRescue);
@@ -447,14 +777,14 @@ namespace TurboMegaMod
             bool rescueReady = false;
             if (rescueSite != null)
             {
-                Pawn rScout = SpawnColonist(map);
+                Pawn rScout = SpawnCleanColonist(map);
                 EnterSiteWithScout(rScout, rescueSite);
                 story.DirectorTick();
                 rescueReady = GetVar(rescueRun, "heroImprisonedOnSite") == "true" && !GetVar(rescueRun, "targetPawnId").NullOrEmpty();
             }
             AddCheck("ReloadPrep_RescueCaptiveOnSite", rescueReady, "imprisoned=true", rescueReady.ToString());
 
-            // 7B. Retrieve with unique protected item on site map
+            // 12B. Retrieve
             story.SetFlag("probe.reloadRetrieve", "true");
             story.DirectorTick();
             StoryQuestRun retRun = story.RunFor(StoryStagesProbeBootstrap.QuestReloadRetrieve);
@@ -462,7 +792,7 @@ namespace TurboMegaMod
             bool retrieveReady = false;
             if (retSite != null)
             {
-                Pawn iScout = SpawnColonist(map);
+                Pawn iScout = SpawnCleanColonist(map);
                 EnterSiteWithScout(iScout, retSite);
                 story.DirectorTick();
                 string tid = GetVar(retRun, "targetThingId");
@@ -474,27 +804,24 @@ namespace TurboMegaMod
             }
             AddCheck("ReloadPrep_RetrieveUniqueItemProtected", retrieveReady, "item spawned & non-stackable", retrieveReady.ToString());
 
-            // 7C. Hold with partial confirmed progress (first poll adds 0, second poll adds 2h of 4h)
+            // 12C. Hold with partial confirmed progress
             story.SetFlag("probe.reloadHold", "true");
             story.DirectorTick();
             StoryQuestRun holdRun = story.RunFor(StoryStagesProbeBootstrap.QuestReloadHold);
             Site holdSite = FindSite(ParseInt(holdRun, "siteId", -1));
-            bool holdPrepOk = false;
             if (holdSite != null)
             {
-                // Advance 3 hours BEFORE entering -> first poll after entry MUST add 0 ticks!
                 AdvanceTicks(3 * GenDate.TicksPerHour);
-                Pawn hScout = SpawnColonist(map);
+                Pawn hScout = SpawnCleanColonist(map);
                 EnterSiteWithScout(hScout, holdSite);
                 story.DirectorTick();
                 int heldAfterEntry = ParseInt(holdRun, "heldTicks", -1);
 
-                // Now advance 2 confirmed hours with standing colonist
                 AdvanceTicks(2 * GenDate.TicksPerHour);
                 story.DirectorTick();
                 int heldAfter2h = ParseInt(holdRun, "heldTicks", -1);
 
-                holdPrepOk = heldAfterEntry == 0 && heldAfter2h == 2 * GenDate.TicksPerHour && holdRun.status == StoryQuestStatus.Active;
+                bool holdPrepOk = heldAfterEntry == 0 && heldAfter2h == 2 * GenDate.TicksPerHour && holdRun.status == StoryQuestStatus.Active;
                 AddCheck("P2_Hold_FirstPollZeroAndPartialSaved", holdPrepOk,
                     "afterEntry=0, after2h=5000, active",
                     string.Format("entry={0}, after2h={1}, status={2}", heldAfterEntry, heldAfter2h, holdRun.status));
@@ -504,12 +831,12 @@ namespace TurboMegaMod
                 AddCheck("P2_Hold_FirstPollZeroAndPartialSaved", false, "site created", "site null");
             }
 
-            SanitizeDanglingPawnRelations();
+            // Save directly WITHOUT any global SanitizeDanglingPawnRelations mask!
             GameDataSaveLoader.SaveGame(StoryStagesProbeBootstrap.SaveName); // CHECK API
         }
 
         // =====================================================================
-        // RELOAD PROBE: COMPLETES RESCUE, RETRIEVE, AND PARTIAL HOLD ONCE EACH
+        // RELOAD PROBE
         // =====================================================================
 
         private void RunReloadProbe()
@@ -574,7 +901,10 @@ namespace TurboMegaMod
                     carrier.DeSpawn(DestroyMode.Vanish);
                     Caravan car = CaravanMaker.MakeCaravan(new List<Pawn> { carrier }, Faction.OfPlayer, map.Tile, true); // CHECK API
                     Current.Game.DeinitAndRemoveMap(retSite.Map, false); // CHECK API
+
+                    AdvanceTicks(StoryStage_Site.RetrieveScanInterval);
                     story.DirectorTick();
+                    AdvanceTicks(StoryStage_Site.RetrieveScanInterval);
                     story.DirectorTick();
 
                     bool once = CountOutcome(retRun, "success") == 1;
@@ -618,6 +948,52 @@ namespace TurboMegaMod
         // HELPERS
         // =====================================================================
 
+        private static Zone_Stockpile EnsureTestStockpile(Map targetMap)
+        {
+            if (targetMap == null || targetMap.zoneManager == null) return null;
+            Zone_Stockpile zone = new Zone_Stockpile(StorageSettingsPreset.DefaultStockpile, targetMap.zoneManager); // CHECK API
+            targetMap.zoneManager.RegisterZone(zone);
+            IntVec3 origin = FindStandable(targetMap);
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dz = -1; dz <= 1; dz++)
+                {
+                    IntVec3 c = origin + new IntVec3(dx, 0, dz);
+                    if (c.InBounds(targetMap) && c.Standable(targetMap) && targetMap.zoneManager.ZoneAt(c) == null)
+                    {
+                        zone.AddCell(c);
+                    }
+                }
+            }
+            return zone.cells.Count > 0 ? zone : null;
+        }
+
+        private static TravellingTransporters LaunchTestFlyingPod(PlanetTile originTile, PlanetTile destTile, Thing item)
+        {
+            if (item == null || Find.WorldObjects == null) return null;
+            ActiveTransporterInfo info = new ActiveTransporterInfo();
+            info.openDelay = 110;
+            info.leaveSlag = false;
+            info.innerContainer.TryAdd(item, false);
+
+            TravellingTransporters worldObj = (TravellingTransporters)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.TravellingTransporters); // CHECK API
+            worldObj.SetFaction(Faction.OfPlayer);
+            worldObj.Tile = originTile;
+            worldObj.destinationTile = destTile;
+            Find.WorldObjects.Add(worldObj);
+            worldObj.AddTransporter(info, true);
+            return worldObj;
+        }
+
+        private static void ExtractItemFromFlyingPod(TravellingTransporters pods, Thing item)
+        {
+            if (pods == null || item == null) return;
+            if (item.holdingOwner != null)
+            {
+                item.holdingOwner.Remove(item);
+            }
+        }
+
         private static Faction FindNeutralHumanlikeFaction()
         {
             List<Faction> all = Find.FactionManager.AllFactionsListForReading;
@@ -644,10 +1020,6 @@ namespace TurboMegaMod
             if (delta != 0)
             {
                 fac.TryAffectGoodwillWith(Faction.OfPlayer, delta, false, false, null, null);
-            }
-            if (fac.HostileTo(Faction.OfPlayer))
-            {
-                fac.SetRelationDirect(Faction.OfPlayer, FactionRelationKind.Neutral, false, null, GlobalTargetInfo.Invalid);
             }
         }
 
@@ -676,15 +1048,39 @@ namespace TurboMegaMod
             if (s != null && !s.Destroyed) s.Destroy();
         }
 
-        private static Pawn SpawnColonist(Map targetMap)
+        private static Pawn SpawnCleanColonist(Map targetMap)
         {
-            Pawn p = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
-            if (p != null && p.relations != null)
-            {
-                p.relations.ClearAllRelations();
-            }
+            PawnGenerationRequest req = new PawnGenerationRequest(
+                PawnKindDefOf.Colonist,
+                Faction.OfPlayer,
+                PawnGenerationContext.NonPlayer,
+                canGeneratePawnRelations: false,
+                allowAddictions: false); // CHECK API
+            Pawn p = PawnGenerator.GeneratePawn(req);
             GenSpawn.Spawn(p, FindStandable(targetMap), targetMap, WipeMode.Vanish);
             return p;
+        }
+
+        private static Pawn SpawnCleanNpc(Map targetMap, Faction fac)
+        {
+            PawnKindDef kind = fac != null ? (fac.RandomPawnKind() ?? PawnKindDefOf.SpaceRefugee) : PawnKindDefOf.SpaceRefugee;
+            PawnGenerationRequest req = new PawnGenerationRequest(
+                kind,
+                fac,
+                PawnGenerationContext.NonPlayer,
+                canGeneratePawnRelations: false,
+                allowAddictions: false); // CHECK API
+            Pawn p = PawnGenerator.GeneratePawn(req);
+            GenSpawn.Spawn(p, FindStandable(targetMap), targetMap, WipeMode.Vanish);
+            return p;
+        }
+
+        private static void CleanupCleanPawn(Pawn p)
+        {
+            if (p == null) return;
+            if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
+            if (Find.WorldPawns != null && Find.WorldPawns.Contains(p)) Find.WorldPawns.RemovePawn(p);
+            if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
         }
 
         private static Caravan EnterSiteWithScout(Pawn scout, Site site)
@@ -704,34 +1100,14 @@ namespace TurboMegaMod
             if (!car.Destroyed) car.Destroy();
             for (int i = 0; i < pawns.Count; i++)
             {
-                Pawn p = pawns[i];
-                if (p == null) continue;
-                if (p.relations != null) p.relations.ClearAllRelations();
-                if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
-                if (Find.WorldPawns != null && Find.WorldPawns.Contains(p))
-                {
-                    Find.WorldPawns.RemovePawn(p);
-                }
-                if (!p.Destroyed)
-                {
-                    p.Destroy(DestroyMode.Vanish);
-                }
+                CleanupCleanPawn(pawns[i]);
             }
         }
 
         private static void CleanupScoutAndSite(Pawn scout, Caravan car, Site site)
         {
             if (car != null && !car.Destroyed) car.Destroy();
-            if (scout != null && !scout.Destroyed)
-            {
-                if (scout.relations != null) scout.relations.ClearAllRelations();
-                if (scout.Spawned) scout.DeSpawn(DestroyMode.Vanish);
-                if (Find.WorldPawns != null && Find.WorldPawns.Contains(scout))
-                {
-                    Find.WorldPawns.RemovePawn(scout);
-                }
-                scout.Destroy(DestroyMode.Vanish);
-            }
+            CleanupCleanPawn(scout);
             if (site != null && !site.Destroyed)
             {
                 if (site.HasMap && site.Map != null)
@@ -739,54 +1115,6 @@ namespace TurboMegaMod
                     Current.Game.DeinitAndRemoveMap(site.Map, false); // CHECK API
                 }
                 if (!site.Destroyed) site.Destroy();
-            }
-        }
-
-        private static void SanitizeDanglingPawnRelations()
-        {
-            if (Find.WorldPawns != null && Find.WorldPawns.AllPawnsAliveOrDead != null)
-            {
-                List<Pawn> pawns = new List<Pawn>(Find.WorldPawns.AllPawnsAliveOrDead);
-                for (int i = 0; i < pawns.Count; i++)
-                {
-                    CleanPawnRelations(pawns[i]);
-                }
-            }
-            if (Find.Maps != null)
-            {
-                for (int m = 0; m < Find.Maps.Count; m++)
-                {
-                    Map map = Find.Maps[m];
-                    if (map == null || map.mapPawns == null) continue;
-                    List<Pawn> pawns = map.mapPawns.AllPawns;
-                    for (int i = 0; i < pawns.Count; i++)
-                    {
-                        CleanPawnRelations(pawns[i]);
-                    }
-                }
-            }
-        }
-
-        private static void CleanPawnRelations(Pawn p)
-        {
-            if (p == null || p.relations == null || p.relations.DirectRelations == null) return;
-            List<DirectPawnRelation> broken = new List<DirectPawnRelation>();
-            List<DirectPawnRelation> list = p.relations.DirectRelations;
-            for (int i = 0; i < list.Count; i++)
-            {
-                DirectPawnRelation rel = list[i];
-                if (rel == null || rel.otherPawn == null || rel.otherPawn.Destroyed)
-                {
-                    broken.Add(rel);
-                }
-                else if (!rel.otherPawn.Spawned && Find.WorldPawns != null && !Find.WorldPawns.Contains(rel.otherPawn))
-                {
-                    broken.Add(rel);
-                }
-            }
-            for (int i = 0; i < broken.Count; i++)
-            {
-                p.relations.RemoveDirectRelation(broken[i]);
             }
         }
 
@@ -922,9 +1250,8 @@ namespace TurboMegaMod
             m_checks.Add(item);
         }
 
-        private void WriteReport(string fileName)
+        private bool WriteReport(string fileName)
         {
-            // Honest evaluation: passed is true ONLY when 0 errors, >=1 check, and every check passed
             bool allPassed = m_errors.Count == 0 && m_checks.Count > 0;
             for (int i = 0; i < m_checks.Count; i++)
             {
@@ -938,6 +1265,8 @@ namespace TurboMegaMod
             StringBuilder sb = new StringBuilder();
             sb.Append("{\"passed\":");
             sb.Append(allPassed ? "true" : "false");
+            sb.Append(",\"testModeEnabled\":");
+            sb.Append(TestMode.Enabled ? "true" : "false");
             sb.Append(",\"checksCount\":");
             sb.Append(m_checks.Count);
             sb.Append(",\"checks\":[");
@@ -967,6 +1296,24 @@ namespace TurboMegaMod
 
             string path = Path.Combine(GenFilePaths.SaveDataFolderPath, fileName);
             File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
+            return allPassed;
+        }
+
+        private void WriteUiReport(bool actualPassed)
+        {
+            try
+            {
+                string uiPath = Path.Combine(GenFilePaths.SaveDataFolderPath, "StoryStagesUiProbe.json");
+                string payload = string.Format(
+                    "{{\"passed\":{0},\"checksCount\":{1},\"errorsCount\":{2},\"visualLayoutInspected\":false}}",
+                    actualPassed ? "true" : "false",
+                    m_checks.Count,
+                    m_errors.Count);
+                File.WriteAllText(uiPath, payload, Encoding.UTF8);
+            }
+            catch
+            {
+            }
         }
 
         private static string EscapeJson(string s)

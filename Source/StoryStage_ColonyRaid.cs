@@ -12,13 +12,25 @@ namespace TurboMegaMod
 {
     /// <summary>
     /// Quest stage that launches a vanilla IncidentDefOf.RaidEnemy raid against a pinned home map
-    /// after delayHours, tracking the exact raid map uniqueID and complete incident pawn cohort
-    /// (including incoming pods/skyfallers) in a single pass per tick, and delegating hostility
-    /// rollback to StoryRelationRestorer so concurrent raids, exceptions, and disabled quests
-    /// always clean up cleanly.
+    /// after delayHours.
+    ///
+    /// Round 2 invariants:
+    /// - Success ONLY when a NON-EMPTY confirmed raider cohort was recorded at spawn time AND all
+    ///   tracked raiders are dead, downed, captured, or fleeing/exited.
+    /// - Empty raider cohort (even if a lord ID was stored and later vanished) ALWAYS resolves as
+    ///   "timeout", NEVER "success".
+    /// - Any failed raid spawn (TryExecute false, exception, or 0 confirmed raiders) rolls back
+    ///   forced hostility via StoryRelationRestorer.AbortLease REGARDLESS of restoreRelations.
+    /// - Test-only raid execution override is strictly gated behind TestMode.Enabled.
     /// </summary>
     public sealed class StoryStage_ColonyRaid : StoryStage
     {
+        /// <summary>
+        /// Test-only hook (active ONLY when TestMode.Enabled) allowing probes to simulate
+        /// a failed raid spawn or zero-raider execution to verify AbortLease and non-success timeout.
+        /// </summary>
+        public static Func<IncidentParms, bool> TestRaidExecuteOverride;
+
         public string faction;
         public float pointsFactor = 1.0f;
         public float delayHours = 2.0f;
@@ -61,6 +73,7 @@ namespace TurboMegaMod
             ctx.run.vars["deadlineTick"] = deadlineTick.ToString();
             ctx.run.vars["spawned"] = "false";
             ctx.run.vars["raidLordId"] = "-1";
+            ctx.run.vars["confirmedRaiderCount"] = "0";
             ctx.run.vars["raidMapId"] = ctx.Home != null ? ctx.Home.uniqueID.ToString() : "-1";
 
             if (!text.NullOrEmpty() && delayHours > 0f)
@@ -86,7 +99,6 @@ namespace TurboMegaMod
                 ctx.run.vars["spawnTick"] = spawnTick.ToString();
             }
 
-            // Persist missing deadlineTick once so it never slides forward on migration
             int deadlineTick;
             if (!TryGetInt(ctx, "deadlineTick", out deadlineTick))
             {
@@ -96,10 +108,9 @@ namespace TurboMegaMod
 
             if (!GetBool(ctx, "spawned"))
             {
-                // Always check deadline BEFORE attempting to spawn (even if a home map just appeared)
                 if (now >= deadlineTick)
                 {
-                    return Finish(ctx, "timeout");
+                    return FinishAborted(ctx, "timeout");
                 }
 
                 if (now < spawnTick) return null;
@@ -112,8 +123,8 @@ namespace TurboMegaMod
 
                 if (!SpawnRaid(ctx, targetMap))
                 {
-                    Log.Warning("[TMM] StoryStage_ColonyRaid: failed to spawn raid for quest " + (ctx.def != null ? ctx.def.defName : "null"));
-                    return Finish(ctx, "timeout");
+                    Log.Warning("[TMM] StoryStage_ColonyRaid: failed to spawn confirmed raid for quest " + (ctx.def != null ? ctx.def.defName : "null"));
+                    return FinishAborted(ctx, "timeout");
                 }
 
                 ctx.run.vars["spawned"] = "true";
@@ -126,7 +137,6 @@ namespace TurboMegaMod
                 return Finish(ctx, "timeout");
             }
 
-            // Track ONLY the exact pinned raid map (never silently switch to another colony map!)
             int raidMapId = GetInt(ctx, "raidMapId", -1);
             Map raidMap = FindMapByUniqueId(raidMapId);
             if (raidMap == null)
@@ -135,10 +145,11 @@ namespace TurboMegaMod
             }
 
             HashSet<int> trackedSet = ParseIntSet(GetStr(ctx, "raidPawnIds"));
+            int confirmedCount = GetInt(ctx, "confirmedRaiderCount", trackedSet.Count);
             int lordId = GetInt(ctx, "raidLordId", -1);
 
-            // Empty identification -> explicit timeout, NEVER success
-            if (trackedSet.Count == 0 && lordId < 0)
+            // Empty confirmed raider cohort (even if a lord ID was stored & vanished) is ALWAYS timeout, NEVER success
+            if (trackedSet.Count == 0 || confirmedCount <= 0)
             {
                 return Finish(ctx, "timeout");
             }
@@ -201,7 +212,6 @@ namespace TurboMegaMod
                 return false;
             }
 
-            // Snapshot ALL existing pawns of raidFac on targetMap (both spawned AND inside any pods/holders)
             HashSet<int> prevPawns = SnapshotAllFactionPawnsOnMap(targetMap, raidFac);
             HashSet<int> prevLords = SnapshotLords(targetMap);
 
@@ -223,52 +233,56 @@ namespace TurboMegaMod
             bool executed = false;
             try
             {
-                executed = IncidentDefOf.RaidEnemy.Worker.TryExecute(parms); // CHECK API
+                executed = ExecuteRaidIncident(parms);
                 if (!executed)
                 {
                     parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
                     parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
-                    executed = IncidentDefOf.RaidEnemy.Worker.TryExecute(parms); // CHECK API
+                    executed = ExecuteRaidIncident(parms);
                 }
             }
             catch (Exception ex)
             {
-                Log.Error("[TMM] StoryStage_ColonyRaid: TryExecute threw exception: " + ex);
-                ReleaseHostilityLease(ctx);
+                TestMode.ReportException("[TMM] StoryStage_ColonyRaid: TryExecute threw exception: ", ex);
+                AbortHostilityLease(ctx);
                 return false;
             }
 
             if (!executed)
             {
-                ReleaseHostilityLease(ctx);
+                // Failed spawn MUST roll back hostility regardless of restoreRelations
+                AbortHostilityLease(ctx);
                 return false;
             }
 
-            // Collect COMPLETE cohort: new lord ownedPawns + newly spawned pawns + pawns inside new drop pods/skyfallers
+            // Collect COMPLETE confirmed raider cohort (new lord ownedPawns + newly spawned pawns + pawns in pods/holders)
             List<int> trackedIds = new List<int>();
             HashSet<int> trackedUnique = new HashSet<int>();
             int newLordId = -1;
 
-            List<Lord> lords = targetMap.lordManager.lords;
-            for (int i = 0; i < lords.Count; i++)
+            if (targetMap.lordManager != null)
             {
-                Lord l = lords[i];
-                if (l == null || l.faction != raidFac) continue;
-                if (!prevLords.Contains(l.loadID))
+                List<Lord> lords = targetMap.lordManager.lords;
+                for (int i = 0; i < lords.Count; i++)
                 {
-                    newLordId = l.loadID;
-                    if (l.ownedPawns != null)
+                    Lord l = lords[i];
+                    if (l == null || l.faction != raidFac) continue;
+                    if (!prevLords.Contains(l.loadID))
                     {
-                        for (int pIdx = 0; pIdx < l.ownedPawns.Count; pIdx++)
+                        newLordId = l.loadID;
+                        if (l.ownedPawns != null)
                         {
-                            Pawn p = l.ownedPawns[pIdx];
-                            if (p != null && trackedUnique.Add(p.thingIDNumber))
+                            for (int pIdx = 0; pIdx < l.ownedPawns.Count; pIdx++)
                             {
-                                trackedIds.Add(p.thingIDNumber);
+                                Pawn p = l.ownedPawns[pIdx];
+                                if (p != null && trackedUnique.Add(p.thingIDNumber))
+                                {
+                                    trackedIds.Add(p.thingIDNumber);
+                                }
                             }
                         }
+                        break;
                     }
-                    break;
                 }
             }
 
@@ -281,25 +295,36 @@ namespace TurboMegaMod
                 }
             }
 
-            // If incident spawned zero identifiable pawns and no lord, fail safely (timeout) and release lease
-            if (trackedIds.Count == 0 && newLordId < 0)
+            // STRICT REQUIREMENT: must have a NON-EMPTY confirmed raider cohort!
+            // Zero spawned raiders (even if a lord was created) fails spawn & rolls back hostility regardless of restoreRelations.
+            if (trackedIds.Count == 0)
             {
-                ReleaseHostilityLease(ctx);
+                AbortHostilityLease(ctx);
                 return false;
             }
 
             ctx.run.vars["raidLordId"] = newLordId.ToString();
             ctx.run.vars["raidPawnIds"] = JoinInts(trackedIds);
+            ctx.run.vars["confirmedRaiderCount"] = trackedIds.Count.ToString();
             return true;
+        }
+
+        private static bool ExecuteRaidIncident(IncidentParms parms)
+        {
+            if (TestMode.Enabled && TestRaidExecuteOverride != null)
+            {
+                return TestRaidExecuteOverride(parms);
+            }
+            return IncidentDefOf.RaidEnemy.Worker.TryExecute(parms); // CHECK API
         }
 
         /// <summary>
         /// Single-pass batch check across the pinned raid map's spawned pawns, ThingHolders (pods/skyfallers),
-        /// and the raid's Lord. Never falls back to unrelated pawns of the same faction.
+        /// and the raid's Lord. Requires non-empty trackedSet; never falls back to empty-set success.
         /// </summary>
         private static bool IsRaidClearedSinglePass(Map raidMap, HashSet<int> trackedSet, int lordId)
         {
-            if (raidMap == null) return false;
+            if (raidMap == null || trackedSet == null || trackedSet.Count == 0) return false;
 
             // 1. Check the raid's Lord if still active on raidMap
             if (lordId >= 0 && raidMap.lordManager != null)
@@ -319,12 +344,6 @@ namespace TurboMegaMod
                     }
                     break;
                 }
-            }
-
-            if (trackedSet.Count == 0)
-            {
-                // Lord was verified above and has no active pawns remaining
-                return lordId >= 0;
             }
 
             // 2. Single pass over spawned pawns on raidMap
@@ -349,7 +368,7 @@ namespace TurboMegaMod
                 {
                     Thing h = holders[i];
                     if (h == null || h.Destroyed || h is Pawn) continue;
-                    if (HolderHasActiveTrackedRaider(h as IThingHolder, trackedSet, raidMap))
+                    if (ThingHasActiveTrackedRaider(h, trackedSet, raidMap))
                     {
                         return false;
                     }
@@ -381,6 +400,32 @@ namespace TurboMegaMod
             return true;
         }
 
+        private static bool ThingHasActiveTrackedRaider(Thing h, HashSet<int> trackedSet, Map raidMap)
+        {
+            if (h == null || h.Destroyed) return false;
+
+            IThingHolder direct = h as IThingHolder;
+            if (direct != null && HolderHasActiveTrackedRaider(direct, trackedSet, raidMap))
+            {
+                return true;
+            }
+
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                List<ThingComp> comps = twc.AllComps;
+                for (int i = 0; i < comps.Count; i++)
+                {
+                    IThingHolder ch = comps[i] as IThingHolder;
+                    if (ch != null && HolderHasActiveTrackedRaider(ch, trackedSet, raidMap))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         private static bool HolderHasActiveTrackedRaider(IThingHolder holder, HashSet<int> trackedSet, Map raidMap)
         {
             if (holder == null) return false;
@@ -390,7 +435,7 @@ namespace TurboMegaMod
                 for (int i = 0; i < owner.Count; i++)
                 {
                     Pawn p = owner[i] as Pawn;
-                    if (p != null && trackedSet.Contains(p.thingIDNumber) && !p.Dead && !p.Destroyed && !p.IsPrisonerOfColony)
+                    if (p != null && trackedSet.Contains(p.thingIDNumber) && !p.Dead && !p.Destroyed && !p.IsPrisonerOfColony && !p.IsSlaveOfColony)
                     {
                         return true;
                     }
@@ -412,6 +457,13 @@ namespace TurboMegaMod
             return outcome;
         }
 
+        private string FinishAborted(StoryContext ctx, string outcome)
+        {
+            AbortHostilityLease(ctx);
+            ctx.run.vars["finished"] = outcome;
+            return outcome;
+        }
+
         private static void ReleaseHostilityLease(StoryContext ctx)
         {
             if (ctx == null || ctx.run == null) return;
@@ -419,6 +471,17 @@ namespace TurboMegaMod
             if (!leaseId.NullOrEmpty() && StoryRelationRestorer.Instance != null)
             {
                 StoryRelationRestorer.Instance.ReleaseLease(leaseId);
+                ctx.run.vars.Remove("relationLeaseId");
+            }
+        }
+
+        private static void AbortHostilityLease(StoryContext ctx)
+        {
+            if (ctx == null || ctx.run == null) return;
+            string leaseId = GetStr(ctx, "relationLeaseId");
+            if (!leaseId.NullOrEmpty() && StoryRelationRestorer.Instance != null)
+            {
+                StoryRelationRestorer.Instance.AbortLease(leaseId);
                 ctx.run.vars.Remove("relationLeaseId");
             }
         }
@@ -490,11 +553,30 @@ namespace TurboMegaMod
                 {
                     Thing h = holders[i];
                     if (h == null || h.Destroyed || h is Pawn) continue;
-                    CollectFactionPawnsInHolder(h as IThingHolder, fac, ids);
+                    CollectFactionPawnsInThing(h, fac, ids);
                 }
             }
 
             return ids;
+        }
+
+        private static void CollectFactionPawnsInThing(Thing h, Faction fac, HashSet<int> ids)
+        {
+            if (h == null || h.Destroyed) return;
+
+            IThingHolder direct = h as IThingHolder;
+            if (direct != null) CollectFactionPawnsInHolder(direct, fac, ids);
+
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                List<ThingComp> comps = twc.AllComps;
+                for (int i = 0; i < comps.Count; i++)
+                {
+                    IThingHolder ch = comps[i] as IThingHolder;
+                    if (ch != null) CollectFactionPawnsInHolder(ch, fac, ids);
+                }
+            }
         }
 
         private static void CollectFactionPawnsInHolder(IThingHolder holder, Faction fac, HashSet<int> ids)

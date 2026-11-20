@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -976,7 +976,7 @@ namespace TurboMegaMod
             Find.WorldPawns.PassToWorld(pawn, stored ? PawnDiscardDecideMode.KeepForever : PawnDiscardDecideMode.Decide);
         }
 
-public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason)
+        public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason)
         {
             return AddPawnFromCaravan(caravan, pawn, out failReason, true);
         }
@@ -1014,32 +1014,29 @@ public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason
                 return false;
             }
 
-            // If other pawns remain in the caravan, guarantee at least one capable mobile colonist remains
-            if (unclaimBed && caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, pawn))
+            // Never leave remaining caravan pawns stranded without a capable mobile colonist carrier
+            if (caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, pawn))
             {
                 failReason = "StrategicOutpost_NoMobileCarrierLeft".Translate();
                 return false;
             }
 
             PlanetTile origTile = caravan.Tile;
-            caravan.RemovePawn(pawn);
-
-            // Verify removal from caravan holder before attempting outpost insertion/spawn
-            if (caravan.ContainsPawn(pawn) || pawn.holdingOwner != null)
-            {
-                if (!caravan.Destroyed && !caravan.ContainsPawn(pawn))
-                {
-                    caravan.AddPawn(pawn, false);
-                }
-                failReason = "StrategicOutpost_FailedToAddPawn".Translate();
-                return false;
-            }
-
-            bool added = false;
+            bool removedFromCaravan = false;
             bool spawnedPhysically = false;
+            bool added = false;
+
             try
             {
-                if (pawn.RaceProps.Animal)
+                // RemovePawn inside try so any exception is fully journaled and rolled back in finally
+                caravan.RemovePawn(pawn);
+                removedFromCaravan = !caravan.ContainsPawn(pawn);
+
+                if (!removedFromCaravan || pawn.holdingOwner != null)
+                {
+                    added = false;
+                }
+                else if (pawn.RaceProps.Animal)
                 {
                     if (operationalMode == OutpostOperationalMode.Physical && HasMap && Map != null)
                     {
@@ -1106,14 +1103,43 @@ public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason
                     if (deployedAnimalPawnIDs != null) deployedAnimalPawnIDs.Remove(pawn.thingIDNumber);
                     if (Workers.Contains(pawn)) Workers.Remove(pawn);
                     if (Animals.Contains(pawn)) Animals.Remove(pawn);
-
-                    if (!caravan.Destroyed)
+                    if (pawn.holdingOwner != null && (caravan == null || !caravan.ContainsPawn(pawn)))
                     {
-                        caravan.AddPawn(pawn, false);
+                        pawn.holdingOwner.Remove(pawn);
                     }
-                    else if (origTile.Valid)
+
+                    // Verified rollback: confirm actual owner after every AddPawn / fallback step
+                    bool restored = false;
+                    if (caravan != null && !caravan.Destroyed && caravan.Spawned)
                     {
-                        CaravanMaker.MakeCaravan(new List<Pawn> { pawn }, Faction.OfPlayer, origTile, true);
+                        if (!caravan.ContainsPawn(pawn))
+                        {
+                            caravan.AddPawn(pawn, false);
+                        }
+                        restored = caravan.ContainsPawn(pawn);
+                    }
+
+                    if (!restored && origTile.Valid)
+                    {
+                        Caravan fallbackCar = CaravanMaker.MakeCaravan(new List<Pawn> { pawn }, Faction.OfPlayer, origTile, true); // CHECK API
+                        restored = fallbackCar != null && fallbackCar.ContainsPawn(pawn);
+                    }
+
+                    if (!restored)
+                    {
+                        Map fallbackHome = OutpostCaravanManager.ResolveHomeMap(null);
+                        if (fallbackHome != null)
+                        {
+                            IntVec3 spot = DropCellFinder.TradeDropSpot(fallbackHome);
+                            if (!spot.IsValid || !spot.InBounds(fallbackHome)) spot = fallbackHome.Center;
+                            GenSpawn.Spawn(pawn, spot, fallbackHome, WipeMode.Vanish);
+                            restored = pawn.Spawned && pawn.Map == fallbackHome;
+                        }
+                    }
+
+                    if (!restored && Find.WorldPawns != null && !Find.WorldPawns.Contains(pawn))
+                    {
+                        Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
                     }
                 }
             }
@@ -1173,14 +1199,11 @@ public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason
             try
             {
                 owner.Remove(pawn);
-                if (owner.Contains(pawn) || pawn.holdingOwner != null)
+                if (!owner.Contains(pawn) && pawn.holdingOwner == null)
                 {
-                    failReason = "StrategicOutpost_FailedToAddPawnToCaravan".Translate();
-                    return false;
+                    caravan.AddPawn(pawn, false);
+                    transferred = caravan.ContainsPawn(pawn);
                 }
-
-                caravan.AddPawn(pawn, false);
-                transferred = caravan.ContainsPawn(pawn);
             }
             catch (Exception ex)
             {
@@ -1191,9 +1214,51 @@ public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason
             {
                 if (!transferred)
                 {
-                    if (caravan.ContainsPawn(pawn)) caravan.RemovePawn(pawn);
-                    if (!owner.Contains(pawn)) owner.TryAdd(pawn, false);
-                    SetStoredPawnProtection(pawn, true);
+                    if (caravan != null && !caravan.Destroyed && caravan.ContainsPawn(pawn))
+                    {
+                        caravan.RemovePawn(pawn);
+                    }
+                    if (pawn.holdingOwner != null && pawn.holdingOwner != owner)
+                    {
+                        pawn.holdingOwner.Remove(pawn);
+                    }
+
+                    bool restored = owner.Contains(pawn) || (owner.TryAdd(pawn, false) && owner.Contains(pawn));
+                    if (restored)
+                    {
+                        SetStoredPawnProtection(pawn, true);
+                    }
+                    else
+                    {
+                        // Verified fallback if outpost container refused re-insertion
+                        bool fallbackOk = false;
+                        if (caravan != null && !caravan.Destroyed && caravan.Spawned)
+                        {
+                            caravan.AddPawn(pawn, false);
+                            fallbackOk = caravan.ContainsPawn(pawn);
+                        }
+                        if (!fallbackOk && Tile.Valid)
+                        {
+                            Caravan fallbackCar = CaravanMaker.MakeCaravan(new List<Pawn> { pawn }, Faction.OfPlayer, Tile, true);
+                            fallbackOk = fallbackCar != null && fallbackCar.ContainsPawn(pawn);
+                        }
+                        if (!fallbackOk)
+                        {
+                            Map fallbackHome = OutpostCaravanManager.ResolveHomeMap(null);
+                            if (fallbackHome != null)
+                            {
+                                IntVec3 spot = DropCellFinder.TradeDropSpot(fallbackHome);
+                                if (!spot.IsValid || !spot.InBounds(fallbackHome)) spot = fallbackHome.Center;
+                                GenSpawn.Spawn(pawn, spot, fallbackHome, WipeMode.Vanish);
+                                fallbackOk = pawn.Spawned;
+                            }
+                        }
+                        if (!fallbackOk && Find.WorldPawns != null && !Find.WorldPawns.Contains(pawn))
+                        {
+                            Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
+                        }
+                        SetStoredPawnProtection(pawn, false);
+                    }
                 }
             }
 
@@ -1207,6 +1272,7 @@ public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason
             failReason = null;
             return true;
         }
+
 
         public void AbandonAndEvacuate(Caravan caravan)
         {

@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3390,
-                         "scalarFields":  2932,
+                         "keyed":  3401,
+                         "scalarFields":  3454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,12 +16,14 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2805,
-                        "ticksAdvanced":  38029,
+                        "framesAdvanced":  1496,
+                        "ticksAdvanced":  59139,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
                        "passed":  true,
+                       "checksCount":  15,
+                       "errorsCount":  0,
                        "visualLayoutInspected":  false
                    },
     "odysseyGrammar":  {
@@ -41,10 +43,11 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "841ff81f62e92bc15be1550b7c9c4246f3ab27701f5f72dd1306d40aa1df27ed",
+    "productionAssemblySha256":  "a989f43e9b1a0ac6bd46255a704f9068e7543960acee11c32be5c6451a197705",
     "storyStages":  {
                         "passed":  true,
-                        "checksCount":  10,
+                        "testModeEnabled":  true,
+                        "checksCount":  15,
                         "checks":  [
                                        {
                                            "name":  "SparkStory_Exists",
@@ -65,28 +68,58 @@
                                            "actual":  "unavailable=True, untouched=True"
                                        },
                                        {
-                                           "name":  "P1_RetrieveDestroyed_FailedNoSubstitution",
+                                           "name":  "R2_HeroTransferException_FullRollbackToWorldPawns",
                                            "passed":  true,
-                                           "expected":  "realFound=true, outcome=failed (not substituted by decoy)",
-                                           "actual":  "realFound=True, history=0:failed"
+                                           "expected":  "inWorldPawns=true, origFaction preserved, outcome=unavailable",
+                                           "actual":  "inWorld=True, facMatch=True, hist=0:unavailable"
                                        },
                                        {
-                                           "name":  "P1_NeutralRaid_TwoHomesAndGoodwillRestored",
+                                           "name":  "P1_RetrieveDestroyed_ThrottledAndFailedNoSubstitution",
                                            "passed":  true,
-                                           "expected":  "hostile-\u003esuccess-\u003eNeutral(~-50) with 2 home maps",
-                                           "actual":  "hostile=True, stillActive=True, killed=3, succ=True, nonHostile=True, gw=-52"
+                                           "expected":  "throttled=true, outcome=failed",
+                                           "actual":  "realFound=True, throttled=True, hist=0:failed"
                                        },
                                        {
-                                           "name":  "P1_DisabledQuestRaid_RelationsRolledBack",
+                                           "name":  "R2_Retrieve_NpcNotDelivered_FlyingPodTransit_StockpileSuccess",
                                            "passed":  true,
-                                           "expected":  "hostile-\u003erolledBack Neutral(~-40)",
-                                           "actual":  "hostile=True, nonHostile=True, gw=-37"
+                                           "expected":  "npcWait=true, podTransit=true, stockpileSuccess=true",
+                                           "actual":  "npcWait=True, podTransit=True, stockpile=True"
                                        },
                                        {
-                                           "name":  "P1_ForceOutcomeRefusedWithoutTestFlag",
+                                           "name":  "R2_Hold_AbsenceGapExcludedBy60TickSampler",
                                            "passed":  true,
-                                           "expected":  "false",
-                                           "actual":  "False"
+                                           "expected":  "0-\u003e2500-\u003e(3h absent)-\u003e2500-\u003e5000",
+                                           "actual":  "0=0, 1h=2500, inactive=True, afterGap=2500, final=5000"
+                                       },
+                                       {
+                                           "name":  "P1_NeutralRaid_TwoHomesAndSymmetricRestore",
+                                           "passed":  true,
+                                           "expected":  "hostile-\u003esuccess-\u003eSymmetric Neutral(~-50)",
+                                           "actual":  "hostile=True, active2=True, killed=2, succ=True, symNonH=True, gw=-52/-52, retry=True"
+                                       },
+                                       {
+                                           "name":  "R2_OrphanCleanup_RealStageRemovalRollback",
+                                           "passed":  true,
+                                           "expected":  "hostile-\u003eSparkStory Disable(stage missing)-\u003eSymmetric Neutral(~-40)",
+                                           "actual":  "hostile=True, disabled=True, symNonH=True, gw=-37"
+                                       },
+                                       {
+                                           "name":  "R2_RaidZeroRaiders_TimeoutAndRollback",
+                                           "passed":  true,
+                                           "expected":  "timeout (not success) \u0026 hostility rolled back",
+                                           "actual":  "hist=0:timeout, nonHostile=True"
+                                       },
+                                       {
+                                           "name":  "R2_FailedRaidSpawn_RollsBackEvenWhenRestoreRelationsFalse",
+                                           "passed":  true,
+                                           "expected":  "timeout \u0026 restored Neutral(~-30) despite restoreRelations=false",
+                                           "actual":  "hist=0:timeout, nonHostile=True, gw=-29"
+                                       },
+                                       {
+                                           "name":  "R2_ForceOutcome_ActiveRunGenCheckedInTestMode",
+                                           "passed":  true,
+                                           "expected":  "wrongGen=false(Active), rightGen=true(timeout)",
+                                           "actual":  "wrongGenRefused=True, rightGenWorked=True"
                                        },
                                        {
                                            "name":  "ReloadPrep_RescueCaptiveOnSite",

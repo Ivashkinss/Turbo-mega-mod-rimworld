@@ -202,4 +202,10 @@
   <TMM_OutpostCaravan_MissingSilverAborted>Loaded only {0} of {1} silver. Mission aborted; cargo remains with the caravan.</TMM_OutpostCaravan_MissingSilverAborted>
   <TMM_OutpostCaravan_StorageTransferFailed>Outpost storage refused the cargo. Everything was returned to the caravan.</TMM_OutpostCaravan_StorageTransferFailed>
   <TMM_OutpostCaravan_FormationFailed>Failed to form caravan.</TMM_OutpostCaravan_FormationFailed>
+  <TMM_OutpostCaravan_RetryDelivery>Deliver again</TMM_OutpostCaravan_RetryDelivery>
+  <TMM_OutpostCaravan_InvalidMissionReturning>{0}: the outpost mission is no longer valid. The caravan is heading home with its cargo.</TMM_OutpostCaravan_InvalidMissionReturning>
+  <TMM_OutpostCaravan_LegacyReturningHome>{0}: an outpost mission from an older save could not be restored. The caravan is heading home without unloading.</TMM_OutpostCaravan_LegacyReturningHome>
+  <TMM_OutpostCaravan_RetryDeliveryDesc>Try again to hand the cargo over to {0}.</TMM_OutpostCaravan_RetryDeliveryDesc>
+  <TMM_OutpostCaravan_LowReturnFoodWarning>{0}: food for the trip home lasts {1} days, but the trip takes {2} days.</TMM_OutpostCaravan_LowReturnFoodWarning>
+  <TMM_OutpostCaravan_StorageTransferFailedRetry>{0} could not accept the cargo. Everything stays with the caravan: deliver again or send it home.</TMM_OutpostCaravan_StorageTransferFailedRetry>
 </LanguageData>

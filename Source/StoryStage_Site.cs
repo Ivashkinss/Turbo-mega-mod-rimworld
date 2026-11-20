@@ -23,16 +23,31 @@ namespace TurboMegaMod
     /// <summary>
     /// Quest stage that spawns a world-map Site and tracks completion of a real-world objective
     /// (Clear, Rescue, Retrieve, Hold, KillHero), timeout, failed, or unavailable.
-    /// Rules enforced:
-    /// - NEVER calls Site.Destroy() when a map is generated (vanilla Site.ShouldRemoveMapNow handles it).
-    /// - Hero transfer only moves a free living world pawn, with full validation and rollback.
-    /// - Retrieve locks the exact ThingID against stack merges; loss returns "failed" (no substitution).
-    /// - Hold only accumulates confirmed intervals while a standing colonist is present; deadline wins first.
-    /// - Batch/O(1) checks via HeroRegistry and typed ThingRequestGroups (no WorldPawns.AllPawnsDead scan).
+    ///
+    /// Round 2 invariants:
+    /// - Hero transfer (KillHero / Rescue) goes EXCLUSIVELY through StoryPawnTransfer (journaled,
+    ///   exception-safe rollback of WorldPawns membership, faction including null, guest status,
+    ///   and leadership).
+    /// - NEVER calls Site.Destroy() when a site map is generated.
+    /// - Retrieve distinguishes PlayerOwned (player caravan, player colonist/animal/mech on home map,
+    ///   or player stockpile/storage building on home map) vs InTransitOrOnSite (flying player pods /
+    ///   TravellingTransporters, incoming/leaving pods, NPC inventory on home map, loose ground, site map)
+    ///   vs Lost (-> failed). World/map/holder scan is throttled to once every 250 ticks.
+    /// - Hold uses a 60-tick live presence sampler (StorySiteHoldMonitor, explicit 60-tick discretization)
+    ///   so any absence/downed gap is excluded immediately, while partial confirmed progress is preserved.
     /// </summary>
     public sealed class StoryStage_Site : StoryStage
     {
         public const float TilesPerDay = 4f;
+        public const int RetrieveScanInterval = 250;
+        public const int HoldSampleInterval = 60;
+
+        private enum RetrieveItemState
+        {
+            PlayerOwned,
+            InTransitOrOnSite,
+            Lost
+        }
 
         public SitePartDef sitePart;
         public string enemyFaction;
@@ -50,6 +65,10 @@ namespace TurboMegaMod
         private static MethodInfo s_heroRecordMethod;
         private static MethodInfo s_heroIsDeadMethod;
         private static FieldInfo s_heroRecordsDictField;
+
+        // Cached reflection fallback for TravellingTransporters.transporters
+        private static bool s_transportersFieldChecked;
+        private static FieldInfo s_transportersListField;
 
         public override string Mechanic
         {
@@ -85,18 +104,21 @@ namespace TurboMegaMod
             ctx.run.vars["heldTicks"] = "0";
             ctx.run.vars["holdActive"] = "false";
             ctx.run.vars["lastHoldCheckTick"] = "-1";
+            ctx.run.vars["lastRetrieveScanTick"] = "-1";
             ctx.run.vars["heroSpawned"] = "false";
             ctx.run.vars["heroImprisonedOnSite"] = "false";
             ctx.run.vars["heroUnavailable"] = "false";
             ctx.run.vars["thingSpawned"] = "false";
             ctx.run.vars["thingSpawnFailed"] = "false";
 
-            // Pre-check hero availability BEFORE creating a Site on the world map
+            // Pre-check hero availability via StoryPawnTransfer BEFORE creating a Site on the world map
             if (objective == StorySiteObjective.KillHero || objective == StorySiteObjective.Rescue)
             {
-                if (!IsHeroEligibleForSite(hero))
+                string preFail;
+                if (!IsHeroEligibleForSite(hero, out preFail))
                 {
                     ctx.run.vars["heroUnavailable"] = "true";
+                    ctx.run.vars["heroFailReason"] = preFail ?? "unavailable";
                     ctx.run.vars["siteId"] = "-1";
                     return;
                 }
@@ -144,7 +166,7 @@ namespace TurboMegaMod
             TimeoutComp timeoutComp = site.GetComponent<TimeoutComp>();
             if (timeoutComp != null)
             {
-                // Buffer so StoryStage_Site handles its own timeout deterministically while vanilla removes map-less sites safely
+                // Buffer so StoryStage_Site handles timeout deterministically while vanilla removes map-less sites safely
                 timeoutComp.StartTimeout(Mathf.CeilToInt((timeoutDays + 2f) * GenDate.TicksPerDay)); // CHECK API
             }
 
@@ -163,7 +185,7 @@ namespace TurboMegaMod
 
             int now = Find.TickManager.TicksGame;
 
-            // Ensure deadlineTick is persisted if missing after a save migration (never slides forward)
+            // Ensure deadlineTick is persisted once if missing after a save migration (never slides forward)
             int deadline;
             if (!TryGetInt(ctx, "deadlineTick", out deadline))
             {
@@ -186,7 +208,7 @@ namespace TurboMegaMod
                 return FinishStage(ctx, "failed");
             }
 
-            // 2. Check deadline FIRST before objective completion (prevents Hold/other objectives succeeding past deadline)
+            // 2. Check deadline FIRST before objective completion
             if (now >= deadline)
             {
                 ReleaseSite(site, true);
@@ -199,7 +221,7 @@ namespace TurboMegaMod
                 ctx.run.vars["enteredMap"] = "true";
                 if (!GetBool(ctx, "mapInitialized"))
                 {
-                    InitializeSiteMap(ctx, site);
+                    InitializeSiteMap(ctx, site, now);
                     ctx.run.vars["mapInitialized"] = "true";
 
                     if (GetBool(ctx, "heroUnavailable"))
@@ -215,7 +237,7 @@ namespace TurboMegaMod
                 }
             }
 
-            // 4. Evaluate objective (note: Rescue/Retrieve can succeed even on the tick the site disappears after caravan exit)
+            // 4. Evaluate objective
             string objOutcome = EvaluateObjective(ctx, site, now, deadline);
             if (!objOutcome.NullOrEmpty())
             {
@@ -230,9 +252,14 @@ namespace TurboMegaMod
                 return FinishStage(ctx, objOutcome);
             }
 
-            // 5. If the site vanished without fulfilling the objective, end with timeout
+            // 5. If the site vanished without fulfilling the objective (except Retrieve in transit / home map), timeout
             if (site == null)
             {
+                if (objective == StorySiteObjective.Retrieve && GetBool(ctx, "thingSpawned"))
+                {
+                    // Item may still be in transit inside a flying pod or un-hauled on home map; let Retrieve timer/scan decide
+                    return null;
+                }
                 return FinishStage(ctx, "timeout");
             }
 
@@ -293,15 +320,12 @@ namespace TurboMegaMod
                 return;
             }
 
-            // Generated map present: leave map cleanup strictly to vanilla Site.ShouldRemoveMapNow
             site.customLabel = null;
             if (timedOut)
             {
                 TimeoutComp tc = site.GetComponent<TimeoutComp>();
                 if (tc != null)
                 {
-                    // Vanilla TimeoutComp checks !parent.HasMap before destroying the Site; setting
-                    // a short timeout ensures it vanishes cleanly once the player leaves the map.
                     tc.StartTimeout(1); // CHECK API
                 }
             }
@@ -318,33 +342,22 @@ namespace TurboMegaMod
         }
 
         // =====================================================================
-        // SAFE HERO & ITEM INITIALIZATION ON SITE MAP
+        // SAFE HERO & ITEM INITIALIZATION (EXCLUSIVELY VIA StoryPawnTransfer)
         // =====================================================================
 
-        /// <summary>
-        /// Validates that a hero is a free, living world pawn not belonging to the player,
-        /// not spawned on any map, not in a caravan, not inside any container, and not a prisoner/slave.
-        /// </summary>
-        private static bool IsHeroEligibleForSite(HeroDef heroDef)
+        private static bool IsHeroEligibleForSite(HeroDef heroDef, out string failReason)
         {
-            if (heroDef == null || HeroRegistry.Instance == null) return false;
+            failReason = null;
+            if (heroDef == null || HeroRegistry.Instance == null)
+            {
+                failReason = "hero_def_or_registry_null";
+                return false;
+            }
             Pawn p = HeroRegistry.Instance.GetOrCreate(heroDef);
-            return IsFreeWorldHeroPawn(p);
+            return StoryPawnTransfer.IsFreeWorldPawn(p, null, out failReason);
         }
 
-        private static bool IsFreeWorldHeroPawn(Pawn p)
-        {
-            if (p == null || p.Dead || p.Destroyed) return false;
-            if (p.Faction == Faction.OfPlayer) return false;
-            if (p.Spawned) return false;
-            if (p.IsPrisoner || p.IsSlave) return false;
-            if (p.holdingOwner != null) return false;
-            if (p.GetCaravan() != null) return false;
-            if (Find.WorldPawns == null || !Find.WorldPawns.Contains(p)) return false;
-            return true;
-        }
-
-        private void InitializeSiteMap(StoryContext ctx, Site site)
+        private void InitializeSiteMap(StoryContext ctx, Site site, int now)
         {
             Map map = site.Map;
             if (map == null) return;
@@ -365,7 +378,7 @@ namespace TurboMegaMod
             }
             else if (objective == StorySiteObjective.Retrieve)
             {
-                if (!TryPlaceRetrieveItem(ctx, map))
+                if (!TryPlaceRetrieveItem(ctx, map, now))
                 {
                     ctx.run.vars["thingSpawnFailed"] = "true";
                 }
@@ -377,34 +390,32 @@ namespace TurboMegaMod
             if (hero == null || HeroRegistry.Instance == null || site.Faction == null) return false;
 
             Pawn target = HeroRegistry.Instance.GetOrCreate(hero);
-            if (!IsFreeWorldHeroPawn(target)) return false;
-
-            Faction oldFaction = target.Faction;
-            bool wasLeader = oldFaction != null && oldFaction.leader == target;
-
-            Find.WorldPawns.RemovePawn(target);
-            if (target.Faction != site.Faction)
-            {
-                target.SetFaction(site.Faction);
-            }
-
             IntVec3 cell = FindSpawnCellNearCenter(map);
-            Thing spawned = GenSpawn.Spawn(target, cell, map, WipeMode.Vanish);
 
-            if (spawned != target || !target.Spawned || target.Map != map)
+            PawnTransferHandle handle;
+            string failReason;
+            bool ok = StoryPawnTransfer.TrySpawnFreeWorldPawn(
+                target,
+                map,
+                cell,
+                site.Faction,
+                true,
+                null,
+                null,
+                delegate(Pawn spawnedPawn)
+                {
+                    return AttachToHostileLord(map, site.Faction, spawnedPawn, cell);
+                },
+                true,
+                out handle,
+                out failReason);
+
+            if (!ok)
             {
-                // Rollback completely on spawn failure
-                RollbackHeroToWorld(target, oldFaction, wasLeader, false);
+                ctx.run.vars["heroFailReason"] = failReason ?? "transfer_failed";
                 return false;
             }
 
-            if (wasLeader && oldFaction != target.Faction)
-            {
-                ReplaceVacantLeader(oldFaction);
-            }
-
-            AttachToHostileLord(map, site.Faction, target, cell);
-            HeroRegistry.Instance.NotifyEncountered(target);
             ctx.run.vars["targetPawnId"] = target.ThingID;
             ctx.run.vars["targetPawnIdNum"] = target.thingIDNumber.ToString();
             ctx.run.vars["heroSpawned"] = "true";
@@ -416,41 +427,32 @@ namespace TurboMegaMod
             if (hero == null || HeroRegistry.Instance == null || site.Faction == null) return false;
 
             Pawn captive = HeroRegistry.Instance.GetOrCreate(hero);
-            if (!IsFreeWorldHeroPawn(captive)) return false;
-
-            Faction oldFaction = captive.Faction;
-            bool wasLeader = oldFaction != null && oldFaction.leader == captive;
-
-            Find.WorldPawns.RemovePawn(captive);
-            if (captive.Faction == site.Faction)
-            {
-                captive.SetFaction(null);
-            }
-
             IntVec3 cell = FindSpawnCellNearCenter(map);
-            Thing spawned = GenSpawn.Spawn(captive, cell, map, WipeMode.Vanish);
-            bool spawnedOk = spawned == captive && captive.Spawned && captive.Map == map;
 
-            bool imprisonedOk = false;
-            if (spawnedOk && captive.guest != null)
-            {
-                captive.guest.SetGuestStatus(site.Faction, GuestStatus.Prisoner); // CHECK API
-                imprisonedOk = captive.IsPrisoner && captive.HostFaction == site.Faction;
-            }
+            bool needClearFaction = (captive != null && captive.Faction == site.Faction);
+            Faction targetFaction = needClearFaction ? null : (captive != null ? captive.Faction : null);
 
-            if (!spawnedOk || !imprisonedOk)
+            PawnTransferHandle handle;
+            string failReason;
+            bool ok = StoryPawnTransfer.TrySpawnFreeWorldPawn(
+                captive,
+                map,
+                cell,
+                targetFaction,
+                needClearFaction,
+                site.Faction,
+                null,
+                null,
+                true,
+                out handle,
+                out failReason);
+
+            if (!ok)
             {
-                // Rollback completely on spawn or imprisonment failure
-                RollbackHeroToWorld(captive, oldFaction, wasLeader, true);
+                ctx.run.vars["heroFailReason"] = failReason ?? "transfer_failed";
                 return false;
             }
 
-            if (wasLeader && oldFaction != captive.Faction)
-            {
-                ReplaceVacantLeader(oldFaction);
-            }
-
-            HeroRegistry.Instance.NotifyEncountered(captive);
             ctx.run.vars["targetPawnId"] = captive.ThingID;
             ctx.run.vars["targetPawnIdNum"] = captive.thingIDNumber.ToString();
             ctx.run.vars["heroSpawned"] = "true";
@@ -458,37 +460,7 @@ namespace TurboMegaMod
             return true;
         }
 
-        private static void RollbackHeroToWorld(Pawn p, Faction oldFaction, bool wasLeader, bool clearGuestStatus)
-        {
-            if (p == null) return;
-            if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
-            if (clearGuestStatus && p.guest != null)
-            {
-                p.guest.SetGuestStatus(null, GuestStatus.Guest); // CHECK API
-            }
-            if (oldFaction != null && p.Faction != oldFaction)
-            {
-                p.SetFaction(oldFaction);
-            }
-            if (Find.WorldPawns != null && !Find.WorldPawns.Contains(p))
-            {
-                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
-            }
-            if (wasLeader && oldFaction != null)
-            {
-                oldFaction.leader = p;
-            }
-        }
-
-        private static void ReplaceVacantLeader(Faction oldFaction)
-        {
-            if (oldFaction == null || HeroRegistry.Instance == null) return;
-            Pawn next = HeroRegistry.Instance.SuccessorForVacantLeadership(oldFaction);
-            oldFaction.leader = next;
-            if (next == null) oldFaction.TryGenerateNewLeader();
-        }
-
-        private bool TryPlaceRetrieveItem(StoryContext ctx, Map map)
+        private bool TryPlaceRetrieveItem(StoryContext ctx, Map map, int now)
         {
             if (thing == null || map == null) return false;
 
@@ -518,6 +490,8 @@ namespace TurboMegaMod
 
             ctx.run.vars["targetThingId"] = placed.ThingID;
             ctx.run.vars["thingSpawned"] = "true";
+            // Record spawn tick as last scan tick so we don't rescan immediately on the spawn tick
+            ctx.run.vars["lastRetrieveScanTick"] = now.ToString();
             return true;
         }
 
@@ -554,7 +528,6 @@ namespace TurboMegaMod
 
             if (objective == StorySiteObjective.Rescue)
             {
-                // Requires confirmed imprisonment on site map first (never triggers on pre-existing caravan pawn)
                 if (!GetBool(ctx, "heroImprisonedOnSite")) return null;
                 string pawnId = GetStr(ctx, "targetPawnId");
                 if (pawnId.NullOrEmpty()) return null;
@@ -577,67 +550,29 @@ namespace TurboMegaMod
                 string thingId = GetStr(ctx, "targetThingId");
                 if (thingId.NullOrEmpty()) return "failed";
 
-                // 1. Exact ThingID in any player caravan -> success!
-                if (IsExactThingInPlayerCaravan(thingId))
-                {
-                    return "success";
-                }
-
-                // 2. Exact ThingID arrived on any player home map -> success!
-                if (IsExactThingOnAnyPlayerHomeMap(thingId, thing))
-                {
-                    return "success";
-                }
-
-                // 3. Still on the site map (ground, pawn, or container) -> keep waiting
-                if (site != null && site.HasMap && site.Map != null && IsExactThingOnMap(site.Map, thingId, thing))
+                // Throttle world/caravan/map/holder scan to once every RetrieveScanInterval (250 ticks)
+                int lastScan = GetInt(ctx, "lastRetrieveScanTick", -1);
+                if (lastScan >= 0 && now >= lastScan && (now - lastScan) < RetrieveScanInterval)
                 {
                     return null;
                 }
+                ctx.run.vars["lastRetrieveScanTick"] = now.ToString();
 
-                // 4. Check any other non-home active map just in case it is carried there
-                List<Map> maps = Find.Maps;
-                for (int i = 0; i < maps.Count; i++)
+                RetrieveItemState itemState = LocateRetrieveItem(thingId, thing, site);
+                if (itemState == RetrieveItemState.PlayerOwned)
                 {
-                    Map m = maps[i];
-                    if (m == null || m.IsPlayerHome || (site != null && m == site.Map)) continue;
-                    if (IsExactThingOnMap(m, thingId, thing)) return null;
+                    return "success";
                 }
-
-                // Exact ThingID no longer exists anywhere (destroyed or lost with map) -> explicit failed (NO substitution!)
+                if (itemState == RetrieveItemState.InTransitOrOnSite)
+                {
+                    return null;
+                }
                 return "failed";
             }
 
             if (objective == StorySiteObjective.Hold)
             {
-                bool presentNow = site != null && site.HasMap && site.Map != null && HasStandingPlayerPawns(site.Map);
-                bool wasPresent = GetBool(ctx, "holdActive");
-                int lastTick = GetInt(ctx, "lastHoldCheckTick", -1);
-
-                if (!presentNow)
-                {
-                    // Absent or downed: stop accumulating, preserve already-earned heldTicks for re-entry
-                    ctx.run.vars["holdActive"] = "false";
-                    ctx.run.vars["lastHoldCheckTick"] = "-1";
-                    return null;
-                }
-
-                if (!wasPresent || lastTick < 0)
-                {
-                    // First poll after entry or re-entry: mark active without adding prior elapsed ticks
-                    ctx.run.vars["holdActive"] = "true";
-                    ctx.run.vars["lastHoldCheckTick"] = now.ToString();
-                    return null;
-                }
-
-                int cappedNow = Mathf.Min(now, deadline);
-                int dt = Mathf.Max(0, cappedNow - lastTick);
-                int held = GetInt(ctx, "heldTicks", 0) + dt;
-                ctx.run.vars["heldTicks"] = held.ToString();
-                ctx.run.vars["lastHoldCheckTick"] = now.ToString();
-
-                int targetTicks = Mathf.Max(1, Mathf.RoundToInt(holdHours * GenDate.TicksPerHour));
-                if (held >= targetTicks)
+                if (UpdateHoldProgress(ctx, site, now, deadline))
                 {
                     return "success";
                 }
@@ -645,6 +580,335 @@ namespace TurboMegaMod
             }
 
             return null;
+        }
+
+        // =====================================================================
+        // HOLD PROGRESS (60-TICK LIVE SAMPLING VIA StorySiteHoldMonitor)
+        // =====================================================================
+
+        /// <summary>
+        /// Updates confirmed Hold ticks on an active Hold stage.
+        /// Called every 60 ticks by StorySiteHoldMonitor on the site map (so absences/downed gaps
+        /// are detected at 60-tick resolution and never credited) and also on StoryStage_Site.Tick.
+        /// Never completes the stage directly when called from monitor; returns true if target reached.
+        /// </summary>
+        internal bool UpdateHoldProgress(StoryContext ctx, Site site, int now, int deadline)
+        {
+            if (ctx == null || ctx.run == null) return false;
+            if (ctx.run.vars.ContainsKey("finished")) return false;
+            if (now >= deadline) return false;
+
+            bool presentNow = site != null && site.HasMap && site.Map != null && HasStandingPlayerPawns(site.Map);
+            bool wasPresent = GetBool(ctx, "holdActive");
+            int lastTick = GetInt(ctx, "lastHoldCheckTick", -1);
+
+            if (!presentNow)
+            {
+                ctx.run.vars["holdActive"] = "false";
+                ctx.run.vars["lastHoldCheckTick"] = "-1";
+                return false;
+            }
+
+            if (!wasPresent || lastTick < 0)
+            {
+                // First sample after entry or re-entry: mark active without adding prior elapsed ticks
+                ctx.run.vars["holdActive"] = "true";
+                ctx.run.vars["lastHoldCheckTick"] = now.ToString();
+                return false;
+            }
+
+            int held = GetInt(ctx, "heldTicks", 0);
+            if (now > lastTick)
+            {
+                int cappedNow = Mathf.Min(now, deadline);
+                int dt = Mathf.Max(0, cappedNow - lastTick);
+                held += dt;
+                ctx.run.vars["heldTicks"] = held.ToString();
+                ctx.run.vars["lastHoldCheckTick"] = now.ToString();
+            }
+
+            int targetTicks = Mathf.Max(1, Mathf.RoundToInt(holdHours * GenDate.TicksPerHour));
+            return held >= targetTicks;
+        }
+
+        /// <summary>
+        /// Invoked every 60 ticks by StorySiteHoldMonitor on maps whose Parent is a Site.
+        /// </summary>
+        public static void SampleHoldPresenceForSiteMap(Map siteMap, int now)
+        {
+            if (siteMap == null) return;
+            Site site = siteMap.Parent as Site;
+            if (site == null) return;
+
+            SparkStory story = SparkStory.Instance;
+            if (story == null) return;
+
+            foreach (StoryQuestRun run in story.Runs)
+            {
+                if (run == null || run.status != StoryQuestStatus.Active || run.vars == null) continue;
+                if (run.vars.ContainsKey("finished")) continue;
+
+                StoryQuestDef def = run.Def;
+                if (def == null || run.stage < 0 || run.stage >= def.stages.Count) continue;
+
+                StoryStage_Site st = def.stages[run.stage] as StoryStage_Site;
+                if (st == null || st.objective != StorySiteObjective.Hold) continue;
+
+                string rawSiteId;
+                int runSiteId;
+                if (!run.vars.TryGetValue("siteId", out rawSiteId) || !int.TryParse(rawSiteId, out runSiteId) || runSiteId != site.ID)
+                {
+                    continue;
+                }
+
+                StoryContext ctx = story.Context(run);
+                int deadline;
+                if (!TryGetInt(ctx, "deadlineTick", out deadline)) continue;
+
+                st.UpdateHoldProgress(ctx, site, now, deadline);
+            }
+        }
+
+        // =====================================================================
+        // RETRIEVE OWNERSHIP & TRANSIT CLASSIFICATION
+        // =====================================================================
+
+        /// <summary>
+        /// Classifies exact thingId across:
+        /// 1) Player caravans -> PlayerOwned (success)
+        /// 2) Player home maps:
+        ///    - Player stockpile / player storage building -> PlayerOwned (success)
+        ///    - Player-owned pawn (colonist/animal/mech, not prisoner) -> PlayerOwned (success)
+        ///    - Player-owned non-pod storage container building -> PlayerOwned (success)
+        ///    - NPC inventory/equipment/carry, loose ground outside stockpile, or incoming/leaving pods -> InTransitOrOnSite (wait)
+        /// 3) World map TravellingTransporters (flying player pods) -> InTransitOrOnSite (wait)
+        /// 4) Site map or any other non-home map -> InTransitOrOnSite (wait)
+        /// 5) Nowhere -> Lost (failed)
+        /// </summary>
+        private static RetrieveItemState LocateRetrieveItem(string thingId, ThingDef defHint, Site site)
+        {
+            if (thingId.NullOrEmpty()) return RetrieveItemState.Lost;
+
+            bool foundInTransitOrElsewhere = false;
+
+            // 1. Player caravans on world map -> confirmed PlayerOwned
+            if (IsExactThingInPlayerCaravan(thingId))
+            {
+                return RetrieveItemState.PlayerOwned;
+            }
+
+            // 2. Player home maps: strict ownership verification (NPC inventory != delivered!)
+            if (Find.Maps != null)
+            {
+                List<Map> maps = Find.Maps;
+                for (int i = 0; i < maps.Count; i++)
+                {
+                    Map m = maps[i];
+                    if (m == null || !m.IsPlayerHome) continue;
+
+                    RetrieveItemState homeState = CheckExactThingOnHomeMap(m, thingId, defHint);
+                    if (homeState == RetrieveItemState.PlayerOwned)
+                    {
+                        return RetrieveItemState.PlayerOwned;
+                    }
+                    if (homeState == RetrieveItemState.InTransitOrOnSite)
+                    {
+                        foundInTransitOrElsewhere = true;
+                    }
+                }
+            }
+
+            // 3. Flying transport pods (TravellingTransporters) & other world-map holders -> InTransit
+            if (IsExactThingInWorldTransporters(thingId))
+            {
+                foundInTransitOrElsewhere = true;
+            }
+
+            // 4. Site map & any other active non-home map -> InTransitOrOnSite
+            if (!foundInTransitOrElsewhere && site != null && site.HasMap && site.Map != null)
+            {
+                if (IsExactThingAnywhereOnMap(site.Map, thingId, defHint))
+                {
+                    foundInTransitOrElsewhere = true;
+                }
+            }
+
+            if (!foundInTransitOrElsewhere && Find.Maps != null)
+            {
+                List<Map> maps = Find.Maps;
+                for (int i = 0; i < maps.Count; i++)
+                {
+                    Map m = maps[i];
+                    if (m == null || m.IsPlayerHome || (site != null && m == site.Map)) continue;
+                    if (IsExactThingAnywhereOnMap(m, thingId, defHint))
+                    {
+                        foundInTransitOrElsewhere = true;
+                        break;
+                    }
+                }
+            }
+
+            return foundInTransitOrElsewhere ? RetrieveItemState.InTransitOrOnSite : RetrieveItemState.Lost;
+        }
+
+        private static RetrieveItemState CheckExactThingOnHomeMap(Map home, string thingId, ThingDef defHint)
+        {
+            if (home == null || thingId.NullOrEmpty()) return RetrieveItemState.Lost;
+
+            bool foundNonOwned = false;
+
+            // A. Directly spawned on home map (stockpile/player storage -> PlayerOwned; loose ground -> wait)
+            if (defHint != null && home.listerThings != null)
+            {
+                List<Thing> byDef = home.listerThings.ThingsOfDef(defHint);
+                for (int i = 0; i < byDef.Count; i++)
+                {
+                    Thing t = byDef[i];
+                    if (t != null && !t.Destroyed && t.ThingID == thingId)
+                    {
+                        if (IsInPlayerStorageSlot(home, t))
+                        {
+                            return RetrieveItemState.PlayerOwned;
+                        }
+                        foundNonOwned = true;
+                    }
+                }
+            }
+
+            // B. Pawns on home map: ONLY player-owned non-prisoner pawns count as delivered!
+            // NPC visitors, traders, raiders, or prisoners carrying the item do NOT count as delivered.
+            if (home.mapPawns != null)
+            {
+                IReadOnlyList<Pawn> pawns = home.mapPawns.AllPawnsSpawned;
+                for (int i = 0; i < pawns.Count; i++)
+                {
+                    Pawn p = pawns[i];
+                    if (p == null || !PawnHasExactThing(p, thingId)) continue;
+
+                    if (p.Faction == Faction.OfPlayer && !p.IsPrisoner)
+                    {
+                        return RetrieveItemState.PlayerOwned;
+                    }
+                    foundNonOwned = true;
+                }
+            }
+
+            // C. ThingHolders on home map (incoming/leaving pods -> transit; player container buildings -> PlayerOwned)
+            if (home.listerThings != null)
+            {
+                List<Thing> holders = home.listerThings.ThingsInGroup(ThingRequestGroup.ThingHolder);
+                for (int i = 0; i < holders.Count; i++)
+                {
+                    Thing h = holders[i];
+                    if (h == null || h.Destroyed || h is Pawn) continue;
+                    if (!ThingContainsExactThing(h, thingId)) continue;
+
+                    if (IsPodOrSkyfaller(h))
+                    {
+                        foundNonOwned = true;
+                    }
+                    else if (h is Building && h.Faction == Faction.OfPlayer)
+                    {
+                        return RetrieveItemState.PlayerOwned;
+                    }
+                    else
+                    {
+                        foundNonOwned = true;
+                    }
+                }
+            }
+
+            return foundNonOwned ? RetrieveItemState.InTransitOrOnSite : RetrieveItemState.Lost;
+        }
+
+        private static bool IsInPlayerStorageSlot(Map map, Thing t)
+        {
+            if (map == null || t == null || t.Destroyed || !t.Spawned || t.Map != map) return false;
+            if (map.haulDestinationManager == null) return false;
+
+            SlotGroup sg = map.haulDestinationManager.SlotGroupAt(t.Position); // CHECK API
+            if (sg == null || sg.parent == null) return false;
+
+            if (sg.parent is Zone_Stockpile) return true;
+
+            Building b = sg.parent as Building;
+            if (b != null && b.Faction == Faction.OfPlayer) return true;
+
+            return false;
+        }
+
+        private static bool IsPodOrSkyfaller(Thing t)
+        {
+            if (t == null) return false;
+            if (t is Skyfaller || t is ActiveTransporter) return true; // CHECK API
+            ThingWithComps twc = t as ThingWithComps;
+            if (twc != null && twc.GetComp<CompTransporter>() != null) return true; // CHECK API
+            return false;
+        }
+
+        private static bool IsExactThingInWorldTransporters(string thingId)
+        {
+            if (thingId.NullOrEmpty() || Find.WorldObjects == null) return false;
+
+            List<WorldObject> all = Find.WorldObjects.AllWorldObjects;
+            for (int i = 0; i < all.Count; i++)
+            {
+                WorldObject wo = all[i];
+                if (wo == null || wo.Destroyed || wo is Caravan) continue;
+
+                TravellingTransporters pods = wo as TravellingTransporters; // CHECK API
+                if (pods != null)
+                {
+                    if (TravellingTransportersContainsExactThing(pods, thingId))
+                    {
+                        return true;
+                    }
+                    continue;
+                }
+
+                // Other world-map IThingHolder objects (e.g. player outposts)
+                IThingHolder holder = wo as IThingHolder;
+                if (holder != null && HolderContainsExactThing(holder, thingId))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool TravellingTransportersContainsExactThing(TravellingTransporters pods, string thingId)
+        {
+            if (pods == null || thingId.NullOrEmpty()) return false;
+
+            IThingHolder asHolder = pods as IThingHolder;
+            if (asHolder != null && HolderContainsExactThing(asHolder, thingId))
+            {
+                return true;
+            }
+
+            if (!s_transportersFieldChecked)
+            {
+                s_transportersFieldChecked = true;
+                s_transportersListField = AccessTools.Field(typeof(TravellingTransporters), "transporters"); // CHECK API
+            }
+
+            if (s_transportersListField != null)
+            {
+                IList list = s_transportersListField.GetValue(pods) as IList;
+                if (list != null)
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        IThingHolder h = list[i] as IThingHolder;
+                        if (h != null && HolderContainsExactThing(h, thingId))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         // =====================================================================
@@ -677,36 +941,31 @@ namespace TurboMegaMod
             return false;
         }
 
-        /// <summary>
-        /// Confirms death of the SPECIFIC hero ThingID using site corpses, HeroRegistry record state
-        /// (Dead + ThingID, never treating Missing as Dead), and home-map corpses — never scanning
-        /// all dead WorldPawns.
-        /// </summary>
         private static bool IsTrackedHeroConfirmedDead(HeroDef heroDef, string expectedThingId, Map siteMap)
         {
             if (expectedThingId.NullOrEmpty()) return false;
 
-            // 1. Check site map corpses first (fast)
             if (HasCorpseWithId(siteMap, expectedThingId)) return true;
 
-            // 2. Check HeroRegistry record directly (O(1))
             if (heroDef != null && HeroRegistry.Instance != null)
             {
                 bool confirmed;
-                if (TryCheckHeroRegistryDead(heroDef, expectedThingId, out confirmed))
+                if (TryCheckHeroRegistryDead(heroDef, expectedThingId, out confirmed) && confirmed)
                 {
-                    if (confirmed) return true;
+                    return true;
                 }
             }
 
-            // 3. Check player home map corpses (in case corpse was hauled back)
-            List<Map> maps = Find.Maps;
-            for (int i = 0; i < maps.Count; i++)
+            if (Find.Maps != null)
             {
-                Map m = maps[i];
-                if (m != null && m.IsPlayerHome && m != siteMap && HasCorpseWithId(m, expectedThingId))
+                List<Map> maps = Find.Maps;
+                for (int i = 0; i < maps.Count; i++)
                 {
-                    return true;
+                    Map m = maps[i];
+                    if (m != null && m.IsPlayerHome && m != siteMap && HasCorpseWithId(m, expectedThingId))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -738,7 +997,6 @@ namespace TurboMegaMod
             {
                 s_heroRegChecked = true;
                 Type t = reg.GetType();
-                // CHECK API: HeroRegistry record/state accessors
                 s_heroRecordMethod = AccessTools.Method(t, "RecordFor", new Type[] { typeof(HeroDef) }) ??
                                      AccessTools.Method(t, "GetRecord", new Type[] { typeof(HeroDef) }) ??
                                      AccessTools.Method(t, "EntryFor", new Type[] { typeof(HeroDef) });
@@ -774,7 +1032,6 @@ namespace TurboMegaMod
 
                 if (rec != null)
                 {
-                    // Direct Pawn stored in dictionary?
                     Pawn directPawn = rec as Pawn;
                     if (directPawn != null)
                     {
@@ -782,7 +1039,6 @@ namespace TurboMegaMod
                         return true;
                     }
 
-                    // Structured HeroRecord with pawn/thingId/state fields
                     Type rt = rec.GetType();
                     Pawn recPawn = ReadFieldOrProp(rec, rt, "pawn") as Pawn;
                     object stateObj = ReadFieldOrProp(rec, rt, "state");
@@ -797,7 +1053,6 @@ namespace TurboMegaMod
                         }
                         if (recPawn.ThingID != expectedThingId)
                         {
-                            // Different pawn instance than the one spawned at site
                             return true;
                         }
                     }
@@ -813,7 +1068,6 @@ namespace TurboMegaMod
                             }
                             return true;
                         }
-                        // Missing / Alive / Active -> explicitly NOT dead
                         return true;
                     }
                 }
@@ -854,8 +1108,6 @@ namespace TurboMegaMod
                 Caravan c = caravans[i];
                 if (c == null || c.Destroyed || c.Faction != Faction.OfPlayer) continue;
 
-                // Caravan must have left the site map (in RimWorld forming a caravan removes pawns from map;
-                // also ensure if site still somehow has a map that the caravan moved off or pawn isn't spawned there)
                 List<Pawn> pawns = c.PawnsListForReading;
                 for (int j = 0; j < pawns.Count; j++)
                 {
@@ -874,7 +1126,7 @@ namespace TurboMegaMod
 
         private static bool IsPawnRescuedAtAnyHome(string pawnId)
         {
-            if (pawnId.NullOrEmpty()) return false;
+            if (pawnId.NullOrEmpty() || Find.Maps == null) return false;
             List<Map> maps = Find.Maps;
             for (int m = 0; m < maps.Count; m++)
             {
@@ -911,27 +1163,7 @@ namespace TurboMegaMod
             return false;
         }
 
-        private static bool IsExactThingOnAnyPlayerHomeMap(string thingId, ThingDef defHint)
-        {
-            List<Map> maps = Find.Maps;
-            for (int i = 0; i < maps.Count; i++)
-            {
-                Map m = maps[i];
-                if (m != null && m.IsPlayerHome && IsExactThingOnMap(m, thingId, defHint))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Single targeted search for an exact ThingID on a map:
-        /// 1) listerThings.ThingsOfDef(defHint) (fast typed list),
-        /// 2) pawns' inventory/equipment/apparel/carryTracker,
-        /// 3) ThingRequestGroup.ThingHolder containers (pods, shelves/crates/etc.).
-        /// </summary>
-        private static bool IsExactThingOnMap(Map map, string thingId, ThingDef defHint)
+        private static bool IsExactThingAnywhereOnMap(Map map, string thingId, ThingDef defHint)
         {
             if (map == null || thingId.NullOrEmpty()) return false;
 
@@ -959,8 +1191,9 @@ namespace TurboMegaMod
                 List<Thing> holders = map.listerThings.ThingsInGroup(ThingRequestGroup.ThingHolder);
                 for (int i = 0; i < holders.Count; i++)
                 {
-                    if (holders[i] is Pawn) continue; // already checked above
-                    if (HolderContainsExactThing(holders[i] as IThingHolder, thingId)) return true;
+                    Thing h = holders[i];
+                    if (h == null || h.Destroyed || h is Pawn) continue;
+                    if (ThingContainsExactThing(h, thingId)) return true;
                 }
             }
 
@@ -1002,6 +1235,35 @@ namespace TurboMegaMod
                 for (int i = 0; i < worn.Count; i++)
                 {
                     if (worn[i] != null && !worn[i].Destroyed && worn[i].ThingID == thingId) return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool ThingContainsExactThing(Thing h, string thingId)
+        {
+            if (h == null || h.Destroyed) return false;
+            if (h.ThingID == thingId) return true;
+
+            IThingHolder directHolder = h as IThingHolder;
+            if (directHolder != null && HolderContainsExactThing(directHolder, thingId))
+            {
+                return true;
+            }
+
+            // Also inspect ThingComp IThingHolders (e.g. CompTransporter on Building_TransportPod)
+            ThingWithComps twc = h as ThingWithComps;
+            if (twc != null && twc.AllComps != null)
+            {
+                List<ThingComp> comps = twc.AllComps;
+                for (int i = 0; i < comps.Count; i++)
+                {
+                    IThingHolder compHolder = comps[i] as IThingHolder;
+                    if (compHolder != null && HolderContainsExactThing(compHolder, thingId))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -1054,9 +1316,9 @@ namespace TurboMegaMod
             return center;
         }
 
-        private static void AttachToHostileLord(Map map, Faction fac, Pawn pawn, IntVec3 cell)
+        private static bool AttachToHostileLord(Map map, Faction fac, Pawn pawn, IntVec3 cell)
         {
-            if (map == null || fac == null || pawn == null) return;
+            if (map == null || fac == null || pawn == null || map.lordManager == null) return false;
             List<Lord> lords = map.lordManager.lords;
             for (int i = 0; i < lords.Count; i++)
             {
@@ -1064,12 +1326,13 @@ namespace TurboMegaMod
                 if (l != null && l.faction == fac)
                 {
                     l.AddPawn(pawn);
-                    return;
+                    return pawn.GetLord() == l;
                 }
             }
             List<Pawn> group = new List<Pawn>();
             group.Add(pawn);
-            LordMaker.MakeNewLord(fac, new LordJob_DefendPoint(cell), map, group);
+            Lord created = LordMaker.MakeNewLord(fac, new LordJob_DefendPoint(cell), map, group);
+            return created != null && pawn.GetLord() == created;
         }
 
         private static Site FindSiteById(int siteId)
@@ -1187,6 +1450,27 @@ namespace TurboMegaMod
         {
             string raw;
             return ctx.run.vars.TryGetValue(key, out raw) ? raw : string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Lightweight MapComponent that samples standing-colonist presence every 60 ticks
+    /// (explicit 60-tick discretization step) ONLY on maps belonging to a Site.
+    /// Instantly returns on non-Site maps. Prevents crediting absence/downed intervals
+    /// between 250-tick SparkStory director polls.
+    /// </summary>
+    public sealed class StorySiteHoldMonitor : MapComponent
+    {
+        public StorySiteHoldMonitor(Map map) : base(map)
+        {
+        }
+
+        public override void MapComponentTick()
+        {
+            if (map == null || !(map.Parent is Site)) return;
+            int now = Find.TickManager.TicksGame;
+            if (now % StoryStage_Site.HoldSampleInterval != 0) return;
+            StoryStage_Site.SampleHoldPresenceForSiteMap(map, now);
         }
     }
 }
