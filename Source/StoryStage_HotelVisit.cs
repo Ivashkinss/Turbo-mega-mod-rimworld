@@ -352,8 +352,8 @@ namespace TurboMegaMod
                     PawnKindDef kind = visitFac.RandomPawnKind();
                     if (kind == null) kind = PawnKindDefOf.SpaceRefugee;
                     PawnGenerationRequest req = new PawnGenerationRequest(
-                        kind, visitFac, PawnGenerationContext.NonPlayer, home.Tile,
-                        false, false, false, true, false, 1f, false, true, false, true, true,
+                        kind, visitFac, PawnGenerationContext.NonPlayer, home.Tile, // forceGenerateNewPawn=true: never borrow an existing world pawn that cleanup could destroy
+                        true, false, false, true, false, 1f, false, true, false, true, true,
                         false, false, false, false, 0f, 0f, null, 1f, null, null, null, null, null,
                         null, null, null, null, null, null, null,
                         false, false, false, false, null, null, null, null, null, 0f, DevelopmentalStage.Adult,

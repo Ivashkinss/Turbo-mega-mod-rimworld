@@ -1724,7 +1724,7 @@
     },
     {
       "id": "Round2CoreRecheck",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/Round2CoreRecheck/TASK.md",

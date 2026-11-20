@@ -51,6 +51,7 @@ namespace TurboMegaMod
         public int origKind = (int)FactionRelationKind.Neutral;
         public bool origHasGoodwill;
         public int postForceGoodwill = -100;
+        public int restoreTarget = int.MinValue; // computed once, reused by retries
         public bool restoreWanted;
         public bool anyLeaseCompletedKeepHostile;
         public string activeMode = StoryHostilityLease.ModeHostile;
@@ -63,6 +64,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref origKind, "origKind", (int)FactionRelationKind.Neutral);
             Scribe_Values.Look(ref origHasGoodwill, "origHasGoodwill", true);
             Scribe_Values.Look(ref postForceGoodwill, "postForceGoodwill", -100);
+            Scribe_Values.Look(ref restoreTarget, "restoreTarget", int.MinValue);
             Scribe_Values.Look(ref restoreWanted, "restoreWanted", false);
             Scribe_Values.Look(ref anyLeaseCompletedKeepHostile, "anyLeaseCompletedKeepHostile", false);
             Scribe_Values.Look(ref activeMode, "activeMode", StoryHostilityLease.ModeHostile);
@@ -219,6 +221,7 @@ namespace TurboMegaMod
                 existing.origGoodwill = fac.PlayerGoodwill;
                 existing.origKind = (int)fac.RelationKindWith(Faction.OfPlayer);
                 existing.origHasGoodwill = fac.HasGoodwill;
+                existing.restoreTarget = int.MinValue;
                 existing.restoreWanted = restoreRelations;
                 existing.anyLeaseCompletedKeepHostile = false;
                 existing.activeMode = StoryHostilityLease.ModeHostile;
@@ -228,6 +231,7 @@ namespace TurboMegaMod
 
                 if (!ForceFactionHostile(fac))
                 {
+                    existing.postForceGoodwill = fac.PlayerGoodwill; // nothing was forced: restore must not apply a phantom delta
                     RemoveLease(existing, leaseId);
                     existing.restoreWanted = true;
                     if (FinalizeBackup(existing))
@@ -318,6 +322,7 @@ namespace TurboMegaMod
                 existing.origGoodwill = fac.PlayerGoodwill;
                 existing.origKind = (int)fac.RelationKindWith(Faction.OfPlayer);
                 existing.origHasGoodwill = fac.HasGoodwill;
+                existing.restoreTarget = int.MinValue;
                 existing.restoreWanted = true;
                 existing.anyLeaseCompletedKeepHostile = false;
                 existing.activeMode = StoryHostilityLease.ModeNeutral;
@@ -629,8 +634,16 @@ namespace TurboMegaMod
 
             FactionRelationKind origKind = (FactionRelationKind)b.origKind;
 
-            int externalDelta = fac.HasGoodwill ? (fac.PlayerGoodwill - b.postForceGoodwill) : 0;
-            int targetGoodwill = Mathf.Clamp(b.origGoodwill + externalDelta, -100, 100);
+            int targetGoodwill;
+            if (b.restoreTarget != int.MinValue)
+            {
+                // A previous attempt already fixed the target; do not recompute from a partially restored state.
+                targetGoodwill = b.restoreTarget;
+            }
+            else
+            {
+                int externalDelta = fac.HasGoodwill ? (fac.PlayerGoodwill - b.postForceGoodwill) : 0;
+                targetGoodwill = Mathf.Clamp(b.origGoodwill + externalDelta, -100, 100);
 
             if (origKind == FactionRelationKind.Neutral && targetGoodwill < -74)
             {
@@ -643,6 +656,8 @@ namespace TurboMegaMod
             else if (origKind == FactionRelationKind.Hostile && targetGoodwill > -1)
             {
                 targetGoodwill = -1;
+            }
+            b.restoreTarget = targetGoodwill;
             }
 
             try

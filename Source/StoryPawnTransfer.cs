@@ -58,8 +58,10 @@ namespace TurboMegaMod
         public bool Rollback()
         {
             if (rolledBack) return true;
-            rolledBack = true;
-            return StoryPawnTransfer.ExecuteRollback(snapshot, journal);
+            // Mark as rolled back only when the rollback really succeeded, so a failed one can be retried.
+            bool ok = StoryPawnTransfer.ExecuteRollback(snapshot, journal);
+            if (ok) rolledBack = true;
+            return ok;
         }
 
         /// <summary>
