@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_Sample_Site -->
+  <TMM_Story_Sample_Site.label>пробная зачистка лагеря</TMM_Story_Sample_Site.label>
+  <TMM_Story_Sample_Site.letterLabel>Пробная зачистка лагеря</TMM_Story_Sample_Site.letterLabel>
+  <TMM_Story_Sample_Site.letterText>Разведчики неподалёку от {COLONY} заметили враждебный полевой лагерь. Отправьте караван, зачистите лагерь и доложите о результате.</TMM_Story_Sample_Site.letterText>
+  <TMM_Story_Sample_Site.stages.0.label>Зачистить вражеский лагерь</TMM_Story_Sample_Site.stages.0.label>
+  <TMM_Story_Sample_Site.stages.0.text>Враждебный полевой лагерь отмечен на карте мира рядом с {COLONY}. Отправьте караван и уничтожьте всех противников в лагере.</TMM_Story_Sample_Site.stages.0.text>
+  <TMM_Story_Sample_Site.stages.1.label>Лагерь зачищен</TMM_Story_Sample_Site.stages.1.label>
+  <TMM_Story_Sample_Site.stages.1.text>Вражеский лагерь полностью зачищен. Решите, как оформить итог операции в архивах {COLONY}.</TMM_Story_Sample_Site.stages.1.text>
+  <TMM_Story_Sample_Site.stages.1.choices.0.label>Зафиксировать победу и забрать скромные трофеи</TMM_Story_Sample_Site.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site.stages.1.choices.0.resultText>Разведчики описали зачищенный лагерь и принесли мешочек серебра.</TMM_Story_Sample_Site.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Raid -->
+  <TMM_Story_Sample_Raid.label>пробная атака на периметр</TMM_Story_Sample_Raid.label>
+  <TMM_Story_Sample_Raid.letterLabel>Пробная атака на периметр</TMM_Story_Sample_Raid.letterLabel>
+  <TMM_Story_Sample_Raid.letterText>Враждебные налётчики готовятся проверить оборону {COLONY}. Примите вызов, чтобы провести учебное отражение рейда.</TMM_Story_Sample_Raid.letterText>
+  <TMM_Story_Sample_Raid.stages.0.label>Отразить пробный рейд</TMM_Story_Sample_Raid.stages.0.label>
+  <TMM_Story_Sample_Raid.stages.0.text>К {COLONY} приближаются налётчики. Подготовьте оборону периметра.</TMM_Story_Sample_Raid.stages.0.text>
+
+  <!-- TMM_Story_Sample_Site_Rescue -->
+  <TMM_Story_Sample_Site_Rescue.label>пробное спасение героя</TMM_Story_Sample_Site_Rescue.label>
+  <TMM_Story_Sample_Site_Rescue.letterLabel>Пробное спасение героя</TMM_Story_Sample_Site_Rescue.letterLabel>
+  <TMM_Story_Sample_Site_Rescue.letterText>Пленный герой содержится во враждебном лагере. Спасите пленника.</TMM_Story_Sample_Site_Rescue.letterText>
+  <TMM_Story_Sample_Site_Rescue.stages.0.label>Спасти пленного героя</TMM_Story_Sample_Site_Rescue.stages.0.label>
+  <TMM_Story_Sample_Site_Rescue.stages.0.text>Доберитесь до лагеря и эвакуируйте пленного героя в свой караван.</TMM_Story_Sample_Site_Rescue.stages.0.text>
+  <TMM_Story_Sample_Site_Rescue.stages.1.label>Спасение завершено</TMM_Story_Sample_Site_Rescue.stages.1.label>
+  <TMM_Story_Sample_Site_Rescue.stages.1.text>Пленный герой спасён.</TMM_Story_Sample_Site_Rescue.stages.1.text>
+  <TMM_Story_Sample_Site_Rescue.stages.1.choices.0.label>Завершить спасение</TMM_Story_Sample_Site_Rescue.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site_Rescue.stages.1.choices.0.resultText>Герой в безопасности с вашим отрядом.</TMM_Story_Sample_Site_Rescue.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Site_Rescue_Fail -->
+  <TMM_Story_Sample_Site_Rescue_Fail.label>пробное спасение героя (провал)</TMM_Story_Sample_Site_Rescue_Fail.label>
+  <TMM_Story_Sample_Site_Rescue_Fail.letterLabel>Пробное спасение героя (провал)</TMM_Story_Sample_Site_Rescue_Fail.letterLabel>
+  <TMM_Story_Sample_Site_Rescue_Fail.letterText>Пленный герой содержится во враждебном лагере.</TMM_Story_Sample_Site_Rescue_Fail.letterText>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.0.label>Спасти пленного героя</TMM_Story_Sample_Site_Rescue_Fail.stages.0.label>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.0.text>Доберитесь до лагеря и эвакуируйте пленного героя в свой караван.</TMM_Story_Sample_Site_Rescue_Fail.stages.0.text>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.1.label>Итог операции</TMM_Story_Sample_Site_Rescue_Fail.stages.1.label>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.1.text>Операция завершена.</TMM_Story_Sample_Site_Rescue_Fail.stages.1.text>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.1.choices.0.label>Завершить</TMM_Story_Sample_Site_Rescue_Fail.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site_Rescue_Fail.stages.1.choices.0.resultText>Итог зафиксирован.</TMM_Story_Sample_Site_Rescue_Fail.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Site_Retrieve -->
+  <TMM_Story_Sample_Site_Retrieve.label>пробное изъятие предмета</TMM_Story_Sample_Site_Retrieve.label>
+  <TMM_Story_Sample_Site_Retrieve.letterLabel>Пробное изъятие предмета</TMM_Story_Sample_Site_Retrieve.letterLabel>
+  <TMM_Story_Sample_Site_Retrieve.letterText>Ценный предмет находится во враждебном лагере. Извлеките предмет.</TMM_Story_Sample_Site_Retrieve.letterText>
+  <TMM_Story_Sample_Site_Retrieve.stages.0.label>Извлечь целевой предмет</TMM_Story_Sample_Site_Retrieve.stages.0.label>
+  <TMM_Story_Sample_Site_Retrieve.stages.0.text>Доберитесь до лагеря и погрузите целевой предмет в свой караван.</TMM_Story_Sample_Site_Retrieve.stages.0.text>
+  <TMM_Story_Sample_Site_Retrieve.stages.1.label>Изъятие завершено</TMM_Story_Sample_Site_Retrieve.stages.1.label>
+  <TMM_Story_Sample_Site_Retrieve.stages.1.text>Предмет надёжно извлечён.</TMM_Story_Sample_Site_Retrieve.stages.1.text>
+  <TMM_Story_Sample_Site_Retrieve.stages.1.choices.0.label>Завершить изъятие</TMM_Story_Sample_Site_Retrieve.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site_Retrieve.stages.1.choices.0.resultText>Предмет передан в распоряжение колонии.</TMM_Story_Sample_Site_Retrieve.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Site_Hold -->
+  <TMM_Story_Sample_Site_Hold.label>пробное удержание позиции</TMM_Story_Sample_Site_Hold.label>
+  <TMM_Story_Sample_Site_Hold.letterLabel>Пробное удержание позиции</TMM_Story_Sample_Site_Hold.letterLabel>
+  <TMM_Story_Sample_Site_Hold.letterText>Удерживайте позицию на аванпосту в течение 1 часа.</TMM_Story_Sample_Site_Hold.letterText>
+  <TMM_Story_Sample_Site_Hold.stages.0.label>Удерживать позицию</TMM_Story_Sample_Site_Hold.stages.0.label>
+  <TMM_Story_Sample_Site_Hold.stages.0.text>Поддерживайте присутствие на аванпосту в течение 1 часа.</TMM_Story_Sample_Site_Hold.stages.0.text>
+  <TMM_Story_Sample_Site_Hold.stages.1.label>Удержание завершено</TMM_Story_Sample_Site_Hold.stages.1.label>
+  <TMM_Story_Sample_Site_Hold.stages.1.text>Позиция успешно удержана.</TMM_Story_Sample_Site_Hold.stages.1.text>
+  <TMM_Story_Sample_Site_Hold.stages.1.choices.0.label>Завершить удержание</TMM_Story_Sample_Site_Hold.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site_Hold.stages.1.choices.0.resultText>Позиция удержана без потерь.</TMM_Story_Sample_Site_Hold.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_Sample_Site_KillHero -->
+  <TMM_Story_Sample_Site_KillHero.label>пробная ликвидация командира</TMM_Story_Sample_Site_KillHero.label>
+  <TMM_Story_Sample_Site_KillHero.letterLabel>Пробная ликвидация командира</TMM_Story_Sample_Site_KillHero.letterLabel>
+  <TMM_Story_Sample_Site_KillHero.letterText>Ликвидируйте вражеского командира в лагере.</TMM_Story_Sample_Site_KillHero.letterText>
+  <TMM_Story_Sample_Site_KillHero.stages.0.label>Ликвидировать командира</TMM_Story_Sample_Site_KillHero.stages.0.label>
+  <TMM_Story_Sample_Site_KillHero.stages.0.text>Уничтожьте вражеского героя-командира, командующего гарнизоном лагеря.</TMM_Story_Sample_Site_KillHero.stages.0.text>
+  <TMM_Story_Sample_Site_KillHero.stages.1.label>Ликвидация подтверждена</TMM_Story_Sample_Site_KillHero.stages.1.label>
+  <TMM_Story_Sample_Site_KillHero.stages.1.text>Вражеский командир ликвидирован.</TMM_Story_Sample_Site_KillHero.stages.1.text>
+  <TMM_Story_Sample_Site_KillHero.stages.1.choices.0.label>Подтвердить ликвидацию</TMM_Story_Sample_Site_KillHero.stages.1.choices.0.label>
+  <TMM_Story_Sample_Site_KillHero.stages.1.choices.0.resultText>Командир мёртв.</TMM_Story_Sample_Site_KillHero.stages.1.choices.0.resultText>
+
+</LanguageData>

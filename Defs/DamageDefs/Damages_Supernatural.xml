@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DamageDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_HolyWater</defName>
+    <label>holy water burn</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} was seared to ash by holy water.</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.25</defaultArmorPenetration>
+    <buildingDamageFactor>0.1</buildingDamageFactor>
+    <plantDamageFactor>0.1</plantDamageFactor>
+    <isRanged>true</isRanged>
+  </DamageDef>
+
+  <DamageDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_RockSalt</defName>
+    <label>rock salt blast</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} was torn apart by a blast of rock salt.</deathMessage>
+    <hediff>Gunshot</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>0.15</defaultArmorPenetration>
+    <defaultStoppingPower>1.2</defaultStoppingPower>
+    <isRanged>true</isRanged>
+  </DamageDef>
+
+  <DamageDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Enochian</defName>
+    <label>enochian strike</label>
+    <workerClass>DamageWorker_Cut</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} was felled by an Enochian-etched weapon.</deathMessage>
+    <hediff>Cut</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>16</defaultDamage>
+    <defaultArmorPenetration>0.40</defaultArmorPenetration>
+    <defaultStoppingPower>1.0</defaultStoppingPower>
+    <cutExtraTargetsCurve>
+      <points>
+        <li>0, 0</li>
+        <li>0.6, 1</li>
+      </points>
+    </cutExtraTargetsCurve>
+  </DamageDef>
+
+  <DamageDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_BoraxBurn</defName>
+    <label>caustic borax burn</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} was dissolved by caustic borax.</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>0.35</defaultArmorPenetration>
+    <buildingDamageFactor>0.2</buildingDamageFactor>
+    <isRanged>true</isRanged>
+  </DamageDef>
+
+</Defs>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Небесный ангел -->
+  <TMM_Gene_AngelCelestialGrace.label>небесная благодать</TMM_Gene_AngelCelestialGrace.label>
+  <TMM_Gene_AngelCelestialGrace.description>Носители божественной благодати двигаются с нечеловеческой скоростью, почти не истекают кровью и не стареют. Эта сияющая энергия удерживает ангела в человеческом сосуде и питает его силы.</TMM_Gene_AngelCelestialGrace.description>
+
+  <TMM_Gene_AngelHealingTouch.label>исцеление касанием</TMM_Gene_AngelHealingTouch.label>
+  <TMM_Gene_AngelHealingTouch.description>Прикоснувшись двумя пальцами ко лбу смертного, ангел направляет поток благодати, затягивая раны и выжигая инфекции. Это требует больших сил и времени на восстановление.</TMM_Gene_AngelHealingTouch.description>
+
+  <TMM_Gene_AngelTrueVisage.label>истинный облик</TMM_Gene_AngelTrueVisage.label>
+  <TMM_Gene_AngelTrueVisage.description>Ангел на миг приоткрывает свой ослепительный небесный облик сквозь глаза сосуда. Смертные, попавшие в вспышку, получают ожоги сетчатки и временно слепнут.</TMM_Gene_AngelTrueVisage.description>
+
+  <TMM_Gene_AngelEnochianVulnerability.label>уязвимость к енохианским знакам</TMM_Gene_AngelEnochianVulnerability.label>
+  <TMM_Gene_AngelEnochianVulnerability.description>Древние енохианские символы и небесная бронза нарушают связь ангела с благодатью. Под ударами зачарованных клинков он получает +150% урона и становится уязвим как обычный смертный.</TMM_Gene_AngelEnochianVulnerability.description>
+
+  <!-- Демон -->
+  <TMM_Gene_DemonBlackSmoke.label>рывок чёрным дымом</TMM_Gene_DemonBlackSmoke.label>
+  <TMM_Gene_DemonBlackSmoke.description>Демон на мгновение распадается на клубы чёрного серного дыма, преодолевая препятствия. Резкое возвращение в плоть дезориентирует ближайших врагов.</TMM_Gene_DemonBlackSmoke.description>
+
+  <TMM_Gene_DemonMindCloud.label>адский дурман</TMM_Gene_DemonMindCloud.label>
+  <TMM_Gene_DemonMindCloud.description>Насылая тёмный ментальный туман в разум жертвы, демон затуманивает её сознание страхом и растерянностью. Слабовольные цели с трудом держат оружие и медленно реагируют.</TMM_Gene_DemonMindCloud.description>
+
+  <TMM_Gene_DemonCrossroadsGuile.label>хитрость перекрёстка</TMM_Gene_DemonCrossroadsGuile.label>
+  <TMM_Gene_DemonCrossroadsGuile.description>Столетия торговли смертными душами отточили язык и хищное обаяние демона. Он без труда склоняет торговцев к невыгодным сделкам и ломает волю пленников.</TMM_Gene_DemonCrossroadsGuile.description>
+
+  <TMM_Gene_DemonHolyBane.label>проклятие соли и святой воды</TMM_Gene_DemonHolyBane.label>
+  <TMM_Gene_DemonHolyBane.description>Освящённая вода жжёт демоническую плоть словно кипящая кислота, а заряды каменной соли разрывают выносливость сосуда, нанося +200% урона.</TMM_Gene_DemonHolyBane.description>
+
+  <!-- Супермутант -->
+  <TMM_Gene_MutantFevMusculature.label>титаническая мускулатура ВРЭ</TMM_Gene_MutantFevMusculature.label>
+  <TMM_Gene_MutantFevMusculature.description>Вирус рукотворной эволюции многократно уплотняет мышечные волокна и кости. Супермутанты легко переносят огромные грузы и обращаются с тяжёлыми пулемётами как с лёгкими карабинами.</TMM_Gene_MutantFevMusculature.description>
+
+  <TMM_Gene_MutantRadRegeneration.label>радиационная регенерация</TMM_Gene_MutantRadRegeneration.label>
+  <TMM_Gene_MutantRadRegeneration.description>Мутировавшие клетки используют радиацию как катализатор деления. Вместо лучевой болезни во время токсичных осадков или в загрязнённой зоне раны супермутанта затягиваются прямо на глазах.</TMM_Gene_MutantRadRegeneration.description>
+
+  <TMM_Gene_MutantWarRoar.label>боевой рёв мутанта</TMM_Gene_MutantWarRoar.label>
+  <TMM_Gene_MutantWarRoar.description>Издавая оглушительный рёв, супермутант выбрасывает в кровь ударную дозу адреналина и наводит ужас на ближайших врагов-людей.</TMM_Gene_MutantWarRoar.description>
+
+  <TMM_Gene_MutantBulkyConstraints.label>громоздкая физиология ВРЭ</TMM_Gene_MutantBulkyConstraints.label>
+  <TMM_Gene_MutantBulkyConstraints.description>Глубокая мутация ВРЭ делает носителя полностью бесплодным и вечно голодным (+35% к скорости голода).</TMM_Gene_MutantBulkyConstraints.description>
+
+  <!-- Гуль пустошей -->
+  <TMM_Gene_GhoulRadHealing.label>поглощение радиации</TMM_Gene_GhoulRadHealing.label>
+  <TMM_Gene_GhoulRadHealing.description>Радиация стимулирует некротические ткани гуля, быстро затягивая раны и унимая вечную боль в суставах. То, что убивает «гладкокожих», для гуля — лучшее лекарство.</TMM_Gene_GhoulRadHealing.description>
+
+  <TMM_Gene_GhoulGlowingPulse.label>радиационный импульс светящегося</TMM_Gene_GhoulGlowingPulse.label>
+  <TMM_Gene_GhoulGlowingPulse.description>Высвобождая накопленную ядерную энергию, гуль испускает ослепительную зелёную волну радиации, исцеляющую соседних гулей и мутантов, но отравляющую людей.</TMM_Gene_GhoulGlowingPulse.description>
+
+  <TMM_Gene_GhoulFeralRisk.label>риск одичания</TMM_Gene_GhoulFeralRisk.label>
+  <TMM_Gene_GhoulFeralRisk.description>Века некроза мозга заставляют каждого гуля балансировать на грани рассудка и животного безумия. Тяжёлый нервный срыв с шансом 25% может толкнуть его к приступу одичания.</TMM_Gene_GhoulFeralRisk.description>
+
+  <!-- Левиафан -->
+  <TMM_Gene_LeviathanDevourMaw.label>пасть бездны</TMM_Gene_LeviathanDevourMaw.label>
+  <TMM_Gene_LeviathanDevourMaw.description>Распахивая человеческую личину в бездонную пасть с рядами бритвенных зубов, левиафан вырывает куски плоти, мгновенно утоляя голод и залечивая раны.</TMM_Gene_LeviathanDevourMaw.description>
+
+  <TMM_Gene_LeviathanShapeshiftMimic.label>хищная мимикрия</TMM_Gene_LeviathanShapeshiftMimic.label>
+  <TMM_Gene_LeviathanShapeshiftMimic.description>Поглотив каплю крови или плоти жертвы, левиафан перестраивает свои клетки и превращается в безупречную внешнюю и голосовую копию добычи.</TMM_Gene_LeviathanShapeshiftMimic.description>
+
+  <TMM_Gene_LeviathanBoraxAllergy.label>уязвимость к буре</TMM_Gene_LeviathanBoraxAllergy.label>
+  <TMM_Gene_LeviathanBoraxAllergy.description>Обычный тетраборат натрия (бура) действует на физиологию левиафанов как сильнейшая кислота, нанося +300% урона, сбивая маскировку, подавляя регенерацию и снижая броню вдвое на 30 секунд.</TMM_Gene_LeviathanBoraxAllergy.description>
+
+</LanguageData>

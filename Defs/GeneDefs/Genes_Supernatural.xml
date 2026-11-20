@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- HEAVENLY ANGEL (TMM_Angel) — 4 genes, net biostatMet = -6             -->
+  <!-- ===================================================================== -->
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_AngelCelestialGrace</defName>
+    <geneClass>TurboMegaMod.Gene_SupernaturalPassive</geneClass>
+    <label>celestial grace</label>
+    <description>Carriers of divine grace move with unnatural speed, shrug off bleeding, and resist mortal aging. This radiant energy binds the angel to its human vessel and fuels its supernatural powers.</description>
+    <iconPath>UI/Icons/Genes/Gene_Ageless</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-4</biostatMet>
+    <biostatCpx>4</biostatCpx>
+    <statFactors>
+      <MoveSpeed>1.15</MoveSpeed>
+    </statFactors>
+    <statOffsets>
+      <PsychicSensitivity>0.30</PsychicSensitivity>
+    </statOffsets>
+    <biologicalAgeTickFactorFromAgeCurve>
+      <points>
+        <li>(13, 1)</li>
+        <li>(18.5, 0)</li>
+      </points>
+    </biologicalAgeTickFactorFromAgeCurve>
+    <modExtensions>
+      <li Class="TurboMegaMod.SupernaturalGeneExtension">
+        <passiveHediff>TMM_Hediff_CelestialGrace</passiveHediff>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_AngelHealingTouch</defName>
+    <label>healing touch</label>
+    <description>By pressing two fingers to a mortal's forehead, the angel channels pure grace to mend torn flesh and purge infections. The effort drains the angel's reserves and requires time to recover.</description>
+    <iconPath>UI/Icons/Genes/Gene_Coagulate</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_HealingTouch</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_AngelTrueVisage</defName>
+    <label>true visage</label>
+    <description>The angel briefly lets its overwhelming celestial light flare through its vessel's eyes. Mortals caught in the radiance suffer searing retinal burns and temporary blindness.</description>
+    <iconPath>UI/Icons/Genes/Gene_EnhancedPsychicAbility</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>4</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_TrueVisage</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_AngelEnochianVulnerability</defName>
+    <label>enochian vulnerability</label>
+    <description>Ancient Enochian sigils and celestial bronze disrupt the angel's grace, stripping away its supernatural resilience. Under enchanted blades, an angel takes +150% damage and bleeds like any mortal.</description>
+    <iconPath>UI/Icons/Genes/Gene_Delicate</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>3</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <!-- NOTE: Men of Letters Enochian jammer beacon ability-suppression will hook into this gene later. -->
+    <damageFactors>
+      <TMM_Enochian>2.5</TMM_Enochian>
+    </damageFactors>
+  </GeneDef>
+
+  <!-- ===================================================================== -->
+  <!-- DEMON (TMM_Demon) — 4 genes, net biostatMet = -3                      -->
+  <!-- ===================================================================== -->
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_DemonBlackSmoke</defName>
+    <label>black smoke shift</label>
+    <description>The demon momentarily dissolves into a billowing cloud of sulfur-scented black smoke to cross obstacles. Reforming abruptly disorients nearby foes.</description>
+    <iconPath>UI/Icons/Genes/Gene_LongJumpLegs</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_BlackSmokeShift</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_DemonMindCloud</defName>
+    <label>infernal whisper</label>
+    <description>Projecting dark psychic static into a victim's mind, the demon clouds their thoughts with dread and confusion. Weak-willed targets struggle to aim or react.</description>
+    <iconPath>UI/Icons/Genes/Gene_PsychicBonding</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_InfernalWhisper</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_DemonCrossroadsGuile</defName>
+    <label>crossroads guile</label>
+    <description>Centuries of bargaining for mortal souls have honed the demon's silver tongue and predatory charm. They effortlessly sway traders and intimidate prisoners.</description>
+    <iconPath>UI/Icons/Genes/Gene_AptitudeRemarkable_Social</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <aptitudes>
+      <Social>6</Social>
+    </aptitudes>
+    <statOffsets>
+      <TradePriceImprovement>0.20</TradePriceImprovement>
+      <NegotiationAbility>0.25</NegotiationAbility>
+      <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.25</SuppressionPower>
+    </statOffsets>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_DemonHolyBane</defName>
+    <label>bane of salt and holy water</label>
+    <description>Consecrated water sears demonic flesh like boiling acid, while rock salt blasts tear through their vessel's endurance, dealing +200% damage.</description>
+    <iconPath>UI/Icons/Genes/Gene_FireWeakness</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>4</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <!-- NOTE: Devil's Trap floor pentagram immobilization will hook into this gene once traps are implemented. -->
+    <damageFactors>
+      <TMM_HolyWater>3.0</TMM_HolyWater>
+      <TMM_RockSalt>3.0</TMM_RockSalt>
+    </damageFactors>
+  </GeneDef>
+
+  <!-- ===================================================================== -->
+  <!-- SUPER MUTANT (TMM_SuperMutant) — 4 genes, net biostatMet = -4         -->
+  <!-- ===================================================================== -->
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_MutantFevMusculature</defName>
+    <label>FEV titan frame</label>
+    <description>Forced Evolutionary Virus hyper-densifies muscle fibers and bone structure. Super mutants effortlessly haul massive loads and handle heavy machine guns like light carbines.</description>
+    <iconPath>UI/Icons/Genes/Gene_StrongMeleeDamage</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <statOffsets>
+      <CarryingCapacity>150</CarryingCapacity>
+    </statOffsets>
+    <statFactors>
+      <AimingDelayFactor>0.80</AimingDelayFactor>
+      <MeleeDamageFactor>1.25</MeleeDamageFactor>
+    </statFactors>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_MutantRadRegeneration</defName>
+    <geneClass>TurboMegaMod.Gene_MutantRadRegeneration</geneClass>
+    <label>irradiated metabolism</label>
+    <description>Mutated cellular repair mechanisms thrive on ambient radiation. Instead of suffering sickness during toxic fallout or on polluted terrain, the super mutant's wounds knit shut rapidly and its mood rises.</description>
+    <iconPath>UI/Icons/Genes/Gene_PollutionStimulus</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>3</biostatCpx>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_MutantWarRoar</defName>
+    <label>mutant war roar</label>
+    <description>Letting out an earth-shaking bellow, the super mutant floods its bloodstream with adrenaline while terrifying nearby human enemies.</description>
+    <iconPath>UI/Icons/Genes/Gene_Aggressive</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_MutantWarRoar</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_MutantBulkyConstraints</defName>
+    <geneClass>TurboMegaMod.Gene_SupernaturalPassive</geneClass>
+    <label>bulky FEV physiology</label>
+    <description>Extreme FEV mutation leaves the carrier completely sterile and ravenous for calories (+35% hunger rate).</description>
+    <iconPath>UI/Icons/Genes/Gene_Sterile</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>3</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <statFactors>
+      <Fertility>0</Fertility>
+    </statFactors>
+    <!-- NOTE: Standard human apparel restriction intentionally deferred until mutant apparel defs exist. -->
+    <modExtensions>
+      <li Class="TurboMegaMod.SupernaturalGeneExtension">
+        <passiveHediff>TMM_Hediff_BulkyPhysiology</passiveHediff>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <!-- ===================================================================== -->
+  <!-- WASTELAND GHOUL (TMM_Ghoul) — 3 genes, net biostatMet = -2            -->
+  <!-- ===================================================================== -->
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_GhoulRadHealing</defName>
+    <geneClass>TurboMegaMod.Gene_GhoulRadHealing</geneClass>
+    <label>necrotic radiation absorption</label>
+    <description>Radiation stimulates a ghoul's necrotic tissue, rapidly knitting torn flesh and easing chronic pain. Standing on polluted ground or under toxic fallout heals 15 wound severity every 4 hours.</description>
+    <iconPath>UI/Icons/Genes/Gene_TotalToxicityResistance</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>3</biostatCpx>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_GhoulGlowingPulse</defName>
+    <label>glowing one's pulse</label>
+    <description>Channeling accumulated nuclear energy, the ghoul unleashes a blinding green wave of radiation that mends nearby mutants and ghouls while sickening unprotected humans.</description>
+    <iconPath>UI/Icons/Genes/Gene_AcidSpray</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-2</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_GlowingPulse</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_GhoulFeralRisk</defName>
+    <label>feral degeneration risk</label>
+    <description>Centuries of brain necrosis leave every ghoul walking a razor's edge between sanity and feral madness. Extreme mental breaks carry a 25% chance to trigger a mindless feral frenzy.</description>
+    <iconPath>UI/Icons/Genes/Gene_AggressionHyperAggressive</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>3</biostatMet>
+    <biostatCpx>3</biostatCpx>
+  </GeneDef>
+
+  <!-- ===================================================================== -->
+  <!-- LEVIATHAN (TMM_Leviathan) — 3 genes, net biostatMet = -2              -->
+  <!-- ===================================================================== -->
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_LeviathanDevourMaw</defName>
+    <label>abyssal devouring maw</label>
+    <description>Unhinging its human disguise into a cavernous maw lined with serrated teeth, the Leviathan tears out massive chunks of flesh to instantly replenish strength and hunger.</description>
+    <iconPath>UI/Icons/Genes/Gene_Bloodfeeder</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>3</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_DevourMaw</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_LeviathanShapeshiftMimic</defName>
+    <label>predatory DNA mimicry</label>
+    <description>By sampling a drop of a victim's blood or flesh, a Leviathan reshapes its cellular structure into a convincing duplicate of its prey's face and voice for 48 hours.</description>
+    <iconPath>UI/Icons/Genes/Gene_Beautiful</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>-3</biostatMet>
+    <biostatCpx>4</biostatCpx>
+    <abilities>
+      <li>TMM_Ability_PredatoryMimicry</li>
+    </abilities>
+  </GeneDef>
+
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Gene_LeviathanBoraxAllergy</defName>
+    <label>caustic borax sensitivity</label>
+    <description>Common sodium borate acts as a violent corrosive agent against Leviathan physiology, dealing +300% damage, stripping disguises, suppressing regeneration, and halving armor for 30 seconds.</description>
+    <iconPath>UI/Icons/Genes/Gene_Delicate</iconPath> <!-- CHECK API -->
+    <displayCategory>Miscellaneous</displayCategory>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <biostatMet>4</biostatMet>
+    <biostatCpx>2</biostatCpx>
+    <damageFactors>
+      <TMM_BoraxBurn>4.0</TMM_BoraxBurn>
+    </damageFactors>
+  </GeneDef>
+
+</Defs>

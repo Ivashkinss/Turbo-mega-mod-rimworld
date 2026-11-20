@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_gunners_Q1 -->
+  <TMM_Story_gunners_Q1.label>крышки вперёд</TMM_Story_gunners_Q1.label>
+  <TMM_Story_gunners_Q1.letterLabel>Крышки вперёд</TMM_Story_gunners_Q1.letterLabel>
+  <TMM_Story_gunners_Q1.letterText>Ничего личного, поселенец — просто бизнес. Шайка диких рейдеров перекрыла наш маршрут снабжения, и капитан Уэс хочет расчистить дорогу до заката. Прикрой меня с хребта, пока я буду снимать их пулемётчиков, и поделим добычу пятьдесят на пятьдесят.</TMM_Story_gunners_Q1.letterText>
+  <TMM_Story_gunners_Q1.stages.0.label>Зачистить блокпост рейдеров на трассе с Бейкером</TMM_Story_gunners_Q1.stages.0.label>
+  <TMM_Story_gunners_Q1.stages.0.text>Выбейте рейдеров с баррикад под эстакадой, пока снайпер Бейкер снимает их тяжёлых стрелков сверху.</TMM_Story_gunners_Q1.stages.0.text>
+  <TMM_Story_gunners_Q1.stages.1.label>Зарубки на прикладе</TMM_Story_gunners_Q1.stages.1.label>
+  <TMM_Story_gunners_Q1.stages.1.text>Бейкер спокойно отмечает каждую цель зарубкой на прикладе винтовки и молча кивает командиру вашего отряда, когда трасса открыта.</TMM_Story_gunners_Q1.stages.1.text>
+  <TMM_Story_gunners_Q1.stages.1.choices.0.label>Зачистить блокпост и честно разделить трофеи с Бейкером</TMM_Story_gunners_Q1.stages.1.choices.0.label>
+  <TMM_Story_gunners_Q1.stages.1.choices.0.resultText>Чистая работа. С вами приятно иметь дело — без лишних соплей. Передам Уэсу, что вы держите слово.</TMM_Story_gunners_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_gunners_Q2 -->
+  <TMM_Story_gunners_Q2.label>долг квинси</TMM_Story_gunners_Q2.label>
+  <TMM_Story_gunners_Q2.letterLabel>Долг Квинси</TMM_Story_gunners_Q2.letterLabel>
+  <TMM_Story_gunners_Q2.letterText>Упёртые недобитки из Минитменов так и не поняли, что проиграли — они собираются на ночной штурм моего аванпоста в Квинси. Помоги удержать стены и перебить их, и я открою для твоих торговцев тяжёлый арсенал Стрелков.</TMM_Story_gunners_Q2.letterText>
+  <TMM_Story_gunners_Q2.stages.0.label>Ночь опускается на Квинси</TMM_Story_gunners_Q2.stages.0.label>
+  <TMM_Story_gunners_Q2.stages.0.text>На обгоревшей стене церкви в Квинси всё ещё видны старые рисунки ополченцев и сломанный лазерный мушкет — память о предательстве Клинта. Решите, на чьей стороне вы примете ночной бой.</TMM_Story_gunners_Q2.stages.0.text>
+  <TMM_Story_gunners_Q2.stages.0.choices.0.label>Отбить атаку и защитить Клинта (за Стрелков)</TMM_Story_gunners_Q2.stages.0.choices.0.label>
+  <TMM_Story_gunners_Q2.stages.0.choices.0.resultText>Вот так! Пусть знают, кто теперь хозяин в Квинси. Держи свою долю и чертёж наших касок.</TMM_Story_gunners_Q2.stages.0.choices.0.resultText>
+  <TMM_Story_gunners_Q2.stages.0.choices.1.label>Встать на сторону ополченцев и разгромить отряд Клинта (за Минитменов)</TMM_Story_gunners_Q2.stages.0.choices.1.label>
+  <TMM_Story_gunners_Q2.stages.0.choices.1.resultText>Предательская крыса! Я сдеру с тебя шкуру!</TMM_Story_gunners_Q2.stages.0.choices.1.resultText>
+  <TMM_Story_gunners_Q2.stages.1.label>Удержать Квинси от штурма Минитменов</TMM_Story_gunners_Q2.stages.1.label>
+  <TMM_Story_gunners_Q2.stages.1.text>Обороняйте аванпост Клинта в Квинси 5 часов против яростного ночного штурма мстителей из ополчения.</TMM_Story_gunners_Q2.stages.1.text>
+  <TMM_Story_gunners_Q2.stages.2.label>Разгромить гарнизон Клинта в Квинси</TMM_Story_gunners_Q2.stages.2.label>
+  <TMM_Story_gunners_Q2.stages.2.text>Выбейте наёмников Клинта из руин Квинси и верните город Минитменам.</TMM_Story_gunners_Q2.stages.2.text>
+  <TMM_Story_gunners_Q2.stages.3.label>Рассвет над Квинси</TMM_Story_gunners_Q2.stages.3.label>
+  <TMM_Story_gunners_Q2.stages.3.text>Стрельба на разрушенной церковной площади Квинси стихает. Весть о вашем выборе разносится по всем лагерям наёмников и постам ополчения.</TMM_Story_gunners_Q2.stages.3.text>
+
+  <!-- TMM_Story_gunners_Q3 -->
+  <TMM_Story_gunners_Q3.label>испытание брони</TMM_Story_gunners_Q3.label>
+  <TMM_Story_gunners_Q3.letterLabel>Испытание брони</TMM_Story_gunners_Q3.letterLabel>
+  <TMM_Story_gunners_Q3.letterText>Эй, здоровяк! Я тут наварила новые бронепластины на свою силовую броню и ищу ребят с характером, чтобы проверить их в драке. Приводи лучших рукопашников на арену моей автосвалки — кто первый упадёт, тот ставит выпивку!</TMM_Story_gunners_Q3.letterText>
+  <TMM_Story_gunners_Q3.stages.0.label>Поединок на арене автосвалки Тессы</TMM_Story_gunners_Q3.stages.0.label>
+  <TMM_Story_gunners_Q3.stages.0.text>Выйдите на песчаную арену, где зрители-наёмники ставят крышки и бросают на песок гаечные ключи, и испытайте броню бойцов Тессы в честной драке.</TMM_Story_gunners_Q3.stages.0.text>
+  <TMM_Story_gunners_Q3.stages.1.label>Уважение, выкованное в железе</TMM_Story_gunners_Q3.stages.1.label>
+  <TMM_Story_gunners_Q3.stages.1.text>С дымящимися вмятинами на пластинах Тесса громко хохочет и протягивает тяжёлую латную перчатку для рукопожатия.</TMM_Story_gunners_Q3.stages.1.text>
+  <TMM_Story_gunners_Q3.stages.1.choices.0.label>Одолеть Тессу на арене и пожать ей руку</TMM_Story_gunners_Q3.stages.1.choices.0.label>
+  <TMM_Story_gunners_Q3.stages.1.choices.0.resultText>Ха-ха! Вот это был удар! Броня выдержала, а ты дрался как зверь. Уважаю!</TMM_Story_gunners_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_gunners_Q4 -->
+  <TMM_Story_gunners_Q4.label>двойной контракт</TMM_Story_gunners_Q4.label>
+  <TMM_Story_gunners_Q4.letterLabel>Двойной контракт</TMM_Story_gunners_Q4.letterLabel>
+  <TMM_Story_gunners_Q4.letterText>Вы заслужили место за большим столом. Анонимный заказчик — платящий довоенным золотом и облигациями Волт-Тек — хочет убрать высокопоставленного связного Британских Просвещённых во время тайной встречи. Сработайте чисто, и я отдам вам свой модифицированный карабин — «Страж Смотрителя».</TMM_Story_gunners_Q4.letterText>
+  <TMM_Story_gunners_Q4.stages.0.label>Проникнуть на тайную встречу в метро</TMM_Story_gunners_Q4.stages.0.label>
+  <TMM_Story_gunners_Q4.stages.0.text>Пробейтесь сквозь охрану Британских Просвещённых на заброшенной станции метро и загоните связного в угол.</TMM_Story_gunners_Q4.stages.0.text>
+  <TMM_Story_gunners_Q4.stages.1.label>Портфель на платформе</TMM_Story_gunners_Q4.stages.1.label>
+  <TMM_Story_gunners_Q4.stages.1.text>Прижатый к ржавым рельсам связной открывает портфель — внутри лежит чек от Дика Романа на закупку Стрелками клеток для синтов — и предлагает 2000 серебра за инсценировку смерти и передачу компромата.</TMM_Story_gunners_Q4.stages.1.text>
+  <TMM_Story_gunners_Q4.stages.1.choices.0.label>Выполнить контракт капитана Уэса и устранить цель (за Стрелков)</TMM_Story_gunners_Q4.stages.1.choices.0.label>
+  <TMM_Story_gunners_Q4.stages.1.choices.0.resultText>Никаких вопросов, никаких свидетелей. Вот это профессионализм. Карабин твой, партнёр.</TMM_Story_gunners_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_gunners_Q4.stages.1.choices.1.label>Инсценировать смерть связного, забрать компромат Консорциума и переиграть Уэса (за правду)</TMM_Story_gunners_Q4.stages.1.choices.1.label>
+  <TMM_Story_gunners_Q4.stages.1.choices.1.resultText>Ты кинул Стрелков ради этих британских снобов?! Отныне за твою голову назначена награда в каждом лагере!</TMM_Story_gunners_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_gunners_Q5 -->
+  <TMM_Story_gunners_Q5.label>новый наниматель</TMM_Story_gunners_Q5.label>
+  <TMM_Story_gunners_Q5.letterLabel>Новый наниматель</TMM_Story_gunners_Q5.letterLabel>
+  <TMM_Story_gunners_Q5.letterText>Уэс берёт самоубийственные контракты у пиджаков из Волт-Тек и бросает наши отряды в мясорубку против ангелов и мутантов. К чёрту это. Ты честно побил меня на арене и платишь вовремя. Прикрой мой отход с эстакады Квинси, и моя броня твоя!</TMM_Story_gunners_Q5.letterText>
+  <TMM_Story_gunners_Q5.stages.0.label>Прикрыть прорыв Тессы с эстакады Квинси</TMM_Story_gunners_Q5.stages.0.label>
+  <TMM_Story_gunners_Q5.stages.0.text>Разбейте карательное оцепление капитана Бриджит на эстакаде Квинси, чтобы Тесса вырвалась в своей модифицированной силовой броне.</TMM_Story_gunners_Q5.stages.0.text>
+  <TMM_Story_gunners_Q5.stages.1.label>Тяжёлая броня на службе</TMM_Story_gunners_Q5.stages.1.label>
+  <TMM_Story_gunners_Q5.stages.1.text>Переступив порог {COLONY} в своей побитой силовой броне, Тесса тут же ищет глазами самого крепкого рукопашника колонии для спарринга.</TMM_Story_gunners_Q5.stages.1.text>
+  <TMM_Story_gunners_Q5.stages.1.choices.0.label>Нанять Тессу в постоянный гарнизон колонии</TMM_Story_gunners_Q5.stages.1.choices.0.label>
+  <TMM_Story_gunners_Q5.stages.1.choices.0.resultText>Договорились! Только выдели мне нормальный верстак — надо подлатать наплечник после этой заварушки.</TMM_Story_gunners_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

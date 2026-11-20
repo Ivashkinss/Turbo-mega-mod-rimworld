@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Hotel</defName>
+    <label>sample hotel delegation</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>50</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_preston_garvey</giver>
+    <requires>
+      <li>story.e3samples=true</li>
+    </requires>
+    <letterLabel>Sample Hotel Delegation</letterLabel>
+    <letterText>{GIVER} requests guest lodging at {COLONY}'s waystation for a short diplomatic visit.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>visit</key>
+        <label>Host the visiting delegation</label>
+        <text>{GIVER} and an escort have arrived to stay at {COLONY}'s hotel. Ensure their visit ends peacefully.</text>
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <hero>TMM_Hero_preston_garvey</hero>
+        <groupSize>2</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e3sample_hotelSuccess</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e3sample_hotelFailed</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e3sample_noHotel</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Deliver</defName>
+    <label>sample steel requisition</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>49</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_preston_garvey</giver>
+    <requires>
+      <li>story.e3samples=true</li>
+    </requires>
+    <letterLabel>Sample Steel Requisition</letterLabel>
+    <letterText>{GIVER} requests 50 steel from {COLONY}'s stockpiles to reinforce a nearby watchtower.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>deliver</key>
+        <label>Deliver 50 steel</label>
+        <text>Allocate 50 steel from {COLONY}'s stockpiles and confirm the handover.</text>
+        <thing>Steel</thing>
+        <count>50</count>
+        <to>colony</to>
+        <timeoutDays>10</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e3sample_deliverSuccess</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e3sample_deliverTimeout</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

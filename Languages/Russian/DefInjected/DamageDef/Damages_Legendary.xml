@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Damage_TelekineticWave.label>телекинетический импульс</TMM_Damage_TelekineticWave.label>
+  <TMM_Damage_TelekineticWave.deathMessage>{0} раздавлен телекинетической волной.</TMM_Damage_TelekineticWave.deathMessage>
+
+  <TMM_Damage_RailwaySpike.label>раскалённый костыль</TMM_Damage_RailwaySpike.label>
+  <TMM_Damage_RailwaySpike.deathMessage>{0} пробит насквозь раскалённым железнодорожным костылём.</TMM_Damage_RailwaySpike.deathMessage>
+
+  <TMM_Damage_MiniNuke.label>мини-ядерный взрыв</TMM_Damage_MiniNuke.label>
+  <TMM_Damage_MiniNuke.deathMessage>{0} испарился в тактическом ядерном взрыве.</TMM_Damage_MiniNuke.deathMessage>
+
+  <TMM_Damage_EqualizerRecoil.label>межпространственная отдача</TMM_Damage_EqualizerRecoil.label>
+  <TMM_Damage_EqualizerRecoil.deathMessage>{0} погиб от обратной отдачи «Уравнителя».</TMM_Damage_EqualizerRecoil.deathMessage>
+
+</LanguageData>

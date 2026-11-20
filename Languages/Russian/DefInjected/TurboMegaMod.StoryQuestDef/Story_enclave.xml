@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_enclave_Q1 -->
+  <TMM_Story_enclave_Q1.label>восстановление связи</TMM_Story_enclave_Q1.label>
+  <TMM_Story_enclave_Q1.letterLabel>Восстановление связи</TMM_Story_enclave_Q1.letterLabel>
+  <TMM_Story_enclave_Q1.letterText>Внимание, местное поселение. Говорит капитан Ричардс из экспедиционного корпуса Анклава. Довоенные автоматические системы обороны заблокировали наши орбитальные частоты. Помогите нашему отряду «Адское пламя» зачистить ретранслятор 09, и законное правительство Америки вознаградит вашу лояльность.</TMM_Story_enclave_Q1.letterText>
+  <TMM_Story_enclave_Q1.stages.0.label>Зачистить ретранслятор 09 вместе с капитаном Ричардсом</TMM_Story_enclave_Q1.stages.0.label>
+  <TMM_Story_enclave_Q1.stages.0.text>Штурмуйте довоенную радиолокационную станцию и устраните противников, блокирующих орбитальные частоты Анклава.</TMM_Story_enclave_Q1.stages.0.text>
+  <TMM_Story_enclave_Q1.stages.1.label>Призраки на мониторе</TMM_Story_enclave_Q1.stages.1.label>
+  <TMM_Story_enclave_Q1.stages.1.text>Когда питание возвращается на станцию 09, на главном мониторе на миг всплывает старая заставка президента Эдема с помехами, прежде чем капитан Ричардс очищает буфер.</TMM_Story_enclave_Q1.stages.1.text>
+  <TMM_Story_enclave_Q1.stages.1.choices.0.label>Передать управление ретранслятором капитану Ричардсу</TMM_Story_enclave_Q1.stages.1.choices.0.label>
+  <TMM_Story_enclave_Q1.stages.1.choices.0.resultText>Отличная выучка для гражданских. Анклав запомнит ваше содействие.</TMM_Story_enclave_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_enclave_Q2 -->
+  <TMM_Story_enclave_Q2.label>устав и кулак</TMM_Story_enclave_Q2.label>
+  <TMM_Story_enclave_Q2.letterLabel>Устав и кулак</TMM_Story_enclave_Q2.letterLabel>
+  <TMM_Story_enclave_Q2.letterText>Слушать сюда, салаги! Полковник Отем считает, что у вашей грязной фермы есть потенциал, а значит, теперь вы под моей личной инспекцией! На мой учебный лагерь вот-вот накатят рейдеры Пустоши — тащите сюда свои задницы, встать смирно и покажите, что вы не раскиснете как мокрая бумага!</TMM_Story_enclave_Q2.letterText>
+  <TMM_Story_enclave_Q2.stages.0.label>Удержать учебный лагерь сержанта Дорнана</TMM_Story_enclave_Q2.stages.0.label>
+  <TMM_Story_enclave_Q2.stages.0.text>Обороняйте полевой лагерь Анклава 5 часов от волн рейдеров, пока сержант Дорнан яростно орёт на нападающих за атаку без уставного шлема.</TMM_Story_enclave_Q2.stages.0.text>
+  <TMM_Story_enclave_Q2.stages.1.label>Инспекция пройдена</TMM_Story_enclave_Q2.stages.1.label>
+  <TMM_Story_enclave_Q2.stages.1.text>Дым над плацем рассеивается. Сержант Дорнан проходит вдоль строя, сурово оглядывая стволы винтовок, прежде чем выдать скупое одобрение.</TMM_Story_enclave_Q2.stages.1.text>
+  <TMM_Story_enclave_Q2.stages.1.choices.0.label>Выдержать натиск и не потерять ни одного бойца Дорнана</TMM_Story_enclave_Q2.stages.1.choices.0.label>
+  <TMM_Story_enclave_Q2.stages.1.choices.0.resultText>Неплохо, солдат! Чёрт побери, из тебя ещё можно выбить толк! Держи пару ящиков патронов и не смей терять форму!</TMM_Story_enclave_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_enclave_Q3 -->
+  <TMM_Story_enclave_Q3.label>образцы чистоты</TMM_Story_enclave_Q3.label>
+  <TMM_Story_enclave_Q3.letterLabel>Образцы чистоты</TMM_Story_enclave_Q3.letterLabel>
+  <TMM_Story_enclave_Q3.letterText>Приветствую. Я доктор Чарльз Керлинг, глава химического корпуса Анклава. Чтобы обеспечить выживание чистокровного человечества, мне требуются образцы тканей супермутанта и сверхъестественной аномалии. Соберите их без лишнего шума, и вы будете щедро вознаграждены.</TMM_Story_enclave_Q3.letterText>
+  <TMM_Story_enclave_Q3.stages.0.label>Собрать биопробы мутантов и аномалий на болотах</TMM_Story_enclave_Q3.stages.0.label>
+  <TMM_Story_enclave_Q3.stages.0.text>Зачистите охотничьи угодья диких супермутантов на токсичном болоте и заполните контейнеры доктора Керлинга.</TMM_Story_enclave_Q3.stages.0.text>
+  <TMM_Story_enclave_Q3.stages.1.label>Маркировка «Проекта Чистота»</TMM_Story_enclave_Q3.stages.1.label>
+  <TMM_Story_enclave_Q3.stages.1.text>Запечатывая последнюю колбу, вы замечаете старую маркировку на кейсах Керлинга: «Проект Чистота / Штамм ФЭВ-2». Передать образцы Керлингу или тайно слить копию Брайану Верджилу?</TMM_Story_enclave_Q3.stages.1.text>
+  <TMM_Story_enclave_Q3.stages.1.choices.0.label>Передать образцы доктору Керлингу</TMM_Story_enclave_Q3.stages.1.choices.0.label>
+  <TMM_Story_enclave_Q3.stages.1.choices.0.resultText>Идеальная сохранность. Скоро у нас будет средство, способное исправить все ошибки эволюции.</TMM_Story_enclave_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_enclave_Q3.stages.1.choices.1.label>Передать копию образцов Брайану Верджилу</TMM_Story_enclave_Q3.stages.1.choices.1.label>
+  <TMM_Story_enclave_Q3.stages.1.choices.1.resultText>Образцы доставлены, но в отчётах видны нестыковки... Будьте осторожны, гражданский.</TMM_Story_enclave_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_enclave_Q4 -->
+  <TMM_Story_enclave_Q4.label>чистый лист</TMM_Story_enclave_Q4.label>
+  <TMM_Story_enclave_Q4.letterLabel>Чистый лист</TMM_Story_enclave_Q4.letterLabel>
+  <TMM_Story_enclave_Q4.letterText>Время полумер прошло. Модифицированный аэрозоль доктора Керлинга загружен в баки нашего мобильного краулера — стоит его распылить, и регион одним ударом очистится от всех мутантов, гулей, синтов и оккультных паразитов. Присоединяйтесь ко мне на краулере для запуска и займите своё место в новой Америке.</TMM_Story_enclave_Q4.letterText>
+  <TMM_Story_enclave_Q4.stages.0.label>Прорваться к пульту мобильного краулера Анклава</TMM_Story_enclave_Q4.stages.0.label>
+  <TMM_Story_enclave_Q4.stages.0.text>Очистите палубу гигантского мобильного краулера Анклава от ночных тварей и выйдите к главному пусковому терминалу.</TMM_Story_enclave_Q4.stages.0.text>
+  <TMM_Story_enclave_Q4.stages.1.label>Пульт распыления</TMM_Story_enclave_Q4.stages.1.label>
+  <TMM_Story_enclave_Q4.stages.1.text>Рядом с терминалом лежит секретная директива Консорциума об устранении самого полковника Отема сразу после зачистки. Полковник Отем ждёт вашей авторизации на запуск баков с аэрозолем.</TMM_Story_enclave_Q4.stages.1.text>
+  <TMM_Story_enclave_Q4.stages.1.choices.0.label>Авторизовать полный запуск токсина (за Анклав)</TMM_Story_enclave_Q4.stages.1.choices.0.label>
+  <TMM_Story_enclave_Q4.stages.1.choices.0.resultText>История запомнит этот день как начало возрождения. Вот Пушка Теслы — достойное оружие для верного союзника.</TMM_Story_enclave_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_enclave_Q4.stages.1.choices.1.label>Перенастроить формулу только против демонов и левиафанов (компромисс учёного)</TMM_Story_enclave_Q4.stages.1.choices.1.label>
+  <TMM_Story_enclave_Q4.stages.1.choices.1.resultText>Дерзко... Вы самовольно изменили приказ! Но если это выжжет нечисть — я приму такой результат.</TMM_Story_enclave_Q4.stages.1.choices.1.resultText>
+  <TMM_Story_enclave_Q4.stages.1.choices.2.label>Подорвать баки с токсином и прорваться с боем (за Искру и Пустошь)</TMM_Story_enclave_Q4.stages.1.choices.2.label>
+  <TMM_Story_enclave_Q4.stages.1.choices.2.resultText>Предатель! Вы пожертвовали будущим человечества ради кучки мутантов! Уничтожить их!</TMM_Story_enclave_Q4.stages.1.choices.2.resultText>
+
+  <!-- TMM_Story_enclave_Q5 -->
+  <TMM_Story_enclave_Q5.label>измена штаба</TMM_Story_enclave_Q5.label>
+  <TMM_Story_enclave_Q5.letterLabel>Измена штаба</TMM_Story_enclave_Q5.letterLabel>
+  <TMM_Story_enclave_Q5.letterText>Солдат! Высшее командование окончательно рехнулось! Отем крутит тайные сделки с крысами из Института и оккультными уродами, а только что приказал отряду Ричардса расстрелять мой взвод за «неподчинение»! Мы идём на прорыв — открывайте ворота и дайте настоящему солдату место в строю!</TMM_Story_enclave_Q5.letterText>
+  <TMM_Story_enclave_Q5.stages.0.label>Отбить погоню штурмовиков «Адского пламени»</TMM_Story_enclave_Q5.stages.0.label>
+  <TMM_Story_enclave_Q5.stages.0.text>Сержант Дорнан прорывается к периметру {COLONY}, а следом за ним идут штурмовики Анклава капитана Ричардса! Держите строй!</TMM_Story_enclave_Q5.stages.0.text>
+  <TMM_Story_enclave_Q5.stages.1.label>Инструктор в ваших рядах</TMM_Story_enclave_Q5.stages.1.label>
+  <TMM_Story_enclave_Q5.stages.1.text>Последний преследователь падает в пыль. Сержант Дорнан вытирает копоть с визора и тут же начинает проверять у колонистов наличие уставных комплектов силовой брони.</TMM_Story_enclave_Q5.stages.1.text>
+  <TMM_Story_enclave_Q5.stages.1.choices.0.label>Принять сержанта Дорнана в гарнизон колонии</TMM_Story_enclave_Q5.stages.1.choices.0.label>
+  <TMM_Story_enclave_Q5.stages.1.choices.0.resultText>Наконец-то командир с хребтом! А теперь построились, салаги — я научу вас, как нужно держать оборону!</TMM_Story_enclave_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

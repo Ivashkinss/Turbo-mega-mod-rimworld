@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_vault_tec_Q1 -->
+  <TMM_Story_vault_tec_Q1.label>выгодное предложение</TMM_Story_vault_tec_Q1.label>
+  <TMM_Story_vault_tec_Q1.letterLabel>Выгодное предложение</TMM_Story_vault_tec_Q1.letterLabel>
+  <TMM_Story_vault_tec_Q1.letterText>Доброе утро! Звонит Волт-Тек! Вы не поверите своей удаче — даже спустя двести лет ваше поселение подходит под наш Платиновый пакет выживания! Позвольте заглянуть в вашу гостиницу и оформить бумаги — только приглядите за парой грубых рейдеров, которым приглянулся мой чемоданчик.</TMM_Story_vault_tec_Q1.letterText>
+  <TMM_Story_vault_tec_Q1.stages.0.label>Принять Представителя Волт-Тек</TMM_Story_vault_tec_Q1.stages.0.label>
+  <TMM_Story_vault_tec_Q1.stages.0.text>Представитель Волт-Тек заселился в гостиницу {COLONY}, раздаёт бланки регистрации и травит довоенные байки из 2077 года.</TMM_Story_vault_tec_Q1.stages.0.text>
+  <TMM_Story_vault_tec_Q1.stages.1.label>Отразить налёт за кодовым чемоданом</TMM_Story_vault_tec_Q1.stages.1.label>
+  <TMM_Story_vault_tec_Q1.stages.1.text>Вооружённые налётчики нагрянули в {COLONY}, пытаясь выкрасть довоенный кодовый чемодан агента Волт-Тек!</TMM_Story_vault_tec_Q1.stages.1.text>
+  <TMM_Story_vault_tec_Q1.stages.2.label>Подпись на квитанции</TMM_Story_vault_tec_Q1.stages.2.label>
+  <TMM_Story_vault_tec_Q1.stages.2.text>Возвращая отбитый чемодан, вы замечаете на прикреплённой квитанции странную подпись: «Р. Роман, 2077 г.».</TMM_Story_vault_tec_Q1.stages.2.text>
+  <TMM_Story_vault_tec_Q1.stages.2.choices.0.label>Подписать контракт и вернуть чемодан Представителю</TMM_Story_vault_tec_Q1.stages.2.choices.0.label>
+  <TMM_Story_vault_tec_Q1.stages.2.choices.0.resultText>Фантастика! Вы официально в программе! Вот вам фирменные комбинезоны — носите с гордостью!</TMM_Story_vault_tec_Q1.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_vault_tec_Q2 -->
+  <TMM_Story_vault_tec_Q2.label>утечка в третьем секторе</TMM_Story_vault_tec_Q2.label>
+  <TMM_Story_vault_tec_Q2.letterLabel>Утечка в третьем секторе</TMM_Story_vault_tec_Q2.letterLabel>
+  <TMM_Story_vault_tec_Q2.letterText>Говорит смотритель Макнамара. Подземный толчок разорвал уплотнители фильтрации в нижнем крыле гидропоники, затопив сектор токсичным газом. Наши инженеры заперты за аварийными переборками. Немедленно пришлите команду с ремонтным снаряжением!</TMM_Story_vault_tec_Q2.letterText>
+  <TMM_Story_vault_tec_Q2.stages.0.label>Запечатать клапаны фильтрации в гидропонике</TMM_Story_vault_tec_Q2.stages.0.label>
+  <TMM_Story_vault_tec_Q2.stages.0.text>Удерживайте задымлённое нижнее крыло Убежища 5 часов, пока техники чинят клапаны фильтрации и выводят запертых инженеров Макнамары.</TMM_Story_vault_tec_Q2.stages.0.text>
+  <TMM_Story_vault_tec_Q2.stages.1.label>Следы спила на трубах</TMM_Story_vault_tec_Q2.stages.1.label>
+  <TMM_Story_vault_tec_Q2.stages.1.text>Когда газ рассеивается и спасённые инженеры переводят дух, механики замечают на трубах фильтрации ровные следы намеренного спила — диверсию изнутри по приказу доктора Брона.</TMM_Story_vault_tec_Q2.stages.1.text>
+  <TMM_Story_vault_tec_Q2.stages.1.choices.0.label>Спасти всех инженеров и доложить смотрителю Гвен Макнамаре</TMM_Story_vault_tec_Q2.stages.1.choices.0.label>
+  <TMM_Story_vault_tec_Q2.stages.1.choices.0.resultText>Вы спасли десятки жизней. Моё Убежище в неоплатном долгу перед вашей колонией.</TMM_Story_vault_tec_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_vault_tec_Q3 -->
+  <TMM_Story_vault_tec_Q3.label>железный порядок</TMM_Story_vault_tec_Q3.label>
+  <TMM_Story_vault_tec_Q3.letterLabel>Железный порядок</TMM_Story_vault_tec_Q3.letterLabel>
+  <TMM_Story_vault_tec_Q3.letterText>Порядок — единственная стена, отделяющая Волт-Тек от дикости поверхности. Подрывные элементы в моём шахтёрском крыле угрожают вскрыть главную гермодверь. Помогите начальнику охраны Кендаллу восстановить абсолютную дисциплину.</TMM_Story_vault_tec_Q3.letterText>
+  <TMM_Story_vault_tec_Q3.stages.0.label>Противостояние у шлюза Убежища</TMM_Story_vault_tec_Q3.stages.0.label>
+  <TMM_Story_vault_tec_Q3.stages.0.text>Прибыв к шлюзу Убежища Альмодовара, вы узнаёте истинную причину забастовки: шахтёры прокопали стену и наткнулись на древний енохианский камень, гудящий прямо под Убежищем.</TMM_Story_vault_tec_Q3.stages.0.text>
+  <TMM_Story_vault_tec_Q3.stages.1.label>Восстановление дисциплины</TMM_Story_vault_tec_Q3.stages.1.label>
+  <TMM_Story_vault_tec_Q3.stages.1.text>Начальник охраны Кендалл ждёт вашего сигнала для силового разгона с шоковыми дубинками — если только вы не выйдете вперёд и не договоритесь с перепуганными шахтёрами миром.</TMM_Story_vault_tec_Q3.stages.1.text>
+  <TMM_Story_vault_tec_Q3.stages.1.choices.0.label>Поддержать Альмодовара и подавить бунт</TMM_Story_vault_tec_Q3.stages.1.choices.0.label>
+  <TMM_Story_vault_tec_Q3.stages.1.choices.0.resultText>Прекрасно. Каждый знает своё место, и воздух в фильтрах остаётся чистым.</TMM_Story_vault_tec_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_vault_tec_Q3.stages.1.choices.1.label>Убедить Кендалла пойти на уступки без кровопролития</TMM_Story_vault_tec_Q3.stages.1.choices.1.label>
+  <TMM_Story_vault_tec_Q3.stages.1.choices.1.resultText>Неортодоксальный метод, но... двери остались закрыты, а добыча возобновилась.</TMM_Story_vault_tec_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_vault_tec_Q4 -->
+  <TMM_Story_vault_tec_Q4.label>сон длиной в двести лет</TMM_Story_vault_tec_Q4.label>
+  <TMM_Story_vault_tec_Q4.letterLabel>Сон длиной в двести лет</TMM_Story_vault_tec_Q4.letterLabel>
+  <TMM_Story_vault_tec_Q4.letterText>Ах, моя смышлёная поверхностная аномалия! Вы нашли ключ к моему величайшему театру — Убежищу 112! Лягте в мои шезлонги «Транквилити» и познайте совершенство, или же мы обсудим взаимовыгодный обмен насчёт вашей маленькой проблемы с «Искрой».</TMM_Story_vault_tec_Q4.letterText>
+  <TMM_Story_vault_tec_Q4.stages.0.label>Прорваться в зал капсул Убежища 112</TMM_Story_vault_tec_Q4.stages.0.label>
+  <TMM_Story_vault_tec_Q4.stages.0.text>Пробейтесь сквозь наёмную охрану Убежища 112 в центральный зал шезлонгов «Транквилити», где десятки довоенных жителей заперты в вечной виртуальной пытке.</TMM_Story_vault_tec_Q4.stages.0.text>
+  <TMM_Story_vault_tec_Q4.stages.1.label>Главный пульт Убежища 112</TMM_Story_vault_tec_Q4.stages.1.label>
+  <TMM_Story_vault_tec_Q4.stages.1.text>В терминале Брона сохранена переписка с «Р. Романом» о расчёте квоты душ с каждого Убежища. Улыбающаяся голограмма Брона предлагает сделку за технологии ГЭКК и Золотой Пип-Бой — либо вы можете дёрнуть рубильник аварийного сброса.</TMM_Story_vault_tec_Q4.stages.1.text>
+  <TMM_Story_vault_tec_Q4.stages.1.choices.0.label>Заключить сделку с Броном и оставить эксперимент в силе (за Волт-Тек)</TMM_Story_vault_tec_Q4.stages.1.choices.0.label>
+  <TMM_Story_vault_tec_Q4.stages.1.choices.0.resultText>Чудесно! Настоящий визионер! Вот ваш Золотой Пип-Бой — пользуйтесь на здоровье, ха-ха!</TMM_Story_vault_tec_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_vault_tec_Q4.stages.1.choices.1.label>Запустить аварийный сброс и освободить пленников смертью (за человечность)</TMM_Story_vault_tec_Q4.stages.1.choices.1.label>
+  <TMM_Story_vault_tec_Q4.stages.1.choices.1.resultText>Варвары! Вы разрушили мой шедевр! Я сотру ваше жалкое поселение с карты!</TMM_Story_vault_tec_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_vault_tec_Q5 -->
+  <TMM_Story_vault_tec_Q5.label>открытые гермодвери</TMM_Story_vault_tec_Q5.label>
+  <TMM_Story_vault_tec_Q5.letterLabel>Открытые гермодвери</TMM_Story_vault_tec_Q5.letterLabel>
+  <TMM_Story_vault_tec_Q5.letterText>Записи, которые вы вскрыли в Убежище 112, ужаснули нас всех. Брон и Альмодовар заблокировали центральный совет и наняли Стрелков, чтобы заткнуть рот каждому несогласному. Помогите мне и Представителю Волт-Тек прорвать блокаду и вывести инженеров в вашу колонию!</TMM_Story_vault_tec_Q5.letterText>
+  <TMM_Story_vault_tec_Q5.stages.0.label>Прорвать блокаду Стрелков у Убежища Макнамары</TMM_Story_vault_tec_Q5.stages.0.label>
+  <TMM_Story_vault_tec_Q5.stages.0.text>Разгромите оцепление Стрелков, прижавших сторонников смотрителя Гвен Макнамары и Представителя Волт-Тек у внешнего шлюза Убежища.</TMM_Story_vault_tec_Q5.stages.0.text>
+  <TMM_Story_vault_tec_Q5.stages.1.label>Прочь из-за стальных дверей</TMM_Story_vault_tec_Q5.stages.1.label>
+  <TMM_Story_vault_tec_Q5.stages.1.text>Когда блокада Стрелков прорвана, Гвен Макнамара и Представитель Волт-Тек благополучно прибывают в {COLONY}, где Представитель наконец получает чистую комнату спустя два столетия.</TMM_Story_vault_tec_Q5.stages.1.text>
+  <TMM_Story_vault_tec_Q5.stages.1.choices.0.label>Принять Гвен Макнамару и Представителя Волт-Тек в колонию</TMM_Story_vault_tec_Q5.stages.1.choices.0.label>
+  <TMM_Story_vault_tec_Q5.stages.1.choices.0.resultText>Мы больше не прячемся за стальными дверями. Наши знания и технологии теперь служат вашей колонии.</TMM_Story_vault_tec_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

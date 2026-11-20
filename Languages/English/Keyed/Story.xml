@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Story.Accept>Accept</TMM.Story.Accept>
+  <TMM.Story.Later>Later</TMM.Story.Later>
+  <TMM.Story.ChoiceLocked>Not available now.</TMM.Story.ChoiceLocked>
+  <TMM.Story.DaysLeft>{0} days left</TMM.Story.DaysLeft>
+  <TMM.Story.NoStory>The story has not begun yet.</TMM.Story.NoStory>
+  <TMM.Story.Title>Chronicle of the Spark</TMM.Story.Title>
+  <TMM.Story.ActHeader>Act {0}</TMM.Story.ActHeader>
+  <TMM.Story.Holodisk>Holodisk Key: {0} of {1} sectors decrypted</TMM.Story.Holodisk>
+  <TMM.Story.ActiveHeader>Active quests ({0})</TMM.Story.ActiveHeader>
+  <TMM.Story.OfferedHeader>Waiting for your answer</TMM.Story.OfferedHeader>
+  <TMM.Story.ArcsHeader>Faction storylines</TMM.Story.ArcsHeader>
+  <TMM.Story.LogHeader>Decisions made ({0})</TMM.Story.LogHeader>
+  <TMM.Story.Failed>failed</TMM.Story.Failed>
+</LanguageData>

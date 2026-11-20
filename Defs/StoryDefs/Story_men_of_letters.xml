@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- MEN OF LETTERS Q1: A POLITE PROPOSITION                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_men_of_letters_Q1</defName>
+    <label>a polite proposition</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_mick_davies</giver>
+    <fallbackGiver>TMM_Hero_antonia_bevell</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>A Polite Proposition</letterLabel>
+    <letterText>Good day to you. My name is Mick Davies, representing the British Men of Letters. We've observed your settlement's rather impressive resilience against supernatural incursions. Allow me to visit your waystation—I've brought an Enochian suppression beacon that could make your perimeter entirely invisible to angels and demons alike.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>mick_tea_visit</key>
+        <label>Host Mick Davies at the waystation</label>
+        <text>Mick Davies checks into {COLONY}'s waystation—bringing real imported British tea and politely grimacing at local wasteland brew—while setting up his prototype Enochian beacon.</text>
+        <faction>TMM_MenOfLettersFaction</faction>
+        <hero>TMM_Hero_mick_davies</hero>
+        <groupSize>1</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>beacon_field_test</key>
+        <label>Field-test the Enochian beacon against lured anomalies</label>
+        <text>The trial pulse from Mick's beacon draws nocturnal horrors toward {COLONY}! Neutralize the test subjects!</text>
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>0.85</pointsFactor>
+        <delayHours>4</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>sign_london_accord</key>
+        <label>Data-sharing accord</label>
+        <text>Satisfied with the field telemetry, Mick Davies dusts off his tweed jacket and offers an official London exchange agreement.</text>
+        <choices>
+          <li>
+            <outcome>tested</outcome>
+            <label>Complete the beacon test and sign the data-sharing accord</label>
+            <resultText>Splendid! London will be thrilled. Here are our runic suit patterns—wear them in good health.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mol_q1</flag>
+                <value>tested</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.mol_runic_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MEN OF LETTERS Q2: CLEAN SWEEP                                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_men_of_letters_Q2</defName>
+    <label>clean sweep</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_kendricks</giver>
+    <fallbackGiver>TMM_Hero_arthur_ketch</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_men_of_letters_Q1</li>
+    </requires>
+    <letterLabel>Clean Sweep</letterLabel>
+    <letterText>Attention. A nest of feral vampires has established itself in an abandoned railway depot six miles from your border. London requires absolute containment—no survivors, no witnesses, no messy local hunting methods. Accompany my tactical unit and execute a textbook sweep.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>vampire_depot</key>
+        <label>Execute a clean sweep of the vampire railway depot</label>
+        <text>Assault the abandoned railway depot by night and wipe out the feral vampire nest down to the last monster.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>depot_crate</key>
+        <label>Crates from Richard Roman Enterprises</label>
+        <text>Inside the cleared railway depot sits a wooden shipping crate stamped "Richard Roman Enterprises", packed tight with pre-war preserved blood pouches. Mr. Kendricks calmly inspects your squad's work.</text>
+        <choices>
+          <li>
+            <outcome>swept</outcome>
+            <label>Report a textbook sweep to Mr. Kendricks</label>
+            <resultText>Disciplined and devoid of needless emotion. A rarity on this continent. You have earned your compensation.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mol_q2</flag>
+                <value>swept</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>750</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enochian_grenades</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.runic_ammo</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MEN OF LETTERS Q3: THE INTERROGATION ROOM                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_men_of_letters_Q3</defName>
+    <label>the interrogation room</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_antonia_bevell</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_dr_hess</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_men_of_letters_Q2</li>
+    </requires>
+    <letterLabel>The Interrogation Room</letterLabel>
+    <letterText>We have captured a high-ranking crossroads demon who knows the exact frequency of the Zero Anchor's containment seals. However, he is stubborn, and my colleagues in London require results tonight. Assist me at our field black-site—whether by arcane extraction or psychological pressure.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>blacksite_cell</key>
+        <label>Inside the London field black-site</label>
+        <text>Beneath a painted ceiling Devil's Trap, Lady Antonia Bevell lays out ritual silver blades before a bound crossroads demon—who laughs in her face, sneering that her own London bosses work for Leviathans.</text>
+        <days>0.6</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>demon_interrogation</key>
+        <label>Extracting the seal frequencies</label>
+        <text>Antonia Bevell raises a glowing Enochian iron. Allow her to proceed with arcane torture, or step in and pry the truth out through cunning and a deal?</text>
+        <choices>
+          <li>
+            <outcome>torture</outcome>
+            <label>Let Lady Antonia Bevell conduct a ruthless arcane interrogation</label>
+            <resultText>Pain opens every lock. The coordinates are ours, and you proved you are not afraid to soil your hands.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mol_q3</flag>
+                <value>torture</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>800</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.seal_intel</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>persuaded</outcome>
+            <label>Halt the torture and extract the truth by wit and bargain</label>
+            <resultText>Hmm... Unexpectedly effective, though far too soft for my taste. The intelligence checks out.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mol_q3</flag>
+                <value>persuaded</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>800</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.seal_intel</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MEN OF LETTERS Q4 (FACTION POINT): THE KENDRICKS CODE                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_men_of_letters_Q4</defName>
+    <label>the kendricks code</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_dr_hess</giver>
+    <fallbackGiver>TMM_Hero_arthur_ketch</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_men_of_letters_Q3</li>
+    </requires>
+    <letterLabel>The Kendricks Code</letterLabel>
+    <letterText>It has come to my attention that a settlement of mutated ghouls—including an archivist named Kent Connolly—possesses pre-war shipping ledgers linking our order to certain... unfortunate architectural projects. London demands total operational security. Liquidate the settlement and retrieve those ledgers, and I shall entrust you with our ultimate deterrent: The Equalizer.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>ghoul_camp_order</key>
+        <label>Orders outside the ghoul camp</label>
+        <text>Standing on the ridge overlooking the peaceful ghoul archive beside Arthur Ketch's liquidation squad, you catch sight of the boxed 2052 Zero Anchor contracts—signed jointly by Dr. Hess and Dick Roman. Execute Dr. Hess's purge order, or turn your guns on Arthur Ketch to save the ghouls and the evidence?</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Carry out Dr. Hess's order and liquidate the ghoul archive (Side with Men of Letters)</label>
+            <resultText>Immaculate discipline. The continent is in capable hands. Accept The Equalizer—use it only as a last resort.</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.men_of_letters</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_the_equalizer</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.hess_monocle</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Defend the ghouls and crush Arthur Ketch's purge squad (Spark &amp; Truth)</label>
+            <resultText>You dared raise weapons against British operatives?! From this hour, every hunter in the region is a target!</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.men_of_letters</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.consortium2052Contract</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>-70</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.ketch_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>purge_ghouls</key>
+        <label>Liquidate the ghoul archive camp</label>
+        <text>Sweep the ghoul archive camp alongside Arthur Ketch and seize the pre-war 2052 shipping ledgers for London.</text>
+        <enemyFaction>TMM_GhoulsFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>ambush_ketch</key>
+        <label>Destroy Arthur Ketch's liquidation squad</label>
+        <text>Engage Arthur Ketch's elite British Men of Letters strike team to protect the ghoul settlement and secure the 2052 Consortium contract.</text>
+        <enemyFaction>TMM_MenOfLettersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>kendricks_aftermath</key>
+        <label>The 2052 Zero Anchor ledgers</label>
+        <text>Smoke drifts across the ridge as the battle concludes. The truth of London's 2052 pact with Dick Roman has forever changed how the British Men of Letters view {COLONY}.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.men_of_letters</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MEN OF LETTERS Q5 (DEFECTOR QUEST): ESCAPE FROM LONDON COMPOUND       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_men_of_letters_Q5</defName>
+    <label>escape from the london compound</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_MenOfLettersFaction</faction>
+    <giver>TMM_Hero_mick_davies</giver>
+    <fallbackGiver>TMM_Hero_dr_hess</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_men_of_letters_Q4</li>
+    </requires>
+    <anyOf>
+      <li>choice.men_of_letters=pro_spark</li>
+      <li>ponr1=protect</li>
+    </anyOf>
+    <letterLabel>Escape from the London Compound</letterLabel>
+    <letterText>Bloody hell, they've completely lost it! Dr. Hess ordered Arthur Ketch to liquidate me for questioning the Consortium files! I've nicked the master schematics for our Enochian suppression pylons and bolted for your border—please tell me your gates are open, because Ketch is right on my heels!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>ketch_hit_squad</key>
+        <label>Repel Arthur Ketch's liquidation team</label>
+        <text>Mick Davies sprints inside {COLONY}'s walls as Arthur Ketch—politely tipping his hat before opening fire—and Lady Antonia Bevell assault your perimeter!</text>
+        <faction>TMM_MenOfLettersFaction</faction>
+        <pointsFactor>1.35</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>recruit_mick</key>
+        <label>Schematics from London</label>
+        <text>With the liquidation squad broken, Mick Davies catches his breath and hands over the master Enochian suppression pylon blueprints.</text>
+        <choices>
+          <li>
+            <outcome>accept_mick</outcome>
+            <label>Shelter Mick Davies and welcome him into {COLONY}</label>
+            <resultText>I owe you my life, truly. Let's build these suppressors and show London what real hunting looks like!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_mick_davies</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_mick_davies</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>-90</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enochian_suppressor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

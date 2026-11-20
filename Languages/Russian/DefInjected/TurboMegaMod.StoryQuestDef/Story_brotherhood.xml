@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_brotherhood_Q1 -->
+  <TMM_Story_brotherhood_Q1.label>потерянный маяк</TMM_Story_brotherhood_Q1.label>
+  <TMM_Story_brotherhood_Q1.letterLabel>Потерянный маяк</TMM_Story_brotherhood_Q1.letterLabel>
+  <TMM_Story_brotherhood_Q1.letterText>Гражданский. Мой разведвзвод «Гладиус» перестал выходить на связь у старого спутникового узла в трёх километрах от вашей позиции. Командование требует немедленно вернуть их жетоны и полевые журналы. Помогите Братству зачистить периметр, и вы заслужите уважение стали.</TMM_Story_brotherhood_Q1.letterText>
+  <TMM_Story_brotherhood_Q1.stages.0.label>Зачистить спутниковый узел</TMM_Story_brotherhood_Q1.stages.0.label>
+  <TMM_Story_brotherhood_Q1.stages.0.text>Зачистите старую станцию слежения, окружённую дикими гулями и фонящими воронками, чтобы паладин Данс смог эвакуировать раненого писца Братства.</TMM_Story_brotherhood_Q1.stages.0.text>
+  <TMM_Story_brotherhood_Q1.stages.1.label>Жетоны разведвзвода «Гладиус»</TMM_Story_brotherhood_Q1.stages.1.label>
+  <TMM_Story_brotherhood_Q1.stages.1.text>Внутри бункера, на стене которого выцарапана енохианская печать, отпугивающая диких гулей, вы находите жетоны павших бойцов и зашифрованные полевые журналы.</TMM_Story_brotherhood_Q1.stages.1.text>
+  <TMM_Story_brotherhood_Q1.stages.1.choices.0.label>Вернуть все жетоны и секретные голодиски Дансу</TMM_Story_brotherhood_Q1.stages.1.choices.0.label>
+  <TMM_Story_brotherhood_Q1.stages.1.choices.0.resultText>Вы действовали как настоящий солдат. Братство Стали не забывает тех, кто прикрывает спину.</TMM_Story_brotherhood_Q1.stages.1.choices.0.resultText>
+  <TMM_Story_brotherhood_Q1.stages.1.choices.1.label>Скопировать данные с голодисков перед передачей</TMM_Story_brotherhood_Q1.stages.1.choices.1.label>
+  <TMM_Story_brotherhood_Q1.stages.1.choices.1.resultText>Жетоны на месте, но в логах видны следы взлома... Я буду следить за вами.</TMM_Story_brotherhood_Q1.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_brotherhood_Q2 -->
+  <TMM_Story_brotherhood_Q2.label>броня для штурма</TMM_Story_brotherhood_Q2.label>
+  <TMM_Story_brotherhood_Q2.letterLabel>Броня для штурма</TMM_Story_brotherhood_Q2.letterLabel>
+  <TMM_Story_brotherhood_Q2.letterText>Слушай сюда, житель Пустоши. Говорит проктор Ингрэм. Мой полевой ремонтный док накрыло миномётом, и половину наших каркасов T-60 заклинило намертво. Присылай лучших механиков и запчасти и прикрой мне спину от Стрелков, пока я завариваю магистрали охлаждения.</TMM_Story_brotherhood_Q2.letterText>
+  <TMM_Story_brotherhood_Q2.stages.0.label>Выделить запчасти для ремонтного дока</TMM_Story_brotherhood_Q2.stages.0.label>
+  <TMM_Story_brotherhood_Q2.stages.0.text>Передайте 6 компонентов со складов {COLONY}, чтобы проктор Ингрэм смогла заменить пробитые клапаны силовой брони T-60.</TMM_Story_brotherhood_Q2.stages.0.text>
+  <TMM_Story_brotherhood_Q2.stages.1.label>Удержать ремонтный док Братства</TMM_Story_brotherhood_Q2.stages.1.label>
+  <TMM_Story_brotherhood_Q2.stages.1.text>Удерживайте полевой аванпост Братства от налётов Стрелков в течение 6 часов, пока Ингрэм в модифицированном каркасе силовой брони без ног отпускает саркастичные шутки под обстрелом.</TMM_Story_brotherhood_Q2.stages.1.text>
+  <TMM_Story_brotherhood_Q2.stages.2.label>Гидравлика снова в строю</TMM_Story_brotherhood_Q2.stages.2.label>
+  <TMM_Story_brotherhood_Q2.stages.2.text>Последняя волна Стрелков отступает, когда все три комплекта T-60 с шипением оживают в ремонтном доке.</TMM_Story_brotherhood_Q2.stages.2.text>
+  <TMM_Story_brotherhood_Q2.stages.2.choices.0.label>Завершить ремонт всех трёх комплектов без потерь</TMM_Story_brotherhood_Q2.stages.2.choices.0.label>
+  <TMM_Story_brotherhood_Q2.stages.2.choices.0.resultText>Чёрт возьми, у твоих ребят руки растут откуда надо! Держи пару энергоячеек за выручку.</TMM_Story_brotherhood_Q2.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_brotherhood_Q3 -->
+  <TMM_Story_brotherhood_Q3.label>уроки старого старейшины</TMM_Story_brotherhood_Q3.label>
+  <TMM_Story_brotherhood_Q3.letterLabel>Уроки старого старейшины</TMM_Story_brotherhood_Q3.letterLabel>
+  <TMM_Story_brotherhood_Q3.letterText>Артур Мэксон говорит о стали и огне, и он прав насчёт тьмы, сгущающейся над этой землёй. Но если мы раздавим тех, кого поклялись защищать, что останется спасать? Встреть меня в поселении на перекрёстке и помоги договориться миром, пока Келлс не отдал приказ об артобстреле.</TMM_Story_brotherhood_Q3.letterText>
+  <TMM_Story_brotherhood_Q3.stages.0.label>Встреча с Оуэном Лайонсом на перекрёстке</TMM_Story_brotherhood_Q3.stages.0.label>
+  <TMM_Story_brotherhood_Q3.stages.0.text>Старый Оуэн Лайонс ждёт у ворот посёлка, доставая потрёпанную флягу с чистой водой из проекта «Чистота», пока патруль Братства держит на прицеле местных жителей, укрывающих раненого разумного гуля.</TMM_Story_brotherhood_Q3.stages.0.text>
+  <TMM_Story_brotherhood_Q3.stages.1.label>Щит или меч</TMM_Story_brotherhood_Q3.stages.1.label>
+  <TMM_Story_brotherhood_Q3.stages.1.text>Командир патруля требует отступить в сторону, чтобы зачистить гуля по уставу Мэксона. Оуэн Лайонс смотрит на вас, ожидая вашего слова.</TMM_Story_brotherhood_Q3.stages.1.text>
+  <TMM_Story_brotherhood_Q3.stages.1.choices.0.label>Убедить командира патруля отступить и защитить поселенцев (путь Лайонса)</TMM_Story_brotherhood_Q3.stages.1.choices.0.label>
+  <TMM_Story_brotherhood_Q3.stages.1.choices.0.resultText>Ты напомнил им, что значит быть щитом человечества. Спасибо, друг.</TMM_Story_brotherhood_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_brotherhood_Q3.stages.1.choices.1.label>Поддержать устав Мэксона и зачистить поселение от гулей</TMM_Story_brotherhood_Q3.stages.1.choices.1.label>
+  <TMM_Story_brotherhood_Q3.stages.1.choices.1.resultText>Ты выбрал суровую необходимость... Молюсь, чтобы наши души выдержали этот груз.</TMM_Story_brotherhood_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_brotherhood_Q4 -->
+  <TMM_Story_brotherhood_Q4.label>слепой предатель</TMM_Story_brotherhood_Q4.label>
+  <TMM_Story_brotherhood_Q4.letterLabel>Слепой предатель</TMM_Story_brotherhood_Q4.letterLabel>
+  <TMM_Story_brotherhood_Q4.letterText>Расшифрованные архивы Института раскрыли мерзкую правду: паладин Данс не человек, а синтетический лазутчик с аномальной «Искрой» в нейроядре. Он бежал на пост прослушивания «Браво». Найдите его и приведите приговор в исполнение — человечество не позволит машинам носить нашу кожу.</TMM_Story_brotherhood_Q4.letterText>
+  <TMM_Story_brotherhood_Q4.stages.0.label>Пробиться к посту прослушивания «Браво»</TMM_Story_brotherhood_Q4.stages.0.label>
+  <TMM_Story_brotherhood_Q4.stages.0.text>Отогнав разведчиков Института на подступах к бункеру «Браво», вы спускаетесь внутрь, где безоружный Данс ждёт своей участи.</TMM_Story_brotherhood_Q4.stages.0.text>
+  <TMM_Story_brotherhood_Q4.stages.1.label>Приговор паладину Дансу</TMM_Story_brotherhood_Q4.stages.1.label>
+  <TMM_Story_brotherhood_Q4.stages.1.text>Стоя на коленях в глубине бункера, паладин Данс сам снимает свои жетоны Братства и протягивает их вам со словами «Ad Victoriam». За гермодверью уже ждёт Артур Мэксон в боевом плаще с отрядом паладинов.</TMM_Story_brotherhood_Q4.stages.1.text>
+  <TMM_Story_brotherhood_Q4.stages.1.choices.0.label>Казнить паладина Данса по приказу Мэксона (за Братство)</TMM_Story_brotherhood_Q4.stages.1.choices.0.label>
+  <TMM_Story_brotherhood_Q4.stages.1.choices.0.resultText>Ты сделал то, на что у многих не хватило бы духа. Сталь очищена от скверны.</TMM_Story_brotherhood_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_brotherhood_Q4.stages.1.choices.1.label>Укрыть Данса и убедить Мэксона или отбить его боем (за Искру)</TMM_Story_brotherhood_Q4.stages.1.choices.1.label>
+  <TMM_Story_brotherhood_Q4.stages.1.choices.1.resultText>Отныне он мёртв для Братства! Если он снова попадётся нам на глаза — я лично сотру его в пыль!</TMM_Story_brotherhood_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_brotherhood_Q5 -->
+  <TMM_Story_brotherhood_Q5.label>мятеж стража</TMM_Story_brotherhood_Q5.label>
+  <TMM_Story_brotherhood_Q5.letterLabel>Мятеж Стража</TMM_Story_brotherhood_Q5.letterLabel>
+  <TMM_Story_brotherhood_Q5.letterText>Мэксон окончательно потерял рассудок — он готовит удар винтокрылов по всем поселениям, укрывающим синтов и гулей. Мы с отцом не станем участвовать в бойне. Мы с Дансом прорываемся к вашей колонии — прикройте зону посадки!</TMM_Story_brotherhood_Q5.letterText>
+  <TMM_Story_brotherhood_Q5.stages.0.label>Отразить карательный десант капитана Келлса</TMM_Story_brotherhood_Q5.stages.0.label>
+  <TMM_Story_brotherhood_Q5.stages.0.text>Сара Лайонс и паладин Данс совершили аварийную посадку на угнанном винтокрыле, пока старый Оуэн Лайонс остался на флагмане задержать преследователей. Отразите штурм паладинов капитана Келлса!</TMM_Story_brotherhood_Q5.stages.0.text>
+  <TMM_Story_brotherhood_Q5.stages.1.label>Рыцари без Старейшины</TMM_Story_brotherhood_Q5.stages.1.label>
+  <TMM_Story_brotherhood_Q5.stages.1.text>Когда карательный отряд Братства отбит, Сара Лайонс и паладин Данс снимают шлемы перед вашим штабным столом.</TMM_Story_brotherhood_Q5.stages.1.text>
+  <TMM_Story_brotherhood_Q5.stages.1.choices.0.label>Принять Сару Лайонс и паладина Данса в ряды колонии</TMM_Story_brotherhood_Q5.stages.1.choices.0.label>
+  <TMM_Story_brotherhood_Q5.stages.1.choices.0.resultText>Наши доспехи всё ещё служат людям — просто теперь мы сами выбираем, кого защищать.</TMM_Story_brotherhood_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

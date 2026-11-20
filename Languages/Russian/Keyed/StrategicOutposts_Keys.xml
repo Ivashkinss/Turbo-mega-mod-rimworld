@@ -173,4 +173,39 @@
   <StrategicOutpost_NotEnoughSilverToSend>В колонии недостаточно серебра для отправки (требуется: {0}).</StrategicOutpost_NotEnoughSilverToSend>
   <StrategicOutpost_NotEnoughSilverForTopUp>В колонии недостаточно серебра для пополнения (требуется: {0}, доступно: {1}).</StrategicOutpost_NotEnoughSilverForTopUp>
   <StrategicOutpost_PodsReturnedOutpostGone>Аванпоста больше нет: капсулы вернулись в колонию вместе с грузом.</StrategicOutpost_PodsReturnedOutpostGone>
+
+  <!-- Outpost Walking Caravan (Stage B) -->
+  <StrategicOutpost_ByTransportPod>Транспортной капсулой</StrategicOutpost_ByTransportPod>
+  <StrategicOutpost_ByWalkingCaravan>Пешим караваном</StrategicOutpost_ByWalkingCaravan>
+  <StrategicOutpost_ByTransportVehicle>Транспортом (скоро)</StrategicOutpost_ByTransportVehicle>
+  <StrategicOutpost_TransportVehicleSoonTip>Транспорт и челноки станут доступны на следующем этапе развития.</StrategicOutpost_TransportVehicleSoonTip>
+  <TMM_OutpostCaravan_Title>Пеший караван к аванпосту: {0}</TMM_OutpostCaravan_Title>
+  <TMM_OutpostCaravan_SelectColonists>Выберите колонистов в караван:</TMM_OutpostCaravan_SelectColonists>
+  <TMM_OutpostCaravan_StayAsWorker>Остаться</TMM_OutpostCaravan_StayAsWorker>
+  <TMM_OutpostCaravan_SilverToSend>Серебро для отправки: {0} (из {1})</TMM_OutpostCaravan_SilverToSend>
+  <TMM_OutpostCaravan_TripEstimate>Дней пути туда и обратно: {0} (в одну сторону: {1})</TMM_OutpostCaravan_TripEstimate>
+  <TMM_OutpostCaravan_FoodEstimate>Еды на дорогу: {0} из {1} дней</TMM_OutpostCaravan_FoodEstimate>
+  <TMM_OutpostCaravan_SendBtn>Отправить</TMM_OutpostCaravan_SendBtn>
+  <TMM_OutpostCaravan_NoPawnsSelectedTip>Не выбрано ни одного колониста для каравана.</TMM_OutpostCaravan_NoPawnsSelectedTip>
+  <TMM_OutpostCaravan_PathUnreachableTip>Невозможно проложить пеший маршрут до аванпоста.</TMM_OutpostCaravan_PathUnreachableTip>
+  <TMM_OutpostCaravan_NotEnoughFoodTip>Недостаточно еды на складах колонии для пути туда и обратно (нужно на {0} дн.).</TMM_OutpostCaravan_NotEnoughFoodTip>
+  <TMM_OutpostCaravan_ReportDelivering>Доставка груза на {0}</TMM_OutpostCaravan_ReportDelivering>
+  <TMM_OutpostCaravan_OutpostGone>Целевой аванпост больше не существует. Доставка отменена.</TMM_OutpostCaravan_OutpostGone>
+  <TMM_OutpostCaravan_WorkerRejected>Аванпост {1}: вместимость исчерпана, колонист {0} возвращается домой.</TMM_OutpostCaravan_WorkerRejected>
+  <TMM_OutpostCaravan_DeliveredReturning>Караван прибыл на аванпост {0}, передал груз и возвращается в {1}.</TMM_OutpostCaravan_DeliveredReturning>
+  <TMM_OutpostCaravan_ReturnHome>Вернуться домой</TMM_OutpostCaravan_ReturnHome>
+  <TMM_OutpostCaravan_ReturnHomeDesc>Отменить доставку на аванпост и повернуть караван обратно в колонию.</TMM_OutpostCaravan_ReturnHomeDesc>
+  <TMM_OutpostCaravan_CancelledReturning>{0} отменяет доставку и возвращается домой.</TMM_OutpostCaravan_CancelledReturning>
+  <StrategicOutpost_InvalidOutpost>Недопустимый аванпост.</StrategicOutpost_InvalidOutpost>
+  <StrategicOutpost_NoMobileCarrierLeft>В караване не останется ни одного носильщика, способного идти.</StrategicOutpost_NoMobileCarrierLeft>
+  <TMM_OutpostCaravan_HomeUnreachable>{0}: дорога домой недоступна. Караван остаётся на месте — нажмите «Домой», когда путь откроется.</TMM_OutpostCaravan_HomeUnreachable>
+  <TMM_OutpostCaravan_MissingSilverAborted>Погружено только {0} серебра из {1}. Миссия отменена, груз остаётся у каравана.</TMM_OutpostCaravan_MissingSilverAborted>
+  <TMM_OutpostCaravan_StorageTransferFailed>Склад аванпоста не принял груз. Всё возвращено в караван.</TMM_OutpostCaravan_StorageTransferFailed>
+  <TMM_OutpostCaravan_FormationFailed>Не удалось сформировать караван.</TMM_OutpostCaravan_FormationFailed>
+  <TMM_OutpostCaravan_RetryDelivery>Сдать ещё раз</TMM_OutpostCaravan_RetryDelivery>
+  <TMM_OutpostCaravan_InvalidMissionReturning>{0}: миссия к аванпосту больше недействительна. Караван возвращается домой с грузом.</TMM_OutpostCaravan_InvalidMissionReturning>
+  <TMM_OutpostCaravan_LegacyReturningHome>{0}: миссию к аванпосту из старого сохранения восстановить не удалось. Караван возвращается домой, не сдав груз.</TMM_OutpostCaravan_LegacyReturningHome>
+  <TMM_OutpostCaravan_RetryDeliveryDesc>Повторить попытку сдать груз: {0}.</TMM_OutpostCaravan_RetryDeliveryDesc>
+  <TMM_OutpostCaravan_LowReturnFoodWarning>{0}: еды на обратный путь хватит на {1} дн., а дорога займёт {2} дн.</TMM_OutpostCaravan_LowReturnFoodWarning>
+  <TMM_OutpostCaravan_StorageTransferFailedRetry>{0}: груз не принят. Всё осталось в караване — сдайте ещё раз или отправьте караван домой.</TMM_OutpostCaravan_StorageTransferFailedRetry>
 </LanguageData>

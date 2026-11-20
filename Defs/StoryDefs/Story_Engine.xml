@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Story engine plumbing: the choice letter and the Chronicle tab. Design: Documentation/STORY-ENGINE-DESIGN.md. -->
+<Defs>
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>TMM_StoryChoice</defName>
+    <letterClass>TurboMegaMod.StoryChoiceLetter</letterClass>
+    <color>(200, 160, 70)</color>
+    <flashColor>(220, 180, 90)</flashColor>
+    <flashInterval>90</flashInterval>
+    <arriveSound>LetterArrive_Good</arriveSound>
+  </LetterDef>
+
+  <MainButtonDef>
+    <defName>TMM_Chronicle</defName>
+    <label>chronicle</label>
+    <description>The Chronicle of the Spark: the story so far, faction storylines, open quests and the choices you made.</description>
+    <tabWindowClass>TurboMegaMod.MainTabWindow_Chronicle</tabWindowClass>
+    <order>75</order>
+    <validWithoutMap>true</validWithoutMap>
+  </MainButtonDef>
+</Defs>

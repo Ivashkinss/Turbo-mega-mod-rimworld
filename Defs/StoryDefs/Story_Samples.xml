@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site</defName>
+    <label>sample outpost sweep</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>50</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Outpost Sweep</letterLabel>
+    <letterText>Scouts near {COLONY} spotted a hostile field camp. Send a caravan to clear the camp and report back.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Clear the hostile camp</label>
+        <text>A hostile field camp has been marked on the world map near {COLONY}. Send a caravan to eliminate all hostile fighters at the camp.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Clear</objective>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_siteCleared</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage> <!-- CHECK: -1 ends quest -->
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_siteTimeout</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Outpost secured</label>
+        <text>The hostile camp has been cleared. Decide how to log the operation in {COLONY}'s records.</text>
+        <choices>
+          <li>
+            <outcome>claim_supplies</outcome>
+            <label>Log victory and collect a small salvage bonus</label>
+            <resultText>Your scouts cataloged the cleared camp and brought back a pouch of silver.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>150</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Raid</defName>
+    <label>sample perimeter probe</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>49</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Perimeter Probe</letterLabel>
+    <letterText>Hostile raiders are mobilizing to test {COLONY}'s defenses. Accept to trigger a controlled defensive engagement.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>raid</key>
+        <label>Repel the probing raid</label>
+        <text>Raiders have been sighted approaching {COLONY}. Prepare your perimeter defenses.</text>
+        <pointsFactor>1.0</pointsFactor>
+        <delayHours>2</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <restoreRelations>true</restoreRelations>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_raidRepelled</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.e2sample_raidTimeout</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </outcomes>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RESCUE OBJECTIVE SAMPLE                                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site_Rescue</defName>
+    <label>sample site rescue</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>48</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Site Rescue</letterLabel>
+    <letterText>A captured hero is held at a hostile site. Rescue the captive.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Rescue the captive hero</label>
+        <text>Reach the site and extract the captive hero to your caravan.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Rescue</objective>
+        <hero>TMM_Hero_dean_winchester</hero>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Rescue complete</label>
+        <text>The captive hero has been saved.</text>
+        <choices>
+          <li>
+            <outcome>done</outcome>
+            <label>Complete rescue</label>
+            <resultText>The hero is safely with your team.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RESCUE FAILED OBJECTIVE SAMPLE                                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site_Rescue_Fail</defName>
+    <label>sample site rescue fail</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>48</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Site Rescue Fail</letterLabel>
+    <letterText>A captured hero is held at a hostile site.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Rescue the captive hero</label>
+        <text>Reach the site and extract the captive hero to your caravan.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Rescue</objective>
+        <hero>TMM_Hero_sam_winchester</hero>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Rescue aftermath</label>
+        <text>The operation has concluded.</text>
+        <choices>
+          <li>
+            <outcome>done</outcome>
+            <label>Conclude operation</label>
+            <resultText>The operation is over.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- RETRIEVE OBJECTIVE SAMPLE                                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site_Retrieve</defName>
+    <label>sample site retrieve</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>47</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Site Retrieve</letterLabel>
+    <letterText>A valuable item is located at a hostile site. Retrieve the item.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Retrieve the target item</label>
+        <text>Reach the site and secure the target item in your caravan.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Retrieve</objective>
+        <thing>ComponentSpacer</thing>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Retrieve complete</label>
+        <text>The item has been secured.</text>
+        <choices>
+          <li>
+            <outcome>done</outcome>
+            <label>Complete retrieval</label>
+            <resultText>The item is in your possession.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- HOLD OBJECTIVE SAMPLE                                                 -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site_Hold</defName>
+    <label>sample site hold</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>46</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Site Hold</letterLabel>
+    <letterText>Hold the outpost position for 1 hour against probing forces.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Hold the position</label>
+        <text>Maintain presence at the outpost for 1 hour.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>Hold</objective>
+        <holdHours>1</holdHours>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Hold complete</label>
+        <text>The position was held.</text>
+        <choices>
+          <li>
+            <outcome>done</outcome>
+            <label>Complete hold</label>
+            <resultText>The position was held successfully.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- KILL HERO OBJECTIVE SAMPLE                                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_Sample_Site_KillHero</defName>
+    <label>sample site kill hero</label>
+    <act>1</act>
+    <main>false</main>
+    <priority>45</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <requires>
+      <li>story.e2samples=true</li>
+    </requires>
+    <letterLabel>Sample Site Kill Hero</letterLabel>
+    <letterText>Eliminate the hostile commander at the site.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>site</key>
+        <label>Eliminate the target commander</label>
+        <text>Eliminate the hostile hero commander stationed at the site.</text>
+        <minDays>2</minDays>
+        <maxDays>6</maxDays>
+        <objective>KillHero</objective>
+        <hero>TMM_Hero_clint</hero>
+        <timeoutDays>15</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>-1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>aftermath</key>
+        <label>Elimination complete</label>
+        <text>The commander has been eliminated.</text>
+        <choices>
+          <li>
+            <outcome>done</outcome>
+            <label>Confirm kill</label>
+            <resultText>The commander is dead.</resultText>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

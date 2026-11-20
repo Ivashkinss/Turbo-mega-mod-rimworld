@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_men_of_letters_Q1 -->
+  <TMM_Story_men_of_letters_Q1.label>вежливое предложение</TMM_Story_men_of_letters_Q1.label>
+  <TMM_Story_men_of_letters_Q1.letterLabel>Вежливое предложение</TMM_Story_men_of_letters_Q1.letterLabel>
+  <TMM_Story_men_of_letters_Q1.letterText>Добрый день. Меня зовут Мик Дэвис, я представляю Британских Просвещённых. Мы наблюдали за впечатляющей стойкостью вашего поселения перед лицом сверхъестественных вторжений. Позвольте нанести визит в вашу гостиницу — я привёз енохианский подавитель, способный скрыть ваш периметр от ангелов и демонов.</TMM_Story_men_of_letters_Q1.letterText>
+  <TMM_Story_men_of_letters_Q1.stages.0.label>Принять Мика Дэвиса в гостинице</TMM_Story_men_of_letters_Q1.stages.0.label>
+  <TMM_Story_men_of_letters_Q1.stages.0.text>Мик Дэвис заселяется в гостиницу {COLONY} — привозит настоящий британский чай и вежливо морщится от пойла Пустоши — пока монтирует пробный енохианский маяк.</TMM_Story_men_of_letters_Q1.stages.0.text>
+  <TMM_Story_men_of_letters_Q1.stages.1.label>Испытать енохианский маяк на привлечённых тварях</TMM_Story_men_of_letters_Q1.stages.1.label>
+  <TMM_Story_men_of_letters_Q1.stages.1.text>Пробный импульс маяка притянул к {COLONY} ночных тварей! Нейтрализуйте цели испытания!</TMM_Story_men_of_letters_Q1.stages.1.text>
+  <TMM_Story_men_of_letters_Q1.stages.2.label>Соглашение об обмене данными</TMM_Story_men_of_letters_Q1.stages.2.label>
+  <TMM_Story_men_of_letters_Q1.stages.2.text>Удовлетворённый показаниями датчиков, Мик Дэвис отряхивает твидовый пиджак и предлагает подписать соглашение с Лондоном.</TMM_Story_men_of_letters_Q1.stages.2.text>
+  <TMM_Story_men_of_letters_Q1.stages.2.choices.0.label>Провести испытания маяка и подписать соглашение об обмене данными</TMM_Story_men_of_letters_Q1.stages.2.choices.0.label>
+  <TMM_Story_men_of_letters_Q1.stages.2.choices.0.resultText>Splendid! Потрясающе! Лондон будет в восторге. Вот наши выкройки рунических костюмов — носите на здоровье.</TMM_Story_men_of_letters_Q1.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_men_of_letters_Q2 -->
+  <TMM_Story_men_of_letters_Q2.label>чистая зачистка</TMM_Story_men_of_letters_Q2.label>
+  <TMM_Story_men_of_letters_Q2.letterLabel>Чистая зачистка</TMM_Story_men_of_letters_Q2.letterLabel>
+  <TMM_Story_men_of_letters_Q2.letterText>Внимание. Гнездо одичавших вампиров обосновалось в заброшенном железнодорожном депо в шести милях от вашей границы. Лондон требует абсолютной зачистки — никаких выживших, никаких свидетелей, никакой кустарщины. Присоединяйтесь к моему тактическому отряду и проведите образцовую операцию.</TMM_Story_men_of_letters_Q2.letterText>
+  <TMM_Story_men_of_letters_Q2.stages.0.label>Зачистить логово вампиров в железнодорожном депо</TMM_Story_men_of_letters_Q2.stages.0.label>
+  <TMM_Story_men_of_letters_Q2.stages.0.text>Проведите ночной тактический штурм заброшенного депо и уничтожьте гнездо одичавших вампиров до последней твари.</TMM_Story_men_of_letters_Q2.stages.0.text>
+  <TMM_Story_men_of_letters_Q2.stages.1.label>Ящик «Ричард Роман Энтерпрайзис»</TMM_Story_men_of_letters_Q2.stages.1.label>
+  <TMM_Story_men_of_letters_Q2.stages.1.text>Внутри зачищенного депо обнаруживается деревянный ящик со штампом «Ричард Роман Энтерпрайзис», доверху набитый пакетами консервированной крови. Мистер Кендрикс спокойно оценивает вашу работу.</TMM_Story_men_of_letters_Q2.stages.1.text>
+  <TMM_Story_men_of_letters_Q2.stages.1.choices.0.label>Зачистить депо точно по протоколу Кендрикса</TMM_Story_men_of_letters_Q2.stages.1.choices.0.label>
+  <TMM_Story_men_of_letters_Q2.stages.1.choices.0.resultText>Дисциплинированно и без лишних эмоций. Редкость для этого континента. Вы заслужили награду.</TMM_Story_men_of_letters_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_men_of_letters_Q3 -->
+  <TMM_Story_men_of_letters_Q3.label>комната допросов</TMM_Story_men_of_letters_Q3.label>
+  <TMM_Story_men_of_letters_Q3.letterLabel>Комната допросов</TMM_Story_men_of_letters_Q3.letterLabel>
+  <TMM_Story_men_of_letters_Q3.letterText>Мы захватили высокопоставленного демона перекрёстка, знающего точную частоту печатей Нулевого Якоря. Однако он упрям, а моим коллегам в Лондоне нужен результат уже сегодня ночью. Помогите мне на нашем полевом объекте — оккультным извлечением или психологическим давлением.</TMM_Story_men_of_letters_Q3.letterText>
+  <TMM_Story_men_of_letters_Q3.stages.0.label>В тайной камере допросов Лондона</TMM_Story_men_of_letters_Q3.stages.0.label>
+  <TMM_Story_men_of_letters_Q3.stages.0.text>Под нарисованной на потолке дьявольской ловушкой Антония Бевелл раскладывает ритуальные серебряные ножи перед пленным демоном, а тот хохочет ей в лицо, бросая, что её начальники в Лондоне работают на левиафанов.</TMM_Story_men_of_letters_Q3.stages.0.text>
+  <TMM_Story_men_of_letters_Q3.stages.1.label>Извлечение частот печатей</TMM_Story_men_of_letters_Q3.stages.1.label>
+  <TMM_Story_men_of_letters_Q3.stages.1.text>Антония Бевелл поднимает раскалённое енохианское клеймо. Позволить ей провести жёсткий оккультный допрос или остановить пытки и вытянуть правду хитростью?</TMM_Story_men_of_letters_Q3.stages.1.text>
+  <TMM_Story_men_of_letters_Q3.stages.1.choices.0.label>Позволить Антонии Бевелл провести жёсткий оккультный допрос</TMM_Story_men_of_letters_Q3.stages.1.choices.0.label>
+  <TMM_Story_men_of_letters_Q3.stages.1.choices.0.resultText>Боль открывает любые замки. Координаты у нас, а вы доказали, что не боитесь испачкать руки.</TMM_Story_men_of_letters_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_men_of_letters_Q3.stages.1.choices.1.label>Остановить пытки и вытянуть правду хитростью и сделкой</TMM_Story_men_of_letters_Q3.stages.1.choices.1.label>
+  <TMM_Story_men_of_letters_Q3.stages.1.choices.1.resultText>Хм... Неожиданно эффективно, пусть и слишком мягко для моего вкуса. Информация верна.</TMM_Story_men_of_letters_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_men_of_letters_Q4 -->
+  <TMM_Story_men_of_letters_Q4.label>кодекс кендрикса</TMM_Story_men_of_letters_Q4.label>
+  <TMM_Story_men_of_letters_Q4.letterLabel>Кодекс Кендрикса</TMM_Story_men_of_letters_Q4.letterLabel>
+  <TMM_Story_men_of_letters_Q4.letterText>До моего сведения дошло, что поселение мутировавших гулей — включая некоего архивариуса Кента Коннолли — владеет довоенными накладными, связывающими наш орден с кое-какими... нежелательными проектами. Лондон требует абсолютной секретности. Ликвидируйте поселение и верните бумаги, и я доверю вам наше высшее оружие: «Уравнитель».</TMM_Story_men_of_letters_Q4.letterText>
+  <TMM_Story_men_of_letters_Q4.stages.0.label>Приказ на подступах к лагерю гулей</TMM_Story_men_of_letters_Q4.stages.0.label>
+  <TMM_Story_men_of_letters_Q4.stages.0.text>На холме перед мирным архивом гулей рядом с отрядом ликвидаторов Артура Кетча вы замечаете ящики с контрактами 2052 года на строительство Нулевых Якорей за подписями доктора Хесс и Дика Романа. Исполнить приказ Хесс или развернуть оружие против Кетча?</TMM_Story_men_of_letters_Q4.stages.0.text>
+  <TMM_Story_men_of_letters_Q4.stages.0.choices.0.label>Выполнить приказ доктора Хесс и уничтожить свидетелей (за Просвещённых)</TMM_Story_men_of_letters_Q4.stages.0.choices.0.label>
+  <TMM_Story_men_of_letters_Q4.stages.0.choices.0.resultText>Безупречная дисциплина. Континент в надёжных руках. Примите «Уравнитель» — используйте его только в крайнем случае.</TMM_Story_men_of_letters_Q4.stages.0.choices.0.resultText>
+  <TMM_Story_men_of_letters_Q4.stages.0.choices.1.label>Защитить гулей и разгромить карательный отряд Просвещённых (за Искру и правду)</TMM_Story_men_of_letters_Q4.stages.0.choices.1.label>
+  <TMM_Story_men_of_letters_Q4.stages.0.choices.1.resultText>Вы осмелились поднять руку на британских оперативников?! Отныне каждый охотник в регионе станет нашей мишенью!</TMM_Story_men_of_letters_Q4.stages.0.choices.1.resultText>
+  <TMM_Story_men_of_letters_Q4.stages.1.label>Зачистить лагерь архивариусов-гулей</TMM_Story_men_of_letters_Q4.stages.1.label>
+  <TMM_Story_men_of_letters_Q4.stages.1.text>Зачистите поселение гулей вместе с Артуром Кетчем и изымите довоенные накладные 2052 года для Лондона.</TMM_Story_men_of_letters_Q4.stages.1.text>
+  <TMM_Story_men_of_letters_Q4.stages.2.label>Уничтожить карательный отряд Артура Кетча</TMM_Story_men_of_letters_Q4.stages.2.label>
+  <TMM_Story_men_of_letters_Q4.stages.2.text>Разгромите элитную группу зачистки Артура Кетча, чтобы защитить гулей и сохранить контракт Консорциума 2052 года.</TMM_Story_men_of_letters_Q4.stages.2.text>
+  <TMM_Story_men_of_letters_Q4.stages.3.label>Накладные Нулевого Якоря 2052 года</TMM_Story_men_of_letters_Q4.stages.3.label>
+  <TMM_Story_men_of_letters_Q4.stages.3.text>Дым рассеивается над холмом. Правда о сговоре Лондона с Диком Романом в 2052 году навсегда изменила отношения Британских Просвещённых и {COLONY}.</TMM_Story_men_of_letters_Q4.stages.3.text>
+
+  <!-- TMM_Story_men_of_letters_Q5 -->
+  <TMM_Story_men_of_letters_Q5.label>побег из лондонского штаба</TMM_Story_men_of_letters_Q5.label>
+  <TMM_Story_men_of_letters_Q5.letterLabel>Побег из лондонского штаба</TMM_Story_men_of_letters_Q5.letterLabel>
+  <TMM_Story_men_of_letters_Q5.letterText>Чёрт побери, они окончательно спятили! Доктор Хесс приказала Артуру Кетчу ликвидировать меня за вопросы о файлах Консорциума! Я стащил главные чертежи наших енохианских глушителей и рванул к вашей границе — скажите, что ваши ворота открыты, потому что Кетч висит у меня на хвосте!</TMM_Story_men_of_letters_Q5.letterText>
+  <TMM_Story_men_of_letters_Q5.stages.0.label>Отбить группу ликвидации Артура Кетча</TMM_Story_men_of_letters_Q5.stages.0.label>
+  <TMM_Story_men_of_letters_Q5.stages.0.text>Мик Дэвис врывается за стены {COLONY}, а следом идут Антония Бевелл и Артур Кетч — вежливо приподнимающий шляпу перед открытием огня!</TMM_Story_men_of_letters_Q5.stages.0.text>
+  <TMM_Story_men_of_letters_Q5.stages.1.label>Чертежи из Лондона</TMM_Story_men_of_letters_Q5.stages.1.label>
+  <TMM_Story_men_of_letters_Q5.stages.1.text>Когда группа ликвидации разбита, Мик Дэвис переводит дух и выкладывает на стол главные чертежи енохианских подавителей.</TMM_Story_men_of_letters_Q5.stages.1.text>
+  <TMM_Story_men_of_letters_Q5.stages.1.choices.0.label>Укрыть Мика Дэвиса и принять его в колонию</TMM_Story_men_of_letters_Q5.stages.1.choices.0.label>
+  <TMM_Story_men_of_letters_Q5.stages.1.choices.0.resultText>Я в долгу перед вами по гроб жизни. Давайте соберём эти глушители и покажем Лондону, что такое настоящая охота!</TMM_Story_men_of_letters_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

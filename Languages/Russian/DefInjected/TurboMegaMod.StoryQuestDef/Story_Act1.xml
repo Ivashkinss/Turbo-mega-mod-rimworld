@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Story_A1_Signal.label>сигнал под фундаментом</TMM_Story_A1_Signal.label>
+  <TMM_Story_A1_Signal.stages.0.label>Сигнал под фундаментом</TMM_Story_A1_Signal.stages.0.label>
+  <TMM_Story_A1_Signal.stages.0.text>Копая фундамент для {COLONY}, колонисты наткнулись на запечатанный довоенный люк. Сталь испещрена угловатыми рунами, которых никто не может прочесть, а снизу доносится медленный ровный стук, будто под землёй бьётся сердце. В щели уплотнителя застрял треснувший голодиск.\n\nЧто будете делать?</TMM_Story_A1_Signal.stages.0.text>
+  <TMM_Story_A1_Signal.stages.0.choices.0.label>Вскрыть люк</TMM_Story_A1_Signal.stages.0.choices.0.label>
+  <TMM_Story_A1_Signal.stages.0.choices.0.resultText>Люк со стоном поддаётся. За ним короткий коридор с мёртвыми терминалами, и стук становится громче. Здесь кто-то был совсем недавно: свежие следы ботинок ведут вглубь и обрываются у обрушенной стены. Голодиск теперь у вас.</TMM_Story_A1_Signal.stages.0.choices.0.resultText>
+  <TMM_Story_A1_Signal.stages.0.choices.1.label>Заварить люк и оставить голодиск себе</TMM_Story_A1_Signal.stages.0.choices.1.label>
+  <TMM_Story_A1_Signal.stages.0.choices.1.resultText>Сварщики работают до темноты. Люк запаян, но стук не прекращается, а ночью кажется, что он идёт прямо из-под кроватей. Голодиск тихо тёплый на ощупь.</TMM_Story_A1_Signal.stages.0.choices.1.resultText>
+  <TMM_Story_A1_Signal.stages.1.label>Сны под пеплом</TMM_Story_A1_Signal.stages.1.label>
+  <TMM_Story_A1_Signal.stages.1.text>Всю ночь колонистам снится один и тот же сон: белые стены лаборатории, незнакомец в потёртом плаще бежит по снегу, прижимая к груди что-то светящееся, и голос говорит: «Не отдавай Искру никому из них».\n\nУтром голодиск гудит сам по себе.</TMM_Story_A1_Signal.stages.1.text>
+
+  <TMM_Story_A1_Castiel.label>гость в бежевом плаще</TMM_Story_A1_Castiel.label>
+  <TMM_Story_A1_Castiel.letterLabel>Гость в бежевом плаще</TMM_Story_A1_Castiel.letterLabel>
+  <TMM_Story_A1_Castiel.letterText>На краю {COLONY} стоит человек в мятом бежевом плаще и смотрит в землю, будто прислушивается к ней. Он называет себя {GIVER} и просит поговорить с тем, кто здесь главный.\n\n«То, что под вами, проснулось. Все, кто может это услышать, уже в пути. Я бы хотел, чтобы правду вы узнали сначала от меня».</TMM_Story_A1_Castiel.letterText>
+  <TMM_Story_A1_Castiel.stages.0.label>Правда об Искре</TMM_Story_A1_Castiel.stages.0.label>
+  <TMM_Story_A1_Castiel.stages.0.text>{GIVER} говорит негромко. «После войны ни одна душа не дошла ни до Небес, ни до Ада. Оба царства голодают. Ангелы без благодати падают с неба, демоны рвут друг друга за крохи. А потом в Институте случилось чудо: родился синтетический человек с настоящей душой — Искрой. Кто-то вынес первую Искру из лабораторий и принёс сюда, к Якорю под вашим домом.\n\nЗа ней придут все. И Небеса тоже. Я прошу вас не отдавать её никому — даже моим братьям».</TMM_Story_A1_Castiel.stages.0.text>
+  <TMM_Story_A1_Castiel.stages.0.choices.0.label>Выслушать его и пообещать защищать Искру</TMM_Story_A1_Castiel.stages.0.choices.0.label>
+  <TMM_Story_A1_Castiel.stages.0.choices.0.resultText>«Спасибо». {GIVER} касается голодиска, и тот мерцает: открывается первый сектор с картой подземных узлов, таких же, как под вашей колонией. «Я вернусь. Не верьте тем, кто обещает уберечь Искру».</TMM_Story_A1_Castiel.stages.0.choices.0.resultText>
+  <TMM_Story_A1_Castiel.stages.0.choices.1.label>Попросить ангела уйти и не вмешиваться</TMM_Story_A1_Castiel.stages.0.choices.1.label>
+  <TMM_Story_A1_Castiel.stages.0.choices.1.resultText>{GIVER} кивает без обиды. «Тогда хотя бы взгляните». Он касается голодиска, и открывается первый сектор: карта подземных узлов, таких же, как под вашей колонией. Когда вы поднимаете глаза, его уже нет.</TMM_Story_A1_Castiel.stages.0.choices.1.resultText>
+</LanguageData>

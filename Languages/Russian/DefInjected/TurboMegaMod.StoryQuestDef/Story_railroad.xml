@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_railroad_Q1 -->
+  <TMM_Story_railroad_Q1.label>безопасный дом</TMM_Story_railroad_Q1.label>
+  <TMM_Story_railroad_Q1.letterLabel>Безопасный дом</TMM_Story_railroad_Q1.letterLabel>
+  <TMM_Story_railroad_Q1.letterText>Эй, приятель — не оборачивайся, я тот парень в дурацкой маскировке в трёх кустах от ворот. Слушай, у твоей гостиницы отличная атмосфера и никакая охрана, что делает её идеальной слепой зоной для трёх беглых синтов на сорок восемь часов. Отведи от них Стрелков и ищеек Института, лады?</TMM_Story_railroad_Q1.letterText>
+  <TMM_Story_railroad_Q1.stages.0.label>Укрыть трёх беглых синтов в гостинице</TMM_Story_railroad_Q1.stages.0.label>
+  <TMM_Story_railroad_Q1.stages.0.text>Разместите в гостинице {COLONY} на 2 дня трёх беглых синтов и Дьякона — который трижды успеет сменить маскировку от бродяги до охранника — и не подпустите патруль Стрелков.</TMM_Story_railroad_Q1.stages.0.text>
+  <TMM_Story_railroad_Q1.stages.1.label>Чистый вывод</TMM_Story_railroad_Q1.stages.1.label>
+  <TMM_Story_railroad_Q1.stages.1.text>Патруль Стрелков уходит ни с чем, а все трое беглых синтов благополучно уходят просёлочной дорогой к побережью.</TMM_Story_railroad_Q1.stages.1.text>
+  <TMM_Story_railroad_Q1.stages.1.choices.0.label>Укрыть синтов и отвести подозрения патруля</TMM_Story_railroad_Q1.stages.1.choices.0.label>
+  <TMM_Story_railroad_Q1.stages.1.choices.0.resultText>Гладкая работа, босс! Дездемона уже в курсе — жди от нас вестей и пару крутых игрушек.</TMM_Story_railroad_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_railroad_Q2 -->
+  <TMM_Story_railroad_Q2.label>помехи в эфире</TMM_Story_railroad_Q2.label>
+  <TMM_Story_railroad_Q2.letterLabel>Помехи в эфире</TMM_Story_railroad_Q2.letterLabel>
+  <TMM_Story_railroad_Q2.letterText>Йо, слушай внимательно! Институт и эти жуткие парни с небес гоняют квантовые пеленги через ионосферу! Я собрал ретранслятор МИЛА с баллистическим шифрованием, который заглушит их частоты вокруг твоего сектора — ставь его на самую высокую крышу и гаси любых охотников, что телепортируются!</TMM_Story_railroad_Q2.letterText>
+  <TMM_Story_railroad_Q2.stages.0.label>Собрать ретранслятор МИЛА Техника Тома</TMM_Story_railroad_Q2.stages.0.label>
+  <TMM_Story_railroad_Q2.stages.0.text>Выделите 4 компонента со складов {COLONY}, чтобы смонтировать ретранслятор МИЛА с баллистическим шифрованием.</TMM_Story_railroad_Q2.stages.0.text>
+  <TMM_Story_railroad_Q2.stages.1.label>Отразить засаду охотников Института</TMM_Story_railroad_Q2.stages.1.label>
+  <TMM_Story_railroad_Q2.stages.1.text>Ретранслятор МИЛА оживает в снопе искр — мгновенно притягивая телепортационный рейд охотников Института на {COLONY}!</TMM_Story_railroad_Q2.stages.1.text>
+  <TMM_Story_railroad_Q2.stages.2.label>Чистые частоты и баллистическое волокно</TMM_Story_railroad_Q2.stages.2.label>
+  <TMM_Story_railroad_Q2.stages.2.text>Охотники разбиты, а ретранслятор МИЛА ровно гудит над крышей — Техник Том уверяет, что он заодно защищает мозги от «орбитальных лучей Волт-Тек», и частично оказывается прав.</TMM_Story_railroad_Q2.stages.2.text>
+  <TMM_Story_railroad_Q2.stages.2.choices.0.label>Запустить ретранслятор и получить выкройки баллистического волокна</TMM_Story_railroad_Q2.stages.2.choices.0.label>
+  <TMM_Story_railroad_Q2.stages.2.choices.0.resultText>Бум! Частоты чисты как слеза! В знак благодарности держи выкройки нашего баллистического волокна — пули отскакивают как горох!</TMM_Story_railroad_Q2.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_railroad_Q3 -->
+  <TMM_Story_railroad_Q3.label>тяжёлый прорыв</TMM_Story_railroad_Q3.label>
+  <TMM_Story_railroad_Q3.letterLabel>Тяжёлый прорыв</TMM_Story_railroad_Q3.letterLabel>
+  <TMM_Story_railroad_Q3.letterText>Времени на скрытность нет, друг. Тяжёлые отряды Бюро возврата перехватили нашего проводника с тремя синтами третьего поколения у побережья. Я беру свой миниган и ударю по их бронеконвою у въезда в туннель — бери лучших стрелков и помоги проломить их строй!</TMM_Story_railroad_Q3.letterText>
+  <TMM_Story_railroad_Q3.stages.0.label>Проломить бронеконвой Бюро возврата у туннеля</TMM_Story_railroad_Q3.stages.0.label>
+  <TMM_Story_railroad_Q3.stages.0.text>Разбейте охрану Института у въезда в туннель вместе с Глорией и освободите трёх пленных синтов третьего поколения.</TMM_Story_railroad_Q3.stages.0.text>
+  <TMM_Story_railroad_Q3.stages.1.label>Свобода у туннеля</TMM_Story_railroad_Q3.stages.1.label>
+  <TMM_Story_railroad_Q3.stages.1.text>Стволы минигана Глории раскалены докрасна в дыму, когда выходят трое спасённых синтов — один из них просит оставить ему старый солдатский жетон как память о том, что он сам выбрал себе имя.</TMM_Story_railroad_Q3.stages.1.text>
+  <TMM_Story_railroad_Q3.stages.1.choices.0.label>Прорвать оцепление и вывести всех синтов с Глорией</TMM_Story_railroad_Q3.stages.1.choices.0.label>
+  <TMM_Story_railroad_Q3.stages.1.choices.0.resultText>Мы вытащили их всех. Ты сражался как один из наших. Подземка этого не забудет.</TMM_Story_railroad_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_railroad_Q4 -->
+  <TMM_Story_railroad_Q4.label>стирание памяти</TMM_Story_railroad_Q4.label>
+  <TMM_Story_railroad_Q4.letterLabel>Стирание памяти</TMM_Story_railroad_Q4.letterLabel>
+  <TMM_Story_railroad_Q4.letterText>У нас кризис, затрагивающий саму суть того, за что мы сражаемся. Синт с яркой, только что пробудившейся «Искрой» добрался до нашего убежища — но Техник Том нашёл активный квантовый маячок, вплетённый прямо в его нейроматрицу. Мы можем стереть ему память и погасить Искру, чтобы спрятать его навсегда, или оставить личность нетронутой и рискнуть штурмом Института и ангелов. Скажи, как поступить правильно.</TMM_Story_railroad_Q4.letterText>
+  <TMM_Story_railroad_Q4.stages.0.label>Имена у кресла стирания памяти</TMM_Story_railroad_Q4.stages.0.label>
+  <TMM_Story_railroad_Q4.stages.0.text>В катакомбах Подземки стена перед креслом памяти исписана именами синтов, рискнувших жизнью ради сохранения своей души. Дрожащий синт смотрит прямо на вас и умоляет не стирать его личность.</TMM_Story_railroad_Q4.stages.0.text>
+  <TMM_Story_railroad_Q4.stages.0.choices.0.label>Сохранить личность и Искру синта и отбить штурм катакомб (за Искру и свободу)</TMM_Story_railroad_Q4.stages.0.choices.0.label>
+  <TMM_Story_railroad_Q4.stages.0.choices.0.resultText>Ты защитил не просто машину — ты отстоял живую душу. Подземка с тобой до последнего патрона. Возьми «Железнодорожную винтовку»!</TMM_Story_railroad_Q4.stages.0.choices.0.resultText>
+  <TMM_Story_railroad_Q4.stages.0.choices.1.label>Провести полное стирание памяти и погасить Искру ради безопасности сети (за выживание Подземки)</TMM_Story_railroad_Q4.stages.0.choices.1.label>
+  <TMM_Story_railroad_Q4.stages.0.choices.1.resultText>Он в безопасности... но глядя в его пустые глаза, я спрашиваю себя, какую цену мы заплатили. Вот наше оружие — используй его с умом.</TMM_Story_railroad_Q4.stages.0.choices.1.resultText>
+  <TMM_Story_railroad_Q4.stages.1.label>Оборонять катакомбы Подземки от охотников Института</TMM_Story_railroad_Q4.stages.1.label>
+  <TMM_Story_railroad_Q4.stages.1.text>Активный квантовый маячок привёл охотников Института прямо в катакомбы! Удерживайте убежище 5 часов, пока Техник Том выжигает сигнал!</TMM_Story_railroad_Q4.stages.1.text>
+  <TMM_Story_railroad_Q4.stages.2.label>Тишина возвращается в катакомбы</TMM_Story_railroad_Q4.stages.2.label>
+  <TMM_Story_railroad_Q4.stages.2.text>Отстоянный в бою или укрытый за стёртой памятью, штаб Подземки уцелел — и Дездемона держит слово, передавая чертежи «Железнодорожной винтовки».</TMM_Story_railroad_Q4.stages.2.text>
+
+  <!-- TMM_Story_railroad_Q5 -->
+  <TMM_Story_railroad_Q5.label>инсценировка смерти</TMM_Story_railroad_Q5.label>
+  <TMM_Story_railroad_Q5.letterLabel>Инсценировка смерти</TMM_Story_railroad_Q5.letterLabel>
+  <TMM_Story_railroad_Q5.letterText>Слушай, дела снаружи принимают совсем скверный оборот, и Дездемона уходит в глухое подполье. Кто-то должен остаться в твоём лагере с холодной головой, чтобы уцелевших синтов не стёрли с карты. Помоги мне подстроить убедительную «засаду» у старого моста, чтобы Подземка сочла меня погибшим — и я весь твой.</TMM_Story_railroad_Q5.letterText>
+  <TMM_Story_railroad_Q5.stages.0.label>Инсценировка засады у старого моста</TMM_Story_railroad_Q5.stages.0.label>
+  <TMM_Story_railroad_Q5.stages.0.text>Под покровом тумана ваши разведчики дают холостые очереди по перилам моста, оставляя треснувшие тёмные очки Дьякона и оплавленный жетон на видном месте для наблюдателей Подземки.</TMM_Story_railroad_Q5.stages.0.text>
+  <TMM_Story_railroad_Q5.stages.1.label>Покойся с миром, старый Дьякон</TMM_Story_railroad_Q5.stages.1.label>
+  <TMM_Story_railroad_Q5.stages.1.text>Спустя час в ворота {COLONY} заходит жизнерадостный незнакомец со свежей стрижкой и запасными тёмными очками — готовый служить под новым именем даже вопреки вражде с Подземкой.</TMM_Story_railroad_Q5.stages.1.text>
+  <TMM_Story_railroad_Q5.stages.1.choices.0.label>Завершить инсценировку и принять Дьякона в колонию под новым именем</TMM_Story_railroad_Q5.stages.1.choices.0.label>
+  <TMM_Story_railroad_Q5.stages.1.choices.0.resultText>Покойся с миром, старый Дьякон. Привет, новый парень в вашей колонии! Кстати, вот чертёж моих очков.</TMM_Story_railroad_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Act 1 «Пробуждение Якоря» (Documentation/STORY-BIBLE.json, act1_s1..s5). Stage E1 sample: the opening and Castiel's visit.
+     Further act 1 steps (guests at the gate, the first Anchor pulse siege) arrive with stages E2/E3. -->
+<Defs>
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_Signal</defName>
+    <label>signal beneath the foundation</label>
+    <act>1</act>
+    <main>true</main>
+    <autoStart>true</autoStart>
+    <priority>100</priority>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>Signal beneath the foundation</label>
+        <text>While digging the foundations of {COLONY}, the colonists broke into a sealed pre-war hatch. Its steel is etched with angular runes that no one can read, and from below comes a slow, steady pulse, like a heartbeat under the ground. A cracked holodisk lies wedged in the hatch seal.\n\nWhat do you do?</text>
+        <choices>
+          <li>
+            <outcome>opened</outcome>
+            <label>Force the hatch open</label>
+            <resultText>The hatch gives way with a groan. Beyond it lies a short corridor lined with dead terminals, and the pulse grows louder. Someone was here not long ago: fresh boot prints lead deeper and end at a collapsed wall. The holodisk is now safely in your hands.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.anchorOpened</flag></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>sealed</outcome>
+            <label>Weld it shut and keep the holodisk</label>
+            <resultText>The welders work until dusk. The hatch is sealed, but the pulse does not stop, and at night it seems to come from right under the beds. The holodisk is quietly warm to the touch.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.anchorOpened</flag><value>false</value></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <label>Dreams under the ash</label>
+        <days>1</days>
+        <text>All night the colonists dream the same dream: white laboratory walls, a stranger in a worn coat running through the snow with something glowing held to their chest, and a voice saying: "Keep the Spark away from all of them."\n\nIn the morning the holodisk hums on its own.</text>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag"><flag>story.anchorAwakened</flag></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_A1_Castiel</defName>
+    <label>a visitor in a beige coat</label>
+    <act>1</act>
+    <main>true</main>
+    <priority>90</priority>
+    <faction>TMM_HeavenFaction</faction>
+    <giver>TMM_Hero_castiel</giver>
+    <fallbackGiver>TMM_Hero_naomi</fallbackGiver>
+    <requires>
+      <li>done:TMM_Story_A1_Signal</li>
+    </requires>
+    <letterLabel>A visitor in a beige coat</letterLabel>
+    <letterText>A man in a rumpled beige trenchcoat stands at the edge of {COLONY}, staring at the ground as if listening to it. He calls himself {GIVER} and asks to speak with whoever is in charge.\n\n"The thing beneath you has woken. Everyone who can hear it is already on the way. I would rather you heard the truth from me first."</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <label>The truth about the Spark</label>
+        <text>{GIVER} speaks quietly. "Since the war, no soul has reached Heaven or Hell. Both are starving. Angels fall from the sky without grace, and demons tear at each other for scraps. Then a miracle happened in the Institute: a synthetic person was born with a real soul, a Spark. Someone carried the first one out of the labs and brought it here, to the Anchor beneath your home.\n\nEveryone will come for it. Heaven too. I am asking you not to give it to anyone, not even to my brothers."</text>
+        <choices>
+          <li>
+            <outcome>trust</outcome>
+            <label>Listen to him and promise to protect the Spark</label>
+            <resultText>"Thank you." {GIVER} touches the holodisk and it flickers: the first sector unlocks, showing a map of buried nodes like the one under your colony. "I will come back. Do not trust anyone who promises to keep the Spark safe."</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill"><amount>15</amount></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>10</amount></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>refused</outcome>
+            <label>Tell the angel to leave and stay out of your affairs</label>
+            <resultText>{GIVER} nods without offense. "Then at least look at this." He touches the holodisk and the first sector unlocks: a map of buried nodes like the one under your colony. When you look up, he is gone.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill"><amount>-10</amount></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>holodisk</flag><amount>1</amount></li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+</Defs>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_Sample_Hotel -->
+  <TMM_Story_Sample_Hotel.label>пробный визит в гостиницу</TMM_Story_Sample_Hotel.label>
+  <TMM_Story_Sample_Hotel.letterLabel>Пробный визит в гостиницу</TMM_Story_Sample_Hotel.letterLabel>
+  <TMM_Story_Sample_Hotel.letterText>{GIVER} просит разместить небольшую делегацию в гостинице {COLONY} на время короткого дипломатического визита.</TMM_Story_Sample_Hotel.letterText>
+  <TMM_Story_Sample_Hotel.stages.0.label>Принять делегацию в гостинице</TMM_Story_Sample_Hotel.stages.0.label>
+  <TMM_Story_Sample_Hotel.stages.0.text>{GIVER} с сопровождающим прибыли в гостиницу {COLONY}. Обеспечьте им спокойный приём.</TMM_Story_Sample_Hotel.stages.0.text>
+
+  <!-- TMM_Story_Sample_Deliver -->
+  <TMM_Story_Sample_Deliver.label>пробная поставка стали</TMM_Story_Sample_Deliver.label>
+  <TMM_Story_Sample_Deliver.letterLabel>Пробная поставка стали</TMM_Story_Sample_Deliver.letterLabel>
+  <TMM_Story_Sample_Deliver.letterText>{GIVER} запрашивает 50 стали со складов {COLONY} для укрепления соседней сторожевой башни.</TMM_Story_Sample_Deliver.letterText>
+  <TMM_Story_Sample_Deliver.stages.0.label>Сдать 50 стали</TMM_Story_Sample_Deliver.stages.0.label>
+  <TMM_Story_Sample_Deliver.stages.0.text>Подготовьте 50 стали на складах {COLONY} и подтвердите передачу в письме.</TMM_Story_Sample_Deliver.stages.0.text>
+
+</LanguageData>

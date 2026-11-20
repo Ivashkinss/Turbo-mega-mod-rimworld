@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- INSTITUTE Q1: COLD SCANNER                                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_institute_Q1</defName>
+    <label>cold scanner</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_justin_ayo</giver>
+    <fallbackGiver>TMM_Hero_x6_88</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Cold Scanner</letterLabel>
+    <letterText>Surface dweller. Our telemetry indicates an unregistered synthetic unit has taken shelter among the refugees at your settlement's waystation. The Synth Retention Bureau expects your full cooperation in identifying and securing Institute property. Comply, and you will be compensated; interfere, and we will consider your outpost hostile.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>hotel_scan</key>
+        <label>Investigate the waystation refugees</label>
+        <text>Three refugees have checked into {COLONY}'s waystation—one of them is an unregistered third-generation synth. Question the guests before the Synth Retention Bureau arrives.</text>
+        <faction>TMM_RailroadFaction</faction>
+        <groupSize>3</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Investigate</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>courser_ultimatum</key>
+        <label>Courser at the perimeter</label>
+        <text>Blue lightning flashes at the edge of {COLONY}: Institute Courser X6-88 and a squad of synths have teleported in, demanding you hand over the runaway unit immediately.</text>
+        <choices>
+          <li>
+            <outcome>handed_over</outcome>
+            <label>Hand the runaway synth over to Courser X6-88</label>
+            <resultText>A rational decision. The Synth Retention Bureau values discipline and punctuality.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q1</flag>
+                <value>handed_over</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.institute_lab_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>saved</outcome>
+            <label>Hide the runaway synth and feed X6-88 a decoy transponder</label>
+            <resultText>So the signal went cold. Very well—but the Bureau will keep watching your sector.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q1</flag>
+                <value>saved</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- INSTITUTE Q2: FIRMWARE GLITCH                                         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_institute_Q2</defName>
+    <label>firmware glitch</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_alan_binet</giver>
+    <fallbackGiver>TMM_Hero_madison_li</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_institute_Q1</li>
+    </requires>
+    <letterLabel>Firmware Glitch</letterLabel>
+    <letterText>Please, keep this transmission off the main Bureau frequencies. One of my experimental third-generation units suffered a quantum cascade during a surface relay test—she is hurt, frightened, and displaying true emotional resonance. Patch her neural link before Ayo's trackers triangulate her signal.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>crash_site</key>
+        <label>Secure the crashed relay pod</label>
+        <text>Clear the scavengers converging on the broken Institute relay pod so your team can evacuate the wounded synth assistant Eve back to {COLONY}.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>medbay_stabilize</key>
+        <label>Stabilizing the neural cascade</label>
+        <text>In {COLONY}'s infirmary, your medics work furiously to calm Eve's overheating neural interface before Bureau drones triangulate her. Half-conscious, she quietly hums an old pre-war lullaby—the exact same tune only the Zero Synth knows.</text>
+        <days>0.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>neural_decision</key>
+        <label>Eve's neural matrix</label>
+        <text>The Bureau tracking pulse is seconds away from locking onto your infirmary. You can wipe the Bureau tracker and preserve Eve's emerging personality as Alan Binet begs, or factory-reset her firmware and return her to Father.</text>
+        <choices>
+          <li>
+            <outcome>preserved</outcome>
+            <label>Restore her personality and erase the Bureau tracker</label>
+            <resultText>You gave her the right to feel. I will not forget this when the reckoning comes.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q2</flag>
+                <value>preserved</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>5</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentSpacer</thing>
+                <count>2</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.synth_ceramic_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>wiped</outcome>
+            <label>Reset her firmware to factory defaults and return her to Father</label>
+            <resultText>A pity... another spark snuffed out. Still, Father will reward your loyalty.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q2</flag>
+                <value>wiped</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>-10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentSpacer</thing>
+                <count>4</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.synth_ceramic_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- INSTITUTE Q3: REACTOR ON THE BRINK                                    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_institute_Q3</defName>
+    <label>reactor on the brink</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_madison_li</giver>
+    <fallbackGiver>TMM_Hero_father_shaun</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_institute_Q2</li>
+    </requires>
+    <letterLabel>Reactor on the Brink</letterLabel>
+    <letterText>I do not care for surface politics, and I certainly do not care for Father's philosophical games, but our main fusion agitator is losing containment. Only one pre-war beryllium amplifier survived in the flooded Mass Fusion sub-levels. Retrieve it before the entire sector experiences a thermal meltdown.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>mass_fusion</key>
+        <label>Retrieve the beryllium amplifier at Mass Fusion</label>
+        <text>Fight through Brotherhood of Steel knights contesting the flooded Mass Fusion sub-levels and extract the pre-war beryllium amplifier.</text>
+        <enemyFaction>TMM_BrotherhoodFaction</enemyFaction>
+        <objective>Retrieve</objective>
+        <thing>ComponentSpacer</thing>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>agitator_fate</key>
+        <label>Fate of the beryllium amplifier</label>
+        <text>Beside the reactor core, your team also found a pre-war engineer's skeleton clutching a note about secret uranium shipments to Vault-Tec. Now you hold the priceless beryllium amplifier—deliver it to Dr. Madison Li, or install it in {COLONY}'s own reactor?</text>
+        <choices>
+          <li>
+            <outcome>institute</outcome>
+            <label>Deliver the beryllium amplifier to Dr. Madison Li</label>
+            <resultText>Finally, someone on the surface who knows how to get real work done. The reactor is stabilized.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q3</flag>
+                <value>institute</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1200</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.synth_implants</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>kept</outcome>
+            <label>Keep the amplifier to supercharge {COLONY}'s own nuclear reactor</label>
+            <resultText>You stole the future of science for your miserable little generator! I won't let this slide.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.inst_q3</flag>
+                <value>kept</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Uranium</thing>
+                <count>20</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.beryllium_reactor_mod</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- INSTITUTE Q4 (FACTION POINT): GHOST IN THE MACHINE                    -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_institute_Q4</defName>
+    <label>ghost in the machine</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_father_shaun</giver>
+    <fallbackGiver>TMM_Hero_justin_ayo</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_institute_Q3</li>
+    </requires>
+    <letterLabel>Ghost in the Machine</letterLabel>
+    <letterText>You have proven yourself remarkably capable, my friend. Now we face a critical anomaly: a prototype synth has developed a self-sustaining spiritual resonance—a 'Spark'—that is attracting both angels and demons to our relay frequencies. Help X6-88 bring this specimen home so we may study and contain this flaw.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>chapel_clash</key>
+        <label>Intercept the prototype at the ruined chapel</label>
+        <text>An angel watcher and Institute Courser X6-88 have converged on the prototype synth inside a ruined chapel. Fight through the angelic strike squad to reach the relay beacon.</text>
+        <enemyFaction>TMM_HeavenFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>beacon_choice</key>
+        <label>The Spark at the relay beacon</label>
+        <text>Before the chapel altar, the terrified prototype synth speaks an angel's true Enochian name—stopping the last watcher cold. Over your radio, Alan Binet begs you to spare the synth's soul, while Father calmly orders you to lock the teleporter beacon and extract its core.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Surrender the prototype to Father for Spark extraction (Side with the Institute)</label>
+            <resultText>Hard choices define the future of humanity. The Spark telemetry is now in our hands.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.institute</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_experiment_18a</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.father_white_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Smash the Institute beacon and smuggle the synth to freedom (Protect the Spark)</label>
+            <resultText>You betrayed the Institute's trust for a defective machine. From this hour on, the Retention Bureau shows no mercy.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.institute</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.courser_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.institute</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- INSTITUTE Q5 (DEFECTOR QUEST): ESCAPE FROM BELOW                      -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_institute_Q5</defName>
+    <label>escape from below</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_InstituteFaction</faction>
+    <giver>TMM_Hero_alan_binet</giver>
+    <fallbackGiver>TMM_Hero_madison_li</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_institute_Q4</li>
+    </requires>
+    <anyOf>
+      <li>choice.institute=pro_spark</li>
+      <li>ponr1=protect</li>
+    </anyOf>
+    <letterLabel>Escape from Below</letterLabel>
+    <letterText>Father has handed full security control to Justin Ayo, and they are preparing to purge every third-generation synth in Robotics! Madison Li and I have rigged an emergency relay to your coordinates, but Coursers are already breaching our blast doors. Hold the perimeter!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>courser_pursuit</key>
+        <label>Hold the relay against Institute Coursers</label>
+        <text>Justin Ayo's Courser hit squads are teleporting into {COLONY} to stop Alan Binet and Dr. Madison Li from escaping! Defeat the hunters!</text>
+        <faction>TMM_InstituteFaction</faction>
+        <pointsFactor>1.25</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_scientists</key>
+        <label>Refugees from Robotics</label>
+        <text>In a blinding column of blue static, Alan Binet and Dr. Madison Li stumble onto your floor—followed by Alan's startled pet cat, which somehow survived quantum relay transit. Your techs jam the Institute's frequency overhead.</text>
+        <choices>
+          <li>
+            <outcome>accept_defectors</outcome>
+            <label>Welcome Alan Binet and Dr. Madison Li into {COLONY}</label>
+            <resultText>We are free... and we will help you build the Spark Resonator to protect every last one of them.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_alan_binet</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_madison_li</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_alan_binet</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_madison_li</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_InstituteFaction</faction>
+                <amount>-100</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.molecular_relay</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

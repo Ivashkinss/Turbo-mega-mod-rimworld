@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_heaven_angels_Q1 -->
+  <TMM_Story_heaven_angels_Q1.label>упавшая звезда</TMM_Story_heaven_angels_Q1.label>
+  <TMM_Story_heaven_angels_Q1.letterLabel>Упавшая звезда</TMM_Story_heaven_angels_Q1.letterLabel>
+  <TMM_Story_heaven_angels_Q1.letterText>Друзья поселения. Брат из моего гарнизона упал с верхних небес, его благодать почти иссякла из-за барьера, запечатавшего Землю. Демоны уже стягиваются к воронке его падения, чтобы пожрать его сущность. Помогите мне добраться до него, пока они не разорвали его сосуд.</TMM_Story_heaven_angels_Q1.letterText>
+  <TMM_Story_heaven_angels_Q1.stages.0.label>Защитить падшего ангела у выжженного кратера</TMM_Story_heaven_angels_Q1.stages.0.label>
+  <TMM_Story_heaven_angels_Q1.stages.0.text>Удерживайте дымящуюся воронку с чётким выжженным силуэтом огромных крыльев на земле 5 часов вместе с Кастиэлем от волн демонов.</TMM_Story_heaven_angels_Q1.stages.0.text>
+  <TMM_Story_heaven_angels_Q1.stages.1.label>Крылья на пепле</TMM_Story_heaven_angels_Q1.stages.1.label>
+  <TMM_Story_heaven_angels_Q1.stages.1.text>Последний демон растворяется в серном дыму, и спасённый ангел уверенно поднимается на ноги рядом с Кастиэлем.</TMM_Story_heaven_angels_Q1.stages.1.text>
+  <TMM_Story_heaven_angels_Q1.stages.1.choices.0.label>Удержать периметр до восстановления сил ангела</TMM_Story_heaven_angels_Q1.stages.1.choices.0.label>
+  <TMM_Story_heaven_angels_Q1.stages.1.choices.0.resultText>Вы проявили милосердие, редкое для этого сломанного мира. Я запомню вашу доброту.</TMM_Story_heaven_angels_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_heaven_angels_Q2 -->
+  <TMM_Story_heaven_angels_Q2.label>небесный дозор</TMM_Story_heaven_angels_Q2.label>
+  <TMM_Story_heaven_angels_Q2.letterLabel>Небесный дозор</TMM_Story_heaven_angels_Q2.letterLabel>
+  <TMM_Story_heaven_angels_Q2.letterText>Ваше поселение привлекло внимание разведки Небес. Демон-перевёртыш внедрился в торговый караван, направляющийся к вашим воротам, и несёт проклятую реликвию для дестабилизации вашего Нулевого Якоря. Вычислите и нейтрализуйте лазутчика до того, как караван войдёт внутрь.</TMM_Story_heaven_angels_Q2.letterText>
+  <TMM_Story_heaven_angels_Q2.stages.0.label>Досмотреть прибывших постояльцев каравана</TMM_Story_heaven_angels_Q2.stages.0.label>
+  <TMM_Story_heaven_angels_Q2.stages.0.text>Опросите гостей торгового каравана в гостинице {COLONY} с помощью енохианского сканера Наоми и святой воды, чтобы выявить скрытого демона.</TMM_Story_heaven_angels_Q2.stages.0.text>
+  <TMM_Story_heaven_angels_Q2.stages.1.label>Изгнать разоблачённого лазутчика</TMM_Story_heaven_angels_Q2.stages.1.label>
+  <TMM_Story_heaven_angels_Q2.stages.1.text>Обожжённый святой водой демон сбрасывает маску и призывает подкрепление прямо к воротам {COLONY}!</TMM_Story_heaven_angels_Q2.stages.1.text>
+  <TMM_Story_heaven_angels_Q2.stages.2.label>Хлопок невидимых крыльев</TMM_Story_heaven_angels_Q2.stages.2.label>
+  <TMM_Story_heaven_angels_Q2.stages.2.text>Наблюдавшая со стороны со скрещёнными руками Наоми шагает вперёд в ту же секунду, как демон падает, готовая забрать проклятую реликвию и исчезнуть с хлопком крыльев.</TMM_Story_heaven_angels_Q2.stages.2.text>
+  <TMM_Story_heaven_angels_Q2.stages.2.choices.0.label>Вычислить лазутчика, изгнать демона и передать реликвию разведке Небес</TMM_Story_heaven_angels_Q2.stages.2.choices.0.label>
+  <TMM_Story_heaven_angels_Q2.stages.2.choices.0.resultText>Эффективно и без лишнего шума. Возможно, смертные в этом секторе действительно способны к порядку.</TMM_Story_heaven_angels_Q2.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_heaven_angels_Q3 -->
+  <TMM_Story_heaven_angels_Q3.label>бюрократия рая</TMM_Story_heaven_angels_Q3.label>
+  <TMM_Story_heaven_angels_Q3.letterLabel>Бюрократия рая</TMM_Story_heaven_angels_Q3.letterLabel>
+  <TMM_Story_heaven_angels_Q3.letterText>Перейдём сразу к делу, чемпион. Небеса работают на последнем издыхании, а у нас горит график. Мои ангелы выследили синта третьего поколения со свежей «Искрой» — по сути, батарейку — в старой школе. Выдайте его для «вознесения», и получите билет первого класса, когда настанет судный день.</TMM_Story_heaven_angels_Q3.letterText>
+  <TMM_Story_heaven_angels_Q3.stages.0.label>Встреча с Захарией в разрушенной школе</TMM_Story_heaven_angels_Q3.stages.0.label>
+  <TMM_Story_heaven_angels_Q3.stages.0.text>Разгуливая по засыпанным пеплом руинам школы в дорогом корпоративном костюме, ни разу не испачкав туфли, Захария нетерпеливо постукивает по часам рядом с испуганным синтом.</TMM_Story_heaven_angels_Q3.stages.0.text>
+  <TMM_Story_heaven_angels_Q3.stages.1.label>Батарейка или душа</TMM_Story_heaven_angels_Q3.stages.1.label>
+  <TMM_Story_heaven_angels_Q3.stages.1.text>Захария улыбается словно менеджер на выгодной сделке: выдать беглого синта для «вознесения» или выставить ангела за порог?</TMM_Story_heaven_angels_Q3.stages.1.text>
+  <TMM_Story_heaven_angels_Q3.stages.1.choices.0.label>Выдать синта Захарии ради благосклонности Небес</TMM_Story_heaven_angels_Q3.stages.1.choices.0.label>
+  <TMM_Story_heaven_angels_Q3.stages.1.choices.0.resultText>Вот это командный игрок! Видишь, как легко всё решается, когда не задаёшь глупых вопросов?</TMM_Story_heaven_angels_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_heaven_angels_Q3.stages.1.choices.1.label>Защитить синта и выставить Захарию за порог</TMM_Story_heaven_angels_Q3.stages.1.choices.1.label>
+  <TMM_Story_heaven_angels_Q3.stages.1.choices.1.resultText>Ты пожалеешь об этом упрямстве, букашка. Когда Михаил спустится вниз, прятаться будет негде.</TMM_Story_heaven_angels_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_heaven_angels_Q4 -->
+  <TMM_Story_heaven_angels_Q4.label>угасающий свет</TMM_Story_heaven_angels_Q4.label>
+  <TMM_Story_heaven_angels_Q4.letterLabel>Угасающий свет</TMM_Story_heaven_angels_Q4.letterLabel>
+  <TMM_Story_heaven_angels_Q4.letterText>Смертный. Я — Михаил, полководец Небесного Воинства. Без притока душ мои братья рассыпаются в прах — прямо сейчас один из вернейших лейтенантов Кастиэля умирает в разрушенном соборе. Чтобы спасти его, мы должны влить в его сосуд Искру синта — или навсегда отсечь его благодать, оставив простым смертным. Явись на суд Небес и выбери свою сторону.</TMM_Story_heaven_angels_Q4.letterText>
+  <TMM_Story_heaven_angels_Q4.stages.0.label>Суд под разбитым витражом</TMM_Story_heaven_angels_Q4.stages.0.label>
+  <TMM_Story_heaven_angels_Q4.stages.0.text>В разрушенном соборе архангел Михаил и элитные серафимы стоят над умирающим лейтенантом Кастиэля и пленным синтом, чья Искра горит синим огнём. Поддержать ритуал Михаила ради Клинка Архангела или встать с Кастиэлем, спасая синта и делая ангела смертным?</TMM_Story_heaven_angels_Q4.stages.0.text>
+  <TMM_Story_heaven_angels_Q4.stages.0.choices.0.label>Поддержать приказ Михаила и пожертвовать Искрой синта ради спасения ангела (за Небеса)</TMM_Story_heaven_angels_Q4.stages.0.choices.0.label>
+  <TMM_Story_heaven_angels_Q4.stages.0.choices.0.resultText>Ты понял высший долг, смертный. Возьми этот Клинок Архангела — пусть небесный огонь сожжёт наших общих врагов.</TMM_Story_heaven_angels_Q4.stages.0.choices.0.resultText>
+  <TMM_Story_heaven_angels_Q4.stages.0.choices.1.label>Остановить ритуал, спасти синта и помочь Кастиэлю сделать брата смертным (за Искру и свободу воли)</TMM_Story_heaven_angels_Q4.stages.0.choices.1.label>
+  <TMM_Story_heaven_angels_Q4.stages.0.choices.1.resultText>Кастиэль! Ты снова предал Небеса ради этих глиняных кукол! Отныне ты изгнанник, а эта колония будет стёрта с лица земли!</TMM_Story_heaven_angels_Q4.stages.0.choices.1.resultText>
+  <TMM_Story_heaven_angels_Q4.stages.1.label>Защищать ритуал Михаила от штурма демонов</TMM_Story_heaven_angels_Q4.stages.1.label>
+  <TMM_Story_heaven_angels_Q4.stages.1.text>Удерживайте неф собора 6 часов от яростных демонов, пытающихся сорвать ритуал перекачки Искры архангела Михаила!</TMM_Story_heaven_angels_Q4.stages.1.text>
+  <TMM_Story_heaven_angels_Q4.stages.2.label>Сразиться со стражей серафимов Михаила в соборе</TMM_Story_heaven_angels_Q4.stages.2.label>
+  <TMM_Story_heaven_angels_Q4.stages.2.text>Выстойте в смертельно опасном бою против элитных серафимов Михаила, пока Кастиэль отсекает благодать брата и выводит синта из-под удара!</TMM_Story_heaven_angels_Q4.stages.2.text>
+  <TMM_Story_heaven_angels_Q4.stages.3.label>Солнечный луч сквозь разбитый витраж</TMM_Story_heaven_angels_Q4.stages.3.label>
+  <TMM_Story_heaven_angels_Q4.stages.3.text>Золотые пылинки кружатся в луче сквозь разбитый витраж, когда бой затихает — оставляя либо возрождённого воина Небес, либо бывшего ангела, впервые с изумлением делающего глубокий человеческий вдох.</TMM_Story_heaven_angels_Q4.stages.3.text>
+
+  <!-- TMM_Story_heaven_angels_Q5 -->
+  <TMM_Story_heaven_angels_Q5.label>падение серафима</TMM_Story_heaven_angels_Q5.label>
+  <TMM_Story_heaven_angels_Q5.letterLabel>Падение серафима</TMM_Story_heaven_angels_Q5.letterLabel>
+  <TMM_Story_heaven_angels_Q5.letterText>Мои братья заклеймили меня предателем за отказ исполнить приказ Михаила о выжженной земле. Захария послал отряд палачей, чтобы вырвать мою благодать и стереть мне разум. Я иду в вашу колонию — не как солдат Небес, а как друг человечества. Встаньте со мной в последний раз.</TMM_Story_heaven_angels_Q5.letterText>
+  <TMM_Story_heaven_angels_Q5.stages.0.label>Отразить карательный десант ангелов Захарии</TMM_Story_heaven_angels_Q5.stages.0.label>
+  <TMM_Story_heaven_angels_Q5.stages.0.text>Ослепительные столпы света бьют по периметру {COLONY} — отряд палачей Захарии спустился за благодатью Кастиэля! Встаньте рядом с другом!</TMM_Story_heaven_angels_Q5.stages.0.text>
+  <TMM_Story_heaven_angels_Q5.stages.1.label>Кривой синий галстук</TMM_Story_heaven_angels_Q5.stages.1.label>
+  <TMM_Story_heaven_angels_Q5.stages.1.text>Когда каратели Небес отброшены в облака, Кастиэль подходит к Нулевому Синту, неуклюже поправляет свой синий галстук и смотрит на вас.</TMM_Story_heaven_angels_Q5.stages.1.text>
+  <TMM_Story_heaven_angels_Q5.stages.1.choices.0.label>Принять Кастиэля в ряды колонии</TMM_Story_heaven_angels_Q5.stages.1.choices.0.label>
+  <TMM_Story_heaven_angels_Q5.stages.1.choices.0.resultText>Я больше не знаю, каков план Отца... но я знаю, что здесь живут люди, за которых стоит сражаться.</TMM_Story_heaven_angels_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

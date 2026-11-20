@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_monster_clans_Q1 -->
+  <TMM_Story_monster_clans_Q1.label>ночной гость</TMM_Story_monster_clans_Q1.label>
+  <TMM_Story_monster_clans_Q1.letterLabel>Ночной гость</TMM_Story_monster_clans_Q1.letterLabel>
+  <TMM_Story_monster_clans_Q1.letterText>Добрый вечер, дружище. Зовут меня Бенни. Прежде чем схватишься за кровь мертвеца, выслушай — я завязал с охотой на людей ещё в Чистилище и хочу тихо переждать бурю в вашей гостинице, никого не трогая. Беда в том, что меня выследила моя старая стая. Подкинешь пару припасов и поможешь отбиться от них, чтобы не задели ваших?</TMM_Story_monster_clans_Q1.letterText>
+  <TMM_Story_monster_clans_Q1.stages.0.label>Укрыть Бенни Лафита в гостинице</TMM_Story_monster_clans_Q1.stages.0.label>
+  <TMM_Story_monster_clans_Q1.stages.0.text>Бенни Лафит тихо снимает комнату в гостинице {COLONY} на ночь — и даже варит на кухне отличный каджунский суп для колонистов, хотя сам его не ест.</TMM_Story_monster_clans_Q1.stages.0.text>
+  <TMM_Story_monster_clans_Q1.stages.1.label>Отбить ночной налёт бывшей стаи Бенни</TMM_Story_monster_clans_Q1.stages.1.label>
+  <TMM_Story_monster_clans_Q1.stages.1.text>Из темноты выходят дикие вампиры из бывшей стаи Бенни, чтобы разорвать отступника — помогите ему удержать крыльцо!</TMM_Story_monster_clans_Q1.stages.1.text>
+  <TMM_Story_monster_clans_Q1.stages.2.label>Благодарность вампира</TMM_Story_monster_clans_Q1.stages.2.label>
+  <TMM_Story_monster_clans_Q1.stages.2.text>Когда бывшая стая обращается в пепел до рассвета, Бенни вытирает клинок и искренне кивает в знак признательности.</TMM_Story_monster_clans_Q1.stages.2.text>
+  <TMM_Story_monster_clans_Q1.stages.2.choices.0.label>Помочь Бенни и отбить атаку его бывшей стаи</TMM_Story_monster_clans_Q1.stages.2.choices.0.label>
+  <TMM_Story_monster_clans_Q1.stages.2.choices.0.resultText>Merci, брат. Не каждый человек протянет руку упырю. Если понадобятся клыки на вашей стороне — только свистни.</TMM_Story_monster_clans_Q1.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_monster_clans_Q2 -->
+  <TMM_Story_monster_clans_Q2.label>новые дети евы</TMM_Story_monster_clans_Q2.label>
+  <TMM_Story_monster_clans_Q2.letterLabel>Новые дети Евы</TMM_Story_monster_clans_Q2.letterLabel>
+  <TMM_Story_monster_clans_Q2.letterText>Смертный. Я — Ева, Мать всех тварей. Из пепла и радиации вашего разрушенного мира я вывела новый выводок высших хищников — быстрее, сильнее и невосприимчивых к вашему серебру. Но даже мать обязана прореживать детей, когда они дичают и нарушают равновесие. Помоги усмирить мой сорвавшийся выводок на старом консервном заводе, и кланы будут уважать ваши границы.</TMM_Story_monster_clans_Q2.letterText>
+  <TMM_Story_monster_clans_Q2.stages.0.label>Уничтожить сорвавшийся выводок Евы на консервном заводе</TMM_Story_monster_clans_Q2.stages.0.label>
+  <TMM_Story_monster_clans_Q2.stages.0.text>Зачистите старый консервный завод и уничтожьте мутировавших гибридов и аномальные коконы, нарушающие равновесие.</TMM_Story_monster_clans_Q2.stages.0.text>
+  <TMM_Story_monster_clans_Q2.stages.1.label>Договоры поставок в «Сукрокорп»</TMM_Story_monster_clans_Q2.stages.1.label>
+  <TMM_Story_monster_clans_Q2.stages.1.text>В забрызганном кровью кабинете директора завода находится свежий договор о поставках мяса в корпорацию Дика Романа «Сукрокорп». Ева спокойно наблюдает с галереи, как догорает последний кокон.</TMM_Story_monster_clans_Q2.stages.1.text>
+  <TMM_Story_monster_clans_Q2.stages.1.choices.0.label>Уничтожить выводок и сжечь коконы на заводе</TMM_Story_monster_clans_Q2.stages.1.choices.0.label>
+  <TMM_Story_monster_clans_Q2.stages.1.choices.0.resultText>Вы сражаетесь с яростью моих лучших детей. Возможно, человечество не так безнадёжно, как говорит Дик.</TMM_Story_monster_clans_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_monster_clans_Q3 -->
+  <TMM_Story_monster_clans_Q3.label>совет старейшин ночи</TMM_Story_monster_clans_Q3.label>
+  <TMM_Story_monster_clans_Q3.letterLabel>Совет старейшин ночи</TMM_Story_monster_clans_Q3.letterLabel>
+  <TMM_Story_monster_clans_Q3.letterText>Ступай осторожно, смертный. Тысячелетиями мои дети правили тьмой, пока Дик Роман и его левиафаны не выползли из бездны, чтобы превратить в скот и людей, и монстров. Встреть меня в заброшенном оперном театре — обсудим древнее перемирие, пока псы Романа не сожрали нас всех.</TMM_Story_monster_clans_Q3.letterText>
+  <TMM_Story_monster_clans_Q3.stages.0.label>Отбить засаду левиафанов Эдгара в оперном театре</TMM_Story_monster_clans_Q3.stages.0.label>
+  <TMM_Story_monster_clans_Q3.stages.0.text>Переговоры срывает штурм Эдгара, в разгар боя сбрасывающего человеческую личину в зубастую пасть бездны! Удержите сцену 5 часов рядом с Альфа-вампиром, пока залп тетрабората натрия не обратит Эдгара в бегство!</TMM_Story_monster_clans_Q3.stages.0.text>
+  <TMM_Story_monster_clans_Q3.stages.1.label>Тайна тетрабората натрия</TMM_Story_monster_clans_Q3.stages.1.label>
+  <TMM_Story_monster_clans_Q3.stages.1.text>Когда Эдгар с воем скрывается за балконом, Альфа-вампир касается перчаткой рассыпанного белого чистящего порошка, обжёгшего левиафана словно кислота: тетраборат натрия — бура.</TMM_Story_monster_clans_Q3.stages.1.text>
+  <TMM_Story_monster_clans_Q3.stages.1.choices.0.label>Отбить атаку левиафанов плечом к плечу с Альфа-вампиром и получить формулу буры</TMM_Story_monster_clans_Q3.stages.1.choices.0.label>
+  <TMM_Story_monster_clans_Q3.stages.1.choices.0.resultText>Ты пролил кровь рядом с Первородным. Отныне кланы ночи не тронут твоё поселение — а вот с левиафанами у нас личный счёт.</TMM_Story_monster_clans_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_monster_clans_Q4 -->
+  <TMM_Story_monster_clans_Q4.label>кровь и бура</TMM_Story_monster_clans_Q4.label>
+  <TMM_Story_monster_clans_Q4.letterLabel>Кровь и бура</TMM_Story_monster_clans_Q4.letterLabel>
+  <TMM_Story_monster_clans_Q4.letterText>Приветствую! На связи Дик Роман. Должен признать, меня дико впечатляет ваше маленькое предприятие — отличная синергия, колоссальный потенциал роста! Говорят, к вам в руки попала неприятная химическая формула под названием «бура», которая вредит бизнесу. Передайте формулу и образцы на нашем перерабатывающем заводе, и я сделаю вас партнёром в новой мировой экономике.</TMM_Story_monster_clans_Q4.letterText>
+  <TMM_Story_monster_clans_Q4.stages.0.label>На пищевом комбинате «Сукрокорп»</TMM_Story_monster_clans_Q4.stages.0.label>
+  <TMM_Story_monster_clans_Q4.stages.0.text>За сияющими конвейерами розлива газировки тянутся ряды усыплённых людей и синтов, готовых к жатве биомассы. Дик Роман с ослепительной улыбкой протягивает руку: сдать формулу буры ради партнёрства или облить его бурой, снять 99% неуязвимость и вступить в смертельный бой?</TMM_Story_monster_clans_Q4.stages.0.text>
+  <TMM_Story_monster_clans_Q4.stages.0.choices.0.label>Принять предложение Дика Романа и уничтожить формулу буры (за левиафанов и Консорциум)</TMM_Story_monster_clans_Q4.stages.0.choices.0.label>
+  <TMM_Story_monster_clans_Q4.stages.0.choices.0.resultText>Фантастика! Обожаю людей, которые умеют считать прибыль! Вот вам живой клинок «Альфа-хищник» и чек на круглую сумму — добро пожаловать в высшую лигу!</TMM_Story_monster_clans_Q4.stages.0.choices.0.resultText>
+  <TMM_Story_monster_clans_Q4.stages.0.choices.1.label>Облить Дика Романа бурой, снять неуязвимость и уничтожить его в бою (за свободу от фермы)</TMM_Story_monster_clans_Q4.stages.0.choices.1.label>
+  <TMM_Story_monster_clans_Q4.stages.0.choices.1.resultText>Ты... ты мелкая букашка! Как ты смеешь жечь меня этой дрянью?! Эдгар, разорви их на куски!</TMM_Story_monster_clans_Q4.stages.0.choices.1.resultText>
+  <TMM_Story_monster_clans_Q4.stages.1.label>Уничтожить Дика Романа на заводе «Сукрокорп» (возьмите буру!)</TMM_Story_monster_clans_Q4.stages.1.label>
+  <TMM_Story_monster_clans_Q4.stages.1.text>Идеальный деловой костюм Дика Романа дымится белой кислотной пеной, а его лицо искажается в зубастую пасть! Используйте распылители или баллоны буры, чтобы снять его 99% неуязвимость и добить босса!</TMM_Story_monster_clans_Q4.stages.1.text>
+  <TMM_Story_monster_clans_Q4.stages.2.label>После событий в «Сукрокорп»</TMM_Story_monster_clans_Q4.stages.2.label>
+  <TMM_Story_monster_clans_Q4.stages.2.text>Линии розлива со скрежетом останавливаются. Став партнёром совета левиафанов или забрав дымящиеся архивы сговора с Волт-Тек, {COLONY} получает живой клинок «Альфа-хищник».</TMM_Story_monster_clans_Q4.stages.2.text>
+
+  <!-- TMM_Story_monster_clans_Q5 -->
+  <TMM_Story_monster_clans_Q5.label>кровавый пакт против бездны</TMM_Story_monster_clans_Q5.label>
+  <TMM_Story_monster_clans_Q5.letterLabel>Кровавый пакт против бездны</TMM_Story_monster_clans_Q5.letterLabel>
+  <TMM_Story_monster_clans_Q5.letterText>Брат, Эдгар и уцелевшая стая левиафанов рвут старые вампирские гнёзда, превращая целые кланы в безмозглых рабов. Альфа-вампир согласился послать своих лучших старейшин на штурм логова Эдгара — а когда пыль уляжется, я навсегда завяжу со старой жизнью и встану в ваш строй, если примете.</TMM_Story_monster_clans_Q5.letterText>
+  <TMM_Story_monster_clans_Q5.stages.0.label>Штурмовать логово левиафанов Эдгара</TMM_Story_monster_clans_Q5.stages.0.label>
+  <TMM_Story_monster_clans_Q5.stages.0.text>Возглавьте совместный штурм логова Эдгара с Бенни Лафитом и старейшинами Альфа-вампира — с бурой и серебром — чтобы навсегда покончить с палачом левиафанов!</TMM_Story_monster_clans_Q5.stages.0.text>
+  <TMM_Story_monster_clans_Q5.stages.1.label>Костяной мачете из Чистилища</TMM_Story_monster_clans_Q5.stages.1.label>
+  <TMM_Story_monster_clans_Q5.stages.1.text>Сжимая вырезанный из кости чистилищный мачете как сувенир на стену, Бенни Лафит переступает порог {COLONY} с заключённым пактом о ненападении от Альфа-вампира.</TMM_Story_monster_clans_Q5.stages.1.text>
+  <TMM_Story_monster_clans_Q5.stages.1.choices.0.label>Уничтожить Эдгара и принять Бенни Лафита в колонию</TMM_Story_monster_clans_Q5.stages.1.choices.0.label>
+  <TMM_Story_monster_clans_Q5.stages.1.choices.0.resultText>Вот и всё, cher. Старые долги закрыты. Выделите мне тихий угол подальше от солнца — и я прикрою спину любому из ваших.</TMM_Story_monster_clans_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

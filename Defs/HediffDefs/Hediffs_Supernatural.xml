@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Passive bleed reduction for Angel Celestial Grace (RimWorld has no BleedRate StatDef) -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_CelestialGrace</defName>
+    <label>celestial grace</label>
+    <description>Radiant grace knits torn vessels almost instantly, reducing bleeding by 80%.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <totalBleedFactor>0.2</totalBleedFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Angel True Visage retinal burn -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_RetinalBurn</defName>
+    <label>celestial retinal burn</label>
+    <description>Overwhelming divine radiance seared this creature's eyes, severely impairing vision for several hours.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1.0, 0.85, 0.45)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>15000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.70</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Demon Infernal Whisper -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_InfernalWhisper</defName>
+    <label>infernal whisper</label>
+    <description>Dark psychic static clouds the victim's thoughts with dread, lowering consciousness, work speed, and combat responsiveness.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.2, 0.25)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>20000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <WorkSpeedGlobal>0.70</WorkSpeedGlobal>
+          <AimingDelayFactor>1.30</AimingDelayFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Super Mutant Irradiated Metabolism (active on polluted ground or toxic fallout) -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_IrradiatedMetabolism</defName>
+    <label>irradiated metabolism</label>
+    <description>Ambient radiation accelerates FEV cellular division, dramatically increasing wound healing speed and lifting mood.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.45, 0.9, 0.35)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets>
+          <InjuryHealingFactor>1.50</InjuryHealingFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Thought_IrradiatedMetabolism</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>TMM_Hediff_IrradiatedMetabolism</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>irradiated vigor</label>
+        <description>The radiation in the air makes my blood sing and my wounds knit shut.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Super Mutant War Roar caster buff & enemy fear debuff -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_WarRoarAdrenaline</defName>
+    <label>mutant battle rush</label>
+    <description>A surge of FEV adrenaline accelerates melee strikes and movement for a short burst.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4, 0.85, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.25</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>1.25</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_WarRoarFear</defName>
+    <label>terrifying roar</label>
+    <description>Shaken to the bone by a super mutant's war bellow, slowing movement speed.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.85, 0.55, 0.2)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1200</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.80</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Super Mutant Bulky Physiology hunger multiplier (works even with net metabolism 0) -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_BulkyPhysiology</defName>
+    <label>bulky FEV physiology</label>
+    <description>Massive mutated muscle mass demands 35% more calories than a human frame.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <hungerRateFactor>1.35</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Leviathan Predatory Mimicry disguise -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_PredatoryMimicry</defName>
+    <label>predatory mimicry</label>
+    <description>Cellular shapeshifting copies another humanoid's face and voice, granting sharp social and trading bonuses. Breaks immediately on borax damage or when using Abyssal Devouring Maw.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.35, 0.85)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>120000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="TurboMegaMod.HediffCompProperties_PredatoryMimicry" />
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <SocialImpact>0.25</SocialImpact>
+          <NegotiationAbility>0.25</NegotiationAbility>
+          <TradePriceImprovement>0.25</TradePriceImprovement>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Leviathan Caustic Borax Burn debuff -->
+  <HediffDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Hediff_BoraxBurn</defName>
+    <label>caustic borax burn</label>
+    <description>Sodium borate is violently corroding Leviathan tissue, suppressing cellular regeneration and halving armor protection for 30 seconds.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.9, 0.95)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <InjuryHealingFactor>0.01</InjuryHealingFactor>
+          <ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.50</ArmorRating_Heat>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Ghoul Feral Frenzy mental state -->
+  <MentalStateDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_MentalState_FeralGhoul</defName>
+    <stateClass>TurboMegaMod.MentalState_FeralGhoul</stateClass>
+    <label>feral ghoul frenzy</label>
+    <category>Aggro</category>
+    <blockInteractionInitiationExcept>
+      <li>Insult</li>
+    </blockInteractionInitiationExcept>
+    <blockInteractionRecipientExcept>
+      <li>Insult</li>
+    </blockInteractionRecipientExcept>
+    <minTicksBeforeRecovery>10000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>30000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.4</recoveryMtbDays>
+    <nameColor>(0.85, 0.35, 0.2)</nameColor>
+    <beginLetter>{0} has succumbed to feral degeneration and is attacking nearby humans in a mindless rage!</beginLetter>
+    <beginLetterDef>ThreatSmall</beginLetterDef>
+    <recoveryMessage>{0} has pulled back from the brink of feral madness.</recoveryMessage>
+    <baseInspectLine>Mental state: Feral frenzy</baseInspectLine>
+  </MentalStateDef>
+
+</Defs>

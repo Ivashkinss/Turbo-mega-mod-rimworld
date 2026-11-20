@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- MINUTEMEN & HUNTERS Q1: SALT AND SHOTGUN                              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_minutemen_hunters_Q1</defName>
+    <label>salt and shotgun</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_dean_winchester</giver>
+    <fallbackGiver>TMM_Hero_sam_winchester</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Salt and Shotgun</letterLabel>
+    <letterText>Hey there, neighbor. Name's Dean. Me and my brother Sam are tracking a nasty son of a bitch—a wendigo that's been picking off caravans near your sector and wearing the face of a wounded trader. If a guy limps into your waystation asking for raw meat and a dark room, don't offer him pie—call us.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>wendigo_guests</key>
+        <label>Question the wounded caravan guests</label>
+        <text>A trio of battered caravan traders has limped into {COLONY}'s waystation—one of them is the wendigo in disguise. Investigate them closely before nightfall.</text>
+        <faction>TMM_MinutemenHuntersFaction</faction>
+        <groupSize>3</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Investigate</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>wendigo_hunt</key>
+        <label>Put down the exposed wendigo</label>
+        <text>Cornered at midnight, the wendigo sheds its human disguise and calls nocturnal horrors out of the dark! Fight alongside the Winchesters!</text>
+        <faction>TMM_MonsterClansFaction</faction>
+        <pointsFactor>0.9</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>pie_and_salt</key>
+        <label>After the hunt</label>
+        <text>With the wendigo burned to ash, Dean Winchester immediately raids your pantry looking for cherry pie—and leaves a handful of pre-war silver on the counter for his trouble.</text>
+        <choices>
+          <li>
+            <outcome>clean</outcome>
+            <label>Accept Dean's jacket pattern and rock salt bandolier</label>
+            <resultText>Not bad at all! Real hunters. Here's a decent jacket pattern and a couple packs of rock salt.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mh_q1</flag>
+                <value>clean</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>350</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.dean_leather_jacket</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.salt_bandolier</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MINUTEMEN & HUNTERS Q2: THE SALVAGE YARD GRIMOIRE                     -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_minutemen_hunters_Q2</defName>
+    <label>the salvage yard grimoire</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_bobby_singer</giver>
+    <fallbackGiver>TMM_Hero_sam_winchester</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_minutemen_hunters_Q1</li>
+    </requires>
+    <letterLabel>The Salvage Yard Grimoire</letterLabel>
+    <letterText>Listen up, idjits! Sam found a pre-war occult ledger buried under three tons of rusted Buicks in my yard, and it mentions your 'Zero Anchor'. Problem is, half of Hell's crossroads lackeys smelled the ink and are swarming my perimeter. Get your boots over here and hold the line while Sam finishes the translation!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>bobbys_yard</key>
+        <label>Hold Bobby Singer's salvage yard</label>
+        <text>Defend Bobby Singer's fortified salvage yard against waves of crossroads demons for 6 hours while Sam translates the Sixty-Six Seals ledger and Bobby lures the demon commander into his iron panic room.</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>6</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>translation_done</key>
+        <label>The 66 Seals decoded</label>
+        <text>Sam closes the ancient ledger as the last demon burns out at the fence, confirming the direct link between the Sixty-Six Seals and the October 2077 nuclear blasts.</text>
+        <choices>
+          <li>
+            <outcome>translated</outcome>
+            <label>Take Sam's translation copy and Bobby's spare cap</label>
+            <resultText>Well, at least somebody left in this world ain't completely hopeless. Take a copy of the translation and my spare cap.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mh_q2</flag>
+                <value>translated</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bobby_cap</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.sam_jacket</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MINUTEMEN & HUNTERS Q3: GUNS OF THE CASTLE                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_minutemen_hunters_Q3</defName>
+    <label>guns of the castle</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_ronnie_shaw</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_preston_garvey</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_minutemen_hunters_Q2</li>
+    </requires>
+    <letterLabel>Guns of the Castle</letterLabel>
+    <letterText>General's got faith in you, so I'll skip the speeches. A feral super mutant warband is massing near the southern ridge, ready to flatten three farming settlements. Help us haul shells, repair the old Castle mortars, and blow their war-beacon to kingdom come.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>deliver_shells</key>
+        <label>Supply mortar shells for the Castle</label>
+        <text>Deliver 6 high-explosive mortar shells from {COLONY}'s stockpiles so Ronnie Shaw can load the old Castle artillery battery—alongside a barrel of consecrated salt for good measure.</text>
+        <thing>Shell_HighExplosive</thing>
+        <count>6</count>
+        <to>colony</to>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>hold_castle</key>
+        <label>Hold the Castle battery against wild super mutants</label>
+        <text>The first barrage shattered the mutant war-beacon, sending a furious super mutant counterattack straight toward the artillery outpost! Hold the line for 5 hours!</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>castle_secured</key>
+        <label>Southern ridge cleared</label>
+        <text>Smoke rises from the shattered super mutant camp on the southern ridge as the farming settlements signal all-clear.</text>
+        <choices>
+          <li>
+            <outcome>victory</outcome>
+            <label>Accept Minutemen artillery flares and Preston Garvey's hat pattern</label>
+            <resultText>Fine work, soldier. With fire support like this, the wasteland can finally breathe free again.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.mh_q3</flag>
+                <value>victory</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_WildMutantsFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.preston_hat</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.castle_artillery</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MINUTEMEN & HUNTERS Q4 (FACTION POINT): NIGHT AT THE ROADHOUSE        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_minutemen_hunters_Q4</defName>
+    <label>night at the roadhouse</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_ellen_harvelle</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_dean_winchester</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_minutemen_hunters_Q3</li>
+    </requires>
+    <letterLabel>Night at the Roadhouse</letterLabel>
+    <letterText>Drop everything and get to Harvelle's Roadhouse! A black storm rolled in out of nowhere, demonic raiders have surrounded the bar, and worse—one of the travelers we let inside is possessed and sabotaging our salt lines from the inside. We can't hold out till dawn alone!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>roadhouse_siege</key>
+        <label>Defend Harvelle's Roadhouse</label>
+        <text>Hold Harvelle's Roadhouse through the black storm for 6 hours against waves of possessed raiders and hellhounds while the corner jukebox blares 1970s classic rock.</text>
+        <enemyFaction>TMM_HellFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>6</holdHours>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>roadhouse_exorcism</key>
+        <label>The demon inside the bar</label>
+        <text>Between waves, the front salt line smears away from the inside. Five frightened travelers huddle by the jukebox—one of them wears black eyes behind a panicked smile.</text>
+        <choices>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Test each guest with holy water, expose the demon, and save every innocent (Protect the Living)</label>
+            <resultText>You saved my home and my people. The Winchesters agreed you've earned the hunters' greatest trump card—take The Colt.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.minutemen_hunters</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_the_colt</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.minutemen_general_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Sweep the room with gunfire indiscriminately to guarantee the demon dies (Ruthless)</label>
+            <resultText>The demon is dead... and you gunned down innocent travelers right in front of my bar. Get out of my roadhouse!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.minutemen_hunters</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>900</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enochian_rounds</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.minutemen_hunters</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- MINUTEMEN & HUNTERS Q5 (DEFECTOR QUEST): COLD PRAGMATISM              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_minutemen_hunters_Q5</defName>
+    <label>cold pragmatism</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_MinutemenHuntersFaction</faction>
+    <giver>TMM_Hero_rufus_turner</giver>
+    <fallbackGiver>TMM_Hero_preston_garvey</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_minutemen_hunters_Q4</li>
+    </requires>
+    <letterLabel>Cold Pragmatism</letterLabel>
+    <letterText>Winchester and Garvey want to play nice with synths and friendly monsters, and maybe they're right—or maybe we're all gonna get burned. Either way, an old trapper like me knows which way the wind blows. Let's settle our business once and for all.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>bounty_ambush</key>
+        <label>Clear the bounty hunters' ambush with Rufus Turner</label>
+        <text>Meet veteran trapper Rufus Turner in the hills to spring an ambush on Gunner bounty hunters tracking local hunters—and settle where his loyalty lies.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>rufus_verdict</key>
+        <label>An old trapper's loyalty</label>
+        <text>With the smoke clearing over the ridge, Rufus Turner checks his rifle and sizes up {COLONY}'s stance on the Rift.</text>
+        <choices>
+          <li>
+            <outcome>recruit_rufus</outcome>
+            <label>Welcome Rufus Turner into {COLONY}'s garrison</label>
+            <resultText>Fine—just don't go disarming the holy-water tripwires I string around my bunk. I'll wire the approaches myself.</resultText>
+            <requires>
+              <li>!ponr1=abyss</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_rufus_turner</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_rufus_turner</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.hunter_traps</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>veteran_schism</outcome>
+            <label>[Abyss Path] Watch Rufus Turner and Ronnie Shaw break ranks and depart for the Brotherhood</label>
+            <resultText>You cut deals with demons and expect old hunters to salute? Count us out—we're riding with steel from here on.</resultText>
+            <requires>
+              <li>ponr1=abyss</li>
+            </requires>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.rufus_departed</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>15</amount>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
