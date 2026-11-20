@@ -52,7 +52,7 @@ Claude не опрашивает очередь сам. Он видит резу
 
 - `id`, `taskFile` (внутри `Delegation/`), `outputDir` (внутри `Tools/Build/`), `expectedOutputs`
 - `assignee`: `gemini` | `codex`. Нет поля — считать `gemini` (старые записи).
-- `state`: `pending` → исполнитель берёт; `assigned` (выдано вручную), `reviewed`/`accepted`/`rejected` — решения Claude.
+- `state`: `pending` → исполнитель берёт; `hold` — не брать: отложено ради лимита, вернёт Claude; `assigned` (выдано вручную), `reviewed`/`accepted`/`rejected` — решения Claude.
 - `kind`:
   - `implement` — кандидат в outputDir, корень не меняется;
   - `integrate` — перенести уже одобренный Claude кандидат в корень; разрешены только файлы, перечисленные в TASK.md;
@@ -150,3 +150,8 @@ Claude 53% (сброс вс 22.11 15:00, ~20%/день), Antigravity 38% (мин
 
 ## Снимок лимитов 20.11 ~02:00
 Antigravity 31% (−7% за 1,5 ч — урезаем), Claude 50% (сброс вс 15:00 — тратить смело), Codex 13% (одна повторная приёмка E2), Gemini 92%. Claude забирает E4 (установка квестов фракций + линтер), задача переназначена на claude; запуски игры — только когда Antigravity её закрыл. Antigravity: регрессии только релевантные, без повторных полных прогонов.
+
+**Снимок 20.11 ~03:30, пользователь ушёл спать.** Claude 48%, Codex 10%, Antigravity 24%, Gemini-чат 91%.
+- Antigravity: 10% держим в резерве, до сброса на проект остаётся ~14%. Это LegendaryItems (идёт), затем StoryHotelFix и OutpostCaravanFix. EquipmentSlots, VehicleFramework и FactionApparel поставлены в hold.
+- Codex: фото больше не нужны, весь остаток идёт на проект, примерно по 2% на проверку. Три повторные приёмки: E2, E3, караваны.
+- Объёмную работу дальше берёт Neon, ставит и проверяет её Claude.

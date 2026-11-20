@@ -1670,8 +1670,50 @@
       "note": "Integrate Neon's fixes for Codex walking-caravan review (Delegation/StoryContent/CaravanFix); blocked if folder empty."
     },
     {
-      "id": "EquipmentSlots",
+      "id": "StoryStageSiteRecheck",
       "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "afterTask": "StoryStageSiteFix",
+      "taskFile": "Delegation/StoryStageSiteRecheck/TASK.md",
+      "outputDir": "Tools/Build/CodexStoryStageSiteRecheck",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T03:30:00Z",
+      "note": "Read-only recheck of E2 fixes against the previous Codex report."
+    },
+    {
+      "id": "StoryStageHotelRecheck",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "afterTask": "StoryHotelFix",
+      "taskFile": "Delegation/StoryStageHotelRecheck/TASK.md",
+      "outputDir": "Tools/Build/CodexStoryStageHotelRecheck",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T03:30:00Z",
+      "note": "Read-only recheck of E3 fixes against the previous Codex report."
+    },
+    {
+      "id": "OutpostCaravanRecheck",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "afterTask": "OutpostCaravanFix",
+      "taskFile": "Delegation/OutpostCaravanRecheck/TASK.md",
+      "outputDir": "Tools/Build/CodexOutpostCaravanRecheck",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-20T03:30:00Z",
+      "note": "Read-only recheck of walking-caravan fixes against the previous Codex report."
+    },
+    {
+      "id": "EquipmentSlots",
+      "state": "hold",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "OutpostCaravanFix",
@@ -1685,7 +1727,7 @@
     },
     {
       "id": "VehicleFramework",
-      "state": "pending",
+      "state": "hold",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "EquipmentSlots",
@@ -1699,7 +1741,7 @@
     },
     {
       "id": "FactionApparel",
-      "state": "pending",
+      "state": "hold",
       "assignee": "gemini",
       "kind": "implement",
       "afterTask": "VehicleFramework",
@@ -1726,7 +1768,7 @@
     },
     {
       "id": "StoryStageHotelReview",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/StoryStageHotelReview/TASK.md",
@@ -1739,7 +1781,7 @@
     },
     {
       "id": "OutpostCaravanReview",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "taskFile": "Delegation/OutpostCaravanReview/TASK.md",
