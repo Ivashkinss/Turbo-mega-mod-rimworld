@@ -259,8 +259,33 @@ namespace TurboMegaMod
                 return true;
             }
 
+            // Wait until the caravan has actually left the home tile: cancelling or deleting the outpost while it still
+            // stands on the home tile makes it re-enter the colony at once, which is correct but not what these phases test.
+            if (m_activeMission.caravan != null && m_activeMission.everAttached && m_activeMission.caravan.Tile == map.Tile && m_phaseTicks < FormationTimeoutTicks)
+            {
+                return false;
+            }
             if (m_activeMission.caravan != null && m_activeMission.everAttached)
             {
+                {
+                    System.Text.StringBuilder dsb = new System.Text.StringBuilder();
+                    dsb.Append("[TMM probe] silver diag ").Append(phaseLabel).Append(": caravanSilver=").Append(OutpostCaravanLogistics.CountCaravanSilver(m_activeMission.caravan)).Append(" ids=");
+                    if (m_activeMission.missionSilverIds != null)
+                    {
+                        foreach (string sid in m_activeMission.missionSilverIds)
+                        {
+                            dsb.Append(sid).Append('@');
+                            Thing found = null;
+                            foreach (Thing mt in map.listerThings.ThingsOfDef(ThingDefOf.Silver)) { if (mt.ThingID == sid) { found = mt; break; } }
+                            dsb.Append(found != null ? ("map:" + found.Position + "x" + found.stackCount + (found.IsForbidden(Faction.OfPlayer) ? "F" : "")) : "notOnMap").Append(' ');
+                        }
+                    }
+                    dsb.Append(" mapSilver=");
+                    foreach (Thing mt in map.listerThings.ThingsOfDef(ThingDefOf.Silver)) dsb.Append(mt.ThingID).Append("x").Append(mt.stackCount).Append(' ');
+                    foreach (Pawn cp in m_activeMission.caravan.PawnsListForReading) foreach (Thing it in cp.inventory.innerContainer) if (it.def == ThingDefOf.Silver) dsb.Append(" inv:").Append(cp.LabelShort).Append(":").Append(it.ThingID).Append("x").Append(it.stackCount);
+                    Log.Message(dsb.ToString());
+                }
+                Log.Message(string.Format("[TMM probe] {0}: attached after {1} ticks, state={2}, pathDest={3}, moving={4}, tile={5}, outpostTile={6}", phaseLabel, m_phaseTicks, m_activeMission.state, m_activeMission.caravan.pather != null ? m_activeMission.caravan.pather.Destination.ToString() : "-", m_activeMission.caravan.pather != null && m_activeMission.caravan.pather.Moving, m_activeMission.caravan.Tile, m_activeOutpost != null ? m_activeOutpost.Tile.ToString() : "-"));
                 return true;
             }
 
@@ -503,8 +528,11 @@ namespace TurboMegaMod
         private void CompletePhase_OutpostDeleteAfterExit(OutpostCaravanManager mgr)
         {
             Caravan car = m_activeMission != null ? m_activeMission.caravan : null;
+            Log.Message("[TMM probe] del diag before: silver=" + OutpostCaravanLogistics.CountCaravanSilver(car) + " destroyed=" + (car != null && car.Destroyed) + " spawned=" + (car != null && car.Spawned) + " sameCar=" + (m_activeMission != null && m_activeMission.caravan == car));
             if (m_activeOutpost != null && !m_activeOutpost.Destroyed) m_activeOutpost.Destroy();
+            Log.Message("[TMM probe] del diag after destroy: silver=" + OutpostCaravanLogistics.CountCaravanSilver(car) + " destroyed=" + (car != null && car.Destroyed) + " state=" + (m_activeMission != null ? m_activeMission.state.ToString() : "null"));
             mgr.AuditAndCleanupMissions(false);
+            Log.Message("[TMM probe] del diag after audit: silver=" + OutpostCaravanLogistics.CountCaravanSilver(car) + " destroyed=" + (car != null && car.Destroyed) + " state=" + (m_activeMission != null ? m_activeMission.state.ToString() : "null") + " dest=" + (car != null && car.pather != null ? car.pather.Destination.ToString() : "-") + " home=" + map.Tile + " moving=" + (car != null && car.pather != null && car.pather.Moving));
 
             bool autoTurnedAround = car != null && m_activeMission != null &&
                                     m_activeMission.state == OutpostMissionState.Returning &&
@@ -707,6 +735,8 @@ namespace TurboMegaMod
 
             Caravan car = outMission.caravan;
             StrategicOutpost outp = outMission.outpost;
+            // Make the travellers hungry so a short trip still triggers natural caravan eating.
+            foreach (Pawn hp in car.PawnsListForReading) if (hp.needs != null && hp.needs.food != null) hp.needs.food.CurLevelPercentage = 0.05f;
             int mealsBeforeArrival = CountCaravanMeals(car);
 
             if (TestMode.Enabled)
@@ -992,6 +1022,7 @@ namespace TurboMegaMod
                 allowAddictions: false); // CHECK API
             Pawn p = PawnGenerator.GeneratePawn(req);
             p.Name = new NameTriple("Probe", nick, "Tester");
+            Log.Message("[TMM probe] colonist " + nick + ": haulingDisabled=" + p.WorkTypeIsDisabled(WorkTypeDefOf.Hauling) + " manualDumbDisabled=" + p.WorkTagIsDisabled(WorkTags.ManualDumb));
             IntVec3 cell;
             if (!CellFinder.TryFindRandomCellNear(near, map, 4, c => c.InBounds(map) && c.Standable(map) && !c.Fogged(map), out cell))
             {
@@ -1008,6 +1039,7 @@ namespace TurboMegaMod
             if (p == null) return;
             if (p.Spawned) p.DeSpawn(DestroyMode.Vanish);
             if (Find.WorldPawns != null && Find.WorldPawns.Contains(p)) Find.WorldPawns.RemovePawn(p);
+            if (p.relations != null) p.relations.ClearAllRelations();
             if (!p.Destroyed) p.Destroy(DestroyMode.Vanish);
         }
 

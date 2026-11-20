@@ -2278,6 +2278,7 @@ namespace TurboMegaMod
             public IntVec3 origPos;
             public bool wasSplit;
             public string protectedId;
+            public Pawn inventoryPawn; // set when the mission stack was moved straight into a carrier's inventory
         }
 
         public static bool StartCaravan(StrategicOutpost outpost, Map map, List<Pawn> pawns, List<Pawn> stayPawns, int silverAmount, out string failReason)
@@ -2382,11 +2383,24 @@ namespace TurboMegaMod
 
                         missionSilverIds.Add(missionStack.ThingID);
 
-                        TransferableOneWay t = new TransferableOneWay();
-                        t.things.Add(missionStack);
-                        t.ForceTo(missionStack.stackCount);
-                        transferables.Add(t);
-                        remainingSilver -= missionStack.stackCount;
+                        // Load mission silver straight into a carrier's inventory instead of relying on vanilla
+                        // gathering: vanilla gather jobs proved unreliable with merge-protected stacks (the caravan
+                        // could leave with part or none of the silver). The stack keeps its ThingID and protection.
+                        Pawn silverCarrier = PickSilverCarrier(pawns, stayPawns);
+                        int stackAmount = missionStack.stackCount;
+                        if (silverCarrier == null || silverCarrier.inventory == null)
+                        {
+                            silverPrepOk = false;
+                            break;
+                        }
+                        if (missionStack.Spawned) missionStack.DeSpawn(DestroyMode.Vanish);
+                        prep.inventoryPawn = silverCarrier;
+                        if (!silverCarrier.inventory.innerContainer.TryAdd(missionStack, false) || missionStack.holdingOwner != silverCarrier.inventory.innerContainer)
+                        {
+                            silverPrepOk = false;
+                            break;
+                        }
+                        remainingSilver -= stackAmount;
                     }
 
                     if (remainingSilver > 0) silverPrepOk = false;
@@ -2495,6 +2509,20 @@ namespace TurboMegaMod
             return true;
         }
 
+        private static Pawn PickSilverCarrier(List<Pawn> pawns, List<Pawn> stayPawns)
+        {
+            if (pawns == null) return null;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn p = pawns[i];
+                if (p != null && !p.Dead && p.inventory != null && (stayPawns == null || !stayPawns.Contains(p))) return p;
+            }
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                if (pawns[i] != null && !pawns[i].Dead && pawns[i].inventory != null) return pawns[i];
+            }
+            return null;
+        }
         private static void RollbackSilverPrepJournal(Map map, List<SilverPrepJournalEntry> journal)
         {
             if (journal == null) return;
@@ -2508,7 +2536,18 @@ namespace TurboMegaMod
                     {
                         OutpostCaravanManager.UnregisterTransientSilverProtection(entry.protectedId);
                     }
-                    if (!entry.wasSplit || entry.missionStack == null || entry.missionStack.Destroyed) continue;
+                    if (entry.missionStack == null || entry.missionStack.Destroyed) continue;
+                    if (!entry.wasSplit)
+                    {
+                        // Whole stack: if it was moved into a carrier's inventory (or despawned on the way), put it back.
+                        Thing whole = entry.missionStack;
+                        if (!whole.Spawned)
+                        {
+                            if (whole.holdingOwner != null) whole.holdingOwner.Remove(whole);
+                            if (map != null && entry.origPos.InBounds(map)) GenPlace.TryPlaceThing(whole, entry.origPos, map, ThingPlaceMode.Near);
+                        }
+                        continue;
+                    }
 
                     Thing split = entry.missionStack;
                     if (split.holdingOwner != null) split.holdingOwner.Remove(split);

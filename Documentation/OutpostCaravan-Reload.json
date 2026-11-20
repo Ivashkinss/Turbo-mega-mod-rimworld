@@ -1,7 +1,8 @@
 ﻿{
     "outpostCaravanReload":  {
                                  "passed":  true,
-                                 "checksCount":  3,
+                                 "testModeEnabled":  false,
+                                 "checksCount":  5,
                                  "checks":  [
                                                 {
                                                     "name":  "Reload_ManagerExists",
@@ -10,15 +11,27 @@
                                                     "actual":  "ok"
                                                 },
                                                 {
-                                                    "name":  "Reload_ReturningMissionRestored",
+                                                    "name":  "R2_Reload_OutboundMissionRestored",
                                                     "passed":  true,
-                                                    "expected":  "Returning mission with Enter home action",
-                                                    "actual":  "state=Returning, destMatch=True"
+                                                    "expected":  "Outbound restored, loaded=150, \u003e=2 tagged stacks, OutpostDelivery action",
+                                                    "actual":  "state=Outbound, loaded=150, ids=2, act=CaravanArrivalAction_OutpostDelivery"
+                                                },
+                                                {
+                                                    "name":  "R2_Reload_PersonalSilverUntouchedAfterShift",
+                                                    "passed":  true,
+                                                    "expected":  "outpostRaw=150, personalTotal=50",
+                                                    "actual":  "outpostRaw=150, carSilv=30, workerPersonal=20"
+                                                },
+                                                {
+                                                    "name":  "RealTrip_FoodConsumedNaturally",
+                                                    "passed":  true,
+                                                    "expected":  "\u003c 4",
+                                                    "actual":  "0"
                                                 },
                                                 {
                                                     "name":  "Reload_CarrierEnteredHomeAndMissionClosed",
                                                     "passed":  true,
-                                                    "expected":  "carrierHome=true, outpostSilver=120 \u0026 worker\u003e=1, missionClosed=true",
+                                                    "expected":  "carrierHome=true, outpostSilver=150 \u0026 worker\u003e=1, missionClosed=true",
                                                     "actual":  "carrierHome=True, outpostOk=True, closed=True"
                                                 }
                                             ],
@@ -29,8 +42,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4147,
-                        "ticksAdvanced":  6904,
+                        "framesAdvanced":  2921,
+                        "ticksAdvanced":  35630,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -39,7 +52,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
-    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
+    "freshAssemblySha256":  "a42379c19affe3ac85534c8f95451b27d77c5d4e049188d91833773d72d9e710",
+    "productionAssemblySha256":  "a42379c19affe3ac85534c8f95451b27d77c5d4e049188d91833773d72d9e710",
     "passed":  true
 }
