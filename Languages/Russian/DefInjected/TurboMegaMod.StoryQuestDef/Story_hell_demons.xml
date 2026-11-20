@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_hell_demons_Q1 -->
+  <TMM_Story_hell_demons_Q1.label>мелкий шрифт</TMM_Story_hell_demons_Q1.label>
+  <TMM_Story_hell_demons_Q1.letterLabel>Мелкий шрифт</TMM_Story_hell_demons_Q1.letterLabel>
+  <TMM_Story_hell_demons_Q1.letterText>Привет, солнышко. Не хватайся сразу за каменную соль — я здесь исключительно по делу. Один из моих чересчур ретивых чертей на перекрёстке обманом заставил бедного поселенца подписать контракт на душу с поддельным пунктом, а такая халтура портит репутацию Ада. Помоги уладить спор, и я в долгу не останусь.</TMM_Story_hell_demons_Q1.letterText>
+  <TMM_Story_hell_demons_Q1.stages.0.label>Разбор контракта на перекрёстке</TMM_Story_hell_demons_Q1.stages.0.label>
+  <TMM_Story_hell_demons_Q1.stages.0.text>Спокойно потягивая тридцатилетний шотландский виски из хрустального стакана прямо посреди радиоактивного перекрёстка, Кроули протягивает вам тлеющий пергамент контракта.</TMM_Story_hell_demons_Q1.stages.0.text>
+  <TMM_Story_hell_demons_Q1.stages.1.label>Поддельная сноска на латыни</TMM_Story_hell_demons_Q1.stages.1.label>
+  <TMM_Story_hell_demons_Q1.stages.1.text>Заметив незаконный подпункт, вписанный микроскопическими серными чернилами, вы вскрываете подлог прямо перед вспотевшим чертом под ледяную ухмылку Кроули.</TMM_Story_hell_demons_Q1.stages.1.text>
+  <TMM_Story_hell_demons_Q1.stages.1.choices.0.label>Найти подделку в договоре и помочь Кроули наказать нерадивого демона</TMM_Story_hell_demons_Q1.stages.1.choices.0.label>
+  <TMM_Story_hell_demons_Q1.stages.1.choices.0.resultText>Блестяще! Вы бы сделали головокружительную карьеру в моём юридическом отделе. Вот вам выкройка приличного костюма — хватит ходить в лохмотьях.</TMM_Story_hell_demons_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_hell_demons_Q2 -->
+  <TMM_Story_hell_demons_Q2.label>кровь и пламя</TMM_Story_hell_demons_Q2.label>
+  <TMM_Story_hell_demons_Q2.letterLabel>Кровь и пламя</TMM_Story_hell_demons_Q2.letterLabel>
+  <TMM_Story_hell_demons_Q2.letterText>Слушайте сюда, дружки Кларенса. Это Мэг. Фанатики Рыцарей Ада Абаддон рвут регион на куски, сжигая перекрёстки и вырезая всех, кто поддерживает перемирие Кроули. Меня зажали в подвале старой церкви с полдюжиной адских гончих на хвосте — вытащите меня из огня, и я буду перед вами в долгу.</TMM_Story_hell_demons_Q2.letterText>
+  <TMM_Story_hell_demons_Q2.stages.0.label>Удержать подвал церкви вместе с Мэг</TMM_Story_hell_demons_Q2.stages.0.label>
+  <TMM_Story_hell_demons_Q2.stages.0.text>Обороняйте подвал старой церкви — на стене которого огромная дьявольская ловушка сдерживает вожака адских гончих — от фанатиков Абаддон в течение 5 часов.</TMM_Story_hell_demons_Q2.stages.0.text>
+  <TMM_Story_hell_demons_Q2.stages.1.label>Долг мятежного демона</TMM_Story_hell_demons_Q2.stages.1.label>
+  <TMM_Story_hell_demons_Q2.stages.1.text>Стирая демонический ихор с потёртой кожаной куртки, Мэг язвительно усмехается над прожжённой пентаграммой.</TMM_Story_hell_demons_Q2.stages.1.text>
+  <TMM_Story_hell_demons_Q2.stages.1.choices.0.label>Отбить штурм и спасти Мэг</TMM_Story_hell_demons_Q2.stages.1.choices.0.label>
+  <TMM_Story_hell_demons_Q2.stages.1.choices.0.resultText>Неплохо для кучки смертных. Передам Кастиэлю, что вы ещё дышите — если увижу этого пернатого.</TMM_Story_hell_demons_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_hell_demons_Q3 -->
+  <TMM_Story_hell_demons_Q3.label>охота за костью</TMM_Story_hell_demons_Q3.label>
+  <TMM_Story_hell_demons_Q3.letterLabel>Охота за костью</TMM_Story_hell_demons_Q3.letterLabel>
+  <TMM_Story_hell_demons_Q3.letterText>Я — Каин. Я веками жил в тихом уединении, ухаживая за пчёлами вдали от шума Ада и глупости людей. Но дрожь вашего Нулевого Якоря пробудила Метку на моей руке. Приходите в мою часовню — если ваши бойцы выдержат моё испытание и не поддадутся слепой жажде крови, я открою тайну Первого Клинка.</TMM_Story_hell_demons_Q3.letterText>
+  <TMM_Story_hell_demons_Q3.stages.0.label>Выдержать испытание Каина у часовни</TMM_Story_hell_demons_Q3.stages.0.label>
+  <TMM_Story_hell_demons_Q3.stages.0.text>Выстойте 6 часов против волн демонов у тихих ульев Каина, пока Отец Убийства спокойно собирает мёд и проверяет, сумеют ли ваши бойцы удержать разум от ярости.</TMM_Story_hell_demons_Q3.stages.0.text>
+  <TMM_Story_hell_demons_Q3.stages.1.label>Власть над зверем внутри</TMM_Story_hell_demons_Q3.stages.1.label>
+  <TMM_Story_hell_demons_Q3.stages.1.text>Алая метка на предплечье Каина тускнеет, когда последний противник обращается в пепел. Он опускает деревянный дымарь и смотрит на ваших бойцов со спокойной печалью.</TMM_Story_hell_demons_Q3.stages.1.text>
+  <TMM_Story_hell_demons_Q3.stages.1.choices.0.label>Выдержать испытание Каина и получить координаты святилища Первого Клинка</TMM_Story_hell_demons_Q3.stages.1.choices.0.label>
+  <TMM_Story_hell_demons_Q3.stages.1.choices.0.resultText>Ты сдержал зверя внутри. Немногие способны на это. Когда пробьёт час — ты будешь знать, где искать челюстную кость.</TMM_Story_hell_demons_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_hell_demons_Q4 -->
+  <TMM_Story_hell_demons_Q4.label>сделка на перекрёстке</TMM_Story_hell_demons_Q4.label>
+  <TMM_Story_hell_demons_Q4.letterLabel>Сделка на перекрёстке</TMM_Story_hell_demons_Q4.letterLabel>
+  <TMM_Story_hell_demons_Q4.letterText>Отбросим любезности, ладно? Моё королевство умирает с голоду без душ, а крылатые головорезы Небес сгребают каждую Искру. Я предлагаю тебе главный приз — сам Первый Клинок, способный свалить архангела с одного удара. Взамен я прошу лишь жизнь старшего ангела-наблюдателя... и крошечный залог на будущее.</TMM_Story_hell_demons_Q4.letterText>
+  <TMM_Story_hell_demons_Q4.stages.0.label>Челюстная кость на обелиске перекрёстка</TMM_Story_hell_demons_Q4.stages.0.label>
+  <TMM_Story_hell_demons_Q4.stages.0.text>Под багровым сумеречным небом Первый Клинок пульсирует алым светом на древнем обелиске, пока к нему стягиваются элитные ангелы-наблюдатели. Скрепить кровавую сделку Кроули ради Первого Клинка или сорвать ритуал и защитить ангелов?</TMM_Story_hell_demons_Q4.stages.0.text>
+  <TMM_Story_hell_demons_Q4.stages.0.choices.0.label>Принять сделку Кроули, перебить ангелов и забрать Первый Клинок (за Ад)</TMM_Story_hell_demons_Q4.stages.0.choices.0.label>
+  <TMM_Story_hell_demons_Q4.stages.0.choices.0.resultText>Ах, люблю запах заключённых сделок по утрам! Первый Клинок твой — только не порежься, Метка Каина любит свежую кровь.</TMM_Story_hell_demons_Q4.stages.0.choices.0.resultText>
+  <TMM_Story_hell_demons_Q4.stages.0.choices.1.label>Отвергнуть сделку, спасти ангелов и сорвать ритуал Кроули (за свет и Искру)</TMM_Story_hell_demons_Q4.stages.0.choices.1.label>
+  <TMM_Story_hell_demons_Q4.stages.0.choices.1.resultText>Идиоты! Вы могли стать богами этой Пустоши, а выбрали жалкую мораль! Что ж, посмотрим, как вы запоёте, когда Клетка треснет!</TMM_Story_hell_demons_Q4.stages.0.choices.1.resultText>
+  <TMM_Story_hell_demons_Q4.stages.1.label>Перебить элитную засаду ангелов у обелиска</TMM_Story_hell_demons_Q4.stages.1.label>
+  <TMM_Story_hell_demons_Q4.stages.1.text>Выстойте в смертельно опасной схватке против элитных ангелов-наблюдателей, чтобы забрать Первый Клинок!</TMM_Story_hell_demons_Q4.stages.1.text>
+  <TMM_Story_hell_demons_Q4.stages.2.label>Разбить ритуальную стражу Кроули у обелиска</TMM_Story_hell_demons_Q4.stages.2.label>
+  <TMM_Story_hell_demons_Q4.stages.2.text>Пробейтесь сквозь элитных демонов перекрёстка и сокрушите кровавый обелиск, пока ангелы живы!</TMM_Story_hell_demons_Q4.stages.2.text>
+  <TMM_Story_hell_demons_Q4.stages.3.label>Багровый отблеск над перекрёстком</TMM_Story_hell_demons_Q4.stages.3.label>
+  <TMM_Story_hell_demons_Q4.stages.3.text>Кровавые тучи рассеиваются над расколотым обелиском. Независимо от того, вспыхнула ли на руке Метка Каина или преисподняя объявила вам вендетту, взгляд Бездны теперь прикован к {COLONY}.</TMM_Story_hell_demons_Q4.stages.3.text>
+
+  <!-- TMM_Story_hell_demons_Q5 -->
+  <TMM_Story_hell_demons_Q5.label>беглый король ада</TMM_Story_hell_demons_Q5.label>
+  <TMM_Story_hell_demons_Q5.letterLabel>Беглый Король Ада</TMM_Story_hell_demons_Q5.letterLabel>
+  <TMM_Story_hell_demons_Q5.letterText>Тревога, солнышко! Эти безмозглые фанатики в Аду всё-таки сделали это — они взломали последний замок на Клетке! Люцифер на свободе, он в ярости и прямо сейчас украшает мой тронный зал моими бывшими подчинёнными! Открывайте ворота — я знаю каждый грязный секрет Ада и предпочту не превратиться в серную пыль!</TMM_Story_hell_demons_Q5.letterText>
+  <TMM_Story_hell_demons_Q5.stages.0.label>Отразить карательный легион Люцифера</TMM_Story_hell_demons_Q5.stages.0.label>
+  <TMM_Story_hell_demons_Q5.stages.0.text>Кроули телепортируется прямо во двор {COLONY}, а следом на ваш периметр обрушивается яростный легион демонов освобождённого Люцифера!</TMM_Story_hell_demons_Q5.stages.0.text>
+  <TMM_Story_hell_demons_Q5.stages.1.label>Король в изгнании у барной стойки</TMM_Story_hell_demons_Q5.stages.1.label>
+  <TMM_Story_hell_demons_Q5.stages.1.text>Уже требуя отдельный барный шкаф в гостинице и ругая качество местного виски, Кроули предлагает все тайны Ада в обмен на убежище, пока на преисподний трон восходит Люцифер.</TMM_Story_hell_demons_Q5.stages.1.text>
+  <TMM_Story_hell_demons_Q5.stages.1.choices.0.label>Укрыть Кроули в колонии и признать его советником</TMM_Story_hell_demons_Q5.stages.1.choices.0.label>
+  <TMM_Story_hell_demons_Q5.stages.1.choices.0.resultText>Умничка. Обещаю вести себя прилично... ну, почти. А теперь давай подумаем, как нам остановить Люцифера, пока он не сжёг мой любимый портной цех.</TMM_Story_hell_demons_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

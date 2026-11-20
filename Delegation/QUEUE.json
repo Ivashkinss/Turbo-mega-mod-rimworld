@@ -1587,7 +1587,7 @@
     },
     {
       "id": "StoryContentFactions",
-      "state": "reviewed",
+      "state": "accepted",
       "assignee": "claude",
       "kind": "implement",
       "afterTask": "StoryStageHotel",

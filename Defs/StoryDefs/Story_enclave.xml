@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- ENCLAVE Q1: RESTORING THE GRID                                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_enclave_Q1</defName>
+    <label>restoring the grid</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_EnclaveFaction</faction>
+    <giver>TMM_Hero_captain_richards</giver>
+    <fallbackGiver>TMM_Hero_colonel_autumn</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Restoring the Grid</letterLabel>
+    <letterText>Attention, local settlement. This is Captain Richards of the Enclave Expeditionary Force. Pre-war automated defense platforms have locked onto our orbital relay frequencies. Assist our Hellfire squad in securing Relay Tower 09, and the rightful government of America will reward your loyalty.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>relay_tower_09</key>
+        <label>Secure Relay Tower 09 with Captain Richards</label>
+        <text>Assault the pre-war radar station defending Relay Tower 09 and clear the hostile forces blocking Enclave orbital frequencies.</text>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>relay_handover</key>
+        <label>Ghosts on the monitor</label>
+        <text>As power returns to Relay Tower 09, an ancient static-warped broadcast screen flickers briefly with President Eden's pre-war seal before Captain Richards wipes the buffer.</text>
+        <choices>
+          <li>
+            <outcome>secured</outcome>
+            <label>Transfer control of Relay Tower 09 to Captain Richards</label>
+            <resultText>Sharp discipline for civilians. The Enclave remembers those who serve order.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.enc_q1</flag>
+                <value>secured</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>550</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enclave_officer_uniform</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ENCLAVE Q2: REGULATION AND FIST                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_enclave_Q2</defName>
+    <label>regulation and fist</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_EnclaveFaction</faction>
+    <giver>TMM_Hero_sergeant_dornan</giver>
+    <fallbackGiver>TMM_Hero_captain_richards</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_enclave_Q1</li>
+    </requires>
+    <letterLabel>Regulation and Fist</letterLabel>
+    <letterText>Listen up, maggots! Colonel Autumn thinks your little dirt-farm has potential, which means you are now under my personal inspection! My field training camp is about to be hit by a pack of wasteland raiders—get over here, stand at attention, and show me you don't fold like wet paper!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>dornan_camp</key>
+        <label>Hold Sergeant Dornan's training camp</label>
+        <text>Hold the Enclave field camp for 5 hours against raiding waves while Sergeant Dornan furiously chews out a charging raider for attacking without a regulation helmet.</text>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>dornan_inspection</key>
+        <label>Inspection passed</label>
+        <text>The smoke clears over the drill yard. Sergeant Dornan marches down your firing line, glaring at every rifle barrel before letting out a grudging bark of approval.</text>
+        <choices>
+          <li>
+            <outcome>passed</outcome>
+            <label>Stand at attention and collect Dornan's commendation</label>
+            <resultText>Not half bad, soldier! Dammit, I might actually hammer real troopers out of you yet! Take your pay and don't dare lose your gear!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.enc_q2</flag>
+                <value>passed</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>700</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.dornan_drill_buff</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ENCLAVE Q3: SAMPLES OF PURITY                                         -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_enclave_Q3</defName>
+    <label>samples of purity</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_EnclaveFaction</faction>
+    <giver>TMM_Hero_dr_curling</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_colonel_autumn</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_enclave_Q2</li>
+    </requires>
+    <letterLabel>Samples of Purity</letterLabel>
+    <letterText>Greetings. I am Dr. Charles Curling, head of the Enclave Chemical Corps. To ensure the survival of uncorrupted humanity, I require tissue samples from both a mutated super mutant behemoth and a supernatural anomaly. Collect them quietly, and you will be compensated handsomely.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>swamp_hunt</key>
+        <label>Collect mutant and anomaly tissue samples in the mire</label>
+        <text>Clear the wild super mutant hunting ground in the toxic mire and fill Dr. Curling's bio-vials.</text>
+        <enemyFaction>TMM_WildMutantsFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>curling_vials</key>
+        <label>Stamp of Project Purity</label>
+        <text>Sealing the last specimen tube, you notice faded stenciling on Dr. Curling's cases: "Project Purity / Strain FEV-2." Deliver the full batch to Dr. Curling, or secretly forward a copy to Brian Virgil?</text>
+        <choices>
+          <li>
+            <outcome>delivered</outcome>
+            <label>Deliver all tissue samples straight to Dr. Charles Curling</label>
+            <resultText>Immaculate preservation. Soon we will hold a remedy capable of correcting every error of evolution.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.enc_q3</flag>
+                <value>delivered</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>850</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>4</count>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>leaked</outcome>
+            <label>Leak a duplicate sample and Curling's notes to Brian Virgil</label>
+            <resultText>The samples arrived, though the lab manifest shows curious discrepancies... Tread carefully, civilian.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.enc_q3</flag>
+                <value>leaked</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>850</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>4</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ENCLAVE Q4 (FACTION POINT): CLEAN SLATE                               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_enclave_Q4</defName>
+    <label>clean slate</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_EnclaveFaction</faction>
+    <giver>TMM_Hero_colonel_autumn</giver>
+    <fallbackGiver>TMM_Hero_captain_richards</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_enclave_Q3</li>
+    </requires>
+    <letterLabel>Clean Slate</letterLabel>
+    <letterText>The time for half-measures is over. Dr. Curling's modified aerosol is loaded into our mobile crawler's dispersal tanks—once released, it will cleanse the region of every mutant, ghoul, synth, and occult parasite in one stroke. Join me at the crawler to authorize the launch, and secure your place in the new America.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>mobile_crawler</key>
+        <label>Reach the Enclave Mobile Base Crawler console</label>
+        <text>Fight through nocturnal creatures assaulting the colossal Enclave Mobile Base Crawler to reach the central aerosol launch console.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>crawler_console</key>
+        <label>The dispersal console</label>
+        <text>Beside the launch terminal lies an unread Consortium directive ordering the silent liquidation of Colonel Autumn himself once the purge concludes. Colonel Autumn waits for your authorization on the aerosol tanks.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Authorize full dispersal of Dr. Curling's aerosol (Side with the Enclave)</label>
+            <resultText>History will mark this day as the dawn of rebirth. Take this Tesla Cannon—a weapon worthy of a loyal ally.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.enclave</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_tesla_cannon</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enclave_x01_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>compromise</outcome>
+            <label>Reprogram the aerosol to target ONLY demons and Leviathans (Scientist's Compromise)</label>
+            <resultText>Audacious... you altered a direct order! Yet if this scours the abominations from our soil, I can accept the result.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.enclave</flag>
+                <value>compromise</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_HellFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MonsterClansFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_tesla_cannon</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.enclave_x01_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Detonate the aerosol tanks and fight your way off the crawler (Protect the Wasteland)</label>
+            <resultText>Traitor! You threw away mankind's future for a horde of mutants! Cut them down!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.enclave</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>-70</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_FriendlyMutantsFaction</faction>
+                <amount>40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.autumn_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.enclave</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- ENCLAVE Q5 (DEFECTOR QUEST): TREASON AT HEADQUARTERS                  -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_enclave_Q5</defName>
+    <label>treason at headquarters</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_EnclaveFaction</faction>
+    <giver>TMM_Hero_sergeant_dornan</giver>
+    <fallbackGiver>TMM_Hero_captain_richards</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_enclave_Q4</li>
+    </requires>
+    <anyOf>
+      <li>choice.enclave=pro_spark</li>
+      <li>choice.enclave=compromise</li>
+      <li>ponr1=protect</li>
+    </anyOf>
+    <letterLabel>Treason at Headquarters</letterLabel>
+    <letterText>Soldier! High Command has lost its damn mind! Autumn is cutting backroom deals with Institute lab-rats and occult freaks, and he just ordered Richards' squad to execute my platoon for 'insubordination'! We are breaking out—open your gates and give a real soldier a place to stand!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>hellfire_pursuit</key>
+        <label>Repel Captain Richards's Hellfire pursuit squad</label>
+        <text>Sergeant Dornan charges through {COLONY}'s perimeter with Enclave Hellfire troopers hot on his heels! Hold the line!</text>
+        <faction>TMM_EnclaveFaction</faction>
+        <pointsFactor>1.3</pointsFactor>
+        <delayHours>2</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>accept_dornan</key>
+        <label>A drill sergeant in your ranks</label>
+        <text>The last Hellfire pursuer hits the dirt. Sergeant Dornan wipes soot off his visor and immediately starts glaring at your colonists for not wearing regulation power armor.</text>
+        <choices>
+          <li>
+            <outcome>recruit_dornan</outcome>
+            <label>Welcome Sergeant Dornan into {COLONY}'s garrison</label>
+            <resultText>Finally a commander with a spine! Now fall in, maggots—I'm gonna teach you how to hold a perimeter!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_sergeant_dornan</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_sergeant_dornan</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_EnclaveFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gun_Minigun</thing>
+                <count>1</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

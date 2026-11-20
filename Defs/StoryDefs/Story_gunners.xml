@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- GUNNERS Q1: CAPS UP FRONT                                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_gunners_Q1</defName>
+    <label>caps up front</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_baker</giver>
+    <fallbackGiver>TMM_Hero_captain_bridget</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>Caps Up Front</letterLabel>
+    <letterText>Nothing personal, settler—just business. A pack of feral raiders set up roadblocks on our supply route, and Captain Wes wants the lane cleared before sunset. Spot for me from the ridge while I pick off their heavies, and we'll split the loot fifty-fifty.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>highway_roadblock</key>
+        <label>Clear the raider highway roadblock with Baker</label>
+        <text>Flush the raiders out of the overpass barricades while Gunner sniper Baker picks off their heavy gunners from above.</text>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>split_loot</key>
+        <label>Notches on the rifle stock</label>
+        <text>Baker calmly carves another set of notches onto his sniper stock and nods once to your squad leader as the supply route opens.</text>
+        <choices>
+          <li>
+            <outcome>honest</outcome>
+            <label>Split the salvaged loot fairly with Baker</label>
+            <resultText>Clean work. Refreshing dealing with folks who skip the drama. I'll tell Wes you keep your word.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.gun_q1</flag>
+                <value>honest</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.gunner_combat_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GUNNERS Q2: DEBT OF QUINCY                                            -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_gunners_Q2</defName>
+    <label>debt of quincy</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_clint</giver>
+    <fallbackGiver>TMM_Hero_captain_bridget</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_gunners_Q1</li>
+    </requires>
+    <letterLabel>Debt of Quincy</letterLabel>
+    <letterText>Some stubborn Minutemen holdouts haven't learned when they're beaten—they're gathering for a midnight strike on my outpost at Quincy. Help me hold the walls and wipe them out, and I'll make sure the Gunners open their heavy armory to your traders.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>quincy_allegiance</key>
+        <label>Night falls over Quincy</label>
+        <text>On the scarred wall of Quincy's old church, faded militia chalk murals and a shattered laser musket still mark the site of Clint's betrayal. Before midnight strikes, choose whose side you fight on.</text>
+        <choices>
+          <li>
+            <outcome>clint</outcome>
+            <label>Hold the walls of Quincy alongside Clint against the Minutemen (Side with Gunners)</label>
+            <resultText>That's how it's done! Let them learn who owns Quincy now. Take your cut and our helmet schematics.</resultText>
+            <nextStage>1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.gun_q2</flag>
+                <value>clint</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>900</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.gunner_helmet_bandana</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>minutemen</outcome>
+            <label>Warn the Minutemen and storm Clint's garrison in Quincy (Side with Minutemen)</label>
+            <resultText>Backstabbing rat! I'll skin you alive!</resultText>
+            <nextStage>2</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.gun_q2</flag>
+                <value>minutemen</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gun_AssaultRifle</thing>
+                <count>1</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>quincy_hold</key>
+        <label>Hold Quincy against the Minutemen counterattack</label>
+        <text>Defend Clint's Quincy outpost for 5 hours against the furious midnight militia assault.</text>
+        <enemyFaction>TMM_MinutemenHuntersFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>quincy_liberate</key>
+        <label>Storm Clint's Gunner outpost in Quincy</label>
+        <text>Crush Clint's mercenary garrison in the ruins of Quincy and return the town to the Minutemen.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>3</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>3</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>quincy_aftermath</key>
+        <label>Dawn over Quincy</label>
+        <text>Gunfire dies out across the ruined church square of Quincy. Word of your decisive intervention reaches every mercenary camp and militia watchtower in the region.</text>
+        <days>0.2</days>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GUNNERS Q3: TRIAL BY IRON                                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_gunners_Q3</defName>
+    <label>trial by iron</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_tessa</giver>
+    <fallbackGiver>TMM_Hero_captain_bridget</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_gunners_Q2</li>
+    </requires>
+    <letterLabel>Trial by Iron</letterLabel>
+    <letterText>Hey, tough guy! I've been welding new reinforced plates onto my power armor frame, and I need someone with real guts to test if they hold up in a brawl. Bring your best melee fighters to my scrapyard arena—first one knocked down buys the drinks!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>scrapyard_arena</key>
+        <label>Brawl at Tessa's scrapyard arena</label>
+        <text>Step into the sand pit surrounded by cheering mercenaries tossing wrenches and caps, and test your mettle against Tessa's armored brawlers.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>tessa_respect</key>
+        <label>Respect forged in scrap</label>
+        <text>Dented plating smoking in the dust, Tessa laughs loudly and offers a heavy power-armored gauntlet for a handshake.</text>
+        <choices>
+          <li>
+            <outcome>won</outcome>
+            <label>Shake Tessa's hand and collect the arena purse</label>
+            <resultText>Haha! Now THAT was a punch! The plates held and you fought like a beast. Respect!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.gun_q3</flag>
+                <value>won</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>750</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>3</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GUNNERS Q4 (FACTION POINT): DOUBLE CONTRACT                           -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_gunners_Q4</defName>
+    <label>double contract</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_captain_wes</giver>
+    <fallbackGiver>TMM_Hero_captain_bridget</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_gunners_Q3</li>
+    </requires>
+    <letterLabel>Double Contract</letterLabel>
+    <letterText>You've earned a seat at the big table. An anonymous client—paying in pre-war gold and Vault-Tec bearer bonds—wants a senior liaison of the British Men of Letters eliminated during a secret meeting. Handle the hit cleanly, and I'll hand you my own modified combat rifle, Overseer's Guardian.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>metro_meeting</key>
+        <label>Infiltrate the abandoned metro meeting</label>
+        <text>Fight past the British Men of Letters security detail at the abandoned metro station to corner the senior liaison.</text>
+        <enemyFaction>TMM_MenOfLettersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>metro_deal</key>
+        <label>Briefcase on the platform</label>
+        <text>Cornered beside the rusted subway tracks, the British liaison opens his briefcase—revealing a receipt signed by Dick Roman paying the Gunners for synth-capture cages—and offers you 2000 silver to fake his death and take the evidence.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Fulfill Captain Wes's contract and eliminate the liaison (Side with Gunners)</label>
+            <resultText>No questions, no witnesses. That is true professionalism. Overseer's Guardian is yours, partner.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.gunners</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_overseers_guardian</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.wes_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Fake the liaison's death, seize the Consortium dirt, and double-cross Wes (For the Truth)</label>
+            <resultText>You burned the Gunners for those British snobs?! There's a bounty on your head in every camp from here to the coast!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.gunners</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.consortiumGunnerReceipt</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-60</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MenOfLettersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>2000</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.gunners</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- GUNNERS Q5 (DEFECTOR QUEST): NEW EMPLOYER                             -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_gunners_Q5</defName>
+    <label>new employer</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_GunnersFaction</faction>
+    <giver>TMM_Hero_tessa</giver>
+    <fallbackGiver>TMM_Hero_baker</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_gunners_Q4</li>
+      <li>story.gun_q3=won</li>
+    </requires>
+    <letterLabel>New Employer</letterLabel>
+    <letterText>Wes is taking suicidal contracts from Vault-Tec suits and throwing our squads into meat grinders against angels and mutants. Screw that. You beat me fair on the arena and you actually pay on time. Cover my exit from the Quincy overpass, and my armor is yours!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>overpass_breakout</key>
+        <label>Cover Tessa's breakout from the Quincy overpass</label>
+        <text>Shatter Captain Bridget's punitive Gunner encirclement on the Quincy overpass so Tessa can break free in her custom power armor.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>hire_tessa</key>
+        <label>Heavy armor for hire</label>
+        <text>Stepping through {COLONY}'s gate in her battered custom power armor, Tessa immediately scans your courtyard looking for your toughest melee brawler to spar with.</text>
+        <choices>
+          <li>
+            <outcome>recruit_tessa</outcome>
+            <label>Hire Tessa into {COLONY}'s permanent garrison</label>
+            <resultText>Deal! Just point me to a proper workbench—gotta weld this pauldron back together after that brawl.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_tessa</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_tessa</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-50</amount>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

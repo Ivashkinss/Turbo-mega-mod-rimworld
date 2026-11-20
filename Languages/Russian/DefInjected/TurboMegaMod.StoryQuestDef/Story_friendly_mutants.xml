@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_friendly_mutants_Q1 -->
+  <TMM_Story_friendly_mutants_Q1.label>бродячий сказочник</TMM_Story_friendly_mutants_Q1.label>
+  <TMM_Story_friendly_mutants_Q1.letterLabel>Бродячий сказочник</TMM_Story_friendly_mutants_Q1.letterLabel>
+  <TMM_Story_friendly_mutants_Q1.letterText>Привет, маленькие друзья-люди! Меня зовут Дядя Лео! Я шёл по старому шоссе с мешком чистой воды и довоенных книг для бедной фермы, но злые рейдеры с громкими пушками прижали меня за ржавым автобусом. Я не люблю делать людям больно — поможете мне пройти?</TMM_Story_friendly_mutants_Q1.letterText>
+  <TMM_Story_friendly_mutants_Q1.stages.0.label>Разогнать рейдеров, прижавших Дядю Лео</TMM_Story_friendly_mutants_Q1.stages.0.label>
+  <TMM_Story_friendly_mutants_Q1.stages.0.text>Разгромите рейдеров у старого автобуса на шоссе, чтобы безоружный супермутант Дядя Лео смог донести припасы до фермы.</TMM_Story_friendly_mutants_Q1.stages.0.text>
+  <TMM_Story_friendly_mutants_Q1.stages.1.label>Добрый великан на шоссе</TMM_Story_friendly_mutants_Q1.stages.1.label>
+  <TMM_Story_friendly_mutants_Q1.stages.1.text>Рейдеры разбегаются, и Дядя Лео выходит из-за ржавого автобуса с мешком чистой воды, пайков и потрёпанным томиком Шекспира, который он хочет подарить Силачу.</TMM_Story_friendly_mutants_Q1.stages.1.text>
+  <TMM_Story_friendly_mutants_Q1.stages.1.choices.0.label>Довести Дядю Лео до фермы без гибели поселенцев</TMM_Story_friendly_mutants_Q1.stages.1.choices.0.label>
+  <TMM_Story_friendly_mutants_Q1.stages.1.choices.0.resultText>Видишь? Не все большие зелёные ребята плохие! Спасибо, друг, вот тебе немного припасов из моего мешка.</TMM_Story_friendly_mutants_Q1.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_friendly_mutants_Q2 -->
+  <TMM_Story_friendly_mutants_Q2.label>туманная псарня</TMM_Story_friendly_mutants_Q2.label>
+  <TMM_Story_friendly_mutants_Q2.letterLabel>Туманная псарня</TMM_Story_friendly_mutants_Q2.letterLabel>
+  <TMM_Story_friendly_mutants_Q2.letterText>Ты... ты помог Лео. Хорошо. Меня зовут Эриксон. Я живу в тумане у разбитого самолёта со своими псами. Охотники за трофеями из Стрелков наставили вокруг лагеря отравленных капканов и ранили моего лучшего пса-мутанта. Принеси лекарства и помоги зачистить их засаду.</TMM_Story_friendly_mutants_Q2.letterText>
+  <TMM_Story_friendly_mutants_Q2.stages.0.label>Выделить медикаменты для раненых псов Эриксона</TMM_Story_friendly_mutants_Q2.stages.0.label>
+  <TMM_Story_friendly_mutants_Q2.stages.0.text>Передайте 4 аптечки со складов {COLONY}, чтобы вылечить отравленных гончих-мутантов Эриксона.</TMM_Story_friendly_mutants_Q2.stages.0.text>
+  <TMM_Story_friendly_mutants_Q2.stages.1.label>Зачистить охотников Стрелков у разбитого самолёта</TMM_Story_friendly_mutants_Q2.stages.1.label>
+  <TMM_Story_friendly_mutants_Q2.stages.1.text>Выбейте снайперов Стрелков из тумана вокруг псарни Эриксона у разбитого самолёта.</TMM_Story_friendly_mutants_Q2.stages.1.text>
+  <TMM_Story_friendly_mutants_Q2.stages.2.label>Тишина в фюзеляже</TMM_Story_friendly_mutants_Q2.stages.2.label>
+  <TMM_Story_friendly_mutants_Q2.stages.2.text>Внутри разбитого фюзеляжа, где Эриксон ведёт аккуратный лабораторный журнал наблюдений за туманными аномалиями, гончие-мутанты снова дышат ровно.</TMM_Story_friendly_mutants_Q2.stages.2.text>
+  <TMM_Story_friendly_mutants_Q2.stages.2.choices.0.label>Вылечить всех псов Эриксона и прогнать Стрелков</TMM_Story_friendly_mutants_Q2.stages.2.choices.0.label>
+  <TMM_Story_friendly_mutants_Q2.stages.2.choices.0.resultText>Псы дышат ровно. Ты не боишься нас, и мы это ценим. Возьми чертежи брони — она сшита под крупные плечи.</TMM_Story_friendly_mutants_Q2.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_friendly_mutants_Q3 -->
+  <TMM_Story_friendly_mutants_Q3.label>молоко человеческой доброты</TMM_Story_friendly_mutants_Q3.label>
+  <TMM_Story_friendly_mutants_Q3.letterLabel>Молоко человеческой доброты</TMM_Story_friendly_mutants_Q3.letterLabel>
+  <TMM_Story_friendly_mutants_Q3.letterText>Силачу нужен друг-человек! Дикие братья напали на торговцев людей на мосту. Силач раздавит диких братьев, чтобы люди увидели — Силач хороший! Приходи помочь Силачу драться — может, люди наконец дадут Силачу молоко человеческой доброты!</TMM_Story_friendly_mutants_Q3.letterText>
+  <TMM_Story_friendly_mutants_Q3.stages.0.label>Отбить караван на мосту вместе с Силачом</TMM_Story_friendly_mutants_Q3.stages.0.label>
+  <TMM_Story_friendly_mutants_Q3.stages.0.text>Разбейте на разрушенном мосту банду диких супермутантов, напавших на человеческий караван.</TMM_Story_friendly_mutants_Q3.stages.0.text>
+  <TMM_Story_friendly_mutants_Q3.stages.1.label>Стволы наведены на спасителя</TMM_Story_friendly_mutants_Q3.stages.1.label>
+  <TMM_Story_friendly_mutants_Q3.stages.1.text>Едва падает последний дикий мутант, перепуганные охранники каравана вскидывают стволы прямо на Силача! Вмешайтесь, пока Силач не сорвался в слепую ярость.</TMM_Story_friendly_mutants_Q3.stages.1.text>
+  <TMM_Story_friendly_mutants_Q3.stages.1.choices.0.label>Успокоить обе стороны и убедить торговцев поблагодарить Силача</TMM_Story_friendly_mutants_Q3.stages.1.choices.0.label>
+  <TMM_Story_friendly_mutants_Q3.stages.1.choices.0.resultText>Ха! Люди не стрелять! Люди дать Силачу тёплый хлеб, бутылку браминьего молока и сказать спасибо! Силач теперь уважать тебя!</TMM_Story_friendly_mutants_Q3.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_friendly_mutants_Q4 -->
+  <TMM_Story_friendly_mutants_Q4.label>лекарство для верджила</TMM_Story_friendly_mutants_Q4.label>
+  <TMM_Story_friendly_mutants_Q4.letterLabel>Лекарство для Верджила</TMM_Story_friendly_mutants_Q4.letterLabel>
+  <TMM_Story_friendly_mutants_Q4.letterText>Я сделал это... боже, я правда её синтезировал! Используя данные резонанса вашей Нулевой Искры, я стабилизировал одну-единственную дозу ретровируса ВРЭ! Немедленно приходите в мою пещерную лабораторию — мой рассудок тает с каждым днём, и это мой единственный шанс снова стать человеком!</TMM_Story_friendly_mutants_Q4.letterText>
+  <TMM_Story_friendly_mutants_Q4.stages.0.label>Защитить пещерную лабораторию Брайана Верджила</TMM_Story_friendly_mutants_Q4.stages.0.label>
+  <TMM_Story_friendly_mutants_Q4.stages.0.text>Удерживайте вход в пещеру Верджила плечом к плечу с Фоксом в течение 5 часов, пока охотники Института рвутся уничтожить центрифугу.</TMM_Story_friendly_mutants_Q4.stages.0.text>
+  <TMM_Story_friendly_mutants_Q4.stages.1.label>Одна уцелевшая ампула</TMM_Story_friendly_mutants_Q4.stages.1.label>
+  <TMM_Story_friendly_mutants_Q4.stages.1.text>Фокс опускает миниган у входа в пещеру — сам он отказывается от лекарства, потому что его сила нужна для защиты слабых. Внутри уцелела единственная ампула ретровируса ВРЭ: вернуть Верджилу человеческий облик или спасти умирающего от острой лучевой мутации ребёнка поселенцев?</TMM_Story_friendly_mutants_Q4.stages.1.text>
+  <TMM_Story_friendly_mutants_Q4.stages.1.choices.0.label>Отдать единственную дозу Брайану Верджилу (за науку и союз с Фоксом)</TMM_Story_friendly_mutants_Q4.stages.1.choices.0.label>
+  <TMM_Story_friendly_mutants_Q4.stages.1.choices.0.resultText>Оно работает... я снова чувствую свои пальцы, свои мысли! Я никогда не забуду этого долга. Фокс и я будем с вами до конца!</TMM_Story_friendly_mutants_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_friendly_mutants_Q4.stages.1.choices.1.label>Забрать сыворотку для спасения умирающего ребёнка (жертвенный выбор)</TMM_Story_friendly_mutants_Q4.stages.1.choices.1.label>
+  <TMM_Story_friendly_mutants_Q4.stages.1.choices.1.resultText>Я... я понимаю. Я сам создал это чудовище, мне и нести этот крест. Возьмите ампулу... и уходите, пока я ещё помню своё имя.</TMM_Story_friendly_mutants_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_friendly_mutants_Q5 -->
+  <TMM_Story_friendly_mutants_Q5.label>лаборатория надежды</TMM_Story_friendly_mutants_Q5.label>
+  <TMM_Story_friendly_mutants_Q5.letterLabel>Лаборатория надежды</TMM_Story_friendly_mutants_Q5.letterLabel>
+  <TMM_Story_friendly_mutants_Q5.letterText>Теперь, когда Консорциум и Анклав подняли армии, моя пещера больше не безопасна — а у вашего Нулевого Якоря есть именно та энергетическая сигнатура, которая нужна для массового лекарства от ВРЭ и одичания гулей. Помогите перевезти оборудование в вашу колонию!</TMM_Story_friendly_mutants_Q5.letterText>
+  <TMM_Story_friendly_mutants_Q5.stages.0.label>Прорвать засаду Анклава при эвакуации Верджила</TMM_Story_friendly_mutants_Q5.stages.0.label>
+  <TMM_Story_friendly_mutants_Q5.stages.0.text>Разбейте засаду Анклава на хребте, прижавшую Брайана Верджила и ящики с его лабораторным оборудованием.</TMM_Story_friendly_mutants_Q5.stages.0.text>
+  <TMM_Story_friendly_mutants_Q5.stages.1.label>Настоящая лаборатория</TMM_Story_friendly_mutants_Q5.stages.1.label>
+  <TMM_Story_friendly_mutants_Q5.stages.1.text>Когда солдаты Анклава разбиты, Брайан Верджил благополучно прибывает к воротам {COLONY} с тремя ящиками научного оборудования — готовый создать лекарство для всей Пустоши.</TMM_Story_friendly_mutants_Q5.stages.1.text>
+  <TMM_Story_friendly_mutants_Q5.stages.1.choices.0.label>Принять Брайана Верджила в научный штаб колонии</TMM_Story_friendly_mutants_Q5.stages.1.choices.0.label>
+  <TMM_Story_friendly_mutants_Q5.stages.1.choices.0.resultText>Наконец-то настоящая лаборатория. Дайте мне время — и мы исцелим эту проклятую Пустошь.</TMM_Story_friendly_mutants_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

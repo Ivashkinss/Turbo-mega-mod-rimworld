@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_wild_mutants_Q1 -->
+  <TMM_Story_wild_mutants_Q1.label>мясные мешки</TMM_Story_wild_mutants_Q1.label>
+  <TMM_Story_wild_mutants_Q1.letterLabel>Мясные мешки</TMM_Story_wild_mutants_Q1.letterLabel>
+  <TMM_Story_wild_mutants_Q1.letterText>Маленькие мясные мешки шлют сигналы! У Мастера-мясника три мягких торговца людей висят в клетках на старой скотобойне. Приходите нести блестящий лом или острые ножи — или сами станете ужином! Ха-ха!</TMM_Story_wild_mutants_Q1.letterText>
+  <TMM_Story_wild_mutants_Q1.stages.0.label>Совершить вылазку на скотобойню диких мутантов</TMM_Story_wild_mutants_Q1.stages.0.label>
+  <TMM_Story_wild_mutants_Q1.stages.0.text>Проникните на старую скотобойню под ржавой вывеской «Берегитесь Лебедя» и перебейте охрану мутантов до того, как пленные торговцы станут ужином.</TMM_Story_wild_mutants_Q1.stages.0.text>
+  <TMM_Story_wild_mutants_Q1.stages.1.label>Под вывеской «Берегитесь Лебедя»</TMM_Story_wild_mutants_Q1.stages.1.label>
+  <TMM_Story_wild_mutants_Q1.stages.1.text>Клетки распахнуты посреди смрадной скотобойни. Решите, как ваши разведчики завершат вылазку до рассвета.</TMM_Story_wild_mutants_Q1.stages.1.text>
+  <TMM_Story_wild_mutants_Q1.stages.1.choices.0.label>Тихо взломать клетки и увести всех пленников без потерь</TMM_Story_wild_mutants_Q1.stages.1.choices.0.label>
+  <TMM_Story_wild_mutants_Q1.stages.1.choices.0.resultText>Гррр! Хитрые маленькие крысы украли ужин Мясника! В следующий раз раздавим!</TMM_Story_wild_mutants_Q1.stages.1.choices.0.resultText>
+  <TMM_Story_wild_mutants_Q1.stages.1.choices.1.label>Перебить охрану скотобойни в лобовом бою</TMM_Story_wild_mutants_Q1.stages.1.choices.1.label>
+  <TMM_Story_wild_mutants_Q1.stages.1.choices.1.resultText>Сильные руки у мелких людей! Кувалда запомнит ваш запах!</TMM_Story_wild_mutants_Q1.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_wild_mutants_Q2 -->
+  <TMM_Story_wild_mutants_Q2.label>безумный конвой</TMM_Story_wild_mutants_Q2.label>
+  <TMM_Story_wild_mutants_Q2.letterLabel>Безумный конвой</TMM_Story_wild_mutants_Q2.letterLabel>
+  <TMM_Story_wild_mutants_Q2.letterText>ВРУМ! БУМ! Безумный Гонщик нашёл блестящие тикающие мячики! Быстрые братья привязали мини-заряды к груди и бегут прямо к вашим стенам! Ловите нас, мелкие муравьи!</TMM_Story_wild_mutants_Q2.letterText>
+  <TMM_Story_wild_mutants_Q2.stages.0.label>Пережить атаку камикадзе Безумного Гонщика</TMM_Story_wild_mutants_Q2.stages.0.label>
+  <TMM_Story_wild_mutants_Q2.stages.0.text>Над долиной нарастает зловещий писк взведённых мини-зарядов — отстреляйте бегущих диких супермутантов на подступах к стенам {COLONY}!</TMM_Story_wild_mutants_Q2.stages.0.text>
+  <TMM_Story_wild_mutants_Q2.stages.1.label>Неразорвавшиеся заряды у ворот</TMM_Story_wild_mutants_Q2.stages.1.label>
+  <TMM_Story_wild_mutants_Q2.stages.1.text>Подступы к {COLONY} покрыты дымящимися воронками, но ваши стрелки сняли двоих бегунов до детонации, добыв целые снаряды и привлекая тихое внимание Мёртвого Глаза.</TMM_Story_wild_mutants_Q2.stages.1.text>
+  <TMM_Story_wild_mutants_Q2.stages.1.choices.0.label>Отстрелять камикадзе на дальних подступах и забрать трофейные заряды</TMM_Story_wild_mutants_Q2.stages.1.choices.0.label>
+  <TMM_Story_wild_mutants_Q2.stages.1.choices.0.resultText>Ха-ха! Громкий фейерверк! Твои стрелки быстрые, как пули!</TMM_Story_wild_mutants_Q2.stages.1.choices.0.resultText>
+
+  <!-- TMM_Story_wild_mutants_Q3 -->
+  <TMM_Story_wild_mutants_Q3.label>маяк ярости</TMM_Story_wild_mutants_Q3.label>
+  <TMM_Story_wild_mutants_Q3.letterLabel>Маяк ярости</TMM_Story_wild_mutants_Q3.letterLabel>
+  <TMM_Story_wild_mutants_Q3.letterText>Вожак людей. Я — Мёртвый Глаз. В отличие от шумных братьев, я смотрю и думаю. Старая довоенная вышка на холме кричит высоким звуком, который жжёт головы и сводит братьев с ума от ярости. Сломай вышку — или заставь её кричать на наших врагов.</TMM_Story_wild_mutants_Q3.letterText>
+  <TMM_Story_wild_mutants_Q3.stages.0.label>Прорваться к довоенной ультразвуковой вышке</TMM_Story_wild_mutants_Q3.stages.0.label>
+  <TMM_Story_wild_mutants_Q3.stages.0.text>Пробейтесь мимо обезумевших мутантов к пульту управления кричащей вышки на холме.</TMM_Story_wild_mutants_Q3.stages.0.text>
+  <TMM_Story_wild_mutants_Q3.stages.1.label>«Волт-Тек — Эксперимент контроля агрессии»</TMM_Story_wild_mutants_Q3.stages.1.label>
+  <TMM_Story_wild_mutants_Q3.stages.1.text>На стальном щитке вышки выбит довоенный логотип: «Волт-Тек — Эксперимент контроля агрессии». Разбить излучатель и облегчить боль мутантов или перенастроить его против врагов {COLONY}?</TMM_Story_wild_mutants_Q3.stages.1.text>
+  <TMM_Story_wild_mutants_Q3.stages.1.choices.0.label>Уничтожить ультразвуковую вышку и облегчить боль мутантов</TMM_Story_wild_mutants_Q3.stages.1.choices.0.label>
+  <TMM_Story_wild_mutants_Q3.stages.1.choices.0.resultText>Тишина... Впервые за долгие годы в голове тихо. Я запомню этот долг, вожак людей.</TMM_Story_wild_mutants_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_wild_mutants_Q3.stages.1.choices.1.label>Перенастроить частоту вышки как оружие против врагов колонии</TMM_Story_wild_mutants_Q3.stages.1.choices.1.label>
+  <TMM_Story_wild_mutants_Q3.stages.1.choices.1.resultText>Ты хитрый, как когтистый зверь. Пусть теперь враги сходят с ума от этого воя.</TMM_Story_wild_mutants_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_wild_mutants_Q4 -->
+  <TMM_Story_wild_mutants_Q4.label>рёв из глубины</TMM_Story_wild_mutants_Q4.label>
+  <TMM_Story_wild_mutants_Q4.letterLabel>Рёв из глубины</TMM_Story_wild_mutants_Q4.letterLabel>
+  <TMM_Story_wild_mutants_Q4.letterText>Мелкий вожак! Лебедь проснулся в глубокой тёмной воде! Земля дрожит, деревья ломаются! Кувалда говорит: если ты сильный, приходи в затопленный парк и сразись с Королём Бегемотов! Победишь Лебедя — дикая орда признает твою силу, или сгинет под его якорем!</TMM_Story_wild_mutants_Q4.letterText>
+  <TMM_Story_wild_mutants_Q4.stages.0.label>Сразиться с Королём Бегемотов Лебедем в затопленном парке</TMM_Story_wild_mutants_Q4.stages.0.label>
+  <TMM_Story_wild_mutants_Q4.stages.0.text>Высадитесь в затопленный довоенный парк и одолейте исполинского Лебедя с корабельным якорем и сдвоенным ядерным гранатомётом, чтобы орда не ударила в спину в финальной осаде.</TMM_Story_wild_mutants_Q4.stages.0.text>
+  <TMM_Story_wild_mutants_Q4.stages.1.label>Выцветший бейдж Эдгара Свонна</TMM_Story_wild_mutants_Q4.stages.1.label>
+  <TMM_Story_wild_mutants_Q4.stages.1.text>У беседки затопленного парка лежат разорванные страницы дневника старого уборщика по имени «Эдгар Свонн» — с каждым днём буквы в нём становились всё крупнее и бессвязнее, пока не осталась одна ярость.</TMM_Story_wild_mutants_Q4.stages.1.text>
+  <TMM_Story_wild_mutants_Q4.stages.1.choices.0.label>[Лебедь повержен] Заявить право сильного и забрать «Большой мальчик» и якорь Лебедя</TMM_Story_wild_mutants_Q4.stages.1.choices.0.label>
+  <TMM_Story_wild_mutants_Q4.stages.1.choices.0.resultText>Оооо... Гора упала... Кувалда и братья видят: мелкий вожак сильнее бегемота! Забирай большую пушку и якорь — мы уходим в глушь!</TMM_Story_wild_mutants_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_wild_mutants_Q4.stages.1.choices.1.label>[Лебедь на свободе] Отступить — Король Бегемотов всё ещё бродит по Пустоши</TMM_Story_wild_mutants_Q4.stages.1.choices.1.label>
+  <TMM_Story_wild_mutants_Q4.stages.1.choices.1.resultText>Кувалда дико хохочет из руин под сотрясающий землю рёв Лебедя. Когда начнётся финальная осада, дикая орда обрушится на всех подряд!</TMM_Story_wild_mutants_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_wild_mutants_Q5 -->
+  <TMM_Story_wild_mutants_Q5.label>уважение снайпера</TMM_Story_wild_mutants_Q5.label>
+  <TMM_Story_wild_mutants_Q5.letterLabel>Уважение снайпера</TMM_Story_wild_mutants_Q5.letterLabel>
+  <TMM_Story_wild_mutants_Q5.letterText>Лебедя больше нет, и Кувалда хочет бросить племя на бессмысленную бойню против людей в силовой броне. Я устал умирать за крикливых дураков. Позволь мне проверить винтовку рядом с твоими стрелками — если попадёшь в цель, я встану на твои стены.</TMM_Story_wild_mutants_Q5.letterText>
+  <TMM_Story_wild_mutants_Q5.stages.0.label>Пройти испытание меткости с Мёртвым Глазом</TMM_Story_wild_mutants_Q5.stages.0.label>
+  <TMM_Story_wild_mutants_Q5.stages.0.text>Зачистите логово опасных тварей Пустоши плечом к плечу с Мёртвым Глазом, доказав меткость ваших стрелков.</TMM_Story_wild_mutants_Q5.stages.0.text>
+  <TMM_Story_wild_mutants_Q5.stages.1.label>Чистая оптика в кожаном чехле</TMM_Story_wild_mutants_Q5.stages.1.label>
+  <TMM_Story_wild_mutants_Q5.stages.1.text>Мёртвый Глаз — единственный из дикой стаи, кто держит свой оптический прицел протёртым до блеска в кожаном чехле — спокойно кивает в знак уважения.</TMM_Story_wild_mutants_Q5.stages.1.text>
+  <TMM_Story_wild_mutants_Q5.stages.1.choices.0.label>Принять Мёртвого Глаза в гарнизон колонии</TMM_Story_wild_mutants_Q5.stages.1.choices.0.label>
+  <TMM_Story_wild_mutants_Q5.stages.1.choices.0.resultText>Хороший выстрел, вожак. Дай мне высокую башню и патроны — ни один враг не подойдёт к воротам живым.</TMM_Story_wild_mutants_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>
