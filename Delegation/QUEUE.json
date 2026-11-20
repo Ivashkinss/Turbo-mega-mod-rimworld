@@ -1671,7 +1671,7 @@
     },
     {
       "id": "StoryStageSiteRecheck",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "afterTask": "StoryStageSiteFix",
@@ -1685,7 +1685,7 @@
     },
     {
       "id": "StoryStageHotelRecheck",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "afterTask": "StoryHotelFix",
@@ -1699,7 +1699,7 @@
     },
     {
       "id": "OutpostCaravanRecheck",
-      "state": "pending",
+      "state": "reviewed",
       "assignee": "codex",
       "kind": "accept",
       "afterTask": "OutpostCaravanFix",
@@ -1710,6 +1710,17 @@
       ],
       "createdUtc": "2026-11-20T03:30:00Z",
       "note": "Read-only recheck of walking-caravan fixes against the previous Codex report."
+    },
+    {
+      "id": "Round2Integration",
+      "state": "hold",
+      "assignee": "claude",
+      "kind": "implement",
+      "taskFile": "Delegation/Hydrogen/44-Neon-Round2-Core-FIX-PROMPT.md",
+      "outputDir": "Delegation/StoryContent/Round2",
+      "expectedOutputs": [],
+      "createdUtc": "2026-11-20T14:00:00Z",
+      "note": "Neon round 2 (prompts 44-47) for Codex rechecks of E2, E3, caravans; Claude stages, integrates, runs StoryStages/StoryHotel/OutpostCaravan/StoryEngine/Outposts on one DLL; Codex rechecks only the shared core (~2%)."
     },
     {
       "id": "EquipmentSlots",
