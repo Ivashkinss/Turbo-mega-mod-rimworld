@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3390,
-                         "scalarFields":  1474,
+                         "scalarFields":  2932,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1883,
-                        "ticksAdvanced":  23144,
+                        "framesAdvanced":  1946,
+                        "ticksAdvanced":  23186,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -41,10 +41,10 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "2c035ef1daf820cfc16bdc7e168aebd4f2a8a304e94c46f1c41da4cc002f89ce",
+    "productionAssemblySha256":  "841ff81f62e92bc15be1550b7c9c4246f3ab27701f5f72dd1306d40aa1df27ed",
     "storyEngine":  {
                         "passed":  true,
-                        "checksCount":  33,
+                        "checksCount":  34,
                         "facts":  [
                                       "heavenBefore=0",
                                       "fixtureRelationsCleaned=true"
@@ -108,7 +108,7 @@
                                            "name":  "AdvancedToWait",
                                            "passed":  true,
                                            "expected":  "stage #1 with deadline",
-                                           "actual":  "#1/60766"
+                                           "actual":  "#1/60702"
                                        },
                                        {
                                            "name":  "StaleLetterOnlyCloses",
@@ -186,7 +186,7 @@
                                            "name":  "SpawnedHeroNotStolen",
                                            "passed":  true,
                                            "expected":  "refused, unchanged",
-                                           "actual":  "False/Р“РёР»СЊРґРёСЏ Р‘Р°С‚РѕСѓР±СѓРј"
+                                           "actual":  "False/Р—РµР»С‘РЅР°СЏ РћСЃСЊ"
                                        },
                                        {
                                            "name":  "FreeHeroJoins",
@@ -237,10 +237,16 @@
                                            "actual":  "checked"
                                        },
                                        {
+                                           "name":  "UninvitedGuestsAvailable",
+                                           "passed":  true,
+                                           "expected":  "True",
+                                           "actual":  "True"
+                                       },
+                                       {
                                            "name":  "ChronicleLogsDecisions",
                                            "passed":  true,
                                            "expected":  "two log lines",
-                                           "actual":  "## РђРєС‚ 1 | Р“РѕР»РѕРґРёСЃРє-РљР»СЋС‡: Р Р°СЃС€РёС„СЂРѕРІР°РЅРѕ СЃРµРєС‚РѕСЂРѕРІ 1 РёР· 4 | ## РђРєС‚РёРІРЅС‹Рµ Р·Р°РґР°РЅРёСЏ (0) | ## РџСЂРёРЅСЏС‚С‹Рµ СЂРµС€РµРЅРёСЏ (2) | вЂў РЎРёРіРЅР°Р» РїРѕРґ С„СѓРЅРґР°РјРµРЅС‚РѕРј в†’ done | вЂў Р“РѕСЃС‚СЊ РІ Р±РµР¶РµРІРѕРј РїР»Р°С‰Рµ в†’ trust"
+                                           "actual":  "## РђРєС‚ 1 | Р“РѕР»РѕРґРёСЃРє-РљР»СЋС‡: Р Р°СЃС€РёС„СЂРѕРІР°РЅРѕ СЃРµРєС‚РѕСЂРѕРІ 1 РёР· 4 | ## РђРєС‚РёРІРЅС‹Рµ Р·Р°РґР°РЅРёСЏ (0) | ## Р›РёРЅРёРё С„СЂР°РєС†РёР№ | вЂў Р‘СЂР°С‚СЃС‚РІРѕ РЎС‚Р°Р»Рё: 0 / 7 | вЂў РЎС‚СЂРµР»РєРё: 0 / 2 | вЂў Р’РѕРёРЅСЃС‚РІРѕ РќРµР±РµСЃ: 0 / 1 | вЂў РРЅСЃС‚РёС‚СѓС‚: 0 / 6 | вЂў Р‘СЂРёС‚Р°РЅСЃРєРёРµ РџСЂРѕСЃРІРµС‰С‘РЅРЅС‹Рµ: 0 / 2 | вЂў Р—РµР»С‘РЅР°СЏ РћСЃСЊ: 0 / 14 | вЂў РљР»Р°РЅС‹ РЅРµС‡РёСЃС‚Рё: 0 / 1 | вЂў РР·РіРѕРё Р‘СЂР°С‚СЃС‚РІР°: 0 / 5 | вЂў РџРѕРґР·РµРјРєР°: 0 / 1 | вЂў Р’РѕР»С‚-РўРµРє: 0 / 6 | ## РџСЂРёРЅСЏС‚С‹Рµ СЂРµС€РµРЅРёСЏ (2) | вЂў Р“РѕСЃС‚СЊ РІ Р±РµР¶РµРІРѕРј РїР»Р°С‰Рµ в†’ trust | вЂў РЎРёРіРЅР°Р» РїРѕРґ С„СѓРЅРґР°РјРµРЅС‚РѕРј в†’ done"
                                        },
                                        {
                                            "name":  "ChronicleDrawsClean",

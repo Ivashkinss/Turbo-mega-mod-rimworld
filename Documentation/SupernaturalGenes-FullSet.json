@@ -1,0 +1,259 @@
+﻿{
+    "component":  "SupernaturalGenes",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3390,
+                         "scalarFields":  2932,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3089,
+                        "ticksAdvanced":  1762,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "7ddebf16f2ce7cc354fc1d77f5105762fbe13fdde3a8376960f4b9b3198d8067",
+    "supernaturalGenes":  {
+                              "passed":  true,
+                              "checksCount":  34,
+                              "checks":  [
+                                             {
+                                                 "name":  "Race_Angel_GenesActive",
+                                                 "passed":  true,
+                                                 "expected":  "all active",
+                                                 "actual":  "all active"
+                                             },
+                                             {
+                                                 "name":  "Race_Angel_MetabolismZero",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "Race_Demon_GenesActive",
+                                                 "passed":  true,
+                                                 "expected":  "all active",
+                                                 "actual":  "all active"
+                                             },
+                                             {
+                                                 "name":  "Race_Demon_MetabolismZero",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "Race_SuperMutant_GenesActive",
+                                                 "passed":  true,
+                                                 "expected":  "all active",
+                                                 "actual":  "all active"
+                                             },
+                                             {
+                                                 "name":  "Race_SuperMutant_MetabolismZero",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "Race_Ghoul_GenesActive",
+                                                 "passed":  true,
+                                                 "expected":  "all active",
+                                                 "actual":  "all active"
+                                             },
+                                             {
+                                                 "name":  "Race_Ghoul_MetabolismZero",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "Race_Leviathan_GenesActive",
+                                                 "passed":  true,
+                                                 "expected":  "all active",
+                                                 "actual":  "all active"
+                                             },
+                                             {
+                                                 "name":  "Race_Leviathan_MetabolismZero",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0"
+                                             },
+                                             {
+                                                 "name":  "Passive_AngelMoveSpeed15Pct",
+                                                 "passed":  true,
+                                                 "expected":  "\u003e 5.06",
+                                                 "actual":  "5.29"
+                                             },
+                                             {
+                                                 "name":  "Passive_AngelPsychicSensitivity",
+                                                 "passed":  true,
+                                                 "expected":  "\u003e= 1.30",
+                                                 "actual":  "1.50"
+                                             },
+                                             {
+                                                 "name":  "Passive_AngelBleedHediff",
+                                                 "passed":  true,
+                                                 "expected":  "present",
+                                                 "actual":  "True"
+                                             },
+                                             {
+                                                 "name":  "Passive_DemonTradePriceBonus",
+                                                 "passed":  true,
+                                                 "expected":  "\u003e= 0.20",
+                                                 "actual":  "0.29"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantCarryCapacity",
+                                                 "passed":  true,
+                                                 "expected":  "\u003e= 200",
+                                                 "actual":  "225.0"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantMeleeDamage",
+                                                 "passed":  true,
+                                                 "expected":  "\u003e= 1.25",
+                                                 "actual":  "1.88"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantAimDelay",
+                                                 "passed":  true,
+                                                 "expected":  "\u003c= 0.85",
+                                                 "actual":  "0.80"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantSterile",
+                                                 "passed":  true,
+                                                 "expected":  "0",
+                                                 "actual":  "0.00"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantBulkyHungerHediff",
+                                                 "passed":  true,
+                                                 "expected":  "present",
+                                                 "actual":  "True"
+                                             },
+                                             {
+                                                 "name":  "Passive_MutantRadRegenOnPollution",
+                                                 "passed":  true,
+                                                 "expected":  "present",
+                                                 "actual":  "True"
+                                             },
+                                             {
+                                                 "name":  "Passive_GhoulRadHealing",
+                                                 "passed":  true,
+                                                 "expected":  "healed \u003e 0",
+                                                 "actual":  "before=16.9, after=1.9, healed=15.0"
+                                             },
+                                             {
+                                                 "name":  "Ability_HealingTouch",
+                                                 "passed":  true,
+                                                 "expected":  "wounds healed \u0026 infection halved",
+                                                 "actual":  "act=True, inj=16.9-\u003e8.5, inf=0.30"
+                                             },
+                                             {
+                                                 "name":  "Ability_TrueVisage",
+                                                 "passed":  true,
+                                                 "expected":  "RetinalBurn applied",
+                                                 "actual":  "act=True, hasBurn=True"
+                                             },
+                                             {
+                                                 "name":  "Ability_BlackSmokeShift",
+                                                 "passed":  true,
+                                                 "expected":  "(112, 0, 133)",
+                                                 "actual":  "(112, 0, 133)"
+                                             },
+                                             {
+                                                 "name":  "Ability_InfernalWhisper",
+                                                 "passed":  true,
+                                                 "expected":  "InfernalWhisper applied",
+                                                 "actual":  "act=True, hasHediff=True"
+                                             },
+                                             {
+                                                 "name":  "Ability_MutantWarRoar",
+                                                 "passed":  true,
+                                                 "expected":  "selfBuff=true, enemyFear=true",
+                                                 "actual":  "act=True, buff=True, fear=True"
+                                             },
+                                             {
+                                                 "name":  "Ability_GlowingPulse",
+                                                 "passed":  true,
+                                                 "expected":  "ally healed \u0026 human got ToxicBuildup",
+                                                 "actual":  "act=True, allyInj=16.9-\u003e0.0, tox=0.25"
+                                             },
+                                             {
+                                                 "name":  "Ability_PredatoryMimicry",
+                                                 "passed":  true,
+                                                 "expected":  "mimic applied, hair copied \u0026 restored",
+                                                 "actual":  "act=True, hediff=True, copied=True, restored=True"
+                                             },
+                                             {
+                                                 "name":  "Ability_DevourMaw",
+                                                 "passed":  true,
+                                                 "expected":  "prey hurt, food +40%, self healed",
+                                                 "actual":  "act=True, preyHurt=True, food=0.25-\u003e0.65, selfInj=12.7-\u003e0.0"
+                                             },
+                                             {
+                                                 "name":  "Weakness_AngelEnochian",
+                                                 "passed":  true,
+                                                 "expected":  "ratio \u003e= 2.0x",
+                                                 "actual":  "target=15.0, human=6.0, ratio=2.50x"
+                                             },
+                                             {
+                                                 "name":  "Weakness_DemonHolyWater",
+                                                 "passed":  true,
+                                                 "expected":  "ratio \u003e= 2.5x",
+                                                 "actual":  "target=18.0, human=6.0, ratio=3.00x"
+                                             },
+                                             {
+                                                 "name":  "Weakness_DemonRockSalt",
+                                                 "passed":  true,
+                                                 "expected":  "ratio \u003e= 2.5x",
+                                                 "actual":  "target=18.0, human=6.0, ratio=3.00x"
+                                             },
+                                             {
+                                                 "name":  "Weakness_LeviathanBoraxDamage",
+                                                 "passed":  true,
+                                                 "expected":  "ratio \u003e= 3.0x",
+                                                 "actual":  "target=18.0, human=0.2, ratio=75.00x"
+                                             },
+                                             {
+                                                 "name":  "Weakness_LeviathanBoraxDebuff",
+                                                 "passed":  true,
+                                                 "expected":  "TMM_Hediff_BoraxBurn applied",
+                                                 "actual":  "True"
+                                             }
+                                         ],
+                              "errors":  [
+
+                                         ]
+                          },
+    "passed":  true
+}

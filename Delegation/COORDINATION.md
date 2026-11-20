@@ -155,3 +155,5 @@ Antigravity 31% (−7% за 1,5 ч — урезаем), Claude 50% (сброс �
 - Antigravity: 10% держим в резерве, до сброса на проект остаётся ~14%. Это LegendaryItems (идёт), затем StoryHotelFix и OutpostCaravanFix. EquipmentSlots, VehicleFramework и FactionApparel поставлены в hold.
 - Codex: фото больше не нужны, весь остаток идёт на проект, примерно по 2% на проверку. Три повторные приёмки: E2, E3, караваны.
 - Объёмную работу дальше берёт Neon, ставит и проверяет её Claude.
+
+**20.11, утро.** За ночь Antigravity закрыл четыре задачи: LegendaryItems, StoryHotelFix, OutpostCaravanFix и предыдущую StoryStageSiteFix. Все прогоны зелёные. Остаток Antigravity 11%. **До сброса (~25.11) его не запускаем**: это резерв пользователя, pending для gemini в очереди нет. EquipmentSlots, VehicleFramework и FactionApparel переназначены на claude, пока в hold. Ставит и проверяет их Claude, код пишет Neon. Codex делает три повторные приёмки: E2, E3 и караваны.

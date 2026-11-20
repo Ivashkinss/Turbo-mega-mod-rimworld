@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- VAULT-TEC Q1: A GENEROUS OFFER                                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_vault_tec_Q1</defName>
+    <label>a generous offer</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_vaulttec_rep</giver>
+    <fallbackGiver>TMM_Hero_gwen_mcnamara</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>A Generous Offer</letterLabel>
+    <letterText>Good morning! Vault-Tec calling! You won't believe the luck—even after two hundred years, your settlement qualifies for our Platinum Resilience Package! Let me stop by your hospitality lounge to sign the forms—just watch out for some very rude raiders who want my briefcase.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>rep_visit</key>
+        <label>Host the Vault-Tec Representative</label>
+        <text>The Vault-Tec Rep has checked into {COLONY}'s waystation, passing out glossy pre-war registration forms and telling stories from 2077.</text>
+        <faction>TMM_VaultTecFaction</faction>
+        <hero>TMM_Hero_vaulttec_rep</hero>
+        <groupSize>1</groupSize>
+        <stayDays>1</stayDays>
+        <objective>Host</objective>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>noHotel</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>briefcase_raiders</key>
+        <label>Repel the raiders hunting the briefcase</label>
+        <text>Armed mercenaries have arrived at {COLONY} trying to steal the Vault-Tec Rep's pre-war cipher briefcase!</text>
+        <faction>TMM_GunnersFaction</faction>
+        <pointsFactor>0.9</pointsFactor>
+        <delayHours>6</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>sign_package</key>
+        <label>Signature on the shipping receipt</label>
+        <text>Handing back the recovered briefcase, you notice the pre-war shipping slip tucked into its latch bears an eerie signature: "R. Roman, 2077."</text>
+        <choices>
+          <li>
+            <outcome>signed</outcome>
+            <label>Sign the Platinum Resilience forms and return the briefcase</label>
+            <resultText>Fantastic! You're officially enrolled! Here are genuine Vault jumpsuits—wear them with pride!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.vt_q1</flag>
+                <value>signed</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>350</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.vault_jumpsuit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- VAULT-TEC Q2: SECTOR THREE LEAK                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_vault_tec_Q2</defName>
+    <label>sector three leak</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_gwen_mcnamara</giver>
+    <fallbackGiver>TMM_Hero_vaulttec_rep</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_vault_tec_Q1</li>
+    </requires>
+    <letterLabel>Sector Three Leak</letterLabel>
+    <letterText>This is Overseer McNamara. A seismic tremor ruptured the filtration seals in our lower hydroponics wing, flooding the sector with toxic coolant gas. Our engineers are trapped behind emergency bulkheads. Send a team with repair gear immediately!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>hydroponics_leak</key>
+        <label>Seal the hydroponics filtration valves</label>
+        <text>Hold the gas-choked lower hydroponics wing for 5 hours while your team seals the ruptured filtration pipes and evacuates Overseer McNamara's trapped engineers.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>5</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>sabotage_marks</key>
+        <label>Saw marks on the coolant pipes</label>
+        <text>As the air clears and the rescued engineers catch their breath, your mechanics spot clean saw-marks along the ruptured filtration pipes—sabotaged from the inside on Dr. Braun's quiet orders.</text>
+        <choices>
+          <li>
+            <outcome>saved</outcome>
+            <label>Report the sealed valves to Overseer Gwen McNamara</label>
+            <resultText>You saved dozens of lives. My Vault owes your colony a debt we can never fully repay.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.vt_q2</flag>
+                <value>saved</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>600</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>MedicineIndustrial</thing>
+                <count>5</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.vault_security_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- VAULT-TEC Q3: IRON ORDER                                              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_vault_tec_Q3</defName>
+    <label>iron order</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_alphonse_almodovar</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_gwen_mcnamara</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_vault_tec_Q2</li>
+    </requires>
+    <letterLabel>Iron Order</letterLabel>
+    <letterText>Order is the sole wall separating Vault-Tec from the savagery of the surface. Subversive elements in my mining wing are threatening to breach the main vault door. Assist Chief Kendall in restoring absolute discipline.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>mining_wing_standoff</key>
+        <label>Standoff at the Vault airlock</label>
+        <text>Arriving at Overseer Almodovar's Vault airlock, you learn why the miners went on strike: their drills broke through bedrock into an ancient Enochian monolith humming directly beneath the Vault.</text>
+        <days>0.6</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>strike_resolution</key>
+        <label>Restoring discipline</label>
+        <text>Security Chief Kendall waits for your signal to storm the barricade with shock batons—unless you step forward and broker a quiet settlement with the frightened miners.</text>
+        <choices>
+          <li>
+            <outcome>crackdown</outcome>
+            <label>Back Almodovar and crush the miners' strike by force</label>
+            <resultText>Splendid. Everyone knows their place, and the air filters remain unpolluted.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.vt_q3</flag>
+                <value>crackdown</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Steel</thing>
+                <count>100</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>compromise</outcome>
+            <label>Persuade Chief Kendall to grant concessions without bloodshed</label>
+            <resultText>Unorthodox... yet the main door stayed shut and ore output has resumed.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.vt_q3</flag>
+                <value>compromise</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Steel</thing>
+                <count>100</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>ComponentIndustrial</thing>
+                <count>3</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- VAULT-TEC Q4 (FACTION POINT): A TWO-HUNDRED-YEAR SLEEP                -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_vault_tec_Q4</defName>
+    <label>a two-hundred-year sleep</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_stanislaus_braun</giver>
+    <fallbackGiver>TMM_Hero_gwen_mcnamara</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_vault_tec_Q3</li>
+    </requires>
+    <letterLabel>A Two-Hundred-Year Sleep</letterLabel>
+    <letterText>Ah, my clever little surface anomaly! You have found the key to my grandest theater—Vault 112! Step into my Tranquility Loungers and experience perfection, or perhaps we can discuss a mutually beneficial exchange regarding your little 'Spark' problem.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>vault_112</key>
+        <label>Breach Vault 112's Tranquility Hall</label>
+        <text>Fight past hired Gunner security protecting Vault 112 to reach the central Tranquility Lounger chamber where dozens of pre-war captives are trapped in endless virtual torment.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>braun_console</key>
+        <label>The master terminal of Vault 112</label>
+        <text>On Dr. Braun's master terminal, archived correspondence with "R. Roman" calculates soul quotas per Vault. Braun's smiling hologram beckons from the screen—cut a deal for G.E.C.K. tech and his Golden Pip-Boy, or pull the failsafe switch to grant the captives merciful peace.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Strike a bargain with Dr. Braun and leave Vault 112 running (Side with Vault-Tec)</label>
+            <resultText>Wonderful! A true visionary! Here is your Golden Pip-Boy—enjoy it in good health, ha-ha!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.vault_tec</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_golden_pipboy</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.braun_sim_suit</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.geck_tech</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Trigger the emergency failsafe and free the captives in death (Side with Humanity)</label>
+            <resultText>Barbarians! You ruined my masterpiece! I will wipe your miserable little settlement off the map!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.vault_tec</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.braunRomanLinkFound</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>-50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>1200</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.vault_tec</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- VAULT-TEC Q5 (DEFECTOR QUEST): OPEN BLAST DOORS                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_vault_tec_Q5</defName>
+    <label>open blast doors</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_VaultTecFaction</faction>
+    <giver>TMM_Hero_gwen_mcnamara</giver>
+    <fallbackGiver>TMM_Hero_vaulttec_rep</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_vault_tec_Q4</li>
+    </requires>
+    <anyOf>
+      <li>choice.vault_tec=pro_spark</li>
+      <li>ponr1=protect</li>
+    </anyOf>
+    <letterLabel>Open Blast Doors</letterLabel>
+    <letterText>The records you uncovered in Vault 112 sickened us all. Braun and Almodovar have locked down the central council and hired Gunner mercenaries to silence anyone who speaks out. Help me and the Vault-Tec Rep break out of our lockdown and bring our engineers to your colony!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>vault_blockade</key>
+        <label>Break the Gunner blockade at McNamara's Vault</label>
+        <text>Assault the Gunner mercenary cordon pinning Overseer Gwen McNamara and the Vault-Tec Rep inside the outer blast-door perimeter.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_vault_defectors</key>
+        <label>Out from behind the steel doors</label>
+        <text>With the Gunner blockade shattered, Overseer Gwen McNamara and the Vault-Tec Rep arrive safely at {COLONY}—where the Rep finally gets a clean room of his own after two centuries.</text>
+        <choices>
+          <li>
+            <outcome>accept_defectors</outcome>
+            <label>Welcome Gwen McNamara and the Vault-Tec Rep into {COLONY}</label>
+            <resultText>We are done hiding behind steel doors. Our knowledge and technology now serve your colony.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_gwen_mcnamara</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_vaulttec_rep</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_gwen_mcnamara</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_vaulttec_rep</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_VaultTecFaction</faction>
+                <amount>-75</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.vault_cryopods</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>

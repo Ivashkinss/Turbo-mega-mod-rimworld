@@ -68,12 +68,18 @@ namespace TurboMegaMod
         public int lastOfferTick = -999999;
         public string lastMechanic = "";
         private bool reconciled;                         // transient: reconcile once after load/start
+        private Dictionary<string, string> transientForcedOutcomes = new Dictionary<string, string>(); // never serialized to saves
 
         public SparkStory(World world) : base(world) { }
 
         public static SparkStory Instance { get { return Find.World == null ? null : Find.World.GetComponent<SparkStory>(); } }
         public IEnumerable<StoryQuestRun> Runs { get { return runs; } }
         public IEnumerable<KeyValuePair<string, string>> Flags { get { return flags; } }
+
+        private static bool IsStoryTestMode
+        {
+            get { return Environment.GetCommandLineArgs().Contains("-tmm-story-test"); }
+        }
 
         // ------------------------------------------------ flags
         public string GetFlag(string key) { string v; return key != null && flags.TryGetValue(key, out v) ? v : ""; }
@@ -142,7 +148,7 @@ namespace TurboMegaMod
             StoryQuestDef d = r.Def;
             var st = d == null || stage < 0 || stage >= d.stages.Count ? null : d.stages[stage] as StoryStage_Choice;
             StoryChoice c = st == null ? null : st.ChoiceFor(outcome);
-            if (c == null || !StoryConditions.Holds(this, c.requires, null)) return false; // re-check requires at click time
+            if (c == null || !StoryConditions.Holds(this, c.requires, c.anyOf)) return false; // re-check requires at click time
             r.chosenOutcome = outcome;
             SafeTick(r); // resolve immediately so the player sees the consequence at once
             return true;
@@ -191,14 +197,39 @@ namespace TurboMegaMod
             if (d == null || r.stage < 0 || r.stage >= d.stages.Count) { Disable(r, "stage missing"); return; }
             StoryStage st = d.stages[r.stage];
             StoryContext ctx = Context(r);
-            string o, forced;
-            if (r.vars.TryGetValue("forceOutcome", out forced)) { r.vars.Remove("forceOutcome"); o = forced; }
-            else o = st.Tick(ctx);
+
+            string o = null;
+            string forcedFromVars;
+            if (r.vars.TryGetValue("forceOutcome", out forcedFromVars))
+            {
+                r.vars.Remove("forceOutcome");
+                if (IsStoryTestMode && !forcedFromVars.NullOrEmpty())
+                {
+                    o = forcedFromVars;
+                }
+            }
+
+            string transientForced;
+            if (o == null && transientForcedOutcomes != null && transientForcedOutcomes.TryGetValue(r.quest, out transientForced))
+            {
+                transientForcedOutcomes.Remove(r.quest);
+                if (IsStoryTestMode && !transientForced.NullOrEmpty())
+                {
+                    o = transientForced;
+                }
+            }
+
+            if (o == null)
+            {
+                o = st.Tick(ctx);
+            }
+
             if (o == null) return;
             int from = r.stage;
             r.outcome = o;
             r.history.Add(from + ":" + o);
             r.stage = -1; // transition boundary: nothing re-enters this stage
+            StoryRelationRestorer.CheckOrphansIfPresent(); // ensure stage leases/protections are cleaned up even on forced outcomes
             foreach (StoryEffect e in st.EffectsFor(o).ToList()) ApplySafe(e, ctx);
             if (o == "failed") { Finish(r, StoryQuestStatus.Failed); return; }
             int next = st.NextFor(o);
@@ -230,6 +261,7 @@ namespace TurboMegaMod
             r.pendingChoice = false;
             r.needsLetter = false;
             r.finishedTick = Find.TickManager.TicksGame;
+            StoryRelationRestorer.CheckOrphansIfPresent();
             SetFlag("q." + r.quest, r.outcome ?? (status == StoryQuestStatus.Failed ? "failed" : "done"));
             if (d != null && status == StoryQuestStatus.Completed)
                 foreach (StoryEffect e in d.onComplete) ApplySafe(e, Context(r));
@@ -240,11 +272,13 @@ namespace TurboMegaMod
         {
             if (r.status == StoryQuestStatus.Disabled) return;
             r.status = StoryQuestStatus.Disabled;
+            r.stage = -1;
             r.pendingChoice = false;
             r.needsLetter = false;
             r.gen++;
             r.finishedTick = Find.TickManager.TicksGame;
             r.history.Add("disabled:" + why);
+            StoryRelationRestorer.CheckOrphansIfPresent();
         }
 
         /// Once after load: drop runs of removed Defs, remap stages by stable key, resend exactly one letter
@@ -267,6 +301,7 @@ namespace TurboMegaMod
                 }
                 else if (!live.Any(l => l.storyQuest == r.quest && l.gen == r.gen)) r.needsLetter = true;
             }
+            StoryRelationRestorer.CheckOrphansIfPresent();
         }
 
         private void ResendLostLetters()
@@ -282,12 +317,13 @@ namespace TurboMegaMod
 
         // ------------------------------------------------ test hook
         /// Test-only: finish the current stage of an Active quest with a declared outcome, through the normal transition.
-        /// Refused unless the game runs with -tmm-story-test and the generation matches.
+        /// Refused unless the game runs with -tmm-story-test and the generation matches. Kept outside Scribe vars.
         public bool TestForceOutcome(StoryQuestRun r, int expectedGen, string outcome)
         {
-            if (!Environment.GetCommandLineArgs().Contains("-tmm-story-test")) return false;
+            if (!IsStoryTestMode) return false;
             if (r == null || r.status != StoryQuestStatus.Active || r.gen != expectedGen || outcome.NullOrEmpty()) return false;
-            r.vars["forceOutcome"] = outcome;
+            if (transientForcedOutcomes == null) transientForcedOutcomes = new Dictionary<string, string>();
+            transientForcedOutcomes[r.quest] = outcome;
             SafeTick(r);
             return true;
         }
@@ -341,6 +377,8 @@ namespace TurboMegaMod
                 if (flags == null) flags = new Dictionary<string, string>();
                 if (runs == null) runs = new List<StoryQuestRun>();
                 runs.RemoveAll(r => r == null || r.quest.NullOrEmpty());
+                if (transientForcedOutcomes == null) transientForcedOutcomes = new Dictionary<string, string>();
+                transientForcedOutcomes.Clear();
                 reconciled = false;
             }
         }

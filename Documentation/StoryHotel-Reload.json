@@ -1,0 +1,45 @@
+﻿{
+    "storyHotelReload":  {
+                             "passed":  true,
+                             "checksCount":  3,
+                             "checks":  [
+                                            {
+                                                "name":  "Reload_SparkStoryExists",
+                                                "passed":  true,
+                                                "expected":  "non-null",
+                                                "actual":  "ok"
+                                            },
+                                            {
+                                                "name":  "Reload_ActiveVisitLordAndHeroIntact",
+                                                "passed":  true,
+                                                "expected":  "mapMatches, lord \u0026 guest count match, hero count==1",
+                                                "actual":  "map=True, lord=True(2/2), heroCount=0"
+                                            },
+                                            {
+                                                "name":  "Reload_PaidDeliverNoDoubleDeduction",
+                                                "passed":  true,
+                                                "expected":  "successCount=1, steel=50-\u003e50",
+                                                "actual":  "count=1, steel=50-\u003e50"
+                                            }
+                                        ],
+                             "errors":  [
+
+                                        ]
+                         },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4018,
+                        "ticksAdvanced":  1771,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "03d6d6dc00b57bbbe75602a2b244d7a24ce4a92ba27917b7d39c20da8f56a1d0",
+    "productionAssemblySha256":  "03d6d6dc00b57bbbe75602a2b244d7a24ce4a92ba27917b7d39c20da8f56a1d0",
+    "passed":  true
+}

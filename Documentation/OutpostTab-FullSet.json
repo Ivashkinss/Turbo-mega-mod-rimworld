@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3368,
-                         "scalarFields":  1474,
+                         "keyed":  3395,
+                         "scalarFields":  2932,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4211,
-                        "ticksAdvanced":  1780,
+                        "framesAdvanced":  3955,
+                        "ticksAdvanced":  1783,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,16 +42,16 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "01684b4c6c08c72e716a6a3d546492d41c3c956755317d2596bc1f511ffc6043",
+    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
     "outpostTab":  {
                        "passed":  true,
                        "checksCount":  38,
                        "stage":  2,
                        "facts":  [
                                      "Verified empty state layout",
-                                     "Outpost successfully founded at tile 63011,0",
-                                     "Zero resource cost rejection verified: 4 С‚РѕРїР». (0 РµСЃС‚СЊ, РґРѕРїР»Р°С‚Р°: 10 СЃРµСЂ.; СЃРєР»Р°Рґ: 0 С‚РѕРїР»., 0 СЃРµСЂ.)",
-                                     "Silver fallback verified: silverDeduct=10",
+                                     "Outpost successfully founded at tile 384,0",
+                                     "Zero resource cost rejection verified: 5 С‚РѕРїР». (0 РµСЃС‚СЊ, РґРѕРїР»Р°С‚Р°: 12 СЃРµСЂ.; СЃРєР»Р°Рґ: 0 С‚РѕРїР»., 0 СЃРµСЂ.)",
+                                     "Silver fallback verified: silverDeduct=12",
                                      "Pod launched with worker and 100 silver",
                                      "Mid-flight game state saved as TMM-OutpostTabFlight",
                                      "Pod successfully delivered worker and silver to outpost",
@@ -180,7 +180,7 @@
                                           "actual":  "True"
                                       },
                                       {
-                                          "name":  "Chemfuel deducted exactly calculated amount: before=150 after=146 expected=4",
+                                          "name":  "Chemfuel deducted exactly calculated amount: before=150 after=145 expected=5",
                                           "passed":  true,
                                           "expected":  "True",
                                           "actual":  "True"

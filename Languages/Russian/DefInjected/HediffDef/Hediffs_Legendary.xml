@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Hediff_FinalJudgmentHeat.label>перегрев «Последнего суда»</TMM_Hediff_FinalJudgmentHeat.label>
+  <TMM_Hediff_FinalJudgmentHeat.description>Тепловая отдача микроядерного блока «Последнего суда» замедляет движение и при предельном нагреве наносит ожоги.</TMM_Hediff_FinalJudgmentHeat.description>
+
+  <TMM_Hediff_ProtectorStimpak.label>автостимулятор «Протектора»</TMM_Hediff_ProtectorStimpak.label>
+  <TMM_Hediff_ProtectorStimpak.description>Экстренная доза боевых стимуляторов от силовой брони «Протектор» подавляет боль и резко ускоряет заживление ран.</TMM_Hediff_ProtectorStimpak.description>
+
+  <TMM_Hediff_Pinned.label>пригвождён костылём</TMM_Hediff_Pinned.label>
+  <TMM_Hediff_Pinned.description>Раскалённый железнодорожный костыль снизил скорость передвижения на 70% на 5 секунд.</TMM_Hediff_Pinned.description>
+
+  <TMM_Hediff_MarkOfCain.label>Метка Каина</TMM_Hediff_MarkOfCain.label>
+  <TMM_Hediff_MarkOfCain.description>Древняя багровая печать, выжженная на предплечье владельца Первого Клинка. Даёт нечеловеческую скорость, мощь в ближнем бою и нечувствительность к боли, но не снимается. Без убийств в течение трёх дней копится неутолимая жажда крови, переходящая в берсерк.</TMM_Hediff_MarkOfCain.description>
+
+  <TMM_Hediff_DickRomanInvulnerable.label>неуязвимость первородного левиафана</TMM_Hediff_DickRomanInvulnerable.label>
+  <TMM_Hediff_DickRomanInvulnerable.description>Глава левиафанов Дик Роман игнорирует 99% любого входящего урона. Только ожог едкой бурой способен снять эту защиту на 30 секунд.</TMM_Hediff_DickRomanInvulnerable.description>
+
+  <TMM_Hediff_BoraxAcidBurn.label>разъедающий ожог бурой</TMM_Hediff_BoraxAcidBurn.label>
+  <TMM_Hediff_BoraxAcidBurn.description>Концентрированный раствор буры разъедает плоть левиафана, отключая неуязвимость Дика Романа и нанося сильный периодический кислотный урон в течение 30 секунд.</TMM_Hediff_BoraxAcidBurn.description>
+
+</LanguageData>

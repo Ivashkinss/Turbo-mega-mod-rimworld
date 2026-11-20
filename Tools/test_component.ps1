@@ -1,8 +1,14 @@
-﻿param([Parameter(Mandatory=$true)][ValidateSet('StoryEngine','FactionHierarchy','OutpostTab','ComponentErrorsSweep','HotelVisit','ColonyRoles','LeviathanXenotype','GhoulXenotype','SuperMutantXenotype','GreenhouseRoof','AngelXenotype','DemonXenotype','MinutemenHunters','HeroRegistry','OutpostShipment','OutpostMaps','OutpostCalendar','Outposts','WorldTraffic','FriendlyVisit','RegionalWorld','ClinicAdmissionAcceptance','VisitorServiceAcceptance','OrdinaryPurse','OpeningVisit','FactionRansomPolicy','ServiceReadiness','RestaurantMenu','FactionRansom','PawnOverview','WorkContract','Housekeeping','AreaCacheBaseline','AreaCache','Addiction','Pricing','GeneticSupply','Hemogen','Deathrest','Outdoor','Vip','Dossier','Wholesale','SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
+﻿param([Parameter(Mandatory=$true)][ValidateSet('Legendary','SupernaturalGenes','StoryContent','StoryHotel','StoryStages','OutpostCaravan','StoryEngine','FactionHierarchy','OutpostTab','ComponentErrorsSweep','HotelVisit','ColonyRoles','LeviathanXenotype','GhoulXenotype','SuperMutantXenotype','GreenhouseRoof','AngelXenotype','DemonXenotype','MinutemenHunters','HeroRegistry','OutpostShipment','OutpostMaps','OutpostCalendar','Outposts','WorldTraffic','FriendlyVisit','RegionalWorld','ClinicAdmissionAcceptance','VisitorServiceAcceptance','OrdinaryPurse','OpeningVisit','FactionRansomPolicy','ServiceReadiness','RestaurantMenu','FactionRansom','PawnOverview','WorkContract','Housekeeping','AreaCacheBaseline','AreaCache','Addiction','Pricing','GeneticSupply','Hemogen','Deathrest','Outdoor','Vip','Dossier','Wholesale','SalesDelivery','Sales','Recruit','ClinicGuest','Company','ComplexLayout','Clinic','Complex','Restaurant','Hospitality','Farming','Harmony','VanillaExpandedFramework','MapPreview','CharacterEditor','MeleeAnimation','HugsLib','AdaptiveStorage','RealisticRooms','AlmostThere','DevInYourLanguage','SnapOut','CommonSense','RunAndGun','SimpleSidearms','PickUpAndHaul','NiceBillTab','MorePlanning','ShowMeYourHands','UsefulMarks','DynamicTradeInterface','FSharpCore','WallsAreSolid','XmlExtensions')][string]$Component, [switch]$OriginalActive, [switch]$FullSet, [int]$TimeoutSeconds = 240, [switch]$WithNiceBillTab, [switch]$WithWallsAreSolid, [switch]$WithRunAndGun, [switch]$WithHands, [switch]$WithCoreRegression, [switch]$UseBuiltAssembly, [switch]$CompileProbeOnly)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $gamePath = Split-Path -Parent (Split-Path -Parent $projectPath)
 $definition = switch ($Component) {
+    'Legendary' { @{ folder=''; id='turbomegamod.legendary'; dll='Assemblies\TurboMegaMod.dll'; source='InGameLegendaryProbe.cs'; flag='-tmm-legendary-probe'; report='LegendaryProbe.json'; ui='LegendaryUiProbe.json'; key='legendary'; prefix='Legendary' } }
+    'SupernaturalGenes' { @{ folder=''; id='turbomegamod.supernatural.genes'; dll='Assemblies\TurboMegaMod.dll'; source='InGameSupernaturalGenesProbe.cs'; flag='-tmm-supergenes-probe'; report='SupernaturalGenesProbe.json'; ui='SupernaturalGenesUiProbe.json'; key='supernaturalGenes'; prefix='SupernaturalGenes' } }
+    'StoryContent' { @{ folder=''; id='turbomegamod.story.content'; dll='Assemblies\TurboMegaMod.dll'; source='InGameStoryEngineProbe.cs'; flag=@('-tmm-story-content-probe','-tmm-story-test'); report='StoryContentProbe.json'; ui='StoryContentUiProbe.json'; key='storyContent'; prefix='StoryContent' } }
+    'StoryHotel' { @{ folder=''; id='turbomegamod.story.hotel'; dll='Assemblies\TurboMegaMod.dll'; source='InGameStoryHotelProbe.cs'; flag=@('-tmm-story-hotel-probe','-tmm-story-test'); report='StoryHotelProbe.json'; ui='StoryHotelUiProbe.json'; key='storyHotel'; prefix='StoryHotel' } }
+    'StoryStages' { @{ folder=''; id='turbomegamod.story.stages'; dll='Assemblies\TurboMegaMod.dll'; source='InGameStoryStagesProbe.cs'; flag='-tmm-story-stages-probe'; report='StoryStagesProbe.json'; ui='StoryStagesUiProbe.json'; key='storyStages'; prefix='StoryStages' } }
+    'OutpostCaravan' { @{ folder=''; id='turbomegamod.outpost.caravan'; dll='Assemblies\TurboMegaMod.dll'; source='InGameOutpostCaravanProbe.cs'; flag='-tmm-outpost-caravan-probe'; report='OutpostCaravanProbe.json'; ui='OutpostCaravanUiProbe.json'; key='outpostCaravan'; prefix='OutpostCaravan' } }
     'FactionHierarchy' { @{ folder=''; id='turbomegamod.faction.hierarchy'; dll='Assemblies\TurboMegaMod.dll'; source='InGameFactionHierarchyProbe.cs'; flag='-tmm-faction-hierarchy-probe'; report='FactionHierarchyProbe.json'; ui='FactionHierarchyUiProbe.json'; key='factionHierarchy'; prefix='FactionHierarchy' } }
     'OutpostTab' { @{ folder=''; id='turbomegamod.outpost.tab'; dll='Assemblies\TurboMegaMod.dll'; source='InGameOutpostTabProbe.cs'; flag='-tmm-outpost-tab-probe'; report='OutpostTabProbe.json'; ui='OutpostTabUiProbe.json'; key='outpostTab'; prefix='OutpostTab' } }
     'ComponentErrorsSweep' { @{ folder=''; id='turbomegamod.component.errors.sweep'; dll='Assemblies\TurboMegaMod.dll'; source='InGameComponentErrorsSweepProbe.cs'; flag='-tmm-component-errors-sweep-probe'; report='ComponentErrorsSweepProbe.json'; ui='ComponentErrorsSweepUiProbe.json'; key='componentErrorsSweep'; prefix='ComponentErrorsSweep' } }
@@ -183,8 +189,13 @@ try {
     Copy-Item -LiteralPath $builtProbe -Destination $installedProbe
     $probeInstalled = $true
     $arguments = @(
-        ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe','-tmm-grammar-probe',$definition.flag
+        ('"-savedatafolder=' + $testRoot + '"'), '-quicktest','-tmm-localization-probe','-tmm-render-probe','-tmm-grammar-probe'
     )
+    if ($definition.flag -is [System.Collections.IEnumerable] -and $definition.flag -isnot [string]) {
+        foreach ($f in $definition.flag) { $arguments += $f }
+    } else {
+        $arguments += $definition.flag
+    }
     foreach ($regression in $regressions) { $arguments += $regression.flag }
     if ($WithNiceBillTab) { $arguments += '-tmm-nicebill-probe' }
     if ($WithHands) { $arguments += '-tmm-hands-probe' }
@@ -288,5 +299,9 @@ try {
     $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $projectPath ('Documentation\' + $Component + '-' + $label + '.json')) -Encoding utf8
 } finally {
     if ($process -and !$process.HasExited) { $process.Kill(); $process.WaitForExit() }
-    if ($probeInstalled -and (Test-Path -LiteralPath $installedProbe)) { Remove-Item -LiteralPath $installedProbe -Force }
+    if ($probeInstalled -and (Test-Path -LiteralPath $installedProbe)) {
+        for ($r = 0; $r -lt 10; $r++) {
+            try { Remove-Item -LiteralPath $installedProbe -Force; break } catch { Start-Sleep -Milliseconds 300 }
+        }
+    }
 }

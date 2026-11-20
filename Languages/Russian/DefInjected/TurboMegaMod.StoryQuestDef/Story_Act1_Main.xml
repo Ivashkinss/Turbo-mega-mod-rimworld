@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_A1_UninvitedGuests -->
+  <TMM_Story_A1_UninvitedGuests.label>незваные гости у ворот</TMM_Story_A1_UninvitedGuests.label>
+  <TMM_Story_A1_UninvitedGuests.letterLabel>Дым на горизонте</TMM_Story_A1_UninvitedGuests.letterLabel>
+  <TMM_Story_A1_UninvitedGuests.letterText>Слухи в пепельных пустошах разносятся быстро. С тех пор как странная синяя дрожь сотрясла землю под {COLONY}, дальние рации захлёбываются помехами — и теперь к вашему периметру приближаются разведчики Минитменов и охотников, чтобы проверить, кто потревожил довоенные руины.\n\n{GIVER} просит разрешения разместить небольшой разведотряд в вашей гостинице, чтобы понять, друг вы или враг.</TMM_Story_A1_UninvitedGuests.letterText>
+  <TMM_Story_A1_UninvitedGuests.stages.1.label>Незнакомец с запахом серы</TMM_Story_A1_UninvitedGuests.stages.1.label>
+  <TMM_Story_A1_UninvitedGuests.stages.1.text>Едва разведчики Минитменов сворачивают спальники на закате, из пепельного тумана выходит одинокий путник в безупречном чёрном костюме. Он улыбается слишком широко, а от него едва уловимо тянет озоном и серой.\n\n— Уютный у вас клочок грязи, — мурлычет переговорщик с перекрёстка, косясь на землю под вашими сапогами. — Я как раз торгую довоенным железом и маленькими чудесами — всего-то за один короткий взгляд на то, что спит у вас под полом.</TMM_Story_A1_UninvitedGuests.stages.1.text>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.0.label>Открыть люк и позволить ему заглянуть внутрь в обмен на припасы</TMM_Story_A1_UninvitedGuests.stages.1.choices.0.label>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.0.resultText>Делец склоняется над открытой шахтой, и его глаза на миг вспыхивают угольной чернотой в синем свечении. «Любопытно... настоящий Нулевой Якорь, всё ещё гудит спустя два века». Он бросает к вашим ногам тяжёлую сумку с компонентами и растворяется в воздухе, оставляя Нулевого Синта дрожать от отвращения.</TMM_Story_A1_UninvitedGuests.stages.1.choices.0.resultText>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.1.label>Указать на заваренный стальной люк и велеть ему убираться</TMM_Story_A1_UninvitedGuests.stages.1.choices.1.label>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.1.resultText>Улыбка демона гаснет, когда его взгляд упирается в толстую заваренную переборку. «Упрямые обезьяны, — шипит он, поднимая облачко серного пепла. — Заваривайте сколько угодно: когда настанет затмение, пол расплавится прямо у вас под ногами». Он исчезает в клубах чёрного дыма.</TMM_Story_A1_UninvitedGuests.stages.1.choices.1.resultText>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.2.label>Насыпать полосу каменной соли и прогнать его под прицелом</TMM_Story_A1_UninvitedGuests.stages.1.choices.2.label>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.2.resultText>В ту же секунду, как крупная соль ложится на землю между вами, незнакомец отшатывается словно от ожога кислотой. «Какие мы нервные. Кроули услышит о вашем гостеприимстве». Он распадается чёрным дымом, а Нулевой Синт смотрит на вас с новым уважением.</TMM_Story_A1_UninvitedGuests.stages.1.choices.2.resultText>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.3.label>Выпытать у него, кто построил Якорь до падения бомб</TMM_Story_A1_UninvitedGuests.stages.1.choices.3.label>
+  <TMM_Story_A1_UninvitedGuests.stages.1.choices.3.resultText>Демон мрачно усмехается: «Вы даже не знаете, на чьей клетке разбили огород, верно? Спросите Волт-Тек и их дружков в белых костюмах — они подписали купчую ещё в 2052-м». Не дав задать ни слова больше, он отступает в тень и исчезает.</TMM_Story_A1_UninvitedGuests.stages.1.choices.3.resultText>
+
+  <!-- TMM_Story_A1_Interlude_MentorJournal -->
+  <TMM_Story_A1_Interlude_MentorJournal.label>заметки на полях в пепле</TMM_Story_A1_Interlude_MentorJournal.label>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.0.label>Разбор вещей наставника</TMM_Story_A1_Interlude_MentorJournal.stages.0.label>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.0.text>Разбирая опалённый походный рюкзак, который ваш пропавший наставник оставил у люка Якоря, один из колонистов находит двойное дно с потрёпанным кожаным блокнотом и треснувшей голозаписью.</TMM_Story_A1_Interlude_MentorJournal.stages.0.text>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.label>Последнее предупреждение наставника</TMM_Story_A1_Interlude_MentorJournal.stages.1.label>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.text>Почти все чернила размыты пеплом и дождём, но последнюю страницу удаётся прочесть:\n\n«Октябрьский огонь не был случайностью. Дик Роман, Брон и Лондон заперли небо, чтобы превратить весь континент в жатву. Берегите Нулевого Синта — это единственная душа, которую Консорциум не учёл. И ни за что не верьте никому в чистом довоенном галстуке».</TMM_Story_A1_Interlude_MentorJournal.stages.1.text>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.0.label>Показать дневник Нулевому Синту и пообещать найти наставника</TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.0.label>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.0.resultText>Нулевой Синт дрожащими пальцами проводит по знакомому почерку: «Он рискнул всем, чтобы вытащить меня из тех белых комнат... Я не позволю, чтобы его жертва оказалась напрасной». Ваше взаимное доверие заметно крепнет.</TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.0.resultText>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.1.label>Запереть дневник в сейфе, чтобы не сеять панику в поселении</TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.1.label>
+  <TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.1.resultText>Вы убираете блокнот в укреплённый ящик. Нулевой Синт замечает, как вы прячете рюкзак наставника, и молча уходит в сторону, погрузившись в тяжёлые мысли.</TMM_Story_A1_Interlude_MentorJournal.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A1_ZeroSynthDreams -->
+  <TMM_Story_A1_ZeroSynthDreams.label>сны о белых стенах</TMM_Story_A1_ZeroSynthDreams.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.0.label>Тревожный резонанс</TMM_Story_A1_ZeroSynthDreams.stages.0.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.0.text>Три ночи подряд Нулевой Синт просыпается с криком от кошмаров о стерильных белых коридорах, гудении хирургических лазеров и голосе, шепчущем «Образец Ноль». Удивительно, но во время этих снов над {COLONY} разливается мягкая синяя статика, успокаивающая животных и глушащая психический шум.</TMM_Story_A1_ZeroSynthDreams.stages.0.text>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.label>Шёпот из-под тёмных очков</TMM_Story_A1_ZeroSynthDreams.stages.2.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.text>Тихий постоялец в тёмных очках перехватывает вас за кухней гостиницы, мгновенно сбрасывая маску простодушного охранника каравана.\n\n— Зовут меня Дьякон. Наши радиоустановки поймали духовный всплеск прямо из вашего лагеря — от такого слюнки текут и у охотников Института, и у крылатых святош. Скажи прямо: парень с Искрой для тебя человек или просто батарейка?</TMM_Story_A1_ZeroSynthDreams.stages.2.text>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.label>Заявить, что Нулевой Синт — свободный житель {COLONY}</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.resultText>Дьякон широко ухмыляется и поправляет очки: «Бальзам на душу, босс. Дездемоне вы понравитесь. Не высовывайтесь — мы поможем сбить ищеек Института с вашей частоты».</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.resultText>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.1.label>Попросить у Дьякона детали шифратора, чтобы скрыть сигнал Искры</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.1.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.1.resultText>«Умно. Прагматично. С прагматиками я работать умею». Дьякон незаметно суёт вам в карман два довоенных частотных модулятора и растворяется среди постояльцев.</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.1.resultText>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.2.label>Холодно ответить, что выживание важнее — здесь каждый ресурс</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.2.label>
+  <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.2.resultText>Улыбка мгновенно сходит с лица Дьякона: «Да... слышал я уже эти речи от парней в белых халатах. Не делайте того, что потом не отмоете с рук». Он уходит не оглядываясь.</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.2.resultText>
+
+  <!-- TMM_Story_A1_Interlude_StaticBroadcast -->
+  <TMM_Story_A1_Interlude_StaticBroadcast.label>призрачная частота 104.7</TMM_Story_A1_Interlude_StaticBroadcast.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.0.label>Полуночный сигнал</TMM_Story_A1_Interlude_StaticBroadcast.stages.0.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.0.text>В полночь все радиоприёмники и лампы в {COLONY} оживают на заброшенной довоенной аварийной частоте, транслируя искажённую запись енохианских песнопений поверх телеметрии Волт-Тек.</TMM_Story_A1_Interlude_StaticBroadcast.stages.0.text>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.label>Пеленгация эха</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.text>Сигнал отражается от полуразрушенного бункера-ретранслятора в двух милях отсюда и резонирует в такт с Нулевым Якорем под вашей базой. Можно отправить отряд за тайником в бункере, пока его не разграбили, или заглушить частоту, чтобы не привлекать лишнего внимания.</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.text>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.0.label>Отправить разведгруппу зачистить бункер-ретранслятор</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.0.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.0.resultText>Ваши разведчики засекают точные координаты и готовятся к выходу, пока бункер не наводнили дикие гули.</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.0.resultText>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.1.label>Сжечь катушки приёмника и заглушить местный диапазон</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.1.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.1.resultText>Жуткое пение обрывается в снопе искр. Поселение ещё немного побудет в тени, хотя тайна заброшенного ретранслятора так и остаётся нераскрытой.</TMM_Story_A1_Interlude_StaticBroadcast.stages.1.choices.1.resultText>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.2.outcomes.0.effects.3.label>Тайник ретранслятора захвачен</TMM_Story_A1_Interlude_StaticBroadcast.stages.2.outcomes.0.effects.3.label>
+  <TMM_Story_A1_Interlude_StaticBroadcast.stages.2.outcomes.0.effects.3.text>Внутри бункера-ретранслятора отряд нашёл довоенное серебро, медикаменты и уцелевший журнал обслуживания, подтверждающий, что сеть Нулевых Якорей охватывает весь континент.</TMM_Story_A1_Interlude_StaticBroadcast.stages.2.outcomes.0.effects.3.text>
+
+  <!-- TMM_Story_A1_AnchorPulse -->
+  <TMM_Story_A1_AnchorPulse.label>первый импульс якоря</TMM_Story_A1_AnchorPulse.label>
+  <TMM_Story_A1_AnchorPulse.stages.0.label>Подземный толчок</TMM_Story_A1_AnchorPulse.stages.0.label>
+  <TMM_Story_A1_AnchorPulse.stages.0.text>Глубокий металлический гул прокатывается из-под земли под {COLONY}, сбрасывая кружки со столов и заставляя волосы вставать дыбом. Нулевой Якорь пробуждается — и его духовная ударная волна пробивает временную брешь на границе с Чистилищем.</TMM_Story_A1_AnchorPulse.stages.0.text>
+  <TMM_Story_A1_AnchorPulse.stages.2.label>Усмирение резонанса</TMM_Story_A1_AnchorPulse.stages.2.label>
+  <TMM_Story_A1_AnchorPulse.stages.2.text>Даже когда последняя тварь падает у баррикад, Нулевой Якорь продолжает угрожающе гудеть под полом. Нулевой Синт опускается на колени над вибрирующим металлом, предлагая направить свою Искру, чтобы успокоить ядро — а инженеры предлагают сбросить избыточный заряд в энергосеть колонии.</TMM_Story_A1_AnchorPulse.stages.2.text>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.0.label>Позволить Нулевому Синту войти в резонанс с Якорем и закрыть брешь</TMM_Story_A1_AnchorPulse.stages.2.choices.0.label>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.0.resultText>Бледно-голубой свет струится с ладоней Нулевого Синта в древние енохианские руны. Оглушительный гул стихает до ровного пульса, и Голодиск-Ключ отзывается тихим гулом.</TMM_Story_A1_AnchorPulse.stages.2.choices.0.resultText>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.1.label>Сбросить выброс Якоря в силовые контуры и собрать уцелевшие детали</TMM_Story_A1_AnchorPulse.stages.2.choices.1.label>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.1.resultText>Дуги синих молний проскакивают по проводам, сжигая пару реле, но оставляя пригодный для дела лом и компоненты. Нулевой Синт вскрикивает от отдачи, схватившись за виски.</TMM_Story_A1_AnchorPulse.stages.2.choices.1.resultText>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.2.label>Использовать тепловой выброс, чтобы вскрыть заваренный люк Якоря</TMM_Story_A1_AnchorPulse.stages.2.choices.2.label>
+  <TMM_Story_A1_AnchorPulse.stages.2.choices.2.resultText>Раскалённый выброс энергии ослабляет оплавленные швы, и механики наконец поддевают тяжёлую крышку люка. Из древней шахты снизу тянет ледяным сквозняком.</TMM_Story_A1_AnchorPulse.stages.2.choices.2.resultText>
+
+  <!-- TMM_Story_A1_Interlude_WhispersInTheAsh -->
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.label>шёпот в пепле</TMM_Story_A1_Interlude_WhispersInTheAsh.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.0.label>Эхо на весь регион</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.0.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.0.text>Энергетический всплеск из {COLONY} засветился на всех дальних сканерах сектора. Спустя пару часов на узел связи одновременно приходят три зашифрованных вызова.</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.0.text>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.label>Три голоса в помехах</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.text>Паладин Данс из Братства Стали сухо требует отчёт об энергетическом выбросе; Мик Дэвис из Британских Просвещённых вежливо предлагает защиту от аномалий; а жизнерадостный Представитель Волт-Тек обещает «приоритетную страховку». Кому вы ответите первым?</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.text>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.0.label>Ответить паладину Дансу и передать очищенные данные сканеров</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.0.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.0.resultText>«Принято, гражданский. Ваше содействие учтено — скоро в вашем секторе появится разведвзвод Братства». Паладин Данс отмечает ваше поселение как дружественное.</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.0.resultText>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.1.label>Ответить Мику Дэвису из Британских Просвещённых</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.1.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.1.resultText>«Великолепно! Поселение со здравым смыслом. Я немедленно организую визит в вашу гостиницу». Мик Дэвис открывает защищённый канал связи.</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.1.resultText>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.2.label>Принять срочный вызов Представителя Волт-Тек</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.2.label>
+  <TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.2.resultText>«Фантастика! Просто фантастика! Вы на самой вершине нашего Платинового списка выживания!» Довоенный коммивояжёр с энтузиазмом назначает встречу.</TMM_Story_A1_Interlude_WhispersInTheAsh.stages.1.choices.2.resultText>
+
+  <!-- TMM_Story_A1_TalkUnderAsh -->
+  <TMM_Story_A1_TalkUnderAsh.label>разговор под пеплом</TMM_Story_A1_TalkUnderAsh.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.0.label>Первый сектор открыт</TMM_Story_A1_TalkUnderAsh.stages.0.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.0.text>Когда Якорь успокаивается, а телеметрия расшифрована, Голодиск-Ключ проецирует призрачную карту пятнадцати сил, делящих Пустошь. В сумерках знакомый хлопок крыльев возвещает о возвращении {GIVER}.</TMM_Story_A1_TalkUnderAsh.stages.0.text>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.label>Война за Искру начинается</TMM_Story_A1_TalkUnderAsh.stages.1.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.text>{GIVER} стоит под падающим пеплом, мрачнее прежнего: «Импульс подтвердил мои худшие опасения. Небеса и Ад умирают от голода за запечатанным Разломом, и скоро каждая фракция на этой карте поймёт, что живёт внутри вашего Нулевого Синта.\n\nЧтобы открыть остальные сектора Голодиска-Ключа и добраться до ядра Якоря, вам придётся пройти через дела всех пятнадцати сил этого сломанного мира. Скажи — за какое будущее вы будете сражаться?»</TMM_Story_A1_TalkUnderAsh.stages.1.text>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.0.label>Поклясться запечатать Разлом и защитить душу Нулевого Синта</TMM_Story_A1_TalkUnderAsh.stages.1.choices.0.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.0.resultText>{GIVER} слегка склоняет голову: «Значит, мы несём одну ношу. Будьте осторожны в выборе союзников — во тьме сбиться с пути могут даже ангелы». Он исчезает с тихим шелестом крыльев.</TMM_Story_A1_TalkUnderAsh.stages.1.choices.0.resultText>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.1.label>Ответить, что выживание людей превыше всего — вы сохраните свободу рук</TMM_Story_A1_TalkUnderAsh.stages.1.choices.1.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.1.resultText>«Прагматизм — обоюдоострый клинок, — тихо отвечает {GIVER}. — Смотрите, чтобы он не ранил невинных». В мгновение ока двор пустеет.</TMM_Story_A1_TalkUnderAsh.stages.1.choices.1.resultText>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.2.label>Спросить, как подчинить силу Якоря и Искры, чтобы править Пустошью</TMM_Story_A1_TalkUnderAsh.stages.1.choices.2.label>
+  <TMM_Story_A1_TalkUnderAsh.stages.1.choices.2.resultText>В глазах {GIVER} вспыхивает холодный небесный огонь: «Эта же гордыня сожгла мир в 2077 году. Не вынуждайте меня встать против вас». Он растворяется в пепельном ветре.</TMM_Story_A1_TalkUnderAsh.stages.1.choices.2.resultText>
+  <TMM_Story_A1_TalkUnderAsh.onComplete.2.label>Акт II: Нити кукловодов</TMM_Story_A1_TalkUnderAsh.onComplete.2.label>
+  <TMM_Story_A1_TalkUnderAsh.onComplete.2.text>Региональная карта на Голодиске-Ключе открыта! Теперь вам доступны сюжетные линии всех 15 фракций Пустоши и сверхъестественного мира — раскройте тайну Проекта «Чистилище» и откройте оставшиеся сектора Ключа.</TMM_Story_A1_TalkUnderAsh.onComplete.2.text>
+
+</LanguageData>

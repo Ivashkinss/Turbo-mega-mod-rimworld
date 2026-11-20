@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3355,
-                         "scalarFields":  1454,
+                         "keyed":  3395,
+                         "scalarFields":  2932,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1428,
-                        "ticksAdvanced":  1511,
+                        "framesAdvanced":  3209,
+                        "ticksAdvanced":  1449,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,20 +42,20 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
     "regionalWorld":  {
                           "passed":  true,
                           "checks":  22,
-                          "relocated":  72,
+                          "relocated":  69,
                           "retained":  2,
-                          "distanceBefore":  128.9566,
-                          "distanceAfter":  32.72784,
-                          "lowBuildings":  462,
-                          "highBuildings":  2734,
-                          "lowBeds":  19,
-                          "highBeds":  84,
+                          "distanceBefore":  120.5483,
+                          "distanceAfter":  41.52763,
+                          "lowBuildings":  426,
+                          "highBuildings":  2465,
+                          "lowBeds":  12,
+                          "highBeds":  91,
                           "lowPawns":  7,
-                          "highPawns":  59,
+                          "highPawns":  57,
                           "errors":  [
 
                                      ]

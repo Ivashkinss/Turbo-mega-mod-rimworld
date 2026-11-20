@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_Angel"]/genes</xpath>
+    <value>
+      <li>TMM_Gene_AngelCelestialGrace</li>
+      <li>TMM_Gene_AngelHealingTouch</li>
+      <li>TMM_Gene_AngelTrueVisage</li>
+      <li>TMM_Gene_AngelEnochianVulnerability</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_Demon"]/genes</xpath>
+    <value>
+      <li>TMM_Gene_DemonBlackSmoke</li>
+      <li>TMM_Gene_DemonMindCloud</li>
+      <li>TMM_Gene_DemonCrossroadsGuile</li>
+      <li>TMM_Gene_DemonHolyBane</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_SuperMutant"]/genes</xpath>
+    <value>
+      <li>TMM_Gene_MutantFevMusculature</li>
+      <li>TMM_Gene_MutantRadRegeneration</li>
+      <li>TMM_Gene_MutantWarRoar</li>
+      <li>TMM_Gene_MutantBulkyConstraints</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_Ghoul"]/genes</xpath>
+    <value>
+      <li>TMM_Gene_GhoulRadHealing</li>
+      <li>TMM_Gene_GhoulGlowingPulse</li>
+      <li>TMM_Gene_GhoulFeralRisk</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_Leviathan"]/genes</xpath>
+    <value>
+      <li>TMM_Gene_LeviathanDevourMaw</li>
+      <li>TMM_Gene_LeviathanShapeshiftMimic</li>
+      <li>TMM_Gene_LeviathanBoraxAllergy</li>
+    </value>
+  </Operation>
+
+</Patch>

@@ -24,27 +24,43 @@ namespace TurboMegaMod
             return Find.AnyPlayerHomeMap;
         }
 
+        /// <summary>
+        /// Counts unforbidden resources in colony stockpiles, falling back to all unforbidden on map.
+        /// </summary>
         public static int CountResource(Map map, ThingDef def)
         {
-            if (map == null || def == null || map.listerThings == null) return 0;
+            if (map == null || def == null) return 0;
+            int count = StoryPayment.CountInColonyStockpiles(map, def);
+            if (count > 0) return count;
+
+            if (map.listerThings == null) return 0;
             List<Thing> list = map.listerThings.ThingsOfDef(def);
-            int count = 0;
+            int total = 0;
             for (int i = 0; i < list.Count; i++)
             {
                 Thing t = list[i];
                 if (t != null && !t.Destroyed && !t.IsForbidden(Faction.OfPlayer))
                 {
-                    count += t.stackCount;
+                    total += t.stackCount;
                 }
             }
-            return count;
+            return total;
         }
 
+        /// <summary>
+        /// Atomically deducts from colony stockpiles, falling back to map items if not in storage.
+        /// </summary>
         public static int DeductResource(Map map, ThingDef def, int count)
         {
-            if (map == null || def == null || count <= 0 || map.listerThings == null) return 0;
+            if (map == null || def == null || count <= 0) return 0;
+            int deducted;
+            if (StoryPayment.TryDeductFromColonyStockpiles(map, def, count, out deducted))
+            {
+                return deducted;
+            }
+            if (map.listerThings == null) return 0;
             int remaining = count;
-            List<Thing> list = map.listerThings.ThingsOfDef(def).ToList();
+            List<Thing> list = map.listerThings.ThingsOfDef(def);
             for (int i = 0; i < list.Count; i++)
             {
                 Thing t = list[i];
@@ -127,13 +143,29 @@ namespace TurboMegaMod
                 return false;
             }
 
+            List<StoryPayment.ResourceRequirement> reqs = new List<StoryPayment.ResourceRequirement>();
             if (fuelDeduct > 0)
             {
-                DeductResource(homeMap, ThingDefOf.Chemfuel, fuelDeduct);
+                reqs.Add(new StoryPayment.ResourceRequirement(ThingDefOf.Chemfuel, fuelDeduct));
             }
             if (silverDeduct > 0)
             {
-                DeductResource(homeMap, ThingDefOf.Silver, silverDeduct);
+                reqs.Add(new StoryPayment.ResourceRequirement(ThingDefOf.Silver, silverDeduct));
+            }
+
+            if (reqs.Count > 0 && !StoryPayment.TryDeductMultipleFromColonyStockpiles(homeMap, reqs))
+            {
+                if (CountResource(homeMap, ThingDefOf.Chemfuel) >= fuelDeduct &&
+                    CountResource(homeMap, ThingDefOf.Silver) >= silverDeduct)
+                {
+                    if (fuelDeduct > 0) DeductResource(homeMap, ThingDefOf.Chemfuel, fuelDeduct);
+                    if (silverDeduct > 0) DeductResource(homeMap, ThingDefOf.Silver, silverDeduct);
+                }
+                else
+                {
+                    failReason = summary;
+                    return false;
+                }
             }
 
             failReason = null;
@@ -221,7 +253,6 @@ namespace TurboMegaMod
 
         public override FloatMenuAcceptanceReport StillValid(IEnumerable<IThingHolder> pods, PlanetTile destinationTile)
         {
-            // Stays valid while the outpost exists or a home map can take the cargo back (see Arrived).
             StrategicOutpost outpost = StrategicOutpostCaravanUtility.GetOutpostAtTile(destinationTile);
             if (outpost != null && outpost.Spawned) return true;
             return OutpostPodLogistics.GetHomeMap() != null;
@@ -232,7 +263,6 @@ namespace TurboMegaMod
             StrategicOutpost outpost = StrategicOutpostCaravanUtility.GetOutpostAtTile(tile);
             if (outpost == null || !outpost.Spawned)
             {
-                // The outpost was dissolved or destroyed during the flight: drop everything at home instead of losing it.
                 Map home = OutpostPodLogistics.GetHomeMap();
                 if (home == null) return;
                 new TransportersArrivalAction_ColonyRecall(home.Tile).Arrived(transporters, home.Tile);

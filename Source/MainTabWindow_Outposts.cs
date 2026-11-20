@@ -322,6 +322,34 @@ namespace TurboMegaMod
             if (outpost == null || homeMap == null) return;
             List<FloatMenuOption> options = new List<FloatMenuOption>();
 
+            // 1. Transport pod
+            options.Add(new FloatMenuOption("StrategicOutpost_ByTransportPod".Translate(), delegate
+            {
+                ShowSendWorkerPodMenu(outpost, homeMap);
+            }));
+
+            // 2. Walking caravan
+            options.Add(new FloatMenuOption("StrategicOutpost_ByWalkingCaravan".Translate(), delegate
+            {
+                Find.WindowStack.Add(new Dialog_OutpostCaravan(outpost, homeMap, false));
+            }));
+
+            // 3. Transport vehicle (soon)
+            FloatMenuOption vehicleOpt = new FloatMenuOption("StrategicOutpost_ByTransportVehicle".Translate(), null, MenuOptionPriority.Default, delegate(Rect r)
+            {
+                TooltipHandler.TipRegion(r, "StrategicOutpost_TransportVehicleSoonTip".Translate());
+            }, null, 0f, null, null, true, 0);
+            vehicleOpt.Disabled = true;
+            options.Add(vehicleOpt);
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        private void ShowSendWorkerPodMenu(StrategicOutpost outpost, Map homeMap)
+        {
+            if (outpost == null || homeMap == null) return;
+            List<FloatMenuOption> options = new List<FloatMenuOption>();
+
             List<Pawn> colonists = homeMap.mapPawns.FreeColonistsSpawned
                 .Where(p => StrategicOutpostCaravanUtility.IsSuitableColonist(p) && !p.Drafted && !p.InMentalState)
                 .ToList();
@@ -377,6 +405,34 @@ namespace TurboMegaMod
         }
 
         private void ShowSendSilverMenu(StrategicOutpost outpost, Map homeMap)
+        {
+            if (outpost == null || homeMap == null) return;
+            List<FloatMenuOption> options = new List<FloatMenuOption>();
+
+            // 1. Transport pod
+            options.Add(new FloatMenuOption("StrategicOutpost_ByTransportPod".Translate(), delegate
+            {
+                ShowSendSilverPodMenu(outpost, homeMap);
+            }));
+
+            // 2. Walking caravan
+            options.Add(new FloatMenuOption("StrategicOutpost_ByWalkingCaravan".Translate(), delegate
+            {
+                Find.WindowStack.Add(new Dialog_OutpostCaravan(outpost, homeMap, true));
+            }));
+
+            // 3. Transport vehicle (soon)
+            FloatMenuOption vehicleOpt = new FloatMenuOption("StrategicOutpost_ByTransportVehicle".Translate(), null, MenuOptionPriority.Default, delegate(Rect r)
+            {
+                TooltipHandler.TipRegion(r, "StrategicOutpost_TransportVehicleSoonTip".Translate());
+            }, null, 0f, null, null, true, 0);
+            vehicleOpt.Disabled = true;
+            options.Add(vehicleOpt);
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        private void ShowSendSilverPodMenu(StrategicOutpost outpost, Map homeMap)
         {
             if (outpost == null || homeMap == null) return;
             List<FloatMenuOption> options = new List<FloatMenuOption>();

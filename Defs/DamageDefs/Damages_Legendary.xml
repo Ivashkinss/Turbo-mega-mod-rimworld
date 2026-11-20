@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- HELPER DAMAGE DEFS FOR LEGENDARY WEAPONS                              -->
+  <!-- ===================================================================== -->
+
+  <DamageDef>
+    <defName>TMM_Damage_TelekineticWave</defName>
+    <label>telekinetic shockwave</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} was crushed by a telekinetic shockwave.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Blunt</armorCategory>
+    <defaultDamage>34</defaultDamage>
+    <defaultArmorPenetration>0.65</defaultArmorPenetration>
+    <defaultStoppingPower>2.5</defaultStoppingPower>
+    <buildingDamageFactor>4.0</buildingDamageFactor>
+    <explosionCellFleck>BlastDry</explosionCellFleck>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+  </DamageDef>
+
+  <DamageDef>
+    <defName>TMM_Damage_RailwaySpike</defName>
+    <label>superheated railway spike</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} was impaled by a superheated railway spike.</deathMessage>
+    <hediff>Stab</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>36</defaultDamage>
+    <defaultArmorPenetration>0.78</defaultArmorPenetration>
+    <defaultStoppingPower>2.0</defaultStoppingPower>
+    <isRanged>true</isRanged>
+    <additionalHediffs>
+      <li>
+        <hediff>TMM_Hediff_Pinned</hediff>
+        <severityPerDamageDealt>0.1</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+
+  <DamageDef>
+    <defName>TMM_Damage_MiniNuke</defName>
+    <label>mini-nuke blast</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} was vaporized in a tactical nuclear blast.</deathMessage>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>150</defaultDamage>
+    <defaultArmorPenetration>1.0</defaultArmorPenetration>
+    <buildingDamageFactor>3.5</buildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>25</explosionHeatEnergyPerCell>
+    <explosionCellFleck>BlastFlame</explosionCellFleck>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <additionalHediffs>
+      <li>
+        <hediff>ToxicBuildup</hediff>
+        <severityPerDamageDealt>0.004</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+
+  <DamageDef>
+    <defName>TMM_Damage_EqualizerRecoil</defName>
+    <label>dimensional backlash</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>false</externalViolence>
+    <deathMessage>{0} died from dimensional weapon backlash.</deathMessage>
+    <hediff>Burn</hediff>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>1.0</defaultArmorPenetration>
+  </DamageDef>
+
+</Defs>

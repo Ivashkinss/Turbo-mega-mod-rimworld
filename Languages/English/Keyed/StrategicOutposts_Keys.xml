@@ -173,4 +173,33 @@
   <StrategicOutpost_NotEnoughSilverToSend>Not enough silver in colony to send (requires: {0}).</StrategicOutpost_NotEnoughSilverToSend>
   <StrategicOutpost_NotEnoughSilverForTopUp>Not enough silver in colony for top-up (requires: {0}, available: {1}).</StrategicOutpost_NotEnoughSilverForTopUp>
   <StrategicOutpost_PodsReturnedOutpostGone>The outpost no longer exists; the pods landed back at the colony with their cargo.</StrategicOutpost_PodsReturnedOutpostGone>
+
+  <!-- Outpost Walking Caravan (Stage B) -->
+  <StrategicOutpost_ByTransportPod>Transport pod</StrategicOutpost_ByTransportPod>
+  <StrategicOutpost_ByWalkingCaravan>Walking caravan</StrategicOutpost_ByWalkingCaravan>
+  <StrategicOutpost_ByTransportVehicle>Transport vehicle (soon)</StrategicOutpost_ByTransportVehicle>
+  <StrategicOutpost_TransportVehicleSoonTip>Vehicles and shuttles will become available in a future update.</StrategicOutpost_TransportVehicleSoonTip>
+  <TMM_OutpostCaravan_Title>Walking caravan to {0}</TMM_OutpostCaravan_Title>
+  <TMM_OutpostCaravan_SelectColonists>Select caravan colonists:</TMM_OutpostCaravan_SelectColonists>
+  <TMM_OutpostCaravan_StayAsWorker>Stay</TMM_OutpostCaravan_StayAsWorker>
+  <TMM_OutpostCaravan_SilverToSend>Silver to send: {0} (of {1})</TMM_OutpostCaravan_SilverToSend>
+  <TMM_OutpostCaravan_TripEstimate>Round trip days: {0} (one way: {1})</TMM_OutpostCaravan_TripEstimate>
+  <TMM_OutpostCaravan_FoodEstimate>Food for trip: {0} of {1} days</TMM_OutpostCaravan_FoodEstimate>
+  <TMM_OutpostCaravan_SendBtn>Send</TMM_OutpostCaravan_SendBtn>
+  <TMM_OutpostCaravan_NoPawnsSelectedTip>No colonists selected for the caravan.</TMM_OutpostCaravan_NoPawnsSelectedTip>
+  <TMM_OutpostCaravan_PathUnreachableTip>Cannot reach the outpost on foot.</TMM_OutpostCaravan_PathUnreachableTip>
+  <TMM_OutpostCaravan_NotEnoughFoodTip>Not enough food in colony stores for a round trip (needs {0} days).</TMM_OutpostCaravan_NotEnoughFoodTip>
+  <TMM_OutpostCaravan_ReportDelivering>Delivering to {0}</TMM_OutpostCaravan_ReportDelivering>
+  <TMM_OutpostCaravan_OutpostGone>Target outpost no longer exists. Delivery cancelled.</TMM_OutpostCaravan_OutpostGone>
+  <TMM_OutpostCaravan_WorkerRejected>Outpost {1}: capacity is full, {0} is returning home.</TMM_OutpostCaravan_WorkerRejected>
+  <TMM_OutpostCaravan_DeliveredReturning>Caravan delivered cargo to {0} and is returning to {1}.</TMM_OutpostCaravan_DeliveredReturning>
+  <TMM_OutpostCaravan_ReturnHome>Return home</TMM_OutpostCaravan_ReturnHome>
+  <TMM_OutpostCaravan_ReturnHomeDesc>Cancel outpost delivery and order the caravan to head back to the home colony.</TMM_OutpostCaravan_ReturnHomeDesc>
+  <TMM_OutpostCaravan_CancelledReturning>{0} cancelled delivery and is returning home.</TMM_OutpostCaravan_CancelledReturning>
+  <StrategicOutpost_InvalidOutpost>Invalid outpost.</StrategicOutpost_InvalidOutpost>
+  <StrategicOutpost_NoMobileCarrierLeft>No capable mobile carrier would remain in the caravan.</StrategicOutpost_NoMobileCarrierLeft>
+  <TMM_OutpostCaravan_HomeUnreachable>{0}: route home is unreachable. The caravan remains in place — click "Return home" when the route becomes available.</TMM_OutpostCaravan_HomeUnreachable>
+  <TMM_OutpostCaravan_MissingSilverAborted>Loaded only {0} of {1} silver. Mission aborted; cargo remains with the caravan.</TMM_OutpostCaravan_MissingSilverAborted>
+  <TMM_OutpostCaravan_StorageTransferFailed>Outpost storage refused the cargo. Everything was returned to the caravan.</TMM_OutpostCaravan_StorageTransferFailed>
+  <TMM_OutpostCaravan_FormationFailed>Failed to form caravan.</TMM_OutpostCaravan_FormationFailed>
 </LanguageData>

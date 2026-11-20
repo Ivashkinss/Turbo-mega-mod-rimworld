@@ -32,18 +32,119 @@ namespace TurboMegaMod
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (string e in base.ConfigErrors()) yield return e;
-            if (stages.Count == 0) yield return "story quest has no stages";
-            for (int i = 0; i < stages.Count; i++)
-                if (stages[i] == null) yield return "stage " + i + " is null (bad Class?)";
-            if (!autoStart && letterText.NullOrEmpty()) yield return "offered quest needs letterText";
-            var keys = new HashSet<string>();
-            for (int i = 0; i < stages.Count; i++)
-                if (stages[i] != null && !keys.Add(stages[i].Key(i))) yield return "duplicate stage key " + stages[i].Key(i);
-            foreach (string c in requires.Concat(anyOf))
+
+            if (stages == null || stages.Count == 0)
             {
-                string err = StoryConditions.SyntaxError(c);
-                if (err != null) yield return "condition '" + c + "': " + err;
+                yield return "StoryQuestDef " + defName + " has no stages.";
             }
+
+            foreach (string err in ValidateConditionList(requires, "quest.requires")) yield return err;
+            foreach (string err in ValidateConditionList(anyOf, "quest.anyOf")) yield return err;
+
+            if (stages != null)
+            {
+                for (int i = 0; i < stages.Count; i++)
+                {
+                    StoryStage st = stages[i];
+                    if (st == null)
+                    {
+                        yield return "StoryQuestDef " + defName + " has null stage at index " + i + ".";
+                        continue;
+                    }
+
+                    StoryStage_Choice choiceStage = st as StoryStage_Choice;
+                    if (choiceStage != null && choiceStage.choices != null)
+                    {
+                        for (int c = 0; c < choiceStage.choices.Count; c++)
+                        {
+                            StoryChoice ch = choiceStage.choices[c];
+                            if (ch == null) continue;
+                            string prefix = string.Format("stage[{0}].choices[{1}]", i, c);
+                            foreach (string err in ValidateConditionList(ch.requires, prefix + ".requires")) yield return err;
+                            foreach (string err in ValidateConditionList(ch.anyOf, prefix + ".anyOf")) yield return err;
+                        }
+                    }
+
+                    // Validate outcomes (List<StoryChoice>) on Site, ColonyRaid, HotelVisit, Deliver, etc.
+                    System.Reflection.FieldInfo outcomesField = st.GetType().GetField("outcomes");
+                    if (outcomesField != null)
+                    {
+                        List<StoryChoice> outs = outcomesField.GetValue(st) as List<StoryChoice>;
+                        if (outs != null)
+                        {
+                            for (int o = 0; o < outs.Count; o++)
+                            {
+                                StoryChoice ch = outs[o];
+                                if (ch == null) continue;
+                                string prefix = string.Format("stage[{0}].outcomes[{1}]", i, o);
+                                foreach (string err in ValidateConditionList(ch.requires, prefix + ".requires")) yield return err;
+                                foreach (string err in ValidateConditionList(ch.anyOf, prefix + ".anyOf")) yield return err;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static IEnumerable<string> ValidateConditionList(List<string> list, string where)
+        {
+            if (list == null) yield break;
+            for (int i = 0; i < list.Count; i++)
+            {
+                string raw = list[i];
+                string err = CheckConditionSyntax(raw);
+                if (!err.NullOrEmpty())
+                {
+                    yield return string.Format("{0}[{1}] ('{2}'): {3}", where, i, raw ?? "null", err);
+                }
+            }
+        }
+
+        private static string CheckConditionSyntax(string raw)
+        {
+            if (raw.NullOrEmpty() || raw.Trim().Length == 0) return "empty condition";
+            string s = raw.Trim();
+            if (s[0] == '!') s = s.Substring(1).Trim();
+            if (s.Length == 0) return "empty negated condition";
+
+            if (s.StartsWith("done:", StringComparison.Ordinal))
+            {
+                return s.Length > 5 ? null : "missing quest defName after done:";
+            }
+            if (s.StartsWith("heroAlive:", StringComparison.Ordinal))
+            {
+                return s.Length > 10 ? null : "missing HeroDef defName after heroAlive:";
+            }
+
+            string[] numOps = new string[] { ">=", "<=", ">", "<" };
+            for (int i = 0; i < numOps.Length; i++)
+            {
+                int idx = s.IndexOf(numOps[i], StringComparison.Ordinal);
+                if (idx >= 0)
+                {
+                    string lhs = s.Substring(0, idx).Trim();
+                    string rhs = s.Substring(idx + numOps[i].Length).Trim();
+                    int parsed;
+                    if (lhs.Length == 0) return "missing flag name before " + numOps[i];
+                    if (!int.TryParse(rhs, out parsed)) return "non-integer value after " + numOps[i];
+                    return null;
+                }
+            }
+
+            int eq = s.IndexOf('=');
+            if (eq >= 0)
+            {
+                string lhs = s.Substring(0, eq).Trim();
+                if (lhs.Length == 0) return "missing flag name before =";
+                return null;
+            }
+
+            // Bare boolean flag token: reject whitespace
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (char.IsWhiteSpace(s[i])) return "unexpected whitespace in condition";
+            }
+            return null;
         }
     }
 
@@ -93,6 +194,7 @@ namespace TurboMegaMod
         [MustTranslate] public string resultText;  // giver's reply, shown as a follow-up letter
         public int nextStage = -2;
         public List<string> requires = new List<string>();
+        public List<string> anyOf = new List<string>();
         public List<StoryEffect> effects = new List<StoryEffect>();
     }
 

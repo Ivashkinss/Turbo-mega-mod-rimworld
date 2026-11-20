@@ -85,14 +85,23 @@ namespace TurboMegaMod
                     opt.action = delegate
                     {
                         if (!Current(run)) return;
+                        // Re-check requires/anyOf BEFORE Resolve() so a stale option never consumes the letter
+                        if (!StoryConditions.Holds(s, choice.requires, choice.anyOf)) return;
                         int letterGen = gen;
                         Resolve();
-                        // The reply is sent only when the engine really accepted the transition.
-                        if (s.Choose(run, stage, letterGen, choice.outcome) && !choice.resultText.NullOrEmpty())
-                            Find.LetterStack.ReceiveLetter(def.LabelCap.ToString(), StoryUtil.Format(choice.resultText, ctx), LetterDefOf.NeutralEvent);
+                        // If Choose refuses for any reason, request a resend so the player is never left without a letter
+                        if (s.Choose(run, stage, letterGen, choice.outcome))
+                        {
+                            if (!choice.resultText.NullOrEmpty())
+                                Find.LetterStack.ReceiveLetter(def.LabelCap.ToString(), StoryUtil.Format(choice.resultText, ctx), LetterDefOf.NeutralEvent);
+                        }
+                        else
+                        {
+                            s.Notify_LetterLost(run, kind, letterGen);
+                        }
                     };
                     opt.resolveTree = true;
-                    if (!StoryConditions.Holds(s, choice.requires, null)) opt.Disable("TMM.Story.ChoiceLocked".Translate());
+                    if (!StoryConditions.Holds(s, choice.requires, choice.anyOf)) opt.Disable("TMM.Story.ChoiceLocked".Translate());
                     yield return opt;
                 }
             }

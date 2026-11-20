@@ -1,0 +1,45 @@
+﻿{
+    "outpostCaravanReload":  {
+                                 "passed":  true,
+                                 "checksCount":  3,
+                                 "checks":  [
+                                                {
+                                                    "name":  "Reload_ManagerExists",
+                                                    "passed":  true,
+                                                    "expected":  "non-null",
+                                                    "actual":  "ok"
+                                                },
+                                                {
+                                                    "name":  "Reload_ReturningMissionRestored",
+                                                    "passed":  true,
+                                                    "expected":  "Returning mission with Enter home action",
+                                                    "actual":  "state=Returning, destMatch=True"
+                                                },
+                                                {
+                                                    "name":  "Reload_CarrierEnteredHomeAndMissionClosed",
+                                                    "passed":  true,
+                                                    "expected":  "carrierHome=true, outpostSilver=120 \u0026 worker\u003e=1, missionClosed=true",
+                                                    "actual":  "carrierHome=True, outpostOk=True, closed=True"
+                                                }
+                                            ],
+                                 "errors":  [
+
+                                            ]
+                             },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4147,
+                        "ticksAdvanced":  6904,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "compatibilityReload":  false,
+    "freshAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
+    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
+    "passed":  true
+}

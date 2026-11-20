@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- 3. OUTCASTS: PROTECTOR POWER ARMOR (AUTO-INJECTOR AT <30% HEALTH)     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Legendary_ProtectorArmor</defName>
+    <label>Protector Power Armor</label>
+    <description>A custom black-and-crimson power armor suit forged by Brotherhood Outcast master technicians. Worn over regular clothing, its chestplate houses a medical auto-injector that floods the wearer's bloodstream with stimpaks the moment vitals drop below 30%.</description>
+    <techLevel>Spacer</techLevel>
+    <smeltable>false</smeltable>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <MarketValue>6200</MarketValue>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Mass>14.0</Mass>
+      <Flammability>0.1</Flammability>
+      <ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.65</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.10</ArmorRating_Heat>
+      <Insulation_Cold>38</Insulation_Cold>
+      <Insulation_Heat>22</Insulation_Heat>
+      <EquipDelay>10</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.60</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_LegendaryItem" />
+      <li Class="TurboMegaMod.CompProperties_ProtectorAutoInjector">
+        <cooldownTicks>30000</cooldownTicks>
+        <healthThreshold>0.30</healthThreshold>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 4. VAULT-TEC: GOLDEN PIP-BOY 3000 MARK IV (UTILITY + ANTI-PANIC)      -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Legendary_GoldenPipBoy</defName>
+    <label>Golden Pip-Boy 3000 Mark IV</label>
+    <description>A commemorative gold-plated wrist computer crafted for senior Vault-Tec executives. Its upgraded tactical V.A.T.S. co-processor sharpens aim, accelerates complex tasks, steadies morale, and prevents panic breaks.</description>
+    <techLevel>Spacer</techLevel>
+    <smeltable>false</smeltable>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <MarketValue>4500</MarketValue>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>0.9</Mass>
+      <Flammability>0.1</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+      <AimingDelayFactor>-0.25</AimingDelayFactor>
+      <MentalBreakThreshold>-0.30</MentalBreakThreshold>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+        <li>Worker</li>
+      </defaultOutfitTags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_LegendaryItem" />
+    </comps>
+  </ThingDef>
+
+</Defs>

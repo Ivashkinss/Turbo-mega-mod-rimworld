@@ -1,0 +1,139 @@
+﻿{
+    "component":  "OutpostCaravan",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3395,
+                         "scalarFields":  2932,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4013,
+                        "ticksAdvanced":  9571,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
+    "outpostCaravan":  {
+                           "passed":  true,
+                           "checksCount":  14,
+                           "checks":  [
+                                          {
+                                              "name":  "Manager_Exists",
+                                              "passed":  true,
+                                              "expected":  "non-null",
+                                              "actual":  "ok"
+                                          },
+                                          {
+                                              "name":  "P2_FoodCalcUsesTransferableExactCount",
+                                              "passed":  true,
+                                              "expected":  "1 meal from 40-stack \u003c 2.0 days",
+                                              "actual":  "0.48d"
+                                          },
+                                          {
+                                              "name":  "Setup_OutpostACreated",
+                                              "passed":  true,
+                                              "expected":  "non-null",
+                                              "actual":  "ok"
+                                          },
+                                          {
+                                              "name":  "P1_CancelWithCargo_RealGizmo",
+                                              "passed":  true,
+                                              "expected":  "attached, gizmo clicked, dest=home, cargo=200",
+                                              "actual":  "start=True(fail=), out=True, gizmo=True, ret=True, silver=200"
+                                          },
+                                          {
+                                              "name":  "P1_StorageRefusal_AtomicSilverRollback",
+                                              "passed":  true,
+                                              "expected":  "outpost+0, caravan=200 (150+50), delivered=false",
+                                              "actual":  "outpost=0-\u003e0, carSilver=200, deliv=False, state=Outbound"
+                                          },
+                                          {
+                                              "name":  "P2_WorkerOverflow_RejectedSafely",
+                                              "passed":  true,
+                                              "expected":  "extraWorker stays in caravan, count==MaxCapacity",
+                                              "actual":  "inCaravan=True, workers=2/2"
+                                          },
+                                          {
+                                              "name":  "P2_LastMobileCarrierProtected",
+                                              "passed":  true,
+                                              "expected":  "transfer refused \u0026 walkingWorker remains in caravan",
+                                              "actual":  "blocked=True, reason=В караване не останется ни одного носильщика, способного идти."
+                                          },
+                                          {
+                                              "name":  "P1_OutpostDeletedBeforeExit_FormationAborted",
+                                              "passed":  true,
+                                              "expected":  "mission removed \u0026 pawn stopped forming",
+                                              "actual":  "started=True, inMgr=False, forming=False"
+                                          },
+                                          {
+                                              "name":  "P1_OutpostDeletedAfterExit_AutoReturnWithCargo",
+                                              "passed":  true,
+                                              "expected":  "state=Returning, dest=home, silver=100",
+                                              "actual":  "state=Returning, destMatch=True, silver=100"
+                                          },
+                                          {
+                                              "name":  "P1_AbortedFormation_DoesNotHijackLaterCaravan",
+                                              "passed":  true,
+                                              "expected":  "mission cleaned \u0026 normal caravan untouched",
+                                              "actual":  "True"
+                                          },
+                                          {
+                                              "name":  "P1_CaravanDestroyed_MissionCleaned",
+                                              "passed":  true,
+                                              "expected":  "removed",
+                                              "actual":  "True"
+                                          },
+                                          {
+                                              "name":  "RealTrip_OutpostCreated",
+                                              "passed":  true,
+                                              "expected":  "non-null",
+                                              "actual":  "ok"
+                                          },
+                                          {
+                                              "name":  "RealTrip_FoodConsumedWithoutMaintainPawns",
+                                              "passed":  true,
+                                              "expected":  "meals \u003c 14",
+                                              "actual":  "12"
+                                          },
+                                          {
+                                              "name":  "RealTrip_DeliveredAndSavedOnReturnLeg",
+                                              "passed":  true,
+                                              "expected":  "delivered=true, state=Returning, silver=120, worker in outpost, carrier heading home",
+                                              "actual":  "deliv=True, state=Returning, silver=120, workerIn=True, carrierIn=True"
+                                          }
+                                      ],
+                           "errors":  [
+
+                                      ]
+                       },
+    "passed":  true
+}

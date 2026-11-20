@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 4: CELESTIAL ORDER                                          -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_CO_1_HarvestOfSparks -->
+  <TMM_Story_A5_CO_1_HarvestOfSparks.label>жатва искр</TMM_Story_A5_CO_1_HarvestOfSparks.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.label>Возрождение угасающей благодати</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.text>Чтобы вернуть Небесному Воинству полную мощь до закрытия Разлома, архангелу Михаилу требуется духовный резонанс пробудившихся синтов третьего поколения, укрытых на перевалочной станции Подземки. Доктор Хесс передала енохианские фонари-сифоны для сбора их Искр.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.text>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.0.label>[Помощь перебежчиков] Позволить Кастиэлю или Мику Дэвису настроить фонари на щадящий сбор без убийства синтов</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.0.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.0.resultText>Тайком от Михаила ваш перебежчик перестраивает енохианские фонари на съём лишь избыточного резонанса — спасая жизни синтов, но всё равно питая небесный маяк.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.0.resultText>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.1.label>Исполнить приказ Михаила без колебаний — выкачать каждую Искру на станции</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.1.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.1.resultText>Золотые фонари вспыхивают ослепительным светом, пока ударная группа выступает к станции Подземки. Нулевой Синт смотрит вам вслед в немом ужасе.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.0.choices.1.resultText>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.0.effects.1.label>Небесные фонари заряжены</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.0.effects.1.text>Ударная группа проломила оборону Подземки в бронеплащах и зарядила енохианские фонари до предела — крылья ангелов над {COLONY} уже сияют ярче!</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.1.effects.0.label>Ангелы сами зачистили станцию</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.1.effects.0.text>До прихода вашего отряда штурмовые ангелы Наоми сами обрушились на станцию и вернулись с частично заряженными фонарями Искр.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.2.effects.0.label>Удалось вынести часть благодати</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.2.effects.0.text>Вынужденные отступить из засады Подземки, техники всё же вынесли два наполненных сифона — этого хватит, чтобы не сорвать график Михаила.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.label>Следующий этап: сеть контроля Лондона</TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.text>Когда благодать Небес вновь наполняет Резонатор, доктор Хесс разворачивает карту континента: Британские Просвещённые должны установить главный енохианский пилон на довоенной радиомачте, чтобы усмирить волю Пустоши.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.text>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.choices.0.label>Выдвинуть инженеров для запуска Сети Лондона</TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.choices.0.label>
+  <TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.choices.0.resultText>Артур Кетч и серафимы Наоми встают в строй рядом с вашими бойцами, и конвой направляется к радиомачте.</TMM_Story_A5_CO_1_HarvestOfSparks.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_CO_2_LondonNetwork -->
+  <TMM_Story_A5_CO_2_LondonNetwork.label>сеть лондона</TMM_Story_A5_CO_2_LondonNetwork.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.0.label>Монтаж главного енохианского шпиля</TMM_Story_A5_CO_2_LondonNetwork.stages.0.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.0.text>Оккультные архитекторы доктора Хесс смонтировали главный енохианский пилон подавления на высокой довоенной радиомачте. Винтокрылы Братства Стали уже летят снести шпиль с хребта, пока его умиротворяющее поле не накрыло регион.</TMM_Story_A5_CO_2_LondonNetwork.stages.0.text>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.0.effects.1.label>Сеть Лондона запущена</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.0.effects.1.text>Восемь часов под лазерным огнём Братства Стали ваши стражи удерживали шпиль, пока над горизонтом не сомкнулся сияющий золотой купол енохианской вязи!</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.1.effects.0.label>Запущен резервный пилон</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.1.effects.0.text>Пока паладины Братства сражались с ложными целями Просвещённых, Артур Кетч активировал подземный резервный ретранслятор.</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.2.effects.0.label>Гармоническое ядро эвакуировано</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.2.effects.0.text>Сбитые с хребта артиллерией Братства, оперативники всё же сняли золотое ядро ретранслятора для прямого монтажа в {COLONY}.</TMM_Story_A5_CO_2_LondonNetwork.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.label>Пленник в подвале Лондона</TMM_Story_A5_CO_2_LondonNetwork.stages.2.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.text>В запертом допросном крыле под радиомачтой отряд совершает потрясающую находку: в стазис-камере под печатями сидит ваш пропавший наставник, схваченный чистильщиками Просвещённых несколько недель назад. Доктор Хесс холодно чеканит по интеркому: «Этот человек знает слишком много о Проекте „Чистилище“. Оставьте его под нашей стражей».</TMM_Story_A5_CO_2_LondonNetwork.stages.2.text>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.0.label>Ослушаться доктора Хесс, разбить печати камеры и забрать наставника в {COLONY}</TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.0.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.0.resultText>Скулы доктора Хесс каменеют, но она не смеет перечить вам, пока Резонатор в ваших руках. Измождённый наставник крепко сжимает ваше плечо, когда отряд выводит его из подвала!</TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.0.resultText>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.1.label>Оставить пленника Лондону — ничто не должно угрожать Небесному Порядку</TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.1.label>
+  <TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.1.resultText>Тяжёлая стальная дверь захлопывается, заглушая тихую мольбу наставника. Доктор Хесс вознаграждает ваше безусловное послушание сундуком довоенного золота.</TMM_Story_A5_CO_2_LondonNetwork.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_A5_CO_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.0.label>Небесный маяк зажигается</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.0.text>Столп ослепительного золотого огня бьёт из Резонатора Искр {COLONY} в багровые тучи, призывая легионы Небес обратно на Землю. Отчаянно пытаясь остановить Небесный Порядок, пока свобода воли не скована навсегда, охотники, винтокрылы Анклава и орды Ада сходятся у ваших стен!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.label>Небесный Столп 45% — гром на всех горизонтах</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.text>Ангелы-курьеры сбрасывают во двор передовые аптечки и боеприпасы Просвещённых, пока авангард охотников откатывается назад. За пепельным хребтом ревут плазменные турбины Анклава — и земля вздрагивает под тяжёлой поступью.</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Направить все енохианские орудия на наступающий авангард Анклава</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку Лебедь уже мёртв, дикие племена супермутантов отсиживаются в холмах — гарнизон встречает Анклав полным залпом!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Бить в набат — бегемоты Лебедя врываются в сражение!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Ослеплённая и взбешённая золотым столпом света, орда Лебедя врезается в ваши баррикады раньше десанта Анклава!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>Орда бегемотов очищена огнём</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>Святой огонь и рунические залпы скосили наступающих бегемотов у самых стен, когда небо затянули винтокрылы Анклава!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.5.label>Небесный Столп 90% — сера разрывает землю</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.5.text>Чёрная броня Анклава дымится во дворе! Теперь земля за периметром трескается в фонтанах серы: последний легион Ада бросается в отчаянную атаку, пытаясь погасить свет Небес!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>Небесный Порядок устоял!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>Залив поле боя ослепительным белым светом, гарнизон сокрушил легионы Ада! Остался лишь сам Денница — выдвигайтесь на штурм Серной Цитадели!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Золотой столп замкнут</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Сквозь едкий дым и пробитые ворота Резонатор завершил призыв Небес — ударьте по твердыне Люцифера, пока он не сорвал печать!</TMM_Story_A5_CO_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_CO_4_AscensionOfTheHost -->
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.label>восхождение воинства: падение денницы</TMM_Story_A5_CO_4_AscensionOfTheHost.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.label>Последняя битва братьев</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.text>В пылающих руинах Серной Цитадели Люцифер вырвался из Клетки, собрав последних демонов Ада и наёмных левиафанов, чтобы обрушить вновь зажжённые Небеса. Архангел Михаил обнажает золотой Клинок Архангела, а доктор Хесс взводит «Уравнитель».</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.text>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.0.label>[Формула буры готова] Вооружить штурмовое воинство святым маслом, енохианскими пулями и бурой</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.0.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.0.resultText>Освящённые обереги и канистры буры не оставят ни демонам Люцифера, ни его страже левиафанов ни единого шанса!</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.0.resultText>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.1.label>Спуститься в столпах небесного огня прямо в тронный зал Люцифера</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.1.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.1.resultText>Хлопок крыльев гремит подобно грому, когда ударный отряд высаживается в сердце Серной Цитадели, чтобы окончить древнейшую войну мироздания.</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.0.choices.1.resultText>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.0.effects.1.label>Люцифер низвергнут обратно в Бездну!</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.0.effects.1.text>В оглушительной вспышке белых и багровых молний Люцифер рухнул на колени — и золотые цепи Небес утащили его обратно в запечатанную Клетку навеки!</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.1.effects.0.label>Цитадель испепелена небесным огнём</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.1.effects.0.text>Архангел Михаил обрушил с Резонатора столп очищающего пламени, похоронив Серную Цитадель и запаяв разлом преисподней остекленевшей породой.</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.2.effects.0.label>Пиррова победа над Бездной</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.2.effects.0.text>Хотя авангард понёс тяжёлые потери в серном дыму, рунические заряды Просвещённых обрушили тронный зал и обезглавили силы Ада.</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.label>Торжество Небесного Порядка</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.text>Сияющий безоблачный свет разливается над континентом. Рейды, чудовища и хаос исчезают под мерным гулом золотых пилонов Сети Лондона и зорким взглядом небесного воинства — безупречный, безмолвный рай, купленный ценой свободы воли.</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.text>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.choices.0.label>Вострубить в серебряные трубы — Небесный Порядок правит Землёй в вечной тишине</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.choices.0.label>
+  <TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.choices.0.resultText>Ангелы патрулируют безупречное небо над {COLONY}. Война окончена; наступил абсолютный покой.</TMM_Story_A5_CO_4_AscensionOfTheHost.stages.2.choices.0.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 5: DARK COVENANT                                            -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_DC_1_BloodTithe -->
+  <TMM_Story_A5_DC_1_BloodTithe.label>кровавая десятина</TMM_Story_A5_DC_1_BloodTithe.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.label>Взлом хранилища душ Волт-Тек</TMM_Story_A5_DC_1_BloodTithe.stages.0.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.text>Чтобы разорвать последнюю Печать и затопить Землю мощью Ада и Чистилища, вашим тёмным союзникам нужны довоенные накопители душ из резервного бункера Волт-Тек. Левиафаны Дика Романа и стая Альфа-вампира готовы взломать гермодверь рядом с вами.</TMM_Story_A5_DC_1_BloodTithe.stages.0.text>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.0.label>Усилить отряд кровавой алхимией Альфа-вампира и биоферритовыми амулетами</TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.0.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.0.resultText>Багровый туман вьётся вокруг клинков бойцов, а хищный голод обостряет их реакцию перед штурмом Убежища.</TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.0.resultText>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.1.label>Призвать серных подрывников, чтобы прожечь стальные переборки Волт-Тек насквозь</TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.1.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.1.resultText>Демоны перекрёстка пропитывают заряды адской серой — ни одна довоенная дверь не задержит ваш авангард.</TMM_Story_A5_DC_1_BloodTithe.stages.0.choices.1.resultText>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.0.effects.1.label>Накопители Убежища разграблены</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.0.effects.1.text>Смяв отряды охраны Волт-Тек, ваш тёмный легион вырвал золотые накопители душ из центрального ядра и доставил их в {COLONY}!</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.1.effects.0.label>Стая левиафанов опустошила бункер</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.1.effects.0.text>До прихода вашего отряда штурмовики Дика Романа пролезли через вентиляцию и сами положили украденные накопители к вашему алтарю.</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.2.effects.0.label>Отход сквозь огонь с десятиной</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.2.effects.0.text>Хотя турели Убежища изрядно потрепали авангард, Мэг вынырнула из чёрного дыма, сжимая в руках главную матрицу.</TMM_Story_A5_DC_1_BloodTithe.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.label>Знакомое лицо в криохранилище</TMM_Story_A5_DC_1_BloodTithe.stages.2.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.text>За криогенной переборкой бойцы находят вашего пропавшего наставника в работающей капсуле Волт-Тек — того самого человека, что выкрал Нулевого Синта, пытаясь остановить этот кошмар. Мэг мрачно ухмыляется у пульта: «Гляди, кого мы нашли, босс. Заберём его посмотреть на твою коронацию или скормим капсулу Бездне?»</TMM_Story_A5_DC_1_BloodTithe.stages.2.text>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.0.label>Вскрыть стазис-капсулу и забрать наставника в {COLONY} живым</TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.0.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.0.resultText>Даже на самой тёмной тропе не все узы рвутся легко. Потрясённого наставника бережно несут к транспорту, пока Убежище полыхает за спиной.</TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.0.resultText>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.1.label>Отречься от прошлого — слить энергию криобанка прямо в алтарь Резонатора</TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.1.label>
+  <TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.1.resultText>Багровая молния пронзает криозал, обращая в пепел последние следы прежней жизни. Преисподняя рукоплещет вашей безжалостной верности.</TMM_Story_A5_DC_1_BloodTithe.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_A5_DC_2_FallOfHeavensGates -->
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.label>погашенное серебро</TMM_Story_A5_DC_2_FallOfHeavensGates.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.0.label>Охота за «Кольтом»</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.0.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.0.text>На Земле осталось лишь одно смертное оружие, способное угрожать владыкам вашего союза: «Кольт», с которым Дин Винчестер собирает последних охотников и Минитменов в укреплённом мотеле у шоссе. Дик Роман ослепительно улыбается: «Уберите мистера Винчестера с доски, и сопротивление людей рухнет за одну ночь».</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.0.text>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.0.effects.1.label>Чемпион охотников пал</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.0.effects.1.text>У дымящегося капота побитой чёрной машины Дин Винчестер отстреливался до последней серебряной пули, прежде чем пасть под натиском вашего тёмного авангарда — боевой дух охотников континента сломлен!</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.1.effects.0.label>Укрепление брошено в огне</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.1.effects.0.text>Ночные стаи Альфа-вампира сожгли мотель до вашего прихода, разогнав уцелевших охотников по холмам.</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.2.effects.0.label>Кровавая засада у дороги</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.2.effects.0.text>Каменная соль и артиллерия потрепали ударный отряд, но подошедшие демоны следом сравняли передовой лагерь охотников с землёй.</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.label>Крестоносцы на горизонте</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.text>Когда охотники разбиты, между {COLONY} и вечными сумерками стоит лишь последний отчаянный крестовый поход Британских Просвещённых, Братства Стали и воинства архангела Михаила. Резонатор Искр жадно пьёт багровые молнии Затмения!</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.text>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.choices.0.label>Спустить адских гончих и занять стены — пусть крестоносцы разобьются о Бездну!</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.choices.0.label>
+  <TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.choices.0.resultText>На стенах пылают серные костры, пока тёмные союзники стягиваются вокруг Резонатора.</TMM_Story_A5_DC_2_FallOfHeavensGates.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_DC_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.0.label>Взлом Шестьдесят Шестой Печати</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.0.text>Резонатор Искр воет неестественным багровым аккордом — Шестьдесят Шестая Печать идёт трещинами! Чуя конец власти смертных, Британские Просвещённые, Братство Стали и последнее воинство Небес обрушивают на {COLONY} объединённый крестовый штурм!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.label>Разлом Печати 45% — сталь и рёв на хребте</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.text>Старейшины вампиров и демоны перекрёстка подносят на стены трофейные боеприпасы и пакеты крови поверх павших британских оперативников. Сквозь багровый дым снижаются винтокрылы Братства — а ворота содрогаются от тяжёлой поступи.</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Встретить паладинов Братства адским пламенем и когтями</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку Лебедь уже мёртв, дикие супермутанты не суются в бой — переведите весь огонь на десант рыцарей Братства!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Спустить стаю — бегемоты Лебедя ломятся сорвать ритуал!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Обезумевшие от запаха серы, дикие супермутанты Лебедя таранят внешние стены раньше Братства Стали!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>Дикие мутанты поглощены ночью</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>Демоны и ночные кланы растерзали обезумевших супермутантов, мгновенно развернувшись навстречу бронедесанту Братства!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.5.label>Разлом Печати 90% — звучит последняя труба Небес</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.5.text>Разбитая силовая броня Братства остывает в лужах чёрного ихора! Теперь ослепительные белые молнии рассекают багровый свод — Небеса бросают в бой последних серафимов, чтобы стереть {COLONY} с лица Земли!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>Крестовый поход сокрушён!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>Опалённые перья кружатся над двором словно снег — последний штурм Небес захлебнулся! Теперь ворвитесь в Небесный Собор и прикончите архангела Михаила!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Бездна ширится</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Хотя небесный огонь опалил внутренние стены, Шестьдесят Шестая Печать треснула — добейте архангела Михаила, пока Небеса не затянули рану!</TMM_Story_A5_DC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_DC_4_ShatteredAbyss -->
+  <TMM_Story_A5_DC_4_ShatteredAbyss.label>распахнутая бездна: падение архангела</TMM_Story_A5_DC_4_ShatteredAbyss.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.label>Штурм Небесного Собора</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.text>Архангел Михаил стоит в одиночестве среди руин Небесного Собора, отдавая последние искры благодати, чтобы удержать Разлом. Убейте его — и грань между Землёй, Адом и Чистилищем растворится навсегда во славу Тёмного Завета.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.text>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.0.label>[Метка Каина пробуждена] Влить первородную ярость Первого Клинка в ударный отряд</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.0.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.0.resultText>Метка Каина вспыхивает алым огнём на руке вашего чемпиона, и тёмная мощь заливает штурмовиков — перед таким клинком истечёт кровью даже архангел!</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.0.resultText>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.1.label>Обрушить на собор всю объединённую мощь демонов Ада и ночных кланов</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.1.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.1.resultText>Чёрный дым и хищный вой врываются в распахнутые врата собора, пока тёмная коалиция штурмует последнее святилище Михаила.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.0.choices.1.resultText>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.0.effects.1.label>Архангел пал!</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.0.effects.1.text>С раскатом грома, выбившим витражи на мили вокруг, архангел Михаил рухнул под ударами вашего тёмного авангарда — и небо над Землёй навсегда застыло в багровых сумерках!</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.1.effects.0.label>Собор поглощён серой</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.1.effects.0.text>Под полом собора разверзлись адские расщелины, поглотив святилище Михаила в серном пламени и оборвав последнюю нить Небес.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.2.effects.0.label>Тьма поглощает руины</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.2.effects.0.text>Хотя клинок Михаила собрал кровавую жатву среди авангарда, старейшины Альфа-вампира и демоны добили обессилевшего архангела мгновение спустя.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.label>Владыки Вечных Сумерек</TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.text>Последняя Печать рассыпается в рёве ликующего адского огня. Серный туман и вечные сумерки окутывают континент, пока демоны, вампиры и левиафаны склоняются перед {COLONY} — новыми князьями тёмной, бессмертной империи на пепле старого мира.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.text>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.choices.0.label>Взойти на пепельный трон — Тёмный Завет правит Пустошью навеки</TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.choices.0.label>
+  <TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.choices.0.resultText>Багровые огни пылают вдоль горизонта. Небеса пали; эта ночь принадлежит вам.</TMM_Story_A5_DC_4_ShatteredAbyss.stages.2.choices.0.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 6: SHADOW CONSORTIUM                                        -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_SC_1_HostileTakeover -->
+  <TMM_Story_A5_SC_1_HostileTakeover.label>враждебное поглощение</TMM_Story_A5_SC_1_HostileTakeover.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.label>Монополизация региональной энергосети</TMM_Story_A5_SC_1_HostileTakeover.stages.0.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.text>Чтобы превратить Резонатор Искр {COLONY} в абсолютную коммерческую монополию на энергию, доктору Брону нужно захватить передовой термоядерный узел Братства Стали целым. Капитан Уэс уже вывел боевые отряды Стрелков для блокады периметра.</TMM_Story_A5_SC_1_HostileTakeover.stages.0.text>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.0.label>Задействовать довоенные коды доступа и дронов Волт-Тек для взлома турелей узла</TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.0.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.0.resultText>Доктор Брон довольно хихикает, когда турели Братства на миг глохнут от старых сервисных ключей Волт-Тек, открывая бойцам чистый проход.</TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.0.resultText>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.1.label>Оплатить артподготовку тяжёлых расчётов капитана Уэса перед штурмом</TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.1.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.1.resultText>Ракетчики Стрелков перепахивают укрепления Братства и сбрасывают вашему отряду тяжёлые бронепластины.</TMM_Story_A5_SC_1_HostileTakeover.stages.0.choices.1.resultText>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.0.effects.1.label>Термоядерный узел перешёл в собственность</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.0.effects.1.text>Удержав узел сквозь восемь часов контратак Братства, ваши наёмники перевели всю энергосеть на центральный баланс Волт-Тек!</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.1.effects.0.label>Резерв Стрелков закрыл сделку</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.1.effects.0.text>Резервный батальон капитана Уэса прорвался через чёрный ход и перенаправил урановые магистрали прямо в {COLONY}.</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.2.effects.0.label>Врезка выполнена под землёй</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.2.effects.0.text>Отброшенные с поверхности рыцарями Братства, техники Волт-Тек всё равно поставили подземный отвод на главный силовой кабель узла.</TMM_Story_A5_SC_1_HostileTakeover.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.2.label>Следующая цель: конкуренты на поверхности</TMM_Story_A5_SC_1_HostileTakeover.stages.2.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.2.text>Когда региональная энергосеть в вашем кулаке, капитан Уэс кладёт на стол следующий контракт: зачистить главный логистический узел Минитменов и охотников, пока они не подняли вольные поселения против вашей монополии.</TMM_Story_A5_SC_1_HostileTakeover.stages.2.text>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.2.choices.0.label>Подписать приказ на ликвидацию и выдвинуть штурмовые группы Стрелков</TMM_Story_A5_SC_1_HostileTakeover.stages.2.choices.0.label>
+  <TMM_Story_A5_SC_1_HostileTakeover.stages.2.choices.0.resultText>Рации наёмников сухо щёлкают в знак подтверждения, и ударная колонна выдвигается к узлу сопротивления.</TMM_Story_A5_SC_1_HostileTakeover.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_SC_2_LiquidationContract -->
+  <TMM_Story_A5_SC_2_LiquidationContract.label>контракт на зачистку</TMM_Story_A5_SC_2_LiquidationContract.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.0.label>Блокада узла сопротивления</TMM_Story_A5_SC_2_LiquidationContract.stages.0.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.0.text>Разведчики Бейкера окружили укреплённый перекрёсток Минитменов и охотников — и заметили в их лазарете неожиданный сюрприз: вашего пропавшего наставника, которого недавно отбили у конвоя Консорциума люди Престона Гарви.</TMM_Story_A5_SC_2_LiquidationContract.stages.0.text>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.0.effects.1.label>Узел сопротивления ликвидирован</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.0.effects.1.text>Перекрёстный огонь Стрелков и снайперы Бейкера сокрушили баррикады ополчения, передав перекрёсток в руки Теневого Консорциума!</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.1.effects.0.label>Ополченцы выбиты с трассы</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.1.effects.0.text>Главная колонна капитана Уэса зачистила перекрёсток раньше срока, захватив склады охотников при отходе ополчения.</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.2.effects.0.label>Узел сметён миномётами</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.2.effects.0.text>Отбитые яростным сопротивлением охотников, миномётные расчёты Стрелков разнесли укрепления перекрёстка с дальней дистанции.</TMM_Story_A5_SC_2_LiquidationContract.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.label>Эвакуация актива в лазарете</TMM_Story_A5_SC_2_LiquidationContract.stages.2.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.text>В дыму захваченного узла ваш пропавший наставник стоит безоружным в лазарете, с неверием глядя на ваши наёмнические шевроны. Капитан Уэс передёргивает затвор: «Ваше слово, босс. Эвакуируем VIP в {COLONY} или сжигаем здание без лишних хвостов?»</TMM_Story_A5_SC_2_LiquidationContract.stages.2.text>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.0.label>Приказать Уэсу опустить оружие и безопасно сопроводить наставника в {COLONY}</TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.0.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.0.resultText>«Принято — оформляем эвакуацию VIP». Хотя наставник смотрит на ваших корпоративных союзников с горьким разочарованием, он доживёт до рассвета.</TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.0.resultText>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.1.label>Никаких хвостов — запереть здание и сжечь все архивы внутри</TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.1.label>
+  <TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.1.resultText>Зажигательные гранаты охватывают деревянные стены пламенем. Доктор Брон переводит на ваш счёт щедрую премию.</TMM_Story_A5_SC_2_LiquidationContract.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_A5_SC_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.0.label>Стабилизация вечного энергокупола</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.0.text>Доктор Брон замыкает Резонатор Искр на коммерческий контур откачки, вытягивая фоновую энергию Разлома для вечного питания сети Убежищ Волт-Тек! Взбешённые наглой кражей космической силы, Подземка, демоны Ада и ангелы Небес обрушиваются на {COLONY}!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.label>Энергоконтур 45% — наёмники держат строй</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.text>Грузовые капсулы Волт-Тек сбрасывают во двор свежие медикаменты и пласталь, пока капитан Уэс меняет магазин: «Диверсанты Подземки легли — теперь глядите на чёрный дым с юга!»</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Навести тяжёлые турели Стрелков на наступающих демонов Ада</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку Лебедь уже устранён, дикие супермутанты не мешаются под ногами — наёмники встречают демонов шквальным огнём!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Тревога по периметру — бегемоты Лебедя крушат ограждения!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Привлечённые колоссальной тягой Резонатора, дикие супермутанты Лебедя таранят стены раньше легиона Ада!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>Дикие мутанты расстреляны у стен</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>Ракетные батареи и пулемёты Стрелков изрешетили бегемотов Лебедя на подступах за минуту до удара демонов!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.5.label>Энергоконтур 90% — Небеса пытаются выдернуть вилку</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.5.text>Серный пепел оседает поверх россыпей гильз Стрелков! Теперь ослепительные столпы света пробивают тучи — последняя ударная группа Небес падает прямо на серверное ядро, чтобы оборвать сифон Консорциума!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>Теневой Консорциум выстоял!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>Огневая мощь наёмников и щиты Волт-Тек разбили десант Небес! Остался лишь один неуступчивый член совета директоров — пора провести враждебный выкуп Дика Романа!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Вечный цикл стабилизирован</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Несмотря на опалённые турели, коммерческий контур Резонатора замкнулся — атакуйте штаб Дика Романа, пока он не перехватил контрольный пакет!</TMM_Story_A5_SC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_SC_4_PerpetualCycle -->
+  <TMM_Story_A5_SC_4_PerpetualCycle.label>запуск вечного цикла: смена председателя</TMM_Story_A5_SC_4_PerpetualCycle.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.label>Смещение Председателя Совета</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.text>Осталось лишь одно препятствие, мешающее {COLONY}, Волт-Тек и Стрелкам завладеть 100% акций новой энергетической империи: глава левиафанов Дик Роман отказывается уходить и укрепился в Главной Серверной Башне Консорциума. Доктор Брон лучезарно улыбается: «Будьте душкой, расторгните контракт мистера Романа окончательно!»</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.text>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.0.label>[Формула буры открыта] Выдать каждому штурмовику Стрелков промышленный распылитель буры</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.0.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.0.resultText>Химические канистры Волт-Тек закрепляются на разгрузках бойцов — неуязвимость Дика Романа растворится при первом же контакте!</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.0.resultText>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.1.label>Штурмовать Главную Серверную Башню тяжёлой огневой мощью наёмников</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.1.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.1.resultText>Элитные отряды капитана Уэса вскрывают лифты правления. Помните: против Романа необходима бура!</TMM_Story_A5_SC_4_PerpetualCycle.stages.0.choices.1.resultText>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.0.effects.1.label>Враждебный выкуп завершён!</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.0.effects.1.text>Захлёбываясь в облаке белой буры, Дик Роман рухнул прямо на стол из красного дерева — передавая единоличный контроль над сетью Консорциума в руки {COLONY}!</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.1.effects.0.label>Этаж правления зачищен дистанционно</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.1.effects.0.text>Волт-Тек удалённо открыла в зале заседаний пожарные форсунки с галоном и бурой, нейтрализовав Романа до входа наёмников в серверную.</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.2.effects.0.label>Дорогая реструктуризация</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.2.effects.0.text>Хотя первый штурм стоил немалой крови, снайперы капитана Уэса заблокировали пентхаус, пока охрана Романа не сложила оружие.</TMM_Story_A5_SC_4_PerpetualCycle.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.2.label>Штаб-квартира Нового Мира</TMM_Story_A5_SC_4_PerpetualCycle.stages.2.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.2.text>Фанатики, ангелы, демоны и чудовища списаны со счетов как нерентабельные активы. Питаемая вечным Резонатором Искр, {COLONY} возвышается как сверкающая корпоративная столица Теневого Консорциума — управляющая Пустошью через Убежища, контракты и нерушимую монополию на энергию.</TMM_Story_A5_SC_4_PerpetualCycle.stages.2.text>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.2.choices.0.label>Ударить в биржевой колокол — будущее принадлежит Теневому Консорциуму</TMM_Story_A5_SC_4_PerpetualCycle.stages.2.choices.0.label>
+  <TMM_Story_A5_SC_4_PerpetualCycle.stages.2.choices.0.resultText>Золотые слитки и торговые караваны неиссякаемым потоком тянутся к воротам {COLONY}. Дела ещё никогда не шли так хорошо.</TMM_Story_A5_SC_4_PerpetualCycle.stages.2.choices.0.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- SHARED EPILOGUE PART 1: ECHOES OF THE SPARK                           -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_Epilogue_EchoesOfTheSpark -->
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.label>новый рассвет: судьба искры</TMM_Story_A5_Epilogue_EchoesOfTheSpark.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.0.label>Тишина после Кровавого затмения</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.0.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.0.text>Медленно багровая тень сходит с солнца — или навсегда застывает в новом небе — пока Резонатор Искр завершает последний планетарный цикл. По всей {COLONY} измотанные выжившие опускают оружие и собираются вокруг гудящего Нулевого Якоря, чтобы увидеть истинную цену победы.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.0.text>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.label>Судьба Нулевого Синта</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.text>Центральный кристалл Резонатора Искр остывает от слепящей вспышки до тихого свечения. В самом сердце всех событий — от первой ночи у люка под {COLONY} до последней осады — стояла одна невозможная душа, рождённая в белых коридорах: Нулевой Синт.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.text>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.0.label>[Свободная Пустошь и высокое доверие] Встать рядом с Нулевым Синтом — живым Хранителем Запечатанного Разлома</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.0.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.0.resultText>Тёплый голубой свет мягко оседает в груди Нулевого Синта, пока планетарный барьер замыкается без вреда для его души. Он улыбается чистому небу: «Мы сдержали слово. Ни клеток, ни хозяев — только дом, за который стоило сражаться». Нулевой Синт навсегда остаётся сердцем {COLONY}.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.1.label>[Свободная Пустошь и трещина в доверии] Проводить Нулевого Синта, уходящего с рюкзаком на вольную дорогу</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.1.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.1.resultText>Разлом запечатан, и Нулевой Синт выжил с нетронутой душой — но сомнения между вами так и не затянулись до конца. Остановившись у ворот {COLONY}, он коротко кивает: «Спасибо, что спасли мир. Теперь мне нужно узнать, кто я без этой машины».</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.2.label>[Высокое доверие на суровом пути] Почтить добровольную жертву Нулевого Синта ради спасения ваших колонистов</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.2.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.2.resultText>Даже зная, чего требует ваша коалиция, Нулевой Синт сам шагнул в луч Резонатора, чтобы отдача машины не убила его друзей в {COLONY}. Его последние слова тихо отзываются в голубом сиянии: «Сделайте так, чтобы мир, который я купил, стоил этой цены». В зале остаётся лишь тёплый молчаливый кристалл.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.2.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.3.label>[Низкое доверие на суровом пути] Зафиксировать расход «Образца Ноль» в журнале Резонатора</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.3.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.3.resultText>Без тёплых слов и сожалений Резонатор выкачал Искру Нулевого Синта до последней крупицы, скрепляя новый порядок вашей коалиции. Его глаза погасли в молчании, оставив у гудящей машины лишь пустую оболочку.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.3.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.4.label>[Тёмный Завет] Смотреть, как Бездна поглощает чистейшую Искру, когда-либо рождённую на Земле</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.4.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.4.resultText>Прикованная над расколотой Печатью, сияющая душа Нулевого Синта в последний раз вспыхнула подобно умирающей звезде, прежде чем Бездна проглотила её целиком — навсегда окрасив кристалл Резонатора в кроваво-алый цвет вашей тёмной империи.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.1.choices.4.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.label>Пропавший наставник</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.text>С самого первого дня одна личная нить вела {COLONY} в сердце Проекта «Чистилище»: наставник, исчезнувший в шахте Нулевого Якоря с Голодиском-Ключом в 2287 году.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.text>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.0.label>[Наставник спасён] Встретить израненного, поседевшего наставника у очага {COLONY}</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.0.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.0.resultText>Поседевший после долгих месяцев в стазисе Консорциума, ваш наставник тихо сидит у огня в столовой и кладёт на стол потёртый довоенный латунный ключ: «Я украл тот диск в надежде, что кто-то закончит начатое, — говорит он, оглядывая вашу окрепшую крепость. — Вы правда пережили всю эту бурю. Я дома».</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.1.label>[Наставник погиб] Положить треснувший Пип-Бой и опалённый дневник наставника на памятный камень</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.1.label>
+  <TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.1.resultText>Хотя наставнику не суждено было снова переступить порог {COLONY}, его отвага взломала двухсотлетний заговор. Вы высекаете его имя рядом с люком Нулевого Якоря — тихое напоминание о долге, с которого всё началось.</TMM_Story_A5_Epilogue_EchoesOfTheSpark.stages.2.choices.1.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- SHARED EPILOGUE PART 2: NEW DAWN — HEROES, WORLD & POSTGAME           -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_Epilogue_NewDawn -->
+  <TMM_Story_A5_Epilogue_NewDawn.label>новый рассвет: каким стал мир</TMM_Story_A5_Epilogue_NewDawn.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.0.label>Вести из перекроенного мира</TMM_Story_A5_Epilogue_NewDawn.stages.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.0.text>После последней битвы проходят недели. Караванные курьеры, дальние радиоретрансляторы и случайные путники приносят в {COLONY} вести о том, что стало с героями, соперниками и фракциями, чьи судьбы переплелись вокруг вашего Нулевого Якоря.</TMM_Story_A5_Epilogue_NewDawn.stages.0.text>
+
+  <!-- SLIDE 1: PALADIN DANSE -->
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.label>Хроника героев: Паладин Данс</TMM_Story_A5_Epilogue_NewDawn.stages.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.text>Среди всех ветеранов, проливших кровь в войне за Искру, мало кто воплощал конфликт между сталью и душой так ярко, как паладин Данс.</TMM_Story_A5_Epilogue_NewDawn.stages.1.text>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.0.label>[Завербован] Паладин Данс обучает новое поколение защитников {COLONY}</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.0.resultText>Навсегда сняв старые жетоны Братства, паладин Данс становится гранитной опорой гарнизона {COLONY} — каждый день доказывая, что честь куётся поступками, а не кровью или микросхемами.</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.1.label>[Спасён] По Пустоши ходят слухи об одиноком рыцаре в побитой броне T-60, охраняющем фермы</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.1.resultText>Хотя Данс так и не встал навсегда под ваше знамя, охранники караванов до сих пор рассказывают о молчаливом рыцаре в иссечённой силовой броне, выходящем из тумана всякий раз, когда рейдеры угрожают беззащитным поселенцам.</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.2.label>[Вычеркнут из списков] Имя паладина Данса навсегда стёрто в архивах Братства</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.2.resultText>В холодных хранилищах Братства Стали личное дело Данса остаётся залитым чёрными чернилами — суровый памятник ордену, испугавшемуся собственной человечности.</TMM_Story_A5_Epilogue_NewDawn.stages.1.choices.2.resultText>
+
+  <!-- SLIDE 2: CASTIEL -->
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.label>Хроника героев: Кастиэль</TMM_Story_A5_Epilogue_NewDawn.stages.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.text>Он был первым небесным посланником, постучавшим в ваши ворота при пробуждении Якоря — в мятом бежевом плаще и с грузом умирающих Небес на плечах.</TMM_Story_A5_Epilogue_NewDawn.stages.2.text>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.0.label>[Завербован] Кастиэль свободно живёт среди поселенцев {COLONY} как страж и друг</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.0.resultText>Предпочтя упрямых смертных слепому послушанию, Кастиэль остаётся в {COLONY} — неуклюже ухаживает за ульями, поправляет кривой синий галстук и не перестаёт удивляться хрупкому упорству свободной воли.</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.1.label>[Небесный Порядок] Кастиэль несёт безмолвную стражу с тенью печали в глазах</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.1.resultText>Обретший прежнюю благодать под властью архангела Михаила, Кастиэль послушно патрулирует безупречное небо, навсегда сохранив тоску по живому человеческому теплу, принесённому в жертву совершенству.</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.2.label>[Ушёл в легенды] Встречи с ангелом в бежевом плаще становятся байками у костра</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.2.resultText>Когда Разлом изменился навсегда, Кастиэль растворился в бескрайней тишине за пепельными пустошами — оставшись лишь тихой легендой, которую охотники рассказывают друг другу по ночам.</TMM_Story_A5_Epilogue_NewDawn.stages.2.choices.2.resultText>
+
+  <!-- SLIDE 3: CROWLEY -->
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.label>Хроника героев: Кроули</TMM_Story_A5_Epilogue_NewDawn.stages.3.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.text>Вчитываясь в мелкий шрифт или разливая тридцатилетний виски прямо посреди перестрелки, бывший Король Перекрёстков всегда умел приземляться на обе ноги — почти всегда.</TMM_Story_A5_Epilogue_NewDawn.stages.3.text>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.0.label>[Завербован] Кроули открывает дорогой бар в {COLONY} и приписывает спасение мира себе</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.0.resultText>Пережив гнев Люцифера за вашими стенами, Кроули занимает лучшую комнату гостиницы, беспощадно критикует местный самогон и уверяет каждого торговца, что всю вашу победу спланировал лично он.</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.1.label>[Тёмный Завет] Кроули поднимает хрустальный бокал с трона из пепла и серы</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.1.resultText>При торжестве Тёмного Завета Кроули возглавляет процветающую империю контрактов и сумеречной торговли, неизменно поднимая тост за своих любимых смертных партнёров.</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.2.label>[Отрезан от сделок] Лишившись притока душ, Кроули исчезает на забытых перекрёстках</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.2.resultText>Отрезанный от человеческих душ и Резонатора Искр, бывший Король Ада растворяется на глухих окраинах Пустоши, бормоча изобретательные проклятия в адрес несносных поселенцев.</TMM_Story_A5_Epilogue_NewDawn.stages.3.choices.2.resultText>
+
+  <!-- SLIDE 4: JOHN HANCOCK & PRESTON GARVEY -->
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.label>Хроника героев: Джон Хэнкок и Престон Гарви</TMM_Story_A5_Epilogue_NewDawn.stages.4.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.text>От неоновых переулков Добрососедства до каменных бастионов Замка простые жители Пустоши смотрели на Джона Хэнкока и Престона Гарви, гадая, каким окажется завтрашний день.</TMM_Story_A5_Epilogue_NewDawn.stages.4.text>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.0.label>[Свободная Пустошь] Хэнкок и Гарви объединяют людей, гулей, синтов и мутантов под общим знаменем</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.0.resultText>В Добрососедстве Джон Хэнкок угощает всех за счёт заведения, пока стабилизатор Верджила спасает целые поколения гулей. А по всему фронтиру Престон Гарви поднимает знамя Минитменов над свободными городками — впервые ни одно поселение не осталось в одиночестве.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.1.label>[Стерильная Империя] Добрососедство пустеет под белой дымкой, а народное ополчение распущено</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.1.resultText>Матрица Стерилизации смела и радиацию, и мутантов. Красный сюртук Джона Хэнкока остался в пепле Добрососедства, а потрёпанная шляпа Престона Гарви висит под стеклом в музее «умиротворённой Пустоши» Анклава.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.2.label>[Железный Крестовый Поход] Добрососедство держит ставни закрытыми в тени дирижаблей Братства</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.2.resultText>Хэнкок тихо запирает переулки от проходящих стальных патрулей, а Престон Гарви обменивает вольность ополчения на защиту Братства — благодарный за спасение от чудовищ, но встревоженный ценой в свободе.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.2.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.3.label>[Небесный Порядок] Бунтарские песни стихают под ровным гулом золотых енохианских пилонов</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.3.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.3.resultText>Под безупречной властью Небес дерзкие речи Хэнкока переходят на шёпот, а Престон Гарви смотрит, как смирные поселенцы идут под ангельскими крыльями, молясь, чтобы этот безмолвный рай стоил своих цепей.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.3.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.4.label>[Тёмный Завет] Добрососедство догорает в сумерках, а Престон Гарви уводит последних партизан в горы</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.4.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.4.resultText>Пока ночные стаи занимают руины Добрососедства, Престон Гарви уходит в северные хребты с горсткой упрямых охотников — клянясь, что пока горит хоть один костёр, человечество не сдалось.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.4.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.5.label>[Теневой Консорциум] Добрососедство становится налоговой зоной, а Гарви сдаёт свой значок</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.5.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.5.resultText>Хэнкок мрачно подписывает договор аренды с Волт-Тек, чтобы сохранить Добрососедство под охраной Стрелков, а Престон Гарви вешает шляпу на гвоздь, отказываясь охранять корпоративные заставы.</TMM_Story_A5_Epilogue_NewDawn.stages.4.choices.5.resultText>
+
+  <!-- SLIDE 5: WHAT BECAME OF THE WORLD -->
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.label>Каким стал мир</TMM_Story_A5_Epilogue_NewDawn.stages.5.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.text>Спустя двести лет после того, как октябрьский ядерный ритуал сорвал Шестьдесят Шесть Печатей, долгая ночь Проекта «Чистилище» наконец завершилась. Взгляните со стен {COLONY} на новую эпоху, выкованную вашим выбором.</TMM_Story_A5_Epilogue_NewDawn.stages.5.text>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.0.label>[Концовка: Свободная Пустошь] Чистое небо над выстраданным, несломленным фронтиром</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.0.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.0.resultText>Разлом запечатан навеки. Небеса и Ад отрезаны от Земли, Консорциум повержен, а люди, синты, гули и разумные мутанты встречают суровый, но честный рассвет — славя {COLONY} как маяк, подаривший миру свободу.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.0.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.1.label>[Концовка: Стерильная Империя] Чистый воздух, белые лаборатории и железное господство людей</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.1.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.1.resultText>Радиация, мутации и оккультные кошмары вытравлены с континента. Под двойным знаменем Анклава и Института из руин поднимаются строгие города — а {COLONY} венчает вершину нового имперского порядка.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.1.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.2.label>[Концовка: Железный Крестовый Поход] Магия погашена за стенами стали и силовой брони</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.2.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.2.resultText>Континентальный подавитель тихо гудит под {COLONY}, навеки гася сверхъестественные разломы и мятежные машины. Человечество вступает в суровый век стали под эгидой воссоединившихся Братства Стали и Изгоев.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.2.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.3.label>[Концовка: Небесный Порядок] Безупречный, неподвижный рай под золотыми крыльями</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.3.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.3.resultText>Войны, чудовища и преступления исчезают под объединённой властью Небесного Воинства и Британских Просвещённых. {COLONY} сияет как земной престол вечного, незыблемого покоя.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.3.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.4.label>[Концовка: Тёмный Завет] Вечные сумерки и бессмертное владычество над пеплом</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.4.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.4.resultText>Земля сливается с тенями Ада и Чистилища. Облачённые в тёмную мощь и бессмертную кровь, владыки {COLONY} безраздельно правят как князья бесконечной багровой ночи.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.4.resultText>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.5.label>[Концовка: Теневой Консорциум] Убежища, контракты и нерушимая монополия на энергию</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.5.label>
+  <TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.5.resultText>Фанатики и чудовища окончательно списаны из отчётности. Питаемая вечным Резонатором Искр, {COLONY} правит Пустошью как сверкающая корпоративная столица Волт-Тек и Стрелков.</TMM_Story_A5_Epilogue_NewDawn.stages.5.choices.5.resultText>
+
+  <TMM_Story_A5_Epilogue_NewDawn.onComplete.4.label>Хроника завершена</TMM_Story_A5_Epilogue_NewDawn.onComplete.4.label>
+  <TMM_Story_A5_Epilogue_NewDawn.onComplete.4.text>Поздравляем! Вы прошли главную сюжетную хронику «Цена Искры: Пепел, Сера и Заговор».\n\n{COLONY} переходит в Акт VI — Постгейм! Вы можете свободно развивать свою столицу, повышать колонистов в званиях, ковать именное снаряжение героев и владеть легендарным арсеналом в новом мире, который создали сами.</TMM_Story_A5_Epilogue_NewDawn.onComplete.4.text>
+
+</LanguageData>

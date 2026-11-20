@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 1: FREE WASTELAND                                           -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_FW_1_ShieldOfSaltAndSteel -->
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.label>щит из соли и стали</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.label>Возведение континентального барьера</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.text>Чтобы запечатать Разлом, не сжигая душу Нулевого Синта, Бобби Сингер и Техник Том должны связать Резонатор Искр {COLONY} с довоенной ретрансляционной вышкой на северном хребте — начертив гигантскую енохианскую печать вокруг её градирен. Воздушный авангард Анклава уже летит, чтобы снести вышку.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.text>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.0.label>[Данные перебежчиков] Использовать частотные таблицы Мика Дэвиса или Алана Бине для быстрой настройки</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.0.resultText>Вооружившись вынесенными таблицами Консорциума и Института, Техник Том вдвое сокращает время настройки маяка и передаёт ударной группе передовые аптечки.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.0.resultText>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.1.label>Отправить ударный отряд с каменной солью, серебряными оберегами и тяжёлым оружием</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.1.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.1.resultText>Бойцы грузят енохианские катушки и выдвигаются на северный хребет, чтобы удержать вышку любой ценой.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.0.choices.1.resultText>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.0.effects.2.label>Северный енохианский маяк запущен</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.0.effects.2.text>Восемь долгих часов под плазменным огнём ваши защитники удерживали вышку, пока Техник Том не замкнул енохианский контур сдерживания!</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.label>Задействован резервный ретранслятор</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.label>Задействован резервный ретранслятор</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.text>Пока отряд добирался до хребта, артиллерия Минитменов отвлекла патруль Анклава, позволив Технику Тому запустить резервный маяк пониженной мощности.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.2.effects.0.label>Тяжёлый отход с хребта</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.2.effects.0.text>Вынужденные отступить под бомбёжкой винтокрылов, инженеры всё же вынесли главную гармоническую катушку для ручной коммутации в {COLONY}.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.label>Первая опорная точка замкнута</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.text>Над северным горизонтом вспыхивает бледно-голубая дуга — Щит из соли и стали активирован. На базе Дин Винчестер врывается в штабную со срочной новостью: перехваченные каналы Консорциума выдали координаты тайной тюрьмы, где держат вашего пропавшего наставника.</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.text>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.choices.0.label>Отозвать ударную группу и готовить прорыв за наставником</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.choices.0.label>
+  <TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.choices.0.resultText>Глаза Нулевого Синта горят решимостью: «Он спас меня из тех белых комнат — теперь наш черёд вернуть его домой».</TMM_Story_A5_FW_1_ShieldOfSaltAndSteel.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_FW_2_MentorPrisonBreak -->
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.label>освобождение наставника</TMM_Story_A5_FW_2_MentorPrisonBreak.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.0.label>Расшифровка координат спецтюрьмы</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.0.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.0.text>Связисты Дездемоны сопоставили след сигнала из Сектора 3 с перехваченными логами Института, вычислив Подземный изолятор №00 — секретную тюрьму Консорциума под охраной охотников и стазис-ловушек.</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.0.text>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.0.effects.3.label>Наставник на свободе!</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.0.effects.3.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.0.effects.3.text>Сбив замки стазис-камеры, ваша группа вытащила измученного наставника из тайной тюрьмы Консорциума живым — вместе с физическим мастер-ключом от Нулевого Якоря!</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.0.effects.3.text>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.1.effects.1.label>Пустая камера и выцарапанный шифр</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.1.effects.1.text>Чистильщики Консорциума вывезли пленника за пару часов до штурма, но наставник успел выцарапать финальный код сброса Якоря на внутренней стороне стазис-стекла.</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.1.effects.1.text>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.2.effects.1.label>Жертва во тьме</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.2.effects.1.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.2.effects.1.text>Когда подкрепление охотников прижало отряд, наставник изнутри опустил аварийные гермодвери, спасая ваших бойцов — и в последнюю секунду просунул в щель голодиск с финальным ключом.</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.1.outcomes.2.effects.1.text>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.label>Последняя деталь мозаики</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.text>Опираясь на живую память спасённого наставника или найденный в камере финальный шифр, Резонатор Искр готов дать планетарный импульс запечатывания. В ту же секунду все сирены тревоги в {COLONY} взвывают одновременно!</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.text>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.choices.0.label>Занять стены — союзные подкрепления спешат к {COLONY} на решающую осаду!</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.choices.0.label>
+  <TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.choices.0.resultText>На всех горизонтах поднимаются столбы пыли: враги стягиваются к Нулевому Якорю, а верные союзники идут встать с вами плечом к плечу.</TMM_Story_A5_FW_2_MentorPrisonBreak.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_FW_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.0.label>Буря обрушивается на {COLONY}</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.0.text>Под кроваво-красным солнцем Резонатор Искр начинает накапливать энергию для планетарного запечатывания. За периметром вспыхивают молнии телепортации Института — первая волна Осады Нулевого Якоря пошла на штурм!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.label>Заряд Резонатора 40% — союзники сбрасывают припасы</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.text>Дымящиеся остовы синтов усеивают подступы, а разведчики Джона Хэнкока и пулемётчики Фокса сбрасывают во двор ящики с медикаментами и боеприпасами! За хребтом сгущаются серные тучи — и земля содрогается от тяжёлой поступи.</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Держать строй — сквозь пепел наступают легионы Ада</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку Король Бегемотов уже пал, дикие племена супермутантов не решаются лезть в бой — все стволы сосредоточены на авангарде преисподней!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Трубить тревогу — дикие супермутанты Лебедя врываются в мясорубку!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Привлечённая оглушительным гулом Резонатора, обезумевшая орда Лебедя обрушивается на долину прямо перед легионом Ада!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>Орда бегемотов разбита</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>Защитники скосили наступающих супермутантов у самых баррикад и тут же развернули орудия навстречу клубам чёрного дыма!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.3.outcomes.0.effects.1.text>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.5.label>Заряд Резонатора 85% — ослепительный свет пронзает багровые тучи</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.5.text>Линии соли и енохианские обереги выдержали натиск демонов! Высоко в небе багровые облака разрывают столпы золотого света: архангел Михаил бросает в бой элитное воинство Небес, пытаясь захватить Нулевого Синта в последнюю минуту!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.1.label>Нулевой Якорь устоял!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.1.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.1.text>Под небом, озарённым синими гармоническими молниями, гарнизон сокрушил последний десант Небес! Планетарная печать замкнута — теперь остаётся лишь Шпиль Разлома Дика Романа!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.1.text>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Импульс выпущен сквозь дым</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Несмотря на пробитые стены и опалённые укрепления, Резонатор Искр вовремя дал гармонический залп — пора ударить по цитадели Дика Романа!</TMM_Story_A5_FW_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_FW_4_CitadelAssault -->
+  <TMM_Story_A5_FW_4_CitadelAssault.label>последний импульс: врата разлома</TMM_Story_A5_FW_4_CitadelAssault.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.label>Штурм Шпиля Разлома Консорциума</TMM_Story_A5_FW_4_CitadelAssault.stages.0.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.text>Планетарная печать замкнута, отрезав Небеса и Ад от Земли — но глава левиафанов Дик Роман пытается перегрузить центральный Шпиль Разлома, чтобы снова прорвать барьер и пожрать континент. Дин Винчестер проверяет барабан «Кольта», а Сэм взводит гармонический детонатор.</TMM_Story_A5_FW_4_CitadelAssault.stages.0.text>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.0.label>[Формула буры открыта] Вооружить штурмовой отряд распылителями концентрированной буры</TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.0.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.0.resultText>Интенданты выдают каждому бойцу баллоны с тетраборатом натрия. Неуязвимость Дика Романа растает при первом же попадании!</TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.0.resultText>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.1.label>Начать штурм с тяжёлым оружием, «Кольтом» и енохианскими патронами</TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.1.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.1.resultText>Винтокрылы и разведчики Минитменов высаживают ударную группу прямо у порога Шпиля Разлома. Помните: против Романа необходима бура!</TMM_Story_A5_FW_4_CitadelAssault.stages.0.choices.1.resultText>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.0.effects.2.label>Дик Роман растворился в пепле!</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.0.effects.2.text>Шипя в белой пене буры, человеческая личина Дика Романа разорвалась с воплем чёрного ихора, и тварь рухнула безжизненным пеплом! Шпиль Разлома умолк навсегда.</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.1.effects.0.label>Шпиль рухнул в Разлом</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.1.effects.0.text>Прежде чем Роман запустил перегрузку, гармоническая волна Резонатора обрушила Шпиль Разлома — похоронив совет левиафанов под тысячами тонн бетона.</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.2.effects.0.label>Артиллерия союзников добивает вершину</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.2.effects.0.text>Хотя авангард понёс тяжёлые потери при штурме холла, батареи Минитменов снесли ретрансляционную корону Шпиля до запуска перегрузки.</TMM_Story_A5_FW_4_CitadelAssault.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.2.label>Рассвет Свободной Пустоши</TMM_Story_A5_FW_4_CitadelAssault.stages.2.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.2.text>Багровые тучи расступаются над руинами. Впервые за два столетия чистый солнечный свет озаряет мир, свободный от небесных тиранов, адских сделок и жатвы Консорциума — а Нулевой Синт стоит рядом с вами живым и невредимым.</TMM_Story_A5_FW_4_CitadelAssault.stages.2.text>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.2.choices.0.label>Передать отбой по всем частотам — Пустошь принадлежит живым</TMM_Story_A5_FW_4_CitadelAssault.stages.2.choices.0.label>
+  <TMM_Story_A5_FW_4_CitadelAssault.stages.2.choices.0.resultText>Ликующие голоса звучат от Добрососедства до Замка. Война за Искру выиграна.</TMM_Story_A5_FW_4_CitadelAssault.stages.2.choices.0.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 2: STERILE EMPIRE                                           -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_SE_1_ToxicHorizon -->
+  <TMM_Story_A5_SE_1_ToxicHorizon.label>токсичный горизонт</TMM_Story_A5_SE_1_ToxicHorizon.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.label>Синхронизация сети распыления</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.text>Доктор Чарльз Керлинг и Отец подключили Резонатор Искр к довоенной метеостанции. После зарядки её излучатели вытравят радиацию, мутации ВРЭ и оккультные аномалии по всему континенту — если вы удержите станцию от винтокрылов Братства Стали.</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.text>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.0.label>Высадить ударные отряды синтов Института для прикрытия периметра</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.0.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.0.resultText>Эстафетные гранаты вспыхивают по периметру станции, и синтетические штурмовики перекрывают сектора обстрела.</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.0.resultText>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.1.label>Запитать довоенные плазменные конденсаторы обороны самой станции</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.1.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.1.resultText>Тяжёлые энергоконтуры на крыше метеостанции оживают, готовые прожигать силовую броню десанта.</TMM_Story_A5_SE_1_ToxicHorizon.stages.0.choices.1.resultText>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.0.effects.1.label>Атмосферный ретранслятор заряжен</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.0.effects.1.text>Защитники восемь часов сдерживали натиск паладинов Братства, выведя Матрицу Стерилизации на полную мощность!</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.1.effects.0.label>Сигнал переведён на орбитальный спутник</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.1.effects.0.text>Пока отряды Братства увязли в ложных бункерах, инженеры Анклава переключили частоту распыления на орбитальный ретранслятор.</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.2.effects.0.label>Резервный блок вынесен из-под огня</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.2.effects.0.text>Отступив с крыши под плотным лазерным огнём, техники всё же успели извлечь главный передатчик перед телепортацией в {COLONY}.</TMM_Story_A5_SE_1_ToxicHorizon.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.2.label>Цель: штаб сопротивления</TMM_Story_A5_SE_1_ToxicHorizon.stages.2.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.2.text>Когда сеть распыления взведена, полковник Отем приказывает нанести молниеносный обезглавливающий удар по коалиции сопротивления, которую возглавляет мэр-гуль Джон Хэнкок.</TMM_Story_A5_SE_1_ToxicHorizon.stages.2.text>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.2.choices.0.label>Подготовить ударную группу охотников и штурмовиков «Адского пламени»</TMM_Story_A5_SE_1_ToxicHorizon.stages.2.choices.0.label>
+  <TMM_Story_A5_SE_1_ToxicHorizon.stages.2.choices.0.resultText>Координаты телепортации наводятся на укреплённый штаб Добрососедства.</TMM_Story_A5_SE_1_ToxicHorizon.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_SE_2_PurgeOfGoodneighbor -->
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.label>зачистка добрососедства</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.0.effects.1.label>Командование сопротивления разгромлено</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.0.effects.1.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.0.effects.1.text>Джон Хэнкок пал на баррикадах Добрососедства в своём алом сюртуке — хребет наземного сопротивления сломлен!</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.0.effects.1.text>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.1.effects.0.label>Добрососедство эвакуировано</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.1.effects.0.text>Хэнкок оставил укреплённую площадь до подхода главных сил, бросив склады припасов при отходе в руины.</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.1.effects.0.text>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.2.effects.0.label>Кровавый уличный бой</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.2.effects.0.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.2.effects.0.text>Хотя телохранители Хэнкока вынудили десант отойти, спустя минуту орбитальный удар Анклава сравнял квартал с землёй.</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.0.outcomes.2.effects.0.text>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.label>После боя в пепле</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.text>В окружении сдавшихся мирных жителей и пленных связных Подземки полевой командир ждёт приказа об участи пленных — и докладывает, что стазис-капсула вашего пропавшего наставника обнаружена в башне Консорциума.</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.text>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.0.label>Отправить выживших в стерильные карантинные лагеря без расстрелов</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.0.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.0.resultText>Сдержанность предотвращает бунт в {COLONY} и не даёт Нулевому Синту окончательно отвернуться от вас.</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.0.resultText>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.1.label>Исполнить директиву полковника Отема о нулевой терпимости без исключений</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.1.label>
+  <TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.1.resultText>Плазменные залпы устанавливают мёртвую тишину. На базе Нулевой Синт смотрит на сводку с камер в холодном, ужасающем молчании.</TMM_Story_A5_SE_2_PurgeOfGoodneighbor.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A5_SE_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.0.label>Ответный удар Пустоши</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.0.text>Поняв, что Матрица Стерилизации выйдет на полную мощность через считанные часы, все уцелевшие силы сопротивления бросаются на отчаянный штурм {COLONY}!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.label>Матрица на 45% — тяжёлая броня на подходе</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.text>Подкрепления синтов Института телепортируются во двор со свежими плазменными батареями и стимуляторами как раз в тот миг, когда багровое небо сотрясает рёв турбин винтокрылов Братства Стали.</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Развернуть плазменные батареи в небо против десанта Братства</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку бегемоты Лебедя уже истреблены, турели периметра чисто наводятся на снижающихся паладинов Братства!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Перенаправить огонь — дикие супермутанты Лебедя таранят баррикады!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Сведённая с ума ультразвуковым импульсом Резонатора, орда Лебедя врезается во внешний периметр раньше десанта Братства!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.5.label>Матрица на 90% — чёрный ихор поднимается из бури</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.5.text>Пробитые доспехи T-60 дымятся во дворе! Прежде чем инженеры успевают задраить гермодвери, Дик Роман бросает на {COLONY} всю стаю левиафанов, чтобы сорвать волну стерилизации!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>Стерильная Империя выстояла!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>Плазменные когорты и распылители буры уничтожили штурмовую стаю левиафанов! Теперь пора ударить по штаб-квартире Дика Романа и завершить Протокол Возрождения!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Периметр изранен, но не сломлен</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Стая левиафанов отступила в пепел, когда Резонатор вышел на полную мощность — немедленно атакуйте башню Романа!</TMM_Story_A5_SE_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_SE_4_ProtocolRebirth -->
+  <TMM_Story_A5_SE_4_ProtocolRebirth.label>протокол возрождения: цитадель совета</TMM_Story_A5_SE_4_ProtocolRebirth.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.label>Ликвидация Совета Консорциума</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.text>Осталось одно препятствие, мешающее Матрице Стерилизации очистить континент: глава левиафанов Дик Роман перехватил орбитальный погодный канал в башне «Сукрокорп» — а разведка Анклава подтверждает, что на том же этаже в стазис-капсуле держат вашего пропавшего наставника.</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.text>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.0.label>[Формула буры открыта] Вооружить отряд «Адского пламени» распылителями концентрированной буры</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.0.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.0.resultText>Химические баллоны закреплены на броне бойцов — неуязвимость Дика Романа исчезнет в ту же секунду, как его накроет белый туман!</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.0.resultText>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.1.label>Высадиться через телепорт Института с тяжёлым плазменным вооружением</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.1.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.1.resultText>Синие молнии высаживают отряд прямо на этаж правления. Используйте оружие с бурой, чтобы снять защиту Романа!</TMM_Story_A5_SE_4_ProtocolRebirth.stages.0.choices.1.resultText>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.0.effects.2.label>Дик Роман ликвидирован, наставник спасён</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.0.effects.2.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.0.effects.2.text>Растворившись в шипящей пене буры, Дик Роман рухнул в зале заседаний — а бойцы вскрыли стазис-капсулу с вашим пропавшим наставником!</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.0.effects.2.text>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.1.effects.1.label>Орбитальный канал очищен</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.1.effects.1.text>Орбитальный плазменный луч Анклава превратил верхний ярус башни в расплавленное стекло, освободив частоту для Протокола Возрождения.</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.1.effects.1.text>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.2.effects.1.label>Маяк подорван при отходе</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.2.effects.1.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.2.effects.1.text>Хотя авангард понёс тяжёлые потери, подрывные заряды уничтожили главный передатчик башни перед эвакуацией.</TMM_Story_A5_SE_4_ProtocolRebirth.stages.1.outcomes.2.effects.1.text>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.label>Чистый, стерильный мир</TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.text>Белый аэрозоль накрывает верхние слои атмосферы, нейтрализуя радиацию, токсины ВРЭ и пространственные разломы. Под двойным знаменем Анклава и Института из пепла поднимается дисциплинированная империя людей — пока Нулевой Синт молча стоит под охраной у Резонатора.</TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.text>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.choices.0.label>Передать Имперскую Хартию — человечество вернуло себе право на Землю</TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.choices.0.label>
+  <TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.choices.0.resultText>Винтокрылы торжественно кружат в чистом небе над {COLONY}. Стерильная Империя восторжествовала.</TMM_Story_A5_SE_4_ProtocolRebirth.stages.2.choices.0.resultText>
+
+
+  <!-- ===================================================================== -->
+  <!-- COALITION 3: IRON CRUSADE                                             -->
+  <!-- ===================================================================== -->
+
+  <!-- TMM_Story_A5_IC_1_HammerAndAnvil -->
+  <TMM_Story_A5_IC_1_HammerAndAnvil.label>молот и наковальня</TMM_Story_A5_IC_1_HammerAndAnvil.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.label>Топливо для континентального подавителя</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.text>Чтобы превратить Резонатор Искр в постоянный планетарный подавитель, гасящий любую сверхъестественную магию и вышедший из-под контроля ИИ, Генри Касдину и проктору Ингрэм нужны обогащённые урановые стержни из укреплённого арсенала Анклава.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.text>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.0.label>Выдать штурмовой группе термические резаки Изгоев и свинцовые контейнеры</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.0.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.0.resultText>Специалист Олин раздаёт бойцам тяжёлые плазменные резаки и защитные ранцы для рейда на склад Анклава.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.0.resultText>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.1.label>Провести стремительную высадку с винтокрылов прямо на крышу арсенала</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.1.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.1.resultText>Пилоты Братства прокладывают маршрут на сверхмалой высоте, обходя внешние минные поля склада.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.0.choices.1.resultText>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.0.effects.1.label>Обогащённые урановые стержни захвачены</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.0.effects.1.text>Вскрыв гермодвери Анклава под шквалом лазерного огня, ваши рыцари вынесли обогащённые урановые стержни целыми!</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.1.effects.1.label>Захвачен резервный обоз</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.1.effects.1.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.1.effects.1.text>Пока транспорты Анклава эвакуировали главный бункер, разведчики перехватили арьергардный конвой с половиной нужного запаса урана.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.1.effects.1.text>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.2.effects.0.label>Аварийная выгрузка из резервного реактора</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.2.effects.0.text>Отбитые от арсенала плотным плазменным огнём, инженеры проктора Ингрэм извлекли урановые стержни из списанного вспомогательного реактора дирижабля.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.label>Следующая цель: фабрика синтов</TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.text>Когда топливные стержни подавителя получены, Артур Мэксон бьёт кулаком по тактической карте: прежде чем опустится Железный занавес, подземный комплекс Института должен быть выжжен до основания.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.text>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.choices.0.label>Собрать тяжёлый бронетанковый кулак для нисхождения в Институт</TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.choices.0.label>
+  <TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.choices.0.resultText>Сервоприводы слаженно гудят, пока паладины Братства и Изгоев готовятся к бою в подземных залах.</TMM_Story_A5_IC_1_HammerAndAnvil.stages.2.choices.0.resultText>
+
+  <!-- TMM_Story_A5_IC_2_DescentIntoInstitute -->
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.label>нисхождение в институт</TMM_Story_A5_IC_2_DescentIntoInstitute.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.0.effects.1.label>Ядро Института сокрушено</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.0.effects.1.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.0.effects.1.text>Проломив белый атриум в силовой броне, ваш крестовый отряд ликвидировал Отца и взорвал молекулярный телепорт Института!</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.0.effects.1.text>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.1.effects.0.label>Шахта обрушена</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.1.effects.0.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.1.effects.0.text>Сапёры Братства подорвали главный ствол шахты термоядерными зарядами, похоронив уцелевших учёных Института под толщей скалы.</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.1.effects.0.text>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.2.effects.0.label>Отход из атриума</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.2.effects.0.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.2.effects.0.text>Оттеснённые на поверхность волнами охотников, подрывники всё же успели взорвать кумулятивный заряд и перерезать поверхностную сеть телепортации.</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.0.outcomes.2.effects.0.text>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.label>В дымящихся руинах робототехники</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.text>Среди разбитых конвейеров сборки синтов разведчики находят запертую камеру Консорциума — и перед вами встаёт выбор, как поступить с безоружными учёными в нижней лаборатории.</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.text>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.0.label>Включить сирену эвакуации и дать безоружным техникам уйти на поверхность</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.0.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.0.resultText>Даже Артур Мэксон опускает ствол гатлинг-лазера, пока перепуганные техники бегут по аварийной лестнице — а внутри камеры бойцы находят вашего пропавшего наставника живым!</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.0.resultText>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.1.label>Задраить гермодвери и затопить нижние уровни — от Института не останется ни следа</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.1.label>
+  <TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.1.resultText>Тяжёлые стальные створки навсегда захлопываются над подземным комплексом, хороня и учёных, и всех пленников внутри.</TMM_Story_A5_IC_2_DescentIntoInstitute.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_A5_IC_3_SiegeOfZeroAnchor -->
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.label>осада нулевого якоря</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.0.label>Зарядка подавителя «Железный занавес»</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.0.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.0.text>Проктор Ингрэм и специалист Олин загружают обогащённые урановые стержни в Резонатор Искр! Едва его антимагическое поле начинает расширяться над регионом, все сверхъестественные хищники Земли бросаются на {COLONY}, чтобы уничтожить машину до конца зарядки!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.0.text>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.label>Поле подавления 50% — небесный гром над головой</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.text>Винтокрылы Братства сбрасывают во двор свежие энергоячейки и боеприпасы, пока Генри Касдин кричит по громкой связи: «Первая волна отбита! Держите распылители буры наготове и следите за небом!»</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.text>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>[Лебедь повержен] Навести зенитные турели на спускающееся воинство Небес</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.0.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>Поскольку Лебедь уже мёртв, дикие племена супермутантов не лезут в бой — ваши рыцари сосредоточили весь огонь на авангарде ангелов!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.0.resultText>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>[Дикая орда на подходе] Боевая тревога — бегемоты Лебедя штурмуют ворота!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.1.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>Разъярённые гулом подавителя, дикие супермутанты Лебедя врезаются во внешние стены прямо перед десантом Небес!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.2.choices.1.resultText>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.5.label>Поле подавления 90% — серные тучи заволакивают горизонт</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.5.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.5.text>Ангельские перья сгорают в пепел на ваших брустверах! Теперь земля разверзается за периметром, и последний легион Ада рвётся сквозь багровый туман в отчаянной попытке разбить Железный занавес!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.5.text>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>Железный Крестовый Поход непобедим!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>Сталь, соль и дисциплинированный огонь сокрушили последний натиск преисподней у ваших ворот! Теперь садитесь в винтокрылы и штурмуйте Небесный Шпиль, чтобы навсегда отсечь сверхъестественную силу от Земли!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.0.effects.0.text>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>Поле подавления стабилизировано</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.label>
+  <TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>Ценой тяжёлых потерь рыцари удержали Резонатор до замыкания поля — немедленно атакуйте главный якорь врага!</TMM_Story_A5_IC_3_SiegeOfZeroAnchor.stages.6.outcomes.1.effects.0.text>
+
+  <!-- TMM_Story_A5_IC_4_IronCurtain -->
+  <TMM_Story_A5_IC_4_IronCurtain.label>железный занавес: штурм небесного шпиля</TMM_Story_A5_IC_4_IronCurtain.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.label>Штурм Небесного Бастиона</TMM_Story_A5_IC_4_IronCurtain.stages.0.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.text>Последняя твердыня удерживает сверхъестественный Разлом над Землёй — Небесный Шпиль, который обороняет архангел Михаил со своей гвардией серафимов. Артур Мэксон досылает энергоячейку в «Последний суд», пока Генри Касдин проверяет штурмовые винтокрылы.</TMM_Story_A5_IC_4_IronCurtain.stages.0.text>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.0.label>[Бура и технологии готовы] Загрузить патроны с енохианской гравировкой и баллоны буры</TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.0.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.0.resultText>Олин и Ингрэм снабжают каждого рыцаря руническими зарядами и химическими канистрами — ни ангельская броня, ни лазутчики левиафанов не выдержат такого удара!</TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.0.resultText>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.1.label>Возглавить лобовой штурм в силовой броне прямо через главные врата Шпиля</TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.1.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.1.resultText>Штурмовые винтокрылы подавляют двор огнём, пока ваши рыцари высаживаются в самое сердце Небесного Шпиля. Ad Victoriam!</TMM_Story_A5_IC_4_IronCurtain.stages.0.choices.1.resultText>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.0.effects.1.label>Архангел Михаил повержен!</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.0.effects.1.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.0.effects.1.text>В ослепительной схватке небесного огня и тяжёлых лазерных лучей архангел Михаил пал — и якорный камень Разлома рассыпался в безжизненную пыль!</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.0.effects.1.text>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.1.effects.0.label>Шпиль разрушен артиллерией «Придвена»</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.1.effects.0.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.1.effects.0.text>Орудия дирижабля Братства накрыли верхние ярусы Шпиля, обрушив якорный камень и отбросив уцелевших ангелов за закрытый Разлом.</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.1.effects.0.text>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.2.effects.0.label>Якорный камень перегружен в бою</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.2.effects.0.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.2.effects.0.text>Вынужденные отойти под испепеляющим светом, сапёры успели подорвать главный контур Шпиля перед эвакуацией.</TMM_Story_A5_IC_4_IronCurtain.stages.1.outcomes.2.effects.0.text>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.2.label>Эпоха Железного занавеса</TMM_Story_A5_IC_4_IronCurtain.stages.2.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.2.text>Беззвучная невидимая волна прокатывается от Нулевого Якоря — навсегда гася оккультную магию, пространственные разломы и неконтролируемые синтетические сети по всей планете. Человечество укрыто за стенами стали под суровым надзором воссоединившихся Братства Стали и Изгоев.</TMM_Story_A5_IC_4_IronCurtain.stages.2.text>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.2.choices.0.label>Провозгласить Ad Victoriam — Железный Крестовый Поход защитил Землю</TMM_Story_A5_IC_4_IronCurtain.stages.2.choices.0.label>
+  <TMM_Story_A5_IC_4_IronCurtain.stages.2.choices.0.resultText>Винтокрылы триумфально кружат над {COLONY}. Ни одно чудовище и ни один лжебог больше не угрожают человечеству.</TMM_Story_A5_IC_4_IronCurtain.stages.2.choices.0.resultText>
+
+</LanguageData>

@@ -1,0 +1,205 @@
+﻿{
+    "component":  "Legendary",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3390,
+                         "scalarFields":  2932,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3745,
+                        "ticksAdvanced":  1768,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "7ddebf16f2ce7cc354fc1d77f5105762fbe13fdde3a8376960f4b9b3198d8067",
+    "legendary":  {
+                      "passed":  true,
+                      "checksCount":  25,
+                      "checks":  [
+                                     {
+                                         "name":  "Registry_AndColtDefExist",
+                                         "passed":  true,
+                                         "expected":  "both non-null",
+                                         "actual":  "reg=True, colt=True"
+                                     },
+                                     {
+                                         "name":  "Registry_TryGrantTwice",
+                                         "passed":  true,
+                                         "expected":  "first=true, second=false",
+                                         "actual":  "first=True, second=False"
+                                     },
+                                     {
+                                         "name":  "DickRoman_SpawnedWithInvuln",
+                                         "passed":  true,
+                                         "expected":  "invulnerable Hediff active",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "DickRoman_Blocks99PctNormalDamage",
+                                         "passed":  true,
+                                         "expected":  "dealt\u003c1.0 \u0026 loss\u003c1%",
+                                         "actual":  "dealt=0.23, hpLoss=0.30%"
+                                     },
+                                     {
+                                         "name":  "DickRoman_FullDamageAfterBorax",
+                                         "passed":  true,
+                                         "expected":  "boraxDebuff=true, dealt\u003e=15",
+                                         "actual":  "debuff=True, dealt=22.5"
+                                     },
+                                     {
+                                         "name":  "Borax_StrongVsLeviathanNearZeroVsHuman",
+                                         "passed":  true,
+                                         "expected":  "lev\u003e=20 \u0026 debuff \u0026 human\u003c=1.5",
+                                         "actual":  "lev=36.0 (debuff=True), human=0.48"
+                                     },
+                                     {
+                                         "name":  "FirstBlade_MarkOfCainOnEquip",
+                                         "passed":  true,
+                                         "expected":  "TMM_Hediff_MarkOfCain present",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "FirstBlade_KillsNormalPawnInOneHit",
+                                         "passed":  true,
+                                         "expected":  "Dead=true",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "FirstBlade_DoesNotOneShotDickRoman",
+                                         "passed":  true,
+                                         "expected":  "Dead=false",
+                                         "actual":  "False"
+                                     },
+                                     {
+                                         "name":  "Colt_KillsDemonInOneShot",
+                                         "passed":  true,
+                                         "expected":  "Dead=true",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Colt_NormalDamageOnHuman",
+                                         "passed":  true,
+                                         "expected":  "alive \u0026 injured",
+                                         "actual":  "dead=False, inj=19.0"
+                                     },
+                                     {
+                                         "name":  "Colt_13ChargesExhausted",
+                                         "passed":  true,
+                                         "expected":  "after2=11, after13=0, shot14=false",
+                                         "actual":  "after2=11, after13=0, shot14=False"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_Experiment18A",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_FinalJudgment",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_LorenzosArtifact",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_TeslaCannon",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_OverseersGuardian",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_RailwayRifle",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_BigBoy",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_TheEqualizer",
+                                         "passed":  true,
+                                         "expected":  "fired cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_AtomsJudgement",
+                                         "passed":  true,
+                                         "expected":  "struck cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_ArchangelBlade",
+                                         "passed":  true,
+                                         "expected":  "struck cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_TMM_Legendary_AlphaPredator",
+                                         "passed":  true,
+                                         "expected":  "struck cleanly",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "Smoke_ProtectorAndPipBoy",
+                                         "passed":  true,
+                                         "expected":  "both worn \u0026 panic blocked",
+                                         "actual":  "protector=True, pipboy=True, panicBlocked=True"
+                                     },
+                                     {
+                                         "name":  "Borax_ResearchAndTurretDefsLoaded",
+                                         "passed":  true,
+                                         "expected":  "both loaded",
+                                         "actual":  "research=True, turret=True"
+                                     }
+                                 ],
+                      "errors":  [
+
+                                 ]
+                  },
+    "passed":  true
+}

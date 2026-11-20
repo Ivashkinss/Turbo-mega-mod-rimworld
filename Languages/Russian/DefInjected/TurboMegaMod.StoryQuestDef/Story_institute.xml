@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TMM_Story_institute_Q1 -->
+  <TMM_Story_institute_Q1.label>холодный сканер</TMM_Story_institute_Q1.label>
+  <TMM_Story_institute_Q1.letterLabel>Холодный сканер</TMM_Story_institute_Q1.letterLabel>
+  <TMM_Story_institute_Q1.letterText>Житель поверхности. Наша телеметрия указывает, что незарегистрированный синтетический образец укрылся среди беженцев в гостинице вашего поселения. Бюро возврата синтов ожидает вашего полного содействия в опознании и передаче собственности Института. Подчинитесь — и получите награду; помешаете — мы сочтём ваш аванпост враждебным.</TMM_Story_institute_Q1.letterText>
+  <TMM_Story_institute_Q1.stages.0.label>Опросить беженцев в гостинице</TMM_Story_institute_Q1.stages.0.label>
+  <TMM_Story_institute_Q1.stages.0.text>В гостиницу {COLONY} заселились трое беженцев, один из которых — скрытый синт третьего поколения. Проведите опрос постояльцев до прихода Бюро возврата.</TMM_Story_institute_Q1.stages.0.text>
+  <TMM_Story_institute_Q1.stages.1.label>Охотник на периметре</TMM_Story_institute_Q1.stages.1.label>
+  <TMM_Story_institute_Q1.stages.1.text>На границе {COLONY} вспыхивают синие молнии: охотник Института X6-88 с отрядом синтов телепортировался к воротам и требует немедленно выдать беглеца.</TMM_Story_institute_Q1.stages.1.text>
+  <TMM_Story_institute_Q1.stages.1.choices.0.label>Выдать синта охотнику X6-88</TMM_Story_institute_Q1.stages.1.choices.0.label>
+  <TMM_Story_institute_Q1.stages.1.choices.0.resultText>Разумное решение. Бюро возврата ценит дисциплину и пунктуальность.</TMM_Story_institute_Q1.stages.1.choices.0.resultText>
+  <TMM_Story_institute_Q1.stages.1.choices.1.label>Скрыть беглеца и откупиться фальшивым маячком</TMM_Story_institute_Q1.stages.1.choices.1.label>
+  <TMM_Story_institute_Q1.stages.1.choices.1.resultText>Что ж, сигнал оборвался. Но мы продолжим наблюдать за вашим сектором.</TMM_Story_institute_Q1.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_institute_Q2 -->
+  <TMM_Story_institute_Q2.label>сбой в прошивке</TMM_Story_institute_Q2.label>
+  <TMM_Story_institute_Q2.letterLabel>Сбой в прошивке</TMM_Story_institute_Q2.letterLabel>
+  <TMM_Story_institute_Q2.letterText>Прошу, держите этот канал в тайне от частот Бюро возврата. Один из моих экспериментальных образцов третьего поколения пережил квантовый сбой при выбросе на поверхность — она ранена, напугана и проявляет настоящий эмоциональный резонанс. Стабилизируйте её нейросеть, пока ищейки Айо не запеленговали сигнал.</TMM_Story_institute_Q2.letterText>
+  <TMM_Story_institute_Q2.stages.0.label>Зачистить место падения капсулы</TMM_Story_institute_Q2.stages.0.label>
+  <TMM_Story_institute_Q2.stages.0.text>Отбейте разбитую капсулу телепортации Института у наёмников, чтобы эвакуировать раненую синт-ассистентку Ив в лазарет {COLONY}.</TMM_Story_institute_Q2.stages.0.text>
+  <TMM_Story_institute_Q2.stages.1.label>Стабилизация нейросети</TMM_Story_institute_Q2.stages.1.label>
+  <TMM_Story_institute_Q2.stages.1.text>В лазарете {COLONY} медики спешно стабилизируют перегревшийся нейроинтерфейс Ив до прилёта поискового дрона. В полубреду она тихо напевает старую колыбельную, которую знает только Нулевой Синт.</TMM_Story_institute_Q2.stages.1.text>
+  <TMM_Story_institute_Q2.stages.2.label>Нейроматрица Ив</TMM_Story_institute_Q2.stages.2.label>
+  <TMM_Story_institute_Q2.stages.2.text>Поисковый импульс Бюро вот-вот запеленгует лазарет. Восстановите личность Ив и сотрите маячок, как умоляет Алан Бине, или сбросьте прошивку до заводской и верните её Отцу.</TMM_Story_institute_Q2.stages.2.text>
+  <TMM_Story_institute_Q2.stages.2.choices.0.label>Восстановить личность и стереть маячок Бюро</TMM_Story_institute_Q2.stages.2.choices.0.label>
+  <TMM_Story_institute_Q2.stages.2.choices.0.resultText>Вы дали ей право чувствовать. Я этого не забуду, когда придёт время платить по счетам.</TMM_Story_institute_Q2.stages.2.choices.0.resultText>
+  <TMM_Story_institute_Q2.stages.2.choices.1.label>Сбросить прошивку до заводской и вернуть Отцу</TMM_Story_institute_Q2.stages.2.choices.1.label>
+  <TMM_Story_institute_Q2.stages.2.choices.1.resultText>Жаль... ещё одна искра погасла. Но Отец оценит вашу лояльность.</TMM_Story_institute_Q2.stages.2.choices.1.resultText>
+
+  <!-- TMM_Story_institute_Q3 -->
+  <TMM_Story_institute_Q3.label>реактор на грани</TMM_Story_institute_Q3.label>
+  <TMM_Story_institute_Q3.letterLabel>Реактор на грани</TMM_Story_institute_Q3.letterLabel>
+  <TMM_Story_institute_Q3.letterText>Меня не интересует политика поверхности и философские игры Отца, но наш главный термоядерный реактор теряет стабильность. Единственный уцелевший бериллиевый усилитель находится на затопленных уровнях «Масс Фьюжн». Достаньте его, пока весь сектор не накрыло тепловым выбросом.</TMM_Story_institute_Q3.letterText>
+  <TMM_Story_institute_Q3.stages.0.label>Добыть бериллиевый усилитель в «Масс Фьюжн»</TMM_Story_institute_Q3.stages.0.label>
+  <TMM_Story_institute_Q3.stages.0.text>Пробейтесь сквозь десант Братства Стали на затопленных уровнях комплекса «Масс Фьюжн» и вынесите довоенный бериллиевый усилитель.</TMM_Story_institute_Q3.stages.0.text>
+  <TMM_Story_institute_Q3.stages.1.label>Судьба бериллиевого усилителя</TMM_Story_institute_Q3.stages.1.label>
+  <TMM_Story_institute_Q3.stages.1.text>В зале реактора отряд нашёл скелет довоенного инженера с запиской о тайных поставках урана для Волт-Тек. Теперь бесценный бериллиевый усилитель у вас в руках — отдать его доктору Мэдисон Ли или забрать для реактора {COLONY}?</TMM_Story_institute_Q3.stages.1.text>
+  <TMM_Story_institute_Q3.stages.1.choices.0.label>Передать бериллиевый усилитель доктору Мэдисон Ли</TMM_Story_institute_Q3.stages.1.choices.0.label>
+  <TMM_Story_institute_Q3.stages.1.choices.0.resultText>Наконец-то хоть кто-то на поверхности умеет работать руками. Реактор стабилизирован.</TMM_Story_institute_Q3.stages.1.choices.0.resultText>
+  <TMM_Story_institute_Q3.stages.1.choices.1.label>Оставить усилитель для ядерного реактора своей колонии</TMM_Story_institute_Q3.stages.1.choices.1.label>
+  <TMM_Story_institute_Q3.stages.1.choices.1.resultText>Вы украли будущее науки ради своего жалкого генератора! Я этого так не оставлю.</TMM_Story_institute_Q3.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_institute_Q4 -->
+  <TMM_Story_institute_Q4.label>призрак в машине</TMM_Story_institute_Q4.label>
+  <TMM_Story_institute_Q4.letterLabel>Призрак в машине</TMM_Story_institute_Q4.letterLabel>
+  <TMM_Story_institute_Q4.letterText>Вы показали себя удивительно способным союзником, мой друг. Теперь перед нами критическая аномалия: в прототипе синта возник устойчивый духовный резонанс — «Искра», притягивающая к нашим частотам и ангелов, и демонов. Помогите X6-88 вернуть образец домой, чтобы мы могли изучить и устранить этот сбой.</TMM_Story_institute_Q4.letterText>
+  <TMM_Story_institute_Q4.stages.0.label>Перехватить прототип в заброшенной часовне</TMM_Story_institute_Q4.stages.0.label>
+  <TMM_Story_institute_Q4.stages.0.text>В заброшенную часовню к беглому прототипу одновременно ворвались ангел-наблюдатель и охотник X6-88. Пробейтесь сквозь небесный отряд к маяку телепортации.</TMM_Story_institute_Q4.stages.0.text>
+  <TMM_Story_institute_Q4.stages.1.label>Искра у маяка телепортации</TMM_Story_institute_Q4.stages.1.label>
+  <TMM_Story_institute_Q4.stages.1.text>У алтаря часовни синт смотрит в глаза ангелу и произносит его истинное енохианское имя, заставляя того отступить. По рации Алан Бине умоляет пощадить душу синта, а Отец спокойно приказывает активировать маяк для извлечения ядра.</TMM_Story_institute_Q4.stages.1.text>
+  <TMM_Story_institute_Q4.stages.1.choices.0.label>Выдать синта Отцу для извлечения Искры (за Институт)</TMM_Story_institute_Q4.stages.1.choices.0.label>
+  <TMM_Story_institute_Q4.stages.1.choices.0.resultText>Тяжёлые решения определяют будущее человечества. Данные Искры теперь в наших руках.</TMM_Story_institute_Q4.stages.1.choices.0.resultText>
+  <TMM_Story_institute_Q4.stages.1.choices.1.label>Уничтожить маяк Института и спасти синта (за Искру)</TMM_Story_institute_Q4.stages.1.choices.1.label>
+  <TMM_Story_institute_Q4.stages.1.choices.1.resultText>Вы предали доверие Института ради бракованной машины. Отныне Бюро возврата не знает пощады.</TMM_Story_institute_Q4.stages.1.choices.1.resultText>
+
+  <!-- TMM_Story_institute_Q5 -->
+  <TMM_Story_institute_Q5.label>побег из-под земли</TMM_Story_institute_Q5.label>
+  <TMM_Story_institute_Q5.letterLabel>Побег из-под земли</TMM_Story_institute_Q5.letterLabel>
+  <TMM_Story_institute_Q5.letterText>Отец передал всю власть Джастину Айо, и они готовят полную зачистку отдела робототехники! Мы с Мэдисон Ли настроили аварийный телепорт на ваши координаты, но охотники уже режут гермодвери. Удержите периметр!</TMM_Story_institute_Q5.letterText>
+  <TMM_Story_institute_Q5.stages.0.label>Отразить погоню охотников Института</TMM_Story_institute_Q5.stages.0.label>
+  <TMM_Story_institute_Q5.stages.0.text>Карательные отряды охотников Джастина Айо телепортируются в {COLONY}, чтобы не дать Алану Бине и Мэдисон Ли сбежать! Удержите периметр!</TMM_Story_institute_Q5.stages.0.text>
+  <TMM_Story_institute_Q5.stages.1.label>Беглецы из робототехники</TMM_Story_institute_Q5.stages.1.label>
+  <TMM_Story_institute_Q5.stages.1.text>В ослепительном столбе синей статики на пол вываливаются Алан Бине и доктор Мэдисон Ли — а следом за ними домашний кот Алана, переживший квантовый перенос. Техники глушат частоты Института над базой.</TMM_Story_institute_Q5.stages.1.text>
+  <TMM_Story_institute_Q5.stages.1.choices.0.label>Принять Алана Бине и Мэдисон Ли в колонию</TMM_Story_institute_Q5.stages.1.choices.0.label>
+  <TMM_Story_institute_Q5.stages.1.choices.0.resultText>Мы свободны... и мы поможем вам построить Резонатор Искр, чтобы защитить каждого из них.</TMM_Story_institute_Q5.stages.1.choices.0.resultText>
+
+</LanguageData>

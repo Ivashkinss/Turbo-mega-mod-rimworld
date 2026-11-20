@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +17,18 @@ namespace TurboMegaMod
         public Dictionary<string, float> fractionalRemainders = new Dictionary<string, float>();
         public int lastProductionTick = -1;
         public int nextProductionTick = -1;
+
+        public string customName;
+        public string Name
+        {
+            get { return !string.IsNullOrEmpty(customName) ? customName : Label; }
+            set { customName = value; }
+        }
+
+        public override string Label
+        {
+            get { return !string.IsNullOrEmpty(customName) ? customName : base.Label; }
+        }
 
         // Abstract world personnel/animals are suspended, never cloned
         public bool ShouldTickContents { get { return false; } }
@@ -964,7 +976,7 @@ namespace TurboMegaMod
             Find.WorldPawns.PassToWorld(pawn, stored ? PawnDiscardDecideMode.KeepForever : PawnDiscardDecideMode.Decide);
         }
 
-        public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason)
+public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason)
         {
             return AddPawnFromCaravan(caravan, pawn, out failReason, true);
         }
@@ -1002,61 +1014,112 @@ namespace TurboMegaMod
                 return false;
             }
 
+            // If other pawns remain in the caravan, guarantee at least one capable mobile colonist remains
+            if (unclaimBed && caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, pawn))
+            {
+                failReason = "StrategicOutpost_NoMobileCarrierLeft".Translate();
+                return false;
+            }
+
+            PlanetTile origTile = caravan.Tile;
             caravan.RemovePawn(pawn);
 
-            bool added = false;
-            if (pawn.RaceProps.Animal)
+            // Verify removal from caravan holder before attempting outpost insertion/spawn
+            if (caravan.ContainsPawn(pawn) || pawn.holdingOwner != null)
             {
-                if (operationalMode == OutpostOperationalMode.Physical && HasMap && Map != null)
+                if (!caravan.Destroyed && !caravan.ContainsPawn(pawn))
                 {
-                    StrategicOutpostMapComponent comp = Map.GetComponent<StrategicOutpostMapComponent>();
-                    IntVec3 center = comp != null && comp.baseCenter.IsValid ? comp.baseCenter : Map.Center;
-                    IntVec3 c;
-                    if (CellFinder.TryFindRandomCellNear(center, Map, 8, cell => cell.Standable(Map) && !cell.Fogged(Map), out c))
+                    caravan.AddPawn(pawn, false);
+                }
+                failReason = "StrategicOutpost_FailedToAddPawn".Translate();
+                return false;
+            }
+
+            bool added = false;
+            bool spawnedPhysically = false;
+            try
+            {
+                if (pawn.RaceProps.Animal)
+                {
+                    if (operationalMode == OutpostOperationalMode.Physical && HasMap && Map != null)
                     {
-                        GenSpawn.Spawn(pawn, c, Map, Rot4.South, WipeMode.Vanish, false, false);
-                        if (deployedAnimalPawnIDs == null) deployedAnimalPawnIDs = new List<int>();
-                        deployedAnimalPawnIDs.Add(pawn.thingIDNumber);
-                        added = true;
+                        StrategicOutpostMapComponent comp = Map.GetComponent<StrategicOutpostMapComponent>();
+                        IntVec3 center = comp != null && comp.baseCenter.IsValid ? comp.baseCenter : Map.Center;
+                        IntVec3 c;
+                        if (CellFinder.TryFindRandomCellNear(center, Map, 8, cell => cell.Standable(Map) && !cell.Fogged(Map), out c))
+                        {
+                            Thing res = GenSpawn.Spawn(pawn, c, Map, Rot4.South, WipeMode.Vanish, false, false);
+                            if (res == pawn && pawn.Spawned && pawn.Map == Map)
+                            {
+                                if (deployedAnimalPawnIDs == null) deployedAnimalPawnIDs = new List<int>();
+                                if (!deployedAnimalPawnIDs.Contains(pawn.thingIDNumber)) deployedAnimalPawnIDs.Add(pawn.thingIDNumber);
+                                spawnedPhysically = true;
+                                added = true;
+                            }
+                        }
                     }
-                    else
+
+                    if (!added)
                     {
-                        added = Animals.TryAdd(pawn, false);
+                        if (pawn.Spawned) pawn.DeSpawn(DestroyMode.Vanish);
+                        added = Animals.TryAdd(pawn, false) && Animals.Contains(pawn);
                     }
                 }
                 else
                 {
-                    added = Animals.TryAdd(pawn, false);
+                    if (operationalMode == OutpostOperationalMode.Physical && HasMap && Map != null)
+                    {
+                        StrategicOutpostMapComponent comp = Map.GetComponent<StrategicOutpostMapComponent>();
+                        IntVec3 center = comp != null && comp.baseCenter.IsValid ? comp.baseCenter : Map.Center;
+                        IntVec3 c;
+                        if (CellFinder.TryFindRandomCellNear(center, Map, 8, cell => cell.Standable(Map) && !cell.Fogged(Map), out c))
+                        {
+                            Thing res = GenSpawn.Spawn(pawn, c, Map, Rot4.South, WipeMode.Vanish, false, false);
+                            if (res == pawn && pawn.Spawned && pawn.Map == Map)
+                            {
+                                if (deployedStaffPawnIDs == null) deployedStaffPawnIDs = new List<int>();
+                                if (!deployedStaffPawnIDs.Contains(pawn.thingIDNumber)) deployedStaffPawnIDs.Add(pawn.thingIDNumber);
+                                spawnedPhysically = true;
+                                added = true;
+                            }
+                        }
+                    }
+
+                    if (!added)
+                    {
+                        if (pawn.Spawned) pawn.DeSpawn(DestroyMode.Vanish);
+                        added = Workers.TryAdd(pawn, false) && Workers.Contains(pawn);
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (operationalMode == OutpostOperationalMode.Physical && HasMap && Map != null)
+                Log.Error("[TMM] StrategicOutpost.AddPawnFromCaravan failed, rolling back: " + ex);
+                added = false;
+            }
+            finally
+            {
+                if (!added)
                 {
-                    StrategicOutpostMapComponent comp = Map.GetComponent<StrategicOutpostMapComponent>();
-                    IntVec3 center = comp != null && comp.baseCenter.IsValid ? comp.baseCenter : Map.Center;
-                    IntVec3 c;
-                    if (CellFinder.TryFindRandomCellNear(center, Map, 8, cell => cell.Standable(Map) && !cell.Fogged(Map), out c))
+                    if (pawn.Spawned) pawn.DeSpawn(DestroyMode.Vanish);
+                    if (deployedStaffPawnIDs != null) deployedStaffPawnIDs.Remove(pawn.thingIDNumber);
+                    if (deployedAnimalPawnIDs != null) deployedAnimalPawnIDs.Remove(pawn.thingIDNumber);
+                    if (Workers.Contains(pawn)) Workers.Remove(pawn);
+                    if (Animals.Contains(pawn)) Animals.Remove(pawn);
+
+                    if (!caravan.Destroyed)
                     {
-                        GenSpawn.Spawn(pawn, c, Map, Rot4.South, WipeMode.Vanish, false, false);
-                        if (deployedStaffPawnIDs == null) deployedStaffPawnIDs = new List<int>();
-                        deployedStaffPawnIDs.Add(pawn.thingIDNumber);
-                        added = true;
+                        caravan.AddPawn(pawn, false);
                     }
-                    else
+                    else if (origTile.Valid)
                     {
-                        added = Workers.TryAdd(pawn, false);
+                        CaravanMaker.MakeCaravan(new List<Pawn> { pawn }, Faction.OfPlayer, origTile, true);
                     }
-                }
-                else
-                {
-                    added = Workers.TryAdd(pawn, false);
                 }
             }
 
             if (!added)
             {
-                caravan.AddPawn(pawn, false);
                 failReason = "StrategicOutpost_FailedToAddPawn".Translate();
                 return false;
             }
@@ -1066,7 +1129,11 @@ namespace TurboMegaMod
                 pawn.ownership.UnclaimBed();
             }
 
-            SetStoredPawnProtection(pawn, true);
+            if (!spawnedPhysically)
+            {
+                SetStoredPawnProtection(pawn, true);
+            }
+
             failReason = null;
             return true;
         }
@@ -1101,12 +1168,37 @@ namespace TurboMegaMod
             }
 
             ThingOwner<Pawn> owner = inWorkers ? Workers : Animals;
-            owner.Remove(pawn);
+            bool transferred = false;
 
-            caravan.AddPawn(pawn, false);
-            if (!caravan.ContainsPawn(pawn))
+            try
             {
-                owner.TryAdd(pawn, false);
+                owner.Remove(pawn);
+                if (owner.Contains(pawn) || pawn.holdingOwner != null)
+                {
+                    failReason = "StrategicOutpost_FailedToAddPawnToCaravan".Translate();
+                    return false;
+                }
+
+                caravan.AddPawn(pawn, false);
+                transferred = caravan.ContainsPawn(pawn);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("[TMM] StrategicOutpost.RemovePawnToCaravan failed, rolling back: " + ex);
+                transferred = false;
+            }
+            finally
+            {
+                if (!transferred)
+                {
+                    if (caravan.ContainsPawn(pawn)) caravan.RemovePawn(pawn);
+                    if (!owner.Contains(pawn)) owner.TryAdd(pawn, false);
+                    SetStoredPawnProtection(pawn, true);
+                }
+            }
+
+            if (!transferred)
+            {
                 failReason = "StrategicOutpost_FailedToAddPawnToCaravan".Translate();
                 return false;
             }
@@ -1171,6 +1263,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref targetColonyTile, "targetColonyTile", -1);
             Scribe_Values.Look(ref lastScannedHostileSettlements, "lastScannedHostileSettlements", 0);
             Scribe_Values.Look(ref lastScannedTotalSettlements, "lastScannedTotalSettlements", 0);
+            Scribe_Values.Look(ref customName, "customName");
 
             Scribe_Deep.Look(ref workersHolder, "workersHolder", this);
             Scribe_Deep.Look(ref animalsHolder, "animalsHolder", this);

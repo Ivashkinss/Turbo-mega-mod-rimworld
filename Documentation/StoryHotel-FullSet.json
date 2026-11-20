@@ -1,0 +1,157 @@
+﻿{
+    "component":  "StoryHotel",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3390,
+                         "scalarFields":  2932,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  3924,
+                        "ticksAdvanced":  58848,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true,
+                       "visualLayoutInspected":  false
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "03d6d6dc00b57bbbe75602a2b244d7a24ce4a92ba27917b7d39c20da8f56a1d0",
+    "storyHotel":  {
+                       "passed":  true,
+                       "checksCount":  17,
+                       "checks":  [
+                                      {
+                                          "name":  "SparkStory_Exists",
+                                          "passed":  true,
+                                          "expected":  "non-null",
+                                          "actual":  "ok"
+                                      },
+                                      {
+                                          "name":  "Compat_NoHotelImmediateOnStart",
+                                          "passed":  true,
+                                          "expected":  "immediate noHotel \u0026 0 spawns",
+                                          "actual":  "immediate=True, finished=True"
+                                      },
+                                      {
+                                          "name":  "Setup_HotelBuiltAndOpen",
+                                          "passed":  true,
+                                          "expected":  "built=true, open=true",
+                                          "actual":  "built=True, open=True"
+                                      },
+                                      {
+                                          "name":  "Setup_StockpileReady",
+                                          "passed":  true,
+                                          "expected":  "\u003e=9 cells",
+                                          "actual":  "16"
+                                      },
+                                      {
+                                          "name":  "P1_HeroColonistNotMoved",
+                                          "passed":  true,
+                                          "expected":  "heroIncluded=false \u0026 colonist untouched",
+                                          "actual":  "skipped=True, reason=colonist, untouched=True"
+                                      },
+                                      {
+                                          "name":  "P1_PermanentEnemyFailsWithoutSpawn",
+                                          "passed":  true,
+                                          "expected":  "outcome=failed, arrived=false, 0 spawned",
+                                          "actual":  "hist=0:failed, arrived=false, pawns=69-\u003e69"
+                                      },
+                                      {
+                                          "name":  "P1_TruceRestoredOnDisabledQuest",
+                                          "passed":  true,
+                                          "expected":  "truce-\u003eDisabled-\u003eHostile(~-85)",
+                                          "actual":  "truce=True, hostile=True, gw=-81"
+                                      },
+                                      {
+                                          "name":  "P1_TruceRestoredAfterStageEnd",
+                                          "passed":  true,
+                                          "expected":  "truce-\u003eend-\u003eHostile(~-90)",
+                                          "actual":  "truce=True, failed=True, hostile=True, gw=-88"
+                                      },
+                                      {
+                                          "name":  "P1_GuestKilled_NotSuccess",
+                                          "passed":  true,
+                                          "expected":  "failed",
+                                          "actual":  "0:failed"
+                                      },
+                                      {
+                                          "name":  "P1_GuestImprisoned_NotSuccess",
+                                          "passed":  true,
+                                          "expected":  "failed",
+                                          "actual":  "0:failed"
+                                      },
+                                      {
+                                          "name":  "P1_InvestigateRequiresRealInteraction",
+                                          "passed":  true,
+                                          "expected":  "withoutChat=false, afterRealChat=true",
+                                          "actual":  "noChatFalse=True, afterChat=True"
+                                      },
+                                      {
+                                          "name":  "P1_HideWithoutRaid_ReachesDeadline",
+                                          "passed":  true,
+                                          "expected":  "not success \u0026 hunterRaidBound=false",
+                                          "actual":  "hist=0:failed, bound=false, reason=hide_no_raid_deadline"
+                                      },
+                                      {
+                                          "name":  "P1_DeliverExpiredClick_DeductsNothing",
+                                          "passed":  true,
+                                          "expected":  "steel unchanged, delivered!=true, timeout",
+                                          "actual":  "letter=True, refused=True, timeout=True, steel=40-\u003e40"
+                                      },
+                                      {
+                                          "name":  "P1_DeliverAtomicRollback_SecondStackFail",
+                                          "passed":  true,
+                                          "expected":  "steel=60-\u003e60, delivered!=true, letter stays",
+                                          "actual":  "clicked=True, steel=60-\u003e60, delivered=false"
+                                      },
+                                      {
+                                          "name":  "P2_CaravanDeliver_PassingIgnoredArrivedDeducted",
+                                          "passed":  true,
+                                          "expected":  "passing=40(active), arrived=0(success)",
+                                          "actual":  "passingOk=True(cargo=40), valid=True, afterCargo=0, hist=0:success"
+                                      },
+                                      {
+                                          "name":  "ReloadPrep_ActiveHotelVisitSaved",
+                                          "passed":  true,
+                                          "expected":  "active visit with lordId\u003e=0",
+                                          "actual":  "arrived=true, lordId=8, heroIncluded=false"
+                                      },
+                                      {
+                                          "name":  "ReloadPrep_PaidDeliverSavedBeforeTransition",
+                                          "passed":  true,
+                                          "expected":  "paid=true, steelLeft=50, delivered=true",
+                                          "actual":  "paid=True, steel=50, delivered=true"
+                                      }
+                                  ],
+                       "errors":  [
+
+                                  ]
+                   },
+    "passed":  true
+}

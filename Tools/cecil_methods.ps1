@@ -1,6 +1,6 @@
 # Lists the method signatures of one game type by reading Assembly-CSharp metadata with Mono.Cecil.
 # Game code is never executed. Usage: ./Tools/cecil_methods.ps1 -Type Verse.LetterStack [-Name ReceiveLetter]
-param([Parameter(Mandatory = $true)][string]$Type, [string]$Name = '')
+param([Parameter(Mandatory = $true)][string]$Type, [string]$Name = '', [switch]$IL)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $harmony = [Reflection.Assembly]::LoadFrom((Join-Path $root 'Components/Harmony/1.6/Assemblies/0Harmony.dll'))
@@ -12,5 +12,11 @@ if ($null -eq $t) { throw "type not found: $Type" }
 foreach ($m in $t.Methods) {
     if ($Name -and $m.Name -ne $Name) { continue }
     $p = ($m.Parameters | ForEach-Object { "$($_.ParameterType.Name) $($_.Name)" }) -join ', '
-    "$($m.ReturnType.Name) $($m.Name)($p)"
+    $attrs = $m.Attributes.ToString()
+    "$attrs $($m.ReturnType.Name) $($m.Name)($p)"
+    if ($IL -and $m.HasBody) {
+        foreach ($inst in $m.Body.Instructions) {
+            "    $($inst.OpCode) $($inst.Operand)"
+        }
+    }
 }

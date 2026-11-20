@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- BROTHERHOOD Q1: THE LOST BEACON                                       -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_brotherhood_Q1</defName>
+    <label>the lost beacon</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_paladin_danse</giver>
+    <fallbackGiver>TMM_Hero_captain_kells</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+    </requires>
+    <letterLabel>The Lost Beacon</letterLabel>
+    <letterText>Civilian. My recon squad 'Gladius' went dark near an old satellite array three clicks from your position. High Command demands their holotags and field logs recovered immediately. Assist the Brotherhood in securing the perimeter, and you will earn the respect of the steel.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>satellite_array</key>
+        <label>Clear the satellite array</label>
+        <text>Secure the old satellite array surrounded by feral horrors and radiation craters so Paladin Danse can evacuate the wounded Brotherhood scribe.</text>
+        <enemyFaction>TMM_MonsterClansFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>holotag_handover</key>
+        <label>The Gladius holotags</label>
+        <text>Inside the bunker—whose wall bears a scratched Enochian sigil keeping feral ghouls at bay—you recover the fallen squad's holotags and encrypted field logs before the vertibird arrives.</text>
+        <choices>
+          <li>
+            <outcome>honorable</outcome>
+            <label>Return all holotags and sealed logs untouched to Paladin Danse</label>
+            <resultText>You fought like a true soldier. The Brotherhood of Steel never forgets those who guard its flank.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.bos_q1</flag>
+                <value>honorable</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>450</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bos_scribe_uniform</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.danse_hood</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>copied</outcome>
+            <label>Secretly copy the encrypted field logs before handing them over</label>
+            <resultText>The holotags are intact, yet these logs show signs of tampering... I'll be watching you closely.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.bos_q1</flag>
+                <value>copied</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>10</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>450</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bos_scribe_uniform</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- BROTHERHOOD Q2: ARMOR FOR THE ASSAULT                                 -->
+  <!-- Note: Proctor Ingram not in base HeroDefs; giver omitted per Rule 3.  -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_brotherhood_Q2</defName>
+    <label>armor for the assault</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <fallbackGiver>TMM_Hero_paladin_danse</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_brotherhood_Q1</li>
+    </requires>
+    <letterLabel>Armor for the Assault</letterLabel>
+    <letterText>Listen up, wastelander. Proctor Ingram here. My field repair gantry took a mortar hit, and half our T-60 hydraulic frames are locked up tighter than a vault door. Bring your best mechanics and spare components, and keep the Gunners off my back while I weld these coolant lines.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Deliver">
+        <key>deliver_parts</key>
+        <label>Supply repair components for Ingram's gantry</label>
+        <text>Allocate 6 industrial components from {COLONY}'s stockpiles so Proctor Ingram can replace the blown T-60 hydraulic valves.</text>
+        <thing>ComponentIndustrial</thing>
+        <count>6</count>
+        <to>colony</to>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>hold_gantry</key>
+        <label>Defend the Brotherhood repair gantry</label>
+        <text>Hold the Brotherhood field repair dock against waves of Gunner mercenaries for 6 hours while Proctor Ingram—welding inside her legless power-armor frame—cracks sarcastic jokes under fire.</text>
+        <enemyFaction>TMM_GunnersFaction</enemyFaction>
+        <objective>Hold</objective>
+        <holdHours>6</holdHours>
+        <timeoutDays>7</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>2</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>2</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>gantry_reward</key>
+        <label>Hydraulics back online</label>
+        <text>The last Gunner squad retreats as all three T-60 frames hiss back to life on the gantry.</text>
+        <choices>
+          <li>
+            <outcome>complete_repairs</outcome>
+            <label>Collect Ingram's uranium cells and recon suit blueprints</label>
+            <resultText>Damn, your crew actually knows which end of a wrench to hold! Take a couple of fusion cores for the save.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.bos_q2</flag>
+                <value>success</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GunnersFaction</faction>
+                <amount>-15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>500</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Uranium</thing>
+                <count>20</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bos_recon_suit</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- BROTHERHOOD Q3: LESSONS OF THE OLD ELDER                              -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_brotherhood_Q3</defName>
+    <label>lessons of the old elder</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>60</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_owen_lyons</giver> <!-- check id -->
+    <fallbackGiver>TMM_Hero_sarah_lyons</fallbackGiver>
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_brotherhood_Q2</li>
+    </requires>
+    <letterLabel>Lessons of the Old Elder</letterLabel>
+    <letterText>Arthur Maxson speaks of steel and fire, and he is not wrong about the darkness gathering over this land. Yet if we crush the very people we swore to protect, what remains worth saving? Meet me at the crossroads settlement and help me broker peace before Kells orders an artillery strike.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Wait">
+        <key>crossroads_approach</key>
+        <label>Meeting Owen Lyons at the crossroads</label>
+        <text>Old Owen Lyons waits outside the crossroads settlement, offering a worn canteen of pure Project Purity water while a tense Brotherhood patrol aims rifles at locals sheltering a wounded sentient ghoul.</text>
+        <days>0.5</days>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>lyons_or_maxson</key>
+        <label>Shield or sword</label>
+        <text>The patrol commander demands the villagers step aside so the ghoul can be purged under Maxson's code. Owen Lyons looks to you to tip the scales.</text>
+        <choices>
+          <li>
+            <outcome>mercy</outcome>
+            <label>Convince the patrol to stand down and protect the settlers (Lyons' Way)</label>
+            <resultText>You reminded them what it truly means to be humanity's shield. Thank you, my friend.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.bos_q3</flag>
+                <value>mercy</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>15</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>400</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.sarah_lyons_coat</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>purge</outcome>
+            <label>Back Maxson's codex and clear the settlement of ghouls</label>
+            <resultText>You chose harsh necessity... I pray our souls can endure the weight of what we do.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.bos_q3</flag>
+                <value>purge</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_GhoulsFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>-25</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Silver</thing>
+                <count>700</count>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Gun_ChargeRifle</thing>
+                <count>1</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- BROTHERHOOD Q4 (FACTION POINT): BLIND BETRAYAL                        -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_brotherhood_Q4</defName>
+    <label>blind betrayal</label>
+    <act>2</act>
+    <main>false</main>
+    <priority>65</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_arthur_maxson</giver>
+    <fallbackGiver>TMM_Hero_captain_kells</fallbackGiver> <!-- check id -->
+    <requires>
+      <li>act>=2</li>
+      <li>done:TMM_Story_brotherhood_Q3</li>
+    </requires>
+    <letterLabel>Blind Betrayal</letterLabel>
+    <letterText>Decrypted Institute records have revealed a vile truth: Paladin Danse is not a man, but a synthetic infiltrator carrying an anomalous 'Spark' in his neural core. He has fled to Listening Post Bravo. Find him and execute the sentence—humanity cannot allow machines to wear our skin.</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_Site">
+        <key>listening_post_bravo</key>
+        <label>Reach Listening Post Bravo</label>
+        <text>Fight past Institute trackers scouting the perimeter of Listening Post Bravo to reach the lower bunker where Paladin Danse awaits his fate.</text>
+        <enemyFaction>TMM_InstituteFaction</enemyFaction>
+        <objective>Clear</objective>
+        <timeoutDays>8</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>failed</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>danse_verdict</key>
+        <label>The verdict on Paladin Danse</label>
+        <text>Kneeling unarmed inside the bunker, Paladin Danse pulls off his Brotherhood dog tags and holds them out to you: "Ad Victoriam." Outside the blast door, Elder Arthur Maxson stands waiting with a squad of paladins.</text>
+        <choices>
+          <li>
+            <outcome>pro_faction</outcome>
+            <label>Execute Paladin Danse by Maxson's order (Side with the Brotherhood)</label>
+            <resultText>You did what few would have the stomach to do. The steel is cleansed of taint.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.brotherhood</flag>
+                <value>pro_faction</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.danseDead</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>50</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>-40</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.legendary_final_judgment</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.bos_t60_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+          <li>
+            <outcome>pro_spark</outcome>
+            <label>Spare Danse and stand between him and Arthur Maxson (Protect the Spark)</label>
+            <resultText>From this day forward, he is dead to the Brotherhood! If he ever crosses our path again, I will personally grind him to dust!</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>choice.brotherhood</flag>
+                <value>pro_spark</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>story.danseSaved</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>-35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_RailroadFaction</faction>
+                <amount>35</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt">
+                <flag>zeroSynth.trust</flag>
+                <amount>20</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>unlock.danse_armor</flag>
+                <value>true</value>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+    <onComplete>
+      <li Class="TurboMegaMod.StoryEffect_AddInt">
+        <flag>arcPoints</flag>
+        <amount>1</amount>
+      </li>
+      <li Class="TurboMegaMod.StoryEffect_SetFlag">
+        <flag>arc.brotherhood</flag>
+        <value>4</value>
+      </li>
+    </onComplete>
+  </TurboMegaMod.StoryQuestDef>
+
+  <!-- ===================================================================== -->
+  <!-- BROTHERHOOD Q5 (DEFECTOR QUEST): MUTINY OF THE SENTINEL               -->
+  <!-- ===================================================================== -->
+  <TurboMegaMod.StoryQuestDef>
+    <defName>TMM_Story_brotherhood_Q5</defName>
+    <label>mutiny of the sentinel</label>
+    <act>3</act>
+    <main>false</main>
+    <priority>75</priority>
+    <faction>TMM_BrotherhoodFaction</faction>
+    <giver>TMM_Hero_sarah_lyons</giver>
+    <fallbackGiver>TMM_Hero_paladin_danse</fallbackGiver>
+    <requires>
+      <li>act>=3</li>
+      <li>done:TMM_Story_brotherhood_Q4</li>
+      <li>choice.brotherhood=pro_spark</li>
+    </requires>
+    <letterLabel>Mutiny of the Sentinel</letterLabel>
+    <letterText>Maxson has lost his mind—he's preparing an orbital and vertibird strike on every settlement sheltering synths or ghouls. My father and I won't be part of a slaughter. Danse and I are breaking through the cordon to your colony; cover our landing zone!</letterText>
+    <stages>
+      <li Class="TurboMegaMod.StoryStage_ColonyRaid">
+        <key>kells_pursuit</key>
+        <label>Repel Captain Kells's punitive strike</label>
+        <text>Sarah Lyons and Paladin Danse have crash-landed a stolen vertibird inside {COLONY} while old Owen Lyons stayed aboard the flagship to buy them time. Repel Captain Kells's pursuing paladins!</text>
+        <faction>TMM_BrotherhoodFaction</faction>
+        <pointsFactor>1.3</pointsFactor>
+        <delayHours>3</delayHours>
+        <timeoutDays>3</timeoutDays>
+        <outcomes>
+          <li>
+            <outcome>success</outcome>
+            <nextStage>1</nextStage>
+          </li>
+          <li>
+            <outcome>timeout</outcome>
+            <nextStage>1</nextStage>
+          </li>
+        </outcomes>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>welcome_lyons_danse</key>
+        <label>Knights without an Elder</label>
+        <text>With the pursuing Brotherhood shock team driven back, Sarah Lyons and Paladin Danse remove their helmets and stand before your command desk.</text>
+        <choices>
+          <li>
+            <outcome>accept_defectors</outcome>
+            <label>Welcome Sarah Lyons and Paladin Danse into {COLONY}'s ranks</label>
+            <resultText>Our armor still serves the people—only now we choose for ourselves whom we protect.</resultText>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_paladin_danse</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_HeroJoins">
+                <hero>TMM_Hero_sarah_lyons</hero>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_paladin_danse</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_SetFlag">
+                <flag>defector.TMM_Hero_sarah_lyons</flag>
+                <value>true</value>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_BrotherhoodFaction</faction>
+                <amount>-80</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill">
+                <faction>TMM_MinutemenHuntersFaction</faction>
+                <amount>30</amount>
+              </li>
+              <li Class="TurboMegaMod.StoryEffect_GiveThing">
+                <thing>Plasteel</thing>
+                <count>40</count>
+              </li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+    </stages>
+  </TurboMegaMod.StoryQuestDef>
+
+</Defs>
