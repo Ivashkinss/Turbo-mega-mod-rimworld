@@ -167,7 +167,7 @@ namespace TurboMegaMod
             foreach (var pawn in selectedColonists.Concat(animals))
             {
                 string error;
-                if (outpost.AddPawnFromCaravan(caravan, pawn, out error, false))
+                if (outpost.AddPawnFromCaravan(caravan, pawn, out error, false, false))
                 {
                     addedPawns.Add(pawn);
                     continue;

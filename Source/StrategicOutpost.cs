@@ -983,6 +983,12 @@ namespace TurboMegaMod
 
         public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason, bool unclaimBed)
         {
+            return AddPawnFromCaravan(caravan, pawn, out failReason, unclaimBed, true);
+        }
+
+        /// requireMobileCarrier=false is for founding, where the whole caravan settles and nobody is left to travel.
+        public bool AddPawnFromCaravan(Caravan caravan, Pawn pawn, out string failReason, bool unclaimBed, bool requireMobileCarrier)
+        {
             if (!CanInteract(caravan) || pawn == null)
             {
                 failReason = "StrategicOutpost_InvalidCaravanOrPawn".Translate();
@@ -1015,7 +1021,7 @@ namespace TurboMegaMod
             }
 
             // Never leave remaining caravan pawns stranded without a capable mobile colonist carrier
-            if (caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, pawn))
+            if (requireMobileCarrier && caravan.PawnsListForReading.Count > 1 && !OutpostCaravanLogistics.HasMobileCarrierExcluding(caravan, pawn))
             {
                 failReason = "StrategicOutpost_NoMobileCarrierLeft".Translate();
                 return false;

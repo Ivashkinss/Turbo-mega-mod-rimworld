@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3395,
-                         "scalarFields":  2932,
+                         "keyed":  3401,
+                         "scalarFields":  3454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3209,
-                        "ticksAdvanced":  1449,
+                        "framesAdvanced":  3381,
+                        "ticksAdvanced":  1420,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,20 +42,20 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "da47d673ca9f0036330546923cbdd99b70729bc1b5c097f25e36f585bc77a183",
+    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
     "regionalWorld":  {
                           "passed":  true,
                           "checks":  22,
-                          "relocated":  69,
-                          "retained":  2,
-                          "distanceBefore":  120.5483,
-                          "distanceAfter":  41.52763,
-                          "lowBuildings":  426,
-                          "highBuildings":  2465,
-                          "lowBeds":  12,
-                          "highBeds":  91,
-                          "lowPawns":  7,
-                          "highPawns":  57,
+                          "relocated":  81,
+                          "retained":  0,
+                          "distanceBefore":  123.453,
+                          "distanceAfter":  46.03228,
+                          "lowBuildings":  459,
+                          "highBuildings":  2321,
+                          "lowBeds":  19,
+                          "highBeds":  96,
+                          "lowPawns":  6,
+                          "highPawns":  60,
                           "errors":  [
 
                                      ]

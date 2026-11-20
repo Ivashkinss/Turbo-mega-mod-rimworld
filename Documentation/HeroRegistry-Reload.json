@@ -4,7 +4,7 @@
                                "checksCount":  10,
                                "stage":  1,
                                "facts":  [
-                                             "forcePauseDialogsClosed=1"
+                                             "forcePauseDialogsClosed=0"
                                          ],
                                "checks":  [
                                               {
@@ -46,20 +46,20 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human12157",
-                                                  "actual":  "Human12157"
+                                                  "expected":  "Human45792",
+                                                  "actual":  "Human45792"
                                               },
                                               {
                                                   "name":  "FourthSurvivesTwoDays",
                                                   "passed":  true,
                                                   "expected":  "alive record",
-                                                  "actual":  "Human12168"
+                                                  "actual":  "Human45805"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human12157",
-                                                  "actual":  "Human12157"
+                                                  "expected":  "Human45792",
+                                                  "actual":  "Human45792"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
@@ -75,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  1282,
-                        "ticksAdvanced":  22343,
+                        "framesAdvanced":  2014,
+                        "ticksAdvanced":  21341,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -85,7 +85,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
-    "productionAssemblySha256":  "1bdbb9bf730a2d4752019cfa87e43f5ea5413722fc3a8132eb024d69fa000050",
+    "freshAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
     "passed":  true
 }

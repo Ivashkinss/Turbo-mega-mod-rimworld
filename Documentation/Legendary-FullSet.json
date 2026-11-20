@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3390,
-                         "scalarFields":  2932,
+                         "keyed":  3401,
+                         "scalarFields":  3454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3745,
-                        "ticksAdvanced":  1768,
+                        "framesAdvanced":  4199,
+                        "ticksAdvanced":  1766,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -41,7 +41,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "7ddebf16f2ce7cc354fc1d77f5105762fbe13fdde3a8376960f4b9b3198d8067",
+    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
     "legendary":  {
                       "passed":  true,
                       "checksCount":  25,
@@ -68,7 +68,7 @@
                                          "name":  "DickRoman_Blocks99PctNormalDamage",
                                          "passed":  true,
                                          "expected":  "dealt\u003c1.0 \u0026 loss\u003c1%",
-                                         "actual":  "dealt=0.23, hpLoss=0.30%"
+                                         "actual":  "dealt=0.32, hpLoss=0.42%"
                                      },
                                      {
                                          "name":  "DickRoman_FullDamageAfterBorax",
@@ -79,7 +79,7 @@
                                      {
                                          "name":  "Borax_StrongVsLeviathanNearZeroVsHuman",
                                          "passed":  true,
-                                         "expected":  "lev\u003e=20 \u0026 debuff \u0026 human\u003c=1.5",
+                                         "expected":  "lev\u003e=15 \u0026 debuff \u0026 human\u003c=1.5",
                                          "actual":  "lev=36.0 (debuff=True), human=0.48"
                                      },
                                      {
@@ -109,8 +109,8 @@
                                      {
                                          "name":  "Colt_NormalDamageOnHuman",
                                          "passed":  true,
-                                         "expected":  "alive \u0026 injured",
-                                         "actual":  "dead=False, inj=19.0"
+                                         "expected":  "injured or killed",
+                                         "actual":  "dead=True, inj=45.0"
                                      },
                                      {
                                          "name":  "Colt_13ChargesExhausted",

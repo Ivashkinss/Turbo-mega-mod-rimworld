@@ -1713,7 +1713,7 @@
     },
     {
       "id": "Round2Integration",
-      "state": "running",
+      "state": "accepted",
       "assignee": "claude",
       "kind": "implement",
       "taskFile": "Delegation/Hydrogen/44-Neon-Round2-Core-FIX-PROMPT.md",

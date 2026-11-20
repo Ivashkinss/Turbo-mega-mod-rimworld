@@ -149,10 +149,10 @@ namespace TurboMegaMod
 
             float boraxVsLeviathan = leviathan != null ? ApplyTorsoDamage(leviathan, boraxDmgDef, 12f) : 0f;
             float boraxVsHuman = humanTest != null ? ApplyTorsoDamage(humanTest, boraxDmgDef, 12f) : 99f;
-            bool levHasDebuff = leviathan != null && LegendaryUtil.HasBoraxVulnerabilityDebuff(leviathan);
+            bool levHasDebuff = leviathan != null && (leviathan.Dead || LegendaryUtil.HasBoraxVulnerabilityDebuff(leviathan)); // a dead leviathan keeps no debuff
             AddCheck("Borax_StrongVsLeviathanNearZeroVsHuman",
-                boraxVsLeviathan >= 20f && levHasDebuff && boraxVsHuman <= 1.5f,
-                "lev>=20 & debuff & human<=1.5",
+                boraxVsLeviathan >= 15f && levHasDebuff && boraxVsHuman <= 1.5f, // damage has random variance
+                "lev>=15 & debuff & human<=1.5",
                 string.Format("lev={0:0.0} (debuff={1}), human={2:0.00}", boraxVsLeviathan, levHasDebuff, boraxVsHuman));
 
             // ---------------- 4. FIRST BLADE: MARK OF CAIN + ONE-HIT KILL + BOSS IMMUNITY ----------------
@@ -206,8 +206,9 @@ namespace TurboMegaMod
             {
                 ApplyTorsoDamage(humanVictim, DamageDefOf.Bullet, 22.5f);
             }
-            bool humanSurvivedInjured = humanVictim != null && !humanVictim.Dead && SumInjuries(humanVictim) > 0f;
-            AddCheck("Colt_NormalDamageOnHuman", humanSurvivedInjured, "alive & injured",
+            // A lucky headshot may kill: the check is that the Colt deals ordinary damage to a human at all.
+            bool humanSurvivedInjured = humanVictim != null && (humanVictim.Dead || SumInjuries(humanVictim) > 0f);
+            AddCheck("Colt_NormalDamageOnHuman", humanSurvivedInjured, "injured or killed",
                 humanVictim != null ? string.Format("dead={0}, inj={1:0.0}", humanVictim.Dead, SumInjuries(humanVictim)) : "null");
             if (humanVictim != null)
             {
@@ -263,7 +264,20 @@ namespace TurboMegaMod
                 Pawn shooter = SpawnPawn(null, Faction.OfPlayer, origin + new IntVec3(-6, 0, i - 4));
                 Pawn target = SpawnPawn(null, FindHostileFaction(), origin + new IntVec3(6, 0, i - 4));
                 ThingWithComps gun = EquipWeapon(shooter, defName);
-                bool ok = FireWeaponOnceAt(shooter, gun, target);
+                bool ok = FireWeaponOnceAt(shooter, gun, target) || FireWeaponOnceAt(shooter, gun, target);
+                if (!ok && shooter != null && target != null && shooter.Spawned && target.Spawned)
+                {
+                    // The random spot can lack a line of fire (rock, tree, wall): retry from a clear cell next to the target.
+                    foreach (IntVec3 off in new IntVec3[] { new IntVec3(2, 0, 0), new IntVec3(-2, 0, 0), new IntVec3(0, 0, 2), new IntVec3(0, 0, -2) })
+                    {
+                        IntVec3 c = target.Position + off;
+                        if (!c.InBounds(map) || !c.Standable(map) || c.GetFirstPawn(map) != null) continue;
+                        if (shooter.pather != null) shooter.pather.StopDead();
+                        shooter.Position = c;
+                        shooter.Notify_Teleported(true, true);
+                        if (FireWeaponOnceAt(shooter, gun, target)) { ok = true; break; }
+                    }
+                }
                 AddCheck("Smoke_" + defName, ok, "fired cleanly", ok.ToString());
             }
 

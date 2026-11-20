@@ -72,8 +72,17 @@ namespace TurboMegaMod
         public void FinalizeTransfer()
         {
             if (rolledBack || leadershipFinalized || snapshot == null || snapshot.pawn == null) return;
-            leadershipFinalized = true;
-            StoryPawnTransfer.FinalizeLeadershipAndRegistry(snapshot);
+            // The pawn is already on the map and owned by the operation; finalisation (faction leader, registry note)
+            // must not undo that. A failure here is reported and can be retried by calling FinalizeTransfer again.
+            try
+            {
+                StoryPawnTransfer.FinalizeLeadershipAndRegistry(snapshot);
+                leadershipFinalized = true;
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] StoryPawnTransfer: finalisation failed for " + snapshot.pawn.LabelShort + ": ", ex);
+            }
         }
     }
 

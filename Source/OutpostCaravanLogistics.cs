@@ -1720,8 +1720,7 @@ namespace TurboMegaMod
                 }
             }
 
-            Log.Error("[TMM] OutpostCaravanLogistics: failed to return item " + chunk.LabelShort + " to any holder!");
-            return false;
+            return StoryPaymentLimbo.Hold(chunk);
         }
 
         // =====================================================================

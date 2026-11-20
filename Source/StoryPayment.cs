@@ -748,8 +748,7 @@ namespace TurboMegaMod
                 }
             }
 
-            Log.Error("[TMM] StoryPayment: failed to return thing " + chunk.LabelShort + " to any map or holder during rollback!");
-            return false;
+            return StoryPaymentLimbo.Hold(chunk);
         }
 
         /// <summary>
@@ -810,8 +809,7 @@ namespace TurboMegaMod
                 return TryReturnThingToMap(chunk, null, home, DropCellFinder.TradeDropSpot(home));
             }
 
-            Log.Error("[TMM] StoryPayment: failed to return thing " + chunk.LabelShort + " to caravan or any fallback holder!");
-            return false;
+            return StoryPaymentLimbo.Hold(chunk);
         }
 
         // =====================================================================
@@ -824,7 +822,18 @@ namespace TurboMegaMod
             {
                 return TestSplitOffOverride(src, count, stepIndex);
             }
-            return src.SplitOff(count);
+            // Vanilla ThingWithComps.SplitOff lowers the source count before PostSplitOff callbacks run. If a callback
+            // throws, the reference to the split part is lost: restore the source count so nothing silently disappears.
+            int before = src.stackCount;
+            try
+            {
+                return src.SplitOff(count);
+            }
+            catch
+            {
+                if (!src.Destroyed && src.stackCount < before) src.stackCount = before;
+                throw;
+            }
         }
 
         private static bool TryAddToOwnerChecked(ThingOwner owner, Thing item, bool canMerge)

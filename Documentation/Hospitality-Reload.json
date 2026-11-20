@@ -1,21 +1,23 @@
-{
-  "hotelReload": {
-    "passed": true,
-    "checks": 16,
-    "errors": []
-  },
-  "mapActivity": {
-    "mapLoaded": true,
-    "observedActiveSeconds": 30,
-    "framesAdvanced": 3884,
-    "ticksAdvanced": 1757,
-    "newsWindowsDismissedInTest": 0
-  },
-  "runtimeErrors": 0,
-  "unresolvedReferences": 0,
-  "gpuLost": false,
-  "isolatedFixtureSave": true,
-  "userSaveTested": false,
-  "productionAssemblySha256": "d47f23b5594fad31dbfc8c16ea3eefa11e1f66c336ec6290b7de421cd368e2a5",
-  "passed": true
+﻿{
+    "hotelReload":  {
+                        "passed":  true,
+                        "checks":  16,
+                        "errors":  [
+
+                                   ]
+                    },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4179,
+                        "ticksAdvanced":  1771,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "runtimeErrors":  0,
+    "unresolvedReferences":  0,
+    "gpuLost":  false,
+    "isolatedFixtureSave":  true,
+    "userSaveTested":  false,
+    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "passed":  true
 }

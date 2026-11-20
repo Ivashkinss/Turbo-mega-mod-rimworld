@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3390,
-                         "scalarFields":  2874,
+                         "keyed":  3401,
+                         "scalarFields":  3454,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3660,
-                        "ticksAdvanced":  1767,
+                        "framesAdvanced":  4247,
+                        "ticksAdvanced":  1785,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,12 +42,12 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "e7c93d6b894eab097b3fd1d1133ef918972d96d2710cf0052529247c431c988d",
+    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
     "ghoulXenotype":  {
                           "passed":  true,
                           "checksCount":  20,
                           "facts":  [
-                                        "xenotype=TMM_Ghoul skinGene=Skin_Orange"
+                                        "xenotype=TMM_Ghoul skinGene=Skin_PaleRed"
                                     ],
                           "checks":  [
                                          {
