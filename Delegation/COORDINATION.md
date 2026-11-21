@@ -195,3 +195,14 @@ Antigravity 31% (−7% за 1,5 ч — урезаем), Claude 50% (сброс �
 - Промпт `52` (машины и винтокрылы фракций) ждёт отправки Neon.
 - Арт одежды готов к промптам `50` и `51`.
 - Codex: задача `EquipmentApparelReview`.
+
+**Заметки по машинам VF (21.11, на следующую сессию).**
+- Пример реальной машины: VVE Mule (`github.com/Vanilla-Expanded/VanillaVehiclesExpanded`, `1.6/Defs/VehicleDefs/Tier1/Mule`). В репозитории VVE есть и ветка 1.7.
+- Шейдеры VF (`CutoutComplexRGB`/`Pattern`/`Skin`) лежат в AssetBundle, а 1.7 их не загружает. Для наших машин `graphicData.shaderType` = ванильный `CutoutComplex`, `graphicClass` = `Vehicles.Graphic_Vehicle`.
+- Поля сверены через `Tools/cecil_fields.ps1`:
+  - `VehicleRole`: `key`, `label`, `handlingTypes` (Movement/Turret), `slots`, `slotsToOperate`, `turretIds`, `hitbox`;
+  - компоненты: `key`, `label`, `health`, `depth` (Internal/External), `categories` — список `VehicleStatDef` (MoveSpeed, CargoCapacity, FlightSpeed…), `armor`, `reactors`, `tags`;
+  - `CompProperties_FueledTravel`: `fuelType`, `leakDef`, `fuelConsumptionRate`, `fuelCapacity`, `fuelConsumptionWorldMultiplier`;
+  - `vehicleType`: Land/Sea/Air; `vehicleCategory`: Transport/Combat/…
+- Создание из кода: `Vehicles.VehicleSpawner.SpawnVehicleRandomized(def, cell, map, faction, rot, autoFill)`.
+- Следующий шаг: прототип `TMM_Vehicle_HunterTruck` с простым артом и проба (спавн, движение, сохранение). Результат дописать в промпт 52 как проверенный образец.
