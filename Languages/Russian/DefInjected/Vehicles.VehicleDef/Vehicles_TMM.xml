@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Vehicle_HunterTruck.label>пикап охотников</TMM_Vehicle_HunterTruck.label>
+  <TMM_Vehicle_HunterTruck.description>Бронированный довоенный пикап, который держат на ходу минитмены и бродячие охотники на чудовищ. Вмещает водителя и двух пассажиров, хорошо везёт груз в кузове и ездит на химтопливе. Двери изнутри обложены солью и железом.</TMM_Vehicle_HunterTruck.description>
+  <TMM_Vehicle_HunterTruck.properties.roles.0.label>водитель</TMM_Vehicle_HunterTruck.properties.roles.0.label>
+  <TMM_Vehicle_HunterTruck.properties.roles.1.label>пассажир</TMM_Vehicle_HunterTruck.properties.roles.1.label>
+  <TMM_Vehicle_HunterTruck.components.0.label>двигатель</TMM_Vehicle_HunterTruck.components.0.label>
+  <TMM_Vehicle_HunterTruck.components.1.label>колёса</TMM_Vehicle_HunterTruck.components.1.label>
+  <TMM_Vehicle_HunterTruck.components.2.label>кузов</TMM_Vehicle_HunterTruck.components.2.label>
+  <TMM_Vehicle_HunterTruck.components.3.label>корпус</TMM_Vehicle_HunterTruck.components.3.label>
+</LanguageData>
