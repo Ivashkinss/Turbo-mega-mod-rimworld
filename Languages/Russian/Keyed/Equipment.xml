@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_TabEquipment>Снаряжение</TMM_TabEquipment>
+
+  <TMM_Slot_Head>Голова</TMM_Slot_Head>
+  <TMM_Slot_Eyes>Глаза</TMM_Slot_Eyes>
+  <TMM_Slot_Skin>Кожа</TMM_Slot_Skin>
+  <TMM_Slot_Middle>Средний</TMM_Slot_Middle>
+  <TMM_Slot_Shell>Верх</TMM_Slot_Shell>
+  <TMM_Slot_Legs>Ноги</TMM_Slot_Legs>
+  <TMM_Slot_Belt>Пояс</TMM_Slot_Belt>
+  <TMM_Slot_Backpack>Рюкзак</TMM_Slot_Backpack>
+  <TMM_Slot_PowerArmor>Сил. броня</TMM_Slot_PowerArmor>
+  <TMM_Slot_Primary>Основное</TMM_Slot_Primary>
+  <TMM_Slot_Sidearms>Запасное оружие</TMM_Slot_Sidearms>
+  <TMM_Slot_Backup>Запас</TMM_Slot_Backup>
+
+  <TMM_Stat_Carry>Груз</TMM_Stat_Carry>
+  <TMM_Stat_Move>Скорость</TMM_Stat_Move>
+  <TMM_Stat_Sharp>Защита (остр.)</TMM_Stat_Sharp>
+  <TMM_Stat_Blunt>Защита (туп.)</TMM_Stat_Blunt>
+
+  <TMM_WeaponModsEmpty>Слоты модулей: 0/{0}</TMM_WeaponModsEmpty>
+  <TMM_WeaponModsPrefix>Модули:</TMM_WeaponModsPrefix>
+  <TMM_ApparelModsPrefix>Улучшение:</TMM_ApparelModsPrefix>
+  <TMM_ApparelModStatLine>Установленный модуль: +{0}</TMM_ApparelModStatLine>
+  <TMM_EmptyModSlotTip>Пустой слот модуля (нажмите для установки)</TMM_EmptyModSlotTip>
+
+  <TMM_Menu_Info>Информация</TMM_Menu_Info>
+  <TMM_Menu_Unequip>Снять</TMM_Menu_Unequip>
+  <TMM_Menu_InstallMod>Установить {0}</TMM_Menu_InstallMod>
+  <TMM_Menu_RemoveMod>Снять модуль</TMM_Menu_RemoveMod>
+  <TMM_NoModsAvailable>Нет подходящих модулей</TMM_NoModsAvailable>
+  <TMM_Float_InstallOn>Установить {0} на {1}</TMM_Float_InstallOn>
+
+  <TMM_ColtAmmoInspect>Серебряные пули: {0} / {1}</TMM_ColtAmmoInspect>
+  <TMM_ReloadColtGizmo>Зарядить Кольт ({0}/{1})</TMM_ReloadColtGizmo>
+  <TMM_ReloadColtDesc>Дозарядить «Кольт» серебряными пулями из инвентаря или со складов до 13 патронов.</TMM_ReloadColtDesc>
+  <TMM_NoColtBullets>Нет серебряных пуль Кольта в инвентаре или на складах.</TMM_NoColtBullets>
+
+</LanguageData>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_WastelandMilitaryGear.label>военная экипировка Пустоши</TMM_WastelandMilitaryGear.label>
+  <TMM_WastelandMilitaryGear.description>Технологии пошива и штамповки армейской брони наёмников, тактических шлемов и офицерской формы.</TMM_WastelandMilitaryGear.description>
+
+  <TMM_VaultTecStandards.label>стандарты снаряжения Волт-Тек</TMM_VaultTecStandards.label>
+  <TMM_VaultTecStandards.description>Довоенные чертежи износостойких синтетических комбинезонов Убежищ и брони службы безопасности.</TMM_VaultTecStandards.description>
+
+  <TMM_RadSurvivalGear.label>противорадиационная одежда Пустоши</TMM_RadSurvivalGear.label>
+  <TMM_RadSurvivalGear.description>Методы пропитки и обшивки тяжёлых плащей прорезиненной тканью и свинцом для защиты от токсичных осадков.</TMM_RadSurvivalGear.description>
+
+  <TMM_HuntersMilitiaCraft.label>снаряжение охотников и ополчения</TMM_HuntersMilitiaCraft.label>
+  <TMM_HuntersMilitiaCraft.description>Пошив прочных кожаных плащей с серебряной прострочкой для охоты на нечисть и парадных головных уборов ополчения.</TMM_HuntersMilitiaCraft.description>
+
+  <TMM_OccultTailoring.label>оккультное портняжное дело</TMM_OccultTailoring.label>
+  <TMM_OccultTailoring.description>Вплетение серебряных нитей, огнеупорной подкладки и енохианских оберегов в костюмы и плащи.</TMM_OccultTailoring.description>
+
+  <TMM_SuperMutantArmor.label>броня титанов Пустоши</TMM_SuperMutantArmor.label>
+  <TMM_SuperMutantArmor.description>Методы тяжёлой сварки для создания негабаритных бронеплит и шлемов-клеток под исполинское тело супермутанта.</TMM_SuperMutantArmor.description>
+
+  <TMM_UndergroundElectronics.label>подпольная электроника</TMM_UndergroundElectronics.label>
+  <TMM_UndergroundElectronics.description>Сборка кустарных глушителей сигналов и сенсорных очков, используемых подпольными агентами.</TMM_UndergroundElectronics.description>
+
+  <TMM_BrotherhoodGear.label>полевое снаряжение Братства Стали</TMM_BrotherhoodGear.label>
+  <TMM_BrotherhoodGear.description>Производство усиленной формы писцов и баллистических поддоспешников для силовой брони.</TMM_BrotherhoodGear.description>
+
+  <TMM_InstituteTextiles.label>синтетические ткани Института</TMM_InstituteTextiles.label>
+  <TMM_InstituteTextiles.description>Синтез стерильных лабораторных халатов и лёгкой керамико-полимерной брони по образцам Института.</TMM_InstituteTextiles.description>
+
+  <TMM_ClanBioferriteCraft.label>алхимия ночных кланов</TMM_ClanBioferriteCraft.label>
+  <TMM_ClanBioferriteCraft.description>Обработка плотного бархата и кожи алхимическими составами для создания одежды ночных кланов.</TMM_ClanBioferriteCraft.description>
+
+</LanguageData>

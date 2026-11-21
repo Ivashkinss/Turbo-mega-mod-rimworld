@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Рюкзаки -->
+  <TMM_Backpack_Canvas.label>холщовый рюкзак</TMM_Backpack_Canvas.label>
+  <TMM_Backpack_Canvas.description>Прочный сшитый из холстины рюкзак с кожаными лямками. Умеренно увеличивает переносимый вес ценой небольшого замедления.</TMM_Backpack_Canvas.description>
+
+  <TMM_Backpack_Military.label>армейский рюкзак</TMM_Backpack_Military.label>
+  <TMM_Backpack_Military.description>Усиленный тактический рюкзак с внутренним каркасом и креплениями. Значительно повышает грузоподъёмность ценой небольшого снижения скорости.</TMM_Backpack_Military.description>
+
+  <TMM_Backpack_Power.label>силовой рюкзак</TMM_Backpack_Power.label>
+  <TMM_Backpack_Power.description>Довоенный разгрузочный ранец из пластали с микросервоприводами. Огромная прибавка к переносимому весу при минимальном штрафе к скорости.</TMM_Backpack_Power.description>
+
+  <!-- Модули оружия -->
+  <TMM_Mod_HolyWaterTank.label>баллон святой воды</TMM_Mod_HolyWaterTank.label>
+  <TMM_Mod_HolyWaterTank.description>Подствольный баллон под давлением с освящённой водой. Наносит дополнительный урон святой водой в течение 30 атак, сжигая демонов.</TMM_Mod_HolyWaterTank.description>
+
+  <TMM_Mod_BoraxTank.label>баллон буры</TMM_Mod_BoraxTank.label>
+  <TMM_Mod_BoraxTank.description>Компактный резервуар с раствором тетрабората натрия. На 30 атак добавляет урон бурой, пробивая уязвимость левиафанов и снимая неуязвимость Дика Романа.</TMM_Mod_BoraxTank.description>
+
+  <TMM_Mod_RockSaltPack.label>соляной заряд</TMM_Mod_RockSaltPack.label>
+  <TMM_Mod_RockSaltPack.description>Дополнительный магазин охотника с кристаллами каменной соли. Добавляет урон каменной солью на 30 атак против демонов и духов.</TMM_Mod_RockSaltPack.description>
+
+  <TMM_Mod_SilverEngraving.label>серебрёная гравировка</TMM_Mod_SilverEngraving.label>
+  <TMM_Mod_SilverEngraving.description>Тонкая вязка енохианских рун из серебра и небесной бронзы для нанесения на любое оружие. Навсегда добавляет енохианский урон без расхода зарядов, поражая уязвимость ангелов.</TMM_Mod_SilverEngraving.description>
+
+  <!-- Модуль одежды и патроны Кольта -->
+  <TMM_Mod_RailroadBallisticWeave.label>баллистическое волокно Подземки</TMM_Mod_RailroadBallisticWeave.label>
+  <TMM_Mod_RailroadBallisticWeave.description>Сверхплотная синтетическая подкладка Техника Тома, вшиваемая в плащ, куртку или дастер. Даёт +25% к защите от режущего урона без штрафа к скорости. Открывается по сюжету Подземки.</TMM_Mod_RailroadBallisticWeave.description>
+
+  <TMM_Ammo_ColtSilverBullet.label>серебряная пуля Кольта</TMM_Ammo_ColtSilverBullet.label>
+  <TMM_Ammo_ColtSilverBullet.description>Отлитый вручную и испещрённый рунами серебряный патрон для легендарного револьвера Сэмюэля Кольта. Крайне дорог в изготовлении; используется для дозарядки «Кольта» до 13 выстрелов.</TMM_Ammo_ColtSilverBullet.description>
+
+</LanguageData>

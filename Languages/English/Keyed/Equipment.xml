@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_TabEquipment>Equipment</TMM_TabEquipment>
+
+  <TMM_Slot_Head>Head</TMM_Slot_Head>
+  <TMM_Slot_Eyes>Eyes</TMM_Slot_Eyes>
+  <TMM_Slot_Skin>Skin</TMM_Slot_Skin>
+  <TMM_Slot_Middle>Middle</TMM_Slot_Middle>
+  <TMM_Slot_Shell>Shell</TMM_Slot_Shell>
+  <TMM_Slot_Legs>Legs</TMM_Slot_Legs>
+  <TMM_Slot_Belt>Belt</TMM_Slot_Belt>
+  <TMM_Slot_Backpack>Backpack</TMM_Slot_Backpack>
+  <TMM_Slot_PowerArmor>Power Armor</TMM_Slot_PowerArmor>
+  <TMM_Slot_Primary>Primary</TMM_Slot_Primary>
+  <TMM_Slot_Sidearms>Sidearms</TMM_Slot_Sidearms>
+  <TMM_Slot_Backup>Backup</TMM_Slot_Backup>
+
+  <TMM_Stat_Carry>Carry</TMM_Stat_Carry>
+  <TMM_Stat_Move>Speed</TMM_Stat_Move>
+  <TMM_Stat_Sharp>Sharp Armor</TMM_Stat_Sharp>
+  <TMM_Stat_Blunt>Blunt Armor</TMM_Stat_Blunt>
+
+  <TMM_WeaponModsEmpty>Module slots: 0/{0}</TMM_WeaponModsEmpty>
+  <TMM_WeaponModsPrefix>Modules:</TMM_WeaponModsPrefix>
+  <TMM_ApparelModsPrefix>Lining:</TMM_ApparelModsPrefix>
+  <TMM_ApparelModStatLine>Installed lining: +{0}</TMM_ApparelModStatLine>
+  <TMM_EmptyModSlotTip>Empty module slot (click to install)</TMM_EmptyModSlotTip>
+
+  <TMM_Menu_Info>Info</TMM_Menu_Info>
+  <TMM_Menu_Unequip>Unequip</TMM_Menu_Unequip>
+  <TMM_Menu_InstallMod>Install {0}</TMM_Menu_InstallMod>
+  <TMM_Menu_RemoveMod>Remove module</TMM_Menu_RemoveMod>
+  <TMM_NoModsAvailable>No compatible modules available</TMM_NoModsAvailable>
+  <TMM_Float_InstallOn>Install {0} onto {1}</TMM_Float_InstallOn>
+
+  <TMM_ColtAmmoInspect>Silver bullets: {0} / {1}</TMM_ColtAmmoInspect>
+  <TMM_ReloadColtGizmo>Reload Colt ({0}/{1})</TMM_ReloadColtGizmo>
+  <TMM_ReloadColtDesc>Reload The Colt up to 13 rounds using enchanted Colt silver bullets from inventory or stockpiles.</TMM_ReloadColtDesc>
+  <TMM_NoColtBullets>No Colt silver bullets available in inventory or stockpiles.</TMM_NoColtBullets>
+
+</LanguageData>

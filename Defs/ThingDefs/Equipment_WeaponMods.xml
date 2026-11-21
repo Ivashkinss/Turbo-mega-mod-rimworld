@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- BASE FOR EQUIPMENT MODULES                                            -->
+  <!-- ===================================================================== -->
+
+  <ThingDef Name="TMM_EquipmentModBase" ParentName="ResourceBase" Abstract="True">
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+      <Mass>0.8</Mass>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 1. HOLY WATER TANK (WEAPON MOD, 30 CHARGES, TMM_HolyWater)            -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="TMM_EquipmentModBase">
+    <defName>TMM_Mod_HolyWaterTank</defName>
+    <label>holy water tank</label>
+    <description>A pressurized weapon attachment filled with consecrated water. Coats projectiles or blades for 30 attacks, adding extra holy water burn damage that devastates demons.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/TMM/TMM_Mod_HolyWaterTank</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>260</MarketValue>
+      <WorkToMake>2800</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>25</Steel>
+      <Silver>35</Silver>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+    </recipeMaker>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_EquipmentMod">
+        <modKind>Weapon</modKind>
+        <extraDamageDef>TMM_HolyWater</extraDamageDef>
+        <extraDamageAmount>6</extraDamageAmount>
+        <extraArmorPenetration>0.50</extraArmorPenetration>
+        <maxCharges>30</maxCharges>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 2. BORAX TANK (WEAPON MOD, 30 CHARGES, TMM_BoraxBurn)                 -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="TMM_EquipmentModBase">
+    <defName>TMM_Mod_BoraxTank</defName>
+    <label>borax canister mod</label>
+    <description>A compact under-barrel sodium borate reservoir. Coats shots or strikes for 30 attacks with caustic borax, triggering Leviathan weakness and stripping Dick Roman's invulnerability.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Chemfuel</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>320</MarketValue>
+      <WorkToMake>3600</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>25</Steel>
+      <Chemfuel>20</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>TMM_BoraxResearch</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+    </recipeMaker>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_EquipmentMod">
+        <modKind>Weapon</modKind>
+        <extraDamageDef>TMM_BoraxBurn</extraDamageDef>
+        <extraDamageAmount>6</extraDamageAmount>
+        <extraArmorPenetration>0.85</extraArmorPenetration>
+        <maxCharges>30</maxCharges>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 3. ROCK SALT CHARGE (WEAPON MOD, 30 CHARGES, TMM_RockSalt)            -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="TMM_EquipmentModBase">
+    <defName>TMM_Mod_RockSaltPack</defName>
+    <label>rock salt charge pack</label>
+    <description>A hunter's auxiliary magazine loaded with coarse rock salt crystals. Adds rock salt damage to 30 attacks, severely punishing demons and spirits.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>190</MarketValue>
+      <WorkToMake>2200</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+      <Silver>15</Silver>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+    </recipeMaker>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_EquipmentMod">
+        <modKind>Weapon</modKind>
+        <extraDamageDef>TMM_RockSalt</extraDamageDef>
+        <extraDamageAmount>5</extraDamageAmount>
+        <extraArmorPenetration>0.35</extraArmorPenetration>
+        <maxCharges>30</maxCharges>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 4. SILVERED ENOCHIAN ENGRAVING (PERMANENT WEAPON MOD, TMM_Enochian)   -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="TMM_EquipmentModBase">
+    <defName>TMM_Mod_SilverEngraving</defName>
+    <label>silvered Enochian engraving kit</label>
+    <description>Precision-inlaid silver runes and celestial bronze sigils designed to be etched onto any firearm or blade. Permanently adds Enochian strike damage with no charge limit, exploiting angelic vulnerability.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ComponentIndustrial</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>680</MarketValue>
+      <WorkToMake>6500</WorkToMake>
+      <Mass>0.4</Mass>
+    </statBases>
+    <costList>
+      <Silver>90</Silver>
+      <Gold>8</Gold>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li>ElectricSmithy</li>
+      </recipeUsers>
+    </recipeMaker>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_EquipmentMod">
+        <modKind>Weapon</modKind>
+        <extraDamageDef>TMM_Enochian</extraDamageDef>
+        <extraDamageAmount>5</extraDamageAmount>
+        <extraArmorPenetration>0.65</extraArmorPenetration>
+        <maxCharges>0</maxCharges>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 5. RAILROAD BALLISTIC WEAVE (APPAREL MOD, +0.25 SHARP ARMOR)          -->
+  <!-- Unlocked by story flag: unlock.railroad_ballistic                     -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="TMM_EquipmentModBase">
+    <defName>TMM_Mod_RailroadBallisticWeave</defName>
+    <label>Railroad ballistic weave</label>
+    <description>Tinker Tom's ultra-dense synthetic weave lining, stitched into the inner shell of a coat, jacket, or duster. Adds +25% sharp armor protection without adding weight penalty. Crafting unlocks via the Railroad questline.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Synthread</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>520</MarketValue>
+      <WorkToMake>5400</WorkToMake>
+      <Mass>0.5</Mass>
+    </statBases>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_EquipmentMod">
+        <modKind>Apparel</modKind>
+        <armorSharpOffset>0.25</armorSharpOffset>
+        <maxCharges>0</maxCharges>
+        <requiredStoryFlag>unlock.railroad_ballistic</requiredStoryFlag>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <RecipeDef>
+    <defName>TMM_Make_RailroadBallisticWeave</defName>
+    <label>craft Railroad ballistic weave</label>
+    <description>Weave ultra-dense ballistic lining capable of reinforcing coats, jackets, and dusters with +25% sharp armor.</description>
+    <jobString>Weaving ballistic fiber.</jobString>
+    <workAmount>5400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <recipeUsers>
+      <li>ElectricTailoringBench</li>
+      <li>HandTailoringBench</li>
+      <li>TableMachining</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cloth</li>
+            <li>DevilstrandCloth</li>
+            <li>Synthread</li>
+            <li>Hyperweave</li>
+          </thingDefs>
+        </filter>
+        <count>45</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <TMM_Mod_RailroadBallisticWeave>1</TMM_Mod_RailroadBallisticWeave>
+    </products>
+  </RecipeDef>
+
+  <!-- ===================================================================== -->
+  <!-- 6. ENCHANTED COLT SILVER BULLET (1 BULLET: 25 GOLD, 40 SILVER, 1 ADV) -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>TMM_Ammo_ColtSilverBullet</defName>
+    <label>Colt silver bullet</label>
+    <description>A hand-cast, rune-inscribed silver cartridge engineered specifically for Samuel Colt's 1851 revolver. Extremely costly to produce; used to reload The Colt up to 13 rounds.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Silver</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MarketValue>650</MarketValue>
+      <Mass>0.08</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+
+  <RecipeDef>
+    <defName>TMM_Make_ColtSilverBullet</defName>
+    <label>forge Colt silver bullet</label>
+    <description>Cast and engrave a single enchanted silver bullet for The Colt.</description>
+    <jobString>Forging Colt silver bullet.</jobString>
+    <workAmount>8000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>TMM_ColtBullets</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <recipeUsers>
+      <li>TableMachining</li>
+      <li>ElectricSmithy</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Gold</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>40</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <TMM_Ammo_ColtSilverBullet>1</TMM_Ammo_ColtSilverBullet>
+    </products>
+  </RecipeDef>
+
+  <!-- ===================================================================== -->
+  <!-- 7. REFILL RECIPES FOR DEPLETED WEAPON TANKS / PACKS                   -->
+  <!-- ===================================================================== -->
+
+  <RecipeDef>
+    <defName>TMM_Refill_HolyWaterTank</defName>
+    <label>refill holy water tank</label>
+    <description>Replenish a depleted holy water tank back to 30 full charges.</description>
+    <jobString>Refilling holy water tank.</jobString>
+    <workAmount>1200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>DrugLab</li>
+      <li>TableMachining</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TMM_Mod_HolyWaterTank</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <products>
+      <TMM_Mod_HolyWaterTank>1</TMM_Mod_HolyWaterTank>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>TMM_Refill_BoraxTank</defName>
+    <label>refill borax canister mod</label>
+    <description>Repressurize a depleted borax canister back to 30 full charges.</description>
+    <jobString>Refilling borax canister.</jobString>
+    <workAmount>1400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <researchPrerequisite>TMM_BoraxResearch</researchPrerequisite>
+    <recipeUsers>
+      <li>DrugLab</li>
+      <li>TableMachining</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TMM_Mod_BoraxTank</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <products>
+      <TMM_Mod_BoraxTank>1</TMM_Mod_BoraxTank>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>TMM_Refill_RockSaltPack</defName>
+    <label>refill rock salt charge pack</label>
+    <description>Repack a depleted rock salt magazine back to 30 full charges.</description>
+    <jobString>Refilling rock salt pack.</jobString>
+    <workAmount>1000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>TableMachining</li>
+      <li>ElectricSmithy</li>
+      <li>FueledSmithy</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TMM_Mod_RockSaltPack</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <products>
+      <TMM_Mod_RockSaltPack>1</TMM_Mod_RockSaltPack>
+    </products>
+  </RecipeDef>
+
+</Defs>

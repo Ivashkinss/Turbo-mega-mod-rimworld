@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- SET 1: DEAN WINCHESTER — "OLDER BROTHER"                              -->
+  <!-- Dean's worn leather jacket + Dean's sawed-off double-barrel           -->
+  <!-- +10% MoveSpeed + immunity to supernatural fear / panic                -->
+  <!-- ===================================================================== -->
+
+  <HediffDef>
+    <defName>TMM_Hediff_Set_Dean</defName>
+    <label>Older Brother (set bonus)</label>
+    <description>Wearing Dean's worn leather jacket while wielding his sawed-off shotgun grants +10% movement speed and complete immunity to supernatural fear and panic.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.90, 0.72, 0.35)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.10</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ===================================================================== -->
+  <!-- SET 2: CASTIEL — "REBEL SERAPH"                                       -->
+  <!-- Castiel's rumpled trenchcoat + Castiel's angel blade                  -->
+  <!-- +15% MoveSpeed + 20% cooldown reduction on angelic abilities          -->
+  <!-- ===================================================================== -->
+
+  <HediffDef>
+    <defName>TMM_Hediff_Set_Castiel</defName>
+    <label>Rebel Seraph (set bonus)</label>
+    <description>Wearing Castiel's rumpled trenchcoat while wielding his angel blade grants +15% movement speed and reduces the cooldown of angelic abilities by 20%.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.15</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ===================================================================== -->
+  <!-- SET 3: KELLOGG — "INSTITUTE MERCENARY"                                -->
+  <!-- Kellogg's armored mercenary outfit + Kellogg's .44 revolver           -->
+  <!-- -15% AimingDelayFactor                                                -->
+  <!-- ===================================================================== -->
+
+  <HediffDef>
+    <defName>TMM_Hediff_Set_Kellogg</defName>
+    <label>Institute Mercenary (set bonus)</label>
+    <description>Wearing Kellogg's armored mercenary outfit while wielding his .44 revolver reduces aiming delay by 15%.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.78, 0.82)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <AimingDelayFactor>0.85</AimingDelayFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

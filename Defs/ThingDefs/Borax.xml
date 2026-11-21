@@ -49,7 +49,7 @@
     <description>A pressurized chemical sprayer filled with concentrated sodium borate solution. Harmless to humans, this caustic white mist dissolves the indestructible flesh of Leviathans and strips Dick Roman of his supernatural invulnerability.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/IncendiaryLauncher</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Gun_BoraxSprayer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- 1. CANVAS BACKPACK (TIER 1)                                           -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Backpack_Canvas</defName>
+    <label>canvas backpack</label>
+    <description>A stitched canvas pack with leather straps worn on the back. Modestly increases carrying capacity at a slight cost to movement speed.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>45</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>15</Steel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <WorkToMake>3600</WorkToMake>
+      <Mass>1.6</Mass>
+      <EquipDelay>1.5</EquipDelay>
+      <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>35</CarryingCapacity>
+      <MoveSpeed>-0.05</MoveSpeed>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <layers>
+        <li>TMM_Backpack</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.BackpackExtension">
+        <bonusCaravanKg>25</bonusCaravanKg>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 2. MILITARY BACKPACK (TIER 2)                                         -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Backpack_Military</defName>
+    <label>military field backpack</label>
+    <description>A reinforced tactical rucksack with an internal aluminum frame and modular webbing. Greatly expands carrying capacity while slightly slowing movement.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>70</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>35</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <WorkToMake>7200</WorkToMake>
+      <Mass>2.8</Mass>
+      <EquipDelay>2.0</EquipDelay>
+      <ArmorRating_Sharp>0.12</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>70</CarryingCapacity>
+      <MoveSpeed>-0.10</MoveSpeed>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>ComplexClothing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <layers>
+        <li>TMM_Backpack</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.BackpackExtension">
+        <bonusCaravanKg>50</bonusCaravanKg>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 3. POWERED EXO-BACKPACK (TIER 3 — RESEARCH LOCKED)                    -->
+  <!-- ===================================================================== -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Backpack_Power</defName>
+    <label>powered exo-backpack</label>
+    <description>A pre-war servo-assisted load-bearing frame built from plasteel and micro-hydraulics. Grants massive carrying capacity with minimal mobility penalty.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Plasteel>45</Plasteel>
+      <Steel>50</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>340</MaxHitPoints>
+      <WorkToMake>16000</WorkToMake>
+      <Mass>4.5</Mass>
+      <EquipDelay>3.0</EquipDelay>
+      <ArmorRating_Sharp>0.22</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>120</CarryingCapacity>
+      <MoveSpeed>-0.05</MoveSpeed>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_PowerBackpackResearch</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <layers>
+        <li>TMM_Backpack</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.BackpackExtension">
+        <bonusCaravanKg>85</bonusCaravanKg>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+</Defs>

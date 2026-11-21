@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Hediff_Set_Dean.label>Старший брат (бонус комплекта)</TMM_Hediff_Set_Dean.label>
+  <TMM_Hediff_Set_Dean.description>Потёртая кожаная куртка Дина и его обрез вместе дают +10% к скорости передвижения и полный иммунитет к страху от нечисти и панике.</TMM_Hediff_Set_Dean.description>
+
+  <TMM_Hediff_Set_Castiel.label>Мятежный серафим (бонус комплекта)</TMM_Hediff_Set_Castiel.label>
+  <TMM_Hediff_Set_Castiel.description>Мятый плащ Кастиэля и его ангельский клинок вместе дают +15% к скорости передвижения и сокращают перезарядку ангельских способностей на 20%.</TMM_Hediff_Set_Castiel.description>
+
+  <TMM_Hediff_Set_Kellogg.label>Наёмник Института (бонус комплекта)</TMM_Hediff_Set_Kellogg.label>
+  <TMM_Hediff_Set_Kellogg.description>Бронекуртка Келлога и его револьвер вместе сокращают задержку прицеливания на 15%.</TMM_Hediff_Set_Kellogg.description>
+
+</LanguageData>

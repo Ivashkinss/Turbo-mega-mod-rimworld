@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Story-gated recipes for all 13 quest-unlocked faction apparel items.
+    Availability is controlled by FactionApparelHarmony.Postfix_RecipeDef_AvailableNow,
+    which checks SparkStory for requiredStoryFlag ("unlock.<item_id>=true") OR any alias
+    in altStoryFlags (set by Story_<faction>.xml quests).
+  -->
+
+  <!-- 1. Infernal Operative Coat -->
+  <RecipeDef>
+    <defName>TMM_Make_demon_infernal_trenchcoat</defName>
+    <label>craft infernal operative coat</label>
+    <description>Tailor a flame-resistant charcoal leather trenchcoat stitched with crimson thread.</description>
+    <jobString>Tailoring infernal operative coat.</jobString>
+    <workAmount>5800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>65</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>15</count></li>
+    </ingredients>
+    <products><TMM_Apparel_demon_infernal_trenchcoat>1</TMM_Apparel_demon_infernal_trenchcoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.demon_infernal_trenchcoat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.hell_operative_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 2. Celestial Host Vestment (angel_only) -->
+  <RecipeDef>
+    <defName>TMM_Make_angel_celestial_raiment</defName>
+    <label>forge celestial host vestment</label>
+    <description>Fabricate white-and-gold Enochian plate vestments cut for angelic wings.</description>
+    <jobString>Forging celestial host vestment.</jobString>
+    <workAmount>14000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>75</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>50</count></li>
+    </ingredients>
+    <products><TMM_Apparel_angel_celestial_raiment>1</TMM_Apparel_angel_celestial_raiment></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.angel_celestial_raiment</requiredStoryFlag>
+        <altStoryFlags><li>unlock.celestial_vestments</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 3. T-60 Brotherhood Power Armor -->
+  <RecipeDef>
+    <defName>TMM_Make_bos_t60_power_armor</defName>
+    <label>fabricate T-60 Brotherhood power armor</label>
+    <description>Assemble a heavy T-60 Brotherhood power armor suit powered by uranium fuel cells.</description>
+    <jobString>Fabricating T-60 power armor.</jobString>
+    <workAmount>24000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>9</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <!-- NOTE: Nuclear reactor researchPrerequisite can be added once that ResearchProjectDef exists. -->
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>110</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>8</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Apparel_bos_t60_power_armor>1</TMM_Apparel_bos_t60_power_armor></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.bos_t60_power_armor</requiredStoryFlag>
+        <altStoryFlags><li>unlock.bos_t60_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 4. T-60 Power Armor Helmet -->
+  <RecipeDef>
+    <defName>TMM_Make_bos_t60_helmet</defName>
+    <label>fabricate T-60 power armor helmet</label>
+    <description>Assemble an armored T-60 helmet with integrated rebreather and tactical visor.</description>
+    <jobString>Fabricating T-60 helmet.</jobString>
+    <workAmount>8500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>5</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>4</count></li>
+    </ingredients>
+    <products><TMM_Apparel_bos_t60_helmet>1</TMM_Apparel_bos_t60_helmet></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.bos_t60_helmet</requiredStoryFlag>
+        <altStoryFlags><li>unlock.bos_t60_power_armor</li><li>unlock.bos_t60_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 5. Outcast T-45d Power Armor -->
+  <RecipeDef>
+    <defName>TMM_Make_outcast_power_armor</defName>
+    <label>fabricate Outcast T-45d power armor</label>
+    <description>Assemble refurbished matte-black and crimson Outcast T-45d power armor.</description>
+    <jobString>Fabricating Outcast power armor.</jobString>
+    <workAmount>21000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>95</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>8</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <products><TMM_Apparel_outcast_power_armor>1</TMM_Apparel_outcast_power_armor></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.outcast_power_armor</requiredStoryFlag>
+        <altStoryFlags><li>unlock.outcasts_t45d_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 6. Enclave X-01 Power Armor -->
+  <RecipeDef>
+    <defName>TMM_Make_enclave_x01_power_armor</defName>
+    <label>fabricate Enclave X-01 power armor</label>
+    <description>Assemble sloped composite Enclave X-01 power armor.</description>
+    <jobString>Fabricating X-01 power armor.</jobString>
+    <workAmount>28000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>10</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>135</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>3</count></li>
+    </ingredients>
+    <products><TMM_Apparel_enclave_x01_power_armor>1</TMM_Apparel_enclave_x01_power_armor></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.enclave_x01_power_armor</requiredStoryFlag>
+        <altStoryFlags><li>unlock.enclave_x01_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 7. X-01 Insectoid Helmet -->
+  <RecipeDef>
+    <defName>TMM_Make_enclave_x01_helmet</defName>
+    <label>fabricate X-01 insectoid helmet</label>
+    <description>Assemble an Enclave X-01 power armor helmet with amber optical lenses.</description>
+    <jobString>Fabricating X-01 helmet.</jobString>
+    <workAmount>9500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <skillRequirements><Crafting>9</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>8</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <products><TMM_Apparel_enclave_x01_helmet>1</TMM_Apparel_enclave_x01_helmet></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.enclave_x01_helmet</requiredStoryFlag>
+        <altStoryFlags><li>unlock.enclave_x01_power_armor</li><li>unlock.enclave_x01_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 8. Institute Courser Coat -->
+  <RecipeDef>
+    <defName>TMM_Make_institute_courser_uniform</defName>
+    <label>fabricate Institute Courser coat</label>
+    <description>Craft a matte-black hyperweave and ceramic armored Courser coat.</description>
+    <jobString>Fabricating Courser coat.</jobString>
+    <workAmount>15000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Hyperweave</li></thingDefs></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>40</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <products><TMM_Apparel_institute_courser_uniform>1</TMM_Apparel_institute_courser_uniform></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.institute_courser_uniform</requiredStoryFlag>
+        <altStoryFlags><li>unlock.courser_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 9. Railroad Ballistic-Weave Heavy Coat -->
+  <RecipeDef>
+    <defName>TMM_Make_railroad_armored_coat</defName>
+    <label>craft ballistic-weave heavy coat</label>
+    <description>Line a heavy wasteland duster with Railroad ballistic weave fibers.</description>
+    <jobString>Tailoring ballistic-weave coat.</jobString>
+    <workAmount>9800</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>85</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>3</count></li>
+    </ingredients>
+    <products><TMM_Apparel_railroad_armored_coat>1</TMM_Apparel_railroad_armored_coat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.railroad_armored_coat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.railroad_ballistic</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 10. Minutemen Colonial Duster (Leathery category per balance fix) -->
+  <RecipeDef>
+    <defName>TMM_Make_minutemen_general_uniform</defName>
+    <label>craft Minutemen colonial duster</label>
+    <description>Tailor a reinforced colonial general's duster with boiled leather shoulder guards.</description>
+    <jobString>Tailoring Minutemen duster.</jobString>
+    <workAmount>7600</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>65</count></li>
+      <li><filter><categories><li>Leathers</li></categories></filter><count>45</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <products><TMM_Apparel_minutemen_general_uniform>1</TMM_Apparel_minutemen_general_uniform></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.minutemen_general_uniform</requiredStoryFlag>
+        <altStoryFlags><li>unlock.minutemen_general_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 11. London Black-Ops Trenchcoat -->
+  <RecipeDef>
+    <defName>TMM_Make_mol_covert_trenchcoat</defName>
+    <label>craft London black-ops trenchcoat</label>
+    <description>Assemble a kevlar-lined, ward-etched waterproof trenchcoat of the British Men of Letters.</description>
+    <jobString>Tailoring London black-ops trenchcoat.</jobString>
+    <workAmount>10500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Synthread</li></thingDefs></filter><count>75</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>25</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <products><TMM_Apparel_mol_covert_trenchcoat>1</TMM_Apparel_mol_covert_trenchcoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.mol_covert_trenchcoat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.ketch_suit</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 12. Crimson Revolutionary Coat -->
+  <RecipeDef>
+    <defName>TMM_Make_ghoul_revolutionary_frockcoat</defName>
+    <label>craft crimson revolutionary coat</label>
+    <description>Tailor a weathered crimson frock coat in Goodneighbor's iconic style.</description>
+    <jobString>Tailoring crimson revolutionary coat.</jobString>
+    <workAmount>4400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <skillRequirements><Crafting>5</Crafting></skillRequirements>
+    <recipeUsers><li>ElectricTailoringBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>75</count></li>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <products><TMM_Apparel_ghoul_revolutionary_frockcoat>1</TMM_Apparel_ghoul_revolutionary_frockcoat></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.ghoul_revolutionary_frockcoat</requiredStoryFlag>
+        <altStoryFlags><li>unlock.hancock_coat</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 13A. Living Bioferrite Carapace (Fallback without Anomaly DLC) -->
+  <RecipeDef>
+    <defName>TMM_Make_clan_bioferrite_carapace</defName>
+    <label>grow living carapace armor</label>
+    <description>Cultivate an organic self-repairing carapace from plasteel weave and devilstrand.</description>
+    <jobString>Cultivating living carapace.</jobString>
+    <workAmount>18500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>85</count></li>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>70</count></li>
+      <li><filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <products><TMM_Apparel_clan_bioferrite_carapace>1</TMM_Apparel_clan_bioferrite_carapace></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.clan_bioferrite_carapace</requiredStoryFlag>
+        <altStoryFlags><li>unlock.living_bioferrite_armor</li></altStoryFlags>
+        <hideWhenAnomalyActive>true</hideWhenAnomalyActive>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <!-- 13B. Living Bioferrite Carapace (Anomaly DLC version using BioferriteShaper + Bioferrite) -->
+  <RecipeDef MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>TMM_Make_clan_bioferrite_carapace_Anomaly</defName>
+    <label>shape living bioferrite carapace</label>
+    <description>Shape hardened bioferrite, plasteel, and devilstrand into a living self-repairing carapace.</description>
+    <jobString>Shaping living bioferrite carapace.</jobString>
+    <workAmount>18500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>BioferriteShaper</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Bioferrite</li></thingDefs></filter><count>110</count></li>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>35</count></li>
+      <li><filter><thingDefs><li>DevilstrandCloth</li></thingDefs></filter><count>40</count></li>
+    </ingredients>
+    <products><TMM_Apparel_clan_bioferrite_carapace>1</TMM_Apparel_clan_bioferrite_carapace></products>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelRecipeExtension">
+        <requiredStoryFlag>unlock.clan_bioferrite_carapace</requiredStoryFlag>
+        <altStoryFlags><li>unlock.living_bioferrite_armor</li></altStoryFlags>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+</Defs>

@@ -29,7 +29,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/ChargeRifle</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_Experiment18A</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_ChargeRifle</soundInteract>
@@ -103,7 +103,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/Minigun</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_FinalJudgment</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
@@ -172,7 +172,7 @@
     <techLevel>Industrial</techLevel>
     <smeltable>false</smeltable>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_TheColt</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Revolver</soundInteract>
@@ -250,7 +250,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/ChargeLance</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_LorenzosArtifact</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_ChargeLance</soundInteract>
@@ -302,7 +302,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/Mace</texPath> <!-- TODO art (vanilla Mace avoids Royalty dependency) -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_AtomsJudgement</texPath> <!-- TODO art (vanilla Mace avoids Royalty dependency) -->
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>
@@ -358,7 +358,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/ChargeLance</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_TeslaCannon</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_ChargeLance</soundInteract>
@@ -424,7 +424,7 @@
     <techLevel>Industrial</techLevel>
     <smeltable>false</smeltable>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/AssaultRifle</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_OverseersGuardian</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
@@ -498,7 +498,7 @@
     <techLevel>Industrial</techLevel>
     <smeltable>false</smeltable>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/SniperRifle</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_RailwayRifle</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
@@ -567,7 +567,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/RocketLauncher</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_BigBoy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
@@ -643,7 +643,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/Autopistol</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_TheEqualizer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Autopistol</soundInteract>
@@ -695,7 +695,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/Knife</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_FirstBlade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>
@@ -730,7 +730,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/Gladius</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_ArchangelBlade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>
@@ -771,7 +771,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/LongSword</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_AlphaPredator</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>
