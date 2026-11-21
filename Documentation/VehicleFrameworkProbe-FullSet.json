@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3433,
-                         "scalarFields":  4034,
+                         "scalarFields":  4046,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4261,
-                        "ticksAdvanced":  1787,
+                        "framesAdvanced":  4171,
+                        "ticksAdvanced":  1754,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -43,7 +43,7 @@
     "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "vehicleFramework":  {
                              "passed":  true,
-                             "checksCount":  5,
+                             "checksCount":  10,
                              "checks":  [
                                             {
                                                 "name":  "VehiclesAssemblyLoaded",
@@ -53,12 +53,12 @@
                                             {
                                                 "name":  "SmashToolsLoaded",
                                                 "passed":  true,
-                                                "actual":  "ok"
+                                                "actual":  "checked"
                                             },
                                             {
                                                 "name":  "VehicleFrameworkDefsLoaded",
                                                 "passed":  true,
-                                                "actual":  "93"
+                                                "actual":  "95"
                                             },
                                             {
                                                 "name":  "VehicleFrameworkPatchesApplied",
@@ -66,9 +66,34 @@
                                                 "actual":  "211"
                                             },
                                             {
-                                                "name":  "MapRunsWithFramework",
+                                                "name":  "HunterTruckDefLoaded",
                                                 "passed":  true,
-                                                "actual":  "600"
+                                                "actual":  "РџРёРєР°Рї РѕС…РѕС‚РЅРёРєРѕРІ"
+                                            },
+                                            {
+                                                "name":  "HunterTruckSpawned",
+                                                "passed":  true,
+                                                "actual":  "True (143, 0, 117)"
+                                            },
+                                            {
+                                                "name":  "HunterTruckSurvivesTicks",
+                                                "passed":  true,
+                                                "actual":  "840"
+                                            },
+                                            {
+                                                "name":  "HunterTruckDrives",
+                                                "passed":  true,
+                                                "actual":  "boarded=True canMove=True dest=(145, 0, 119) moved=18 now=(143, 0, 117)"
+                                            },
+                                            {
+                                                "name":  "HunterTruckHasFuelComp",
+                                                "passed":  true,
+                                                "actual":  "CompAttachBase,CompFueledTravel"
+                                            },
+                                            {
+                                                "name":  "SaveWritten",
+                                                "passed":  true,
+                                                "actual":  "checked"
                                             }
                                         ]
                          },

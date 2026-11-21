@@ -19,6 +19,178 @@
 - Исследования `TMM_Vehicle_Engines` и `TMM_Vehicle_Vertibird` — свои `ResearchProjectDef` в основной вкладке исследований (без своего `tab`), как остальные исследования мода. Пререквизиты: ванильные `Electricity` и `Machining` для двигателей, `MicroelectronicsBasics` для винтокрыла.
 - Фракционные машины (техничка, винтокрыл Анклава) подключи к `pawnGroupMakers` нельзя без VF-API рейдов — просто пометь `<!-- TODO raids -->`, рейды сделаем отдельно.
 
+## Проверенный образец (уже в моде, работает в игре)
+Я собрал прототип `TMM_Vehicle_HunterTruck`. В RimWorld 1.7 он спавнится, водитель садится, машина проезжает 18 клеток, сохраняется и загружается без ошибок. **Делай остальные машины по этому образцу** и дополни его (турель в кузове, заменишь мой временный арт).
+
+Что выяснилось при проверке:
+- Шейдеры VF (`CutoutComplexRGB/Pattern/Skin`) лежат в AssetBundle, а 1.7 их не загружает. Ставь **`<shaderType>CutoutComplex</shaderType>`**, `graphicClass` `Vehicles.Graphic_Vehicle`, без маски и паттернов.
+- `drawSize` **квадратный** (например, `(5,5)` для машины 2×4): текстуры квадратные, машина нарисована по центру, вид `east` — та же машина, повёрнутая вправо.
+- Стата `AccelerationRate` в VF 1.6 **нет**. Есть `Mass`, `MoveSpeed`, `CargoCapacity`, `RepairRate`, `FlightSpeed`, `FlightControl`, `BodyIntegrity`, `WorkToSabotage`.
+- `categories` у компонентов — эти же статы VF.
+- Русские ключи: `<defName>.properties.roles.N.label`, `<defName>.components.N.label`. Папки `Vehicles.VehicleDef` и `Vehicles.VehicleBuildDef`.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vehicles of Turbo mega mod on the integrated Vehicle Framework (SmashPhil, MIT).
+     Loaded only when the framework is present: the defs use its classes. Graphics use the vanilla CutoutComplex
+     shader because the framework's own RGB shaders come in AssetBundles that RimWorld 1.7 does not load. -->
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>TMM_Vehicle_Engines</defName>
+    <label>combustion vehicles</label>
+    <description>Rebuild pre-war combustion engines, gearboxes and wheels into working ground vehicles: trucks and cars that carry colonists and cargo across the map and the wasteland.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Machining</li>
+      <li>Electricity</li>
+    </prerequisites>
+    <researchViewX>9.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_HunterTruck</defName>
+    <label>hunter pickup</label>
+    <description>An armoured pre-war pickup kept running by the Minutemen and travelling monster hunters. Seats a driver and two passengers, carries a good load in the bed and burns chemfuel. Its doors are lined with salt and iron.</description>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(5,5)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+    <fillPercent>1</fillPercent>
+    <buildDef>TMM_Vehicle_HunterTruck_Blueprint</buildDef>
+    <size>(2,4)</size>
+    <vehicleCategory>Transport</vehicleCategory>
+    <techLevel>Industrial</techLevel>
+    <vehicleType>Land</vehicleType>
+    <statBases>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.3</ArmorRating_Heat>
+      <Flammability>0.4</Flammability>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+    <vehicleStats>
+      <Mass>220</Mass>
+      <MoveSpeed>9</MoveSpeed>
+      <CargoCapacity>500</CargoCapacity>
+      <RepairRate>0.5</RepairRate>
+    </vehicleStats>
+    <race>
+      <baseBodySize>3</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>1.2</worldSpeedMultiplier>
+      <visibilityWeight>3</visibilityWeight>
+      <roles>
+        <li>
+          <key>driver</key>
+          <label>driver</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>passenger</label>
+          <slots>2</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Engine</key>
+        <label>engine</label>
+        <health>220</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Wheels</key>
+        <label>wheels</label>
+        <health>240</health>
+        <depth>External</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Bed</key>
+        <label>cargo bed</label>
+        <health>300</health>
+        <depth>External</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Body</key>
+        <label>body</label>
+        <health>600</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>15</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>0.5</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>80</fuelCapacity>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
+
+  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+    <defName>TMM_Vehicle_HunterTruck_Blueprint</defName>
+    <label>hunter pickup</label>
+    <description>Assemble a hunter pickup from a rebuilt engine, steel and spare parts.</description>
+    <thingToSpawn>TMM_Vehicle_HunterTruck</thingToSpawn>
+    <size>(2,4)</size>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+    </statBases>
+    <costList>
+      <Steel>260</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <WoodLog>40</WoodLog>
+    </costList>
+    <researchPrerequisites>
+      <li>TMM_Vehicle_Engines</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+  </Vehicles.VehicleBuildDef>
+
+</Defs>
+```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Vehicle_HunterTruck.label>пикап охотников</TMM_Vehicle_HunterTruck.label>
+  <TMM_Vehicle_HunterTruck.description>Бронированный довоенный пикап, который держат на ходу минитмены и бродячие охотники на чудовищ. Вмещает водителя и двух пассажиров, хорошо везёт груз в кузове и ездит на химтопливе. Двери изнутри обложены солью и железом.</TMM_Vehicle_HunterTruck.description>
+  <TMM_Vehicle_HunterTruck.properties.roles.0.label>водитель</TMM_Vehicle_HunterTruck.properties.roles.0.label>
+  <TMM_Vehicle_HunterTruck.properties.roles.1.label>пассажир</TMM_Vehicle_HunterTruck.properties.roles.1.label>
+  <TMM_Vehicle_HunterTruck.components.0.label>двигатель</TMM_Vehicle_HunterTruck.components.0.label>
+  <TMM_Vehicle_HunterTruck.components.1.label>колёса</TMM_Vehicle_HunterTruck.components.1.label>
+  <TMM_Vehicle_HunterTruck.components.2.label>кузов</TMM_Vehicle_HunterTruck.components.2.label>
+  <TMM_Vehicle_HunterTruck.components.3.label>корпус</TMM_Vehicle_HunterTruck.components.3.label>
+</LanguageData>
+```
+
 ### Порядок частей
 1. `Defs/VehicleDefs/Vehicles_TMM.xml` — все пять машин (+ вариант Анклава).
 2. `Defs/VehicleDefs/VehicleTurrets_TMM.xml` — турели.
