@@ -25,7 +25,7 @@
                                                 {
                                                     "name":  "RealTrip_FoodConsumedNaturally",
                                                     "passed":  true,
-                                                    "expected":  "\u003c 4",
+                                                    "expected":  "\u003c 2",
                                                     "actual":  "0"
                                                 },
                                                 {
@@ -42,8 +42,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2872,
-                        "ticksAdvanced":  35054,
+                        "framesAdvanced":  2866,
+                        "ticksAdvanced":  31221,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -52,7 +52,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
-    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "freshAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "passed":  true
 }

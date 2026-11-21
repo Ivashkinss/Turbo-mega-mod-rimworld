@@ -302,7 +302,7 @@
     <smeltable>false</smeltable>
     <recipeMaker IsNull="True"/>
     <graphicData>
-      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_AtomsJudgement</texPath> <!-- TODO art (vanilla Mace avoids Royalty dependency) -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Legendary_AtomsJudgement</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>

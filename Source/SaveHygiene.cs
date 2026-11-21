@@ -28,23 +28,36 @@ namespace TurboMegaMod
             catch (Exception ex) { Log.Warning("[TMM] SaveHygiene skipped: " + ex.Message); }
         }
 
-        /// Returns how many relations were removed.
+        /// Returns how many relations were removed. A relation is dangling when the other pawn will not be written
+        /// to the save: it is not on a map, not a world pawn and not held anywhere in the world (caravans, outposts,
+        /// transporters, corpses and other holders are all included).
         public static int CleanDanglingRelations()
         {
-            if (Current.Game == null) return 0;
-            int removed = 0;
-            List<Pawn> pawns = PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead;
-            List<DirectPawnRelation> dead = new List<DirectPawnRelation>();
-            for (int i = 0; i < pawns.Count; i++)
+            if (Current.Game == null || Find.World == null) return 0;
+            HashSet<Pawn> saved = new HashSet<Pawn>();
+            foreach (Pawn p in PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead) if (p != null) saved.Add(p);
+            if (Find.WorldPawns != null) foreach (Pawn p in Find.WorldPawns.AllPawnsAliveOrDead) if (p != null) saved.Add(p);
+            List<Thing> held = new List<Thing>();
+            ThingOwnerUtility.GetAllThingsRecursively(Find.World, held, true, null);
+            foreach (Map m in Find.Maps) ThingOwnerUtility.GetAllThingsRecursively(m, held, true, null);
+            for (int i = 0; i < held.Count; i++)
             {
-                Pawn p = pawns[i];
-                if (p == null || p.relations == null || p.Discarded) continue;
+                Pawn hp = held[i] as Pawn;
+                if (hp != null) { saved.Add(hp); continue; }
+                Corpse c = held[i] as Corpse;
+                if (c != null && c.InnerPawn != null) saved.Add(c.InnerPawn);
+            }
+            int removed = 0;
+            List<DirectPawnRelation> dead = new List<DirectPawnRelation>();
+            foreach (Pawn p in saved)
+            {
+                if (p.relations == null || p.Discarded) continue;
                 List<DirectPawnRelation> rels = p.relations.DirectRelations;
                 dead.Clear();
                 for (int j = 0; j < rels.Count; j++)
                 {
                     DirectPawnRelation r = rels[j];
-                    if (r != null && (r.otherPawn == null || r.otherPawn.Discarded || (r.otherPawn.Destroyed && !r.otherPawn.Dead))) dead.Add(r);
+                    if (r != null && (r.otherPawn == null || r.otherPawn.Discarded || !saved.Contains(r.otherPawn))) dead.Add(r);
                 }
                 for (int j = 0; j < dead.Count; j++)
                 {
@@ -53,7 +66,7 @@ namespace TurboMegaMod
                     removed++;
                 }
             }
-            if (removed > 0) Log.Message("[TMM] SaveHygiene: removed " + removed + " relation(s) to pawns that no longer exist.");
+            if (removed > 0) Log.Message("[TMM] SaveHygiene: removed " + removed + " relation(s) to pawns that are not saved.");
             return removed;
         }
     }

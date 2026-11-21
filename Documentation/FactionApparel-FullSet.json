@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3952,
-                        "ticksAdvanced":  1665,
+                        "framesAdvanced":  4226,
+                        "ticksAdvanced":  1780,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -121,7 +121,7 @@
                                               "name":  "Faction_MonsterClans_NocturnalCoatSpeed008",
                                               "passed":  true,
                                               "expected":  "delta ~ +0.08",
-                                              "actual":  "+0.077"
+                                              "actual":  "+0.080"
                                           },
                                           {
                                               "name":  "Race_AngelCoatBlockedOnHuman",
@@ -169,7 +169,7 @@
                                               "name":  "Special_AngelRaimentReducesDemonDamage",
                                               "passed":  true,
                                               "expected":  "\u003c 21.2",
-                                              "actual":  "armored=13.0, bare=28.2"
+                                              "actual":  "armored=18.4, bare=28.2"
                                           }
                                       ],
                            "errors":  [

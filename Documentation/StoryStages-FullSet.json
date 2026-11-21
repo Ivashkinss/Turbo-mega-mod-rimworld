@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3401,
-                         "scalarFields":  3454,
+                         "keyed":  3433,
+                         "scalarFields":  4034,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,7 +16,7 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2654,
+                        "framesAdvanced":  2874,
                         "ticksAdvanced":  59139,
                         "newsWindowsDismissedInTest":  0
                     },
@@ -43,7 +43,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "storyStages":  {
                         "passed":  true,
                         "testModeEnabled":  true,
@@ -95,13 +95,13 @@
                                            "name":  "P1_NeutralRaid_TwoHomesAndSymmetricRestore",
                                            "passed":  true,
                                            "expected":  "hostile-\u003esuccess-\u003eSymmetric Neutral(~-50)",
-                                           "actual":  "hostile=True, active2=True, killed=2, succ=True, symNonH=True, gw=-52/-52, retry=True"
+                                           "actual":  "hostile=True, active2=True, killed=3, succ=True, symNonH=True, gw=-50/-50, retry=True"
                                        },
                                        {
                                            "name":  "R2_OrphanCleanup_RealStageRemovalRollback",
                                            "passed":  true,
                                            "expected":  "hostile-\u003eSparkStory Disable(stage missing)-\u003eSymmetric Neutral(~-40)",
-                                           "actual":  "hostile=True, disabled=True, symNonH=True, gw=-37"
+                                           "actual":  "hostile=True, disabled=True, symNonH=True, gw=-38"
                                        },
                                        {
                                            "name":  "R2_RaidZeroRaiders_TimeoutAndRollback",

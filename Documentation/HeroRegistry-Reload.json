@@ -46,20 +46,20 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human23870",
-                                                  "actual":  "Human23870"
+                                                  "expected":  "Human55646",
+                                                  "actual":  "Human55646"
                                               },
                                               {
                                                   "name":  "FourthSurvivesTwoDays",
                                                   "passed":  true,
                                                   "expected":  "alive record",
-                                                  "actual":  "Human23881"
+                                                  "actual":  "Human55663"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human23870",
-                                                  "actual":  "Human23870"
+                                                  "expected":  "Human55646",
+                                                  "actual":  "Human55646"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
@@ -75,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2392,
-                        "ticksAdvanced":  21093,
+                        "framesAdvanced":  2381,
+                        "ticksAdvanced":  21919,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -85,7 +85,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "37c0bba3dddd88aa9ae2b2e7b3dadf68b01cff64db2cf2b0ca48270fd29d826f",
-    "productionAssemblySha256":  "37c0bba3dddd88aa9ae2b2e7b3dadf68b01cff64db2cf2b0ca48270fd29d826f",
+    "freshAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "passed":  true
 }

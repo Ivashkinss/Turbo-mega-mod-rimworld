@@ -1737,7 +1737,7 @@
     },
     {
       "id": "EquipmentSlots",
-      "state": "hold",
+      "state": "accepted",
       "assignee": "claude",
       "kind": "implement",
       "afterTask": "OutpostCaravanFix",
@@ -1748,6 +1748,19 @@
       ],
       "createdUtc": "2026-11-19T23:00:00Z",
       "note": "Integrate Neon's equipment system: paper-doll tab, weapon and apparel mod slots, backpacks, power armor layer, Colt silver bullets."
+    },
+    {
+      "id": "EquipmentApparelReview",
+      "state": "pending",
+      "assignee": "codex",
+      "kind": "accept",
+      "taskFile": "Delegation/EquipmentApparelReview/TASK.md",
+      "outputDir": "Tools/Build/CodexEquipmentApparelReview",
+      "expectedOutputs": [
+        "REPORT.md"
+      ],
+      "createdUtc": "2026-11-21T05:40:00Z",
+      "note": "Read-only acceptance of equipment slots, faction apparel, signature gear, save hygiene, localized hero names."
     },
     {
       "id": "VehicleFramework",
@@ -1765,7 +1778,7 @@
     },
     {
       "id": "FactionApparel",
-      "state": "hold",
+      "state": "accepted",
       "assignee": "claude",
       "kind": "implement",
       "afterTask": "VehicleFramework",

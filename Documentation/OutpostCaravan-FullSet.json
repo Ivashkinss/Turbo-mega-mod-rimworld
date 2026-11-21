@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3401,
-                         "scalarFields":  3454,
+                         "keyed":  3433,
+                         "scalarFields":  4034,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2984,
-                        "ticksAdvanced":  33637,
+                        "framesAdvanced":  3295,
+                        "ticksAdvanced":  30356,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -43,7 +43,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "outpostCaravan":  {
                            "passed":  true,
                            "testModeEnabled":  true,
@@ -59,7 +59,7 @@
                                               "name":  "Setup_EdgeStockpileReady",
                                               "passed":  true,
                                               "expected":  "\u003e=6 cells",
-                                              "actual":  "21"
+                                              "actual":  "25"
                                           },
                                           {
                                               "name":  "P2_FoodCalcUsesTransferableExactCount",

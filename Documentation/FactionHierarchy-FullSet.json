@@ -4,8 +4,8 @@
     "fullUserModSet":  true,
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
-                         "keyed":  3401,
-                         "scalarFields":  3454,
+                         "keyed":  3433,
+                         "scalarFields":  4034,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3060,
-                        "ticksAdvanced":  24683,
+                        "framesAdvanced":  3547,
+                        "ticksAdvanced":  25785,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -42,7 +42,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "ed4c4e3e12f46e4245d5f0fd23c5f5a56c781758ff53c3990c6288af7e8af56a",
+    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
     "factionHierarchy":  {
                              "passed":  true,
                              "checksCount":  91,
@@ -85,8 +85,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_EnclaveFaction",
                                                 "passed":  true,
-                                                "expected":  "Colonel Autumn",
-                                                "actual":  "Colonel Autumn"
+                                                "expected":  "РџРѕР»РєРѕРІРЅРёРє РћС‚РµРј",
+                                                "actual":  "РџРѕР»РєРѕРІРЅРёРє РћС‚РµРј"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_EnclaveFaction",
@@ -109,8 +109,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_BrotherhoodFaction",
                                                 "passed":  true,
-                                                "expected":  "Maxson",
-                                                "actual":  "Maxson"
+                                                "expected":  "РњСЌРєСЃРѕРЅ",
+                                                "actual":  "РњСЌРєСЃРѕРЅ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_BrotherhoodFaction",
@@ -133,8 +133,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_MenOfLettersFaction",
                                                 "passed":  true,
-                                                "expected":  "Dr. Hess",
-                                                "actual":  "Dr. Hess"
+                                                "expected":  "Р”РѕРєС‚РѕСЂ РҐРµСЃСЃ",
+                                                "actual":  "Р”РѕРєС‚РѕСЂ РҐРµСЃСЃ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_MenOfLettersFaction",
@@ -157,8 +157,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_HeavenFaction",
                                                 "passed":  true,
-                                                "expected":  "Michael",
-                                                "actual":  "Michael"
+                                                "expected":  "РњРёС…Р°РёР»",
+                                                "actual":  "РњРёС…Р°РёР»"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_HeavenFaction",
@@ -181,8 +181,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_VaultTecFaction",
                                                 "passed":  true,
-                                                "expected":  "Overseer Almodovar",
-                                                "actual":  "Overseer Almodovar"
+                                                "expected":  "РЎРјРѕС‚СЂРёС‚РµР»СЊ РђР»СЊРјРѕРґРѕРІР°СЂ",
+                                                "actual":  "РЎРјРѕС‚СЂРёС‚РµР»СЊ РђР»СЊРјРѕРґРѕРІР°СЂ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_VaultTecFaction",
@@ -205,8 +205,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_HellFaction",
                                                 "passed":  true,
-                                                "expected":  "Crowley",
-                                                "actual":  "Crowley"
+                                                "expected":  "РљСЂРѕСѓР»Рё",
+                                                "actual":  "РљСЂРѕСѓР»Рё"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_HellFaction",
@@ -229,8 +229,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_WildMutantsFaction",
                                                 "passed":  true,
-                                                "expected":  "Swan",
-                                                "actual":  "Swan"
+                                                "expected":  "РЎРІРѕРЅ",
+                                                "actual":  "РЎРІРѕРЅ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_WildMutantsFaction",
@@ -253,8 +253,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_FriendlyMutantsFaction",
                                                 "passed":  true,
-                                                "expected":  "Fox",
-                                                "actual":  "Fox"
+                                                "expected":  "Р¤РѕРєСЃ",
+                                                "actual":  "Р¤РѕРєСЃ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_FriendlyMutantsFaction",
@@ -277,8 +277,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_OutcastsFaction",
                                                 "passed":  true,
-                                                "expected":  "Casdin",
-                                                "actual":  "Casdin"
+                                                "expected":  "РљР°СЃРґРёРЅ",
+                                                "actual":  "РљР°СЃРґРёРЅ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_OutcastsFaction",
@@ -301,8 +301,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_InstituteFaction",
                                                 "passed":  true,
-                                                "expected":  "Father",
-                                                "actual":  "Father"
+                                                "expected":  "РћС‚РµС†",
+                                                "actual":  "РћС‚РµС†"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_InstituteFaction",
@@ -325,8 +325,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_MonsterClansFaction",
                                                 "passed":  true,
-                                                "expected":  "Alpha",
-                                                "actual":  "Alpha"
+                                                "expected":  "РђР»СЊС„Р°",
+                                                "actual":  "РђР»СЊС„Р°"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_MonsterClansFaction",
@@ -341,6 +341,30 @@
                                                 "actual":  "5"
                                             },
                                             {
+                                                "name":  "Leader not null for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Displayed leader equals faction.leader for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "Р“Р°СЂРІРё",
+                                                "actual":  "Р“Р°СЂРІРё"
+                                            },
+                                            {
+                                                "name":  "Faction leader is registered hero for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "True",
+                                                "actual":  "True"
+                                            },
+                                            {
+                                                "name":  "Tree node count matches HeroDef count for TMM_MinutemenHuntersFaction",
+                                                "passed":  true,
+                                                "expected":  "7",
+                                                "actual":  "7"
+                                            },
+                                            {
                                                 "name":  "Leader not null for TMM_RailroadFaction",
                                                 "passed":  true,
                                                 "expected":  "True",
@@ -349,8 +373,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_RailroadFaction",
                                                 "passed":  true,
-                                                "expected":  "Desdemona",
-                                                "actual":  "Desdemona"
+                                                "expected":  "Р”РµР·РґРµРјРѕРЅР°",
+                                                "actual":  "Р”РµР·РґРµРјРѕРЅР°"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_RailroadFaction",
@@ -373,8 +397,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_GhoulsFaction",
                                                 "passed":  true,
-                                                "expected":  "Hancock",
-                                                "actual":  "Hancock"
+                                                "expected":  "РҐСЌРЅРєРѕРє",
+                                                "actual":  "РҐСЌРЅРєРѕРє"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_GhoulsFaction",
@@ -397,8 +421,8 @@
                                             {
                                                 "name":  "Displayed leader equals faction.leader for TMM_GunnersFaction",
                                                 "passed":  true,
-                                                "expected":  "Captain Wes",
-                                                "actual":  "Captain Wes"
+                                                "expected":  "РљР°РїРёС‚Р°РЅ РЈСЌСЃ",
+                                                "actual":  "РљР°РїРёС‚Р°РЅ РЈСЌСЃ"
                                             },
                                             {
                                                 "name":  "Faction leader is registered hero for TMM_GunnersFaction",
@@ -411,30 +435,6 @@
                                                 "passed":  true,
                                                 "expected":  "5",
                                                 "actual":  "5"
-                                            },
-                                            {
-                                                "name":  "Leader not null for TMM_MinutemenHuntersFaction",
-                                                "passed":  true,
-                                                "expected":  "True",
-                                                "actual":  "True"
-                                            },
-                                            {
-                                                "name":  "Displayed leader equals faction.leader for TMM_MinutemenHuntersFaction",
-                                                "passed":  true,
-                                                "expected":  "Garvey",
-                                                "actual":  "Garvey"
-                                            },
-                                            {
-                                                "name":  "Faction leader is registered hero for TMM_MinutemenHuntersFaction",
-                                                "passed":  true,
-                                                "expected":  "True",
-                                                "actual":  "True"
-                                            },
-                                            {
-                                                "name":  "Tree node count matches HeroDef count for TMM_MinutemenHuntersFaction",
-                                                "passed":  true,
-                                                "expected":  "7",
-                                                "actual":  "7"
                                             },
                                             {
                                                 "name":  "Minutemen faction exists",
@@ -565,8 +565,8 @@
                                             {
                                                 "name":  "Successor Dean Winchester became new faction leader",
                                                 "passed":  true,
-                                                "expected":  "Dean",
-                                                "actual":  "Dean"
+                                                "expected":  "Р”РёРЅ",
+                                                "actual":  "Р”РёРЅ"
                                             },
                                             {
                                                 "name":  "New leader Dean is known",
@@ -583,8 +583,8 @@
                                             {
                                                 "name":  "Window model reflects Dean as current leader",
                                                 "passed":  true,
-                                                "expected":  "Dean",
-                                                "actual":  "Dean"
+                                                "expected":  "Р”РёРЅ",
+                                                "actual":  "Р”РёРЅ"
                                             },
                                             {
                                                 "name":  "HeroRegistry instance exists",

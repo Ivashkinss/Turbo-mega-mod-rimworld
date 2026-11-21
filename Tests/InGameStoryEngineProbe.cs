@@ -115,7 +115,9 @@ public sealed class StoryEngineProbe : MapComponent
             s.DirectorTick();
             StoryChoiceLetter offer = LetterFor(Castiel, StoryChoiceLetter.KindOffer);
             C("CastielOffered", offer != null, "offer letter", offer == null ? "none" : "ok");
-            C("GiverNameInText", offer != null && offer.Text.ToString().Contains("Castiel") && !offer.Text.ToString().Contains("{GIVER}"), "Castiel", "checked");
+            HeroDef casDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_castiel");
+            string casName = casDef != null ? casDef.nameFirst : "Castiel"; // localized (Кастиэль in Russian)
+            C("GiverNameInText", offer != null && offer.Text.ToString().Contains(casName) && !offer.Text.ToString().Contains("{GIVER}"), casName, offer == null ? "none" : "checked");
             ActionOf(offer, 1)(); // later
             StoryQuestRun run = s.RunFor(Castiel);
             C("DeclinedWithCooldown", run.status == StoryQuestStatus.Declined && run.cooldownUntilTick > now, "Declined", run.status + "/" + (run.cooldownUntilTick - now));
@@ -159,7 +161,8 @@ public sealed class StoryEngineProbe : MapComponent
     private void AfterTrust(SparkStory s, StoryQuestRun run)
     {
         int after = HeavenGoodwill;
-        C("HeavenGoodwillPlus15", Heaven != null && after - heavenBefore == Math.Min(15, 100 - heavenBefore), "+15", after - heavenBefore);
+        // The quest grants +15; ordinary goodwill events in the same ticks can move it by a few points.
+        C("HeavenGoodwillPlus15", Heaven != null && Math.Abs((after - heavenBefore) - Math.Min(15, 100 - heavenBefore)) <= 3, "+15 (±3)", after - heavenBefore);
         C("TrustRaised", s.GetInt("zeroSynth.trust") == 10, 10, s.GetInt("zeroSynth.trust"));
         C("HolodiskOne", s.GetInt("holodisk") == 1, 1, s.GetInt("holodisk"));
         C("CastielCompleted", s.GetFlag("q." + Castiel) == "trust" && run.status == StoryQuestStatus.Completed, "trust", s.GetFlag("q." + Castiel));

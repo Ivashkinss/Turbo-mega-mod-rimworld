@@ -695,7 +695,15 @@ namespace TurboMegaMod
                 if (pos.IsValid && pos.InBounds(map))
                 {
                     Thing placed;
-                    if (GenPlace.TryPlaceThing(chunk, pos, map, ThingPlaceMode.Near, out placed) &&
+                    // Exactly back on its own cell first (merging with what lies there), so a rolled-back payment ends up
+                    // in the same stockpile; only if that cell refuses, the nearest free cell.
+                    if (GenPlace.TryPlaceThing(chunk, pos, map, ThingPlaceMode.Direct, out placed) &&
+                        (chunk.Destroyed || (placed != null && placed.Spawned && placed.Map == map)))
+                    {
+                        return true;
+                    }
+                    if (!chunk.Destroyed && chunk.stackCount > 0 && !chunk.Spawned &&
+                        GenPlace.TryPlaceThing(chunk, pos, map, ThingPlaceMode.Near, out placed) &&
                         (chunk.Destroyed || (placed != null && placed.Spawned && placed.Map == map)))
                     {
                         return true;
