@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- TMM_Hero_arthur_maxson -->
+  <TMM_Hero_arthur_maxson.label>Артур Мэксон</TMM_Hero_arthur_maxson.label>
+  <TMM_Hero_arthur_maxson.nameFirst>Артур</TMM_Hero_arthur_maxson.nameFirst>
+  <TMM_Hero_arthur_maxson.nameNick>Мэксон</TMM_Hero_arthur_maxson.nameNick>
+  <TMM_Hero_arthur_maxson.nameLast>Мэксон</TMM_Hero_arthur_maxson.nameLast>
+  <!-- TMM_Hero_owen_lyons -->
+  <TMM_Hero_owen_lyons.label>Оуэн Лайонс</TMM_Hero_owen_lyons.label>
+  <TMM_Hero_owen_lyons.nameFirst>Оуэн</TMM_Hero_owen_lyons.nameFirst>
+  <TMM_Hero_owen_lyons.nameNick>Старейшина Лайонс</TMM_Hero_owen_lyons.nameNick>
+  <TMM_Hero_owen_lyons.nameLast>Лайонс</TMM_Hero_owen_lyons.nameLast>
+  <!-- TMM_Hero_sarah_lyons -->
+  <TMM_Hero_sarah_lyons.label>Сара Лайонс</TMM_Hero_sarah_lyons.label>
+  <TMM_Hero_sarah_lyons.nameFirst>Сара</TMM_Hero_sarah_lyons.nameFirst>
+  <TMM_Hero_sarah_lyons.nameNick>Страж</TMM_Hero_sarah_lyons.nameNick>
+  <TMM_Hero_sarah_lyons.nameLast>Лайонс</TMM_Hero_sarah_lyons.nameLast>
+  <!-- TMM_Hero_paladin_danse -->
+  <TMM_Hero_paladin_danse.label>Паладин Данс</TMM_Hero_paladin_danse.label>
+  <TMM_Hero_paladin_danse.nameFirst>Данс</TMM_Hero_paladin_danse.nameFirst>
+  <TMM_Hero_paladin_danse.nameNick>Паладин Данс</TMM_Hero_paladin_danse.nameNick>
+  <!-- TMM_Hero_captain_kells -->
+  <TMM_Hero_captain_kells.label>Капитан Келлс</TMM_Hero_captain_kells.label>
+  <TMM_Hero_captain_kells.nameFirst>Келлс</TMM_Hero_captain_kells.nameFirst>
+  <TMM_Hero_captain_kells.nameNick>Капитан Келлс</TMM_Hero_captain_kells.nameNick>
+  <!-- TMM_Hero_proctor_ingram -->
+  <TMM_Hero_proctor_ingram.label>Проктор Ингрэм</TMM_Hero_proctor_ingram.label>
+  <TMM_Hero_proctor_ingram.nameFirst>Ингрэм</TMM_Hero_proctor_ingram.nameFirst>
+  <TMM_Hero_proctor_ingram.nameNick>Проктор Ингрэм</TMM_Hero_proctor_ingram.nameNick>
+  <!-- TMM_Hero_colonel_autumn -->
+  <TMM_Hero_colonel_autumn.label>Полковник Отем</TMM_Hero_colonel_autumn.label>
+  <TMM_Hero_colonel_autumn.nameFirst>Огастус</TMM_Hero_colonel_autumn.nameFirst>
+  <TMM_Hero_colonel_autumn.nameNick>Полковник Отем</TMM_Hero_colonel_autumn.nameNick>
+  <TMM_Hero_colonel_autumn.nameLast>Отем</TMM_Hero_colonel_autumn.nameLast>
+  <!-- TMM_Hero_dr_curling -->
+  <TMM_Hero_dr_curling.label>Доктор Чарльз Керлинг</TMM_Hero_dr_curling.label>
+  <TMM_Hero_dr_curling.nameFirst>Чарльз</TMM_Hero_dr_curling.nameFirst>
+  <TMM_Hero_dr_curling.nameNick>Доктор Керлинг</TMM_Hero_dr_curling.nameNick>
+  <TMM_Hero_dr_curling.nameLast>Керлинг</TMM_Hero_dr_curling.nameLast>
+  <!-- TMM_Hero_sergeant_dornan -->
+  <TMM_Hero_sergeant_dornan.label>Сержант Дорнан</TMM_Hero_sergeant_dornan.label>
+  <TMM_Hero_sergeant_dornan.nameFirst>Арч</TMM_Hero_sergeant_dornan.nameFirst>
+  <TMM_Hero_sergeant_dornan.nameNick>Сержант Дорнан</TMM_Hero_sergeant_dornan.nameNick>
+  <TMM_Hero_sergeant_dornan.nameLast>Дорнан</TMM_Hero_sergeant_dornan.nameLast>
+  <!-- TMM_Hero_captain_richards -->
+  <TMM_Hero_captain_richards.label>Капитан Ричардс</TMM_Hero_captain_richards.label>
+  <TMM_Hero_captain_richards.nameFirst>Ричардс</TMM_Hero_captain_richards.nameFirst>
+  <TMM_Hero_captain_richards.nameNick>Капитан Ричардс</TMM_Hero_captain_richards.nameNick>
+  <!-- TMM_Hero_fox -->
+  <TMM_Hero_fox.label>Фокс</TMM_Hero_fox.label>
+  <TMM_Hero_fox.nameFirst>Фокс</TMM_Hero_fox.nameFirst>
+  <TMM_Hero_fox.nameNick>Фокс</TMM_Hero_fox.nameNick>
+  <!-- TMM_Hero_uncle_leo -->
+  <TMM_Hero_uncle_leo.label>Дядя Лео</TMM_Hero_uncle_leo.label>
+  <TMM_Hero_uncle_leo.nameFirst>Лео</TMM_Hero_uncle_leo.nameFirst>
+  <TMM_Hero_uncle_leo.nameNick>Дядя Лео</TMM_Hero_uncle_leo.nameNick>
+  <!-- TMM_Hero_strong -->
+  <TMM_Hero_strong.label>Стронг</TMM_Hero_strong.label>
+  <TMM_Hero_strong.nameFirst>Стронг</TMM_Hero_strong.nameFirst>
+  <TMM_Hero_strong.nameNick>Стронг</TMM_Hero_strong.nameNick>
+  <!-- TMM_Hero_erickson -->
+  <TMM_Hero_erickson.label>Эриксон</TMM_Hero_erickson.label>
+  <TMM_Hero_erickson.nameFirst>Эриксон</TMM_Hero_erickson.nameFirst>
+  <TMM_Hero_erickson.nameNick>Эриксон</TMM_Hero_erickson.nameNick>
+  <!-- TMM_Hero_virgil -->
+  <TMM_Hero_virgil.label>Брайан Вёрджил</TMM_Hero_virgil.label>
+  <TMM_Hero_virgil.nameFirst>Брайан</TMM_Hero_virgil.nameFirst>
+  <TMM_Hero_virgil.nameNick>Вёрджил</TMM_Hero_virgil.nameNick>
+  <TMM_Hero_virgil.nameLast>Вёрджил</TMM_Hero_virgil.nameLast>
+  <!-- TMM_Hero_john_hancock -->
+  <TMM_Hero_john_hancock.label>Джон Хэнкок</TMM_Hero_john_hancock.label>
+  <TMM_Hero_john_hancock.nameFirst>Джон</TMM_Hero_john_hancock.nameFirst>
+  <TMM_Hero_john_hancock.nameNick>Хэнкок</TMM_Hero_john_hancock.nameNick>
+  <TMM_Hero_john_hancock.nameLast>Хэнкок</TMM_Hero_john_hancock.nameLast>
+  <!-- TMM_Hero_kent_connolly -->
+  <TMM_Hero_kent_connolly.label>Кент Коннолли</TMM_Hero_kent_connolly.label>
+  <TMM_Hero_kent_connolly.nameFirst>Кент</TMM_Hero_kent_connolly.nameFirst>
+  <TMM_Hero_kent_connolly.nameNick>Серебряный Плащ</TMM_Hero_kent_connolly.nameNick>
+  <TMM_Hero_kent_connolly.nameLast>Коннолли</TMM_Hero_kent_connolly.nameLast>
+  <!-- TMM_Hero_charon -->
+  <TMM_Hero_charon.label>Харон</TMM_Hero_charon.label>
+  <TMM_Hero_charon.nameFirst>Харон</TMM_Hero_charon.nameFirst>
+  <TMM_Hero_charon.nameNick>Харон</TMM_Hero_charon.nameNick>
+  <!-- TMM_Hero_edward_deegan -->
+  <TMM_Hero_edward_deegan.label>Эдвард Диган</TMM_Hero_edward_deegan.label>
+  <TMM_Hero_edward_deegan.nameFirst>Эдвард</TMM_Hero_edward_deegan.nameFirst>
+  <TMM_Hero_edward_deegan.nameNick>Диган</TMM_Hero_edward_deegan.nameNick>
+  <TMM_Hero_edward_deegan.nameLast>Диган</TMM_Hero_edward_deegan.nameLast>
+  <!-- TMM_Hero_daisy -->
+  <TMM_Hero_daisy.label>Дейзи</TMM_Hero_daisy.label>
+  <TMM_Hero_daisy.nameFirst>Дейзи</TMM_Hero_daisy.nameFirst>
+  <TMM_Hero_daisy.nameNick>Дейзи</TMM_Hero_daisy.nameNick>
+  <!-- TMM_Hero_gob -->
+  <TMM_Hero_gob.label>Гоб</TMM_Hero_gob.label>
+  <TMM_Hero_gob.nameFirst>Гоб</TMM_Hero_gob.nameFirst>
+  <TMM_Hero_gob.nameNick>Гоб</TMM_Hero_gob.nameNick>
+  <!-- TMM_Hero_captain_wes -->
+  <TMM_Hero_captain_wes.label>Капитан Уэс</TMM_Hero_captain_wes.label>
+  <TMM_Hero_captain_wes.nameFirst>Уэс</TMM_Hero_captain_wes.nameFirst>
+  <TMM_Hero_captain_wes.nameNick>Капитан Уэс</TMM_Hero_captain_wes.nameNick>
+  <!-- TMM_Hero_clint -->
+  <TMM_Hero_clint.label>Клинт</TMM_Hero_clint.label>
+  <TMM_Hero_clint.nameFirst>Клинт</TMM_Hero_clint.nameFirst>
+  <TMM_Hero_clint.nameNick>Клинт</TMM_Hero_clint.nameNick>
+  <!-- TMM_Hero_tessa -->
+  <TMM_Hero_tessa.label>Тесса</TMM_Hero_tessa.label>
+  <TMM_Hero_tessa.nameFirst>Тесса</TMM_Hero_tessa.nameFirst>
+  <TMM_Hero_tessa.nameNick>Тесса</TMM_Hero_tessa.nameNick>
+  <!-- TMM_Hero_captain_bridget -->
+  <TMM_Hero_captain_bridget.label>Капитан Бриджит</TMM_Hero_captain_bridget.label>
+  <TMM_Hero_captain_bridget.nameFirst>Бриджит</TMM_Hero_captain_bridget.nameFirst>
+  <TMM_Hero_captain_bridget.nameNick>Капитан Бриджит</TMM_Hero_captain_bridget.nameNick>
+  <!-- TMM_Hero_baker -->
+  <TMM_Hero_baker.label>Бейкер</TMM_Hero_baker.label>
+  <TMM_Hero_baker.nameFirst>Бейкер</TMM_Hero_baker.nameFirst>
+  <TMM_Hero_baker.nameNick>Бейкер</TMM_Hero_baker.nameNick>
+  <!-- TMM_Hero_michael -->
+  <TMM_Hero_michael.label>Михаил</TMM_Hero_michael.label>
+  <TMM_Hero_michael.nameFirst>Михаил</TMM_Hero_michael.nameFirst>
+  <TMM_Hero_michael.nameNick>Михаил</TMM_Hero_michael.nameNick>
+  <!-- TMM_Hero_lucifer -->
+  <TMM_Hero_lucifer.label>Люцифер</TMM_Hero_lucifer.label>
+  <TMM_Hero_lucifer.nameFirst>Люцифер</TMM_Hero_lucifer.nameFirst>
+  <TMM_Hero_lucifer.nameNick>Ник</TMM_Hero_lucifer.nameNick>
+  <!-- TMM_Hero_castiel -->
+  <TMM_Hero_castiel.label>Кастиэль</TMM_Hero_castiel.label>
+  <TMM_Hero_castiel.nameFirst>Кастиэль</TMM_Hero_castiel.nameFirst>
+  <TMM_Hero_castiel.nameNick>Кас</TMM_Hero_castiel.nameNick>
+  <!-- TMM_Hero_gabriel -->
+  <TMM_Hero_gabriel.label>Гавриил</TMM_Hero_gabriel.label>
+  <TMM_Hero_gabriel.nameFirst>Гавриил</TMM_Hero_gabriel.nameFirst>
+  <TMM_Hero_gabriel.nameNick>Локи</TMM_Hero_gabriel.nameNick>
+  <!-- TMM_Hero_zachariah -->
+  <TMM_Hero_zachariah.label>Захария</TMM_Hero_zachariah.label>
+  <TMM_Hero_zachariah.nameFirst>Захария</TMM_Hero_zachariah.nameFirst>
+  <TMM_Hero_zachariah.nameNick>Зак</TMM_Hero_zachariah.nameNick>
+  <!-- TMM_Hero_naomi -->
+  <TMM_Hero_naomi.label>Наоми</TMM_Hero_naomi.label>
+  <TMM_Hero_naomi.nameFirst>Наоми</TMM_Hero_naomi.nameFirst>
+  <TMM_Hero_naomi.nameNick>Наоми</TMM_Hero_naomi.nameNick>
+  <!-- TMM_Hero_crowley -->
+  <TMM_Hero_crowley.label>Кроули</TMM_Hero_crowley.label>
+  <TMM_Hero_crowley.nameFirst>Кроули</TMM_Hero_crowley.nameFirst>
+  <TMM_Hero_crowley.nameNick>Кроули</TMM_Hero_crowley.nameNick>
+  <!-- TMM_Hero_azazel -->
+  <TMM_Hero_azazel.label>Азазель</TMM_Hero_azazel.label>
+  <TMM_Hero_azazel.nameFirst>Азазель</TMM_Hero_azazel.nameFirst>
+  <TMM_Hero_azazel.nameNick>Желтоглазый</TMM_Hero_azazel.nameNick>
+  <!-- TMM_Hero_lilith -->
+  <TMM_Hero_lilith.label>Лилит</TMM_Hero_lilith.label>
+  <TMM_Hero_lilith.nameFirst>Лилит</TMM_Hero_lilith.nameFirst>
+  <TMM_Hero_lilith.nameNick>Лилит</TMM_Hero_lilith.nameNick>
+  <!-- TMM_Hero_abaddon -->
+  <TMM_Hero_abaddon.label>Абаддон</TMM_Hero_abaddon.label>
+  <TMM_Hero_abaddon.nameFirst>Абаддон</TMM_Hero_abaddon.nameFirst>
+  <TMM_Hero_abaddon.nameNick>Абаддон</TMM_Hero_abaddon.nameNick>
+  <!-- TMM_Hero_cain -->
+  <TMM_Hero_cain.label>Каин</TMM_Hero_cain.label>
+  <TMM_Hero_cain.nameFirst>Каин</TMM_Hero_cain.nameFirst>
+  <TMM_Hero_cain.nameNick>Каин</TMM_Hero_cain.nameNick>
+  <!-- TMM_Hero_meg -->
+  <TMM_Hero_meg.label>Мэг</TMM_Hero_meg.label>
+  <TMM_Hero_meg.nameFirst>Мэг</TMM_Hero_meg.nameFirst>
+  <TMM_Hero_meg.nameNick>Мэг</TMM_Hero_meg.nameNick>
+  <TMM_Hero_meg.nameLast>Мастерс</TMM_Hero_meg.nameLast>
+  <!-- TMM_Hero_ruby -->
+  <TMM_Hero_ruby.label>Руби</TMM_Hero_ruby.label>
+  <TMM_Hero_ruby.nameFirst>Руби</TMM_Hero_ruby.nameFirst>
+  <TMM_Hero_ruby.nameNick>Руби</TMM_Hero_ruby.nameNick>
+  <!-- TMM_Hero_father_shaun -->
+  <TMM_Hero_father_shaun.label>Отец</TMM_Hero_father_shaun.label>
+  <TMM_Hero_father_shaun.nameFirst>Шон</TMM_Hero_father_shaun.nameFirst>
+  <TMM_Hero_father_shaun.nameNick>Отец</TMM_Hero_father_shaun.nameNick>
+  <!-- TMM_Hero_justin_ayo -->
+  <TMM_Hero_justin_ayo.label>Джастин Айо</TMM_Hero_justin_ayo.label>
+  <TMM_Hero_justin_ayo.nameFirst>Джастин</TMM_Hero_justin_ayo.nameFirst>
+  <TMM_Hero_justin_ayo.nameNick>Айо</TMM_Hero_justin_ayo.nameNick>
+  <TMM_Hero_justin_ayo.nameLast>Айо</TMM_Hero_justin_ayo.nameLast>
+  <!-- TMM_Hero_x6_88 -->
+  <TMM_Hero_x6_88.label>X6-88</TMM_Hero_x6_88.label>
+  <TMM_Hero_x6_88.nameFirst>X6-88</TMM_Hero_x6_88.nameFirst>
+  <TMM_Hero_x6_88.nameNick>X6-88</TMM_Hero_x6_88.nameNick>
+  <!-- TMM_Hero_madison_li -->
+  <TMM_Hero_madison_li.label>Доктор Мэдисон Ли</TMM_Hero_madison_li.label>
+  <TMM_Hero_madison_li.nameFirst>Мэдисон</TMM_Hero_madison_li.nameFirst>
+  <TMM_Hero_madison_li.nameNick>Доктор Ли</TMM_Hero_madison_li.nameNick>
+  <TMM_Hero_madison_li.nameLast>Ли</TMM_Hero_madison_li.nameLast>
+  <!-- TMM_Hero_kellogg -->
+  <TMM_Hero_kellogg.label>Конрад Келлогг</TMM_Hero_kellogg.label>
+  <TMM_Hero_kellogg.nameFirst>Конрад</TMM_Hero_kellogg.nameFirst>
+  <TMM_Hero_kellogg.nameNick>Келлогг</TMM_Hero_kellogg.nameNick>
+  <TMM_Hero_kellogg.nameLast>Келлогг</TMM_Hero_kellogg.nameLast>
+  <!-- TMM_Hero_alan_binet -->
+  <TMM_Hero_alan_binet.label>Алан Бине</TMM_Hero_alan_binet.label>
+  <TMM_Hero_alan_binet.nameFirst>Алан</TMM_Hero_alan_binet.nameFirst>
+  <TMM_Hero_alan_binet.nameNick>Алан</TMM_Hero_alan_binet.nameNick>
+  <TMM_Hero_alan_binet.nameLast>Бине</TMM_Hero_alan_binet.nameLast>
+  <!-- TMM_Hero_dr_hess -->
+  <TMM_Hero_dr_hess.label>Доктор Хесс</TMM_Hero_dr_hess.label>
+  <TMM_Hero_dr_hess.nameFirst>Хесс</TMM_Hero_dr_hess.nameFirst>
+  <TMM_Hero_dr_hess.nameNick>Доктор Хесс</TMM_Hero_dr_hess.nameNick>
+  <!-- TMM_Hero_arthur_ketch -->
+  <TMM_Hero_arthur_ketch.label>Артур Кетч</TMM_Hero_arthur_ketch.label>
+  <TMM_Hero_arthur_ketch.nameFirst>Артур</TMM_Hero_arthur_ketch.nameFirst>
+  <TMM_Hero_arthur_ketch.nameNick>Кетч</TMM_Hero_arthur_ketch.nameNick>
+  <TMM_Hero_arthur_ketch.nameLast>Кетч</TMM_Hero_arthur_ketch.nameLast>
+  <!-- TMM_Hero_mick_davies -->
+  <TMM_Hero_mick_davies.label>Мик Дэвис</TMM_Hero_mick_davies.label>
+  <TMM_Hero_mick_davies.nameFirst>Мик</TMM_Hero_mick_davies.nameFirst>
+  <TMM_Hero_mick_davies.nameNick>Мик</TMM_Hero_mick_davies.nameNick>
+  <TMM_Hero_mick_davies.nameLast>Дэвис</TMM_Hero_mick_davies.nameLast>
+  <!-- TMM_Hero_antonia_bevell -->
+  <TMM_Hero_antonia_bevell.label>Леди Антония Бевелл</TMM_Hero_antonia_bevell.label>
+  <TMM_Hero_antonia_bevell.nameFirst>Антония</TMM_Hero_antonia_bevell.nameFirst>
+  <TMM_Hero_antonia_bevell.nameNick>Леди Бевелл</TMM_Hero_antonia_bevell.nameNick>
+  <TMM_Hero_antonia_bevell.nameLast>Бевелл</TMM_Hero_antonia_bevell.nameLast>
+  <!-- TMM_Hero_kendricks -->
+  <TMM_Hero_kendricks.label>Мистер Кендрикс</TMM_Hero_kendricks.label>
+  <TMM_Hero_kendricks.nameFirst>Кендрикс</TMM_Hero_kendricks.nameFirst>
+  <TMM_Hero_kendricks.nameNick>Кендрикс</TMM_Hero_kendricks.nameNick>
+  <!-- TMM_Hero_preston_garvey -->
+  <TMM_Hero_preston_garvey.label>Престон Гарви</TMM_Hero_preston_garvey.label>
+  <TMM_Hero_preston_garvey.nameFirst>Престон</TMM_Hero_preston_garvey.nameFirst>
+  <TMM_Hero_preston_garvey.nameNick>Гарви</TMM_Hero_preston_garvey.nameNick>
+  <TMM_Hero_preston_garvey.nameLast>Гарви</TMM_Hero_preston_garvey.nameLast>
+  <!-- TMM_Hero_dean_winchester -->
+  <TMM_Hero_dean_winchester.label>Дин Винчестер</TMM_Hero_dean_winchester.label>
+  <TMM_Hero_dean_winchester.nameFirst>Дин</TMM_Hero_dean_winchester.nameFirst>
+  <TMM_Hero_dean_winchester.nameNick>Дин</TMM_Hero_dean_winchester.nameNick>
+  <TMM_Hero_dean_winchester.nameLast>Винчестер</TMM_Hero_dean_winchester.nameLast>
+  <!-- TMM_Hero_sam_winchester -->
+  <TMM_Hero_sam_winchester.label>Сэм Винчестер</TMM_Hero_sam_winchester.label>
+  <TMM_Hero_sam_winchester.nameFirst>Сэм</TMM_Hero_sam_winchester.nameFirst>
+  <TMM_Hero_sam_winchester.nameNick>Сэм</TMM_Hero_sam_winchester.nameNick>
+  <TMM_Hero_sam_winchester.nameLast>Винчестер</TMM_Hero_sam_winchester.nameLast>
+  <!-- TMM_Hero_bobby_singer -->
+  <TMM_Hero_bobby_singer.label>Бобби Сингер</TMM_Hero_bobby_singer.label>
+  <TMM_Hero_bobby_singer.nameFirst>Роберт</TMM_Hero_bobby_singer.nameFirst>
+  <TMM_Hero_bobby_singer.nameNick>Бобби</TMM_Hero_bobby_singer.nameNick>
+  <TMM_Hero_bobby_singer.nameLast>Сингер</TMM_Hero_bobby_singer.nameLast>
+  <!-- TMM_Hero_ronnie_shaw -->
+  <TMM_Hero_ronnie_shaw.label>Ронни Шоу</TMM_Hero_ronnie_shaw.label>
+  <TMM_Hero_ronnie_shaw.nameFirst>Ронни</TMM_Hero_ronnie_shaw.nameFirst>
+  <TMM_Hero_ronnie_shaw.nameNick>Ронни</TMM_Hero_ronnie_shaw.nameNick>
+  <TMM_Hero_ronnie_shaw.nameLast>Шоу</TMM_Hero_ronnie_shaw.nameLast>
+  <!-- TMM_Hero_rufus_turner -->
+  <TMM_Hero_rufus_turner.label>Руфус Тёрнер</TMM_Hero_rufus_turner.label>
+  <TMM_Hero_rufus_turner.nameFirst>Руфус</TMM_Hero_rufus_turner.nameFirst>
+  <TMM_Hero_rufus_turner.nameNick>Руфус</TMM_Hero_rufus_turner.nameNick>
+  <TMM_Hero_rufus_turner.nameLast>Тёрнер</TMM_Hero_rufus_turner.nameLast>
+  <!-- TMM_Hero_ellen_harvelle -->
+  <TMM_Hero_ellen_harvelle.label>Эллен Харвелл</TMM_Hero_ellen_harvelle.label>
+  <TMM_Hero_ellen_harvelle.nameFirst>Эллен</TMM_Hero_ellen_harvelle.nameFirst>
+  <TMM_Hero_ellen_harvelle.nameNick>Эллен</TMM_Hero_ellen_harvelle.nameNick>
+  <TMM_Hero_ellen_harvelle.nameLast>Харвелл</TMM_Hero_ellen_harvelle.nameLast>
+  <!-- TMM_Hero_alpha_vampire -->
+  <TMM_Hero_alpha_vampire.label>Альфа-вампир</TMM_Hero_alpha_vampire.label>
+  <TMM_Hero_alpha_vampire.nameFirst>Альфа</TMM_Hero_alpha_vampire.nameFirst>
+  <TMM_Hero_alpha_vampire.nameNick>Альфа</TMM_Hero_alpha_vampire.nameNick>
+  <!-- TMM_Hero_dick_roman -->
+  <TMM_Hero_dick_roman.label>Дик Роман</TMM_Hero_dick_roman.label>
+  <TMM_Hero_dick_roman.nameFirst>Ричард</TMM_Hero_dick_roman.nameFirst>
+  <TMM_Hero_dick_roman.nameNick>Дик Роман</TMM_Hero_dick_roman.nameNick>
+  <TMM_Hero_dick_roman.nameLast>Роман</TMM_Hero_dick_roman.nameLast>
+  <!-- TMM_Hero_eve -->
+  <TMM_Hero_eve.label>Ева</TMM_Hero_eve.label>
+  <TMM_Hero_eve.nameFirst>Ева</TMM_Hero_eve.nameFirst>
+  <TMM_Hero_eve.nameNick>Мать</TMM_Hero_eve.nameNick>
+  <!-- TMM_Hero_benny_lafitte -->
+  <TMM_Hero_benny_lafitte.label>Бенни Лафит</TMM_Hero_benny_lafitte.label>
+  <TMM_Hero_benny_lafitte.nameFirst>Бенджамин</TMM_Hero_benny_lafitte.nameFirst>
+  <TMM_Hero_benny_lafitte.nameNick>Бенни</TMM_Hero_benny_lafitte.nameNick>
+  <TMM_Hero_benny_lafitte.nameLast>Лафит</TMM_Hero_benny_lafitte.nameLast>
+  <!-- TMM_Hero_edgar -->
+  <TMM_Hero_edgar.label>Эдгар</TMM_Hero_edgar.label>
+  <TMM_Hero_edgar.nameFirst>Эдгар</TMM_Hero_edgar.nameFirst>
+  <TMM_Hero_edgar.nameNick>Эдгар</TMM_Hero_edgar.nameNick>
+  <!-- TMM_Hero_henry_casdin -->
+  <TMM_Hero_henry_casdin.label>Генри Касдин</TMM_Hero_henry_casdin.label>
+  <TMM_Hero_henry_casdin.nameFirst>Генри</TMM_Hero_henry_casdin.nameFirst>
+  <TMM_Hero_henry_casdin.nameNick>Касдин</TMM_Hero_henry_casdin.nameNick>
+  <TMM_Hero_henry_casdin.nameLast>Касдин</TMM_Hero_henry_casdin.nameLast>
+  <!-- TMM_Hero_specialist_olin -->
+  <TMM_Hero_specialist_olin.label>Специалист Олин</TMM_Hero_specialist_olin.label>
+  <TMM_Hero_specialist_olin.nameFirst>Миранда</TMM_Hero_specialist_olin.nameFirst>
+  <TMM_Hero_specialist_olin.nameNick>Олин</TMM_Hero_specialist_olin.nameNick>
+  <TMM_Hero_specialist_olin.nameLast>Олин</TMM_Hero_specialist_olin.nameLast>
+  <!-- TMM_Hero_scribe_silas -->
+  <TMM_Hero_scribe_silas.label>Писец Сайлас</TMM_Hero_scribe_silas.label>
+  <TMM_Hero_scribe_silas.nameFirst>Сайлас</TMM_Hero_scribe_silas.nameFirst>
+  <TMM_Hero_scribe_silas.nameNick>Сайлас</TMM_Hero_scribe_silas.nameNick>
+  <TMM_Hero_scribe_silas.nameLast>Вэнс</TMM_Hero_scribe_silas.nameLast>
+  <!-- TMM_Hero_defender_morrigan -->
+  <TMM_Hero_defender_morrigan.label>Защитник Морриган</TMM_Hero_defender_morrigan.label>
+  <TMM_Hero_defender_morrigan.nameFirst>Эвелин</TMM_Hero_defender_morrigan.nameFirst>
+  <TMM_Hero_defender_morrigan.nameNick>Морриган</TMM_Hero_defender_morrigan.nameNick>
+  <TMM_Hero_defender_morrigan.nameLast>Морриган</TMM_Hero_defender_morrigan.nameLast>
+  <!-- TMM_Hero_paladin_vargas -->
+  <TMM_Hero_paladin_vargas.label>Паладин Варгас</TMM_Hero_paladin_vargas.label>
+  <TMM_Hero_paladin_vargas.nameFirst>Маркус</TMM_Hero_paladin_vargas.nameFirst>
+  <TMM_Hero_paladin_vargas.nameNick>Варгас</TMM_Hero_paladin_vargas.nameNick>
+  <TMM_Hero_paladin_vargas.nameLast>Варгас</TMM_Hero_paladin_vargas.nameLast>
+  <!-- TMM_Hero_scout_kessler -->
+  <TMM_Hero_scout_kessler.label>Разведчик Кесслер</TMM_Hero_scout_kessler.label>
+  <TMM_Hero_scout_kessler.nameFirst>Джулиан</TMM_Hero_scout_kessler.nameFirst>
+  <TMM_Hero_scout_kessler.nameNick>Кесслер</TMM_Hero_scout_kessler.nameNick>
+  <TMM_Hero_scout_kessler.nameLast>Кесслер</TMM_Hero_scout_kessler.nameLast>
+  <!-- TMM_Hero_desdemona -->
+  <TMM_Hero_desdemona.label>Дездемона</TMM_Hero_desdemona.label>
+  <TMM_Hero_desdemona.nameFirst>Дездемона</TMM_Hero_desdemona.nameFirst>
+  <TMM_Hero_desdemona.nameNick>Дездемона</TMM_Hero_desdemona.nameNick>
+  <!-- TMM_Hero_deacon -->
+  <TMM_Hero_deacon.label>Дьякон</TMM_Hero_deacon.label>
+  <TMM_Hero_deacon.nameFirst>Дьякон</TMM_Hero_deacon.nameFirst>
+  <TMM_Hero_deacon.nameNick>Дьякон</TMM_Hero_deacon.nameNick>
+  <!-- TMM_Hero_tinker_tom -->
+  <TMM_Hero_tinker_tom.label>Механик Том</TMM_Hero_tinker_tom.label>
+  <TMM_Hero_tinker_tom.nameFirst>Том</TMM_Hero_tinker_tom.nameFirst>
+  <TMM_Hero_tinker_tom.nameNick>Механик Том</TMM_Hero_tinker_tom.nameNick>
+  <!-- TMM_Hero_glory -->
+  <TMM_Hero_glory.label>Глори</TMM_Hero_glory.label>
+  <TMM_Hero_glory.nameFirst>Глори</TMM_Hero_glory.nameFirst>
+  <TMM_Hero_glory.nameNick>Глори</TMM_Hero_glory.nameNick>
+  <!-- TMM_Hero_alphonse_almodovar -->
+  <TMM_Hero_alphonse_almodovar.label>Смотритель Альфонс Альмодовар</TMM_Hero_alphonse_almodovar.label>
+  <TMM_Hero_alphonse_almodovar.nameFirst>Альфонс</TMM_Hero_alphonse_almodovar.nameFirst>
+  <TMM_Hero_alphonse_almodovar.nameNick>Смотритель Альмодовар</TMM_Hero_alphonse_almodovar.nameNick>
+  <TMM_Hero_alphonse_almodovar.nameLast>Альмодовар</TMM_Hero_alphonse_almodovar.nameLast>
+  <!-- TMM_Hero_gwen_mcnamara -->
+  <TMM_Hero_gwen_mcnamara.label>Смотрительница Гвен Макнамара</TMM_Hero_gwen_mcnamara.label>
+  <TMM_Hero_gwen_mcnamara.nameFirst>Гвен</TMM_Hero_gwen_mcnamara.nameFirst>
+  <TMM_Hero_gwen_mcnamara.nameNick>Смотрительница Макнамара</TMM_Hero_gwen_mcnamara.nameNick>
+  <TMM_Hero_gwen_mcnamara.nameLast>Макнамара</TMM_Hero_gwen_mcnamara.nameLast>
+  <!-- TMM_Hero_stanislaus_braun -->
+  <TMM_Hero_stanislaus_braun.label>Доктор Станислав Браун</TMM_Hero_stanislaus_braun.label>
+  <TMM_Hero_stanislaus_braun.nameFirst>Станислав</TMM_Hero_stanislaus_braun.nameFirst>
+  <TMM_Hero_stanislaus_braun.nameNick>Доктор Браун</TMM_Hero_stanislaus_braun.nameNick>
+  <TMM_Hero_stanislaus_braun.nameLast>Браун</TMM_Hero_stanislaus_braun.nameLast>
+  <!-- TMM_Hero_vaulttec_rep -->
+  <TMM_Hero_vaulttec_rep.label>Представитель «Волт-Тек»</TMM_Hero_vaulttec_rep.label>
+  <TMM_Hero_vaulttec_rep.nameFirst>Представитель</TMM_Hero_vaulttec_rep.nameFirst>
+  <TMM_Hero_vaulttec_rep.nameNick>Представитель</TMM_Hero_vaulttec_rep.nameNick>
+  <!-- TMM_Hero_security_chief_kendall -->
+  <TMM_Hero_security_chief_kendall.label>Шеф охраны Кендалл</TMM_Hero_security_chief_kendall.label>
+  <TMM_Hero_security_chief_kendall.nameFirst>Кендалл</TMM_Hero_security_chief_kendall.nameFirst>
+  <TMM_Hero_security_chief_kendall.nameNick>Шеф Кендалл</TMM_Hero_security_chief_kendall.nameNick>
+  <!-- TMM_Hero_swan -->
+  <TMM_Hero_swan.label>Свон</TMM_Hero_swan.label>
+  <TMM_Hero_swan.nameFirst>Эдгар</TMM_Hero_swan.nameFirst>
+  <TMM_Hero_swan.nameNick>Свон</TMM_Hero_swan.nameNick>
+  <TMM_Hero_swan.nameLast>Свон</TMM_Hero_swan.nameLast>
+  <!-- TMM_Hero_fist -->
+  <TMM_Hero_fist.label>Кулак</TMM_Hero_fist.label>
+  <TMM_Hero_fist.nameFirst>Кулак</TMM_Hero_fist.nameFirst>
+  <TMM_Hero_fist.nameNick>Кулак</TMM_Hero_fist.nameNick>
+  <!-- TMM_Hero_dead_eye -->
+  <TMM_Hero_dead_eye.label>Меткий Глаз</TMM_Hero_dead_eye.label>
+  <TMM_Hero_dead_eye.nameFirst>Меткий Глаз</TMM_Hero_dead_eye.nameFirst>
+  <TMM_Hero_dead_eye.nameNick>Меткий Глаз</TMM_Hero_dead_eye.nameNick>
+  <!-- TMM_Hero_mad_racer -->
+  <TMM_Hero_mad_racer.label>Безумный Гонщик</TMM_Hero_mad_racer.label>
+  <TMM_Hero_mad_racer.nameFirst>Безумный Гонщик</TMM_Hero_mad_racer.nameFirst>
+  <TMM_Hero_mad_racer.nameNick>Гонщик</TMM_Hero_mad_racer.nameNick>
+  <!-- TMM_Hero_master_butcher -->
+  <TMM_Hero_master_butcher.label>Мастер-мясник</TMM_Hero_master_butcher.label>
+  <TMM_Hero_master_butcher.nameFirst>Мясник</TMM_Hero_master_butcher.nameFirst>
+  <TMM_Hero_master_butcher.nameNick>Мясник</TMM_Hero_master_butcher.nameNick>
+</LanguageData>

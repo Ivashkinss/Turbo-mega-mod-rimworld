@@ -1,4 +1,4 @@
-﻿Turbo mega mod 0.14 (RimWorld 1.7)
+﻿Turbo mega mod 0.15 (RimWorld 1.7)
 
 1. Распакуйте эту папку в папку Mods игры, например:
    C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods

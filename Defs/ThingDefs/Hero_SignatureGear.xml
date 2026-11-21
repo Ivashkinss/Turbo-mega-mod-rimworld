@@ -10,7 +10,7 @@
     <label>rock-salt buckshot</label>
     <thingClass>TurboMegaMod.Bullet_DeanRockSalt</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Shotgun</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_DeanShotgun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -27,7 +27,7 @@
     <defName>TMM_Bullet_KelloggRevolver</defName>
     <label>.44 magnum round</label>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_KelloggRevolver</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -308,7 +308,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/Knife</texPath> <!-- TODO art -->
+      <texPath>Things/Item/Equipment/TMM/TMM_Sig_castiel_angel_blade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
