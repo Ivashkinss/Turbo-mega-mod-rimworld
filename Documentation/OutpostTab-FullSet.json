@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4249,
-                        "ticksAdvanced":  1784,
+                        "framesAdvanced":  4263,
+                        "ticksAdvanced":  1787,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -49,7 +49,7 @@
                        "stage":  2,
                        "facts":  [
                                      "Verified empty state layout",
-                                     "Outpost successfully founded at tile 72616,0",
+                                     "Outpost successfully founded at tile 110781,0",
                                      "Zero resource cost rejection verified: 4 С‚РѕРїР». (0 РµСЃС‚СЊ, РґРѕРїР»Р°С‚Р°: 10 СЃРµСЂ.; СЃРєР»Р°Рґ: 0 С‚РѕРїР»., 0 СЃРµСЂ.)",
                                      "Silver fallback verified: silverDeduct=10",
                                      "Pod launched with worker and 100 silver",

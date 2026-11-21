@@ -88,7 +88,7 @@
 
 | Группа | Моды |
 | --- | --- |
-| Библиотеки | Harmony, HugsLib, Adaptive Storage Framework, Vanilla Expanded Framework, XML Extensions |
+| Библиотеки | Harmony, HugsLib, Adaptive Storage Framework, Vanilla Expanded Framework, XML Extensions, Vehicle Framework |
 | Гости и услуги | Hospitality (Continued), Hospital |
 | Хранение | Neat Storage, Fridge |
 | Бой и персонажи | Melee Animation, Show Me Your Hands, RunAndGun, Simple Sidearms, Snap Out!, Character Editor |

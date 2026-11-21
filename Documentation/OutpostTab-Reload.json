@@ -4,7 +4,7 @@
                              "checksCount":  4,
                              "stage":  1,
                              "facts":  [
-                                           "Reload mid-flight state verified: destinationTile=72616,0",
+                                           "Reload mid-flight state verified: destinationTile=110781,0",
                                            "Pod delivered contents cleanly after reload without duplicates"
                                        ],
                              "checks":  [
@@ -40,7 +40,7 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4259,
+                        "framesAdvanced":  4249,
                         "ticksAdvanced":  1788,
                         "newsWindowsDismissedInTest":  0
                     },

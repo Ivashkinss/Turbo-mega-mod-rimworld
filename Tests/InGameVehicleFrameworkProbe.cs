@@ -56,10 +56,13 @@ namespace TurboMegaMod
             }
             Check("VehicleFrameworkDefsLoaded", vfDefs > 0, vfDefs.ToString());
             int patched = 0;
+            Dictionary<string, int> owners = new Dictionary<string, int>();
             foreach (System.Reflection.MethodBase m in Harmony.GetAllPatchedMethods())
             {
                 Patches p = Harmony.GetPatchInfo(m);
-                if (p != null && p.Owners.Any(o => o.IndexOf("vehicle", StringComparison.OrdinalIgnoreCase) >= 0 || o.IndexOf("smashphil", StringComparison.OrdinalIgnoreCase) >= 0)) patched++;
+                if (p != null) foreach (string o in p.Owners) { int c; owners.TryGetValue(o, out c); owners[o] = c + 1; }
+                // Integrated, VF registers its patches under our package id, so count patches whose code lives in its namespaces.
+                if (p != null && p.Prefixes.Concat(p.Postfixes).Concat(p.Transpilers).Concat(p.Finalizers).Any(x => x.PatchMethod != null && x.PatchMethod.DeclaringType != null && x.PatchMethod.DeclaringType.Namespace != null && (x.PatchMethod.DeclaringType.Namespace.StartsWith("Vehicles") || x.PatchMethod.DeclaringType.Namespace.StartsWith("SmashTools")))) patched++;
             }
             Check("VehicleFrameworkPatchesApplied", patched > 20, patched.ToString());
             Check("MapRunsWithFramework", Find.TickManager.TicksGame > 0, Find.TickManager.TicksGame.ToString());

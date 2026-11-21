@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3815,
-                        "ticksAdvanced":  14530,
+                        "framesAdvanced":  4000,
+                        "ticksAdvanced":  14546,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -48,10 +48,10 @@
                          "checksCount":  148,
                          "stage":  1,
                          "facts":  [
-                                       "leaderLetter=РњРѕСЂР°Р»СЊРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё РЎРѕСЋР· РђСЂРёРЅРѕСЂ СѓРјРµСЂ РЈРјРµСЂ РњРѕСЂР°Р»СЊРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРЎРѕСЋР· РђСЂРёРЅРѕСЂ\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ РњРѕСЂР°Р»СЊРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ.",
-                                       "secondId=Human55646",
-                                       "thirdId=Human55653",
-                                       "saveHygieneRemoved=1"
+                                       "leaderLetter=Р’С‹СЃС€РёР№ Р’РѕР¶РґСЊ С„СЂР°РєС†РёРё Р‘РµР»С‹Р№ РЎРѕСЋР· СѓРјРµСЂ РЈРјРµСЂ Р’С‹СЃС€РёР№ Р’РѕР¶РґСЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР‘РµР»С‹Р№ РЎРѕСЋР·\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLead Probe\u003c/color\u003e.  \u003ccolor=#D09B61FF\u003eSecond Probe\u003c/color\u003e РѕС‚РЅС‹РЅРµ РЅРѕРІС‹Р№ Р’С‹СЃС€РёР№ Р’РѕР¶РґСЊ.",
+                                       "secondId=Human18467",
+                                       "thirdId=Human18475",
+                                       "saveHygieneRemoved=0"
                                    ],
                          "checks":  [
                                         {
@@ -64,7 +64,7 @@
                                             "name":  "TestFactionPresent",
                                             "passed":  true,
                                             "expected":  "OutlanderCivil",
-                                            "actual":  "РЎРѕСЋР· РђСЂРёРЅРѕСЂ"
+                                            "actual":  "Р‘РµР»С‹Р№ РЎРѕСЋР·"
                                         },
                                         {
                                             "name":  "MinutemenHeroesLoadedFromXml",
@@ -783,8 +783,8 @@
                                         {
                                             "name":  "SecondCallSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human545",
-                                            "actual":  "Human545"
+                                            "expected":  "Human662",
+                                            "actual":  "Human662"
                                         },
                                         {
                                             "name":  "NameApplied",
@@ -802,7 +802,7 @@
                                             "name":  "LeaderInFactionAndWorld",
                                             "passed":  true,
                                             "expected":  "faction+world",
-                                            "actual":  "РЎРѕСЋР· РђСЂРёРЅРѕСЂ/True"
+                                            "actual":  "Р‘РµР»С‹Р№ РЎРѕСЋР·/True"
                                         },
                                         {
                                             "name":  "FactionLeaderIsHero",
@@ -838,7 +838,7 @@
                                             "name":  "FifthAcceptedByCasket",
                                             "passed":  true,
                                             "expected":  "True",
-                                            "actual":  "CryptosleepCasket55685"
+                                            "actual":  "CryptosleepCasket18497"
                                         },
                                         {
                                             "name":  "SixthInFlightHolder",
@@ -862,7 +862,7 @@
                                             "name":  "LeaderLetterNamesSuccessor",
                                             "passed":  true,
                                             "expected":  "letter about Lead Probe naming Second Probe",
-                                            "actual":  "РњРѕСЂР°Р»СЊРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё РЎРѕСЋР· РђСЂРёРЅРѕСЂ СѓРјРµСЂ РЈРјРµСЂ РњРѕСЂР°Р»СЊРЅС‹Р№ Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eРЎРѕСЋР· РђСЂРёРЅРѕСЂ\u003c/color\u003e"
+                                            "actual":  "Р’С‹СЃС€РёР№ Р’РѕР¶РґСЊ С„СЂР°РєС†РёРё Р‘РµР»С‹Р№ РЎРѕСЋР· СѓРјРµСЂ РЈРјРµСЂ Р’С‹СЃС€РёР№ Р’РѕР¶РґСЊ С„СЂР°РєС†РёРё \u003ccolor=#00BFFFFF\u003eР‘РµР»С‹Р№ РЎРѕСЋР·\u003c/color\u003e, \u003ccolor=#D09B61FF\u003eLea"
                                         },
                                         {
                                             "name":  "DeadLeaderStateDead",
@@ -897,7 +897,7 @@
                                         {
                                             "name":  "CapturedHeroSamePawn",
                                             "passed":  true,
-                                            "expected":  "Human55653",
+                                            "expected":  "Human18475",
                                             "actual":  "checked"
                                         },
                                         {

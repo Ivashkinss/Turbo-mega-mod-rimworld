@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3921,
-                        "ticksAdvanced":  26646,
+                        "framesAdvanced":  3298,
+                        "ticksAdvanced":  25775,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -108,7 +108,7 @@
                                            "name":  "AdvancedToWait",
                                            "passed":  true,
                                            "expected":  "stage #1 with deadline",
-                                           "actual":  "#1/60484"
+                                           "actual":  "#1/60769"
                                        },
                                        {
                                            "name":  "StaleLetterOnlyCloses",

@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3449,
-                        "ticksAdvanced":  26059,
+                        "framesAdvanced":  3512,
+                        "ticksAdvanced":  25989,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {

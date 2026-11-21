@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3295,
-                        "ticksAdvanced":  30356,
+                        "framesAdvanced":  2947,
+                        "ticksAdvanced":  20999,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -59,13 +59,13 @@
                                               "name":  "Setup_EdgeStockpileReady",
                                               "passed":  true,
                                               "expected":  "\u003e=6 cells",
-                                              "actual":  "25"
+                                              "actual":  "21"
                                           },
                                           {
                                               "name":  "P2_FoodCalcUsesTransferableExactCount",
                                               "passed":  true,
                                               "expected":  "\u003c 2.0d for 1 meal from 40-stack",
-                                              "actual":  "0.48d"
+                                              "actual":  "0.66d"
                                           },
                                           {
                                               "name":  "P2_LastMobileCarrierProtected",

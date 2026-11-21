@@ -50,6 +50,13 @@
     <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.6/Compat/VNPE</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
     <li IfModNotActive="adamas.hospital">Components/Hospital/1.6</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework/1.6</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework/LegacyTextures</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.royalty">Components/VehicleFramework/1.6/Compatibility/Royalty</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.ideology">Components/VehicleFramework/1.6/Compatibility/Ideology</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.biotech">Components/VehicleFramework/1.6/Compatibility/Biotech</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.odyssey">Components/VehicleFramework/1.6/Compatibility/Odyssey</li>
   </v1.6>
   <v1.7>
     <li IfModNotActive="brrainz.harmony">Components/Harmony</li>
@@ -101,5 +108,12 @@
     <li IfModNotActive="orion.hospitality" IfModActive="vanillaexpanded.vnutriente">Components/Hospitality/1.7/Compat/VNPE</li>
     <li IfModNotActive="orion.hospitality">Components/Hospitality</li>
     <li IfModNotActive="adamas.hospital">Components/Hospital/1.7</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework/1.6</li>
+    <li IfModNotActive="smashphil.vehicleframework">Components/VehicleFramework/LegacyTextures</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.royalty">Components/VehicleFramework/1.6/Compatibility/Royalty</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.ideology">Components/VehicleFramework/1.6/Compatibility/Ideology</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.biotech">Components/VehicleFramework/1.6/Compatibility/Biotech</li>
+    <li IfModNotActive="smashphil.vehicleframework" IfModActive="ludeon.rimworld.odyssey">Components/VehicleFramework/1.6/Compatibility/Odyssey</li>
   </v1.7>
 </loadFolders>

@@ -1764,7 +1764,7 @@
     },
     {
       "id": "VehicleFramework",
-      "state": "hold",
+      "state": "accepted",
       "assignee": "claude",
       "kind": "implement",
       "afterTask": "EquipmentSlots",

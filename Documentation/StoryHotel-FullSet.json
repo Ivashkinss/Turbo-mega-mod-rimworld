@@ -16,7 +16,7 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4091,
+                        "framesAdvanced":  4099,
                         "ticksAdvanced":  362149,
                         "newsWindowsDismissedInTest":  0
                     },
@@ -185,7 +185,7 @@
                                           "name":  "ReloadPrep_ActiveHotelVisitSaved",
                                           "passed":  true,
                                           "expected":  "active visit with lordId\u003e=0",
-                                          "actual":  "arrived=true, lordId=14, heroIncluded=false"
+                                          "actual":  "arrived=true, lordId=13, heroIncluded=false"
                                       },
                                       {
                                           "name":  "ReloadPrep_PaidDeliverSavedBeforeTransition",

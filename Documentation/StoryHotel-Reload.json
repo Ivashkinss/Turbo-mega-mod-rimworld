@@ -30,7 +30,7 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4241,
+                        "framesAdvanced":  4258,
                         "ticksAdvanced":  49,
                         "newsWindowsDismissedInTest":  0
                     },

@@ -2,16 +2,16 @@
     "regionalWorldReload":  {
                                 "passed":  true,
                                 "checks":  22,
-                                "relocated":  72,
-                                "retained":  1,
-                                "distanceBefore":  136.1433,
-                                "distanceAfter":  47.57411,
-                                "lowBuildings":  394,
-                                "highBuildings":  2888,
-                                "lowBeds":  11,
-                                "highBeds":  139,
+                                "relocated":  74,
+                                "retained":  2,
+                                "distanceBefore":  124.6574,
+                                "distanceAfter":  35.04047,
+                                "lowBuildings":  399,
+                                "highBuildings":  2795,
+                                "lowBeds":  12,
+                                "highBeds":  142,
                                 "lowPawns":  6,
-                                "highPawns":  61,
+                                "highPawns":  59,
                                 "errors":  [
 
                                            ]
@@ -19,8 +19,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4211,
-                        "ticksAdvanced":  1772,
+                        "framesAdvanced":  4203,
+                        "ticksAdvanced":  1769,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,

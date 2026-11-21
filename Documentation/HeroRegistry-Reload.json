@@ -4,7 +4,7 @@
                                "checksCount":  10,
                                "stage":  1,
                                "facts":  [
-                                             "forcePauseDialogsClosed=1"
+                                             "forcePauseDialogsClosed=0"
                                          ],
                                "checks":  [
                                               {
@@ -46,20 +46,20 @@
                                               {
                                                   "name":  "SameSecondAfterLoad",
                                                   "passed":  true,
-                                                  "expected":  "Human55646",
-                                                  "actual":  "Human55646"
+                                                  "expected":  "Human18467",
+                                                  "actual":  "Human18467"
                                               },
                                               {
                                                   "name":  "FourthSurvivesTwoDays",
                                                   "passed":  true,
                                                   "expected":  "alive record",
-                                                  "actual":  "Human55663"
+                                                  "actual":  "Human18481"
                                               },
                                               {
                                                   "name":  "SecondSurvivesDayAndGC",
                                                   "passed":  true,
-                                                  "expected":  "Human55646",
-                                                  "actual":  "Human55646"
+                                                  "expected":  "Human18467",
+                                                  "actual":  "Human18467"
                                               },
                                               {
                                                   "name":  "NoDuplicateRecords",
@@ -75,8 +75,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  2381,
-                        "ticksAdvanced":  21919,
+                        "framesAdvanced":  3167,
+                        "ticksAdvanced":  23714,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
