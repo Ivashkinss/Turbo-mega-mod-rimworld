@@ -1,0 +1,123 @@
+﻿{
+    "component":  "TextureExport",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3433,
+                         "scalarFields":  4034,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4215,
+                        "ticksAdvanced":  1769,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "37c0bba3dddd88aa9ae2b2e7b3dadf68b01cff64db2cf2b0ca48270fd29d826f",
+    "textureExport":  {
+                          "passed":  true,
+                          "exported":  69,
+                          "missing":  [
+
+                                      ],
+                          "files":  [
+                                        "Naked_Male_south 128x128",
+                                        "ShirtBasic_Male_south 128x128",
+                                        "Duster_Male_south 128x128",
+                                        "PowerArmor_Male_south 128x128",
+                                        "Naked_Male_north 128x128",
+                                        "ShirtBasic_Male_north 128x128",
+                                        "Duster_Male_north 128x128",
+                                        "PowerArmor_Male_north 128x128",
+                                        "Naked_Male_east 128x128",
+                                        "ShirtBasic_Male_east 128x128",
+                                        "Duster_Male_east 128x128",
+                                        "PowerArmor_Male_east 128x128",
+                                        "Naked_Female_south 128x128",
+                                        "ShirtBasic_Female_south 128x128",
+                                        "Duster_Female_south 128x128",
+                                        "PowerArmor_Female_south 128x128",
+                                        "Naked_Female_north 128x128",
+                                        "ShirtBasic_Female_north 128x128",
+                                        "Duster_Female_north 128x128",
+                                        "PowerArmor_Female_north 128x128",
+                                        "Naked_Female_east 128x128",
+                                        "ShirtBasic_Female_east 128x128",
+                                        "Duster_Female_east 128x128",
+                                        "PowerArmor_Female_east 128x128",
+                                        "Naked_Thin_south 128x128",
+                                        "ShirtBasic_Thin_south 128x128",
+                                        "Duster_Thin_south 128x128",
+                                        "PowerArmor_Thin_south 128x128",
+                                        "Naked_Thin_north 128x128",
+                                        "ShirtBasic_Thin_north 128x128",
+                                        "Duster_Thin_north 128x128",
+                                        "PowerArmor_Thin_north 128x128",
+                                        "Naked_Thin_east 128x128",
+                                        "ShirtBasic_Thin_east 128x128",
+                                        "Duster_Thin_east 128x128",
+                                        "PowerArmor_Thin_east 128x128",
+                                        "Naked_Hulk_south 128x128",
+                                        "ShirtBasic_Hulk_south 128x128",
+                                        "Duster_Hulk_south 128x128",
+                                        "PowerArmor_Hulk_south 128x128",
+                                        "Naked_Hulk_north 128x128",
+                                        "ShirtBasic_Hulk_north 128x128",
+                                        "Duster_Hulk_north 128x128",
+                                        "PowerArmor_Hulk_north 128x128",
+                                        "Naked_Hulk_east 128x128",
+                                        "ShirtBasic_Hulk_east 128x128",
+                                        "Duster_Hulk_east 128x128",
+                                        "PowerArmor_Hulk_east 128x128",
+                                        "Naked_Fat_south 128x128",
+                                        "ShirtBasic_Fat_south 128x128",
+                                        "Duster_Fat_south 128x128",
+                                        "PowerArmor_Fat_south 128x128",
+                                        "Naked_Fat_north 128x128",
+                                        "ShirtBasic_Fat_north 128x128",
+                                        "Duster_Fat_north 128x128",
+                                        "PowerArmor_Fat_north 128x128",
+                                        "Naked_Fat_east 128x128",
+                                        "ShirtBasic_Fat_east 128x128",
+                                        "Duster_Fat_east 128x128",
+                                        "PowerArmor_Fat_east 128x128",
+                                        "Male_Average_Normal_south 128x128",
+                                        "CowboyHat_south 128x128",
+                                        "PowerArmorHelmet_south 128x128",
+                                        "Male_Average_Normal_north 128x128",
+                                        "CowboyHat_north 128x128",
+                                        "PowerArmorHelmet_north 128x128",
+                                        "Male_Average_Normal_east 128x128",
+                                        "CowboyHat_east 128x128",
+                                        "PowerArmorHelmet_east 128x128"
+                                    ]
+                      },
+    "passed":  true
+}

@@ -34,3 +34,8 @@ To find what is still missing: `Select-String Defs -Recurse -Pattern 'TODO art'`
 - Дальше:
   - промпт `49b`, пункты 5–29;
   - одежда: 32 вещи фракций, 28 именных, 2 легендарные. Промпта ещё нет. Нужны значки и надетые виды north/south/east. Neon рисует Male, остальные телосложения получаем масштабированием.
+
+## Одежда (с 21.11)
+- Шаблоны посадки снимаются из игры: компонент `TextureExport` (`Tests/InGameTextureExportProbe.cs`) выгружает ванильные тела, рубаху, пыльник, силовую броню, голову и шляпы в `.rgba`. `Tools/rgba_to_png.ps1` переводит их в PNG и печатает рамки. PNG — ванильные текстуры, поэтому лежат только локально в `Tools/Build/ArtTemplates` и не коммитятся. Контуры для промптов: `Tools/trace_template.ps1`, готовые — в `Documentation/ArtTemplates/template_paths.txt`.
+- Neon рисует вещь только на теле Male, три вида. `Tools/install_apparel_art.ps1 -Staged <папка>` пересчитывает её на Female, Thin, Hulk и Fat по рамкам ванильной вещи того же типа (Shell — пыльник, силовая броня — PowerArmor, остальное — рубаха), делает значок из вида south и прописывает `texPath` и `wornGraphicPath`. Головные уборы (Overhead/EyeCover) идут без телосложений.
+- Промпты: `50` — одежда фракций (32), `51` — именные вещи и броня Защитника (26). По одной вещи (3 SVG) на ответ.

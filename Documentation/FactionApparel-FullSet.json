@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4194,
-                        "ticksAdvanced":  1768,
+                        "framesAdvanced":  3952,
+                        "ticksAdvanced":  1665,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -40,7 +40,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "37c0bba3dddd88aa9ae2b2e7b3dadf68b01cff64db2cf2b0ca48270fd29d826f",
+    "productionAssemblySha256":  "a82a74940bae4679aef08a2e9975ed825087a44998600cb63aa7a1be3d6a8130",
     "factionApparel":  {
                            "passed":  true,
                            "checksCount":  21,
@@ -121,7 +121,7 @@
                                               "name":  "Faction_MonsterClans_NocturnalCoatSpeed008",
                                               "passed":  true,
                                               "expected":  "delta ~ +0.08",
-                                              "actual":  "+0.074"
+                                              "actual":  "+0.077"
                                           },
                                           {
                                               "name":  "Race_AngelCoatBlockedOnHuman",
