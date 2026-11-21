@@ -263,8 +263,9 @@ namespace TurboMegaMod
             if (armoredAngel != null && raiment != null) armoredAngel.apparel.Wear(raiment, false);
 
             Log.Message("[TMM probe] angel diag: demonXeno=" + (demonAttacker != null && demonAttacker.genes != null && demonAttacker.genes.Xenotype != null ? demonAttacker.genes.Xenotype.defName : "null") + " demonFaction=" + (demonAttacker != null && demonAttacker.Faction != null ? demonAttacker.Faction.def.defName : "null") + " isSuper=" + FactionApparelUtil.IsSupernaturalSource(new DamageInfo(DamageDefOf.Blunt, 20f, 2f, -1f, demonAttacker), true) + " worn=" + (armoredAngel != null && raiment != null && armoredAngel.apparel.WornApparel.Contains(raiment)));
-            float bareDmg = ApplyTorsoDamageFrom(bareAngel, demonAttacker, DamageDefOf.Blunt, 20f);
-            float armoredDmg = ApplyTorsoDamageFrom(armoredAngel, demonAttacker, DamageDefOf.Blunt, 20f);
+            // Cut, not Blunt: blunt hits also injure inner organs, which makes the summed injury noisy.
+            float bareDmg = ApplyTorsoDamageFrom(bareAngel, demonAttacker, DamageDefOf.Cut, 20f);
+            float armoredDmg = ApplyTorsoDamageFrom(armoredAngel, demonAttacker, DamageDefOf.Cut, 20f);
             AddCheck("Special_AngelRaimentReducesDemonDamage",
                 armoredAngel != null && raiment != null && armoredAngel.apparel.WornApparel.Contains(raiment) && armoredDmg < bareDmg * 0.75f,
                 string.Format("< {0:0.0}", bareDmg * 0.75f),

@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="ab_aura_outer" cx="56%" cy="50%" r="48%" fx="56%" fy="50%">
+      <stop offset="0%" stop-color="#8cd6ff" stop-opacity="0.34"/>
+      <stop offset="48%" stop-color="#5ca9d6" stop-opacity="0.16"/>
+      <stop offset="80%" stop-color="#3c7aa3" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#2b5d80" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ab_aura_inner" cx="62%" cy="50%" r="36%">
+      <stop offset="0%" stop-color="#d6f4ff" stop-opacity="0.45"/>
+      <stop offset="55%" stop-color="#7bc9f5" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5ca9d6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ab_blade_upper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8c9d6"/>
+      <stop offset="28%" stop-color="#eef7fc"/>
+      <stop offset="65%" stop-color="#c9dde8"/>
+      <stop offset="100%" stop-color="#e4f3fa"/>
+    </linearGradient>
+    <linearGradient id="ab_blade_lower" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#536270"/>
+      <stop offset="40%" stop-color="#798c9e"/>
+      <stop offset="78%" stop-color="#4e5e6e"/>
+      <stop offset="100%" stop-color="#6b8094"/>
+    </linearGradient>
+    <linearGradient id="ab_blade_flute" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2e3945"/>
+      <stop offset="50%" stop-color="#5d7082"/>
+      <stop offset="100%" stop-color="#9cb2c4"/>
+    </linearGradient>
+    <linearGradient id="ab_grip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cad6e0"/>
+      <stop offset="28%" stop-color="#92a2b0"/>
+      <stop offset="62%" stop-color="#586673"/>
+      <stop offset="100%" stop-color="#37424d"/>
+    </linearGradient>
+    <linearGradient id="ab_collar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e3edf5"/>
+      <stop offset="40%" stop-color="#9bb0c2"/>
+      <stop offset="75%" stop-color="#5d6e7d"/>
+      <stop offset="100%" stop-color="#3c4854"/>
+    </linearGradient>
+    <linearGradient id="ab_pommel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dce7f0"/>
+      <stop offset="50%" stop-color="#7c8e9e"/>
+      <stop offset="100%" stop-color="#3b454f"/>
+    </linearGradient>
+    <linearGradient id="ab_ridge_shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9ec0d6" stop-opacity="0.7"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="75%" stop-color="#c9eeff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="ab_spark" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#9be0ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#69b8e8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Soft celestial blue aura (no filters) -->
+  <ellipse cx="290" cy="256" rx="220" ry="102" fill="url(#ab_aura_outer)"/>
+  <ellipse cx="328" cy="256" rx="170" ry="52" fill="url(#ab_aura_inner)"/>
+
+  <!-- Subtle ethereal glints -->
+  <circle cx="468" cy="256" r="24" fill="url(#ab_spark)"/>
+  <path d="M 358,214 L 362,226 L 374,230 L 362,234 L 358,246 L 354,234 L 342,230 L 354,226 Z" fill="#d6f4ff" opacity="0.65"/>
+  <path d="M 278,282 L 280,290 L 288,292 L 280,294 L 278,302 L 276,294 L 268,292 L 276,290 Z" fill="#b3e6ff" opacity="0.55"/>
+
+  <!-- Outer silhouette base stroke for thick crisp dark contour -->
+  <path d="M 40,256
+           C 40,242 54,234 72,235
+           L 132,238
+           C 146,238 156,232 166,230
+           L 184,226
+           C 265,227 374,236 476,256
+           C 374,276 265,285 184,286
+           L 166,282
+           C 156,280 146,274 132,274
+           L 72,277
+           C 54,278 40,270 40,256 Z"
+        fill="#121519" stroke="#121519" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Pommel -->
+  <path d="M 42,256 C 42,243 55,236 74,237 L 78,256 L 74,275 C 55,276 42,269 42,256 Z"
+        fill="url(#ab_pommel)"/>
+
+  <!-- Cylindrical contoured grip (guardless) -->
+  <path d="M 73,237 L 154,235 L 158,256 L 154,277 L 73,275 Z"
+        fill="url(#ab_grip)"/>
+
+  <!-- Grip subtle machined rings & grooves -->
+  <path d="M 88,237 L 88,275 M 102,237 L 102,275 M 116,236 L 116,276 M 130,236 L 130,276 M 144,235 L 144,277"
+        stroke="#262e36" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 91,239 L 91,260 M 105,239 L 105,260 M 119,238 L 119,260 M 133,238 L 133,260 M 147,237 L 147,260"
+        stroke="#d7e4ed" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Smooth seamless bolster (no crossguard) -->
+  <path d="M 152,235 C 160,234 168,230 183,227 L 190,256 L 183,285 C 168,282 160,278 152,277 Z"
+        fill="url(#ab_collar)"/>
+  <path d="M 154,235 L 154,277" stroke="#121519" stroke-width="4.5"/>
+  <path d="M 183,227 L 188,256 L 183,285" fill="none" stroke="#121519" stroke-width="4.5" stroke-linejoin="round"/>
+
+  <!-- Three-edged silver blade: upper bright facet -->
+  <path d="M 184,227 C 266,228 374,237 476,256 L 188,256 Z"
+        fill="url(#ab_blade_upper)"/>
+
+  <!-- Three-edged silver blade: lower shaded facet -->
+  <path d="M 188,256 L 476,256 C 374,275 266,284 184,285 Z"
+        fill="url(#ab_blade_lower)"/>
+
+  <!-- Recessed triangular third-face bevel / flute near bolster -->
+  <path d="M 188,243 L 266,256 L 188,269 Z"
+        fill="url(#ab_blade_flute)" opacity="0.82"/>
+  <path d="M 188,243 L 266,256 L 188,269"
+        fill="none" stroke="#222b33" stroke-width="2.5" stroke-linejoin="round" opacity="0.75"/>
+
+  <!-- Reflected cyan edge gleam along upper and lower edges -->
+  <path d="M 192,232 C 272,233 372,241 464,255"
+        fill="none" stroke="#d9f4ff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 196,280 C 274,278 370,270 460,257"
+        fill="none" stroke="#7ccbf2" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Prominent central triangular spine ridge -->
+  <path d="M 188,256 L 474,256"
+        stroke="#27323d" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+  <path d="M 188,254.5 L 472,255.5"
+        stroke="url(#ab_ridge_shine)" stroke-width="3.2" stroke-linecap="round"/>
+
+  <!-- Specular highlight streak on grip & pommel -->
+  <path d="M 52,245 C 62,242 74,242 148,241"
+        fill="none" stroke="#edf6fc" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M 160,238 L 178,234"
+        fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Re-stroke crisp outer outline to ensure unbroken thick dark edge -->
+  <path d="M 40,256
+           C 40,242 54,234 72,235
+           L 132,238
+           C 146,238 156,232 166,230
+           L 184,226
+           C 265,227 374,236 476,256
+           C 374,276 265,285 184,286
+           L 166,282
+           C 156,280 146,274 132,274
+           L 72,277
+           C 54,278 40,270 40,256 Z"
+        fill="none" stroke="#121519" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

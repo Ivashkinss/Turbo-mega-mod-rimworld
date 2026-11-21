@@ -300,6 +300,9 @@ public sealed class HeroRegistryProbe : MapComponent
             facts.Add("thirdId=" + third.ThingID);
             // World generation in this mod set can leave relations of random world pawns pointing at discarded pawns.
             // Remove those before saving (they are not ours), but fail if a hero or a player pawn has one.
+            // The mod itself now drops relations to pawns the GC removed before every save (SaveHygiene); after it
+            // no hero or player pawn may keep one. The reload test checks the save has no unresolved references.
+            facts.Add("saveHygieneRemoved=" + SaveHygiene.CleanDanglingRelations());
             int ownDangling = CleanDanglingRelations(reg);
             C("NoDanglingRelationsOnHeroesOrPlayer", ownDangling == 0, 0, ownDangling + " " + string.Join("; ", ownDanglingNames.ToArray()));
             GameDataSaveLoader.SaveGame("TMM-HeroRegistry");

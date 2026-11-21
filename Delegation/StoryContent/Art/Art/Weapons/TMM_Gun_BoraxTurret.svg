@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="btg_nozzle_body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3a434b"/>
+      <stop offset="25%" stop-color="#6c7985"/>
+      <stop offset="50%" stop-color="#8795a1"/>
+      <stop offset="76%" stop-color="#535e69"/>
+      <stop offset="100%" stop-color="#2c333b"/>
+    </linearGradient>
+    <linearGradient id="btg_nozzle_lip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#444e57"/>
+      <stop offset="30%" stop-color="#8a98a3"/>
+      <stop offset="55%" stop-color="#a5b2bd"/>
+      <stop offset="82%" stop-color="#5c6773"/>
+      <stop offset="100%" stop-color="#313840"/>
+    </linearGradient>
+    <linearGradient id="btg_nozzle_in" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#191e24"/>
+      <stop offset="65%" stop-color="#2e3740"/>
+      <stop offset="100%" stop-color="#4e5a66"/>
+    </linearGradient>
+    <linearGradient id="btg_barrel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#323a42"/>
+      <stop offset="30%" stop-color="#616e7a"/>
+      <stop offset="55%" stop-color="#768591"/>
+      <stop offset="85%" stop-color="#46515c"/>
+      <stop offset="100%" stop-color="#272e36"/>
+    </linearGradient>
+    <linearGradient id="btg_cradle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#606b73"/>
+      <stop offset="45%" stop-color="#444d54"/>
+      <stop offset="100%" stop-color="#2a3036"/>
+    </linearGradient>
+    <linearGradient id="btg_cap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7a8791"/>
+      <stop offset="50%" stop-color="#4e5861"/>
+      <stop offset="100%" stop-color="#2f363d"/>
+    </linearGradient>
+    <linearGradient id="btg_brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cfb26f"/>
+      <stop offset="45%" stop-color="#9c7e42"/>
+      <stop offset="100%" stop-color="#5e4921"/>
+    </linearGradient>
+    <linearGradient id="btg_pipe" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#614c24"/>
+      <stop offset="45%" stop-color="#b89854"/>
+      <stop offset="100%" stop-color="#57431f"/>
+    </linearGradient>
+    <linearGradient id="btg_powder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c3ced4"/>
+      <stop offset="40%" stop-color="#f2f6f7"/>
+      <stop offset="75%" stop-color="#dde6ea"/>
+      <stop offset="100%" stop-color="#aebbc2"/>
+    </linearGradient>
+    <linearGradient id="btg_dust" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eef4f7" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#d4e0e6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Twin side copper/brass pressurization pipes -->
+  <path d="M 198,256 L 198,176 C 198,158 212,148 228,148"
+        fill="none" stroke="#121519" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 198,256 L 198,176 C 198,158 212,148 228,148"
+        fill="none" stroke="url(#btg_pipe)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M 314,256 L 314,176 C 314,158 300,148 284,148"
+        fill="none" stroke="#121519" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 314,256 L 314,176 C 314,158 300,148 284,148"
+        fill="none" stroke="url(#btg_pipe)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Rear pressurized feed manifold & counterweight box -->
+  <rect x="206" y="316" width="100" height="86" rx="16"
+        fill="url(#btg_cradle)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  <!-- Rear hazard accent bar -->
+  <rect x="220" y="370" width="72" height="18" rx="4"
+        fill="#b58f31" stroke="#121519" stroke-width="5"/>
+  <path d="M 232,370 L 224,388 M 250,370 L 242,388 M 268,370 L 260,388 M 286,370 L 278,388"
+        stroke="#1c2126" stroke-width="7"/>
+  <!-- Rear pressure valve wheel / dial -->
+  <circle cx="256" cy="346" r="18" fill="url(#btg_brass)" stroke="#121519" stroke-width="6"/>
+  <circle cx="256" cy="346" r="9" fill="#d7e1e6" stroke="#121519" stroke-width="3"/>
+  <path d="M 256,346 L 262,340" stroke="#992b24" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Swivel mount side trunnion brackets (centered on y=256) -->
+  <rect x="160" y="216" width="192" height="80" rx="18"
+        fill="url(#btg_cradle)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  <!-- Side trunnion pivot bolts -->
+  <rect x="148" y="238" width="22" height="36" rx="6"
+        fill="url(#btg_brass)" stroke="#121519" stroke-width="9"/>
+  <rect x="342" y="238" width="22" height="36" rx="6"
+        fill="url(#btg_brass)" stroke="#121519" stroke-width="9"/>
+
+  <!-- Main pressurized barrel & breech body -->
+  <rect x="218" y="138" width="76" height="188" rx="12"
+        fill="url(#btg_barrel)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Clamp bands on barrel -->
+  <rect x="212" y="168" width="88" height="18" rx="5"
+        fill="url(#btg_cradle)" stroke="#121519" stroke-width="7"/>
+  <rect x="212" y="294" width="88" height="18" rx="5"
+        fill="url(#btg_cradle)" stroke="#121519" stroke-width="7"/>
+
+  <!-- Flared borax sprayer diffuser nozzle (pointing North) -->
+  <path d="M 222,150
+           L 174,78
+           L 174,56
+           C 174,48 210,42 256,42
+           C 302,42 338,48 338,56
+           L 338,78
+           L 290,150 Z"
+        fill="url(#btg_nozzle_body)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Recessed nozzle mouth opening at very top -->
+  <ellipse cx="256" cy="56" rx="74" ry="11"
+           fill="url(#btg_nozzle_in)" stroke="#121519" stroke-width="7"/>
+  <!-- Internal atomizer diffuser bar & brass tip inside nozzle -->
+  <line x1="196" y1="56" x2="316" y2="56" stroke="#7d6433" stroke-width="4.5" stroke-linecap="round"/>
+  <ellipse cx="256" cy="56" rx="18" ry="5" fill="url(#btg_brass)" stroke="#121519" stroke-width="3"/>
+
+  <!-- Reinforced nozzle lip collar -->
+  <path d="M 174,64 C 174,72 210,77 256,77 C 302,77 338,72 338,64 L 338,80 C 338,88 302,93 256,93 C 210,93 174,88 174,80 Z"
+        fill="url(#btg_nozzle_lip)" stroke="#121519" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- Subtle white borax powder dusting on nozzle rim -->
+  <path d="M 192,76 C 214,82 298,82 320,76 L 306,102 C 284,106 228,106 206,102 Z"
+        fill="url(#btg_dust)"/>
+
+  <!-- Longitudinal stiffening ribs on flared nozzle -->
+  <path d="M 234,146 L 204,88 M 256,146 L 256,90 M 278,146 L 308,88"
+        stroke="#272f36" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M 237,145 L 208,89 M 259,145 L 259,90"
+        stroke="#a9b7c2" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Central rotary pivot hub (centered at 256,256) -->
+  <circle cx="256" cy="256" r="46"
+          fill="url(#btg_cap)" stroke="#121519" stroke-width="10"/>
+  <circle cx="256" cy="256" r="32"
+          fill="#343c44" stroke="#121519" stroke-width="5"/>
+
+  <!-- Sight glass window on top of central chamber showing white borax powder -->
+  <rect x="242" y="200" width="28" height="112" rx="14"
+        fill="url(#btg_powder)" stroke="#121519" stroke-width="7"/>
+  <!-- Powder grain specks inside sight window -->
+  <circle cx="251" cy="224" r="3" fill="#ffffff" opacity="0.9"/>
+  <circle cx="261" cy="242" r="2.5" fill="#b7c6cf" opacity="0.7"/>
+  <circle cx="253" cy="264" r="3" fill="#ffffff" opacity="0.85"/>
+  <circle cx="260" cy="285" r="2.5" fill="#b7c6cf" opacity="0.75"/>
+  <!-- Glass specular reflection streak -->
+  <path d="M 248,212 L 248,298" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Steel rivets on swivel cradle & nozzle -->
+  <g fill="#8c9aa6" stroke="#121519" stroke-width="3.5">
+    <circle cx="182" cy="232" r="6"/>
+    <circle cx="182" cy="280" r="6"/>
+    <circle cx="330" cy="232" r="6"/>
+    <circle cx="330" cy="280" r="6"/>
+    <circle cx="222" cy="332" r="5"/>
+    <circle cx="290" cy="332" r="5"/>
+    <circle cx="196" cy="82" r="4.5"/>
+    <circle cx="316" cy="82" r="4.5"/>
+  </g>
+</svg>

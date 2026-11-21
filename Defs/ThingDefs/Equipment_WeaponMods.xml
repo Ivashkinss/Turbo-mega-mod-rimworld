@@ -69,7 +69,7 @@
     <label>borax canister mod</label>
     <description>A compact under-barrel sodium borate reservoir. Coats shots or strikes for 30 attacks with caustic borax, triggering Leviathan weakness and stripping Dick Roman's invulnerability.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Chemfuel</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/TMM_Mod_BoraxTank</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -111,8 +111,8 @@
     <label>rock salt charge pack</label>
     <description>A hunter's auxiliary magazine loaded with coarse rock salt crystals. Adds rock salt damage to 30 attacks, severely punishing demons and spirits.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath> <!-- TODO art -->
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/TMM/TMM_Mod_RockSaltPack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>190</MarketValue>
@@ -152,8 +152,8 @@
     <label>silvered Enochian engraving kit</label>
     <description>Precision-inlaid silver runes and celestial bronze sigils designed to be etched onto any firearm or blade. Permanently adds Enochian strike damage with no charge limit, exploiting angelic vulnerability.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/ComponentIndustrial</texPath> <!-- TODO art -->
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/TMM/TMM_Mod_SilverEngraving</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>680</MarketValue>
@@ -195,8 +195,8 @@
     <label>Railroad ballistic weave</label>
     <description>Tinker Tom's ultra-dense synthetic weave lining, stitched into the inner shell of a coat, jacket, or duster. Adds +25% sharp armor protection without adding weight penalty. Crafting unlocks via the Railroad questline.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Synthread</texPath> <!-- TODO art -->
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/TMM/TMM_Mod_RailroadBallisticWeave</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>520</MarketValue>
@@ -274,8 +274,8 @@
     <label>Colt silver bullet</label>
     <description>A hand-cast, rune-inscribed silver cartridge engineered specifically for Samuel Colt's 1851 revolver. Extremely costly to produce; used to reload The Colt up to 13 rounds.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Silver</texPath> <!-- TODO art -->
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/TMM/TMM_Ammo_ColtSilverBullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <stackLimit>25</stackLimit>
     <statBases>

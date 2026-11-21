@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="mbt_steel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#374048"/>
+      <stop offset="26%" stop-color="#768591"/>
+      <stop offset="48%" stop-color="#98a7b3"/>
+      <stop offset="76%" stop-color="#515d69"/>
+      <stop offset="100%" stop-color="#2a3138"/>
+    </linearGradient>
+    <linearGradient id="mbt_cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2f373f"/>
+      <stop offset="35%" stop-color="#6b7985"/>
+      <stop offset="70%" stop-color="#48535e"/>
+      <stop offset="100%" stop-color="#242a30"/>
+    </linearGradient>
+    <linearGradient id="mbt_clamp" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#262c33"/>
+      <stop offset="32%" stop-color="#545f69"/>
+      <stop offset="65%" stop-color="#3c454d"/>
+      <stop offset="100%" stop-color="#1f2429"/>
+    </linearGradient>
+    <linearGradient id="mbt_brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d9bc75"/>
+      <stop offset="45%" stop-color="#9e7f40"/>
+      <stop offset="100%" stop-color="#5c461d"/>
+    </linearGradient>
+    <linearGradient id="mbt_powder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c4d0d6"/>
+      <stop offset="36%" stop-color="#f2f7f9"/>
+      <stop offset="70%" stop-color="#e1eaee"/>
+      <stop offset="100%" stop-color="#aebcc4"/>
+    </linearGradient>
+    <linearGradient id="mbt_glass_void" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#232c33"/>
+      <stop offset="100%" stop-color="#3f4d57"/>
+    </linearGradient>
+    <linearGradient id="mbt_hazard" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a6c22"/>
+      <stop offset="42%" stop-color="#cfa63e"/>
+      <stop offset="85%" stop-color="#997726"/>
+      <stop offset="100%" stop-color="#695017"/>
+    </linearGradient>
+    <clipPath id="mbt_win_clip">
+      <rect x="218" y="186" width="76" height="156" rx="22"/>
+    </clipPath>
+    <clipPath id="mbt_haz_clip">
+      <rect x="174" y="362" width="164" height="24"/>
+    </clipPath>
+  </defs>
+
+  <g transform="rotate(-14 256 256)">
+    <!-- Side brass pressure release gauge assembly (left side) -->
+    <path d="M 184,158 L 146,158" stroke="#121519" stroke-width="24" stroke-linecap="round"/>
+    <path d="M 184,158 L 146,158" stroke="url(#mbt_brass)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="138" cy="158" r="24" fill="url(#mbt_brass)" stroke="#121519" stroke-width="10"/>
+    <circle cx="138" cy="158" r="14" fill="#dce4e8" stroke="#121519" stroke-width="4"/>
+    <path d="M 138,158 L 145,150" stroke="#9e2f27" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="138" cy="158" r="3" fill="#121519"/>
+
+    <!-- Top threaded weapon coupling nozzle & valve collar -->
+    <rect x="234" y="74" width="44" height="36" rx="7"
+          fill="url(#mbt_brass)" stroke="#121519" stroke-width="11" stroke-linejoin="round"/>
+    <line x1="238" y1="86" x2="274" y2="86" stroke="#121519" stroke-width="4.5"/>
+    <line x1="238" y1="96" x2="274" y2="96" stroke="#121519" stroke-width="4.5"/>
+    <!-- Hex valve base nut -->
+    <rect x="216" y="102" width="80" height="26" rx="6"
+          fill="url(#mbt_brass)" stroke="#121519" stroke-width="11" stroke-linejoin="round"/>
+    <line x1="238" y1="104" x2="238" y2="126" stroke="#121519" stroke-width="4.5"/>
+    <line x1="274" y1="104" x2="274" y2="126" stroke="#121519" stroke-width="4.5"/>
+
+    <!-- Bottom drain plug -->
+    <rect x="236" y="408" width="40" height="20" rx="6"
+          fill="url(#mbt_cap)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Main pressurized steel cylindrical tank body -->
+    <rect x="174" y="122" width="164" height="292" rx="64"
+          fill="url(#mbt_steel)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+    <!-- Welded dome seam lines -->
+    <path d="M 178,166 Q 256,176 334,166" fill="none" stroke="#252c33" stroke-width="4.5" opacity="0.8"/>
+    <path d="M 178,360 Q 256,370 334,360" fill="none" stroke="#252c33" stroke-width="4.5" opacity="0.8"/>
+
+    <!-- Subtle hazard band near bottom of tank -->
+    <g clip-path="url(#mbt_haz_clip)">
+      <rect x="172" y="360" width="168" height="28" fill="url(#mbt_hazard)"/>
+      <g stroke="#1b2026" stroke-width="12">
+        <line x1="184" y1="390" x2="202" y2="358"/>
+        <line x1="214" y1="390" x2="232" y2="358"/>
+        <line x1="244" y1="390" x2="262" y2="358"/>
+        <line x1="274" y1="390" x2="292" y2="358"/>
+        <line x1="304" y1="390" x2="322" y2="358"/>
+      </g>
+    </g>
+    <path d="M 175,362 L 337,362 M 176,386 L 336,386" stroke="#121519" stroke-width="5"/>
+
+    <!-- Metallic vertical specular sheen on tank left side -->
+    <path d="M 196,174 L 196,350" stroke="#c3d2de" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Recessed sight glass frame -->
+    <rect x="212" y="180" width="88" height="168" rx="26"
+          fill="#2c343d" stroke="#121519" stroke-width="8"/>
+
+    <!-- Sight glass interior with white borax powder -->
+    <g clip-path="url(#mbt_win_clip)">
+      <!-- Dark headspace above powder -->
+      <rect x="218" y="186" width="76" height="44" fill="url(#mbt_glass_void)"/>
+      <!-- White granular borax powder fill -->
+      <path d="M 216,214 Q 238,204 258,213 Q 278,221 296,212 L 296,344 L 216,344 Z"
+            fill="url(#mbt_powder)"/>
+      <!-- Powder shadow contour layers -->
+      <path d="M 216,248 Q 246,238 272,249 Q 286,254 296,246 L 296,344 L 216,344 Z"
+            fill="#d4dfe6" opacity="0.45"/>
+      <path d="M 216,294 Q 250,286 296,298 L 296,344 L 216,344 Z"
+            fill="#bccad4" opacity="0.4"/>
+      <!-- Granular bright specks -->
+      <circle cx="234" cy="228" r="4" fill="#ffffff"/>
+      <circle cx="256" cy="238" r="3" fill="#ffffff"/>
+      <circle cx="272" cy="224" r="3.5" fill="#ffffff"/>
+      <circle cx="242" cy="264" r="4.5" fill="#ffffff"/>
+      <circle cx="268" cy="278" r="3.5" fill="#ffffff"/>
+      <circle cx="236" cy="306" r="3.5" fill="#ffffff"/>
+      <circle cx="264" cy="318" r="4" fill="#ffffff"/>
+      <circle cx="252" cy="252" r="2.5" fill="#9fb0ba"/>
+      <circle cx="278" cy="296" r="2.8" fill="#9fb0ba"/>
+      <circle cx="246" cy="326" r="2.5" fill="#9fb0ba"/>
+      <!-- Measurement gauge ticks on right side of glass -->
+      <g stroke="#3e4b54" stroke-width="3.5" stroke-linecap="round" opacity="0.7">
+        <line x1="274" y1="220" x2="292" y2="220"/>
+        <line x1="280" y1="244" x2="292" y2="244"/>
+        <line x1="274" y1="268" x2="292" y2="268"/>
+        <line x1="280" y1="292" x2="292" y2="292"/>
+        <line x1="274" y1="316" x2="292" y2="316"/>
+      </g>
+      <!-- Glass reflection highlight -->
+      <path d="M 230,198 L 230,330" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.72"/>
+      <path d="M 241,200 L 241,244" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    </g>
+    <!-- Crisp inner glass rim outline -->
+    <rect x="218" y="186" width="76" height="156" rx="22"
+          fill="none" stroke="#121519" stroke-width="6.5"/>
+
+    <!-- Heavy upper mounting clamp band (хомут) with side bolt lugs -->
+    <rect x="150" y="200" width="24" height="32" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="10"/>
+    <rect x="338" y="200" width="24" height="32" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="10"/>
+    <rect x="164" y="204" width="184" height="24" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="9"/>
+    <!-- Upper clamp center protective bar cutout highlight -->
+    <line x1="176" y1="211" x2="336" y2="211" stroke="#7d8a96" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Heavy lower mounting clamp band (хомут) with side bolt lugs -->
+    <rect x="150" y="294" width="24" height="32" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="10"/>
+    <rect x="338" y="294" width="24" height="32" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="10"/>
+    <rect x="164" y="298" width="184" height="24" rx="6"
+          fill="url(#mbt_clamp)" stroke="#121519" stroke-width="9"/>
+    <line x1="176" y1="305" x2="336" y2="305" stroke="#7d8a96" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Clamp bolt heads -->
+    <g fill="#9aa8b5" stroke="#121519" stroke-width="4">
+      <circle cx="186" cy="216" r="6"/>
+      <circle cx="326" cy="216" r="6"/>
+      <circle cx="186" cy="310" r="6"/>
+      <circle cx="326" cy="310" r="6"/>
+    </g>
+
+    <!-- Re-stroke main silhouette edge gently where needed for clean bold rim -->
+    <rect x="174" y="122" width="164" height="292" rx="64"
+          fill="none" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  </g>
+</svg>

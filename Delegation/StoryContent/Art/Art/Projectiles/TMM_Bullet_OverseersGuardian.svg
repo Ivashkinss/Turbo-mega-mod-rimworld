@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="og_aura" cx="50%" cy="38%" r="48%">
+      <stop offset="0%" stop-color="#ffd98a" stop-opacity="0.34"/>
+      <stop offset="52%" stop-color="#d48c35" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#7a4410" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="og_trail_outer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe29e" stop-opacity="0.82"/>
+      <stop offset="35%" stop-color="#e09438" stop-opacity="0.46"/>
+      <stop offset="72%" stop-color="#9e521b" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#59280b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="og_trail_core" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="32%" stop-color="#ffeaad" stop-opacity="0.72"/>
+      <stop offset="72%" stop-color="#e89a3c" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a65217" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="og_brass_body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5e4518"/>
+      <stop offset="24%" stop-color="#e0be67"/>
+      <stop offset="46%" stop-color="#fff0b8"/>
+      <stop offset="74%" stop-color="#b58d35"/>
+      <stop offset="100%" stop-color="#4a3410"/>
+    </linearGradient>
+    <linearGradient id="og_copper_tip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#693b1c"/>
+      <stop offset="28%" stop-color="#d99457"/>
+      <stop offset="48%" stop-color="#ffd2a1"/>
+      <stop offset="76%" stop-color="#ad6832"/>
+      <stop offset="100%" stop-color="#4d2911"/>
+    </linearGradient>
+    <radialGradient id="og_ember_base" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#ffd478"/>
+      <stop offset="85%" stop-color="#d96b21"/>
+      <stop offset="100%" stop-color="#87330c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Subtle warm dual-tracer ambient glow -->
+  <ellipse cx="256" cy="238" rx="80" ry="182" fill="url(#og_aura)"/>
+
+  <!-- LEFT PARALLEL BULLET + TRACER TRAIL (x=218) -->
+  <g transform="translate(218 0)">
+    <!-- Tapered warm supersonic tracer plume -->
+    <path d="M -21,196 C -25,264 -16,348 0,432 C 16,348 25,264 21,196 Z" fill="url(#og_trail_outer)"/>
+    <path d="M -11,198 C -12,256 -6,322 0,390 C 6,322 12,256 11,198 Z" fill="url(#og_trail_core)"/>
+
+    <!-- Subtle supersonic slipstream chevron lines -->
+    <path d="M -28,238 L 0,214 L 28,238" fill="none" stroke="#ffe7a8" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    <path d="M -22,284 L 0,264 L 22,284" fill="none" stroke="#e6a24c" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Glowing hot tracer ignition base -->
+    <ellipse cx="0" cy="202" rx="18" ry="12" fill="url(#og_ember_base)"/>
+
+    <!-- Machined brass full-metal-jacket rifle bullet (pointing North) -->
+    <path d="M 0,76
+             C 14,94 23,124 23,156
+             L 23,194
+             C 23,199 13,202 0,202
+             C -13,202 -23,199 -23,194
+             L -23,156
+             C -23,124 -14,94 0,76 Z"
+          fill="url(#og_brass_body)" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+
+    <!-- Copper-brass aerodynamic ogive nose tip accent -->
+    <path d="M 0,80 C 10,94 17,114 20,136 Q 0,141 -20,136 C -17,114 -10,94 0,80 Z"
+          fill="url(#og_copper_tip)" opacity="0.62"/>
+
+    <!-- Cannelure crimp groove & metallic banding -->
+    <path d="M -20,174 Q 0,180 20,174" fill="none" stroke="#3d2b0d" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M -20,184 Q 0,190 20,184" fill="none" stroke="#3d2b0d" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Crisp metallic specular highlight along left curvature -->
+    <path d="M -6,96 C -12,116 -14,140 -14,186" fill="none" stroke="#fffbe6" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
+  </g>
+
+  <!-- RIGHT PARALLEL BULLET + TRACER TRAIL (x=294, slight 10px dynamic stagger) -->
+  <g transform="translate(294 10)">
+    <!-- Tapered warm supersonic tracer plume -->
+    <path d="M -21,196 C -25,264 -16,348 0,432 C 16,348 25,264 21,196 Z" fill="url(#og_trail_outer)"/>
+    <path d="M -11,198 C -12,256 -6,322 0,390 C 6,322 12,256 11,198 Z" fill="url(#og_trail_core)"/>
+
+    <!-- Subtle supersonic slipstream chevron lines -->
+    <path d="M -28,238 L 0,214 L 28,238" fill="none" stroke="#ffe7a8" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    <path d="M -22,284 L 0,264 L 22,284" fill="none" stroke="#e6a24c" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Glowing hot tracer ignition base -->
+    <ellipse cx="0" cy="202" rx="18" ry="12" fill="url(#og_ember_base)"/>
+
+    <!-- Machined brass full-metal-jacket rifle bullet (pointing North) -->
+    <path d="M 0,76
+             C 14,94 23,124 23,156
+             L 23,194
+             C 23,199 13,202 0,202
+             C -13,202 -23,199 -23,194
+             L -23,156
+             C -23,124 -14,94 0,76 Z"
+          fill="url(#og_brass_body)" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+
+    <!-- Copper-brass aerodynamic ogive nose tip accent -->
+    <path d="M 0,80 C 10,94 17,114 20,136 Q 0,141 -20,136 C -17,114 -10,94 0,80 Z"
+          fill="url(#og_copper_tip)" opacity="0.62"/>
+
+    <!-- Cannelure crimp groove & metallic banding -->
+    <path d="M -20,174 Q 0,180 20,174" fill="none" stroke="#3d2b0d" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M -20,184 Q 0,190 20,184" fill="none" stroke="#3d2b0d" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Crisp metallic specular highlight along left curvature -->
+    <path d="M -6,96 C -12,116 -14,140 -14,186" fill="none" stroke="#fffbe6" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
+  </g>
+
+  <!-- Crisp twin nose glints & trailing hot gunpowder embers -->
+  <path d="M 218,68 L 220,76 L 228,78 L 220,80 L 218,88 L 216,80 L 208,78 L 216,76 Z" fill="#fff7d6" opacity="0.9"/>
+  <path d="M 294,78 L 296,86 L 304,88 L 296,90 L 294,98 L 292,90 L 284,88 L 292,86 Z" fill="#fff7d6" opacity="0.9"/>
+
+  <g stroke="#121519" stroke-width="4" stroke-linejoin="round">
+    <circle cx="204" cy="346" r="4.5" fill="#ffdf8a"/>
+    <circle cx="256" cy="320" r="5" fill="#ffeab0"/>
+    <circle cx="308" cy="364" r="4.5" fill="#ffcf6e"/>
+    <circle cx="232" cy="404" r="4" fill="#f2a849"/>
+    <circle cx="282" cy="414" r="4" fill="#ffe299"/>
+  </g>
+</svg>

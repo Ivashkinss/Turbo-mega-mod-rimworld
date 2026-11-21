@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bxt_mist_aura" cx="50%" cy="38%" r="52%">
+      <stop offset="0%" stop-color="#f5fafc" stop-opacity="0.54"/>
+      <stop offset="52%" stop-color="#bfd2db" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#79909c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bxt_wake_plume" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f2f8fa" stop-opacity="0.86"/>
+      <stop offset="38%" stop-color="#cadbe3" stop-opacity="0.56"/>
+      <stop offset="76%" stop-color="#8fa5b0" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#5c6f78" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="bxt_cloud_main" cx="44%" cy="32%" r="66%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="42%" stop-color="#eef5f8"/>
+      <stop offset="76%" stop-color="#c3d4dc"/>
+      <stop offset="100%" stop-color="#8da2ad"/>
+    </radialGradient>
+    <radialGradient id="bxt_cloud_mid" cx="45%" cy="36%" r="64%">
+      <stop offset="0%" stop-color="#f7fbfc"/>
+      <stop offset="50%" stop-color="#d4e2e8"/>
+      <stop offset="100%" stop-color="#92a7b2"/>
+    </radialGradient>
+    <linearGradient id="bxt_cloud_deep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d9e6ec"/>
+      <stop offset="55%" stop-color="#a8bcc7"/>
+      <stop offset="100%" stop-color="#768b96"/>
+    </linearGradient>
+    <linearGradient id="bxt_chunk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#dce7ed"/>
+      <stop offset="100%" stop-color="#98adb8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Broad pressurized airborne borax mist envelope (larger than handheld puff) -->
+  <ellipse cx="256" cy="244" rx="110" ry="194" fill="url(#bxt_mist_aura)"/>
+
+  <!-- Heavy pressurized diffuser spray wake tapering South -->
+  <path d="M 184,218
+           C 172,298 206,380 256,456
+           C 306,380 340,298 328,218 Z"
+        fill="url(#bxt_wake_plume)"/>
+
+  <!-- Pressurized swirling airflow streaks flanking the cloud -->
+  <path d="M 182,148 C 154,194 160,256 196,304" fill="none" stroke="#e4eff4" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+  <path d="M 330,148 C 358,194 352,256 316,304" fill="none" stroke="#d5e4eb" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Lower trailing dense billowing sub-cloud -->
+  <path d="M 212,306
+           C 192,318 190,348 208,364
+           C 210,384 230,398 248,392
+           C 256,406 278,404 286,390
+           C 306,390 322,368 312,346
+           C 324,330 314,306 292,304 Z"
+        fill="url(#bxt_cloud_mid)" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M 218,328 C 212,342 218,356 232,364" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+  <path d="M 238,348 C 254,338 278,342 290,358" fill="none" stroke="#8da2ad" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+
+  <!-- Tail vortex puff at southern end -->
+  <path d="M 234,404
+           C 224,414 228,432 242,438
+           C 250,448 268,446 274,434
+           C 286,426 282,406 266,404 Z"
+        fill="url(#bxt_cloud_deep)" stroke="#121519" stroke-width="6.5" stroke-linejoin="round"/>
+
+  <!-- Massive billowing pressurized turret borax cloud head (pointing North) -->
+  <path d="M 256,58
+           C 282,58 302,78 300,102
+           C 326,110 344,136 336,164
+           C 356,184 358,218 340,242
+           C 352,266 340,298 316,308
+           C 306,328 282,336 264,328
+           C 252,338 228,334 218,318
+           C 192,316 168,292 174,264
+           C 156,242 156,204 174,182
+           C 164,154 180,122 208,112
+           C 206,82 228,58 256,58 Z"
+        fill="url(#bxt_cloud_main)" stroke="#121519" stroke-width="7.5" stroke-linejoin="round"/>
+
+  <!-- Volumetric shadowed under-billows inside main heavy cloud -->
+  <path d="M 192,248 C 216,274 282,278 318,252 C 330,282 310,318 268,322 C 222,326 184,292 192,248 Z"
+        fill="url(#bxt_cloud_deep)" opacity="0.62"/>
+  <path d="M 198,176 C 212,196 240,204 266,194 C 244,218 206,216 188,194 Z"
+        fill="#a3b7c2" opacity="0.48"/>
+
+  <!-- Sculpted rolling cumulus crease lines inside the powder blast -->
+  <g fill="none" stroke="#8ea3ae" stroke-width="4.5" stroke-linecap="round" opacity="0.68">
+    <path d="M 222,126 C 238,106 276,108 292,130"/>
+    <path d="M 190,178 C 208,158 238,160 254,180"/>
+    <path d="M 264,166 C 284,150 314,160 322,186"/>
+    <path d="M 212,238 C 232,220 264,222 284,240"/>
+    <path d="M 278,224 C 298,214 322,226 326,248"/>
+    <path d="M 226,286 C 246,276 274,278 290,294"/>
+  </g>
+
+  <!-- Crisp sunlit chalk-white rim highlights across leading North billows -->
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" opacity="0.94">
+    <path d="M 234,74 C 248,65 268,66 282,78" stroke-width="6"/>
+    <path d="M 190,136 C 180,150 180,166 188,180" stroke-width="5.5"/>
+    <path d="M 174,202 C 168,218 174,238 188,250" stroke-width="5"/>
+    <path d="M 314,124 C 326,134 330,148 326,162" stroke-width="4.5" opacity="0.8"/>
+    <path d="M 232,144 C 246,134 266,136 278,148" stroke-width="4.5" opacity="0.88"/>
+  </g>
+
+  <!-- Dense white powder granular highlights inside the blast -->
+  <g fill="#ffffff" opacity="0.95">
+    <circle cx="256" cy="96" r="5"/>
+    <circle cx="222" cy="146" r="4.5"/>
+    <circle cx="288" cy="152" r="4"/>
+    <circle cx="254" cy="196" r="5"/>
+    <circle cx="210" cy="222" r="4"/>
+    <circle cx="302" cy="212" r="4.5"/>
+    <circle cx="246" cy="264" r="4.5"/>
+    <circle cx="284" cy="272" r="3.8"/>
+    <circle cx="256" cy="348" r="4"/>
+  </g>
+
+  <!-- Heavy outlined borax powder clumps & crystal granules bursting outward -->
+  <g stroke="#121519" stroke-width="5" stroke-linejoin="round">
+    <polygon points="178,98 190,90 198,104 186,112" fill="url(#bxt_chunk)"/>
+    <polygon points="322,94 334,88 340,102 328,108" fill="url(#bxt_chunk)"/>
+    <polygon points="154,274 166,268 172,282 158,288" fill="url(#bxt_chunk)"/>
+    <polygon points="344,282 356,276 360,290 348,296" fill="url(#bxt_chunk)"/>
+    <circle cx="176" cy="336" r="7.5" fill="#edf4f7"/>
+    <circle cx="336" cy="342" r="7" fill="#dce7ec"/>
+    <polygon points="200,398 210,392 216,404 206,410" fill="#ffffff"/>
+    <circle cx="306" cy="404" r="6" fill="#e5eff4"/>
+    <circle cx="224" cy="442" r="5.5" fill="#d5e2e8"/>
+    <circle cx="290" cy="446" r="5" fill="#e6f0f5"/>
+  </g>
+</svg>

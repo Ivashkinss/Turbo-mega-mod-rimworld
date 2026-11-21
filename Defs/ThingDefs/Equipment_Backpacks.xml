@@ -11,7 +11,7 @@
     <description>A stitched canvas pack with leather straps worn on the back. Modestly increases carrying capacity at a slight cost to movement speed.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/TMM_Backpack_Canvas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>45</costStuffCount>
@@ -76,7 +76,7 @@
     <description>A reinforced tactical rucksack with an internal aluminum frame and modular webbing. Greatly expands carrying capacity while slightly slowing movement.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/TMM_Backpack_Military</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>70</costStuffCount>
@@ -143,7 +143,7 @@
     <description>A pre-war servo-assisted load-bearing frame built from plasteel and micro-hydraulics. Grants massive carrying capacity with minimal mobility penalty.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/TMM_Backpack_Power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>

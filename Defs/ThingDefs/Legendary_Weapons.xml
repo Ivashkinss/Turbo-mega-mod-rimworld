@@ -10,7 +10,7 @@
     <label>overclocked plasma bolt</label>
     <thingClass>TurboMegaMod.Bullet_Experiment18A</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Charge_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_Experiment18A</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -84,7 +84,7 @@
     <defName>TMM_Bullet_FinalJudgment</defName>
     <label>high-energy laser beam</label>
     <graphicData>
-      <texPath>Things/Projectile/Charge_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_FinalJudgment</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -153,7 +153,7 @@
     <label>enchanted silver bullet</label>
     <thingClass>TurboMegaMod.Bullet_TheColt</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_TheColt</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -231,7 +231,7 @@
     <label>telekinetic pulse</label>
     <thingClass>TurboMegaMod.Projectile_LorenzoWave</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/ChargeLanceShot</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Projectile_LorenzoWave</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -339,7 +339,7 @@
     <label>high-voltage arc</label>
     <thingClass>TurboMegaMod.Bullet_TeslaCannon</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/ChargeLanceShot</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_TeslaCannon</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -406,7 +406,7 @@
     <defName>TMM_Bullet_OverseersGuardian</defName>
     <label>twin-chamber rifle bullet</label>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_OverseersGuardian</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -479,7 +479,7 @@
     <defName>TMM_Bullet_RailwayRifle</defName>
     <label>superheated railway spike</label>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Big</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_RailwayRifle</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -547,7 +547,7 @@
     <label>mini-nuke warhead</label>
     <thingClass>Projectile_Explosive</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Rocket_Big</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Projectile_BigBoy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -623,7 +623,7 @@
     <label>quantum-entangled round</label>
     <thingClass>TurboMegaMod.Bullet_TheEqualizer</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Charge_Small</texPath> <!-- TODO art -->
+      <texPath>Things/Projectile/TMM/TMM_Bullet_TheEqualizer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>

@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bpc_canvas_main" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#a89472"/>
+      <stop offset="48%" stop-color="#877353"/>
+      <stop offset="100%" stop-color="#594a34"/>
+    </linearGradient>
+    <linearGradient id="bpc_canvas_flap" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#baa682"/>
+      <stop offset="52%" stop-color="#96815f"/>
+      <stop offset="100%" stop-color="#69583e"/>
+    </linearGradient>
+    <linearGradient id="bpc_canvas_side" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7d6a4c"/>
+      <stop offset="100%" stop-color="#4d3f2b"/>
+    </linearGradient>
+    <linearGradient id="bpc_canvas_pocket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9c8765"/>
+      <stop offset="55%" stop-color="#7d694b"/>
+      <stop offset="100%" stop-color="#544530"/>
+    </linearGradient>
+    <linearGradient id="bpc_patch_olive" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e7357"/>
+      <stop offset="100%" stop-color="#484d39"/>
+    </linearGradient>
+    <linearGradient id="bpc_patch_denim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#66717a"/>
+      <stop offset="100%" stop-color="#424b52"/>
+    </linearGradient>
+    <linearGradient id="bpc_patch_tan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b59872"/>
+      <stop offset="100%" stop-color="#7d6447"/>
+    </linearGradient>
+    <linearGradient id="bpc_leather" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d281b"/>
+      <stop offset="35%" stop-color="#6e4a32"/>
+      <stop offset="70%" stop-color="#523522"/>
+      <stop offset="100%" stop-color="#2e1d13"/>
+    </linearGradient>
+    <linearGradient id="bpc_brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dec37a"/>
+      <stop offset="50%" stop-color="#a3843e"/>
+      <stop offset="100%" stop-color="#5e491d"/>
+    </linearGradient>
+    <linearGradient id="bpc_scuff" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2b2217" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#2b2217" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top canvas carry handle loop -->
+  <path d="M 218,128 C 218,76 294,76 294,128"
+        fill="none" stroke="#121519" stroke-width="30" stroke-linecap="round"/>
+  <path d="M 218,128 C 218,76 294,76 294,128"
+        fill="none" stroke="url(#bpc_leather)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Shoulder strap loops peeking out from top shoulders -->
+  <path d="M 148,144 C 122,146 112,172 118,208"
+        fill="none" stroke="#121519" stroke-width="26" stroke-linecap="round"/>
+  <path d="M 148,144 C 122,146 112,172 118,208"
+        fill="none" stroke="url(#bpc_leather)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 364,144 C 390,146 400,172 394,208"
+        fill="none" stroke="#121519" stroke-width="26" stroke-linecap="round"/>
+  <path d="M 364,144 C 390,146 400,172 394,208"
+        fill="none" stroke="url(#bpc_leather)" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Left & right bulging side utility pouches -->
+  <path d="M 134,242 L 106,250 C 94,254 88,266 90,280 L 96,368 C 98,382 108,390 122,390 L 146,386 Z"
+        fill="url(#bpc_canvas_side)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M 378,242 L 406,250 C 418,254 424,266 422,280 L 416,368 C 414,382 404,390 390,390 L 366,386 Z"
+        fill="url(#bpc_canvas_side)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  <!-- Side pouch cinch lines -->
+  <path d="M 94,282 Q 112,288 134,282" fill="none" stroke="#121519" stroke-width="6"/>
+  <path d="M 378,282 Q 400,288 418,282" fill="none" stroke="#121519" stroke-width="6"/>
+
+  <!-- Main rugged canvas backpack sack body -->
+  <path d="M 152,132
+           C 192,116 320,116 360,132
+           C 380,142 388,166 388,196
+           L 392,374
+           C 392,406 366,422 332,424
+           L 180,424
+           C 146,422 120,406 120,374
+           L 124,196
+           C 124,166 132,142 152,132 Z"
+        fill="url(#bpc_canvas_main)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+  <!-- Bottom grime & wear gradient -->
+  <path d="M 126,340 L 386,340 L 386,374 C 386,402 362,417 330,418 L 182,418 C 150,417 126,402 126,374 Z"
+        fill="url(#bpc_scuff)"/>
+
+  <!-- Canvas fabric fold & crease lines -->
+  <path d="M 142,248 Q 160,262 154,288 M 370,248 Q 352,262 358,288"
+        fill="none" stroke="#3d3222" stroke-width="4.5" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Sewn patch #1 on right side of main body (muted tan canvas patch) -->
+  <g transform="translate(342 292) rotate(7)">
+    <polygon points="-24,-22 24,-20 22,22 -22,24"
+             fill="url(#bpc_patch_tan)" stroke="#121519" stroke-width="5.5" stroke-linejoin="round"/>
+    <g stroke="#292117" stroke-width="3" stroke-linecap="round">
+      <line x1="-28" y1="-10" x2="-18" y2="-10"/>
+      <line x1="-28" y1="8" x2="-18" y2="8"/>
+      <line x1="18" y1="-10" x2="28" y2="-10"/>
+      <line x1="18" y1="8" x2="28" y2="8"/>
+      <line x1="-8" y1="-26" x2="-8" y2="-16"/>
+      <line x1="10" y1="-25" x2="10" y2="-15"/>
+    </g>
+  </g>
+
+  <!-- Large front canvas cargo pocket -->
+  <path d="M 164,288 L 348,288 C 358,288 364,296 364,306 L 360,384 C 358,396 348,404 334,404 L 178,404 C 164,404 154,396 152,384 L 148,306 C 148,296 154,288 164,288 Z"
+        fill="url(#bpc_canvas_pocket)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Front pocket fold-over lip & central snap button -->
+  <path d="M 148,308 Q 256,326 364,308" fill="none" stroke="#121519" stroke-width="7"/>
+  <circle cx="256" cy="316" r="8" fill="url(#bpc_brass)" stroke="#121519" stroke-width="4"/>
+
+  <!-- Sewn patch #2 on front pocket (worn slate-denim patch with visible hand stitches) -->
+  <g transform="translate(212 362) rotate(-5)">
+    <polygon points="-38,-22 36,-24 40,22 -34,24"
+             fill="url(#bpc_patch_denim)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+    <!-- Subtle worn weave crosshatch on patch -->
+    <path d="M -24,-10 L 24,-10 M -24,6 L 24,6" stroke="#85929c" stroke-width="2" opacity="0.35"/>
+    <!-- Hand-sewn rough whip stitches around patch edges -->
+    <g stroke="#d6ccb8" stroke-width="3.2" stroke-linecap="round">
+      <line x1="-26" y1="-27" x2="-24" y2="-17"/>
+      <line x1="-8" y1="-28" x2="-8" y2="-18"/>
+      <line x1="10" y1="-28" x2="10" y2="-18"/>
+      <line x1="26" y1="-27" x2="25" y2="-17"/>
+      <line x1="-22" y1="18" x2="-24" y2="28"/>
+      <line x1="-2" y1="18" x2="-2" y2="28"/>
+      <line x1="18" y1="18" x2="20" y2="28"/>
+      <line x1="-41" y1="-6" x2="-31" y2="-6"/>
+      <line x1="-40" y1="10" x2="-30" y2="10"/>
+      <line x1="33" y1="-6" x2="43" y2="-6"/>
+      <line x1="34" y1="10" x2="44" y2="10"/>
+    </g>
+  </g>
+
+  <!-- Small stitched tear/mend on right side of front pocket -->
+  <g stroke="#292117" stroke-width="4" stroke-linecap="round">
+    <path d="M 304,352 L 334,370"/>
+    <line x1="308" y1="364" x2="316" y2="348"/>
+    <line x1="316" y1="369" x2="324" y2="353"/>
+    <line x1="324" y1="374" x2="332" y2="358"/>
+  </g>
+
+  <!-- Fold-over top canvas lid flap -->
+  <path d="M 140,148
+           C 178,116 334,116 372,148
+           C 384,162 390,192 386,226
+           C 384,242 370,252 350,256
+           Q 256,274 162,256
+           C 142,252 128,242 126,226
+           C 122,192 128,162 140,148 Z"
+        fill="url(#bpc_canvas_flap)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Subtle canvas top highlight & edge stitching on flap -->
+  <path d="M 164,142 Q 256,126 348,142" fill="none" stroke="#d4c3a3" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 146,238 Q 256,258 366,238" fill="none" stroke="#473a27" stroke-width="3.5" stroke-dasharray="10 7" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Sewn patch #3 on top lid flap (weathered olive patch with cross stitches) -->
+  <g transform="translate(274 186) rotate(4)">
+    <polygon points="-36,-22 38,-18 34,24 -38,22"
+             fill="url(#bpc_patch_olive)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+    <g stroke="#d6ccb8" stroke-width="3.2" stroke-linecap="round">
+      <line x1="-22" y1="-26" x2="-22" y2="-16"/>
+      <line x1="0" y1="-25" x2="0" y2="-15"/>
+      <line x1="22" y1="-23" x2="22" y2="-13"/>
+      <line x1="-24" y1="16" x2="-24" y2="26"/>
+      <line x1="-2" y1="17" x2="-2" y2="27"/>
+      <line x1="20" y1="18" x2="20" y2="28"/>
+      <line x1="-42" y1="0" x2="-32" y2="0"/>
+      <line x1="30" y1="2" x2="40" y2="2"/>
+    </g>
+  </g>
+
+  <!-- Twin worn leather closure straps & brass buckles -->
+  <!-- Left strap -->
+  <rect x="172" y="132" width="32" height="170" rx="7"
+        fill="url(#bpc_leather)" stroke="#121519" stroke-width="9" stroke-linejoin="round"/>
+  <!-- Left brass buckle -->
+  <rect x="166" y="232" width="44" height="36" rx="7"
+        fill="none" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+  <rect x="166" y="232" width="44" height="36" rx="7"
+        fill="none" stroke="url(#bpc_brass)" stroke-width="7" stroke-linejoin="round"/>
+  <line x1="188" y1="234" x2="188" y2="254" stroke="#dec37a" stroke-width="5" stroke-linecap="round"/>
+  <!-- Strap eyelets -->
+  <circle cx="188" cy="278" r="3" fill="#121519"/>
+  <circle cx="188" cy="291" r="3" fill="#121519"/>
+
+  <!-- Right strap -->
+  <rect x="308" y="132" width="32" height="170" rx="7"
+        fill="url(#bpc_leather)" stroke="#121519" stroke-width="9" stroke-linejoin="round"/>
+  <!-- Right brass buckle -->
+  <rect x="302" y="232" width="44" height="36" rx="7"
+        fill="none" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+  <rect x="302" y="232" width="44" height="36" rx="7"
+        fill="none" stroke="url(#bpc_brass)" stroke-width="7" stroke-linejoin="round"/>
+  <line x1="324" y1="234" x2="324" y2="254" stroke="#dec37a" stroke-width="5" stroke-linecap="round"/>
+  <!-- Strap eyelets -->
+  <circle cx="324" cy="278" r="3" fill="#121519"/>
+  <circle cx="324" cy="291" r="3" fill="#121519"/>
+
+  <!-- Leather reinforcement corners at bottom of rucksack -->
+  <path d="M 122,374 C 122,404 146,422 178,424 L 178,396 L 122,366 Z"
+        fill="url(#bpc_leather)" stroke="#121519" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M 390,374 C 390,404 366,422 334,424 L 334,396 L 390,366 Z"
+        fill="url(#bpc_leather)" stroke="#121519" stroke-width="8" stroke-linejoin="round"/>
+</svg>

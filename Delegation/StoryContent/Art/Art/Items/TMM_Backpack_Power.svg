@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bpp_glow_outer" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#69ffbe" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#30bd85" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#1b7854" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bpp_steel_frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8796a3"/>
+      <stop offset="45%" stop-color="#586470"/>
+      <stop offset="100%" stop-color="#2e353d"/>
+    </linearGradient>
+    <linearGradient id="bpp_armor_body" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#6a7680"/>
+      <stop offset="50%" stop-color="#475159"/>
+      <stop offset="100%" stop-color="#293036"/>
+    </linearGradient>
+    <linearGradient id="bpp_armor_dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d454d"/>
+      <stop offset="100%" stop-color="#1d2226"/>
+    </linearGradient>
+    <linearGradient id="bpp_side_pod" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#374047"/>
+      <stop offset="35%" stop-color="#707e8a"/>
+      <stop offset="70%" stop-color="#4d5761"/>
+      <stop offset="100%" stop-color="#272e33"/>
+    </linearGradient>
+    <linearGradient id="bpp_core_yellow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#755a1c"/>
+      <stop offset="28%" stop-color="#dfb74e"/>
+      <stop offset="52%" stop-color="#f0ce6e"/>
+      <stop offset="80%" stop-color="#a8842c"/>
+      <stop offset="100%" stop-color="#5c4514"/>
+    </linearGradient>
+    <linearGradient id="bpp_core_cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d343b"/>
+      <stop offset="38%" stop-color="#758390"/>
+      <stop offset="72%" stop-color="#49535c"/>
+      <stop offset="100%" stop-color="#23292e"/>
+    </linearGradient>
+    <linearGradient id="bpp_copper" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#693e24"/>
+      <stop offset="45%" stop-color="#c48154"/>
+      <stop offset="100%" stop-color="#522f1a"/>
+    </linearGradient>
+    <radialGradient id="bpp_led_glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e3fff2"/>
+      <stop offset="38%" stop-color="#5effb5"/>
+      <stop offset="75%" stop-color="#1db876" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0f7a4c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bpp_energy_bar" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#24b875"/>
+      <stop offset="55%" stop-color="#5cffb0"/>
+      <stop offset="100%" stop-color="#ccffe6"/>
+    </linearGradient>
+    <clipPath id="bpp_haz_clip">
+      <rect x="172" y="366" width="168" height="24" rx="4"/>
+    </clipPath>
+  </defs>
+
+  <!-- Subtle radioactive / plasma indicator ambient aura -->
+  <circle cx="256" cy="248" r="196" fill="url(#bpp_glow_outer)"/>
+
+  <!-- Heavy tubular steel exoskeleton roll-cage frame (металлический каркас) -->
+  <path d="M 142,418
+           L 124,394
+           L 124,132
+           L 158,92
+           L 354,92
+           L 388,132
+           L 388,394
+           L 370,418
+           L 338,418
+           L 338,390
+           L 174,390
+           L 174,418 Z"
+        fill="none" stroke="#121519" stroke-width="34" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 142,418
+           L 124,394
+           L 124,132
+           L 158,92
+           L 354,92
+           L 388,132
+           L 388,394
+           L 370,418
+           L 338,418
+           L 338,390
+           L 174,390
+           L 174,418 Z"
+        fill="none" stroke="url(#bpp_steel_frame)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Twin insulated copper/armored power conduits looping from side pods -->
+  <path d="M 116,184 C 92,196 92,318 120,334"
+        fill="none" stroke="#121519" stroke-width="24" stroke-linecap="round"/>
+  <path d="M 116,184 C 92,196 92,318 120,334"
+        fill="none" stroke="url(#bpp_copper)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 396,184 C 420,196 420,318 392,334"
+        fill="none" stroke="#121519" stroke-width="24" stroke-linecap="round"/>
+  <path d="M 396,184 C 420,196 420,318 392,334"
+        fill="none" stroke="url(#bpp_copper)" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Left & right cylindrical capacitor / stabilizer exhaust pods -->
+  <g stroke="#121519" stroke-linejoin="round">
+    <!-- Left pod -->
+    <rect x="94" y="204" width="46" height="118" rx="14" fill="url(#bpp_side_pod)" stroke-width="11"/>
+    <line x1="98" y1="234" x2="136" y2="234" stroke-width="6"/>
+    <line x1="98" y1="292" x2="136" y2="292" stroke-width="6"/>
+    <!-- Right pod -->
+    <rect x="372" y="204" width="46" height="118" rx="14" fill="url(#bpp_side_pod)" stroke-width="11"/>
+    <line x1="376" y1="234" x2="414" y2="234" stroke-width="6"/>
+    <line x1="376" y1="292" x2="414" y2="292" stroke-width="6"/>
+  </g>
+
+  <!-- Main armored metal power-pack chassis inside the exo-frame -->
+  <path d="M 156,120
+           L 356,120
+           L 378,150
+           L 378,378
+           L 352,402
+           L 160,402
+           L 134,378
+           L 134,150 Z"
+        fill="url(#bpp_armor_body)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+  <!-- Recessed dark mechanical core bay -->
+  <rect x="166" y="142" width="180" height="214" rx="16"
+        fill="url(#bpp_armor_dark)" stroke="#121519" stroke-width="8"/>
+
+  <!-- Heat-sink cooling louvres on lower-left and upper-left of chassis -->
+  <g stroke="#1b2026" stroke-width="5.5" stroke-linecap="round">
+    <line x1="178" y1="292" x2="210" y2="292"/>
+    <line x1="178" y1="306" x2="210" y2="306"/>
+    <line x1="178" y1="320" x2="210" y2="320"/>
+    <line x1="178" y1="334" x2="210" y2="334"/>
+  </g>
+
+  <!-- Lower yellow-black hazard strip plate -->
+  <g clip-path="url(#bpp_haz_clip)">
+    <rect x="170" y="364" width="172" height="28" fill="#c9a038"/>
+    <g stroke="#1a1f24" stroke-width="12">
+      <line x1="184" y1="394" x2="202" y2="362"/>
+      <line x1="214" y1="394" x2="232" y2="362"/>
+      <line x1="244" y1="394" x2="262" y2="362"/>
+      <line x1="274" y1="394" x2="292" y2="362"/>
+      <line x1="304" y1="394" x2="322" y2="362"/>
+    </g>
+  </g>
+  <rect x="172" y="366" width="168" height="24" rx="4" fill="none" stroke="#121519" stroke-width="6"/>
+
+  <!-- NUCLEAR BATTERY / FUSION CORE (ядерная батарея) locked in central-left core bay -->
+  <g transform="translate(232 246)">
+    <!-- Core top armored socket cap -->
+    <rect x="-36" y="-92" width="72" height="24" rx="8"
+          fill="url(#bpp_core_cap)" stroke="#121519" stroke-width="9"/>
+    <!-- Core bottom armored socket base -->
+    <rect x="-36" y="68" width="72" height="24" rx="8"
+          fill="url(#bpp_core_cap)" stroke="#121519" stroke-width="9"/>
+    <!-- Main cylindrical yellow industrial fusion core casing -->
+    <rect x="-42" y="-72" width="84" height="144" rx="14"
+          fill="url(#bpp_core_yellow)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+    <!-- Core machined cooling rings / ribs -->
+    <line x1="-40" y1="-44" x2="40" y2="-44" stroke="#121519" stroke-width="6"/>
+    <line x1="-40" y1="44" x2="40" y2="44" stroke="#121519" stroke-width="6"/>
+    <!-- Center dark armored containment band -->
+    <rect x="-44" y="-22" width="88" height="44" rx="6"
+          fill="url(#bpp_core_cap)" stroke="#121519" stroke-width="7"/>
+    <!-- Glowing nuclear core energy slits inside containment band -->
+    <rect x="-26" y="-9" width="52" height="18" rx="6"
+          fill="#10291e" stroke="#121519" stroke-width="4.5"/>
+    <rect x="-22" y="-5" width="44" height="10" rx="4" fill="#63ffba"/>
+    <line x1="-10" y1="-8" x2="-10" y2="8" stroke="#121519" stroke-width="4"/>
+    <line x1="10" y1="-8" x2="10" y2="8" stroke="#121519" stroke-width="4"/>
+    <!-- Stylized radiation trefoil dot emblem on upper yellow casing (no text) -->
+    <g transform="translate(0 -58)">
+      <circle cx="0" cy="0" r="3.5" fill="#1a1f24"/>
+      <path d="M -5,-2 L -11,-8 A 12,12 0 0 1 -2,-12 Z" fill="#1a1f24"/>
+      <path d="M 5,-2 L 11,-8 A 12,12 0 0 0 2,-12 Z" fill="#1a1f24"/>
+      <path d="M -3,5 L 3,5 L 6,11 A 12,12 0 0 1 -6,11 Z" fill="#1a1f24"/>
+    </g>
+    <!-- Specular metallic shine along left of core -->
+    <line x1="-22" y1="-64" x2="-22" y2="-48" stroke="#fff5cc" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+    <line x1="-22" y1="50" x2="-22" y2="64" stroke="#fff5cc" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <!-- Heavy steel retaining clamps locking the nuclear battery to the frame -->
+  <path d="M 162,188 L 194,188 L 198,204 L 162,204 Z" fill="url(#bpp_steel_frame)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 270,188 L 298,188 L 298,204 L 266,204 Z" fill="url(#bpp_steel_frame)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 162,288 L 198,288 L 194,304 L 162,304 Z" fill="url(#bpp_steel_frame)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 266,288 L 298,288 L 298,304 L 270,304 Z" fill="url(#bpp_steel_frame)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- GLOWING STATUS INDICATOR MODULE (светящийся индикатор) on right side of bay -->
+  <g transform="translate(316 246)">
+    <!-- Armored indicator housing -->
+    <rect x="-24" y="-84" width="48" height="168" rx="12"
+          fill="#283038" stroke="#121519" stroke-width="8"/>
+
+    <!-- Top circular glowing reactor status beacon -->
+    <circle cx="0" cy="-48" r="34" fill="url(#bpp_led_glow)"/>
+    <circle cx="0" cy="-48" r="16" fill="#0e2b1f" stroke="#121519" stroke-width="5"/>
+    <circle cx="0" cy="-48" r="11" fill="#5effb5"/>
+    <circle cx="-3" cy="-51" r="4" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Vertical segmented glowing power charge bar -->
+    <rect x="-12" y="-18" width="24" height="86" rx="6"
+          fill="#0d1c16" stroke="#121519" stroke-width="5"/>
+    <!-- Glowing green-cyan charge segments -->
+    <rect x="-8" y="-12" width="16" height="74" rx="3" fill="url(#bpp_energy_bar)"/>
+    <!-- Segment divider bars -->
+    <g stroke="#10211a" stroke-width="4">
+      <line x1="-10" y1="6" x2="10" y2="6"/>
+      <line x1="-10" y1="24" x2="10" y2="24"/>
+      <line x1="-10" y1="42" x2="10" y2="42"/>
+    </g>
+    <!-- Glass specular highlight over indicator bar -->
+    <line x1="-5" y1="-9" x2="-5" y2="58" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  </g>
+
+  <!-- Corner steel gusset plates & heavy rivets on exo-frame -->
+  <g fill="url(#bpp_steel_frame)" stroke="#121519" stroke-width="8" stroke-linejoin="round">
+    <polygon points="130,136 172,114 172,148 130,162"/>
+    <polygon points="382,136 340,114 340,148 382,162"/>
+    <polygon points="130,368 172,390 172,358 130,344"/>
+    <polygon points="382,368 340,390 340,358 382,344"/>
+  </g>
+  <g fill="#95a4b2" stroke="#121519" stroke-width="3.5">
+    <circle cx="152" cy="138" r="5"/>
+    <circle cx="360" cy="138" r="5"/>
+    <circle cx="152" cy="368" r="5"/>
+    <circle cx="360" cy="368" r="5"/>
+    <circle cx="204" cy="100" r="5"/>
+    <circle cx="308" cy="100" r="5"/>
+  </g>
+</svg>

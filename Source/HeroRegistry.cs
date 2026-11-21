@@ -99,6 +99,35 @@ namespace TurboMegaMod
             {
                 EnsureLeadersInitialized();
             }
+            SyncLocalizedNames();
+        }
+
+        /// Hero names and faction names come from translated defs (DefInjected). Pawns and factions keep the name they
+        /// were created with, so a save started in another language (or before the translation existed) is brought in
+        /// line with the current language here.
+        public void SyncLocalizedNames()
+        {
+            for (int i = 0; i < records.Count; i++)
+            {
+                HeroRecord r = records[i];
+                HeroDef hd = r != null ? DefDatabase<HeroDef>.GetNamedSilentFail(r.heroDefName) : null;
+                if (r == null || r.pawn == null || hd == null || hd.nameFirst.NullOrEmpty()) continue;
+                NameTriple want = BuildName(hd);
+                NameTriple have = r.pawn.Name as NameTriple;
+                if (have == null || have.First != want.First || have.Nick != want.Nick || have.Last != want.Last) r.pawn.Name = want;
+            }
+            if (Find.FactionManager == null) return;
+            foreach (Faction f in Find.FactionManager.AllFactionsListForReading)
+            {
+                if (f == null || f.def == null || f.IsPlayer || f.def.fixedName.NullOrEmpty()) continue;
+                if (!f.def.defName.StartsWith("TMM_", StringComparison.Ordinal)) continue;
+                if (f.Name != f.def.fixedName) f.Name = f.def.fixedName;
+            }
+        }
+
+        public static NameTriple BuildName(HeroDef def)
+        {
+            return new NameTriple(def.nameFirst, def.nameNick.NullOrEmpty() ? def.nameFirst : def.nameNick, def.nameLast ?? "");
         }
 
         public static Faction FactionFor(HeroDef def)
@@ -156,7 +185,7 @@ namespace TurboMegaMod
                 fixedBiologicalAge: def.ageRange.RandomInRange,
                 forcedXenotype: xeno,
                 developmentalStages: DevelopmentalStage.Adult));
-            pawn.Name = new NameTriple(def.nameFirst, def.nameNick.NullOrEmpty() ? def.nameFirst : def.nameNick, def.nameLast ?? "");
+            pawn.Name = BuildName(def);
             if (pawn.story != null)
             {
                 if (def.childhood != null) pawn.story.Childhood = def.childhood;
@@ -365,6 +394,18 @@ namespace TurboMegaMod
             var letter = AccessTools.Method(typeof(LetterStack), "ReceiveLetter", new Type[] { typeof(Letter), typeof(string), typeof(int), typeof(bool) });
             if (letter == null) Log.Error("[TMM] HeroRegistry: LetterStack.ReceiveLetter(Letter, string, int, bool) not found; heroes are not revealed by letters.");
             else harmony.Patch(letter, prefix: new HarmonyMethod(typeof(HeroRegistryPatches), "NotifyLetter"));
+            // A hero who shows up on one of the player's maps counts as met, not only one named in a letter.
+            var spawn = AccessTools.Method(typeof(Pawn), "SpawnSetup", new Type[] { typeof(Map), typeof(bool) });
+            if (spawn == null) Log.Error("[TMM] HeroRegistry: Pawn.SpawnSetup(Map, bool) not found; heroes are not revealed on arrival.");
+            else harmony.Patch(spawn, postfix: new HarmonyMethod(typeof(HeroRegistryPatches), "NotifySpawned"));
+        }
+
+        public static void NotifySpawned(Pawn __instance, Map map)
+        {
+            if (__instance == null || map == null || __instance.Faction == Faction.OfPlayer) return;
+            if (!map.IsPlayerHome && (map.mapPawns == null || !map.mapPawns.AnyColonistSpawned)) return;
+            HeroRegistry reg = HeroRegistry.Instance;
+            if (reg != null && reg.IsHero(__instance)) reg.NotifyEncountered(__instance);
         }
 
         public static void NotifyLetter(Letter let)

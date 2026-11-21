@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="teq_quantum_aura" cx="50%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#d4f4ff" stop-opacity="0.5"/>
+      <stop offset="44%" stop-color="#4aa8ff" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#17448a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="teq_wake_outer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dff8ff" stop-opacity="0.82"/>
+      <stop offset="35%" stop-color="#4fb3ff" stop-opacity="0.48"/>
+      <stop offset="72%" stop-color="#2165c4" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0f2c66" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="teq_wake_core" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="38%" stop-color="#c9f1ff" stop-opacity="0.72"/>
+      <stop offset="76%" stop-color="#4fa8ff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#1d54b0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="teq_bullet_blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2057a8"/>
+      <stop offset="26%" stop-color="#78ccff"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="74%" stop-color="#61bdff"/>
+      <stop offset="100%" stop-color="#1a478f"/>
+    </linearGradient>
+    <linearGradient id="teq_bullet_tip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="48%" stop-color="#e3f7ff"/>
+      <stop offset="100%" stop-color="#66c4ff"/>
+    </linearGradient>
+    <radialGradient id="teq_shimmer_flare" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="38%" stop-color="#9ee2ff" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#2b82e6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Wide quantum blue-white radiance envelope -->
+  <ellipse cx="256" cy="236" rx="84" ry="184" fill="url(#teq_quantum_aura)"/>
+
+  <!-- Quantum phase-slip stream tapering South -->
+  <path d="M 218,188
+           C 206,258 224,352 256,442
+           C 288,352 306,258 294,188 Z"
+        fill="url(#teq_wake_outer)"/>
+  <path d="M 238,192
+           C 234,254 242,330 256,412
+           C 270,330 278,254 274,192 Z"
+        fill="url(#teq_wake_core)"/>
+
+  <!-- Shimmering phase-shifted ghost afterimages flanking the main bullet -->
+  <path d="M 232,102 C 216,120 206,148 206,184 L 206,204 L 222,204 L 222,158 Z"
+        fill="#7ad4ff" opacity="0.46"/>
+  <path d="M 280,102 C 296,120 306,148 306,184 L 306,204 L 290,204 L 290,158 Z"
+        fill="#7ad4ff" opacity="0.46"/>
+
+  <!-- Quantum harmonic wave rings & double-helix energy filaments -->
+  <path d="M 222,204 C 198,252 302,286 276,348 C 266,374 260,398 256,426"
+        fill="none" stroke="#9ce6ff" stroke-width="4.5" stroke-linecap="round" opacity="0.78"/>
+  <path d="M 290,204 C 314,252 210,286 236,348 C 246,374 252,398 256,426"
+        fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.72"/>
+
+  <!-- Trailing quantum shimmer ellipses -->
+  <ellipse cx="256" cy="236" rx="54" ry="12" fill="none" stroke="#121519" stroke-width="5.5" opacity="0.58"/>
+  <ellipse cx="256" cy="236" rx="54" ry="12" fill="none" stroke="#ccf4ff" stroke-width="3"/>
+  <ellipse cx="256" cy="292" rx="40" ry="9" fill="none" stroke="#75d0ff" stroke-width="3" opacity="0.78"/>
+  <ellipse cx="256" cy="348" rx="26" ry="6" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.72"/>
+
+  <!-- Leading crystalline white-blue quantum bullet silhouette (pointing North) -->
+  <path d="M 256,72
+           C 276,92 288,124 288,160
+           L 288,200
+           L 272,216
+           L 240,216
+           L 224,200
+           L 224,160
+           C 224,124 236,92 256,72 Z"
+        fill="url(#teq_bullet_blue)" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- Inner luminous white quantum core diamond faceted along the bullet -->
+  <polygon points="256,84 274,148 256,208 238,148" fill="url(#teq_bullet_tip)" opacity="0.94"/>
+  <polygon points="256,96 265,148 256,196 247,148" fill="#ffffff"/>
+
+  <!-- Crisp arcane-tech containment bands across the blue-white casing -->
+  <path d="M 227,174 Q 256,184 285,174" fill="none" stroke="#184791" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 227,190 Q 256,200 285,190" fill="none" stroke="#184791" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 232,171 Q 256,179 280,171" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.88"/>
+
+  <!-- Intense shimmering star flare at leading nose & phase points -->
+  <circle cx="256" cy="86" r="30" fill="url(#teq_shimmer_flare)"/>
+  <path d="M 256,56 L 261,80 L 288,86 L 261,92 L 256,116 L 251,92 L 224,86 L 251,80 Z"
+        fill="#ffffff" opacity="0.95"/>
+
+  <!-- Shimmering quantum diamond motes & flickering 4-point sparkles -->
+  <path d="M 206,154 L 209,165 L 220,168 L 209,171 L 206,182 L 203,171 L 192,168 L 203,165 Z"
+        fill="#e6faff" opacity="0.92"/>
+  <path d="M 306,180 L 309,189 L 318,192 L 309,195 L 306,204 L 303,195 L 294,192 L 303,189 Z"
+        fill="#ffffff" opacity="0.92"/>
+  <path d="M 218,318 L 220,326 L 228,328 L 220,330 L 218,338 L 216,330 L 208,328 L 216,326 Z"
+        fill="#b8ecff" opacity="0.88"/>
+  <path d="M 294,344 L 296,352 L 304,354 L 296,356 L 294,364 L 292,356 L 284,354 L 292,352 Z"
+        fill="#ffffff" opacity="0.88"/>
+
+  <!-- Outlined trailing quantum crystal shards -->
+  <g stroke="#121519" stroke-width="4" stroke-linejoin="round">
+    <polygon points="228,266 234,276 228,286 222,276" fill="#e6faff"/>
+    <polygon points="284,290 290,300 284,310 278,300" fill="#8ad8ff"/>
+    <polygon points="256,372 263,384 256,396 249,384" fill="#ffffff"/>
+    <circle cx="238" cy="404" r="4.5" fill="#99e1ff"/>
+    <circle cx="274" cy="414" r="4" fill="#ffffff"/>
+  </g>
+</svg>

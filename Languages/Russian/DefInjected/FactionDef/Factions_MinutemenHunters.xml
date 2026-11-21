@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+  <TMM_MinutemenHuntersFaction.fixedName>Минитмены и охотники</TMM_MinutemenHuntersFaction.fixedName>
   <TMM_MinutemenHuntersFaction.label>минитмены и охотники</TMM_MinutemenHuntersFaction.label>
   <TMM_MinutemenHuntersFaction.description>Союз гражданских ополченцев фронтира и странствующих охотников на чудовищ. Организованы по принципу взаимовыручки поселений («помощь за минуту») и вооружены для защиты дальних форпостов от диких тварей и сверхъестественных угроз. Они хранят архивы древних оберегов и всегда готовы ответить на сигнал о помощи.</TMM_MinutemenHuntersFaction.description>
   <TMM_MinutemenHuntersFaction.pawnSingular>ополченец-охотник</TMM_MinutemenHuntersFaction.pawnSingular>

@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="rbw_cloth_roll" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e242b"/>
+      <stop offset="28%" stop-color="#3c4652"/>
+      <stop offset="52%" stop-color="#4e5a69"/>
+      <stop offset="80%" stop-color="#2c343d"/>
+      <stop offset="100%" stop-color="#191e24"/>
+    </linearGradient>
+    <linearGradient id="rbw_cloth_flap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#424d59"/>
+      <stop offset="48%" stop-color="#2e3740"/>
+      <stop offset="100%" stop-color="#1e242b"/>
+    </linearGradient>
+    <linearGradient id="rbw_cloth_back" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c2229"/>
+      <stop offset="100%" stop-color="#313a45"/>
+    </linearGradient>
+    <linearGradient id="rbw_plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c8b99"/>
+      <stop offset="45%" stop-color="#4f5b66"/>
+      <stop offset="100%" stop-color="#2b333b"/>
+    </linearGradient>
+    <linearGradient id="rbw_plate_edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9aaab8"/>
+      <stop offset="100%" stop-color="#566370"/>
+    </linearGradient>
+    <linearGradient id="rbw_strap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b291d"/>
+      <stop offset="45%" stop-color="#6b4b35"/>
+      <stop offset="100%" stop-color="#2e1f15"/>
+    </linearGradient>
+    <linearGradient id="rbw_brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d9be75"/>
+      <stop offset="50%" stop-color="#9e7f3c"/>
+      <stop offset="100%" stop-color="#5c461c"/>
+    </linearGradient>
+    <radialGradient id="rbw_lantern_glow" cx="50%" cy="52%" r="50%">
+      <stop offset="0%" stop-color="#ffe7a8" stop-opacity="0.85"/>
+      <stop offset="45%" stop-color="#d9a54c" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a87628" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="rbw_flap_clip">
+      <path d="M 164,132 L 384,128 C 400,128 412,140 410,156 L 396,360 C 394,376 382,386 366,386 L 154,382 Z"/>
+    </clipPath>
+    <clipPath id="rbw_roll_clip">
+      <rect x="92" y="106" width="112" height="296" rx="50"/>
+    </clipPath>
+  </defs>
+
+  <g transform="rotate(-10 256 256)">
+    <!-- Unrolled heavy ballistic fabric flap extending to the right -->
+    <path d="M 164,132 L 384,128 C 400,128 412,140 410,156 L 396,360 C 394,376 382,386 366,386 L 154,382 Z"
+          fill="url(#rbw_cloth_flap)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+    <!-- Woven Kevlar grid & interwoven armored plates inside flap -->
+    <g clip-path="url(#rbw_flap_clip)">
+      <!-- Subtle diagonal Kevlar cross-weave texture -->
+      <g stroke="#1b2128" stroke-width="3" opacity="0.55">
+        <line x1="150" y1="180" x2="220" y2="110"/>
+        <line x1="150" y1="220" x2="260" y2="110"/>
+        <line x1="150" y1="260" x2="300" y2="110"/>
+        <line x1="150" y1="300" x2="340" y2="110"/>
+        <line x1="150" y1="340" x2="380" y2="110"/>
+        <line x1="150" y1="380" x2="420" y2="110"/>
+        <line x1="185" y1="395" x2="425" y2="155"/>
+        <line x1="225" y1="395" x2="425" y2="195"/>
+        <line x1="265" y1="395" x2="425" y2="235"/>
+        <line x1="305" y1="395" x2="425" y2="275"/>
+        <line x1="345" y1="395" x2="425" y2="315"/>
+      </g>
+      <g stroke="#596775" stroke-width="2" opacity="0.28">
+        <line x1="155" y1="125" x2="415" y2="385"/>
+        <line x1="195" y1="125" x2="415" y2="345"/>
+        <line x1="235" y1="125" x2="415" y2="305"/>
+        <line x1="275" y1="125" x2="415" y2="265"/>
+        <line x1="315" y1="125" x2="415" y2="225"/>
+        <line x1="155" y1="165" x2="375" y2="385"/>
+        <line x1="155" y1="205" x2="335" y2="385"/>
+        <line x1="155" y1="245" x2="295" y2="385"/>
+        <line x1="155" y1="285" x2="255" y2="385"/>
+      </g>
+
+      <!-- Interwoven ceramic/titanium ballistic armor plates stitched into fabric -->
+      <g fill="url(#rbw_plate)" stroke="#121519" stroke-width="5.5" stroke-linejoin="round">
+        <!-- Upper row of woven plates -->
+        <polygon points="212,146 254,146 262,156 262,188 254,196 212,196 204,188 204,156"/>
+        <polygon points="274,146 316,146 324,156 324,188 316,196 274,196 266,188 266,156"/>
+        <polygon points="336,146 378,146 386,156 386,188 378,196 336,196 328,188 328,156"/>
+        <!-- Lower row of woven plates -->
+        <polygon points="208,324 250,324 258,334 258,364 250,372 208,372 200,364 200,334"/>
+        <polygon points="270,324 312,324 320,334 320,364 312,372 270,372 262,364 262,334"/>
+        <polygon points="332,324 374,324 382,334 382,364 374,372 332,372 324,364 324,334"/>
+      </g>
+      <!-- Metallic top-edge glints on plates -->
+      <g stroke="url(#rbw_plate_edge)" stroke-width="2.5" stroke-linecap="round" opacity="0.7">
+        <line x1="214" y1="154" x2="250" y2="154"/>
+        <line x1="276" y1="154" x2="312" y2="154"/>
+        <line x1="338" y1="154" x2="374" y2="154"/>
+        <line x1="210" y1="332" x2="246" y2="332"/>
+        <line x1="272" y1="332" x2="308" y2="332"/>
+        <line x1="334" y1="332" x2="370" y2="332"/>
+      </g>
+
+      <!-- Heavy stitched edge trim along right & bottom border -->
+      <path d="M 392,138 L 380,372" fill="none" stroke="#8596a6" stroke-width="3" stroke-dasharray="10 8" opacity="0.5"/>
+      <path d="M 196,372 L 378,374" fill="none" stroke="#8596a6" stroke-width="3" stroke-dasharray="10 8" opacity="0.5"/>
+
+      <!-- Shadow cast by the thick fabric roll onto the flap -->
+      <rect x="188" y="124" width="24" height="268" fill="#121519" opacity="0.48"/>
+    </g>
+
+    <!-- Re-stroke flap perimeter cleanly -->
+    <path d="M 164,132 L 384,128 C 400,128 412,140 410,156 L 396,360 C 394,376 382,386 366,386 L 154,382 Z"
+          fill="none" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+
+    <!-- Railroad Lantern Emblem (фонарь-символ Подземки) stenciled on center of ballistic cloth -->
+    <g transform="translate(298 258)">
+      <!-- Subtle warm lantern glow -->
+      <circle cx="0" cy="4" r="64" fill="url(#rbw_lantern_glow)"/>
+      <!-- Chalk-white / aged stencil outer ring -->
+      <circle cx="0" cy="2" r="56" fill="#20262e" fill-opacity="0.72" stroke="#d8cfc0" stroke-width="5.5" stroke-dasharray="28 7 18 6"/>
+      <!-- Stylized Railroad Lantern -->
+      <!-- Top carrying ring -->
+      <circle cx="0" cy="-37" r="7.5" fill="none" stroke="#e8decb" stroke-width="4.5"/>
+      <!-- Lantern cap / hood -->
+      <path d="M -22,-22 Q 0,-34 22,-22 L 16,-15 L -16,-15 Z" fill="#e8decb" stroke="#121519" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Lantern side cage struts -->
+      <path d="M -16,-15 C -26,-2 -26,18 -16,28 M 16,-15 C 26,-2 26,18 16,28"
+            fill="none" stroke="#d8cfc0" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Glowing lantern glass globe & inner flame -->
+      <ellipse cx="0" cy="6" rx="15" ry="19" fill="#d9a84e" stroke="#121519" stroke-width="3"/>
+      <path d="M 0,-6 C 7,4 8,14 0,20 C -8,14 -7,4 0,-6 Z" fill="#fff3cc"/>
+      <!-- Lantern horizontal guard bands -->
+      <line x1="-18" y1="6" x2="18" y2="6" stroke="#20262e" stroke-width="3.2"/>
+      <!-- Lantern base pedestal -->
+      <path d="M -20,26 L 20,26 L 25,36 L -25,36 Z" fill="#e8decb" stroke="#121519" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Subtle radiating light ticks -->
+      <g stroke="#f0d28c" stroke-width="3.5" stroke-linecap="round" opacity="0.85">
+        <line x1="-38" y1="6" x2="-30" y2="6"/>
+        <line x1="30" y1="6" x2="38" y2="6"/>
+        <line x1="-34" y1="-10" x2="-27" y2="-6"/>
+        <line x1="27" y1="-6" x2="34" y2="-10"/>
+        <line x1="-34" y1="22" x2="-27" y2="18"/>
+        <line x1="27" y1="18" x2="34" y2="22"/>
+      </g>
+    </g>
+
+    <!-- Main thick rolled cylinder of ballistic weave on the left -->
+    <rect x="92" y="106" width="112" height="296" rx="50"
+          fill="url(#rbw_cloth_roll)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+    <!-- Quilted armor rib seams wrapping around the fabric roll -->
+    <g clip-path="url(#rbw_roll_clip)">
+      <path d="M 92,188 Q 148,200 204,188" fill="none" stroke="#181d24" stroke-width="5"/>
+      <path d="M 92,232 Q 148,244 204,232" fill="none" stroke="#181d24" stroke-width="5"/>
+      <path d="M 92,318 Q 148,330 204,318" fill="none" stroke="#181d24" stroke-width="5"/>
+      <path d="M 92,356 Q 148,368 204,356" fill="none" stroke="#181d24" stroke-width="5"/>
+      <!-- Soft vertical metallic-weave sheen along left cylinder face -->
+      <path d="M 122,164 L 122,380" stroke="#7d8f9e" stroke-width="10" stroke-linecap="round" opacity="0.28"/>
+      <!-- Woven plate glint peeking on the roll -->
+      <rect x="114" y="198" width="44" height="26" rx="5" fill="url(#rbw_plate)" stroke="#121519" stroke-width="4.5" opacity="0.85"/>
+      <rect x="148" y="324" width="42" height="24" rx="5" fill="url(#rbw_plate)" stroke="#121519" stroke-width="4.5" opacity="0.85"/>
+    </g>
+
+    <!-- Top spiral end of rolled fabric showing layered cloth & metallic weave core -->
+    <ellipse cx="148" cy="134" rx="44" ry="22" fill="url(#rbw_cloth_back)" stroke="#121519" stroke-width="9"/>
+    <!-- Spiral concentric weave layers -->
+    <path d="M 118,134 C 118,120 176,120 178,134 C 180,147 126,148 128,134 C 130,124 166,124 166,134 C 166,141 140,141 142,134"
+          fill="none" stroke="#6f7f8f" stroke-width="4.5" stroke-linecap="round"/>
+    <ellipse cx="148" cy="134" rx="8" ry="4" fill="#121519"/>
+
+    <!-- Leather binding strap & brass buckle cinched around the roll -->
+    <path d="M 86,262 Q 148,278 210,262 L 210,294 Q 148,310 86,294 Z"
+          fill="url(#rbw_strap)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+    <!-- Brass buckle -->
+    <rect x="130" y="264" width="38" height="40" rx="7"
+          fill="none" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+    <rect x="130" y="264" width="38" height="40" rx="7"
+          fill="none" stroke="url(#rbw_brass)" stroke-width="7" stroke-linejoin="round"/>
+    <line x1="146" y1="284" x2="168" y2="284" stroke="#d9be75" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Crisp final cylinder border stroke -->
+    <rect x="92" y="106" width="112" height="296" rx="50"
+          fill="none" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+  </g>
+</svg>

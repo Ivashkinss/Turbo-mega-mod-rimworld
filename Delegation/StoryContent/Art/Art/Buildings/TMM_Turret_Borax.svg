@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="btb_hull" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#64707a"/>
+      <stop offset="45%" stop-color="#48525c"/>
+      <stop offset="100%" stop-color="#2c333b"/>
+    </linearGradient>
+    <linearGradient id="btb_deck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#57636d"/>
+      <stop offset="50%" stop-color="#3f4852"/>
+      <stop offset="100%" stop-color="#2a3138"/>
+    </linearGradient>
+    <linearGradient id="btb_foot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c555e"/>
+      <stop offset="100%" stop-color="#232930"/>
+    </linearGradient>
+    <radialGradient id="btb_ring_outer" cx="42%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#7c8a96"/>
+      <stop offset="55%" stop-color="#4d5761"/>
+      <stop offset="100%" stop-color="#2c333b"/>
+    </radialGradient>
+    <radialGradient id="btb_ring_pit" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#15191f"/>
+      <stop offset="72%" stop-color="#232a33"/>
+      <stop offset="100%" stop-color="#353f4a"/>
+    </radialGradient>
+    <linearGradient id="btb_brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b56c"/>
+      <stop offset="50%" stop-color="#997a3c"/>
+      <stop offset="100%" stop-color="#5c471e"/>
+    </linearGradient>
+    <linearGradient id="btb_tank_metal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3e4750"/>
+      <stop offset="30%" stop-color="#7a8894"/>
+      <stop offset="55%" stop-color="#94a3b0"/>
+      <stop offset="85%" stop-color="#4f5a66"/>
+      <stop offset="100%" stop-color="#2d343b"/>
+    </linearGradient>
+    <linearGradient id="btb_powder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c3cfd6"/>
+      <stop offset="35%" stop-color="#f2f6f8"/>
+      <stop offset="68%" stop-color="#e3ebef"/>
+      <stop offset="100%" stop-color="#b4c2ca"/>
+    </linearGradient>
+    <linearGradient id="btb_pump" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#606d61"/>
+      <stop offset="50%" stop-color="#455046"/>
+      <stop offset="100%" stop-color="#2b332c"/>
+    </linearGradient>
+    <linearGradient id="btb_yellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cfa63c"/>
+      <stop offset="100%" stop-color="#9e7a22"/>
+    </linearGradient>
+    <clipPath id="btb_clip_haz_n">
+      <polygon points="168,88 344,88 326,120 186,120"/>
+    </clipPath>
+    <clipPath id="btb_clip_haz_s">
+      <polygon points="186,392 326,392 344,424 168,424"/>
+    </clipPath>
+  </defs>
+
+  <!-- 6 heavy corner anchor stabilizer lugs/feet -->
+  <g fill="url(#btb_foot)" stroke="#121519" stroke-width="12" stroke-linejoin="round">
+    <rect x="430" y="232" width="44" height="48" rx="10"/>
+    <rect x="38" y="232" width="44" height="48" rx="10"/>
+    <polygon points="344,62 384,74 374,112 334,98"/>
+    <polygon points="168,62 128,74 138,112 178,98"/>
+    <polygon points="344,450 384,438 374,400 334,414"/>
+    <polygon points="168,450 128,438 138,400 178,414"/>
+  </g>
+
+  <!-- Main hexagonal armored base platform -->
+  <polygon points="458,256 357,431 155,431 54,256 155,81 357,81"
+           fill="url(#btb_hull)" stroke="#121519" stroke-width="14" stroke-linejoin="round"/>
+
+  <!-- Inner beveled armored deck -->
+  <polygon points="424,256 340,402 172,402 88,256 172,110 340,110"
+           fill="url(#btb_deck)" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- Subtle welded floor panel seams -->
+  <g stroke="#22282e" stroke-width="4" opacity="0.7">
+    <line x1="88" y1="256" x2="184" y2="256"/>
+    <line x1="328" y1="256" x2="424" y2="256"/>
+    <line x1="172" y1="110" x2="218" y2="190"/>
+    <line x1="340" y1="110" x2="294" y2="190"/>
+    <line x1="172" y1="402" x2="218" y2="322"/>
+    <line x1="340" y1="402" x2="294" y2="322"/>
+  </g>
+
+  <!-- North yellow-black hazard stripe plate -->
+  <g clip-path="url(#btb_clip_haz_n)">
+    <rect x="160" y="84" width="192" height="40" fill="url(#btb_yellow)"/>
+    <g stroke="#1b2026" stroke-width="15">
+      <line x1="174" y1="126" x2="196" y2="82"/>
+      <line x1="208" y1="126" x2="230" y2="82"/>
+      <line x1="242" y1="126" x2="264" y2="82"/>
+      <line x1="276" y1="126" x2="298" y2="82"/>
+      <line x1="310" y1="126" x2="332" y2="82"/>
+      <line x1="344" y1="126" x2="366" y2="82"/>
+    </g>
+  </g>
+  <polygon points="168,88 344,88 326,120 186,120"
+           fill="none" stroke="#121519" stroke-width="6.5" stroke-linejoin="round"/>
+
+  <!-- South yellow-black hazard stripe plate -->
+  <g clip-path="url(#btb_clip_haz_s)">
+    <rect x="160" y="388" width="192" height="40" fill="url(#btb_yellow)"/>
+    <g stroke="#1b2026" stroke-width="15">
+      <line x1="174" y1="430" x2="196" y2="386"/>
+      <line x1="208" y1="430" x2="230" y2="386"/>
+      <line x1="242" y1="430" x2="264" y2="386"/>
+      <line x1="276" y1="430" x2="298" y2="386"/>
+      <line x1="310" y1="430" x2="332" y2="386"/>
+      <line x1="344" y1="430" x2="366" y2="386"/>
+    </g>
+  </g>
+  <polygon points="186,392 326,392 344,424 168,424"
+           fill="none" stroke="#121519" stroke-width="6.5" stroke-linejoin="round"/>
+
+  <!-- Armored feed hoses connecting Borax Tank and Compressor to central turret ring -->
+  <path d="M 340,214 C 314,214 306,226 296,236"
+        fill="none" stroke="#121519" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 340,214 C 314,214 306,226 296,236"
+        fill="none" stroke="#7d6433" stroke-width="8" stroke-linecap="round"/>
+
+  <path d="M 340,298 C 314,298 306,286 296,276"
+        fill="none" stroke="#121519" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 340,298 C 314,298 306,286 296,276"
+        fill="none" stroke="#5c6873" stroke-width="8" stroke-linecap="round"/>
+
+  <path d="M 174,256 L 204,256"
+        fill="none" stroke="#121519" stroke-width="22" stroke-linecap="round"/>
+  <path d="M 174,256 L 204,256"
+        fill="none" stroke="#8f723b" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Left side: compact armored pressure pump / compressor unit -->
+  <rect x="114" y="196" width="66" height="120" rx="12"
+        fill="url(#btb_pump)" stroke="#121519" stroke-width="9" stroke-linejoin="round"/>
+  <!-- Cooling fins on pump -->
+  <g stroke="#222823" stroke-width="4.5" stroke-linecap="round">
+    <line x1="126" y1="214" x2="168" y2="214"/>
+    <line x1="126" y1="226" x2="168" y2="226"/>
+    <line x1="126" y1="238" x2="168" y2="238"/>
+  </g>
+  <!-- Brass pressure gauge on pump -->
+  <circle cx="147" cy="278" r="19" fill="url(#btb_brass)" stroke="#121519" stroke-width="5.5"/>
+  <circle cx="147" cy="278" r="11" fill="#dbe3e6" stroke="#121519" stroke-width="2.5"/>
+  <path d="M 147,278 L 154,271" stroke="#a63329" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Right side: pressurized cylindrical Borax Tank with white powder window -->
+  <rect x="330" y="174" width="74" height="164" rx="28"
+        fill="url(#btb_tank_metal)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Brass valve cap on top end of tank -->
+  <circle cx="367" cy="186" r="10" fill="url(#btb_brass)" stroke="#121519" stroke-width="4.5"/>
+
+  <!-- Viewing window showing bright white borax powder -->
+  <rect x="348" y="204" width="38" height="104" rx="14"
+        fill="url(#btb_powder)" stroke="#121519" stroke-width="6.5"/>
+  <!-- Powder mound texture & subtle granular shading inside window -->
+  <path d="M 351,232 Q 367,224 383,234 L 383,304 Q 367,308 351,304 Z"
+        fill="#dce5ea" opacity="0.55"/>
+  <circle cx="359" cy="222" r="3.2" fill="#ffffff"/>
+  <circle cx="372" cy="242" r="2.8" fill="#ffffff"/>
+  <circle cx="362" cy="266" r="3.5" fill="#ffffff"/>
+  <circle cx="374" cy="286" r="3" fill="#ffffff"/>
+  <circle cx="366" cy="252" r="2.2" fill="#aebcc4"/>
+  <circle cx="358" cy="280" r="2.4" fill="#aebcc4"/>
+  <!-- Measurement tick lines on glass -->
+  <g stroke="#4c5c66" stroke-width="2.5" stroke-linecap="round" opacity="0.65">
+    <line x1="373" y1="226" x2="382" y2="226"/>
+    <line x1="373" y1="246" x2="382" y2="246"/>
+    <line x1="373" y1="266" x2="382" y2="266"/>
+    <line x1="373" y1="286" x2="382" y2="286"/>
+  </g>
+  <!-- Crisp specular glass highlight -->
+  <path d="M 355,214 L 355,296" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Heavy steel tank mounting straps (clamps) -->
+  <rect x="325" y="216" width="84" height="14" rx="4"
+        fill="#39424a" stroke="#121519" stroke-width="5.5"/>
+  <rect x="325" y="282" width="84" height="14" rx="4"
+        fill="#39424a" stroke="#121519" stroke-width="5.5"/>
+
+  <!-- Central turret rotary bearing ring (socket for TMM_Gun_BoraxTurret) -->
+  <circle cx="256" cy="256" r="68"
+          fill="url(#btb_ring_outer)" stroke="#121519" stroke-width="11"/>
+  <!-- Recessed dark mechanical pit -->
+  <circle cx="256" cy="256" r="46"
+          fill="url(#btb_ring_pit)" stroke="#121519" stroke-width="6"/>
+  <!-- Internal bearing race dashes -->
+  <circle cx="256" cy="256" r="34"
+          fill="none" stroke="#535f6b" stroke-width="6" stroke-dasharray="12 9"/>
+  <!-- Center brass/steel spindle mount -->
+  <circle cx="256" cy="256" r="18"
+          fill="url(#btb_brass)" stroke="#121519" stroke-width="5.5"/>
+  <circle cx="256" cy="256" r="7"
+          fill="#1b2026"/>
+
+  <!-- Bolts on central turret ring -->
+  <g fill="#94a3b0" stroke="#121519" stroke-width="3">
+    <circle cx="256" cy="199" r="5"/>
+    <circle cx="296" cy="216" r="5"/>
+    <circle cx="313" cy="256" r="5"/>
+    <circle cx="296" cy="296" r="5"/>
+    <circle cx="256" cy="313" r="5"/>
+    <circle cx="216" cy="296" r="5"/>
+    <circle cx="199" cy="256" r="5"/>
+    <circle cx="216" cy="216" r="5"/>
+  </g>
+
+  <!-- Perimeter armored deck rivets -->
+  <g fill="#8c9ba8" stroke="#121519" stroke-width="3.5">
+    <circle cx="152" cy="116" r="6.5"/>
+    <circle cx="360" cy="116" r="6.5"/>
+    <circle cx="424" cy="222" r="6.5"/>
+    <circle cx="424" cy="290" r="6.5"/>
+    <circle cx="360" cy="396" r="6.5"/>
+    <circle cx="152" cy="396" r="6.5"/>
+    <circle cx="88" cy="290" r="6.5"/>
+    <circle cx="88" cy="222" r="6.5"/>
+    <circle cx="118" cy="168" r="6"/>
+    <circle cx="394" cy="168" r="6"/>
+    <circle cx="394" cy="344" r="6"/>
+    <circle cx="118" cy="344" r="6"/>
+  </g>
+</svg>

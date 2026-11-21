@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="dsg_smoke_aura" cx="50%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#ffcf7d" stop-opacity="0.34"/>
+      <stop offset="48%" stop-color="#a8764a" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#4d3b2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dsg_streak_hot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff4c4" stop-opacity="0.92"/>
+      <stop offset="28%" stop-color="#f2a241" stop-opacity="0.62"/>
+      <stop offset="68%" stop-color="#9e5932" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#523f36" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="dsg_streak_smoke" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe5a3" stop-opacity="0.72"/>
+      <stop offset="35%" stop-color="#b88b5a" stop-opacity="0.36"/>
+      <stop offset="72%" stop-color="#7c838a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#454c54" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="dsg_pellet_lead" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="24%" stop-color="#c2ced6"/>
+      <stop offset="60%" stop-color="#5e6973"/>
+      <stop offset="100%" stop-color="#252b30"/>
+    </radialGradient>
+    <radialGradient id="dsg_pellet_hot" cx="40%" cy="30%" r="64%">
+      <stop offset="0%" stop-color="#fffce6"/>
+      <stop offset="28%" stop-color="#e3c79e"/>
+      <stop offset="62%" stop-color="#6c757d"/>
+      <stop offset="100%" stop-color="#262c30"/>
+    </radialGradient>
+    <linearGradient id="dsg_wad_cup" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#69231d"/>
+      <stop offset="45%" stop-color="#b54338"/>
+      <stop offset="100%" stop-color="#4d1814"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm gunsmoke & muzzle-blast radiance cone -->
+  <ellipse cx="256" cy="244" rx="88" ry="188" fill="url(#dsg_smoke_aura)"/>
+
+  <!-- Conical supersonic slipstream & powder-smoke velocity streaks trailing South from each buckshot pellet -->
+  <!-- Far-left pellet trail -->
+  <path d="M 192,162 L 210,162 L 228,342 L 218,348 Z" fill="url(#dsg_streak_smoke)"/>
+  <!-- Far-right pellet trail -->
+  <path d="M 302,172 L 320,172 L 296,356 L 286,350 Z" fill="url(#dsg_streak_smoke)"/>
+
+  <!-- Mid-left pellet trail -->
+  <path d="M 214,116 L 234,116 L 242,356 L 228,358 Z" fill="url(#dsg_streak_hot)"/>
+  <!-- Mid-right pellet trail -->
+  <path d="M 278,124 L 298,124 L 284,366 L 270,362 Z" fill="url(#dsg_streak_hot)"/>
+
+  <!-- Center lead-pellet primary hot tracer wake -->
+  <path d="M 244,86 L 268,86 L 264,398 L 248,398 Z" fill="url(#dsg_streak_hot)"/>
+
+  <!-- Lower-left & lower-right secondary pellet trails -->
+  <path d="M 206,232 L 224,232 L 238,412 L 226,412 Z" fill="url(#dsg_streak_smoke)"/>
+  <path d="M 288,242 L 306,242 L 288,420 L 276,418 Z" fill="url(#dsg_streak_smoke)"/>
+  <path d="M 246,196 L 266,196 L 262,434 L 250,434 Z" fill="url(#dsg_streak_hot)"/>
+
+  <!-- Crisp thin incandescent streak cores directly behind pellets -->
+  <g stroke-linecap="round" opacity="0.82">
+    <line x1="256" y1="102" x2="256" y2="274" stroke="#fff4cc" stroke-width="4.5"/>
+    <line x1="224" y1="132" x2="232" y2="282" stroke="#ffd88a" stroke-width="3.5"/>
+    <line x1="288" y1="140" x2="280" y2="292" stroke="#ffd88a" stroke-width="3.5"/>
+    <line x1="201" y1="176" x2="218" y2="298" stroke="#f0be73" stroke-width="3"/>
+    <line x1="311" y1="186" x2="294" y2="306" stroke="#f0be73" stroke-width="3"/>
+    <line x1="256" y1="214" x2="256" y2="352" stroke="#ffe5a3" stroke-width="3.5"/>
+  </g>
+
+  <!-- Tumbling open shotgun shot-cup wad trailing at rear of spread -->
+  <g transform="translate(256 382) rotate(-8)">
+    <path d="M -18,-14 L -12,14 L 12,14 L 18,-14 L 8,-14 L 6,2 L -6,2 L -8,-14 Z"
+          fill="url(#dsg_wad_cup)" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Tight lethal cluster of heavy lead buckshot pellets flying North -->
+  <g stroke="#121519" stroke-width="6.5">
+    <!-- Point lead pellet (highest North) -->
+    <circle cx="256" cy="88" r="15" fill="url(#dsg_pellet_hot)"/>
+    <!-- Upper-left & upper-right flanking pellets -->
+    <circle cx="224" cy="118" r="13.5" fill="url(#dsg_pellet_lead)"/>
+    <circle cx="288" cy="126" r="13.5" fill="url(#dsg_pellet_hot)"/>
+    <!-- Outer wide spread pellets -->
+    <circle cx="201" cy="166" r="12" fill="url(#dsg_pellet_lead)"/>
+    <circle cx="311" cy="174" r="12" fill="url(#dsg_pellet_lead)"/>
+    <!-- Center core heavy pellet -->
+    <circle cx="256" cy="196" r="14" fill="url(#dsg_pellet_hot)"/>
+    <!-- Lower trailing pellets -->
+    <circle cx="216" cy="236" r="12.5" fill="url(#dsg_pellet_lead)"/>
+    <circle cx="296" cy="244" r="12.5" fill="url(#dsg_pellet_lead)"/>
+    <circle cx="254" cy="288" r="11.5" fill="url(#dsg_pellet_lead)"/>
+  </g>
+
+  <!-- Leading metallic-heat rim gleams on upper pellet arcs -->
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <path d="M 248,80 A 10,10 0 0 1 262,80"/>
+    <path d="M 218,111 A 9,9 0 0 1 229,111"/>
+    <path d="M 282,119 A 9,9 0 0 1 293,119"/>
+    <path d="M 250,189 A 9,9 0 0 1 261,189"/>
+  </g>
+
+  <!-- Sharp burning gunpowder sparks & hot muzzle embers in the buckshot spread -->
+  <g stroke="#121519" stroke-width="4" stroke-linejoin="round">
+    <polygon points="236,154 241,162 236,170 231,162" fill="#ffe694"/>
+    <polygon points="278,176 283,184 278,192 273,184" fill="#ffb84d"/>
+    <polygon points="236,266 240,274 236,282 232,274" fill="#ffd978"/>
+    <circle cx="280" cy="316" r="5" fill="#ffae42"/>
+    <circle cx="228" cy="336" r="4.5" fill="#ffe18c"/>
+    <circle cx="268" cy="422" r="4.5" fill="#ff9838"/>
+  </g>
+</svg>

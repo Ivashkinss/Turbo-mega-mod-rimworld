@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="lw_aura_outer" cx="50%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#ffe58f" stop-opacity="0.44"/>
+      <stop offset="50%" stop-color="#d49b35" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#7a5112" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lw_wake_stream" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff2bd" stop-opacity="0.72"/>
+      <stop offset="38%" stop-color="#e3ad42" stop-opacity="0.38"/>
+      <stop offset="76%" stop-color="#9e6d1c" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#5e3e0b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lw_ring_gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff9db"/>
+      <stop offset="28%" stop-color="#f7cf6a"/>
+      <stop offset="68%" stop-color="#c98f29"/>
+      <stop offset="100%" stop-color="#7a5010"/>
+    </linearGradient>
+    <linearGradient id="lw_crest_hot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="32%" stop-color="#ffeaa3"/>
+      <stop offset="72%" stop-color="#d99b2e"/>
+      <stop offset="100%" stop-color="#875812"/>
+    </linearGradient>
+    <radialGradient id="lw_core_orb" cx="50%" cy="46%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="42%" stop-color="#ffdf80" stop-opacity="0.72"/>
+      <stop offset="80%" stop-color="#c98824" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#7d4f0d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lw_ring_fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe699"/>
+      <stop offset="55%" stop-color="#cf9229"/>
+      <stop offset="100%" stop-color="#784f10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm supernatural golden-amber aura envelope -->
+  <ellipse cx="256" cy="236" rx="84" ry="184" fill="url(#lw_aura_outer)"/>
+
+  <!-- Tapered telekinetic distortion wake streaming southward -->
+  <path d="M 192,154
+           C 188,248 214,344 256,440
+           C 298,344 324,248 320,154 Z"
+        fill="url(#lw_wake_stream)"/>
+
+  <!-- Swirling arcane harmonic filaments linking the wave rings -->
+  <path d="M 206,154 C 194,214 294,254 274,324 C 266,356 260,390 256,426"
+        fill="none" stroke="#ffea9e" stroke-width="4.5" stroke-linecap="round" opacity="0.68"/>
+  <path d="M 306,154 C 318,214 218,254 238,324 C 246,356 252,390 256,426"
+        fill="none" stroke="#e8b246" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Trailing harmonic wave ring #3 (small, near tail) -->
+  <path d="M 224,376
+           A 32,12 0 1 1 288,376
+           A 32,12 0 1 1 224,376 Z
+           M 235,376
+           A 21,6 0 1 0 277,376
+           A 21,6 0 1 0 235,376 Z"
+        fill="url(#lw_ring_fade)" fill-rule="evenodd" stroke="#121519" stroke-width="6" stroke-linejoin="round" opacity="0.88"/>
+
+  <!-- Trailing harmonic wave ring #2 (medium, mid-lower) -->
+  <path d="M 206,314
+           A 50,18 0 1 1 306,314
+           A 50,18 0 1 1 206,314 Z
+           M 220,314
+           A 36,10 0 1 0 292,314
+           A 36,10 0 1 0 220,314 Z"
+        fill="url(#lw_ring_gold)" fill-rule="evenodd" stroke="#121519" stroke-width="6.5" stroke-linejoin="round"/>
+  <path d="M 218,308 Q 256,296 294,308" fill="none" stroke="#fff7d6" stroke-width="3" stroke-linecap="round" opacity="0.82"/>
+
+  <!-- Secondary shock ring #1 (wide, upper-mid) -->
+  <path d="M 188,244
+           A 68,24 0 1 1 324,244
+           A 68,24 0 1 1 188,244 Z
+           M 206,244
+           A 50,14 0 1 0 306,244
+           A 50,14 0 1 0 206,244 Z"
+        fill="url(#lw_ring_gold)" fill-rule="evenodd" stroke="#121519" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M 204,234 Q 256,218 308,234" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.88"/>
+
+  <!-- Central telekinetic glowing energy core inside primary ring -->
+  <circle cx="256" cy="156" r="46" fill="url(#lw_core_orb)"/>
+
+  <!-- Primary leading golden ring-wave (bold sculptural telekinetic ring moving North) -->
+  <path d="M 182,158
+           A 74,74 0 1 1 330,158
+           A 74,74 0 1 1 182,158 Z
+           M 204,158
+           A 52,52 0 1 0 308,158
+           A 52,52 0 1 0 204,158 Z"
+        fill="url(#lw_ring_gold)" fill-rule="evenodd" stroke="#121519" stroke-width="7.5" stroke-linejoin="round"/>
+
+  <!-- Forward-bowed high-energy wave crest crowning the leading North edge -->
+  <path d="M 186,138
+           C 198,94 226,74 256,74
+           C 286,74 314,94 326,138
+           C 308,112 284,98 256,98
+           C 228,98 204,112 186,138 Z"
+        fill="url(#lw_crest_hot)" stroke="#121519" stroke-width="6.5" stroke-linejoin="round"/>
+
+  <!-- Bright white-gold specular rim highlight along North crest -->
+  <path d="M 206,104 C 224,86 240,81 256,81 C 272,81 288,86 306,104"
+        fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" opacity="0.94"/>
+
+  <!-- Inner eldritch geometric resonance diamond inside main golden ring -->
+  <polygon points="256,120 278,158 256,196 234,158"
+           fill="#fff2bd" fill-opacity="0.35" stroke="#fff7d6" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="256" cy="158" r="10" fill="#ffffff" opacity="0.92"/>
+
+  <!-- Trailing golden energy motes -->
+  <g stroke="#121519" stroke-width="4" stroke-linejoin="round">
+    <polygon points="210,278 215,286 210,294 205,286" fill="#ffefad"/>
+    <polygon points="302,272 307,280 302,288 297,280" fill="#ffefad"/>
+    <circle cx="228" cy="348" r="5" fill="#ffe180"/>
+    <circle cx="284" cy="354" r="4.5" fill="#fff2bd"/>
+    <circle cx="256" cy="418" r="5.5" fill="#ffe794"/>
+  </g>
+</svg>

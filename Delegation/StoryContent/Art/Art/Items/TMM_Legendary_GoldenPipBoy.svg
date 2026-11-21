@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="gpb_gold_aura" cx="50%" cy="50%" r="48%">
+      <stop offset="0%" stop-color="#ffe285" stop-opacity="0.32"/>
+      <stop offset="52%" stop-color="#cc9b33" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8c6414" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gpb_screen_aura" cx="52%" cy="48%" r="42%">
+      <stop offset="0%" stop-color="#5eff7c" stop-opacity="0.34"/>
+      <stop offset="65%" stop-color="#22ad49" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#146e2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gpb_gold_main" x1="12%" y1="5%" x2="88%" y2="95%">
+      <stop offset="0%" stop-color="#fae18c"/>
+      <stop offset="28%" stop-color="#d9ae48"/>
+      <stop offset="54%" stop-color="#f2d272"/>
+      <stop offset="80%" stop-color="#a67a21"/>
+      <stop offset="100%" stop-color="#694a10"/>
+    </linearGradient>
+    <linearGradient id="gpb_gold_bezel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c99d3c"/>
+      <stop offset="50%" stop-color="#8f671b"/>
+      <stop offset="100%" stop-color="#543a0c"/>
+    </linearGradient>
+    <linearGradient id="gpb_gold_knob" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fce69a"/>
+      <stop offset="45%" stop-color="#c99c38"/>
+      <stop offset="100%" stop-color="#664810"/>
+    </linearGradient>
+    <linearGradient id="gpb_cuff_leather" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4d3524"/>
+      <stop offset="35%" stop-color="#332217"/>
+      <stop offset="100%" stop-color="#1c120b"/>
+    </linearGradient>
+    <radialGradient id="gpb_crt_bg" cx="46%" cy="44%" r="64%">
+      <stop offset="0%" stop-color="#276e38"/>
+      <stop offset="55%" stop-color="#154221"/>
+      <stop offset="100%" stop-color="#0b2412"/>
+    </radialGradient>
+    <linearGradient id="gpb_crt_glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4ffdc" stop-opacity="0.42"/>
+      <stop offset="45%" stop-color="#8cff9f" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#8cff9f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gpb_steel_dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a535c"/>
+      <stop offset="100%" stop-color="#21262b"/>
+    </linearGradient>
+    <clipPath id="gpb_crt_clip">
+      <rect x="200" y="182" width="166" height="126" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <!-- Warm legendary gilded aura -->
+  <circle cx="256" cy="256" r="206" fill="url(#gpb_gold_aura)"/>
+
+  <g transform="rotate(-7 256 256)">
+    <!-- Padded dark leather wrist cuff extending left and right -->
+    <path d="M 78,200
+             C 62,202 58,230 58,266
+             C 58,302 64,334 80,338
+             L 432,338
+             C 448,334 454,302 454,266
+             C 454,230 450,202 434,200 Z"
+          fill="url(#gpb_cuff_leather)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+    <!-- Cuff padded rib stitching -->
+    <path d="M 86,214 C 76,244 76,290 88,324" fill="none" stroke="#6b4b34" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 426,214 C 436,244 436,290 424,324" fill="none" stroke="#6b4b34" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Top protruding Geiger-counter / Rad-meter gauge housing (upper-left) -->
+    <path d="M 152,162 L 152,128 C 152,110 174,98 202,98 C 230,98 252,110 252,128 L 252,162 Z"
+          fill="url(#gpb_gold_main)" stroke="#121519" stroke-width="12" stroke-linejoin="round"/>
+    <!-- Recessed analog rad-meter dial -->
+    <path d="M 172,148 A 30,28 0 0 1 232,148 Z"
+          fill="#e8e2c8" stroke="#121519" stroke-width="6" stroke-linejoin="round"/>
+    <!-- Meter tick marks & red danger zone arc -->
+    <path d="M 212,124 A 24,22 0 0 1 228,144" fill="none" stroke="#b53328" stroke-width="5" stroke-linecap="round"/>
+    <line x1="202" y1="146" x2="218" y2="128" stroke="#121519" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="202" cy="146" r="4.5" fill="#121519"/>
+
+    <!-- Top-right ribbed gold heat-vent / radio receiver bar -->
+    <rect x="272" y="124" width="96" height="34" rx="10"
+          fill="url(#gpb_gold_bezel)" stroke="#121519" stroke-width="11" stroke-linejoin="round"/>
+    <g stroke="#291d08" stroke-width="4.5" stroke-linecap="round">
+      <line x1="288" y1="136" x2="288" y2="148"/>
+      <line x1="302" y1="136" x2="302" y2="148"/>
+      <line x1="316" y1="136" x2="316" y2="148"/>
+      <line x1="330" y1="136" x2="330" y2="148"/>
+      <line x1="344" y1="136" x2="344" y2="148"/>
+    </g>
+
+    <!-- Bottom gold wrist clamp hinge & latch -->
+    <rect x="200" y="362" width="112" height="32" rx="10"
+          fill="url(#gpb_gold_bezel)" stroke="#121519" stroke-width="11" stroke-linejoin="round"/>
+    <line x1="224" y1="364" x2="224" y2="392" stroke="#121519" stroke-width="5"/>
+    <line x1="288" y1="364" x2="288" y2="392" stroke="#121519" stroke-width="5"/>
+
+    <!-- Main sculpted gilded Pip-Boy armored casing -->
+    <path d="M 118,162
+             C 118,148 130,140 146,140
+             L 372,140
+             C 394,140 410,156 410,178
+             L 410,334
+             C 410,356 394,372 372,372
+             L 146,372
+             C 130,372 118,360 118,344
+             L 106,316
+             L 106,196 Z"
+          fill="url(#gpb_gold_main)" stroke="#121519" stroke-width="13" stroke-linejoin="round"/>
+
+    <!-- Gilded beveled highlight edge along top and left -->
+    <path d="M 136,154 L 372,154 C 386,154 396,164 396,178"
+          fill="none" stroke="#fff2bf" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+
+    <!-- Knurled gold rotary tuning dial protruding from left side -->
+    <rect x="86" y="218" width="28" height="76" rx="9"
+          fill="url(#gpb_gold_knob)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+    <g stroke="#3d2908" stroke-width="4" stroke-linecap="round">
+      <line x1="90" y1="234" x2="110" y2="234"/>
+      <line x1="90" y1="248" x2="110" y2="248"/>
+      <line x1="90" y1="262" x2="110" y2="262"/>
+      <line x1="90" y1="276" x2="110" y2="276"/>
+    </g>
+
+    <!-- Knurled gold scroll wheel on right bezel -->
+    <rect x="402" y="226" width="22" height="58" rx="8"
+          fill="url(#gpb_gold_knob)" stroke="#121519" stroke-width="10" stroke-linejoin="round"/>
+    <g stroke="#3d2908" stroke-width="3.5" stroke-linecap="round">
+      <line x1="405" y1="242" x2="421" y2="242"/>
+      <line x1="405" y1="255" x2="421" y2="255"/>
+      <line x1="405" y1="268" x2="421" y2="268"/>
+    </g>
+
+    <!-- Left control column: rotary dial, speaker vents & LED status pips -->
+    <!-- Upper speaker grille slots -->
+    <g stroke="#332207" stroke-width="5" stroke-linecap="round">
+      <line x1="130" y1="176" x2="174" y2="176"/>
+      <line x1="130" y1="189" x2="174" y2="189"/>
+      <line x1="130" y1="202" x2="174" y2="202"/>
+    </g>
+
+    <!-- Round mechanical selector knob -->
+    <circle cx="152" cy="252" r="24" fill="url(#gpb_gold_bezel)" stroke="#121519" stroke-width="8"/>
+    <circle cx="152" cy="252" r="14" fill="url(#gpb_gold_knob)" stroke="#121519" stroke-width="4"/>
+    <line x1="152" y1="252" x2="162" y2="242" stroke="#121519" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Status indicator LEDs (green & amber/red) -->
+    <circle cx="138" cy="306" r="8" fill="#59ff7a" stroke="#121519" stroke-width="4.5"/>
+    <circle cx="164" cy="306" r="8" fill="#e0583f" stroke="#121519" stroke-width="4.5"/>
+
+    <!-- Recessed armored bezel framing the CRT screen -->
+    <rect x="188" y="170" width="190" height="150" rx="24"
+          fill="url(#gpb_gold_bezel)" stroke="#121519" stroke-width="9"/>
+
+    <!-- Glowing phosphor-green CRT screen (зелёный экран) -->
+    <rect x="200" y="182" width="166" height="126" rx="18"
+          fill="url(#gpb_crt_bg)" stroke="#121519" stroke-width="7"/>
+
+    <!-- CRT screen contents (pure vector UI — no text) -->
+    <g clip-path="url(#gpb_crt_clip)">
+      <!-- Inner phosphor glow -->
+      <ellipse cx="283" cy="245" rx="92" ry="68" fill="url(#gpb_screen_aura)"/>
+
+      <!-- Subtle CRT scanlines -->
+      <g stroke="#091f10" stroke-width="2" opacity="0.55">
+        <line x1="198" y1="194" x2="368" y2="194"/>
+        <line x1="198" y1="204" x2="368" y2="204"/>
+        <line x1="198" y1="214" x2="368" y2="214"/>
+        <line x1="198" y1="224" x2="368" y2="224"/>
+        <line x1="198" y1="234" x2="368" y2="234"/>
+        <line x1="198" y1="244" x2="368" y2="244"/>
+        <line x1="198" y1="254" x2="368" y2="254"/>
+        <line x1="198" y1="264" x2="368" y2="264"/>
+        <line x1="198" y1="274" x2="368" y2="274"/>
+        <line x1="198" y1="284" x2="368" y2="284"/>
+        <line x1="198" y1="294" x2="368" y2="294"/>
+      </g>
+
+      <!-- Top & bottom retro Pip-Boy UI header/footer brackets -->
+      <path d="M 212,202 L 212,194 L 354,194 L 354,202" fill="none" stroke="#5eff7c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 212,286 L 212,294 L 354,294 L 354,286" fill="none" stroke="#5eff7c" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Left mini radar / vault-gear circular emblem on CRT -->
+      <g transform="translate(242 244)" fill="none" stroke="#6bff87" stroke-width="3">
+        <circle cx="0" cy="0" r="22"/>
+        <circle cx="0" cy="0" r="11" stroke-dasharray="6 4"/>
+        <line x1="-26" y1="0" x2="-16" y2="0"/>
+        <line x1="16" y1="0" x2="26" y2="0"/>
+        <line x1="0" y1="-26" x2="0" y2="-16"/>
+        <line x1="0" y1="16" x2="0" y2="26"/>
+        <circle cx="0" cy="0" r="4" fill="#a8ffb8" stroke="none"/>
+      </g>
+
+      <!-- Right biometric ECG heartbeat waveform & status bars on CRT -->
+      <polyline points="276,242 290,242 297,222 305,260 313,234 320,242 350,242"
+                fill="none" stroke="#99ffab" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Health / AP / Rad segmented status bars -->
+      <rect x="278" y="210" width="70" height="7" rx="2" fill="#5eff7c" opacity="0.9"/>
+      <rect x="278" y="270" width="54" height="7" rx="2" fill="#5eff7c" opacity="0.8"/>
+      <rect x="336" y="270" width="12" height="7" rx="2" fill="#2b803f"/>
+
+      <!-- Curved CRT glass specular reflection -->
+      <path d="M 204,186 L 318,186 L 238,304 L 204,304 Z" fill="url(#gpb_crt_glare)"/>
+      <path d="M 212,192 Q 246,188 278,192" fill="none" stroke="#d4ffdc" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+    </g>
+
+    <!-- Crisp final CRT screen rim -->
+    <rect x="200" y="182" width="166" height="126" rx="18"
+          fill="none" stroke="#121519" stroke-width="7"/>
+
+    <!-- Bottom row of tactile control buttons beneath CRT screen -->
+    <g stroke="#121519" stroke-width="6" stroke-linejoin="round">
+      <rect x="198" y="332" width="32" height="20" rx="5" fill="url(#gpb_steel_dark)"/>
+      <rect x="242" y="332" width="32" height="20" rx="5" fill="url(#gpb_steel_dark)"/>
+      <rect x="286" y="332" width="32" height="20" rx="5" fill="url(#gpb_steel_dark)"/>
+      <rect x="330" y="332" width="32" height="20" rx="5" fill="url(#gpb_gold_knob)"/>
+    </g>
+
+    <!-- Corner gilded hex bolts -->
+    <g fill="#f7dc86" stroke="#121519" stroke-width="4">
+      <circle cx="136" cy="158" r="5.5"/>
+      <circle cx="390" cy="160" r="5.5"/>
+      <circle cx="136" cy="350" r="5.5"/>
+      <circle cx="390" cy="350" r="5.5"/>
+    </g>
+  </g>
+
+  <!-- Crisp legendary golden star glints -->
+  <path d="M 388,128 L 392,143 L 407,147 L 392,151 L 388,166 L 384,151 L 369,147 L 384,143 Z" fill="#fff7d1" opacity="0.95"/>
+  <path d="M 114,358 L 117,368 L 127,371 L 117,374 L 114,384 L 111,374 L 101,371 L 111,368 Z" fill="#ffe999" opacity="0.88"/>
+  <path d="M 218,88 L 220,95 L 227,97 L 220,99 L 218,106 L 216,99 L 209,97 L 216,95 Z" fill="#fff7d1" opacity="0.85"/>
+</svg>
