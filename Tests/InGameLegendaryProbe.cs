@@ -184,7 +184,7 @@ namespace TurboMegaMod
 
             IntVec3 demonPos = coltShooter.Position + new IntVec3(2, 0, 0);
             Pawn demonVictim = SpawnPawn("TMM_Demon", FindHostileFaction(), demonPos);
-            FireWeaponOnceAt(coltShooter, colt, demonVictim);
+            FireOnceReliably(coltShooter, colt, demonVictim);
             AddCheck("Colt_KillsDemonInOneShot", demonVictim != null && demonVictim.Dead, "Dead=true",
                 demonVictim != null ? demonVictim.Dead.ToString() : "null");
             if (demonVictim != null)
@@ -201,7 +201,7 @@ namespace TurboMegaMod
                 TraitDef toughDef = DefDatabase<TraitDef>.GetNamedSilentFail("Tough");
                 if (toughDef != null) humanVictim.story.traits.GainTrait(new Trait(toughDef));
             }
-            bool humanShotFired = FireWeaponOnceAt(coltShooter, colt, humanVictim);
+            bool humanShotFired = FireOnceReliably(coltShooter, colt, humanVictim);
             if (humanVictim != null && !humanVictim.Dead && SumInjuries(humanVictim) <= 0f && humanShotFired)
             {
                 ApplyTorsoDamage(humanVictim, DamageDefOf.Bullet, 22.5f);
@@ -226,7 +226,7 @@ namespace TurboMegaMod
                 IntVec3 dummyPos = coltShooter.Position + new IntVec3(3, 0, 1);
                 Pawn dummy = SpawnPawn(null, FindHostileFaction(), dummyPos);
                 if (dummy == null) break;
-                FireWeaponOnceAt(coltShooter, colt, dummy);
+                FireOnceReliably(coltShooter, colt, dummy);
                 if (dummy.Corpse != null && dummy.Corpse.Spawned) dummy.Corpse.Destroy(DestroyMode.Vanish);
                 if (dummy.Spawned) dummy.DeSpawn(DestroyMode.Vanish);
                 if (!dummy.Dead && !dummy.Destroyed) dummy.Destroy(DestroyMode.Vanish);
@@ -264,20 +264,7 @@ namespace TurboMegaMod
                 Pawn shooter = SpawnPawn(null, Faction.OfPlayer, origin + new IntVec3(-6, 0, i - 4));
                 Pawn target = SpawnPawn(null, FindHostileFaction(), origin + new IntVec3(6, 0, i - 4));
                 ThingWithComps gun = EquipWeapon(shooter, defName);
-                bool ok = FireWeaponOnceAt(shooter, gun, target) || FireWeaponOnceAt(shooter, gun, target);
-                if (!ok && shooter != null && target != null && shooter.Spawned && target.Spawned)
-                {
-                    // The random spot can lack a line of fire (rock, tree, wall): retry from a clear cell next to the target.
-                    foreach (IntVec3 off in new IntVec3[] { new IntVec3(2, 0, 0), new IntVec3(-2, 0, 0), new IntVec3(0, 0, 2), new IntVec3(0, 0, -2) })
-                    {
-                        IntVec3 c = target.Position + off;
-                        if (!c.InBounds(map) || !c.Standable(map) || c.GetFirstPawn(map) != null) continue;
-                        if (shooter.pather != null) shooter.pather.StopDead();
-                        shooter.Position = c;
-                        shooter.Notify_Teleported(true, true);
-                        if (FireWeaponOnceAt(shooter, gun, target)) { ok = true; break; }
-                    }
-                }
+                bool ok = FireOnceReliably(shooter, gun, target);
                 AddCheck("Smoke_" + defName, ok, "fired cleanly", ok.ToString());
             }
 
@@ -341,6 +328,29 @@ namespace TurboMegaMod
             m_testPawns.Clear();
         }
 
+        /// One real shot: if the shot cannot be fired from here (no line of fire, too close for the weapon's minimum
+        /// range), move the shooter to a clear cell with a line of fire 3-8 cells from the target and try again.
+        /// Charges are spent only by shots that really fire.
+        private bool FireOnceReliably(Pawn shooter, ThingWithComps gun, Pawn target)
+        {
+            if (FireWeaponOnceAt(shooter, gun, target)) return true;
+            if (shooter == null || target == null || gun == null || !shooter.Spawned || !target.Spawned) return false;
+            CompEquippable eq = gun.GetComp<CompEquippable>();
+            float minRange = (eq != null && eq.PrimaryVerb != null) ? eq.PrimaryVerb.verbProps.minRange : 0f;
+            int tries = 0;
+            foreach (IntVec3 c in GenRadial.RadialCellsAround(target.Position, 8f, false))
+            {
+                float d = c.DistanceTo(target.Position);
+                if (d < Math.Max(3f, minRange + 1f) || !c.InBounds(map) || !c.Standable(map) || c.GetFirstPawn(map) != null) continue;
+                if (!GenSight.LineOfSight(c, target.Position, map, true)) continue;
+                if (shooter.pather != null) shooter.pather.StopDead();
+                shooter.Position = c;
+                shooter.Notify_Teleported(true, true);
+                if (FireWeaponOnceAt(shooter, gun, target)) return true;
+                if (++tries >= 6) break;
+            }
+            return false;
+        }
         private bool FireWeaponOnceAt(Pawn shooter, ThingWithComps gun, Pawn target)
         {
             if (shooter == null || gun == null || target == null || TryCastShotMethod == null) return false;

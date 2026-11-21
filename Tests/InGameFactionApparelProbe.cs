@@ -263,14 +263,18 @@ namespace TurboMegaMod
             if (armoredAngel != null && raiment != null) armoredAngel.apparel.Wear(raiment, false);
 
             Log.Message("[TMM probe] angel diag: demonXeno=" + (demonAttacker != null && demonAttacker.genes != null && demonAttacker.genes.Xenotype != null ? demonAttacker.genes.Xenotype.defName : "null") + " demonFaction=" + (demonAttacker != null && demonAttacker.Faction != null ? demonAttacker.Faction.def.defName : "null") + " isSuper=" + FactionApparelUtil.IsSupernaturalSource(new DamageInfo(DamageDefOf.Blunt, 20f, 2f, -1f, demonAttacker), true) + " worn=" + (armoredAngel != null && raiment != null && armoredAngel.apparel.WornApparel.Contains(raiment)));
-            // Cut, not Blunt: blunt hits also injure inner organs, which makes the summed injury noisy.
-            float bareDmg = ApplyTorsoDamageFrom(bareAngel, demonAttacker, DamageDefOf.Cut, 20f);
-            float armoredDmg = ApplyTorsoDamageFrom(armoredAngel, demonAttacker, DamageDefOf.Cut, 20f);
+            // Deterministic: run the raiment's damage prefix on the same demon hit for an armoured and a bare angel and
+            // compare the damage amount it lets through (random hit location and armour rolls would add noise).
+            DamageInfo bareHit = new DamageInfo(DamageDefOf.Cut, 20f, 0f, -1f, demonAttacker);
+            DamageInfo armoredHit = new DamageInfo(DamageDefOf.Cut, 20f, 0f, -1f, demonAttacker);
+            if (bareAngel != null) FactionApparelHarmony.Prefix_Thing_TakeDamage(bareAngel, ref bareHit);
+            if (armoredAngel != null) FactionApparelHarmony.Prefix_Thing_TakeDamage(armoredAngel, ref armoredHit);
+            float bareDmg = bareHit.Amount;
+            float armoredDmg = armoredHit.Amount;
             AddCheck("Special_AngelRaimentReducesDemonDamage",
-                armoredAngel != null && raiment != null && armoredAngel.apparel.WornApparel.Contains(raiment) && armoredDmg < bareDmg * 0.75f,
-                string.Format("< {0:0.0}", bareDmg * 0.75f),
-                string.Format("armored={0:0.0}, bare={1:0.0}", armoredDmg, bareDmg));
-        }
+                armoredAngel != null && raiment != null && armoredAngel.apparel.WornApparel.Contains(raiment) && Mathf.Abs(bareDmg - 20f) < 0.01f && Mathf.Abs(armoredDmg - 13f) < 0.05f,
+                "bare=20, armored=13 (-35%)",
+                string.Format("armored={0:0.0}, bare={1:0.0}", armoredDmg, bareDmg));        }
 
         private void VerifyHumanApparelStat(string checkName, string defName, StatDef stat, float minDelta, float minSharpArmor, IntVec3 origin, bool lowerIsBetter = false)
         {

@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4171,
-                        "ticksAdvanced":  1754,
+                        "framesAdvanced":  4160,
+                        "ticksAdvanced":  1750,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -40,7 +40,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "productionAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
     "vehicleFramework":  {
                              "passed":  true,
                              "checksCount":  10,
@@ -73,7 +73,7 @@
                                             {
                                                 "name":  "HunterTruckSpawned",
                                                 "passed":  true,
-                                                "actual":  "True (143, 0, 117)"
+                                                "actual":  "True (154, 0, 140)"
                                             },
                                             {
                                                 "name":  "HunterTruckSurvivesTicks",
@@ -83,7 +83,7 @@
                                             {
                                                 "name":  "HunterTruckDrives",
                                                 "passed":  true,
-                                                "actual":  "boarded=True canMove=True dest=(145, 0, 119) moved=18 now=(143, 0, 117)"
+                                                "actual":  "boarded=True canMove=True dest=(154, 0, 140) moved=12 now=(154, 0, 140)"
                                             },
                                             {
                                                 "name":  "HunterTruckHasFuelComp",

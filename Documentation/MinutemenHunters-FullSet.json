@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3433,
-                         "scalarFields":  4034,
+                         "scalarFields":  4046,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  3872,
-                        "ticksAdvanced":  1632,
+                        "framesAdvanced":  4059,
+                        "ticksAdvanced":  1702,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {

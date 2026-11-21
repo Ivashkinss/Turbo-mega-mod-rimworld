@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3433,
-                         "scalarFields":  4034,
+                         "scalarFields":  4046,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -43,7 +43,7 @@
     "gpuLost":  false,
     "visualUiVerified":  false,
     "stoppedByTest":  true,
-    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "productionAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
     "storyHotel":  {
                        "passed":  true,
                        "testModeEnabled":  true,
@@ -71,7 +71,7 @@
                                           "name":  "Setup_StockpileReady",
                                           "passed":  true,
                                           "expected":  "\u003e=9 cells",
-                                          "actual":  "15"
+                                          "actual":  "14"
                                       },
                                       {
                                           "name":  "P1_HeroColonistNotMoved",
@@ -89,7 +89,7 @@
                                           "name":  "P1_PermanentEnemyFailsWithoutSpawn",
                                           "passed":  true,
                                           "expected":  "outcome=failed, arrived=false, 0 spawned",
-                                          "actual":  "hist=0:failed, arrived=false, pawns=59-\u003e59"
+                                          "actual":  "hist=0:failed, arrived=false, pawns=71-\u003e71"
                                       },
                                       {
                                           "name":  "R2_OverlappingTruceVisits_StaysNeutralUntilLastEnds",

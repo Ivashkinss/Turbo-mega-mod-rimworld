@@ -66,7 +66,40 @@ namespace TurboMegaMod
                     removed++;
                 }
             }
+            removed += CleanRelationshipRecords(saved);
             if (removed > 0) Log.Message("[TMM] SaveHygiene: removed " + removed + " relation(s) to pawns that are not saved.");
+            return removed;
+        }
+
+        /// RimWorld 1.6+ keeps a world-level journal of relationships (Find.RelationshipRecords) that references pawns
+        /// too. Drop references to pawns that will not be saved and let vanilla purge records left without references.
+        /// Reflection keeps this compiling against older references.
+        private static int CleanRelationshipRecords(HashSet<Pawn> saved)
+        {
+            int removed = 0;
+            try
+            {
+                System.Reflection.PropertyInfo prop = AccessTools.Property(typeof(Find), "RelationshipRecords");
+                object records = prop != null ? prop.GetValue(null, null) : null;
+                if (records == null) return 0;
+                System.Collections.IEnumerable dict = AccessTools.Property(records.GetType(), "Records").GetValue(records, null) as System.Collections.IEnumerable;
+                if (dict == null) return 0;
+                List<object> recs = new List<object>();
+                foreach (object kv in dict) recs.Add(kv.GetType().GetProperty("Value").GetValue(kv, null));
+                foreach (object rec in recs)
+                {
+                    if (rec == null) continue;
+                    System.Collections.IEnumerable refs = AccessTools.Property(rec.GetType(), "References").GetValue(rec, null) as System.Collections.IEnumerable;
+                    if (refs == null) continue;
+                    List<Pawn> gone = new List<Pawn>();
+                    foreach (object o in refs) { Pawn rp = o as Pawn; if (rp != null && (rp.Discarded || !saved.Contains(rp))) gone.Add(rp); }
+                    System.Reflection.MethodInfo remove = AccessTools.Method(rec.GetType(), "RemoveReference");
+                    foreach (Pawn g in gone) { remove.Invoke(rec, new object[] { g }); removed++; }
+                }
+                System.Reflection.MethodInfo cleanup = AccessTools.Method(records.GetType(), "CleanupUnusedRecords");
+                if (cleanup != null) cleanup.Invoke(records, null);
+            }
+            catch (Exception ex) { Log.Warning("[TMM] SaveHygiene: relationship records skipped: " + ex.Message); }
             return removed;
         }
     }

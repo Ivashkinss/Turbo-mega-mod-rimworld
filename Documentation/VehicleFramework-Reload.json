@@ -31,15 +31,15 @@
                                                   {
                                                       "name":  "HunterTruckRestored",
                                                       "passed":  true,
-                                                      "actual":  "(143, 0, 117)"
+                                                      "actual":  "(154, 0, 140)"
                                                   }
                                               ]
                                },
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4240,
-                        "ticksAdvanced":  1784,
+                        "framesAdvanced":  4214,
+                        "ticksAdvanced":  1774,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -48,7 +48,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
-    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "freshAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
+    "productionAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
     "passed":  true
 }

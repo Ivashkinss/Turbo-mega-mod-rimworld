@@ -4,7 +4,7 @@
                              "checksCount":  4,
                              "stage":  1,
                              "facts":  [
-                                           "Reload mid-flight state verified: destinationTile=110781,0",
+                                           "Reload mid-flight state verified: destinationTile=51663,0",
                                            "Pod delivered contents cleanly after reload without duplicates"
                                        ],
                              "checks":  [
@@ -40,8 +40,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4249,
-                        "ticksAdvanced":  1788,
+                        "framesAdvanced":  4261,
+                        "ticksAdvanced":  1790,
                         "newsWindowsDismissedInTest":  0
                     },
     "runtimeErrors":  0,
@@ -50,7 +50,7 @@
     "isolatedFixtureSave":  true,
     "userSaveTested":  false,
     "compatibilityReload":  false,
-    "freshAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
-    "productionAssemblySha256":  "c4c8d151020ee59202977a2b9edf4a1a8c7ad938a976dfb194980fa7172afa74",
+    "freshAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
+    "productionAssemblySha256":  "f57fb508ad426d010c98462143097d669ae75fe9bd9d0149f825fd25147c9f71",
     "passed":  true
 }

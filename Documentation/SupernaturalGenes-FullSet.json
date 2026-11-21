@@ -5,7 +5,7 @@
     "gameVersion":  "1.7.5000 rev1275",
     "localization":  {
                          "keyed":  3433,
-                         "scalarFields":  4034,
+                         "scalarFields":  4046,
                          "grammarLines":  94,
                          "displayPatches":  12,
                          "passed":  true,
@@ -16,8 +16,8 @@
     "mapActivity":  {
                         "mapLoaded":  true,
                         "observedActiveSeconds":  30,
-                        "framesAdvanced":  4192,
-                        "ticksAdvanced":  1778,
+                        "framesAdvanced":  4202,
+                        "ticksAdvanced":  1770,
                         "newsWindowsDismissedInTest":  0
                     },
     "settingsUi":  {
@@ -176,7 +176,7 @@
                                                  "name":  "Ability_HealingTouch",
                                                  "passed":  true,
                                                  "expected":  "wounds healed \u0026 infection halved",
-                                                 "actual":  "act=True, inj=16.8-\u003e5.3, inf=0.30"
+                                                 "actual":  "act=True, inj=17.8-\u003e8.5, inf=0.30"
                                              },
                                              {
                                                  "name":  "Ability_TrueVisage",
@@ -187,8 +187,8 @@
                                              {
                                                  "name":  "Ability_BlackSmokeShift",
                                                  "passed":  true,
-                                                 "expected":  "(128, 0, 135)",
-                                                 "actual":  "(128, 0, 135)"
+                                                 "expected":  "(119, 0, 120)",
+                                                 "actual":  "(119, 0, 120)"
                                              },
                                              {
                                                  "name":  "Ability_InfernalWhisper",
@@ -206,7 +206,7 @@
                                                  "name":  "Ability_GlowingPulse",
                                                  "passed":  true,
                                                  "expected":  "ally healed \u0026 human got ToxicBuildup",
-                                                 "actual":  "act=True, allyInj=12.0-\u003e0.0, tox=0.25"
+                                                 "actual":  "act=True, allyInj=16.9-\u003e0.0, tox=0.25"
                                              },
                                              {
                                                  "name":  "Ability_PredatoryMimicry",
