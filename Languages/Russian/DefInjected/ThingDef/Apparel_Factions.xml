@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ад -->
+  <TMM_Apparel_demon_crossroads_suit.label>деловой костюм перекрёстка</TMM_Apparel_demon_crossroads_suit.label>
+  <TMM_Apparel_demon_crossroads_suit.description>Безупречный чёрный костюм-тройка с тёмно-алой шёлковой подкладкой и серебряными запонками. Одежда демонов-дельцов, предпочитающих контракты дракам; ткань неестественно устойчива к жару и огню.</TMM_Apparel_demon_crossroads_suit.description>
+
+  <TMM_Apparel_demon_infernal_trenchcoat.label>плащ адского оперативника</TMM_Apparel_demon_infernal_trenchcoat.label>
+  <TMM_Apparel_demon_infernal_trenchcoat.description>Тяжёлый угольно-чёрный кожаный плащ, простроченный тёмно-алой нитью вдоль лацканов. Создан для долгих ночных вылазок, хорошо держит удары клинков и открытое пламя.</TMM_Apparel_demon_infernal_trenchcoat.description>
+
+  <!-- Небеса -->
+  <TMM_Apparel_angel_vessel_trenchcoat.label>бежевый плащ сосуда</TMM_Apparel_angel_vessel_trenchcoat.label>
+  <TMM_Apparel_angel_vessel_trenchcoat.description>Потрёпанный бежевый хлопковый плащ поверх тёмного костюма и слегка ослабленного галстука, скроенный с усиленными прорезями на спине для раскрытия небесных крыльев. Подходит только ангелам.</TMM_Apparel_angel_vessel_trenchcoat.description>
+
+  <TMM_Apparel_angel_celestial_raiment.label>облачение небесного воинства</TMM_Apparel_angel_celestial_raiment.label>
+  <TMM_Apparel_angel_celestial_raiment.description>Сияющие бело-золотые пластинчатые латы поверх туники с открытыми прорезями на лопатках для крыльев. Покрыты енохианской вязью, снижающей урон от демонов и аномалий на 35%. Подходит только ангелам.</TMM_Apparel_angel_celestial_raiment.description>
+
+  <!-- Братство Стали -->
+  <TMM_Apparel_bos_scribe_fatigues.label>форма писца Братства</TMM_Apparel_bos_scribe_fatigues.label>
+  <TMM_Apparel_bos_scribe_fatigues.description>Практичная красно-песочная туника из плотной парусины с кожаными подсумками для инструментов, латунными пряжками и нашивкой шестерни с мечом на плече.</TMM_Apparel_bos_scribe_fatigues.description>
+
+  <TMM_Apparel_bos_t60_power_armor.label>силовая броня T-60 Братства</TMM_Apparel_bos_t60_power_armor.label>
+  <TMM_Apparel_bos_t60_power_armor.description>Тяжёлая стально-серая гидравлическая силовая броня с гербом Братства Стали на нагруднике. Надевается в отдельный слой силовой брони поверх обычной одежды.</TMM_Apparel_bos_t60_power_armor.description>
+
+  <TMM_Apparel_bos_t60_helmet.label>шлем силовой брони T-60</TMM_Apparel_bos_t60_helmet.label>
+  <TMM_Apparel_bos_t60_helmet.description>Угловатый стально-серый бронешлем со встроенным налобным фонарём, фильтрами респиратора и визором из бронестекла.</TMM_Apparel_bos_t60_helmet.description>
+
+  <!-- Изгои -->
+  <TMM_Apparel_outcast_recon_underarmor.label>разведкостюм Изгоев</TMM_Apparel_outcast_recon_underarmor.label>
+  <TMM_Apparel_outcast_recon_underarmor.description>Облегающий тёмно-угольный с алыми вставками баллистический поддоспешник с усиленными налокотниками и разъёмами для стыковки с силовой бронёй.</TMM_Apparel_outcast_recon_underarmor.description>
+
+  <TMM_Apparel_outcast_power_armor.label>силовая броня Изгоев</TMM_Apparel_outcast_power_armor.label>
+  <TMM_Apparel_outcast_power_armor.description>Модернизированная силовая броня T-45d, выкрашенная в матовый чёрный цвет с контрастными кроваво-красными наплечниками. Надевается в слой силовой брони поверх одежды.</TMM_Apparel_outcast_power_armor.description>
+
+  <!-- Анклав -->
+  <TMM_Apparel_enclave_officer_uniform.label>офицерский мундир Анклава</TMM_Apparel_enclave_officer_uniform.label>
+  <TMM_Apparel_enclave_officer_uniform.description>Безупречный чёрно-грифельный двубортный военный мундир с серебряными погонами и эмблемой со звёздами. Внушает холодную авторитарную дисциплину.</TMM_Apparel_enclave_officer_uniform.description>
+
+  <TMM_Apparel_enclave_x01_power_armor.label>силовая броня X-01 Анклава</TMM_Apparel_enclave_x01_power_armor.label>
+  <TMM_Apparel_enclave_x01_power_armor.description>Обтекаемая композитная силовая броня угольно-чёрного цвета с высоким воротником-щитком. Надевается в слой силовой брони поверх одежды, отражая бронебойные пули и плазму.</TMM_Apparel_enclave_x01_power_armor.description>
+
+  <TMM_Apparel_enclave_x01_helmet.label>шлем силовой брони X-01</TMM_Apparel_enclave_x01_helmet.label>
+  <TMM_Apparel_enclave_x01_helmet.description>Устрашающий чёрный бронешлем, напоминающий голову хищного насекомого, со светящимися янтарными окулярами и двойными фильтрами очистки воздуха.</TMM_Apparel_enclave_x01_helmet.description>
+
+  <!-- Институт -->
+  <TMM_Apparel_institute_lab_coat.label>халат учёного Института</TMM_Apparel_institute_lab_coat.label>
+  <TMM_Apparel_institute_lab_coat.description>Безупречно белый стерильный синтетический халат с геометрическими швами и цветными полосами отделов на рукавах.</TMM_Apparel_institute_lab_coat.description>
+
+  <TMM_Apparel_institute_synth_armor.label>керамическая броня синтов</TMM_Apparel_institute_synth_armor.label>
+  <TMM_Apparel_institute_synth_armor.description>Лёгкие белые керамико-полимерные пластины поверх тёмно-серого комбинезона. Серийная броня штурмовых отрядов синтов, отлично рассеивающая энергетический огонь.</TMM_Apparel_institute_synth_armor.description>
+
+  <TMM_Apparel_institute_courser_uniform.label>плащ Охотника Института</TMM_Apparel_institute_courser_uniform.label>
+  <TMM_Apparel_institute_courser_uniform.description>Гладкий матово-чёрный бронированный кожаный плащ, усиленный углеволокном и скрытыми керамическими пластинами. Униформа самых смертоносных ликвидаторов Института.</TMM_Apparel_institute_courser_uniform.description>
+
+  <!-- Подземка -->
+  <TMM_Apparel_railroad_armored_coat.label>бронеплащ Подземки</TMM_Apparel_railroad_armored_coat.label>
+  <TMM_Apparel_railroad_armored_coat.description>Поношенный на вид коричневый плащ путника, изнутри прошитый сверхпрочным баллистическим волокном. Выглядит как обычная одежда, но держит винтовочные пули.</TMM_Apparel_railroad_armored_coat.description>
+
+  <TMM_Apparel_railroad_tinker_headgear.label>шапка и очки конспиролога</TMM_Apparel_railroad_tinker_headgear.label>
+  <TMM_Apparel_railroad_tinker_headgear.description>Вязаная шерстяная шапка с вплетёнными медными антеннами в комплекте с затемнёнными сварочными очками. Помогает выслеживать стелс-поля и глушит психический шум.</TMM_Apparel_railroad_tinker_headgear.description>
+
+  <!-- Стрелки -->
+  <TMM_Apparel_gunner_combat_armor.label>боевая броня Стрелков</TMM_Apparel_gunner_combat_armor.label>
+  <TMM_Apparel_gunner_combat_armor.description>Оливковые модульные армейские бронепластины поверх тёмно-зелёной формы с белым трафаретным черепом на наплечнике. Надёжная экипировка профессиональных наёмников.</TMM_Apparel_gunner_combat_armor.description>
+
+  <TMM_Apparel_gunner_skull_helmet.label>каска Стрелков с банданой</TMM_Apparel_gunner_skull_helmet.label>
+  <TMM_Apparel_gunner_skull_helmet.description>Оливковая армейская каска в паре с банданой, на которой напечатана челюсть черепа. Защищает от осколков, пыли и токсичных ветров.</TMM_Apparel_gunner_skull_helmet.description>
+
+  <!-- Волт-Тек -->
+  <TMM_Apparel_vault_tec_jumpsuit.label>комбинезон Убежища</TMM_Apparel_vault_tec_jumpsuit.label>
+  <TMM_Apparel_vault_tec_jumpsuit.description>Облегающий кобальтово-синий синтетический комбинезон с ярко-жёлтой отделкой, латунными молниями и крупным номером Убежища на спине.</TMM_Apparel_vault_tec_jumpsuit.description>
+
+  <TMM_Apparel_vault_security_armor.label>броня службы безопасности Убежища</TMM_Apparel_vault_security_armor.label>
+  <TMM_Apparel_vault_security_armor.description>Тёмно-синий стёганый баллистический бронежилет с чёткой белой надписью «SECURITY» на груди и спине, созданный для подавления бунтов и обороны шлюзов.</TMM_Apparel_vault_security_armor.description>
+
+  <!-- Охотники и Минитмены -->
+  <TMM_Apparel_hunter_leather_duster.label>потёртый плащ охотника на нечисть</TMM_Apparel_hunter_leather_duster.label>
+  <TMM_Apparel_hunter_leather_duster.description>Тяжёлый потёртый в дороге коричневый кожаный плащ поверх красно-чёрной фланелевой рубахи, со скрытыми внутренними кобурами и простроченными серебряной нитью манжетами.</TMM_Apparel_hunter_leather_duster.description>
+
+  <TMM_Apparel_minutemen_general_uniform.label>мундир генерала Минитменов</TMM_Apparel_minutemen_general_uniform.label>
+  <TMM_Apparel_minutemen_general_uniform.description>Потрёпанный тёмно-синий колониальный сюртук с наплечниками из вываренной кожи, перекрещенными патронташами и латунными пуговицами. Вдохновляет поселенцев стоять до конца.</TMM_Apparel_minutemen_general_uniform.description>
+
+  <TMM_Apparel_minutemen_tricorn_hat.label>треуголка Минитменов</TMM_Apparel_minutemen_tricorn_hat.label>
+  <TMM_Apparel_minutemen_tricorn_hat.description>Прочная тёмная фетровая треуголка с латунной кокардой в виде скрещённых мушкетов и молнии. Защищает от солнца и дождя и подчёркивает авторитет командира.</TMM_Apparel_minutemen_tricorn_hat.description>
+
+  <!-- Британские Просвещённые -->
+  <TMM_Apparel_mol_arcane_tweed_suit.label>рунический костюм Просвещённых</TMM_Apparel_mol_arcane_tweed_suit.label>
+  <TMM_Apparel_mol_arcane_tweed_suit.description>Сшитый на заказ британский твидовый костюм-тройка, пронизанный тончайшими серебряными нитями и скрытыми енохианскими оберегами в подкладке жилета.</TMM_Apparel_mol_arcane_tweed_suit.description>
+
+  <TMM_Apparel_mol_covert_trenchcoat.label>тактический плащ лондонского ордена</TMM_Apparel_mol_covert_trenchcoat.label>
+  <TMM_Apparel_mol_covert_trenchcoat.description>Строгий тёмно-синий непромокаемый плащ со скрытыми кевларовыми пластинами и латунными медальонами, снижающими урон от нечисти, ангелов и демонов на 25%.</TMM_Apparel_mol_covert_trenchcoat.description>
+
+  <!-- Разумные гули -->
+  <TMM_Apparel_ghoul_revolutionary_frockcoat.label>алый революционный сюртук</TMM_Apparel_ghoul_revolutionary_frockcoat.label>
+  <TMM_Apparel_ghoul_revolutionary_frockcoat.description>Выцветший, пробитый пулями алый колониальный сюртук поверх потрёпанного жилета. Прославленный мэром Добрососедства, он внушает уважение среди изгоев Пустоши.</TMM_Apparel_ghoul_revolutionary_frockcoat.description>
+
+  <TMM_Apparel_ghoul_lead_lined_poncho.label>прорезиненное пончо Пустоши</TMM_Apparel_ghoul_lead_lined_poncho.label>
+  <TMM_Apparel_ghoul_lead_lined_poncho.description>Тяжёлое пончо скитальца Пустоши, сшитое из прорезиненного брезента, обрезков кожи и тонких свинцовых пластин. Надёжно укрывает от токсичных бурь и кислотных дождей.</TMM_Apparel_ghoul_lead_lined_poncho.description>
+
+  <!-- Супермутанты -->
+  <TMM_Apparel_mutant_scrap_harness.label>нагрудник супермутанта из лома</TMM_Apparel_mutant_scrap_harness.label>
+  <TMM_Apparel_mutant_scrap_harness.description>Массивные грубо сваренные стальные листы, ржавые дорожные знаки и тяжёлые цепи, скреплённые болтами по меркам исполинского торса супермутанта. Люди не могут его надеть.</TMM_Apparel_mutant_scrap_harness.description>
+
+  <TMM_Apparel_mutant_rebar_cage_helmet.label>шлем-клетка супермутанта</TMM_Apparel_mutant_rebar_cage_helmet.label>
+  <TMM_Apparel_mutant_rebar_cage_helmet.description>Грубая железная клетка, сваренная из толстой арматуры и стальных обрезков по размеру массивного черепа супермутанта. Подходит только супермутантам.</TMM_Apparel_mutant_rebar_cage_helmet.description>
+
+  <!-- Кланы нечисти -->
+  <TMM_Apparel_clan_nocturnal_aristocrat_coat.label>бархатный плащ ночного клана</TMM_Apparel_clan_nocturnal_aristocrat_coat.label>
+  <TMM_Apparel_clan_nocturnal_aristocrat_coat.description>Длинный полуночно-чёрный плащ из плотного бархата и кожи с высоким воротником, который носят старейшины вампиров. Скроен для бесшумного движения и внушения трепета.</TMM_Apparel_clan_nocturnal_aristocrat_coat.description>
+
+  <TMM_Apparel_clan_bioferrite_carapace.label>живой биоферритовый панцирь</TMM_Apparel_clan_bioferrite_carapace.label>
+  <TMM_Apparel_clan_bioferrite_carapace.description>Органические багрово-чёрные хитиновые пластины, выращенные из закалённого биоферрита и крови тварей. Надевается в слой силовой брони поверх одежды, ускоряет заживление ран на 25% и сам восстанавливает прочность.</TMM_Apparel_clan_bioferrite_carapace.description>
+
+</LanguageData>

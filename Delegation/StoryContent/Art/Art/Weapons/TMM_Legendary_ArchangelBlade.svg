@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="ab_goldBlade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8d6" />
+      <stop offset="32%" stop-color="#ffd966" />
+      <stop offset="68%" stop-color="#c99324" />
+      <stop offset="100%" stop-color="#704b0b" />
+    </linearGradient>
+
+    <linearGradient id="ab_goldHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff5bf" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ffd24d" />
+    </linearGradient>
+
+    <linearGradient id="ab_goldDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8841f" />
+      <stop offset="100%" stop-color="#593a07" />
+    </linearGradient>
+
+    <linearGradient id="ab_ivoryGrip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#d8e3ed" />
+      <stop offset="100%" stop-color="#8b9aa8" />
+    </linearGradient>
+
+    <radialGradient id="ab_graceCore" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#b8f2ff" />
+      <stop offset="80%" stop-color="#52b8ff" />
+      <stop offset="100%" stop-color="#1c5ca8" />
+    </radialGradient>
+
+    <radialGradient id="ab_holyHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff9cc" stop-opacity="0.78" />
+      <stop offset="45%" stop-color="#ffd24d" stop-opacity="0.34" />
+      <stop offset="78%" stop-color="#85d6ff" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#85d6ff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Сияющий небесный ореол благодати и святого огня -->
+  <g id="ab_halo">
+    <circle cx="294" cy="218" r="144" fill="url(#ab_holyHalo)" />
+  </g>
+
+  <!-- Клинок Архангела повернут по диагонали (рукоять слева-снизу, витое золотое лезвие справа-сверху) -->
+  <g id="ab_blade_group" transform="rotate(-45 256 256)">
+    <!-- Витое трёхгранное золотое лезвие -->
+    <g id="ab_blade">
+      <!-- Основной силуэт длинного стилета -->
+      <path d="M172,226 L446,242 L494,256 L446,270 L172,286 Z"
+            fill="url(#ab_goldBlade)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+      <!-- Нижняя теневая грань клинка -->
+      <polygon points="176,256 484,256 444,268 176,282"
+               fill="url(#ab_goldDark)" opacity="0.65" />
+
+      <!-- Фирменные спиральные (витые) рёбра Клинка Архангела -->
+      <path d="M188,232 C214,256 226,276 248,280"
+            fill="none" stroke="#634109" stroke-width="7" stroke-linecap="round" />
+      <path d="M236,232 C262,256 274,274 296,278"
+            fill="none" stroke="#634109" stroke-width="7" stroke-linecap="round" />
+      <path d="M286,235 C310,256 322,272 344,275"
+            fill="none" stroke="#634109" stroke-width="6.5" stroke-linecap="round" />
+      <path d="M336,238 C358,256 370,268 390,271"
+            fill="none" stroke="#634109" stroke-width="6" stroke-linecap="round" />
+      <path d="M386,241 C406,256 416,265 434,267"
+            fill="none" stroke="#634109" stroke-width="5.5" stroke-linecap="round" />
+
+      <!-- Ослепительные бело-золотые блики на витках спирали -->
+      <path d="M196,232 C220,252 232,270 250,274"
+            fill="none" stroke="url(#ab_goldHighlight)" stroke-width="4.5" stroke-linecap="round" />
+      <path d="M244,232 C268,252 280,268 298,272"
+            fill="none" stroke="url(#ab_goldHighlight)" stroke-width="4.5" stroke-linecap="round" />
+      <path d="M294,235 C316,252 328,266 346,269"
+            fill="none" stroke="url(#ab_goldHighlight)" stroke-width="4" stroke-linecap="round" />
+      <path d="M344,238 C364,252 376,263 392,265"
+            fill="none" stroke="url(#ab_goldHighlight)" stroke-width="4" stroke-linecap="round" />
+      <path d="M394,242 C412,253 422,260 438,262"
+            fill="none" stroke="url(#ab_goldHighlight)" stroke-width="3.5" stroke-linecap="round" />
+
+      <!-- Осевой луч небесного света до самого острия -->
+      <line x1="184" y1="256" x2="480" y2="256" stroke="#ffffff" stroke-width="3.5" opacity="0.82" stroke-linecap="round" />
+    </g>
+
+    <!-- Крылатая золотая гарда -->
+    <g id="ab_guard">
+      <path d="M150,210 C168,184 196,178 214,186 C198,202 194,224 196,256
+               C194,288 198,310 214,326 C196,334 168,328 150,302 Z"
+            fill="url(#ab_goldBlade)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+      <!-- Перьевые насечки на крыльях гарды -->
+      <path d="M168,208 L194,196 M166,226 L190,218 M166,286 L190,294 M168,304 L194,316"
+            fill="none" stroke="#6b460a" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Сияющий центр гарды -->
+      <polygon points="174,240 190,256 174,272 158,256"
+               fill="url(#ab_graceCore)" stroke="#121519" stroke-width="5" stroke-linejoin="round" />
+    </g>
+
+    <!-- Изящная рукоять из слоновой кости и золота -->
+    <g id="ab_hilt">
+      <rect x="64" y="238" width="94" height="36" rx="8"
+            fill="url(#ab_ivoryGrip)" stroke="#121519" stroke-width="10" />
+      <!-- Золотые витые кольца на рукояти -->
+      <line x1="88" y1="241" x2="88" y2="271" stroke="#c99324" stroke-width="7" />
+      <line x1="112" y1="241" x2="112" y2="271" stroke="#c99324" stroke-width="7" />
+      <line x1="136" y1="241" x2="136" y2="271" stroke="#c99324" stroke-width="7" />
+
+      <!-- Золотое навершие со сферой благодати -->
+      <path d="M32,256 L56,230 L74,236 L74,276 L56,282 Z"
+            fill="url(#ab_goldBlade)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+      <circle cx="56" cy="256" r="10" fill="url(#ab_graceCore)" stroke="#121519" stroke-width="4.5" />
+    </g>
+  </g>
+
+  <!-- Искры святого света вокруг клинка -->
+  <g id="ab_sparks">
+    <polygon points="366,112 370,126 384,130 370,134 366,148 362,134 348,130 362,126"
+             fill="#ffffff" stroke="#ffd24d" stroke-width="3" stroke-linejoin="round" />
+    <polygon points="418,196 421,206 431,209 421,212 418,222 415,212 405,209 415,206"
+             fill="#ffffff" stroke="#85d6ff" stroke-width="2.5" stroke-linejoin="round" />
+    <circle cx="242" cy="148" r="5" fill="#fff9cc" stroke="#d9a426" stroke-width="3" />
+  </g>
+</svg>

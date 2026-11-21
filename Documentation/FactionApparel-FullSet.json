@@ -1,0 +1,180 @@
+﻿{
+    "component":  "FactionApparel",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3433,
+                         "scalarFields":  3750,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4152,
+                        "ticksAdvanced":  1772,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "c4e1c2c75718c37fd05c42a05acec08fad7bf24bf220c9d270a5720323f44f94",
+    "factionApparel":  {
+                           "passed":  true,
+                           "checksCount":  21,
+                           "checks":  [
+                                          {
+                                              "name":  "Research_All10Loaded",
+                                              "passed":  true,
+                                              "expected":  "10",
+                                              "actual":  "10"
+                                          },
+                                          {
+                                              "name":  "Faction_Hell_Suit",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.15, delta\u003e=0.15",
+                                              "actual":  "worn=True, sharp=0.18, delta=+0.20"
+                                          },
+                                          {
+                                              "name":  "Faction_BoS_Scribe",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.20, delta\u003e=0.10",
+                                              "actual":  "worn=True, sharp=0.24, delta=+0.12"
+                                          },
+                                          {
+                                              "name":  "Faction_Outcasts_Recon",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.30, delta\u003e=0.08",
+                                              "actual":  "worn=True, sharp=0.34, delta=+0.12"
+                                          },
+                                          {
+                                              "name":  "Faction_Enclave_Officer",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.25, delta\u003e=0.12",
+                                              "actual":  "worn=True, sharp=0.28, delta=+0.15"
+                                          },
+                                          {
+                                              "name":  "Faction_Institute_LabCoat",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.14, delta\u003e=0.14",
+                                              "actual":  "worn=True, sharp=0.16, delta=+0.16"
+                                          },
+                                          {
+                                              "name":  "Faction_Railroad_Coat",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.90, delta\u003e=0.06",
+                                              "actual":  "worn=True, sharp=0.94, delta=+0.10"
+                                          },
+                                          {
+                                              "name":  "Faction_Gunners_Combat",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.88, delta\u003c=-0.02",
+                                              "actual":  "worn=True, sharp=0.92, delta=-0.05"
+                                          },
+                                          {
+                                              "name":  "Faction_VaultTec_Jumpsuit",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.20, delta\u003e=0.06",
+                                              "actual":  "worn=True, sharp=0.22, delta=+0.08"
+                                          },
+                                          {
+                                              "name":  "Faction_Hunters_Duster",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.50, delta\u003e=0.04",
+                                              "actual":  "worn=True, sharp=0.54, delta=+0.06"
+                                          },
+                                          {
+                                              "name":  "Faction_MoL_TweedSuit",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.42, delta\u003e=0.10",
+                                              "actual":  "worn=True, sharp=0.46, delta=+0.12"
+                                          },
+                                          {
+                                              "name":  "Faction_Ghouls_Frockcoat",
+                                              "passed":  true,
+                                              "expected":  "worn, sharp\u003e=0.40, delta\u003e=0.15",
+                                              "actual":  "worn=True, sharp=0.44, delta=+0.20"
+                                          },
+                                          {
+                                              "name":  "Faction_MonsterClans_NocturnalCoatSpeed008",
+                                              "passed":  true,
+                                              "expected":  "delta ~ +0.08",
+                                              "actual":  "+0.080"
+                                          },
+                                          {
+                                              "name":  "Race_AngelCoatBlockedOnHuman",
+                                              "passed":  true,
+                                              "expected":  "all false",
+                                              "actual":  "hasParts=False, canEquip=False, worn=False"
+                                          },
+                                          {
+                                              "name":  "Race_AngelCoatWornByAngel",
+                                              "passed":  true,
+                                              "expected":  "hasParts=true, worn=true",
+                                              "actual":  "hasParts=True, worn=True"
+                                          },
+                                          {
+                                              "name":  "Race_MutantArmorBlockedOnHuman",
+                                              "passed":  true,
+                                              "expected":  "both false",
+                                              "actual":  "hasParts=False, worn=False"
+                                          },
+                                          {
+                                              "name":  "Race_MutantArmorWornBySuperMutant",
+                                              "passed":  true,
+                                              "expected":  "both worn",
+                                              "actual":  "hasParts=True, bothWorn=True"
+                                          },
+                                          {
+                                              "name":  "QuestRecipe_LockedWithoutFlagAndUnlockedWithFlag",
+                                              "passed":  true,
+                                              "expected":  "t60(lock-\u003eopen) \u0026 coat(lock-\u003eopen)",
+                                              "actual":  "t60(True-\u003eTrue), coat(True-\u003eTrue)"
+                                          },
+                                          {
+                                              "name":  "PowerArmor_LayerTMM_PowerArmorAndStacks",
+                                              "passed":  true,
+                                              "expected":  "all 4 in TMM_PowerArmor \u0026 stacks over coat+backpack",
+                                              "actual":  "allLayer=True, stacked=True"
+                                          },
+                                          {
+                                              "name":  "Special_BioferriteCarapaceSelfRepair",
+                                              "passed":  true,
+                                              "expected":  "HP increased",
+                                              "actual":  "True"
+                                          },
+                                          {
+                                              "name":  "Special_AngelRaimentReducesDemonDamage",
+                                              "passed":  true,
+                                              "expected":  "\u003c 19.2",
+                                              "actual":  "armored=13.0, bare=25.6"
+                                          }
+                                      ],
+                           "errors":  [
+
+                                      ]
+                       },
+    "passed":  true
+}

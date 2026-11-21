@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="lor_bronze" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4ad6a" />
+      <stop offset="45%" stop-color="#9e7438" />
+      <stop offset="85%" stop-color="#66461c" />
+      <stop offset="100%" stop-color="#422b0f" />
+    </linearGradient>
+
+    <linearGradient id="lor_bronzeBright" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5dc99" />
+      <stop offset="55%" stop-color="#c49343" />
+      <stop offset="100%" stop-color="#78521c" />
+    </linearGradient>
+
+    <linearGradient id="lor_gunmetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6c757d" />
+      <stop offset="50%" stop-color="#434b52" />
+      <stop offset="100%" stop-color="#22272c" />
+    </linearGradient>
+
+    <linearGradient id="lor_gripWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6b4a33" />
+      <stop offset="50%" stop-color="#452d1d" />
+      <stop offset="100%" stop-color="#24160d" />
+    </linearGradient>
+
+    <radialGradient id="lor_orbCore" cx="40%" cy="38%" r="58%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="28%" stop-color="#fff099" />
+      <stop offset="65%" stop-color="#f2a922" />
+      <stop offset="100%" stop-color="#995206" />
+    </radialGradient>
+
+    <radialGradient id="lor_orbHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe47a" stop-opacity="0.72" />
+      <stop offset="48%" stop-color="#f5a623" stop-opacity="0.30" />
+      <stop offset="78%" stop-color="#d97b16" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#d97b16" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Золотой телекинетический ореол вокруг шара и переднего излучателя -->
+  <g id="lor_halo">
+    <circle cx="384" cy="236" r="102" fill="url(#lor_orbHalo)" />
+  </g>
+
+  <!-- Рукоять и спусковая скоба (слева) -->
+  <g id="lor_grip">
+    <!-- Спусковая скоба -->
+    <path d="M134,274 L196,274 L188,314 L132,314 Z"
+          fill="none" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <path d="M162,276 L154,302" fill="none" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Рукоять гамма-пушки -->
+    <path d="M84,264 L136,264 L112,358 L62,350 Z"
+          fill="url(#lor_gripWood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <!-- Латунная оковка рукояти -->
+    <path d="M62,350 L112,358 L118,338 L68,330 Z"
+          fill="url(#lor_bronze)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+    <line x1="88" y1="286" x2="120" y2="292" stroke="#24160d" stroke-width="5" />
+    <line x1="82" y1="308" x2="114" y2="314" stroke="#24160d" stroke-width="5" />
+  </g>
+
+  <!-- Нижний силовой кабель к излучателю -->
+  <g id="lor_cable">
+    <path d="M188,284 C232,326 306,326 352,292"
+          fill="none" stroke="#121519" stroke-width="18" stroke-linecap="round" />
+    <path d="M188,284 C232,326 306,326 352,292"
+          fill="none" stroke="#c49343" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  <!-- Основной корпус-генератор -->
+  <g id="lor_body">
+    <!-- Задний колпак-конденсатор слева -->
+    <path d="M36,214 C36,192 54,182 82,182 L106,182 L106,274 L82,274 C54,274 36,262 36,240 Z"
+          fill="url(#lor_gunmetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Центральный корпус -->
+    <path d="M96,178 L272,174 L294,194 L294,276 L272,290 L96,282 Z"
+          fill="url(#lor_gunmetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Светлый верхний блик корпуса -->
+    <line x1="108" y1="188" x2="266" y2="185" stroke="#b8c2cc" stroke-width="5" opacity="0.6" stroke-linecap="round" />
+
+    <!-- Две древние бронзовые индукционные катушки сверху -->
+    <rect x="132" y="150" width="38" height="32" rx="6"
+          fill="url(#lor_bronzeBright)" stroke="#121519" stroke-width="10" />
+    <rect x="192" y="148" width="44" height="34" rx="6"
+          fill="url(#lor_bronzeBright)" stroke="#121519" stroke-width="10" />
+
+    <!-- Бронзовая оккультная пластина с золотым индикатором в центре -->
+    <rect x="122" y="206" width="136" height="54" rx="10"
+          fill="url(#lor_bronze)" stroke="#121519" stroke-width="9" />
+    <circle cx="158" cy="233" r="14" fill="url(#lor_orbCore)" stroke="#121519" stroke-width="5" />
+    <!-- Гравировка артефакта (резные линии и руна) -->
+    <line x1="188" y1="220" x2="240" y2="220" stroke="#ffe79e" stroke-width="5" stroke-linecap="round" />
+    <line x1="188" y1="234" x2="232" y2="234" stroke="#ffe79e" stroke-width="5" stroke-linecap="round" />
+    <line x1="188" y1="248" x2="240" y2="248" stroke="#ffe79e" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- Задняя часть каркаса-короны Лоренцо -->
+  <g id="lor_cage_back">
+    <!-- Соединительная шейка излучателя -->
+    <rect x="288" y="206" width="44" height="60" rx="6"
+          fill="url(#lor_bronze)" stroke="#121519" stroke-width="11" />
+
+    <!-- Задняя дуга чаши-короны -->
+    <path d="M322,158 C362,158 386,192 386,236 C386,280 362,314 322,314"
+          fill="none" stroke="#121519" stroke-width="20" stroke-linecap="round" />
+    <path d="M322,158 C362,158 386,192 386,236 C386,280 362,314 322,314"
+          fill="none" stroke="url(#lor_bronze)" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <!-- Золотой светящийся шар-артефакт в центре каркаса -->
+  <g id="lor_golden_orb">
+    <circle cx="384" cy="236" r="46" fill="url(#lor_orbCore)" stroke="#121519" stroke-width="10" />
+    <!-- Резное внутреннее кольцо и блик -->
+    <circle cx="384" cy="236" r="28" fill="none" stroke="#fff7cc" stroke-width="4.5" opacity="0.7" />
+    <circle cx="370" cy="222" r="10" fill="#ffffff" opacity="0.88" />
+  </g>
+
+  <!-- Передние рёбра древнего каркаса и расходящиеся дуги излучения -->
+  <g id="lor_cage_front">
+    <!-- Верхний изогнутый зубец короны -->
+    <path d="M308,186 C348,144 416,146 462,186 L446,204 C410,174 358,176 322,206 Z"
+          fill="url(#lor_bronzeBright)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Нижний изогнутый зубец короны -->
+    <path d="M308,286 C348,328 416,326 462,286 L446,268 C410,298 358,296 322,266 Z"
+          fill="url(#lor_bronze)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Центральный охватывающий обруч поверх шара -->
+    <path d="M352,190 C376,208 376,264 352,282"
+          fill="none" stroke="#121519" stroke-width="16" stroke-linecap="round" />
+    <path d="M352,190 C376,208 376,264 352,282"
+          fill="none" stroke="url(#lor_bronzeBright)" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Золотые телекинетические волны на выходе справа -->
+    <path d="M452,204 C468,220 468,252 452,268"
+          fill="none" stroke="#fff0a6" stroke-width="6" stroke-linecap="round" />
+    <path d="M470,192 C488,214 488,258 470,280"
+          fill="none" stroke="#ffd24d" stroke-width="5" stroke-linecap="round" opacity="0.85" />
+  </g>
+</svg>

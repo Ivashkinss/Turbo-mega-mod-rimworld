@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="ds_wood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#96613d" />
+      <stop offset="46%" stop-color="#663c22" />
+      <stop offset="100%" stop-color="#361d0e" />
+    </linearGradient>
+
+    <linearGradient id="ds_woodDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5e361e" />
+      <stop offset="100%" stop-color="#291409" />
+    </linearGradient>
+
+    <linearGradient id="ds_steelTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b96a1" />
+      <stop offset="42%" stop-color="#525b63" />
+      <stop offset="100%" stop-color="#282d33" />
+    </linearGradient>
+
+    <linearGradient id="ds_steelBot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#66707a" />
+      <stop offset="50%" stop-color="#3b424a" />
+      <stop offset="100%" stop-color="#1b1f24" />
+    </linearGradient>
+
+    <linearGradient id="ds_receiver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c858f" />
+      <stop offset="48%" stop-color="#4b535c" />
+      <stop offset="100%" stop-color="#24292e" />
+    </linearGradient>
+
+    <linearGradient id="ds_tape" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3d434a" />
+      <stop offset="48%" stop-color="#212529" />
+      <stop offset="100%" stop-color="#0f1114" />
+    </linearGradient>
+
+    <linearGradient id="ds_brass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#edd080" />
+      <stop offset="55%" stop-color="#b58932" />
+      <stop offset="100%" stop-color="#694b15" />
+    </linearGradient>
+  </defs>
+
+  <!-- Открытые курки и спусковая скоба с двойным спуском -->
+  <g id="ds_triggers">
+    <!-- Пара классических внешних курков -->
+    <path d="M168,200 C160,174 178,162 198,170 C188,180 198,188 210,198 Z"
+          fill="url(#ds_steelTop)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+
+    <!-- Спусковая скоба -->
+    <path d="M148,268 L226,268 C220,308 188,320 156,306 L142,286 Z"
+          fill="none" stroke="#121519" stroke-width="14" stroke-linejoin="round" />
+    <path d="M148,268 L226,268 C220,308 188,320 156,306 L142,286 Z"
+          fill="none" stroke="url(#ds_steelTop)" stroke-width="5" stroke-linejoin="round" />
+
+    <!-- Два спусковых крючка двустволки -->
+    <path d="M178,270 C178,286 171,294 164,298" fill="none" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+    <path d="M198,270 C198,286 191,294 184,298" fill="none" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  <!-- Обрезанная деревянная рукоять-приклад с потёртостями -->
+  <g id="ds_stock">
+    <path d="M162,216 L186,256 C144,274 114,300 84,336 C64,344 40,330 34,308
+             C62,268 104,232 162,216 Z"
+          fill="url(#ds_wood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Нижняя тень и спиленный торец -->
+    <path d="M40,304 C66,272 104,242 152,226" fill="none" stroke="#ba8257" stroke-width="5" opacity="0.55" stroke-linecap="round" />
+    <path d="M34,308 C42,330 64,344 84,336 L94,322 C74,328 54,316 44,298 Z"
+          fill="url(#ds_woodDark)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+
+    <!-- Потёртости и царапины на дереве -->
+    <path d="M76,294 L98,284 M102,268 L128,256 M94,306 L112,298"
+          fill="none" stroke="#361c0e" stroke-width="4" opacity="0.7" stroke-linecap="round" />
+  </g>
+
+  <!-- Укороченные спаренные стволы двустволки -->
+  <g id="ds_barrels">
+    <!-- Второй ствол (слегка виден сверху для чтения двустволки) -->
+    <path d="M242,192 L462,192 L462,214 L242,216 Z"
+          fill="url(#ds_steelTop)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Основной ближний ствол -->
+    <path d="M242,208 L474,208 L474,244 L242,248 Z"
+          fill="url(#ds_steelBot)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Верхний блик на стволе -->
+    <line x1="254" y1="216" x2="462" y2="216" stroke="#b0bcc7" stroke-width="4.5" opacity="0.6" stroke-linecap="round" />
+
+    <!-- Двойной дульный срез -->
+    <ellipse cx="472" cy="226" rx="7" ry="15" fill="#121519" />
+    <ellipse cx="461" cy="202" rx="5" ry="9" fill="#121519" />
+
+    <!-- Латунная мушка-бусина на срезе -->
+    <circle cx="458" cy="188" r="6.5" fill="url(#ds_brass)" stroke="#121519" stroke-width="4" />
+
+    <!-- Металлические царапины на стволе -->
+    <path d="M396,222 L420,228 M430,234 L448,232" stroke="#aab6c2" stroke-width="3" opacity="0.55" stroke-linecap="round" />
+  </g>
+
+  <!-- Деревянное цевьё, обмотанное чёрной изолентой -->
+  <g id="ds_forend">
+    <!-- Деревянная основа цевья -->
+    <path d="M244,244 L388,242 L378,274 L244,274 Z"
+          fill="url(#ds_wood)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Потёртый край дерева впереди -->
+    <path d="M360,250 L376,250 L370,266 L356,266 Z" fill="#4a2916" opacity="0.65" />
+
+    <!-- Плотная намотка чёрной изоленты вокруг цевья и стволов -->
+    <g id="ds_electrical_tape">
+      <path d="M276,204 L356,204 L352,278 L272,278 Z"
+            fill="url(#ds_tape)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+      <!-- Диагональные витки изоленты -->
+      <path d="M286,206 L298,276 M306,206 L318,276 M326,206 L338,276"
+            fill="none" stroke="#101214" stroke-width="6" stroke-linecap="round" />
+      <path d="M292,210 L302,270 M312,210 L322,270 M332,210 L342,270"
+            fill="none" stroke="#57606b" stroke-width="3.5" opacity="0.6" stroke-linecap="round" />
+      <!-- Слегка отклеившийся кончик изоленты снизу -->
+      <path d="M336,276 L354,284 L356,272" fill="url(#ds_tape)" stroke="#121519" stroke-width="5" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- Стальная колодка переломного механизма -->
+  <g id="ds_receiver">
+    <path d="M156,208 L252,196 L252,274 L164,274 L148,252 Z"
+          fill="url(#ds_receiver)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхний рычаг отпирания стволов -->
+    <path d="M150,206 L176,196 L184,208 L158,218 Z"
+          fill="url(#ds_steelTop)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+
+    <!-- Латунный шарнирный штифт перелома и болты -->
+    <circle cx="234" cy="252" r="9" fill="url(#ds_brass)" stroke="#121519" stroke-width="4.5" />
+    <circle cx="192" cy="236" r="5" fill="#23282e" stroke="#121519" stroke-width="3.5" />
+    <circle cx="216" cy="222" r="4" fill="#23282e" stroke="#121519" stroke-width="3" />
+    <!-- Гравировочный завиток на колодке -->
+    <path d="M174,254 C188,244 202,258 216,248" fill="none" stroke="#9aa5b0" stroke-width="3.5" opacity="0.6" stroke-linecap="round" />
+  </g>
+</svg>

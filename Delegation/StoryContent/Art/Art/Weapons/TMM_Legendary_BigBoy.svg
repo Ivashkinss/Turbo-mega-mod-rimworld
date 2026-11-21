@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bb_olive" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b9668" />
+      <stop offset="48%" stop-color="#5d6840" />
+      <stop offset="100%" stop-color="#333b22" />
+    </linearGradient>
+
+    <linearGradient id="bb_steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9ca6b0" />
+      <stop offset="45%" stop-color="#646e78" />
+      <stop offset="100%" stop-color="#31373e" />
+    </linearGradient>
+
+    <linearGradient id="bb_darkMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#59626b" />
+      <stop offset="50%" stop-color="#343b42" />
+      <stop offset="100%" stop-color="#1a1f24" />
+    </linearGradient>
+
+    <linearGradient id="bb_hazard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe169" />
+      <stop offset="55%" stop-color="#d49e24" />
+      <stop offset="100%" stop-color="#7a560e" />
+    </linearGradient>
+
+    <linearGradient id="bb_nukeBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#92a867" />
+      <stop offset="48%" stop-color="#5a7038" />
+      <stop offset="100%" stop-color="#2c3a19" />
+    </linearGradient>
+
+    <linearGradient id="bb_nukeTip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b57" />
+      <stop offset="55%" stop-color="#c93022" />
+      <stop offset="100%" stop-color="#70160e" />
+    </linearGradient>
+
+    <radialGradient id="bb_radHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b8ff7a" stop-opacity="0.62" />
+      <stop offset="48%" stop-color="#ffd24d" stop-opacity="0.26" />
+      <stop offset="82%" stop-color="#ff7a29" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ff7a29" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Радиоактивно-янтарный ореол вокруг сдвоенных мини-ядерных зарядов -->
+  <g id="bb_halo">
+    <circle cx="386" cy="212" r="98" fill="url(#bb_radHalo)" />
+  </g>
+
+  <!-- Рукояти удержания и спусковой механизм снизу -->
+  <g id="bb_grips">
+    <!-- Задняя рукоять управления -->
+    <path d="M132,306 L174,306 L160,378 L122,374 Z"
+          fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <path d="M170,308 L206,308 L200,340 L168,340"
+          fill="none" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+
+    <!-- Передняя опора-рукоять -->
+    <path d="M276,302 L314,302 L322,366 L286,366 Z"
+          fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Усиленный трос-шнур взвода катапульты -->
+    <path d="M108,314 C166,356 238,356 286,318"
+          fill="none" stroke="#121519" stroke-width="14" stroke-linecap="round" />
+    <path d="M108,314 C166,356 238,356 286,318"
+          fill="none" stroke="#a6b0ba" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- Сдвоенные мини-ядерные боеголовки на направляющих «Большого мальчика» -->
+  <g id="bb_nukes">
+    <!-- Верхний мини-ядерный снаряд (задний план) -->
+    <g id="bb_nuke_top">
+      <!-- Стабилизаторы -->
+      <path d="M294,142 L328,130 L328,194 L294,182 Z"
+            fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+      <!-- Овальный корпус бомбы -->
+      <path d="M322,138 C362,126 420,132 452,162 C420,192 362,198 322,186 Z"
+            fill="url(#bb_nukeBody)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+      <!-- Жёлтая предупреждающая полоса -->
+      <path d="M388,136 C402,138 414,142 422,146 L422,178 C414,182 402,186 388,188 Z"
+            fill="url(#bb_hazard)" stroke="#121519" stroke-width="5" />
+      <!-- Красный взрыватель -->
+      <path d="M432,148 L460,162 L432,176 Z"
+            fill="url(#bb_nukeTip)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+      <line x1="338" y1="150" x2="378" y2="146" stroke="#d5ebb0" stroke-width="4" opacity="0.55" stroke-linecap="round" />
+    </g>
+
+    <!-- Нижний (передний) мини-ядерный снаряд -->
+    <g id="bb_nuke_front">
+      <!-- Стабилизаторы -->
+      <path d="M306,192 L342,180 L342,248 L306,236 Z"
+            fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+      <!-- Овальный корпус бомбы -->
+      <path d="M336,188 C378,176 438,182 472,214 C438,246 378,252 336,240 Z"
+            fill="url(#bb_nukeBody)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+      <!-- Жёлтая предупреждающая полоса -->
+      <path d="M404,186 C418,188 430,192 438,196 L438,232 C430,236 418,240 404,242 Z"
+            fill="url(#bb_hazard)" stroke="#121519" stroke-width="5" />
+      <!-- Красный взрыватель -->
+      <path d="M448,198 L480,214 L448,230 Z"
+            fill="url(#bb_nukeTip)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+      <!-- Блик и знак радиации -->
+      <line x1="352" y1="200" x2="394" y2="196" stroke="#d5ebb0" stroke-width="4.5" opacity="0.6" stroke-linecap="round" />
+      <circle cx="378" cy="216" r="7" fill="url(#bb_hazard)" stroke="#121519" stroke-width="3.5" />
+    </g>
+  </g>
+
+  <!-- Направляющие рельсы катапульты и пневмопоршни -->
+  <g id="bb_rails">
+    <!-- Пневматический толкатель -->
+    <rect x="242" y="246" width="212" height="22" rx="5"
+          fill="url(#bb_steel)" stroke="#121519" stroke-width="10" />
+    <!-- Нижняя несущая рельса катапульты -->
+    <path d="M236,268 L474,268 L466,304 L236,304 Z"
+          fill="url(#bb_olive)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Опорные хомуты и рёбра жёсткости -->
+    <rect x="292" y="240" width="24" height="66" rx="5"
+          fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="8" />
+    <rect x="372" y="240" width="24" height="66" rx="5"
+          fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="8" />
+    <rect x="442" y="244" width="22" height="62" rx="5"
+          fill="url(#bb_hazard)" stroke="#121519" stroke-width="8" />
+  </g>
+
+  <!-- Массивная плечевая рама и блок запуска (слева) -->
+  <g id="bb_chassis">
+    <!-- Задний плечевой упор-демпфер -->
+    <path d="M32,226 L98,218 L98,314 L40,324 L30,308 L30,240 Z"
+          fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Главный корпус катапульты -->
+    <path d="M88,214 L256,204 L274,224 L274,298 L256,312 L88,312 Z"
+          fill="url(#bb_olive)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Светлая верхняя кромка корпуса -->
+    <line x1="100" y1="222" x2="248" y2="214" stroke="#bdca97" stroke-width="5" opacity="0.55" stroke-linecap="round" />
+
+    <!-- Предупреждающая жёлтая полоса на корпусе -->
+    <rect x="108" y="220" width="24" height="84" rx="3" fill="url(#bb_hazard)" stroke="#121519" stroke-width="5" />
+    <line x1="110" y1="242" x2="130" y2="256" stroke="#121519" stroke-width="6" />
+    <line x1="110" y1="270" x2="130" y2="284" stroke="#121519" stroke-width="6" />
+
+    <!-- Бронированная накладка супермутанта с заклёпками -->
+    <path d="M148,232 L248,228 L258,242 L258,284 L246,294 L148,294 Z"
+          fill="url(#bb_steel)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Крупный манометр давления катапульты -->
+    <circle cx="192" cy="262" r="22" fill="url(#bb_darkMetal)" stroke="#121519" stroke-width="7" />
+    <circle cx="192" cy="262" r="13" fill="#f5f0dc" stroke="#121519" stroke-width="3.5" />
+    <line x1="192" y1="262" x2="200" y2="254" stroke="#c93022" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="192" cy="262" r="3.5" fill="#121519" />
+
+    <!-- Болты -->
+    <circle cx="236" cy="246" r="4.5" fill="#121519" />
+    <circle cx="236" cy="278" r="4.5" fill="#121519" />
+  </g>
+</svg>

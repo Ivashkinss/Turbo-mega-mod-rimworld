@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Make_RailroadBallisticWeave.label>изготовить баллистическое волокно Подземки</TMM_Make_RailroadBallisticWeave.label>
+  <TMM_Make_RailroadBallisticWeave.description>Соткать сверхплотную баллистическую подкладку (+25% к защите от острого урона) для плащей, курток и дастеров.</TMM_Make_RailroadBallisticWeave.description>
+  <TMM_Make_RailroadBallisticWeave.jobString>Ткёт баллистическое волокно.</TMM_Make_RailroadBallisticWeave.jobString>
+
+  <TMM_Make_ColtSilverBullet.label>отлить серебряную пулю Кольта</TMM_Make_ColtSilverBullet.label>
+  <TMM_Make_ColtSilverBullet.description>Отлить и зачаровать одну серебряную пулю для легендарного «Кольта».</TMM_Make_ColtSilverBullet.description>
+  <TMM_Make_ColtSilverBullet.jobString>Отливает серебряную пулю Кольта.</TMM_Make_ColtSilverBullet.jobString>
+
+  <TMM_Refill_HolyWaterTank.label>перезаправить баллон святой воды</TMM_Refill_HolyWaterTank.label>
+  <TMM_Refill_HolyWaterTank.description>Восполнить опустевший баллон святой воды до 30 зарядов.</TMM_Refill_HolyWaterTank.description>
+  <TMM_Refill_HolyWaterTank.jobString>Перезаправляет баллон святой воды.</TMM_Refill_HolyWaterTank.jobString>
+
+  <TMM_Refill_BoraxTank.label>перезаправить баллон буры</TMM_Refill_BoraxTank.label>
+  <TMM_Refill_BoraxTank.description>Восполнить опустевший баллон буры до 30 зарядов.</TMM_Refill_BoraxTank.description>
+  <TMM_Refill_BoraxTank.jobString>Перезаправляет баллон буры.</TMM_Refill_BoraxTank.jobString>
+
+  <TMM_Refill_RockSaltPack.label>перезарядить соляной заряд</TMM_Refill_RockSaltPack.label>
+  <TMM_Refill_RockSaltPack.description>Восполнить опустевший соляной заряд до 30 зарядов.</TMM_Refill_RockSaltPack.description>
+  <TMM_Refill_RockSaltPack.jobString>Перезаряжает соляной заряд.</TMM_Refill_RockSaltPack.jobString>
+
+</LanguageData>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="fb_bone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f2e9d5" />
+      <stop offset="45%" stop-color="#d6c5a3" />
+      <stop offset="85%" stop-color="#9e8765" />
+      <stop offset="100%" stop-color="#69553c" />
+    </linearGradient>
+
+    <linearGradient id="fb_boneDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bda986" />
+      <stop offset="100%" stop-color="#5e4a33" />
+    </linearGradient>
+
+    <linearGradient id="fb_teeth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e3" />
+      <stop offset="65%" stop-color="#dbc697" />
+      <stop offset="100%" stop-color="#8c7249" />
+    </linearGradient>
+
+    <linearGradient id="fb_leather" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6e2c26" />
+      <stop offset="50%" stop-color="#451714" />
+      <stop offset="100%" stop-color="#210908" />
+    </linearGradient>
+
+    <radialGradient id="fb_markHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff2e2e" stop-opacity="0.72" />
+      <stop offset="46%" stop-color="#b80f18" stop-opacity="0.32" />
+      <stop offset="80%" stop-color="#6e050c" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#6e050c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Зловещий багровый ореол Метки Каина -->
+  <g id="fb_halo">
+    <circle cx="294" cy="218" r="134" fill="url(#fb_markHalo)" />
+  </g>
+
+  <!-- Первый Клинок повернут по диагонали (рукоять слева-снизу, челюстная кость справа-сверху) -->
+  <g id="fb_blade_group" transform="rotate(-45 256 256)">
+    <!-- Острые зубы вдоль нижней режущей кромки челюстной кости -->
+    <g id="fb_teeth_row">
+      <polygon points="222,284 236,316 254,284" fill="url(#fb_teeth)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="256,282 272,318 290,282" fill="url(#fb_teeth)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="292,278 308,314 326,276" fill="url(#fb_teeth)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="328,274 344,306 360,270" fill="url(#fb_teeth)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="362,268 378,296 394,262" fill="url(#fb_teeth)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+    </g>
+
+    <!-- Первородная изогнутая челюстная кость (основное лезвие) -->
+    <g id="fb_jawbone">
+      <path d="M52,232 C76,222 126,224 186,216 C258,206 336,192 414,202 C446,206 472,222 486,238
+               C458,262 414,274 358,280 C292,288 230,294 176,294 C132,294 82,296 50,284
+               C38,276 38,242 52,232 Z"
+            fill="url(#fb_bone)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+      <!-- Нижняя теневая грань кости -->
+      <path d="M188,268 C264,266 346,258 424,244 C448,240 468,236 476,238
+               C446,260 404,270 352,276 C288,284 228,288 184,288 Z"
+            fill="url(#fb_boneDark)" opacity="0.65" />
+
+      <!-- Светлый блик по верхнему обуху кости -->
+      <path d="M192,226 C264,216 338,204 410,212 C432,214 448,220 460,228"
+            fill="none" stroke="#fffbf0" stroke-width="5.5" opacity="0.65" stroke-linecap="round" />
+
+      <!-- Костяные трещины и древние выбоины -->
+      <path d="M236,214 L244,234 M314,204 L308,226 M382,204 L374,224"
+            fill="none" stroke="#594631" stroke-width="4.5" stroke-linecap="round" />
+
+      <!-- Пылающие алые жилы силы и Метка Каина у основания клинка -->
+      <path d="M214,252 C264,248 326,244 388,236 C418,232 444,232 464,238"
+            fill="none" stroke="#ff3838" stroke-width="6" stroke-linecap="round" opacity="0.92" />
+      <path d="M214,252 C264,248 326,244 388,236"
+            fill="none" stroke="#ffc2c2" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+
+      <!-- Пылающая Метка Каина на широкой части челюсти -->
+      <g id="fb_mark_of_cain">
+        <path d="M206,232 C226,232 238,242 238,254 C238,266 226,274 206,274"
+              fill="none" stroke="#ff2626" stroke-width="7" stroke-linecap="round" />
+        <path d="M254,232 C234,232 222,242 222,254 C222,266 234,274 254,274"
+              fill="none" stroke="#ff2626" stroke-width="7" stroke-linecap="round" />
+        <line x1="230" y1="226" x2="230" y2="280" stroke="#ff9999" stroke-width="4" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Кожаная багрово-тёмная обмотка рукояти -->
+    <g id="fb_handle">
+      <path d="M58,226 L184,218 L184,296 L58,290 C44,276 44,240 58,226 Z"
+            fill="url(#fb_leather)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+      <!-- Перекрестная грубая перевязь -->
+      <path d="M78,226 L104,290 M106,224 L132,292 M134,222 L160,294 M160,220 L182,276"
+            fill="none" stroke="#170606" stroke-width="7" stroke-linecap="round" />
+      <path d="M104,226 L78,290 M132,224 L106,292 M160,222 L134,294"
+            fill="none" stroke="#8c362e" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+
+      <!-- Костяной утолщённый сустав-навершие -->
+      <ellipse cx="48" cy="258" rx="16" ry="30"
+               fill="url(#fb_bone)" stroke="#121519" stroke-width="10" />
+    </g>
+  </g>
+
+  <!-- Алые искры жажды крови вокруг клинка -->
+  <g id="fb_sparks">
+    <circle cx="348" cy="134" r="6" fill="#ff9c9c" stroke="#cc1414" stroke-width="3" />
+    <circle cx="404" cy="186" r="5" fill="#ff9c9c" stroke="#cc1414" stroke-width="3" />
+    <circle cx="242" cy="176" r="5" fill="#ff9c9c" stroke="#cc1414" stroke-width="3" />
+  </g>
+</svg>

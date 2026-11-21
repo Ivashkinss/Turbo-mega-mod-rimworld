@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_PowerBackpackResearch.label>силовые рюкзаки</TMM_PowerBackpackResearch.label>
+  <TMM_PowerBackpackResearch.description>Разработка разгрузочных ранцев из пластали с микросервоприводами, резко увеличивающих переносимый вес с минимальной потерей скорости.</TMM_PowerBackpackResearch.description>
+
+  <TMM_ColtBullets.label>серебряные пули Кольта</TMM_ColtBullets.label>
+  <TMM_ColtBullets.description>Освоение древнего оккультно-металлургического ритуала Сэмюэля Кольта для отливки сменных серебряных патронов к «Кольту». Открывается по сюжету охотников.</TMM_ColtBullets.description>
+
+</LanguageData>

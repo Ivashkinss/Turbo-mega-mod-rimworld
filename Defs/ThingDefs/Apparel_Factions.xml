@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================== -->
+  <!-- 1. HELL / DEMONS                                                      -->
+  <!-- ===================================================================== -->
+
+  <!-- 1.1 Crossroads Tailored Suit (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_demon_crossroads_suit</defName>
+    <label>crossroads tailored suit</label>
+    <description>An immaculate black three-piece suit with subtle crimson silk lining and silver cufflinks. Worn by dealmakers who prefer sealing contracts over brawling, its fabric is unnaturally resistant to scorching heat.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>75</Synthread>
+      <DevilstrandCloth>25</DevilstrandCloth>
+    </costList>
+    <statBases>
+      <WorkToMake>4200</WorkToMake>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>1.4</Mass>
+      <MarketValue>650</MarketValue>
+      <ArmorRating_Sharp>0.18</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.85</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>24</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.20</SocialImpact>
+      <TradePriceImprovement>0.10</TradePriceImprovement>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_OccultTailoring</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_HellApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 1.2 Infernal Operative Coat (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_demon_infernal_trenchcoat</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>infernal operative coat</label>
+    <description>A heavy charcoal-black leather trenchcoat stitched with dark crimson thread along the lapels. Designed for long nights on the road, it turns aside blades and shrugs off flames.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>260</MaxHitPoints>
+      <Mass>2.6</Mass>
+      <MarketValue>920</MarketValue>
+      <ArmorRating_Sharp>0.42</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.90</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>20</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PainShockThreshold>0.08</PainShockThreshold>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_HellApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HEAVEN / ANGELS (angel_only)                                       -->
+  <!-- ===================================================================== -->
+
+  <!-- 2.1 Seraphic Rumpled Trenchcoat (research, angel_only) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_angel_vessel_trenchcoat</defName>
+    <label>seraphic rumpled trenchcoat</label>
+    <description>A weathered beige cotton trenchcoat worn over a dark suit and loose tie, tailored with reinforced vertical slits across the upper back to accommodate manifestation of celestial wings. Can only be worn by Angels.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>85</Synthread>
+      <Gold>5</Gold>
+    </costList>
+    <statBases>
+      <WorkToMake>4800</WorkToMake>
+      <MaxHitPoints>240</MaxHitPoints>
+      <Mass>2.2</Mass>
+      <MarketValue>780</MarketValue>
+      <ArmorRating_Sharp>0.36</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.15</PsychicSensitivity>
+      <SocialImpact>0.10</SocialImpact>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_OccultTailoring</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_AngelApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelExtension">
+        <requiredXenotype>TMM_Angel</requiredXenotype>
+        <wingFriendly>true</wingFriendly>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 2.2 Celestial Host Vestment (quest, angel_only, -35% demon/anomaly dmg) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_angel_celestial_raiment</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>celestial host vestment</label>
+    <description>Gleaming white-and-gold layered armor plates worn over a tailored tunic, open across the shoulder blades for angelic wings. Etched with Enochian script, it deflects demonic curses and cuts incoming demon and anomaly damage by 35%. Can only be worn by Angels.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>360</MaxHitPoints>
+      <Mass>6.5</Mass>
+      <MarketValue>2900</MarketValue>
+      <ArmorRating_Sharp>1.08</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.54</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.85</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>22</Insulation_Heat>
+      <EquipDelay>4.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeDodgeChance>0.08</MeleeDodgeChance>
+      <ToxicResistance>0.30</ToxicResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_AngelApparel</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelExtension">
+        <requiredXenotype>TMM_Angel</requiredXenotype>
+        <wingFriendly>true</wingFriendly>
+        <supernaturalDamageReduction>0.35</supernaturalDamageReduction>
+        <demonAnomalyOnlyReduction>true</demonAnomalyOnlyReduction>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 3. BROTHERHOOD OF STEEL                                               -->
+  <!-- ===================================================================== -->
+
+  <!-- 3.1 Brotherhood Scribe Fatigues (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_bos_scribe_fatigues</defName>
+    <label>brotherhood scribe fatigues</label>
+    <description>A practical crimson-and-tan canvas tunic fitted with leather tool pouches, brass buckles, and an embroidered gear-and-sword emblem on the shoulder.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>65</Synthread>
+      <Steel>15</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>3600</WorkToMake>
+      <MaxHitPoints>210</MaxHitPoints>
+      <Mass>1.8</Mass>
+      <MarketValue>520</MarketValue>
+      <ArmorRating_Sharp>0.24</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.12</ResearchSpeed>
+      <GeneralLaborSpeed>0.08</GeneralLaborSpeed>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_BrotherhoodGear</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_BrotherhoodApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 3.2 T-60 Brotherhood Power Armor (quest, layer TMM_PowerArmor) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_bos_t60_power_armor</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>T-60 Brotherhood power armor</label>
+    <description>Heavy steel-grey hydraulic power armor stamped with the Brotherhood of Steel crest on the chestplate. Worn on the dedicated Power Armor layer over regular clothing.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>440</MaxHitPoints>
+      <Mass>15.0</Mass>
+      <MarketValue>3900</MarketValue>
+      <Flammability>0.1</Flammability>
+      <ArmorRating_Sharp>1.24</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.58</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.72</ArmorRating_Heat>
+      <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>10.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>65</CarryingCapacity>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.50</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>TMM_PowerArmor</li></layers>
+      <tags><li>TMM_BrotherhoodPowerArmor</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 3.3 T-60 Power Armor Helmet (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_bos_t60_helmet</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>T-60 power armor helmet</label>
+    <description>An angular steel-grey armored helmet with a built-in tactical headlamp, rebreather filters, and armored glass visor.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>3.2</Mass>
+      <MarketValue>1250</MarketValue>
+      <Flammability>0.1</Flammability>
+      <ArmorRating_Sharp>1.18</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.52</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.65</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.06</ShootingAccuracyPawn>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.50</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_BrotherhoodPowerArmor</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 4. BROTHERHOOD OUTCASTS                                               -->
+  <!-- ===================================================================== -->
+
+  <!-- 4.1 Outcast Recon Bodysuit (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_outcast_recon_underarmor</defName>
+    <label>Outcast recon bodysuit</label>
+    <description>A form-fitting dark charcoal and crimson ballistic undersuit fitted with reinforced elbow pads and power-armor interface ports.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Pants/Pants</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>70</Synthread>
+      <Plasteel>15</Plasteel>
+    </costList>
+    <statBases>
+      <WorkToMake>4500</WorkToMake>
+      <MaxHitPoints>240</MaxHitPoints>
+      <Mass>2.0</Mass>
+      <MarketValue>680</MarketValue>
+      <ArmorRating_Sharp>0.34</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.12</MoveSpeed>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_BrotherhoodGear</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li></layers>
+      <tags><li>TMM_OutcastsApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 4.2 Outcast T-45d Power Armor (quest, layer TMM_PowerArmor) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_outcast_power_armor</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>Outcast T-45d power armor</label>
+    <description>Refurbished T-45d power armor painted matte black with stark blood-red trim and shoulder plates. Worn on the Power Armor layer over regular clothing.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>410</MaxHitPoints>
+      <Mass>14.5</Mass>
+      <MarketValue>3600</MarketValue>
+      <Flammability>0.1</Flammability>
+      <ArmorRating_Sharp>1.18</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.56</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.78</ArmorRating_Heat>
+      <Insulation_Cold>34</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>9.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>55</CarryingCapacity>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.50</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>TMM_PowerArmor</li></layers>
+      <tags><li>TMM_OutcastsPowerArmor</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 5. ENCLAVE                                                            -->
+  <!-- ===================================================================== -->
+
+  <!-- 5.1 Enclave Officer Uniform (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_enclave_officer_uniform</defName>
+    <label>Enclave officer uniform</label>
+    <description>A crisp black-and-slate double-breasted military uniform with silver shoulder boards and an eagle-and-stars insignia. Radiates cold authoritarian discipline.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>80</Synthread>
+      <Plasteel>10</Plasteel>
+    </costList>
+    <statBases>
+      <WorkToMake>4600</WorkToMake>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>1.9</Mass>
+      <MarketValue>740</MarketValue>
+      <ArmorRating_Sharp>0.28</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.16</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.25</SuppressionPower>
+      <SocialImpact>0.15</SocialImpact>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_WastelandMilitaryGear</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_EnclaveApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 5.2 Enclave X-01 Power Armor (quest, layer TMM_PowerArmor) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_enclave_x01_power_armor</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>Enclave X-01 power armor</label>
+    <description>Sleek, sloped composite power armor in jet-black finish with a towering neck guard. Worn on the Power Armor layer over regular clothing, its curved plates deflect high-velocity rounds and plasma blasts.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Mass>14.0</Mass>
+      <MarketValue>4800</MarketValue>
+      <Flammability>0.05</Flammability>
+      <ArmorRating_Sharp>1.32</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.64</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.92</ArmorRating_Heat>
+      <Insulation_Cold>40</Insulation_Cold>
+      <Insulation_Heat>24</Insulation_Heat>
+      <EquipDelay>10.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <CarryingCapacity>75</CarryingCapacity>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.60</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>TMM_PowerArmor</li></layers>
+      <tags><li>TMM_EnclavePowerArmor</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 5.3 X-01 Insectoid Helmet (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_enclave_x01_helmet</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>X-01 insectoid helmet</label>
+    <description>An intimidating black armored helmet shaped like a predatory insect head, featuring glowing amber optical lenses and dual filtration canisters.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>3.0</Mass>
+      <MarketValue>1550</MarketValue>
+      <Flammability>0.05</Flammability>
+      <ArmorRating_Sharp>1.25</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.58</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.80</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.40</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_EnclavePowerArmor</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 6. INSTITUTE                                                          -->
+  <!-- ===================================================================== -->
+
+  <!-- 6.1 Institute Division Lab Coat (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_institute_lab_coat</defName>
+    <label>Institute division lab coat</label>
+    <description>A pristine, sterile white synthetic coat with clean geometric seams and colored division stripes along the sleeves. Keeps its wearer comfortable in sterile subterranean labs.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>75</Synthread>
+      <Hyperweave>10</Hyperweave>
+    </costList>
+    <statBases>
+      <WorkToMake>3800</WorkToMake>
+      <MaxHitPoints>190</MaxHitPoints>
+      <Mass>1.2</Mass>
+      <MarketValue>580</MarketValue>
+      <ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>1.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.16</ResearchSpeed>
+      <MedicalTendQuality>0.08</MedicalTendQuality>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_InstituteTextiles</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_InstituteApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 6.2 Institute Ceramic Synth Armor (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_institute_synth_armor</defName>
+    <label>Institute ceramic synth armor</label>
+    <description>Lightweight white ceramic-polymer plates strapped over a dark grey bodysuit. Mass-produced for synth strike teams, it offers crisp protection against energy weapons.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Plasteel>55</Plasteel>
+      <Synthread>45</Synthread>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToMake>11500</WorkToMake>
+      <MaxHitPoints>320</MaxHitPoints>
+      <Mass>5.2</Mass>
+      <MarketValue>1650</MarketValue>
+      <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.42</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.95</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>22</Insulation_Heat>
+      <EquipDelay>4.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.06</AimingDelayFactor>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_InstituteTextiles</researchPrerequisite>
+      <skillRequirements><Crafting>7</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_InstituteApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 6.3 Institute Courser Coat (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_institute_courser_uniform</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>Institute Courser coat</label>
+    <description>A sleek, matte-black armored leather trenchcoat reinforced with woven carbon fibers and internal ceramic trauma plates. Worn by the Institute's deadliest synth retrievers.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Mass>4.4</Mass>
+      <MarketValue>2400</MarketValue>
+      <ArmorRating_Sharp>1.02</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.85</ArmorRating_Heat>
+      <Insulation_Cold>24</Insulation_Cold>
+      <Insulation_Heat>20</Insulation_Heat>
+      <EquipDelay>3.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.18</MoveSpeed>
+      <MeleeDodgeChance>0.08</MeleeDodgeChance>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_InstituteApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 7. RAILROAD                                                           -->
+  <!-- ===================================================================== -->
+
+  <!-- 7.1 Ballistic-Weave Heavy Coat (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_railroad_armored_coat</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>ballistic-weave heavy coat</label>
+    <description>A patched, unassuming brown wasteland coat secretly lined with ultra-dense ballistic weave fibers. Looks like ordinary civilian clothing while stopping rifle rounds.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>320</MaxHitPoints>
+      <Mass>3.4</Mass>
+      <MarketValue>1750</MarketValue>
+      <ArmorRating_Sharp>0.94</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.55</ArmorRating_Heat>
+      <Insulation_Cold>24</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>2.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.10</MoveSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_RailroadApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 7.2 Signal-Tracker Beanie & Goggles (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_railroad_tinker_headgear</defName>
+    <label>signal-tracker beanie &amp; goggles</label>
+    <description>A knitted wool beanie wired with copper antennae and paired with tinted brass welding goggles. Built to spot stealth fields and block stray psychic noise.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Cloth>45</Cloth>
+      <Steel>20</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToMake>3400</WorkToMake>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Mass>0.6</Mass>
+      <MarketValue>490</MarketValue>
+      <ArmorRating_Sharp>0.22</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.20</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>4</Insulation_Heat>
+      <EquipDelay>1.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+      <PsychicSensitivity>-0.25</PsychicSensitivity>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_UndergroundElectronics</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_RailroadApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 8. GUNNERS                                                            -->
+  <!-- ===================================================================== -->
+
+  <!-- 8.1 Gunner Reinforced Combat Armor (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_gunner_combat_armor</defName>
+    <label>Gunner reinforced combat armor</label>
+    <description>Olive-drab modular military armor plates strapped over dark green fatigues, stenciled with a white skull emblem on the shoulder guard. Built for professional wasteland mercenaries.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Steel>85</Steel>
+      <Plasteel>25</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToMake>9200</WorkToMake>
+      <MaxHitPoints>310</MaxHitPoints>
+      <Mass>7.5</Mass>
+      <MarketValue>1350</MarketValue>
+      <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.42</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>4.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.05</AimingDelayFactor>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_WastelandMilitaryGear</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_GunnersApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 8.2 Gunner Helmet with Skull Bandana (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_gunner_skull_helmet</defName>
+    <label>Gunner helmet with skull bandana</label>
+    <description>An olive-green army combat helmet paired with a lower-face bandana printed with a skeletal jaw. Protects against shrapnel and dusty wasteland winds.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/AdvancedHelmet/AdvancedHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Steel>40</Steel>
+      <Cloth>25</Cloth>
+    </costList>
+    <statBases>
+      <WorkToMake>3800</WorkToMake>
+      <MaxHitPoints>170</MaxHitPoints>
+      <Mass>1.6</Mass>
+      <MarketValue>540</MarketValue>
+      <ArmorRating_Sharp>0.78</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>6</Insulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.20</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_WastelandMilitaryGear</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/AdvancedHelmet/AdvancedHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_GunnersApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 9. VAULT-TEC                                                          -->
+  <!-- ===================================================================== -->
+
+  <!-- 9.1 Vault-Tec Ribbed Jumpsuit (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_vault_tec_jumpsuit</defName>
+    <label>Vault-Tec ribbed jumpsuit</label>
+    <description>A form-fitting cobalt-blue synthetic jumpsuit accented with bright yellow trim, brass zippers, and bold vault numerals across the back. Comfortable, durable, and iconic.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>65</Synthread>
+    </costList>
+    <statBases>
+      <WorkToMake>3200</WorkToMake>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>1.3</Mass>
+      <MarketValue>460</MarketValue>
+      <ArmorRating_Sharp>0.22</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.35</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>1.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.08</WorkSpeedGlobal>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.15</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_VaultTecStandards</researchPrerequisite>
+      <skillRequirements><Crafting>4</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li></layers>
+      <tags><li>TMM_VaultTecApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 9.2 Vault Security Vest (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_vault_security_armor</defName>
+    <label>Vault security vest</label>
+    <description>A dark navy padded ballistic vest stenciled with 'SECURITY' in crisp white block letters, built to quell underground riots and hold airlock chokepoints.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Steel>55</Steel>
+      <Synthread>35</Synthread>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToMake>6400</WorkToMake>
+      <MaxHitPoints>260</MaxHitPoints>
+      <Mass>4.8</Mass>
+      <MarketValue>820</MarketValue>
+      <ArmorRating_Sharp>0.86</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.52</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.32</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>8</Insulation_Heat>
+      <EquipDelay>3.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.15</SuppressionPower>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_VaultTecStandards</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li></layers>
+      <tags><li>TMM_VaultTecApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 10. MINUTEMEN & HUNTERS                                               -->
+  <!-- ===================================================================== -->
+
+  <!-- 10.1 Weathered Monster-Hunter Duster (research; Leathery stuff per balance fix) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_hunter_leather_duster</defName>
+    <label>weathered monster-hunter duster</label>
+    <description>A heavy, road-worn brown leather duster layered over a red-and-black flannel shirt, with hidden inner holsters and silver-stitched cuffs to fend off claws and fangs.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>85</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Silver>15</Silver>
+    </costList>
+    <statBases>
+      <WorkToMake>5400</WorkToMake>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>2.8</Mass>
+      <MarketValue>890</MarketValue>
+      <ArmorRating_Sharp>0.54</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.38</ArmorRating_Heat>
+      <Insulation_Cold>24</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeDodgeChance>0.06</MeleeDodgeChance>
+      <AimingDelayFactor>-0.05</AimingDelayFactor>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_HuntersMilitiaCraft</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_HuntersApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 10.2 Minutemen Colonial Duster (quest; uses Leathery in RecipeDef) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_minutemen_general_uniform</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>Minutemen colonial duster</label>
+    <description>A weathered navy-blue colonial frock coat reinforced with boiled leather shoulder plates, crossed bandoliers, and brass buttons. Inspires settlers to stand their ground.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>290</MaxHitPoints>
+      <Mass>3.5</Mass>
+      <MarketValue>1280</MarketValue>
+      <ArmorRating_Sharp>0.68</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.34</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.35</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.22</SocialImpact>
+      <NegotiationAbility>0.15</NegotiationAbility>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_HuntersApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 10.3 Minutemen Tricorn Hat (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_minutemen_tricorn_hat</defName>
+    <label>Minutemen tricorn hat</label>
+    <description>A sturdy dark felt tricorn hat pinned with a brass musket-and-lightning badge. Shields the wearer from harsh sun and rain while projecting frontier authority.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>35</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+      <li>Fabric</li>
+    </stuffCategories>
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>2200</WorkToMake>
+      <MaxHitPoints>130</MaxHitPoints>
+      <Mass>0.4</Mass>
+      <MarketValue>340</MarketValue>
+      <ArmorRating_Sharp>0.18</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.12</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.20</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>0.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.12</SocialImpact>
+      <ShootingAccuracyPawn>0.03</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_HuntersMilitiaCraft</researchPrerequisite>
+      <skillRequirements><Crafting>4</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_HuntersApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 11. BRITISH MEN OF LETTERS                                            -->
+  <!-- ===================================================================== -->
+
+  <!-- 11.1 Men of Letters Warded Suit (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_mol_arcane_tweed_suit</defName>
+    <label>Men of Letters warded suit</label>
+    <description>A bespoke British tweed three-piece suit interwoven with fine silver-alloy filaments and concealed Enochian wards sewn into the waistcoat.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Synthread>70</Synthread>
+      <Silver>35</Silver>
+    </costList>
+    <statBases>
+      <WorkToMake>6800</WorkToMake>
+      <MaxHitPoints>230</MaxHitPoints>
+      <Mass>2.1</Mass>
+      <MarketValue>1150</MarketValue>
+      <ArmorRating_Sharp>0.46</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>2.2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ResearchSpeed>0.12</ResearchSpeed>
+      <PsychicSensitivity>-0.35</PsychicSensitivity>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_OccultTailoring</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>TMM_MenOfLettersApparel</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 11.2 London Black-Ops Trenchcoat (quest, -25% supernatural damage) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_mol_covert_trenchcoat</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>London black-ops trenchcoat</label>
+    <description>A tailored navy-black waterproof trenchcoat fitted with concealed kevlar panels and brass ward-plates etched with binding sigils that reduce incoming supernatural damage by 25%.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>310</MaxHitPoints>
+      <Mass>3.6</Mass>
+      <MarketValue>1950</MarketValue>
+      <ArmorRating_Sharp>0.84</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.65</ArmorRating_Heat>
+      <Insulation_Cold>24</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>-0.50</PsychicSensitivity>
+      <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_MenOfLettersApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelExtension">
+        <supernaturalDamageReduction>0.25</supernaturalDamageReduction>
+        <demonAnomalyOnlyReduction>false</demonAnomalyOnlyReduction>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 12. SENTIENT GHOULS                                                   -->
+  <!-- ===================================================================== -->
+
+  <!-- 12.1 Crimson Revolutionary Coat (quest) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_ghoul_revolutionary_frockcoat</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>crimson revolutionary coat</label>
+    <description>A faded, bullet-nicked crimson colonial frock coat worn over a battered waistcoat. Popularized by Goodneighbor's ghoul mayor, it commands respect among wasteland outcasts.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>240</MaxHitPoints>
+      <Mass>2.4</Mass>
+      <MarketValue>720</MarketValue>
+      <ArmorRating_Sharp>0.44</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+      <Insulation_Cold>18</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.20</SocialImpact>
+      <TradePriceImprovement>0.08</TradePriceImprovement>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_GhoulsApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 12.2 Patched Lead-Lined Poncho (research) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_ghoul_lead_lined_poncho</defName>
+    <label>patched lead-lined poncho</label>
+    <description>A heavy wasteland poncho stitched from rubberized canvas, scrap leather, and thin lead foil strips. Built to endure toxic storms and acid rain.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Parka/Parka</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>65</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>3600</WorkToMake>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>3.2</Mass>
+      <MarketValue>510</MarketValue>
+      <ArmorRating_Sharp>0.38</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>28</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.45</ToxicEnvironmentResistance>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_RadSurvivalGear</researchPrerequisite>
+      <skillRequirements><Crafting>4</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Parka/Parka</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_GhoulsApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 13. SUPER MUTANTS (super_mutant_only)                                 -->
+  <!-- ===================================================================== -->
+
+  <!-- 13.1 Super Mutant Scrap Harness (research, super_mutant_only; Leathery per balance fix) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_mutant_scrap_harness</defName>
+    <label>super mutant scrap harness</label>
+    <description>Massive, crudely welded steel plates, rusted highway signs, and heavy iron chains bolted together to fit the hulking torso of a super mutant. Too huge for humans to wear.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>40</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>140</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>8800</WorkToMake>
+      <MaxHitPoints>420</MaxHitPoints>
+      <Mass>16.0</Mass>
+      <MarketValue>1100</MarketValue>
+      <ArmorRating_Sharp>0.96</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.40</ArmorRating_Heat>
+      <Insulation_Cold>20</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>6.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeDamageFactor>0.10</MeleeDamageFactor>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_SuperMutantArmor</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>TMM_SuperMutantApparel</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelExtension">
+        <requiredXenotype>TMM_SuperMutant</requiredXenotype>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 13.2 Super Mutant Rebar Cage Helmet (research, super_mutant_only) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_mutant_rebar_cage_helmet</defName>
+    <label>super mutant rebar cage helmet</label>
+    <description>A brutal iron cage welded from thick rebar rods and bolted steel scrap, sized to protect a super mutant's massive skull in melee brawls. Can only be worn by Super Mutants.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Steel>60</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>3500</WorkToMake>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>4.2</Mass>
+      <MarketValue>480</MarketValue>
+      <ArmorRating_Sharp>0.76</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>8</Insulation_Heat>
+      <EquipDelay>2.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PainShockThreshold>0.10</PainShockThreshold>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_SuperMutantArmor</researchPrerequisite>
+      <skillRequirements><Crafting>4</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Overhead</li></layers>
+      <tags><li>TMM_SuperMutantApparel</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="TurboMegaMod.FactionApparelExtension">
+        <requiredXenotype>TMM_SuperMutant</requiredXenotype>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ===================================================================== -->
+  <!-- 14. MONSTER CLANS                                                     -->
+  <!-- ===================================================================== -->
+
+  <!-- 14.1 Nocturnal Clan Velvet Coat (research; MoveSpeed +0.08 per Claude's balance fix) -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TMM_Apparel_clan_nocturnal_aristocrat_coat</defName>
+    <label>nocturnal clan velvet coat</label>
+    <description>A long, high-collared midnight-black velvet and leather coat worn by ancient vampire elders. Tailored for silent movement and intimidating presence.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <DevilstrandCloth>75</DevilstrandCloth>
+      <Silver>10</Silver>
+    </costList>
+    <statBases>
+      <WorkToMake>5600</WorkToMake>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>2.3</Mass>
+      <MarketValue>950</MarketValue>
+      <ArmorRating_Sharp>0.48</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.20</ArmorRating_Heat>
+      <Insulation_Cold>26</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+      <EquipDelay>2.4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.08</MoveSpeed>
+      <SocialImpact>0.18</SocialImpact>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <researchPrerequisite>TMM_ClanBioferriteCraft</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <layers><li>Shell</li></layers>
+      <tags><li>TMM_MonsterClansApparel</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_ApparelMods"><maxSlots>1</maxSlots></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 14.2 Living Bioferrite Carapace (quest, layer TMM_PowerArmor, self-repairing) -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>TMM_Apparel_clan_bioferrite_carapace</defName>
+    <smeltable>false</smeltable> <!-- made by a special recipe, nothing to smelt back -->
+    <label>living bioferrite carapace</label>
+    <description>Organic crimson-black chitinous plates grown from hardened bioferrite and monster blood. Worn on the Power Armor layer over regular clothing, the living carapace accelerates wound healing by 25% and slowly repairs its own durability.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>420</MaxHitPoints>
+      <Mass>8.5</Mass>
+      <MarketValue>3400</MarketValue>
+      <Flammability>0.2</Flammability>
+      <ArmorRating_Sharp>1.16</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.62</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.35</ArmorRating_Heat>
+      <Insulation_Cold>28</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>6.0</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeDamageFactor>0.15</MeleeDamageFactor>
+      <InjuryHealingFactor>0.25</InjuryHealingFactor>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <layers><li>TMM_PowerArmor</li></layers>
+      <tags><li>TMM_MonsterClansPowerArmor</li></tags>
+    </apparel>
+    <comps>
+      <li Class="TurboMegaMod.CompProperties_LivingCarapaceRepair">
+        <repairIntervalTicks>600</repairIntervalTicks>
+        <hitPointsPerRepair>1</hitPointsPerRepair>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

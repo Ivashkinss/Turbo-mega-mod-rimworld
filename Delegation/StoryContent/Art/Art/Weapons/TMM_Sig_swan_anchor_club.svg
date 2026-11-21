@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="sa_iron" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7a8085" />
+      <stop offset="42%" stop-color="#4d5257" />
+      <stop offset="85%" stop-color="#2c3034" />
+      <stop offset="100%" stop-color="#191c1f" />
+    </linearGradient>
+
+    <linearGradient id="sa_rust" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ba6234" />
+      <stop offset="48%" stop-color="#853d1c" />
+      <stop offset="100%" stop-color="#471d0b" />
+    </linearGradient>
+
+    <linearGradient id="sa_rustBright" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97d43" />
+      <stop offset="55%" stop-color="#9e4921" />
+      <stop offset="100%" stop-color="#54230c" />
+    </linearGradient>
+
+    <linearGradient id="sa_chain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8c7a6b" />
+      <stop offset="50%" stop-color="#59473a" />
+      <stop offset="100%" stop-color="#2b2019" />
+    </linearGradient>
+
+    <linearGradient id="sa_algae" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5d7348" />
+      <stop offset="100%" stop-color="#2b381f" />
+    </linearGradient>
+  </defs>
+
+  <!-- Тяжёлая ржавая якорная цепь слева и обвитая вокруг веретена -->
+  <g id="sa_chain_back">
+    <!-- Свободный хвост цепи слева снизу -->
+    <ellipse cx="48" cy="306" rx="18" ry="12" transform="rotate(-25 48 306)"
+             fill="none" stroke="#121519" stroke-width="14" />
+    <ellipse cx="48" cy="306" rx="18" ry="12" transform="rotate(-25 48 306)"
+             fill="none" stroke="url(#sa_chain)" stroke-width="6" />
+
+    <ellipse cx="70" cy="282" rx="18" ry="12" transform="rotate(-40 70 282)"
+             fill="none" stroke="#121519" stroke-width="14" />
+    <ellipse cx="70" cy="282" rx="18" ry="12" transform="rotate(-40 70 282)"
+             fill="none" stroke="url(#sa_rust)" stroke-width="6" />
+
+    <!-- Большое якорное кольцо (рым) на левом конце -->
+    <circle cx="90" cy="256" r="30" fill="none" stroke="#121519" stroke-width="20" />
+    <circle cx="90" cy="256" r="30" fill="none" stroke="url(#sa_iron)" stroke-width="9" />
+  </g>
+
+  <!-- Поперечный шток якоря у левого конца (вертикальный брус) -->
+  <g id="sa_stock_bar">
+    <rect x="132" y="168" width="28" height="176" rx="8"
+          fill="url(#sa_iron)" stroke="#121519" stroke-width="11" />
+    <!-- Шарообразные законцовки штока -->
+    <circle cx="146" cy="166" r="18" fill="url(#sa_rust)" stroke="#121519" stroke-width="10" />
+    <circle cx="146" cy="346" r="18" fill="url(#sa_rust)" stroke="#121519" stroke-width="10" />
+  </g>
+
+  <!-- Исполинские рога и лапы корабельного якоря (справа) -->
+  <g id="sa_arms">
+    <!-- Мощные изогнутые рога, расходящиеся кверху и книзу -->
+    <path d="M404,224 C422,190 402,140 364,116 L342,138 C368,164 380,204 374,256
+             C380,308 368,348 342,374 L364,396 C402,372 422,322 404,288
+             L452,276 C462,264 462,248 452,236 Z"
+          fill="url(#sa_iron)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхняя треугольная лапа якоря -->
+    <path d="M322,94 L394,108 L372,158 L334,136 Z"
+          fill="url(#sa_rust)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <path d="M336,104 L380,114 L366,140" fill="none" stroke="#e08952" stroke-width="4" opacity="0.55" stroke-linecap="round" />
+
+    <!-- Нижняя треугольная лапа якоря -->
+    <path d="M322,418 L394,404 L372,354 L334,376 Z"
+          fill="url(#sa_rust)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <path d="M336,408 L380,398 L366,372" fill="none" stroke="#5c240c" stroke-width="4" opacity="0.65" stroke-linecap="round" />
+
+    <!-- Тяжёлый ударный тренд (вершина короны якоря справа) -->
+    <path d="M424,222 L470,236 C482,248 482,264 470,276 L424,290 Z"
+          fill="url(#sa_rustBright)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <line x1="436" y1="234" x2="464" y2="244" stroke="#f0a875" stroke-width="4" opacity="0.55" stroke-linecap="round" />
+  </g>
+
+  <!-- Центральное массивное веретено (древко дубины) -->
+  <g id="sa_shank">
+    <path d="M108,236 L432,226 L432,286 L108,276 Z"
+          fill="url(#sa_iron)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Светлая верхняя грань и пятна глубокой ржавчины -->
+    <line x1="120" y1="244" x2="416" y2="236" stroke="#9aa2a8" stroke-width="5" opacity="0.5" stroke-linecap="round" />
+    <path d="M278,234 L344,232 L334,264 L286,262 Z" fill="url(#sa_rust)" opacity="0.72" />
+    <path d="M362,252 L420,250 L418,278 L354,276 Z" fill="url(#sa_rust)" opacity="0.78" />
+    <!-- Следы тины из затопленного пруда Лебедя -->
+    <path d="M388,284 C394,302 384,316 392,326" fill="none" stroke="url(#sa_algae)" stroke-width="7" stroke-linecap="round" />
+    <path d="M304,232 C310,218 320,216 326,228" fill="none" stroke="url(#sa_algae)" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Клёпаные железные усиливающие хомуты -->
+    <circle cx="146" cy="256" r="8" fill="#1b1f24" stroke="#121519" stroke-width="4" />
+    <circle cx="406" cy="256" r="9" fill="#1b1f24" stroke="#121519" stroke-width="4" />
+  </g>
+
+  <!-- Обмотка цепи вокруг веретена (рукоять для супермутанта) -->
+  <g id="sa_chain_wrap">
+    <path d="M180,224 L196,288 M208,224 L224,288 M236,224 L252,288 M264,224 L280,288"
+          fill="none" stroke="#121519" stroke-width="20" stroke-linecap="round" />
+    <path d="M180,224 L196,288 M208,224 L224,288 M236,224 L252,288 M264,224 L280,288"
+          fill="none" stroke="url(#sa_chain)" stroke-width="9" stroke-linecap="round" />
+
+    <!-- Свисающее звено цепи под рукоятью -->
+    <ellipse cx="222" cy="304" rx="14" ry="20" transform="rotate(15 222 304)"
+             fill="none" stroke="#121519" stroke-width="14" />
+    <ellipse cx="222" cy="304" rx="14" ry="20" transform="rotate(15 222 304)"
+             fill="none" stroke="url(#sa_rustBright)" stroke-width="6" />
+
+    <!-- Блик на звеньях -->
+    <path d="M184,232 L192,262 M212,232 L220,262 M240,232 L248,262 M268,232 L276,262"
+          fill="none" stroke="#b8a798" stroke-width="3" opacity="0.55" stroke-linecap="round" />
+  </g>
+</svg>

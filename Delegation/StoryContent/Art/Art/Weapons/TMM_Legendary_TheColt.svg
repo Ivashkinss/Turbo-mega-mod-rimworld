@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="colt_silver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8eff5" />
+      <stop offset="38%" stop-color="#b4bec8" />
+      <stop offset="76%" stop-color="#707b86" />
+      <stop offset="100%" stop-color="#454e57" />
+    </linearGradient>
+
+    <linearGradient id="colt_silverTop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5f9fc" />
+      <stop offset="65%" stop-color="#cdd6df" />
+      <stop offset="100%" stop-color="#9da8b3" />
+    </linearGradient>
+
+    <linearGradient id="colt_silverDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c8792" />
+      <stop offset="100%" stop-color="#313940" />
+    </linearGradient>
+
+    <linearGradient id="colt_brass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f2d58a" />
+      <stop offset="50%" stop-color="#bd903c" />
+      <stop offset="100%" stop-color="#6e4e19" />
+    </linearGradient>
+
+    <linearGradient id="colt_wood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c4b30" />
+      <stop offset="48%" stop-color="#4e2b19" />
+      <stop offset="100%" stop-color="#27140b" />
+    </linearGradient>
+
+    <radialGradient id="colt_muzzleHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78" />
+      <stop offset="38%" stop-color="#d8f1ff" stop-opacity="0.38" />
+      <stop offset="72%" stop-color="#ffe7a3" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffe7a3" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Серебристо-кометный ореол у дульного среза -->
+  <g id="colt_halo">
+    <circle cx="468" cy="212" r="46" fill="url(#colt_muzzleHalo)" />
+  </g>
+
+  <!-- Курок и спусковая скоба -->
+  <g id="colt_mechanism">
+    <!-- Изогнутый кавалерийский курок -->
+    <path d="M124,196 C112,168 128,150 152,158 C142,172 154,182 168,194 Z"
+          fill="url(#colt_brass)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Латунная спусковая скоба -->
+    <path d="M150,268 L224,268 C218,308 186,322 156,308 L144,286 Z"
+          fill="none" stroke="#121519" stroke-width="16" stroke-linejoin="round" />
+    <path d="M150,268 L224,268 C218,308 186,322 156,308 L144,286 Z"
+          fill="none" stroke="url(#colt_brass)" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Спусковой крючок -->
+    <path d="M186,270 C186,288 178,296 170,300"
+          fill="none" stroke="#121519" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <!-- Деревянная рукоять с пентаграммой -->
+  <g id="colt_grip">
+    <path d="M126,232 L166,246 C152,292 134,332 108,366 C82,378 46,368 34,348 C62,306 86,268 102,234 Z"
+          fill="url(#colt_wood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхний светлый блик на дереве -->
+    <path d="M108,244 C94,274 76,304 54,332"
+          fill="none" stroke="#a66c49" stroke-width="5" opacity="0.55" stroke-linecap="round" />
+
+    <!-- Латунный тыльник рукояти -->
+    <path d="M34,348 C46,368 82,378 108,366 L118,350 C92,360 64,352 46,334 Z"
+          fill="url(#colt_brass)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Серебряная пентаграмма в круге на рукояти -->
+    <g id="colt_pentagram">
+      <circle cx="98" cy="306" r="28" fill="#211109" stroke="#e4eef7" stroke-width="5" />
+      <polygon points="98,282 113,325 76,298 120,298 83,325"
+               fill="none" stroke="#e8f3fc" stroke-width="4.5" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- Длинный восьмигранный кавалерийский ствол -->
+  <g id="colt_barrel">
+    <!-- Подствольный рычаг-шомпол -->
+    <path d="M250,248 L434,240 L430,260 L252,270 Z"
+          fill="url(#colt_silverDark)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+    <circle cx="276" cy="256" r="8" fill="url(#colt_brass)" stroke="#121519" stroke-width="5" />
+
+    <!-- Мушка -->
+    <polygon points="454,194 472,194 468,172 458,174"
+             fill="url(#colt_brass)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Основной восьмигранный ствол -->
+    <path d="M248,194 L478,196 L478,244 L248,248 Z"
+          fill="url(#colt_silver)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <!-- Верхняя светлая грань -->
+    <polygon points="254,200 472,202 472,212 254,211" fill="url(#colt_silverTop)" />
+    <!-- Нижняя теневая грань -->
+    <polygon points="254,232 472,230 472,240 254,242" fill="url(#colt_silverDark)" />
+
+    <!-- Латунный клин крепления ствола -->
+    <rect x="274" y="208" width="20" height="24" rx="3" fill="url(#colt_brass)" stroke="#121519" stroke-width="5" />
+
+    <!-- Серебряно-светлая волнистая гравировка вдоль ствола -->
+    <path d="M312,221 C324,212 336,230 348,221 C360,212 372,230 384,221 C396,212 408,230 422,221 L458,221"
+          fill="none" stroke="#f5fbff" stroke-width="5" stroke-linecap="round" />
+    <path d="M312,225 C324,216 336,234 348,225 C360,216 372,234 384,225 C396,216 408,234 422,225"
+          fill="none" stroke="#2c343d" stroke-width="4" opacity="0.55" stroke-linecap="round" />
+  </g>
+
+  <!-- Рама и гравированный барабан -->
+  <g id="colt_frame_cylinder">
+    <!-- Рама револьвера -->
+    <path d="M120,212 L156,192 L258,192 L258,274 L136,274 L112,242 Z"
+          fill="url(#colt_silver)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Барабан -->
+    <rect x="172" y="190" width="78" height="72" rx="10"
+          fill="url(#colt_silver)" stroke="#121519" stroke-width="11" />
+
+    <!-- Латунные ободки барабана -->
+    <rect x="178" y="196" width="10" height="60" fill="url(#colt_brass)" stroke="#121519" stroke-width="4" />
+    <rect x="234" y="196" width="10" height="60" fill="url(#colt_brass)" stroke="#121519" stroke-width="4" />
+
+    <!-- Долы барабана и серебряная насечка -->
+    <rect x="194" y="202" width="34" height="12" rx="4" fill="#46505a" stroke="#121519" stroke-width="4" />
+    <rect x="194" y="220" width="34" height="12" rx="4" fill="#636f7a" stroke="#121519" stroke-width="4" />
+    <rect x="194" y="238" width="34" height="12" rx="4" fill="#3a434c" stroke="#121519" stroke-width="4" />
+
+    <!-- Серебряная гравировка на боковой пластине рамы -->
+    <path d="M130,224 C142,214 152,226 162,216 M132,248 C144,258 156,246 164,256"
+          fill="none" stroke="#f5fbff" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="148" cy="236" r="6" fill="url(#colt_brass)" stroke="#121519" stroke-width="4" />
+  </g>
+
+  <!-- Звезда-искра у дула -->
+  <g id="colt_spark">
+    <polygon points="468,194 472,208 486,212 472,216 468,230 464,216 450,212 464,208"
+             fill="#ffffff" stroke="#a6d8ff" stroke-width="4" stroke-linejoin="round" />
+  </g>
+</svg>

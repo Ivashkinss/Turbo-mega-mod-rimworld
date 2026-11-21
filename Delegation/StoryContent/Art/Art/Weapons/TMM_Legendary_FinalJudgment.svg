@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="fj_steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#abb6c0" />
+      <stop offset="40%" stop-color="#737e89" />
+      <stop offset="85%" stop-color="#48515a" />
+      <stop offset="100%" stop-color="#2e353c" />
+    </linearGradient>
+
+    <linearGradient id="fj_darkMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#58626c" />
+      <stop offset="50%" stop-color="#343b43" />
+      <stop offset="100%" stop-color="#1b2026" />
+    </linearGradient>
+
+    <linearGradient id="fj_barrel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#929da8" />
+      <stop offset="45%" stop-color="#4f5862" />
+      <stop offset="100%" stop-color="#252b31" />
+    </linearGradient>
+
+    <linearGradient id="fj_crimson" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c43d31" />
+      <stop offset="55%" stop-color="#91261e" />
+      <stop offset="100%" stop-color="#5c1610" />
+    </linearGradient>
+
+    <linearGradient id="fj_gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8c368" />
+      <stop offset="50%" stop-color="#b88c34" />
+      <stop offset="100%" stop-color="#6e4f18" />
+    </linearGradient>
+
+    <radialGradient id="fj_redLens" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ffd6d6" />
+      <stop offset="35%" stop-color="#ff4038" />
+      <stop offset="75%" stop-color="#cc1414" />
+      <stop offset="100%" stop-color="#660808" />
+    </radialGradient>
+
+    <radialGradient id="fj_redHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3b30" stop-opacity="0.62" />
+      <stop offset="55%" stop-color="#d91e18" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#d91e18" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Алые ореолы красных лазерных линз и ядерного блока -->
+  <g id="fj_halos">
+    <circle cx="470" cy="242" r="58" fill="url(#fj_redHalo)" />
+    <circle cx="212" cy="304" r="58" fill="url(#fj_redHalo)" />
+  </g>
+
+  <!-- Верхняя силовая ручка, тыльник и рукоять -->
+  <g id="fj_handles">
+    <path d="M100,196 L118,154 L230,154 L246,196 L222,196 L212,174 L136,174 L124,196 Z"
+          fill="url(#fj_darkMetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <path d="M30,206 L82,200 L82,292 L34,300 L28,284 L28,218 Z"
+          fill="url(#fj_darkMetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <line x1="48" y1="214" x2="48" y2="286" stroke="#181c22" stroke-width="6" />
+
+    <path d="M104,292 L148,292 L138,358 L100,354 Z"
+          fill="url(#fj_darkMetal)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <path d="M144,294 L174,294 L168,324 L142,324"
+          fill="none" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+  </g>
+
+  <!-- Вращающийся блок лазерных стволов с красными линзами -->
+  <g id="fj_barrels">
+    <!-- Раскалённая красная ось блока стволов -->
+    <rect x="272" y="224" width="194" height="36" rx="4"
+          fill="url(#fj_redLens)" stroke="#121519" stroke-width="7" />
+
+    <!-- Четыре параллельных тяжёлых ствола -->
+    <rect x="272" y="198" width="204" height="18" rx="4"
+          fill="url(#fj_barrel)" stroke="#121519" stroke-width="9" />
+    <rect x="272" y="220" width="208" height="18" rx="4"
+          fill="url(#fj_barrel)" stroke="#121519" stroke-width="9" />
+    <rect x="272" y="246" width="208" height="18" rx="4"
+          fill="url(#fj_barrel)" stroke="#121519" stroke-width="9" />
+    <rect x="272" y="268" width="204" height="18" rx="4"
+          fill="url(#fj_barrel)" stroke="#121519" stroke-width="9" />
+
+    <!-- Два массивных хомута вращения -->
+    <rect x="332" y="190" width="26" height="104" rx="6"
+          fill="url(#fj_steel)" stroke="#121519" stroke-width="11" />
+    <line x1="345" y1="200" x2="345" y2="284" stroke="#2c333b" stroke-width="5" />
+
+    <rect x="412" y="190" width="26" height="104" rx="6"
+          fill="url(#fj_steel)" stroke="#121519" stroke-width="11" />
+    <line x1="425" y1="200" x2="425" y2="284" stroke="#2c333b" stroke-width="5" />
+
+    <!-- Крупные светящиеся красные лазерные линзы на дульных срезах -->
+    <rect x="462" y="199" width="20" height="16" rx="4" fill="url(#fj_redLens)" stroke="#121519" stroke-width="5" />
+    <rect x="466" y="221" width="20" height="16" rx="4" fill="url(#fj_redLens)" stroke="#121519" stroke-width="5" />
+    <rect x="466" y="247" width="20" height="16" rx="4" fill="url(#fj_redLens)" stroke="#121519" stroke-width="5" />
+    <rect x="462" y="269" width="20" height="16" rx="4" fill="url(#fj_redLens)" stroke="#121519" stroke-width="5" />
+  </g>
+
+  <!-- Бронированный корпус Братства Стали -->
+  <g id="fj_body">
+    <path d="M74,196 L264,188 L282,206 L282,284 L264,298 L74,296 Z"
+          fill="url(#fj_steel)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхний блик -->
+    <line x1="88" y1="204" x2="256" y2="198" stroke="#dce5ee" stroke-width="5" opacity="0.65" stroke-linecap="round" />
+
+    <!-- Гербовые полосы Братства Стали -->
+    <polygon points="100,198 126,197 112,292 86,292" fill="url(#fj_crimson)" stroke="#121519" stroke-width="5" />
+    <polygon points="132,197 150,196 136,292 118,292" fill="url(#fj_gold)" stroke="#121519" stroke-width="5" />
+
+    <!-- Раскалённые красные решётки охлаждения -->
+    <rect x="172" y="204" width="88" height="28" rx="5"
+          fill="#260c0c" stroke="#121519" stroke-width="7" />
+    <line x1="188" y1="210" x2="188" y2="226" stroke="#ff4238" stroke-width="7" stroke-linecap="round" />
+    <line x1="208" y1="210" x2="208" y2="226" stroke="#ff7a70" stroke-width="7" stroke-linecap="round" />
+    <line x1="228" y1="210" x2="228" y2="226" stroke="#ff7a70" stroke-width="7" stroke-linecap="round" />
+    <line x1="246" y1="210" x2="246" y2="226" stroke="#ff4238" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Эмблема шестерни и меча Братства -->
+    <circle cx="158" cy="252" r="15" fill="url(#fj_darkMetal)" stroke="#e8c368" stroke-width="5" />
+    <line x1="158" y1="234" x2="158" y2="270" stroke="#e8c368" stroke-width="5" stroke-linecap="round" />
+    <line x1="146" y1="252" x2="170" y2="252" stroke="#e8c368" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Заклёпки -->
+    <circle cx="88" cy="214" r="5" fill="#2a3138" stroke="#121519" stroke-width="4" />
+    <circle cx="266" cy="220" r="5" fill="#2a3138" stroke="#121519" stroke-width="4" />
+    <circle cx="266" cy="272" r="5" fill="#2a3138" stroke="#121519" stroke-width="4" />
+  </g>
+
+  <!-- Боковой микроядерный блок -->
+  <g id="fj_core">
+    <path d="M244,308 C274,316 290,302 280,276"
+          fill="none" stroke="#121519" stroke-width="15" stroke-linecap="round" />
+    <path d="M244,308 C274,316 290,302 280,276"
+          fill="none" stroke="#c4963a" stroke-width="6" stroke-linecap="round" />
+
+    <rect x="172" y="264" width="78" height="76" rx="12"
+          fill="url(#fj_gold)" stroke="#121519" stroke-width="12" />
+    <rect x="184" y="276" width="54" height="52" rx="6"
+          fill="#240a0a" stroke="#121519" stroke-width="6" />
+    <rect x="190" y="282" width="42" height="40" rx="4" fill="url(#fj_redLens)" />
+    <line x1="204" y1="278" x2="204" y2="326" stroke="#121519" stroke-width="6" />
+    <line x1="218" y1="278" x2="218" y2="326" stroke="#121519" stroke-width="6" />
+  </g>
+</svg>

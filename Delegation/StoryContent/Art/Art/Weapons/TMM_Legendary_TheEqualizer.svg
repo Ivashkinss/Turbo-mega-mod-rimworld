@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="eq_steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b96a6" />
+      <stop offset="42%" stop-color="#535d6b" />
+      <stop offset="85%" stop-color="#2c333d" />
+      <stop offset="100%" stop-color="#191d24" />
+    </linearGradient>
+
+    <linearGradient id="eq_darkFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#48505c" />
+      <stop offset="50%" stop-color="#262c34" />
+      <stop offset="100%" stop-color="#13171c" />
+    </linearGradient>
+
+    <linearGradient id="eq_gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe799" />
+      <stop offset="50%" stop-color="#cc9a38" />
+      <stop offset="100%" stop-color="#704e14" />
+    </linearGradient>
+
+    <linearGradient id="eq_quantumTube" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#61c8ff" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#c48aff" />
+    </linearGradient>
+
+    <radialGradient id="eq_core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#9ce8ff" />
+      <stop offset="72%" stop-color="#5c7cff" />
+      <stop offset="100%" stop-color="#2e1c6b" />
+    </radialGradient>
+
+    <radialGradient id="eq_halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8ecff" stop-opacity="0.72" />
+      <stop offset="45%" stop-color="#7384ff" stop-opacity="0.30" />
+      <stop offset="78%" stop-color="#9e5cff" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#9e5cff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Межпространственное сияние квантового ядра и дула -->
+  <g id="eq_halos">
+    <circle cx="242" cy="218" r="84" fill="url(#eq_halo)" />
+    <circle cx="464" cy="206" r="46" fill="url(#eq_halo)" />
+  </g>
+
+  <!-- Спусковая скоба и тяжёлая тактическая рукоять -->
+  <g id="eq_grip">
+    <!-- Угловатая защитная скоба -->
+    <path d="M180,264 L250,264 L238,312 L176,312 Z"
+          fill="none" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <path d="M214,266 L206,298" fill="none" stroke="#cc9a38" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Рукоять пистолета -->
+    <path d="M108,246 L186,256 L154,394 L76,386 Z"
+          fill="url(#eq_darkFrame)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Золотая боковая накладка с оккультным ромбом на рукояти -->
+    <path d="M114,274 L164,280 L144,366 L94,360 Z"
+          fill="url(#eq_gold)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+    <polygon points="129,296 144,322 125,348 110,322"
+             fill="url(#eq_darkFrame)" stroke="#121519" stroke-width="5" stroke-linejoin="round" />
+    <circle cx="127" cy="322" r="5" fill="#9ce8ff" />
+
+    <!-- Пятка рукояти -->
+    <path d="M72,380 L158,388 L154,408 L68,398 Z"
+          fill="url(#eq_steel)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+  </g>
+
+  <!-- Нижний стабилизатор ствола -->
+  <g id="eq_underbarrel">
+    <path d="M242,248 L434,244 L424,272 L246,274 Z"
+          fill="url(#eq_darkFrame)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <!-- Светящаяся квантовая полоса снизу -->
+    <rect x="272" y="253" width="132" height="10" rx="4"
+          fill="url(#eq_quantumTube)" stroke="#121519" stroke-width="3.5" />
+  </g>
+
+  <!-- Основной затвор и межпространственный ствол «Уравнителя» -->
+  <g id="eq_slide">
+    <!-- Задний выступ затвора и мушка -->
+    <path d="M74,178 L112,164 L444,164 L466,184 L466,238 L440,252 L112,262 L84,242 L74,196 Z"
+          fill="url(#eq_steel)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхняя золотая планка и прицельные приспособления -->
+    <path d="M118,164 L436,164 L436,182 L118,182 Z"
+          fill="url(#eq_gold)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+    <polygon points="420,164 438,164 434,146 424,148"
+             fill="url(#eq_gold)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+
+    <!-- Светлый верхний блик -->
+    <line x1="128" y1="173" x2="416" y2="173" stroke="#fff6d1" stroke-width="4" opacity="0.7" stroke-linecap="round" />
+
+    <!-- Вентиляционные окна квантового ускорителя на стволе -->
+    <rect x="296" y="194" width="138" height="26" rx="6"
+          fill="#121626" stroke="#121519" stroke-width="6" />
+    <rect x="304" y="200" width="122" height="14" rx="4"
+          fill="url(#eq_quantumTube)" />
+    <!-- Золотые рёбра-перемычки поверх светового канала -->
+    <line x1="336" y1="194" x2="336" y2="220" stroke="#cc9a38" stroke-width="7" />
+    <line x1="368" y1="194" x2="368" y2="220" stroke="#cc9a38" stroke-width="7" />
+    <line x1="400" y1="194" x2="400" y2="220" stroke="#cc9a38" stroke-width="7" />
+
+    <!-- Дульный срез со вспышкой искажения -->
+    <rect x="448" y="186" width="24" height="44" rx="5"
+          fill="url(#eq_gold)" stroke="#121519" stroke-width="8" />
+    <circle cx="468" cy="208" r="10" fill="url(#eq_core)" stroke="#121519" stroke-width="4" />
+
+    <!-- Енохианская геометрическая гравировка на задней части затвора -->
+    <path d="M114,202 L148,202 L160,214 L148,226 L114,226 Z"
+          fill="none" stroke="url(#eq_gold)" stroke-width="5" stroke-linejoin="round" />
+    <line x1="126" y1="214" x2="146" y2="214" stroke="#9ce8ff" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Круглая квантово-оккультная камера (сердце «Уравнителя») -->
+    <g id="eq_quantum_core">
+      <circle cx="242" cy="218" r="36" fill="url(#eq_gold)" stroke="#121519" stroke-width="9" />
+      <circle cx="242" cy="218" r="24" fill="url(#eq_core)" stroke="#121519" stroke-width="5" />
+      <!-- Внутренние перекрещенные орбиты -->
+      <ellipse cx="242" cy="218" rx="18" ry="8" transform="rotate(-35 242 218)"
+               fill="none" stroke="#ffffff" stroke-width="3.5" opacity="0.85" />
+      <ellipse cx="242" cy="218" rx="18" ry="8" transform="rotate(35 242 218)"
+               fill="none" stroke="#ffe799" stroke-width="3.5" opacity="0.85" />
+      <circle cx="242" cy="218" r="6" fill="#ffffff" />
+    </g>
+  </g>
+</svg>

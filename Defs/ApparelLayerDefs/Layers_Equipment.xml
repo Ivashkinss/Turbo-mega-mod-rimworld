@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Drawn over Shell (200) and under Belt (300) -->
+  <ApparelLayerDef>
+    <defName>TMM_Backpack</defName>
+    <label>backpack</label>
+    <drawOrder>210</drawOrder>
+  </ApparelLayerDef>
+
+  <!-- Full-body powered exosuit worn over regular clothing, Shell, and Backpack -->
+  <ApparelLayerDef>
+    <defName>TMM_PowerArmor</defName>
+    <label>power armor</label>
+    <drawOrder>250</drawOrder>
+  </ApparelLayerDef>
+
+</Defs>

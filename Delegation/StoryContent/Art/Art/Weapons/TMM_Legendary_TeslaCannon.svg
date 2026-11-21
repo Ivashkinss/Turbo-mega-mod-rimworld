@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="tesla_armor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6b7682" />
+      <stop offset="42%" stop-color="#3f4750" />
+      <stop offset="85%" stop-color="#252b31" />
+      <stop offset="100%" stop-color="#171b1f" />
+    </linearGradient>
+
+    <linearGradient id="tesla_plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b96a3" />
+      <stop offset="50%" stop-color="#525c66" />
+      <stop offset="100%" stop-color="#2e353d" />
+    </linearGradient>
+
+    <linearGradient id="tesla_copper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0bd73" />
+      <stop offset="50%" stop-color="#bd7d36" />
+      <stop offset="100%" stop-color="#6e4214" />
+    </linearGradient>
+
+    <linearGradient id="tesla_hazard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066" />
+      <stop offset="55%" stop-color="#d49e22" />
+      <stop offset="100%" stop-color="#7d580c" />
+    </linearGradient>
+
+    <linearGradient id="tesla_arcCore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="42%" stop-color="#7aeaff" />
+      <stop offset="100%" stop-color="#1a85db" />
+    </linearGradient>
+
+    <radialGradient id="tesla_halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9cf2ff" stop-opacity="0.72" />
+      <stop offset="45%" stop-color="#2cb6ff" stop-opacity="0.30" />
+      <stop offset="80%" stop-color="#1368cc" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#1368cc" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Электрическое свечение катушек и дульного излучателя -->
+  <g id="tesla_halos">
+    <circle cx="372" cy="236" r="82" fill="url(#tesla_halo)" />
+    <circle cx="468" cy="236" r="52" fill="url(#tesla_halo)" />
+  </g>
+
+  <!-- Рукояти, плечевой упор и силовой кабель -->
+  <g id="tesla_lower">
+    <!-- Толстый жёлтый высоковольтный кабель -->
+    <path d="M98,284 C132,338 238,342 308,282"
+          fill="none" stroke="#121519" stroke-width="20" stroke-linecap="round" />
+    <path d="M98,284 C132,338 238,342 308,282"
+          fill="none" stroke="url(#tesla_hazard)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Задняя рукоять управления -->
+    <path d="M168,280 L210,280 L196,356 L158,352 Z"
+          fill="url(#tesla_armor)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <path d="M206,282 L242,282 L236,314 L204,314"
+          fill="none" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+
+    <!-- Передняя рукоять поддержки -->
+    <path d="M272,276 L308,276 L316,336 L282,336 Z"
+          fill="url(#tesla_armor)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+  </g>
+
+  <!-- Верхний прицельный блок и ручка переноски -->
+  <g id="tesla_top">
+    <path d="M138,186 L154,152 L262,152 L276,186 L252,186 L242,170 L172,170 L162,186 Z"
+          fill="url(#tesla_plate)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <!-- Оптический прицел Анклава -->
+    <rect x="182" y="156" width="52" height="18" rx="4"
+          fill="url(#tesla_arcCore)" stroke="#121519" stroke-width="5" />
+  </g>
+
+  <!-- Открытый ствол-ускоритель с кольцами Теслы -->
+  <g id="tesla_barrel">
+    <!-- Центральный высоковольтный стержень -->
+    <rect x="292" y="218" width="166" height="36" rx="6"
+          fill="url(#tesla_armor)" stroke="#121519" stroke-width="10" />
+    <rect x="296" y="227" width="158" height="18" rx="4"
+          fill="url(#tesla_arcCore)" stroke="#121519" stroke-width="4.5" />
+
+    <!-- Верхний и нижний изоляторные штыри на дуле -->
+    <path d="M440,204 L482,212 L482,226 L444,226 Z"
+          fill="url(#tesla_plate)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+    <path d="M440,268 L482,260 L482,246 L444,246 Z"
+          fill="url(#tesla_plate)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+
+    <!-- Три массивных медных индукционных кольца Теслы -->
+    <rect x="318" y="192" width="26" height="88" rx="8"
+          fill="url(#tesla_copper)" stroke="#121519" stroke-width="10" />
+    <rect x="364" y="194" width="26" height="84" rx="8"
+          fill="url(#tesla_copper)" stroke="#121519" stroke-width="10" />
+    <rect x="408" y="198" width="24" height="76" rx="8"
+          fill="url(#tesla_copper)" stroke="#121519" stroke-width="10" />
+
+    <!-- Керамические ободки и блики на кольцах -->
+    <line x1="331" y1="202" x2="331" y2="270" stroke="#fff3c4" stroke-width="4.5" opacity="0.65" stroke-linecap="round" />
+    <line x1="377" y1="204" x2="377" y2="268" stroke="#fff3c4" stroke-width="4.5" opacity="0.65" stroke-linecap="round" />
+    <line x1="420" y1="208" x2="420" y2="264" stroke="#fff3c4" stroke-width="4.5" opacity="0.65" stroke-linecap="round" />
+  </g>
+
+  <!-- Бронированный плечевой корпус Анклава -->
+  <g id="tesla_body">
+    <!-- Задний плечевой энергоблок -->
+    <path d="M32,194 L118,188 L118,292 L38,302 L30,286 L30,208 Z"
+          fill="url(#tesla_armor)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <!-- Жёлтые полосы высокого напряжения -->
+    <rect x="46" y="204" width="16" height="82" rx="3" fill="url(#tesla_hazard)" stroke="#121519" stroke-width="4.5" />
+    <rect x="74" y="214" width="28" height="58" rx="5" fill="#101a24" stroke="#121519" stroke-width="5" />
+    <rect x="80" y="220" width="16" height="46" rx="3" fill="url(#tesla_arcCore)" />
+
+    <!-- Центральный корпус-конденсатор -->
+    <path d="M110,186 L288,182 L306,202 L306,274 L288,288 L110,288 Z"
+          fill="url(#tesla_armor)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Светлая верхняя грань корпуса -->
+    <line x1="122" y1="194" x2="282" y2="191" stroke="#9aa6b3" stroke-width="5" opacity="0.55" stroke-linecap="round" />
+
+    <!-- Боковая бронированная пластина с отметкой Анклава -->
+    <path d="M128,208 L268,208 L280,222 L280,256 L268,268 L128,268 Z"
+          fill="url(#tesla_plate)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Светящийся голубой индикатор заряда -->
+    <rect x="144" y="224" width="76" height="28" rx="6" fill="#0d1824" stroke="#121519" stroke-width="6" />
+    <rect x="150" y="230" width="64" height="16" rx="3" fill="url(#tesla_arcCore)" />
+
+    <!-- Эмблема Анклава (золотая звезда в кольце) -->
+    <circle cx="248" cy="238" r="16" fill="#1d2329" stroke="url(#tesla_hazard)" stroke-width="5" />
+    <polygon points="248,226 251,234 260,234 253,240 256,248 248,243 240,248 243,240 236,234 245,234"
+             fill="#ffe066" />
+  </g>
+
+  <!-- Разряды цепной молнии между кольцами и у дула -->
+  <g id="tesla_lightning">
+    <path d="M344,210 L354,196 L358,214 L364,204"
+          fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M390,262 L399,276 L402,256 L408,266"
+          fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M432,226 L448,214 L454,238 L474,236 L486,222"
+          fill="none" stroke="#e0faff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M460,236 L476,252 L486,246"
+          fill="none" stroke="#7aeaff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="kr_bluedSteel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#697c94" />
+      <stop offset="35%" stop-color="#3c4a5c" />
+      <stop offset="78%" stop-color="#222a36" />
+      <stop offset="100%" stop-color="#141921" />
+    </linearGradient>
+
+    <linearGradient id="kr_bluedLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#96abc4" />
+      <stop offset="60%" stop-color="#5d728c" />
+      <stop offset="100%" stop-color="#3c4b5e" />
+    </linearGradient>
+
+    <linearGradient id="kr_bluedDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#364252" />
+      <stop offset="100%" stop-color="#141921" />
+    </linearGradient>
+
+    <linearGradient id="kr_darkWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5e3a28" />
+      <stop offset="48%" stop-color="#382015" />
+      <stop offset="100%" stop-color="#1c0f09" />
+    </linearGradient>
+
+    <linearGradient id="kr_chrome" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e3eef7" />
+      <stop offset="50%" stop-color="#9fb1c2" />
+      <stop offset="100%" stop-color="#566575" />
+    </linearGradient>
+
+    <radialGradient id="kr_cyberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e3fbff" />
+      <stop offset="45%" stop-color="#59d4ff" />
+      <stop offset="100%" stop-color="#135c8a" />
+    </radialGradient>
+  </defs>
+
+  <!-- Курок и массивная спусковая скоба .44 Magnum -->
+  <g id="kr_mechanism">
+    <!-- Спортивный курок с насечкой -->
+    <path d="M124,186 C112,158 130,144 152,154 C144,166 154,176 166,186 Z"
+          fill="url(#kr_chrome)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Спусковая скоба -->
+    <path d="M158,266 L236,266 L226,314 L156,314 Z"
+          fill="none" stroke="#121519" stroke-width="15" stroke-linejoin="round" />
+    <path d="M158,266 L236,266 L226,314 L156,314 Z"
+          fill="none" stroke="url(#kr_bluedSteel)" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Хромированный облегчённый спусковой крючок -->
+    <path d="M196,268 C196,288 188,298 180,302" fill="none" stroke="#121519" stroke-width="11" stroke-linecap="round" />
+    <path d="M196,268 C196,288 188,298 180,302" fill="none" stroke="url(#kr_chrome)" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Рукоять из тёмного дерева с кибернетическими насечками -->
+  <g id="kr_grip">
+    <path d="M126,232 L176,246 C160,298 140,342 114,382 C88,392 50,382 38,364
+             C66,318 88,274 102,236 Z"
+          fill="url(#kr_darkWood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Кибернетическая металлическая накладка-гребень по спинке рукояти -->
+    <path d="M102,236 C88,276 66,316 38,364 L54,370 C82,324 102,282 116,240 Z"
+          fill="url(#kr_bluedSteel)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Стальная пятка с кибер-индикатором -->
+    <path d="M38,364 C50,382 88,392 114,382 L122,366 C94,374 66,368 48,350 Z"
+          fill="url(#kr_bluedDark)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Глубокие кибернетические насечки-пазы на тёмном дереве -->
+    <g id="kr_grip_notches">
+      <line x1="94" y1="274" x2="146" y2="286" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+      <line x1="86" y1="296" x2="138" y2="308" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+      <line x1="78" y1="318" x2="130" y2="330" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+      <line x1="70" y1="340" x2="120" y2="352" stroke="#121519" stroke-width="7" stroke-linecap="round" />
+      <!-- Тонкий стальной отблеск по краям насечек -->
+      <line x1="96" y1="270" x2="144" y2="281" stroke="#7d95b0" stroke-width="2.5" opacity="0.65" stroke-linecap="round" />
+      <line x1="88" y1="292" x2="136" y2="303" stroke="#7d95b0" stroke-width="2.5" opacity="0.65" stroke-linecap="round" />
+      <line x1="80" y1="314" x2="128" y2="325" stroke="#7d95b0" stroke-width="2.5" opacity="0.65" stroke-linecap="round" />
+      <!-- Медальон кибер-интерфейса Института в рукояти -->
+      <circle cx="116" cy="260" r="8" fill="url(#kr_chrome)" stroke="#121519" stroke-width="4" />
+      <circle cx="116" cy="260" r="3.5" fill="url(#kr_cyberGlow)" />
+    </g>
+  </g>
+
+  <!-- Тяжёлый воронёный ствол .44 Magnum с вентилируемой планкой -->
+  <g id="kr_barrel">
+    <!-- Высокая прицельная мушка с контрастной вставкой -->
+    <polygon points="444,178 472,178 472,158 456,160"
+             fill="url(#kr_bluedDark)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+    <line x1="464" y1="164" x2="464" y2="174" stroke="#ff5c4d" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Основной массивный ствол с полным подствольным приливом (full underlug) -->
+    <path d="M262,178 L478,178 L478,244 L262,248 Z"
+          fill="url(#kr_bluedSteel)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Светлая верхняя прицельная планка -->
+    <rect x="266" y="182" width="206" height="12" fill="url(#kr_bluedLight)" />
+
+    <!-- Вентиляционные окна вдоль планки ствола -->
+    <rect x="292" y="190" width="26" height="10" rx="3" fill="#121519" />
+    <rect x="332" y="190" width="26" height="10" rx="3" fill="#121519" />
+    <rect x="372" y="190" width="26" height="10" rx="3" fill="#121519" />
+    <rect x="412" y="190" width="26" height="10" rx="3" fill="#121519" />
+
+    <!-- Глубокий подствольный прилив и кибернетические насечки компенсатора -->
+    <rect x="266" y="226" width="206" height="16" fill="url(#kr_bluedDark)" />
+    <!-- Хромированный шомпол-экстрактор внутри подствольного прилива -->
+    <rect x="278" y="230" width="118" height="8" rx="3" fill="url(#kr_chrome)" stroke="#121519" stroke-width="3" />
+
+    <!-- Кибернетические диагональные насечки на дульной части ствола -->
+    <path d="M418,208 L428,224 M434,208 L444,224 M450,208 L460,224"
+          fill="none" stroke="#121519" stroke-width="6" stroke-linecap="round" />
+    <path d="M422,208 L432,224 M438,208 L448,224 M454,208 L464,224"
+          fill="none" stroke="#85a4c4" stroke-width="2.5" opacity="0.7" stroke-linecap="round" />
+  </g>
+
+  <!-- Мощная воронёная рама и барабан .44 -->
+  <g id="kr_frame_cylinder">
+    <!-- Верхняя и задняя часть рамы -->
+    <path d="M118,198 L156,178 L272,178 L272,272 L138,272 L108,236 Z"
+          fill="url(#kr_bluedSteel)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Целик сверху рамы -->
+    <rect x="148" y="168" width="26" height="12" rx="3" fill="url(#kr_bluedDark)" stroke="#121519" stroke-width="6" />
+
+    <!-- Массивный 6-зарядный барабан .44 Magnum -->
+    <rect x="178" y="188" width="84" height="74" rx="10"
+          fill="url(#kr_bluedSteel)" stroke="#121519" stroke-width="11" />
+
+    <!-- Глубокие долы барабана -->
+    <rect x="192" y="198" width="54" height="12" rx="4" fill="#1b222c" stroke="#121519" stroke-width="4" />
+    <rect x="192" y="218" width="54" height="14" rx="4" fill="#2d3947" stroke="#121519" stroke-width="4" />
+    <rect x="192" y="240" width="54" height="12" rx="4" fill="#171d26" stroke="#121519" stroke-width="4" />
+
+    <!-- Блестящие вертикальные грани барабана -->
+    <line x1="186" y1="196" x2="186" y2="254" stroke="#8ca3bd" stroke-width="3.5" opacity="0.65" />
+    <line x1="254" y1="196" x2="254" y2="254" stroke="#8ca3bd" stroke-width="3.5" opacity="0.65" />
+
+    <!-- Кибернетическая технологическая насечка и микродатчик на раме -->
+    <path d="M128,214 L164,214 L164,244 L128,244 Z" fill="url(#kr_bluedDark)" stroke="#121519" stroke-width="5" stroke-linejoin="round" />
+    <line x1="136" y1="224" x2="156" y2="224" stroke="#59d4ff" stroke-width="4" stroke-linecap="round" />
+    <line x1="136" y1="234" x2="150" y2="234" stroke="#96abc4" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+</svg>

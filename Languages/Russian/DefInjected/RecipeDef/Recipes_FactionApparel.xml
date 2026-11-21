@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Make_demon_infernal_trenchcoat.label>сшить плащ адского оперативника</TMM_Make_demon_infernal_trenchcoat.label>
+  <TMM_Make_demon_infernal_trenchcoat.description>Сшить тяжёлый огнестойкий кожаный плащ адского оперативника.</TMM_Make_demon_infernal_trenchcoat.description>
+  <TMM_Make_demon_infernal_trenchcoat.jobString>Шьёт плащ адского оперативника.</TMM_Make_demon_infernal_trenchcoat.jobString>
+
+  <TMM_Make_angel_celestial_raiment.label>выковать облачение небесного воинства</TMM_Make_angel_celestial_raiment.label>
+  <TMM_Make_angel_celestial_raiment.description>Изготовить бело-золотые енохианские латы с прорезями под крылья ангела.</TMM_Make_angel_celestial_raiment.description>
+  <TMM_Make_angel_celestial_raiment.jobString>Куёт облачение небесного воинства.</TMM_Make_angel_celestial_raiment.jobString>
+
+  <TMM_Make_bos_t60_power_armor.label>собрать силовую броню T-60 Братства</TMM_Make_bos_t60_power_armor.label>
+  <TMM_Make_bos_t60_power_armor.description>Собрать тяжёлую силовую броню T-60 Братства Стали на урановых элементах.</TMM_Make_bos_t60_power_armor.description>
+  <TMM_Make_bos_t60_power_armor.jobString>Собирает силовую броню T-60.</TMM_Make_bos_t60_power_armor.jobString>
+
+  <TMM_Make_bos_t60_helmet.label>собрать шлем силовой брони T-60</TMM_Make_bos_t60_helmet.label>
+  <TMM_Make_bos_t60_helmet.description>Собрать бронешлем силовой брони T-60 со встроенным респиратором.</TMM_Make_bos_t60_helmet.description>
+  <TMM_Make_bos_t60_helmet.jobString>Собирает шлем T-60.</TMM_Make_bos_t60_helmet.jobString>
+
+  <TMM_Make_outcast_power_armor.label>собрать силовую броню Изгоев</TMM_Make_outcast_power_armor.label>
+  <TMM_Make_outcast_power_armor.description>Собрать чёрно-красную силовую броню T-45d Изгоев.</TMM_Make_outcast_power_armor.description>
+  <TMM_Make_outcast_power_armor.jobString>Собирает силовую броню Изгоев.</TMM_Make_outcast_power_armor.jobString>
+
+  <TMM_Make_enclave_x01_power_armor.label>собрать силовую броню X-01 Анклава</TMM_Make_enclave_x01_power_armor.label>
+  <TMM_Make_enclave_x01_power_armor.description>Собрать композитную силовую броню X-01 Анклава.</TMM_Make_enclave_x01_power_armor.description>
+  <TMM_Make_enclave_x01_power_armor.jobString>Собирает силовую броню X-01.</TMM_Make_enclave_x01_power_armor.jobString>
+
+  <TMM_Make_enclave_x01_helmet.label>собрать шлем силовой брони X-01</TMM_Make_enclave_x01_helmet.label>
+  <TMM_Make_enclave_x01_helmet.description>Собрать бронешлем X-01 с янтарными окулярами.</TMM_Make_enclave_x01_helmet.description>
+  <TMM_Make_enclave_x01_helmet.jobString>Собирает шлем X-01.</TMM_Make_enclave_x01_helmet.jobString>
+
+  <TMM_Make_institute_courser_uniform.label>изготовить плащ Охотника Института</TMM_Make_institute_courser_uniform.label>
+  <TMM_Make_institute_courser_uniform.description>Изготовить бронированный плащ ликвидатора Института из гиперткани и керамики.</TMM_Make_institute_courser_uniform.description>
+  <TMM_Make_institute_courser_uniform.jobString>Изготавливает плащ Охотника.</TMM_Make_institute_courser_uniform.jobString>
+
+  <TMM_Make_railroad_armored_coat.label>сшить бронеплащ Подземки</TMM_Make_railroad_armored_coat.label>
+  <TMM_Make_railroad_armored_coat.description>Сшить неприметный плащ путника с подкладкой из баллистического волокна Подземки.</TMM_Make_railroad_armored_coat.description>
+  <TMM_Make_railroad_armored_coat.jobString>Шьёт бронеплащ Подземки.</TMM_Make_railroad_armored_coat.jobString>
+
+  <TMM_Make_minutemen_general_uniform.label>сшить мундир генерала Минитменов</TMM_Make_minutemen_general_uniform.label>
+  <TMM_Make_minutemen_general_uniform.description>Сшить усиленный колониальный сюртук генерала Минитменов.</TMM_Make_minutemen_general_uniform.description>
+  <TMM_Make_minutemen_general_uniform.jobString>Шьёт мундир Минитменов.</TMM_Make_minutemen_general_uniform.jobString>
+
+  <TMM_Make_mol_covert_trenchcoat.label>сшить тактический плащ лондонского ордена</TMM_Make_mol_covert_trenchcoat.label>
+  <TMM_Make_mol_covert_trenchcoat.description>Изготовить непромокаемый плащ Просвещённых со скрытым кевларом и оберегами.</TMM_Make_mol_covert_trenchcoat.description>
+  <TMM_Make_mol_covert_trenchcoat.jobString>Шьёт тактический плащ ордена.</TMM_Make_mol_covert_trenchcoat.jobString>
+
+  <TMM_Make_ghoul_revolutionary_frockcoat.label>сшить алый революционный сюртук</TMM_Make_ghoul_revolutionary_frockcoat.label>
+  <TMM_Make_ghoul_revolutionary_frockcoat.description>Сшить алый сюртук в стиле мэра Добрососедства.</TMM_Make_ghoul_revolutionary_frockcoat.description>
+  <TMM_Make_ghoul_revolutionary_frockcoat.jobString>Шьёт алый сюртук.</TMM_Make_ghoul_revolutionary_frockcoat.jobString>
+
+  <TMM_Make_clan_bioferrite_carapace.label>вырастить живой панцирь кланов</TMM_Make_clan_bioferrite_carapace.label>
+  <TMM_Make_clan_bioferrite_carapace.description>Вырастить органический самовосстанавливающийся панцирь из пластали и дьяволоткани.</TMM_Make_clan_bioferrite_carapace.description>
+  <TMM_Make_clan_bioferrite_carapace.jobString>Выращивает живой панцирь.</TMM_Make_clan_bioferrite_carapace.jobString>
+
+  <TMM_Make_clan_bioferrite_carapace_Anomaly.label>вырастить живой биоферритовый панцирь</TMM_Make_clan_bioferrite_carapace_Anomaly.label>
+  <TMM_Make_clan_bioferrite_carapace_Anomaly.description>Сформировать живой хитиновый панцирь из закалённого биоферрита, пластали и дьяволоткани.</TMM_Make_clan_bioferrite_carapace_Anomaly.description>
+  <TMM_Make_clan_bioferrite_carapace_Anomaly.jobString>Формирует биоферритовый панцирь.</TMM_Make_clan_bioferrite_carapace_Anomaly.jobString>
+
+</LanguageData>

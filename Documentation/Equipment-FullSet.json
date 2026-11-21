@@ -1,0 +1,108 @@
+﻿{
+    "component":  "Equipment",
+    "originalComponentActive":  false,
+    "fullUserModSet":  true,
+    "gameVersion":  "1.7.5000 rev1275",
+    "localization":  {
+                         "keyed":  3433,
+                         "scalarFields":  3750,
+                         "grammarLines":  94,
+                         "displayPatches":  12,
+                         "passed":  true,
+                         "errors":  [
+
+                                    ]
+                     },
+    "mapActivity":  {
+                        "mapLoaded":  true,
+                        "observedActiveSeconds":  30,
+                        "framesAdvanced":  4254,
+                        "ticksAdvanced":  1788,
+                        "newsWindowsDismissedInTest":  0
+                    },
+    "settingsUi":  {
+                       "passed":  true
+                   },
+    "odysseyGrammar":  {
+                           "passed":  true,
+                           "odysseyActive":  true,
+                           "checks":  252,
+                           "errors":  [
+
+                                      ]
+                       },
+    "runtimeErrors":  0,
+    "knownExternalRuntimeErrors":  0,
+    "unexpectedRuntimeErrors":  0,
+    "knownExternalMessages":  [
+
+                              ],
+    "gpuLost":  false,
+    "visualUiVerified":  false,
+    "stoppedByTest":  true,
+    "productionAssemblySha256":  "c4e1c2c75718c37fd05c42a05acec08fad7bf24bf220c9d270a5720323f44f94",
+    "equipment":  {
+                      "passed":  true,
+                      "checksCount":  9,
+                      "checks":  [
+                                     {
+                                         "name":  "Backpack_IncreasesCarryingCapacity",
+                                         "passed":  true,
+                                         "expected":  "carry\u003e125, kg\u003e65",
+                                         "actual":  "carry=75-\u003e145, kg=35-\u003e135"
+                                     },
+                                     {
+                                         "name":  "WeaponMod_InstallJobSucceeded",
+                                         "passed":  true,
+                                         "expected":  "jobDone=true, mod=HolyWaterTank[30]",
+                                         "actual":  "jobDone=True, count=1, charges=30"
+                                     },
+                                     {
+                                         "name":  "WeaponMod_HolyWaterTriggersOnHit",
+                                         "passed":  true,
+                                         "expected":  "holy water burn on the shot demon",
+                                         "actual":  "burn=True, dmg=61.0"
+                                     },
+                                     {
+                                         "name":  "WeaponMod_ChargesDecreased",
+                                         "passed":  true,
+                                         "expected":  "\u003c 30",
+                                         "actual":  "28"
+                                     },
+                                     {
+                                         "name":  "WeaponMod_HolyWaterHurtsDemonMoreThanHuman",
+                                         "passed":  true,
+                                         "expected":  "demon \u003e= 1.4 x human for the same holy water hit",
+                                         "actual":  "demon=21.0(dead=False), human=14.0"
+                                     },
+                                     {
+                                         "name":  "WeaponMod_RemoveJobReturnsItem",
+                                         "passed":  true,
+                                         "expected":  "removed \u0026 returned charges=19",
+                                         "actual":  "jobDone=True, remaining=0, returnedCharges=19"
+                                     },
+                                     {
+                                         "name":  "ApparelMod_BallisticWeaveBoostsArmor",
+                                         "passed":  true,
+                                         "expected":  "+0.25 sharp",
+                                         "actual":  "jobDone=True, sharp=0.11-\u003e0.36"
+                                     },
+                                     {
+                                         "name":  "Layers_BackpackAndPowerArmorCoexist",
+                                         "passed":  true,
+                                         "expected":  "all 3 worn simultaneously",
+                                         "actual":  "True"
+                                     },
+                                     {
+                                         "name":  "ITab_RepaintNoExceptions",
+                                         "passed":  true,
+                                         "expected":  "true",
+                                         "actual":  "True"
+                                     }
+                                 ],
+                      "errors":  [
+
+                                 ]
+                  },
+    "passed":  true
+}

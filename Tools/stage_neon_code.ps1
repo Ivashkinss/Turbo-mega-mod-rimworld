@@ -9,7 +9,7 @@ $f = Get-ChildItem Delegation\Hydrogen\Inbox -File | Where-Object Name -ne 'READ
 if (!$f) { throw 'Inbox is empty' }
 "file: $($f.Name)"
 $src = [IO.File]::ReadAllText($f.FullName, [Text.Encoding]::UTF8)
-$m = [regex]::Matches($src, '(?s)(?:^|\n)[#*`\s]*`?([\w/\.\-]+\.(?:cs|xml))`?[*\s]*\r?\n\s*```(\w*)\s*\r?\n(.*?)```')
+$m = [regex]::Matches($src, '(?s)(?:^|\n)[#*`\s]*`?([\w/\.\-]+\.(?:cs|xml|svg|txt))`?[*\s]*\r?\n\s*```(\w*)\s*\r?\n(.*?)```')
 $out = Join-Path $root "Delegation\StoryContent\$Folder"
 $u = New-Object Text.UTF8Encoding $false
 foreach ($x in $m) {

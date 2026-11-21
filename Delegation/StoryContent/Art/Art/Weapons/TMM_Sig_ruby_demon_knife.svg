@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="rk_bladeSteel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c9d2db" />
+      <stop offset="38%" stop-color="#7c8791" />
+      <stop offset="76%" stop-color="#434b54" />
+      <stop offset="100%" stop-color="#22272e" />
+    </linearGradient>
+
+    <linearGradient id="rk_bladeEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9ca8b5" />
+      <stop offset="50%" stop-color="#f2f7fc" />
+      <stop offset="100%" stop-color="#cbd6e0" />
+    </linearGradient>
+
+    <linearGradient id="rk_boneGrip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7a6855" />
+      <stop offset="45%" stop-color="#4d3f32" />
+      <stop offset="85%" stop-color="#2e241b" />
+      <stop offset="100%" stop-color="#1a130e" />
+    </linearGradient>
+
+    <linearGradient id="rk_brass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c9a55c" />
+      <stop offset="55%" stop-color="#856328" />
+      <stop offset="100%" stop-color="#473210" />
+    </linearGradient>
+
+    <radialGradient id="rk_aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d92b3a" stop-opacity="0.46" />
+      <stop offset="50%" stop-color="#7a111c" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#7a111c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Едва заметная тёмно-багровая оккультная аура вдоль клинка -->
+  <g id="rk_halo">
+    <ellipse cx="322" cy="248" rx="146" ry="72" fill="url(#rk_aura)" />
+  </g>
+
+  <!-- Тонкий изогнутый древний клинок (лежит горизонтально, остриё вправо) -->
+  <g id="rk_blade">
+    <!-- Основное изогнутое полотно клинка -->
+    <path d="M188,228 C258,230 334,226 402,216 C438,210 468,204 484,214
+             C472,240 436,266 382,276 C318,288 250,286 188,278 Z"
+          fill="url(#rk_bladeSteel)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Светлая режущая кромка снизу до острия -->
+    <path d="M196,272 C256,280 318,282 378,270 C426,260 458,238 474,218"
+          fill="none" stroke="url(#rk_bladeEdge)" stroke-width="5.5" stroke-linecap="round" />
+
+    <!-- Тёмный дол вдоль обуха -->
+    <path d="M204,238 C268,240 338,236 402,226"
+          fill="none" stroke="#1e2329" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Демонические оккультные символы-глифы, выгравированные на клинке (только графика, без текста) -->
+    <g id="rk_runes" fill="none" stroke="#ff4d5a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Глиф 1 -->
+      <path d="M222,250 L236,264 M236,250 L222,264 M229,246 L229,268" />
+      <!-- Глиф 2 -->
+      <path d="M258,258 C264,246 276,246 280,258 C274,266 264,266 258,258 Z M269,246 L269,268" />
+      <!-- Глиф 3 -->
+      <path d="M300,264 L310,248 L320,264 M304,258 L316,258" />
+      <!-- Глиф 4 -->
+      <path d="M342,248 L358,248 L346,264 L362,262" />
+      <!-- Глиф 5 -->
+      <path d="M382,244 L394,254 L384,260 M394,244 L406,248" />
+    </g>
+
+    <!-- Тонкий светлый блик внутри глифов -->
+    <g id="rk_runes_glow" fill="none" stroke="#ffd1d6" stroke-width="1.8" opacity="0.8" stroke-linecap="round">
+      <path d="M229,248 L229,266 M269,248 L269,266 M310,250 L318,262 M348,250 L358,260" />
+    </g>
+  </g>
+
+  <!-- Изящная старинная гарда-больстер -->
+  <g id="rk_guard">
+    <path d="M172,206 C188,202 200,214 198,252 C200,290 188,302 172,298
+             C176,278 176,226 172,206 Z"
+          fill="url(#rk_brass)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+    <circle cx="185" cy="252" r="6" fill="#ff3849" stroke="#121519" stroke-width="3.5" />
+  </g>
+
+  <!-- Тёмная костяная/роговая рукоять с рельефными бороздками -->
+  <g id="rk_handle">
+    <!-- Изогнутая форма рукояти из потемневшего оленьего рога -->
+    <path d="M40,244 C64,234 118,228 176,232 L176,274 C122,276 74,284 44,296
+             C28,288 26,256 40,244 Z"
+          fill="url(#rk_boneGrip)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+    <!-- Светлый костяной блик по верхней грани -->
+    <path d="M52,248 C84,240 124,238 164,240" fill="none" stroke="#a69179" stroke-width="4.5" opacity="0.6" stroke-linecap="round" />
+
+    <!-- Органическая фактура рога и потёртые борозды -->
+    <path d="M74,242 C72,256 76,268 82,280 M104,238 C102,252 106,264 110,274 M134,236 C132,250 134,262 138,272"
+          fill="none" stroke="#1c150f" stroke-width="5.5" stroke-linecap="round" />
+    <path d="M88,244 L92,274 M118,242 L122,270 M148,240 L150,268"
+          fill="none" stroke="#8c7862" stroke-width="2.5" opacity="0.45" stroke-linecap="round" />
+
+    <!-- Бронзовая заклёпка и колпачок навершия -->
+    <path d="M36,246 L56,240 L60,290 L42,296 C28,288 26,256 36,246 Z"
+          fill="url(#rk_brass)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+    <circle cx="116" cy="256" r="5" fill="url(#rk_brass)" stroke="#121519" stroke-width="3.5" />
+  </g>
+</svg>

@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="rail_iron" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b949c" />
+      <stop offset="42%" stop-color="#586068" />
+      <stop offset="85%" stop-color="#353b42" />
+      <stop offset="100%" stop-color="#1f2328" />
+    </linearGradient>
+
+    <linearGradient id="rail_rust" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9e6240" />
+      <stop offset="50%" stop-color="#693b23" />
+      <stop offset="100%" stop-color="#381d10" />
+    </linearGradient>
+
+    <linearGradient id="rail_copper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0b67d" />
+      <stop offset="50%" stop-color="#bd773e" />
+      <stop offset="100%" stop-color="#6e3e18" />
+    </linearGradient>
+
+    <linearGradient id="rail_brass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0d382" />
+      <stop offset="55%" stop-color="#bd9037" />
+      <stop offset="100%" stop-color="#6e4e16" />
+    </linearGradient>
+
+    <linearGradient id="rail_wood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c4e30" />
+      <stop offset="50%" stop-color="#4d2c19" />
+      <stop offset="100%" stop-color="#29150a" />
+    </linearGradient>
+
+    <linearGradient id="rail_hotSpike" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#5c2818" />
+      <stop offset="35%" stop-color="#d94518" />
+      <stop offset="72%" stop-color="#ff9924" />
+      <stop offset="100%" stop-color="#fff4b8" />
+    </linearGradient>
+
+    <radialGradient id="rail_spikeHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffbb4d" stop-opacity="0.72" />
+      <stop offset="48%" stop-color="#ff5e1a" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#ff5e1a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Жаркое свечение раскалённого железнодорожного костыля -->
+  <g id="rail_heat_halo">
+    <circle cx="454" cy="228" r="56" fill="url(#rail_spikeHalo)" />
+  </g>
+
+  <!-- Облачко пара из верхнего свистка-клапана -->
+  <g id="rail_steam" opacity="0.82">
+    <circle cx="268" cy="144" r="14" fill="#edf4f8" />
+    <circle cx="286" cy="134" r="18" fill="#dce7ee" />
+    <circle cx="308" cy="126" r="12" fill="#edf4f8" />
+  </g>
+
+  <!-- Рукоять, курок и медный паропровод снизу -->
+  <g id="rail_lower">
+    <!-- Медная паропроводная трубка -->
+    <path d="M174,284 C202,334 274,336 312,282"
+          fill="none" stroke="#121519" stroke-width="18" stroke-linecap="round" />
+    <path d="M174,284 C202,334 274,336 312,282"
+          fill="none" stroke="url(#rail_copper)" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Спусковая скоба -->
+    <path d="M150,274 L198,274 L190,310 L148,310 Z"
+          fill="none" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+    <path d="M172,276 L166,298" fill="none" stroke="#121519" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Костыльная кассета-магазин -->
+    <path d="M254,276 L310,276 L306,338 L258,338 Z"
+          fill="url(#rail_iron)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <line x1="270" y1="286" x2="270" y2="328" stroke="#1b2026" stroke-width="6" />
+    <line x1="284" y1="286" x2="284" y2="328" stroke="#ff7a29" stroke-width="5" />
+    <line x1="296" y1="286" x2="296" y2="328" stroke="#1b2026" stroke-width="6" />
+  </g>
+
+  <!-- Самодельный деревянный приклад с железной скобой -->
+  <g id="rail_stock">
+    <path d="M32,226 L122,220 L150,224 L150,276 L118,284 L48,334 L32,320 Z"
+          fill="url(#rail_wood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <path d="M32,226 L52,224 L52,330 L40,332 L32,320 Z"
+          fill="url(#rail_rust)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+    <path d="M64,242 L134,236" fill="none" stroke="#a66f49" stroke-width="5" opacity="0.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Открытый рельсовый ствол и раскалённый костыль -->
+  <g id="rail_barrel">
+    <!-- Раскалённый железнодорожный костыль, торчащий из ствола -->
+    <polygon points="402,216 462,218 486,228 462,238 402,240"
+             fill="url(#rail_hotSpike)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+    <!-- Шляпка костыля -->
+    <rect x="404" y="210" width="14" height="36" rx="4"
+          fill="#d94518" stroke="#121519" stroke-width="6" />
+
+    <!-- Рельсовые направляющие ствола -->
+    <rect x="304" y="198" width="142" height="18" rx="4"
+          fill="url(#rail_iron)" stroke="#121519" stroke-width="10" />
+    <rect x="304" y="242" width="142" height="18" rx="4"
+          fill="url(#rail_iron)" stroke="#121519" stroke-width="10" />
+
+    <!-- Стягивающие хомуты ствола -->
+    <rect x="336" y="192" width="22" height="74" rx="5"
+          fill="url(#rail_brass)" stroke="#121519" stroke-width="9" />
+    <rect x="394" y="192" width="22" height="74" rx="5"
+          fill="url(#rail_brass)" stroke="#121519" stroke-width="9" />
+  </g>
+
+  <!-- Паровой котёл-ресивер с манометром и паровым свистком -->
+  <g id="rail_boiler">
+    <!-- Верхний паровой свисток Подземки -->
+    <rect x="248" y="158" width="22" height="44" rx="5"
+          fill="url(#rail_brass)" stroke="#121519" stroke-width="9" />
+    <rect x="242" y="154" width="34" height="12" rx="4"
+          fill="url(#rail_copper)" stroke="#121519" stroke-width="7" />
+
+    <!-- Массивный цилиндрический паровой котёл -->
+    <path d="M138,204 C138,192 150,188 164,188 L294,188 C306,188 314,196 314,208 L314,272 C314,284 306,290 294,290 L164,290 C150,290 138,284 138,272 Z"
+          fill="url(#rail_rust)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхний металлический блик котла -->
+    <line x1="158" y1="200" x2="294" y2="200" stroke="#cf906b" stroke-width="6" opacity="0.55" stroke-linecap="round" />
+
+    <!-- Стальные клёпаные обручи котла -->
+    <rect x="150" y="190" width="16" height="98" fill="url(#rail_iron)" stroke="#121519" stroke-width="6" />
+    <rect x="284" y="190" width="16" height="98" fill="url(#rail_iron)" stroke="#121519" stroke-width="6" />
+
+    <!-- Крупный читаемый манометр давления пара -->
+    <circle cx="224" cy="239" r="32" fill="url(#rail_brass)" stroke="#121519" stroke-width="9" />
+    <circle cx="224" cy="239" r="21" fill="#f4f0e4" stroke="#121519" stroke-width="4" />
+    <!-- Красная зона высокого давления на циферблате -->
+    <path d="M232,222 A19,19 0 0,1 242,244" fill="none" stroke="#d93226" stroke-width="6" stroke-linecap="round" />
+    <!-- Стрелка манометра -->
+    <line x1="224" y1="239" x2="238" y2="228" stroke="#121519" stroke-width="5" stroke-linecap="round" />
+    <circle cx="224" cy="239" r="5" fill="#121519" />
+
+    <!-- Болты крепления -->
+    <circle cx="158" cy="212" r="4" fill="#121519" />
+    <circle cx="158" cy="268" r="4" fill="#121519" />
+    <circle cx="292" cy="212" r="4" fill="#121519" />
+    <circle cx="292" cy="268" r="4" fill="#121519" />
+  </g>
+</svg>

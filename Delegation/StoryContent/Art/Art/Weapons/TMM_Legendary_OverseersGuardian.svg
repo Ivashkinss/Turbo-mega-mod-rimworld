@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="og_steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b95a0" />
+      <stop offset="40%" stop-color="#58616b" />
+      <stop offset="85%" stop-color="#333940" />
+      <stop offset="100%" stop-color="#1e2227" />
+    </linearGradient>
+
+    <linearGradient id="og_darkSteel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#545d66" />
+      <stop offset="50%" stop-color="#31373d" />
+      <stop offset="100%" stop-color="#191d21" />
+    </linearGradient>
+
+    <linearGradient id="og_wood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a5938" />
+      <stop offset="48%" stop-color="#5c361e" />
+      <stop offset="100%" stop-color="#301a0d" />
+    </linearGradient>
+
+    <linearGradient id="og_vaultBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3c73b8" />
+      <stop offset="55%" stop-color="#224a7d" />
+      <stop offset="100%" stop-color="#142d4f" />
+    </linearGradient>
+
+    <linearGradient id="og_brass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5d77a" />
+      <stop offset="55%" stop-color="#c49735" />
+      <stop offset="100%" stop-color="#735316" />
+    </linearGradient>
+
+    <radialGradient id="og_glint" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="42%" stop-color="#ffe799" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#ffe799" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Лёгкий двойной отблеск у сдвоенного дульного среза -->
+  <g id="og_muzzle_glow">
+    <circle cx="470" cy="212" r="24" fill="url(#og_glint)" />
+    <circle cx="470" cy="238" r="24" fill="url(#og_glint)" />
+  </g>
+
+  <!-- Рукоять, спусковая скоба и изогнутый магазин -->
+  <g id="og_lower">
+    <!-- Спусковая скоба -->
+    <path d="M168,266 L216,266 L208,298 L166,298 Z"
+          fill="none" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+    <path d="M190,268 L184,288" fill="none" stroke="#121519" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Изогнутый магазин повышенной ёмкости -->
+    <path d="M226,266 L272,266 C274,300 282,328 294,350 L252,358 C238,330 230,300 226,266 Z"
+          fill="url(#og_darkSteel)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <!-- Рёбра жёсткости и синяя лента Волт-Тек на магазине -->
+    <polygon points="234,300 276,294 281,314 239,320" fill="url(#og_vaultBlue)" stroke="#121519" stroke-width="4" />
+    <line x1="238" y1="312" x2="278" y2="306" stroke="#f5d77a" stroke-width="4" />
+  </g>
+
+  <!-- Деревянный приклад боевого карабина -->
+  <g id="og_stock">
+    <path d="M32,226 L124,218 L156,222 L156,268 L128,274 L46,320 L32,306 Z"
+          fill="url(#og_wood)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+    <!-- Стальной затыльник приклада -->
+    <path d="M32,226 L50,224 L50,316 L38,318 L32,306 Z"
+          fill="url(#og_darkSteel)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+    <!-- Блик на ореховом дереве -->
+    <path d="M62,238 L136,232" fill="none" stroke="#b37b52" stroke-width="5" opacity="0.55" stroke-linecap="round" />
+    <!-- Антабка -->
+    <circle cx="82" cy="296" r="7" fill="url(#og_brass)" stroke="#121519" stroke-width="4" />
+  </g>
+
+  <!-- Сдвоенные стволы (фирменная особенность «Стража Смотрителя») -->
+  <g id="og_barrels">
+    <!-- Верхний ствол -->
+    <rect x="376" y="204" width="98" height="16" rx="3"
+          fill="url(#og_steel)" stroke="#121519" stroke-width="9" />
+    <!-- Нижний синхронный ствол -->
+    <rect x="376" y="228" width="98" height="16" rx="3"
+          fill="url(#og_darkSteel)" stroke="#121519" stroke-width="9" />
+
+    <!-- Соединительный дульный хомут и сдвоенный компенсатор -->
+    <rect x="448" y="198" width="32" height="52" rx="5"
+          fill="url(#og_steel)" stroke="#121519" stroke-width="9" />
+    <line x1="464" y1="206" x2="464" y2="242" stroke="#121519" stroke-width="5" />
+    <!-- Мушка -->
+    <polygon points="452,198 468,198 464,178 456,180"
+             fill="url(#og_brass)" stroke="#121519" stroke-width="7" stroke-linejoin="round" />
+  </g>
+
+  <!-- Вентилируемое цевьё -->
+  <g id="og_handguard">
+    <!-- Верхний перфорированный кожух -->
+    <path d="M294,202 L392,204 L388,248 L294,250 Z"
+          fill="url(#og_darkSteel)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+    <!-- Вентиляционные отверстия охлаждения -->
+    <rect x="312" y="212" width="14" height="12" rx="3" fill="#121519" />
+    <rect x="334" y="212" width="14" height="12" rx="3" fill="#121519" />
+    <rect x="356" y="212" width="14" height="12" rx="3" fill="#121519" />
+
+    <!-- Нижняя деревянная накладка цевья -->
+    <path d="M296,238 L384,238 L376,262 L296,262 Z"
+          fill="url(#og_wood)" stroke="#121519" stroke-width="9" stroke-linejoin="round" />
+  </g>
+
+  <!-- Коллиматорный прицел сверху -->
+  <g id="og_optic">
+    <path d="M174,196 L186,168 L244,168 L254,196 Z"
+          fill="url(#og_darkSteel)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+    <rect x="196" y="176" width="38" height="12" rx="3" fill="#70e0ff" stroke="#121519" stroke-width="4" />
+  </g>
+
+  <!-- Сдвоенный ресивер карабина -->
+  <g id="og_receiver">
+    <path d="M144,196 L298,196 L306,208 L306,264 L294,272 L144,272 L136,256 L136,210 Z"
+          fill="url(#og_steel)" stroke="#121519" stroke-width="12" stroke-linejoin="round" />
+
+    <!-- Верхний блик -->
+    <line x1="152" y1="204" x2="292" y2="204" stroke="#c8d3de" stroke-width="5" opacity="0.6" stroke-linecap="round" />
+
+    <!-- Двойной затворный механизм (два параллельных окна выброса и латунных затвора) -->
+    <rect x="208" y="208" width="68" height="15" rx="4" fill="#1b2026" stroke="#121519" stroke-width="5" />
+    <rect x="216" y="212" width="38" height="7" rx="2" fill="url(#og_brass)" />
+
+    <rect x="208" y="232" width="68" height="15" rx="4" fill="#1b2026" stroke="#121519" stroke-width="5" />
+    <rect x="224" y="236" width="38" height="7" rx="2" fill="url(#og_brass)" />
+
+    <!-- Памятный значок Смотрителя Убежища 81 (сине-золотой щиток) -->
+    <circle cx="172" cy="234" r="17" fill="url(#og_vaultBlue)" stroke="url(#og_brass)" stroke-width="5" />
+    <line x1="162" y1="234" x2="182" y2="234" stroke="#f5d77a" stroke-width="5" stroke-linecap="round" />
+    <circle cx="172" cy="234" r="5" fill="#f5d77a" />
+  </g>
+</svg>

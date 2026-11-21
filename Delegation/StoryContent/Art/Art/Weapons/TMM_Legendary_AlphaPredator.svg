@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="ap_bioferrite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#523c4e" />
+      <stop offset="38%" stop-color="#2b1e2a" />
+      <stop offset="78%" stop-color="#170f18" />
+      <stop offset="100%" stop-color="#0b070c" />
+    </linearGradient>
+
+    <linearGradient id="ap_bioHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8c637e" />
+      <stop offset="50%" stop-color="#b8849f" />
+      <stop offset="100%" stop-color="#5e3d54" />
+    </linearGradient>
+
+    <linearGradient id="ap_fangs" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff0f2" />
+      <stop offset="55%" stop-color="#d9b2ba" />
+      <stop offset="100%" stop-color="#7a2c3b" />
+    </linearGradient>
+
+    <linearGradient id="ap_grip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#731d2c" />
+      <stop offset="50%" stop-color="#420e18" />
+      <stop offset="100%" stop-color="#1c050a" />
+    </linearGradient>
+
+    <radialGradient id="ap_bloodCore" cx="42%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#ffd6df" />
+      <stop offset="32%" stop-color="#ff2e55" />
+      <stop offset="74%" stop-color="#a80c28" />
+      <stop offset="100%" stop-color="#420310" />
+    </radialGradient>
+
+    <radialGradient id="ap_bloodHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff244c" stop-opacity="0.68" />
+      <stop offset="46%" stop-color="#9e0e2b" stop-opacity="0.30" />
+      <stop offset="80%" stop-color="#4a071c" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#4a071c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Багрово-алый хищный ореол крови Альфа-вампира -->
+  <g id="ap_halo">
+    <circle cx="296" cy="216" r="142" fill="url(#ap_bloodHalo)" />
+  </g>
+
+  <!-- Живой клинок повёрнут по диагонали (рукоять слева-снизу, хищное лезвие справа-сверху) -->
+  <g id="ap_sword_group" transform="rotate(-45 256 256)">
+    <!-- Зазубренные костяные клыки вдоль нижней режущей кромки -->
+    <g id="ap_fangs_edge">
+      <polygon points="214,274 228,308 248,274" fill="url(#ap_fangs)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="252,272 268,310 288,270" fill="url(#ap_fangs)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="292,268 310,306 328,266" fill="url(#ap_fangs)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="332,264 350,298 368,260" fill="url(#ap_fangs)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+      <polygon points="372,258 392,288 408,254" fill="url(#ap_fangs)" stroke="#121519" stroke-width="8" stroke-linejoin="round" />
+    </g>
+
+    <!-- Живое биоферритовое лезвие -->
+    <g id="ap_blade">
+      <path d="M180,224 C252,212 344,202 426,216 C458,222 480,234 494,248
+               C466,266 424,274 366,276 C298,278 236,282 180,282 Z"
+            fill="url(#ap_bioferrite)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+      <!-- Светлый органический обух лезвия -->
+      <path d="M192,232 C266,220 348,214 422,224 C446,228 462,234 474,242"
+            fill="none" stroke="url(#ap_bioHighlight)" stroke-width="5" opacity="0.7" stroke-linecap="round" />
+
+      <!-- Хитиновые чешуйчатые насечки вдоль обуха -->
+      <path d="M242,220 L252,236 M298,214 L306,232 M356,214 L362,232 M412,218 L416,234"
+            fill="none" stroke="#121519" stroke-width="5" stroke-linecap="round" />
+
+      <!-- Пульсирующая артерия живой крови внутри биоферрита -->
+      <path d="M198,254 C248,248 296,258 348,248 C392,240 432,244 472,248"
+            fill="none" stroke="#ff244c" stroke-width="7.5" stroke-linecap="round" />
+      <path d="M202,254 C250,248 298,258 348,248 C390,240 428,244 464,248"
+            fill="none" stroke="#ffb3c2" stroke-width="3" stroke-linecap="round" opacity="0.88" />
+      <!-- Боковые капилляры к клыкам -->
+      <path d="M266,252 L272,272 M308,252 L314,270 M352,248 L358,266 M396,244 L402,260"
+            fill="none" stroke="#ff2e55" stroke-width="4" stroke-linecap="round" />
+    </g>
+
+    <!-- Хищная крылато-рёберная гарда с живым сердцем крови -->
+    <g id="ap_guard">
+      <path d="M148,204 C166,174 202,166 226,178 C206,196 198,220 200,254
+               C198,288 206,312 226,330 C202,342 166,334 148,304 Z"
+            fill="url(#ap_bioferrite)" stroke="#121519" stroke-width="11" stroke-linejoin="round" />
+
+      <!-- Костяные шипы на концах гарды -->
+      <path d="M170,192 L204,182 M166,216 L194,210 M166,292 L194,298 M170,316 L204,326"
+            fill="none" stroke="#a67a90" stroke-width="4.5" stroke-linecap="round" opacity="0.65" />
+
+      <!-- Пульсирующий рубиновый кристалл крови в сердце гарды -->
+      <circle cx="176" cy="254" r="18" fill="url(#ap_bloodCore)" stroke="#121519" stroke-width="6" />
+      <circle cx="171" cy="249" r="5" fill="#ffffff" opacity="0.82" />
+    </g>
+
+    <!-- Живая рукоять и когтистое навершие -->
+    <g id="ap_hilt">
+      <rect x="64" y="236" width="90" height="36" rx="8"
+            fill="url(#ap_grip)" stroke="#121519" stroke-width="10" />
+      <!-- Сухожильные рёбра обмотки -->
+      <path d="M84,238 L94,270 M106,238 L116,270 M128,238 L138,270"
+            fill="none" stroke="#121519" stroke-width="6" stroke-linecap="round" />
+      <path d="M90,242 L98,266 M112,242 L120,266 M134,242 L142,266"
+            fill="none" stroke="#bf344e" stroke-width="3" opacity="0.7" stroke-linecap="round" />
+
+      <!-- Когтистое навершие с каплей крови -->
+      <path d="M28,254 L54,224 L74,234 L74,274 L54,284 Z"
+            fill="url(#ap_bioferrite)" stroke="#121519" stroke-width="10" stroke-linejoin="round" />
+      <circle cx="54" cy="254" r="10" fill="url(#ap_bloodCore)" stroke="#121519" stroke-width="4.5" />
+    </g>
+  </g>
+
+  <!-- Парящие капли алой крови вокруг живого клинка -->
+  <g id="ap_droplets">
+    <path d="M358,116 C366,128 366,138 358,142 C350,138 350,128 358,116 Z"
+          fill="#ff385c" stroke="#121519" stroke-width="4" stroke-linejoin="round" />
+    <circle cx="418" cy="184" r="6" fill="#ff99ad" stroke="#a80c28" stroke-width="3" />
+    <circle cx="240" cy="166" r="5" fill="#ff99ad" stroke="#a80c28" stroke-width="3" />
+  </g>
+</svg>
