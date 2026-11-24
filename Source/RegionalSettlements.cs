@@ -106,25 +106,76 @@ namespace TurboMegaMod
             var def = layer.Def.SettlementWorldObjectDef;
             if (def == null) return;
             var factions = Find.FactionManager.AllFactionsListForReading
-                .Where(f => f != null && !f.IsPlayer && !f.defeated && !f.Hidden && f.def != null && f.def.settlementGenerationWeight > 0 &&
+                .Where(f => f != null && !f.IsPlayer && !f.defeated && !f.Hidden && !f.temporary && f.def != null && f.def.settlementGenerationWeight > 0 &&
                     (f.def.layerWhitelist.NullOrEmpty() || f.def.layerWhitelist.Contains(layer.Def)))
                 .OrderBy(f => f.loadID)
                 .ToList();
-            foreach (var faction in factions)
-            {
-                int current = Find.WorldObjects.Settlements.Count(s => s.Faction == faction && s.Tile.Layer == layer);
-                int needed = 2 - current;
-                for (int i = 0; i < needed; i++)
+            RepairMisplaced(layer);
+            // Every faction gets its first settlement before anyone gets a second one, so a crowded map cannot leave a faction without a base.
+            for (int target = 1; target <= 2; target++)
+                foreach (var faction in factions)
                 {
-                    var tile = TileFinder.RandomSettlementTileFor(layer, faction, false, null);
-                    if (!tile.Valid) break;
+                    if (Find.WorldObjects.Settlements.Count(s => s.Faction == faction && s.Tile.Layer == layer) >= target) continue;
+                    var tile = FindSettlementTile(layer, faction);
+                    if (!tile.Valid)
+                    {
+                        if (target == 1) Log.Warning("[TMM] No free tile for the first settlement of " + faction.def.defName + "; the world is too small or too crowded.");
+                        continue;
+                    }
                     var settlement = (Settlement)WorldObjectMaker.MakeWorldObject(def);
                     settlement.SetFaction(faction);
                     settlement.Tile = tile;
                     settlement.Name = SettlementNameGenerator.GenerateSettlementName(settlement, null);
                     Find.WorldObjects.Add(settlement);
                 }
+        }
+        private static bool BuildableTerrain(PlanetTile tile)
+        {
+            var terrain = Find.WorldGrid[tile];
+            return terrain.PrimaryBiome.canBuildBase && terrain.hilliness != Hilliness.Impassable;
+        }
+        // When vanilla finds no tile it puts the settlement on tile 0, whatever stands or lies there.
+        private static void RepairMisplaced(PlanetLayer layer)
+        {
+            var taken = new HashSet<PlanetTile>();
+            foreach (var settlement in Find.WorldObjects.Settlements.Where(s => s.Faction != null && s.Tile.Layer == layer)
+                .OrderByDescending(s => s.Faction.IsPlayer).ThenBy(s => s.ID).ToList())
+            {
+                bool free = taken.Add(settlement.Tile);
+                if (settlement.Faction.IsPlayer || settlement.HasMap || (free && BuildableTerrain(settlement.Tile))) continue;
+                Find.WorldObjects.Remove(settlement);
+                var tile = FindSettlementTile(layer, settlement.Faction);
+                if (!tile.Valid)
+                {
+                    Log.Warning("[TMM] Removed a misplaced settlement of " + settlement.Faction.def.defName + ": no free tile for it.");
+                    continue;
+                }
+                settlement.Tile = tile;
+                taken.Add(tile);
+                Find.WorldObjects.Add(settlement);
             }
+        }
+        public static PlanetTile FindSettlementTile(PlanetLayer layer, Faction faction)
+        {
+            for (int i = 0; i < 500; i++)
+            {
+                var tile = new PlanetTile(Rand.Range(0, layer.TilesCount), layer);
+                if (!Rand.Chance(Find.WorldGrid[tile].PrimaryBiome.settlementSelectionWeight) || !Suitable(tile, faction)) continue;
+                var curve = faction.def.minSettlementTemperatureChanceCurve;
+                if (curve == null || Rand.Chance(curve.Evaluate(GenTemperature.MinTemperatureAtTile(tile)))) return tile;
+            }
+            // Crowded or tiny world: full search, the faction's own climate first, then any place where a base may stand.
+            var suitable = new List<PlanetTile>();
+            var any = new List<PlanetTile>();
+            for (int id = 0; id < layer.TilesCount; id++)
+            {
+                var tile = new PlanetTile(id, layer);
+                if (!TileFinder.IsValidTileForNewSettlement(tile)) continue;
+                any.Add(tile);
+                if (Suitable(tile, faction)) suitable.Add(tile);
+            }
+            if (suitable.Count > 0) return suitable.RandomElement();
+            return any.Count > 0 ? any.RandomElement() : PlanetTile.Invalid;
         }
         public static void Generate(PlanetLayer layer, RegionalWorld state)
         {

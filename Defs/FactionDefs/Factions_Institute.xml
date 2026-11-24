@@ -2,6 +2,9 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_InstituteFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>107</configurationListOrderPriority>
     <label>Institute</label>
     <description>A hidden underground order of scientists who build synthetic humans and see the surface as a lost cause.</description>
     <pawnSingular>scientist</pawnSingular>

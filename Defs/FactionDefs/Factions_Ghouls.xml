@@ -2,6 +2,9 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_GhoulsFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>103</configurationListOrderPriority>
     <label>sapient ghouls</label>
     <description>Ghouls who kept their minds: traders, drifters and freedom-loving rogues who remember the world before the bombs and resent the smoothskins who fear them.</description>
     <pawnSingular>ghoul</pawnSingular>

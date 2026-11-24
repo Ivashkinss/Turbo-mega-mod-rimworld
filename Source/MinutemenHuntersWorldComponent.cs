@@ -27,32 +27,18 @@ namespace TurboMegaMod
             }
         }
 
-        private bool initialized;
-
-        public override void WorldComponentTick()
+        /// The faction comes only from the world creation list. A player who removed it there, and an old save without it,
+        /// keep their choice: nothing creates it later. Quests that need it are not offered without it.
+        public static bool Available
         {
-            base.WorldComponentTick();
-            if (!initialized)
-            {
-                initialized = true;
-                EnsureFactionExists();
-            }
+            get { Faction f = Faction; return f != null && !f.defeated; }
         }
 
-        public void EnsureFactionExists()
+        /// Kept for existing callers: says whether the faction is there, never creates it.
+        public bool EnsureFactionExists()
         {
-            if (Find.FactionManager == null || MinutemenHuntersDefOf.TMM_MinutemenHuntersFaction == null) return;
-            var existing = Find.FactionManager.FirstFactionOfDef(MinutemenHuntersDefOf.TMM_MinutemenHuntersFaction);
-            if (existing != null) return;
-
-            // Safely generate faction for new world or existing save without breaking other factions
-            var parms = new FactionGeneratorParms(MinutemenHuntersDefOf.TMM_MinutemenHuntersFaction);
-            var newFaction = FactionGenerator.NewGeneratedFaction(parms);
-            newFaction.TryAffectGoodwillWith(Faction.OfPlayer, 0, false, false);
-            Find.FactionManager.Add(newFaction);
-            Log.Message("[TMM] Minutemen & Hunters faction successfully registered in world.");
+            return Available;
         }
-
         public override void ExposeData()
         {
             base.ExposeData();

@@ -2,6 +2,9 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_MenOfLettersFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>108</configurationListOrderPriority>
     <label>British Men of Letters</label>
     <description>An old British order of scholars and hunters who keep the world's monsters under control — with ruthless efficiency and no tolerance for amateurs.</description>
     <pawnSingular>man of letters</pawnSingular>

@@ -28,6 +28,17 @@ namespace TurboMegaMod
             catch (Exception ex) { Log.Warning("[TMM] SaveHygiene skipped: " + ex.Message); }
         }
 
+        private static readonly System.Reflection.PropertyInfo VehicleCrew = AccessTools.TypeByName("Vehicles.VehiclePawn") == null ? null : AccessTools.Property(AccessTools.TypeByName("Vehicles.VehiclePawn"), "AllPawnsAboard");
+
+        /// Crew and passengers sit in vehicle seats that the holder traversal does not enter, but the vehicle saves them.
+        private static IEnumerable<Pawn> AboardVehicle(Pawn vehicle)
+        {
+            if (VehicleCrew == null || !VehicleCrew.DeclaringType.IsInstanceOfType(vehicle)) yield break;
+            System.Collections.IEnumerable crew = VehicleCrew.GetValue(vehicle, null) as System.Collections.IEnumerable;
+            if (crew == null) yield break;
+            foreach (object o in crew) { Pawn p = o as Pawn; if (p != null) yield return p; }
+        }
+
         /// Returns how many relations were removed. A relation is dangling when the other pawn will not be written
         /// to the save: it is not on a map, not a world pawn and not held anywhere in the world (caravans, outposts,
         /// transporters, corpses and other holders are all included).
@@ -47,6 +58,7 @@ namespace TurboMegaMod
                 Corpse c = held[i] as Corpse;
                 if (c != null && c.InnerPawn != null) saved.Add(c.InnerPawn);
             }
+            foreach (Pawn v in new List<Pawn>(saved)) foreach (Pawn p in AboardVehicle(v)) saved.Add(p);
             int removed = 0;
             List<DirectPawnRelation> dead = new List<DirectPawnRelation>();
             foreach (Pawn p in saved)

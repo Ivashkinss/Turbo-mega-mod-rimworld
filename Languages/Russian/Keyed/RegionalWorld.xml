@@ -5,4 +5,6 @@
   <TMM.World.EnterFriendly>Войти в дружественное поселение</TMM.World.EnterFriendly>
   <TMM.World.EnterFriendlyHelp>Войти своим караваном на настоящую карту поселения в этой точке. Существующие постройки и вещи сохранятся. Для выхода используйте обычную команду повторного сбора каравана.</TMM.World.EnterFriendlyHelp>
   <TMM.World.RegionalCenter>Крупный региональный центр</TMM.World.RegionalCenter>
+  <TMM.World.SettlementProperty>принадлежит фракции «{0}»</TMM.World.SettlementProperty>
+  <TMM.World.SettlementPropertyRefused>{0} не может взять {1}: вещь принадлежит фракции «{2}». Купите её у торговца.</TMM.World.SettlementPropertyRefused>
 </LanguageData>

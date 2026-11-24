@@ -10,7 +10,7 @@ namespace TurboMegaMod
         protected override bool TestRunInt(Slate slate)
         {
             var map = QuestGen_Get.GetMap();
-            if (map == null) return false;
+            if (map == null || !MinutemenHuntersWorldComponent.Available) return false;
             var comp = MinutemenHuntersWorldComponent.Instance;
             if (comp != null && comp.quest1Completed) return false;
             return true;
@@ -22,9 +22,16 @@ namespace TurboMegaMod
             Slate slate = QuestGen.slate;
             Map map = QuestGen_Get.GetMap();
 
-            var comp = MinutemenHuntersWorldComponent.Instance;
-            if (comp != null) comp.EnsureFactionExists();
             Faction faction = MinutemenHuntersWorldComponent.Faction;
+            if (faction == null)
+            {
+                // Only a forced generation gets here (the test run refuses). The quest ends at once and creates nothing.
+                Log.Warning("[TMM] Minutemen quest skipped: the faction is not in this world.");
+                quest.name = "TMM_MinutemenReliefQuest_Title".Translate();
+                quest.description = "TMM_MinutemenReliefQuest_Title".Translate();
+                quest.End(QuestEndOutcome.Unknown, 0, null, quest.InitiateSignal);
+                return;
+            }
 
             string questTag = "MinutemenRelief" + quest.id;
             string inSignalEnable = slate.Get<string>("inSignal") ?? QuestGen.slate.Get<string>("inSignal");

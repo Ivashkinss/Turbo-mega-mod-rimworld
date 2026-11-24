@@ -16,16 +16,9 @@ namespace TurboMegaMod
         public override void Generate(Map map, GenStepParams parms)
         {
             IntVec3 center = map.Center;
-            Faction faction = MinutemenHuntersWorldComponent.Faction;
-            if (faction == null)
-            {
-                var comp = MinutemenHuntersWorldComponent.Instance;
-                if (comp != null)
-                {
-                    comp.EnsureFactionExists();
-                    faction = MinutemenHuntersWorldComponent.Faction;
-                }
-            }
+            // An outpost of an existing save keeps the faction it really has; without any faction it is an abandoned place
+            // (no garrison, buildings without an owner) and nothing new is created.
+            Faction faction = map.Parent != null && map.Parent.Faction != null && !map.Parent.Faction.IsPlayer ? map.Parent.Faction : MinutemenHuntersWorldComponent.Faction;
 
             // 1. Clear 45x45 area
             CellRect bounds = new CellRect(center.x - 22, center.z - 22, 45, 45);

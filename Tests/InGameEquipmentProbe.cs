@@ -134,6 +134,7 @@ namespace TurboMegaMod
                     else if (EquipmentProbeBootstrap.ReloadMode)
                     {
                         RunReloadLogic();
+                        CheckT60Helmet("Reload");
                         FinishAndShutdown("EquipmentReloadProbe.json", false);
                     }
                 }
@@ -179,6 +180,13 @@ namespace TurboMegaMod
             {
                 if (saveBeforeQuit)
                 {
+                    // The hero may fire on his own after the checks: save a known number that is not a default, so that the reload proves the saved value.
+                    foreach (Pawn p in map.mapPawns.FreeColonistsSpawned)
+                        if (p.Name != null && p.Name.ToStringShort == ProbeColonistNick && p.equipment != null && p.equipment.Primary != null)
+                        {
+                            CompWeaponMods saved = p.equipment.Primary.GetComp<CompWeaponMods>();
+                            if (saved != null && saved.InstalledMods.Count > 0) saved.InstalledMods[0].charges = ReloadCharges;
+                        }
                     GameDataSaveLoader.SaveGame(EquipmentProbeBootstrap.SaveName); // CHECK API
                 }
             }
@@ -352,7 +360,33 @@ namespace TurboMegaMod
                                    hero.apparel.WornApparel.Contains(duster) &&
                                    (powerArmor != null && hero.apparel.WornApparel.Contains(powerArmor));
             AddCheck("Layers_BackpackAndPowerArmorCoexist", wearingAllThree, "all 3 worn simultaneously", wearingAllThree.ToString());
+            Pawn fit = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,
+                Faction.OfPlayer, forceGenerateNewPawn: true, canGeneratePawnRelations: false, fixedGender: Gender.Female));
+            fit.Name = new NameTriple("T60", "ReleaseHelmet", "Probe");
+            fit.story.bodyType = BodyTypeDefOf.Female;
+            GenSpawn.Spawn(fit, FindClearCenter(), map);
+            WearApparel(fit, "TMM_Apparel_bos_t60_power_armor");
+            WearApparel(fit, "TMM_Apparel_bos_t60_helmet");
+            CheckT60Helmet("Fresh");
         }
+
+        private void CheckT60Helmet(string stage)
+        {
+            Pawn wearer = map.mapPawns.AllPawnsSpawned.FirstOrDefault(p =>
+                p.Name != null && p.Name.ToStringShort == "ReleaseHelmet");
+            ThingDef def = ThingDef.Named("TMM_Apparel_bos_t60_helmet");
+            bool headLayer = def.apparel.layers.Contains(ApparelLayerDefOf.Overhead) &&
+                !def.apparel.layers.Any(layer => layer.defName == "TMM_PowerArmor");
+            bool worn = wearer != null && wearer.apparel.WornApparel.Any(item => item.def == def);
+            RenderTexture portrait = wearer == null ? null : PortraitsCache.Get(wearer,
+                new Vector2(192f, 192f), Rot4.South, default(Vector3), 1f, true, true, true, true);
+            bool rendered = portrait != null && wearer.Drawer.renderer.renderTree.Resolved;
+            AddCheck("T60_" + stage, headLayer && worn && rendered &&
+                !m_errors.Any(message => message.Contains("Failed to find any textures")),
+                "head layer, worn, portrait rendered", "layer=" + headLayer + " worn=" + worn + " rendered=" + rendered);
+        }
+
+        private const int ReloadCharges = 17;
 
         private void RunReloadLogic()
         {
@@ -374,9 +408,9 @@ namespace TurboMegaMod
             CompWeaponMods rifleMods = rifle != null ? rifle.GetComp<CompWeaponMods>() : null;
             bool weaponModPersisted = rifleMods != null && rifleMods.InstalledMods.Count == 1 &&
                                       rifleMods.InstalledMods[0].modDefName == "TMM_Mod_HolyWaterTank" &&
-                                      rifleMods.InstalledMods[0].charges == 28;
+                                      rifleMods.InstalledMods[0].charges == ReloadCharges;
             AddCheck("Reload_WeaponModAndChargesPersisted", weaponModPersisted,
-                "HolyWaterTank[28]",
+                "HolyWaterTank[" + ReloadCharges + "]",
                 (rifleMods != null && rifleMods.InstalledMods.Count > 0)
                     ? string.Format("{0}[{1}]", rifleMods.InstalledMods[0].modDefName, rifleMods.InstalledMods[0].charges)
                     : "none");

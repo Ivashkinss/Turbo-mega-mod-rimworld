@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using HarmonyLib;
@@ -12,6 +13,52 @@ using Verse.AI.Group;
 
 namespace TurboMegaMod
 {
+    /// Is the hotel open? One answer for the goal, the guest and the Chronicle: the reception desk's own readiness data.
+    public static class StoryHotelGate
+    {
+        private static ServiceReadinessData Data(Map map)
+        {
+            ComplexMap complex = map == null ? null : map.GetComponent<ComplexMap>();
+            return complex == null || complex.desk == null || !complex.desk.Spawned ? null : ServiceReadinessData.Gather(complex.desk);
+        }
+
+        /// Null when the hotel of this map is ready; otherwise the key of the first missing thing.
+        public static string MissingKey(Map map, bool needFreePlace)
+        {
+            ServiceReadinessData d = Data(map);
+            if (d == null || !d.deskActive) return "TMM.Story.Hotel.MissingDesk";
+            if (!d.hotelModuleEnabled) return "TMM.Story.Hotel.MissingModule";
+            if (d.guestBedsTotal <= 0) return "TMM.Story.Hotel.MissingBed";
+            if (!d.guestsWelcome) return "TMM.Story.Hotel.MissingWelcome";
+            if (needFreePlace && d.guestSlotsAvailable <= 0) return "TMM.Story.Hotel.MissingPlace";
+            return null;
+        }
+
+        public static string MissingText(Map map, bool needFreePlace)
+        {
+            string key = MissingKey(map, needFreePlace);
+            return key == null ? "" : key.Translate().ToString();
+        }
+
+        public static Map ReadyHome(bool needFreePlace)
+        {
+            return Find.Maps == null ? null : Find.Maps.FirstOrDefault(m => m.IsPlayerHome && MissingKey(m, needFreePlace) == null);
+        }
+
+        /// The story guest is about to arrive as the first guest of this hotel, so no separate opening group is invited now.
+        public static bool StoryGuestExpected
+        {
+            get
+            {
+                SparkStory story = SparkStory.Instance;
+                return story != null && story.Runs.Any(r => r.status == StoryQuestStatus.Active && r.Def != null && r.stage >= 0 && r.stage < r.Def.stages.Count &&
+                    (r.Def.stages[r.stage] is StoryStage_OpenHotel ||
+                     r.Def.stages[r.stage] is StoryStage_HotelVisit && ((StoryStage_HotelVisit)r.Def.stages[r.stage]).requireHero &&
+                     r.vars.ContainsKey("waitingForGuest") && (!r.vars.ContainsKey("waitReason") || r.vars["waitReason"] == "hotel")));
+            }
+        }
+    }
+
     public enum StoryHotelObjective
     {
         Host,
@@ -35,7 +82,7 @@ namespace TurboMegaMod
     ///   removal from the visit map under our visit/exit lord in non-hostile, non-sentAway state.
     /// - Investigate requires a genuine PlayLogEntry_Interaction (colonist -> guest of this visit).
     /// </summary>
-    public sealed class StoryStage_HotelVisit : StoryStage
+    public sealed class StoryStage_HotelVisit : StoryStage_Choice
     {
         private const float DefaultHardOverdueDays = 2.0f;
 
@@ -82,6 +129,15 @@ namespace TurboMegaMod
         public float hunterRaidPointsFactor = 0.85f;
         public List<StoryChoice> outcomes = new List<StoryChoice>();
 
+        // A conversation with a named guest: the stage waits for an open hotel and for the hero (or the fallback hero), the hero
+        // checks in through Hospitality like any guest, and the inherited choices are offered once the guest really has a room.
+        public bool requireHero;
+        public HeroDef fallbackHero;
+        [MustTranslate] public string arrivalLabel;
+        [MustTranslate] public string arrivalText;
+        public string leaveOnOutcome;        // the guest leaves at once after this choice; otherwise the stay simply goes on
+        public float revisitDays = 1f;       // pause before the next visit when the guest left or died without an answer
+
         public override string Mechanic
         {
             get { return "hotel"; }
@@ -89,13 +145,13 @@ namespace TurboMegaMod
 
         public override int NextFor(string outcome)
         {
-            StoryChoice c = FindOutcome(outcome);
+            StoryChoice c = FindOutcome(outcome) ?? ChoiceFor(outcome);
             return c != null ? c.nextStage : -2;
         }
 
         public override IEnumerable<StoryEffect> EffectsFor(string outcome)
         {
-            StoryChoice c = FindOutcome(outcome);
+            StoryChoice c = FindOutcome(outcome) ?? ChoiceFor(outcome);
             if (c == null || c.effects == null) yield break;
             for (int i = 0; i < c.effects.Count; i++)
             {
@@ -195,10 +251,176 @@ namespace TurboMegaMod
         public override void Start(StoryContext ctx)
         {
             if (ctx == null || ctx.run == null) return;
+            if (requireHero)
+            {
+                ctx.run.vars["waitingForGuest"] = "true";
+                TryArrive(ctx);
+                return;
+            }
+            Arrive(ctx, ctx.Home, hero);
+        }
 
+        // ---------------- CONVERSATION WITH A NAMED GUEST ----------------
+
+        /// Waits until the hotel is open with a free place, the faction exists and one of the two heroes is free. Nothing is
+        /// created while any of that is missing: no faction, no second copy of a hero, no guest without a name.
+        private void TryArrive(StoryContext ctx)
+        {
+            int now = Find.TickManager.TicksGame;
+            if (now < GetInt(ctx, "nextTryTick", 0)) return;
+
+            Faction visitFac = ResolveVisitFaction(ctx);
+            Map home = StoryHotelGate.ReadyHome(true);
+            HeroDef visitor = null;
+            string reason = null;
+            if (visitFac == null) reason = "faction";
+            else if (home == null) reason = "hotel";
+            else
+            {
+                visitor = PickVisitor(visitFac);
+                if (visitor == null) reason = "guest";
+            }
+            if (reason == null)
+            {
+                string lastVisit = GetStr(ctx, "lastVisit");
+                ctx.run.vars["visitorHero"] = visitor.defName;
+                Arrive(ctx, home, visitor);
+                if (GetBool(ctx, "arrived") && GetBool(ctx, "heroIncluded"))
+                {
+                    ctx.run.vars.Remove("waitingForGuest");
+                    ctx.run.vars.Remove("waitReason");
+                    return;
+                }
+                string fail = GetStr(ctx, "failReason");
+                ctx.run.vars.Clear();
+                ctx.run.vars["waitingForGuest"] = "true";
+                if (!lastVisit.NullOrEmpty()) ctx.run.vars["lastVisit"] = lastVisit;
+                reason = fail.NullOrEmpty() ? "guest" : fail;
+            }
+            ctx.run.vars["waitReason"] = reason;
+            ctx.run.vars["nextTryTick"] = (now + (reason == "hotel" ? SparkStory.TickInterval : GenDate.TicksPerHour)).ToString();
+        }
+
+        private HeroDef PickVisitor(Faction visitFac)
+        {
+            HeroRegistry reg = HeroRegistry.Instance;
+            if (reg == null) return null;
+            foreach (HeroDef h in new[] { hero, fallbackHero })
+            {
+                string reason;
+                if (h != null && StoryPawnTransfer.IsFreeWorldPawn(reg.GetOrCreate(h), visitFac, out reason)) return h;
+            }
+            return null;
+        }
+
+        /// The choices come only while the guest is really staying: the guest claimed a room through Hospitality.
+        private void OfferTalk(StoryContext ctx)
+        {
+            if (choices.Count == 0 || GetBool(ctx, "talkOffered")) return;
+            Pawn guest = StoryGuest(ctx);
+            if (guest == null || HotelBillingHooks.Bed(guest) == null) return;
+            ctx.run.vars["talkOffered"] = "true";
+            ctx.run.pendingChoice = true;
+            StoryChoiceLetter.Send(ctx, ctx.run.stage, StoryChoiceLetter.KindChoice);
+        }
+
+        private Pawn StoryGuest(StoryContext ctx)
+        {
+            Map map = FindMapByUniqueId(GetInt(ctx, "visitMapId", -1));
+            int id = GetInt(ctx, "heroIdNum", -1);
+            return map == null ? null : map.mapPawns.AllPawnsSpawned.FirstOrDefault(p => p.thingIDNumber == id);
+        }
+
+        private string TickConversation(StoryContext ctx)
+        {
+            if (!ctx.run.chosenOutcome.NullOrEmpty())
+            {
+                string chosen = ctx.run.chosenOutcome;
+                ctx.run.chosenOutcome = null;
+                if (ChoiceFor(chosen) != null && GetStr(ctx, "talkOutcome").NullOrEmpty())
+                {
+                    ctx.run.pendingChoice = false;
+                    ctx.run.vars["talkOutcome"] = chosen;
+                    Pawn guest = StoryGuest(ctx);
+                    if (chosen == leaveOnOutcome && guest != null)
+                    {
+                        Lord exit = TriggerGracefulDeparture(guest.Map, guest.Faction, new List<Pawn> { guest });
+                        if (exit != null)
+                        {
+                            ctx.run.vars["exitLordId"] = exit.loadID.ToString();
+                            if (StoryRelationRestorer.Instance != null) StoryRelationRestorer.Instance.SetHotelExitLordId(StoryRelationRestorer.MakeLeaseId(ctx.run), exit.loadID);
+                        }
+                        ctx.run.vars["departureTriggered"] = "true";
+                    }
+                }
+            }
+            string talk = GetStr(ctx, "talkOutcome");
+            // The answer counts at once and the guest goes on as an ordinary hotel guest. Under a truce the visit stays
+            // tracked until the guest is gone: ending the truce now would turn the guest hostile inside the hotel.
+            if (!talk.NullOrEmpty() && GetStr(ctx, "truceLeaseId").NullOrEmpty()) return Finish(ctx, talk);
+            if (GetBool(ctx, "waitingForGuest"))
+            {
+                TryArrive(ctx);
+                return null;
+            }
+            string ended = TickVisit(ctx);
+            if (ended == null)
+            {
+                if (talk.NullOrEmpty()) OfferTalk(ctx);
+                return null;
+            }
+            if (!talk.NullOrEmpty()) return talk;
+
+            // Left, sent away or died without an answer: the main story waits for another visit instead of skipping the talk.
+            string why = GetStr(ctx, "failReason");
+            ctx.run.pendingChoice = false;
+            foreach (StoryChoiceLetter l in Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().ToList())
+                if (l.storyQuest == ctx.run.quest && l.kind == StoryChoiceLetter.KindChoice) Find.LetterStack.RemoveLetter(l);
+            ctx.run.needsLetter = false;
+            ctx.run.vars.Clear();
+            ctx.run.vars["waitingForGuest"] = "true";
+            ctx.run.vars["lastVisit"] = why.NullOrEmpty() ? ended : why;
+            ctx.run.vars["nextTryTick"] = (Find.TickManager.TicksGame + Mathf.RoundToInt(revisitDays * GenDate.TicksPerDay)).ToString();
+            return null;
+        }
+
+        private string ConversationObjective(StoryContext ctx)
+        {
+            string who = StoryUtil.Format("{GIVER}", ctx);
+            if (GetBool(ctx, "waitingForGuest"))
+            {
+                string reason = GetStr(ctx, "waitReason");
+                if (reason == "hotel") return "TMM.Story.Hotel.WaitHotel".Translate(StoryHotelGate.MissingText(ctx.Home, true)).ToString();
+                if (reason == "faction")
+                {
+                    FactionDef fd = DefDatabase<FactionDef>.GetNamedSilentFail(faction.NullOrEmpty() ? ctx.def.faction ?? "" : faction);
+                    return "TMM.Story.Hotel.NoFaction".Translate(who, fd == null ? "?" : fd.LabelCap.ToString()).ToString();
+                }
+                if (reason == "guest") return "TMM.Story.Hotel.NoGuest".Translate(who).ToString();
+                return "TMM.Story.Hotel.WaitGuest".Translate(who).ToString();
+            }
+            if (GetBool(ctx, "talkOffered")) return "TMM.Story.Hotel.Answer".Translate(who).ToString();
+            return "TMM.Story.Hotel.CheckIn".Translate(who).ToString();
+        }
+
+        /// A guest pays for the room like everyone else; a hero who lives off the map has no purse of their own.
+        private void EnsurePurse(Pawn guest)
+        {
+            if (guest == null || guest.Map == null || guest.inventory == null) return;
+            int fee = 0;
+            foreach (Building_Bed bed in guest.Map.listerBuildings.allBuildingsColonist.OfType<Building_Bed>())
+                if (ComplexLayout.IsGuest(bed)) fee = Mathf.Max(fee, HotelBillingHooks.Fee(bed));
+            int need = fee * (Mathf.CeilToInt(stayDays) + 1) - HotelBillingHooks.Money(guest);
+            if (need <= 0) return;
+            Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver);
+            silver.stackCount = need;
+            if (!guest.inventory.innerContainer.TryAdd(silver)) silver.Destroy(DestroyMode.Vanish);
+        }
+
+        private void Arrive(StoryContext ctx, Map home, HeroDef hero)
+        {
             EnsureHospitalityReflection();
 
-            Map home = ctx.Home;
             int now = Find.TickManager.TicksGame;
             int stayTicks = Mathf.Max(GenDate.TicksPerHour, Mathf.RoundToInt(stayDays * GenDate.TicksPerDay));
             int overdueTicks = Mathf.Max(GenDate.TicksPerHour * 6, Mathf.RoundToInt(Mathf.Max(0.25f, overdueDays) * GenDate.TicksPerDay));
@@ -415,8 +637,7 @@ namespace TurboMegaMod
                         visitFac,
                         delegate(Pawn spawnedHero)
                         {
-                            capturedLord.AddPawn(spawnedHero);
-                            return spawnedHero.GetLord() == capturedLord;
+                            return JoinVisit(capturedLord, spawnedHero);
                         },
                         false,
                         out heroHandle,
@@ -453,6 +674,9 @@ namespace TurboMegaMod
                     return;
                 }
 
+                if (requireHero && heroTransferred) EnsurePurse(heroHandle.Pawn);
+                RefreshHospitalityGuests(home);
+
                 if (usedMode == "hospitality")
                 {
                     for (int i = 0; i < finalGuests.Count; i++)
@@ -480,8 +704,8 @@ namespace TurboMegaMod
                     restorer.RegisterHotelGuests(ctx.run, home.uniqueID, visitLord.loadID, guestIdNums);
                 }
 
-                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Hotel Guests Arrived"), ctx);
-                string body = StoryUtil.Format(!text.NullOrEmpty() ? text : Objective(ctx), ctx);
+                string title = StoryUtil.Format(!arrivalLabel.NullOrEmpty() ? arrivalLabel : !label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Hotel Guests Arrived"), ctx);
+                string body = StoryUtil.Format(!arrivalText.NullOrEmpty() ? arrivalText : !text.NullOrEmpty() ? text : Objective(ctx), ctx);
                 LookTargets target = (heroHandle != null && heroHandle.Pawn != null) ? new LookTargets(heroHandle.Pawn) : new LookTargets(finalGuests[0]);
                 Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.NeutralEvent, target); // CHECK API
             }
@@ -559,6 +783,11 @@ namespace TurboMegaMod
         public override string Tick(StoryContext ctx)
         {
             if (ctx == null || ctx.run == null) return null;
+            return requireHero ? TickConversation(ctx) : TickVisit(ctx);
+        }
+
+        private string TickVisit(StoryContext ctx)
+        {
             if (ctx.run.vars.ContainsKey("finished")) return null;
 
             string immediate = GetStr(ctx, "immediateOutcome");
@@ -821,6 +1050,7 @@ namespace TurboMegaMod
 
         public override string Objective(StoryContext ctx)
         {
+            if (requireHero && ctx != null && ctx.run != null) return ConversationObjective(ctx);
             if (ctx != null && ctx.run != null && GetBool(ctx, "noHotel"))
             {
                 return "Open a hotel (build guest beds and enable welcoming guests)";
@@ -1283,6 +1513,25 @@ namespace TurboMegaMod
 
             LordJob vanillaJob = new RimWorld.LordJob_VisitColony(fac, chillSpot, stayTicks); // CHECK API
             return LordMaker.MakeNewLord(fac, vanillaJob, home, guests);
+        }
+
+        /// The hero joins after the group lord exists. Hospitality has its own late-join path (guest status, mood record);
+        /// a bare AddPawn leaves a pawn with a guest duty that Hospitality does not know as a guest.
+        private static bool JoinVisit(Lord lord, Pawn pawn)
+        {
+            LordToil toil = lord.CurLordToil;
+            MethodInfo joinLate = toil == null ? null : AccessTools.Method(toil.GetType(), "JoinLate", new Type[] { typeof(Pawn) });
+            if (joinLate != null) joinLate.Invoke(toil, new object[] { pawn });
+            if (pawn.GetLord() != lord) lord.AddPawn(pawn);
+            return pawn.GetLord() == lord;
+        }
+
+        /// Hospitality does the same right after it spawns a visitor group.
+        private static void RefreshHospitalityGuests(Map map)
+        {
+            MapComponent comp = HotelVisitGuarantee.HospitalityOf(map);
+            MethodInfo refresh = comp == null ? null : AccessTools.Method(comp.GetType(), "RefreshGuestListTotal", Type.EmptyTypes);
+            if (refresh != null) refresh.Invoke(comp, null);
         }
 
         private static LordJob TryCreateHospitalityLordJob(Faction fac, IntVec3 chillSpot, int stayTicks)

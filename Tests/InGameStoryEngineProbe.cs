@@ -14,10 +14,21 @@ using Verse;
 [StaticConstructorOnStartup]
 public static class StoryProbeLaunch
 {
+    private static bool worldDone;
+    private static void NoHeaven(ref List<FactionDef> factions)
+    {
+        if (worldDone) return;
+        worldDone = true;
+        var page = new Page_CreateWorldParams();
+        AccessTools.Method(typeof(Page_CreateWorldParams), "ResetFactionCounts").Invoke(page, null);
+        factions = ((List<FactionDef>)AccessTools.Field(typeof(Page_CreateWorldParams), "factions").GetValue(page)).Where(d => d.defName != "TMM_HeavenFaction").ToList();
+    }
     static StoryProbeLaunch()
     {
         if (Environment.GetCommandLineArgs().Contains("-tmm-story-reload"))
-            LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-Story"));
+            LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame(StoryEngineProbe.SaveName));
+        if (StoryEngineProbe.Case == "noheaven" && Environment.GetCommandLineArgs().Contains("-tmm-story-probe"))
+            new Harmony("tmm.test.story.noheaven").Patch(AccessTools.Method(typeof(RimWorld.Planet.WorldGenerator), "GenerateWorld"), prefix: new HarmonyMethod(typeof(StoryProbeLaunch), "NoHeaven"));
         LongEventHandler.ExecuteWhenFinished(() =>
         {
             if (Find.Maps == null) return;
@@ -35,8 +46,13 @@ public static class StoryProbeLaunch
     }
 }
 
+// Fresh cases (TMM_STORY_CASE): delayed (default), open (the hotel is open before the dream), fallback (Castiel is dead, Naomi comes),
+// noheaven (a world without Heaven). Saves (TMM_STORY_SAVE for the reload): before the hotel, stay (default), after the choice.
 public sealed class StoryEngineProbe : MapComponent
 {
+    public static string Case { get { string s = Environment.GetEnvironmentVariable("TMM_STORY_CASE"); return string.IsNullOrEmpty(s) ? "delayed" : s; } }
+    public static string SavePoint { get { string s = Environment.GetEnvironmentVariable("TMM_STORY_SAVE"); return string.IsNullOrEmpty(s) ? "stay" : s; } }
+    public static string SaveName { get { return SavePoint == "stay" ? "TMM-Story" : "TMM-Story-" + SavePoint; } }
     private sealed class Check { public string name, expected, actual; public bool passed; }
     private readonly List<Check> checks = new List<Check>();
     private readonly List<string> facts = new List<string>();
@@ -83,6 +99,7 @@ public sealed class StoryEngineProbe : MapComponent
         if (stage == 0)
         {
             C("StateExists", s != null, true, s != null);
+            if (Case == "open") { BuildHotel(); C("HotelReadyBeforeDream", StoryHotelGate.ReadyHome(true) == map, "ready", StoryHotelGate.MissingKey(map, true)); }
             s.DirectorTick();
             StoryQuestRun run = s.RunFor(Signal);
             C("OpeningAutoStarted", run != null && run.status == StoryQuestStatus.Active && run.stage == 0, "Active/0", run == null ? "none" : run.status + "/" + run.stage);
@@ -113,66 +130,195 @@ public sealed class StoryEngineProbe : MapComponent
             C("OpeningCompleted", s.GetFlag("q." + Signal) == "done", "done", s.GetFlag("q." + Signal));
             C("OnCompleteFlag", s.GetFlag("story.anchorAwakened") == "true", "true", s.GetFlag("story.anchorAwakened"));
             s.DirectorTick();
-            StoryChoiceLetter offer = LetterFor(Castiel, StoryChoiceLetter.KindOffer);
-            C("CastielOffered", offer != null, "offer letter", offer == null ? "none" : "ok");
-            HeroDef casDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_castiel");
-            string casName = casDef != null ? casDef.nameFirst : "Castiel"; // localized (Кастиэль in Russian)
-            C("GiverNameInText", offer != null && offer.Text.ToString().Contains(casName) && !offer.Text.ToString().Contains("{GIVER}"), casName, offer == null ? "none" : "checked");
-            ActionOf(offer, 1)(); // later
             StoryQuestRun run = s.RunFor(Castiel);
-            C("DeclinedWithCooldown", run.status == StoryQuestStatus.Declined && run.cooldownUntilTick > now, "Declined", run.status + "/" + (run.cooldownUntilTick - now));
-            s.DirectorTick();
-            C("NotReofferedDuringCooldown", LetterFor(Castiel, StoryChoiceLetter.KindOffer) == null, "no offer", "checked");
-            run.cooldownUntilTick = now; // the cooldown has passed
-            s.DirectorTick();
-            StoryChoiceLetter offer2 = LetterFor(Castiel, StoryChoiceLetter.KindOffer);
-            C("ReofferedAfterCooldown", offer2 != null && run.status == StoryQuestStatus.Offered && offer2.gen == run.gen, "Offered", run.status);
-            ActionOf(offer, 0); // the old, declined offer letter must not react
-            C("OldOfferLetterInert", offer.Choices.Count() == 1 && run.status == StoryQuestStatus.Offered, "close only", offer.Choices.Count());
-            Action accept = ActionOf(offer2, 0);
-            accept();
-            int g = run.gen;
-            accept(); // repeated accept
-            C("AcceptedOnce", run.status == StoryQuestStatus.Active && run.stage == 0 && run.gen == g, "Active/0, same gen", run.status + "/" + run.stage);
-            StoryChoiceLetter choice = LetterFor(Castiel, StoryChoiceLetter.KindChoice);
-            C("CastielChoicePending", choice != null && run.pendingChoice && choice.gen == run.gen, "pending letter", choice == null ? "none" : "ok");
-
+            C("CastielGoalStarted", run != null && run.status == StoryQuestStatus.Active && run.Def.stages[run.stage].key == (Case == "open" && run.stage == 1 ? "stay" : "openHotel"), "Active, hotel goal", run == null ? "none" : run.status + "/" + run.stageKey);
+            C("NoOfferLetterAnyMore", LetterFor(Castiel, StoryChoiceLetter.KindOffer) == null, "no offer", "checked");
+            C("GoalLetterSentOnce", GoalLetters() == (Case == "open" ? 0 : 1), Case == "open" ? 0 : 1, GoalLetters());
+            if (Case != "open")
+            {
+                string objective = run.Def.stages[run.stage].Objective(s.Context(run));
+                C("GoalNamesMissingThing", objective.Contains("TMM.Story.Hotel.MissingDesk".Translate().ToString()), "desk is missing", objective);
+                C("GoalInChronicle", MainTabWindow_Chronicle.BuildLines(s).Any(l => l.Contains(run.Def.stages[0].label)), run.Def.stages[0].label, "checked");
+            }
             DisabledDefCheck(s);
             HeroJoinsChecks(s, run);
-
-            heavenBefore = HeavenGoodwill;
-            facts.Add("heavenBefore=" + heavenBefore);
+            if (Case == "fallback")
+            {
+                Pawn cas = HeroRegistry.Instance.GetOrCreate(Hero("TMM_Hero_castiel"));
+                if (cas != null) cas.Kill(null);
+                C("CastielDeadForFallback", HeroRegistry.Instance.GetOrCreate(Hero("TMM_Hero_castiel")) == null, "dead", "checked");
+            }
             CleanDanglingRelations(); // fixture only: removes world-gen relations to discarded pawns that are unrelated to the engine
+            facts.Add("case=" + Case);
             facts.Add("fixtureRelationsCleaned=true");
-            GameDataSaveLoader.SaveGame("TMM-Story");
-            C("SaveWritten", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Story.rws")), true, "checked");
-            ActionOf(choice, 0)(); // trust him (the reload answers the same letter from the save)
-            AfterTrust(s, run);
-            stage = 2;
+            GameDataSaveLoader.SaveGame("TMM-Story-before");
+            stage = 2; waitStart = now;
             return;
         }
-        if (stage == 2 && uiChecked)
+        if (stage == 2)
+        {
+            StoryQuestRun run = s.RunFor(Castiel);
+            if (Case != "open")
+            {
+                if (now - waitStart < 4000) return;
+                C("GoalWaitsWithoutHotel", run.status == StoryQuestStatus.Active && run.Def.stages[run.stage].key == "openHotel", "openHotel", run.stageKey);
+                C("GoalLetterNotRepeated", GoalLetters() == 1, 1, GoalLetters());
+                BuildHotel();
+                C("HotelReadyByServiceReadiness", StoryHotelGate.ReadyHome(true) == map, "ready", StoryHotelGate.MissingKey(map, true));
+            }
+            C("SaveBeforeWritten", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Story-before.rws")), true, "checked");
+            stage = 3; waitStart = now;
+            return;
+        }
+        if (stage == 3)
+        {
+            StoryQuestRun run = s.RunFor(Castiel);
+            if (Case == "noheaven")
+            {
+                if (now - waitStart < 6000) return;
+                CheckNoHeaven(s, run, "Fresh");
+                GameDataSaveLoader.SaveGame("TMM-Story");
+                stage = 6; waitStart = now;
+                return;
+            }
+            if (LetterFor(Castiel, StoryChoiceLetter.KindChoice) == null)
+            {
+                if (now - waitStart > 60000) throw new Exception("the guest never checked in: stage=" + run.stageKey + " vars=" + string.Join(",", run.vars.Select(v => v.Key + "=" + v.Value).ToArray()) + " objective=" + run.Def.stages[run.stage].Objective(s.Context(run)));
+                string early; // the choice must not be offered before the guest has a room
+                Pawn walking = Visitor(run);
+                if (run.pendingChoice && (walking == null || HotelBillingHooks.Bed(walking) == null)) { early = "offered without a room"; throw new Exception(early); }
+                return;
+            }
+            Pawn guest = Visitor(run);
+            string want = Case == "fallback" ? "TMM_Hero_naomi" : "TMM_Hero_castiel";
+            string visitor; run.vars.TryGetValue("visitorHero", out visitor);
+            C("RightGuestCame", visitor == want && guest != null && guest == HeroRegistry.Instance.RecordFor(Hero(want)).pawn, want, visitor);
+            C("GuestHasRoom", guest != null && HotelBillingHooks.Bed(guest) != null && map.GetComponent<HotelBilling>().stays.Any(x => x.guest == guest), "claimed bed and a hotel stay", guest == null ? "none" : "bed=" + (HotelBillingHooks.Bed(guest) != null) + " stays=" + map.GetComponent<HotelBilling>().stays.Count);
+            string mode; run.vars.TryGetValue("visitMode", out mode);
+            C("HospitalityVisit", mode == "hospitality", "hospitality", mode);
+            C("OneGuestOnly", map.mapPawns.AllPawnsSpawned.Count(p => p.Faction == Heaven) == 1, 1, map.mapPawns.AllPawnsSpawned.Count(p => p.Faction == Heaven));
+            StoryChoiceLetter choice = LetterFor(Castiel, StoryChoiceLetter.KindChoice);
+            C("ChoicePendingDuringStay", run.pendingChoice && choice.gen == run.gen && run.Def.stages[run.stage].key == "stay", "pending at stay", run.stageKey + "/" + run.pendingChoice);
+            string name = Hero(want).label;
+            C("GiverNameInText", choice.Text.ToString().Contains(name) && !choice.Text.ToString().Contains("{GIVER}"), name, "checked");
+            // A hotel opened long before the dream invites its ordinary first group as always; one opened for the story must not.
+            if (Case != "open") C("OpeningVisitNotDoubled", map.GetComponent<ComplexOpeningVisit>().scheduledTick < 0, "no separate opening group", map.GetComponent<ComplexOpeningVisit>().scheduledTick);
+            facts.Add("guestWalkTicks=" + (now - waitStart));
+            CleanDanglingRelations();
+            GameDataSaveLoader.SaveGame("TMM-Story");
+            stage = 4; waitStart = now;
+            return;
+        }
+        if (stage == 4)
+        {
+            if (!File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Story.rws")) || now - waitStart < 300) return;
+            C("SaveWritten", true, true, "checked");
+            StoryQuestRun run = s.RunFor(Castiel);
+            C("OneChoiceLetterWhileWaiting", Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().Count(l => l.storyQuest == Castiel) == 1, 1, "checked");
+            StoryChoiceLetter choice = LetterFor(Castiel, StoryChoiceLetter.KindChoice);
+            heavenBefore = HeavenGoodwill;
+            int expected = Heaven.CalculateAdjustedGoodwillChange(Faction.OfPlayer, 15);
+            Action trust = ActionOf(choice, 0);
+            trust();
+            int afterOnce = HeavenGoodwill;
+            trust(); // repeated click
+            facts.Add("goodwill before=" + heavenBefore + " natural=" + Heaven.NaturalGoodwill + " expected=" + expected + " real=" + (afterOnce - heavenBefore));
+            C("HeavenGoodwillExact", afterOnce - heavenBefore == Math.Min(expected, 100 - heavenBefore), expected, afterOnce - heavenBefore);
+            C("RepeatedChoiceNoEffect", HeavenGoodwill == afterOnce && s.GetInt("zeroSynth.trust") == 10, "0", HeavenGoodwill - afterOnce);
+            AfterTrust(s, run);
+            GameDataSaveLoader.SaveGame("TMM-Story-after");
+            stage = 5; waitStart = now;
+            return;
+        }
+        if (stage == 5)
+        {
+            if (!File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Story-after.rws")) || now - waitStart < 600) return;
+            string want = Case == "fallback" ? "TMM_Hero_naomi" : "TMM_Hero_castiel";
+            Pawn guest = HeroRegistry.Instance.RecordFor(Hero(want)).pawn;
+            C("GuestStaysAfterTrust", guest != null && guest.Spawned && !guest.Dead && !guest.HostileTo(Faction.OfPlayer), "still a peaceful guest", guest == null ? "none" : guest.Spawned + "/" + guest.Dead);
+            stage = 6; waitStart = now;
+            return;
+        }
+        if (stage == 6 && uiChecked && File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Story.rws")))
         {
             C("ChronicleDrawsClean", uiError == null, "null", uiError);
             Finish(null, false);
         }
     }
 
+    private static HeroDef Hero(string name) { return DefDatabase<HeroDef>.GetNamed(name); }
+
+    private Pawn Visitor(StoryQuestRun run)
+    {
+        string id; int n;
+        if (!run.vars.TryGetValue("heroIdNum", out id) || !int.TryParse(id, out n)) return null;
+        return map.mapPawns.AllPawnsSpawned.FirstOrDefault(p => p.thingIDNumber == n);
+    }
+
+    private static int GoalLetters()
+    {
+        string label = DefDatabase<StoryQuestDef>.GetNamed(Castiel).stages[0].label;
+        return Find.Archive.ArchivablesListForReading.OfType<Letter>().Count(l => l.Label.ToString() == label);
+    }
+
+    private Building Build(string name, IntVec3 c)
+    {
+        var d = DefDatabase<ThingDef>.GetNamed(name);
+        var b = (Building)ThingMaker.MakeThing(d, d.MadeFromStuff ? ThingDefOf.Steel : null);
+        b.SetFaction(Faction.OfPlayer);
+        return (Building)GenSpawn.Spawn(b, c, map);
+    }
+
+    private void BuildHotel()
+    {
+        map.fogGrid.ClearAllFog();
+        IntVec3 at = map.Center;
+        CellRect ground = CellRect.CenteredOn(at, 12);
+        foreach (IntVec3 c in ground)
+        {
+            foreach (Thing t in c.GetThingList(map).ToArray()) if (t is Building || t is Plant || t is Filth) { if (t.def.destroyable) t.Destroy(); else t.DeSpawn(); }
+            map.terrainGrid.SetTerrain(c, TerrainDefOf.Soil);
+            map.roofGrid.SetRoof(c, null);
+        }
+        Area_Allowed area, staff;
+        map.areaManager.TryMakeNewAllowed(out area);
+        map.areaManager.TryMakeNewAllowed(out staff);
+        foreach (IntVec3 c in ground) area[c] = true;
+        var desk = (Building_ComplexDesk)Build("TMM_ComplexDesk", at + new IntVec3(-8, 0, -8));
+        desk.area = area; desk.staffArea = staff; desk.vipChance = 0;
+        CellRect room = new CellRect(at.x - 4, at.z - 4, 9, 9);
+        foreach (IntVec3 c in room.EdgeCells) Build(c == new IntVec3(room.CenterCell.x, 0, room.minZ) ? "Door" : "Wall", c);
+        foreach (IntVec3 c in room.ContractedBy(1)) map.roofGrid.SetRoof(c, RoofDefOf.RoofConstructed);
+        Build("BedGuest", at + new IntVec3(-1, 0, 1));
+        map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
+        desk.ApplyServiceAreas();
+        object native = map.components.First(c => c.GetType().FullName == "Hospitality.Hospitality_MapComponent");
+        AccessTools.Field(native.GetType(), "guestsAreWelcome").SetValue(native, true);
+    }
+
+    private void CheckNoHeaven(SparkStory s, StoryQuestRun run, string when)
+    {
+        C(when + "_NoHeavenFaction", Heaven == null, "absent", Heaven == null ? "absent" : "present");
+        C(when + "_StoryWaitsAtHotel", run != null && run.status == StoryQuestStatus.Active && run.stageKey == "stay" && run.vars.ContainsKey("waitingForGuest"), "Active at stay, waiting", run == null ? "none" : run.status + "/" + run.stageKey);
+        string objective = run.Def.stages[run.stage].Objective(s.Context(run));
+        C(when + "_ReasonShown", objective.Contains(DefDatabase<FactionDef>.GetNamed("TMM_HeavenFaction").LabelCap.ToString()), "names the missing faction", objective);
+        C(when + "_NoHeroInvented", HeroRegistry.Instance.RecordFor(Hero("TMM_Hero_castiel")) == null && HeroRegistry.Instance.RecordFor(Hero("TMM_Hero_naomi")) == null, "no records", "checked");
+        C(when + "_OrdinaryHotelNotBlocked", !StoryHotelGate.StoryGuestExpected, "false", StoryHotelGate.StoryGuestExpected);
+        C(when + "_GoalLetterOnce", GoalLetters() == 1, 1, GoalLetters());
+    }
+
     private void AfterTrust(SparkStory s, StoryQuestRun run)
     {
-        int after = HeavenGoodwill;
-        // The quest grants +15; ordinary goodwill events in the same ticks can move it by a few points.
-        C("HeavenGoodwillPlus15", Heaven != null && Math.Abs((after - heavenBefore) - Math.Min(15, 100 - heavenBefore)) <= 3, "+15 (±3)", after - heavenBefore);
         C("TrustRaised", s.GetInt("zeroSynth.trust") == 10, 10, s.GetInt("zeroSynth.trust"));
         C("HolodiskOne", s.GetInt("holodisk") == 1, 1, s.GetInt("holodisk"));
-        C("CastielCompleted", s.GetFlag("q." + Castiel) == "trust" && run.status == StoryQuestStatus.Completed, "trust", s.GetFlag("q." + Castiel));
+        C("CastielCompleted", s.GetFlag("q." + Castiel) == "trust" && run.status == StoryQuestStatus.Completed, "trust", s.GetFlag("q." + Castiel) + "/" + run.status);
         C("ReplyLetterSent", Find.LetterStack.LettersListForReading.Any(l => string.Equals(l.Label.ToString(), DefDatabase<StoryQuestDef>.GetNamed(Castiel).LabelCap.ToString(), StringComparison.OrdinalIgnoreCase)), "reply", "checked");
         StoryQuestDef uninvited = DefDatabase<StoryQuestDef>.GetNamedSilentFail("TMM_Story_A1_UninvitedGuests");
-        C("UninvitedGuestsAvailable", uninvited != null && s.IsAvailable(uninvited), true, uninvited != null && s.IsAvailable(uninvited));
+        StoryQuestRun next = s.RunFor("TMM_Story_A1_UninvitedGuests");
+        C("UninvitedGuestsAvailable", uninvited != null && (next != null || s.IsAvailable(uninvited)), true, next == null ? "available" : next.status.ToString());
         List<string> lines = MainTabWindow_Chronicle.BuildLines(s);
         C("ChronicleLogsDecisions", lines.Any(l => l.Contains("→ trust")) && lines.Any(l => l.Contains("→ done")), "two log lines", string.Join(" | ", lines.ToArray()));
     }
-
     /// F1: a saved run whose StoryQuestDef no longer exists must be disabled and must not block offers.
     private void DisabledDefCheck(SparkStory s)
     {
@@ -213,28 +359,73 @@ public sealed class StoryEngineProbe : MapComponent
             s.DirectorTick();
             StoryQuestRun sig = s.RunFor(Signal);
             C("OpeningStillCompleted", sig != null && sig.status == StoryQuestStatus.Completed && sig.history.Count == 2, "Completed, 2 entries", sig == null ? "none" : sig.status + "/" + sig.history.Count);
-            StoryQuestRun run = s.RunFor(Castiel);
-            C("PendingChoiceSurvived", run != null && run.status == StoryQuestStatus.Active && run.pendingChoice, "Active + pending", run == null ? "none" : run.status + "/" + run.pendingChoice);
-            int letters = Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().Count(l => l.storyQuest == Castiel && l.kind == StoryChoiceLetter.KindChoice);
-            C("ExactlyOneChoiceLetter", letters == 1, 1, letters);
-            StoryChoiceLetter choice = LetterFor(Castiel, StoryChoiceLetter.KindChoice);
-            C("LetterGenMatches", choice != null && choice.gen == run.gen, run == null ? -1 : run.gen, choice == null ? -1 : choice.gen);
             C("GhostStillDisabled", s.Runs.Any(r => r.quest == "TMM_Story_RemovedInUpdate" && r.status == StoryQuestStatus.Disabled), "Disabled", "checked");
-            heavenBefore = HeavenGoodwill;
-            Action trust = ActionOf(choice, 0);
-            trust();
-            int afterOnce = HeavenGoodwill;
-            trust(); // repeated after load
-            C("ChoiceAppliedOnceAfterLoad", HeavenGoodwill == afterOnce && afterOnce - heavenBefore == Math.Min(15, 100 - heavenBefore), "+15 once", (afterOnce - heavenBefore) + "/" + (HeavenGoodwill - afterOnce));
-            C("CastielCompletedAfterLoad", s.GetFlag("q." + Castiel) == "trust", "trust", s.GetFlag("q." + Castiel));
-            C("HolodiskOneAfterLoad", s.GetInt("holodisk") == 1, 1, s.GetInt("holodisk"));
-            Finish(null, true);
+            stage = 1; waitStart = Find.TickManager.TicksGame;
+            return;
         }
+        if (stage != 1) return;
+        StoryQuestRun run = s.RunFor(Castiel);
+        bool heavenless = Heaven == null;
+        // Let the loaded game run: nothing may be repeated by time alone.
+        if (Find.TickManager.TicksGame - waitStart < 1500) return;
+        facts.Add("save=" + SaveName);
+        if (SavePoint == "before")
+        {
+            C("GoalSurvived", run != null && run.status == StoryQuestStatus.Active && run.stageKey == "openHotel", "openHotel", run == null ? "none" : run.stageKey);
+            C("GoalLetterNotRepeatedAfterLoad", GoalLetters() == 1, 1, GoalLetters());
+            Finish(null, true);
+            return;
+        }
+        if (SavePoint == "legacy")
+        {
+            // A real save made before the hotel stages existed, with the old choice letter open.
+            C("LegacyStageRemapped", run != null && run.status == StoryQuestStatus.Active && run.stageKey == "#0" && run.stage == 2 && run.pendingChoice, "Active #0 at index 2", run == null ? "none" : run.status + "/" + run.stageKey + "/" + run.stage);
+            List<StoryChoiceLetter> old = Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().Where(l => l.storyQuest == Castiel && l.kind == StoryChoiceLetter.KindChoice).ToList();
+            C("LegacyOneLetterStillOpen", old.Count == 1 && old[0].stage == 2 && old[0].Choices.Count() == 2, "one live letter", old.Count);
+            C("LegacyNoHotelAsked", GoalLetters() == 0, 0, GoalLetters());
+            int was = HeavenGoodwill, want15 = Heaven.CalculateAdjustedGoodwillChange(Faction.OfPlayer, 15);
+            Action answer = ActionOf(old[0], 0);
+            answer();
+            int got = HeavenGoodwill - was;
+            answer();
+            C("LegacyChoiceOnce", got == want15 && HeavenGoodwill - was == got && s.GetFlag("q." + Castiel) == "trust" && run.status == StoryQuestStatus.Completed && s.GetInt("holodisk") == 1, want15 + "/trust/Completed/1", got + "/" + s.GetFlag("q." + Castiel) + "/" + run.status + "/" + s.GetInt("holodisk"));
+            Finish(null, true);
+            return;
+        }
+        if (heavenless) { CheckNoHeaven(s, run, "Reload"); Finish(null, true); return; }
+        string want = Case == "fallback" ? "TMM_Hero_naomi" : "TMM_Hero_castiel";
+        int onMap = map.mapPawns.AllPawnsSpawned.Count(p => p.Faction == Heaven);
+        Pawn hero = HeroRegistry.Instance.RecordFor(Hero(want)).pawn;
+        if (SavePoint == "after")
+        {
+            C("ChoiceKeptAfterLoad", run.status == StoryQuestStatus.Completed && s.GetFlag("q." + Castiel) == "trust" && s.GetInt("zeroSynth.trust") == 10 && s.GetInt("holodisk") == 1, "Completed/trust/10/1", run.status + "/" + s.GetFlag("q." + Castiel) + "/" + s.GetInt("zeroSynth.trust") + "/" + s.GetInt("holodisk"));
+            C("NoChoiceLetterAfterLoad", LetterFor(Castiel, StoryChoiceLetter.KindChoice) == null, "none", "checked");
+            C("NoSecondGuestAfterLoad", onMap <= 1 && hero != null && !hero.Dead, "0-1", onMap);
+            StoryQuestRun next = s.RunFor("TMM_Story_A1_UninvitedGuests");
+            C("NextQuestStarts", next != null && next.status == StoryQuestStatus.Offered, "Offered", next == null ? "none" : next.status.ToString());
+            Finish(null, true);
+            return;
+        }
+        C("PendingChoiceSurvived", run != null && run.status == StoryQuestStatus.Active && run.pendingChoice && run.stageKey == "stay", "Active + pending at stay", run == null ? "none" : run.status + "/" + run.pendingChoice + "/" + run.stageKey);
+        int letters = Find.LetterStack.LettersListForReading.OfType<StoryChoiceLetter>().Count(l => l.storyQuest == Castiel && l.kind == StoryChoiceLetter.KindChoice);
+        C("ExactlyOneChoiceLetter", letters == 1, 1, letters);
+        C("SameGuestAfterLoad", onMap == 1 && hero != null && hero.Spawned && Visitor(run) == hero && HotelBillingHooks.Bed(hero) != null, "one guest with a room", onMap);
+        StoryChoiceLetter choice = LetterFor(Castiel, StoryChoiceLetter.KindChoice);
+        C("LetterGenMatches", choice != null && choice.gen == run.gen, run == null ? -1 : run.gen, choice == null ? -1 : choice.gen);
+        heavenBefore = HeavenGoodwill;
+        int expected = Heaven.CalculateAdjustedGoodwillChange(Faction.OfPlayer, 15);
+        Action trust = ActionOf(choice, 0);
+        trust();
+        int afterOnce = HeavenGoodwill;
+        trust(); // repeated after load
+        C("ChoiceAppliedOnceAfterLoad", HeavenGoodwill == afterOnce && afterOnce - heavenBefore == Math.Min(expected, 100 - heavenBefore), expected + " once", (afterOnce - heavenBefore) + "/" + (HeavenGoodwill - afterOnce));
+        C("CastielCompletedAfterLoad", s.GetFlag("q." + Castiel) == "trust", "trust", s.GetFlag("q." + Castiel));
+        C("HolodiskOneAfterLoad", s.GetInt("holodisk") == 1, 1, s.GetInt("holodisk"));
+        Finish(null, true);
     }
-
     public override void MapComponentOnGUI()
     {
-        if (done || uiChecked || stage != 2 || Event.current.type != EventType.Repaint) return;
+        if (done || uiChecked || stage != 6 || Event.current.type != EventType.Repaint) return;
         try
         {
             var w = new MainTabWindow_Chronicle();

@@ -120,6 +120,15 @@ namespace TurboMegaMod
                 List<Faction> ourFactions = visible.Where(f => !f.IsPlayer && MainTabWindow_FactionHierarchy.HasHeroDefs(f)).ToList();
                 Check(ourFactions.Count >= 10, "At least 10 custom factions with heroes present", ">= 10", ourFactions.Count);
                 facts.Add("Custom factions count: " + ourFactions.Count);
+                // Every one of our factions is listed, and the count shown in the tab is the number of real settlements standing on the surface map.
+                foreach (FactionDef d in DefDatabase<FactionDef>.AllDefs.Where(x => x.defName.StartsWith("TMM_") && !x.isPlayer && !x.hidden))
+                {
+                    Faction inTab = visible.FirstOrDefault(f => f.def == d);
+                    Check(inTab != null, "Faction is listed in the hierarchy tab: " + d.defName);
+                    int shown = Find.WorldObjects.Settlements.Count(s => s.Faction == inTab);
+                    int real = Find.WorldObjects.Settlements.Count(s => s.Faction == inTab && s.Spawned && s.Tile.Valid && s.Tile.Layer == Find.WorldGrid.Surface);
+                    Check(real > 0 && real == shown, "Tab count matches the settlements on the map: " + d.defName, real, shown);
+                }
 
                 // 1. In new world for each of our factions, window model produces leader == faction.leader
                 // and tree nodes count == count of HeroDefs for that faction

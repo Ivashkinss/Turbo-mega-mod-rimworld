@@ -538,13 +538,20 @@ namespace TurboMegaMod
             Pawn firstPrisGuest = FindGuestOnMap(map, prisGuests);
             if (firstPrisGuest != null && firstPrisGuest.guest != null)
             {
-                firstPrisGuest.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner); // CHECK API
+                // A registered Hospitality guest of a peaceful faction cannot be turned into a prisoner by a bare status change
+                // (Hospitality rewrites it back to Guest). Capture the way the game does it.
+                firstPrisGuest.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+                AddCheck("P1_BareStatusChangeDoesNotImprisonGuest", !firstPrisGuest.IsPrisonerOfColony && !HasOutcome(prisRun, "failed"), "still a guest", firstPrisGuest.GuestStatus.ToString());
+                firstPrisGuest.guest.CapturedBy(Faction.OfPlayer, map.mapPawns.FreeColonistsSpawned[0]);
             }
+            Faction prisFaction = firstPrisGuest != null ? firstPrisGuest.Faction : null;
+            string prisState = firstPrisGuest == null ? "null" : "prisoner=" + firstPrisGuest.IsPrisonerOfColony + " hostile=" + (prisFaction != null && prisFaction.HostileTo(Faction.OfPlayer));
             story.DirectorTick();
             AddCheck("P1_GuestImprisoned_NotSuccess",
                 prisRun != null && HasOutcome(prisRun, "failed") && !HasOutcome(prisRun, "success"),
-                "failed", prisRun != null ? string.Join(",", prisRun.history.ToArray()) : "null");
+                "failed", (prisRun != null ? string.Join(",", prisRun.history.ToArray()) : "null") + " " + GetVar(prisRun, "failReason") + " " + prisState);
             CleanupPawnsByIds(map, prisGuests);
+            if (prisFaction != null && prisFaction.HasGoodwill && prisFaction.HostileTo(Faction.OfPlayer)) ForceNeutralWithGoodwill(prisFaction, 10); // later checks expect the peaceful faction
 
             // 7C. Vanished without Pawn.ExitMap -> MUST fail (guest_missing), NEVER success
             story.SetFlag("probe.e3.hostVanished", "true");

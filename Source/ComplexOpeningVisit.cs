@@ -31,7 +31,7 @@ namespace TurboMegaMod
         private static bool Eligible(Faction faction){return faction!=null&&!faction.IsPlayer&&!faction.defeated&&!faction.HostileTo(Faction.OfPlayer)&&faction.def.pawnGroupMakers!=null&&faction.def.pawnGroupMakers.Any(g=>g.kindDef==PawnGroupKindDefOf.Peaceful);}
         public bool TryPlanOpeningVisit()
         {
-            if(completed||!map.IsPlayerHome||NativeMap==null||QueueField==null||WelcomeField==null||Plan==null)return false;
+            if(completed||!map.IsPlayerHome||NativeMap==null||QueueField==null||WelcomeField==null||Plan==null||StoryHotelGate.StoryGuestExpected)return false;
             var desk=map.GetComponent<ComplexMap>().desk;
             if(desk==null||!desk.Active||map.mapPawns.ColonistCount==0||IsSpace!=null&&(bool)IsSpace.Invoke(null,new object[]{map}))return false;
             // An established hotel does not need an extra opening group after migration.

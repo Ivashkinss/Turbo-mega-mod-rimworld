@@ -98,7 +98,7 @@ namespace TurboMegaMod
             if (r != null && Find.TickManager.TicksGame < r.cooldownUntilTick) return false;
             int act = Math.Max(1, GetInt("act"));
             if (d.act > act) return false;
-            if (!d.faction.NullOrEmpty() && StoryUtil.FactionOf(d.faction) == null) return false;
+            if (!d.startsWithoutFaction && !d.faction.NullOrEmpty() && StoryUtil.FactionOf(d.faction) == null) return false;
             return StoryConditions.Holds(this, d.requires, d.anyOf);
         }
 
@@ -297,6 +297,9 @@ namespace TurboMegaMod
                     int byKey = r.stageKey.NullOrEmpty() ? r.stage : d.stages.FindIndex(s => s.Key(d.stages.IndexOf(s)) == r.stageKey);
                     if (byKey < 0) { Disable(r, "stage missing"); continue; }
                     r.stage = byKey;
+                    // A stage that moved in the def keeps its open letter: the letter stores the old index.
+                    foreach (StoryChoiceLetter l in live)
+                        if (l.storyQuest == r.quest && l.gen == r.gen && l.kind == StoryChoiceLetter.KindChoice) l.stage = byKey;
                     if (r.pendingChoice && !live.Any(l => l.storyQuest == r.quest && l.gen == r.gen)) r.needsLetter = true;
                 }
                 else if (!live.Any(l => l.storyQuest == r.quest && l.gen == r.gen)) r.needsLetter = true;

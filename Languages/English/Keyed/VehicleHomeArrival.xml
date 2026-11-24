@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_VehicleUnloadHome>Unload vehicle</TMM_VehicleUnloadHome>
+  <TMM_VehicleUnloadHomeDesc>The crew gets out and haulers carry the cargo to storage. Cargo without a storage place is put down near the colony.</TMM_VehicleUnloadHomeDesc>
+  <TMM_VehicleUnloadHomeActive>The vehicle is being unloaded. Press to repeat the order, for example if the crew could not get out or enemies are near.</TMM_VehicleUnloadHomeActive>
+</LanguageData>

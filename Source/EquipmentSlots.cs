@@ -145,6 +145,9 @@ namespace TurboMegaMod
             string n = def.defName;
             if (n.NullOrEmpty()) return false;
             if (n == "TMM_Legendary_ProtectorArmor") return true;
+            // The name rule is only for body armor: a helmet named after its suit (T-60, X-01) must keep Overhead as its last
+            // layer, otherwise vanilla appends the body type to its worn texture path.
+            if (!IsTorsoArmorShape(def)) return false;
             if (n.StartsWith("TMM_", StringComparison.Ordinal) &&
                 (n.IndexOf("PowerArmor", StringComparison.OrdinalIgnoreCase) >= 0 ||
                  n.IndexOf("T60", StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -154,6 +157,14 @@ namespace TurboMegaMod
                 return true;
             }
             return false;
+        }
+
+        private static bool IsTorsoArmorShape(ThingDef def)
+        {
+            if (def.apparel.bodyPartGroups == null || !def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Torso)) return false;
+            List<ApparelLayerDef> layers = def.apparel.layers;
+            if (layers == null) return true;
+            return !layers.Contains(ApparelLayerDefOf.Overhead) && !layers.Contains(ApparelLayerDefOf.EyeCover);
         }
 
         public static Building FindNearestWorkbench(Pawn pawn)

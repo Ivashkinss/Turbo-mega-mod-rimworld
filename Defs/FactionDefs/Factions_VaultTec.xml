@@ -2,6 +2,9 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_VaultTecFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>113</configurationListOrderPriority>
     <label>Vault-Tec</label>
     <description>The corporation that built the Vaults, still run by a council of overseers who treat survivors as experiments and customers.</description>
     <pawnSingular>vault dweller</pawnSingular>

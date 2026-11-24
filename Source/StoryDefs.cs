@@ -17,6 +17,7 @@ namespace TurboMegaMod
         public int priority;
         public bool main;                   // main-line quest: not limited by MaxActive
         public bool autoStart;              // starts without an offer letter
+        public bool startsWithoutFaction;   // the quest may start in a world where its faction is absent (its stages explain the wait)
         public List<string> requires = new List<string>();
         public List<string> anyOf = new List<string>();
         public HeroDef giver;
@@ -198,8 +199,8 @@ namespace TurboMegaMod
         public List<StoryEffect> effects = new List<StoryEffect>();
     }
 
-    /// A letter with choices. The quest waits until the player picks one.
-    public sealed class StoryStage_Choice : StoryStage
+    /// A letter with choices. The quest waits until the player picks one. A hotel visit offers its choices during the stay.
+    public class StoryStage_Choice : StoryStage
     {
         public List<StoryChoice> choices = new List<StoryChoice>();
         public override string Mechanic { get { return "choice"; } }
@@ -249,6 +250,26 @@ namespace TurboMegaMod
         {
             float left = Mathf.Max(0f, (ctx.run.stageUntilTick - Find.TickManager.TicksGame) / (float)GenDate.TicksPerDay);
             return StoryUtil.Format(label, ctx) + " (" + "TMM.Story.DaysLeft".Translate(left.ToString("0.0")) + ")";
+        }
+    }
+
+    /// A goal: the player's hotel must be open by the same data the reception desk shows (ServiceReadiness).
+    /// The letter is sent once, when the stage starts and the hotel is not open yet; the Chronicle shows what is missing.
+    public sealed class StoryStage_OpenHotel : StoryStage
+    {
+        public override string Mechanic { get { return "openHotel"; } }
+
+        public override void Start(StoryContext ctx)
+        {
+            if (StoryHotelGate.ReadyHome(false) != null || text.NullOrEmpty()) return;
+            Find.LetterStack.ReceiveLetter(StoryUtil.Format(label, ctx), StoryUtil.Format(text, ctx), LetterDefOf.NeutralEvent);
+        }
+
+        public override string Tick(StoryContext ctx) { return StoryHotelGate.ReadyHome(false) != null ? "ready" : null; }
+
+        public override string Objective(StoryContext ctx)
+        {
+            return StoryUtil.Format(label, ctx) + " (" + StoryHotelGate.MissingText(ctx.Home, false) + ")";
         }
     }
 
@@ -485,12 +506,21 @@ namespace TurboMegaMod
             return f == null ? "?" : f.Name;
         }
 
+        /// The hero who really came to the hotel speaks for the quest (the fallback guest must not be called by the main giver's name).
+        private static string VisitorName(StoryContext ctx)
+        {
+            string id;
+            if (ctx.run == null || ctx.run.vars == null || !ctx.run.vars.TryGetValue("visitorHero", out id)) return null;
+            HeroDef h = DefDatabase<HeroDef>.GetNamedSilentFail(id);
+            return h == null ? null : h.label;
+        }
+
         public static string Format(string text, StoryContext ctx)
         {
             if (text.NullOrEmpty()) return "";
             Faction f = ctx == null ? null : ctx.Faction;
             string colony = Faction.OfPlayer == null ? "" : Faction.OfPlayer.Name;
-            return text.Replace("{GIVER}", ctx == null ? "" : GiverName(ctx.def))
+            return text.Replace("{GIVER}", ctx == null ? "" : VisitorName(ctx) ?? GiverName(ctx.def))
                        .Replace("{FACTION}", f == null ? "" : f.Name)
                        .Replace("{COLONY}", colony);
         }
