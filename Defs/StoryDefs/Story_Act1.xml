@@ -48,6 +48,8 @@
     <label>a visitor in a beige coat</label>
     <act>1</act>
     <main>true</main>
+    <autoStart>true</autoStart>
+    <startsWithoutFaction>true</startsWithoutFaction>
     <priority>90</priority>
     <faction>TMM_HeavenFaction</faction>
     <giver>TMM_Hero_castiel</giver>
@@ -58,7 +60,51 @@
     <letterLabel>A visitor in a beige coat</letterLabel>
     <letterText>A man in a rumpled beige trenchcoat stands at the edge of {COLONY}, staring at the ground as if listening to it. He calls himself {GIVER} and asks to speak with whoever is in charge.\n\n"The thing beneath you has woken. Everyone who can hear it is already on the way. I would rather you heard the truth from me first."</letterText>
     <stages>
+      <!-- User decision 24.11.2026: after the prologue the story waits for the hotel, the guest stays in it and talks during the stay. -->
+      <li Class="TurboMegaMod.StoryStage_OpenHotel">
+        <key>openHotel</key>
+        <label>Open the hotel</label>
+        <text>After the dream the holodisk keeps humming, and one word returns again and again in the static: "guest". Someone is already on the way to {COLONY} and will not talk at the gate.\n\nOpen the hotel: place the reception desk and give it an area, put at least one guest bed inside that area, and allow guests on the Guests tab. The service readiness window of the reception desk shows what is still missing. The current goal is in the Chronicle.</text>
+      </li>
+      <li Class="TurboMegaMod.StoryStage_HotelVisit">
+        <key>stay</key>
+        <requireHero>true</requireHero>
+        <faction>TMM_HeavenFaction</faction>
+        <hero>TMM_Hero_castiel</hero>
+        <fallbackHero>TMM_Hero_naomi</fallbackHero>
+        <groupSize>1</groupSize>
+        <stayDays>2</stayDays>
+        <objective>Host</objective>
+        <leaveOnOutcome>refused</leaveOnOutcome>
+        <arrivalLabel>A guest from Heaven</arrivalLabel>
+        <arrivalText>A guest in a travelling coat walks up to {COLONY}, stops for a while and listens to the ground. The name in the guest book is {GIVER}.\n\n"I need a room. We will talk when I have settled in."</arrivalText>
+        <label>The truth about the Spark</label>
+        <text>{GIVER} speaks quietly. "Since the war, no soul has reached Heaven or Hell. Both are starving. Angels fall from the sky without grace, and demons tear at each other for scraps. Then a miracle happened in the Institute: a synthetic person was born with a real soul, a Spark. Someone carried the first one out of the labs and brought it here, to the Anchor beneath your home.\n\nEveryone will come for it. Heaven too. I am asking you not to give it to anyone, not even to my own kin."</text>
+        <choices>
+          <li>
+            <outcome>trust</outcome>
+            <label>Listen to the guest and promise to protect the Spark</label>
+            <resultText>"Thank you." {GIVER} touches the holodisk and it flickers: the first sector unlocks, showing a map of buried nodes like the one under your colony. "I will come back. Do not trust anyone who promises to keep the Spark safe."</resultText>
+            <nextStage>-1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill"><amount>15</amount></li>
+              <li Class="TurboMegaMod.StoryEffect_AddInt"><flag>zeroSynth.trust</flag><amount>10</amount></li>
+            </effects>
+          </li>
+          <li>
+            <outcome>refused</outcome>
+            <label>Ask the angel to leave and stay out of your affairs</label>
+            <resultText>{GIVER} nods without offense. "Then at least look at this." One touch, and the first sector of the holodisk unlocks: a map of buried nodes like the one under your colony. The guest packs and leaves at once.</resultText>
+            <nextStage>-1</nextStage>
+            <effects>
+              <li Class="TurboMegaMod.StoryEffect_Goodwill"><amount>-10</amount></li>
+            </effects>
+          </li>
+        </choices>
+      </li>
+      <!-- Saves made before 24.11.2026 stand on this stage with an open letter; its old key "#0" keeps them here. New games never enter it. -->
       <li Class="TurboMegaMod.StoryStage_Choice">
+        <key>#0</key>
         <label>The truth about the Spark</label>
         <text>{GIVER} speaks quietly. "Since the war, no soul has reached Heaven or Hell. Both are starving. Angels fall from the sky without grace, and demons tear at each other for scraps. Then a miracle happened in the Institute: a synthetic person was born with a real soul, a Spark. Someone carried the first one out of the labs and brought it here, to the Anchor beneath your home.\n\nEveryone will come for it. Heaven too. I am asking you not to give it to anyone, not even to my brothers."</text>
         <choices>

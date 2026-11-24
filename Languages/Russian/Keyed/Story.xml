@@ -13,4 +13,15 @@
   <TMM.Story.ArcsHeader>Линии фракций</TMM.Story.ArcsHeader>
   <TMM.Story.LogHeader>Принятые решения ({0})</TMM.Story.LogHeader>
   <TMM.Story.Failed>провалено</TMM.Story.Failed>
+  <TMM.Story.Hotel.Answer>Ответьте гостю, пока он живёт в гостинице: {0}</TMM.Story.Hotel.Answer>
+  <TMM.Story.Hotel.CheckIn>Гость заселяется: {0}</TMM.Story.Hotel.CheckIn>
+  <TMM.Story.Hotel.MissingBed>разместите гостевую кровать в зоне стойки</TMM.Story.Hotel.MissingBed>
+  <TMM.Story.Hotel.MissingDesk>поставьте стойку управления комплексом и назначьте ей зону</TMM.Story.Hotel.MissingDesk>
+  <TMM.Story.Hotel.MissingModule>модуль гостиницы не активен</TMM.Story.Hotel.MissingModule>
+  <TMM.Story.Hotel.MissingPlace>нет свободной гостевой кровати</TMM.Story.Hotel.MissingPlace>
+  <TMM.Story.Hotel.MissingWelcome>разрешите приём гостей во вкладке «Гости»</TMM.Story.Hotel.MissingWelcome>
+  <TMM.Story.Hotel.NoFaction>{0} не придёт: в этом мире нет фракции «{1}»</TMM.Story.Hotel.NoFaction>
+  <TMM.Story.Hotel.NoGuest>{0} сейчас не может прийти, и прийти вместо некому</TMM.Story.Hotel.NoGuest>
+  <TMM.Story.Hotel.WaitGuest>Ожидается гость: {0}</TMM.Story.Hotel.WaitGuest>
+  <TMM.Story.Hotel.WaitHotel>Гость ждёт места в гостинице: {0}</TMM.Story.Hotel.WaitHotel>
 </LanguageData>

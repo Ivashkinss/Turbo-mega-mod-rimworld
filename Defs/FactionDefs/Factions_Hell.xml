@@ -4,6 +4,9 @@
 <Defs>
   <FactionDef ParentName="PirateBandBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_HellFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>106</configurationListOrderPriority>
     <label>legions of Hell</label>
     <description>Demons wearing stolen human vessels. They answer to the King of Hell, strike from hidden ritual sites and crossroads altars, and trade only in contracts whose price comes due later.</description>
     <pawnSingular>demon</pawnSingular>

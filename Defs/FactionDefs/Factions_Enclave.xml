@@ -2,6 +2,9 @@
 <Defs>
   <FactionDef ParentName="PirateBandBase">
     <defName>TMM_EnclaveFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>101</configurationListOrderPriority>
     <label>Enclave</label>
     <description>The heirs of the pre-war government: power-armored, ruthless and convinced that only pure humans deserve the future.</description>
     <pawnSingular>enclave soldier</pawnSingular>

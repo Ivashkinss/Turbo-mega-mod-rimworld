@@ -3,6 +3,9 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_BrotherhoodFaction</defName>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>100</configurationListOrderPriority>
     <label>Brotherhood of Steel</label>
     <description>A techno-military order sworn to gather and guard pre-war technology. Disciplined, proud and wary of mutants and synths, its paladins in power armor are the steel fist of the wasteland.</description>
     <pawnSingular>knight</pawnSingular>
