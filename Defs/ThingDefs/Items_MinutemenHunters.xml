@@ -6,7 +6,7 @@
     <label>hunters field archive</label>
     <description>A rugged, waterproof field archive and data core compiled by minutemen patrols and monster hunters. Contains detailed records of anomalous entities, behavioral patterns of dangerous frontier beasts, and handwritten notes on protective warding circles.</description>
     <graphicData>
-      <texPath>Things/Item/Special/SubpersonaCoreTechprof</texPath>
+      <texPath>Things/Item/Equipment/TMM/TMM_HuntersFieldArchive</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Standard_Drop</soundInteract>

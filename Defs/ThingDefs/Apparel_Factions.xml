@@ -12,7 +12,7 @@
     <description>An immaculate black three-piece suit with subtle crimson silk lining and silver cufflinks. Worn by dealmakers who prefer sealing contracts over brawling, its fabric is unnaturally resistant to scorching heat.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_demon_crossroads_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -45,7 +45,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_demon_crossroads_suit/TMM_Apparel_demon_crossroads_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_HellApparel</li></tags>
     </apparel>
@@ -59,7 +59,7 @@
     <description>A heavy charcoal-black leather trenchcoat stitched with dark crimson thread along the lapels. Designed for long nights on the road, it turns aside blades and shrugs off flames.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_demon_infernal_trenchcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -79,7 +79,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_demon_infernal_trenchcoat/TMM_Apparel_demon_infernal_trenchcoat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_HellApparel</li></tags>
     </apparel>
@@ -99,7 +99,7 @@
     <description>A weathered beige cotton trenchcoat worn over a dark suit and loose tie, tailored with reinforced vertical slits across the upper back to accommodate manifestation of celestial wings. Can only be worn by Angels.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_angel_vessel_trenchcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -132,7 +132,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_angel_vessel_trenchcoat/TMM_Apparel_angel_vessel_trenchcoat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_AngelApparel</li></tags>
     </apparel>
@@ -155,7 +155,7 @@
     <description>Gleaming white-and-gold layered armor plates worn over a tailored tunic, open across the shoulder blades for angelic wings. Etched with Enochian script, it deflects demonic curses and cuts incoming demon and anomaly damage by 35%. Can only be worn by Angels.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_angel_celestial_raiment</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -176,7 +176,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_angel_celestial_raiment/TMM_Apparel_angel_celestial_raiment</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_AngelApparel</li></tags>
     </apparel>
@@ -201,7 +201,7 @@
     <description>A practical crimson-and-tan canvas tunic fitted with leather tool pouches, brass buckles, and an embroidered gear-and-sword emblem on the shoulder.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_bos_scribe_fatigues</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -234,7 +234,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_bos_scribe_fatigues/TMM_Apparel_bos_scribe_fatigues</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_BrotherhoodApparel</li></tags>
     </apparel>
@@ -248,7 +248,7 @@
     <description>Heavy steel-grey hydraulic power armor stamped with the Brotherhood of Steel crest on the chestplate. Worn on the dedicated Power Armor layer over regular clothing.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_bos_t60_power_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -270,7 +270,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_bos_t60_power_armor/TMM_Apparel_bos_t60_power_armor</wornGraphicPath>
       <layers><li>TMM_PowerArmor</li></layers>
       <tags><li>TMM_BrotherhoodPowerArmor</li></tags>
     </apparel>
@@ -284,7 +284,7 @@
     <description>An angular steel-grey armored helmet with a built-in tactical headlamp, rebreather filters, and armored glass visor.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_bos_t60_helmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -306,7 +306,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>FullHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_bos_t60_helmet/TMM_Apparel_bos_t60_helmet</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_BrotherhoodPowerArmor</li></tags>
     </apparel>
@@ -323,7 +323,7 @@
     <description>A form-fitting dark charcoal and crimson ballistic undersuit fitted with reinforced elbow pads and power-armor interface ports.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Pants/Pants</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_outcast_recon_underarmor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -355,7 +355,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_outcast_recon_underarmor/TMM_Apparel_outcast_recon_underarmor</wornGraphicPath>
       <layers><li>OnSkin</li></layers>
       <tags><li>TMM_OutcastsApparel</li></tags>
     </apparel>
@@ -369,7 +369,7 @@
     <description>Refurbished T-45d power armor painted matte black with stark blood-red trim and shoulder plates. Worn on the Power Armor layer over regular clothing.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_outcast_power_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -391,7 +391,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_outcast_power_armor/TMM_Apparel_outcast_power_armor</wornGraphicPath>
       <layers><li>TMM_PowerArmor</li></layers>
       <tags><li>TMM_OutcastsPowerArmor</li></tags>
     </apparel>
@@ -408,7 +408,7 @@
     <description>A crisp black-and-slate double-breasted military uniform with silver shoulder boards and an eagle-and-stars insignia. Radiates cold authoritarian discipline.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_enclave_officer_uniform</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -441,7 +441,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_enclave_officer_uniform/TMM_Apparel_enclave_officer_uniform</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_EnclaveApparel</li></tags>
     </apparel>
@@ -455,7 +455,7 @@
     <description>Sleek, sloped composite power armor in jet-black finish with a towering neck guard. Worn on the Power Armor layer over regular clothing, its curved plates deflect high-velocity rounds and plasma blasts.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_enclave_x01_power_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -477,7 +477,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_enclave_x01_power_armor/TMM_Apparel_enclave_x01_power_armor</wornGraphicPath>
       <layers><li>TMM_PowerArmor</li></layers>
       <tags><li>TMM_EnclavePowerArmor</li></tags>
     </apparel>
@@ -491,7 +491,7 @@
     <description>An intimidating black armored helmet shaped like a predatory insect head, featuring glowing amber optical lenses and dual filtration canisters.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_enclave_x01_helmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -513,7 +513,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>FullHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_enclave_x01_helmet/TMM_Apparel_enclave_x01_helmet</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_EnclavePowerArmor</li></tags>
     </apparel>
@@ -530,7 +530,7 @@
     <description>A pristine, sterile white synthetic coat with clean geometric seams and colored division stripes along the sleeves. Keeps its wearer comfortable in sterile subterranean labs.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_institute_lab_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -563,7 +563,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_institute_lab_coat/TMM_Apparel_institute_lab_coat</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_InstituteApparel</li></tags>
     </apparel>
@@ -576,7 +576,7 @@
     <description>Lightweight white ceramic-polymer plates strapped over a dark grey bodysuit. Mass-produced for synth strike teams, it offers crisp protection against energy weapons.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_institute_synth_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -609,7 +609,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_institute_synth_armor/TMM_Apparel_institute_synth_armor</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_InstituteApparel</li></tags>
     </apparel>
@@ -623,7 +623,7 @@
     <description>A sleek, matte-black armored leather trenchcoat reinforced with woven carbon fibers and internal ceramic trauma plates. Worn by the Institute's deadliest synth retrievers.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_institute_courser_uniform</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -644,7 +644,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_institute_courser_uniform/TMM_Apparel_institute_courser_uniform</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_InstituteApparel</li></tags>
     </apparel>
@@ -665,7 +665,7 @@
     <description>A patched, unassuming brown wasteland coat secretly lined with ultra-dense ballistic weave fibers. Looks like ordinary civilian clothing while stopping rifle rounds.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_railroad_armored_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -685,7 +685,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_railroad_armored_coat/TMM_Apparel_railroad_armored_coat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_RailroadApparel</li></tags>
     </apparel>
@@ -701,7 +701,7 @@
     <description>A knitted wool beanie wired with copper antennae and paired with tinted brass welding goggles. Built to spot stealth fields and block stray psychic noise.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_railroad_tinker_headgear</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -735,7 +735,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_railroad_tinker_headgear/TMM_Apparel_railroad_tinker_headgear</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_RailroadApparel</li></tags>
     </apparel>
@@ -752,7 +752,7 @@
     <description>Olive-drab modular military armor plates strapped over dark green fatigues, stenciled with a white skull emblem on the shoulder guard. Built for professional wasteland mercenaries.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_gunner_combat_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -785,7 +785,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_gunner_combat_armor/TMM_Apparel_gunner_combat_armor</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_GunnersApparel</li></tags>
     </apparel>
@@ -798,7 +798,7 @@
     <description>An olive-green army combat helmet paired with a lower-face bandana printed with a skeletal jaw. Protects against shrapnel and dusty wasteland winds.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/AdvancedHelmet/AdvancedHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_gunner_skull_helmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -830,7 +830,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>FullHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/AdvancedHelmet/AdvancedHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_gunner_skull_helmet/TMM_Apparel_gunner_skull_helmet</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_GunnersApparel</li></tags>
     </apparel>
@@ -847,7 +847,7 @@
     <description>A form-fitting cobalt-blue synthetic jumpsuit accented with bright yellow trim, brass zippers, and bold vault numerals across the back. Comfortable, durable, and iconic.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_vault_tec_jumpsuit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -879,7 +879,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_vault_tec_jumpsuit/TMM_Apparel_vault_tec_jumpsuit</wornGraphicPath>
       <layers><li>OnSkin</li></layers>
       <tags><li>TMM_VaultTecApparel</li></tags>
     </apparel>
@@ -892,7 +892,7 @@
     <description>A dark navy padded ballistic vest stenciled with 'SECURITY' in crisp white block letters, built to quell underground riots and hold airlock chokepoints.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_vault_security_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -925,7 +925,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_vault_security_armor/TMM_Apparel_vault_security_armor</wornGraphicPath>
       <layers><li>Middle</li></layers>
       <tags><li>TMM_VaultTecApparel</li></tags>
     </apparel>
@@ -942,7 +942,7 @@
     <description>A heavy, road-worn brown leather duster layered over a red-and-black flannel shirt, with hidden inner holsters and silver-stitched cuffs to fend off claws and fangs.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_hunter_leather_duster</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>85</costStuffCount>
@@ -978,7 +978,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_hunter_leather_duster/TMM_Apparel_hunter_leather_duster</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_HuntersApparel</li></tags>
     </apparel>
@@ -995,7 +995,7 @@
     <description>A weathered navy-blue colonial frock coat reinforced with boiled leather shoulder plates, crossed bandoliers, and brass buttons. Inspires settlers to stand their ground.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_minutemen_general_uniform</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1016,7 +1016,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_minutemen_general_uniform/TMM_Apparel_minutemen_general_uniform</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_HuntersApparel</li></tags>
     </apparel>
@@ -1032,7 +1032,7 @@
     <description>A sturdy dark felt tricorn hat pinned with a brass musket-and-lightning badge. Shields the wearer from harsh sun and rain while projecting frontier authority.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_minutemen_tricorn_hat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>35</costStuffCount>
@@ -1069,7 +1069,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_minutemen_tricorn_hat/TMM_Apparel_minutemen_tricorn_hat</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_HuntersApparel</li></tags>
     </apparel>
@@ -1086,7 +1086,7 @@
     <description>A bespoke British tweed three-piece suit interwoven with fine silver-alloy filaments and concealed Enochian wards sewn into the waistcoat.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_mol_arcane_tweed_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -1119,7 +1119,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_mol_arcane_tweed_suit/TMM_Apparel_mol_arcane_tweed_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_MenOfLettersApparel</li></tags>
     </apparel>
@@ -1133,7 +1133,7 @@
     <description>A tailored navy-black waterproof trenchcoat fitted with concealed kevlar panels and brass ward-plates etched with binding sigils that reduce incoming supernatural damage by 25%.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_mol_covert_trenchcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1154,7 +1154,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_mol_covert_trenchcoat/TMM_Apparel_mol_covert_trenchcoat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_MenOfLettersApparel</li></tags>
     </apparel>
@@ -1181,7 +1181,7 @@
     <description>A faded, bullet-nicked crimson colonial frock coat worn over a battered waistcoat. Popularized by Goodneighbor's ghoul mayor, it commands respect among wasteland outcasts.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_ghoul_revolutionary_frockcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1202,7 +1202,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_ghoul_revolutionary_frockcoat/TMM_Apparel_ghoul_revolutionary_frockcoat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_GhoulsApparel</li></tags>
     </apparel>
@@ -1218,7 +1218,7 @@
     <description>A heavy wasteland poncho stitched from rubberized canvas, scrap leather, and thin lead foil strips. Built to endure toxic storms and acid rain.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Parka/Parka</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_ghoul_lead_lined_poncho</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>65</costStuffCount>
@@ -1253,7 +1253,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Parka/Parka</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_ghoul_lead_lined_poncho/TMM_Apparel_ghoul_lead_lined_poncho</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_GhoulsApparel</li></tags>
     </apparel>
@@ -1273,7 +1273,7 @@
     <description>Massive, crudely welded steel plates, rusted highway signs, and heavy iron chains bolted together to fit the hulking torso of a super mutant. Too huge for humans to wear.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_mutant_scrap_harness</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costStuffCount>40</costStuffCount>
@@ -1308,7 +1308,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_mutant_scrap_harness/TMM_Apparel_mutant_scrap_harness</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SuperMutantApparel</li></tags>
     </apparel>
@@ -1326,7 +1326,7 @@
     <description>A brutal iron cage welded from thick rebar rods and bolted steel scrap, sized to protect a super mutant's massive skull in melee brawls. Can only be worn by Super Mutants.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_mutant_rebar_cage_helmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -1357,7 +1357,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>FullHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_mutant_rebar_cage_helmet/TMM_Apparel_mutant_rebar_cage_helmet</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_SuperMutantApparel</li></tags>
     </apparel>
@@ -1379,7 +1379,7 @@
     <description>A long, high-collared midnight-black velvet and leather coat worn by ancient vampire elders. Tailored for silent movement and intimidating presence.</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_clan_nocturnal_aristocrat_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <costList>
@@ -1412,7 +1412,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_clan_nocturnal_aristocrat_coat/TMM_Apparel_clan_nocturnal_aristocrat_coat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_MonsterClansApparel</li></tags>
     </apparel>
@@ -1429,7 +1429,7 @@
     <description>Organic crimson-black chitinous plates grown from hardened bioferrite and monster blood. Worn on the Power Armor layer over regular clothing, the living carapace accelerates wound healing by 25% and slowly repairs its own durability.</description>
     <techLevel>Spacer</techLevel>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Apparel_clan_bioferrite_carapace</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1451,7 +1451,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Apparel_clan_bioferrite_carapace/TMM_Apparel_clan_bioferrite_carapace</wornGraphicPath>
       <layers><li>TMM_PowerArmor</li></layers>
       <tags><li>TMM_MonsterClansPowerArmor</li></tags>
     </apparel>

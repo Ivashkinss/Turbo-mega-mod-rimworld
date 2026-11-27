@@ -1053,15 +1053,15 @@ namespace TurboMegaMod
             if (requireHero && ctx != null && ctx.run != null) return ConversationObjective(ctx);
             if (ctx != null && ctx.run != null && GetBool(ctx, "noHotel"))
             {
-                return "Open a hotel (build guest beds and enable welcoming guests)";
+                return "TMM.Story.Hotel.OpenObjective".Translate();
             }
 
             string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : text, ctx);
             if (baseText.NullOrEmpty())
             {
-                if (objective == StoryHotelObjective.Investigate) baseText = "Investigate visiting hotel guests";
-                else if (objective == StoryHotelObjective.Hide) baseText = "Shelter hidden guests from hunters";
-                else baseText = "Host visiting delegation in the hotel";
+                if (objective == StoryHotelObjective.Investigate) baseText = "TMM.Story.Hotel.Investigate".Translate();
+                else if (objective == StoryHotelObjective.Hide) baseText = "TMM.Story.Hotel.Shelter".Translate();
+                else baseText = "TMM.Story.Hotel.Host".Translate();
             }
 
             if (ctx == null || ctx.run == null) return baseText;
@@ -1070,21 +1070,17 @@ namespace TurboMegaMod
             int leaveTick = GetInt(ctx, "leaveTick", now);
             float daysLeft = Mathf.Max(0f, (leaveTick - now) / (float)GenDate.TicksPerDay);
 
+            string time = "TMM.Story.DaysLeft".Translate(daysLeft.ToString("0.0"));
+            string statusKey = null;
             if (objective == StoryHotelObjective.Investigate)
-            {
-                string status = GetBool(ctx, "investigated") ? "clue found" : "talk to guest";
-                return string.Format("{0} ({1}, {2:0.0}d left)", baseText, status, daysLeft);
-            }
+                statusKey = GetBool(ctx, "investigated") ? "TMM.Story.Hotel.ClueFound" : "TMM.Story.Hotel.TalkToGuest";
+            else if (objective == StoryHotelObjective.Hide)
+                statusKey = GetBool(ctx, "hunterRaidCleared") ? "TMM.Story.Hotel.Repelled"
+                    : (GetBool(ctx, "hunterRaidBound") ? "TMM.Story.Hotel.Repel" : "TMM.Story.Hotel.AwaitingHunters");
 
-            if (objective == StoryHotelObjective.Hide)
-            {
-                string status = GetBool(ctx, "hunterRaidCleared")
-                    ? "hunters repelled"
-                    : (GetBool(ctx, "hunterRaidBound") ? "repel hunters" : "awaiting hunters");
-                return string.Format("{0} ({1}, {2:0.0}d left)", baseText, status, daysLeft);
-            }
-
-            return string.Format("{0} ({1:0.0}d left)", baseText, daysLeft);
+            return statusKey == null
+                ? "TMM.Story.Hotel.GoalTime".Translate(baseText, time)
+                : "TMM.Story.Hotel.GoalStatusTime".Translate(baseText, statusKey.Translate(), time);
         }
 
         // =====================================================================
@@ -1468,9 +1464,8 @@ namespace TurboMegaMod
 
         private void SendNoHotelLetter(StoryContext ctx, Map home)
         {
-            string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "No Hotel Available"), ctx);
-            string body = "A story delegation tried to visit {COLONY}, but your settlement does not have an open hotel.\n\nTo receive hotel visitors in future quests, build at least one Guest Bed (and a reception desk if desired) and enable 'Guests are welcome' in the Guests tab.";
-            body = StoryUtil.Format(body, ctx);
+            string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "TMM.Story.Hotel.ClosedTitle".Translate().ToString()), ctx);
+            string body = "TMM.Story.Hotel.ClosedLetter".Translate(StoryUtil.Format("{COLONY}", ctx));
             LookTargets target = home != null ? new LookTargets(home.Center, home) : LookTargets.Invalid;
             Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.NeutralEvent, target); // CHECK API
         }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Common -->
+  <TMM.Event.Common.Colonist>colonist</TMM.Event.Common.Colonist>
+  <TMM.Event.Common.ItemMissing>Required item is no longer available on the map.</TMM.Event.Common.ItemMissing>
+  <TMM.Event.Common.Decline>Decline</TMM.Event.Common.Decline>
+  <TMM.Event.Common.NotEnoughSilver>Requires {0} silver in storage.</TMM.Event.Common.NotEnoughSilver>
+  <TMM.Event.Common.ColonistUnavailable>The selected colonist is no longer available.</TMM.Event.Common.ColonistUnavailable>
+
+  <!-- 1. Brotherhood of Steel -->
+  <TMM.Event.BosTechDemand.FallbackTech>pre-war technology</TMM.Event.BosTechDemand.FallbackTech>
+  <TMM.Event.BosTechDemand.Title>Brotherhood tech requisition</TMM.Event.BosTechDemand.Title>
+  <TMM.Event.BosTechDemand.Text>A power-armored patrol from {0} has hailed the settlement. Their scribe has detected a restricted piece of technology ({1}) and demands you surrender it for safekeeping under the Codex.</TMM.Event.BosTechDemand.Text>
+  <TMM.Event.BosTechDemand.Accept>Surrender technology (+15 goodwill)</TMM.Event.BosTechDemand.Accept>
+  <TMM.Event.BosTechDemand.AcceptMsg>{0} accepted the requisitioned technology with approval.</TMM.Event.BosTechDemand.AcceptMsg>
+  <TMM.Event.BosTechDemand.Refuse>Refuse (-20 goodwill)</TMM.Event.BosTechDemand.Refuse>
+  <TMM.Event.BosTechDemand.RefuseMsg>{0} logged your defiance as technology hoarding.</TMM.Event.BosTechDemand.RefuseMsg>
+
+  <TMM.Event.BosPaladinShelter.Title>Paladin requests shelter</TMM.Event.BosPaladinShelter.Title>
+  <TMM.Event.BosPaladinShelter.Text>A battered field paladin from {0} asks for two days of safe shelter to recharge power cells and patch armor plating. They promise medical supplies and goodwill in return.</TMM.Event.BosPaladinShelter.Text>
+  <TMM.Event.BosPaladinShelter.Accept>Grant shelter for 2 days</TMM.Event.BosPaladinShelter.Accept>
+  <TMM.Event.BosPaladinShelter.AcceptMsg>Paladin {0} is entering the settlement to rest for two days.</TMM.Event.BosPaladinShelter.AcceptMsg>
+  <TMM.Event.BosPaladinShelter.Refuse>Turn them away (-5 goodwill)</TMM.Event.BosPaladinShelter.Refuse>
+  <TMM.Event.BosPaladinShelter.DoneTitle>Brotherhood paladin departs</TMM.Event.BosPaladinShelter.DoneTitle>
+  <TMM.Event.BosPaladinShelter.DoneText>{0} thanks the colony for the hospitality, leaving behind a drop of industrial medicine before marching out. Ad Victoriam.</TMM.Event.BosPaladinShelter.DoneText>
+
+  <!-- 2. Brotherhood Outcasts -->
+  <TMM.Event.OutcastsTechForMeds.Title>Outcasts salvage exchange</TMM.Event.OutcastsTechForMeds.Title>
+  <TMM.Event.OutcastsTechForMeds.Text>A scavenger team from {0} offers 10 industrial medicine in exchange for your {1}. No sermons, strictly hardware for supplies.</TMM.Event.OutcastsTechForMeds.Text>
+  <TMM.Event.OutcastsTechForMeds.Accept>Trade technology for 10 medicine</TMM.Event.OutcastsTechForMeds.Accept>
+  <TMM.Event.OutcastsTechForMeds.AcceptMsg>The Outcasts delivered 10 industrial medicine in exchange for your technology.</TMM.Event.OutcastsTechForMeds.AcceptMsg>
+
+  <TMM.Event.OutcastsCaravanAmbush.Title>Outcasts roadblock</TMM.Event.OutcastsCaravanAmbush.Title>
+  <TMM.Event.OutcastsCaravanAmbush.Text>An armored squad from {0} has boxed in your caravan near their patrol sector. They demand a {1} silver salvage toll to let you pass unharmed.</TMM.Event.OutcastsCaravanAmbush.Text>
+  <TMM.Event.OutcastsCaravanAmbush.Pay>Pay {0} silver toll</TMM.Event.OutcastsCaravanAmbush.Pay>
+  <TMM.Event.OutcastsCaravanAmbush.PaidMsg>Your caravan paid {0} silver and passed the Outcasts roadblock safely.</TMM.Event.OutcastsCaravanAmbush.PaidMsg>
+  <TMM.Event.OutcastsCaravanAmbush.Fight>Refuse and fight!</TMM.Event.OutcastsCaravanAmbush.Fight>
+
+  <!-- 3. Enclave -->
+  <TMM.Event.EnclavePropaganda.Title>Enclave radio broadcast</TMM.Event.EnclavePropaganda.Title>
+  <TMM.Event.EnclavePropaganda.Text>A crisp pre-war march cuts across every receiver in the settlement as {0} broadcasts an address on order, heritage, and purging wasteland impurities.\n\nInspired colonists: {1}\nDisgusted colonists: {2}</TMM.Event.EnclavePropaganda.Text>
+
+  <TMM.Event.EnclavePunitiveDrop.Title>Enclave punitive strike</TMM.Event.EnclavePunitiveDrop.Title>
+  <TMM.Event.EnclavePunitiveDrop.Text>Enclave command has designated your settlement a hostile insurgent cell. {0} strike troopers are dropping directly onto your perimeter!</TMM.Event.EnclavePunitiveDrop.Text>
+
+  <!-- 4. Institute -->
+  <TMM.Event.InstituteCourserAbduction.Title>Courser abduction raid</TMM.Event.InstituteCourserAbduction.Title>
+  <TMM.Event.InstituteCourserAbduction.Text>Blue relay flashes split the air! A compact retrieval team from {0} has teleported in to abduct one of your colonists.</TMM.Event.InstituteCourserAbduction.Text>
+
+  <TMM.Event.InstituteSynthReplacement.Title>Eerie relay static</TMM.Event.InstituteSynthReplacement.Title>
+  <TMM.Event.InstituteSynthReplacement.Text>Short-range telemetry spikes briefly flickered near the barracks — classic signature of a {0} molecular relay. Everyone is accounted for, yet someone feels subtly... different.</TMM.Event.InstituteSynthReplacement.Text>
+  <TMM.Event.InstituteSynthReplacement.RevealTitle>Synth infiltrator exposed: {0}</TMM.Event.InstituteSynthReplacement.RevealTitle>
+  <TMM.Event.InstituteSynthReplacement.RevealText>Routine medical scans have uncovered an Institute synth component inside {0}. They were quietly replaced weeks ago — though for now they remain loyal to the settlement.</TMM.Event.InstituteSynthReplacement.RevealText>
+
+  <!-- 5. Railroad -->
+  <TMM.Event.RailroadFugitiveSynth.Title>Fugitive synth seeks sanctuary</TMM.Event.RailroadFugitiveSynth.Title>
+  <TMM.Event.RailroadFugitiveSynth.Text>A courier from {0} brings word of a newly liberated synth hiding nearby. They can join your colony immediately, but Institute hunters will track them here within three days.</TMM.Event.RailroadFugitiveSynth.Text>
+  <TMM.Event.RailroadFugitiveSynth.Accept>Grant sanctuary (joins colony; Institute pursuit in 3 days)</TMM.Event.RailroadFugitiveSynth.Accept>
+  <TMM.Event.RailroadFugitiveSynth.AcceptMsg>{0} has joined the colony under Railroad protection. Expect Institute pursuit in 3 days.</TMM.Event.RailroadFugitiveSynth.AcceptMsg>
+  <TMM.Event.RailroadFugitiveSynth.Refuse>Refuse sanctuary (-5 goodwill)</TMM.Event.RailroadFugitiveSynth.Refuse>
+
+  <TMM.Event.RailroadDeadDrop.Title>Railroad dead-drop cache</TMM.Event.RailroadDeadDrop.Title>
+  <TMM.Event.RailroadDeadDrop.Text>A scout spotted a chalk lantern rail-sign etched on a boulder nearby. Beneath it lies a hidden {0} supply cache stocked with silver, medicine, and components.</TMM.Event.RailroadDeadDrop.Text>
+
+  <!-- 6. Gunners -->
+  <TMM.Event.GunnersExtortion.Title>Gunners protection demand</TMM.Event.GunnersExtortion.Title>
+  <TMM.Event.GunnersExtortion.Text>A platoon leader from {0} radios from the ridge: pay a {1} silver "security fee" now, or their squads move in and collect it in lead.</TMM.Event.GunnersExtortion.Text>
+  <TMM.Event.GunnersExtortion.Pay>Pay {0} silver protection fee</TMM.Event.GunnersExtortion.Pay>
+  <TMM.Event.GunnersExtortion.PaidMsg>Paid {0} silver to the Gunners. Their squad pulls back from the ridge.</TMM.Event.GunnersExtortion.PaidMsg>
+  <TMM.Event.GunnersExtortion.Refuse>Refuse — prepare for a raid!</TMM.Event.GunnersExtortion.Refuse>
+
+  <TMM.Event.GunnersMercContract.Title>Gunners mercenary contract</TMM.Event.GunnersMercContract.Title>
+  <TMM.Event.GunnersMercContract.Text>Two off-duty veterans from {0} offer to serve your colony for one full season (15 days) for an upfront retainer of {1} silver.</TMM.Event.GunnersMercContract.Text>
+  <TMM.Event.GunnersMercContract.Hire>Hire 2 mercenaries for {0} silver</TMM.Event.GunnersMercContract.Hire>
+  <TMM.Event.GunnersMercContract.HiredMsg>{0} Gunner mercenaries have entered the colony on a 15-day contract.</TMM.Event.GunnersMercContract.HiredMsg>
+  <TMM.Event.GunnersMercContract.ExpiredMsg>The Gunner mercenary contract has expired; the hired fighters are departing.</TMM.Event.GunnersMercContract.ExpiredMsg>
+
+  <!-- 7. Vault-Tec -->
+  <TMM.Event.VaultTecExperiment.Title>Vault-Tec "voluntary" clinical trial</TMM.Event.VaultTecExperiment.Title>
+  <TMM.Event.VaultTecExperiment.Text>A cheerful representative from {0} invites {1} to participate in an experimental vitality serum study. Completely voluntary, totally safe (probably), and pays a crisp silver stipend.</TMM.Event.VaultTecExperiment.Text>
+  <TMM.Event.VaultTecExperiment.Accept>Participate in trial (+{0} silver, experimental serum)</TMM.Event.VaultTecExperiment.Accept>
+  <TMM.Event.VaultTecExperiment.AcceptMsg>{0} received the Vault-Tec trial serum and the promised stipend.</TMM.Event.VaultTecExperiment.AcceptMsg>
+
+  <TMM.Event.VaultTecSupplyCaravan.Title>Vault-Tec surplus drop</TMM.Event.VaultTecSupplyCaravan.Title>
+  <TMM.Event.VaultTecSupplyCaravan.Text>A logistics officer from {0} offers a subsidized pre-war Vault surplus pallet (16 survival meals, 8 medicine, 6 components) for {1} silver.</TMM.Event.VaultTecSupplyCaravan.Text>
+  <TMM.Event.VaultTecSupplyCaravan.Buy>Purchase surplus crate ({0} silver)</TMM.Event.VaultTecSupplyCaravan.Buy>
+  <TMM.Event.VaultTecSupplyCaravan.BoughtMsg>Vault-Tec surplus supplies have landed near your settlement.</TMM.Event.VaultTecSupplyCaravan.BoughtMsg>
+
+  <!-- 8. Minutemen & Hunters -->
+  <TMM.Event.MinutemenDistressSignal.Title>Minutemen distress call</TMM.Event.MinutemenDistressSignal.Title>
+  <TMM.Event.MinutemenDistressSignal.Text>Radio Freedom crackles to life! {0} reports a nearby outpost under siege by raiders and asks if you can mark the coordinates on your world map and send help.</TMM.Event.MinutemenDistressSignal.Text>
+  <TMM.Event.MinutemenDistressSignal.Accept>Mark distress site on world map (+8 goodwill)</TMM.Event.MinutemenDistressSignal.Accept>
+  <TMM.Event.MinutemenDistressSignal.SiteCreatedMsg>Distress signal coordinates marked on the world map.</TMM.Event.MinutemenDistressSignal.SiteCreatedMsg>
+  <TMM.Event.MinutemenDistressSignal.Refuse>We cannot spare anyone (-5 goodwill)</TMM.Event.MinutemenDistressSignal.Refuse>
+
+  <TMM.Event.HuntersMonsterWarning.Title>Hunter warning: monsters inbound</TMM.Event.HuntersMonsterWarning.Title>
+  <TMM.Event.HuntersMonsterWarning.Text>A traveling hunter allied with {0} stopped by to warn you: a hunting pack from {1} has picked up your scent and will strike in roughly two days. Prepare silver and salt.</TMM.Event.HuntersMonsterWarning.Text>
+
+  <!-- 9. Men of Letters -->
+  <TMM.Event.MolBuyRecords.Title>Men of Letters lore acquisition</TMM.Event.MolBuyRecords.Title>
+  <TMM.Event.MolBuyRecords.TextArchive>An emissary from {0} has learned you possess {1}. They offer {2} silver and strong diplomatic favor to acquire it for their London vault.</TMM.Event.MolBuyRecords.TextArchive>
+  <TMM.Event.MolBuyRecords.TextNotes>An archivist from {0} requests copies of your settlement's field observations on supernatural monsters, offering {1} silver for the dossier.</TMM.Event.MolBuyRecords.TextNotes>
+  <TMM.Event.MolBuyRecords.SellArchive>Sell archive for {0} silver (+18 goodwill)</TMM.Event.MolBuyRecords.SellArchive>
+  <TMM.Event.MolBuyRecords.SellNotes>Share field notes for {0} silver (+8 goodwill)</TMM.Event.MolBuyRecords.SellNotes>
+  <TMM.Event.MolBuyRecords.SoldMsg>The Men of Letters wired {0} silver for your supernatural records.</TMM.Event.MolBuyRecords.SoldMsg>
+
+  <TMM.Event.MolRecruitment.Title>Men of Letters recruitment offer</TMM.Event.MolRecruitment.Title>
+  <TMM.Event.MolRecruitment.Text>{0} has taken note of {1}'s sharp intellect and offers to recruit them into their chapter in exchange for a {2} silver stipend, 2 advanced components, and major goodwill.</TMM.Event.MolRecruitment.Text>
+  <TMM.Event.MolRecruitment.Accept>Release {0} to the Chapter (+{1} silver, +2 adv. components)</TMM.Event.MolRecruitment.Accept>
+  <TMM.Event.MolRecruitment.AcceptMsg>{0} has departed to join {1}. Your stipend has arrived.</TMM.Event.MolRecruitment.AcceptMsg>
+  <TMM.Event.MolRecruitment.Refuse>Keep {0} in our colony</TMM.Event.MolRecruitment.Refuse>
+
+  <!-- 10. Heaven -->
+  <TMM.Event.HeavenVesselRequest.Title>Angel seeks a willing vessel</TMM.Event.HeavenVesselRequest.Title>
+  <TMM.Event.HeavenVesselRequest.Text>A resonant voice from {0} speaks to {1}, asking permission to briefly share their vessel to stabilize a rift. Saying yes bestows lasting angelic grace and Heaven's favor.</TMM.Event.HeavenVesselRequest.Text>
+  <TMM.Event.HeavenVesselRequest.Accept>Give consent for {0} (+angelic grace, +20 goodwill)</TMM.Event.HeavenVesselRequest.Accept>
+  <TMM.Event.HeavenVesselRequest.AcceptMsg>Celestial grace washes over {0}.</TMM.Event.HeavenVesselRequest.AcceptMsg>
+  <TMM.Event.HeavenVesselRequest.Refuse>Deny consent (-5 goodwill)</TMM.Event.HeavenVesselRequest.Refuse>
+
+  <TMM.Event.HeavenDivineOmen.Title>Celestial omen</TMM.Event.HeavenDivineOmen.Title>
+  <TMM.Event.HeavenDivineOmen.Text>Columns of silver-gold light part the clouds above your settlement as the host of {0} passes overhead. The faithful feel uplifted, while demonic blood burns with unease.\n\nUplifted: {1}\nUnsettled: {2}</TMM.Event.HeavenDivineOmen.Text>
+
+  <!-- 11. Hell -->
+  <TMM.Event.HellCrossroadsDeal.Title>Crossroads bargain</TMM.Event.HellCrossroadsDeal.Title>
+  <TMM.Event.HellCrossroadsDeal.Text>A sharp-dressed dealmaker from {0} waits at the crossroads with an irresistible offer: {1} silver and 4 glitterworld medicine right now — in exchange for a "collection visit" exactly one year from today.</TMM.Event.HellCrossroadsDeal.Text>
+  <TMM.Event.HellCrossroadsDeal.Accept>Seal the deal (+{0} silver, +4 glitterworld meds; debt in 1 year)</TMM.Event.HellCrossroadsDeal.Accept>
+  <TMM.Event.HellCrossroadsDeal.AcceptMsg>The crossroads contract is signed. Expect Hell's collectors in one year.</TMM.Event.HellCrossroadsDeal.AcceptMsg>
+  <TMM.Event.HellCrossroadsDeal.Refuse>Walk away from the crossroads</TMM.Event.HellCrossroadsDeal.Refuse>
+  <TMM.Event.HellCrossroadsDeal.DueTitle>Crossroads debt is due!</TMM.Event.HellCrossroadsDeal.DueTitle>
+  <TMM.Event.HellCrossroadsDeal.DueText>One year has passed since the crossroads bargain signed in {0}'s name. Hellhounds and demons have arrived to collect!</TMM.Event.HellCrossroadsDeal.DueText>
+
+  <TMM.Event.HellDemonicPossession.Title>Demonic possession</TMM.Event.HellDemonicPossession.Title>
+  <TMM.Event.HellDemonicPossession.Text>Black smoke coils around {0} as a rogue spirit from {1} forces its way into their body! You can spend {2} silver on emergency exorcism supplies to banish it, or let {0} endure the possession for several days.</TMM.Event.HellDemonicPossession.Text>
+  <TMM.Event.HellDemonicPossession.Exorcise>Perform exorcism ({0} silver)</TMM.Event.HellDemonicPossession.Exorcise>
+  <TMM.Event.HellDemonicPossession.ExorcisedMsg>The demon was cast out of {0} in a burst of sulfur smoke.</TMM.Event.HellDemonicPossession.ExorcisedMsg>
+  <TMM.Event.HellDemonicPossession.Endure>Let {0} endure the possession</TMM.Event.HellDemonicPossession.Endure>
+  <TMM.Event.HellDemonicPossession.PossessedMsg>{0}'s eyes flash pitch black as the demon takes hold.</TMM.Event.HellDemonicPossession.PossessedMsg>
+
+  <!-- 12. Ghouls -->
+  <TMM.Event.GhoulsRefugees.Title>Ghoul refugees seek shelter</TMM.Event.GhoulsRefugees.Title>
+  <TMM.Event.GhoulsRefugees.Text>Two sane ghoul wanderers affiliated with {0} were driven out of a nearby town by bigots and ask to settle with your colony permanently.</TMM.Event.GhoulsRefugees.Text>
+  <TMM.Event.GhoulsRefugees.Accept>Welcome both ghoul refugees (+15 goodwill)</TMM.Event.GhoulsRefugees.Accept>
+  <TMM.Event.GhoulsRefugees.AcceptMsg>{0} ghoul refugees have joined the colony.</TMM.Event.GhoulsRefugees.AcceptMsg>
+  <TMM.Event.GhoulsRefugees.Refuse>Turn them away (-5 goodwill)</TMM.Event.GhoulsRefugees.Refuse>
+
+  <TMM.Event.GhoulsRadTrade.Title>Radioactive salvage offer</TMM.Event.GhoulsRadTrade.Title>
+  <TMM.Event.GhoulsRadTrade.Text>Scavengers from {0} hauled 45 uranium and 120 chemfuel out of a hot crater no smoothskin could enter. They will sell the whole lot for {1} silver.</TMM.Event.GhoulsRadTrade.Text>
+  <TMM.Event.GhoulsRadTrade.Buy>Buy 45 uranium + 120 chemfuel ({0} silver)</TMM.Event.GhoulsRadTrade.Buy>
+  <TMM.Event.GhoulsRadTrade.BoughtMsg>The ghoul scavengers delivered uranium and chemfuel to your drop zone.</TMM.Event.GhoulsRadTrade.BoughtMsg>
+
+  <!-- 13. Friendly Super Mutants -->
+  <TMM.Event.FriendlyMutantJoin.Title>Wandering super mutant</TMM.Event.FriendlyMutantJoin.Title>
+  <TMM.Event.FriendlyMutantJoin.Text>A thoughtful, peaceful super mutant from {0} has arrived at your borders seeking a home where they can work and protect gentle humans.</TMM.Event.FriendlyMutantJoin.Text>
+  <TMM.Event.FriendlyMutantJoin.Accept>Welcome the super mutant (+12 goodwill)</TMM.Event.FriendlyMutantJoin.Accept>
+  <TMM.Event.FriendlyMutantJoin.AcceptMsg>{0} has joined your colony!</TMM.Event.FriendlyMutantJoin.AcceptMsg>
+
+  <TMM.Event.FriendlyMutantHeal.Title>Wounded mutant kinsman</TMM.Event.FriendlyMutantHeal.Title>
+  <TMM.Event.FriendlyMutantHeal.Text>{0} asks if your medics can tend a wounded brother who survived a raider ambush. Patch them up over the next two days for steel and lasting gratitude.</TMM.Event.FriendlyMutantHeal.Text>
+  <TMM.Event.FriendlyMutantHeal.Accept>Agree to tend the wounded mutant</TMM.Event.FriendlyMutantHeal.Accept>
+  <TMM.Event.FriendlyMutantHeal.AcceptMsg>Wounded super mutant {0} is entering the settlement for medical care.</TMM.Event.FriendlyMutantHeal.AcceptMsg>
+  <TMM.Event.FriendlyMutantHeal.Refuse>Refuse (-5 goodwill)</TMM.Event.FriendlyMutantHeal.Refuse>
+  <TMM.Event.FriendlyMutantHeal.DoneTitle>Super mutant recovered</TMM.Event.FriendlyMutantHeal.DoneTitle>
+  <TMM.Event.FriendlyMutantHeal.DoneText>{0} is back on their feet thanks to your doctors and leaves 120 salvaged steel as a thank-you gift.</TMM.Event.FriendlyMutantHeal.DoneText>
+
+  <!-- 14. Wild Super Mutants -->
+  <TMM.Event.WildMutantsMeatBags.Title>Mutant raid with captives!</TMM.Event.WildMutantsMeatBags.Title>
+  <TMM.Event.WildMutantsMeatBags.Text>A warband from {0} is charging the settlement — and they dragged two bound human captives ("meat bags") to the edge of the map! Drive off the mutants to rescue the prisoners.</TMM.Event.WildMutantsMeatBags.Text>
+
+  <TMM.Event.WildMutantsWarlordDuel.Title>Mutant warlord challenge</TMM.Event.WildMutantsWarlordDuel.Title>
+  <TMM.Event.WildMutantsWarlordDuel.Text>A towering warlord from {0} bellows at your gates, demanding single combat! Face the lone champion for their 500-silver trophy pouch, or refuse and face the whole warband.</TMM.Event.WildMutantsWarlordDuel.Text>
+  <TMM.Event.WildMutantsWarlordDuel.Accept>Accept the warlord's challenge (1 champion, 500 silver loot)</TMM.Event.WildMutantsWarlordDuel.Accept>
+  <TMM.Event.WildMutantsWarlordDuel.AcceptMsg>Warlord {0} strides onto the field for single combat!</TMM.Event.WildMutantsWarlordDuel.AcceptMsg>
+  <TMM.Event.WildMutantsWarlordDuel.Refuse>Refuse — brace for a full raid!</TMM.Event.WildMutantsWarlordDuel.Refuse>
+
+  <!-- 15. Monster Clans -->
+  <TMM.Event.MonsterVampireNightHunt.Title>Vampire night hunt</TMM.Event.MonsterVampireNightHunt.Title>
+  <TMM.Event.MonsterVampireNightHunt.Text>Under the cover of darkness, a hunting nest from {0} has slipped across your borders to feed!</TMM.Event.MonsterVampireNightHunt.Text>
+
+  <TMM.Event.MonsterShapeshifterGuest.Title>Werewolf among guests!</TMM.Event.MonsterShapeshifterGuest.Title>
+  <TMM.Event.MonsterShapeshifterGuest.Text>A traveler named {0} just wandered into your settlement, but your sharpest lookout caught silver-allergy burns on their wrist and yellow reflections in their eyes. Confront them now, or ignore the warning at your peril.</TMM.Event.MonsterShapeshifterGuest.Text>
+  <TMM.Event.MonsterShapeshifterGuest.Confront>Confront and expose them now</TMM.Event.MonsterShapeshifterGuest.Confront>
+  <TMM.Event.MonsterShapeshifterGuest.ConfrontedMsg>Cornered, {0} drops their disguise and lunges at the colony!</TMM.Event.MonsterShapeshifterGuest.ConfrontedMsg>
+  <TMM.Event.MonsterShapeshifterGuest.Ignore>Ignore the suspicion</TMM.Event.MonsterShapeshifterGuest.Ignore>
+  <TMM.Event.MonsterShapeshifterGuest.TransformTitle>Guest turns hostile!</TMM.Event.MonsterShapeshifterGuest.TransformTitle>
+  <TMM.Event.MonsterShapeshifterGuest.TransformText>The lookout was right! {0} has dropped all pretense and attacked the colony from within!</TMM.Event.MonsterShapeshifterGuest.TransformText>
+
+  <TMM.Event.Common.PaymentFailed>The exchange could not be completed. Payment was kept and you can try again.</TMM.Event.Common.PaymentFailed>
+</LanguageData>

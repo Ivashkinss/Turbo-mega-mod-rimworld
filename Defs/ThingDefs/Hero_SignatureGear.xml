@@ -51,7 +51,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_dean_leather_jacket</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -72,7 +72,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_dean_leather_jacket/TMM_Sig_dean_leather_jacket</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -143,7 +143,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_sam_hunting_flannel</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -164,7 +164,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_sam_hunting_flannel/TMM_Sig_sam_hunting_flannel</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -185,7 +185,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_preston_garvey_hat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -206,7 +206,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_preston_garvey_hat/TMM_Sig_preston_garvey_hat</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -224,7 +224,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_bobby_singer_cap_vest</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -245,7 +245,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_bobby_singer_cap_vest/TMM_Sig_bobby_singer_cap_vest</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -263,7 +263,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_castiel_trenchcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -284,7 +284,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_castiel_trenchcoat/TMM_Sig_castiel_trenchcoat</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li><li>TMM_AngelApparel</li></tags>
     </apparel>
@@ -351,7 +351,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_michael_archangel_plate</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -373,7 +373,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_michael_archangel_plate/TMM_Sig_michael_archangel_plate</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li><li>TMM_AngelApparel</li></tags>
     </apparel>
@@ -397,7 +397,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_lucifer_white_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -419,7 +419,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_lucifer_white_suit/TMM_Sig_lucifer_white_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -437,7 +437,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_crowley_king_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -460,7 +460,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_crowley_king_suit/TMM_Sig_crowley_king_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -522,7 +522,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_maxson_battlecoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -543,7 +543,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_maxson_battlecoat/TMM_Sig_maxson_battlecoat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -564,7 +564,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_danse_recon_hood</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -585,7 +585,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_danse_recon_hood/TMM_Sig_danse_recon_hood</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -603,7 +603,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_casdin_protector_helm</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -625,7 +625,7 @@
     <thingCategories><li>ArmorHeadgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>FullHead</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_casdin_protector_helm/TMM_Sig_casdin_protector_helm</wornGraphicPath>
       <layers><li>Overhead</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -643,7 +643,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_autumn_enclave_greatcoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -664,7 +664,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_autumn_enclave_greatcoat/TMM_Sig_autumn_enclave_greatcoat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -685,7 +685,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_father_director_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -707,7 +707,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_father_director_coat/TMM_Sig_father_director_coat</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -725,7 +725,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_kellogg_cyber_jacket</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -746,7 +746,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_kellogg_cyber_jacket/TMM_Sig_kellogg_cyber_jacket</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -817,7 +817,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_desdemona_railroad_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -838,7 +838,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_desdemona_railroad_coat/TMM_Sig_desdemona_railroad_coat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -859,7 +859,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_deacon_sunglasses</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -879,7 +879,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Eyes</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_deacon_sunglasses/TMM_Sig_deacon_sunglasses</wornGraphicPath>
       <layers>
         <li MayRequire="Ludeon.RimWorld.Ideology">EyeCover</li>
         <li MayRequire="!Ludeon.RimWorld.Ideology">Overhead</li>
@@ -900,7 +900,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_wes_gunner_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -921,7 +921,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_wes_gunner_coat/TMM_Sig_wes_gunner_coat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -942,7 +942,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_braun_white_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -963,7 +963,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_braun_white_suit/TMM_Sig_braun_white_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -981,7 +981,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_dr_hess_monocle</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1001,7 +1001,7 @@
     <thingCategories><li>Headgear</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Eyes</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Tuque/Tuque</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_dr_hess_monocle/TMM_Sig_dr_hess_monocle</wornGraphicPath>
       <layers>
         <li MayRequire="Ludeon.RimWorld.Ideology">EyeCover</li>
         <li MayRequire="!Ludeon.RimWorld.Ideology">Overhead</li>
@@ -1022,7 +1022,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_ketch_arsenal_briefcase_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1044,7 +1044,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_ketch_arsenal_briefcase_coat/TMM_Sig_ketch_arsenal_briefcase_coat</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -1062,7 +1062,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_hancock_tricorn_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1083,7 +1083,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_hancock_tricorn_coat/TMM_Sig_hancock_tricorn_coat</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -1104,7 +1104,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_silver_shroud_costume</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1125,7 +1125,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_silver_shroud_costume/TMM_Sig_silver_shroud_costume</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -1146,7 +1146,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_fawkes_vault87_harness</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1167,7 +1167,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_fawkes_vault87_harness/TMM_Sig_fawkes_vault87_harness</wornGraphicPath>
       <layers><li>Middle</li><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li><li>TMM_SuperMutantApparel</li></tags>
     </apparel>
@@ -1232,7 +1232,7 @@
     <techLevel>Industrial</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_alpha_vampire_cloak</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1254,7 +1254,7 @@
     <thingCategories><li>ApparelArmor</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_alpha_vampire_cloak/TMM_Sig_alpha_vampire_cloak</wornGraphicPath>
       <layers><li>Shell</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>
@@ -1275,7 +1275,7 @@
     <techLevel>Spacer</techLevel>
     <generateCommonality>0</generateCommonality>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Sig_dick_roman_corporate_suit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -1297,7 +1297,7 @@
     <thingCategories><li>ApparelMisc</li></thingCategories>
     <apparel>
       <bodyPartGroups><li>Torso</li><li>Legs</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Sig_dick_roman_corporate_suit/TMM_Sig_dick_roman_corporate_suit</wornGraphicPath>
       <layers><li>OnSkin</li><li>Middle</li></layers>
       <tags><li>TMM_SignatureGear</li></tags>
     </apparel>

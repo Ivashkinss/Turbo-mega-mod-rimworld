@@ -6,7 +6,7 @@
     <label>demon</label>
     <description>Beings from below wearing human flesh: horned, tailed, with black or burning eyes. They shrug off fire and heat and are quick to violence.</description>
     <descriptionShort>Horned and tailed beings from below. Resistant to fire and heat, aggressive.</descriptionShort>
-    <iconPath>UI/Icons/Xenotypes/Impid</iconPath>
+    <iconPath>UI/Icons/TMM/Xenotypes/TMM_Demon</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.2</combatPowerFactor>
     <genes>

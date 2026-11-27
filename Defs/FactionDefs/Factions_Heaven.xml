@@ -4,9 +4,7 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_HeavenFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>105</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_HeavenFaction</factionIconPath>
     <label>host of Heaven</label>
     <description>Angels in human vessels, soldiers and clerks of a Heaven whose Father has gone silent. They follow the archangels' orders and "the plan", and look down on humans as tools — though some of them have learned to care.</description>
     <pawnSingular>angel</pawnSingular>
@@ -14,6 +12,9 @@
     <leaderTitle>archangel commander</leaderTitle>
     <fixedName>Host of Heaven</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>105</configurationListOrderPriority>
     <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <listOrderPriority>12</listOrderPriority>
     <colorSpectrum Inherit="False">

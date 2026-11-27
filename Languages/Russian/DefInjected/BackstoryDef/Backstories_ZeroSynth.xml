@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_ZeroSynthChildhood.title>объект «Ноль»</TMM_ZeroSynthChildhood.title>
+  <TMM_ZeroSynthChildhood.titleShort>объект «Ноль»</TMM_ZeroSynthChildhood.titleShort>
+  <TMM_ZeroSynthChildhood.description>[PAWN_nameDef] помнит белые комнаты и голос, произносящий числа вслух. Эти воспоминания позволяют освоить почти любое дело, но причинить вред другому [PAWN_nameDef] не может.</TMM_ZeroSynthChildhood.description>
+</LanguageData>

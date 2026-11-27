@@ -24,4 +24,52 @@
   <TMM.Story.Hotel.NoGuest>{0} cannot come now and nobody can come instead</TMM.Story.Hotel.NoGuest>
   <TMM.Story.Hotel.WaitGuest>Waiting for the guest: {0}</TMM.Story.Hotel.WaitGuest>
   <TMM.Story.Hotel.WaitHotel>Waiting for a free place in the hotel: {0}</TMM.Story.Hotel.WaitHotel>
+  <TMM.Story.Completed>completed</TMM.Story.Completed>
+  <TMM.Story.Hotel.OpenObjective>Open a hotel: place guest beds and allow guests</TMM.Story.Hotel.OpenObjective>
+  <TMM.Story.Hotel.Investigate>Investigate visiting hotel guests</TMM.Story.Hotel.Investigate>
+  <TMM.Story.Hotel.Shelter>Shelter hidden guests from hunters</TMM.Story.Hotel.Shelter>
+  <TMM.Story.Hotel.Host>Host the visiting delegation in the hotel</TMM.Story.Hotel.Host>
+  <TMM.Story.Hotel.ClueFound>clue found</TMM.Story.Hotel.ClueFound>
+  <TMM.Story.Hotel.TalkToGuest>talk to the guest</TMM.Story.Hotel.TalkToGuest>
+  <TMM.Story.Hotel.Repelled>hunters repelled</TMM.Story.Hotel.Repelled>
+  <TMM.Story.Hotel.Repel>repel the hunters</TMM.Story.Hotel.Repel>
+  <TMM.Story.Hotel.AwaitingHunters>awaiting hunters</TMM.Story.Hotel.AwaitingHunters>
+  <TMM.Story.Hotel.GoalTime>{0} ({1})</TMM.Story.Hotel.GoalTime>
+  <TMM.Story.Hotel.GoalStatusTime>{0} ({1}, {2})</TMM.Story.Hotel.GoalStatusTime>
+  <TMM.Story.Hotel.ClosedTitle>The hotel is closed</TMM.Story.Hotel.ClosedTitle>
+  <TMM.Story.Hotel.ClosedLetter>A delegation tried to visit {0}, but the hotel is closed.&#10;&#10;To host guests in future quests, place at least one guest bed and allow guests in the Guests tab.</TMM.Story.Hotel.ClosedLetter>
+  <TMM.Story.ZeroSynth.Name>Zero Synth</TMM.Story.ZeroSynth.Name>
+  <TMM.Story.ZeroSynth.ArrivedTitle>The Zero Synth has joined</TMM.Story.ZeroSynth.ArrivedTitle>
+  <TMM.Story.ZeroSynth.ArrivedText>The Zero Synth heard the uncovered Anchor and found your settlement. The synth needs neither food nor sleep and refuses to take up arms. The synth now lives and works here.</TMM.Story.ZeroSynth.ArrivedText>
+  <TMM.Story.Site.Title>Site</TMM.Story.Site.Title>
+  <TMM.Story.Site.Clear>Clear the hostile site</TMM.Story.Site.Clear>
+  <TMM.Story.Site.Rescue>Rescue the captive hero</TMM.Story.Site.Rescue>
+  <TMM.Story.Site.Retrieve>Retrieve the item</TMM.Story.Site.Retrieve>
+  <TMM.Story.Site.Hold>Hold the site</TMM.Story.Site.Hold>
+  <TMM.Story.Site.KillHero>Eliminate the target</TMM.Story.Site.KillHero>
+  <TMM.Story.Site.Complete>Complete the objective at the site</TMM.Story.Site.Complete>
+  <TMM.Story.Site.HoldGoal>{0} ({1}/{2} h, {3})</TMM.Story.Site.HoldGoal>
+  <TMM.Story.Raid.Title>Incoming raid</TMM.Story.Raid.Title>
+  <TMM.Story.Raid.Repel>Repel the raid</TMM.Story.Raid.Repel>
+  <TMM.Story.Raid.Arriving>{0} (arriving in {1} h)</TMM.Story.Raid.Arriving>
+  <TMM.Story.Deliver.Goal>Deliver {0} x{1}</TMM.Story.Deliver.Goal>
+  <TMM.Story.Deliver.HandIn>Deliver {0} x{1} ({2}/{1})</TMM.Story.Deliver.HandIn>
+  <TMM.Story.Deliver.NeedInStorage>Need {0} {1} in colony storage on {2} ({3}/{0})</TMM.Story.Deliver.NeedInStorage>
+  <TMM.Story.Deliver.Colony>colony</TMM.Story.Deliver.Colony>
+  <TMM.Story.Deliver.Settlement>settlement</TMM.Story.Deliver.Settlement>
+  <TMM.Story.Deliver.FactionSettlement>faction settlement</TMM.Story.Deliver.FactionSettlement>
+  <TMM.Story.Deliver.Items>items</TMM.Story.Deliver.Items>
+  <TMM.Story.Deliver.CargoTo>Deliver quest cargo to {0}</TMM.Story.Deliver.CargoTo>
+  <TMM.Story.Deliver.CarryingTo>Delivering quest cargo to {0}.</TMM.Story.Deliver.CarryingTo>
+  <TMM.Story.Deliver.CaravanTitle>Caravan delivery</TMM.Story.Deliver.CaravanTitle>
+  <TMM.Story.Deliver.GoalColony>{0} ({1}/{2} {3}, {4})</TMM.Story.Deliver.GoalColony>
+  <TMM.Story.Deliver.GoalSettlement>{0} to {1} ({2})</TMM.Story.Deliver.GoalSettlement>
+  <TMM.Story.Deliver.DoneTitle>Delivery complete</TMM.Story.Deliver.DoneTitle>
+  <TMM.Story.Deliver.DoneText>Your caravan delivered {0} x{1} to {2}.</TMM.Story.Deliver.DoneText>
+  <TMM.Story.Deliver.ColonyInstruction>Gather {0} x{1} in {2}'s storage stockpiles within {3} days, then open this letter and click Deliver.</TMM.Story.Deliver.ColonyInstruction>
+  <TMM.Story.Deliver.SettlementInstruction>Send a caravan carrying {0} x{1} to {2} within {3} days and choose the cargo delivery there.</TMM.Story.Deliver.SettlementInstruction>
+  <TMM.Story.Deliver.CaravanOption>Deliver {0} x{1} to {2} ({3}/{1})</TMM.Story.Deliver.CaravanOption>
+  <TMM.Story.Deliver.NotEnough>{0} (not enough cargo)</TMM.Story.Deliver.NotEnough>
+  <TMM.Story.Deliver.CommandDesc>Hand in {0} x{1} to {2} for quest '{3}' ({4}/{1} carried).</TMM.Story.Deliver.CommandDesc>
+  <TMM.Story.Deliver.CaravanLacks>Caravan carries only {0}/{1} {2}.</TMM.Story.Deliver.CaravanLacks>
 </LanguageData>

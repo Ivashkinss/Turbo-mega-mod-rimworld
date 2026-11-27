@@ -161,6 +161,39 @@ namespace TurboMegaMod
             AddCheck("CastielBlade_KillsRegularDemonInOneHit", regularDemon != null && regularDemon.Dead,
                 "Dead=true", regularDemon != null ? regularDemon.Dead.ToString() : "null");
 
+            // Execution constraints: fist attack (unarmed) does not trigger execution
+            Pawn fistDemon = SpawnPawn("TMM_Demon", FindHostileFaction(), origin + new IntVec3(3, 0, 0));
+            if (fistDemon != null && angel != null)
+            {
+                fistDemon.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 4f, 0f, -1f, angel, null, null));
+            }
+            AddCheck("Execution_DoesNotTriggerFromFists", fistDemon != null && !fistDemon.Dead,
+                "Dead=false (fist strike does not execute)",
+                fistDemon != null ? (!fistDemon.Dead).ToString() : "null");
+
+            // Execution constraints: zero damage dealt does not trigger execution
+            Pawn zeroDmgDemon = SpawnPawn("TMM_Demon", FindHostileFaction(), origin + new IntVec3(4, 0, 0));
+            if (zeroDmgDemon != null && angel != null && casBlade != null)
+            {
+                SignatureGearHarmony.Postfix_Pawn_PostApplyDamage(zeroDmgDemon, new DamageInfo(DamageDefOf.Cut, 0f, 0f, -1f, angel, null, casBlade.def), 0f);
+            }
+            AddCheck("Execution_DoesNotTriggerFromZeroDamage", zeroDmgDemon != null && !zeroDmgDemon.Dead,
+                "Dead=false (zero damage does not execute)",
+                zeroDmgDemon != null ? (!zeroDmgDemon.Dead).ToString() : "null");
+
+            // Execution constraints: immortal Dick Roman is immune to execution
+            HeroDef dickDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_dick_roman");
+            Pawn dickRoman = (dickDef != null && HeroRegistry.Instance != null) ? HeroRegistry.Instance.GetOrCreate(dickDef) : null;
+            if (dickRoman != null && angel != null && casBlade != null)
+            {
+                if (dickRoman.Spawned) dickRoman.DeSpawn(DestroyMode.Vanish);
+                GenSpawn.Spawn(dickRoman, origin + new IntVec3(5, 0, 0), map, WipeMode.Vanish);
+                SignatureGearHarmony.Postfix_Pawn_PostApplyDamage(dickRoman, new DamageInfo(DamageDefOf.Cut, 15f, 0f, -1f, angel, null, casBlade.def), 15f);
+            }
+            AddCheck("Execution_ForbiddenForImmortalDickRoman", dickRoman != null && !dickRoman.Dead,
+                "Dead=false (Dick Roman is immortal)",
+                dickRoman != null ? (!dickRoman.Dead).ToString() : "null");
+
             HeroDef demonHeroDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_crowley") ??
                                    DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_meg");
             Pawn demonHero = (demonHeroDef != null && HeroRegistry.Instance != null)
@@ -188,6 +221,24 @@ namespace TurboMegaMod
             bool deanHasJacket = deanHero != null && SignatureGearUtil.IsWearingDef(deanHero, "TMM_Sig_dean_leather_jacket");
             AddCheck("HeroRegistry_DeanWearsSignatureJacket", deanHasJacket, "wearing TMM_Sig_dean_leather_jacket",
                 deanHero != null ? deanHasJacket.ToString() : "deanHero null");
+
+            if (deanHero != null)
+            {
+                // Player gives Dean a custom weapon (e.g. Gun_Autopistol)
+                deanHero.equipment.DestroyAllEquipment();
+                ThingWithComps playerWeapon = MakeWeapon("Gun_Autopistol");
+                if (playerWeapon != null) deanHero.equipment.AddEquipment(playerWeapon);
+
+                // Subsequent GetOrCreate call must NOT destroy player's weapon or re-add signature shotgun
+                Pawn deanAgain = HeroRegistry.Instance.GetOrCreate(deanDef);
+                bool customWeaponKept = deanAgain != null && deanAgain.equipment != null &&
+                                        deanAgain.equipment.Primary != null &&
+                                        deanAgain.equipment.Primary.def.defName == "Gun_Autopistol";
+                AddCheck("HeroRegistry_DeanRetainsCustomWeaponOnSubsequentGetOrCreate", customWeaponKept,
+                    "Gun_Autopistol (player weapon kept, signature gear not re-created)",
+                    (deanAgain != null && deanAgain.equipment != null && deanAgain.equipment.Primary != null)
+                        ? deanAgain.equipment.Primary.def.defName : "null");
+            }
 
             // ---------------- 6. RECIPE FLAG GATING (LOCKED WITHOUT FLAG, OPEN WITH FLAG) ----------------
             SparkStory story = SparkStory.Instance;

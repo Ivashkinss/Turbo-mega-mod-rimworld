@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vehicle turrets for Turbo mega mod on Vehicle Framework 1.6 (SmashPhil, MIT).
+     Uses vanilla CutoutComplex shader (VF AssetBundle shaders are not loaded in RimWorld 1.7). -->
+<Defs>
+
+  <!-- 1. TMM_Turret_HunterLMG: Pintle-mounted light machine gun in the hunter pickup bed -->
+  <Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+    <defName>TMM_Turret_HunterLMG</defName>
+    <label>hunter bed machine gun</label>
+    <turretType>Rotatable</turretType>
+    <shotSound>Shot_AssaultRifle</shotSound>
+    <reloadSound>Interact_Rifle</reloadSound>
+    <projectile>Bullet_LMG</projectile>
+    <reloadTimer>4.5</reloadTimer>
+    <warmUpTimer>1.1</warmUpTimer>
+    <magazineCapacity>60</magazineCapacity>
+    <genericAmmo>true</genericAmmo>
+    <autoSnapTargeting>false</autoSnapTargeting>
+    <rotationSpeed>3.2</rotationSpeed>
+    <maxRange>29.9</maxRange>
+    <minRange>2.5</minRange>
+    <projectileSpeed>68</projectileSpeed>
+    <projectileOffset>0.9</projectileOffset>
+    <ammunition>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </ammunition>
+    <fireModes>
+      <li>
+        <shotsPerBurst>5</shotsPerBurst>
+        <ticksBetweenShots>7</ticksBetweenShots>
+        <ticksBetweenBursts>55</ticksBetweenBursts>
+        <forcedMissRadius>1.4</forcedMissRadius>
+        <label>Burst</label>
+        <texPath>UI/Gizmos/FireMode_Burst</texPath>
+      </li>
+      <li>
+        <shotsPerBurst>10</shotsPerBurst>
+        <ticksBetweenShots>7</ticksBetweenShots>
+        <ticksBetweenBursts>85</ticksBetweenBursts>
+        <forcedMissRadius>2.2</forcedMissRadius>
+        <label>Suppress</label>
+        <texPath>UI/Gizmos/FireMode_Auto</texPath>
+      </li>
+    </fireModes>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/Turrets/TMM_Turret_HunterLMG</texPath>
+      <graphicClass>Vehicles.Graphic_Turret</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.6,1.6)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+  </Vehicles.VehicleTurretDef>
+
+  <!-- 2. TMM_Turret_GunnerHMG: Heavy belt-fed machine gun on the Gunner technical -->
+  <Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+    <defName>TMM_Turret_GunnerHMG</defName>
+    <label>heavy technical machine gun</label>
+    <turretType>Rotatable</turretType>
+    <shotSound>Shot_HeavySMG</shotSound>
+    <reloadSound>Interact_Rifle</reloadSound>
+    <projectile>Bullet_MiniTurret</projectile>
+    <reloadTimer>6.0</reloadTimer>
+    <warmUpTimer>1.5</warmUpTimer>
+    <magazineCapacity>90</magazineCapacity>
+    <genericAmmo>true</genericAmmo>
+    <autoSnapTargeting>false</autoSnapTargeting>
+    <rotationSpeed>2.4</rotationSpeed>
+    <maxRange>33.9</maxRange>
+    <minRange>3.5</minRange>
+    <projectileSpeed>74</projectileSpeed>
+    <projectileOffset>1.1</projectileOffset>
+    <ammunition>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </ammunition>
+    <fireModes>
+      <li>
+        <shotsPerBurst>6</shotsPerBurst>
+        <ticksBetweenShots>8</ticksBetweenShots>
+        <ticksBetweenBursts>65</ticksBetweenBursts>
+        <forcedMissRadius>1.8</forcedMissRadius>
+        <label>Heavy burst</label>
+        <texPath>UI/Gizmos/FireMode_Burst</texPath>
+      </li>
+      <li>
+        <shotsPerBurst>12</shotsPerBurst>
+        <ticksBetweenShots>8</ticksBetweenShots>
+        <ticksBetweenBursts>95</ticksBetweenBursts>
+        <forcedMissRadius>2.8</forcedMissRadius>
+        <label>Full auto</label>
+        <texPath>UI/Gizmos/FireMode_Auto</texPath>
+      </li>
+    </fireModes>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/Turrets/TMM_Turret_GunnerHMG</texPath>
+      <graphicClass>Vehicles.Graphic_Turret</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.9,1.9)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+  </Vehicles.VehicleTurretDef>
+
+  <!-- 3. TMM_Turret_VertibirdDoorGun: Door-mounted rotary minigun for Brotherhood & Enclave Vertibirds -->
+  <Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+    <defName>TMM_Turret_VertibirdDoorGun</defName>
+    <label>Vertibird door minigun</label>
+    <turretType>Rotatable</turretType>
+    <shotSound>Shot_Minigun</shotSound>
+    <reloadSound>Interact_Rifle</reloadSound>
+    <projectile>Bullet_Minigun</projectile>
+    <reloadTimer>7.5</reloadTimer>
+    <warmUpTimer>1.8</warmUpTimer>
+    <magazineCapacity>180</magazineCapacity>
+    <genericAmmo>true</genericAmmo>
+    <autoSnapTargeting>false</autoSnapTargeting>
+    <rotationSpeed>3.6</rotationSpeed>
+    <maxRange>34.9</maxRange>
+    <minRange>3.0</minRange>
+    <projectileSpeed>82</projectileSpeed>
+    <projectileOffset>1.0</projectileOffset>
+    <ammunition>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </ammunition>
+    <fireModes>
+      <li>
+        <shotsPerBurst>12</shotsPerBurst>
+        <ticksBetweenShots>4</ticksBetweenShots>
+        <ticksBetweenBursts>55</ticksBetweenBursts>
+        <forcedMissRadius>2.4</forcedMissRadius>
+        <label>Rotary burst</label>
+        <texPath>UI/Gizmos/FireMode_Burst</texPath>
+      </li>
+      <li>
+        <shotsPerBurst>24</shotsPerBurst>
+        <ticksBetweenShots>4</ticksBetweenShots>
+        <ticksBetweenBursts>80</ticksBetweenBursts>
+        <forcedMissRadius>3.4</forcedMissRadius>
+        <label>Suppressive hail</label>
+        <texPath>UI/Gizmos/FireMode_Auto</texPath>
+      </li>
+    </fireModes>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/Turrets/TMM_Turret_VertibirdDoorGun</texPath>
+      <graphicClass>Vehicles.Graphic_Turret</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.8,1.8)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+  </Vehicles.VehicleTurretDef>
+
+</Defs>

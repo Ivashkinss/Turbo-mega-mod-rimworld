@@ -11,7 +11,7 @@ namespace TurboMegaMod
     /// Snapshot of a free world pawn's state captured BEFORE any mutation during StoryPawnTransfer.
     /// Supports null original faction, guest/host status, faction leadership, and WorldPawns membership.
     /// </summary>
-    public sealed class PawnTransferSnapshot
+    public sealed class PawnTransferSnapshot : IExposable
     {
         public Pawn pawn;
         public Faction origFaction;
@@ -20,6 +20,17 @@ namespace TurboMegaMod
         public bool origHasGuest;
         public Faction origHostFaction;
         public GuestStatus origGuestStatus;
+
+        public void ExposeData()
+        {
+            Scribe_References.Look(ref pawn, "pawn");
+            Scribe_References.Look(ref origFaction, "origFaction");
+            Scribe_Values.Look(ref origWasLeader, "origWasLeader");
+            Scribe_Values.Look(ref origInWorldPawns, "origInWorldPawns");
+            Scribe_Values.Look(ref origHasGuest, "origHasGuest");
+            Scribe_References.Look(ref origHostFaction, "origHostFaction");
+            Scribe_Values.Look(ref origGuestStatus, "origGuestStatus");
+        }
     }
 
     /// <summary>
@@ -27,17 +38,27 @@ namespace TurboMegaMod
     /// a shared Lord after spawning the hero) to roll back the hero cleanly if a subsequent step fails,
     /// or to finalize irreversible leadership replacement once the whole group is confirmed.
     /// </summary>
-    public sealed class PawnTransferHandle
+    public sealed class PawnTransferHandle : IExposable
     {
-        private readonly PawnTransferSnapshot snapshot;
-        private readonly List<StoryPawnTransfer.TransferStep> journal;
+        private PawnTransferSnapshot snapshot;
+        private List<StoryPawnTransfer.TransferStep> journal;
         private bool rolledBack;
         private bool leadershipFinalized;
+
+        public PawnTransferHandle() { }
 
         internal PawnTransferHandle(PawnTransferSnapshot snapshot, List<StoryPawnTransfer.TransferStep> journal)
         {
             this.snapshot = snapshot;
             this.journal = journal;
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Deep.Look(ref snapshot, "snapshot");
+            Scribe_Collections.Look(ref journal, "journal", LookMode.Value);
+            Scribe_Values.Look(ref rolledBack, "rolledBack");
+            Scribe_Values.Look(ref leadershipFinalized, "leadershipFinalized");
         }
 
         public Pawn Pawn
@@ -59,8 +80,15 @@ namespace TurboMegaMod
         {
             if (rolledBack) return true;
             // Mark as rolled back only when the rollback really succeeded, so a failed one can be retried.
+            // The handle owns its place in the pending list: it enters on a failed rollback and leaves only here on success.
             bool ok = StoryPawnTransfer.ExecuteRollback(snapshot, journal);
-            if (ok) rolledBack = true;
+            List<PawnTransferHandle> pending = StoryPawnTransfer.PendingRollbacks;
+            if (ok)
+            {
+                rolledBack = true;
+                pending.Remove(this);
+            }
+            else if (!pending.Contains(this)) pending.Add(this);
             return ok;
         }
 
@@ -260,9 +288,10 @@ namespace TurboMegaMod
                 return false;
             }
 
-            // Capture complete pre-mutation snapshot
+            // Capture complete pre-mutation snapshot and initialize handle immediately
             PawnTransferSnapshot snapshot = CaptureSnapshot(pawn);
             List<TransferStep> journal = new List<TransferStep>();
+            handle = new PawnTransferHandle(snapshot, journal);
 
             try
             {
@@ -274,7 +303,7 @@ namespace TurboMegaMod
                     if (pawn.Faction != targetFaction)
                     {
                         failReason = "set_faction_failed";
-                        ExecuteRollback(snapshot, journal);
+                        handle.Rollback();
                         return false;
                     }
                 }
@@ -285,7 +314,7 @@ namespace TurboMegaMod
                 if (Find.WorldPawns.Contains(pawn))
                 {
                     failReason = "remove_world_pawn_failed";
-                    ExecuteRollback(snapshot, journal);
+                    handle.Rollback();
                     return false;
                 }
 
@@ -295,7 +324,7 @@ namespace TurboMegaMod
                 if (spawned != pawn || !pawn.Spawned || pawn.Map != targetMap)
                 {
                     failReason = "spawn_failed";
-                    ExecuteRollback(snapshot, journal);
+                    handle.Rollback();
                     return false;
                 }
 
@@ -305,7 +334,7 @@ namespace TurboMegaMod
                     if (pawn.guest == null)
                     {
                         failReason = "no_guest_tracker";
-                        ExecuteRollback(snapshot, journal);
+                        handle.Rollback();
                         return false;
                     }
 
@@ -314,7 +343,7 @@ namespace TurboMegaMod
                     if (!pawn.IsPrisoner || pawn.HostFaction != imprisonForFaction)
                     {
                         failReason = "imprison_failed";
-                        ExecuteRollback(snapshot, journal);
+                        handle.Rollback();
                         return false;
                     }
                 }
@@ -326,7 +355,7 @@ namespace TurboMegaMod
                     if (!postSpawnSetup(pawn))
                     {
                         failReason = "post_spawn_setup_failed";
-                        ExecuteRollback(snapshot, journal);
+                        handle.Rollback();
                         return false;
                     }
                 }
@@ -335,11 +364,10 @@ namespace TurboMegaMod
             {
                 Log.Warning("[TMM] StoryPawnTransfer: exception during pawn transfer, rolling back: " + ex.Message);
                 failReason = "transfer_exception";
-                ExecuteRollback(snapshot, journal);
+                handle.Rollback();
                 return false;
             }
 
-            handle = new PawnTransferHandle(snapshot, journal);
             if (autoFinalize)
             {
                 handle.FinalizeTransfer();
@@ -371,6 +399,30 @@ namespace TurboMegaMod
             return GenSpawn.Spawn(pawn, cell, map, WipeMode.Vanish);
         }
 
+        private static readonly List<PawnTransferHandle> s_fallbackPendingRollbacks = new List<PawnTransferHandle>();
+        public static List<PawnTransferHandle> PendingRollbacks
+        {
+            get
+            {
+                if (StoryPawnTransferManager.Instance != null && StoryPawnTransferManager.Instance.PendingRollbacks != null)
+                {
+                    return StoryPawnTransferManager.Instance.PendingRollbacks;
+                }
+                return s_fallbackPendingRollbacks;
+            }
+        }
+        public static Func<Pawn, bool> TestPassToWorldOverride;
+
+        public static void RetryPendingRollbacks()
+        {
+            // Work on a copy: a successful Rollback removes its own handle, and nobody else's.
+            foreach (PawnTransferHandle h in PendingRollbacks.ToArray())
+            {
+                if (h == null || h.IsRolledBack) PendingRollbacks.Remove(h);
+                else h.Rollback();
+            }
+        }
+
         internal static bool ExecuteRollback(PawnTransferSnapshot snapshot, List<TransferStep> journal)
         {
             if (snapshot == null || snapshot.pawn == null) return false;
@@ -382,12 +434,14 @@ namespace TurboMegaMod
                 for (int i = journal.Count - 1; i >= 0; i--)
                 {
                     TransferStep step = journal[i];
+                    bool stepSucceeded = false;
                     try
                     {
                         if (step == TransferStep.PostSpawnExecuted)
                         {
                             Lord lord = pawn.GetLord();
                             if (lord != null) lord.RemovePawn(pawn);
+                            stepSucceeded = true;
                         }
                         else if (step == TransferStep.GuestStatusChanged)
                         {
@@ -395,6 +449,7 @@ namespace TurboMegaMod
                             {
                                 pawn.guest.SetGuestStatus(snapshot.origHostFaction, snapshot.origGuestStatus); // CHECK API
                             }
+                            stepSucceeded = true;
                         }
                         else if (step == TransferStep.SpawnedOnMap)
                         {
@@ -408,6 +463,7 @@ namespace TurboMegaMod
                             {
                                 pawn.holdingOwner.Remove(pawn);
                             }
+                            stepSucceeded = !pawn.Spawned && pawn.holdingOwner == null;
                         }
                         else if (step == TransferStep.FactionChanged)
                         {
@@ -415,20 +471,48 @@ namespace TurboMegaMod
                             {
                                 pawn.SetFaction(snapshot.origFaction);
                             }
+                            stepSucceeded = (pawn.Faction == snapshot.origFaction);
                         }
                         else if (step == TransferStep.RemovedFromWorldPawns)
                         {
                             if (pawn.Spawned) pawn.DeSpawn(DestroyMode.Vanish);
                             if (pawn.holdingOwner != null) pawn.holdingOwner.Remove(pawn);
-                            if (snapshot.origInWorldPawns && Find.WorldPawns != null && !Find.WorldPawns.Contains(pawn))
+                            if (snapshot.origInWorldPawns)
                             {
-                                Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
+                                if (Find.WorldPawns != null && Find.WorldPawns.Contains(pawn))
+                                {
+                                    stepSucceeded = true;
+                                }
+                                else if (TestMode.Enabled && TestPassToWorldOverride != null)
+                                {
+                                    stepSucceeded = TestPassToWorldOverride(pawn);
+                                }
+                                else if (Find.WorldPawns != null)
+                                {
+                                    Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
+                                    stepSucceeded = Find.WorldPawns.Contains(pawn);
+                                }
+                            }
+                            else
+                            {
+                                stepSucceeded = true;
                             }
                         }
                     }
                     catch (Exception ex)
                     {
                         TestMode.ReportException("[TMM] StoryPawnTransfer: rollback step " + step + " failed for " + pawn.LabelShort + ": ", ex);
+                        allOk = false;
+                        stepSucceeded = false;
+                    }
+
+                    // Idempotence: remove confirmed completed steps so a retry will not re-execute them
+                    if (stepSucceeded)
+                    {
+                        journal.RemoveAt(i);
+                    }
+                    else
+                    {
                         allOk = false;
                     }
                 }
@@ -465,7 +549,17 @@ namespace TurboMegaMod
 
             if (!allOk)
             {
-                Log.Error("[TMM] StoryPawnTransfer: post-rollback verification failed for " + pawn.LabelShort);
+                if (TestMode.Enabled && TestPassToWorldOverride != null)
+                {
+                    Log.Warning("[TMM] StoryPawnTransfer: post-rollback verification failed (simulated): " + pawn.LabelShort);
+                }
+                else
+                {
+                    Log.Error("[TMM] StoryPawnTransfer: post-rollback verification failed for " + pawn.LabelShort);
+                }
+                // Between the map and the world nobody would save the pawn: keep it until the next attempt succeeds.
+                StoryPawnTransferManager manager = StoryPawnTransferManager.Instance;
+                if (manager != null) manager.TakeCustody(pawn);
             }
             return allOk;
         }
@@ -493,6 +587,72 @@ namespace TurboMegaMod
             if (HeroRegistry.Instance != null)
             {
                 HeroRegistry.Instance.NotifyEncountered(pawn);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Persisted WorldComponent managing pending StoryPawnTransfer rollbacks and retrying them periodically on world tick.
+    /// </summary>
+    /// It also holds (and saves) a pawn whose rollback stopped between leaving the map and returning to the world: such a pawn
+    /// has exactly one owner at any moment - the map, this custody or the world pawns.
+    public sealed class StoryPawnTransferManager : WorldComponent, IThingHolder
+    {
+        public static StoryPawnTransferManager Instance { get; private set; }
+        private List<PawnTransferHandle> pendingRollbacks = new List<PawnTransferHandle>();
+        private ThingOwner<Pawn> custody;
+
+        public IThingHolder ParentHolder { get { return world; } }
+        public ThingOwner GetDirectlyHeldThings() { return custody; }
+        public void GetChildHolders(List<IThingHolder> outChildren) { ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, custody); }
+        public bool InCustody(Pawn pawn) { return pawn != null && custody.Contains(pawn); }
+
+        public void TakeCustody(Pawn pawn)
+        {
+            if (pawn == null || pawn.Destroyed || pawn.Spawned || pawn.holdingOwner != null) return;
+            if (Find.WorldPawns != null && Find.WorldPawns.Contains(pawn)) return;
+            if (!custody.TryAdd(pawn, false)) Log.Error("[TMM] StoryPawnTransfer: could not take custody of " + pawn.LabelShort);
+        }
+
+        /// A pawn left in custody without its handle (a damaged save) goes back to the world instead of staying here forever.
+        private void ReleaseOrphans()
+        {
+            foreach (Pawn p in custody.InnerListForReading.ToArray())
+            {
+                if (pendingRollbacks.Exists(h => h != null && h.Pawn == p)) continue;
+                custody.Remove(p);
+                if (!p.Destroyed && !Find.WorldPawns.Contains(p)) Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
+            }
+        }
+
+        public List<PawnTransferHandle> PendingRollbacks { get { return pendingRollbacks; } }
+
+        public StoryPawnTransferManager(World world) : base(world)
+        {
+            Instance = this;
+            custody = new ThingOwner<Pawn>(this);
+        }
+
+        public override void WorldComponentTick()
+        {
+            base.WorldComponentTick();
+            if (Find.TickManager.TicksGame % 250 == 0)
+            {
+                StoryPawnTransfer.RetryPendingRollbacks();
+                if (custody.Count > 0) ReleaseOrphans();
+            }
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Collections.Look(ref pendingRollbacks, "pendingRollbacks", LookMode.Deep);
+            Scribe_Deep.Look(ref custody, "custody", this);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                if (custody == null) custody = new ThingOwner<Pawn>(this);
+                if (pendingRollbacks == null) pendingRollbacks = new List<PawnTransferHandle>();
+                pendingRollbacks.RemoveAll(h => h == null || h.IsRolledBack || h.Pawn == null || h.Pawn.Destroyed);
             }
         }
     }

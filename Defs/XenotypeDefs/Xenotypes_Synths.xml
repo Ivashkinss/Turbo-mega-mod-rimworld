@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Synthetic humans (Institute Gen 1, Gen 2, Gen 3) and autonomous robotic chassis (P.A.M., John Henry Eden).
+     Uses the same verified Biotech xenotype + HeadTypeDef + BodyTypeDef + Gene pattern as TMM_SuperMutant.
+     Design choices:
+       - No-eat / no-sleep on Gen 1 and RobotChassis uses vanilla Biotech Neversleep + custom TMM_Synth_NoFood
+         (disablesNeeds: Food) rather than Deathless, so synths and robots can still be destroyed in combat.
+       - Eden uses TMM_RobotChassis (a mobile Enclave carrier chassis) with a unique CRT monitor head
+         (TMM_EdenHead) assigned via HeroDef.appearance so he operates as a full hero pawn on the map. -->
+<Defs>
+
+  <!-- 1. Synth Generation 1: bare Institute android endoskeleton -->
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen1</defName>
+    <label>synth (Gen 1)</label>
+    <description>First-generation Institute android: an exposed composite-and-steel endoskeleton with glowing optical lenses and no synthetic skin. Runs on an internal power cell without food or sleep, shrugs off glancing blows, and is unsettling in conversation.</description>
+    <descriptionShort>First-generation Institute skeletal android. Needs neither food nor sleep, naturally armored, socially stiff.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/TMM_SynthGen1</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>1.15</combatPowerFactor>
+    <genes>
+      <!-- Visual Model -->
+      <li>TMM_Skin_FullColorChassis</li>
+      <li>Body_Thin</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>TMM_Head_SynthGen1</li>
+      <li>TMM_Body_SynthGen1</li>
+      <!-- Synthetic Physiology & Traits -->
+      <li>TMM_Synth_NoFood</li>
+      <li>Neversleep</li>
+      <li>Ageless</li>
+      <li>Sterile</li>
+      <li>PerfectImmunity</li>
+      <li>ToxResist_Total</li>
+      <li>ToxicEnvironmentResistance_Total</li>
+      <li>TMM_Synth_MechanicalArmor</li>
+      <li>TMM_Synth_UncannyMachine</li>
+    </genes>
+  </XenotypeDef>
+
+  <!-- 2. Synth Generation 2: weathered grey rubber skin over mechanical frame (including Nick Valentine) -->
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen2</defName>
+    <label>synth (Gen 2)</label>
+    <description>Second-generation Institute synth clad in weathered grey polymer skin over a mechanical frame, with exposed seams and servos peeking through. Requires no sleep and minimal sustenance, resists toxins and disease, and stands tougher than baseline humans.</description>
+    <descriptionShort>Second-generation synth with grey polymer skin and visible mechanical seams. Sleepless, hardy, toxin-immune.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/TMM_SynthGen2</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>1.1</combatPowerFactor>
+    <genes>
+      <!-- Visual Model (uses vanilla Male/Female bodies tinted grey, custom Gen 2 head) -->
+      <li>TMM_Skin_SynthGen2</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>TMM_Head_SynthGen2</li>
+      <!-- Synthetic Physiology & Traits -->
+      <li>TMM_Synth_NoFood</li>
+      <li>Neversleep</li>
+      <li>Ageless</li>
+      <li>Sterile</li>
+      <li>PerfectImmunity</li>
+      <li>ToxResist_Total</li>
+      <li>ToxicEnvironmentResistance_Total</li>
+      <li>TMM_Synth_LightPlating</li>
+      <li>TMM_Synth_PolymerFace</li>
+    </genes>
+  </XenotypeDef>
+
+  <!-- 3. Synth Generation 3: biologically human, distinguishable only by a faint temple seam & optics -->
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen3</defName>
+    <label>synth (Gen 3)</label>
+    <description>Third-generation Institute synth grown from engineered tissue around a hidden synth component. Indistinguishable from an ordinary human at a glance—eats, sleeps, and bleeds like anyone else—betrayed only by an almost imperceptible seam at the temple and faint ocular rings.</description>
+    <descriptionShort>Biologically human third-generation synth with a faint temple seam, ageless vitality, and high disease resistance.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/TMM_SynthGen3</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>1.05</combatPowerFactor>
+    <genes>
+      <!-- Subtle Visual Variant (preserves normal human body, hair, and skin color) -->
+      <li>TMM_Head_SynthGen3</li>
+      <!-- Subtle Biological Advantages -->
+      <li>Ageless</li>
+      <li>Sterile</li>
+      <li>PerfectImmunity</li>
+      <li>TMM_Synth_NeuralComponent</li>
+    </genes>
+  </XenotypeDef>
+
+  <!-- 4. Autonomous Robot Chassis: rebuilt Assaultron / Enclave AI carrier (P.A.M., John Henry Eden) -->
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_RobotChassis</defName>
+    <label>robot chassis</label>
+    <description>An autonomous military-grade steel chassis housing a predictive or executive AI core. Armored in riveted alloy plating that cannot wear human clothing, powered without food or sleep, and completely immune to biological hazards.</description>
+    <descriptionShort>Armored autonomous robot frame (Assaultron / AI carrier). Needs no food, sleep, or clothing.</descriptionShort>
+    <iconPath>UI/Icons/Xenotypes/TMM_RobotChassis</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>1.35</combatPowerFactor>
+    <genes>
+      <!-- Visual Model -->
+      <li>TMM_Skin_FullColorChassis</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>TMM_Head_RobotChassis</li>
+      <li>TMM_Body_RobotChassis</li>
+      <!-- Robotic Physiology & Restrictions -->
+      <li>TMM_Chassis_NoApparel</li>
+      <li>TMM_Synth_NoFood</li>
+      <li>Neversleep</li>
+      <li>Ageless</li>
+      <li>Sterile</li>
+      <li>PerfectImmunity</li>
+      <li>ToxResist_Total</li>
+      <li>ToxicEnvironmentResistance_Total</li>
+      <li>TMM_Chassis_SteelArmor</li>
+      <li>TMM_Chassis_LogicCore</li>
+    </genes>
+  </XenotypeDef>
+
+</Defs>

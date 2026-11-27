@@ -1,14 +1,12 @@
 using System.Collections.Generic;
-using System.Linq;
-using HarmonyLib;
 using RimWorld;
 using Verse;
 
 namespace TurboMegaMod
 {
-    /// Colony roles stage 3a: promotion requirements, promote gizmo, "ready for promotion" letter, thoughts.
-    /// Works with and without Ideology; the Ideology promotion ritual builds on Promote() later.
-    /// Texts: Documentation/ColonyRoles-Promotion-Texts.json (Gemini).
+    /// Colony roles stage 3a + ceremony & rank uniform integration:
+    /// promotion requirements, promote gizmo (opens Ideology ritual when active & precept present,
+    /// otherwise instant promotion), "ready for promotion" letter, thoughts and rank uniform switch.
     public static class ColonyPromotion
     {
         public static ColonyRank NextRank(ColonyRoleAssignment a)
@@ -42,22 +40,59 @@ namespace TurboMegaMod
             return lines.Count == 0 ? null : string.Join("\n", lines.ToArray());
         }
 
-        public static bool Ready(Pawn p, ColonyRoleAssignment a) { return NextRank(a) != null && MissingFor(p, a) == null; }
+        public static bool Ready(Pawn p, ColonyRoleAssignment a)
+        {
+            return NextRank(a) != null && MissingFor(p, a) == null;
+        }
 
         public static void Promote(Pawn p, ColonyRoleAssignment a)
         {
-            if (!Ready(p, a)) return;
+            Promote(p, a, false);
+        }
+
+        /// Performs the actual rank promotion (single source of truth for both instant promotion and the Ideology ritual).
+        /// Switches the pawn onto the new rank's ApparelPolicy unless the player assigned a custom policy.
+        public static void Promote(Pawn p, ColonyRoleAssignment a, bool fromCeremony)
+        {
+            if (p == null || a == null || !Ready(p, a)) return;
+
+            ColonyRank previousRank = a.Rank;
             a.rank++;
             a.readyNotifiedFor = -1;
             ColonyRank r = a.Rank;
+
+            ColonyRankUniforms.ApplyUniformPolicy(p, a.role, r, previousRank);
+
+            // When triggered from the Ideology promotion ceremony, the ritual outcome worker
+            // grants quality-based memories, optional inspiration hediff and the ritual letter.
+            if (fromCeremony) return;
+
             ThoughtDef mine = DefDatabase<ThoughtDef>.GetNamedSilentFail(a.role.Military ? "TMM_PromotedMilitary" : "TMM_PromotedCivil");
-            if (mine != null && p.needs != null && p.needs.mood != null) p.needs.mood.thoughts.memories.TryGainMemory(mine);
+            if (mine != null && p.needs != null && p.needs.mood != null)
+            {
+                p.needs.mood.thoughts.memories.TryGainMemory(mine);
+            }
+
             ThoughtDef seen = DefDatabase<ThoughtDef>.GetNamedSilentFail("TMM_WitnessedPromotion");
             if (seen != null && p.Map != null)
+            {
                 foreach (Pawn w in p.Map.mapPawns.FreeColonistsSpawned)
-                    if (w != p && w.needs != null && w.needs.mood != null) w.needs.mood.thoughts.memories.TryGainMemory(seen);
-            Find.LetterStack.ReceiveLetter("TMM.Roles.PromotedTitle".Translate(p.LabelShort),
-                "TMM.Roles.PromotedText".Translate(p.LabelShort, r.label, a.role.label), LetterDefOf.PositiveEvent, p);
+                {
+                    if (w != p && w.needs != null && w.needs.mood != null)
+                    {
+                        w.needs.mood.thoughts.memories.TryGainMemory(seen);
+                    }
+                }
+            }
+
+            if (Find.LetterStack != null)
+            {
+                Find.LetterStack.ReceiveLetter(
+                    "TMM.Roles.PromotedTitle".Translate(p.LabelShort),
+                    "TMM.Roles.PromotedText".Translate(p.LabelShort, r.label, a.role.label),
+                    LetterDefOf.PositiveEvent,
+                    p);
+            }
         }
 
         /// Called periodically: one "ready for promotion" letter per reached rank.
@@ -68,8 +103,11 @@ namespace TurboMegaMod
                 if (a.pawn == null || a.pawn.Dead || !a.pawn.IsColonist || a.readyNotifiedFor == a.rank + 1 || !Ready(a.pawn, a)) continue;
                 a.readyNotifiedFor = a.rank + 1;
                 ColonyRank next = NextRank(a);
-                Find.LetterStack.ReceiveLetter("TMM.Roles.ReadyTitle".Translate(a.pawn.LabelShort),
-                    "TMM.Roles.ReadyText".Translate(a.pawn.LabelShort, next.label, a.role.label), LetterDefOf.NeutralEvent, a.pawn);
+                Find.LetterStack.ReceiveLetter(
+                    "TMM.Roles.ReadyTitle".Translate(a.pawn.LabelShort),
+                    "TMM.Roles.ReadyText".Translate(a.pawn.LabelShort, next.label, a.role.label),
+                    LetterDefOf.NeutralEvent,
+                    a.pawn);
             }
         }
 
@@ -77,15 +115,54 @@ namespace TurboMegaMod
         {
             ColonyRank next = NextRank(a);
             if (next == null) return null;
+
             string missing = MissingFor(p, a);
+            bool useCeremony = ColonyRankCeremony.ShouldUseCeremony(p);
+
+            string label = useCeremony
+                ? "TMM.Roles.PromoteCeremonyButton".Translate(next.label).ToString()
+                : "TMM.Roles.PromoteButton".Translate(next.label).ToString();
+
+            string desc = "TMM.Roles.NextRank".Translate(next.label) + "\n" + next.description;
+            if (useCeremony)
+            {
+                desc += "\n\n" + "TMM.Roles.Ceremony.GizmoHint".Translate();
+            }
+            if (missing != null)
+            {
+                desc += "\n\n" + missing;
+            }
+
+            Pawn targetPawn = p;
+            ColonyRoleAssignment targetAssignment = a;
+
             var cmd = new Command_Action
             {
-                defaultLabel = "TMM.Roles.PromoteButton".Translate(next.label),
-                defaultDesc = "TMM.Roles.NextRank".Translate(next.label) + "\n" + next.description + (missing == null ? "" : "\n\n" + missing),
+                defaultLabel = label,
+                defaultDesc = desc,
                 icon = TexCommand.Draft,
-                action = () => Promote(p, a)
+                action = delegate
+                {
+                    if (ColonyRankCeremony.ShouldUseCeremony(targetPawn))
+                    {
+                        ColonyRankCeremony.TryOpenBeginRitualDialog(targetPawn);
+                    }
+                    else
+                    {
+                        Promote(targetPawn, targetAssignment, false);
+                    }
+                }
             };
-            if (missing != null) cmd.Disable(missing);
+
+            if (missing != null)
+            {
+                cmd.Disable(missing);
+            }
+            else if (useCeremony && p.Map == null)
+            {
+                cmd.Disable("TMM.Roles.Ceremony.NeedsMap".Translate());
+            }
+
             return cmd;
         }
     }

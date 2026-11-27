@@ -206,17 +206,10 @@ public sealed class RegionalWorldProbe : MapComponent
         }
         Check(failures.Count == 0, "Factions: " + string.Join("; ", failures));
     }
-    // Vanilla removes a settlement map without colonists on any tick of its settlement: read the loaded maps before the first tick.
-    private static bool ReloadRun { get { return Environment.GetCommandLineArgs().Contains("-tmm-regional-reload"); } }
-    private static bool resumed;
-    public override void FinalizeInit() { if (ReloadRun) Find.TickManager.Pause(); }
-
     public override void MapComponentUpdate()
     {
         var args = Environment.GetCommandLineArgs();
         bool reload = args.Contains("-tmm-regional-reload");
-        // The game refuses a speed change while the player has no control right after loading: repeat until it runs again.
-        if (reload && done && !resumed) { Find.TickManager.CurTimeSpeed = TimeSpeed.Normal; resumed = Find.TickManager.CurTimeSpeed != TimeSpeed.Paused; }
         bool legacy = args.Contains("-tmm-regional-legacy");
         if (!done && args.Contains("-tmm-regional-old") && Find.CurrentMap == map) { OldSave(); return; }
         if (done || Find.CurrentMap != map || (!reload && !legacy && !args.Contains("-tmm-regional-probe"))) return;

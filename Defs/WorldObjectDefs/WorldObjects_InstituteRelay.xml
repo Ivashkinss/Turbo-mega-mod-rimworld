@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorldObjectDef>
+    <defName>TMM_WorldRelayJumpMarker</defName>
+    <label>molecular relay transit</label>
+    <description>An active Institute molecular relay carrier pulse moving a squad across the wasteland.</description>
+    <worldObjectClass>TurboMegaMod.WorldObject_TMMRelayJump</worldObjectClass>
+    <texture>UI/Commands/TMM_Gizmo_RelayWorld</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>UI/Commands/TMM_Gizmo_RelayWorld</expandingIconTexture>
+    <expandingIconPriority>40</expandingIconPriority>
+    <selectable>true</selectable>
+  </WorldObjectDef>
+
+</Defs>

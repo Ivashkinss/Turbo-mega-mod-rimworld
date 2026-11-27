@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -55,7 +56,7 @@ namespace TurboMegaMod
 
         public override void MapComponentTick()
         {
-            if (s_completed || !ProbeEnabled) return;
+            if (s_completed || !(ProbeEnabled || LegendaryProbeLaunch.Reload)) return;
             if (map != Find.AnyPlayerHomeMap) return;
 
             m_ticksWaited++;
@@ -66,7 +67,7 @@ namespace TurboMegaMod
 
             try
             {
-                RunAllChecks();
+                if (LegendaryProbeLaunch.Reload) TraderReloadChecks(); else RunAllChecks();
             }
             catch (Exception ex)
             {
@@ -75,8 +76,8 @@ namespace TurboMegaMod
             finally
             {
                 Application.logMessageReceived -= OnUnityLog;
-                WriteReport("LegendaryProbe.json");
-                try
+                WriteReport(LegendaryProbeLaunch.Reload ? "LegendaryReloadProbe.json" : "LegendaryProbe.json");
+                if (!LegendaryProbeLaunch.Reload) try
                 {
                     string uiPath = Path.Combine(GenFilePaths.SaveDataFolderPath, "LegendaryUiProbe.json");
                     File.WriteAllText(uiPath, "{\"passed\":true,\"visualLayoutInspected\":false}");
@@ -95,6 +96,7 @@ namespace TurboMegaMod
                     if (condition.Contains("Tried to destroy already-destroyed thing")) return;
                     if (condition.Contains("disabled stat")) return;
                 }
+                if (condition != null && condition.Contains("generated destroyed thing")) m_destroyedInStock++;
                 m_errors.Add(type.ToString() + ": " + condition);
             }
         }
@@ -102,6 +104,9 @@ namespace TurboMegaMod
         private void RunAllChecks()
         {
             IntVec3 origin = FindClearCenter();
+            // The combat checks below leave corpses, tales of destroyed test pawns and shells in flight: the saved trader
+            // scenario is played alone in a clean colony.
+            if (Environment.GetEnvironmentVariable("TMM_TRADER_ONLY") == "1") { TraderChecks(origin); return; }
 
             // ---------------- 1. LEGENDARY REGISTRY UNIQUENESS ----------------
             LegendaryRegistry reg = LegendaryRegistry.Instance;
@@ -115,6 +120,119 @@ namespace TurboMegaMod
                 bool secondGrant = reg.TryGrant(coltDef, map);
                 AddCheck("Registry_TryGrantTwice", firstGrant && !secondGrant, "first=true, second=false",
                     string.Format("first={0}, second={1}", firstGrant, secondGrant));
+            }
+
+            // ---------------- 1b. UNIQUENESS ACROSS CREATION PATHS ----------------
+            ThingDef ogDef = DefDatabase<ThingDef>.GetNamedSilentFail("TMM_Legendary_OverseersGuardian");
+            if (reg != null && ogDef != null)
+            {
+                Thing og1 = ThingMaker.MakeThing(ogDef);
+                Thing beforeFirstSpawn = ThingMaker.MakeThing(ogDef);
+                AddCheck("Uniqueness_ReservationBeforeFirstSpawn",
+                    !og1.Destroyed && beforeFirstSpawn.Destroyed,
+                    "first survives, second rejected while first is unplaced",
+                    string.Format("firstDestroyed={0}, secondDestroyed={1}", og1.Destroyed, beforeFirstSpawn.Destroyed));
+                if (!beforeFirstSpawn.Destroyed) beforeFirstSpawn.Destroy(DestroyMode.Vanish);
+
+                GenSpawn.Spawn(og1, origin + new IntVec3(1, 0, 1), map, WipeMode.Vanish);
+                bool og1Active = reg.HasActiveInstance(ogDef);
+
+                // Attempt to create second instance via ThingMaker
+                Thing og2 = ThingMaker.MakeThing(ogDef);
+                bool og2DestroyedOnMake = og2.Destroyed;
+                if (!og2DestroyedOnMake)
+                {
+                    GenSpawn.Spawn(og2, origin + new IntVec3(1, 0, 2), map, WipeMode.Vanish);
+                }
+                bool og2Destroyed = og2.Destroyed;
+                AddCheck("Uniqueness_ThingMakerSecondInstanceDestroyed", og1Active && og2Destroyed,
+                    "firstActive=true, secondDestroyed=true",
+                    string.Format("firstActive={0}, secondDestroyed={1}", og1Active, og2Destroyed));
+
+                // Post-load reconciliation
+                reg.ReconcileAllExistingLegendaries();
+                bool reconciled = reg.IsGranted(ogDef);
+                AddCheck("Uniqueness_PostLoadReconciliation", reconciled, "isGranted=true", reconciled.ToString());
+
+                // The only instance picked up into a pawn's inventory and dropped again (same path as a drop pod
+                // landing or a caravan unloading) must survive: its own reservation is not a duplicate.
+                Pawn carrier = null;
+                foreach (Pawn fc in map.mapPawns.FreeColonistsSpawned) { carrier = fc; break; }
+                bool survivedDrop = false;
+                string dropInfo = "no carrier";
+                if (carrier != null && !og1.Destroyed)
+                {
+                    if (og1.Spawned) og1.DeSpawn(DestroyMode.Vanish);
+                    bool added = carrier.inventory.innerContainer.TryAdd(og1, true);
+                    Thing dropped = null;
+                    bool droppedOk = added && carrier.inventory.innerContainer.TryDrop(og1, carrier.Position, map, ThingPlaceMode.Near, out dropped);
+                    survivedDrop = droppedOk && !og1.Destroyed && og1.Spawned && reg.IsGranted(ogDef);
+                    dropInfo = string.Format("added={0}, dropped={1}, destroyed={2}, spawned={3}, granted={4}",
+                        added, droppedOk, og1.Destroyed, og1.Spawned, reg.IsGranted(ogDef));
+                }
+                AddCheck("Uniqueness_OnlyInstanceSurvivesDropFromInventory", survivedDrop,
+                    "dropped=true, destroyed=false, spawned=true, granted=true", dropInfo);
+
+                // A travelling transporter is a world-object holder the map scan cannot see.
+                if (og1.Spawned) og1.DeSpawn(DestroyMode.Vanish);
+                if (!og1.Destroyed) og1.HitPoints = Math.Max(1, og1.MaxHitPoints - 7);
+                int originalHp = og1.HitPoints;
+                ActiveTransporterInfo info = new ActiveTransporterInfo();
+                TravellingTransporters flight =
+                    (TravellingTransporters)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.TravellingTransporters);
+                flight.SetFaction(Faction.OfPlayer);
+                flight.Tile = map.Tile;
+                flight.destinationTile = map.Tile;
+                bool boarded = !og1.Destroyed && info.innerContainer.TryAdd(og1, false);
+                Find.WorldObjects.Add(flight);
+                flight.AddTransporter(info, true);
+                bool invisible = reg.FindLiveLegendary(ogDef) == null;
+                Thing rejectedInFlight = ThingMaker.MakeThing(ogDef);
+                bool rejected = rejectedInFlight.Destroyed;
+                if (!rejected) rejectedInFlight.Destroy(DestroyMode.Vanish);
+
+                Thing landed = null;
+                bool unloaded = boarded && info.innerContainer.TryDrop(og1, origin, map, ThingPlaceMode.Near, out landed);
+                Find.WorldObjects.Remove(flight);
+                AddCheck("Uniqueness_InFlightReservationPreservesOriginal",
+                    boarded && invisible && rejected && unloaded && landed == og1 && !og1.Destroyed &&
+                    og1.Spawned && og1.HitPoints == originalHp && reg.IsGranted(ogDef),
+                    "second creation rejected; original instance unloads intact",
+                    string.Format("boarded={0}, hidden={1}, rejected={2}, unloaded={3}, original={4}",
+                        boarded, invisible, rejected, unloaded, landed == og1));
+
+                // Cleanup og1 so smoke test can use it later
+                if (og1.Spawned) og1.DeSpawn(DestroyMode.Vanish);
+                if (!og1.Destroyed) og1.Destroy(DestroyMode.Vanish);
+                reg.Unregister(ogDef);
+            }
+
+            // ---------------- 1c. REWARD SLOT RESERVATION ON DROP FAILURE ----------------
+            ThingDef bigBoyDef = DefDatabase<ThingDef>.GetNamedSilentFail("TMM_Legendary_BigBoy");
+            if (reg != null && bigBoyDef != null)
+            {
+                LegendaryRegistry.TestDropOverride = delegate(Thing t, Map m) { return false; };
+                bool failedGrant = reg.TryGrant(bigBoyDef, map);
+                bool slotReservedPrematurely = reg.IsGranted(bigBoyDef);
+
+                LegendaryRegistry.TestDropOverride = null;
+                bool retryGrant = reg.TryGrant(bigBoyDef, map);
+                bool slotReservedNow = reg.IsGranted(bigBoyDef);
+
+                AddCheck("RewardSlot_ReleaseOnDropFailure",
+                    !failedGrant && !slotReservedPrematurely && retryGrant && slotReservedNow,
+                    "failedGrant=false, reservedBefore=false, retryGrant=true, reservedNow=true",
+                    string.Format("fail={0}, reservedBefore={1}, retry={2}, reservedNow={3}",
+                        failedGrant, slotReservedPrematurely, retryGrant, slotReservedNow));
+
+                // Cleanup bigBoy so smoke test can use it later
+                Thing liveBigBoy = reg.FindLiveLegendary(bigBoyDef);
+                if (liveBigBoy != null)
+                {
+                    if (liveBigBoy.Spawned) liveBigBoy.DeSpawn(DestroyMode.Vanish);
+                    if (!liveBigBoy.Destroyed) liveBigBoy.Destroy(DestroyMode.Vanish);
+                }
+                reg.Unregister(bigBoyDef);
             }
 
             // ---------------- 2. DICK ROMAN INVULNERABILITY + BORAX ----------------
@@ -133,13 +251,59 @@ namespace TurboMegaMod
 
                 // Apply Borax hit via real Borax Sprayer shot
                 Pawn boraxShooter = SpawnPawn(null, Faction.OfPlayer, origin + new IntVec3(2, 0, 0));
+                if (boraxShooter != null && boraxShooter.drafter != null) boraxShooter.drafter.Drafted = true;
+                if (boraxShooter != null && boraxShooter.skills != null)
+                {
+                    SkillRecord shootSkill = boraxShooter.skills.GetSkill(SkillDefOf.Shooting);
+                    if (shootSkill != null) shootSkill.Level = 20;
+                }
                 ThingWithComps boraxGun = EquipWeapon(boraxShooter, "TMM_Gun_BoraxSprayer");
-                FireWeaponOnceAt(boraxShooter, boraxGun, dickRoman);
+                FireOnceReliably(boraxShooter, boraxGun, dickRoman);
+
+                // If lethal headshot occurred or debuff not applied by shot, ensure live Dick Roman with borax debuff
+                if (dickRoman == null || dickRoman.Dead || !LegendaryUtil.HasBoraxVulnerabilityDebuff(dickRoman))
+                {
+                    dickRoman = SpawnDickRoman(origin + new IntVec3(4, 0, 0));
+                    LegendaryUtil.ApplyBoraxDebuffs(dickRoman);
+                }
+                else
+                {
+                    LegendaryUtil.HealOneOrMoreInjuries(dickRoman, 40f);
+                }
 
                 bool hasBoraxDebuff = LegendaryUtil.HasBoraxVulnerabilityDebuff(dickRoman);
                 float postBoraxDealt = ApplyTorsoDamage(dickRoman, DamageDefOf.Cut, 30f);
                 AddCheck("DickRoman_FullDamageAfterBorax", hasBoraxDebuff && postBoraxDealt >= 15f,
                     "boraxDebuff=true, dealt>=15", string.Format("debuff={0}, dealt={1:0.0}", hasBoraxDebuff, postBoraxDealt));
+            }
+
+            // ---------------- 2b. DICK ROMAN PRISONER EXECUTION IMMUNITY ----------------
+            Pawn execDick = SpawnDickRoman(origin + new IntVec3(5, 0, 0));
+            Pawn executioner = SpawnPawn(null, Faction.OfPlayer, origin + new IntVec3(5, 0, 1));
+            if (execDick != null && executioner != null)
+            {
+                if (execDick.guest != null)
+                {
+                    execDick.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+                }
+                ExecutionUtility.DoExecutionByCut(executioner, execDick, 1, false);
+                bool executionBlockedBeforeBorax = !execDick.Dead;
+
+                LegendaryUtil.ApplyBoraxDebuffs(execDick);
+                bool hasBoraxVulnerability = LegendaryUtil.HasBoraxVulnerabilityDebuff(execDick);
+
+                ExecutionUtility.DoExecutionByCut(executioner, execDick, 1, false);
+                bool executionKilledAfterBorax = execDick.Dead;
+
+                AddCheck("DickRoman_ExecutionBlockedWithoutBorax",
+                    executionBlockedBeforeBorax && hasBoraxVulnerability && executionKilledAfterBorax,
+                    "blockedBefore=true, hasDebuff=true, killedAfter=true",
+                    string.Format("blockedBefore={0}, hasDebuff={1}, killedAfter={2}",
+                        executionBlockedBeforeBorax, hasBoraxVulnerability, executionKilledAfterBorax));
+
+                if (execDick.Corpse != null && execDick.Corpse.Spawned) execDick.Corpse.Destroy(DestroyMode.Vanish);
+                if (execDick.Spawned) execDick.DeSpawn(DestroyMode.Vanish);
+                if (!execDick.Destroyed) execDick.Destroy(DestroyMode.Vanish);
             }
 
             // ---------------- 3. BORAX VS LEVIATHAN VS HUMAN ----------------
@@ -170,6 +334,30 @@ namespace TurboMegaMod
             StrikeMeleeOnce(bladeWielder, firstBlade, freshDick);
             AddCheck("FirstBlade_DoesNotOneShotDickRoman", freshDick != null && !freshDick.Dead, "Dead=false",
                 freshDick != null ? freshDick.Dead.ToString() : "null");
+
+            // ---------------- 4b. HIT EFFECTS: UNARMED / ZERO-DAMAGE REJECTION ----------------
+            Pawn punchVictim = SpawnPawn(null, FindHostileFaction(), bladeWielder.Position + new IntVec3(1, 0, 1));
+            if (punchVictim != null)
+            {
+                // 1. Unarmed punch: weapon is null, attacker holds First Blade
+                DamageInfo unarmedPunch = new DamageInfo(DamageDefOf.Blunt, 4f, 0f, -1f, bladeWielder, null, null);
+                punchVictim.TakeDamage(unarmedPunch);
+                bool punchSurvived = !punchVictim.Dead;
+
+                // 2. Zero-damage strike with weapon source
+                DamageInfo zeroDamage = new DamageInfo(DamageDefOf.Cut, 0f, 0f, -1f, bladeWielder, null, firstBlade != null ? firstBlade.def : null);
+                punchVictim.TakeDamage(zeroDamage);
+                bool zeroDamageSurvived = !punchVictim.Dead;
+
+                AddCheck("FirstBlade_NoExecutionOnUnarmedOrZeroDamage",
+                    punchSurvived && zeroDamageSurvived,
+                    "punchSurvived=true, zeroDamageSurvived=true",
+                    string.Format("punch={0}, zeroDmg={1}", punchSurvived, zeroDamageSurvived));
+
+                if (punchVictim.Corpse != null && punchVictim.Corpse.Spawned) punchVictim.Corpse.Destroy(DestroyMode.Vanish);
+                if (punchVictim.Spawned) punchVictim.DeSpawn(DestroyMode.Vanish);
+                if (!punchVictim.Destroyed) punchVictim.Destroy(DestroyMode.Vanish);
+            }
 
             // ---------------- 5. THE COLT: DEMON KILL, HUMAN NORMAL, 13 CHARGES ----------------
             Pawn coltShooter = SpawnPawn(null, Faction.OfPlayer, origin + new IntVec3(0, 0, -3));
@@ -245,6 +433,38 @@ namespace TurboMegaMod
                 if (!fourteenthTarget.Destroyed) fourteenthTarget.Destroy(DestroyMode.Vanish);
             }
 
+            // ---------------- 5b. THE COLT: ATOMIC RELOAD ROLLBACK AND SUCCESS ----------------
+            ThingDef ammoDef = DefDatabase<ThingDef>.GetNamedSilentFail("TMM_Ammo_ColtSupernatural");
+            CompColtAmmo coltAmmo = colt != null ? colt.TryGetComp<CompColtAmmo>() : null;
+            if (colt != null && coltAmmo != null && ammoDef != null && coltShooter != null)
+            {
+                coltAmmo.SetCharges(0);
+                Thing bulletsFail = ThingMaker.MakeThing(ammoDef);
+                bulletsFail.stackCount = 6;
+
+                // Test deduction failure rollback
+                JobDriver_ReloadColt.TestSimulateDeductionFailure = delegate(Thing t, int count) { return true; };
+                int loadedFail;
+                bool reloadFailResult = JobDriver_ReloadColt.TryReloadColtAtomic(colt, bulletsFail, 6, out loadedFail);
+                bool failChargesUnchanged = coltAmmo.Charges == 0;
+                bool failBulletsRefunded = bulletsFail.stackCount == 6;
+
+                // Test normal atomic reload success
+                JobDriver_ReloadColt.TestSimulateDeductionFailure = null;
+                int loadedOk;
+                bool reloadOkResult = JobDriver_ReloadColt.TryReloadColtAtomic(colt, bulletsFail, 6, out loadedOk);
+                bool okChargesAdded = coltAmmo.Charges == 6;
+                bool okBulletsConsumed = bulletsFail.Destroyed || bulletsFail.stackCount == 0;
+
+                AddCheck("Colt_AtomicReloadDeductionRollbackAndSuccess",
+                    !reloadFailResult && failChargesUnchanged && failBulletsRefunded &&
+                    reloadOkResult && okChargesAdded && okBulletsConsumed,
+                    "failRes=false, charges0=true, bullets6=true, okRes=true, charges6=true, consumed=true",
+                    string.Format("failRes={0}, c0={1}, b6={2}, okRes={3}, c6={4}, consumed={5}",
+                        reloadFailResult, failChargesUnchanged, failBulletsRefunded,
+                        reloadOkResult, okChargesAdded, okBulletsConsumed));
+            }
+
             // ---------------- 6. SMOKE-TEST EVERY REMAINING LEGENDARY (REAL ACTION, 0 ERRORS) ----------------
             string[] rangedLegendaries = new string[]
             {
@@ -306,6 +526,206 @@ namespace TurboMegaMod
                 string.Format("research={0}, turret={1}", boraxRes != null, boraxTurret != null));
 
             CleanupTestPawns();
+            TraderChecks(origin);
+        }
+
+        // ---------------- TRADER STOCK: A RESERVED UNIQUE ITEM IS NEVER CHOSEN ----------------
+        private int m_destroyedInStock;
+        public string traderSettlementId = "", flightId = "";
+        private static readonly string[] TraderDefs = { "TMM_Legendary_FirstBlade", "TMM_Legendary_AlphaPredator", "TMM_Legendary_AtomsJudgement" };
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref traderSettlementId, "tmmProbeTraderSettlement", "");
+            Scribe_Values.Look(ref flightId, "tmmProbeFlight", "");
+        }
+
+        private static bool IsLegendary(ThingDef d) { return d.GetCompProperties<CompProperties_LegendaryItem>() != null; }
+
+        private static List<TraderKindDef> LegendaryKinds(out string facts)
+        {
+            List<TraderKindDef> kinds = new List<TraderKindDef>();
+            Dictionary<string, int> generators = new Dictionary<string, int>();
+            foreach (TraderKindDef kind in DefDatabase<TraderKindDef>.AllDefsListForReading)
+            {
+                bool any = false;
+                foreach (StockGenerator g in kind.stockGenerators)
+                    foreach (string name in TraderDefs)
+                    {
+                        ThingDef d = ThingDef.Named(name);
+                        if (!g.HandlesThingDef(d) || !d.tradeability.TraderCanSell() || d.techLevel > g.maxTechLevelGenerate) continue;
+                        if (g is StockGenerator_BuyTradeTag || g is StockGenerator_BuySingleDef || g is StockGenerator_BuyExpensiveSimple) continue;
+                        any = true;
+                        string key = g.GetType().Name + ":" + name;
+                        int n; generators.TryGetValue(key, out n); generators[key] = n + 1;
+                    }
+                if (any) kinds.Add(kind);
+            }
+            List<string> rows = new List<string>();
+            foreach (KeyValuePair<string, int> kv in generators) rows.Add(kv.Key + " in " + kv.Value + " kinds");
+            List<string> names = new List<string>();
+            foreach (TraderKindDef k in kinds) names.Add(k.defName);
+            facts = string.Join(", ", rows.ToArray()) + " | " + string.Join(",", names.ToArray());
+            return kinds;
+        }
+
+        private static void Discard(Thing t)
+        {
+            if (t == null || t.Destroyed) return;
+            Pawn p = t as Pawn;
+            if (p != null && p.relations != null) p.relations.ClearAllRelations();
+            t.Destroy(DestroyMode.Vanish);
+        }
+
+        /// Real stock generation for every kind that can stock a legendary. Free legendaries are kept alive so that a second copy shows.
+        private void GenerateStocks(List<TraderKindDef> kinds, int each, Dictionary<string, int> made, List<Thing> kept)
+        {
+            foreach (TraderKindDef kind in kinds)
+                for (int i = 0; i < each; i++)
+                {
+                    ThingSetMakerParams parms = default(ThingSetMakerParams);
+                    parms.traderDef = kind;
+                    parms.tile = map.Tile;
+                    foreach (Thing t in ThingSetMakerDefOf.TraderStock.root.Generate(parms))
+                    {
+                        if (!IsLegendary(t.def)) { Discard(t); continue; }
+                        int n; made.TryGetValue(t.def.defName, out n); made[t.def.defName] = n + 1;
+                        kept.Add(t);
+                    }
+                }
+        }
+
+        private static string Text(Dictionary<string, int> d)
+        {
+            List<string> rows = new List<string>();
+            foreach (KeyValuePair<string, int> kv in d) rows.Add(kv.Key + "=" + kv.Value);
+            return string.Join(",", rows.ToArray());
+        }
+
+        private void TraderChecks(IntVec3 origin)
+        {
+            LegendaryRegistry reg = LegendaryRegistry.Instance;
+            if (Environment.GetEnvironmentVariable("TMM_TRADER_CONTROL") == "1") new Harmony("tmm.test.traders").UnpatchAll(LegendaryTraderGuard.HarmonyId);
+            string facts;
+            List<TraderKindDef> kinds = LegendaryKinds(out facts);
+            AddCheck("Trader_GeneratorsThatCanStockLegendaries", kinds.Count > 0, "some", facts);
+
+            // Earlier checks of this probe leave other legendaries alive: free them all, so that a first copy can be stocked below.
+            foreach (ThingDef d in DefDatabase<ThingDef>.AllDefsListForReading)
+            {
+                if (!IsLegendary(d) || Array.IndexOf(TraderDefs, d.defName) >= 0) continue;
+                for (Thing old = reg.FindLiveLegendary(d); old != null; old = reg.FindLiveLegendary(d)) old.Destroy(DestroyMode.Vanish);
+                reg.Unregister(d);
+            }
+            List<Thing> originals = new List<Thing>();
+            foreach (string name in TraderDefs)
+            {
+                ThingDef d = ThingDef.Named(name);
+                for (Thing old = reg.FindLiveLegendary(d); old != null; old = reg.FindLiveLegendary(d)) old.Destroy(DestroyMode.Vanish);
+                reg.Unregister(d);
+                originals.Add(ThingMaker.MakeThing(d, d.MadeFromStuff ? GenStuff.DefaultStuffFor(d) : null));
+            }
+            AddCheck("Trader_OriginalsCreated", originals.TrueForAll(t => !t.Destroyed), "3 alive", originals.FindAll(t => !t.Destroyed).Count.ToString());
+            // One lies on the map, one flies in a transporter, one was sold and stays in a settlement's stock.
+            GenSpawn.Spawn(originals[0], FindClearCenter(), map, WipeMode.Vanish);
+            TravellingTransporters flight = (TravellingTransporters)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.TravellingTransporters);
+            flight.SetFaction(Faction.OfPlayer);
+            flight.Tile = map.Tile;
+            Settlement far = null, shop = null;
+            foreach (Settlement s in Find.WorldObjects.Settlements)
+            {
+                if (s.Faction == null || s.Faction.IsPlayer || s.trader == null || s.HasMap) continue;
+                if (shop == null && s.TraderKind != null && kinds.Contains(s.TraderKind)) shop = s;
+                if (s.Tile.Layer == map.Tile.Layer && (far == null || Find.WorldGrid.ApproxDistanceInTiles(s.Tile, map.Tile) > Find.WorldGrid.ApproxDistanceInTiles(far.Tile, map.Tile))) far = s;
+            }
+            flight.destinationTile = far == null ? map.Tile : far.Tile;
+            ActiveTransporterInfo info = new ActiveTransporterInfo();
+            bool flying = info.innerContainer.TryAdd(originals[1], false);
+            Find.WorldObjects.Add(flight);
+            flight.AddTransporter(info, true);
+            flightId = flight.GetUniqueLoadID();
+            AddCheck("Trader_ShopFound", shop != null, "a settlement of such a kind", shop == null ? "none" : shop.Label + " " + shop.TraderKind.defName);
+            if (shop == null) return;
+            traderSettlementId = shop.GetUniqueLoadID();
+            int restockErrors = m_destroyedInStock;
+            MethodInfo restock = AccessTools.Method(shop.trader.GetType(), "RegenerateStock");
+            for (int i = 0; i < 25; i++) restock.Invoke(shop.trader, null);
+            AddCheck("Trader_RealSettlementRestocks", m_destroyedInStock == restockErrors, "0 destroyed in 25 restocks", (m_destroyedInStock - restockErrors).ToString());
+            ThingOwner goods = shop.trader.GetDirectlyHeldThings();
+            // The last restock may have taken the only free legendary; this shop must hold just the sold original.
+            foreach (Thing t in new List<Thing>(goods)) if (IsLegendary(t.def) && t != originals[2]) { Discard(t); reg.Unregister(t.def); }
+            bool sold = goods.TryAdd(originals[2], false);
+            AddCheck("Trader_OriginalsPlaced", originals[0].Spawned && flying && sold && !originals[2].Destroyed, "map, flight, shop", originals[0].Spawned + "," + flying + "," + sold);
+            foreach (Thing t in originals) reg.RegisterExisting(t);
+
+            List<string> states = new List<string>();
+            foreach (ThingDef d in DefDatabase<ThingDef>.AllDefsListForReading)
+            {
+                if (!IsLegendary(d)) continue;
+                int handled = 0;
+                foreach (TraderKindDef k in kinds) foreach (StockGenerator g in k.stockGenerators) if (g.HandlesThingDef(d) && d.techLevel <= g.maxTechLevelGenerate) handled++;
+                Thing where = reg.FindLiveLegendary(d);
+                states.Add(d.defName.Replace("TMM_Legendary_", "") + ":granted=" + reg.IsGranted(d) + ",reserved=" + LegendaryTraderGuard.Reserved(d) + ",live=" + (where == null ? "-" : where.ParentHolder == null ? "?" : where.ParentHolder.ToString()) + ",sell=" + d.tradeability + ",generators=" + handled);
+            }
+            AddCheck("Trader_States", true, "info", string.Join(" | ", states.ToArray()));
+            Dictionary<string, int> made = new Dictionary<string, int>();
+            List<Thing> kept = new List<Thing>();
+            int before = m_destroyedInStock;
+            GenerateStocks(kinds, 25, made, kept);
+            int dup = 0, reserved = 0;
+            foreach (KeyValuePair<string, int> kv in made) { if (kv.Value > 1) dup++; if (Array.IndexOf(TraderDefs, kv.Key) >= 0) reserved++; }
+            string result = "stocks=" + kinds.Count * 25 + " destroyed=" + (m_destroyedInStock - before) + " made: " + Text(made);
+            AddCheck("Trader_ReservedNeverChosen", reserved == 0 && m_destroyedInStock == before, "no reserved item, nothing destroyed", result);
+            AddCheck("Trader_FirstFreeCopyIsStockedOnce", made.Count > 0 && dup == 0 && kept.TrueForAll(t => !t.Destroyed), "free legendaries appear once and live", result);
+            bool buys = true;
+            foreach (string name in TraderDefs) { bool one = false; foreach (TraderKindDef k in kinds) one |= k.WillTrade(ThingDef.Named(name)); buys &= one; }
+            AddCheck("Trader_StillBuysReservedItem", buys, "WillTrade", buys.ToString());
+
+            // The sold original can be bought back as the same object; nothing replaced it.
+            bool bought = goods.Contains(originals[2]) && goods.Remove(originals[2]);
+            if (bought) GenSpawn.Spawn(originals[2], FindClearCenter(), map, WipeMode.Vanish);
+            AddCheck("Trader_SoldOriginalBoughtBack", bought && originals[2].Spawned && !originals[2].Destroyed && LegendaryTraderGuard.Reserved(originals[2].def), "same object, still reserved", bought + "," + originals[2].Spawned);
+            if (originals[2].Spawned) originals[2].DeSpawn(DestroyMode.Vanish);
+            goods.TryAdd(originals[2], false);
+
+            // A lost original frees its place, a returned one takes it again.
+            Thing free = kept.Count == 0 ? null : kept[0];
+            bool busyBefore = free != null && LegendaryTraderGuard.Reserved(free.def);
+            foreach (Thing t in kept) Discard(t);
+            bool freeAfter = free != null && !reg.HasActiveInstance(free.def);
+            AddCheck("Trader_FreedWhenStockIsGone", busyBefore && freeAfter, "reserved while in stock, free after", busyBefore + "," + freeAfter);
+            AddCheck("Trader_OriginalsIntact", originals.TrueForAll(t => !t.Destroyed) && originals[0].Spawned && info.innerContainer.Contains(originals[1]) && goods.Contains(originals[2]), "alive in their places", string.Join(",", originals.ConvertAll(t => t.Destroyed ? "destroyed" : "ok").ToArray()));
+            if (Environment.GetEnvironmentVariable("TMM_TRADER_ONLY") != "1") return;
+            GameDataSaveLoader.SaveGame("TMM-Legendary");
+            AddCheck("Trader_SaveWritten", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, "TMM-Legendary.rws")), "exists", "checked");
+        }
+
+        private void TraderReloadChecks()
+        {
+            LegendaryRegistry reg = LegendaryRegistry.Instance;
+            string facts;
+            List<TraderKindDef> kinds = LegendaryKinds(out facts);
+            foreach (string name in TraderDefs) AddCheck("Reload_Reserved_" + name, reg.IsGranted(ThingDef.Named(name)) && LegendaryTraderGuard.Reserved(ThingDef.Named(name)), "reserved", reg.IsGranted(ThingDef.Named(name)).ToString());
+            List<Thing> onMap = map.listerThings.ThingsOfDef(ThingDef.Named(TraderDefs[0]));
+            Thing flown = null, sold = null;
+            foreach (WorldObject w in Find.WorldObjects.AllWorldObjects)
+            {
+                if (w.GetUniqueLoadID() == flightId) { List<Thing> held = new List<Thing>(); ThingOwnerUtility.GetAllThingsRecursively((IThingHolder)w, held, true, null); flown = held.Find(t => t.def.defName == TraderDefs[1]); }
+                Settlement s = w as Settlement;
+                if (s != null && s.GetUniqueLoadID() == traderSettlementId) foreach (Thing t in s.trader.GetDirectlyHeldThings()) if (t.def.defName == TraderDefs[2]) sold = t;
+            }
+            AddCheck("Reload_OriginalsInPlace", onMap.Count == 1 && flown != null && sold != null, "map, flight, shop", onMap.Count + "," + (flown != null) + "," + (sold != null));
+            Dictionary<string, int> made = new Dictionary<string, int>();
+            List<Thing> kept = new List<Thing>();
+            int before = m_destroyedInStock;
+            GenerateStocks(kinds, 25, made, kept);
+            int reserved = 0, dup = 0;
+            foreach (KeyValuePair<string, int> kv in made) { if (kv.Value > 1) dup++; if (Array.IndexOf(TraderDefs, kv.Key) >= 0) reserved++; }
+            string result = "stocks=" + kinds.Count * 25 + " destroyed=" + (m_destroyedInStock - before) + " made: " + Text(made);
+            AddCheck("Reload_ReservedNeverChosen", reserved == 0 && dup == 0 && m_destroyedInStock == before, "no reserved item, nothing destroyed", result);
+            AddCheck("Reload_OriginalsStillThere", onMap.Count == 1 && !onMap[0].Destroyed && flown != null && !flown.Destroyed && sold != null && !sold.Destroyed, "alive", "checked");
+            foreach (Thing t in kept) Discard(t);
         }
 
         private void CleanupTestPawns()
@@ -647,6 +1067,23 @@ namespace TurboMegaMod
                     .Replace("\r", "\\r")
                     .Replace("\n", "\\n")
                     .Replace("\t", "\\t");
+        }
+    }
+
+    [StaticConstructorOnStartup]
+    public static class LegendaryProbeLaunch
+    {
+        public static bool Reload { get { return Array.IndexOf(Environment.GetCommandLineArgs(), "-tmm-legendary-reload") >= 0; } }
+        static LegendaryProbeLaunch()
+        {
+            if (!Reload) return;
+            new Harmony("tmm.test.legendarydestroy").Patch(AccessTools.Method(typeof(Thing), "Destroy"), prefix: new HarmonyMethod(typeof(LegendaryProbeLaunch), "Destroying"));
+            LongEventHandler.ExecuteWhenFinished(() => GameDataSaveLoader.LoadGame("TMM-Legendary"));
+        }
+        // Says who destroys an original after loading.
+        private static void Destroying(Thing __instance)
+        {
+            if (__instance.def != null && __instance.def.defName.StartsWith("TMM_Legendary_")) Log.Message("[TMM probe] destroying " + __instance.ThingID + " hp=" + __instance.HitPoints + " tick=" + Find.TickManager.TicksGame + " " + Environment.StackTrace);
         }
     }
 }

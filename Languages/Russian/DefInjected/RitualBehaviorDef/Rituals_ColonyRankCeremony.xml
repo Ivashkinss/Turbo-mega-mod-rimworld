@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_PromotionCeremonyBehavior.spectatorsLabel MayRequire="Ludeon.RimWorld.Ideology">Зрители</TMM_PromotionCeremonyBehavior.spectatorsLabel>
+  <TMM_PromotionCeremonyBehavior.spectatorGerund MayRequire="Ludeon.RimWorld.Ideology">присутствовать</TMM_PromotionCeremonyBehavior.spectatorGerund>
+  <TMM_PromotionCeremonyBehavior.roles.0.label MayRequire="Ludeon.RimWorld.Ideology">повышаемый</TMM_PromotionCeremonyBehavior.roles.0.label>
+  <TMM_PromotionCeremonyBehavior.roles.1.label MayRequire="Ludeon.RimWorld.Ideology">ведущий</TMM_PromotionCeremonyBehavior.roles.1.label>
+</LanguageData>

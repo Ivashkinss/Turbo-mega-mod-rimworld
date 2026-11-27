@@ -173,7 +173,7 @@ namespace TurboMegaMod
             Find.WorldObjects.Add(site);
             ctx.run.vars["siteId"] = site.ID.ToString();
 
-            string letterTitle = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Site"), ctx);
+            string letterTitle = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "TMM.Story.Site.Title".Translate().ToString()), ctx);
             string letterBody = StoryUtil.Format(!text.NullOrEmpty() ? text : Objective(ctx), ctx);
             Find.LetterStack.ReceiveLetter(letterTitle, letterBody, LetterDefOf.NeutralEvent, new LookTargets(site)); // CHECK API
         }
@@ -284,10 +284,10 @@ namespace TurboMegaMod
             {
                 int heldTicks = GetInt(ctx, "heldTicks", 0);
                 float hoursDone = heldTicks / (float)GenDate.TicksPerHour;
-                return string.Format("{0} ({1:0.0}/{2:0.0}h, {3:0.0}d left)", baseText, hoursDone, holdHours, daysLeft);
+                return "TMM.Story.Site.HoldGoal".Translate(baseText, hoursDone.ToString("0.0"), holdHours.ToString("0.0"), "TMM.Story.DaysLeft".Translate(daysLeft.ToString("0.0")));
             }
 
-            return string.Format("{0} ({1:0.0}d left)", baseText, daysLeft);
+            return "TMM.Story.Hotel.GoalTime".Translate(baseText, "TMM.Story.DaysLeft".Translate(daysLeft.ToString("0.0")));
         }
 
         private string FinishStage(StoryContext ctx, string outcome)
@@ -333,12 +333,12 @@ namespace TurboMegaMod
 
         private string DefaultObjectiveText()
         {
-            if (objective == StorySiteObjective.Clear) return "Clear hostile site";
-            if (objective == StorySiteObjective.Rescue) return "Rescue captive hero";
-            if (objective == StorySiteObjective.Retrieve) return "Retrieve target item";
-            if (objective == StorySiteObjective.Hold) return "Hold site";
-            if (objective == StorySiteObjective.KillHero) return "Eliminate target hero";
-            return "Complete site objective";
+            if (objective == StorySiteObjective.Clear) return "TMM.Story.Site.Clear".Translate();
+            if (objective == StorySiteObjective.Rescue) return "TMM.Story.Site.Rescue".Translate();
+            if (objective == StorySiteObjective.Retrieve) return "TMM.Story.Site.Retrieve".Translate();
+            if (objective == StorySiteObjective.Hold) return "TMM.Story.Site.Hold".Translate();
+            if (objective == StorySiteObjective.KillHero) return "TMM.Story.Site.KillHero".Translate();
+            return "TMM.Story.Site.Complete".Translate();
         }
 
         // =====================================================================

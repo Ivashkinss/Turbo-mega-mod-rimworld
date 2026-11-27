@@ -107,6 +107,80 @@ public sealed class MeleeProbe : MapComponent
             finally { owner.Patch(makeArgs, prefix: new HarmonyMethod(fix)); }
             drawArgs[2] = default(PawnDrawParms); makeArgs.Invoke(null, drawArgs);
             Check(((PawnDrawParms)drawArgs[2]).pawn == animatedPawn, "Render argument patch did not fill pawn identity");
+
+            // Test improvised melee weapons (Beer and WoodLog)
+            Pawn enemy = null;
+            try
+            {
+                IntVec3 spawnCell = CellFinder.StandableCellNear(animatedPawn.Position, map, 3);
+                Faction hostileFaction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.AncientsHostile) ?? Faction.OfAncients;
+                enemy = PawnGenerator.GeneratePawn(PawnKindDefOf.Drifter, hostileFaction);
+                GenSpawn.Spawn(enemy, spawnCell, map);
+
+                MethodInfo applyDamage = AccessTools.Method(typeof(Verb_MeleeAttack), "ApplyMeleeDamageToTarget");
+                Type workerType = AccessTools.TypeByName("AM.Events.Workers.KillPawnWorker");
+                Type inputType = AccessTools.TypeByName("AM.Events.Workers.AnimEventInput");
+                Type eventType = AccessTools.TypeByName("AM.Events.KillPawnEvent");
+                object worker = workerType != null ? Activator.CreateInstance(workerType) : null;
+                object eventInput = inputType != null ? Activator.CreateInstance(inputType) : null;
+                object killEvent = eventType != null ? Activator.CreateInstance(eventType) : null;
+                MethodInfo injureMethod = workerType != null ? AccessTools.Method(workerType, "Injure") : null;
+
+                // 1. Beer test
+                animatedPawn.equipment.DestroyAllEquipment();
+                ThingWithComps beer = (ThingWithComps)ThingMaker.MakeThing(ThingDefOf.Beer);
+                animatedPawn.equipment.AddEquipment(beer);
+                float hpBeforeBeer = enemy.health.summaryHealth.SummaryHealthPercent;
+                Verb verbBeer = animatedPawn.meleeVerbs.TryGetMeleeVerb(enemy);
+                Check(verbBeer != null, "Missing melee verb when holding Beer");
+                if (applyDamage != null && verbBeer != null)
+                {
+                    applyDamage.Invoke(verbBeer, new object[] { new LocalTargetInfo(enemy) });
+                }
+                animatedPawn.Drawer.Notify_MeleeAttackOn(enemy);
+                bool beerHitDealt = enemy.health.summaryHealth.SummaryHealthPercent < hpBeforeBeer || enemy.health.hediffSet.hediffs.Count > 0;
+                Check(beerHitDealt, "Beer melee strike did not inflict damage");
+
+                // Execute Melee Animation KillPawnWorker.Injure with Beer
+                if (injureMethod != null && worker != null && eventInput != null && killEvent != null)
+                {
+                    float hpBeforeBeerInjure = enemy.health.summaryHealth.SummaryHealthPercent;
+                    int hediffsBeforeBeerInjure = enemy.health.hediffSet.hediffs.Count;
+                    injureMethod.Invoke(worker, new object[] { eventInput, enemy, animatedPawn, killEvent });
+                    bool beerInjureDealt = enemy.health.summaryHealth.SummaryHealthPercent < hpBeforeBeerInjure || enemy.health.hediffSet.hediffs.Count > hediffsBeforeBeerInjure;
+                    Check(beerInjureDealt, "Melee Animation Injure did not inflict damage when holding Beer");
+                }
+
+                // 2. WoodLog test
+                animatedPawn.equipment.DestroyAllEquipment();
+                ThingWithComps wood = (ThingWithComps)ThingMaker.MakeThing(ThingDefOf.WoodLog);
+                animatedPawn.equipment.AddEquipment(wood);
+                float hpBeforeWood = enemy.health.summaryHealth.SummaryHealthPercent;
+                int hediffsBeforeWood = enemy.health.hediffSet.hediffs.Count;
+                Verb verbWood = animatedPawn.meleeVerbs.TryGetMeleeVerb(enemy);
+                Check(verbWood != null, "Missing melee verb when holding WoodLog");
+                if (applyDamage != null && verbWood != null)
+                {
+                    applyDamage.Invoke(verbWood, new object[] { new LocalTargetInfo(enemy) });
+                }
+                animatedPawn.Drawer.Notify_MeleeAttackOn(enemy);
+                bool woodHitDealt = enemy.health.summaryHealth.SummaryHealthPercent < hpBeforeWood || enemy.health.hediffSet.hediffs.Count > hediffsBeforeWood;
+                Check(woodHitDealt, "WoodLog melee strike did not inflict damage");
+
+                // Execute Melee Animation KillPawnWorker.Injure with WoodLog
+                if (injureMethod != null && worker != null && eventInput != null && killEvent != null)
+                {
+                    float hpBeforeWoodInjure = enemy.health.summaryHealth.SummaryHealthPercent;
+                    int hediffsBeforeWoodInjure = enemy.health.hediffSet.hediffs.Count;
+                    injureMethod.Invoke(worker, new object[] { eventInput, enemy, animatedPawn, killEvent });
+                    bool woodInjureDealt = enemy.health.summaryHealth.SummaryHealthPercent < hpBeforeWoodInjure || enemy.health.hediffSet.hediffs.Count > hediffsBeforeWoodInjure;
+                    Check(woodInjureDealt, "Melee Animation Injure did not inflict damage when holding WoodLog");
+                }
+            }
+            finally
+            {
+                if (enemy != null && !enemy.Destroyed) enemy.Destroy();
+            }
         }
         catch (Exception e) { errors.Add(e.ToString()); }
         finally { if (started && (errors.Count > 0 || Find.TickManager.TicksGame - startTick >= 20)) Finish(); }

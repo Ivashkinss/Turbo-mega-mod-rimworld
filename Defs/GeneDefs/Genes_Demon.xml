@@ -10,7 +10,7 @@
     <defName>TMM_Headbone_DemonHorns</defName>
     <label>demon horns</label>
     <description>Carriers of this gene grow long, ridged horns that curve up and outward from the skull.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Headbone_DemonHorns</iconPath>
     <renderNodeProperties>
       <li>
         <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
@@ -31,7 +31,7 @@
     <defName>TMM_Headbone_DemonHornsSmall</defName>
     <label>demon spikes</label>
     <description>Carriers of this gene grow two short, straight horns above the forehead.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Headbone_DemonHornsSmall</iconPath>
     <renderNodeProperties>
       <li>
         <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
@@ -52,7 +52,7 @@
     <defName>TMM_Headbone_DemonHornsRam</defName>
     <label>ram horns</label>
     <description>Carriers of this gene grow heavy horns that curl around the sides of the head.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeadboneMinihorns</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Headbone_DemonHornsRam</iconPath>
     <renderNodeProperties>
       <li>
         <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
@@ -73,7 +73,7 @@
     <defName>TMM_Tail_Demon</defName>
     <label>demon tail</label>
     <description>Carriers of this gene grow a long, thin tail ending in an arrow-shaped tip.</description>
-    <iconPath>UI/Icons/Genes/Gene_TailSmooth</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Tail_Demon</iconPath>
     <randomChosen>false</randomChosen>
     <biostatCpx>1</biostatCpx>
     <renderNodeProperties>
@@ -108,7 +108,7 @@
     <label>devil eyes</label>
     <labelShortAdj>devil-eyed</labelShortAdj>
     <description>Carriers of this gene have burning amber eyes with slit pupils.</description>
-    <iconPath>UI/Icons/Genes/Gene_RedEyes</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Eyes_Devil</iconPath>
     <renderNodeProperties>
       <li Class="PawnRenderNodeProperties_Eye">
         <texPath>Things/TMM/Xenotypes/Demon/DevilEye</texPath>
@@ -142,7 +142,7 @@
     <label>black demon eyes</label>
     <labelShortAdj>black-eyed</labelShortAdj>
     <description>Carriers of this gene have eyes that are entirely black, without whites or irises.</description>
-    <iconPath>UI/Icons/Genes/Gene_GrayEyes</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Eyes_DemonBlack</iconPath>
     <renderNodeProperties>
       <li Class="PawnRenderNodeProperties_Eye">
         <texPath>Things/TMM/Xenotypes/Demon/DemonEyeBlack</texPath>

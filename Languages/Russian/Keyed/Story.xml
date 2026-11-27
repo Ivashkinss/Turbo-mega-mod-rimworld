@@ -24,4 +24,52 @@
   <TMM.Story.Hotel.NoGuest>{0} сейчас не может прийти, и прийти вместо некому</TMM.Story.Hotel.NoGuest>
   <TMM.Story.Hotel.WaitGuest>Ожидается гость: {0}</TMM.Story.Hotel.WaitGuest>
   <TMM.Story.Hotel.WaitHotel>Гость ждёт места в гостинице: {0}</TMM.Story.Hotel.WaitHotel>
+  <TMM.Story.Completed>завершено</TMM.Story.Completed>
+  <TMM.Story.Hotel.OpenObjective>Откройте гостиницу: поставьте гостевые кровати и разрешите приём гостей</TMM.Story.Hotel.OpenObjective>
+  <TMM.Story.Hotel.Investigate>Расспросите постояльцев гостиницы</TMM.Story.Hotel.Investigate>
+  <TMM.Story.Hotel.Shelter>Укройте гостей от охотников</TMM.Story.Hotel.Shelter>
+  <TMM.Story.Hotel.Host>Примите делегацию в гостинице</TMM.Story.Hotel.Host>
+  <TMM.Story.Hotel.ClueFound>зацепка найдена</TMM.Story.Hotel.ClueFound>
+  <TMM.Story.Hotel.TalkToGuest>поговорите с гостем</TMM.Story.Hotel.TalkToGuest>
+  <TMM.Story.Hotel.Repelled>охотники отбиты</TMM.Story.Hotel.Repelled>
+  <TMM.Story.Hotel.Repel>отбейте охотников</TMM.Story.Hotel.Repel>
+  <TMM.Story.Hotel.AwaitingHunters>охотники ещё не появились</TMM.Story.Hotel.AwaitingHunters>
+  <TMM.Story.Hotel.GoalTime>{0} ({1})</TMM.Story.Hotel.GoalTime>
+  <TMM.Story.Hotel.GoalStatusTime>{0} ({1}, {2})</TMM.Story.Hotel.GoalStatusTime>
+  <TMM.Story.Hotel.ClosedTitle>Гостиница закрыта</TMM.Story.Hotel.ClosedTitle>
+  <TMM.Story.Hotel.ClosedLetter>Делегация хотела посетить {0}, но гостиница закрыта.&#10;&#10;Чтобы принять гостей в следующих заданиях, поставьте хотя бы одну гостевую кровать и разрешите приём во вкладке «Гости».</TMM.Story.Hotel.ClosedLetter>
+  <TMM.Story.ZeroSynth.Name>Нулевой синт</TMM.Story.ZeroSynth.Name>
+  <TMM.Story.ZeroSynth.ArrivedTitle>Нулевой синт присоединился к поселению</TMM.Story.ZeroSynth.ArrivedTitle>
+  <TMM.Story.ZeroSynth.ArrivedText>Нулевой синт услышал жужжание вскрытого Якоря и нашёл дорогу к вам. Он не спит, не ест и не поднимет оружие. Теперь он живёт и работает в поселении.</TMM.Story.ZeroSynth.ArrivedText>
+  <TMM.Story.Site.Title>Место</TMM.Story.Site.Title>
+  <TMM.Story.Site.Clear>Зачистить вражеское место</TMM.Story.Site.Clear>
+  <TMM.Story.Site.Rescue>Спасти пленного героя</TMM.Story.Site.Rescue>
+  <TMM.Story.Site.Retrieve>Забрать нужный предмет</TMM.Story.Site.Retrieve>
+  <TMM.Story.Site.Hold>Удержать место</TMM.Story.Site.Hold>
+  <TMM.Story.Site.KillHero>Устранить цель</TMM.Story.Site.KillHero>
+  <TMM.Story.Site.Complete>Выполнить задание на месте</TMM.Story.Site.Complete>
+  <TMM.Story.Site.HoldGoal>{0} ({1} из {2} ч, {3})</TMM.Story.Site.HoldGoal>
+  <TMM.Story.Raid.Title>Надвигается набег</TMM.Story.Raid.Title>
+  <TMM.Story.Raid.Repel>Отбить набег</TMM.Story.Raid.Repel>
+  <TMM.Story.Raid.Arriving>{0} (до прибытия, часов: {1})</TMM.Story.Raid.Arriving>
+  <TMM.Story.Deliver.Goal>Доставить: {0} x{1}</TMM.Story.Deliver.Goal>
+  <TMM.Story.Deliver.HandIn>Сдать: {0} x{1} ({2} из {1})</TMM.Story.Deliver.HandIn>
+  <TMM.Story.Deliver.NeedInStorage>Нужно на складе: {1} x{0}, место: {2} (есть {3} из {0})</TMM.Story.Deliver.NeedInStorage>
+  <TMM.Story.Deliver.Colony>колония</TMM.Story.Deliver.Colony>
+  <TMM.Story.Deliver.Settlement>поселение</TMM.Story.Deliver.Settlement>
+  <TMM.Story.Deliver.FactionSettlement>поселение фракции</TMM.Story.Deliver.FactionSettlement>
+  <TMM.Story.Deliver.Items>предметы</TMM.Story.Deliver.Items>
+  <TMM.Story.Deliver.CargoTo>Доставить груз задания: {0}</TMM.Story.Deliver.CargoTo>
+  <TMM.Story.Deliver.CarryingTo>Везёт груз задания: {0}.</TMM.Story.Deliver.CarryingTo>
+  <TMM.Story.Deliver.CaravanTitle>Доставка караваном</TMM.Story.Deliver.CaravanTitle>
+  <TMM.Story.Deliver.GoalColony>{0} (на складе {1} из {2}: {3}, {4})</TMM.Story.Deliver.GoalColony>
+  <TMM.Story.Deliver.GoalSettlement>{0}. Куда: {1} ({2})</TMM.Story.Deliver.GoalSettlement>
+  <TMM.Story.Deliver.DoneTitle>Груз доставлен</TMM.Story.Deliver.DoneTitle>
+  <TMM.Story.Deliver.DoneText>Ваш караван доставил груз: {0} x{1}. Место: {2}.</TMM.Story.Deliver.DoneText>
+  <TMM.Story.Deliver.ColonyInstruction>Соберите на складе груз: {0} x{1}. Место: {2}. Срок в днях: {3}. Затем откройте это письмо и сдайте груз.</TMM.Story.Deliver.ColonyInstruction>
+  <TMM.Story.Deliver.SettlementInstruction>Отправьте караван с грузом: {0} x{1}. Место: {2}. Срок в днях: {3}. На месте выберите доставку груза.</TMM.Story.Deliver.SettlementInstruction>
+  <TMM.Story.Deliver.CaravanOption>Доставить: {0} x{1}, место: {2} (с собой {3} из {1})</TMM.Story.Deliver.CaravanOption>
+  <TMM.Story.Deliver.NotEnough>{0} — груза не хватает</TMM.Story.Deliver.NotEnough>
+  <TMM.Story.Deliver.CommandDesc>Сдать груз: {0} x{1}. Место: {2}. Задание: «{3}». С собой {4} из {1}.</TMM.Story.Deliver.CommandDesc>
+  <TMM.Story.Deliver.CaravanLacks>В караване только {0} из {1}: {2}.</TMM.Story.Deliver.CaravanLacks>
 </LanguageData>

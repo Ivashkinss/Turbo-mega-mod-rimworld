@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom ghoul body gene: assigns TMM_Ghoul BodyTypeDef via Gene_ForceBodyType (same mechanism as custom race bodies). Biotech only. -->
+<Defs>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Body_Ghoul</defName>
+    <label>withered ghoul frame</label>
+    <description>Carriers of this gene have a gaunt, radiation-withered body with protruding ribs, exposed tendons, and peeling patches of necrotic skin.</description>
+    <geneClass>TurboMegaMod.Gene_ForceBodyType</geneClass>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Body_Ghoul</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <modExtensions>
+      <li Class="TurboMegaMod.GeneCustomBodyExtension">
+        <bodyType>TMM_Ghoul</bodyType>
+        <apparelBodyType>Thin</apparelBodyType>
+      </li>
+    </modExtensions>
+  </GeneDef>
+</Defs>

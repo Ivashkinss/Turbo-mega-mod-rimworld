@@ -15,6 +15,7 @@ namespace TurboMegaMod
         public Caravan caravan;
         public Settlement origin, destination;
         public int created, deadline, retryAt, retries;
+        public int relayJumpAt; // Institute relay: tick when the charging caravan reappears at its target (0 = not charging)
         public bool patrol, returning, stranded;
         public void ExposeData()
         {
@@ -28,6 +29,7 @@ namespace TurboMegaMod
             Scribe_Values.Look(ref patrol, "patrol");
             Scribe_Values.Look(ref returning, "returning");
             Scribe_Values.Look(ref stranded, "stranded");
+            Scribe_Values.Look(ref relayJumpAt, "relayJumpAt");
         }
     }
 
@@ -73,8 +75,16 @@ namespace TurboMegaMod
         }
         private static Pawn MakePawn(PawnKindDef kind, Faction faction)
         {
-            return PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind, faction, forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
-                canGeneratePawnRelations: false, allowAddictions: false, allowPregnant: false, developmentalStages: DevelopmentalStage.Adult));
+            TrafficBackstorySelection.Enter();
+            try
+            {
+                return PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind, faction, forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
+                    canGeneratePawnRelations: false, allowAddictions: false, allowPregnant: false, developmentalStages: DevelopmentalStage.Adult));
+            }
+            finally
+            {
+                TrafficBackstorySelection.Leave();
+            }
         }
         private static bool AddStack(Pawn pawn, ThingDef def, int count)
         {
@@ -205,9 +215,14 @@ namespace TurboMegaMod
             foreach (var pawn in caravan.PawnsListForReading.ToArray())
             {
                 if (pawn.inventory == null) continue;
-                foreach (var item in pawn.inventory.innerContainer.InnerListForReading.ToArray())
-                    if (pawn.inventory.innerContainer.TryTransferToContainer(item, stock, item.stackCount, true) <= 0) return false;
-                if (pawn.inventory.innerContainer.Count > 0) return false;
+                var inventory = pawn.inventory.innerContainer;
+                foreach (var item in inventory.InnerListForReading.ToArray())
+                {
+                    inventory.TryTransferToContainer(item, stock, item.stackCount, true);
+                    // A complete merge consumes the original stack and can report zero moved.
+                    if (!item.Destroyed && item.holdingOwner != stock) return false;
+                }
+                if (inventory.Count > 0) return false;
             }
             foreach (var pawn in caravan.PawnsListForReading.ToArray()) caravan.RemovePawn(pawn);
             routes.Remove(route); // An intentional empty arrival, not a forced-removal salvage event.
@@ -268,7 +283,19 @@ namespace TurboMegaMod
                     if (caravan.Tile == target.Tile) { Retire(route, target); continue; }
                     changedTarget = true;
                 }
-                if (changedTarget) { caravan.pather.StopDead(); route.retryAt = now; route.retries = 0; }
+                if (changedTarget) { caravan.pather.StopDead(); route.retryAt = now; route.retries = 0; route.relayJumpAt = 0; }
+                // Factions with relay technology (FactionTeleportExtension) do not walk: the caravan charges in place, then
+                // reappears on the target tile; the next pass sees it there and retires the route through the normal path.
+                FactionTeleportExtension relay = InstituteRelayFx.GetTeleportExtension(caravan.Faction);
+                if (relay != null && relay.allowWorldJumps && target != null && target.Tile.Valid && target.Tile.Layer == caravan.Tile.Layer)
+                {
+                    if (route.relayJumpAt <= 0) { route.relayJumpAt = now + Math.Max(250, relay.teleportDelayTicks); caravan.pather.StopDead(); continue; }
+                    if (now < route.relayJumpAt) continue;
+                    route.relayJumpAt = 0;
+                    caravan.pather.StopDead();
+                    caravan.Tile = target.Tile;
+                    continue;
+                }
                 if (caravan.pather.Moving || now < route.retryAt) continue;
                 route.retryAt = now + Retry;
                 if (target == null || !caravan.pather.StartPath(target.Tile, null, true, false))

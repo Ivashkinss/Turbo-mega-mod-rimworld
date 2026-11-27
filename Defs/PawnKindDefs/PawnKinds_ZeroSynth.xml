@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PawnKindDef>
+    <defName>TMM_ZeroSynth</defName>
+    <label>Zero Synth</label>
+    <race>Human</race>
+    <combatPower>1</combatPower>
+    <initialResistanceRange>12~20</initialResistanceRange>
+    <initialWillRange>1~3</initialWillRange>
+  </PawnKindDef>
+</Defs>

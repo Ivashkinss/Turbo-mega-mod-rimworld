@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom leviathan body gene: assigns TMM_Leviathan BodyTypeDef. Biotech only. -->
+<Defs>
+  <GeneDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_Body_Leviathan</defName>
+    <label>leviathan vessel</label>
+    <description>Carriers of this gene inhabit a sinewy, elongated body laced with dark subdermal veins and a sealed vertical maw-seam running down the abdomen.</description>
+    <geneClass>TurboMegaMod.Gene_ForceBodyType</geneClass>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Body_Leviathan</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    <modExtensions>
+      <li Class="TurboMegaMod.GeneCustomBodyExtension">
+        <bodyType>TMM_Leviathan</bodyType>
+        <apparelBodyType>Male</apparelBodyType>
+      </li>
+    </modExtensions>
+  </GeneDef>
+</Defs>

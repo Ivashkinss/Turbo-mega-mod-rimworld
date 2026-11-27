@@ -608,7 +608,7 @@ namespace TurboMegaMod
                     return;
                 }
 
-                // Silver payment is now CONFIRMED & IRREVERSIBLE — record independently of worker transfers!
+                // Silver payment is now CONFIRMED & IRREVERSIBLE вЂ” record independently of worker transfers!
                 mission.silverDelivered = true;
                 UnprotectMissionSilver(mission);
             }
@@ -1104,6 +1104,7 @@ namespace TurboMegaMod
                     if (formMap == null || formLord == null || m.pawns == null || m.pawns.Count == 0)
                     {
                         m.state = OutpostMissionState.Failed;
+                        if (formMap != null) OutpostCaravanLogistics.ReturnOrSecureMissionSilver(m, formMap);
                         UnprotectMissionSilver(m);
                         missions.RemoveAt(i);
                         cacheDirty = true;
@@ -1116,6 +1117,7 @@ namespace TurboMegaMod
                         Messages.Message("TMM_OutpostCaravan_OutpostGone".Translate(), MessageTypeDefOf.CautionInput, false);
                         m.state = OutpostMissionState.Cancelled;
                         m.cancelled = true;
+                        OutpostCaravanLogistics.ReturnOrSecureMissionSilver(m, formMap);
                         UnprotectMissionSilver(m);
                         missions.RemoveAt(i);
                         cacheDirty = true;
@@ -1202,10 +1204,8 @@ namespace TurboMegaMod
         public override void ExposeData()
         {
             base.ExposeData();
-            if (Scribe.mode == LoadSaveMode.Saving)
-            {
-                AuditAndCleanupMissions(true);
-            }
+            // Do NOT audit or move things during Scribe serialization (prevents dups and desync).
+            // All audits and item transfers run safely on the game thread during WorldComponentTick().
             Scribe_Collections.Look(ref missions, "missions", LookMode.Deep);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -1240,6 +1240,16 @@ namespace TurboMegaMod
         /// TryAdd during rollback or food redistribution.
         /// </summary>
         public static Func<ThingOwner, Thing, bool> TestRejectInventoryTryAdd;
+
+        /// <summary>
+        /// Test-only hook (ONLY active when TestMode.Enabled) to simulate placement failure during silver prep rollback.
+        /// </summary>
+        public static Func<Thing, IntVec3, Map, bool> TestRejectSilverRollbackPlacement;
+
+        /// <summary>
+        /// Test-only hook (ONLY active when TestMode.Enabled) to simulate formation failure during StartCaravan.
+        /// </summary>
+        public static Func<bool> TestForceFormationFailure;
 
         private sealed class CaravanStagingHolder : IThingHolder
         {
@@ -2489,7 +2499,7 @@ namespace TurboMegaMod
                 }
             }
 
-            if (formationLordId < 0)
+            if ((TestMode.Enabled && TestForceFormationFailure != null && TestForceFormationFailure()) || formationLordId < 0)
             {
                 RollbackSilverPrepJournal(map, silverPrepJournal);
                 failReason = "TMM_OutpostCaravan_FormationFailed".Translate();
@@ -2522,6 +2532,95 @@ namespace TurboMegaMod
             }
             return null;
         }
+        public static void ReturnOrSecureMissionSilver(OutpostCaravanMission m, Map map)
+        {
+            if (m == null || m.missionSilverIds == null || m.missionSilverIds.Count == 0 || m.pawns == null) return;
+            HashSet<string> silverIds = new HashSet<string>(m.missionSilverIds);
+            int totalReturned = 0;
+
+            for (int i = 0; i < m.pawns.Count; i++)
+            {
+                Pawn p = m.pawns[i];
+                if (p == null || p.inventory == null || p.inventory.innerContainer == null) continue;
+
+                List<Thing> toUnload = new List<Thing>();
+                for (int j = 0; j < p.inventory.innerContainer.Count; j++)
+                {
+                    Thing t = p.inventory.innerContainer[j];
+                    if (t != null && silverIds.Contains(t.ThingID))
+                    {
+                        toUnload.Add(t);
+                    }
+                }
+
+                for (int j = 0; j < toUnload.Count; j++)
+                {
+                    Thing s = toUnload[j];
+                    int count = s.stackCount;
+                    p.inventory.innerContainer.Remove(s);
+
+                    bool placed = false;
+                    try
+                    {
+                        if (map != null)
+                        {
+                            IntVec3 cell = IntVec3.Invalid;
+                            if (StoreUtility.TryFindBestBetterStoreCellFor(s, p, map, StoragePriority.Unstored, p.Faction, out cell))
+                            {
+                                placed = GenPlace.TryPlaceThing(s, cell, map, ThingPlaceMode.Near);
+                            }
+                            else
+                            {
+                                IntVec3 nearPos = p.Spawned ? p.Position : DropCellFinder.TradeDropSpot(map);
+                                if (nearPos.IsValid && nearPos.InBounds(map))
+                                {
+                                    placed = GenPlace.TryPlaceThing(s, nearPos, map, ThingPlaceMode.Near);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        TestMode.ReportException("[TMM] ReturnOrSecureMissionSilver: placement failed: ", ex);
+                        placed = false;
+                    }
+                    finally
+                    {
+                        if (placed && (s.Spawned || s.Destroyed)) // merged into an existing map stack counts as returned
+                        {
+                            totalReturned += count;
+                        }
+                        else
+                        {
+                            // Guaranteed owner: carrier inventory -> map -> Limbo
+                            bool secured = false;
+                            if (p != null && !p.Dead && p.inventory != null && p.inventory.innerContainer != null)
+                            {
+                                if (s.Spawned) s.DeSpawn(DestroyMode.Vanish);
+                                secured = p.inventory.innerContainer.TryAdd(s, false);
+                                if (secured)
+                                {
+                                    Messages.Message("TMM_OutpostCaravan_SilverKeptByCarrier".Translate(p.LabelShort, count), p, MessageTypeDefOf.NeutralEvent, false);
+                                }
+                            }
+                            if (!secured)
+                            {
+                                if (!StoryPaymentLimbo.Hold(s))
+                                {
+                                    Log.Error("[TMM] ReturnOrSecureMissionSilver: failed to secure silver " + s.ThingID + " into Limbo!");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (totalReturned > 0)
+            {
+                Messages.Message("TMM_OutpostCaravan_SilverReturnedToStockpile".Translate(totalReturned), MessageTypeDefOf.PositiveEvent, false);
+            }
+        }
+
         private static void RollbackSilverPrepJournal(Map map, List<SilverPrepJournalEntry> journal)
         {
             if (journal == null) return;
@@ -2543,7 +2642,40 @@ namespace TurboMegaMod
                         if (!whole.Spawned)
                         {
                             if (whole.holdingOwner != null) whole.holdingOwner.Remove(whole);
-                            if (map != null && entry.origPos.InBounds(map)) GenPlace.TryPlaceThing(whole, entry.origPos, map, ThingPlaceMode.Near);
+                            bool placed = false;
+                            try
+                            {
+                                if (TestMode.Enabled && TestRejectSilverRollbackPlacement != null && TestRejectSilverRollbackPlacement(whole, entry.origPos, map))
+                                {
+                                    placed = false;
+                                }
+                                else if (map != null && entry.origPos.InBounds(map))
+                                {
+                                    placed = GenPlace.TryPlaceThing(whole, entry.origPos, map, ThingPlaceMode.Near);
+                                }
+                            }
+                            finally
+                            {
+                                if (!whole.Destroyed && (!placed || !whole.Spawned))
+                                {
+                                    bool recovered = false;
+                                    if (entry.inventoryPawn != null && !entry.inventoryPawn.Dead && entry.inventoryPawn.inventory != null)
+                                    {
+                                        if (whole.Spawned) whole.DeSpawn(DestroyMode.Vanish);
+                                        if (!(TestMode.Enabled && TestRejectInventoryTryAdd != null && TestRejectInventoryTryAdd(entry.inventoryPawn.inventory.innerContainer, whole)))
+                                        {
+                                            recovered = entry.inventoryPawn.inventory.innerContainer.TryAdd(whole, false);
+                                        }
+                                    }
+                                    if (!recovered)
+                                    {
+                                        if (!StoryPaymentLimbo.Hold(whole))
+                                        {
+                                            Log.Error("[TMM] RollbackSilverPrepJournal: failed to hold whole silver stack in Limbo: " + whole.ThingID);
+                                        }
+                                    }
+                                }
+                            }
                         }
                         continue;
                     }
@@ -2552,17 +2684,53 @@ namespace TurboMegaMod
                     if (split.holdingOwner != null) split.holdingOwner.Remove(split);
                     if (split.Spawned) split.DeSpawn(DestroyMode.Vanish);
 
-                    if (entry.origStack != null && !entry.origStack.Destroyed && entry.origStack.Spawned && entry.origStack.Map == map)
+                    bool splitPlaced = false;
+                    try
                     {
-                        if (entry.origStack.TryAbsorbStack(split, false) && (split.Destroyed || split.stackCount <= 0))
+                        if (entry.origStack != null && !entry.origStack.Destroyed && entry.origStack.Spawned && entry.origStack.Map == map)
                         {
-                            continue;
+                            if (entry.origStack.TryAbsorbStack(split, false) && (split.Destroyed || split.stackCount <= 0))
+                            {
+                                splitPlaced = true;
+                            }
+                        }
+
+                        if (!splitPlaced)
+                        {
+                            if (TestMode.Enabled && TestRejectSilverRollbackPlacement != null && TestRejectSilverRollbackPlacement(split, entry.origPos, map))
+                            {
+                                splitPlaced = false;
+                            }
+                            else if (map != null && entry.origPos.InBounds(map))
+                            {
+                                splitPlaced = GenPlace.TryPlaceThing(split, entry.origPos, map, ThingPlaceMode.Near);
+                            }
                         }
                     }
-
-                    if (map != null && entry.origPos.InBounds(map))
+                    finally
                     {
-                        GenPlace.TryPlaceThing(split, entry.origPos, map, ThingPlaceMode.Near);
+                        if (!splitPlaced || (!split.Destroyed && !split.Spawned))
+                        {
+                            if (!split.Destroyed && split.stackCount > 0)
+                            {
+                                bool recovered = false;
+                                if (entry.inventoryPawn != null && !entry.inventoryPawn.Dead && entry.inventoryPawn.inventory != null)
+                                {
+                                    if (split.Spawned) split.DeSpawn(DestroyMode.Vanish);
+                                    if (!(TestMode.Enabled && TestRejectInventoryTryAdd != null && TestRejectInventoryTryAdd(entry.inventoryPawn.inventory.innerContainer, split)))
+                                    {
+                                        recovered = entry.inventoryPawn.inventory.innerContainer.TryAdd(split, false);
+                                    }
+                                }
+                                if (!recovered)
+                                {
+                                    if (!StoryPaymentLimbo.Hold(split))
+                                    {
+                                        Log.Error("[TMM] RollbackSilverPrepJournal: failed to hold split silver in Limbo: " + split.ThingID);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)

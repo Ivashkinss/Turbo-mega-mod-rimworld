@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>TMM_Thought_EnclavePropagandaPositive</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>stirring Enclave broadcast</label>
+        <description>That Enclave broadcast spoke of order, strength, and reclaiming civilization. Inspiring words.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TMM_Thought_EnclavePropagandaNegative</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>vile Enclave propaganda</label>
+        <description>Listening to the Enclave preach purity and extermination over the radio made my skin crawl.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TMM_Thought_DivineOmenPositive</defName>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>celestial omen</label>
+        <description>A warm radiance washed across the sky. It felt as though Heaven itself was watching over us.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TMM_Thought_DivineOmenNegative</defName>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>searing celestial omen</label>
+        <description>That blinding heavenly light stung my eyes and set my blood boiling with unease.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

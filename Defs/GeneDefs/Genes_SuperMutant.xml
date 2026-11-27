@@ -5,7 +5,7 @@
     <defName>TMM_Head_SuperMutant</defName>
     <label>mutant skull</label>
     <description>Carriers of this gene have a massive skull with a heavy brow ridge, a noseless face, a brutal underbite and tusk-like lower teeth.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Head_SuperMutant</iconPath>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <forcedHeadTypes>
       <li>TMM_SuperMutantHead</li>
@@ -16,7 +16,7 @@
     <defName>TMM_Body_Giant</defName>
     <label>giant frame</label>
     <description>Carriers of this gene grow far larger than ordinary humans, towering over everyone around them.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Body_Giant</iconPath>
     <displayCategory>Cosmetic</displayCategory>
     <biostatCpx>1</biostatCpx>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
@@ -32,7 +32,7 @@
     <label>mutant frame</label>
     <description>Carriers of this gene grow a hunched, massively muscled frame with huge shoulders and almost no neck.</description>
     <geneClass>TurboMegaMod.Gene_SuperMutantBody</geneClass>
-    <iconPath>UI/Icons/Genes/Gene_BodyHulk</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Body_SuperMutant</iconPath>
     <displayCategory>Cosmetic</displayCategory>
     <biostatCpx>1</biostatCpx>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>

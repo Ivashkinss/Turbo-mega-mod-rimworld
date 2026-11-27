@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+
+  <!-- 1. TMM_Vehicle_Impala -->
+  <TMM_Vehicle_Impala.label>чёрный седан 1967 года («Детка»)</TMM_Vehicle_Impala.label>
+  <TMM_Vehicle_Impala.description>Стремительный чёрный четырёхдверный хардтоп 1967 года, который охотники ласково называют «Деткой». Невероятно быстрая машина на дорогах и равнинах, вмещает четверых, а в защищённом оберегами багажнике хранится запас соли, серебра и оружия против нечисти.</TMM_Vehicle_Impala.description>
+  <TMM_Vehicle_Impala.properties.roles.0.label>водитель</TMM_Vehicle_Impala.properties.roles.0.label>
+  <TMM_Vehicle_Impala.properties.roles.1.label>пассажир</TMM_Vehicle_Impala.properties.roles.1.label>
+  <TMM_Vehicle_Impala.components.0.label>двигатель V8</TMM_Vehicle_Impala.components.0.label>
+  <TMM_Vehicle_Impala.components.1.label>колёса</TMM_Vehicle_Impala.components.1.label>
+  <TMM_Vehicle_Impala.components.2.label>багажник с оберегами</TMM_Vehicle_Impala.components.2.label>
+  <TMM_Vehicle_Impala.components.3.label>кузов</TMM_Vehicle_Impala.components.3.label>
+
+  <!-- 2. TMM_Vehicle_HunterTruck -->
   <TMM_Vehicle_HunterTruck.label>пикап охотников</TMM_Vehicle_HunterTruck.label>
-  <TMM_Vehicle_HunterTruck.description>Бронированный довоенный пикап, который держат на ходу минитмены и бродячие охотники на чудовищ. Вмещает водителя и двух пассажиров, хорошо везёт груз в кузове и ездит на химтопливе. Двери изнутри обложены солью и железом.</TMM_Vehicle_HunterTruck.description>
+  <TMM_Vehicle_HunterTruck.description>Бронированный довоенный пикап, который держат на ходу минитмены и бродячие охотники на чудовищ. Вмещает водителя, стрелка за ручным пулемётом в кузове и пассажира в кабине, хорошо везёт груз и ездит на химтопливе. Двери изнутри обложены солью и железом.</TMM_Vehicle_HunterTruck.description>
   <TMM_Vehicle_HunterTruck.properties.roles.0.label>водитель</TMM_Vehicle_HunterTruck.properties.roles.0.label>
-  <TMM_Vehicle_HunterTruck.properties.roles.1.label>пассажир</TMM_Vehicle_HunterTruck.properties.roles.1.label>
+  <TMM_Vehicle_HunterTruck.properties.roles.1.label>стрелок в кузове</TMM_Vehicle_HunterTruck.properties.roles.1.label>
+  <TMM_Vehicle_HunterTruck.properties.roles.2.label>пассажир</TMM_Vehicle_HunterTruck.properties.roles.2.label>
   <TMM_Vehicle_HunterTruck.components.0.label>двигатель</TMM_Vehicle_HunterTruck.components.0.label>
   <TMM_Vehicle_HunterTruck.components.1.label>колёса</TMM_Vehicle_HunterTruck.components.1.label>
   <TMM_Vehicle_HunterTruck.components.2.label>кузов</TMM_Vehicle_HunterTruck.components.2.label>
-  <TMM_Vehicle_HunterTruck.components.3.label>корпус</TMM_Vehicle_HunterTruck.components.3.label>
+  <TMM_Vehicle_HunterTruck.components.3.label>бронированный корпус</TMM_Vehicle_HunterTruck.components.3.label>
+  <TMM_Vehicle_HunterTruck.comps.2.turrets.0.gizmoLabel>пулемёт в кузове</TMM_Vehicle_HunterTruck.comps.2.turrets.0.gizmoLabel>
+
+  <!-- 3. TMM_Vehicle_GunnerTechnical -->
+  <TMM_Vehicle_GunnerTechnical.label>техничка стрелков</TMM_Vehicle_GunnerTechnical.label>
+  <TMM_Vehicle_GunnerTechnical.description>Ржавый пустошный пикап, наспех обшитый стальными листами, с тяжёлым пулемётом на турели в кузове. Используется исключительно рейдовыми группами наёмников-Стрелков.</TMM_Vehicle_GunnerTechnical.description>
+  <TMM_Vehicle_GunnerTechnical.properties.roles.0.label>водитель</TMM_Vehicle_GunnerTechnical.properties.roles.0.label>
+  <TMM_Vehicle_GunnerTechnical.properties.roles.1.label>тяжёлый пулемётчик</TMM_Vehicle_GunnerTechnical.properties.roles.1.label>
+  <TMM_Vehicle_GunnerTechnical.properties.roles.2.label>пассажир</TMM_Vehicle_GunnerTechnical.properties.roles.2.label>
+  <TMM_Vehicle_GunnerTechnical.components.0.label>двигатель</TMM_Vehicle_GunnerTechnical.components.0.label>
+  <TMM_Vehicle_GunnerTechnical.components.1.label>усиленные шины</TMM_Vehicle_GunnerTechnical.components.1.label>
+  <TMM_Vehicle_GunnerTechnical.components.2.label>орудийный станок</TMM_Vehicle_GunnerTechnical.components.2.label>
+  <TMM_Vehicle_GunnerTechnical.components.3.label>бронированный корпус из лома</TMM_Vehicle_GunnerTechnical.components.3.label>
+  <TMM_Vehicle_GunnerTechnical.comps.2.turrets.0.gizmoLabel>тяжёлый пулемёт</TMM_Vehicle_GunnerTechnical.comps.2.turrets.0.gizmoLabel>
+
+  <!-- 4. TMM_Vehicle_CargoHauler -->
+  <TMM_Vehicle_CargoHauler.label>грузовик-тягач</TMM_Vehicle_CargoHauler.label>
+  <TMM_Vehicle_CargoHauler.description>Тяжёлый медлительный шестиколёсный грузовик для снабжения аванпостов. Вмещает двоих в усиленной кабине и перевозит огромные объёмы стали, химтоплива и припасов по карте и пустоши.</TMM_Vehicle_CargoHauler.description>
+  <TMM_Vehicle_CargoHauler.properties.roles.0.label>водитель</TMM_Vehicle_CargoHauler.properties.roles.0.label>
+  <TMM_Vehicle_CargoHauler.properties.roles.1.label>напарник</TMM_Vehicle_CargoHauler.properties.roles.1.label>
+  <TMM_Vehicle_CargoHauler.components.0.label>тяжёлый дизельный двигатель</TMM_Vehicle_CargoHauler.components.0.label>
+  <TMM_Vehicle_CargoHauler.components.1.label>тяжёлые колёса</TMM_Vehicle_CargoHauler.components.1.label>
+  <TMM_Vehicle_CargoHauler.components.2.label>грузовая платформа</TMM_Vehicle_CargoHauler.components.2.label>
+  <TMM_Vehicle_CargoHauler.components.3.label>усиленная рама</TMM_Vehicle_CargoHauler.components.3.label>
+
+  <!-- 5. TMM_Vehicle_Vertibird -->
+  <TMM_Vehicle_Vertibird.label>винтокрыл Братства Стали</TMM_Vehicle_Vertibird.label>
+  <TMM_Vehicle_Vertibird.description>Знаменитый довоенный конвертоплан вертикального взлёта и посадки, восстановленный писцами Братства Стали. Переносит пилота, бортового стрелка и четырёх бойцов на огромные расстояния по карте мира, прикрывая высадку огнём из дверного минигана.</TMM_Vehicle_Vertibird.description>
+  <TMM_Vehicle_Vertibird.properties.roles.0.label>пилот</TMM_Vehicle_Vertibird.properties.roles.0.label>
+  <TMM_Vehicle_Vertibird.properties.roles.1.label>бортовой стрелок</TMM_Vehicle_Vertibird.properties.roles.1.label>
+  <TMM_Vehicle_Vertibird.properties.roles.2.label>десантник</TMM_Vehicle_Vertibird.properties.roles.2.label>
+  <TMM_Vehicle_Vertibird.components.0.label>поворотные турбины</TMM_Vehicle_Vertibird.components.0.label>
+  <TMM_Vehicle_Vertibird.components.1.label>бортовая авионика</TMM_Vehicle_Vertibird.components.1.label>
+  <TMM_Vehicle_Vertibird.components.2.label>десантный отсек</TMM_Vehicle_Vertibird.components.2.label>
+  <TMM_Vehicle_Vertibird.components.3.label>бронированный фюзеляж</TMM_Vehicle_Vertibird.components.3.label>
+  <TMM_Vehicle_Vertibird.comps.3.turrets.0.gizmoLabel>бортовой миниган</TMM_Vehicle_Vertibird.comps.3.turrets.0.gizmoLabel>
+
+  <!-- 5b. TMM_Vehicle_VertibirdEnclave -->
+  <TMM_Vehicle_VertibirdEnclave.label>винтокрыл Анклава</TMM_Vehicle_VertibirdEnclave.label>
+  <TMM_Vehicle_VertibirdEnclave.description>Ударный чёрный конвертоплан Анклава с усиленной композитной бронёй и форсированными турбинами. Используется исключительно штурмовыми группами Анклава.</TMM_Vehicle_VertibirdEnclave.description>
+  <TMM_Vehicle_VertibirdEnclave.properties.roles.0.label>пилот</TMM_Vehicle_VertibirdEnclave.properties.roles.0.label>
+  <TMM_Vehicle_VertibirdEnclave.properties.roles.1.label>бортовой стрелок</TMM_Vehicle_VertibirdEnclave.properties.roles.1.label>
+  <TMM_Vehicle_VertibirdEnclave.properties.roles.2.label>штурмовик</TMM_Vehicle_VertibirdEnclave.properties.roles.2.label>
+  <TMM_Vehicle_VertibirdEnclave.components.0.label>поворотные турбины</TMM_Vehicle_VertibirdEnclave.components.0.label>
+  <TMM_Vehicle_VertibirdEnclave.components.1.label>тактическая авионика</TMM_Vehicle_VertibirdEnclave.components.1.label>
+  <TMM_Vehicle_VertibirdEnclave.components.2.label>десантный отсек</TMM_Vehicle_VertibirdEnclave.components.2.label>
+  <TMM_Vehicle_VertibirdEnclave.components.3.label>композитный фюзеляж</TMM_Vehicle_VertibirdEnclave.components.3.label>
+  <TMM_Vehicle_VertibirdEnclave.comps.3.turrets.0.gizmoLabel>бортовой миниган</TMM_Vehicle_VertibirdEnclave.comps.3.turrets.0.gizmoLabel>
+
 </LanguageData>

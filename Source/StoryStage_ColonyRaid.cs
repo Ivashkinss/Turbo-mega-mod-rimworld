@@ -78,7 +78,7 @@ namespace TurboMegaMod
 
             if (!text.NullOrEmpty() && delayHours > 0f)
             {
-                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Incoming Raid"), ctx);
+                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "TMM.Story.Raid.Title".Translate().ToString()), ctx);
                 string body = StoryUtil.Format(text, ctx);
                 Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.ThreatSmall,
                     ctx.Home != null ? new LookTargets(ctx.Home.Center, ctx.Home) : LookTargets.Invalid); // CHECK API
@@ -167,7 +167,7 @@ namespace TurboMegaMod
             string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : text, ctx);
             if (baseText.NullOrEmpty())
             {
-                baseText = "Repel incoming raid";
+                baseText = "TMM.Story.Raid.Repel".Translate();
             }
 
             if (ctx == null || ctx.run == null) return baseText;
@@ -177,12 +177,12 @@ namespace TurboMegaMod
             {
                 int spawnTick = GetInt(ctx, "spawnTick", now);
                 float hoursLeft = Mathf.Max(0f, (spawnTick - now) / (float)GenDate.TicksPerHour);
-                return string.Format("{0} (arriving in {1:0.0}h)", baseText, hoursLeft);
+                return "TMM.Story.Raid.Arriving".Translate(baseText, hoursLeft.ToString("0.0"));
             }
 
             int deadline = GetInt(ctx, "deadlineTick", now);
             float daysLeft = Mathf.Max(0f, (deadline - now) / (float)GenDate.TicksPerDay);
-            return string.Format("{0} ({1:0.0}d left)", baseText, daysLeft);
+            return "TMM.Story.Hotel.GoalTime".Translate(baseText, "TMM.Story.DaysLeft".Translate(daysLeft.ToString("0.0")));
         }
 
         private bool SpawnRaid(StoryContext ctx, Map targetMap)

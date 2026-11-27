@@ -12,18 +12,30 @@ namespace TurboMegaMod
 
     public sealed class HeroRecord : IExposable
     {
+        public int recordVersion = 1;
         public string heroDefName;
         public HeroState state = HeroState.Unspawned;
         public Pawn pawn;
         public int deathTick = -1;
         public bool known = false;
+        public bool appearanceApplied = false; // the def's look is applied once; later changes by the player are kept
+        public string lastAutoName;            // the last name set automatically, so a player's rename is never overwritten
+        public bool signatureGearApplied = false; // signature gear is granted once; items stripped by player are not re-added
 
         public void ExposeData()
         {
+            Scribe_Values.Look(ref recordVersion, "recordVersion", 0);
             Scribe_Values.Look(ref heroDefName, "hero");
             Scribe_Values.Look(ref state, "state", HeroState.Unspawned);
             Scribe_Values.Look(ref deathTick, "deathTick", -1);
             Scribe_Values.Look(ref known, "known", false);
+            Scribe_Values.Look(ref appearanceApplied, "appearanceApplied", false);
+            Scribe_Values.Look(ref lastAutoName, "lastAutoName");
+            Scribe_Values.Look(ref signatureGearApplied, "signatureGearApplied", false);
+            // A record from a save made before these fields existed (recordVersion is absent and reads as 0) belongs to
+            // a hero who already has their gear or whatever the player gave them: never issue signature gear again.
+            // Done while loading vars, before anything can call GetOrCreate for this hero.
+            if (Scribe.mode == LoadSaveMode.LoadingVars && recordVersion == 0) signatureGearApplied = true;
             // A discarded (Missing) pawn is not saved anywhere, so its reference is dropped to keep the save clean.
             if (Scribe.mode == LoadSaveMode.Saving && pawn != null && pawn.Discarded) pawn = null;
             Scribe_References.Look(ref pawn, "pawn");
@@ -112,9 +124,57 @@ namespace TurboMegaMod
                 HeroRecord r = records[i];
                 HeroDef hd = r != null ? DefDatabase<HeroDef>.GetNamedSilentFail(r.heroDefName) : null;
                 if (r == null || r.pawn == null || hd == null || hd.nameFirst.NullOrEmpty()) continue;
-                NameTriple want = BuildName(hd);
+
                 NameTriple have = r.pawn.Name as NameTriple;
-                if (have == null || have.First != want.First || have.Nick != want.Nick || have.Last != want.Last) r.pawn.Name = want;
+                string haveFull = have != null ? have.ToStringFull : (r.pawn.Name != null ? r.pawn.Name.ToStringFull : null);
+
+                if (r.recordVersion == 0)
+                {
+                    // Migration of old save records:
+                    // 1. Mark appearance as already applied so existing haircut / appearance is preserved.
+                    r.appearanceApplied = true;
+
+                    // 2. Check whether current pawn name exactly matches auto-name in English or Russian.
+                    NameTriple enName = BuildEnglishName(hd);
+                    string enFull = enName != null ? enName.ToStringFull : null;
+                    NameTriple ruName = BuildRussianName(hd);
+                    string ruFull = ruName != null ? ruName.ToStringFull : null;
+
+                    bool matchesEn = !string.IsNullOrEmpty(enFull) && haveFull == enFull;
+                    bool matchesRu = !string.IsNullOrEmpty(ruFull) && haveFull == ruFull;
+
+                    if (matchesEn || matchesRu)
+                    {
+                        // Matches official auto-name: allow translation
+                        r.lastAutoName = haveFull;
+                    }
+                    else
+                    {
+                        // Player customized the name: preserve it without translation.
+                        r.lastAutoName = !string.IsNullOrEmpty(enFull) ? enFull : haveFull;
+                    }
+                    r.recordVersion = 1;
+                }
+
+                NameTriple want = BuildName(hd);
+                // Translate the name only while it is still the automatic one: a name the player gave the hero stays.
+                bool auto = r.lastAutoName != null && haveFull == r.lastAutoName;
+                if (auto && (have == null || have.First != want.First || have.Nick != want.Nick || have.Last != want.Last))
+                {
+                    r.pawn.Name = want;
+                    r.lastAutoName = want.ToStringFull;
+                }
+                else if (auto && r.lastAutoName == null)
+                {
+                    r.lastAutoName = want.ToStringFull;
+                }
+
+                // The def's look is applied once (also to heroes in older saves); a later haircut by the player is kept.
+                if (!r.appearanceApplied && !r.pawn.Dead)
+                {
+                    if (hd.appearance != null) hd.appearance.ApplyTo(r.pawn);
+                    r.appearanceApplied = true;
+                }
             }
             if (Find.FactionManager == null) return;
             foreach (Faction f in Find.FactionManager.AllFactionsListForReading)
@@ -128,6 +188,78 @@ namespace TurboMegaMod
         public static NameTriple BuildName(HeroDef def)
         {
             return new NameTriple(def.nameFirst, def.nameNick.NullOrEmpty() ? def.nameFirst : def.nameNick, def.nameLast ?? "");
+        }
+
+        public static NameTriple BuildEnglishName(HeroDef def)
+        {
+            if (def == null) return null;
+            string first = def.nameFirst;
+            string nick = def.nameNick;
+            string last = def.nameLast;
+
+            LoadedLanguage active = LanguageDatabase.activeLanguage;
+            if (active != null && active.defInjections != null)
+            {
+                for (int i = 0; i < active.defInjections.Count; i++)
+                {
+                    DefInjectionPackage pkg = active.defInjections[i];
+                    if (pkg != null && pkg.defType == typeof(HeroDef) && pkg.injections != null)
+                    {
+                        DefInjectionPackage.DefInjection di;
+                        if (pkg.injections.TryGetValue(def.defName + ".nameFirst", out di) && di != null && !string.IsNullOrEmpty(di.replacedString))
+                            first = di.replacedString;
+                        if (pkg.injections.TryGetValue(def.defName + ".nameNick", out di) && di != null && !string.IsNullOrEmpty(di.replacedString))
+                            nick = di.replacedString;
+                        if (pkg.injections.TryGetValue(def.defName + ".nameLast", out di) && di != null && !string.IsNullOrEmpty(di.replacedString))
+                            last = di.replacedString;
+                        break;
+                    }
+                }
+            }
+            return new NameTriple(first, string.IsNullOrEmpty(nick) ? first : nick, last ?? "");
+        }
+
+        public static NameTriple BuildRussianName(HeroDef def)
+        {
+            if (def == null) return null;
+            LoadedLanguage active = LanguageDatabase.activeLanguage;
+            if (active != null && (active.folderName.IndexOf("Russian", StringComparison.OrdinalIgnoreCase) >= 0 || (active.LegacyFolderName != null && active.LegacyFolderName.IndexOf("Russian", StringComparison.OrdinalIgnoreCase) >= 0)))
+            {
+                return BuildName(def);
+            }
+            if (LanguageDatabase.AllLoadedLanguages != null)
+            {
+                foreach (LoadedLanguage lang in LanguageDatabase.AllLoadedLanguages)
+                {
+                    if (lang == null || (lang.folderName.IndexOf("Russian", StringComparison.OrdinalIgnoreCase) < 0 && (lang.LegacyFolderName == null || lang.LegacyFolderName.IndexOf("Russian", StringComparison.OrdinalIgnoreCase) < 0))) continue;
+                    if (lang.defInjections == null || lang.defInjections.Count == 0)
+                    {
+                        try { lang.LoadData(); } catch { }
+                    }
+                    if (lang.defInjections != null)
+                    {
+                        for (int i = 0; i < lang.defInjections.Count; i++)
+                        {
+                            DefInjectionPackage pkg = lang.defInjections[i];
+                            if (pkg != null && pkg.defType == typeof(HeroDef) && pkg.injections != null)
+                            {
+                                string first = def.nameFirst;
+                                string nick = def.nameNick;
+                                string last = def.nameLast;
+                                DefInjectionPackage.DefInjection di;
+                                if (pkg.injections.TryGetValue(def.defName + ".nameFirst", out di) && di != null && !string.IsNullOrEmpty(di.injection))
+                                    first = di.injection;
+                                if (pkg.injections.TryGetValue(def.defName + ".nameNick", out di) && di != null && !string.IsNullOrEmpty(di.injection))
+                                    nick = di.injection;
+                                if (pkg.injections.TryGetValue(def.defName + ".nameLast", out di) && di != null && !string.IsNullOrEmpty(di.injection))
+                                    last = di.injection;
+                                return new NameTriple(first, string.IsNullOrEmpty(nick) ? first : nick, last ?? "");
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
         public static Faction FactionFor(HeroDef def)
@@ -156,10 +288,13 @@ namespace TurboMegaMod
 
             Pawn pawn = Generate(def, faction);
             if (pawn == null) return null;
-            if (rec == null) { rec = new HeroRecord { heroDefName = def.defName }; records.Add(rec); }
+            if (rec == null) { rec = new HeroRecord { heroDefName = def.defName, recordVersion = 1 }; records.Add(rec); }
+            rec.recordVersion = 1;
             rec.pawn = pawn;
             rec.state = HeroState.AtHome;
             if (def.isLeader || def.councilMember) rec.known = true;
+            if (def.appearance != null) rec.appearanceApplied = true;
+            if (pawn.Name != null) rec.lastAutoName = pawn.Name.ToStringFull;
             Keep(pawn);
             // A council (Vault-Tec) has no single leader: the first living council member is the formal vanilla leader.
             if ((def.isLeader || def.councilMember) && (faction.leader == null || faction.leader.Dead || !IsHero(faction.leader))) faction.leader = pawn;
@@ -186,6 +321,7 @@ namespace TurboMegaMod
                 forcedXenotype: xeno,
                 developmentalStages: DevelopmentalStage.Adult));
             pawn.Name = BuildName(def);
+            if (def.appearance != null) def.appearance.ApplyTo(pawn);
             if (pawn.story != null)
             {
                 if (def.childhood != null) pawn.story.Childhood = def.childhood;
@@ -207,14 +343,17 @@ namespace TurboMegaMod
                     if (g != null && !pawn.genes.HasActiveGene(g)) pawn.genes.AddGene(g, true);
             if (def.weapon != null && pawn.equipment != null)
             {
-                pawn.equipment.DestroyAllEquipment();
-                ThingWithComps w = (ThingWithComps)ThingMaker.MakeThing(def.weapon, def.weapon.MadeFromStuff ? GenStuff.DefaultStuffFor(def.weapon) : null);
-                pawn.equipment.AddEquipment(w);
+                if (pawn.equipment.Primary == null)
+                {
+                    ThingWithComps w = (ThingWithComps)ThingMaker.MakeThing(def.weapon, def.weapon.MadeFromStuff ? GenStuff.DefaultStuffFor(def.weapon) : null);
+                    pawn.equipment.AddEquipment(w);
+                }
             }
             if (pawn.apparel != null)
                 foreach (ThingDef a in def.apparel)
                 {
                     if (a == null || !ApparelUtility.HasPartsToWear(pawn, a)) continue;
+                    if (!pawn.apparel.CanWearWithoutDroppingAnything(a)) continue;
                     Apparel ap = (Apparel)ThingMaker.MakeThing(a, a.MadeFromStuff ? GenStuff.DefaultStuffFor(a) : null);
                     pawn.apparel.Wear(ap, false);
                 }
@@ -370,6 +509,7 @@ namespace TurboMegaMod
             {
                 if (records == null) records = new List<HeroRecord>();
                 records.RemoveAll(r => r == null || r.heroDefName.NullOrEmpty());
+                SyncLocalizedNames();
             }
         }
     }

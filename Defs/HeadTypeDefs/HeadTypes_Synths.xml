@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom HeadTypeDefs for Institute synths (Gen 1-3), Nick Valentine, P.A.M., and President John Henry Eden. -->
+<Defs>
+
+  <HeadTypeDef ParentName="AverageBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen1Head</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_SynthGen1Head</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>None</gender>
+    <requiredGenes>
+      <li>TMM_Head_SynthGen1</li>
+    </requiredGenes>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="AverageBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen2Head</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_SynthGen2Head</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>None</gender>
+    <requiredGenes>
+      <li>TMM_Head_SynthGen2</li>
+    </requiredGenes>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="AverageBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen3Head_Male</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_SynthGen3Head_Male</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>Male</gender>
+    <requiredGenes>
+      <li>TMM_Head_SynthGen3</li>
+    </requiredGenes>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="AverageBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_SynthGen3Head_Female</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_SynthGen3Head_Female</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>Female</gender>
+    <requiredGenes>
+      <li>TMM_Head_SynthGen3</li>
+    </requiredGenes>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <!-- Nick Valentine unique damaged Gen 2 head (assigned directly by HeroDef.appearance) -->
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>TMM_NickValentineHead</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_NickValentineHead</graphicPath>
+    <randomChosen>false</randomChosen>
+    <selectionWeight>0</selectionWeight>
+    <gender>Male</gender>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <!-- P.A.M. rebuilt Assaultron sensor head (default head for TMM_RobotChassis) -->
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>TMM_PAMHead</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_PAMHead</graphicPath>
+    <randomChosen>false</randomChosen>
+    <gender>None</gender>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <!-- President John Henry Eden CRT monitor head (assigned directly by HeroDef.appearance) -->
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>TMM_EdenHead</defName>
+    <graphicPath>Things/TMM/Xenotypes/Synths/Heads/TMM_EdenHead</graphicPath>
+    <randomChosen>false</randomChosen>
+    <selectionWeight>0</selectionWeight>
+    <gender>None</gender>
+    <eyeOffsetEastWest>(0.15, 0, 0.175)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+</Defs>

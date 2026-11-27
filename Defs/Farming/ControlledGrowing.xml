@@ -38,7 +38,7 @@
     <thingClass>TurboMegaMod.Building_LitHydroponics</thingClass>
     <uiIconPath>UI/Farming/LitHydroponics</uiIconPath>
     <graphicData>
-      <texPath>Things/Building/Production/HydroponicsBasin</texPath>
+      <texPath>Things/Building/TMM/TMM_LitHydroponicsBasin/TMM_LitHydroponicsBasin</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(1,4)</drawSize>
     </graphicData>

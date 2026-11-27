@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_Upgrade>Улучшить</VF_Upgrade>
+  <VF_DisabledFromOtherNode>Недоступно: заблокировано другим улучшением.</VF_DisabledFromOtherNode>
+  <VF_MissingPrerequisiteUpgrade>Не выполнены предварительные условия.</VF_MissingPrerequisiteUpgrade>
+  <VF_RemoveUpgrade>Удалить</VF_RemoveUpgrade>
+</LanguageData>

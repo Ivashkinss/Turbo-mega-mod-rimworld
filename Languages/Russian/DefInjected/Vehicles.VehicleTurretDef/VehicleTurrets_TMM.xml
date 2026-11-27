@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Turret_HunterLMG.label>ручной пулемёт пикапа</TMM_Turret_HunterLMG.label>
+  <TMM_Turret_HunterLMG.fireModes.0.label>Очередь</TMM_Turret_HunterLMG.fireModes.0.label>
+  <TMM_Turret_HunterLMG.fireModes.1.label>Подавление</TMM_Turret_HunterLMG.fireModes.1.label>
+
+  <TMM_Turret_GunnerHMG.label>тяжёлый пулемёт технички</TMM_Turret_GunnerHMG.label>
+  <TMM_Turret_GunnerHMG.fireModes.0.label>Тяжёлая очередь</TMM_Turret_GunnerHMG.fireModes.0.label>
+  <TMM_Turret_GunnerHMG.fireModes.1.label>Беглый огонь</TMM_Turret_GunnerHMG.fireModes.1.label>
+
+  <TMM_Turret_VertibirdDoorGun.label>дверной миниган винтокрыла</TMM_Turret_VertibirdDoorGun.label>
+  <TMM_Turret_VertibirdDoorGun.fireModes.0.label>Короткий шквал</TMM_Turret_VertibirdDoorGun.fireModes.0.label>
+  <TMM_Turret_VertibirdDoorGun.fireModes.1.label>Шквал подавления</TMM_Turret_VertibirdDoorGun.fireModes.1.label>
+
+</LanguageData>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_MustSelectColorPalette>Необходимо выбрать палитру для перезаписи.</VF_MustSelectColorPalette>
+  <VF_VehicleUnableToMove>{0_labelShort} не может двигаться.</VF_VehicleUnableToMove>
+  <VF_VehicleImmobileDeployed>{0_labelShort} развёрнут(а) и не может двигаться.</VF_VehicleImmobileDeployed>
+  <VF_HandlerNotEnoughRoom>Не удалось поместить {0} в {1}: недостаточно свободного места.</VF_HandlerNotEnoughRoom>
+  <VF_NotEnoughToOperate>Не может двигаться: для управления требуется больше экипажа.</VF_NotEnoughToOperate>
+  <VF_UpgradeInProgress>Нельзя завести технику во время модификации {0}.</VF_UpgradeInProgress>
+  <VF_NotEnoughCrew>В {0} недостаточно поселенцев для управления {1}.</VF_NotEnoughCrew>
+  <VF_CannotFit>Недостаточно места.</VF_CannotFit>
+  <VF_NoPathForVehicle>Техника не может сюда проехать.</VF_NoPathForVehicle>
+  <VF_IncapableStatusForRole>{0} не может выполнять эту роль.</VF_IncapableStatusForRole>
+  <VF_CannotAddToCargo>Нельзя погрузить {0} в багажный отсек.</VF_CannotAddToCargo>
+  <VF_InvalidName>Недопустимое имя техники.</VF_InvalidName>
+  <VF_OutOfFood>В {0} нет еды для находящихся на борту поселенцев.</VF_OutOfFood>
+  <VF_NoAmmoLoadedTurret>Боеприпасы не заряжены.</VF_NoAmmoLoadedTurret>
+  <VF_NoAmmoAvailable>В инвентаре нет подходящих боеприпасов.</VF_NoAmmoAvailable>
+  <VF_VehicleCaravanMentalBreakMovementRole>{0} больше не может выполнять свою роль в автокараване из-за нервного срыва.</VF_VehicleCaravanMentalBreakMovementRole>
+  <VF_PawnBoardedFormingCaravan>{0} садится в {1} и готов(а) к отправлению.</VF_PawnBoardedFormingCaravan>
+  <VF_CantAssignVehicle>Недостаточно поселенцев для {0}.</VF_CantAssignVehicle>
+  <VF_AssignFailure>Не удалось распределить места: {0}</VF_AssignFailure>
+  <VF_PackingSpotNotFound>Место сбора автокаравана не найдено. Рекомендуется установить «Место сбора каравана» во вкладке «Разное».</VF_PackingSpotNotFound>
+  <VF_ForceLeaveCaravan>Отправиться немедленно</VF_ForceLeaveCaravan>
+  <VF_ForceLeaveCaravanDesc>Принудительно отправить автокараван с карты. Все не погруженные на текущий момент вещи останутся на месте.</VF_ForceLeaveCaravanDesc>
+  <VF_ForceLeaveConfirmation>Экипаж готовится к отправлению.</VF_ForceLeaveConfirmation>
+  <VF_CaravanTerminatedNoVehicles>Формирование каравана прервано: не осталось техники.</VF_CaravanTerminatedNoVehicles>
+  <VF_LandAndSeaRoutePlannerRestriction>Нельзя спланировать совместный маршрут для наземной и водной техники: пути несовместимы.</VF_LandAndSeaRoutePlannerRestriction>
+  <VF_LeaveVehicleBehindCaravan>Вы уверены, что хотите бросить технику? Будет оставлено: {0}</VF_LeaveVehicleBehindCaravan>
+  <VF_MustAssignEnoughToVehicle>Необходимо назначить достаточно поселенцев для управления техникой.</VF_MustAssignEnoughToVehicle>
+  <VF_AerialVehicleArrived>{0} прибывает в пункт назначения.</VF_AerialVehicleArrived>
+  <VF_AerialVehicleLeft>{0} покидает карту.</VF_AerialVehicleLeft>
+  <VF_AerialVehicleLaunchNotValid>Взлёт невозможен: неподходящие условия.</VF_AerialVehicleLaunchNotValid>
+  <VF_LaunchOutOfFuel>Взлёт невозможен: закончилось топливо.</VF_LaunchOutOfFuel>
+  <VF_FlightPathMaxNodes>Достигнуто максимальное число точек маршрута полёта для {0}.</VF_FlightPathMaxNodes>
+  <VF_MustTargetLanding>Необходимо выбрать место посадки.</VF_MustTargetLanding>
+</LanguageData>

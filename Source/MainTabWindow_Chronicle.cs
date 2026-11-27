@@ -57,9 +57,32 @@ namespace TurboMegaMod
                 .OrderByDescending(r => r.finishedTick).ToList();
             lines.Add("## " + "TMM.Story.LogHeader".Translate(finished.Count));
             foreach (StoryQuestRun r in finished)
-                lines.Add("• " + r.Def.LabelCap + (r.status == StoryQuestStatus.Failed ? " (" + "TMM.Story.Failed".Translate().ToString() + ")" : "") +
-                          (r.outcome.NullOrEmpty() ? "" : " → " + r.outcome));
+                lines.Add("• " + r.Def.LabelCap + " → " + DecisionLabel(s, r));
             return lines;
+        }
+
+        private static string DecisionLabel(SparkStory story, StoryQuestRun run)
+        {
+            if (!run.outcome.NullOrEmpty() && run.history != null)
+            {
+                // Match the recorded stage as well as the outcome. Different choices may reuse an outcome ID.
+                string suffix = ":" + run.outcome;
+                for (int i = run.history.Count - 1; i >= 0; i--)
+                {
+                    string entry = run.history[i];
+                    if (entry.NullOrEmpty() || !entry.EndsWith(suffix, System.StringComparison.Ordinal)) continue;
+                    int stageIndex;
+                    if (!int.TryParse(entry.Substring(0, entry.Length - suffix.Length), out stageIndex) ||
+                        stageIndex < 0 || stageIndex >= run.Def.stages.Count) continue;
+                    var stageWithChoices = run.Def.stages[stageIndex] as StoryStage_Choice;
+                    if (stageWithChoices == null || stageWithChoices.choices == null) continue;
+                    StoryChoice choice = stageWithChoices.choices.FirstOrDefault(c => c != null && c.outcome == run.outcome);
+                    if (choice != null && !choice.label.NullOrEmpty())
+                        return StoryUtil.Format(choice.label, story.Context(run));
+                }
+            }
+
+            return run.status == StoryQuestStatus.Failed ? "TMM.Story.Failed".Translate() : "TMM.Story.Completed".Translate();
         }
 
         public override void DoWindowContents(Rect inRect)

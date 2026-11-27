@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom face scar tattoo for Ideology DLC (used by Arthur Maxson and Conrad Kellogg). -->
+<Defs>
+
+  <TattooDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>TMM_Tattoo_BattleScar</defName>
+    <label>battle scar</label>
+    <tattooType>Face</tattooType>
+    <texPath>Things/Pawn/Humanlike/Tattoos/TMM/TMM_Tattoo_BattleScar</texPath>
+    <styleGender>Any</styleGender>
+    <styleTags>
+      <li>TattooFacePunk</li>
+      <li>TattooFaceTribal</li>
+      <li>TMM_HeroStyle</li>
+    </styleTags>
+  </TattooDef>
+
+</Defs>

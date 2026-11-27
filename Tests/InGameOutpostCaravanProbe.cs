@@ -361,6 +361,52 @@ namespace TurboMegaMod
                 AddCheck("R2_FoodTransferTryAddRefusal_NoOrphanedMeals", totalMealsAfter == 10,
                     "10 meals preserved (returned to worker)", totalMealsAfter.ToString());
                 DestroyCaravanAndPawns(foodCar);
+
+                // 3b. Silver rollback placement refusal -> silver preserved in carrier or Limbo
+                ResetStockpileSupplies(new int[] { 150 }, 30);
+                StrategicOutpost outpostRollback = CreateTestOutpost(2, 4, "ProbeOutpostRollback");
+                if (outpostRollback != null)
+                {
+                    Pawn silverCarrier = SpawnCleanColonist("RollbackCarrier", m_edgeAnchor);
+                    OutpostCaravanLogistics.TestForceFormationFailure = delegate() { return true; };
+                    OutpostCaravanLogistics.TestRejectSilverRollbackPlacement = delegate(Thing item, IntVec3 pos, Map m) { return true; };
+                    OutpostCaravanLogistics.TestRejectInventoryTryAdd = delegate(ThingOwner owner, Thing item) { return true; };
+
+                    string fail;
+                    bool started = OutpostCaravanLogistics.StartCaravan(
+                        outpostRollback, map, new List<Pawn> { silverCarrier }, new List<Pawn>(), 150, out fail);
+
+                    OutpostCaravanLogistics.TestForceFormationFailure = null;
+                    OutpostCaravanLogistics.TestRejectSilverRollbackPlacement = null;
+                    OutpostCaravanLogistics.TestRejectInventoryTryAdd = null;
+
+                    int carrierSilver = OutpostCaravanLogistics.CountPawnInventoryThing(silverCarrier, ThingDefOf.Silver);
+                    StoryPaymentLimbo limbo = Find.World != null ? Find.World.GetComponent<StoryPaymentLimbo>() : null;
+                    int limboSilver = 0;
+                    if (limbo != null)
+                    {
+                        ThingOwner held = limbo.GetDirectlyHeldThings();
+                        if (held != null)
+                        {
+                            for (int hi = 0; hi < held.Count; hi++)
+                            {
+                                if (held[hi] != null && held[hi].def == ThingDefOf.Silver)
+                                    limboSilver += held[hi].stackCount;
+                            }
+                        }
+                    }
+
+                    int totalPreserved = carrierSilver + limboSilver;
+                    AddCheck("SilverRollback_PlacementRefusal_PreservedInCarrierOrLimbo",
+                        !started && totalPreserved == 150 && limboSilver == 150,
+                        "started=false, silverPreserved=150 in Limbo",
+                        string.Format("started={0}, carrierSilver={1}, limboSilver={2}, total={3}",
+                            started, carrierSilver, limboSilver, totalPreserved));
+
+                    outpostRollback.Destroy();
+                    if (silverCarrier.Spawned) silverCarrier.DeSpawn(DestroyMode.Vanish);
+                    silverCarrier.Destroy();
+                }
             }
 
             // 4. Outpost deleted BEFORE exit -> formation aborted cleanly

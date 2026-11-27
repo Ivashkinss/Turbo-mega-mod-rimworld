@@ -620,38 +620,78 @@ namespace TurboMegaMod
             if (!CanInstall(modThing, out reason)) return false;
 
             CompEquipmentMod modComp = modThing.TryGetComp<CompEquipmentMod>();
-            InstalledModEntry entry = new InstalledModEntry();
-            entry.modDefName = modThing.def.defName;
-            entry.maxCharges = modComp.Props.maxCharges;
-            entry.charges = modComp.Charges;
-            entry.hitPoints = modThing.HitPoints;
+            if (modComp == null) return false;
+
+            InstalledModEntry entry = new InstalledModEntry
+            {
+                modDefName = modThing.def.defName,
+                maxCharges = modComp.Props.maxCharges,
+                charges = modComp.Charges,
+                hitPoints = modThing.HitPoints
+            };
+
+            // The module moves into the slot only after one piece is confirmed gone; anything else leaves the stack whole.
+            Map map = modThing.MapHeld ?? (parent != null ? parent.MapHeld : null);
+            IntVec3 pos = modThing.MapHeld != null ? modThing.PositionHeld : (parent != null ? parent.PositionHeld : IntVec3.Invalid);
+            if (ItemConsumption.Consume(modThing, 1, pos, map) != 1) return false;
             InstalledMods.Add(entry);
-
-            if (modThing.stackCount > 1)
-            {
-                Thing split = modThing.SplitOff(1);
-                if (split != null && !split.Destroyed) split.Destroy(DestroyMode.Vanish);
-            }
-            else if (!modThing.Destroyed)
-            {
-                modThing.Destroy(DestroyMode.Vanish);
-            }
-
             return true;
         }
-
-        public Thing RemoveMod(int index, Map map, IntVec3 dropPos)
+        public Thing RemoveMod(int index, Map map, IntVec3 dropPos, Pawn pawn = null)
         {
             if (index < 0 || index >= InstalledMods.Count) return null;
             InstalledModEntry entry = InstalledMods[index];
-            InstalledMods.RemoveAt(index);
+            if (entry == null) return null;
 
             Thing returned = entry.CreateReturnedThing();
-            if (returned != null && map != null && dropPos.InBounds(map))
+            if (returned == null) return null;
+
+            bool placed = false;
+            try
             {
-                GenPlace.TryPlaceThing(returned, dropPos, map, ThingPlaceMode.Near);
+                if (map != null && dropPos.InBounds(map))
+                {
+                    placed = GenPlace.TryPlaceThing(returned, dropPos, map, ThingPlaceMode.Near);
+                }
+
+                if (!placed && pawn != null && pawn.inventory != null && pawn.inventory.innerContainer != null)
+                {
+                    if (pawn.inventory.innerContainer.CanAcceptAnyOf(returned))
+                    {
+                        placed = pawn.inventory.innerContainer.TryAdd(returned, true);
+                    }
+                }
+
+                if (!placed)
+                {
+                    // Placement failed: preserve slot entry and clean up temporary thing
+                    returned.Destroy(DestroyMode.Vanish);
+                    return null;
+                }
+
+                InstalledMods.RemoveAt(index);
+                return returned;
             }
-            return returned;
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] EquipmentSlots: exception during RemoveMod: ", ex);
+                // Reconcile according to actual state:
+                if (placed && (returned.Spawned || returned.holdingOwner != null))
+                {
+                    // Item was successfully placed in the world or inventory: slot entry MUST be removed
+                    if (InstalledMods.Contains(entry))
+                    {
+                        InstalledMods.Remove(entry);
+                    }
+                    return returned;
+                }
+                else
+                {
+                    // Item was not placed: clean up returned thing and preserve slot entry
+                    if (!returned.Destroyed) returned.Destroy(DestroyMode.Vanish);
+                    return null;
+                }
+            }
         }
 
         public override string CompInspectStringExtra()
@@ -681,6 +721,59 @@ namespace TurboMegaMod
         }
     }
 
+    /// Takes items out of a stack so that at any failure the exact rest still has an owner.
+    /// Only a piece that is really Destroyed counts as consumed, whatever Destroy returned or threw.
+    public static class ItemConsumption
+    {
+        public static int Consume(Thing stack, int count, IntVec3 pos, Map map)
+        {
+            if (stack == null || stack.Destroyed || count <= 0 || stack.stackCount < count) return 0;
+            int before = stack.stackCount;
+            Thing piece = stack;
+            if (before > count)
+            {
+                piece = null;
+                try { piece = stack.SplitOff(count); }
+                catch (Exception ex) { TestMode.ReportException("[TMM] ItemConsumption: SplitOff failed: ", ex); }
+                if (piece == null)
+                {
+                    // Nothing was handed over: the stack keeps everything it had.
+                    if (!stack.Destroyed && stack.stackCount < before) stack.stackCount = before;
+                    return 0;
+                }
+            }
+            int amount = piece.stackCount;
+            try { piece.Destroy(DestroyMode.Vanish); }
+            catch (Exception ex) { TestMode.ReportException("[TMM] ItemConsumption: Destroy failed: ", ex); }
+            if (piece.Destroyed) return amount;
+            if (piece != stack && !stack.Destroyed)
+            {
+                stack.stackCount += amount;
+                piece.stackCount = 0; // an empty shell without an owner; its whole amount is back in the stack
+            }
+            else GiveBack(piece, pos, map);
+            return 0;
+        }
+
+        /// Returns consumed items to their stack, to the place, or to the saved limbo holder.
+        public static void Refund(Thing stack, ThingDef def, ThingDef stuff, int count, IntVec3 pos, Map map)
+        {
+            if (count <= 0) return;
+            if (stack != null && !stack.Destroyed) { stack.stackCount += count; return; }
+            Thing back = ThingMaker.MakeThing(def, stuff);
+            back.stackCount = count;
+            GiveBack(back, pos, map);
+        }
+
+        private static void GiveBack(Thing thing, IntVec3 pos, Map map)
+        {
+            if (thing == null || thing.Destroyed || thing.Spawned || thing.holdingOwner != null) return;
+            bool placed = false;
+            try { placed = map != null && pos.InBounds(map) && GenPlace.TryPlaceThing(thing, pos, map, ThingPlaceMode.Near); }
+            catch (Exception ex) { TestMode.ReportException("[TMM] ItemConsumption: could not place an item back: ", ex); }
+            if (!placed && !thing.Destroyed && !thing.Spawned) StoryPaymentLimbo.Hold(thing);
+        }
+    }
     // =========================================================================
     // APPAREL MOD SLOTS COMP (1 SLOT ON COATS / JACKETS / DUSTERS)
     // =========================================================================
@@ -751,38 +844,78 @@ namespace TurboMegaMod
             if (!CanInstall(modThing, out reason)) return false;
 
             CompEquipmentMod modComp = modThing.TryGetComp<CompEquipmentMod>();
-            InstalledModEntry entry = new InstalledModEntry();
-            entry.modDefName = modThing.def.defName;
-            entry.maxCharges = modComp.Props.maxCharges;
-            entry.charges = modComp.Charges;
-            entry.hitPoints = modThing.HitPoints;
+            if (modComp == null) return false;
+
+            InstalledModEntry entry = new InstalledModEntry
+            {
+                modDefName = modThing.def.defName,
+                maxCharges = modComp.Props.maxCharges,
+                charges = modComp.Charges,
+                hitPoints = modThing.HitPoints
+            };
+
+            // The module moves into the slot only after one piece is confirmed gone; anything else leaves the stack whole.
+            Map map = modThing.MapHeld ?? (parent != null ? parent.MapHeld : null);
+            IntVec3 pos = modThing.MapHeld != null ? modThing.PositionHeld : (parent != null ? parent.PositionHeld : IntVec3.Invalid);
+            if (ItemConsumption.Consume(modThing, 1, pos, map) != 1) return false;
             InstalledMods.Add(entry);
-
-            if (modThing.stackCount > 1)
-            {
-                Thing split = modThing.SplitOff(1);
-                if (split != null && !split.Destroyed) split.Destroy(DestroyMode.Vanish);
-            }
-            else if (!modThing.Destroyed)
-            {
-                modThing.Destroy(DestroyMode.Vanish);
-            }
-
             return true;
         }
-
-        public Thing RemoveMod(int index, Map map, IntVec3 dropPos)
+        public Thing RemoveMod(int index, Map map, IntVec3 dropPos, Pawn pawn = null)
         {
             if (index < 0 || index >= InstalledMods.Count) return null;
             InstalledModEntry entry = InstalledMods[index];
-            InstalledMods.RemoveAt(index);
+            if (entry == null) return null;
 
             Thing returned = entry.CreateReturnedThing();
-            if (returned != null && map != null && dropPos.InBounds(map))
+            if (returned == null) return null;
+
+            bool placed = false;
+            try
             {
-                GenPlace.TryPlaceThing(returned, dropPos, map, ThingPlaceMode.Near);
+                if (map != null && dropPos.InBounds(map))
+                {
+                    placed = GenPlace.TryPlaceThing(returned, dropPos, map, ThingPlaceMode.Near);
+                }
+
+                if (!placed && pawn != null && pawn.inventory != null && pawn.inventory.innerContainer != null)
+                {
+                    if (pawn.inventory.innerContainer.CanAcceptAnyOf(returned))
+                    {
+                        placed = pawn.inventory.innerContainer.TryAdd(returned, true);
+                    }
+                }
+
+                if (!placed)
+                {
+                    // Placement failed: preserve slot entry and clean up temporary thing
+                    returned.Destroy(DestroyMode.Vanish);
+                    return null;
+                }
+
+                InstalledMods.RemoveAt(index);
+                return returned;
             }
-            return returned;
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] EquipmentSlots: exception during RemoveMod: ", ex);
+                // Reconcile according to actual state:
+                if (placed && (returned.Spawned || returned.holdingOwner != null))
+                {
+                    // Item was successfully placed in the world or inventory: slot entry MUST be removed
+                    if (InstalledMods.Contains(entry))
+                    {
+                        InstalledMods.Remove(entry);
+                    }
+                    return returned;
+                }
+                else
+                {
+                    // Item was not placed: clean up returned thing and preserve slot entry
+                    if (!returned.Destroyed) returned.Destroy(DestroyMode.Vanish);
+                    return null;
+                }
+            }
         }
 
         public float GetArmorOffset(StatDef stat)
@@ -927,6 +1060,12 @@ namespace TurboMegaMod
             charges = cur + add;
             TryWriteCompLimitedCharges(charges);
             return add;
+        }
+
+        public void SetCharges(int newCharges)
+        {
+            charges = Mathf.Clamp(newCharges, 0, MaxCharges);
+            TryWriteCompLimitedCharges(charges);
         }
 
         public override string CompInspectStringExtra()
@@ -1156,13 +1295,13 @@ namespace TurboMegaMod
                 CompWeaponMods wm = eq.TryGetComp<CompWeaponMods>();
                 if (wm != null)
                 {
-                    wm.RemoveMod(idx, pawn.Map, pawn.Position);
+                    wm.RemoveMod(idx, pawn.Map, pawn.Position, pawn);
                     return;
                 }
                 CompApparelMods am = eq.TryGetComp<CompApparelMods>();
                 if (am != null)
                 {
-                    am.RemoveMod(idx, pawn.Map, pawn.Position);
+                    am.RemoveMod(idx, pawn.Map, pawn.Position, pawn);
                 }
             };
             remove.defaultCompleteMode = ToilCompleteMode.Instant;
@@ -1172,9 +1311,53 @@ namespace TurboMegaMod
 
     public sealed class JobDriver_ReloadColt : JobDriver
     {
+        public static Func<Thing, int, bool> TestSimulateDeductionFailure;
+
         private Thing Colt { get { return job.targetA.Thing; } }
         private Thing Ammo { get { return job.targetB.Thing; } }
 
+        public static bool TryReloadColtAtomic(Thing colt, Thing ammo, int requestedAmount, out int roundsLoaded)
+        {
+            roundsLoaded = 0;
+            if (colt == null || colt.Destroyed || ammo == null || ammo.Destroyed || ammo.stackCount <= 0 || requestedAmount <= 0)
+            {
+                return false;
+            }
+
+            CompColtAmmo ammoComp = colt.TryGetComp<CompColtAmmo>();
+            if (ammoComp == null) return false;
+
+            int missing = ammoComp.MaxCharges - ammoComp.Charges;
+            if (missing <= 0) return false;
+
+            int take = Mathf.Min(missing, Mathf.Min(requestedAmount, ammo.stackCount));
+            if (take <= 0) return false;
+
+            if (TestMode.Enabled && TestSimulateDeductionFailure != null && TestSimulateDeductionFailure(ammo, take))
+            {
+                // Simulated deduction failure: no bullets taken, no charges loaded
+                return false;
+            }
+
+            int initialCharges = ammoComp.Charges;
+            ThingDef ammoDef = ammo.def, ammoStuff = ammo.Stuff;
+            Map map = colt.MapHeld ?? ammo.MapHeld;
+            IntVec3 pos = colt.MapHeld != null ? colt.PositionHeld : ammo.PositionHeld;
+            int consumed = ItemConsumption.Consume(ammo, take, pos, map);
+            if (consumed <= 0) return false;
+            try
+            {
+                roundsLoaded = ammoComp.ReloadRounds(consumed);
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] JobDriver_ReloadColt: exception while loading rounds: ", ex);
+                ammoComp.SetCharges(initialCharges);
+                roundsLoaded = 0;
+            }
+            ItemConsumption.Refund(ammo, ammoDef, ammoStuff, consumed - roundsLoaded, pos, map);
+            return roundsLoaded > 0;
+        }
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             if (Ammo != null && Ammo.Spawned)
@@ -1204,26 +1387,8 @@ namespace TurboMegaMod
             Toil reload = new Toil();
             reload.initAction = delegate
             {
-                CompColtAmmo ammoComp = Colt != null ? Colt.TryGetComp<CompColtAmmo>() : null;
-                if (ammoComp == null || Ammo == null || Ammo.Destroyed) return;
-
-                int need = ammoComp.MaxCharges - ammoComp.Charges;
-                int take = Mathf.Min(need, Ammo.stackCount);
-                if (take <= 0) return;
-
-                int loaded = ammoComp.ReloadRounds(take);
-                if (loaded > 0)
-                {
-                    if (Ammo.stackCount > loaded)
-                    {
-                        Thing split = Ammo.SplitOff(loaded);
-                        if (split != null && !split.Destroyed) split.Destroy(DestroyMode.Vanish);
-                    }
-                    else
-                    {
-                        Ammo.Destroy(DestroyMode.Vanish);
-                    }
-                }
+                int loaded;
+                TryReloadColtAtomic(Colt, Ammo, job.count > 0 ? job.count : 999, out loaded);
             };
             reload.defaultCompleteMode = ToilCompleteMode.Instant;
             yield return reload;
@@ -1231,7 +1396,7 @@ namespace TurboMegaMod
     }
 
     // =========================================================================
-    // WARCRAFT-STYLE EQUIPMENT ITAB (ADDITIVE — DOES NOT REPLACE VANILLA GEAR)
+    // WARCRAFT-STYLE EQUIPMENT ITAB (ADDITIVE вЂ” DOES NOT REPLACE VANILLA GEAR)
     // =========================================================================
 
     public sealed class ITab_TMM_Equipment : ITab
@@ -1330,7 +1495,7 @@ namespace TurboMegaMod
             }
 
             // Stats summary box under portrait
-            Rect statsBox = new Rect(centerX, topY + 200f, centerW, 130f);
+            Rect statsBox = new Rect(centerX - 14f, topY + 188f, centerW + 28f, 155f);
             Widgets.DrawBoxSolid(statsBox, new Color(0.14f, 0.15f, 0.17f, 0.85f));
             GUI.color = SlotBorderColor;
             Widgets.DrawBox(statsBox, 1);
@@ -1338,16 +1503,11 @@ namespace TurboMegaMod
 
             Rect st = statsBox.ContractedBy(8f);
             Text.Font = GameFont.Tiny;
-            float carryStat = pawn.GetStatValue(StatDefOf.CarryingCapacity);
-            float caravanCap = MassUtility.Capacity(pawn); // CHECK API
             float moveSpd = pawn.GetStatValue(StatDefOf.MoveSpeed);
-            float bestSharp = ComputeBestArmor(pawn, StatDefOf.ArmorRating_Sharp);
-            float bestBlunt = ComputeBestArmor(pawn, StatDefOf.ArmorRating_Blunt);
 
-            Widgets.Label(new Rect(st.x, st.y, st.width, 20f), string.Format("{0}: {1:0} / {2:0.#} kg", "TMM_Stat_Carry".Translate(), carryStat, caravanCap));
-            Widgets.Label(new Rect(st.x, st.y + 20f, st.width, 20f), string.Format("{0}: {1:0.00} c/s", "TMM_Stat_Move".Translate(), moveSpd));
-            Widgets.Label(new Rect(st.x, st.y + 42f, st.width, 20f), string.Format("{0}: {1}", "TMM_Stat_Sharp".Translate(), bestSharp.ToStringPercent()));
-            Widgets.Label(new Rect(st.x, st.y + 62f, st.width, 20f), string.Format("{0}: {1}", "TMM_Stat_Blunt".Translate(), bestBlunt.ToStringPercent()));
+            DrawCaravanLoad(new Rect(st.x, st.y, st.width, 20f), pawn);
+            Widgets.Label(new Rect(st.x, st.y + 20f, st.width, 20f), string.Format("{0}: {1}", "TMM_Stat_Move".Translate(), StatDefOf.MoveSpeed.ValueToString(moveSpd)));
+            EquipmentLoadoutStats.WornBy(pawn).Draw(new Rect(st.x, st.y + 40f, st.width, st.height - 40f));
             Text.Font = GameFont.Small;
 
             // RIGHT COLUMN: Legs, Belt, Backpack, Power Armor
@@ -1393,13 +1553,17 @@ namespace TurboMegaMod
             }
         }
 
-        private void DrawEquipmentSlot(Rect rect, Thing item, string emptyLabel, Pawn pawn, bool isApparel)
+        internal static void DrawSlotFrame(Rect rect, bool filled)
         {
-            Widgets.DrawBoxSolid(rect, item != null ? FilledSlotBg : EmptySlotBg);
+            Widgets.DrawBoxSolid(rect, filled ? FilledSlotBg : EmptySlotBg);
             GUI.color = SlotBorderColor;
             Widgets.DrawBox(rect, 1);
             GUI.color = Color.white;
+        }
 
+        private void DrawEquipmentSlot(Rect rect, Thing item, string emptyLabel, Pawn pawn, bool isApparel)
+        {
+            DrawSlotFrame(rect, item != null);
             if (item == null)
             {
                 Text.Font = GameFont.Tiny;
@@ -1422,7 +1586,6 @@ namespace TurboMegaMod
                 Text.Font = GameFont.Tiny;
                 Rect qRect = new Rect(rect.x + 2f, rect.y + 1f, rect.width - 4f, 16f);
                 string qShort = qc.GetLabelShort();
-                if (qShort.Length > 3) qShort = qShort.Substring(0, 3);
                 Widgets.Label(qRect, qShort);
                 Text.Font = GameFont.Small;
             }
@@ -1449,7 +1612,7 @@ namespace TurboMegaMod
             }
 
             // Tooltip with stats & mods
-            TooltipHandler.TipRegion(rect, BuildItemTooltip(item));
+            TooltipHandler.TipRegion(rect, BuildItemTooltip(item, pawn));
 
             // Right-click menu: Info / Unequip / Install Mod / Reload Colt
             if (Event.current.type == EventType.MouseDown && Event.current.button == 1 && Mouse.IsOver(rect))
@@ -1689,50 +1852,40 @@ namespace TurboMegaMod
             for (int i = 0; i < worn.Count; i++)
             {
                 Apparel ap = worn[i];
-                if (ap == null || ap.def == null || ap.def.apparel == null || ap.def.apparel.layers == null) continue;
-                List<ApparelLayerDef> layers = ap.def.apparel.layers;
-                List<BodyPartGroupDef> parts = ap.def.apparel.bodyPartGroups;
-
-                if (slotKey == "powerarmor")
-                {
-                    if (HasLayer(layers, "TMM_PowerArmor")) return ap;
-                }
-                else if (slotKey == "backpack")
-                {
-                    if (HasLayer(layers, "TMM_Backpack")) return ap;
-                }
-                else if (slotKey == "belt")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.Belt)) return ap;
-                }
-                else if (slotKey == "eyes")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.EyeCover)) return ap;
-                }
-                else if (slotKey == "head")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.Overhead)) return ap;
-                }
-                else if (slotKey == "shell")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.Shell) && !HasLayer(layers, "TMM_PowerArmor")) return ap;
-                }
-                else if (slotKey == "middle")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.Middle) && parts != null && parts.Contains(BodyPartGroupDefOf.Torso)) return ap;
-                }
-                else if (slotKey == "skin")
-                {
-                    if (layers.Contains(ApparelLayerDefOf.OnSkin) && parts != null && parts.Contains(BodyPartGroupDefOf.Torso)) return ap;
-                }
-                else if (slotKey == "legs")
-                {
-                    bool hasLegs = parts != null && parts.Contains(BodyPartGroupDefOf.Legs);
-                    bool hasTorso = parts != null && parts.Contains(BodyPartGroupDefOf.Torso);
-                    if (hasLegs && !hasTorso && !HasLayer(layers, "TMM_PowerArmor")) return ap;
-                }
+                if (ap != null && ApparelSlot(ap.def) == slotKey) return ap;
             }
             return null;
+        }
+
+        private static readonly string[] ApparelSlotOrder =
+            { "powerarmor", "backpack", "belt", "head", "eyes", "shell", "middle", "skin", "legs" };
+
+        internal static string ApparelSlot(ThingDef def)
+        {
+            foreach (string slot in ApparelSlotOrder)
+                if (MatchesApparelSlot(def, slot)) return slot;
+            return "other";
+        }
+
+        private static bool MatchesApparelSlot(ThingDef def, string slot)
+        {
+            if (def == null || def.apparel == null || def.apparel.layers == null) return false;
+            List<ApparelLayerDef> layers = def.apparel.layers;
+            List<BodyPartGroupDef> parts = def.apparel.bodyPartGroups;
+            bool torso = parts != null && parts.Contains(BodyPartGroupDefOf.Torso);
+            switch (slot)
+            {
+                case "powerarmor": return HasLayer(layers, "TMM_PowerArmor");
+                case "backpack": return HasLayer(layers, "TMM_Backpack");
+                case "belt": return layers.Contains(ApparelLayerDefOf.Belt);
+                case "eyes": return layers.Contains(ApparelLayerDefOf.EyeCover);
+                case "head": return layers.Contains(ApparelLayerDefOf.Overhead);
+                case "shell": return layers.Contains(ApparelLayerDefOf.Shell) && !HasLayer(layers, "TMM_PowerArmor");
+                case "middle": return torso && layers.Contains(ApparelLayerDefOf.Middle);
+                case "skin": return torso && layers.Contains(ApparelLayerDefOf.OnSkin);
+                case "legs": return !torso && parts != null && parts.Contains(BodyPartGroupDefOf.Legs) && !HasLayer(layers, "TMM_PowerArmor");
+                default: return false;
+            }
         }
 
         private static bool HasLayer(List<ApparelLayerDef> layers, string defName)
@@ -1744,21 +1897,32 @@ namespace TurboMegaMod
             return false;
         }
 
-        private static float ComputeBestArmor(Pawn pawn, StatDef stat)
+        private static void DrawCaravanLoad(Rect rect, Pawn pawn)
         {
-            float best = 0f;
-            if (pawn == null || pawn.apparel == null) return best;
-            List<Apparel> worn = pawn.apparel.WornApparel;
-            for (int i = 0; i < worn.Count; i++)
+            float clothing = 0f;
+            float backpack = 0f;
+            if (pawn.apparel != null)
             {
-                if (worn[i] == null) continue;
-                float val = worn[i].GetStatValue(stat);
-                if (val > best) best = val;
+                foreach (Apparel item in pawn.apparel.WornApparel)
+                {
+                    clothing += item.GetStatValue(StatDefOf.Mass);
+                    BackpackExtension extension = item.def.GetModExtension<BackpackExtension>();
+                    if (extension != null) backpack += Mathf.Max(0f, extension.bonusCaravanKg);
+                }
             }
-            return best;
+            float gear = MassUtility.GearMass(pawn);
+            float inventory = pawn.inventory == null ? 0f : MassUtility.InventoryMass(pawn);
+            float capacity = MassUtility.Capacity(pawn);
+            Thing carried = pawn.carryTracker == null ? null : pawn.carryTracker.CarriedThing;
+            float inHands = carried == null ? 0f : carried.GetStatValue(StatDefOf.Mass) * carried.stackCount;
+
+            Widgets.Label(rect, "TMM_Loadout_Mass".Translate((gear + inventory).ToString("0.#"), capacity.ToString("0.#")));
+            TooltipHandler.TipRegion(rect, "TMM_Loadout_MassDetail".Translate(clothing.ToString("0.#"),
+                Mathf.Max(0f, gear - clothing).ToString("0.#"), inventory.ToString("0.#"), inHands.ToString("0.#"),
+                (capacity - backpack).ToString("0.#"), backpack.ToString("0.#")));
         }
 
-        private static string BuildItemTooltip(Thing item)
+        private static string BuildItemTooltip(Thing item, Pawn pawn)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(item.LabelCap);
@@ -1768,29 +1932,21 @@ namespace TurboMegaMod
             }
             if (item is Apparel)
             {
-                sb.AppendLine(string.Format("Sharp: {0}  Blunt: {1}  Heat: {2}",
+                sb.AppendLine("TMM_Loadout_Armor".Translate(
                     item.GetStatValue(StatDefOf.ArmorRating_Sharp).ToStringPercent(),
                     item.GetStatValue(StatDefOf.ArmorRating_Blunt).ToStringPercent(),
                     item.GetStatValue(StatDefOf.ArmorRating_Heat).ToStringPercent()));
             }
-            CompWeaponMods wm = item.TryGetComp<CompWeaponMods>();
-            if (wm != null && wm.InstalledMods.Count > 0)
+            if (item.def.IsWeapon)
             {
-                sb.AppendLine("--- Modules ---");
-                for (int i = 0; i < wm.InstalledMods.Count; i++)
-                {
-                    sb.AppendLine("• " + wm.InstalledMods[i].DisplayLabel());
-                }
+                if (item.def.tools != null && item.def.tools.Count > 0)
+                    sb.AppendLine("TMM_Loadout_MeleeDps".Translate(item.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS).ToString("0.0")));
+                if (item.def.IsRangedWeapon)
+                    sb.AppendLine("TMM_Loadout_RangedDps".Translate(EquipmentLoadoutStats.RangedDps(new EquipmentLoadoutEntry(item), pawn).ToString("0.0")));
             }
-            CompApparelMods am = item.TryGetComp<CompApparelMods>();
-            if (am != null && am.InstalledMods.Count > 0)
-            {
-                sb.AppendLine("--- Lining ---");
-                for (int i = 0; i < am.InstalledMods.Count; i++)
-                {
-                    sb.AppendLine("• " + am.InstalledMods[i].DisplayLabel());
-                }
-            }
+            var bonuses = new List<string>();
+            EquipmentLoadoutStats.AddBonuses(new EquipmentLoadoutEntry(item), bonuses);
+            foreach (string bonus in bonuses) sb.AppendLine("• " + bonus);
             return sb.ToString().TrimEnd();
         }
     }
@@ -1803,6 +1959,13 @@ namespace TurboMegaMod
     public static class EquipmentSlotsBootstrap
     {
         private static bool s_applyingModDamage;
+        public static int s_currentHitId = 0;
+        private static int s_lastProcessedHitId = -1;
+        public static ThingWithComps s_currentActiveWeapon
+        {
+            get { return s_currentScope != null ? s_currentScope.weapon : null; }
+            set { if (s_currentScope != null) s_currentScope.weapon = value; }
+        }
 
         static EquipmentSlotsBootstrap()
         {
@@ -1957,19 +2120,142 @@ namespace TurboMegaMod
                     prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_VerbShoot_ColtAmmo"),
                     postfix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Postfix_VerbShoot_ColtAmmo"));
             }
+
+            // 7. Track firing weapon instance and assign unique hit ID on projectile impact
+            MethodInfo projectileImpact = AccessTools.Method(typeof(Projectile), "Impact", new Type[] { typeof(Thing), typeof(bool) }); // CHECK API
+            if (projectileImpact != null)
+            {
+                harmony.Patch(projectileImpact,
+                    prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_Projectile_Impact"),
+                    finalizer: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Finalizer_Projectile_Impact"));
+            }
+            // Bullet.Impact calls base.Impact (closing the scope above) BEFORE it applies damage, so the override needs
+            // its own scope around the whole call. Scopes nest: the inner base call restores this one on exit.
+            MethodInfo bulletImpact = AccessTools.DeclaredMethod(typeof(Bullet), "Impact", new Type[] { typeof(Thing), typeof(bool) });
+            if (bulletImpact != null)
+            {
+                harmony.Patch(bulletImpact,
+                    prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_Projectile_Impact"),
+                    finalizer: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Finalizer_Projectile_Impact"));
+            }
+
+            // The Lorenzo wave does its damage by an explosion started before base.Impact, so it needs the scope around the whole override.
+            MethodInfo lorenzoImpact = AccessTools.DeclaredMethod(typeof(Projectile_LorenzoWave), "Impact", new Type[] { typeof(Thing), typeof(bool) });
+            if (lorenzoImpact != null)
+            {
+                harmony.Patch(lorenzoImpact,
+                    prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_Projectile_Impact"),
+                    finalizer: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Finalizer_Projectile_Impact"));
+            }
+            // An explosion hurts on its own later ticks: it keeps the scope of the impact that started it.
+            MethodInfo explosionStart = AccessTools.DeclaredMethod(typeof(Explosion), "StartExplosion");
+            MethodInfo explosionTick = AccessTools.DeclaredMethod(typeof(Explosion), "Tick");
+            if (explosionStart != null && explosionTick != null)
+            {
+                harmony.Patch(explosionStart, prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_Explosion_Start"));
+                harmony.Patch(explosionTick,
+                    prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_Explosion_Tick"),
+                    finalizer: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Finalizer_Projectile_Impact"));
+            }
+
+            // 8. Track striking weapon instance and assign unique hit ID on melee attacks
+            MethodInfo meleeDamage = AccessTools.Method(typeof(Verb_MeleeAttackDamage), "ApplyMeleeDamageToTarget", new Type[] { typeof(LocalTargetInfo) }); // CHECK API
+            if (meleeDamage != null)
+            {
+                harmony.Patch(meleeDamage,
+                    prefix: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Prefix_MeleeDamage"),
+                    finalizer: new HarmonyMethod(typeof(EquipmentSlotsBootstrap), "Finalizer_MeleeDamage"));
+            }
+        }
+
+        public sealed class ActiveDamageSourceScope
+        {
+            public int hitId;
+            public ThingWithComps weapon;
+            public bool applied;   // one impact triggers the modules once, whatever number of hits it causes
+        }
+
+        private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Explosion, ActiveDamageSourceScope> s_explosionScopes =
+            new System.Runtime.CompilerServices.ConditionalWeakTable<Explosion, ActiveDamageSourceScope>();
+
+        public static void Prefix_Explosion_Start(Explosion __instance)
+        {
+            if (__instance == null || s_currentScope == null || s_currentScope.weapon == null) return;
+            s_explosionScopes.Remove(__instance);
+            s_explosionScopes.Add(__instance, s_currentScope);
+        }
+
+        public static void Prefix_Explosion_Tick(Explosion __instance, ref ActiveDamageSourceScope __state)
+        {
+            __state = s_currentScope;
+            ActiveDamageSourceScope scope;
+            s_currentScope = __instance != null && s_explosionScopes.TryGetValue(__instance, out scope) ? scope : null;
+        }
+
+        public static ActiveDamageSourceScope s_currentScope = null;
+        private static int s_scopeSequence = 1;
+
+        public static void Prefix_Projectile_Impact(Projectile __instance, ref ActiveDamageSourceScope __state)
+        {
+            __state = s_currentScope;
+            int nextId = ++s_scopeSequence;
+            ThingWithComps weapon = null;
+            if (__instance != null)
+            {
+                FieldInfo eqField = AccessTools.Field(typeof(Projectile), "equipment");
+                if (eqField != null)
+                {
+                    weapon = eqField.GetValue(__instance) as ThingWithComps;
+                }
+                if (weapon == null)
+                {
+                    FieldInfo launcherField = AccessTools.Field(typeof(Projectile), "launcher");
+                    if (launcherField != null)
+                    {
+                        weapon = launcherField.GetValue(__instance) as ThingWithComps;
+                    }
+                }
+            }
+            s_currentScope = new ActiveDamageSourceScope { hitId = nextId, weapon = weapon };
+        }
+
+        public static void Finalizer_Projectile_Impact(ActiveDamageSourceScope __state)
+        {
+            s_currentScope = __state;
+        }
+
+        public static void Prefix_MeleeDamage(Verb_MeleeAttackDamage __instance, ref ActiveDamageSourceScope __state)
+        {
+            __state = s_currentScope;
+            int nextId = ++s_scopeSequence;
+            ThingWithComps weapon = __instance != null ? __instance.EquipmentSource : null;
+            s_currentScope = new ActiveDamageSourceScope { hitId = nextId, weapon = weapon };
+        }
+
+        public static void Finalizer_MeleeDamage(ActiveDamageSourceScope __state)
+        {
+            s_currentScope = __state;
         }
 
         public static void Postfix_Pawn_PostApplyDamage(Pawn __instance, DamageInfo dinfo, float totalDamageDealt)
         {
             if (s_applyingModDamage) return;
             if (__instance == null || __instance.Dead) return;
+            if (totalDamageDealt <= 0f) return;
             if (dinfo.Def == null || !dinfo.Def.ExternalViolenceFor(__instance)) return;
+            if (dinfo.Weapon == null) return; // Unarmed or fists must never trigger weapon module charges!
+
+            // Only deduct from a confirmed active weapon instance scope (no global fallback or picking by Def!)
+            if (s_currentScope == null || s_currentScope.weapon == null) return;
+            if (s_currentScope.applied) return;
+            s_currentScope.applied = true;
+            s_lastProcessedHitId = s_currentScope.hitId;
 
             Pawn attacker = dinfo.Instigator as Pawn;
             if (attacker == null) return;
 
-            ThingWithComps weapon = FindAttackerWeapon(attacker, dinfo.Weapon);
-            if (weapon == null) return;
+            ThingWithComps weapon = s_currentScope.weapon;
+            if (weapon.def != dinfo.Weapon) return;
 
             CompWeaponMods mods = weapon.GetComp<CompWeaponMods>();
             if (mods == null || mods.InstalledMods.Count == 0) return;
@@ -1979,6 +2265,7 @@ namespace TurboMegaMod
             {
                 for (int i = 0; i < mods.InstalledMods.Count; i++)
                 {
+                    if (__instance.Dead) break; // If target was killed by earlier damage/module, do not waste next charges!
                     InstalledModEntry entry = mods.InstalledMods[i];
                     if (entry == null || !entry.CanTrigger) continue;
 
@@ -2000,27 +2287,6 @@ namespace TurboMegaMod
             {
                 s_applyingModDamage = false;
             }
-        }
-
-        private static ThingWithComps FindAttackerWeapon(Pawn attacker, ThingDef weaponDef)
-        {
-            if (attacker == null) return null;
-            if (attacker.equipment != null && attacker.equipment.Primary != null)
-            {
-                if (weaponDef == null || attacker.equipment.Primary.def == weaponDef)
-                {
-                    return attacker.equipment.Primary;
-                }
-            }
-            if (weaponDef != null && attacker.inventory != null && attacker.inventory.innerContainer != null)
-            {
-                for (int i = 0; i < attacker.inventory.innerContainer.Count; i++)
-                {
-                    ThingWithComps twc = attacker.inventory.innerContainer[i] as ThingWithComps;
-                    if (twc != null && twc.def == weaponDef) return twc;
-                }
-            }
-            return null;
         }
 
         public static void Postfix_MassUtility_Capacity(Pawn p, StringBuilder explanation, ref float __result)

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <ST_Copy>Копировать</ST_Copy>
+  <ST_Paste>Вставить</ST_Paste>
+  <ST_Delete>Удалить</ST_Delete>
+  <ST_AnimationWindow>Аниматор</ST_AnimationWindow>
+  <ST_ControllerWindow>Контроллер</ST_ControllerWindow>
+  <ST_CreateNewClip>Создать новый клип...</ST_CreateNewClip>
+  <ST_RemoveProperties>Удалить свойства</ST_RemoveProperties>
+  <ST_AddKey>Добавить ключ</ST_AddKey>
+  <ST_RemoveKey>Удалить ключ</ST_RemoveKey>
+  <ST_PreviewAnimation>Предпросмотр</ST_PreviewAnimation>
+  <ST_PreviewAnimationTooltip>Включить/выключить режим предпросмотра анимации объекта в игре</ST_PreviewAnimationTooltip>
+  <ST_PlayAnimationTooltip>Воспроизвести анимацию</ST_PlayAnimationTooltip>
+  <ST_PauseAnimationTooltip>Приостановить анимацию</ST_PauseAnimationTooltip>
+  <ST_SkipFrameBeginningTooltip>Перейти к началу анимации</ST_SkipFrameBeginningTooltip>
+  <ST_SkipFramePreviousTooltip>Перейти к предыдущему ключевому кадру</ST_SkipFramePreviousTooltip>
+  <ST_SkipFrameNextTooltip>Перейти к следующему ключевому кадру</ST_SkipFrameNextTooltip>
+  <ST_SkipFrameEndTooltip>Перейти к концу анимации</ST_SkipFrameEndTooltip>
+  <ST_AddKeyFrame>Добавить ключевой кадр</ST_AddKeyFrame>
+  <ST_AddAnimationEvent>Добавить событие</ST_AddAnimationEvent>
+  <ST_AddProperty>Добавить свойство</ST_AddProperty>
+  <ST_Injected>Внедрено</ST_Injected>
+  <ST_UnsupportedType>Неподдерживаемый тип</ST_UnsupportedType>
+  <ST_NoFunctionSelected>Функция не выбрана</ST_NoFunctionSelected>
+  <ST_NoControllerParameters>Нет параметров контроллера</ST_NoControllerParameters>
+  <ST_DopesheetTab>Таблица ключей</ST_DopesheetTab>
+  <ST_CurvesTab>Кривые</ST_CurvesTab>
+  <ST_Layers>Слои</ST_Layers>
+  <ST_Parameters>Параметры</ST_Parameters>
+  <ST_Conditions>Условия</ST_Conditions>
+  <ST_CreateState>Создать состояние</ST_CreateState>
+  <ST_CreateSubState>Создать под-машину состояний</ST_CreateSubState>
+  <ST_MakeTransition>Создать переход</ST_MakeTransition>
+  <ST_SetStateDefault>Сделать состоянием слоя по умолчанию</ST_SetStateDefault>
+  <ST_CreateBlendTree>Создать дерево смешивания в состоянии</ST_CreateBlendTree>
+  <ST_Loop>Зациклить</ST_Loop>
+  <ST_MotionFile>Движение</ST_MotionFile>
+  <ST_MotionSpeed>Скорость</ST_MotionSpeed>
+  <ST_MotionSpeedMultiplier>Множитель</ST_MotionSpeedMultiplier>
+  <ST_MotionTime>Время движения</ST_MotionTime>
+  <ST_Mirror>Отразить</ST_Mirror>
+  <ST_CycleOffset>Смещение цикла</ST_CycleOffset>
+  <ST_WriteDefaults>Значения по умолчанию</ST_WriteDefaults>
+  <ST_TransitionList>Переходы</ST_TransitionList>
+  <ST_TransitionSolo>Соло</ST_TransitionSolo>
+  <ST_TransitionMute>Заглушить</ST_TransitionMute>
+</LanguageData>

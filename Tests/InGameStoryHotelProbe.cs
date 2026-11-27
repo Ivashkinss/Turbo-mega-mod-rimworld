@@ -886,6 +886,86 @@ namespace TurboMegaMod
                     string.Format("clicked={0}, steel={1}, hist={2}",
                         clickedCommit, StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel),
                         commitRun != null ? string.Join(",", commitRun.history.ToArray()) : "null"));
+
+                // 15b. StoryPayment.ExecuteSplitOff exception safety:
+                // Case A: Handler throws before piece was handed off -> source refunded exactly.
+                Thing srcA = ThingMaker.MakeThing(ThingDefOf.Silver);
+                srcA.stackCount = 50;
+                bool threwA = false;
+                StoryPayment.TestSimulatePostSplitOffHandler = delegate(Thing s, Thing p)
+                {
+                    threwA = true;
+                    throw new InvalidOperationException("Simulated PostSplitOff handler exception before handoff");
+                };
+                try
+                {
+                    StoryPayment.ExecuteSplitOff(srcA, 20, 0);
+                }
+                catch (InvalidOperationException) { }
+                StoryPayment.TestSimulatePostSplitOffHandler = null;
+                int finalStackA = srcA.stackCount;
+                bool caseAOk = threwA && finalStackA == 50;
+
+                // Case B: Handler hands off piece to a holder and then throws -> source NOT refunded (no double silver)
+                Thing srcB = ThingMaker.MakeThing(ThingDefOf.Silver);
+                srcB.stackCount = 50;
+                bool threwB = false;
+                Thing pieceHolder = null;
+                StoryPayment.TestSimulatePostSplitOffHandler = delegate(Thing s, Thing p)
+                {
+                    GenPlace.TryPlaceThing(p, map.Center, map, ThingPlaceMode.Near);
+                    pieceHolder = p;
+                    threwB = true;
+                    throw new InvalidOperationException("Simulated PostSplitOff handler exception after handoff");
+                };
+                try
+                {
+                    StoryPayment.ExecuteSplitOff(srcB, 20, 0);
+                }
+                catch (InvalidOperationException) { }
+                StoryPayment.TestSimulatePostSplitOffHandler = null;
+                int finalStackB = srcB.stackCount;
+                bool caseBOk = threwB && finalStackB == 30 && pieceHolder != null && pieceHolder.Spawned;
+                if (pieceHolder != null && pieceHolder.Spawned) pieceHolder.Destroy(DestroyMode.Vanish);
+                if (!srcA.Destroyed) srcA.Destroy(DestroyMode.Vanish);
+                if (!srcB.Destroyed) srcB.Destroy(DestroyMode.Vanish);
+
+                AddCheck("StoryPayment_SplitOffException_RefundsOnlyUnheldPiece", caseAOk && caseBOk,
+                    "caseA=50->50 (refunded), caseB=50->30 (held on map, not refunded)",
+                    string.Format("caseA={0}(stack={1}), caseB={2}(stack={3})",
+                        caseAOk, finalStackA, caseBOk, finalStackB));
+
+                // 15c. StoryPaymentLimbo: drop failure preserves item in held container
+                StoryPaymentLimbo limbo = Find.World != null ? Find.World.GetComponent<StoryPaymentLimbo>() : null;
+                if (limbo != null)
+                {
+                    Thing limboItem = ThingMaker.MakeThing(ThingDefOf.Gold);
+                    limboItem.stackCount = 77;
+                    StoryPaymentLimbo.Hold(limboItem);
+                    bool heldInitially = limbo.GetDirectlyHeldThings().Contains(limboItem);
+
+                    StoryPaymentLimbo.TestLimboDropOverride = delegate(Thing item, IntVec3 pos, Map m)
+                    {
+                        return false; // Simulate placement failure
+                    };
+
+                    limbo.TryDropAllHeldToMap(map, map.Center);
+                    StoryPaymentLimbo.TestLimboDropOverride = null;
+
+                    bool stillHeldAfterFail = limbo.GetDirectlyHeldThings().Contains(limboItem) && !limboItem.Spawned;
+
+                    // Now drop normally
+                    limbo.TryDropAllHeldToMap(map, map.Center);
+                    bool spawnedAfterSuccess = limboItem.Spawned && limboItem.Map == map && !limbo.GetDirectlyHeldThings().Contains(limboItem);
+
+                    AddCheck("StoryPaymentLimbo_FailedDropPreservesItemInHolder",
+                        heldInitially && stillHeldAfterFail && spawnedAfterSuccess,
+                        "heldInit=true, stillHeldAfterFail=true, spawnedAfterSuccess=true",
+                        string.Format("heldInit={0}, stillHeld={1}, spawned={2}",
+                            heldInitially, stillHeldAfterFail, spawnedAfterSuccess));
+
+                    if (limboItem.Spawned) limboItem.Destroy(DestroyMode.Vanish);
+                }
             }
 
             // ---------------- 16. DELIVER giverSettlement: PASSING IGNORED, ARRIVAL ACTION DEDUCTED ----------------
@@ -1034,11 +1114,11 @@ namespace TurboMegaMod
             int steelAfterTick = StoryPayment.CountInColonyStockpiles(map, ThingDefOf.Steel);
 
             bool completedOnceNoRededuct = paidRun != null && CountOutcome(paidRun, "success") == 1 &&
-                                           steelBeforeTick == 50 && steelAfterTick == 50;
+                                           steelBeforeTick == steelAfterTick && steelBeforeTick + SteelInHands(map) == 50;
             AddCheck("Reload_PaidDeliverNoDoubleDeduction", completedOnceNoRededuct,
                 "successCount=1, steel=50->50",
-                string.Format("count={0}, steel={1}->{2}",
-                    CountOutcome(paidRun, "success"), steelBeforeTick, steelAfterTick));
+                string.Format("count={0}, steel={1}->{2}, in hands={3}",
+                    CountOutcome(paidRun, "success"), steelBeforeTick, steelAfterTick, SteelInHands(map)));
         }
 
         // =====================================================================
@@ -1450,6 +1530,15 @@ namespace TurboMegaMod
         private static bool HasOutcome(StoryQuestRun run, string outcome)
         {
             return CountOutcome(run, outcome) > 0;
+        }
+
+        /// Steel a colonist or a hauling animal is carrying: between the load and the check it may be on its way to the stockpile.
+        private static int SteelInHands(Map map)
+        {
+            int n = 0;
+            foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
+                if (p.Faction == Faction.OfPlayer && p.carryTracker != null && p.carryTracker.CarriedThing != null && p.carryTracker.CarriedThing.def == ThingDefOf.Steel) n += p.carryTracker.CarriedThing.stackCount;
+            return n;
         }
 
         private static int CountOutcome(StoryQuestRun run, string outcome)

@@ -251,12 +251,36 @@ namespace TurboMegaMod
         }
 
         /// <summary>
+        /// Returns true if the pawn is immortal or has invulnerability (Dick Roman, Leviathan, Deathless gene, immortal hediffs).
+        /// </summary>
+        public static bool IsImmortal(Pawn pawn)
+        {
+            if (pawn == null) return false;
+            if (LegendaryUtil.IsDickRoman(pawn) || LegendaryUtil.IsLeviathan(pawn)) return true;
+            if (pawn.health != null && pawn.health.hediffSet != null)
+            {
+                HediffDef dRoman = DefDatabase<HediffDef>.GetNamedSilentFail("TMM_Hediff_DickRomanInvulnerable");
+                if (dRoman != null && pawn.health.hediffSet.HasHediff(dRoman)) return true;
+                HediffDef immortal = DefDatabase<HediffDef>.GetNamedSilentFail("TMM_Hediff_Immortal");
+                if (immortal != null && pawn.health.hediffSet.HasHediff(immortal)) return true;
+            }
+            if (ModsConfig.BiotechActive && pawn.genes != null)
+            {
+                GeneDef deathless = DefDatabase<GeneDef>.GetNamedSilentFail("Deathless");
+                if (deathless != null && pawn.genes.HasActiveGene(deathless)) return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Returns true if the pawn is a registered hero inside HeroRegistry.
         /// Castiel's blade and Ruby's knife only one-shot REGULAR (non-hero) demons/angels.
         /// </summary>
         public static bool IsRegisteredHero(Pawn pawn)
         {
-            if (pawn == null || HeroRegistry.Instance == null) return false;
+            if (pawn == null) return false;
+            if (HeroRegistry.Instance == null) return true; // Undefined registry: treat as protected hero
+            if (HeroRegistry.Instance.IsHero(pawn)) return true;
 
             if (!s_heroRegChecked)
             {
@@ -382,6 +406,13 @@ namespace TurboMegaMod
         {
             if (heroDef == null || pawn == null || pawn.Dead) return;
 
+            HeroRegistry reg = HeroRegistry.Instance;
+            HeroRecord rec = reg != null ? reg.RecordFor(heroDef) : null;
+            if (rec != null && rec.signatureGearApplied) return;
+            // Replacing starting gear is allowed only for a hero the player does not own (fresh faction generation).
+            // A player's pawn keeps every item: signature gear goes only into free compatible slots (Codex, 22.11).
+            bool mayReplace = pawn.Faction == null || !pawn.Faction.IsPlayer;
+
             string key1 = heroDef.defName;
             string key2 = null;
             FieldInfo idField = AccessTools.Field(heroDef.GetType(), "heroId"); // CHECK API
@@ -399,8 +430,21 @@ namespace TurboMegaMod
             {
                 ThingDef apDef = DefDatabase<ThingDef>.GetNamedSilentFail(apparelDefName);
                 string reason;
-                if (apDef != null && CanPawnUseSignatureItem(pawn, apDef, out reason))
+                bool fits = apDef != null && pawn.apparel.CanWearWithoutDroppingAnything(apDef);
+                if (apDef != null && (fits || mayReplace) && CanPawnUseSignatureItem(pawn, apDef, out reason))
                 {
+                    if (!fits)
+                    {
+                        List<Apparel> worn = new List<Apparel>(pawn.apparel.WornApparel);
+                        for (int i = 0; i < worn.Count; i++)
+                        {
+                            if (!ApparelUtility.CanWearTogether(apDef, worn[i].def, pawn.RaceProps.body))
+                            {
+                                pawn.apparel.Remove(worn[i]);
+                                worn[i].Destroy(DestroyMode.Vanish);
+                            }
+                        }
+                    }
                     Apparel ap = ThingMaker.MakeThing(apDef, apDef.MadeFromStuff ? GenStuff.DefaultStuffFor(apDef) : null) as Apparel;
                     if (ap != null)
                     {
@@ -413,19 +457,30 @@ namespace TurboMegaMod
             if (!key1.NullOrEmpty() && HeroSignatureWeapons.TryGetValue(key1, out weaponDefName)) { }
             else if (!key2.NullOrEmpty()) HeroSignatureWeapons.TryGetValue(key2, out weaponDefName);
 
-            if (!weaponDefName.NullOrEmpty() && pawn.equipment != null && !IsWieldingDef(pawn, weaponDefName))
+            if (!weaponDefName.NullOrEmpty() && pawn.equipment != null)
             {
                 ThingDef wDef = DefDatabase<ThingDef>.GetNamedSilentFail(weaponDefName);
                 string reason;
                 if (wDef != null && CanPawnUseSignatureItem(pawn, wDef, out reason))
                 {
-                    ThingWithComps w = ThingMaker.MakeThing(wDef, wDef.MadeFromStuff ? GenStuff.DefaultStuffFor(wDef) : null) as ThingWithComps;
-                    if (w != null)
+                    if (mayReplace && pawn.equipment.Primary != null && pawn.equipment.Primary.def != wDef)
                     {
-                        pawn.equipment.DestroyAllEquipment();
-                        pawn.equipment.AddEquipment(w);
+                        pawn.equipment.DestroyEquipment(pawn.equipment.Primary);
+                    }
+                    if (pawn.equipment.Primary == null)
+                    {
+                        ThingWithComps w = ThingMaker.MakeThing(wDef, wDef.MadeFromStuff ? GenStuff.DefaultStuffFor(wDef) : null) as ThingWithComps;
+                        if (w != null)
+                        {
+                            pawn.equipment.AddEquipment(w);
+                        }
                     }
                 }
+            }
+
+            if (rec != null)
+            {
+                rec.signatureGearApplied = true;
             }
 
             RefreshGearSets(pawn);
@@ -667,21 +722,19 @@ namespace TurboMegaMod
         public static void Postfix_Pawn_PostApplyDamage(Pawn __instance, DamageInfo dinfo, float totalDamageDealt)
         {
             if (__instance == null || __instance.Dead) return;
+            if (totalDamageDealt <= 0f) return;
             if (dinfo.Def != null && dinfo.Def.isRanged) return;
+            if (dinfo.Weapon == null) return; // Strike must be from an actual weapon, not unarmed / fists!
 
-            Pawn attacker = dinfo.Instigator as Pawn;
             ThingDef weaponDef = dinfo.Weapon;
-            if (weaponDef == null && attacker != null && attacker.equipment != null && attacker.equipment.Primary != null)
-            {
-                weaponDef = attacker.equipment.Primary.def;
-            }
-            if (weaponDef == null) return;
-
             SignatureGearExtension ext = weaponDef.GetModExtension<SignatureGearExtension>();
             if (ext == null || (!ext.slaysRegularDemons && !ext.slaysRegularAngels)) return;
 
-            // Claude's rule: Heroes in HeroRegistry are NEVER one-shot by Castiel's blade or Ruby's knife.
-            if (SignatureGearUtil.IsRegisteredHero(__instance)) return;
+            // Forbidden if registry is undefined or target is a registered hero
+            if (HeroRegistry.Instance == null || HeroRegistry.Instance.IsHero(__instance) || SignatureGearUtil.IsRegisteredHero(__instance)) return;
+
+            // Forbidden for immortals (Dick Roman / Leviathan / Deathless)
+            if (SignatureGearUtil.IsImmortal(__instance)) return;
 
             bool shouldSlay = false;
             if (ext.slaysRegularDemons && SignatureGearUtil.IsDemon(__instance)) shouldSlay = true;

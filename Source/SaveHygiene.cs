@@ -19,7 +19,67 @@ namespace TurboMegaMod
         {
             var save = AccessTools.Method(typeof(GameDataSaveLoader), "SaveGame", new Type[] { typeof(string) });
             if (save == null) { Log.Warning("[TMM] SaveHygiene: GameDataSaveLoader.SaveGame(string) not found; dangling relations are not cleaned before saving."); return; }
-            new Harmony("colonyproject.integrated.savehygiene").Patch(save, prefix: new HarmonyMethod(typeof(SaveHygiene), "Prefix_SaveGame"));
+            var harmony = new Harmony("colonyproject.integrated.savehygiene");
+            harmony.Patch(save, prefix: new HarmonyMethod(typeof(SaveHygiene), "Prefix_SaveGame"));
+            // Archived letters point at caravans and sites that are long gone: vanilla writes the reference, the object is not saved.
+            harmony.Patch(AccessTools.Method(typeof(LookTargets), "ExposeData"), prefix: new HarmonyMethod(typeof(SaveHygiene), "KeepTileOfGoneObjects"));
+            // Vanilla drops a generation attempt "incapable of required skill" without discarding it, after it has already become
+            // somebody's parent or spouse. Every other failed attempt is discarded; this one stayed as a relation to an unsaved pawn.
+            var attempt = AccessTools.Method(typeof(PawnGenerator), "TryGenerateNewPawnInternal");
+            var relate = AccessTools.Method(typeof(PawnGenerator), "GeneratePawnRelations");
+            if (attempt == null || relate == null) Log.Warning("[TMM] SaveHygiene: PawnGenerator.TryGenerateNewPawnInternal not found; dropped generation attempts keep their relatives.");
+            else
+            {
+                harmony.Patch(attempt, prefix: new HarmonyMethod(typeof(SaveHygiene), "AttemptStart") { priority = Priority.First }, finalizer: new HarmonyMethod(typeof(SaveHygiene), "AttemptEnd"));
+                harmony.Patch(relate, prefix: new HarmonyMethod(typeof(SaveHygiene), "AttemptPawn") { priority = Priority.First });
+            }
+            // The source of the broken references: vanilla invents the author of a generated book (settlement and caravan stock)
+            // as a full pawn with relatives, then neither saves nor discards that pawn. An invented author gets no relatives.
+            var invent = AccessTools.Method(typeof(TaleData_Pawn), "GenerateRandom");
+            var generate = AccessTools.Method(typeof(PawnGenerator), "GeneratePawn", new Type[] { typeof(PawnGenerationRequest) });
+            if (invent == null || generate == null) { Log.Warning("[TMM] SaveHygiene: TaleData_Pawn.GenerateRandom not found; invented book authors keep their relatives."); return; }
+            harmony.Patch(invent, prefix: new HarmonyMethod(typeof(SaveHygiene), "InventStart"), finalizer: new HarmonyMethod(typeof(SaveHygiene), "InventEnd"));
+            harmony.Patch(generate, prefix: new HarmonyMethod(typeof(SaveHygiene), "InventedPawn") { priority = Priority.First });
+        }
+
+        private static void KeepTileOfGoneObjects(LookTargets __instance)
+        {
+            if (Scribe.mode != LoadSaveMode.Saving || __instance.targets == null) return;
+            for (int i = 0; i < __instance.targets.Count; i++)
+            {
+                RimWorld.Planet.GlobalTargetInfo target = __instance.targets[i];
+                RimWorld.Planet.WorldObject gone = target.HasWorldObject ? target.WorldObject : null;
+                // A site may wait unspawned inside a quest that saves it; a caravan never does.
+                if (gone != null && (gone.Destroyed || gone is RimWorld.Planet.Caravan && !gone.Spawned)) __instance.targets[i] = new RimWorld.Planet.GlobalTargetInfo(target.WorldObject.Tile);
+            }
+        }
+
+        private static readonly Stack<Pawn> attempts = new Stack<Pawn>();
+        public static int DroppedAttempts;
+        private static void AttemptStart(out bool __state) { attempts.Push(null); __state = true; }
+        private static void AttemptPawn(Pawn pawn)
+        {
+            if (attempts.Count == 0) return;
+            attempts.Pop();
+            attempts.Push(pawn);
+        }
+        private static Exception AttemptEnd(Exception __exception, Pawn __result, bool __state)
+        {
+            Pawn pawn = __state && attempts.Count > 0 ? attempts.Pop() : null;
+            if (__exception == null && __result == null && pawn != null && !pawn.Destroyed && !pawn.Discarded && !pawn.Spawned && pawn.ParentHolder == null && !Find.WorldPawns.Contains(pawn))
+            {
+                DroppedAttempts++;
+                Find.WorldPawns.PassToWorld(pawn, RimWorld.Planet.PawnDiscardDecideMode.Discard);
+            }
+            return __exception;
+        }
+
+        private static int inventing;
+        private static void InventStart() { inventing++; }
+        private static Exception InventEnd(Exception __exception) { inventing--; return __exception; }
+        private static void InventedPawn(ref PawnGenerationRequest request)
+        {
+            if (inventing > 0) request.CanGeneratePawnRelations = false;
         }
 
         public static void Prefix_SaveGame()
@@ -28,15 +88,15 @@ namespace TurboMegaMod
             catch (Exception ex) { Log.Warning("[TMM] SaveHygiene skipped: " + ex.Message); }
         }
 
-        private static readonly System.Reflection.PropertyInfo VehicleCrew = AccessTools.TypeByName("Vehicles.VehiclePawn") == null ? null : AccessTools.Property(AccessTools.TypeByName("Vehicles.VehiclePawn"), "AllPawnsAboard");
-
-        /// Crew and passengers sit in vehicle seats that the holder traversal does not enter, but the vehicle saves them.
-        private static IEnumerable<Pawn> AboardVehicle(Pawn vehicle)
+        /// Gets rid of a pawn that was generated but is not going to be used, the way the game's own generator does. Destroy alone
+        /// leaves the relations other pawns got to it, and they would be saved as references to an unsaved pawn. A named hero is kept.
+        public static void DiscardUnused(Pawn pawn)
         {
-            if (VehicleCrew == null || !VehicleCrew.DeclaringType.IsInstanceOfType(vehicle)) yield break;
-            System.Collections.IEnumerable crew = VehicleCrew.GetValue(vehicle, null) as System.Collections.IEnumerable;
-            if (crew == null) yield break;
-            foreach (object o in crew) { Pawn p = o as Pawn; if (p != null) yield return p; }
+            if (pawn == null || pawn.Destroyed) return;
+            if (pawn.Spawned) pawn.DeSpawn(DestroyMode.Vanish);
+            if (pawn.holdingOwner != null) pawn.holdingOwner.Remove(pawn);
+            if (Find.WorldPawns.Contains(pawn)) Find.WorldPawns.RemovePawn(pawn);
+            Find.WorldPawns.PassToWorld(pawn, RimWorld.Planet.PawnDiscardDecideMode.Discard);
         }
 
         /// Returns how many relations were removed. A relation is dangling when the other pawn will not be written
@@ -58,7 +118,27 @@ namespace TurboMegaMod
                 Corpse c = held[i] as Corpse;
                 if (c != null && c.InnerPawn != null) saved.Add(c.InnerPawn);
             }
-            foreach (Pawn v in new List<Pawn>(saved)) foreach (Pawn p in AboardVehicle(v)) saved.Add(p);
+            if (Find.QuestManager != null)
+            {
+                foreach (Quest q in Find.QuestManager.QuestsListForReading)
+                {
+                    if (q == null || q.PartsListForReading == null) continue;
+                    foreach (QuestPart qp in q.PartsListForReading)
+                    {
+                        QuestPart_DropPods dp = qp as QuestPart_DropPods;
+                        if (dp != null && dp.Things != null)
+                        {
+                            foreach (Thing t in dp.Things)
+                            {
+                                Pawn qpawn = t as Pawn;
+                                if (qpawn != null) saved.Add(qpawn);
+                            }
+                        }
+                    }
+                }
+            }
+            // Anomaly keeps pawns of a closed pocket map in a plain list until they return; vanilla saves that list deeply.
+            foreach (Pawn p in AnomalyReturnees()) saved.Add(p);
             int removed = 0;
             List<DirectPawnRelation> dead = new List<DirectPawnRelation>();
             foreach (Pawn p in saved)
@@ -69,13 +149,21 @@ namespace TurboMegaMod
                 for (int j = 0; j < rels.Count; j++)
                 {
                     DirectPawnRelation r = rels[j];
-                    if (r != null && (r.otherPawn == null || r.otherPawn.Discarded || !saved.Contains(r.otherPawn))) dead.Add(r);
+                    if (r == null) continue;
+                    Pawn other = r.otherPawn;
+                    if (other == null || other.Discarded) { dead.Add(r); continue; }
+                    if (saved.Contains(other)) continue;
+                    // Not found in the traversal is not proof that the pawn is unsaved: quest parts and other mods
+                    // can save a pawn deeply without any holder. Only null and Discarded are removed (Codex, 22.11).
+                    if (Prefs.DevMode)
+                    {
+                        Log.Message("[TMM] SaveHygiene: relation of " + p.ThingID + " " + p.LabelShort + " to " + Describe(other) + " not seen in known holders (kept).");
+                    }
                 }
                 for (int j = 0; j < dead.Count; j++)
                 {
-                    try { p.relations.RemoveDirectRelation(dead[j]); }
-                    catch { rels.Remove(dead[j]); }
-                    removed++;
+                    try { p.relations.RemoveDirectRelation(dead[j]); removed++; }
+                    catch (Exception ex) { Log.Warning("[TMM] SaveHygiene: could not remove a relation of " + p.LabelShort + ": " + ex.Message); }
                 }
             }
             removed += CleanRelationshipRecords(saved);
@@ -83,6 +171,20 @@ namespace TurboMegaMod
             return removed;
         }
 
+        private static string Describe(Pawn p)
+        {
+            return p.ThingID + " " + p.LabelShort + " (" + (p.kindDef != null ? p.kindDef.defName : "?") + ", " + (p.Faction != null ? p.Faction.def.defName : "no faction") + ", destroyed=" + p.Destroyed + ", dead=" + p.Dead
+                + ", holder=" + (p.ParentHolder != null ? p.ParentHolder.GetType().Name : "none") + ", relations=" + (p.relations != null ? p.relations.DirectRelations.Count : -1) + ")";
+        }
+
+        private static IEnumerable<Pawn> AnomalyReturnees()
+        {
+            System.Reflection.FieldInfo list = AccessTools.Field(typeof(GameComponent_Anomaly), "metalHellPawns");
+            GameComponent_Anomaly comp = Current.Game == null ? null : Current.Game.GetComponent<GameComponent_Anomaly>();
+            List<Pawn> pawns = list == null || comp == null ? null : list.GetValue(comp) as List<Pawn>;
+            if (pawns == null) yield break;
+            foreach (Pawn p in pawns) if (p != null) yield return p;
+        }
         /// RimWorld 1.6+ keeps a world-level journal of relationships (Find.RelationshipRecords) that references pawns
         /// too. Drop references to pawns that will not be saved and let vanilla purge records left without references.
         /// Reflection keeps this compiling against older references.
@@ -104,12 +206,18 @@ namespace TurboMegaMod
                     System.Collections.IEnumerable refs = AccessTools.Property(rec.GetType(), "References").GetValue(rec, null) as System.Collections.IEnumerable;
                     if (refs == null) continue;
                     List<Pawn> gone = new List<Pawn>();
-                    foreach (object o in refs) { Pawn rp = o as Pawn; if (rp != null && (rp.Discarded || !saved.Contains(rp))) gone.Add(rp); }
+                    foreach (object o in refs)
+                    {
+                        Pawn rp = o as Pawn;
+                        if (rp == null) continue;
+                        if (rp.Discarded) { gone.Add(rp); continue; }
+                        if (saved.Contains(rp)) continue;
+
+                        if (Prefs.DevMode) Log.Message("[TMM] SaveHygiene: journal reference to " + Describe(rp) + " not seen in known holders (kept).");
+                    }
                     System.Reflection.MethodInfo remove = AccessTools.Method(rec.GetType(), "RemoveReference");
                     foreach (Pawn g in gone) { remove.Invoke(rec, new object[] { g }); removed++; }
                 }
-                System.Reflection.MethodInfo cleanup = AccessTools.Method(records.GetType(), "CleanupUnusedRecords");
-                if (cleanup != null) cleanup.Invoke(records, null);
             }
             catch (Exception ex) { Log.Warning("[TMM] SaveHygiene: relationship records skipped: " + ex.Message); }
             return removed;

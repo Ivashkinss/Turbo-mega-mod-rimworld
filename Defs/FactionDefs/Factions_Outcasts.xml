@@ -3,9 +3,7 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_OutcastsFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>111</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_OutcastsFaction</factionIconPath>
     <label>Brotherhood Outcasts</label>
     <description>A schism of the Brotherhood of Steel that rejected charity for the wasteland. In black-and-red power armor they seize pre-war technology wherever it lies, even if a settlement or a hospital stands in the way.</description>
     <pawnSingular>outcast</pawnSingular>
@@ -14,6 +12,9 @@
     <fixedName>Brotherhood Outcasts</fixedName>
     <techLevel>Spacer</techLevel>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>111</configurationListOrderPriority>
     <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <listOrderPriority>15</listOrderPriority>
     <colorSpectrum Inherit="False">

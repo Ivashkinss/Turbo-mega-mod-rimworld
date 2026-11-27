@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_PromotionCeremonyPattern.shortDescOverride MayRequire="Ludeon.RimWorld.Ideology">церемония повышения</TMM_PromotionCeremonyPattern.shortDescOverride>
+  <TMM_PromotionCeremonyPattern.descOverride MayRequire="Ludeon.RimWorld.Ideology">Соберите поселение, чтобы командир или лидер торжественно присвоил заслуженному колонисту следующее звание.</TMM_PromotionCeremonyPattern.descOverride>
+</LanguageData>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>TMM_ZeroSynthXenotype</defName>
+    <label>Zero Synth</label>
+    <description>A singular synth carrying the Spark. Its body needs neither food nor sleep, and it cannot willingly commit violence.</description>
+    <iconPath>UI/Icons/Xenotypes/TMM_SynthGen3</iconPath>
+    <inheritable>false</inheritable>
+    <genes>
+      <li>TMM_Head_SynthGen3</li>
+      <li>TMM_Synth_NoFood</li>
+      <li>Neversleep</li>
+      <li>ViolenceDisabled</li>
+    </genes>
+  </XenotypeDef>
+</Defs>

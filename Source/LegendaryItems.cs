@@ -249,7 +249,10 @@ namespace TurboMegaMod
     /// </summary>
     public sealed class LegendaryRegistry : WorldComponent
     {
+        public static Func<Thing, Map, bool> TestDropOverride;
         private Dictionary<string, string> grantedThingIds = new Dictionary<string, string>();
+        private readonly Dictionary<string, System.WeakReference<Thing>> pendingCreations =
+            new Dictionary<string, System.WeakReference<Thing>>();
 
         public LegendaryRegistry(World world) : base(world)
         {
@@ -262,31 +265,279 @@ namespace TurboMegaMod
 
         public bool ExistsInWorld(ThingDef def)
         {
-            if (def == null || grantedThingIds == null) return false;
-            return grantedThingIds.ContainsKey(def.defName);
+            if (def == null) return false;
+            return HasActiveInstance(def);
+        }
+
+        public bool HasActiveInstance(ThingDef def, Thing exclude = null)
+        {
+            if (def == null) return false;
+            if (grantedThingIds == null) grantedThingIds = new Dictionary<string, string>();
+
+            string tracked;
+            if (grantedThingIds.TryGetValue(def.defName, out tracked))
+                return exclude == null || tracked != exclude.ThingID;
+
+            Thing pending = GetPendingCreation(def.defName);
+            if (pending != null)
+                return pending != exclude;
+
+            Thing live = FindLiveLegendary(def, exclude);
+            if (live == null) return false;
+            grantedThingIds.Add(def.defName, live.ThingID);
+            return true;
+        }
+
+        public bool TryReserveCreation(Thing thing)
+        {
+            if (HasActiveInstance(thing.def, thing)) return false;
+
+            // A caller can abandon an unplaced ThingMaker result. Persist only once it has an owner.
+            pendingCreations[thing.def.defName] = new System.WeakReference<Thing>(thing);
+            return true;
+        }
+
+        private readonly Dictionary<string, int> stockScans = new Dictionary<string, int>();
+
+        /// For random trader stock: the same answer as HasActiveInstance, but the maps are searched at most once per tick for a
+        /// free item, because one stock asks about every legendary many times. A copy made meanwhile is a pending creation.
+        public bool ReservedForStock(ThingDef def)
+        {
+            if (def == null) return false;
+            if (grantedThingIds != null && grantedThingIds.ContainsKey(def.defName)) return true;
+            if (GetPendingCreation(def.defName) != null) return true;
+            int scanned;
+            if (stockScans.TryGetValue(def.defName, out scanned) && scanned == Find.TickManager.TicksGame) return false;
+            stockScans[def.defName] = Find.TickManager.TicksGame;
+            return HasActiveInstance(def);
+        }
+
+        private Thing GetPendingCreation(string defName)
+        {
+            System.WeakReference<Thing> reference;
+            if (!pendingCreations.TryGetValue(defName, out reference)) return null;
+
+            Thing thing;
+            if (!reference.TryGetTarget(out thing) || thing.Destroyed)
+            {
+                pendingCreations.Remove(defName);
+                return null;
+            }
+            return thing;
+        }
+
+        private void ConfirmPendingPlacements()
+        {
+            if (pendingCreations.Count == 0) return;
+
+            foreach (string defName in new List<string>(pendingCreations.Keys))
+            {
+                Thing thing = GetPendingCreation(defName);
+                if (thing != null && (thing.Spawned || thing.holdingOwner != null))
+                    RegisterExisting(thing);
+            }
+        }
+
+        public Thing FindLiveLegendary(ThingDef def, Thing exclude = null)
+        {
+            if (def == null) return null;
+
+            // 1. Check maps: spawned items, buildings, and pawn gear/inventories
+            if (Find.Maps != null)
+            {
+                List<Map> maps = Find.Maps;
+                for (int m = 0; m < maps.Count; m++)
+                {
+                    Map map = maps[m];
+                    if (map == null) continue;
+
+                    if (map.listerThings != null)
+                    {
+                        List<Thing> things = map.listerThings.AllThings;
+                        for (int i = 0; i < things.Count; i++)
+                        {
+                            Thing t = things[i];
+                            if (t != null && t != exclude && !t.Destroyed && t.def == def) return t;
+
+                            DropPodIncoming dpi = t as DropPodIncoming;
+                            if (dpi != null && dpi.Contents != null && dpi.Contents.innerContainer != null)
+                            {
+                                ThingOwner dpContainer = dpi.Contents.innerContainer;
+                                for (int cIdx = 0; cIdx < dpContainer.Count; cIdx++)
+                                {
+                                    Thing inHolder = dpContainer[cIdx];
+                                    if (inHolder != null && inHolder != exclude && !inHolder.Destroyed && inHolder.def == def) return inHolder;
+                                }
+                            }
+
+                            IThingHolder holder = t as IThingHolder;
+                            if (holder != null)
+                            {
+                                ThingOwner container = holder.GetDirectlyHeldThings();
+                                if (container != null)
+                                {
+                                    for (int cIdx = 0; cIdx < container.Count; cIdx++)
+                                    {
+                                        Thing inHolder = container[cIdx];
+                                        if (inHolder != null && inHolder != exclude && !inHolder.Destroyed && inHolder.def == def) return inHolder;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (map.mapPawns != null)
+                    {
+                        IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawns;
+                        for (int pIdx = 0; pIdx < pawns.Count; pIdx++)
+                        {
+                            Pawn p = pawns[pIdx];
+                            Thing onPawn = FindOnPawn(p, def, exclude);
+                            if (onPawn != null) return onPawn;
+                        }
+                    }
+                }
+            }
+
+            // 2. Check world pawns
+            if (Find.WorldPawns != null)
+            {
+                IReadOnlyList<Pawn> worldPawns = Find.WorldPawns.AllPawnsAliveOrDead;
+                for (int wIdx = 0; wIdx < worldPawns.Count; wIdx++)
+                {
+                    Pawn wp = worldPawns[wIdx];
+                    Thing onWp = FindOnPawn(wp, def, exclude);
+                    if (onWp != null) return onWp;
+                }
+            }
+
+            // 3. Check caravans
+            if (Find.WorldObjects != null && Find.WorldObjects.Caravans != null)
+            {
+                List<Caravan> caravans = Find.WorldObjects.Caravans;
+                for (int cIdx = 0; cIdx < caravans.Count; cIdx++)
+                {
+                    Caravan car = caravans[cIdx];
+                    if (car == null || car.PawnsListForReading == null) continue;
+                    List<Pawn> carPawns = car.PawnsListForReading;
+                    for (int cpIdx = 0; cpIdx < carPawns.Count; cpIdx++)
+                    {
+                        Pawn cp = carPawns[cpIdx];
+                        Thing onCp = FindOnPawn(cp, def, exclude);
+                        if (onCp != null) return onCp;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static Thing FindOnPawn(Pawn p, ThingDef def, Thing exclude)
+        {
+            if (p == null || p.Dead || p.Destroyed) return null;
+            if (p.equipment != null && p.equipment.AllEquipmentListForReading != null)
+            {
+                List<ThingWithComps> eq = p.equipment.AllEquipmentListForReading;
+                for (int i = 0; i < eq.Count; i++)
+                {
+                    ThingWithComps t = eq[i];
+                    if (t != null && t != exclude && !t.Destroyed && t.def == def) return t;
+                }
+            }
+            if (p.apparel != null && p.apparel.WornApparel != null)
+            {
+                List<Apparel> ap = p.apparel.WornApparel;
+                for (int i = 0; i < ap.Count; i++)
+                {
+                    Apparel a = ap[i];
+                    if (a != null && a != exclude && !a.Destroyed && a.def == def) return a;
+                }
+            }
+            if (p.inventory != null && p.inventory.innerContainer != null)
+            {
+                ThingOwner<Thing> inv = p.inventory.innerContainer;
+                for (int i = 0; i < inv.Count; i++)
+                {
+                    Thing it = inv[i];
+                    if (it != null && it != exclude && !it.Destroyed && it.def == def) return it;
+                }
+            }
+            return null;
+        }
+
+        public void ReconcileAllExistingLegendaries()
+        {
+            if (grantedThingIds == null) grantedThingIds = new Dictionary<string, string>();
+
+            List<ThingDef> legendaryDefs = new List<ThingDef>();
+            foreach (ThingDef td in DefDatabase<ThingDef>.AllDefsListForReading)
+            {
+                if (td != null && td.GetCompProperties<CompProperties_LegendaryItem>() != null)
+                {
+                    legendaryDefs.Add(td);
+                }
+            }
+
+            for (int i = 0; i < legendaryDefs.Count; i++)
+            {
+                ThingDef def = legendaryDefs[i];
+                // The recorded original may be in a holder the scan cannot see.
+                if (grantedThingIds.ContainsKey(def.defName)) continue;
+                Thing live = FindLiveLegendary(def);
+                if (live != null) RegisterExisting(live);
+            }
         }
 
         /// <summary>
         /// Creates the legendary item and drop-pods it to the given map only if no instance
-        /// of this ThingDef currently exists in the world.
+        /// of this ThingDef is already reserved. The reservation is persisted after confirmed placement.
         /// </summary>
         public bool TryGrant(ThingDef def, Map map)
         {
             if (def == null || map == null) return false;
             if (grantedThingIds == null) grantedThingIds = new Dictionary<string, string>();
-            if (grantedThingIds.ContainsKey(def.defName)) return false;
+            if (HasActiveInstance(def)) return false;
 
             ThingDef stuff = def.MadeFromStuff ? GenStuff.DefaultStuffFor(def) : null;
             Thing item = ThingMaker.MakeThing(def, stuff);
-            if (item == null) return false;
+            if (item == null || item.Destroyed) return false;
 
-            grantedThingIds[def.defName] = item.ThingID;
+            bool placed = false;
+            try
+            {
+                if (TestMode.Enabled && TestDropOverride != null)
+                {
+                    placed = TestDropOverride(item, map);
+                }
+                else
+                {
+                    IntVec3 dropSpot = DropCellFinder.TradeDropSpot(map); // CHECK API
+                    if (!dropSpot.IsValid || !dropSpot.InBounds(map)) dropSpot = map.Center;
+                    List<Thing> list = new List<Thing>();
+                    list.Add(item);
+                    DropPodUtility.DropThingsNear(dropSpot, map, list, 110, false, false, true, false, false, null);
+                    placed = (item.holdingOwner != null || item.Spawned);
+                }
+            }
+            catch (Exception ex)
+            {
+                TestMode.ReportException("[TMM] LegendaryRegistry.TryGrant: drop failed: ", ex);
+                placed = false;
+            }
 
-            IntVec3 dropSpot = DropCellFinder.TradeDropSpot(map); // CHECK API
-            List<Thing> list = new List<Thing>();
-            list.Add(item);
-            DropPodUtility.DropThingsNear(dropSpot, map, list, 110, false, false, true, false, false, null);
-            return true;
+            if (placed && (item.holdingOwner != null || item.Spawned))
+            {
+                RegisterExisting(item);
+                return true;
+            }
+            else
+            {
+                if (!item.Destroyed)
+                {
+                    item.Destroy(DestroyMode.Vanish);
+                }
+                return false;
+            }
         }
 
         public void RegisterExisting(Thing thing)
@@ -294,15 +545,21 @@ namespace TurboMegaMod
             if (thing == null || thing.def == null || thing.Destroyed) return;
             if (thing.def.GetCompProperties<CompProperties_LegendaryItem>() == null) return;
             if (grantedThingIds == null) grantedThingIds = new Dictionary<string, string>();
-            if (!grantedThingIds.ContainsKey(thing.def.defName))
-            {
-                grantedThingIds[thing.def.defName] = thing.ThingID;
-            }
+            string tracked;
+            if (!grantedThingIds.TryGetValue(thing.def.defName, out tracked))
+                grantedThingIds.Add(thing.def.defName, thing.ThingID);
+            else if (tracked != thing.ThingID)
+                Log.WarningOnce("[TMM] Legendary reservation for " + tracked + " conflicts with " + thing.ThingID,
+                    Gen.HashCombineInt(1526677831, thing.thingIDNumber));
+
+            if (GetPendingCreation(thing.def.defName) == thing)
+                pendingCreations.Remove(thing.def.defName);
         }
 
         public void NotifyDestroyed(Thing thing)
         {
             if (thing == null || thing.def == null || grantedThingIds == null) return;
+            GetPendingCreation(thing.def.defName);
             string trackedId;
             if (grantedThingIds.TryGetValue(thing.def.defName, out trackedId) && trackedId == thing.ThingID)
             {
@@ -310,10 +567,40 @@ namespace TurboMegaMod
             }
         }
 
+        public void Unregister(ThingDef def)
+        {
+            if (def == null || grantedThingIds == null) return;
+            grantedThingIds.Remove(def.defName);
+            pendingCreations.Remove(def.defName);
+        }
+
+        public bool IsGranted(ThingDef def)
+        {
+            if (def == null || grantedThingIds == null) return false;
+            return grantedThingIds.ContainsKey(def.defName);
+        }
+
+        private struct LaterPush { public Pawn pawn; public IntVec3 from; public Map map; public int cells; public Thing by; public int tick; }
+        private readonly List<LaterPush> laterPushes = new List<LaterPush>();   // a few ticks long, never saved
+        private const int PushDelayTicks = 6;
+
+        public void PushLater(Pawn pawn, IntVec3 from, Map map, int cells, Thing by)
+        {
+            laterPushes.Add(new LaterPush { pawn = pawn, from = from, map = map, cells = cells, by = by, tick = Find.TickManager.TicksGame + PushDelayTicks });
+        }
+
         public override void WorldComponentTick()
         {
             base.WorldComponentTick();
+            for (int i = laterPushes.Count - 1; i >= 0; i--)
+            {
+                if (Find.TickManager.TicksGame < laterPushes[i].tick) continue;
+                LaterPush push = laterPushes[i];
+                laterPushes.RemoveAt(i);
+                Projectile_LorenzoWave.PushAndStun(push.pawn, push.from, push.map, push.cells, push.by);
+            }
             if (Find.TickManager.TicksGame % 250 != 0) return;
+            ConfirmPendingPlacements();
 
             // Guarantee already-existing Dick Roman pawns receive invulnerability Hediff
             List<Map> maps = Find.Maps;
@@ -335,8 +622,14 @@ namespace TurboMegaMod
         public override void ExposeData()
         {
             base.ExposeData();
+            if (Scribe.mode == LoadSaveMode.Saving) ConfirmPendingPlacements();
             Scribe_Collections.Look(ref grantedThingIds, "grantedThingIds", LookMode.Value, LookMode.Value);
             if (grantedThingIds == null) grantedThingIds = new Dictionary<string, string>();
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                ReconcileAllExistingLegendaries();
+            }
         }
     }
 
@@ -354,13 +647,24 @@ namespace TurboMegaMod
 
     public sealed class CompLegendaryItem : ThingComp
     {
+        public override void PostPostMake()
+        {
+            base.PostPostMake();
+            LegendaryRegistry registry = LegendaryRegistry.Instance;
+            if (registry != null && !registry.TryReserveCreation(parent))
+            {
+                Messages.Message("TMM_LegendaryDuplicateDestroyed".Translate(parent.LabelCap), MessageTypeDefOf.RejectInput, false);
+                parent.Destroy(DestroyMode.Vanish);
+            }
+        }
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            if (LegendaryRegistry.Instance != null)
-            {
-                LegendaryRegistry.Instance.RegisterExisting(parent);
-            }
+            // Spawn also runs when a saved item or the original in transit reappears.
+            // Only the creation path can safely discard a conflicting item.
+            LegendaryRegistry registry = LegendaryRegistry.Instance;
+            if (registry != null) registry.RegisterExisting(parent);
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -793,15 +1097,23 @@ namespace TurboMegaMod
                     if (p == null || p == launcher || p.Dead || p.Destroyed) continue;
                     if (p.Position.DistanceTo(center) > 2.5f) continue;
 
-                    PushPawnBack(p, sourcePos, map, Rand.RangeInclusive(3, 5));
-                    if (p.stances != null && p.stances.stunner != null)
-                    {
-                        p.stances.stunner.StunFor(120, launcher); // CHECK API
-                    }
+                    // The explosion hurts during its first ticks: pushing at once would carry the victims out of it unhurt.
+                    LegendaryRegistry registry = LegendaryRegistry.Instance;
+                    if (registry != null) registry.PushLater(p, sourcePos, map, Rand.RangeInclusive(3, 5), launcher);
                 }
             }
 
             base.Impact(hitThing, blockedByShield);
+        }
+
+        internal static void PushAndStun(Pawn pawn, IntVec3 fromCell, Map map, int cells, Thing by)
+        {
+            if (pawn == null || pawn.Dead || pawn.Destroyed || !pawn.Spawned || pawn.Map != map) return;
+            PushPawnBack(pawn, fromCell, map, cells);
+            if (pawn.stances != null && pawn.stances.stunner != null)
+            {
+                pawn.stances.stunner.StunFor(120, by); // CHECK API
+            }
         }
 
         private static void PushPawnBack(Pawn pawn, IntVec3 fromCell, Map map, int cells)
@@ -940,11 +1252,24 @@ namespace TurboMegaMod
                 harmony.Patch(postApplyDamage, postfix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Postfix_Pawn_PostApplyDamage"));
             }
 
-            // 3. Pawn.Kill Postfix: Mark of Cain kill counter reset
+            // 3. Pawn.Kill Prefix + Postfix: Dick Roman execution immunity + Mark of Cain kill counter reset
             MethodInfo pawnKill = AccessTools.Method(typeof(Pawn), "Kill", new Type[] { typeof(DamageInfo?), typeof(Hediff) }); // CHECK API
             if (pawnKill != null)
             {
-                harmony.Patch(pawnKill, postfix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Postfix_Pawn_Kill"));
+                harmony.Patch(pawnKill, prefix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Prefix_Pawn_Kill"),
+                                       postfix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Postfix_Pawn_Kill"));
+            }
+
+            // 3b. ExecutionUtility prefixes: protect Dick Roman from execution without borax
+            MethodInfo doCut = AccessTools.Method(typeof(ExecutionUtility), "DoExecutionByCut", new Type[] { typeof(Pawn), typeof(Pawn), typeof(int), typeof(bool) });
+            if (doCut != null)
+            {
+                harmony.Patch(doCut, prefix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Prefix_ExecutionUtility_DoExecutionByCut"));
+            }
+            MethodInfo execInt = AccessTools.Method(typeof(ExecutionUtility), "ExecutionInt", new Type[] { typeof(Pawn), typeof(Pawn), typeof(bool), typeof(int), typeof(bool) });
+            if (execInt != null)
+            {
+                harmony.Patch(execInt, prefix: new HarmonyMethod(typeof(LegendaryItemsHarmony), "Prefix_ExecutionUtility_ExecutionInt"));
             }
 
             // 4. Pawn.SpawnSetup Postfix: Auto-apply Dick Roman invulnerability on spawn
@@ -1036,15 +1361,9 @@ namespace TurboMegaMod
             }
 
             Pawn attacker = dinfo.Instigator as Pawn;
-            string weaponDef = dinfo.Weapon != null ? dinfo.Weapon.defName : null;
-            if (weaponDef.NullOrEmpty() && attacker != null && attacker.equipment != null && attacker.equipment.Primary != null)
-            {
-                if (!dinfo.Def.isRanged)
-                {
-                    weaponDef = attacker.equipment.Primary.def.defName;
-                }
-            }
-
+            // P1-5: Require confirmed weapon source and non-zero damage dealt
+            if (totalDamageDealt <= 0.001f || dinfo.Weapon == null) return;
+            string weaponDef = dinfo.Weapon.defName;
             if (weaponDef.NullOrEmpty()) return;
 
             // 3. Rule 2: First Blade & Archangel Blade one-hit kill (except Lucifer, Michael, Dick Roman)
@@ -1101,6 +1420,39 @@ namespace TurboMegaMod
                     }
                 }
             }
+        }
+
+        public static bool Prefix_ExecutionUtility_DoExecutionByCut(Pawn victim)
+        {
+            if (victim != null && LegendaryUtil.IsDickRoman(victim) && !LegendaryUtil.HasBoraxVulnerabilityDebuff(victim))
+            {
+                Messages.Message(victim.LabelShort + " cannot be executed while protected by primordial invulnerability!", victim, MessageTypeDefOf.RejectInput, false);
+                return false;
+            }
+            return true;
+        }
+
+        public static bool Prefix_ExecutionUtility_ExecutionInt(Pawn victim)
+        {
+            if (victim != null && LegendaryUtil.IsDickRoman(victim) && !LegendaryUtil.HasBoraxVulnerabilityDebuff(victim))
+            {
+                Messages.Message(victim.LabelShort + " cannot be executed while protected by primordial invulnerability!", victim, MessageTypeDefOf.RejectInput, false);
+                return false;
+            }
+            return true;
+        }
+
+        public static bool Prefix_Pawn_Kill(Pawn __instance, DamageInfo? dinfo)
+        {
+            if (__instance != null && LegendaryUtil.IsDickRoman(__instance) && !LegendaryUtil.HasBoraxVulnerabilityDebuff(__instance))
+            {
+                if (dinfo.HasValue && dinfo.Value.Def != null && dinfo.Value.Def.defName == "TMM_BoraxBurn")
+                {
+                    return true;
+                }
+                return false;
+            }
+            return true;
         }
 
         public static void Postfix_Pawn_Kill(Pawn __instance, DamageInfo? dinfo)

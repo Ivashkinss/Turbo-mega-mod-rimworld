@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PackVehicle.label>погрузить в технику</PackVehicle.label>
+  <PackVehicle.verb>погрузить</PackVehicle.verb>
+  <PackVehicle.gerund>погрузка</PackVehicle.gerund>
+  <HelpPackVehicleCaravan.label>помочь со сбором автокаравана</HelpPackVehicleCaravan.label>
+  <HelpPackVehicleCaravan.verb>погрузить</HelpPackVehicleCaravan.verb>
+  <HelpPackVehicleCaravan.gerund>погрузка</HelpPackVehicleCaravan.gerund>
+  <PackVehicleTurret.label>зарядить турель техники</PackVehicleTurret.label>
+  <PackVehicleTurret.verb>зарядить</PackVehicleTurret.verb>
+  <PackVehicleTurret.gerund>зарядка</PackVehicleTurret.gerund>
+  <LoadUpgradeMaterials.label>доставить материалы для модификации</LoadUpgradeMaterials.label>
+  <LoadUpgradeMaterials.verb>доставить</LoadUpgradeMaterials.verb>
+  <LoadUpgradeMaterials.gerund>доставка</LoadUpgradeMaterials.gerund>
+  <WorkOnUpgrade.label>модифицировать технику</WorkOnUpgrade.label>
+  <WorkOnUpgrade.verb>модифицировать</WorkOnUpgrade.verb>
+  <WorkOnUpgrade.gerund>модификация</WorkOnUpgrade.gerund>
+  <RefuelVehicle.label>заправить технику</RefuelVehicle.label>
+  <RefuelVehicle.verb>заправить</RefuelVehicle.verb>
+  <RefuelVehicle.gerund>заправка</RefuelVehicle.gerund>
+  <RemoveFuelFromVehicle.label>слить топливо из техники</RemoveFuelFromVehicle.label>
+  <RemoveFuelFromVehicle.verb>слить</RemoveFuelFromVehicle.verb>
+  <RemoveFuelFromVehicle.gerund>слив топлива</RemoveFuelFromVehicle.gerund>
+  <RepairVehicle.label>чинить технику</RepairVehicle.label>
+  <RepairVehicle.verb>чинить</RepairVehicle.verb>
+  <RepairVehicle.gerund>починка</RepairVehicle.gerund>
+  <DisassembleVehicle.label>разобрать технику</DisassembleVehicle.label>
+  <DisassembleVehicle.verb>разобрать</DisassembleVehicle.verb>
+  <DisassembleVehicle.gerund>разборка</DisassembleVehicle.gerund>
+  <PaintVehicle.label>покрасить технику</PaintVehicle.label>
+  <PaintVehicle.verb>покрасить</PaintVehicle.verb>
+  <PaintVehicle.gerund>покраска</PaintVehicle.gerund>
+</LanguageData>

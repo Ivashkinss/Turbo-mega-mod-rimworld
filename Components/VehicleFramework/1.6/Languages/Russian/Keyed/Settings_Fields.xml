@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_VehicleEnabled>Включено</VF_VehicleEnabled>
+  <VF_VehicleDisabled>Отключено</VF_VehicleDisabled>
+  <VF_VehiclePlayerOnly>Только для игрока</VF_VehiclePlayerOnly>
+  <VF_VehicleRaiderOnly>Только для NPC</VF_VehicleRaiderOnly>
+  <VF_EnableButtonTooltip>Если отключено, эта техника не появится в игре ни у игрока, ни у фракций NPC.</VF_EnableButtonTooltip>
+  <VF_MovementPermissions>Тип управления</VF_MovementPermissions>
+  <VF_NavigationType>Навигация</VF_NavigationType>
+  <VF_NavigationTypeTooltip>Категория навигации по карте мира. Определяет, где техника может передвигаться на глобальной карте.</VF_NavigationTypeTooltip>
+  <VF_Nameable>Можно переименовывать</VF_Nameable>
+  <VF_NameableTooltip>Разрешить присвоение имени этой технике. Имя появится над техникой и заменит стандартное обозначение.</VF_NameableTooltip>
+  <VF_CombatPower>Боевая мощь</VF_CombatPower>
+  <VF_CombatPowerTooltip>Количество очков стоимости техники при генерации в событиях рейдов.</VF_CombatPowerTooltip>
+  <VF_CanCaravan>Караваны</VF_CanCaravan>
+  <VF_CanCaravanTooltip>Технику можно брать в караваны.</VF_CanCaravanTooltip>
+  <VF_SaveableFieldDisabledConditionTooltip>Отключено: {0}</VF_SaveableFieldDisabledConditionTooltip>
+  <VF_DisabledSingleModDependencyTooltip>Отключено. Необходимый мод не активен: {0}</VF_DisabledSingleModDependencyTooltip>
+  <VF_DisabledMultipleModsDependencyTooltip>Отключено. Необходимые моды не активны: {0}</VF_DisabledMultipleModsDependencyTooltip>
+  <VF_SaveableFieldDisabledTooltip>Отключено для этого типа техники.</VF_SaveableFieldDisabledTooltip>
+  <VF_SaveableFieldLockedTooltip>Параметр заблокирован для этой техники.</VF_SaveableFieldLockedTooltip>
+  <VF_DebugDisabledTooltip>Отключено для всей техники в настоящее время.</VF_DebugDisabledTooltip>
+  <VF_GizmoDisabledTooltip>Отключено в настройках мода.</VF_GizmoDisabledTooltip>
+  <VF_CollisionMultiplier>Урон пешкам при наезде</VF_CollisionMultiplier>
+  <VF_CollisionMultiplierTooltip>Множитель урона, наносимого пешкам при наезде техникой.</VF_CollisionMultiplierTooltip>
+  <VF_CollisionVehicleMultiplier>Урон технике при наезде</VF_CollisionVehicleMultiplier>
+  <VF_CollisionVehicleMultiplierTooltip>Множитель повреждений, получаемых техникой при наезде на пешку.</VF_CollisionVehicleMultiplierTooltip>
+  <VF_ManhunterTargetsVehicle>Цель для животных-людоедов</VF_ManhunterTargetsVehicle>
+  <VF_ManhunterTargetsVehicleTooltip>Животные в состоянии безумия будут атаковать эту технику.</VF_ManhunterTargetsVehicleTooltip>
+  <VF_EMPStuns>Оглушение от ЭМИ</VF_EMPStuns>
+  <VF_EMPStunsTooltip>ЭМИ-оружие будет временно выводить эту технику из строя.</VF_EMPStunsTooltip>
+  <VF_CanAdaptToEMP>Адаптация к ЭМИ</VF_CanAdaptToEMP>
+  <VF_CanAdaptToEMPTooltip>Техника может адаптироваться к ЭМИ-урону и получать временный иммунитет к оглушению.</VF_CanAdaptToEMPTooltip>
+  <VF_VehicleCannotStun>У техники нет компонентов, уязвимых к оглушению.</VF_VehicleCannotStun>
+  <VF_FishingEnabled>Рыбная ловля</VF_FishingEnabled>
+  <VF_FishingEnabledTooltip>Включает возможность рыбной ловли при остановке на воде.</VF_FishingEnabledTooltip>
+  <VF_MaxWorkers>Макс. работников</VF_MaxWorkers>
+  <VF_OffRoadMultiplier>Множитель бездорожья</VF_OffRoadMultiplier>
+  <VF_OffRoadMultiplierTooltip>Множитель стоимости пути при движении по дорогам.</VF_OffRoadMultiplierTooltip>
+  <VF_WinterSpeedMultiplier>Зимний множитель скорости</VF_WinterSpeedMultiplier>
+  <VF_WinterSpeedMultiplierTooltip>Множитель стоимости пути при движении зимой.</VF_WinterSpeedMultiplierTooltip>
+  <VF_WorldSpeedMultiplier>Множитель скорости в мире</VF_WorldSpeedMultiplier>
+  <VF_WorldSpeedMultiplierTooltip>Множитель скорости движения каравана на карте мира.</VF_WorldSpeedMultiplierTooltip>
+  <VF_DeployTime>Время развёртывания</VF_DeployTime>
+  <VF_DischargePerTick>Скорость разрядки</VF_DischargePerTick>
+  <VF_DischargePerTickTooltip>Величина потери заряда батареи за тик.</VF_DischargePerTickTooltip>
+  <VF_TicksPerCharge>Скорость зарядки</VF_TicksPerCharge>
+  <VF_TicksPerChargeTooltip>Величина пополнения заряда батареи за тик.</VF_TicksPerChargeTooltip>
+  <VF_NotElectricPowered>Не работает от электричества.</VF_NotElectricPowered>
+  <VF_PerDay>/ день</VF_PerDay>
+  <VF_Fuel>Топливо</VF_Fuel>
+  <VF_FuelConsumptionRate>Расход топлива</VF_FuelConsumptionRate>
+  <VF_FuelConsumptionRateTooltip>Расход топлива в день. При простое техника потребляет на 50% меньше топлива.</VF_FuelConsumptionRateTooltip>
+  <VF_FuelCapacity>Вместимость бака</VF_FuelCapacity>
+  <VF_FuelCapacityTooltip>Максимальное количество топлива, вмещаемое в бак.</VF_FuelCapacityTooltip>
+  <VF_FuelConsumptionRateWorldMultiplier>Расход топлива в мире (%)</VF_FuelConsumptionRateWorldMultiplier>
+  <VF_FuelConsumptionRateWorldMultiplierTooltip>Множитель расхода топлива при движении по карте мира.</VF_FuelConsumptionRateWorldMultiplierTooltip>
+  <VF_AutoRefuelPercent>Порог автозаправки (%)</VF_AutoRefuelPercent>
+  <VF_AutoRefuelPercentTooltip>Поселенцы будут заправлять технику, когда уровень топлива опустится ниже этого процента.</VF_AutoRefuelPercentTooltip>
+  <VF_TargetFuelConfigurable>Настройка уровня топлива</VF_TargetFuelConfigurable>
+  <VF_TargetFuelConfigurableTooltip>Позволяет настраивать желаемый уровень заправки бака.</VF_TargetFuelConfigurableTooltip>
+  <VF_AmbientHeat>Тепловыделение</VF_AmbientHeat>
+  <VF_AmbientHeatTooltip>Тепло, выделяемое техникой при расходе топлива.</VF_AmbientHeatTooltip>
+  <VF_ReconDistance>Дальность разведки</VF_ReconDistance>
+  <VF_ReconDistanceTooltip>Дистанция в клетках карты мира, на которой челнок может провести разведку объекта или поселения.</VF_ReconDistanceTooltip>
+  <VF_FuelConsumptionWorld>Расход топлива в мире (%)</VF_FuelConsumptionWorld>
+  <VF_FuelConsumptionWorldTooltip>Множитель расхода топлива на карте мира.</VF_FuelConsumptionWorldTooltip>
+  <VF_LaunchFixedMaxDistance>Фиксированная макс. дальность</VF_LaunchFixedMaxDistance>
+  <VF_LaunchFixedMaxDistanceTooltip>Установить фиксированную максимальную дальность полёта независимо от уровня топлива.</VF_LaunchFixedMaxDistanceTooltip>
+  <VF_LaunchFixedMaxDistanceDisabled>Нет</VF_LaunchFixedMaxDistanceDisabled>
+  <VF_ControlInFlight>Управление в полёте</VF_ControlInFlight>
+  <VF_ControlInFlightTooltip>Позволяет управлять летательным аппаратом прямо в полёте: менять курс, выбирать точку посадки после загрузки карты и проводить штурмовку неразведанных участков.</VF_ControlInFlightTooltip>
+  <VF_CanRoofPunch>Пробитие крыш</VF_CanRoofPunch>
+  <VF_CanRoofPunchTooltip>Техника способна пробивать тонкие крыши при посадке.</VF_CanRoofPunchTooltip>
+  <VF_SpaceFlight>Космические полёты</VF_SpaceFlight>
+  <VF_SpaceFlightTooltip>Техника способна взлетать и совершать посадки на космические объекты.</VF_SpaceFlightTooltip>
+  <VF_SignalJamming>Подавитель сигналов</VF_SignalJamming>
+  <VF_SignalJammingTooltip>Техника способна глушить радиосигналы для стыковки с определёнными орбитальными платформами.</VF_SignalJammingTooltip>
+  <VF_RateOfClimb>Скороподъёмность</VF_RateOfClimb>
+  <VF_RateOfClimbTooltip>Скорость набора высоты техникой за тик.</VF_RateOfClimbTooltip>
+  <VF_MaxAltitude>Макс. высота</VF_MaxAltitude>
+  <VF_MaxAltitudeTooltip>Максимальная высота полёта данной техники.</VF_MaxAltitudeTooltip>
+  <VF_MaxFallRate>Макс. скорость падения</VF_MaxFallRate>
+  <VF_MaxFallRateTooltip>Максимальная скорость снижения при падении или окончании топлива.</VF_MaxFallRateTooltip>
+  <VF_Instant>Мгновенно</VF_Instant>
+  <VF_Rotatable>Поворотная</VF_Rotatable>
+  <VF_RotatableTooltip>Может ли турель вращаться для наведения на цель, или зафиксирована и стреляет только по направлению корпуса.</VF_RotatableTooltip>
+  <VF_MagazineCapacity>Вместимость магазина</VF_MagazineCapacity>
+  <VF_MagazineCapacityTooltip>Количество выстрелов до необходимости перезарядки.</VF_MagazineCapacityTooltip>
+  <VF_MinRange>Мин. дистанция</VF_MinRange>
+  <VF_MinRangeTooltip>Минимальная дистанция стрельбы турели.</VF_MinRangeTooltip>
+  <VF_MaxRange>Макс. дистанция</VF_MaxRange>
+  <VF_MaxRangeTooltip>Максимальная дистанция стрельбы турели.</VF_MaxRangeTooltip>
+  <VF_WarmupTime>Время прицеливания</VF_WarmupTime>
+  <VF_WarmupTimeValue>{0} с</VF_WarmupTimeValue>
+  <VF_WarmupTimeTooltip>Время, требуемое турели для подготовки выстрела.</VF_WarmupTimeTooltip>
+  <VF_ReloadTime>Время перезарядки</VF_ReloadTime>
+  <VF_ReloadTimeValue>{0} с</VF_ReloadTimeValue>
+  <VF_ReloadTimeTooltip>Время, требуемое для перезарядки турели.</VF_ReloadTimeTooltip>
+  <VF_RotationSpeed>Скорость поворота</VF_RotationSpeed>
+  <VF_RotationSpeedValue>{0} град/с</VF_RotationSpeedValue>
+  <VF_RotationSpeedTooltip>Скорость наведения турели на цель.</VF_RotationSpeedTooltip>
+  <VF_FireModes>Режимы огня</VF_FireModes>
+  <VF_FireModesTooltip>Доступные режимы скорострельности турели.</VF_FireModesTooltip>
+  <VF_RateOfFire>Скорострельность</VF_RateOfFire>
+  <VF_RateOfFireValue>{0} выстр./мин</VF_RateOfFireValue>
+  <VF_ShotsPerBurst>Выстрелов за очередь</VF_ShotsPerBurst>
+  <VF_ShotGroup>Разброс очереди</VF_ShotGroup>
+  <VF_ShotGroupValue>{0} кл.</VF_ShotGroupValue>
+</LanguageData>

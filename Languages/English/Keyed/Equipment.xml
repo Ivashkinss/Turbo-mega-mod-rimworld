@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+  <TMM_Loadout_Temperature>Comfort {0} to {1}</TMM_Loadout_Temperature>
+  <TMM_Loadout_Armor>Sharp {0} · Blunt {1} · Heat {2}</TMM_Loadout_Armor>
+  <TMM_Loadout_MeleeDps>Melee DPS {0}</TMM_Loadout_MeleeDps>
+  <TMM_Loadout_RangedDps>Ranged DPS {0}</TMM_Loadout_RangedDps>
+  <TMM_Loadout_RangedEstimate>Estimated damage at full accuracy before target armor. Includes aiming, burst time and cooldown.</TMM_Loadout_RangedEstimate>
+  <TMM_Loadout_Bonuses>Gear bonuses ({0})</TMM_Loadout_Bonuses>
+  <TMM_Loadout_NoBonuses>No gear bonuses</TMM_Loadout_NoBonuses>
+  <TMM_Loadout_UniformTitle>Uniform · {0}</TMM_Loadout_UniformTitle>
+  <TMM_Loadout_TemplateStats>Preview uses normal quality, default materials and a compatible set.</TMM_Loadout_TemplateStats>
+  <TMM_Loadout_Save>Save uniform</TMM_Loadout_Save>
+  <TMM_Loadout_Assign>Save and assign</TMM_Loadout_Assign>
+  <TMM_Loadout_RangedSlot>Ranged weapon</TMM_Loadout_RangedSlot>
+  <TMM_Loadout_MeleeSlot>Melee weapon</TMM_Loadout_MeleeSlot>
+  <TMM_Loadout_Alternatives>{0} +{1}</TMM_Loadout_Alternatives>
+  <TMM_Loadout_EmptySlot>Empty slot</TMM_Loadout_EmptySlot>
+  <TMM_Loadout_OtherSlot>Other apparel</TMM_Loadout_OtherSlot>
+  <TMM_Loadout_EditUniform>Uniform editor</TMM_Loadout_EditUniform>
+  <TMM_Loadout_ModuleDamage>Extra damage {0}, penetration {1}</TMM_Loadout_ModuleDamage>
+  <TMM_Loadout_Mass>Load {0} / {1} kg</TMM_Loadout_Mass>
+  <TMM_Loadout_MassDetail>Clothing {0} kg&#10;Equipped weapons {1} kg&#10;Inventory {2} kg&#10;In hands {3} kg, separate from caravan load&#10;Capacity {4} kg + {5} kg from backpacks</TMM_Loadout_MassDetail>
 
   <TMM_TabEquipment>Equipment</TMM_TabEquipment>
 

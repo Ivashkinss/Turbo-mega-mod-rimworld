@@ -2,9 +2,7 @@
 <Defs>
   <FactionDef ParentName="PirateBandBase">
     <defName>TMM_GunnersFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>104</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_GunnersFaction</factionIconPath>
     <label>Gunners</label>
     <description>A mercenary army that sells its guns to whoever pays. Disciplined, well armed and utterly amoral.</description>
     <pawnSingular>gunner</pawnSingular>
@@ -12,6 +10,9 @@
     <leaderTitle>commander</leaderTitle>
     <fixedName>Gunners</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>104</configurationListOrderPriority>
     <settlementGenerationWeight>0.4</settlementGenerationWeight>
     <listOrderPriority>16</listOrderPriority>
     <colorSpectrum Inherit="False">

@@ -126,12 +126,17 @@ public sealed class DemonXenotypeProbe : MapComponent
             C("SuperMutantSkinGene", skin != null && skin.def.defName == "Skin_Green", "Skin_Green", skin == null ? "none" : skin.def.defName);
             C("SuperMutantHead", demon.story != null && demon.story.headType != null && demon.story.headType.defName == "TMM_SuperMutantHead", "TMM_SuperMutantHead", demon.story == null || demon.story.headType == null ? "null" : demon.story.headType.defName);
             C("SuperMutantGiantScale", Math.Abs(TurboMegaMod.GiantDrawScale.FactorFor(demon) - 2.2f) < 0.01f, 2.2, TurboMegaMod.GiantDrawScale.FactorFor(demon));
-            C("SuperMutantBodyCustom", demon.story != null && demon.story.bodyType != null && demon.story.bodyType.defName == "TMM_SuperMutant", "TMM_SuperMutant", demon.story == null || demon.story.bodyType == null ? "null" : demon.story.bodyType.defName);
+            VerifySuperMutantBody(demon, demon.gender);
+            Gender otherGender = demon.gender == Gender.Female ? Gender.Male : Gender.Female;
+            Pawn other = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
+                PawnKindDefOf.Colonist, Faction.OfPlayer, forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
+                canGeneratePawnRelations: false, fixedGender: otherGender, forcedXenotype: xd, developmentalStages: DevelopmentalStage.Adult));
+            VerifySuperMutantBody(other, otherGender);
         }
 
         // Portraits without apparel so horns, eyes and tail are visible; saved for human review.
         int saved = 0;
-        foreach (Rot4 rot in new[] { Rot4.South, Rot4.East, Rot4.North })
+        foreach (Rot4 rot in new[] { Rot4.South, Rot4.East, Rot4.North, Rot4.West })
         {
             RenderTexture rt = PortraitsCache.Get(demon, new Vector2(256f, 256f), rot, default(Vector3), 1f / TurboMegaMod.GiantDrawScale.FactorFor(demon), true, true, false, false);
             if (rt == null) continue;
@@ -139,7 +144,14 @@ public sealed class DemonXenotypeProbe : MapComponent
             SaveBmp(rt, path);
             if (File.Exists(path)) saved++;
         }
-        C("PortraitsSaved", saved == 3, 3, saved);
+        C("PortraitsSaved", saved == 4, 4, saved);
+    }
+
+    private void VerifySuperMutantBody(Pawn pawn, Gender gender)
+    {
+        string expected = gender == Gender.Female ? "TMM_SuperMutantFemale" : "TMM_SuperMutant";
+        string body = pawn == null || pawn.story == null || pawn.story.bodyType == null ? "null" : pawn.story.bodyType.defName;
+        C("SuperMutantBodyCustom_" + gender, pawn != null && pawn.gender == gender && body == expected, expected, body);
     }
 
     private static void SaveBmp(RenderTexture rt, string path)

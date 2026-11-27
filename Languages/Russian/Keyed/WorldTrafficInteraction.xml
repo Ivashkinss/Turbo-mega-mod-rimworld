@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_TrafficTrade>Торговать ({0})</TMM_TrafficTrade>
+  <TMM_TrafficTradeDesc>Открыть торговлю с проходящим караваном фракции — обмениваться можно его реальным грузом.\n\n{0}</TMM_TrafficTradeDesc>
+  <TMM_TrafficAttack>Напасть ({0})</TMM_TrafficAttack>
+  <TMM_TrafficAttackDesc>Устроить засаду на проходящий караван фракции и захватить его груз. Отношения с фракцией резко упадут.\n\n{0}</TMM_TrafficAttackDesc>
+  <TMM_TrafficAttackConfirmTitle>Нападение на караван</TMM_TrafficAttackConfirmTitle>
+  <TMM_TrafficAttackConfirm>Напасть на караван фракции {0}?\n\nФракция {0} станет враждебной, и сразу начнётся бой с охраной каравана.</TMM_TrafficAttackConfirm>
+  <TMM_TrafficTooltip>Фракция: {0}\nЛюдей: {1}\nПримерный вес груза: ~{2} кг</TMM_TrafficTooltip>
+  <TMM_TrafficNoNegotiator>В вашем караване нет переговорщика, способного вести торговлю.</TMM_TrafficNoNegotiator>
+  <TMM_TrafficNoTraderKind>У этого каравана нет доступного профиля торговца.</TMM_TrafficNoTraderKind>
+  <TMM_TrafficAttackBlockedGone>Каравана здесь уже нет.</TMM_TrafficAttackBlockedGone>
+  <TMM_TrafficAttackBlockedTruce>С фракцией {0} действует временное перемирие. Нападение сорвёт сюжетный договор.</TMM_TrafficAttackBlockedTruce>
+  <TMM_TrafficAttackBlockedDiplomacy>Отношения с фракцией {0} сейчас нельзя разорвать, поэтому боя не будет.</TMM_TrafficAttackBlockedDiplomacy>
+  <TMM_TrafficAttackBlockedNoTile>Рядом нет открытой местности для боя. Сначала уйдите с клетки поселения.</TMM_TrafficAttackBlockedNoTile>
+  <TMM_TrafficAttackFailed>Засаду устроить не удалось. Оба каравана остались как были.</TMM_TrafficAttackFailed>
+  <TMM_TrafficTradeStale>Сделка сорвалась: караваны разошлись или товар изменился. Обмена не было.</TMM_TrafficTradeStale>
+  <TMM_VehicleUnloadHome>Разгрузить машину</TMM_VehicleUnloadHome>
+  <TMM_VehicleUnloadHomeDesc>Экипаж выходит, грузчики разносят груз по складам. Груз, для которого нет склада, кладут рядом с колонией.</TMM_VehicleUnloadHomeDesc>
+  <TMM_VehicleUnloadHomeActive>Машина разгружается. Нажмите, чтобы повторить приказ, например если экипаж не смог выйти или рядом враги.</TMM_VehicleUnloadHomeActive>
+</LanguageData>

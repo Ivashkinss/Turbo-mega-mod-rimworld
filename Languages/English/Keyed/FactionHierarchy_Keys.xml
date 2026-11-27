@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+  <TMM_FactionHierarchy_Location_Map>Map</TMM_FactionHierarchy_Location_Map>
+  <TMM_FactionHierarchy_Location_World>World</TMM_FactionHierarchy_Location_World>
+  <TMM_FactionHierarchy_Location_Unknown>Unknown</TMM_FactionHierarchy_Location_Unknown>
   <TMM_FactionHierarchy_Title>Factions and Hierarchy</TMM_FactionHierarchy_Title>
   <TMM_FactionHierarchy_Relations>Relations: {0} ({1})</TMM_FactionHierarchy_Relations>
   <TMM_FactionHierarchy_Leader>Leader: {0}</TMM_FactionHierarchy_Leader>

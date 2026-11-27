@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_BoardVehicle>Сесть как {0} [{1}]</VF_BoardVehicle>
+  <VF_BoardVehicleGroup>Сесть в {0}</VF_BoardVehicleGroup>
+  <VF_BoardVehicleGroupFail>Нельзя сесть в {0}. {1}</VF_BoardVehicleGroupFail>
+  <VF_BoardFailureTooMany>Выбрано слишком много поселенцев</VF_BoardFailureTooMany>
+  <VF_BoardFailureNonCombatant>{0} не способен к насилию</VF_BoardFailureNonCombatant>
+  <VF_ActivityIconOnBoardShip>На борту {0}</VF_ActivityIconOnBoardShip>
+  <VF_IsIncapableOfRamming>Таранить {0}</VF_IsIncapableOfRamming>
+  <VF_CannotMoveToCell>{0} не может добраться до этой области.</VF_CannotMoveToCell>
+  <VF_LandVehicleHere>Посадить технику здесь</VF_LandVehicleHere>
+  <VF_LandVehicleEdge>Приземлиться в {0} у края карты.</VF_LandVehicleEdge>
+  <VF_LandVehicleCenter>Приземлиться в {0} в центре.</VF_LandVehicleCenter>
+  <VF_LandVehicleTargetedLanding>Приземлиться в {0} и выбрать место посадки.</VF_LandVehicleTargetedLanding>
+  <VF_AttackAndTargetLanding>Атаковать {0}: выбор посадки</VF_AttackAndTargetLanding>
+  <VF_StrafeRun>Штурмовка</VF_StrafeRun>
+  <VF_AerialReconSite>Разведка</VF_AerialReconSite>
+  <VF_CantEnterVehicle_IdeoligionForbids>Нельзя сесть в технику: запрещено идеолигией.</VF_CantEnterVehicle_IdeoligionForbids>
+</LanguageData>

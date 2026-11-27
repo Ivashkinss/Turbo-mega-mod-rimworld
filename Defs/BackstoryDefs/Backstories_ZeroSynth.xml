@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <BackstoryDef>
+    <defName>TMM_ZeroSynthChildhood</defName>
+    <slot>Childhood</slot>
+    <title>subject zero</title>
+    <titleShort>subject zero</titleShort>
+    <description>[PAWN_nameDef] remembers white rooms and a voice reading numbers aloud. [PAWN_pronoun] can learn nearly anything from those memories, but cannot bring [PAWN_objective]self to harm another person.</description>
+    <workDisables>Violent</workDisables>
+    <spawnCategories><li>TMM_Heroes</li></spawnCategories>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+</Defs>

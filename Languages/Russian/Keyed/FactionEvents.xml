@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Общее -->
+  <TMM.Event.Common.Colonist>поселенец</TMM.Event.Common.Colonist>
+  <TMM.Event.Common.ItemMissing>Нужный предмет больше не доступен на карте.</TMM.Event.Common.ItemMissing>
+  <TMM.Event.Common.Decline>Отказаться</TMM.Event.Common.Decline>
+  <TMM.Event.Common.NotEnoughSilver>Недостаточно серебра (требуется {0}).</TMM.Event.Common.NotEnoughSilver>
+  <TMM.Event.Common.ColonistUnavailable>Выбранный поселенец больше недоступен.</TMM.Event.Common.ColonistUnavailable>
+
+  <!-- 1. Братство Стали -->
+  <TMM.Event.BosTechDemand.FallbackTech>довоенную технологию</TMM.Event.BosTechDemand.FallbackTech>
+  <TMM.Event.BosTechDemand.Title>Требование Братства Стали</TMM.Event.BosTechDemand.Title>
+  <TMM.Event.BosTechDemand.Text>Патруль в силовой броне из фракции «{0}» вышел на связь. Их писец засёк опасную технологию ({1}) и требует сдать её на хранение согласно Кодексу.</TMM.Event.BosTechDemand.Text>
+  <TMM.Event.BosTechDemand.Accept>Сдать технологию (+15 к отношениям)</TMM.Event.BosTechDemand.Accept>
+  <TMM.Event.BosTechDemand.AcceptMsg>Фракция «{0}» одобрительно приняла изъятую технологию.</TMM.Event.BosTechDemand.AcceptMsg>
+  <TMM.Event.BosTechDemand.Refuse>Отказать (-20 к отношениям)</TMM.Event.BosTechDemand.Refuse>
+  <TMM.Event.BosTechDemand.RefuseMsg>Фракция «{0}» занесла ваш отказ в реестр нарушителей Кодекса.</TMM.Event.BosTechDemand.RefuseMsg>
+
+  <TMM.Event.BosPaladinShelter.Title>Паладин просит приют</TMM.Event.BosPaladinShelter.Title>
+  <TMM.Event.BosPaladinShelter.Text>Потрёпанный в боях паладин из фракции «{0}» просит приюта на два дня, чтобы перезарядить энергоблоки и залатать броню. Взамен обещает медикаменты и благодарность ордена.</TMM.Event.BosPaladinShelter.Text>
+  <TMM.Event.BosPaladinShelter.Accept>Предоставить приют на 2 дня</TMM.Event.BosPaladinShelter.Accept>
+  <TMM.Event.BosPaladinShelter.AcceptMsg>Паладин {0} входит в поселение на двухдневный отдых.</TMM.Event.BosPaladinShelter.AcceptMsg>
+  <TMM.Event.BosPaladinShelter.Refuse>Прогнать (-5 к отношениям)</TMM.Event.BosPaladinShelter.Refuse>
+  <TMM.Event.BosPaladinShelter.DoneTitle>Паладин Братства уходит</TMM.Event.BosPaladinShelter.DoneTitle>
+  <TMM.Event.BosPaladinShelter.DoneText>{0} благодарит поселение за приют и оставляет ящик медикаментов перед тем, как вернуться в строй. Ad Victoriam.</TMM.Event.BosPaladinShelter.DoneText>
+
+  <!-- 2. Изгои Братства -->
+  <TMM.Event.OutcastsTechForMeds.Title>Обмен Изгоев</TMM.Event.OutcastsTechForMeds.Title>
+  <TMM.Event.OutcastsTechForMeds.Text>Разведчики фракции «{0}» предлагают 10 обычных медикаментов в обмен на ваш предмет ({1}). Никаких проповедей — строго железо за аптечки.</TMM.Event.OutcastsTechForMeds.Text>
+  <TMM.Event.OutcastsTechForMeds.Accept>Обменять технологию на 10 медикаментов</TMM.Event.OutcastsTechForMeds.Accept>
+  <TMM.Event.OutcastsTechForMeds.AcceptMsg>Изгои сбросили 10 медикаментов в обмен на ваши технологии.</TMM.Event.OutcastsTechForMeds.AcceptMsg>
+
+  <TMM.Event.OutcastsCaravanAmbush.Title>Засада Изгоев на дороге</TMM.Event.OutcastsCaravanAmbush.Title>
+  <TMM.Event.OutcastsCaravanAmbush.Text>Бронированный отряд фракции «{0}» перекрыл дорогу вашему каравану у своей зоны патрулирования. Они требуют {1} серебра за проход без боя.</TMM.Event.OutcastsCaravanAmbush.Text>
+  <TMM.Event.OutcastsCaravanAmbush.Pay>Заплатить {0} серебра</TMM.Event.OutcastsCaravanAmbush.Pay>
+  <TMM.Event.OutcastsCaravanAmbush.PaidMsg>Караван заплатил {0} серебра и миновал заставу Изгоев без потерь.</TMM.Event.OutcastsCaravanAmbush.PaidMsg>
+  <TMM.Event.OutcastsCaravanAmbush.Fight>Отказаться и принять бой!</TMM.Event.OutcastsCaravanAmbush.Fight>
+
+  <!-- 3. Анклав -->
+  <TMM.Event.EnclavePropaganda.Title>Радиопередача Анклава</TMM.Event.EnclavePropaganda.Title>
+  <TMM.Event.EnclavePropaganda.Text>Чёткий довоенный марш прорывается сквозь помехи на всех частотах: «{0}» вещает о возрождении порядка, чистоты и былой цивилизации.\n\nВоодушевлено поселенцев: {1}\nВозмущено поселенцев: {2}</TMM.Event.EnclavePropaganda.Text>
+
+  <TMM.Event.EnclavePunitiveDrop.Title>Карательный десант Анклава</TMM.Event.EnclavePunitiveDrop.Title>
+  <TMM.Event.EnclavePunitiveDrop.Text>Командование объявило ваше поселение враждебным очагом мятежа. Штурмовые капсулы фракции «{0}» уже падают на ваш периметр!</TMM.Event.EnclavePunitiveDrop.Text>
+
+  <!-- 4. Институт -->
+  <TMM.Event.InstituteCourserAbduction.Title>Похищение синтом-охотником</TMM.Event.InstituteCourserAbduction.Title>
+  <TMM.Event.InstituteCourserAbduction.Text>Воздух разорвали голубые вспышки телепортации! Небольшой отряд захвата фракции «{0}» прибыл, чтобы похитить вашего поселенца.</TMM.Event.InstituteCourserAbduction.Text>
+
+  <TMM.Event.InstituteSynthReplacement.Title>Странные помехи ретранслятора</TMM.Event.InstituteSynthReplacement.Title>
+  <TMM.Event.InstituteSynthReplacement.Text>Возле жилых помещений на мгновение зафиксирован всплеск молекулярного ретранслятора фракции «{0}». Все поселенцы на месте, но в ком-то появилось неуловимое, пугающее отличие.</TMM.Event.InstituteSynthReplacement.Text>
+  <TMM.Event.InstituteSynthReplacement.RevealTitle>Раскрыта подмена синтом: {0}</TMM.Event.InstituteSynthReplacement.RevealTitle>
+  <TMM.Event.InstituteSynthReplacement.RevealText>Плановый медосмотр выявил вживлённый компонент Института у поселенца {0}. Оказывается, подмена произошла давно — но пока синт сохраняет верность вашему поселению.</TMM.Event.InstituteSynthReplacement.RevealText>
+
+  <!-- 5. Подземка -->
+  <TMM.Event.RailroadFugitiveSynth.Title>Беглый синт просит убежища</TMM.Event.RailroadFugitiveSynth.Title>
+  <TMM.Event.RailroadFugitiveSynth.Text>Связной фракции «{0}» передаёт просьбу беглого синта, скрывающегося неподалёку. Он готов присоединиться к вам прямо сейчас, но через 3 дня по его следу придёт погоня Института.</TMM.Event.RailroadFugitiveSynth.Text>
+  <TMM.Event.RailroadFugitiveSynth.Accept>Принять беглеца (присоединится; погоня через 3 дня)</TMM.Event.RailroadFugitiveSynth.Accept>
+  <TMM.Event.RailroadFugitiveSynth.AcceptMsg>{0} присоединяется к поселению. Будьте готовы к погоне Института через 3 дня.</TMM.Event.RailroadFugitiveSynth.AcceptMsg>
+  <TMM.Event.RailroadFugitiveSynth.Refuse>Отказать в убежище (-5 к отношениям)</TMM.Event.RailroadFugitiveSynth.Refuse>
+
+  <TMM.Event.RailroadDeadDrop.Title>Тайник Подземки</TMM.Event.RailroadDeadDrop.Title>
+  <TMM.Event.RailroadDeadDrop.Text>Разведчик заметил начерченный мелом знак фонаря на камне неподалёку. Под ним обнаружен тайник фракции «{0}» с серебром, медикаментами и компонентами.</TMM.Event.RailroadDeadDrop.Text>
+
+  <!-- 6. Стрелки -->
+  <TMM.Event.GunnersExtortion.Title>Вымогательство Стрелков</TMM.Event.GunnersExtortion.Title>
+  <TMM.Event.GunnersExtortion.Text>Командир взвода фракции «{0}» выходит на связь с ближайшего холма: платите {1} серебра «за охрану», иначе бойцы заберут всё силой.</TMM.Event.GunnersExtortion.Text>
+  <TMM.Event.GunnersExtortion.Pay>Заплатить {0} серебра</TMM.Event.GunnersExtortion.Pay>
+  <TMM.Event.GunnersExtortion.PaidMsg>Стрелкам выплачено {0} серебра. Их отряд отходит от периметра.</TMM.Event.GunnersExtortion.PaidMsg>
+  <TMM.Event.GunnersExtortion.Refuse>Отказать — готовиться к налёту!</TMM.Event.GunnersExtortion.Refuse>
+
+  <TMM.Event.GunnersMercContract.Title>Контракт наёмников-Стрелков</TMM.Event.GunnersMercContract.Title>
+  <TMM.Event.GunnersMercContract.Text>Двое свободных от заданий бойцов фракции «{0}» предлагают послужить вашему поселению один сезон (15 дней) за аванс в {1} серебра.</TMM.Event.GunnersMercContract.Text>
+  <TMM.Event.GunnersMercContract.Hire>Нанять 2 бойцов за {0} серебра</TMM.Event.GunnersMercContract.Hire>
+  <TMM.Event.GunnersMercContract.HiredMsg>Наёмники ({0}) прибыли в поселение по контракту на 15 дней.</TMM.Event.GunnersMercContract.HiredMsg>
+  <TMM.Event.GunnersMercContract.ExpiredMsg>Срок контракта наёмников-Стрелков истёк; бойцы покидают поселение.</TMM.Event.GunnersMercContract.ExpiredMsg>
+
+  <!-- 7. Волт-Тек -->
+  <TMM.Event.VaultTecExperiment.Title>«Добровольный» тест Волт-Тек</TMM.Event.VaultTecExperiment.Title>
+  <TMM.Event.VaultTecExperiment.Text>Жизнерадостный представитель фракции «{0}» приглашает поселенца {1} испытать экспериментальную сыворотку бодрости. Строго добровольно, совершенно безопасно (наверное) и с премией серебром.</TMM.Event.VaultTecExperiment.Text>
+  <TMM.Event.VaultTecExperiment.Accept>Участвовать в тесте (+{0} серебра, сыворотка)</TMM.Event.VaultTecExperiment.Accept>
+  <TMM.Event.VaultTecExperiment.AcceptMsg>{0} прошёл клинический тест Волт-Тек и получил премию.</TMM.Event.VaultTecExperiment.AcceptMsg>
+
+  <TMM.Event.VaultTecSupplyCaravan.Title>Поставка излишков Волт-Тек</TMM.Event.VaultTecSupplyCaravan.Title>
+  <TMM.Event.VaultTecSupplyCaravan.Text>Интендант фракции «{0}» предлагает списанный контейнер Убежища (16 сухпайков, 8 медикаментов, 6 компонентов) по льготной цене {1} серебра.</TMM.Event.VaultTecSupplyCaravan.Text>
+  <TMM.Event.VaultTecSupplyCaravan.Buy>Купить контейнер за {0} серебра</TMM.Event.VaultTecSupplyCaravan.Buy>
+  <TMM.Event.VaultTecSupplyCaravan.BoughtMsg>Припасы Убежища от Волт-Тек доставлены в поселение.</TMM.Event.VaultTecSupplyCaravan.BoughtMsg>
+
+  <!-- 8. Минитмены и охотники -->
+  <TMM.Event.MinutemenDistressSignal.Title>Сигнал бедствия минитменов</TMM.Event.MinutemenDistressSignal.Title>
+  <TMM.Event.MinutemenDistressSignal.Text>Радио «Свобода» передаёт срочный вызов! «{0}» сообщает о соседнем аванпосте под угрозой налётчиков и просит отметить его координаты на карте мира, чтобы выслать помощь.</TMM.Event.MinutemenDistressSignal.Text>
+  <TMM.Event.MinutemenDistressSignal.Accept>Отметить точку на карте мира (+8 к отношениям)</TMM.Event.MinutemenDistressSignal.Accept>
+  <TMM.Event.MinutemenDistressSignal.SiteCreatedMsg>Координаты сигнала бедствия отмечены на карте мира.</TMM.Event.MinutemenDistressSignal.SiteCreatedMsg>
+  <TMM.Event.MinutemenDistressSignal.Refuse>Мы не можем отправить людей (-5 к отношениям)</TMM.Event.MinutemenDistressSignal.Refuse>
+
+  <TMM.Event.HuntersMonsterWarning.Title>Предупреждение охотника о нечисти</TMM.Event.HuntersMonsterWarning.Title>
+  <TMM.Event.HuntersMonsterWarning.Text>Проезжий охотник из фракции «{0}» заглянул с тревогой: стая из фракции «{1}» взяла ваш след и ударит примерно через два дня. Готовьте серебро и соль.</TMM.Event.HuntersMonsterWarning.Text>
+
+  <!-- 9. Британские Просвещённые -->
+  <TMM.Event.MolBuyRecords.Title>Запрос Британских Просвещённых</TMM.Event.MolBuyRecords.Title>
+  <TMM.Event.MolBuyRecords.TextArchive>Эмиссар фракции «{0}» узнал, что у вас хранится {1}. Ложа предлагает {2} серебра и высокую дипломатическую признательность за передачу архива в Лондон.</TMM.Event.MolBuyRecords.TextArchive>
+  <TMM.Event.MolBuyRecords.TextNotes>Архивариус фракции «{0}» желает выкупить копии ваших полевых наблюдений о нечисти за {1} серебра.</TMM.Event.MolBuyRecords.TextNotes>
+  <TMM.Event.MolBuyRecords.SellArchive>Продать архив за {0} серебра (+18 к отношениям)</TMM.Event.MolBuyRecords.SellArchive>
+  <TMM.Event.MolBuyRecords.SellNotes>Продать копии записей за {0} серебра (+8 к отношениям)</TMM.Event.MolBuyRecords.SellNotes>
+  <TMM.Event.MolBuyRecords.SoldMsg>Просвещённые выплатили {0} серебра за ваши записи о нечисти.</TMM.Event.MolBuyRecords.SoldMsg>
+
+  <TMM.Event.MolRecruitment.Title>Вербовка в ложу Просвещённых</TMM.Event.MolRecruitment.Title>
+  <TMM.Event.MolRecruitment.Text>Фракция «{0}» впечатлена острым умом поселенца {1} и предлагает перевести его на службу в орден в обмен на {2} серебра, 2 продвинутых компонента и щедрую благодарность.</TMM.Event.MolRecruitment.Text>
+  <TMM.Event.MolRecruitment.Accept>Отпустить {0} в ложу (+{1} серебра, +2 продв. компонента)</TMM.Event.MolRecruitment.Accept>
+  <TMM.Event.MolRecruitment.AcceptMsg>{0} отправляется на службу во фракцию «{1}». Компенсация доставлена.</TMM.Event.MolRecruitment.AcceptMsg>
+  <TMM.Event.MolRecruitment.Refuse>Оставить {0} в нашем поселении</TMM.Event.MolRecruitment.Refuse>
+
+  <!-- 10. Воинство Небес -->
+  <TMM.Event.HeavenVesselRequest.Title>Ангел ищет сосуд</TMM.Event.HeavenVesselRequest.Title>
+  <TMM.Event.HeavenVesselRequest.Text>Звучный голос из «{0}» обращается к поселенцу {1}, испрашивая добровольного согласия ненадолго стать сосудом, чтобы запечатать разлом. Согласие дарует ангельскую благодать и расположение Небес.</TMM.Event.HeavenVesselRequest.Text>
+  <TMM.Event.HeavenVesselRequest.Accept>Дать согласие за {0} (+благодать, +20 к отношениям)</TMM.Event.HeavenVesselRequest.Accept>
+  <TMM.Event.HeavenVesselRequest.AcceptMsg>Небесная благодать снизошла на поселенца {0}.</TMM.Event.HeavenVesselRequest.AcceptMsg>
+  <TMM.Event.HeavenVesselRequest.Refuse>Отказать (-5 к отношениям)</TMM.Event.HeavenVesselRequest.Refuse>
+
+  <TMM.Event.HeavenDivineOmen.Title>Божественное знамение</TMM.Event.HeavenDivineOmen.Title>
+  <TMM.Event.HeavenDivineOmen.Text>Столпы серебристо-золотого света прорезали облака над поселением, пока мимо проходило «{0}». Верующие ощутили прилив мира, а демоническая кровь закипела от тревоги.\n\nВоодушевлено: {1}\nВстревожено: {2}</TMM.Event.HeavenDivineOmen.Text>
+
+  <!-- 11. Демоны Ада -->
+  <TMM.Event.HellCrossroadsDeal.Title>Сделка на перекрёстке</TMM.Event.HellCrossroadsDeal.Title>
+  <TMM.Event.HellCrossroadsDeal.Text>Безупречно одетый делец из фракции «{0}» ждёт у перекрёстка с заманчивой сделкой: {1} серебра и 4 передовых медикамента прямо сейчас — в обмен на «визит сборщиков» ровно через год.</TMM.Event.HellCrossroadsDeal.Text>
+  <TMM.Event.HellCrossroadsDeal.Accept>Заключить сделку (+{0} серебра, +4 передовых мед.; долг через год)</TMM.Event.HellCrossroadsDeal.Accept>
+  <TMM.Event.HellCrossroadsDeal.AcceptMsg>Сделка на перекрёстке скреплена. Ждите сборщиков Ада через год.</TMM.Event.HellCrossroadsDeal.AcceptMsg>
+  <TMM.Event.HellCrossroadsDeal.Refuse>Уйти с перекрёстка</TMM.Event.HellCrossroadsDeal.Refuse>
+  <TMM.Event.HellCrossroadsDeal.DueTitle>Срок сделки на перекрёстке истёк!</TMM.Event.HellCrossroadsDeal.DueTitle>
+  <TMM.Event.HellCrossroadsDeal.DueText>Минул ровно год со дня сделки, заключённой от имени поселенца {0}. Демоны Ада явились за долгом!</TMM.Event.HellCrossroadsDeal.DueText>
+
+  <TMM.Event.HellDemonicPossession.Title>Одержимость поселенца</TMM.Event.HellDemonicPossession.Title>
+  <TMM.Event.HellDemonicPossession.Text>Чёрный дым обвился вокруг {0}: злой дух из «{1}» пытается вселиться в тело! Вы можете потратить {2} серебра на экстренный обряд изгнания или позволить {0} перетерпеть одержимость несколько дней.</TMM.Event.HellDemonicPossession.Text>
+  <TMM.Event.HellDemonicPossession.Exorcise>Провести изгнание ({0} серебра)</TMM.Event.HellDemonicPossession.Exorcise>
+  <TMM.Event.HellDemonicPossession.ExorcisedMsg>Демон изгнан из {0} в клубах серного дыма.</TMM.Event.HellDemonicPossession.ExorcisedMsg>
+  <TMM.Event.HellDemonicPossession.Endure>Перетерпеть одержимость</TMM.Event.HellDemonicPossession.Endure>
+  <TMM.Event.HellDemonicPossession.PossessedMsg>Глаза {0} почернели — демон овладел телом.</TMM.Event.HellDemonicPossession.PossessedMsg>
+
+  <!-- 12. Разумные гули -->
+  <TMM.Event.GhoulsRefugees.Title>Беженцы-гули просят приюта</TMM.Event.GhoulsRefugees.Title>
+  <TMM.Event.GhoulsRefugees.Text>Двое разумных скитальцев-гулей из «{0}» были изгнаны из соседнего городка и просят принять их в ваше поселение.</TMM.Event.GhoulsRefugees.Text>
+  <TMM.Event.GhoulsRefugees.Accept>Принять обоих беженцев-гулей (+15 к отношениям)</TMM.Event.GhoulsRefugees.Accept>
+  <TMM.Event.GhoulsRefugees.AcceptMsg>Беженцы-гули ({0}) присоединились к поселению.</TMM.Event.GhoulsRefugees.AcceptMsg>
+  <TMM.Event.GhoulsRefugees.Refuse>Отказать (-5 к отношениям)</TMM.Event.GhoulsRefugees.Refuse>
+
+  <TMM.Event.GhoulsRadTrade.Title>Радиоактивный товар гулей</TMM.Event.GhoulsRadTrade.Title>
+  <TMM.Event.GhoulsRadTrade.Text>Старатели из «{0}» вытащили из фонящего кратера 45 урана и 120 химтоплива — туда не сунется ни один гладкокожий. Всю партию отдают за {1} серебра.</TMM.Event.GhoulsRadTrade.Text>
+  <TMM.Event.GhoulsRadTrade.Buy>Купить 45 урана и 120 химтоплива ({0} серебра)</TMM.Event.GhoulsRadTrade.Buy>
+  <TMM.Event.GhoulsRadTrade.BoughtMsg>Старатели-гули доставили уран и химтопливо в поселение.</TMM.Event.GhoulsRadTrade.BoughtMsg>
+
+  <!-- 13. Дружелюбные супермутанты -->
+  <TMM.Event.FriendlyMutantJoin.Title>Супермутант-одиночка</TMM.Event.FriendlyMutantJoin.Title>
+  <TMM.Event.FriendlyMutantJoin.Text>Миролюбивый супермутант из «{0}» подошёл к вашим границам в поисках дома, где сможет спокойно трудиться и защищать добрых людей.</TMM.Event.FriendlyMutantJoin.Text>
+  <TMM.Event.FriendlyMutantJoin.Accept>Принять супермутанта (+12 к отношениям)</TMM.Event.FriendlyMutantJoin.Accept>
+  <TMM.Event.FriendlyMutantJoin.AcceptMsg>{0} присоединяется к вашему поселению!</TMM.Event.FriendlyMutantJoin.AcceptMsg>
+
+  <TMM.Event.FriendlyMutantHeal.Title>Просьба вылечить сородича</TMM.Event.FriendlyMutantHeal.Title>
+  <TMM.Event.FriendlyMutantHeal.Text>«{0}» просят ваших врачей перевязать раненого брата, попавшего в засаду рейдеров. Если выходите его за два дня — получите сталь и крепкую дружбу.</TMM.Event.FriendlyMutantHeal.Text>
+  <TMM.Event.FriendlyMutantHeal.Accept>Принять раненого мутанта на лечение</TMM.Event.FriendlyMutantHeal.Accept>
+  <TMM.Event.FriendlyMutantHeal.AcceptMsg>Раненый супермутант {0} прибыл в поселение за помощью.</TMM.Event.FriendlyMutantHeal.AcceptMsg>
+  <TMM.Event.FriendlyMutantHeal.Refuse>Отказать (-5 к отношениям)</TMM.Event.FriendlyMutantHeal.Refuse>
+  <TMM.Event.FriendlyMutantHeal.DoneTitle>Супермутант поправился</TMM.Event.FriendlyMutantHeal.DoneTitle>
+  <TMM.Event.FriendlyMutantHeal.DoneText>{0} окреп благодаря вашим медикам и оставил в благодарность 120 стали перед уходом.</TMM.Event.FriendlyMutantHeal.DoneText>
+
+  <!-- 14. Дикие супермутанты -->
+  <TMM.Event.WildMutantsMeatBags.Title>Набег мутантов с «мясными мешками»</TMM.Event.WildMutantsMeatBags.Title>
+  <TMM.Event.WildMutantsMeatBags.Text>Банда из «{0}» идёт на штурм — и приволокла к краю карты двоих связанных пленников! Отбейте набег, чтобы спасти их.</TMM.Event.WildMutantsMeatBags.Text>
+
+  <TMM.Event.WildMutantsWarlordDuel.Title>Вызов на поединок вождём</TMM.Event.WildMutantsWarlordDuel.Title>
+  <TMM.Event.WildMutantsWarlordDuel.Text>Огромный вождь фракции «{0}» ревёт у ворот, вызывая ваше поселение на честный бой! Сразитесь с одним вождём ради его мешка с 500 серебра — или откажитесь и примите полный набег.</TMM.Event.WildMutantsWarlordDuel.Text>
+  <TMM.Event.WildMutantsWarlordDuel.Accept>Принять вызов вождя (1 боец, добыча 500 серебра)</TMM.Event.WildMutantsWarlordDuel.Accept>
+  <TMM.Event.WildMutantsWarlordDuel.AcceptMsg>Вождь {0} выходит на поединок!</TMM.Event.WildMutantsWarlordDuel.AcceptMsg>
+  <TMM.Event.WildMutantsWarlordDuel.Refuse>Отказаться — готовиться к набегу всей банды!</TMM.Event.WildMutantsWarlordDuel.Refuse>
+
+  <!-- 15. Кланы нечисти -->
+  <TMM.Event.MonsterVampireNightHunt.Title>Ночная охота вампиров</TMM.Event.MonsterVampireNightHunt.Title>
+  <TMM.Event.MonsterVampireNightHunt.Text>Под покровом ночи стая вампиров из «{0}» прокралась через ваш периметр, чтобы поохотиться!</TMM.Event.MonsterVampireNightHunt.Text>
+
+  <TMM.Event.MonsterShapeshifterGuest.Title>Оборотень среди гостей!</TMM.Event.MonsterShapeshifterGuest.Title>
+  <TMM.Event.MonsterShapeshifterGuest.Text>В поселение зашёл путник по имени {0}, но ваш дозорный заметил на его запястье ожоги от серебра и жёлтый отблеск в глазах. Разоблачить гостя немедленно или проигнорировать тревогу?</TMM.Event.MonsterShapeshifterGuest.Text>
+  <TMM.Event.MonsterShapeshifterGuest.Confront>Разоблачить прямо сейчас</TMM.Event.MonsterShapeshifterGuest.Confront>
+  <TMM.Event.MonsterShapeshifterGuest.ConfrontedMsg>Прижатый к стенке, {0} сбрасывает личину и бросается в атаку!</TMM.Event.MonsterShapeshifterGuest.ConfrontedMsg>
+  <TMM.Event.MonsterShapeshifterGuest.Ignore>Игнорировать подозрения</TMM.Event.MonsterShapeshifterGuest.Ignore>
+  <TMM.Event.MonsterShapeshifterGuest.TransformTitle>Гость обернулся чудовищем!</TMM.Event.MonsterShapeshifterGuest.TransformTitle>
+  <TMM.Event.MonsterShapeshifterGuest.TransformText>Дозорный был прав! {0} сбросил маскировку и напал на поселение изнутри!</TMM.Event.MonsterShapeshifterGuest.TransformText>
+
+  <TMM.Event.Common.PaymentFailed>Сделка не состоялась. Оплата сохранена, решение можно принять снова.</TMM.Event.Common.PaymentFailed>
+</LanguageData>

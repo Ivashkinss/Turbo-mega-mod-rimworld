@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>TMM_RelayFlash</defName>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass> <!-- CHECK API -->
+    <graphicData>
+      <texPath>Things/Mote/TMM_RelayFlash</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(2.6, 2.6)</drawSize>
+      <color>(0.45, 0.85, 1.0, 0.95)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.18</solidTime>
+    <fadeOutTime>0.38</fadeOutTime>
+    <growthRate>2.4</growthRate>
+  </FleckDef>
+
+</Defs>

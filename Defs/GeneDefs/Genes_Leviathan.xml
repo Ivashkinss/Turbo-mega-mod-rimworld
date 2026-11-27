@@ -5,7 +5,7 @@
     <defName>TMM_Head_Leviathan</defName>
     <label>leviathan maw</label>
     <description>Carriers of this gene have black veins under the skin and a mouth that splits from ear to ear into rows of needle teeth.</description>
-    <iconPath>UI/Icons/Genes/Gene_HeavyBrow</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Head_Leviathan</iconPath>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <forcedHeadTypes>
       <li>TMM_LeviathanHead</li>

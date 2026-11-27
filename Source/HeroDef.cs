@@ -15,6 +15,39 @@ namespace TurboMegaMod
     /// Immutable description of a unique named hero (see Documentation/HERO-REGISTRY-DESIGN.md).
     /// The faction is a defName string so heroes of factions that are not installed yet do not
     /// break XML cross-references; GetOrCreate simply returns null for them.
+    /// Custom look of a named hero, applied on top of the generated pawn. Every field is optional: unset ones keep
+    /// what the generator chose. Colours with alpha 0 mean "not set".
+    public sealed class HeroAppearance
+    {
+        public HairDef hair;
+        public BeardDef beard;
+        public HeadTypeDef headType;
+        public BodyTypeDef bodyType;
+        public UnityEngine.Color skinColor = new UnityEngine.Color(0f, 0f, 0f, 0f);
+        public UnityEngine.Color hairColor = new UnityEngine.Color(0f, 0f, 0f, 0f);
+        public TattooDef faceTattoo;
+        public TattooDef bodyTattoo;
+
+        /// Returns true when something on the pawn was changed.
+        public bool ApplyTo(Pawn pawn)
+        {
+            if (pawn == null || pawn.story == null) return false;
+            bool changed = false;
+            if (hair != null && pawn.story.hairDef != hair) { pawn.story.hairDef = hair; changed = true; }
+            if (headType != null && pawn.story.headType != headType) { pawn.story.headType = headType; changed = true; }
+            if (bodyType != null && pawn.story.bodyType != bodyType) { pawn.story.bodyType = bodyType; changed = true; }
+            if (skinColor.a > 0f && (!pawn.story.skinColorOverride.HasValue || pawn.story.skinColorOverride.Value != skinColor)) { pawn.story.skinColorOverride = skinColor; changed = true; }
+            if (hairColor.a > 0f && pawn.story.HairColor != hairColor) { pawn.story.HairColor = hairColor; changed = true; }
+            if (pawn.style != null)
+            {
+                if (beard != null && pawn.style.beardDef != beard) { pawn.style.beardDef = beard; changed = true; }
+                if (faceTattoo != null && pawn.style.FaceTattoo != faceTattoo) { pawn.style.FaceTattoo = faceTattoo; changed = true; }
+                if (bodyTattoo != null && pawn.style.BodyTattoo != bodyTattoo) { pawn.style.BodyTattoo = bodyTattoo; changed = true; }
+            }
+            if (changed && pawn.Drawer != null && pawn.Drawer.renderer != null) pawn.Drawer.renderer.SetAllGraphicsDirty();
+            return changed;
+        }
+    }
     public sealed class HeroDef : Def
     {
         public string factionDef;
@@ -40,6 +73,7 @@ namespace TurboMegaMod
         public BackstoryDef childhood;
         public BackstoryDef adulthood;
         public bool uniqueWeaponOneShot;
+        public HeroAppearance appearance;
 
         public override IEnumerable<string> ConfigErrors()
         {

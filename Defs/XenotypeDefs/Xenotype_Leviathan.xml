@@ -6,7 +6,7 @@
     <label>leviathan</label>
     <description>Primordial creatures of black ooze, older than angels and demons, that wear human vessels. They heal almost anything, hunger constantly and open their faces into maws full of teeth.</description>
     <descriptionShort>Primordial devourers in human vessels. Regenerate fast, hit hard, always hungry.</descriptionShort>
-    <iconPath>UI/Icons/Xenotypes/Sanguophage</iconPath>
+    <iconPath>UI/Icons/TMM/Xenotypes/TMM_Leviathan</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.4</combatPowerFactor>
     <genes>

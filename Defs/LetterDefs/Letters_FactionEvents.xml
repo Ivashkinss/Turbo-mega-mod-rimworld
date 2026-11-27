@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <LetterDef>
+    <defName>TMM_FactionEventChoiceLetter</defName>
+    <letterClass>TurboMegaMod.ChoiceLetter_TMMFactionEvent</letterClass>
+    <color>(170, 195, 220)</color>
+    <flashColor>(200, 225, 250)</flashColor>
+    <flashInterval>40</flashInterval>
+    <arriveSound>LetterArrive</arriveSound>
+  </LetterDef>
+</Defs>

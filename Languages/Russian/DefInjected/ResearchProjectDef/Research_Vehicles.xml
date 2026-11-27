@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <TMM_Vehicle_Engines.label>машины на двигателях внутреннего сгорания</TMM_Vehicle_Engines.label>
-  <TMM_Vehicle_Engines.description>Восстановление довоенных двигателей, коробок передач и колёс для сборки машин: грузовиков и автомобилей, которые возят колонистов и груз по карте и пустошам.</TMM_Vehicle_Engines.description>
+
+  <TMM_Vehicle_Engines.label>двигатели внутреннего сгорания</TMM_Vehicle_Engines.label>
+  <TMM_Vehicle_Engines.description>Восстановите довоенные бензиновые и дизельные двигатели, трансмиссии и колёса, чтобы собирать наземный транспорт: седаны, бронированные пикапы и грузовики-тягачи для перевозки поселенцев и грузов по карте и пустоши.</TMM_Vehicle_Engines.description>
+
+  <TMM_Vehicle_Vertibird.label>конвертопланы «Винтокрыл»</TMM_Vehicle_Vertibird.label>
+  <TMM_Vehicle_Vertibird.description>Изучите довоенные поворотные турбины вертикального взлёта, бронированные фюзеляжи и бортовую авионику, чтобы собирать винтокрылы Братства Стали для быстрых перелётов по карте мира и огневой поддержки с воздуха.</TMM_Vehicle_Vertibird.description>
+
 </LanguageData>

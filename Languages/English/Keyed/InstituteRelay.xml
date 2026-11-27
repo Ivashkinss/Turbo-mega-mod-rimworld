@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Relay.WorldJumpInspect>Molecular relay transit remaining: {0}</TMM.Relay.WorldJumpInspect>
+  <TMM.Relay.TechUnlockedMsg>Molecular relay technology is now unlocked for research!</TMM.Relay.TechUnlockedMsg>
+
+  <TMM.Relay.RaidTitle>Blue flashes at the perimeter</TMM.Relay.RaidTitle>
+  <TMM.Relay.RaidText>Blinding blue relay flashes crackled near the settlement! A strike team of {1} synths from {0} has materialized right outside your buildings and is moving in to attack.</TMM.Relay.RaidText>
+
+  <TMM.Relay.AbductionTitle>Blue flashes: abduction squad!</TMM.Relay.AbductionTitle>
+  <TMM.Relay.AbductionText>A small retrieval team from {0} has relayed onto the map, targeting {1}! If they seize a colonist, they will relay back to the Institute shortly after capture.</TMM.Relay.AbductionText>
+
+  <TMM.Relay.GizmoLocalLabel>Teleport (local)</TMM.Relay.GizmoLocalLabel>
+  <TMM.Relay.GizmoLocalDesc>Instantly teleport all colonists standing on this relay pad to another powered relay pad on the same map. Cooldown: 2 hours.</TMM.Relay.GizmoLocalDesc>
+  <TMM.Relay.PickDestPad>Relay pad at ({0}, {1})</TMM.Relay.PickDestPad>
+
+  <TMM.Relay.GizmoWorldLabel>Relay jump (world)</TMM.Relay.GizmoWorldLabel>
+  <TMM.Relay.GizmoWorldDesc>Teleport colonists and cargo standing on this pad up to {0} world tiles away as a caravan. Costs {1} advanced component. Cooldown: 1 day.</TMM.Relay.GizmoWorldDesc>
+  <TMM.Relay.WorldTargetConfirm>Click to launch molecular relay jump here.</TMM.Relay.WorldTargetConfirm>
+
+  <TMM.Relay.LocalJumpSuccess>Teleported {0} pawn(s) across the local relay network.</TMM.Relay.LocalJumpSuccess>
+  <TMM.Relay.WorldJumpSuccess>Molecular relay jump complete: {0} pawn(s) materialized on the world map.</TMM.Relay.WorldJumpSuccess>
+
+  <TMM.Relay.FailNotSpawned>Relay pad is not active on a map.</TMM.Relay.FailNotSpawned>
+  <TMM.Relay.FailNoPower>Requires power.</TMM.Relay.FailNoPower>
+  <TMM.Relay.FailCooldown>Capacitors recharging ({0} remaining).</TMM.Relay.FailCooldown>
+  <TMM.Relay.FailNoDestPad>No other powered relay pad exists on this map.</TMM.Relay.FailNoDestPad>
+  <TMM.Relay.FailDestNoPower>Destination relay pad is unpowered.</TMM.Relay.FailDestNoPower>
+  <TMM.Relay.FailNoPawns>No colonists are standing on the relay pad.</TMM.Relay.FailNoPawns>
+  <TMM.Relay.FailDestBlocked>Destination relay pad is completely obstructed.</TMM.Relay.FailDestBlocked>
+  <TMM.Relay.FailTileImpassable>Selected world tile is impassable.</TMM.Relay.FailTileImpassable>
+  <TMM.Relay.FailOutOfRange>Target exceeds maximum relay range ({0} tiles).</TMM.Relay.FailOutOfRange>
+  <TMM.Relay.FailNeedColonist>At least one conscious colonist must stand on the pad for a world jump.</TMM.Relay.FailNeedColonist>
+  <TMM.Relay.FailNoSpacerComponent>Requires {0} advanced component in storage or on the pad.</TMM.Relay.FailNoSpacerComponent>
+  <TMM.Relay.FailCaravanCreation>Failed to assemble caravan at destination tile.</TMM.Relay.FailCaravanCreation>
+
+  <TMM.Relay.InspectLocalReady>Local relay: Ready</TMM.Relay.InspectLocalReady>
+  <TMM.Relay.InspectLocalCooldown>Local relay recharging: {0}</TMM.Relay.InspectLocalCooldown>
+  <TMM.Relay.InspectWorldReady>World relay: Ready</TMM.Relay.InspectWorldReady>
+  <TMM.Relay.InspectWorldCooldown>World relay recharging: {0}</TMM.Relay.InspectWorldCooldown>
+</LanguageData>

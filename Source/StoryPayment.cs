@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -41,6 +43,22 @@ namespace TurboMegaMod
         /// Parameters: (sourceStack, requestedCount, zeroBasedStepIndex) -> split Thing.
         /// </summary>
         public static Func<Thing, int, int, Thing> TestSplitOffOverride;
+
+        /// <summary>
+        /// Test-only hook (ONLY active when TestMode.Enabled) to simulate third-party PostSplitOff callbacks throwing.
+        /// Parameters: (sourceStack, allocatedPiece).
+        /// </summary>
+        public static Action<Thing, Thing> TestSimulatePostSplitOffHandler;
+
+        public sealed class SplitOffFrame
+        {
+            public Thing source;
+            public Thing result;
+        }
+
+        public static readonly Stack<SplitOffFrame> s_splitFrames = new Stack<SplitOffFrame>();
+        public static Thing s_lastSplitPiece { get { return s_splitFrames.Count > 0 ? s_splitFrames.Peek().result : null; } }
+        public static bool s_trackingSplitPiece { get { return s_splitFrames.Count > 0; } }
 
         /// <summary>
         /// Test-only hook (ONLY active when TestMode.Enabled) to simulate a holder refusing TryAdd
@@ -165,14 +183,14 @@ namespace TurboMegaMod
             return TryDeductFromMap(map, def, requiredCount, true, out deducted, onPaymentSecured);
         }
 
-        public static bool TryDeductFromMap(Map map, ThingDef def, int requiredCount, bool requirePlayerStorage, out int deducted, Action onPaymentSecured = null)
+        public static bool TryDeductFromMap(Map map, ThingDef def, int requiredCount, bool requirePlayerStorage, out int deducted, Action onPaymentSecured = null, Predicate<Thing> allowStack = null)
         {
             deducted = 0;
             if (map == null || def == null || requiredCount <= 0) return false;
 
             List<ResourceRequirement> reqs = new List<ResourceRequirement>();
             reqs.Add(new ResourceRequirement(def, requiredCount));
-            if (TryDeductMultipleFromMap(map, reqs, requirePlayerStorage, onPaymentSecured))
+            if (TryDeductMultipleFromMap(map, reqs, requirePlayerStorage, onPaymentSecured, allowStack))
             {
                 deducted = requiredCount;
                 return true;
@@ -190,7 +208,7 @@ namespace TurboMegaMod
             return TryDeductMultipleFromMap(map, requirements, true, onPaymentSecured);
         }
 
-        public static bool TryDeductMultipleFromMap(Map map, List<ResourceRequirement> requirements, bool requirePlayerStorage, Action onPaymentSecured = null)
+        public static bool TryDeductMultipleFromMap(Map map, List<ResourceRequirement> requirements, bool requirePlayerStorage, Action onPaymentSecured = null, Predicate<Thing> allowStack = null)
         {
             if (map == null || map.listerThings == null || requirements == null || requirements.Count == 0) return false;
 
@@ -225,7 +243,7 @@ namespace TurboMegaMod
                 for (int i = 0; i < raw.Count; i++)
                 {
                     Thing t = raw[i];
-                    if (IsEligibleMapItem(map, t, requirePlayerStorage))
+                    if (IsEligibleMapItem(map, t, requirePlayerStorage) && (allowStack == null || allowStack(t)))
                     {
                         eligible.Add(t);
                         sum += t.stackCount;
@@ -252,7 +270,7 @@ namespace TurboMegaMod
                     for (int i = 0; i < stacks.Count && remaining > 0; i++)
                     {
                         Thing src = stacks[i];
-                        if (!IsEligibleMapItem(map, src, requirePlayerStorage))
+                        if (!IsEligibleMapItem(map, src, requirePlayerStorage) || (allowStack != null && !allowStack(src)))
                         {
                             ok = false;
                             break;
@@ -353,7 +371,7 @@ namespace TurboMegaMod
             return TryDeductFromCaravan(caravan, def, requiredCount, out deducted, null);
         }
 
-        public static bool TryDeductFromCaravan(Caravan caravan, ThingDef def, int requiredCount, out int deducted, Action onPaymentSecured)
+        public static bool TryDeductFromCaravan(Caravan caravan, ThingDef def, int requiredCount, out int deducted, Action onPaymentSecured, Predicate<Thing> allowStack = null)
         {
             deducted = 0;
             if (caravan == null || caravan.Destroyed || caravan.Faction != Faction.OfPlayer || def == null || requiredCount <= 0)
@@ -375,7 +393,7 @@ namespace TurboMegaMod
                 for (int j = 0; j < inv.Count; j++)
                 {
                     Thing t = inv[j];
-                    if (t != null && !t.Destroyed && t.def == def && t.stackCount > 0)
+                    if (t != null && !t.Destroyed && t.def == def && t.stackCount > 0 && (allowStack == null || allowStack(t)))
                     {
                         owners.Add(p);
                         stacks.Add(t);
@@ -400,7 +418,8 @@ namespace TurboMegaMod
                     Pawn p = owners[i];
                     Thing src = stacks[i];
                     if (p == null || p.Dead || p.inventory == null || p.inventory.innerContainer == null ||
-                        src == null || src.Destroyed || src.stackCount <= 0 || !p.inventory.innerContainer.Contains(src))
+                        src == null || src.Destroyed || src.stackCount <= 0 || !p.inventory.innerContainer.Contains(src) ||
+                        (allowStack != null && !allowStack(src)))
                     {
                         ok = false;
                         break;
@@ -824,23 +843,70 @@ namespace TurboMegaMod
         // INTERNAL JOURNAL, VERIFICATION, ROLLBACK & COMMIT HELPERS
         // =====================================================================
 
-        private static Thing ExecuteSplitOff(Thing src, int count, int stepIndex)
+        public static Thing ExecuteSplitOff(Thing src, int count, int stepIndex)
         {
             if (TestMode.Enabled && TestSplitOffOverride != null)
             {
                 return TestSplitOffOverride(src, count, stepIndex);
             }
-            // Vanilla ThingWithComps.SplitOff lowers the source count before PostSplitOff callbacks run. If a callback
-            // throws, the reference to the split part is lost: restore the source count so nothing silently disappears.
+
             int before = src.stackCount;
+            var frame = new SplitOffFrame { source = src };
+            s_splitFrames.Push(frame);
+            Thing piece = null;
             try
             {
-                return src.SplitOff(count);
+                piece = src.SplitOff(count);
+                if (TestMode.Enabled && TestSimulatePostSplitOffHandler != null)
+                {
+                    TestSimulatePostSplitOffHandler(src, piece);
+                }
+                return piece;
             }
             catch
             {
-                if (!src.Destroyed && src.stackCount < before) src.stackCount = before;
+                Thing allocated = piece ?? frame.result;
+                int confirmedRefund = 0;
+                if (allocated != null && !allocated.Destroyed)
+                {
+                    // If the allocated piece was already placed into a holder or spawned on a map, the holder owns it.
+                    // Do NOT refund to src to avoid duplicate items!
+                    if (allocated.holdingOwner == null && !allocated.Spawned)
+                    {
+                        confirmedRefund = allocated.stackCount;
+                        allocated.Destroy(DestroyMode.Vanish);
+                    }
+                }
+                else if (allocated == null)
+                {
+                    if (src.stackCount < before)
+                    {
+                        confirmedRefund = before - src.stackCount;
+                    }
+                }
+
+                if (!src.Destroyed && confirmedRefund > 0)
+                {
+                    src.stackCount += confirmedRefund;
+                }
                 throw;
+            }
+            finally
+            {
+                if (s_splitFrames.Count > 0 && s_splitFrames.Peek() == frame)
+                {
+                    s_splitFrames.Pop();
+                }
+                else if (s_splitFrames.Contains(frame))
+                {
+                    var list = new List<SplitOffFrame>(s_splitFrames);
+                    list.Remove(frame);
+                    s_splitFrames.Clear();
+                    for (int k = list.Count - 1; k >= 0; k--)
+                    {
+                        s_splitFrames.Push(list[k]);
+                    }
+                }
             }
         }
 
@@ -1025,9 +1091,42 @@ namespace TurboMegaMod
                 catch (Exception ex)
                 {
                     TestMode.ReportException("[TMM] StoryPayment: exception destroying committed chunk " + t.ThingID + " (payment already confirmed): ", ex);
-                    if (staging.innerContainer.Contains(t))
+                }
+
+                if (!t.Destroyed)
+                {
+                    StoryPaymentDisposal disposal = Find.World.GetComponent<StoryPaymentDisposal>();
+                    if (disposal == null || !disposal.Keep(t))
+                        Log.Error("[TMM] StoryPayment: could not secure a committed payment for disposal: " + t.ThingID);
+                }
+            }
+        }
+    }
+
+    [StaticConstructorOnStartup]
+    public static class StoryPaymentBootstrap
+    {
+        static StoryPaymentBootstrap()
+        {
+            Harmony harmony = new Harmony("colonyproject.integrated.storypayment");
+            MethodInfo splitOffMethod = AccessTools.DeclaredMethod(typeof(Thing), "SplitOff", new Type[] { typeof(int) }); // CHECK API
+            if (splitOffMethod != null)
+            {
+                harmony.Patch(splitOffMethod,
+                    postfix: new HarmonyMethod(typeof(StoryPaymentBootstrap), "Postfix_Thing_SplitOff"));
+            }
+        }
+
+        public static void Postfix_Thing_SplitOff(Thing __instance, Thing __result)
+        {
+            if (StoryPayment.s_splitFrames.Count > 0 && __instance != null)
+            {
+                foreach (var frame in StoryPayment.s_splitFrames)
+                {
+                    if (frame.source == __instance)
                     {
-                        staging.innerContainer.Remove(t);
+                        frame.result = __result;
+                        break;
                     }
                 }
             }

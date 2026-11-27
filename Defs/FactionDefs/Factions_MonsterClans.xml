@@ -3,9 +3,7 @@
 <Defs>
   <FactionDef ParentName="PirateBandBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_MonsterClansFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>110</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_MonsterClansFaction</factionIconPath>
     <label>monster clans</label>
     <description>Vampire nests and leviathan packs that prey on humans from the shadows, answering to their Alphas and to the ancient things that made them.</description>
     <pawnSingular>monster</pawnSingular>
@@ -13,6 +11,9 @@
     <leaderTitle>alpha</leaderTitle>
     <fixedName>Monster Clans</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>110</configurationListOrderPriority>
     <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <listOrderPriority>23</listOrderPriority>
     <colorSpectrum Inherit="False">

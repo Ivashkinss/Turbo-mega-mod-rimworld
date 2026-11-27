@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Buildable vehicle blueprints (VehicleBuildDef) for player-craftable TMM vehicles.
+     Faction-only vehicles (TMM_Vehicle_GunnerTechnical, TMM_Vehicle_VertibirdEnclave) intentionally have no buildDef. -->
+<Defs>
+
+  <!-- 1. TMM_Vehicle_Impala_Blueprint -->
+  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+    <defName>TMM_Vehicle_Impala_Blueprint</defName>
+    <label>1967 black sedan</label>
+    <description>Restore a sleek 1967 four-door hardtop sedan with a roaring V8 engine, chrome trim and a silver-warded hunting trunk.</description>
+    <thingToSpawn>TMM_Vehicle_Impala</thingToSpawn>
+    <size>(2,4)</size>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_Impala/TMM_Vehicle_Impala</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>360</MaxHitPoints>
+      <WorkToBuild>5500</WorkToBuild>
+      <Flammability>0.1</Flammability>
+    </statBases>
+    <costList>
+      <Steel>240</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <Silver>35</Silver>
+    </costList>
+    <researchPrerequisites>
+      <li>TMM_Vehicle_Engines</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+  </Vehicles.VehicleBuildDef>
+
+  <!-- 2. TMM_Vehicle_HunterTruck_Blueprint -->
+  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+    <defName>TMM_Vehicle_HunterTruck_Blueprint</defName>
+    <label>hunter pickup</label>
+    <description>Assemble an armoured hunter pickup with a rebuilt engine, steel plating, wooden bed slats and a pintle-mounted light machine gun.</description>
+    <thingToSpawn>TMM_Vehicle_HunterTruck</thingToSpawn>
+    <size>(2,4)</size>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>6500</WorkToBuild>
+      <Flammability>0.1</Flammability>
+    </statBases>
+    <costList>
+      <Steel>280</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <WoodLog>40</WoodLog>
+    </costList>
+    <researchPrerequisites>
+      <li>TMM_Vehicle_Engines</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+  </Vehicles.VehicleBuildDef>
+
+  <!-- 3. TMM_Vehicle_CargoHauler_Blueprint -->
+  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+    <defName>TMM_Vehicle_CargoHauler_Blueprint</defName>
+    <label>outpost cargo hauler</label>
+    <description>Assemble a heavy six-wheel cargo truck engineered to haul bulk steel, fuel and supplies between settlements.</description>
+    <thingToSpawn>TMM_Vehicle_CargoHauler</thingToSpawn>
+    <size>(3,5)</size>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_CargoHauler/TMM_Vehicle_CargoHauler</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(6,6)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>550</MaxHitPoints>
+      <WorkToBuild>9000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+    </statBases>
+    <costList>
+      <Steel>420</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <WoodLog>60</WoodLog>
+    </costList>
+    <researchPrerequisites>
+      <li>TMM_Vehicle_Engines</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+  </Vehicles.VehicleBuildDef>
+
+  <!-- 4. TMM_Vehicle_Vertibird_Blueprint -->
+  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+    <defName>TMM_Vehicle_Vertibird_Blueprint</defName>
+    <label>Brotherhood Vertibird</label>
+    <description>Construct a tilt-rotor Brotherhood Vertibird gunship with twin armoured turbines, troop bay, flight avionics and a door-mounted rotary minigun.</description>
+    <thingToSpawn>TMM_Vehicle_Vertibird</thingToSpawn>
+    <size>(5,7)</size>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_Vertibird/TMM_Vehicle_Vertibird</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(9,9)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>18000</WorkToBuild>
+      <Flammability>0.05</Flammability>
+    </statBases>
+    <costList>
+      <Steel>550</Steel>
+      <Plasteel>160</Plasteel>
+      <ComponentIndustrial>18</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <researchPrerequisites>
+      <li>TMM_Vehicle_Vertibird</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+  </Vehicles.VehicleBuildDef>
+
+</Defs>

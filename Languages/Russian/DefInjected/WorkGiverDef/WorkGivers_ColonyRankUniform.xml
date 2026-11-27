@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_EquipRankWeapon.label>вооружиться по рангу</TMM_EquipRankWeapon.label>
+  <TMM_EquipRankWeapon.verb>взять оружие ранга</TMM_EquipRankWeapon.verb>
+  <TMM_EquipRankWeapon.gerund>берёт оружие ранга</TMM_EquipRankWeapon.gerund>
+</LanguageData>

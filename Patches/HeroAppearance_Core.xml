@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Unique canonical appearance for all 82 named heroes (Core-only fields + TMM custom Core HairDefs).
+     Xenotype heroes (SuperMutant, Ghoul, Angel, Demon, Leviathan, Sanguophage) intentionally omit headType
+     so xenotype head genes remain intact. Part 1 of 2: Brotherhood through Hell (39 heroes). -->
+<Patch>
+
+  <!-- ==================== Brotherhood (6) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_maxson"]</xpath>
+    <value>
+      <appearance>
+        <hair>Shaved</hair>
+        <beard>Full</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.88,0.74,0.63,1)</skinColor>
+        <hairColor>(0.26,0.19,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_owen_lyons"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>Full</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.89,0.77,0.68,1)</skinColor>
+        <hairColor>(0.87,0.87,0.89,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_sarah_lyons"]</xpath>
+    <value>
+      <appearance>
+        <hair>BriefPonytail</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.92,0.79,0.69,1)</skinColor>
+        <hairColor>(0.82,0.68,0.38,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_paladin_danse"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>Boxed</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.86,0.71,0.59,1)</skinColor>
+        <hairColor>(0.22,0.16,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_kells"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.85,0.71,0.60,1)</skinColor>
+        <hairColor>(0.28,0.25,0.23,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_proctor_ingram"]</xpath>
+    <value>
+      <appearance>
+        <hair>FancyBun</hair>
+        <headType>Female_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.86,0.72,0.62,1)</skinColor>
+        <hairColor>(0.28,0.20,0.15,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Enclave (4) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_colonel_autumn"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowPointy</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.87,0.75,0.66,1)</skinColor>
+        <hairColor>(0.48,0.47,0.46,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dr_curling"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowPointy</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.90,0.79,0.70,1)</skinColor>
+        <hairColor>(0.68,0.67,0.66,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_sergeant_dornan"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.84,0.68,0.56,1)</skinColor>
+        <hairColor>(0.24,0.20,0.17,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_richards"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bravo</hair>
+        <beard>Moustache</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.86,0.72,0.61,1)</skinColor>
+        <hairColor>(0.22,0.17,0.13,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== FriendlyMutants (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_fox"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_uncle_leo"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_strong"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_erickson"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_virgil"]</xpath>
+    <value>
+      <appearance>
+        <hair>Tuft</hair>
+        <beard>Stubble</beard>
+        <bodyType>Hulk</bodyType>
+        <hairColor>(0.26,0.23,0.20,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Ghouls (6) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_john_hancock"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Male</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_kent_connolly"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Thin</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_charon"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_edward_deegan"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Male</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_daisy"]</xpath>
+    <value>
+      <appearance>
+        <hair>Scrapper</hair>
+        <bodyType>Female</bodyType>
+        <hairColor>(0.74,0.73,0.70,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_gob"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Thin</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Gunners (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_wes"]</xpath>
+    <value>
+      <appearance>
+        <hair>Shaved</hair>
+        <beard>Goatee</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.84,0.68,0.56,1)</skinColor>
+        <hairColor>(0.35,0.34,0.33,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_clint"]</xpath>
+    <value>
+      <appearance>
+        <hair>Rookie</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.85,0.70,0.58,1)</skinColor>
+        <hairColor>(0.24,0.18,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_tessa"]</xpath>
+    <value>
+      <appearance>
+        <hair>Mohawk</hair>
+        <headType>Female_AveragePointy</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.88,0.74,0.64,1)</skinColor>
+        <hairColor>(0.48,0.14,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_bridget"]</xpath>
+    <value>
+      <appearance>
+        <hair>Revolt</hair>
+        <headType>Female_NarrowNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.87,0.73,0.62,1)</skinColor>
+        <hairColor>(0.20,0.16,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_baker"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>MuttonChops</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.86,0.71,0.59,1)</skinColor>
+        <hairColor>(0.32,0.22,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Heaven (6) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_michael"]</xpath>
+    <value>
+      <appearance>
+        <hair>Snazzy</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.91,0.78,0.68,1)</skinColor>
+        <hairColor>(0.48,0.36,0.23,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_lucifer"]</xpath>
+    <value>
+      <appearance>
+        <hair>GreasySwoop</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.93,0.82,0.73,1)</skinColor>
+        <hairColor>(0.74,0.62,0.38,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_castiel"]</xpath>
+    <value>
+      <appearance>
+        <hair>TMM_Hair_CastielMessy</hair>
+        <beard>Stubble</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.90,0.78,0.69,1)</skinColor>
+        <hairColor>(0.16,0.14,0.13,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_gabriel"]</xpath>
+    <value>
+      <appearance>
+        <hair>Messy</hair>
+        <beard>Stubble</beard>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.90,0.77,0.67,1)</skinColor>
+        <hairColor>(0.44,0.34,0.22,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_zachariah"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Fat</bodyType>
+        <skinColor>(0.91,0.79,0.70,1)</skinColor>
+        <hairColor>(0.58,0.56,0.54,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_naomi"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bob</hair>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.93,0.81,0.73,1)</skinColor>
+        <hairColor>(0.84,0.73,0.46,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Hell (7) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_crowley"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>Boxed</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.75,0.66,1)</skinColor>
+        <hairColor>(0.26,0.22,0.19,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_azazel"]</xpath>
+    <value>
+      <appearance>
+        <hair>Warden</hair>
+        <beard>Stubble</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.87,0.75,0.65,1)</skinColor>
+        <hairColor>(0.45,0.42,0.39,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_lilith"]</xpath>
+    <value>
+      <appearance>
+        <hair>Flowy</hair>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.94,0.84,0.78,1)</skinColor>
+        <hairColor>(0.26,0.17,0.13,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_abaddon"]</xpath>
+    <value>
+      <appearance>
+        <hair>Wavy</hair>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.94,0.83,0.76,1)</skinColor>
+        <hairColor>(0.68,0.16,0.10,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_cain"]</xpath>
+    <value>
+      <appearance>
+        <hair>Long</hair>
+        <beard>Full</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.75,0.65,1)</skinColor>
+        <hairColor>(0.36,0.33,0.31,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_meg"]</xpath>
+    <value>
+      <appearance>
+        <hair>Fringe</hair>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.92,0.81,0.74,1)</skinColor>
+        <hairColor>(0.22,0.16,0.14,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_ruby"]</xpath>
+    <value>
+      <appearance>
+        <hair>Long</hair>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.91,0.78,0.69,1)</skinColor>
+        <hairColor>(0.24,0.16,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+<!-- ==================== Institute (6) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_father_shaun"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>Full</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.90,0.79,0.70,1)</skinColor>
+        <hairColor>(0.84,0.84,0.85,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_justin_ayo"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>Goatee</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.36,0.23,0.16,1)</skinColor>
+        <hairColor>(0.10,0.09,0.09,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_x6_88"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.38,0.25,0.18,1)</skinColor>
+        <hairColor>(0.10,0.09,0.09,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_madison_li"]</xpath>
+    <value>
+      <appearance>
+        <hair>FancyBun</hair>
+        <headType>Female_NarrowNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.86,0.73,0.61,1)</skinColor>
+        <hairColor>(0.22,0.20,0.19,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_kellogg"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.84,0.69,0.58,1)</skinColor>
+        <hairColor>(0.32,0.29,0.27,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_alan_binet"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.89,0.76,0.66,1)</skinColor>
+        <hairColor>(0.38,0.34,0.30,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== MenOfLetters (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dr_hess"]</xpath>
+    <value>
+      <appearance>
+        <hair>FancyBun</hair>
+        <headType>Female_NarrowPointy</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.91,0.79,0.71,1)</skinColor>
+        <hairColor>(0.74,0.74,0.75,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_ketch"]</xpath>
+    <value>
+      <appearance>
+        <hair>Snazzy</hair>
+        <beard>Stubble</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.75,0.66,1)</skinColor>
+        <hairColor>(0.20,0.15,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_mick_davies"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.90,0.78,0.69,1)</skinColor>
+        <hairColor>(0.42,0.31,0.22,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_antonia_bevell"]</xpath>
+    <value>
+      <appearance>
+        <hair>Wavy</hair>
+        <headType>Female_NarrowPointy</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.92,0.80,0.72,1)</skinColor>
+        <hairColor>(0.22,0.15,0.11,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_kendricks"]</xpath>
+    <value>
+      <appearance>
+        <hair>Warden</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.86,0.72,0.62,1)</skinColor>
+        <hairColor>(0.38,0.36,0.34,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== MinutemenHunters (7) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_preston_garvey"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.38,0.25,0.18,1)</skinColor>
+        <hairColor>(0.10,0.09,0.09,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dean_winchester"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bravo</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.74,0.63,1)</skinColor>
+        <hairColor>(0.46,0.35,0.22,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_sam_winchester"]</xpath>
+    <value>
+      <appearance>
+        <hair>TMM_Hair_SamWinchester</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.90,0.77,0.67,1)</skinColor>
+        <hairColor>(0.28,0.19,0.13,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_bobby_singer"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>Full</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Fat</bodyType>
+        <skinColor>(0.87,0.73,0.63,1)</skinColor>
+        <hairColor>(0.58,0.55,0.51,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_ronnie_shaw"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bob</hair>
+        <headType>Female_AverageWide</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.86,0.72,0.61,1)</skinColor>
+        <hairColor>(0.74,0.74,0.74,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_rufus_turner"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>Boxed</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.42,0.28,0.20,1)</skinColor>
+        <hairColor>(0.55,0.54,0.53,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_ellen_harvelle"]</xpath>
+    <value>
+      <appearance>
+        <hair>Wavy</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.90,0.77,0.67,1)</skinColor>
+        <hairColor>(0.76,0.61,0.36,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== MonsterClans (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_alpha_vampire"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.38,0.26,0.21,1)</skinColor>
+        <hairColor>(0.10,0.09,0.09,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dick_roman"]</xpath>
+    <value>
+      <appearance>
+        <hair>Snazzy</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.90,0.77,0.67,1)</skinColor>
+        <hairColor>(0.44,0.37,0.30,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_eve"]</xpath>
+    <value>
+      <appearance>
+        <hair>Flowy</hair>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.93,0.84,0.78,1)</skinColor>
+        <hairColor>(0.62,0.48,0.30,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_benny_lafitte"]</xpath>
+    <value>
+      <appearance>
+        <hair>Messy</hair>
+        <beard>Boxed</beard>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.76,0.68,1)</skinColor>
+        <hairColor>(0.22,0.16,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_edgar"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.35,0.23,0.16,1)</skinColor>
+        <hairColor>(0.10,0.09,0.09,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Outcasts (6) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_henry_casdin"]</xpath>
+    <value>
+      <appearance>
+        <hair>Warden</hair>
+        <beard>Stubble</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.85,0.71,0.60,1)</skinColor>
+        <hairColor>(0.48,0.46,0.44,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_specialist_olin"]</xpath>
+    <value>
+      <appearance>
+        <hair>BriefPonytail</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.88,0.74,0.64,1)</skinColor>
+        <hairColor>(0.34,0.23,0.15,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_scribe_silas"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>Goatee</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.89,0.77,0.68,1)</skinColor>
+        <hairColor>(0.26,0.20,0.15,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_defender_morrigan"]</xpath>
+    <value>
+      <appearance>
+        <hair>Revolt</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.87,0.73,0.63,1)</skinColor>
+        <hairColor>(0.48,0.19,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_paladin_vargas"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>Moustache</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Hulk</bodyType>
+        <skinColor>(0.76,0.58,0.45,1)</skinColor>
+        <hairColor>(0.14,0.12,0.11,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_scout_kessler"]</xpath>
+    <value>
+      <appearance>
+        <hair>Rookie</hair>
+        <beard>Stubble</beard>
+        <headType>Male_NarrowPointy</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.86,0.72,0.61,1)</skinColor>
+        <hairColor>(0.54,0.42,0.28,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== Railroad (4) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_desdemona"]</xpath>
+    <value>
+      <appearance>
+        <hair>Wavy</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.89,0.76,0.66,1)</skinColor>
+        <hairColor>(0.70,0.59,0.38,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_deacon"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.88,0.75,0.65,1)</skinColor>
+        <hairColor>(0.34,0.25,0.18,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_tinker_tom"]</xpath>
+    <value>
+      <appearance>
+        <hair>Locks</hair>
+        <beard>Goatee</beard>
+        <headType>Male_NarrowNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.40,0.27,0.19,1)</skinColor>
+        <hairColor>(0.11,0.10,0.10,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_glory"]</xpath>
+    <value>
+      <appearance>
+        <hair>Revolt</hair>
+        <headType>Female_AverageWide</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.82,0.66,0.55,1)</skinColor>
+        <hairColor>(0.12,0.11,0.12,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== VaultTec (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_alphonse_almodovar"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>Moustache</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Fat</bodyType>
+        <skinColor>(0.88,0.75,0.66,1)</skinColor>
+        <hairColor>(0.46,0.42,0.38,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_gwen_mcnamara"]</xpath>
+    <value>
+      <appearance>
+        <hair>FancyBun</hair>
+        <headType>Female_AverageNormal</headType>
+        <bodyType>Female</bodyType>
+        <skinColor>(0.90,0.78,0.69,1)</skinColor>
+        <hairColor>(0.62,0.59,0.56,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_stanislaus_braun"]</xpath>
+    <value>
+      <appearance>
+        <hair>Elder</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_NarrowPointy</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.92,0.82,0.74,1)</skinColor>
+        <hairColor>(0.82,0.82,0.84,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_vaulttec_rep"]</xpath>
+    <value>
+      <appearance>
+        <hair>Decent</hair>
+        <beard>NoBeard</beard>
+        <headType>Male_AverageNormal</headType>
+        <bodyType>Thin</bodyType>
+        <skinColor>(0.90,0.77,0.67,1)</skinColor>
+        <hairColor>(0.46,0.35,0.24,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_security_chief_kendall"]</xpath>
+    <value>
+      <appearance>
+        <hair>Recruit</hair>
+        <beard>StacheAndChops</beard>
+        <headType>Male_AverageWide</headType>
+        <bodyType>Male</bodyType>
+        <skinColor>(0.86,0.71,0.60,1)</skinColor>
+        <hairColor>(0.26,0.20,0.15,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <!-- ==================== WildMutants (5) ==================== -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_swan"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_fist"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dead_eye"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_mad_racer"]</xpath>
+    <value>
+      <appearance>
+        <hair>Mohawk</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+        <hairColor>(0.22,0.20,0.18,1)</hairColor>
+      </appearance>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_master_butcher"]</xpath>
+    <value>
+      <appearance>
+        <hair>Bald</hair>
+        <beard>NoBeard</beard>
+        <bodyType>Hulk</bodyType>
+      </appearance>
+    </value>
+  </Operation>
+
+</Patch>

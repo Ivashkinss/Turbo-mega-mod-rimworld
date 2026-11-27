@@ -805,7 +805,7 @@
     <stages>
       <li Class="TurboMegaMod.StoryStage_Wait">
         <label>Stasis signatures closing in</label>
-        <text>The Zero Synth wakes in a cold sweat, clutching their head: "They're coming—not to kill me, to put me in a stasis cage! I can feel their quantum dampeners locking onto my Spark!"</text>
+        <text>The Zero Synth clutches their head as a sharp pulse cuts through their thoughts: "They're coming to put me in a stasis cage! I can feel their quantum dampeners locking onto my Spark!"</text>
         <days>1.4</days>
       </li>
       <li Class="TurboMegaMod.StoryStage_ColonyRaid">

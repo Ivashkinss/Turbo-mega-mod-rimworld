@@ -27,6 +27,13 @@ namespace TurboMegaMod
         private int m_ticks;
         private int m_spawnTick = -1;
         private Thing m_vehicle;
+        // Vertibird real flight (VertibirdFlightCheck): launch to a neighbour tile and land as a caravan.
+        private Thing m_vtb;
+        private PlanetTile m_vtbDest = PlanetTile.Invalid;
+        private int m_vtbLaunchTick = -1;
+        private bool m_vtbLeftMap, m_vtbInFlight, m_vtbArrived;
+        private float m_vtbFuelBefore = -1f, m_vtbFuelAfter = -1f;
+        private string m_vtbNote = "not launched";
         private IntVec3 m_startPos = IntVec3.Invalid;
         private IntVec3 m_dest = IntVec3.Invalid;
         private string m_driveNote = "not started";
@@ -98,6 +105,14 @@ namespace TurboMegaMod
             return exit.Invoke(null, new object[] { new Pawn[] { vehicle }, Faction.OfPlayer, from, to, to, false }) as Caravan;
         }
 
+        private readonly List<Pawn> m_haulers = new List<Pawn>();
+        private Pawn m_relative;
+        /// Who could have done the work and what stood in the way, for every check of the unloading.
+        private string Who()
+        {
+            Func<Pawn, string> one = p => p == null ? "null" : p.LabelShort + " spawned=" + p.Spawned + " dead=" + p.Dead + " downed=" + p.Downed + " job=" + (p.CurJobDef == null ? "none" : p.CurJobDef.defName) + " faction=" + (p.Faction == null ? "none" : p.Faction.def.defName) + " mental=" + (p.MentalStateDef == null ? "none" : p.MentalStateDef.defName) + " holder=" + (p.ParentHolder == null ? "none" : p.ParentHolder.GetType().Name) + " at " + p.PositionHeld + (p.CurJob == null ? "" : " target=" + p.CurJob.targetA + "/" + p.CurJob.targetB + " toil=" + (p.jobs.curDriver == null ? -1 : p.jobs.curDriver.CurToilIndex) + " since=" + (Find.TickManager.TicksGame - p.CurJob.startTick)) + " carry=" + (p.carryTracker == null || p.carryTracker.CarriedThing == null ? "none" : p.carryTracker.CarriedThing.LabelShort) + " inv=" + (p.inventory == null ? "" : string.Join(",", p.inventory.innerContainer.Select(x => x.def.defName + "x" + x.stackCount).ToArray()));
+            return " | haulers: " + string.Join("; ", m_haulers.Select(one).ToArray()) + " | crew: " + string.Join("; ", m_homeCrew.Select(one).ToArray()) + " | relative: " + one(m_relative) + " | colonists=" + map.mapPawns.FreeColonistsSpawnedCount + " hostiles=" + map.mapPawns.AllPawnsSpawned.Count(p => p.HostileTo(Faction.OfPlayer) && !p.Downed) + " storeCells=" + (m_store == null ? -1 : m_store.Cells.Count) + " vehicle at " + (m_impala == null ? "null" : m_impala.Position + " cargo=" + string.Join(",", m_impala.inventory.innerContainer.Select(x => x.def.defName + "x" + x.stackCount).ToArray()) + " unloadFlag=" + VehicleHome.Requested(m_impala) + " reservedBy=" + (map.reservationManager.FirstRespectedReserver(m_impala, m_haulers.FirstOrDefault()) == null ? "none" : map.reservationManager.FirstRespectedReserver(m_impala, m_haulers.FirstOrDefault()).LabelShort) + " log=" + string.Join(" ; ", m_homeLog.ToArray()) + " reach=" + m_haulers.Count(h => h.Spawned && h.CanReach(m_impala, PathEndMode.Touch, Danger.Deadly)));
+        }
         private void UpdateHome()
         {
             try
@@ -105,24 +120,29 @@ namespace TurboMegaMod
                 VehicleHomeArrival home = map.GetComponent<VehicleHomeArrival>();
                 if (m_homeStage == 0)
                 {
-                    if (m_impala == null) { m_homeNote = "no return pickup"; Stage(9); return; }
+                    if (m_impala == null) { m_homeNote = "no sedan"; Stage(9); return; }
+                    // The stockpile stands on open ground that can be walked to from the map edge; the bare map centre can be rock
+                    // or water (vffix-bret-4: no stockpile cell at all).
+                    IntVec3 storeCenter;
+                    if (!CellFinder.TryFindRandomCellNear(map.Center, map, 45, c => c.Standable(map) && c.GetEdifice(map) == null && map.reachability.CanReachMapEdge(c, TraverseParms.For(TraverseMode.PassDoors)) && GenRadial.RadialCellsAround(c, 5f, true).Count(x => x.InBounds(map) && x.Standable(map) && x.GetEdifice(map) == null) >= 60, out storeCenter)) storeCenter = map.Center;
+                    m_homeNote = "store at " + storeCenter + " outdoor " + map.mapTemperature.OutdoorTemp.ToString("F0") + "C; ";
                     for (int i = 0; i < 4; i++)
                     {
                         Pawn hauler = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, forceGenerateNewPawn: true, canGeneratePawnRelations: false));
                         if (hauler.WorkTypeIsDisabled(WorkTypeDefOf.Hauling)) { i--; continue; }
-                        GenSpawn.Spawn(hauler, CellFinder.RandomClosewalkCellNear(map.Center, map, 10), map);
-                        hauler.workSettings.EnableAndInitialize();
+                        GenSpawn.Spawn(hauler, CellFinder.RandomClosewalkCellNear(storeCenter, map, 10), map); Warm(hauler);
+                        hauler.workSettings.EnableAndInitialize(); m_haulers.Add(hauler);
                         foreach (WorkTypeDef w in DefDatabase<WorkTypeDef>.AllDefs) if (!hauler.WorkTypeIsDisabled(w)) hauler.workSettings.SetPriority(w, w == WorkTypeDefOf.Hauling ? 1 : 0);
                     }
                     m_store = new Zone_Stockpile(StorageSettingsPreset.DefaultStockpile, map.zoneManager);
                     map.zoneManager.RegisterZone(m_store);
-                    foreach (IntVec3 c in GenRadial.RadialCellsAround(map.Center, 5f, true))
+                    foreach (IntVec3 c in GenRadial.RadialCellsAround(storeCenter, 5f, true))
                         if (c.InBounds(map) && c.Standable(map) && c.GetEdifice(map) == null && map.zoneManager.ZoneAt(c) == null && c.GetFirstItem(map) == null) m_store.AddCell(c);
                     m_store.settings.filter.SetDisallowAll();
                     foreach (string d in CargoDefs) m_store.settings.filter.SetAllow(ThingDef.Named(d), true);
                     Pawn rider = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, forceGenerateNewPawn: true, canGeneratePawnRelations: false));
                     rider.Name = new NameTriple("VFHome", "Rider", "TMM");
-                    GenSpawn.Spawn(rider, m_impala.Position + new IntVec3(2, 0, 0), map);
+                    GenSpawn.Spawn(rider, m_impala.Position + new IntVec3(2, 0, 0), map); Warm(rider);
                     AccessTools.Method(m_impala.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(m_impala, new object[] { rider });
                     m_base.Clear();
                     foreach (string d in CargoDefs)
@@ -136,23 +156,6 @@ namespace TurboMegaMod
                     Caravan trip = LeaveBy(m_impala, map.Tile);
                     Check("Home_LeftMap", trip != null && !m_impala.Spawned, "caravan=" + (trip != null));
                     CaravanEnterMapUtility.Enter(trip, map, CaravanEnterMode.Edge, CaravanDropInventoryMode.DoNotDrop, false, null);
-                    // The vehicle enters at a random map edge. If this random map cuts that edge off from the fixture, bring the warehouse and its haulers to the vehicle's side.
-                    if (!map.mapPawns.FreeColonistsSpawned.Where(p => !m_homeCrew.Contains(p) && p.CanReach(m_store.Cells[0], PathEndMode.OnCell, Danger.Deadly)).Any(p => p.CanReach(m_impala, PathEndMode.Touch, Danger.Deadly)))
-                    {
-                        IntVec3 near;
-                        if (CellFinder.TryFindRandomCellNear(m_impala.Position, map, 45, c => c.Standable(map) && c.DistanceTo(m_impala.Position) > 15f && map.reachability.CanReach(c, m_impala, PathEndMode.Touch, TraverseParms.For(TraverseMode.PassDoors)), out near))
-                        {
-                            m_store.Delete();
-                            m_store = new Zone_Stockpile(StorageSettingsPreset.DefaultStockpile, map.zoneManager);
-                            map.zoneManager.RegisterZone(m_store);
-                            foreach (IntVec3 c in GenRadial.RadialCellsAround(near, 5f, true))
-                                if (c.InBounds(map) && c.Standable(map) && c.GetEdifice(map) == null && map.zoneManager.ZoneAt(c) == null && c.GetFirstItem(map) == null) m_store.AddCell(c);
-                            m_store.settings.filter.SetDisallowAll();
-                            foreach (string d in CargoDefs) m_store.settings.filter.SetAllow(ThingDef.Named(d), true);
-                            foreach (Pawn p in map.mapPawns.FreeColonistsSpawned.ToList()) if (!m_homeCrew.Contains(p) && p.workSettings.GetPriority(WorkTypeDefOf.Hauling) == 1) { p.Position = CellFinder.RandomClosewalkCellNear(near, map, 5); p.Notify_Teleported(true, false); }
-                            Log.Message("[TMM probe] warehouse moved to " + near);
-                        }
-                    }
                     Check("Home_VehicleEntered", m_impala.Spawned && m_impala.Map == map, m_impala.Position.ToString());
                     Check("Home_CrewGotOut", m_homeCrew.All(p => p.Spawned && p.Map == map && !p.Dead) && VehicleHome.CrewCount(m_impala) == 0, "crew=" + string.Join(",", m_homeCrew.Select(p => p.LabelShort + ":" + p.Spawned).ToArray()) + " threat=" + GenHostility.AnyHostileActiveThreatToPlayer(map));
                     Check("Home_CargoKeptOnArrival", CargoDefs.Select((d, i) => m_impala.inventory.innerContainer.Where(t => t.def.defName == d).Sum(t => t.stackCount) == CargoCounts[i]).All(x => x), Totals());
@@ -173,30 +176,36 @@ namespace TurboMegaMod
                 }
                 if (m_homeStage == 2)
                 {
-                    bool someOut = CargoDefs.Any(d => OnGround(d) > 0), someIn = CargoDefs.Any(d => m_impala.inventory.innerContainer.Any(t => t.def.defName == d));
+                    // UnloadInventory can transfer a stack straight to a hauler, without dropping it.
+                    var remaining = CargoDefs.Select(d => m_impala.inventory.innerContainer
+                        .Where(t => t.def.defName == d).Sum(t => t.stackCount)).ToArray();
+                    bool someOut = remaining.Where((count, i) => count < CargoCounts[i]).Any();
+                    bool someIn = remaining.Any(count => count > 0);
                     if (someOut && someIn)
                     {
                         Check("Home_CrewMovesOn", m_homeCrew.All(p => p.Spawned && p.CurJob != null), string.Join(",", m_homeCrew.Select(p => p.CurJobDef == null ? "none" : p.CurJobDef.defName).ToArray()));
+                        Check("Home_CargoConservedMidUnload", CargoDefs.Select((d, i) => CountEverywhere(d) == CargoCounts[i]).All(x => x), Totals());
                         GameDataSaveLoader.SaveGame(HomeSaveName);
-                        m_homeNote = "saved in the middle of unloading: " + Totals();
+                        m_homeNote += "saved in the middle of unloading: " + Totals();
                         Stage(3);
                         return;
                     }
-                    if (m_ticks - m_stageTick > 12000) { Check("Home_HaulersCame", false, Totals()); Stage(9); }
+                    if (m_ticks - m_stageTick > 12000) { Check("Home_HaulersCame", false, Totals() + Who()); Stage(9); }
                     return;
                 }
                 if (m_homeStage == 3)
                 {
                     bool delivered = CargoDefs.Select((d, i) => InStore(d) == CargoCounts[i]).All(x => x);
+                    if (m_ticks % 750 == 0 && m_homeLog.Count < 30) m_homeLog.Add((m_ticks - m_homeStart) + ": " + Totals() + " " + string.Join(" / ", m_haulers.Where(h => h.CurJobDef != null && (h.CurJobDef.defName.Contains("Unload") || h.CurJobDef.defName.Contains("Haul"))).Select(h => h.LabelShort + " " + h.CurJobDef.defName + " toil=" + (h.jobs.curDriver == null ? -1 : h.jobs.curDriver.CurToilIndex) + " at " + h.Position + " carry=" + (h.carryTracker.CarriedThing == null ? "none" : h.carryTracker.CarriedThing.LabelShort)).ToArray()));
                     if (!delivered && m_ticks - m_stageTick <= 15000) return;
-                    Check("Home_CargoInStorageExactly", delivered && CargoDefs.Select((d, i) => CountEverywhere(d) == CargoCounts[i]).All(x => x), Totals() + " after " + (m_ticks - m_homeStart) + " ticks");
+                    Check("Home_CargoInStorageExactly", delivered && CargoDefs.Select((d, i) => CountEverywhere(d) == CargoCounts[i]).All(x => x), Totals() + " after " + (m_ticks - m_homeStart) + " ticks" + Who());
                     Stage(4);
                     return;
                 }
                 if (m_homeStage == 4)
                 {
                     if (m_ticks - m_stageTick < 200) return;
-                    Check("Home_UnloadingEnded", !home.Unloading(m_impala) && !VehicleHome.Requested(m_impala) && !m_impala.inventory.innerContainer.Any, "unloading=" + home.Unloading(m_impala));
+                    Check("Home_UnloadingEnded", !home.Unloading(m_impala) && !VehicleHome.Requested(m_impala) && !m_impala.inventory.innerContainer.Any, "unloading=" + home.Unloading(m_impala) + Who());
                     // Cargo without any storage: ordered by hand.
                     AddCargo(m_impala, "Uranium", 15);
                     VehicleHome.Request(m_impala, false);
@@ -209,7 +218,7 @@ namespace TurboMegaMod
                 {
                     bool placed = OnGround("Uranium") == 15;
                     if (!placed && m_ticks - m_stageTick <= 15000) return;
-                    Check("Home_NoStorageCargoAvailable", placed && CountEverywhere("Uranium") == 15 && map.listerThings.ThingsOfDef(ThingDefOf.Uranium).All(t => !t.IsForbidden(Faction.OfPlayer)), "ground=" + OnGround("Uranium") + " all=" + CountEverywhere("Uranium"));
+                    Check("Home_NoStorageCargoAvailable", placed && CountEverywhere("Uranium") == 15 && map.listerThings.ThingsOfDef(ThingDefOf.Uranium).All(t => !t.IsForbidden(Faction.OfPlayer)), "ground=" + OnGround("Uranium") + " all=" + CountEverywhere("Uranium") + Who());
                     Stage(9);
                 }
             }
@@ -224,7 +233,7 @@ namespace TurboMegaMod
                 Settlement town = Find.WorldObjects.Settlements.First(s => s.Faction != null && !s.Faction.IsPlayer && !s.Faction.HostileTo(Faction.OfPlayer) && s.Faction.def.humanlikeFaction && !s.HasMap);
                 Map townMap = GetOrGenerateMapUtility.GetOrGenerateMap(town.Tile, new IntVec3(150, 1, 150), null);
                 Pawn driver = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, forceGenerateNewPawn: true, canGeneratePawnRelations: false));
-                GenSpawn.Spawn(driver, m_impala.Position + new IntVec3(2, 0, 0), map);
+                GenSpawn.Spawn(driver, m_impala.Position + new IntVec3(2, 0, 0), map); Warm(driver);
                 AccessTools.Method(m_impala.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(m_impala, new object[] { driver });
                 AddCargo(m_impala, "Plasteel", 12);
                 Caravan trip = LeaveBy(m_impala, map.Tile);
@@ -233,6 +242,11 @@ namespace TurboMegaMod
                 Check("Elsewhere_CrewAndCargoStayAboard", m_impala.Spawned && m_impala.Map == townMap && VehicleHome.CrewCount(m_impala) == 1 && !driver.Spawned && !listed && !VehicleHome.Requested(m_impala) &&
                     m_impala.inventory.innerContainer.Where(t => t.def.defName == "Plasteel").Sum(t => t.stackCount) == 12, "crew=" + VehicleHome.CrewCount(m_impala) + " listed=" + listed);
                 Check("Elsewhere_NoButton", !m_impala.GetGizmos().Any(g => g is Command_Action && ((Command_Action)g).defaultLabel == "TMM_VehicleUnloadHome".Translate()), "checked");
+                Pawn flyer = m_vtb as Pawn;
+                Caravan air = flyer == null ? null : Find.WorldObjects.Caravans.FirstOrDefault(c => c.ContainsPawn(flyer));
+                int crewBefore = flyer == null ? -1 : VehicleHome.CrewCount(flyer);
+                if (air != null) CaravanEnterMapUtility.Enter(air, map, CaravanEnterMode.Edge, CaravanDropInventoryMode.DoNotDrop, false, null);
+                Check("Elsewhere_AircraftCrewStaysAboard", air != null && flyer.Spawned && flyer.Map == map && crewBefore >= 1 && VehicleHome.CrewCount(flyer) == crewBefore && !map.GetComponent<VehicleHomeArrival>().Unloading(flyer), "caravan=" + (air != null) + " crew " + crewBefore + "->" + (flyer == null ? -1 : VehicleHome.CrewCount(flyer)));
             }
             catch (Exception ex) { Check("Elsewhere_NoException", false, ex.GetBaseException().Message); }
         }
@@ -250,9 +264,23 @@ namespace TurboMegaMod
             }
             m_store = map.zoneManager.AllZones.OfType<Zone_Stockpile>().FirstOrDefault(z => z.settings.filter.Allows(ThingDefOf.Gold) && !z.settings.filter.Allows(ThingDefOf.Steel));
             bool delivered = CargoDefs.Select((d, i) => InStore(d) == CargoCounts[i]).All(x => x);
-            if (!delivered && m_ticks - m_reloadStart < 15000) return;
+            int elapsed = m_ticks - m_reloadStart;
+            bool extended = Environment.GetEnvironmentVariable("TMM_VF_TRACE_UNLOAD") == "1";
+            if (extended && elapsed >= 15000 && !delivered && elapsed % 5000 == 0)
+            {
+                string truck = m_impala == null ? "missing" : string.Join(",", m_impala.inventory.innerContainer
+                    .Select(t => t.def.defName + ":" + t.stackCount).ToArray());
+                string carriers = string.Join(",", map.mapPawns.FreeColonistsSpawned
+                    .Where(p => p.carryTracker != null && p.carryTracker.CarriedThing != null
+                        && CargoDefs.Contains(p.carryTracker.CarriedThing.def.defName))
+                    .Select(p => p.ThingID + " " + p.Position + " " + p.CurJobDef + " carrying="
+                        + p.carryTracker.CarriedThing.def.defName).ToArray());
+                Log.Message("[TMM VF replay] ticks=" + elapsed + " truck=[" + truck + "] carriers=[" + carriers + "] " + Totals());
+            }
+            if (!delivered && elapsed < (extended ? 45000 : 15000)) return;
             s_done = true;
-            Check("HomeReload_CargoInStorageExactly", delivered && CargoDefs.Select((d, i) => CountEverywhere(d) == CargoCounts[i]).All(x => x), Totals() + " after " + (m_ticks - m_reloadStart) + " ticks");
+            Check("HomeReload_CargoInStorageExactly", delivered && elapsed <= 15000
+                && CargoDefs.Select((d, i) => CountEverywhere(d) == CargoCounts[i]).All(x => x), Totals() + " after " + elapsed + " ticks");
             Write("VehicleFrameworkReloadProbe.json", false);
         }
 
@@ -294,13 +322,13 @@ namespace TurboMegaMod
         private Thing FindTruck()
         {
             if (m_vehicle != null && !m_vehicle.Destroyed) return m_vehicle;
-            foreach (Thing t in map.listerThings.AllThings) if (t.def != null && t.def.defName == TruckDef && t != m_impala) return t;
-            foreach (Pawn p in map.mapPawns.AllPawns) if (p.def != null && p.def.defName == TruckDef && p != m_impala) return p;
+            foreach (Thing t in map.listerThings.AllThings) if (t.def != null && t.def.defName == TruckDef) return t;
+            foreach (Pawn p in map.mapPawns.AllPawns) if (p.def != null && p.def.defName == TruckDef) return p;
             foreach (Caravan c in Find.WorldObjects.Caravans)
             {
-                foreach (Pawn p in c.PawnsListForReading) if (p.def != null && p.def.defName == TruckDef && p != m_impala) return p;
+                foreach (Pawn p in c.PawnsListForReading) if (p.def != null && p.def.defName == TruckDef) return p;
             }
-            foreach (Pawn p in Find.WorldPawns.AllPawnsAlive) if (p.def != null && p.def.defName == TruckDef && p != m_impala) return p;
+            foreach (Pawn p in Find.WorldPawns.AllPawnsAlive) if (p.def != null && p.def.defName == TruckDef) return p;
             return null;
         }
 
@@ -381,6 +409,45 @@ namespace TurboMegaMod
             return best.Valid ? best : neighbors.FirstOrDefault(t => !Find.World.Impassable(t));
         }
 
+        /// The probe's own pawns are dressed for the weather: a cold start tile (bret/57568) froze haulers and the relative of the
+        /// passenger, so the unloading and the relation checks failed for reasons outside the vehicles (230711, vffix-bret-3).
+        private void Warm(Pawn p)
+        {
+            if (p == null || p.apparel == null || map.mapTemperature.OutdoorTemp > 5f) return;
+            foreach (string d in new[] { "Apparel_Parka", "Apparel_Tuque" })
+            {
+                ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(d);
+                if (def == null) continue;
+                Apparel a = (Apparel)ThingMaker.MakeThing(def, def.MadeFromStuff ? ThingDefOf.Cloth : null);
+                p.apparel.Wear(a, true);
+            }
+        }
+        /// The fixture's colony works undisturbed: a cave hive of the start map and a raid or manhunter of the storyteller held
+        /// the haulers past the unloading deadline (vffix2-bret-6: hive insects and a manhunter, hostiles=4).
+        private void CalmMap()
+        {
+            int hives = 0, animals = 0;
+            foreach (Thing hive in map.listerThings.AllThings.Where(x => x.def.defName == "Hive").ToList()) { hive.Destroy(DestroyMode.Vanish); hives++; }
+            foreach (Pawn p in map.mapPawns.AllPawnsSpawned.Where(p => !p.RaceProps.Humanlike && (p.HostileTo(Faction.OfPlayer) || p.RaceProps.Insect)).ToList()) { p.Destroy(DestroyMode.Vanish); animals++; }
+            if (Find.Storyteller != null && Find.Storyteller.difficulty != null) Find.Storyteller.difficulty.allowBigThreats = false;
+            m_calmNote = "calm: hives=" + hives + " hostileAnimals=" + animals + " bigThreats=off";
+        }
+        private string m_calmNote = "";
+        private readonly List<string> m_homeLog = new List<string>();
+        private int m_closedDialogs;
+        /// A dialog that pauses the game (a story letter, naming the colony) would stop the ticks this probe counts; nobody is there to close it.
+        public override void MapComponentUpdate()
+        {
+            if (s_done || map != Find.AnyPlayerHomeMap || !Fresh && !Reload) return;
+            if (m_ticks < 5 || !Find.TickManager.Paused) return;   // the game may also be paused before the truck is spawned (tick 60)
+            foreach (Window w in Find.WindowStack.Windows.Where(w => w.forcePause).ToList())
+            {
+                Log.Message("[TMM] Vehicle probe closes a pausing window: " + ProbeWindows.Dismiss(w));
+                m_closedDialogs++;
+            }
+            Find.TickManager.CurTimeSpeed = TimeSpeed.Ultrafast;
+        }
+
         public override void MapComponentTick()
         {
             if (s_done || map != Find.AnyPlayerHomeMap) return;
@@ -390,9 +457,10 @@ namespace TurboMegaMod
             if (Reload && HomeSave) { UpdateHomeReload(); return; }
             if (Reload) { if (m_ticks >= 300) FinishReload(); return; }
             if (m_ticks > 320 && m_homeStage < 9) UpdateHome();
+            if (m_ticks == 30) CalmMap();
             if (m_ticks == 60) SpawnTruck();
             if (m_ticks == 90) StartDrive();
-            if (m_ticks == 120) SpawnReturnTruck();
+            if (m_ticks == 120) TestNewVehicles();
             // Driving needs the asynchronous path and real movement: leave the map once the truck has driven 5 cells (800 ticks at most).
             bool drove = m_vehicle != null && m_vehicle.Spawned && m_startPos.IsValid && m_vehicle.Position.DistanceTo(m_startPos) >= 5f;
             if (!m_caravanStarted && m_ticks >= 200 && (drove || m_ticks >= 800))
@@ -402,8 +470,11 @@ namespace TurboMegaMod
                 StartWorldCaravan();
             }
             if (m_caravanStarted) UpdateCaravan();
+            if (m_ticks == 250) LaunchVertibird();
+            if (m_ticks > 250) UpdateFlight();
             bool truckDone = m_caravanArrived && m_ticks >= m_caravanArrivedTick + 30;
-            if ((truckDone && m_homeStage == 9) || m_ticks >= 60000) FinishFresh();
+            bool flightDone = m_vtbArrived || m_vtbLaunchTick < 0 && m_ticks > 260 || m_vtbLaunchTick >= 0 && m_ticks >= m_vtbLaunchTick + 8000;
+            if ((truckDone && flightDone && m_homeStage == 9) || m_ticks >= 60000) FinishFresh();
         }
 
         /// Refuel, put a colonist in the driver's seat, start the engine and drive about 15 cells.
@@ -417,16 +488,16 @@ namespace TurboMegaMod
                 if (fuel != null) AccessTools.Method(fuel.GetType(), "Refuel", new Type[] { typeof(float) }).Invoke(fuel, new object[] { 80f });
                 Pawn driver = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
                 driver.Name = new NameTriple("VFDriver", "Driver", "TMM");
-                GenSpawn.Spawn(driver, m_vehicle.Position + new IntVec3(3, 0, 0), map);
+                GenSpawn.Spawn(driver, m_vehicle.Position + new IntVec3(3, 0, 0), map); Warm(driver);
                 bool boarded = (bool)AccessTools.Method(m_vehicle.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(m_vehicle, new object[] { driver });
 
                 Pawn relative = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, fixedGender: Gender.Male));
-                relative.Name = new NameTriple("VFRelative", "Relative", "TMM");
-                GenSpawn.Spawn(relative, m_vehicle.Position + new IntVec3(2, 0, 0), map);
+                relative.Name = new NameTriple("VFRelative", "Relative", "TMM"); m_relative = relative;
+                GenSpawn.Spawn(relative, m_vehicle.Position + new IntVec3(2, 0, 0), map); Warm(relative);
 
                 Pawn passenger = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfPlayer, fixedGender: Gender.Female));
                 passenger.Name = new NameTriple("VFPassenger", "Passenger", "TMM");
-                GenSpawn.Spawn(passenger, m_vehicle.Position + new IntVec3(4, 0, 0), map);
+                GenSpawn.Spawn(passenger, m_vehicle.Position + new IntVec3(4, 0, 0), map); Warm(passenger);
                 passenger.relations.AddDirectRelation(PawnRelationDefOf.Spouse, relative);
 
                 bool passBoarded = (bool)AccessTools.Method(m_vehicle.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(m_vehicle, new object[] { passenger });
@@ -435,20 +506,18 @@ namespace TurboMegaMod
                 AccessTools.Property(ignition.GetType(), "Drafted").SetValue(ignition, true, null);
                 m_startPos = m_vehicle.Position;
                 IntVec3 dest;
-                // The game map is random: take only a place this vehicle can really drive to, as a player would.
-                MethodInfo reach = AccessTools.Method(AccessTools.TypeByName("Vehicles.VehicleReachabilityUtility"), "CanReachVehicle", new Type[] { AccessTools.TypeByName("Vehicles.VehiclePawn"), typeof(LocalTargetInfo), typeof(PathEndMode), typeof(Danger), typeof(TraverseMode) });
-                dest = IntVec3.Invalid;
-                for (int tries = 0; tries < 400 && !dest.IsValid; tries++)
-                {
-                    IntVec3 c = m_startPos + new IntVec3(Rand.RangeInclusive(-22, 22), 0, Rand.RangeInclusive(-22, 22));
-                    if (c.InBounds(map) && c.DistanceTo(m_startPos) >= 10f && c.Standable(map) && c.GetEdifice(map) == null && (bool)reach.Invoke(null, new object[] { m_vehicle, new LocalTargetInfo(c), PathEndMode.OnCell, Danger.Deadly, TraverseMode.ByPawn })) dest = c;
-                }
-                if (!dest.IsValid) { m_driveNote = "no reachable drive target"; return; }
+                // The destination must be one the truck can really drive to (Vehicle Framework's own fit and reach test): a cell that
+                // only a pawn can stand on left the truck with a failed path and nothing to check (230711, 012527).
+                Pawn truckPawn = (Pawn)m_vehicle; IntVec3 start = m_startPos;
+                Predicate<IntVec3> drivable = c => c.InBounds(map) && c.Standable(map) && c.GetEdifice(map) == null && c.DistanceTo(start) >= 8f && VfBridge.CanDrive(truckPawn, c);
+                if (!CellFinder.TryFindRandomCellNear(m_startPos + new IntVec3(15, 0, 0), map, 6, drivable, out dest)
+                    && !CellFinder.TryFindRandomCellNear(m_startPos, map, 20, drivable, out dest)) dest = m_startPos + new IntVec3(15, 0, 0);
+                m_driveNote = "drivable=" + VfBridge.CanDrive(truckPawn, dest) + " ";
                 m_dest = dest;
                 object pather = AccessTools.Field(m_vehicle.GetType(), "vehiclePather").GetValue(m_vehicle);
-                AccessTools.Method(pather.GetType(), "StartPath").Invoke(pather, new object[] { new LocalTargetInfo(dest), PathEndMode.OnCell, false });
+                VfBridge.StartPath((Pawn)m_vehicle, dest);   // by a job, as a player orders it; a bare path is cancelled by the idle job
                 bool canMove = (bool)AccessTools.Property(m_vehicle.GetType(), "CanMoveFinal").GetValue(m_vehicle, null);
-                m_driveNote = "boarded=" + boarded + " passBoarded=" + passBoarded + " canMove=" + canMove + " dest=" + dest;
+                m_driveNote += "boarded=" + boarded + " passBoarded=" + passBoarded + " canMove=" + canMove + " dest=" + dest;
             }
             catch (Exception ex) { m_driveNote = "exception: " + ex.GetBaseException().Message; }
         }
@@ -513,6 +582,60 @@ namespace TurboMegaMod
             }
         }
 
+        private void LaunchVertibird()
+        {
+            try
+            {
+                if (m_vtb == null || !m_vtb.Spawned) { m_vtbNote = "no spawned vertibird"; return; }
+                PlanetTile from = map.Tile;
+                List<PlanetTile> neighbors = new List<PlanetTile>();
+                Find.WorldGrid.GetTileNeighbors(from, neighbors);
+                foreach (PlanetTile t in neighbors)
+                    if (t != m_destTile && !Find.World.Impassable(t) && Find.WorldObjects.MapParentAt(t) == null) { m_vtbDest = t; break; }
+                if (!m_vtbDest.Valid) { m_vtbNote = "no free neighbour tile"; return; }
+
+                ThingComp launcher = ((ThingWithComps)m_vtb).AllComps.FirstOrDefault(c => c.GetType().Name == "CompVehicleLauncher");
+                if (launcher == null) { m_vtbNote = "no CompVehicleLauncher"; return; }
+                Type tdType = AccessTools.TypeByName("SmashTools.Targeting.TargetData`1").MakeGenericType(typeof(GlobalTargetInfo));
+                object td = Activator.CreateInstance(tdType);
+                FieldInfo targetsField = AccessTools.Field(tdType, "targets");
+                List<GlobalTargetInfo> targets = targetsField.GetValue(td) as List<GlobalTargetInfo>;
+                if (targets == null) { targets = new List<GlobalTargetInfo>(); targetsField.SetValue(td, targets); }
+                targets.Add(new GlobalTargetInfo(m_vtbDest));
+                object arrival = Activator.CreateInstance(AccessTools.TypeByName("Vehicles.World.ArrivalAction_LandToCaravan"), new object[] { m_vtb });
+                m_vtbFuelBefore = GetFuel(m_vtb);
+                AccessTools.Method(launcher.GetType(), "Launch").Invoke(launcher, new object[] { td, arrival });
+                m_vtbLaunchTick = m_ticks;
+                m_vtbNote = "launched from " + from + " to " + m_vtbDest + " fuel=" + m_vtbFuelBefore;
+            }
+            catch (Exception ex) { m_vtbNote = "launch ex: " + ex.GetBaseException().Message; }
+        }
+
+        private void UpdateFlight()
+        {
+            if (m_vtbLaunchTick < 0 || m_vtb == null || m_vtbArrived) return;
+            try
+            {
+                if (!m_vtb.Spawned) m_vtbLeftMap = true;
+                if (!m_vtbInFlight && Find.WorldObjects.AllWorldObjects.Any(o => o.GetType().Name == "AerialVehicleInFlight")) m_vtbInFlight = true;
+                Pawn vp = m_vtb as Pawn;
+                foreach (Caravan c in Find.WorldObjects.Caravans)
+                {
+                    if (vp != null && c.ContainsPawn(vp))
+                    {
+                        if (c.Tile == m_vtbDest)
+                        {
+                            m_vtbArrived = true;
+                            m_vtbFuelAfter = GetFuel(m_vtb);
+                            m_vtbNote += "; landed as caravan at " + c.Tile + " after " + (m_ticks - m_vtbLaunchTick) + " ticks";
+                        }
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex) { m_vtbNote += "; update ex: " + ex.GetBaseException().Message; m_vtbArrived = true; }
+        }
+
         private void UpdateCaravan()
         {
             try
@@ -563,16 +686,32 @@ namespace TurboMegaMod
             catch (Exception ex) { Check("SpawnTruckNoException", false, ex.GetBaseException().Message); }
         }
 
-        private void SpawnReturnTruck()
+        private void TestNewVehicles()
         {
             Type spawner = AccessTools.TypeByName("Vehicles.VehicleSpawner");
             MethodInfo spawn = spawner == null ? null : AccessTools.Method(spawner, "SpawnVehicleRandomized");
             Type vehicleDefType = AccessTools.TypeByName("Vehicles.VehicleDef");
             if (spawn == null || vehicleDefType == null) return;
 
+            // 1. Check all Defs exist
+            string[] allVehicleDefs = new string[] {
+                "TMM_Vehicle_Impala",
+                "TMM_Vehicle_GunnerTechnical",
+                "TMM_Vehicle_CargoHauler",
+                "TMM_Vehicle_Vertibird",
+                "TMM_Vehicle_VertibirdEnclave"
+            };
+
+            foreach (string vName in allVehicleDefs)
+            {
+                Def vDef = GenDefDatabase.GetDef(vehicleDefType, vName, false);
+                Check("DefLoaded_" + vName, vDef != null, vDef != null ? vDef.label : "null");
+            }
+
+            // 2. Spawn and test TMM_Vehicle_Impala (drives locally)
             try
             {
-                Def impalaDef = TruckVehicleDef();
+                Def impalaDef = GenDefDatabase.GetDef(vehicleDefType, "TMM_Vehicle_Impala", false);
                 if (impalaDef != null)
                 {
                     IntVec3 cell;
@@ -582,7 +721,7 @@ namespace TurboMegaMod
 
                     Thing impala = (Thing)spawn.Invoke(null, new object[] { impalaDef, cell, map, Faction.OfPlayer, (Rot4?)Rot4.North, false });
                     m_impala = impala as Pawn;
-                    Check("Spawned_HomeTestPickup", impala != null && impala.Spawned, impala != null ? impala.Position.ToString() : "null");
+                    Check("Spawned_TMM_Vehicle_Impala", impala != null && impala.Spawned, impala != null ? impala.Position.ToString() : "null");
 
                     if (impala != null)
                     {
@@ -592,7 +731,7 @@ namespace TurboMegaMod
 
                         Pawn impalaDriver = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
                         impalaDriver.Name = new NameTriple("VFImpala", "Driver", "TMM");
-                        GenSpawn.Spawn(impalaDriver, impala.Position + new IntVec3(2, 0, 0), map);
+                        GenSpawn.Spawn(impalaDriver, impala.Position + new IntVec3(2, 0, 0), map); Warm(impalaDriver);
                         bool boarded = (bool)AccessTools.Method(impala.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(impala, new object[] { impalaDriver });
 
                         object ignition = AccessTools.Field(impala.GetType(), "ignition").GetValue(impala);
@@ -603,18 +742,111 @@ namespace TurboMegaMod
                         if (!CellFinder.TryFindRandomCellNear(startPos + new IntVec3(12, 0, 0), map, 6, c => c.Standable(map) && c.GetEdifice(map) == null, out dest)) dest = startPos + new IntVec3(12, 0, 0);
 
                         object pather = AccessTools.Field(impala.GetType(), "vehiclePather").GetValue(impala);
-                        AccessTools.Method(pather.GetType(), "StartPath").Invoke(pather, new object[] { new LocalTargetInfo(dest), PathEndMode.OnCell, false });
+                        VfBridge.StartPath((Pawn)impala, dest);
 
                         bool canMove = (bool)AccessTools.Property(impala.GetType(), "CanMoveFinal").GetValue(impala, null);
-                        Check("HomePickup_CanMoveAndBoarded", boarded && canMove, "boarded=" + boarded + " canMove=" + canMove);
+                        Check("Impala_CanMoveAndBoarded", boarded && canMove, "boarded=" + boarded + " canMove=" + canMove);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Check("HomePickup_TestNoException", false, ex.GetBaseException().Message);
+                Check("Impala_TestNoException", false, ex.GetBaseException().Message);
             }
 
+            // 3. Spawn GunnerTechnical & CargoHauler (verify they spawn and exist)
+            try
+            {
+                Def techDef = GenDefDatabase.GetDef(vehicleDefType, "TMM_Vehicle_GunnerTechnical", false);
+                if (techDef != null)
+                {
+                    IntVec3 cell;
+                    if (!CellFinder.TryFindRandomCellNear(map.Center + new IntVec3(15, 0, 15), map, 15,
+                        c => GenAdj.OccupiedRect(c, Rot4.North, new IntVec2(2, 4)).All(x => x.InBounds(map) && x.Standable(map) && x.GetFirstPawn(map) == null && x.GetEdifice(map) == null), out cell))
+                        cell = map.Center + new IntVec3(15, 0, 15);
+                    Thing tech = (Thing)spawn.Invoke(null, new object[] { techDef, cell, map, Faction.OfPlayer, (Rot4?)Rot4.North, false });
+                    Check("Spawned_TMM_Vehicle_GunnerTechnical", tech != null && tech.Spawned, tech != null ? tech.Position.ToString() : "null");
+                }
+
+                Def cargoDef = GenDefDatabase.GetDef(vehicleDefType, "TMM_Vehicle_CargoHauler", false);
+                if (cargoDef != null)
+                {
+                    IntVec3 cell;
+                    if (!CellFinder.TryFindRandomCellNear(map.Center + new IntVec3(-15, 0, 15), map, 15,
+                        c => GenAdj.OccupiedRect(c, Rot4.North, new IntVec2(3, 5)).All(x => x.InBounds(map) && x.Standable(map) && x.GetFirstPawn(map) == null && x.GetEdifice(map) == null), out cell))
+                        cell = map.Center + new IntVec3(-15, 0, 15);
+                    Thing cargo = (Thing)spawn.Invoke(null, new object[] { cargoDef, cell, map, Faction.OfPlayer, (Rot4?)Rot4.North, false });
+                    Check("Spawned_TMM_Vehicle_CargoHauler", cargo != null && cargo.Spawned, cargo != null ? cargo.Position.ToString() : "null");
+                }
+            }
+            catch (Exception ex)
+            {
+                Check("GroundVehicles_SpawnNoException", false, ex.GetBaseException().Message);
+            }
+
+            // 4. Spawn Vertibird & VertibirdEnclave; test Vertibird startup (fuel, pilot, ignition, launcher)
+            try
+            {
+                Def vtbDef = GenDefDatabase.GetDef(vehicleDefType, "TMM_Vehicle_Vertibird", false);
+                if (vtbDef != null)
+                {
+                    IntVec3 cell;
+                    if (!CellFinder.TryFindRandomCellNear(map.Center + new IntVec3(0, 0, -20), map, 20,
+                        c => GenAdj.OccupiedRect(c, Rot4.North, new IntVec2(5, 7)).All(x => x.InBounds(map) && x.Standable(map) && x.GetFirstPawn(map) == null && x.GetEdifice(map) == null), out cell))
+                        cell = map.Center + new IntVec3(0, 0, -20);
+                    Thing vtb = (Thing)spawn.Invoke(null, new object[] { vtbDef, cell, map, Faction.OfPlayer, (Rot4?)Rot4.North, false });
+                    m_vtb = vtb;
+                    Check("Spawned_TMM_Vehicle_Vertibird", vtb != null && vtb.Spawned, vtb != null ? vtb.Position.ToString() : "null");
+
+                    if (vtb != null)
+                    {
+                        ThingWithComps vtbComps = vtb as ThingWithComps;
+                        ThingComp fuel = vtbComps != null ? vtbComps.AllComps.FirstOrDefault(c => c.GetType().Name == "CompFueledTravel") : null;
+                        if (fuel != null) AccessTools.Method(fuel.GetType(), "Refuel", new Type[] { typeof(float) }).Invoke(fuel, new object[] { 240f });
+
+                        Pawn pilot = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                        pilot.Name = new NameTriple("VFPilot", "Pilot", "TMM");
+                        GenSpawn.Spawn(pilot, vtb.Position + new IntVec3(4, 0, 0), map); Warm(pilot);
+                        bool boarded = (bool)AccessTools.Method(vtb.GetType(), "TryAddPawn", new Type[] { typeof(Pawn) }).Invoke(vtb, new object[] { pilot });
+
+                        object ignition = AccessTools.Field(vtb.GetType(), "ignition").GetValue(vtb);
+                        AccessTools.Property(ignition.GetType(), "Drafted").SetValue(ignition, true, null);
+                        bool engineStarted = (bool)AccessTools.Property(ignition.GetType(), "Drafted").GetValue(ignition, null);
+
+                        ThingComp launcher = vtbComps != null ? vtbComps.AllComps.FirstOrDefault(c => c.GetType().Name == "CompVehicleLauncher") : null;
+                        bool canLaunch = false;
+                        string failReason = null;
+                        if (launcher != null)
+                        {
+                            MethodInfo canLaunchMethod = AccessTools.Method(launcher.GetType(), "CanLaunchWithCargoCapacity", new Type[] { typeof(string).MakeByRefType() });
+                            if (canLaunchMethod != null)
+                            {
+                                object[] args = new object[] { null };
+                                canLaunch = (bool)canLaunchMethod.Invoke(launcher, args);
+                                failReason = args[0] as string;
+                            }
+                        }
+
+                        Check("Vertibird_EngineStartedAndLauncherReady", engineStarted && launcher != null,
+                            "boarded=" + boarded + " engine=" + engineStarted + " launcher=" + (launcher != null) + " canLaunch=" + canLaunch + " reason=" + failReason);
+                    }
+                }
+
+                Def encDef = GenDefDatabase.GetDef(vehicleDefType, "TMM_Vehicle_VertibirdEnclave", false);
+                if (encDef != null)
+                {
+                    IntVec3 cell;
+                    if (!CellFinder.TryFindRandomCellNear(map.Center + new IntVec3(20, 0, -20), map, 20,
+                        c => GenAdj.OccupiedRect(c, Rot4.North, new IntVec2(5, 7)).All(x => x.InBounds(map) && x.Standable(map) && x.GetFirstPawn(map) == null && x.GetEdifice(map) == null), out cell))
+                        cell = map.Center + new IntVec3(20, 0, -20);
+                    Thing enc = (Thing)spawn.Invoke(null, new object[] { encDef, cell, map, Faction.OfPlayer, (Rot4?)Rot4.North, false });
+                    Check("Spawned_TMM_Vehicle_VertibirdEnclave", enc != null && enc.Spawned, enc != null ? enc.Position.ToString() : "null");
+                }
+            }
+            catch (Exception ex)
+            {
+                Check("Vertibirds_TestNoException", false, ex.GetBaseException().Message);
+            }
         }
 
         private void CommonChecks()
@@ -660,14 +892,20 @@ namespace TurboMegaMod
             bool fuelConsumed = m_fuelAfterCaravan > 0f && m_fuelBeforeCaravan > 0f && m_fuelAfterCaravan < m_fuelBeforeCaravan;
             Check("VehicleCaravanConsumedFuel", fuelConsumed, "before=" + m_fuelBeforeCaravan + " after=" + m_fuelAfterCaravan + " delta=" + (m_fuelBeforeCaravan - m_fuelAfterCaravan));
 
+            Check("Vertibird_LeftMapOnLaunch", m_vtbLeftMap, m_vtbNote);
+            Check("Vertibird_FlewAsWorldObject", m_vtbInFlight, m_vtbNote);
+            Check("Vertibird_LandedAsCaravanAtDestination", m_vtbArrived && m_vtbNote.Contains("landed"), m_vtbNote);
+            Check("Vertibird_FlightConsumedFuel", m_vtbFuelBefore > 0f && m_vtbFuelAfter >= 0f && m_vtbFuelAfter < m_vtbFuelBefore,
+                "before=" + m_vtbFuelBefore + " after=" + m_vtbFuelAfter);
 
             Pawn relPawn = map.mapPawns.AllPawns.FirstOrDefault(p => p.Name != null && p.Name.ToStringFull.Contains("VFRelative"));
             Pawn passPawn = FindPassenger(truck);
             bool relationExists = relPawn != null && passPawn != null && relPawn.relations.DirectRelationExists(PawnRelationDefOf.Spouse, passPawn);
-            Check("PassengerRelativeRelationBeforeSave", relationExists, "rel=" + (relPawn != null) + " pass=" + (passPawn != null) + " spouse=" + relationExists);
+            Check("PassengerRelativeRelationBeforeSave", relationExists, "rel=" + (relPawn != null) + " pass=" + (passPawn != null) + " spouse=" + relationExists + Who());
+
             try { GameDataSaveLoader.SaveGame(SaveName); Check("SaveWritten", File.Exists(Path.Combine(GenFilePaths.SavedGamesFolderPath, SaveName + ".rws")), "checked"); }
             catch (Exception ex) { Check("SaveWritten", false, ex.GetBaseException().Message); }
-            Check("Home_Note", m_homeStage == 9, m_homeNote);
+            Check("Home_Note", m_homeStage == 9, m_calmNote + "; " + m_homeNote);
             TestElsewhere();
             Write("VehicleFrameworkProbe.json", true);
         }

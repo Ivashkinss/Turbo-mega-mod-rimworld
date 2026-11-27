@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Player-buildable 3x3 Institute Relay Pad: 150W idle / 1200W peak jump, local & 60-tile world jumps -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>TMM_RelayPad</defName>
+    <label>Institute relay pad</label>
+    <description>A 3x3 molecular relay platform reverse-engineered from Institute telemetry. Draws 150 W on standby and spikes to 1200 W during active dematerialization. Teleports colonists instantly to another powered pad on the same map, or launches pawns and cargo up to 60 world tiles as a caravan at the cost of one advanced component.</description>
+    <thingClass>TurboMegaMod.Building_TMMRelayPad</thingClass>
+    <category>Building</category>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>10</pathCost>
+    <fillPercent>0.12</fillPercent>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <size>(3,3)</size>
+    <designationCategory>Misc</designationCategory>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <canOverlapZones>false</canOverlapZones>
+    <graphicData>
+      <texPath>Things/Building/TMM/TMM_RelayPad</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <WorkToBuild>9500</WorkToBuild>
+      <Flammability>0.1</Flammability>
+      <Beauty>6</Beauty>
+    </statBases>
+    <costList>
+      <Plasteel>120</Plasteel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>TMM_RelayTechnology</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(90, 200, 255, 0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

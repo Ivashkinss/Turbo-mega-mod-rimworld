@@ -6,8 +6,9 @@ using Verse;
 
 namespace TurboMegaMod
 {
-    // Colony roles and ranks, stage 1 (Documentation/COLONY-ROLES-DESIGN.md): data, manual assignment,
-    // automatic work priorities, saving. Ranks, promotion, bonuses, third passion and gear come later.
+    // Colony roles and ranks (Documentation/COLONY-ROLES-DESIGN.md):
+    // data, manual assignment, automatic work priorities, ranks, promotion,
+    // Ideology promotion ceremony hooks, rank uniforms, bonuses and saving.
 
     public sealed class ColonyRankAura
     {
@@ -26,6 +27,7 @@ namespace TurboMegaMod
         public int mood;
         public List<StatModifier> stats = new List<StatModifier>();
         public ColonyRankAura aura;
+        public ColonyRankUniform uniform;
     }
 
     public sealed class ColonyRoleDef : Def
@@ -66,6 +68,8 @@ namespace TurboMegaMod
     public sealed class ColonyRoles : GameComponent
     {
         private List<ColonyRoleAssignment> assignments = new List<ColonyRoleAssignment>();
+        private bool ceremonyPreceptSeeded;
+        private bool sessionInitialized;
 
         public ColonyRoles(Game game) { }
 
@@ -76,14 +80,30 @@ namespace TurboMegaMod
 
         /// Assigns a role (or clears it with null). The role's work types go to priority 1; other work that was
         /// at priority 1 drops to 2, so the role's profession comes first. The player can still edit priorities.
+        /// Also applies the initial rank's ApparelPolicy when defined (without overwriting custom player policies).
         public void Assign(Pawn p, ColonyRoleDef role)
         {
             if (p == null) return;
             ColonyRoleAssignment a = For(p);
             if (role == null) { if (a != null) assignments.Remove(a); return; }
+
+            ColonyRank previousRank = a == null ? null : a.Rank;
             if (a == null) { a = new ColonyRoleAssignment { pawn = p }; assignments.Add(a); }
-            if (a.role != role) { a.role = role; a.rank = 0; }
+
+            bool roleChanged = a.role != role;
+            if (roleChanged)
+            {
+                a.role = role;
+                a.rank = 0;
+                a.readyNotifiedFor = -1;
+            }
+
             ApplyWorkPriorities(p, role);
+
+            if (roleChanged && a.Rank != null)
+            {
+                ColonyRankUniforms.ApplyUniformPolicy(p, role, a.Rank, previousRank);
+            }
         }
 
         public static void ApplyWorkPriorities(Pawn p, ColonyRoleDef role)
@@ -99,14 +119,47 @@ namespace TurboMegaMod
             }
         }
 
+        private void EnsureSessionInitialized()
+        {
+            if (sessionInitialized) return;
+            sessionInitialized = true;
+
+            ColonyRankUniforms.ClearCooldowns();
+            ColonyRankUniforms.SyncAllRankPolicies();
+
+            if (!ceremonyPreceptSeeded && ModsConfig.IdeologyActive)
+            {
+                if (ColonyRankCeremony.EnsurePlayerIdeoPrecept(null))
+                {
+                    ceremonyPreceptSeeded = true;
+                }
+            }
+        }
+
+        public override void StartedNewGame()
+        {
+            base.StartedNewGame();
+            sessionInitialized = false;
+            EnsureSessionInitialized();
+        }
+
+        public override void LoadedGame()
+        {
+            base.LoadedGame();
+            sessionInitialized = false;
+            EnsureSessionInitialized();
+        }
+
         public override void GameComponentTick()
         {
+            if (!sessionInitialized) EnsureSessionInitialized();
             if (Find.TickManager.TicksGame % 2500 == 0) ColonyPromotion.NotifyReady(this);
         }
 
         public override void ExposeData()
         {
             Scribe_Collections.Look(ref assignments, "TMM_colonyRoles", LookMode.Deep);
+            Scribe_Values.Look(ref ceremonyPreceptSeeded, "TMM_ceremonyPreceptSeeded", false);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (assignments == null) assignments = new List<ColonyRoleAssignment>();
@@ -154,7 +207,16 @@ namespace TurboMegaMod
                     {
                         ColonyRoleDef role = r;
                         string tag = (role.Military ? "TMM.Roles.Military" : "TMM.Roles.Civil").Translate().ToString();
-                        opts.Add(new FloatMenuOption(tag + ": " + role.LabelCap, () => { if (ColonyRoles.Instance != null) ColonyRoles.Instance.Assign(p, role); }));
+                        opts.Add(new FloatMenuOption(tag + ": " + role.LabelCap, () =>
+                        {
+                            ColonyRoles currentRoles = ColonyRoles.Instance;
+                            if (currentRoles == null) return;
+                            ColonyRoleAssignment existing = currentRoles.For(p);
+                            ColonyRank rank = existing != null && existing.role == role ? existing.Rank : role.ranks.FirstOrDefault();
+                            ApparelPolicy policy = ColonyRankUniforms.EnsurePolicyFor(role, rank);
+                            if (policy == null) currentRoles.Assign(p, role);
+                            else Find.WindowStack.Add(new Dialog_UniformLoadout(role, rank, policy, p));
+                        }));
                     }
                     opts.Add(new FloatMenuOption("TMM.Roles.Clear".Translate(), () => { if (ColonyRoles.Instance != null) ColonyRoles.Instance.Assign(p, null); }));
                     Find.WindowStack.Add(new FloatMenu(opts));

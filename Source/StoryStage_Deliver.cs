@@ -89,13 +89,13 @@ namespace TurboMegaMod
 
                 int have = StoryPayment.CountInColonyStockpiles(pinnedMap, contractDef);
                 string itemLabel = contractDef.label;
-                string deliverLabel = string.Format("Deliver {0} x{1} ({2}/{3})", itemLabel, contractCount, have, contractCount);
+                string deliverLabel = "TMM.Story.Deliver.HandIn".Translate(itemLabel, contractCount, have);
                 DiaOption deliver = new DiaOption(deliverLabel);
 
                 if (have < contractCount)
                 {
-                    deliver.Disable(string.Format("Need {0} {1} in colony storage on {2} ({3}/{0})",
-                        contractCount, itemLabel, pinnedMap.Parent != null ? pinnedMap.Parent.LabelCap.ToString() : "colony", have));
+                    deliver.Disable("TMM.Story.Deliver.NeedInStorage".Translate(
+                        contractCount, itemLabel, pinnedMap.Parent != null ? pinnedMap.Parent.LabelCap.ToString() : "TMM.Story.Deliver.Colony".Translate().ToString(), have));
                 }
                 else
                 {
@@ -190,8 +190,8 @@ namespace TurboMegaMod
         {
             get
             {
-                return string.Format("Deliver quest cargo to {0}",
-                    settlement != null ? settlement.LabelCap.ToString() : "settlement");
+                return "TMM.Story.Deliver.CargoTo".Translate(
+                    settlement != null ? settlement.LabelCap.ToString() : "TMM.Story.Deliver.Settlement".Translate().ToString());
             }
         }
 
@@ -199,8 +199,8 @@ namespace TurboMegaMod
         {
             get
             {
-                return string.Format("Delivering quest cargo to {0}.",
-                    settlement != null ? settlement.LabelCap.ToString() : "settlement");
+                return "TMM.Story.Deliver.CarryingTo".Translate(
+                    settlement != null ? settlement.LabelCap.ToString() : "TMM.Story.Deliver.Settlement".Translate().ToString());
             }
         }
 
@@ -311,7 +311,7 @@ namespace TurboMegaMod
                 ctx.run.vars["settlementFactionId"] = target.Faction != null ? target.Faction.loadID.ToString() : "-1";
                 ctx.run.vars["settlementName"] = target.LabelCap.ToString();
 
-                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "Caravan Delivery"), ctx);
+                string title = StoryUtil.Format(!label.NullOrEmpty() ? label : (ctx.def != null ? ctx.def.label : "TMM.Story.Deliver.CaravanTitle".Translate().ToString()), ctx);
                 string body = BuildSettlementLetterText(ctx, target);
                 Find.LetterStack.ReceiveLetter(title, body, LetterDefOf.NeutralEvent, new LookTargets(target)); // CHECK API
             }
@@ -404,25 +404,26 @@ namespace TurboMegaMod
                 }
             }
 
-            string itemLabel = displayDef != null ? displayDef.label : "resources";
-            string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", itemLabel, displayCount), ctx);
+            string itemLabel = displayDef != null ? displayDef.label : "TMM.Story.Deliver.Items".Translate().ToString();
+            string baseText = StoryUtil.Format(!label.NullOrEmpty() ? label : "TMM.Story.Deliver.Goal".Translate(itemLabel, displayCount).ToString(), ctx);
 
             if (ctx == null || ctx.run == null) return baseText;
 
             int now = Find.TickManager.TicksGame;
             int deadline = GetInt(ctx.run, "deadlineTick", now);
             float daysLeft = Mathf.Max(0f, (deadline - now) / (float)GenDate.TicksPerDay);
+            string time = "TMM.Story.DaysLeft".Translate(daysLeft.ToString("0.0"));
 
             if (to == StoryDeliverTarget.colony)
             {
                 Map pinnedMap = FindMapByUniqueId(GetInt(ctx.run, "deliverMapId", -1));
                 int have = (pinnedMap != null && displayDef != null) ? StoryPayment.CountInColonyStockpiles(pinnedMap, displayDef) : 0;
-                return string.Format("{0} ({1}/{2} {3}, {4:0.0}d left)", baseText, have, displayCount, itemLabel, daysLeft);
+                return "TMM.Story.Deliver.GoalColony".Translate(baseText, have, displayCount, itemLabel, time);
             }
 
             string targetName = GetStr(ctx.run, "settlementName");
-            if (targetName.NullOrEmpty()) targetName = "faction settlement";
-            return string.Format("{0} to {1} ({2:0.0}d left)", baseText, targetName, daysLeft);
+            if (targetName.NullOrEmpty()) targetName = "TMM.Story.Deliver.FactionSettlement".Translate();
+            return "TMM.Story.Deliver.GoalSettlement".Translate(baseText, targetName, time);
         }
 
         // =====================================================================
@@ -709,8 +710,8 @@ namespace TurboMegaMod
                 return false;
             }
 
-            string doneTitle = !stageDef.label.NullOrEmpty() ? stageDef.label : "Delivery Complete";
-            string doneBody = string.Format("Your caravan delivered {0} x{1} to {2}.",
+            string doneTitle = !stageDef.label.NullOrEmpty() ? stageDef.label : "TMM.Story.Deliver.DoneTitle".Translate().ToString();
+            string doneBody = "TMM.Story.Deliver.DoneText".Translate(
                 contractDef.label, contractCount, settlement.LabelCap);
             Find.LetterStack.ReceiveLetter(doneTitle, doneBody, LetterDefOf.PositiveEvent, new LookTargets(settlement)); // CHECK API
             return true;
@@ -781,7 +782,7 @@ namespace TurboMegaMod
 
             ChoiceLetter_StoryDeliver letter = new ChoiceLetter_StoryDeliver();
             letter.def = LetterDefOf.NeutralEvent;
-            letter.Label = StoryUtil.Format(!label.NullOrEmpty() ? label : string.Format("Deliver {0} x{1}", displayDef.label, displayCount), ctx);
+            letter.Label = StoryUtil.Format(!label.NullOrEmpty() ? label : "TMM.Story.Deliver.Goal".Translate(displayDef.label, displayCount).ToString(), ctx);
             letter.Text = BuildColonyLetterText(ctx, displayDef, displayCount);
             letter.questDefName = ctx.def != null ? ctx.def.defName : string.Empty;
             letter.stageKey = ctx.run.stageKey;
@@ -798,9 +799,9 @@ namespace TurboMegaMod
         private string BuildColonyLetterText(StoryContext ctx, ThingDef displayDef, int displayCount)
         {
             string custom = StoryUtil.Format(text, ctx);
-            string itemLabel = displayDef != null ? displayDef.label : "items";
-            string instruction = string.Format("Gather {0} x{1} in {2}'s storage stockpiles within {3:0.0} days, then open this letter and click Deliver.",
-                itemLabel, displayCount, "{COLONY}", timeoutDays);
+            string itemLabel = displayDef != null ? displayDef.label : "TMM.Story.Deliver.Items".Translate().ToString();
+            string instruction = "TMM.Story.Deliver.ColonyInstruction".Translate(
+                itemLabel, displayCount, "{COLONY}", timeoutDays.ToString("0.0"));
             instruction = StoryUtil.Format(instruction, ctx);
             if (custom.NullOrEmpty()) return instruction;
             return custom + "\n\n" + instruction;
@@ -809,9 +810,9 @@ namespace TurboMegaMod
         private string BuildSettlementLetterText(StoryContext ctx, Settlement target)
         {
             string custom = StoryUtil.Format(text, ctx);
-            string itemLabel = thing != null ? thing.label : "items";
-            string instruction = string.Format("Send a caravan carrying {0} x{1} to {2} and choose 'Deliver quest cargo' within {3:0.0} days.",
-                itemLabel, count, target.LabelCap, timeoutDays);
+            string itemLabel = thing != null ? thing.label : "TMM.Story.Deliver.Items".Translate().ToString();
+            string instruction = "TMM.Story.Deliver.SettlementInstruction".Translate(
+                itemLabel, count, target.LabelCap, timeoutDays.ToString("0.0"));
             if (custom.NullOrEmpty()) return instruction;
             return custom + "\n\n" + instruction;
         }
@@ -994,12 +995,12 @@ namespace TurboMegaMod
                 Caravan capturedCaravan = caravan;
 
                 int have = StoryPayment.CountInCaravanDirectInventory(caravan, d.contractDef);
-                string optLabel = string.Format("Deliver {0} x{1} to {2} ({3}/{1})",
+                string optLabel = "TMM.Story.Deliver.CaravanOption".Translate(
                     d.contractDef.label, d.contractCount, __instance.LabelCap, have);
 
                 if (have < d.contractCount)
                 {
-                    yield return new FloatMenuOption(optLabel + " (not enough cargo)", null);
+                    yield return new FloatMenuOption("TMM.Story.Deliver.NotEnough".Translate(optLabel), null);
                     continue;
                 }
 
@@ -1050,13 +1051,13 @@ namespace TurboMegaMod
                 Caravan capturedCaravan = __instance;
 
                 Command_Action cmd = new Command_Action();
-                cmd.defaultLabel = string.Format("Deliver {0} x{1}", d.contractDef.label, d.contractCount);
-                cmd.defaultDesc = string.Format("Hand in {0} x{1} to {2} for quest '{3}' ({4}/{1} carried).",
+                cmd.defaultLabel = "TMM.Story.Deliver.Goal".Translate(d.contractDef.label, d.contractCount);
+                cmd.defaultDesc = "TMM.Story.Deliver.CommandDesc".Translate(
                     d.contractDef.label, d.contractCount, here.LabelCap, qDef != null ? qDef.LabelCap.ToString() : d.run.quest, have);
                 cmd.icon = d.contractDef.uiIcon; // CHECK API
                 if (have < d.contractCount)
                 {
-                    cmd.Disable(string.Format("Caravan carries only {0}/{1} {2}.", have, d.contractCount, d.contractDef.label));
+                    cmd.Disable("TMM.Story.Deliver.CaravanLacks".Translate(have, d.contractCount, d.contractDef.label));
                 }
                 cmd.action = delegate
                 {

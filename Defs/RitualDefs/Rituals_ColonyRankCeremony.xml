@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Promotion ceremony ritual for Ideology DLC (MayRequire="Ludeon.RimWorld.Ideology").
+     Without Ideology (or if the precept is absent from the player's ideology), ColonyPromotion
+     falls back to instant promotion. -->
+<Defs>
+
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>TMM_PromotionCeremony</defName>
+    <label>promotion ceremony</label>
+    <description>A formal settlement ceremony where a squad commander or colony leader awards a colonist their next rank in front of their comrades.</description>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <issue>Ritual</issue>
+    <ritualPatternBase>TMM_PromotionCeremonyPattern</ritualPatternBase>
+    <allowDuplicates>false</allowDuplicates>
+    <classic>false</classic>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <selectionWeight>0</selectionWeight>
+    <useRepeatPenalty>false</useRepeatPenalty>
+    <showRitualFloatMenuOption>true</showRitualFloatMenuOption>
+    <iconPath>UI/Icons/Rituals/RitualFestival</iconPath> <!-- CHECK API -->
+  </PreceptDef>
+
+  <RitualPatternDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>TMM_PromotionCeremonyPattern</defName>
+    <shortDescOverride>promotion ceremony</shortDescOverride>
+    <descOverride>Gather the colony so a commander or leader can formally promote a deserving colonist to their next rank.</descOverride>
+    <ritualBehavior>TMM_PromotionCeremonyBehavior</ritualBehavior>
+    <ritualOutcomeEffect>TMM_PromotionCeremonyOutcome</ritualOutcomeEffect>
+    <ritualTargetFilter>AltarOrRitualSpot</ritualTargetFilter> <!-- CHECK API -->
+    <ritualObligationTargetFilter>RitualSpotIdeogramOrAltar</ritualObligationTargetFilter> <!-- CHECK API -->
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <playsIdeoMusic>true</playsIdeoMusic>
+    <patternGroupTag>TMM_PromotionCeremony</patternGroupTag>
+  </RitualPatternDef>
+
+  <RitualBehaviorDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>TMM_PromotionCeremonyBehavior</defName>
+    <workerClass>TurboMegaMod.RitualBehaviorWorker_PromotionCeremony</workerClass>
+    <durationTicks>3000</durationTicks>
+    <spectatorsLabel>Spectators</spectatorsLabel>
+    <spectatorGerund>attend</spectatorGerund>
+    <roles>
+      <li Class="TurboMegaMod.RitualRole_PromotionHonoree">
+        <label>honoree</label>
+        <id>honoree</id>
+        <maxCount>1</maxCount>
+        <required>true</required>
+        <substitutable>false</substitutable>
+        <countsAsParticipant>true</countsAsParticipant>
+        <allowBaby>false</allowBaby>
+        <allowChild>false</allowChild>
+      </li>
+      <li Class="TurboMegaMod.RitualRole_PromotionOfficiant">
+        <label>officiant</label>
+        <id>officiant</id>
+        <maxCount>1</maxCount>
+        <required>true</required>
+        <substitutable>true</substitutable>
+        <countsAsParticipant>true</countsAsParticipant>
+        <allowBaby>false</allowBaby>
+        <allowChild>false</allowChild>
+      </li>
+    </roles>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage">
+            <percentage>1.0</percentage>
+          </li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>officiant</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_Leader</speakerInteraction> <!-- CHECK API -->
+            <customPositions>
+              <li Class="RitualPosition_Lectern"> <!-- CHECK API -->
+                <maxDistanceToFocus>5</maxDistanceToFocus>
+              </li>
+              <li Class="RitualPosition_BesideThing" />
+            </customPositions>
+          </li>
+          <li>
+            <roleId>honoree</roleId>
+            <dutyDef>StandOnCell</dutyDef> <!-- CHECK API -->
+            <customPositions>
+              <li Class="RitualPosition_InFrontThingCenter"> <!-- CHECK API -->
+                <offset>(0, 0, -1)</offset>
+              </li>
+              <li Class="RitualPosition_BesideThing" />
+            </customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+  <RitualOutcomeEffectDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>TMM_PromotionCeremonyOutcome</defName>
+    <description>Depending on ceremony quality, the newly promoted colonist and attending spectators gain mood memories. An unforgettable ceremony also inspires the promoted colonist for five days.</description>
+    <workerClass>TurboMegaMod.RitualOutcomeEffectWorker_PromotionCeremony</workerClass>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>participant count</label>
+        <curve>
+          <points>
+            <li>(1, 0.0)</li>
+            <li>(4, 0.25)</li>
+            <li>(8, 0.4)</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_PawnStatScaled">
+        <label>{PAWN_labelShort}'s social impact</label>
+        <labelAbstract>officiant's social impact</labelAbstract>
+        <roleId>officiant</roleId>
+        <statDef>SocialImpact</statDef>
+        <curve>
+          <points>
+            <li>(0.5, 0.0)</li>
+            <li>(1.0, 0.15)</li>
+            <li>(1.6, 0.35)</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>room impressiveness</label>
+        <statDef>Impressiveness</statDef>
+        <curve>
+          <points>
+            <li>(0, 0.0)</li>
+            <li>(50, 0.1)</li>
+            <li>(120, 0.25)</li>
+          </points>
+        </curve>
+      </li>
+    </comps>
+    <outcomeChances>
+      <li>
+        <label>Awful</label>
+        <chance>0.05</chance>
+        <description>The promotion ceremony was awkward and disorganized, dampening the moment.</description>
+        <positivityIndex>-2</positivityIndex>
+      </li>
+      <li>
+        <label>Uninspiring</label>
+        <chance>0.15</chance>
+        <description>The promotion ceremony was brief and flat, though the new rank still stands.</description>
+        <positivityIndex>-1</positivityIndex>
+      </li>
+      <li>
+        <label>Solemn</label>
+        <chance>0.55</chance>
+        <description>The promotion ceremony was dignified and heartfelt, filling everyone with pride in the colony.</description>
+        <positivityIndex>1</positivityIndex>
+      </li>
+      <li>
+        <label>Unforgettable</label>
+        <chance>0.25</chance>
+        <description>The promotion ceremony was truly inspiring! Cheers echoed across the settlement and the newly promoted colonist feels unstoppable.</description>
+        <positivityIndex>2</positivityIndex>
+      </li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+</Defs>

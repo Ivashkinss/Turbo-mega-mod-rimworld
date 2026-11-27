@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/XenotypeDef[defName="TMM_Leviathan"]/genes</xpath>
+    <value>
+      <li>TMM_Body_Leviathan</li>
+    </value>
+  </Operation>
+</Patch>

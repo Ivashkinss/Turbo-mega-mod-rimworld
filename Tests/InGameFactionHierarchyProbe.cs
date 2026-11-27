@@ -226,6 +226,51 @@ namespace TurboMegaMod
                 Check(recSamLetter != null && recSamLetter.known, "Sam is known after a letter pointing at him");
                 facts.Add("Dean Winchester encountered and registered as known");
 
+                // Save 6 hero portraits for human review (Preston, Dean, Sam, Arthur Maxson, Father Shaun, Castiel)
+                string[] portraitHeroes = new string[]
+                {
+                    "TMM_Hero_preston_garvey",
+                    "TMM_Hero_dean_winchester",
+                    "TMM_Hero_sam_winchester",
+                    "TMM_Hero_arthur_maxson",
+                    "TMM_Hero_father_shaun",
+                    "TMM_Hero_castiel"
+                };
+                int savedPortraits = 0;
+                string buildOutDir = null;
+                try
+                {
+                    ModContentPack mod = LoadedModManager.RunningModsListForReading.FirstOrDefault(m => m.PackageIdPlayerFacing == "colonyproject.integrated");
+                    if (mod != null)
+                    {
+                        buildOutDir = Path.Combine(mod.RootDir, "Tools", "Build", "GeminiNeonHeroAppearance");
+                        Directory.CreateDirectory(buildOutDir);
+                    }
+                }
+                catch { }
+
+                foreach (string phName in portraitHeroes)
+                {
+                    HeroDef phDef = DefDatabase<HeroDef>.GetNamedSilentFail(phName);
+                    if (phDef == null) continue;
+                    Pawn phPawn = reg.GetOrCreate(phDef);
+                    if (phPawn == null) continue;
+                    RenderTexture rt = PortraitsCache.Get(phPawn, new Vector2(256f, 256f), Rot4.South, default(Vector3), 1f, true, true, false, false);
+                    if (rt != null)
+                    {
+                        string fileName = phName + ".bmp";
+                        string path1 = Path.Combine(GenFilePaths.SaveDataFolderPath, fileName);
+                        SaveBmp(rt, path1);
+                        if (buildOutDir != null)
+                        {
+                            try { SaveBmp(rt, Path.Combine(buildOutDir, fileName)); } catch { }
+                        }
+                        if (File.Exists(path1)) savedPortraits++;
+                    }
+                }
+                Check(savedPortraits == 6, "Saved 6 hero portraits for human review", 6, savedPortraits);
+                facts.Add("Hero portraits saved: " + savedPortraits);
+
                 // Leader death & succession: kill Preston Garvey
                 Pawn preston = minutemen.leader;
                 Check(preston != null, "Minutemen leader Preston is not null");
@@ -354,6 +399,30 @@ namespace TurboMegaMod
         {
             if (s == null) return "";
             return s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\r", "\\r").Replace("\n", "\\n");
+        }
+
+        private static void SaveBmp(RenderTexture rt, string path)
+        {
+            RenderTexture prev = RenderTexture.active;
+            RenderTexture.active = rt;
+            var tex = new Texture2D(rt.width, rt.height, TextureFormat.ARGB32, false);
+            tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
+            tex.Apply();
+            RenderTexture.active = prev;
+            Color32[] px = tex.GetPixels32();
+            int w = tex.width, h = tex.height, size = 54 + w * h * 4;
+            using (var bw = new BinaryWriter(File.Create(path)))
+            {
+                bw.Write((byte)'B'); bw.Write((byte)'M'); bw.Write(size); bw.Write(0); bw.Write(54);
+                bw.Write(40); bw.Write(w); bw.Write(h); bw.Write((short)1); bw.Write((short)32); bw.Write(0); bw.Write(w * h * 4); bw.Write(2835); bw.Write(2835); bw.Write(0); bw.Write(0);
+                // Composite on grey so transparent areas are readable.
+                foreach (Color32 c in px)
+                {
+                    float a = c.a / 255f;
+                    bw.Write((byte)(c.b * a + 112 * (1 - a))); bw.Write((byte)(c.g * a + 112 * (1 - a))); bw.Write((byte)(c.r * a + 112 * (1 - a))); bw.Write((byte)255);
+                }
+            }
+            UnityEngine.Object.Destroy(tex);
         }
 
         private void Finish(Exception ex, bool reload)

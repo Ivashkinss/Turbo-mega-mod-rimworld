@@ -238,4 +238,4 @@ namespace TurboMegaMod
                 Messages.Message("TMM.World.SettlementPropertyRefused".Translate(pawn.LabelShort, thing.LabelCap, thing.MapHeld.Parent.Faction.Name), thing, MessageTypeDefOf.RejectInput, false);
         }
     }
-}
+}

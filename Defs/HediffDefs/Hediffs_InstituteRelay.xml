@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 6-hour (15000 ticks) post-relay nausea & disorientation; synths, robots and super mutants are immune -->
+  <HediffDef>
+    <defName>TMM_RelaySickness</defName>
+    <label>relay sickness</label>
+    <description>Acute vertigo and nausea caused by molecular dematerialization and reassembly. Clears on its own within six hours; synthetic beings and super mutants are immune.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.52, 0.84, 1.0)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>15000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <vomitMtbDays>0.4</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

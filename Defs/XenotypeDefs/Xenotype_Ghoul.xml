@@ -6,7 +6,7 @@
     <label>wasteland ghoul</label>
     <description>Humans ravaged by radiation who survived and stopped ageing. Their skin peels and their noses are gone, but they shrug off toxins and disease and can outlive centuries.</description>
     <descriptionShort>Radiation-ravaged humans who stopped ageing. Toxin- and disease-proof, but hideous.</descriptionShort>
-    <iconPath>UI/Icons/Xenotypes/Waster</iconPath>
+    <iconPath>UI/Icons/TMM/Xenotypes/TMM_Ghoul</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.1</combatPowerFactor>
     <genes>

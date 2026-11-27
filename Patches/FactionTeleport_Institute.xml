@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Institute relay: its raids arrive and retreat by teleport, and its world traffic caravans jump between settlements. -->
+<Patch>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="TMM_InstituteFaction"]</xpath>
+    <value>
+      <li Class="TurboMegaMod.FactionTeleportExtension">
+        <teleportDelayTicks>2500</teleportDelayTicks>
+        <flashFleck>TMM_RelayFlash</flashFleck>
+        <allowWorldJumps>true</allowWorldJumps>
+      </li>
+    </value>
+  </Operation>
+</Patch>

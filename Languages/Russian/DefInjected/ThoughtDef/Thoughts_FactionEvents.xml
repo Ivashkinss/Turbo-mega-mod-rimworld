@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Thought_EnclavePropagandaPositive.stages.0.label>вдохновляющая речь Анклава</TMM_Thought_EnclavePropagandaPositive.stages.0.label>
+  <TMM_Thought_EnclavePropagandaPositive.stages.0.description>Передача Анклава говорила о порядке, силе и возрождении цивилизации. Воодушевляющие слова.</TMM_Thought_EnclavePropagandaPositive.stages.0.description>
+
+  <TMM_Thought_EnclavePropagandaNegative.stages.0.label>мерзкая пропаганда Анклава</TMM_Thought_EnclavePropagandaNegative.stages.0.label>
+  <TMM_Thought_EnclavePropagandaNegative.stages.0.description>От проповедей Анклава о чистоте и зачистке пустоши по спине пробежал холод.</TMM_Thought_EnclavePropagandaNegative.stages.0.description>
+
+  <TMM_Thought_DivineOmenPositive.stages.0.label>божественное знамение</TMM_Thought_DivineOmenPositive.stages.0.label>
+  <TMM_Thought_DivineOmenPositive.stages.0.description>Тёплое сияние разлилось по небу. Казалось, сами Небеса присматривают за нами.</TMM_Thought_DivineOmenPositive.stages.0.description>
+
+  <TMM_Thought_DivineOmenNegative.stages.0.label>жгучее небесное знамение</TMM_Thought_DivineOmenNegative.stages.0.label>
+  <TMM_Thought_DivineOmenNegative.stages.0.description>Этот слепящий небесный свет резал глаза и наполнил кровь невыносимым беспокойством.</TMM_Thought_DivineOmenNegative.stages.0.description>
+</LanguageData>

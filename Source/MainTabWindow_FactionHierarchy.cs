@@ -170,7 +170,7 @@ namespace TurboMegaMod
                 Rect iconRect = new Rect(rowRect.x + 4f, rowRect.y + 6f, 28f, 28f);
                 if (f.def != null && f.def.FactionIcon != null)
                 {
-                    GUI.color = f.Color;
+                    GUI.color = FactionIconPresentation.ReadableTint(f);
                     GUI.DrawTexture(iconRect, f.def.FactionIcon);
                     GUI.color = Color.white;
                 }
@@ -225,7 +225,7 @@ namespace TurboMegaMod
             Rect iconRect = new Rect(inner.x, inner.y, 36f, 36f);
             if (selectedFaction.def != null && selectedFaction.def.FactionIcon != null)
             {
-                GUI.color = selectedFaction.Color;
+                GUI.color = FactionIconPresentation.ReadableTint(selectedFaction);
                 GUI.DrawTexture(iconRect, selectedFaction.def.FactionIcon);
                 GUI.color = Color.white;
             }
@@ -287,7 +287,9 @@ namespace TurboMegaMod
             Widgets.Label(new Rect(textX, inner.y + 24f, 200f, 20f), "[" + "TMM_FactionHierarchy_LeaderTag".Translate() + "]");
             GUI.color = Color.white;
 
-            string loc = leader.Spawned && leader.Map != null ? leader.Map.Parent != null ? leader.Map.Parent.LabelCap.ToString() : "Map" : "World";
+            string loc = leader.Spawned && leader.Map != null
+                ? (leader.Map.Parent != null ? leader.Map.Parent.LabelCap.ToString() : "TMM_FactionHierarchy_Location_Map".Translate().ToString())
+                : "TMM_FactionHierarchy_Location_World".Translate().ToString();
             GUI.color = Color.gray;
             Widgets.Label(new Rect(textX, inner.y + 44f, 300f, 18f), loc);
             GUI.color = Color.white;
@@ -526,12 +528,12 @@ namespace TurboMegaMod
                         return "TMM_FactionHierarchy_State_InCaravan".Translate();
                     if (pawn != null && pawn.Map != null)
                     {
-                        string mName = pawn.Map.Parent != null ? pawn.Map.Parent.LabelCap.ToString() : "Map";
+                        string mName = pawn.Map.Parent != null ? pawn.Map.Parent.LabelCap.ToString() : "TMM_FactionHierarchy_Location_Map".Translate().ToString();
                         return "TMM_FactionHierarchy_State_OnMap".Translate(mName);
                     }
                     return "TMM_FactionHierarchy_State_Away".Translate();
                 case HeroState.Captive:
-                    string captor = pawn != null && pawn.Faction != null ? pawn.Faction.Name : "Unknown";
+                    string captor = pawn != null && pawn.Faction != null ? pawn.Faction.Name : "TMM_FactionHierarchy_Location_Unknown".Translate().ToString();
                     return "TMM_FactionHierarchy_State_Captive".Translate(captor);
                 case HeroState.Dead:
                     return "TMM_FactionHierarchy_State_Dead".Translate();

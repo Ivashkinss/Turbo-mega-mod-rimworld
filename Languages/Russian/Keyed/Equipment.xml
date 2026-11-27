@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+  <TMM_Loadout_Temperature>Комфорт от {0} до {1}</TMM_Loadout_Temperature>
+  <TMM_Loadout_Armor>Острая {0} · Тупая {1} · Жар {2}</TMM_Loadout_Armor>
+  <TMM_Loadout_MeleeDps>Ближний бой · {0} урона/с</TMM_Loadout_MeleeDps>
+  <TMM_Loadout_RangedDps>Дальний бой · {0} урона/с</TMM_Loadout_RangedDps>
+  <TMM_Loadout_RangedEstimate>Расчётный урон без промахов и защиты цели. Учтены прицеливание, время очереди и пауза после выстрела.</TMM_Loadout_RangedEstimate>
+  <TMM_Loadout_Bonuses>Бонусы снаряжения ({0})</TMM_Loadout_Bonuses>
+  <TMM_Loadout_NoBonuses>У снаряжения нет дополнительных бонусов</TMM_Loadout_NoBonuses>
+  <TMM_Loadout_UniformTitle>Униформа · {0}</TMM_Loadout_UniformTitle>
+  <TMM_Loadout_TemplateStats>Показан совместимый комплект обычного качества из стандартных материалов.</TMM_Loadout_TemplateStats>
+  <TMM_Loadout_Save>Сохранить униформу</TMM_Loadout_Save>
+  <TMM_Loadout_Assign>Сохранить и назначить</TMM_Loadout_Assign>
+  <TMM_Loadout_RangedSlot>Дальнее оружие</TMM_Loadout_RangedSlot>
+  <TMM_Loadout_MeleeSlot>Ближнее оружие</TMM_Loadout_MeleeSlot>
+  <TMM_Loadout_Alternatives>{0} +{1}</TMM_Loadout_Alternatives>
+  <TMM_Loadout_EmptySlot>Пустой слот</TMM_Loadout_EmptySlot>
+  <TMM_Loadout_OtherSlot>Прочая одежда</TMM_Loadout_OtherSlot>
+  <TMM_Loadout_EditUniform>Редактор униформы</TMM_Loadout_EditUniform>
+  <TMM_Loadout_ModuleDamage>Доп. урон {0}, пробитие {1}</TMM_Loadout_ModuleDamage>
+  <TMM_Loadout_Mass>Груз {0} / {1} кг</TMM_Loadout_Mass>
+  <TMM_Loadout_MassDetail>Одежда {0} кг&#10;Экипированное оружие {1} кг&#10;Инвентарь {2} кг&#10;В руках {3} кг, отдельно от груза каравана&#10;Вместимость {4} кг + {5} кг от рюкзаков</TMM_Loadout_MassDetail>
 
   <TMM_TabEquipment>Снаряжение</TMM_TabEquipment>
 

@@ -344,7 +344,10 @@ namespace TurboMegaMod
             if (GetFlag("act").NullOrEmpty()) SetFlag("act", "1");
             foreach (StoryQuestRun r in runs.Where(x => x.status == StoryQuestStatus.Active).ToList()) SafeTick(r);
             ResendLostLetters();
-            if (Find.AnyPlayerHomeMap == null) return; // new quests need a home; active ones keep running
+            Map home = Find.AnyPlayerHomeMap;
+            if (home == null) return; // new quests need a home; active ones keep running
+            StoryZeroSynth synth = Find.World.GetComponent<StoryZeroSynth>();
+            if (synth != null) synth.TryArrive(this, home);
 
             foreach (StoryQuestDef d in DefDatabase<StoryQuestDef>.AllDefs.Where(x => x.autoStart).OrderBy(x => x.act).ThenByDescending(x => x.priority).ToList())
             {

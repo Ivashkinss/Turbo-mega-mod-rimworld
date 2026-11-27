@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom Core HairDefs for named heroes (Castiel and Sam Winchester). -->
+<Defs>
+
+  <HairDef>
+    <defName>TMM_Hair_CastielMessy</defName>
+    <label>tousled angel cut</label>
+    <hairGender>Male</hairGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/TMM/TMM_Hair_CastielMessy</texPath>
+    <styleTags>
+      <li>Urban</li>
+      <li>Rural</li>
+      <li>Punk</li>
+      <li>TMM_HeroStyle</li>
+    </styleTags>
+  </HairDef>
+
+  <HairDef>
+    <defName>TMM_Hair_SamWinchester</defName>
+    <label>layered hunter locks</label>
+    <hairGender>Male</hairGender>
+    <texPath>Things/Pawn/Humanlike/Hairs/TMM/TMM_Hair_SamWinchester</texPath>
+    <styleTags>
+      <li>Urban</li>
+      <li>Rural</li>
+      <li>TMM_HeroStyle</li>
+    </styleTags>
+  </HairDef>
+
+</Defs>

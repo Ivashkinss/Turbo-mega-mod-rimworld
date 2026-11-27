@@ -22,7 +22,12 @@ namespace TurboMegaMod
             if (args == null) return false;
             for (int i = 0; i < args.Length; i++)
             {
-                if (string.Equals(args[i], "-tmm-story-test", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(args[i], "-tmm-story-test", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(args[i], "-tmm-legendary-probe", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(args[i], "-tmm-traffic-interaction-probe", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(args[i], "-tmm-faction-events-probe", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(args[i], "-tmm-vehicle-raid-probe", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(args[i], "-tmm-institute-relay-probe", StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }

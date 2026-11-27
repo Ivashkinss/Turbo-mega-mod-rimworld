@@ -26,6 +26,14 @@ public static class HeroRegistryProbeLaunch
         AddHero("TMMTest_Sixth", 1, false, "Sixth", 8);
         AddHeroWithFaction("TMMTest_AbsentFactionHero", "TMM_NoSuchFaction", 1, false, "Ghost", 5);
         DefDatabase<HeroDef>.GetNamed("TMMTest_Leader").successor = DefDatabase<HeroDef>.GetNamed("TMMTest_Second");
+        HeroDef fourthDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMMTest_Fourth");
+        if (fourthDef != null)
+        {
+            fourthDef.appearance = new HeroAppearance
+            {
+                hair = DefDatabase<HairDef>.GetNamedSilentFail("Shaved") ?? DefDatabase<HairDef>.AllDefs.First()
+            };
+        }
 
         string[] args = Environment.GetCommandLineArgs();
         if (args.Contains("-tmm-hero-registry-reload"))
@@ -227,6 +235,13 @@ public sealed class HeroRegistryProbe : MapComponent
             fifth = reg.GetOrCreate(H("TMMTest_Fifth"));
             sixth = reg.GetOrCreate(H("TMMTest_Sixth"));
             C("AllHeroRecords", reg.Records.Count() == 86, 86, reg.Records.Count());
+            // Synth heroes (Neon 57): Nick Valentine is a Gen 2 synth with his own drawn head and body.
+            Pawn nick = reg.GetOrCreate(H("TMM_Hero_nick_valentine"));
+            string nickXeno = nick == null || nick.genes == null || nick.genes.Xenotype == null ? "none" : nick.genes.Xenotype.defName;
+            string nickHead = nick == null || nick.story == null || nick.story.headType == null ? "none" : nick.story.headType.defName;
+            string nickBody = nick == null || nick.story == null || nick.story.bodyType == null ? "none" : nick.story.bodyType.defName;
+            C("SynthNickValentineModel", nickXeno == "TMM_SynthGen2" && nickHead == "TMM_NickValentineHead" && nickBody == "TMM_NickValentine",
+                "TMM_SynthGen2/TMM_NickValentineHead/TMM_NickValentine", nickXeno + "/" + nickHead + "/" + nickBody);
             int distinct = new[] { leader, second, third, fourth, fifth }.Where(p => p != null).Select(p => p.thingIDNumber).Distinct().Count();
             C("FiveDistinctPawns", distinct == 5, 5, distinct);
             // F3: fourth is a plain world pawn with no vanilla reason to keep it; only the registry postfix protects it.
@@ -249,7 +264,10 @@ public sealed class HeroRegistryProbe : MapComponent
             C("ExplicitDiscardKeepsHero", !fourth.Discarded && !fourth.Destroyed && Find.WorldPawns.Contains(fourth), "kept", fourth.Discarded ? "discarded" : (Find.WorldPawns.Contains(fourth) ? "kept" : "not world pawn"));
 
             // Prisoner of the colony: spawn the third hero on the home map and capture it.
-            IntVec3 cell = CellFinder.RandomClosewalkCellNear(map.Center, map, 8);
+            IntVec3 cell;
+            // The map centre can be solid rock: then the prisoner stood in a cell without a region and the game's own jobs failed on it.
+            IntVec3 free = map.mapPawns.FreeColonistsSpawned[0].Position;
+            if (!CellFinder.TryFindRandomCellNear(map.Center, map, 12, c => c.Standable(map) && c.GetDistrict(map) != null && map.reachability.CanReach(free, c, Verse.AI.PathEndMode.OnCell, TraverseParms.For(TraverseMode.PassDoors)), out cell)) cell = CellFinder.RandomClosewalkCellNear(free, map, 6);
             if (Find.WorldPawns.Contains(third)) Find.WorldPawns.RemovePawn(third);
             GenSpawn.Spawn(third, cell, map);
             third.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
@@ -303,6 +321,70 @@ public sealed class HeroRegistryProbe : MapComponent
             // The mod itself now drops relations to pawns the GC removed before every save (SaveHygiene); after it
             // no hero or player pawn may keep one. The reload test checks the save has no unresolved references.
             facts.Add("saveHygieneRemoved=" + SaveHygiene.CleanDanglingRelations());
+            // A generation attempt that the game drops halfway must not stay a relative of anybody (it is never saved).
+            int dropped = SaveHygiene.DroppedAttempts, made = 0;
+            while (made < 1200 && SaveHygiene.DroppedAttempts - dropped < 3)
+            {
+                Pawn soldier = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.AncientSoldier, Faction.OfAncientsHostile, forceGenerateNewPawn: true));
+                made++;
+                Find.WorldPawns.PassToWorld(soldier, PawnDiscardDecideMode.Discard);
+            }
+            List<string> lost = new List<string>();
+            foreach (Pawn p in Find.WorldPawns.AllPawnsAliveOrDead.Concat(map.mapPawns.AllPawns).Distinct())
+                if (p.relations != null)
+                    foreach (DirectPawnRelation rel in p.relations.DirectRelations)
+                        if (rel.otherPawn != null && !rel.otherPawn.Spawned && rel.otherPawn.ParentHolder == null && !Find.WorldPawns.Contains(rel.otherPawn)) lost.Add(p.ThingID + "->" + rel.otherPawn.ThingID + " " + rel.otherPawn.kindDef.defName);
+            C("DroppedAttemptsAreDiscarded", SaveHygiene.DroppedAttempts - dropped >= 1 && lost.Count == 0, "some dropped, no relation to a lost pawn", "dropped=" + (SaveHygiene.DroppedAttempts - dropped) + " of " + made + " since start=" + SaveHygiene.DroppedAttempts + " lost=" + string.Join(", ", lost.Take(5).ToArray()));
+            HeroDef deanDef = DefDatabase<HeroDef>.GetNamedSilentFail("TMM_Hero_dean_winchester");
+            if (deanDef != null && deanDef.appearance != null)
+            {
+                // A throwaway pawn: the check must not add a registry record (counts are verified after reload).
+                Pawn dean = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, null, PawnGenerationContext.NonPlayer, -1, true, false, false, false, false, 1f, false, true, false, true, true, false, false, false, false, 0f, 0f, null, 1f, null, null, null, null, null, null, null, Gender.Male));
+                deanDef.appearance.ApplyTo(dean);
+                C("HeroAppearanceApplied", dean != null && dean.story != null && dean.story.hairDef == deanDef.appearance.hair && dean.style != null && dean.style.beardDef == deanDef.appearance.beard,
+                    "hair=" + deanDef.appearance.hair + ", beard=" + deanDef.appearance.beard,
+                    dean == null || dean.story == null ? "null" : ("hair=" + dean.story.hairDef + ", beard=" + (dean.style != null ? dean.style.beardDef.ToStringSafe() : "-")));
+            }
+            // Player customizes fourth hero: haircut, custom rename, and custom weapon.
+            HairDef shaved = DefDatabase<HairDef>.GetNamedSilentFail("Shaved") ?? DefDatabase<HairDef>.AllDefs.First();
+            HairDef customHair = DefDatabase<HairDef>.GetNamedSilentFail("Messy") ?? DefDatabase<HairDef>.AllDefs.FirstOrDefault(h => h != shaved) ?? shaved;
+            if (fourth != null && fourth.story != null) fourth.story.hairDef = customHair;
+            if (fourth != null) fourth.Name = new NameTriple("CustomFirst", "PlayerNick", "CustomLast");
+            if (fourth != null && fourth.equipment != null)
+            {
+                fourth.equipment.DestroyAllEquipment();
+                ThingWithComps customGun = (ThingWithComps)ThingMaker.MakeThing(ThingDef.Named("Gun_Autopistol"));
+                fourth.equipment.AddEquipment(customGun);
+            }
+
+            // Old-save migration test scenario (SaveHygieneFix2):
+            // 1. Fourth hero (with player custom name and haircut) has recordVersion, lastAutoName, appearanceApplied zeroed out.
+            HeroRecord r4rec = reg.RecordFor(H("TMMTest_Fourth"));
+            if (r4rec != null)
+            {
+                r4rec.recordVersion = 0;
+                r4rec.lastAutoName = null;
+                r4rec.appearanceApplied = false;
+            }
+
+            // 2. Arthur Maxson has English auto-name forced and migration fields zeroed out to simulate an old English save.
+            HeroRecord rMaxson = reg.RecordFor(H("TMM_Hero_arthur_maxson"));
+            if (rMaxson != null && rMaxson.pawn != null)
+            {
+                rMaxson.pawn.Name = new NameTriple("Arthur", "Maxson", "Maxson");
+                rMaxson.recordVersion = 0;
+                rMaxson.lastAutoName = null;
+                rMaxson.appearanceApplied = false;
+                // An old save has no signatureGearApplied either; the player gave Maxson a plain autopistol.
+                rMaxson.signatureGearApplied = false;
+                if (rMaxson.pawn.equipment != null)
+                {
+                    rMaxson.pawn.equipment.DestroyAllEquipment();
+                    rMaxson.pawn.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(ThingDef.Named("Gun_Autopistol")));
+                }
+            }
+
+            facts.Add("saveHygieneRemoved=" + SaveHygiene.CleanDanglingRelations());
             int ownDangling = CleanDanglingRelations(reg);
             C("NoDanglingRelationsOnHeroesOrPlayer", ownDangling == 0, 0, ownDangling + " " + string.Join("; ", ownDanglingNames.ToArray()));
             GameDataSaveLoader.SaveGame("TMM-HeroRegistry");
@@ -319,10 +401,30 @@ public sealed class HeroRegistryProbe : MapComponent
         if (stage == 0)
         {
             Faction f = TestFaction();
-            C("RegistryLoaded", reg != null && reg.Records.Count() == 86, 86, reg == null ? -1 : reg.Records.Count());
+            C("RegistryLoaded", reg != null && reg.Records.Count() == 87, 87, reg == null ? -1 : reg.Records.Count());
             HeroRecord rl = reg.RecordFor(H("TMMTest_Leader"));
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord rt = reg.RecordFor(H("TMMTest_Third"));
+            HeroRecord r4 = reg.RecordFor(H("TMMTest_Fourth"));
+            HairDef shaved = DefDatabase<HairDef>.GetNamedSilentFail("Shaved") ?? DefDatabase<HairDef>.AllDefs.First();
+            bool hairOk = r4 != null && r4.pawn != null && r4.pawn.story != null && r4.pawn.story.hairDef != null && r4.pawn.story.hairDef != shaved;
+            C("PlayerHaircutPreservedAfterReload", hairOk, "not Shaved", r4 == null || r4.pawn == null || r4.pawn.story == null || r4.pawn.story.hairDef == null ? "null" : r4.pawn.story.hairDef.defName);
+            bool nameOk = r4 != null && r4.pawn != null && r4.pawn.Name != null && r4.pawn.Name.ToStringFull.Contains("PlayerNick");
+            C("PlayerRenamePreservedAfterReload", nameOk, "contains PlayerNick", r4 == null || r4.pawn == null || r4.pawn.Name == null ? "null" : r4.pawn.Name.ToStringFull);
+            C("OldRecordMigratedToVersion1", r4 != null && r4.recordVersion == 1, 1, r4 == null ? 0 : r4.recordVersion);
+
+            HeroRecord rm = reg.RecordFor(H("TMM_Hero_arthur_maxson"));
+            bool maxsonTranslated = rm != null && rm.pawn != null && rm.pawn.Name != null && ((NameTriple)rm.pawn.Name).First == "Артур";
+            C("EnglishAutoNameMigratedToRussian", maxsonTranslated, "Артур", rm == null || rm.pawn == null || rm.pawn.Name == null ? "null" : ((NameTriple)rm.pawn.Name).First);
+            C("HeroAppearanceApplied", rm != null && rm.appearanceApplied, true, rm == null ? false : rm.appearanceApplied);
+            // Requesting the hero again (what quests and factions do) must not swap the player's weapon for signature gear.
+            if (rm != null) reg.GetOrCreate(H("TMM_Hero_arthur_maxson"));
+            string maxsonGun = rm == null || rm.pawn == null || rm.pawn.equipment == null || rm.pawn.equipment.Primary == null ? "none" : rm.pawn.equipment.Primary.def.defName;
+            C("OldSaveSignatureGearNotReissued", rm != null && rm.signatureGearApplied && maxsonGun == "Gun_Autopistol", "applied=true, Gun_Autopistol",
+                (rm == null ? "null" : rm.signatureGearApplied.ToString()) + ", " + maxsonGun);
+            HairDef wantHair = H("TMM_Hero_arthur_maxson").appearance != null && H("TMM_Hero_arthur_maxson").appearance.hair != null ? H("TMM_Hero_arthur_maxson").appearance.hair : DefDatabase<HairDef>.GetNamedSilentFail("Shaved");
+            C("HeroAppearancePreservedAfterReload", rm != null && rm.pawn != null && rm.pawn.story != null && rm.pawn.story.hairDef == wantHair, wantHair != null ? wantHair.defName : "null", rm == null || rm.pawn == null || rm.pawn.story == null || rm.pawn.story.hairDef == null ? "null" : rm.pawn.story.hairDef.defName);
+
             C("LeaderStillDead", rl != null && rl.state == HeroState.Dead, "Dead", rl == null ? "none" : rl.state.ToString());
             C("NoResurrectionAfterLoad", reg.GetOrCreate(H("TMMTest_Leader")) == null, "null", "checked");
             C("SecondAtHome", rs != null && rs.state == HeroState.AtHome && rs.pawn != null, "AtHome", rs == null ? "none" : rs.state.ToString());
@@ -340,6 +442,9 @@ public sealed class HeroRegistryProbe : MapComponent
             HeroRecord rs = reg.RecordFor(H("TMMTest_Second"));
             HeroRecord r4 = reg.RecordFor(H("TMMTest_Fourth"));
             C("FourthSurvivesTwoDays", r4 != null && r4.pawn != null && !r4.pawn.Discarded, "alive record", r4 == null || r4.pawn == null ? "null" : r4.pawn.ThingID);
+            C("FourthHaircutStillPreserved", r4 != null && r4.pawn != null && r4.pawn.story != null && r4.pawn.story.hairDef != null && r4.pawn.story.hairDef.defName != "Shaved", "not Shaved", r4 == null || r4.pawn == null || r4.pawn.story == null || r4.pawn.story.hairDef == null ? "null" : r4.pawn.story.hairDef.defName);
+            C("FourthRenameStillPreserved", r4 != null && r4.pawn != null && r4.pawn.Name != null && r4.pawn.Name.ToStringFull.Contains("PlayerNick"), "PlayerNick", r4 == null || r4.pawn == null || r4.pawn.Name == null ? "null" : r4.pawn.Name.ToStringFull);
+            C("FourthCustomWeaponStillPreserved", r4 != null && r4.pawn != null && r4.pawn.equipment != null && r4.pawn.equipment.Primary != null && r4.pawn.equipment.Primary.def.defName == "Gun_Autopistol", "Gun_Autopistol", r4 == null || r4.pawn == null || r4.pawn.equipment == null || r4.pawn.equipment.Primary == null ? "null" : r4.pawn.equipment.Primary.def.defName);
             C("SecondSurvivesDayAndGC", rs != null && rs.pawn != null && !rs.pawn.Discarded && rs.pawn.ThingID == savedSecondId, savedSecondId, rs == null || rs.pawn == null ? "null" : rs.pawn.ThingID);
             C("NoDuplicateRecords", reg.Records.Select(r => r.heroDefName).Distinct().Count() == reg.Records.Count(), "distinct", reg.Records.Count());
             facts.Add("forcePauseDialogsClosed=" + dialogsClosed);
@@ -351,19 +456,24 @@ public sealed class HeroRegistryProbe : MapComponent
 
     private static int CleanDanglingRelations(HeroRegistry reg)
     {
-        var known = new HashSet<Pawn>();
-        foreach (Map m in Find.Maps) foreach (Pawn p in m.mapPawns.AllPawns) known.Add(p);
-        foreach (Pawn p in Find.WorldPawns.AllPawnsAliveOrDead) known.Add(p);
         var heroes = new HashSet<Pawn>(reg.Records.Where(r => r.pawn != null).Select(r => r.pawn));
         int own = 0;
-        foreach (Pawn p in known.ToList())
+        foreach (Map m in Find.Maps)
         {
-            if (p.relations == null) continue;
-            foreach (DirectPawnRelation rel in p.relations.DirectRelations.ToList())
+            if (m.mapPawns == null) continue;
+            foreach (Pawn p in m.mapPawns.AllPawns)
             {
-                if (rel.otherPawn != null && known.Contains(rel.otherPawn)) continue;
-                if (heroes.Contains(p) || p.Faction == Faction.OfPlayer) { own++; ownDanglingNames.Add(p.LabelShort + "(" + (p.Faction == null ? "no faction" : p.Faction.def.defName) + ", hero=" + heroes.Contains(p) + ") -> " + rel.def.defName); }
-                p.relations.RemoveDirectRelation(rel);
+                if (p.relations == null) continue;
+                if (!heroes.Contains(p) && p.Faction != Faction.OfPlayer) continue;
+                foreach (DirectPawnRelation rel in p.relations.DirectRelations.ToList())
+                {
+                    if (rel.otherPawn == null || rel.otherPawn.Discarded)
+                    {
+                        own++;
+                        ownDanglingNames.Add(p.LabelShort + " -> " + (rel.otherPawn == null ? "null" : "Discarded") + " (" + rel.def.defName + ")");
+                        p.relations.RemoveDirectRelation(rel);
+                    }
+                }
             }
         }
         return own;

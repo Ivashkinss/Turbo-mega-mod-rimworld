@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Attaches FactionVehiclesExtension to eligible factions.
+     Guarded by PatchOperationConditional on TMM_Vehicle_GunnerTechnical so the patch is cleanly skipped if VF defs are absent. -->
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/Vehicles.VehicleDef[defName="TMM_Vehicle_GunnerTechnical"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Gunners: raids with Gunner Technical (weight 3) and Hunter Pickup (weight 1) -->
+        <li Class="PatchOperationAddModExtension">
+          <xpath>Defs/FactionDef[defName="TMM_GunnersFaction"]</xpath>
+          <value>
+            <li Class="TurboMegaMod.FactionVehiclesExtension">
+              <minPoints>900</minPoints>
+              <maxVehicles>2</maxVehicles>
+              <marketValuePointsFactor>0.085</marketValuePointsFactor>
+              <vehicles>
+                <li>
+                  <defName>TMM_Vehicle_GunnerTechnical</defName>
+                  <weight>3</weight>
+                  <forRaids>true</forRaids>
+                  <forVisits>false</forVisits>
+                </li>
+                <li>
+                  <defName>TMM_Vehicle_HunterTruck</defName>
+                  <weight>1</weight>
+                  <forRaids>true</forRaids>
+                  <forVisits>false</forVisits>
+                </li>
+              </vehicles>
+            </li>
+          </value>
+        </li>
+
+        <!-- Minutemen & Hunters: friendly visits only (Cargo Hauler weight 3, Hunter Pickup weight 1) -->
+        <li Class="PatchOperationAddModExtension">
+          <xpath>Defs/FactionDef[defName="TMM_MinutemenHuntersFaction"]</xpath>
+          <value>
+            <li Class="TurboMegaMod.FactionVehiclesExtension">
+              <minPoints>600</minPoints>
+              <maxVehicles>1</maxVehicles>
+              <vehicles>
+                <li>
+                  <defName>TMM_Vehicle_CargoHauler</defName>
+                  <weight>3</weight>
+                  <forRaids>false</forRaids>
+                  <forVisits>true</forVisits>
+                </li>
+                <li>
+                  <defName>TMM_Vehicle_HunterTruck</defName>
+                  <weight>1</weight>
+                  <forRaids>false</forRaids>
+                  <forVisits>true</forVisits>
+                </li>
+              </vehicles>
+            </li>
+          </value>
+        </li>
+
+        <!-- Enclave: Vertibird flight in 1.7 is not verified yet, so Enclave Vertibird is commented out for now -->
+        <li Class="PatchOperationAddModExtension">
+          <xpath>Defs/FactionDef[defName="TMM_EnclaveFaction"]</xpath>
+          <value>
+            <li Class="TurboMegaMod.FactionVehiclesExtension">
+              <minPoints>1800</minPoints>
+              <maxVehicles>1</maxVehicles>
+              <marketValuePointsFactor>0.075</marketValuePointsFactor>
+              <vehicles>
+                <!--
+                <li>
+                  <defName>TMM_Vehicle_VertibirdEnclave</defName>
+                  <weight>1</weight>
+                  <forRaids>true</forRaids>
+                  <forVisits>false</forVisits>
+                </li>
+                -->
+              </vehicles>
+            </li>
+          </value>
+        </li>
+
+        <!-- Wild Super Mutants: raids with Gunner Technical (weight 1) -->
+        <li Class="PatchOperationAddModExtension">
+          <xpath>Defs/FactionDef[defName="TMM_WildMutantsFaction"]</xpath>
+          <value>
+            <li Class="TurboMegaMod.FactionVehiclesExtension">
+              <minPoints>1000</minPoints>
+              <maxVehicles>1</maxVehicles>
+              <marketValuePointsFactor>0.085</marketValuePointsFactor>
+              <vehicles>
+                <li>
+                  <defName>TMM_Vehicle_GunnerTechnical</defName>
+                  <weight>1</weight>
+                  <forRaids>true</forRaids>
+                  <forVisits>false</forVisits>
+                </li>
+              </vehicles>
+            </li>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

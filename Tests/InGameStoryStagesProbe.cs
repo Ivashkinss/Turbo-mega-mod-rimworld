@@ -77,7 +77,27 @@ namespace TurboMegaMod
             AddQuestDef(BuildSiteQuest(QuestReloadRescue, "probe.reloadRescue", StorySiteObjective.Rescue, heroB, null, 10f, 4f));
             AddQuestDef(BuildSiteQuest(QuestReloadRetrieve, "probe.reloadRetrieve", StorySiteObjective.Retrieve, null, ThingDefOf.ComponentIndustrial, 10f, 4f));
             AddQuestDef(BuildSiteQuest(QuestReloadHold, "probe.reloadHold", StorySiteObjective.Hold, null, null, 10f, 4f));
+
+            // Stages without their own texts show the default strings of the stage code.
+            foreach (StoryQuestDef d in new[] { BuildSiteQuest(QuestLang + "Site", "probe.lang.Site", StorySiteObjective.Hold, null, null, 10f, 4f),
+                BuildRaidQuest(QuestLang + "Raid", "probe.lang.Raid", true), BuildSiteQuest(QuestLang + "Colony", "probe.lang.Colony", StorySiteObjective.Hold, null, null, 10f, 4f),
+                BuildSiteQuest(QuestLang + "Caravan", "probe.lang.Caravan", StorySiteObjective.Hold, null, null, 10f, 4f) })
+            {
+                if (d.defName.EndsWith("Colony") || d.defName.EndsWith("Caravan"))
+                {
+                    StoryStage_Deliver st = new StoryStage_Deliver();
+                    st.key = "deliver"; st.thing = ThingDefOf.Steel; st.count = 30; st.timeoutDays = 10f;
+                    st.to = d.defName.EndsWith("Colony") ? StoryDeliverTarget.colony : StoryDeliverTarget.giverSettlement;
+                    st.outcomes = new List<StoryChoice>();
+                    d.stages[0] = st;
+                }
+                d.label = "проверка языка";
+                d.stages[0].label = null;
+                d.stages[0].text = d.defName.EndsWith("Raid") ? "Скоро будет набег." : null;
+                AddQuestDef(d);
+            }
         }
+        public const string QuestLang = "TMM_Probe_Lang_";
 
         private static HeroDef PickAvailableHero(int index)
         {
@@ -251,6 +271,8 @@ namespace TurboMegaMod
             AddCheck("SparkStory_Exists", story != null, "non-null", story != null ? "ok" : "null");
             if (story == null) return;
 
+            LanguageChecks(story);
+
             // ---------------- 1. TIMEOUT WITH DOWNED COLONIST ON SITE MAP ----------------
             story.SetFlag("probe.downedTimeout", "true");
             story.DirectorTick();
@@ -366,7 +388,48 @@ namespace TurboMegaMod
                 {
                     AddCheck("R2_HeroTransferException_FullRollbackToWorldPawns", false, "hero exists", "hero null");
                 }
+
+                // 3b. StoryPawnTransfer: PassToWorld exception during transfer rollback
+                Pawn testPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                Find.WorldPawns.PassToWorld(testPawn, PawnDiscardDecideMode.KeepForever);
+                bool inWorldInitially = Find.WorldPawns.Contains(testPawn);
+
+                PawnTransferHandle pendingHandle = null;
+                string failReason;
+                bool passToWorldThrew = false;
+
+                StoryPawnTransfer.TestSpawnOverride = delegate(Pawn p, Map m, IntVec3 c)
+                {
+                    return null;
+                };
+                StoryPawnTransfer.TestPassToWorldOverride = delegate(Pawn p)
+                {
+                    passToWorldThrew = true;
+                    throw new InvalidOperationException("Simulated PassToWorld failure during rollback");
+                };
+
+                bool transferred = StoryPawnTransfer.TrySpawnFreeWorldPawn(
+                    testPawn, map, map.Center, null, false, null, null, null, false,
+                    out pendingHandle, out failReason);
+
+                StoryPawnTransfer.TestSpawnOverride = null;
+                StoryPawnTransfer.TestPassToWorldOverride = null;
+
+                bool recordedInPending = pendingHandle != null && StoryPawnTransfer.PendingRollbacks.Contains(pendingHandle);
+
+                // Retry when PassToWorld works: verify idempotent execution
+                bool retryOk = pendingHandle != null && pendingHandle.Rollback();
+                bool clearedFromPending = !StoryPawnTransfer.PendingRollbacks.Contains(pendingHandle);
+                bool finallyInWorld = Find.WorldPawns.Contains(testPawn);
+
+                AddCheck("StoryPawnTransfer_PassToWorldException_PendingStoredAndIdempotentRetrySucceeds",
+                    !transferred && passToWorldThrew && recordedInPending && retryOk && clearedFromPending && finallyInWorld,
+                    "transferred=false, pendingStored=true, retry=true, inWorld=true",
+                    string.Format("transferred={0}, pending={1}, retry={2}, inWorld={3}",
+                        transferred, recordedInPending, retryOk, finallyInWorld));
             }
+
+            RollbackCustodyChecks();
 
             // ---------------- 4. RETRIEVE: DESTROYED ITEM -> FAILED (NO SUBSTITUTION) ----------------
             story.SetFlag("probe.retrieveDestroyed", "true");
@@ -782,7 +845,7 @@ namespace TurboMegaMod
                 story.DirectorTick();
                 rescueReady = GetVar(rescueRun, "heroImprisonedOnSite") == "true" && !GetVar(rescueRun, "targetPawnId").NullOrEmpty();
             }
-            AddCheck("ReloadPrep_RescueCaptiveOnSite", rescueReady, "imprisoned=true", rescueReady.ToString());
+            AddCheck("ReloadPrep_RescueCaptiveOnSite", rescueReady, "imprisoned=true", rescueReady + " heroFailReason=" + GetVar(rescueRun, "heroFailReason") + " unavailable=" + GetVar(rescueRun, "heroUnavailable") + " site=" + (rescueSite != null) + " hasMap=" + (rescueSite != null && rescueSite.HasMap) + " status=" + (rescueRun == null ? "null" : rescueRun.status.ToString()));
 
             // 12B. Retrieve
             story.SetFlag("probe.reloadRetrieve", "true");
@@ -832,6 +895,8 @@ namespace TurboMegaMod
             }
 
             // Save directly WITHOUT any global SanitizeDanglingPawnRelations mask!
+            LimboRefusalChecks();
+            LeaveRollbackForSave();
             GameDataSaveLoader.SaveGame(StoryStagesProbeBootstrap.SaveName); // CHECK API
         }
 
@@ -839,8 +904,231 @@ namespace TurboMegaMod
         // RELOAD PROBE
         // =====================================================================
 
+        // ---- Visible strings of real stages in the active language (Russian in test profiles).
+        private void Russian(string name, string text, params string[] names)
+        {
+            string rest = text ?? "";
+            foreach (string n in names) if (!string.IsNullOrEmpty(n)) rest = rest.Replace(n, "");
+            rest = System.Text.RegularExpressions.Regex.Replace(rest, "<[^>]*>", "");
+            bool ok = System.Text.RegularExpressions.Regex.IsMatch(rest, "[а-яё]") && !System.Text.RegularExpressions.Regex.IsMatch(rest, "[A-Za-z]{2,}") && !rest.Contains("TMM.") && !rest.Contains("{");
+            AddCheck("Language_" + name, ok, "Russian text", text == null ? "null" : text.Replace("\n", " / "));
+        }
+        private StoryQuestRun LanguageRun(SparkStory story, string kind)
+        {
+            story.SetFlag("probe.lang." + kind, "true");
+            for (int i = 0; i < 4 && story.RunFor(StoryStagesProbeBootstrap.QuestLang + kind) == null; i++) story.DirectorTick();
+            return story.RunFor(StoryStagesProbeBootstrap.QuestLang + kind);
+        }
+        private static Letter NewLetter(List<Letter> before) { return Find.LetterStack.LettersListForReading.LastOrDefault(l => !before.Contains(l)); }
+        private static string LetterText(Letter l) { ChoiceLetter c = l as ChoiceLetter; return l == null ? null : l.Label + " | " + (c == null ? "" : c.Text.ToString()); }
+
+        private void LanguageChecks(SparkStory story)
+        {
+            AddCheck("Language_ActiveIsRussian", LanguageDatabase.activeLanguage.folderName.StartsWith("Russian"), "Russian", LanguageDatabase.activeLanguage.folderName);
+            List<Letter> had = Find.LetterStack.LettersListForReading.ToList();
+            List<Letter> first = had.ToList();
+            string home = map.Parent.LabelCap;
+
+            StoryQuestRun site = LanguageRun(story, "Site");
+            StoryContext siteCtx = story.Context(site);
+            StoryStage_Site siteStage = (StoryStage_Site)site.Def.stages[0];
+            Russian("SiteLetter", LetterText(NewLetter(had)));
+            StorySiteObjective real = siteStage.objective;
+            foreach (StorySiteObjective o in Enum.GetValues(typeof(StorySiteObjective))) { siteStage.objective = o; Russian("SiteGoal_" + o, siteStage.Objective(siteCtx)); }
+            siteStage.objective = real;
+
+            had = Find.LetterStack.LettersListForReading.ToList();
+            StoryQuestRun raid = LanguageRun(story, "Raid");
+            Russian("RaidLetter", LetterText(NewLetter(had)));
+            Russian("RaidGoal_Arriving", raid.Def.stages[0].Objective(story.Context(raid)));
+            raid.vars["spawned"] = "true";
+            Russian("RaidGoal_Here", raid.Def.stages[0].Objective(story.Context(raid)));
+            raid.vars["spawned"] = "false";
+
+            had = Find.LetterStack.LettersListForReading.ToList();
+            StoryQuestRun colony = LanguageRun(story, "Colony");
+            ChoiceLetter_StoryDeliver letter = NewLetter(had) as ChoiceLetter_StoryDeliver;
+            Russian("ColonyDeliverLetter", LetterText(letter), home);
+            Russian("ColonyDeliverGoal", colony.Def.stages[0].Objective(story.Context(colony)), home);
+            DiaOption hand = letter == null ? null : letter.Choices.FirstOrDefault();
+            string handText = hand == null ? null : (string)HarmonyLib.AccessTools.Field(typeof(DiaOption), "text").GetValue(hand);
+            Russian("ColonyDeliverButton", handText, home);
+            Russian("ColonyDeliverButtonDisabled", hand == null ? null : hand.disabledReason, home);
+
+            Settlement target = Find.WorldObjects.Settlements.First(s => s.Faction != null && !s.Faction.IsPlayer && !s.Faction.HostileTo(Faction.OfPlayer) && !s.HasMap && s.Tile.Layer == map.Tile.Layer);
+            StoryQuestDef caravanDef = DefDatabase<StoryQuestDef>.GetNamed(StoryStagesProbeBootstrap.QuestLang + "Caravan");
+            caravanDef.faction = target.Faction.def.defName;
+            had = Find.LetterStack.LettersListForReading.ToList();
+            StoryQuestRun run = LanguageRun(story, "Caravan");
+            target = Find.WorldObjects.Settlements.First(s => s.ID == ParseInt(run, "settlementId", -1));
+            Russian("CaravanLetter", LetterText(NewLetter(had)), target.LabelCap, target.Label);
+            Russian("CaravanGoal", run.Def.stages[0].Objective(story.Context(run)), target.LabelCap, target.Label);
+            Pawn carrier = SpawnCleanColonist(map);
+            Thing cargo = ThingMaker.MakeThing(ThingDefOf.Steel);
+            cargo.stackCount = 10;
+            carrier.inventory.innerContainer.TryAdd(cargo);
+            carrier.DeSpawn(DestroyMode.Vanish);
+            Caravan car = CaravanMaker.MakeCaravan(new List<Pawn> { carrier }, Faction.OfPlayer, target.Tile, true);
+            for (int pass = 0; pass < 2; pass++)
+            {
+                string how = pass == 0 ? "Short" : "Full";
+                if (pass == 1) StoryPaymentTopUp(carrier, 20);
+                Command_Action cmd = car.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.icon == ThingDefOf.Steel.uiIcon);
+                Russian("CaravanCommand" + how, cmd == null ? null : cmd.defaultLabel + " | " + cmd.defaultDesc + (cmd.Disabled ? " | " + cmd.disabledReason : ""), target.LabelCap, target.Label);
+                AddCheck("Language_CaravanCommandState" + how, cmd != null && cmd.Disabled == (pass == 0), pass == 0 ? "disabled" : "enabled", cmd == null ? "none" : cmd.Disabled.ToString());
+                FloatMenuOption option = target.GetFloatMenuOptions(car).FirstOrDefault(x => x.Label.IndexOf(ThingDefOf.Steel.label, StringComparison.OrdinalIgnoreCase) >= 0);
+                Russian("CaravanMenu" + how, option == null ? null : option.Label, target.LabelCap, target.Label);
+            }
+            CaravanArrivalAction_StoryDeliver action = new CaravanArrivalAction_StoryDeliver(target, run.quest, run.stageKey, run.gen);
+            Russian("CaravanOrder", action.Label + " | " + action.ReportString, target.LabelCap, target.Label);
+            had = Find.LetterStack.LettersListForReading.ToList();
+            action.Arrived(car);
+            Russian("CaravanDoneLetter", LetterText(NewLetter(had)), target.LabelCap, target.Label);
+            AddCheck("Language_DeliveryStillWorks", GetVar(run, "delivered") == "true" && StoryPayment.CountInCaravanDirectInventory(car, ThingDefOf.Steel) == 0, "delivered, 0 left", GetVar(run, "delivered"));
+
+            DestroyTestCaravanAndPawns(car);
+            Site created = FindSite(ParseInt(site, "siteId", -1));
+            if (created != null && !created.Destroyed) created.Destroy();
+            foreach (StoryQuestRun r in new[] { site, raid, colony, run }) { r.status = StoryQuestStatus.Failed; r.vars["finished"] = "probe"; }
+            foreach (Letter l in Find.LetterStack.LettersListForReading.ToList()) if (!first.Contains(l)) Find.LetterStack.RemoveLetter(l);
+        }
+        private static void StoryPaymentTopUp(Pawn p, int n)
+        {
+            Thing more = ThingMaker.MakeThing(ThingDefOf.Steel);
+            more.stackCount = n;
+            p.inventory.innerContainer.TryAdd(more);
+        }
+
+        private const string CustodyNick = "RollbackCustody";
+        private static Pawn RollbackPawn(string nick)
+        {
+            Pawn p = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist, Faction.OfAncients, forceGenerateNewPawn: true, canGeneratePawnRelations: false));
+            p.Name = new NameTriple("Probe", nick, "Pawn");
+            Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
+            return p;
+        }
+        private PawnTransferHandle FailTransfer(Pawn p)
+        {
+            PawnTransferHandle handle; string reason;
+            StoryPawnTransfer.TestSpawnOverride = delegate { return null; };
+            StoryPawnTransfer.TrySpawnFreeWorldPawn(p, map, map.Center, null, false, null, null, null, false, out handle, out reason);
+            StoryPawnTransfer.TestSpawnOverride = null;
+            return handle;
+        }
+        private static int Owners(Pawn p)
+        {
+            return (p.Spawned ? 1 : 0) + (p.holdingOwner != null ? 1 : 0) + (Find.WorldPawns.Contains(p) ? 1 : 0);
+        }
+
+        /// One failed rollback alone, two of which only one recovers, and one left for the save.
+        private void RollbackCustodyChecks()
+        {
+            StoryPawnTransferManager manager = StoryPawnTransferManager.Instance;
+            HashSet<Pawn> refuse = new HashSet<Pawn>();
+            StoryPawnTransfer.TestPassToWorldOverride = delegate(Pawn p)
+            {
+                if (refuse.Contains(p)) throw new InvalidOperationException("Simulated PassToWorld failure");
+                if (p.holdingOwner != null) return false;
+                Find.WorldPawns.PassToWorld(p, PawnDiscardDecideMode.KeepForever);
+                return Find.WorldPawns.Contains(p);
+            };
+            try
+            {
+                int pendingBefore = StoryPawnTransfer.PendingRollbacks.Count;
+                Pawn alone = RollbackPawn("RollbackAlone");
+                refuse.Add(alone);
+                PawnTransferHandle hAlone = FailTransfer(alone);
+                bool held = manager.InCustody(alone) && Owners(alone) == 1 && StoryPawnTransfer.PendingRollbacks.Count(h => h == hAlone) == 1;
+                StoryPawnTransfer.RetryPendingRollbacks(); // still refused: no exception, same owner
+                bool stillHeld = manager.InCustody(alone) && Owners(alone) == 1 && StoryPawnTransfer.PendingRollbacks.Count(h => h == hAlone) == 1;
+                refuse.Remove(alone);
+                StoryPawnTransfer.RetryPendingRollbacks();
+                bool back = Find.WorldPawns.Contains(alone) && Owners(alone) == 1 && !manager.InCustody(alone) && !StoryPawnTransfer.PendingRollbacks.Contains(hAlone);
+                StoryPawnTransfer.RetryPendingRollbacks();
+                AddCheck("Rollback_SingleHandleOneOwnerEveryStep", held && stillHeld && back && Owners(alone) == 1 && StoryPawnTransfer.PendingRollbacks.Count == pendingBefore, "custody, custody, world",
+                    string.Format("held={0}, stillHeld={1}, back={2}, owners={3}, pending={4}->{5}", held, stillHeld, back, Owners(alone), pendingBefore, StoryPawnTransfer.PendingRollbacks.Count));
+
+                Pawn a = RollbackPawn("RollbackA"), b = RollbackPawn("RollbackB"), c = RollbackPawn("RollbackC");
+                refuse.Add(a); refuse.Add(b); refuse.Add(c);
+                PawnTransferHandle ha = FailTransfer(a), hb = FailTransfer(b), hc = FailTransfer(c);
+                refuse.Remove(b);
+                StoryPawnTransfer.RetryPendingRollbacks();
+                bool onlyB = Find.WorldPawns.Contains(b) && manager.InCustody(a) && manager.InCustody(c) && !StoryPawnTransfer.PendingRollbacks.Contains(hb) && StoryPawnTransfer.PendingRollbacks.Contains(ha) && StoryPawnTransfer.PendingRollbacks.Contains(hc);
+                refuse.Remove(a); refuse.Remove(c);
+                StoryPawnTransfer.RetryPendingRollbacks();
+                bool all = new[] { a, b, c }.All(p => Find.WorldPawns.Contains(p) && Owners(p) == 1);
+                AddCheck("Rollback_NeighbourHandlesSurvive", onlyB && all && StoryPawnTransfer.PendingRollbacks.Count == pendingBefore, "b first, then a and c",
+                    string.Format("onlyB={0}, all={1}, pending={2}", onlyB, all, StoryPawnTransfer.PendingRollbacks.Count));
+            }
+            finally { StoryPawnTransfer.TestPassToWorldOverride = null; }
+        }
+
+        private void LeaveRollbackForSave()
+        {
+            StoryPawnTransfer.TestPassToWorldOverride = delegate { throw new InvalidOperationException("Simulated PassToWorld failure"); };
+            Pawn p = RollbackPawn(CustodyNick);
+            PawnTransferHandle h = FailTransfer(p);
+            AddCheck("Rollback_PendingPawnInCustodyAtSave", StoryPawnTransferManager.Instance.InCustody(p) && StoryPawnTransfer.PendingRollbacks.Contains(h) && Owners(p) == 1, "custody", "owners=" + Owners(p));
+        }
+
+        /// The holder itself refuses the item back (full): the item is kept aside, saved and delivered later, exactly once.
+        private void LimboRefusalChecks()
+        {
+            StoryPaymentLimbo limbo = Find.World.GetComponent<StoryPaymentLimbo>();
+            Thing first = ThingMaker.MakeThing(ThingDefOf.Uranium); first.stackCount = 21;
+            int before = limbo.HeldCount;
+            StoryPaymentLimbo.Hold(first);
+            StoryPaymentLimbo.TestLimboDropOverride = delegate { return false; };
+            limbo.TryDropAllHeldToMap(map, map.Center);
+            AddCheck("Limbo_FailedDropStaysHeld", limbo.HeldCount == before + 1 && first.holdingOwner == limbo.GetDirectlyHeldThings() && first.stackCount == 21, "held 21", "held=" + limbo.HeldCount + " stack=" + first.stackCount);
+            System.Reflection.FieldInfo max = HarmonyLib.AccessTools.Field(typeof(ThingOwner), "maxStacks");
+            object old = max.GetValue(limbo.GetDirectlyHeldThings());
+            StoryPaymentLimbo.TestLimboDropOverride = delegate(Thing t, IntVec3 c, Map m)
+            {
+                t.holdingOwner.Remove(t);
+                max.SetValue(limbo.GetDirectlyHeldThings(), 0);
+                return false;
+            };
+            limbo.TryDropAllHeldToMap(map, map.Center);
+            StoryPaymentLimbo.TestLimboDropOverride = null;
+            max.SetValue(limbo.GetDirectlyHeldThings(), old);
+            AddCheck("Limbo_RefusedItemKeptAside", first.holdingOwner == null && !first.Destroyed && limbo.HeldCount == before + 1, "kept aside", "held=" + limbo.HeldCount + " destroyed=" + first.Destroyed);
+        }
+
+        private void LimboReloadChecks()
+        {
+            StoryPaymentLimbo limbo = Find.World.GetComponent<StoryPaymentLimbo>();
+            int onMap = map.listerThings.ThingsOfDef(ThingDefOf.Uranium).Sum(t => t.stackCount);
+            AddCheck("Limbo_KeptAsideSurvivesLoad", limbo.HeldCount >= 1, ">=1", limbo.HeldCount.ToString());
+            HarmonyLib.AccessTools.Method(typeof(StoryPaymentLimbo), "RetryStrays").Invoke(limbo, null);
+            limbo.TryDropAllHeldToMap(map, map.Center);
+            limbo.TryDropAllHeldToMap(map, map.Center);
+            int delivered = map.listerThings.ThingsOfDef(ThingDefOf.Uranium).Sum(t => t.stackCount) - onMap;
+            AddCheck("Limbo_DeliveredOnceAfterLoad", delivered == 21 && limbo.HeldCount == 0, "21 once", "delivered=" + delivered + " held=" + limbo.HeldCount);
+        }
+
+        private static bool IsCustodyPawn(Pawn p) { return p != null && p.Name is NameTriple && ((NameTriple)p.Name).Nick == CustodyNick; }
+        private string m_custodyAtLoad;
+        public override void FinalizeInit()
+        {
+            base.FinalizeInit();
+            if (!StoryStagesProbeBootstrap.ReloadMode || StoryPawnTransferManager.Instance == null) return;
+            ThingOwner held = StoryPawnTransferManager.Instance.GetDirectlyHeldThings();
+            int inCustody = 0;
+            for (int i = 0; i < held.Count; i++) if (IsCustodyPawn(held[i] as Pawn)) inCustody++;
+            m_custodyAtLoad = "custody=" + inCustody + " world=" + Find.WorldPawns.AllPawnsAliveOrDead.Count(IsCustodyPawn) + " pending=" + StoryPawnTransfer.PendingRollbacks.Count(h => h != null && IsCustodyPawn(h.Pawn));
+        }
+
         private void RunReloadProbe()
         {
+            AddCheck("Rollback_SavedBeforeRetry", m_custodyAtLoad == "custody=1 world=0 pending=1", "custody=1 world=0 pending=1", m_custodyAtLoad);
+            StoryPawnTransfer.RetryPendingRollbacks();
+            StoryPawnTransfer.RetryPendingRollbacks();
+            ThingOwner left = StoryPawnTransferManager.Instance.GetDirectlyHeldThings();
+            int worldCount = Find.WorldPawns.AllPawnsAliveOrDead.Count(IsCustodyPawn);
+            AddCheck("Rollback_RetryAfterLoadExactlyOnce", worldCount == 1 && left.Count == 0 && !StoryPawnTransfer.PendingRollbacks.Any(h => h != null && IsCustodyPawn(h.Pawn)), "world=1 custody=0 pending=0",
+                "world=" + worldCount + " custody=" + left.Count);
+            LimboReloadChecks();
             SparkStory story = SparkStory.Instance;
             AddCheck("Reload_SparkStoryExists", story != null, "non-null", story != null ? "ok" : "null");
             if (story == null) return;
@@ -1325,5 +1613,55 @@ namespace TurboMegaMod
                     .Replace("\n", "\\n")
                     .Replace("\t", "\\t");
         }
+    }
+}
+
+[Verse.StaticConstructorOnStartup]
+public static class TmmBirthTrace
+{
+    private static readonly System.Collections.Generic.Dictionary<int, string> born = new System.Collections.Generic.Dictionary<int, string>(), gone = new System.Collections.Generic.Dictionary<int, string>();
+    static TmmBirthTrace()
+    {
+        var h = new HarmonyLib.Harmony("tmm.test.birthtrace");
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(Verse.PawnGenerator), "GeneratePawn", new[] { typeof(Verse.PawnGenerationRequest) }), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Depth"), postfix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Born"));
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(RimWorld.PawnComponentsUtility), "CreateInitialComponents"), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Made"));
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(Verse.Pawn), "Destroy"), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Gone"));
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(RimWorld.Planet.WorldPawns), "PassToWorld"), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Passed"));
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(RimWorld.Planet.WorldPawns), "RemovePawn"), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "Removed"));
+        h.Patch(HarmonyLib.AccessTools.Method(typeof(Verse.GameDataSaveLoader), "SaveGame", new[] { typeof(string) }), prefix: new HarmonyLib.HarmonyMethod(typeof(TmmBirthTrace), "BeforeSave") { priority = HarmonyLib.Priority.First });
+    }
+    private static string Frames()
+    {
+        var all = System.Environment.StackTrace.Split('\n');
+        var sb = new System.Text.StringBuilder(); int n = 0;
+        foreach (string raw in all) { string x = raw.Trim(); if (!x.StartsWith("at ") || x.Contains("TmmBirthTrace") || x.Contains("System.Environment") || x.Contains("Waylith")) continue; if (n++ >= 22) break; sb.Append(x.Substring(3, System.Math.Min(85, x.Length - 3))).Append(" < "); }
+        return sb.ToString();
+    }
+    private static string Holder(Verse.Pawn o) { string s = ""; Verse.IThingHolder h = o.ParentHolder; int n = 0; while (h != null && n++ < 6) { var th = h as Verse.Thing; s += h.GetType().Name + (th == null ? "" : "[" + th.def.defName + " spawned=" + th.Spawned + " destroyed=" + th.Destroyed + "]") + ">"; h = h.ParentHolder; } return (s == "" ? "none" : s) + " owner=" + (o.holdingOwner == null ? "null" : o.holdingOwner.GetType().Name) + " pos=" + o.PositionHeld; }
+    private static void Depth() { }
+    private static void Made(Verse.Pawn pawn) { if (pawn != null && !born.ContainsKey(pawn.thingIDNumber)) Add(born, pawn, "made"); }
+    private static void Add(System.Collections.Generic.Dictionary<int, string> d, Verse.Pawn p, string what) { string old; d.TryGetValue(p.thingIDNumber, out old); if (old == null || old.Length < 6000) d[p.thingIDNumber] = (old == null ? "" : old + " || ") + what + ": " + Frames(); }
+    private static void Born(Verse.Pawn __result) { if (__result != null && !born.ContainsKey(__result.thingIDNumber)) Add(born, __result, "born"); }
+    private static void Gone(Verse.Pawn __instance) { Add(gone, __instance, "Destroy"); }
+    private static void Passed(Verse.Pawn pawn) { Add(gone, pawn, "PassToWorld"); }
+    private static void Removed(Verse.Pawn p) { Add(gone, p, "RemovePawn"); }
+    private static void BeforeSave(string __0)
+    {
+        var known = new System.Collections.Generic.HashSet<Verse.Pawn>(RimWorld.PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead);
+        foreach (Verse.Pawn p in Verse.Find.WorldPawns.AllPawnsAliveOrDead) known.Add(p);
+        var held = new System.Collections.Generic.List<Verse.Thing>();
+        Verse.ThingOwnerUtility.GetAllThingsRecursively(Verse.Find.World, held, true, null);
+        foreach (Verse.Map m in Verse.Find.Maps) Verse.ThingOwnerUtility.GetAllThingsRecursively(m, held, true, null);
+        foreach (Verse.Thing t in held) { if (t is Verse.Pawn) known.Add((Verse.Pawn)t); var c = t as Verse.Corpse; if (c != null && c.InnerPawn != null) known.Add(c.InnerPawn); }
+        foreach (Verse.Pawn p in known)
+            if (p.relations != null)
+                foreach (RimWorld.DirectPawnRelation r in p.relations.DirectRelations)
+                    if (r.otherPawn != null && !known.Contains(r.otherPawn))
+                    {
+                        string b, g; Verse.Pawn o = r.otherPawn;
+                        if (!born.TryGetValue(o.thingIDNumber, out b)) b = "no birth record";
+                        if (!gone.TryGetValue(o.thingIDNumber, out g)) g = "nothing after birth";
+                        Verse.Log.Message("[TMM trace] " + __0 + ": " + r.def.defName + " of " + p.LabelShort + " id=" + p.thingIDNumber + " kind=" + p.kindDef.defName + " faction=" + p.Faction + " -> " + o.LabelShort + " id=" + o.thingIDNumber + " kind=" + o.kindDef.defName + " faction=" + o.Faction + " discarded=" + o.Discarded + " destroyed=" + o.Destroyed + " dead=" + o.Dead + " holder=" + Holder(o) + " | " + b + " | " + g);
+                    }
     }
 }

@@ -2,9 +2,7 @@
 <Defs>
   <FactionDef ParentName="PirateBandBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_WildMutantsFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>114</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_WildMutantsFaction</factionIconPath>
     <label>wild super mutants</label>
     <description>Savage super mutants who lost their minds to the FEV. They raid, eat their captives and answer only to the strongest.</description>
     <pawnSingular>super mutant</pawnSingular>
@@ -12,6 +10,9 @@
     <leaderTitle>behemoth chief</leaderTitle>
     <fixedName>Wild Super Mutants</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>114</configurationListOrderPriority>
     <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <listOrderPriority>14</listOrderPriority>
     <colorSpectrum Inherit="False">

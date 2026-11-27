@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Roles.PromoteCeremonyButton>Ceremony: {0}</TMM.Roles.PromoteCeremonyButton>
+  <TMM.Roles.Ceremony.GizmoHint>Starts an Ideology promotion ceremony. The new rank is awarded when the ritual concludes.</TMM.Roles.Ceremony.GizmoHint>
+  <TMM.Roles.Ceremony.NeedsMap>The colonist must be on a colony map to hold a promotion ceremony.</TMM.Roles.Ceremony.NeedsMap>
+  <TMM.Roles.Ceremony.DefaultTitle>Promotion ceremony</TMM.Roles.Ceremony.DefaultTitle>
+  <TMM.Roles.Ceremony.MustBeFreeColonist>Must be an active free colonist.</TMM.Roles.Ceremony.MustBeFreeColonist>
+  <TMM.Roles.Ceremony.NotReadyForPromotion>Does not meet the requirements for the next rank.</TMM.Roles.Ceremony.NotReadyForPromotion>
+  <TMM.Roles.Ceremony.CannotSpeak>Must be a free colonist capable of social speech.</TMM.Roles.Ceremony.CannotSpeak>
+  <TMM.Roles.Ceremony.MustBeCommanderOrLeader>Must be a squad commander or the ideology leader.</TMM.Roles.Ceremony.MustBeCommanderOrLeader>
+  <TMM.Roles.Ceremony.NoEligibleHonoree>No colonist on this map is ready for a rank promotion.</TMM.Roles.Ceremony.NoEligibleHonoree>
+  <TMM.Roles.Ceremony.InspirationGranted>{0} was deeply inspired by the unforgettable ceremony and gained a temporary boost to consciousness and social presence for 5 days.</TMM.Roles.Ceremony.InspirationGranted>
+</LanguageData>

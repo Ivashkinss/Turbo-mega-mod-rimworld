@@ -2,9 +2,7 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_RailroadFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>112</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_RailroadFaction</factionIconPath>
     <label>Railroad</label>
     <description>A secret network of agents smuggling escaped synths to freedom, hunted by the Institute and distrusted by everyone.</description>
     <pawnSingular>agent</pawnSingular>
@@ -12,6 +10,9 @@
     <leaderTitle>leader</leaderTitle>
     <fixedName>Railroad</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>112</configurationListOrderPriority>
     <settlementGenerationWeight>0.4</settlementGenerationWeight>
     <listOrderPriority>19</listOrderPriority>
     <colorSpectrum Inherit="False">

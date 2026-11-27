@@ -5,7 +5,7 @@
     <defName>TMM_Wings_Angel</defName>
     <label>angel wings</label>
     <description>Carriers of this gene grow a pair of large white feathered wings from the shoulder blades.</description>
-    <iconPath>UI/Icons/Genes/Gene_TailFurry</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Wings_Angel</iconPath>
     <iconColor>(0.95, 0.95, 1.0)</iconColor>
     <displayCategory>Cosmetic</displayCategory>
     <displayOrderInCategory>1100</displayOrderInCategory>
@@ -24,6 +24,8 @@
           <scaleOffsetByBodySize>true</scaleOffsetByBodySize>
           <defaultData><layer>-3</layer><offset>(0, 0, 0.38)</offset></defaultData>
           <dataNorth><layer>90</layer><offset>(0, 0, 0.05)</offset></dataNorth>
+          <dataEast><offset>(-0.10, 0, -0.23)</offset></dataEast>
+          <dataWest><offset>(0.10, 0, -0.23)</offset><flip>true</flip></dataWest>
         </drawData>
       </li>
     </renderNodeProperties>
@@ -34,7 +36,7 @@
     <label>radiant eyes</label>
     <labelShortAdj>radiant-eyed</labelShortAdj>
     <description>Carriers of this gene have eyes that glow with a cold blue-white light.</description>
-    <iconPath>UI/Icons/Genes/Gene_GrayEyes</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Eyes_Angel</iconPath>
     <displayCategory>Cosmetic</displayCategory>
     <biostatCpx>0</biostatCpx>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
