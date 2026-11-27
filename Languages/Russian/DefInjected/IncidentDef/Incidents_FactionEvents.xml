@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Event_BosTechDemand.label>требование технологий Братства</TMM_Event_BosTechDemand.label>
+  <TMM_Event_BosPaladinShelter.label>паладин просит приют</TMM_Event_BosPaladinShelter.label>
+  <TMM_Event_OutcastsTechForMeds.label>обмен технологий с Изгоями</TMM_Event_OutcastsTechForMeds.label>
+  <TMM_Event_OutcastsCaravanAmbush.label>засада Изгоев на караван</TMM_Event_OutcastsCaravanAmbush.label>
+  <TMM_Event_EnclavePropaganda.label>радиопропаганда Анклава</TMM_Event_EnclavePropaganda.label>
+  <TMM_Event_EnclavePunitiveDrop.label>карательный десант Анклава</TMM_Event_EnclavePunitiveDrop.label>
+  <TMM_Event_InstituteCourserAbduction.label>похищение синтом-охотником</TMM_Event_InstituteCourserAbduction.label>
+  <TMM_Event_InstituteSynthReplacement.label>подмена поселенца синтом</TMM_Event_InstituteSynthReplacement.label>
+  <TMM_Event_RailroadFugitiveSynth.label>беглый синт просит убежища</TMM_Event_RailroadFugitiveSynth.label>
+  <TMM_Event_RailroadDeadDrop.label>тайник Подземки</TMM_Event_RailroadDeadDrop.label>
+  <TMM_Event_GunnersExtortion.label>вымогательство Стрелков</TMM_Event_GunnersExtortion.label>
+  <TMM_Event_GunnersMercContract.label>наёмники-Стрелки</TMM_Event_GunnersMercContract.label>
+  <TMM_Event_VaultTecExperiment.label>эксперимент Волт-Тек</TMM_Event_VaultTecExperiment.label>
+  <TMM_Event_VaultTecSupplyCaravan.label>припасы Убежища Волт-Тек</TMM_Event_VaultTecSupplyCaravan.label>
+  <TMM_Event_MinutemenDistressSignal.label>сигнал бедствия минитменов</TMM_Event_MinutemenDistressSignal.label>
+  <TMM_Event_HuntersMonsterWarning.label>предупреждение охотника о нечисти</TMM_Event_HuntersMonsterWarning.label>
+  <TMM_Event_MolBuyRecords.label>предложение Просвещённых о записях</TMM_Event_MolBuyRecords.label>
+  <TMM_Event_MolRecruitment.label>вербовка Просвещённых</TMM_Event_MolRecruitment.label>
+  <TMM_Event_HeavenVesselRequest.label>ангел ищет сосуд</TMM_Event_HeavenVesselRequest.label>
+  <TMM_Event_HeavenDivineOmen.label>божественное знамение</TMM_Event_HeavenDivineOmen.label>
+  <TMM_Event_HellCrossroadsDeal.label>сделка на перекрёстке</TMM_Event_HellCrossroadsDeal.label>
+  <TMM_Event_HellDemonicPossession.label>одержимость поселенца</TMM_Event_HellDemonicPossession.label>
+  <TMM_Event_GhoulsRefugees.label>беженцы-гули</TMM_Event_GhoulsRefugees.label>
+  <TMM_Event_GhoulsRadTrade.label>радиоактивный товар гулей</TMM_Event_GhoulsRadTrade.label>
+  <TMM_Event_FriendlyMutantJoin.label>супермутант-одиночка</TMM_Event_FriendlyMutantJoin.label>
+  <TMM_Event_FriendlyMutantHeal.label>раненый сородич-супермутант</TMM_Event_FriendlyMutantHeal.label>
+  <TMM_Event_WildMutantsMeatBags.label>набег мутантов с пленниками</TMM_Event_WildMutantsMeatBags.label>
+  <TMM_Event_WildMutantsWarlordDuel.label>вызов на поединок вождём мутантов</TMM_Event_WildMutantsWarlordDuel.label>
+  <TMM_Event_MonsterVampireNightHunt.label>ночная охота вампиров</TMM_Event_MonsterVampireNightHunt.label>
+  <TMM_Event_MonsterShapeshifterGuest.label>оборотень среди гостей</TMM_Event_MonsterShapeshifterGuest.label>
+</LanguageData>

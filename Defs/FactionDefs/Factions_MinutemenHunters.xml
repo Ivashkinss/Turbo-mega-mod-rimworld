@@ -3,9 +3,7 @@
 
   <FactionDef ParentName="OutlanderFactionBase">
     <defName>TMM_MinutemenHuntersFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>109</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_MinutemenHuntersFaction</factionIconPath>
     <fixedName>Minutemen and Hunters</fixedName>
     <label>minutemen and hunters</label>
     <description>An alliance of frontier civil minutemen and wandering monster hunters. Organized around mutual community aid ("ready in a minute") and equipped to protect distant outposts from wild beasts and supernatural threats. They maintain archives of protective wards and stand ready to answer distress signals.</description>
@@ -18,10 +16,12 @@
     <leaderTitle>general commander</leaderTitle>
     <settlementGenerationWeight>0.6</settlementGenerationWeight>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>109</configurationListOrderPriority>
     <canMakeRandomly>true</canMakeRandomly>
     <canStageAttacks>true</canStageAttacks>
     <naturalEnemy>false</naturalEnemy>
-    <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
     <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <pawnGroupMakers>
       <li>

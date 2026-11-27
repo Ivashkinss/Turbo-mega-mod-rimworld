@@ -14,8 +14,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-      <damageDef MayRequire="Ludeon.RimWorld.Biotech">TMM_BoraxBurn</damageDef>
-      <damageDef MayRequire="!Ludeon.RimWorld.Biotech">Burn</damageDef>
+      <damageDef>TMM_BoraxBurn</damageDef>
       <damageAmountBase>12</damageAmountBase>
       <armorPenetrationBase>0.85</armorPenetrationBase>
       <speed>48</speed>
@@ -31,8 +30,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-      <damageDef MayRequire="Ludeon.RimWorld.Biotech">TMM_BoraxBurn</damageDef>
-      <damageDef MayRequire="!Ludeon.RimWorld.Biotech">Burn</damageDef>
+      <damageDef>TMM_BoraxBurn</damageDef>
       <damageAmountBase>11</damageAmountBase>
       <armorPenetrationBase>0.85</armorPenetrationBase>
       <speed>54</speed>

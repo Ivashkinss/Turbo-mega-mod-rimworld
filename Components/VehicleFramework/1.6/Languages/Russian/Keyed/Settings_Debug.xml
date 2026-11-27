@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_DevMode>Режим разработчика</VF_DevMode>
+  <VF_DevMode_Logging>Журналирование</VF_DevMode_Logging>
+  <VF_DevMode_Troubleshooting>Диагностика</VF_DevMode_Troubleshooting>
+  <VF_DevMode_Drawers>Визуальные подсказки</VF_DevMode_Drawers>
+  <VF_DevMode_Pathing>Поиск пути</VF_DevMode_Pathing>
+  <VF_DevMode_ShowRecentNews>Показать последние новости</VF_DevMode_ShowRecentNews>
+  <VF_DevMode_OpenQuickTestSettings>Меню быстрых тестов</VF_DevMode_OpenQuickTestSettings>
+  <VF_DevMode_GraphEditor>Редактор графов</VF_DevMode_GraphEditor>
+  <VF_DevMode_ResetAll>Сбросить все настройки</VF_DevMode_ResetAll>
+  <VF_DevMode_ResetVehicle>Сбросить {0}</VF_DevMode_ResetVehicle>
+  <VF_DevMode_ResetAllVehicles>Сбросить всю технику</VF_DevMode_ResetAllVehicles>
+  <VF_DevMode_ResetPage>Сбросить страницу</VF_DevMode_ResetPage>
+  <VF_DevMode_ResetAllConfirmation>Вы уверены, что хотите сбросить все настройки к исходным значениям? Если доступ к настройкам мода был заблокирован исключением, после сброса потребуется перезапуск игры.</VF_DevMode_ResetAllConfirmation>
+  <VF_DevMode_DebugLogging>Отладочные сообщения в лог</VF_DevMode_DebugLogging>
+  <VF_DevMode_DebugLoggingTooltip>Включает запись подробных отладочных значений в лог. Рекомендуется только разработчикам дополнений для техники.</VF_DevMode_DebugLoggingTooltip>
+  <VF_DevMode_DebugPathCostRecalculationLogging>Лог перерасчёта стоимости путей</VF_DevMode_DebugPathCostRecalculationLogging>
+  <VF_DevMode_DebugPathCostRecalculationLoggingTooltip>Записывать сводку изменений стоимости путей для всей техники при обновлении регионов.</VF_DevMode_DebugPathCostRecalculationLoggingTooltip>
+  <VF_DevMode_LogThreadActivity>Лог активности потоков</VF_DevMode_LogThreadActivity>
+  <VF_DevMode_LogThreadActivityTooltip>Записывать текущие асинхронные действия в выделенном потоке просматриваемой карты.</VF_DevMode_LogThreadActivityTooltip>
+  <VF_DevMode_DebugDraftAnyVehicle>Мобилизовать любую технику</VF_DevMode_DebugDraftAnyVehicle>
+  <VF_DevMode_DebugDraftAnyVehicleTooltip>Позволяет заводить и перемещать любую технику независимо от наличия экипажа. Полезно для пустых лодок на глубокой воде или для ускорения тестирования.</VF_DevMode_DebugDraftAnyVehicleTooltip>
+  <VF_DevMode_DebugInstantSendOff>Мгновенный взлёт</VF_DevMode_DebugInstantSendOff>
+  <VF_DevMode_DebugInstantSendOffTooltip>Мгновенно отправлять воздушную технику на карту, пропуская анимации и любое время ожидания.</VF_DevMode_DebugInstantSendOffTooltip>
+  <VF_DevMode_DebugShootAnyTurret>Стрельба из любой турели</VF_DevMode_DebugShootAnyTurret>
+  <VF_DevMode_DebugShootAnyTurretTooltip>Позволяет вести огонь из любой турели независимо от того, управляется ли она стрелком.</VF_DevMode_DebugShootAnyTurretTooltip>
+  <VF_DevMode_DebugSpawnVehiclesGodMode>Спавн построек техники (режим бога)</VF_DevMode_DebugSpawnVehiclesGodMode>
+  <VF_DevMode_DebugSpawnVehiclesGodModeTooltip>При установке чертежей техники в режиме бога будет создаваться вариант постройки вместо создания VehiclePawn.</VF_DevMode_DebugSpawnVehiclesGodModeTooltip>
+  <VF_DevMode_DebugDrawUpgradeNodeGrid>Сетка дерева улучшений</VF_DevMode_DebugDrawUpgradeNodeGrid>
+  <VF_DevMode_DebugDrawUpgradeNodeGridTooltip>Отображать сетку дерева улучшений для размещения узлов по осям (X, Y).</VF_DevMode_DebugDrawUpgradeNodeGridTooltip>
+  <VF_DevMode_DebugDrawHitbox>Отображать хитбокс</VF_DevMode_DebugDrawHitbox>
+  <VF_DevMode_DebugDrawHitboxTooltip>Отображает хитбокс техники, подсвечивая занимаемые ей клетки карты.</VF_DevMode_DebugDrawHitboxTooltip>
+  <VF_DevMode_DebugDrawVehicleTracks>Отображать колею техники</VF_DevMode_DebugDrawVehicleTracks>
+  <VF_DevMode_DebugDrawVehicleTracksTooltip>Отображает клетки колеи, которые получают повреждения при движении техники.</VF_DevMode_DebugDrawVehicleTracksTooltip>
+  <VF_DevMode_DebugDrawBumpers>Отображать бамперы</VF_DevMode_DebugDrawBumpers>
+  <VF_DevMode_DebugDrawBumpersTooltip>Отображает клетки непосредственно перед техникой, фиксирующие столкновения и останавливающие движение.</VF_DevMode_DebugDrawBumpersTooltip>
+  <VF_DevMode_DebugDrawLordMeetingPoint>Точка сбора лорда</VF_DevMode_DebugDrawLordMeetingPoint>
+  <VF_DevMode_DebugDrawLordMeetingPointTooltip>Подсвечивает клетку, назначенную точкой сбора формируемого автокаравана.</VF_DevMode_DebugDrawLordMeetingPointTooltip>
+  <VF_DevMode_DebugDrawFleePoints>Точки бегства пешек</VF_DevMode_DebugDrawFleePoints>
+  <VF_DevMode_DebugDrawFleePointsTooltip>Отображает попытки пешек отбежать от надвигающейся техники во избежание столкновения.</VF_DevMode_DebugDrawFleePointsTooltip>
+  <VF_DevMode_DebugDrawGrid>Отладочная сетка</VF_DevMode_DebugDrawGrid>
+  <VF_DevMode_DebugDrawGridTooltip>Отображает значения отладочной сетки для выбранного типа.</VF_DevMode_DebugDrawGridTooltip>
+  <VF_DevMode_DebugPathfinderDebugging>Локальный поиск пути</VF_DevMode_DebugPathfinderDebugging>
+  <VF_DevMode_DebugPathfinderDebuggingTooltip>Открыть меню отладки различных параметров поиска пути (по клеткам и по регионам).</VF_DevMode_DebugPathfinderDebuggingTooltip>
+  <VF_DevMode_DebugWorldPathfinderDebugging>Глобальный поиск пути</VF_DevMode_DebugWorldPathfinderDebugging>
+  <VF_DevMode_DebugWorldPathfinderDebuggingTooltip>Открыть меню отладки сетки WorldPathGrid для любого VehicleDef.</VF_DevMode_DebugWorldPathfinderDebuggingTooltip>
+  <VF_DevMode_DebugDrawVehiclePathingCosts>Отображать стоимость пути</VF_DevMode_DebugDrawVehiclePathingCosts>
+  <VF_DevMode_DebugDrawVehiclePathingCostsTooltip>Отображает стоимость перемещения по клеткам/тайлам, рассчитанную поисковиком путей. Показывает накопленную стоимость пути.</VF_DevMode_DebugDrawVehiclePathingCostsTooltip>
+  <VF_DevMode_DebugDrawPathfinderSearch>Отображать процесс поиска пути</VF_DevMode_DebugDrawPathfinderSearch>
+  <VF_DevMode_DebugDrawPathfinderSearchTooltip>Отображает процесс перебора узлов поисковиком пути. При включённом иерархическом поиске также показывает поиск по чанкам. Поиск намеренно замедлен для наглядности.</VF_DevMode_DebugDrawPathfinderSearchTooltip>
+</LanguageData>

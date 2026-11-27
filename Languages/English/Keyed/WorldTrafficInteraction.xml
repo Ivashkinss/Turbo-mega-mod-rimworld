@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_TrafficTrade>Trade with {0}</TMM_TrafficTrade>
+  <TMM_TrafficTradeDesc>Open trade with this passing faction caravan using its real carried cargo.\n\n{0}</TMM_TrafficTradeDesc>
+  <TMM_TrafficAttack>Attack {0}</TMM_TrafficAttack>
+  <TMM_TrafficAttackDesc>Ambush this passing faction caravan on the road and seize its cargo. Relations with the faction will plummet.\n\n{0}</TMM_TrafficAttackDesc>
+  <TMM_TrafficAttackConfirmTitle>Attack caravan</TMM_TrafficAttackConfirmTitle>
+  <TMM_TrafficAttackConfirm>Attack the passing {0} caravan?\n\nThis will make {0} hostile and start an immediate road ambush against its crew.</TMM_TrafficAttackConfirm>
+  <TMM_TrafficTooltip>Faction: {0}\nCrew: {1}\nEstimated cargo: ~{2} kg</TMM_TrafficTooltip>
+  <TMM_TrafficNoNegotiator>No colonist capable of social negotiation in this caravan.</TMM_TrafficNoNegotiator>
+  <TMM_TrafficNoTraderKind>This caravan has no compatible trader profile.</TMM_TrafficNoTraderKind>
+  <TMM_TrafficAttackBlockedGone>The caravan is no longer here.</TMM_TrafficAttackBlockedGone>
+  <TMM_TrafficAttackBlockedTruce>{0} is under a temporary truce. Attacking now would break the story agreement.</TMM_TrafficAttackBlockedTruce>
+  <TMM_TrafficAttackBlockedDiplomacy>Relations with {0} cannot be broken right now, so there would be no fight.</TMM_TrafficAttackBlockedDiplomacy>
+  <TMM_TrafficAttackBlockedNoTile>There is no open ground nearby for a battle. Move off the settlement tile first.</TMM_TrafficAttackBlockedNoTile>
+  <TMM_TrafficAttackFailed>The ambush could not be set up. Both caravans stay as they were.</TMM_TrafficAttackFailed>
+  <TMM_TrafficTradeStale>The deal fell through: the caravans have parted or the goods have changed. Nothing was exchanged.</TMM_TrafficTradeStale>
+  <TMM_VehicleUnloadHome>Unload vehicle</TMM_VehicleUnloadHome>
+  <TMM_VehicleUnloadHomeDesc>The crew gets out and haulers carry the cargo to storage. Cargo without a storage place is put down near the colony.</TMM_VehicleUnloadHomeDesc>
+  <TMM_VehicleUnloadHomeActive>The vehicle is being unloaded. Press to repeat the order, for example if the crew could not get out or enemies are near.</TMM_VehicleUnloadHomeActive>
+</LanguageData>

@@ -5,7 +5,7 @@
     <defName>TMM_Head_Ghoul</defName>
     <label>ghoul skull</label>
     <description>Carriers of this gene have a gaunt, radiation-ravaged head: no nose, no lips over the teeth, sunken eyes and patches of peeling skin.</description>
-    <iconPath>UI/Icons/Genes/Gene_GauntHead</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Head_Ghoul</iconPath>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <forcedHeadTypes>
       <li>TMM_GhoulHead</li>

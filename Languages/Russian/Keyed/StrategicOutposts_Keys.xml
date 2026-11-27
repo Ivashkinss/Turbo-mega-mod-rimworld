@@ -208,4 +208,6 @@
   <TMM_OutpostCaravan_RetryDeliveryDesc>Повторить попытку сдать груз: {0}.</TMM_OutpostCaravan_RetryDeliveryDesc>
   <TMM_OutpostCaravan_LowReturnFoodWarning>{0}: еды на обратный путь хватит на {1} дн., а дорога займёт {2} дн.</TMM_OutpostCaravan_LowReturnFoodWarning>
   <TMM_OutpostCaravan_StorageTransferFailedRetry>{0}: груз не принят. Всё осталось в караване — сдайте ещё раз или отправьте караван домой.</TMM_OutpostCaravan_StorageTransferFailedRetry>
+  <TMM_OutpostCaravan_SilverReturnedToStockpile>Серебро миссии ({0} шт.) выгружено на склад колонии.</TMM_OutpostCaravan_SilverReturnedToStockpile>
+  <TMM_OutpostCaravan_SilverKeptByCarrier>Серебро миссии ({1} шт.) осталось в инвентаре носильщика {0}.</TMM_OutpostCaravan_SilverKeptByCarrier>
 </LanguageData>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Institute molecular relay raid: spawns inside/near colony (15..35 cells) with blue flash, 0.85x points, day 45+ -->
+  <IncidentDef>
+    <defName>TMM_InstituteRelayRaid</defName>
+    <label>Institute relay raid</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMMInstituteRelayRaid</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>1.4</baseChance>
+    <minRefireDays>14</minRefireDays>
+    <earliestDay>45</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+    <tale>Raid</tale>
+  </IncidentDef>
+
+  <!-- Institute relay abduction: 2-4 Gen2 synths + 1 Gen3 Courser snatch a vulnerable colonist and relay out -->
+  <IncidentDef>
+    <defName>TMM_InstituteRelayAbduction</defName>
+    <label>Institute relay abduction</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMMInstituteRelayAbduction</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>0.75</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>35</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+</Defs>

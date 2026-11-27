@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Colony roles and ranks (Documentation/COLONY-ROLES-DESIGN.md). Data: Documentation/ColonyRoles-Data.json (Hydrogen). -->
+<!-- Colony roles and ranks (Documentation/COLONY-ROLES-DESIGN.md). Data: Documentation/ColonyRoles-Data.json (Hydrogen).
+     Military ranks include uniform apparel policies and optional armory weapons (DLC items guarded with MayRequire). -->
 <Defs>
   <TurboMegaMod.ColonyRoleDef>
     <defName>TMM_Role_doctor</defName>
@@ -305,6 +306,18 @@
         <stats>
           <ShootingAccuracyPawn>0.03</ShootingAccuracyPawn>
         </stats>
+        <uniform>
+          <apparel>
+            <li>Apparel_BasicShirt</li>
+            <li>Apparel_Pants</li>
+            <li>Apparel_FlakVest</li>
+            <li>Apparel_SimpleHelmet</li>
+          </apparel>
+          <weapons>
+            <li>Gun_BoltActionRifle</li>
+            <li>Gun_PumpShotgun</li>
+          </weapons>
+        </uniform>
       </li>
       <li>
         <label>sergeant</label>
@@ -317,6 +330,19 @@
           <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
           <MeleeHitChance>0.04</MeleeHitChance>
         </stats>
+        <uniform>
+          <apparel>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_FlakPants</li>
+            <li>Apparel_FlakVest</li>
+            <li>Apparel_FlakJacket</li>
+            <li>Apparel_AdvancedHelmet</li>
+          </apparel>
+          <weapons>
+            <li>Gun_HeavySMG</li>
+            <li>Gun_ChainShotgun</li>
+          </weapons>
+        </uniform>
       </li>
       <li>
         <label>lieutenant</label>
@@ -336,6 +362,19 @@
             <ShootingAccuracyPawn>0.03</ShootingAccuracyPawn>
           </stats>
         </aura>
+        <uniform>
+          <apparel>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_FlakPants</li>
+            <li>Apparel_FlakVest</li>
+            <li>Apparel_Duster</li>
+            <li>Apparel_AdvancedHelmet</li>
+          </apparel>
+          <weapons>
+            <li>Gun_AssaultRifle</li>
+            <li>Gun_HeavySMG</li>
+          </weapons>
+        </uniform>
       </li>
       <li>
         <label>major</label>
@@ -357,6 +396,21 @@
             <MeleeHitChance>0.03</MeleeHitChance>
           </stats>
         </aura>
+        <uniform>
+          <apparel>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_FlakPants</li>
+            <li>Apparel_FlakVest</li>
+            <li>Apparel_Duster</li>
+            <li>Apparel_AdvancedHelmet</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorRecon</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetRecon</li>
+          </apparel>
+          <weapons>
+            <li>Gun_AssaultRifle</li>
+            <li>Gun_ChargeRifle</li>
+          </weapons>
+        </uniform>
       </li>
       <li>
         <label>colonel</label>
@@ -379,6 +433,20 @@
             <MeleeDodgeChance>0.03</MeleeDodgeChance>
           </stats>
         </aura>
+        <uniform>
+          <apparel>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_Pants</li>
+            <li>Apparel_PowerArmor</li>
+            <li>Apparel_PowerArmorHelmet</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorReconPrestige</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetReconPrestige</li>
+          </apparel>
+          <weapons>
+            <li>Gun_ChargeRifle</li>
+            <li>Gun_Minigun</li>
+          </weapons>
+        </uniform>
       </li>
       <li>
         <label>general</label>
@@ -401,6 +469,22 @@
             <MeleeDodgeChance>0.05</MeleeDodgeChance>
           </stats>
         </aura>
+        <uniform>
+          <apparel>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_Pants</li>
+            <li>Apparel_PowerArmor</li>
+            <li>Apparel_PowerArmorHelmet</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorMarinePrestige</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorMarineHelmetPrestige</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorCataphract</li>
+            <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetCataphract</li>
+          </apparel>
+          <weapons>
+            <li>Gun_ChargeLance</li>
+            <li>Gun_ChargeRifle</li>
+          </weapons>
+        </uniform>
       </li>
     </ranks>
   </TurboMegaMod.ColonyRoleDef>

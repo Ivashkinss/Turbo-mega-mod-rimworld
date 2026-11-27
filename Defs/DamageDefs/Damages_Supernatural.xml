@@ -53,7 +53,7 @@
     </cutExtraTargetsCurve>
   </DamageDef>
 
-  <DamageDef MayRequire="Ludeon.RimWorld.Biotech">
+  <DamageDef>
     <defName>TMM_BoraxBurn</defName>
     <label>caustic borax burn</label>
     <workerClass>DamageWorker_AddInjury</workerClass>

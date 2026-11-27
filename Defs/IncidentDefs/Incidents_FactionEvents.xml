@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 30 flavor incidents across all 15 Fallout x Supernatural factions (2 per faction). -->
+<Defs>
+
+  <!-- 1. Brotherhood of Steel -->
+  <IncidentDef>
+    <defName>TMM_Event_BosTechDemand</defName>
+    <label>Brotherhood tech requisition</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_BosTechDemand</workerClass>
+    <category>Misc</category>
+    <baseChance>0.9</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>15</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_BosPaladinShelter</defName>
+    <label>paladin seeks shelter</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_BosPaladinShelter</workerClass>
+    <category>Misc</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <!-- 2. Brotherhood Outcasts -->
+  <IncidentDef>
+    <defName>TMM_Event_OutcastsTechForMeds</defName>
+    <label>Outcasts tech exchange</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_OutcastsTechForMeds</workerClass>
+    <category>Misc</category>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>14</minRefireDays>
+    <earliestDay>8</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_OutcastsCaravanAmbush</defName>
+    <label>Outcasts road ambush</label>
+    <targetTags><li>Caravan</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_OutcastsCaravanAmbush</workerClass>
+    <category>ThreatSmall</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <earliestDay>12</earliestDay>
+  </IncidentDef>
+
+  <!-- 3. Enclave -->
+  <IncidentDef>
+    <defName>TMM_Event_EnclavePropaganda</defName>
+    <label>Enclave radio broadcast</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_EnclavePropaganda</workerClass>
+    <category>Misc</category>
+    <baseChance>1.1</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <earliestDay>5</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_EnclavePunitiveDrop</defName>
+    <label>Enclave punitive drop</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_EnclavePunitiveDrop</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>30</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <!-- 4. Institute -->
+  <IncidentDef>
+    <defName>TMM_Event_InstituteCourserAbduction</defName>
+    <label>Courser abduction raid</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_InstituteCourserAbduction</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>0.9</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>25</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_InstituteSynthReplacement</defName>
+    <label>suspected synth replacement</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_InstituteSynthReplacement</workerClass>
+    <category>Misc</category>
+    <baseChance>0.45</baseChance>
+    <minRefireDays>45</minRefireDays>
+    <earliestDay>35</earliestDay>
+  </IncidentDef>
+
+  <!-- 5. Railroad -->
+  <IncidentDef>
+    <defName>TMM_Event_RailroadFugitiveSynth</defName>
+    <label>fugitive synth seeks sanctuary</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_RailroadFugitiveSynth</workerClass>
+    <category>Misc</category>
+    <baseChance>0.75</baseChance>
+    <minRefireDays>25</minRefireDays>
+    <earliestDay>12</earliestDay>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_RailroadDeadDrop</defName>
+    <label>Railroad dead-drop cache</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_RailroadDeadDrop</workerClass>
+    <category>Misc</category>
+    <baseChance>0.9</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>6</earliestDay>
+  </IncidentDef>
+
+  <!-- 6. Gunners -->
+  <IncidentDef>
+    <defName>TMM_Event_GunnersExtortion</defName>
+    <label>Gunners protection demand</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_GunnersExtortion</workerClass>
+    <category>ThreatSmall</category>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>14</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_GunnersMercContract</defName>
+    <label>Gunners mercenary contract</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_GunnersMercContract</workerClass>
+    <category>Misc</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>12</earliestDay>
+  </IncidentDef>
+
+  <!-- 7. Vault-Tec -->
+  <IncidentDef>
+    <defName>TMM_Event_VaultTecExperiment</defName>
+    <label>Vault-Tec clinical trial</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_VaultTecExperiment</workerClass>
+    <category>Misc</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_VaultTecSupplyCaravan</defName>
+    <label>Vault-Tec surplus drop</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_VaultTecSupplyCaravan</workerClass>
+    <category>Misc</category>
+    <baseChance>0.95</baseChance>
+    <minRefireDays>16</minRefireDays>
+    <earliestDay>7</earliestDay>
+  </IncidentDef>
+
+  <!-- 8. Minutemen & Hunters -->
+  <IncidentDef>
+    <defName>TMM_Event_MinutemenDistressSignal</defName>
+    <label>Minutemen distress call</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_MinutemenDistressSignal</workerClass>
+    <category>Misc</category>
+    <baseChance>0.9</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_HuntersMonsterWarning</defName>
+    <label>hunter monster warning</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_HuntersMonsterWarning</workerClass>
+    <category>Misc</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>16</earliestDay>
+  </IncidentDef>
+
+  <!-- 9. Men of Letters -->
+  <IncidentDef>
+    <defName>TMM_Event_MolBuyRecords</defName>
+    <label>Men of Letters lore offer</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_MolBuyRecords</workerClass>
+    <category>Misc</category>
+    <baseChance>0.85</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_MolRecruitment</defName>
+    <label>Men of Letters recruitment</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_MolRecruitment</workerClass>
+    <category>Misc</category>
+    <baseChance>0.55</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>20</earliestDay>
+  </IncidentDef>
+
+  <!-- 10. Heaven -->
+  <IncidentDef>
+    <defName>TMM_Event_HeavenVesselRequest</defName>
+    <label>angel seeks vessel</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_HeavenVesselRequest</workerClass>
+    <category>Misc</category>
+    <baseChance>0.65</baseChance>
+    <minRefireDays>28</minRefireDays>
+    <earliestDay>18</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_HeavenDivineOmen</defName>
+    <label>celestial omen</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_HeavenDivineOmen</workerClass>
+    <category>Misc</category>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>16</minRefireDays>
+    <earliestDay>6</earliestDay>
+  </IncidentDef>
+
+  <!-- 11. Hell -->
+  <IncidentDef>
+    <defName>TMM_Event_HellCrossroadsDeal</defName>
+    <label>crossroads bargain</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_HellCrossroadsDeal</workerClass>
+    <category>Misc</category>
+    <baseChance>0.65</baseChance>
+    <minRefireDays>35</minRefireDays>
+    <earliestDay>15</earliestDay>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_HellDemonicPossession</defName>
+    <label>demonic possession</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_HellDemonicPossession</workerClass>
+    <category>ThreatSmall</category>
+    <baseChance>0.75</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>16</earliestDay>
+  </IncidentDef>
+
+  <!-- 12. Ghouls -->
+  <IncidentDef>
+    <defName>TMM_Event_GhoulsRefugees</defName>
+    <label>ghoul refugees</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_GhoulsRefugees</workerClass>
+    <category>Misc</category>
+    <baseChance>0.85</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>8</earliestDay>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_GhoulsRadTrade</defName>
+    <label>radioactive salvage offer</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_GhoulsRadTrade</workerClass>
+    <category>Misc</category>
+    <baseChance>0.95</baseChance>
+    <minRefireDays>16</minRefireDays>
+    <earliestDay>8</earliestDay>
+  </IncidentDef>
+
+  <!-- 13. Friendly Super Mutants -->
+  <IncidentDef>
+    <defName>TMM_Event_FriendlyMutantJoin</defName>
+    <label>wandering super mutant</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_FriendlyMutantJoin</workerClass>
+    <category>Misc</category>
+    <baseChance>0.7</baseChance>
+    <minRefireDays>25</minRefireDays>
+    <earliestDay>14</earliestDay>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_FriendlyMutantHeal</defName>
+    <label>wounded mutant kinsman</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_FriendlyMutantHeal</workerClass>
+    <category>Misc</category>
+    <baseChance>0.85</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+
+  <!-- 14. Wild Super Mutants -->
+  <IncidentDef>
+    <defName>TMM_Event_WildMutantsMeatBags</defName>
+    <label>mutant captive raid</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_WildMutantsMeatBags</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>0.9</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>18</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_WildMutantsWarlordDuel</defName>
+    <label>mutant warlord challenge</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_WildMutantsWarlordDuel</workerClass>
+    <category>ThreatSmall</category>
+    <baseChance>0.85</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>15</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <!-- 15. Monster Clans -->
+  <IncidentDef>
+    <defName>TMM_Event_MonsterVampireNightHunt</defName>
+    <label>vampire night hunt</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_MonsterVampireNightHunt</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>18</minRefireDays>
+    <earliestDay>16</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>TMM_Event_MonsterShapeshifterGuest</defName>
+    <label>werewolf among guests</label>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMM_MonsterShapeshifterGuest</workerClass>
+    <category>ThreatSmall</category>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>22</minRefireDays>
+    <earliestDay>12</earliestDay>
+  </IncidentDef>
+
+</Defs>

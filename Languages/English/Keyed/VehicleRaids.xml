@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.VehicleRaid.LetterLabel>Mechanized raid: {0}</TMM.VehicleRaid.LetterLabel>
+  <TMM.VehicleRaid.LetterText>Hostile forces from {0} are rolling into the area in {1} armored vehicle(s)!\n\nThey will drive to a staging point near the colony, dismount their assault squad, and press the attack. If you neutralize the crew without destroying a vehicle, you can claim it as a trophy.</TMM.VehicleRaid.LetterText>
+  <TMM.VehicleVisit.LetterLabel>Trade truck: {0}</TMM.VehicleVisit.LetterLabel>
+  <TMM.VehicleVisit.LetterText>A friendly trade crew from {0} has arrived in a {1}.\n\nOnce parked, their trader will step out to trade directly from the vehicle's cargo bay before driving back into the wasteland.</TMM.VehicleVisit.LetterText>
+  <TMM.VehicleRaid.ClaimLabel>Claim vehicle</TMM.VehicleRaid.ClaimLabel>
+  <TMM.VehicleRaid.ClaimDesc>Take ownership of this abandoned {0} for the colony.</TMM.VehicleRaid.ClaimDesc>
+  <TMM.VehicleRaid.ClaimedMsg>Claimed abandoned {0} for the colony.</TMM.VehicleRaid.ClaimedMsg>
+</LanguageData>

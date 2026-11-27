@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Hostile faction raid arriving in armored wasteland vehicles -->
+  <IncidentDef>
+    <defName>TMM_VehicleRaid</defName>
+    <label>mechanized raid</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMMVehicleRaid</workerClass>
+    <category>ThreatBig</category>
+    <baseChance>2.2</baseChance>
+    <minRefireDays>12</minRefireDays>
+    <earliestDay>60</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+    <tale>Raid</tale>
+  </IncidentDef>
+
+  <!-- Friendly faction trader arriving in a cargo hauler or hunter pickup -->
+  <IncidentDef>
+    <defName>TMM_VehicleVisit</defName>
+    <label>trade truck arrival</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TurboMegaMod.IncidentWorker_TMMVehicleVisit</workerClass>
+    <category>Misc</category>
+    <baseChance>1.2</baseChance>
+    <minRefireDays>8</minRefireDays>
+    <earliestDay>5</earliestDay>
+  </IncidentDef>
+
+</Defs>

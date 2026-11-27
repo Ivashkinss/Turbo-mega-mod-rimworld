@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom BodyTypeDefs for Synth Gen 1, Nick Valentine (exposed right skeletal hand), and Robot Chassis (P.A.M., Eden).
+     Follows the verified TMM_SuperMutant BodyTypeDef structure for RimWorld 1.7. -->
+<Defs>
+
+  <!-- 1. Synth Gen 1: lean metallic endoskeleton -->
+  <BodyTypeDef>
+    <defName>TMM_SynthGen1</defName>
+    <headOffset>(0.08, 0.34)</headOffset>
+    <bodyNakedGraphicPath>Things/TMM/Xenotypes/Synths/Bodies/Naked_TMM_SynthGen1</bodyNakedGraphicPath>
+    <bodyDessicatedGraphicPath>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</bodyDessicatedGraphicPath>
+    <bodyGraphicScale>(1, 1)</bodyGraphicScale>
+    <woundAnchors>
+      <li>
+        <rotation>South</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.28</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftLeg</tag>
+        <offset>(0.16,0,-0.44)</offset>
+        <range>0.18</range>
+        <debugColor>(0,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightLeg</tag>
+        <offset>(-0.16,0,-0.44)</offset>
+        <range>0.18</range>
+        <debugColor>(0,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftShoulder</tag>
+        <offset>(0.28,0,0.025)</offset>
+        <range>0.18</range>
+        <debugColor>(1,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightShoulder</tag>
+        <offset>(-0.28,0,0.025)</offset>
+        <range>0.18</range>
+        <debugColor>(1,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.2</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(-0.095, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(1,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(0.095, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(0,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.2</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.30</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <tag>LeftShoulder</tag>
+        <offset>(-0.07,0,0.12)</offset>
+        <range>0.18</range>
+        <canMirror>false</canMirror>
+        <debugColor>(1,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>East</rotation>
+        <tag>LeftLeg</tag>
+        <offset>(-0.14,0,-0.46)</offset>
+        <range>0.2</range>
+        <canMirror>false</canMirror>
+        <debugColor>(0,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>East</rotation>
+        <tag>RightShoulder</tag>
+        <offset>(0.07,0,0.12)</offset>
+        <range>0.18</range>
+        <canMirror>false</canMirror>
+        <debugColor>(1,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <tag>RightLeg</tag>
+        <offset>(0.14,0,-0.46)</offset>
+        <range>0.2</range>
+        <canMirror>false</canMirror>
+        <debugColor>(0,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>East</rotation>
+        <tag>RightEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(1,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <tag>LeftEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(-0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(0,0,0,1)</debugColor>
+      </li>
+    </woundAnchors>
+    <attachPoints>
+      <li><offset>(-.28, 0, .2)</offset><type>PlatformRestraint0</type></li>
+      <li><offset>(.28, 0, .2)</offset><type>PlatformRestraint1</type></li>
+      <li><offset>(.18, 0, -.48)</offset><type>PlatformRestraint2</type></li>
+      <li><offset>(-.18, 0, -.48)</offset><type>PlatformRestraint3</type></li>
+    </attachPoints>
+  </BodyTypeDef>
+
+  <!-- 2. Nick Valentine unique Gen 2 body with exposed mechanical right hand/forearm -->
+  <BodyTypeDef>
+    <defName>TMM_NickValentine</defName>
+    <headOffset>(0.09, 0.34)</headOffset>
+    <bodyNakedGraphicPath>Things/TMM/Xenotypes/Synths/Bodies/Naked_TMM_NickValentine</bodyNakedGraphicPath>
+    <bodyDessicatedGraphicPath>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Male</bodyDessicatedGraphicPath>
+    <bodyGraphicScale>(1, 1)</bodyGraphicScale>
+    <woundAnchors>
+      <li>
+        <rotation>South</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.3</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftLeg</tag>
+        <offset>(0.18,0,-0.45)</offset>
+        <range>0.18</range>
+        <debugColor>(0,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightLeg</tag>
+        <offset>(-0.18,0,-0.45)</offset>
+        <range>0.18</range>
+        <debugColor>(0,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftShoulder</tag>
+        <offset>(0.32,0,0.025)</offset>
+        <range>0.18</range>
+        <debugColor>(1,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightShoulder</tag>
+        <offset>(-0.32,0,0.025)</offset>
+        <range>0.18</range>
+        <debugColor>(1,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.2</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(-0.095, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(1,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(0.095, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(0,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.2</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.32</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>East</rotation>
+        <tag>RightEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(1,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <tag>LeftEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(-0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(0,0,0,1)</debugColor>
+      </li>
+    </woundAnchors>
+    <attachPoints>
+      <li><offset>(-.30, 0, .2)</offset><type>PlatformRestraint0</type></li>
+      <li><offset>(.30, 0, .2)</offset><type>PlatformRestraint1</type></li>
+      <li><offset>(.19, 0, -.49)</offset><type>PlatformRestraint2</type></li>
+      <li><offset>(-.19, 0, -.49)</offset><type>PlatformRestraint3</type></li>
+    </attachPoints>
+  </BodyTypeDef>
+
+  <!-- 3. Robot Chassis: rebuilt Assaultron / Enclave carrier steel body (P.A.M., Eden) -->
+  <BodyTypeDef>
+    <defName>TMM_RobotChassis</defName>
+    <headOffset>(0.09, 0.35)</headOffset>
+    <bodyNakedGraphicPath>Things/TMM/Xenotypes/Synths/Bodies/Naked_TMM_RobotChassis</bodyNakedGraphicPath>
+    <bodyDessicatedGraphicPath>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Male</bodyDessicatedGraphicPath>
+    <bodyGraphicScale>(1.04, 1.06)</bodyGraphicScale>
+    <woundAnchors>
+      <li>
+        <rotation>South</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.32</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftLeg</tag>
+        <offset>(0.19,0,-0.45)</offset>
+        <range>0.2</range>
+        <debugColor>(0,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightLeg</tag>
+        <offset>(-0.19,0,-0.45)</offset>
+        <range>0.2</range>
+        <debugColor>(0,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>LeftShoulder</tag>
+        <offset>(0.34,0,0.03)</offset>
+        <range>0.2</range>
+        <debugColor>(1,1,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <tag>RightShoulder</tag>
+        <offset>(-0.34,0,0.03)</offset>
+        <range>0.2</range>
+        <debugColor>(1,0,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>South</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.2</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>FullHead</group>
+        <offset>(0, 0, 0)</offset>
+        <range>0.21</range>
+        <layer>Head</layer>
+        <debugColor>(0,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <group>Torso</group>
+        <offset>(0,0,-0.12)</offset>
+        <range>0.34</range>
+        <debugColor>(1,0,0,1)</debugColor>
+      </li>
+      <li>
+        <rotation>East</rotation>
+        <tag>RightEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(1,1,1,1)</debugColor>
+      </li>
+      <li>
+        <rotation>West</rotation>
+        <tag>LeftEye</tag>
+        <canMirror>false</canMirror>
+        <offset>(-0.175, 0, 0.18)</offset>
+        <range>0</range>
+        <layer>Head</layer>
+        <debugColor>(0,0,0,1)</debugColor>
+      </li>
+    </woundAnchors>
+    <attachPoints>
+      <li><offset>(-.31, 0, .2)</offset><type>PlatformRestraint0</type></li>
+      <li><offset>(.31, 0, .2)</offset><type>PlatformRestraint1</type></li>
+      <li><offset>(.2, 0, -.5)</offset><type>PlatformRestraint2</type></li>
+      <li><offset>(-.2, 0, -.5)</offset><type>PlatformRestraint3</type></li>
+    </attachPoints>
+  </BodyTypeDef>
+
+</Defs>

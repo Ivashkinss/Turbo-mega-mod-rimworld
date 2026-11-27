@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorkGiverDef>
+    <defName>TMM_EquipRankWeapon</defName>
+    <label>equip rank weapon</label>
+    <giverClass>TurboMegaMod.WorkGiver_EquipRankWeapon</giverClass>
+    <workType>BasicWorker</workType>
+    <priorityInType>5</priorityInType>
+    <verb>equip rank weapon</verb>
+    <gerund>equipping rank weapon</gerund>
+    <scanThings>true</scanThings>
+    <scanCells>false</scanCells>
+  </WorkGiverDef>
+
+</Defs>

@@ -6,7 +6,7 @@
     <label>super mutant</label>
     <description>Huge green mutants created by the Forced Evolutionary Virus (FEV). Exceptionally strong, tough and immune to toxins, though simple-minded and slow to learn.</description>
     <descriptionShort>Huge green mutants created by the FEV virus. Exceptionally strong, robust and toxic-immune, but slow to learn.</descriptionShort>
-    <iconPath>UI/Icons/Xenotypes/Neanderthal</iconPath>
+    <iconPath>UI/Icons/TMM/Xenotypes/TMM_SuperMutant</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.4</combatPowerFactor>
     <genes>

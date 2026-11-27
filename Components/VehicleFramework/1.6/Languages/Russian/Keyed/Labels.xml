@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- Labels and Titles -->
+  <VehicleFramework>Vehicle Framework</VehicleFramework>
+  <VF_Vehicles>Техника</VF_Vehicles>
+  <!-- Gizmos / Float Menus -->
+  <VF_LoadCargo>Погрузить вещи</VF_LoadCargo>
+  <VF_HaulPawnToVehicle>Погрузить поселенца</VF_HaulPawnToVehicle>
+  <VF_DisembarkAllPawns>Выгрузить всех</VF_DisembarkAllPawns>
+  <VF_DisembarkSinglePawn>Высадить: {0}</VF_DisembarkSinglePawn>
+  <VF_GearForward>Вперёд</VF_GearForward>
+  <VF_GearReverse>Назад</VF_GearReverse>
+  <VF_DisembarkNoExit>Невозможно покинуть технику: нет свободных клеток для выхода.</VF_DisembarkNoExit>
+  <VF_DisabledByVehicleUpgrading>{0} находится в процессе модификации.</VF_DisabledByVehicleUpgrading>
+  <VF_StopVehicle>Остановить</VF_StopVehicle>
+  <VF_UndraftVehicle>Заглушить двигатель</VF_UndraftVehicle>
+  <VF_DraftVehicleDesc>Заводит двигатель техники и переводит её в боевой режим для движения. Расходует топливо даже на холостом ходу.</VF_DraftVehicleDesc>
+  <VF_StopVehicleDesc>Немедленно остановить технику.</VF_StopVehicleDesc>
+  <VF_UndraftVehicleDesc>Глушит двигатель техники, отключает боевой режим и останавливает расход топлива.</VF_UndraftVehicleDesc>
+  <VF_RefuelFromInventoryCount>Заправить {0}x {1}</VF_RefuelFromInventoryCount>
+  <VF_RefuelFromInventoryDesc>Заправить {0}, используя топливо из багажного отсека.</VF_RefuelFromInventoryDesc>
+  <VF_VehicleFullyFueled>{0} уже полностью заправлен(а).</VF_VehicleFullyFueled>
+  <VF_NoFuelInVehicle>В {0} нет топлива.</VF_NoFuelInVehicle>
+  <VF_CantRefuelWhileFlying>Нельзя заправлять {0} во время полёта.</VF_CantRefuelWhileFlying>
+  <VF_VehicleFuelCost>Топливо: {0}</VF_VehicleFuelCost>
+  <VF_TransferToVehicle_Order>Перенести в технику</VF_TransferToVehicle_Order>
+  <VF_TransferToVehicle_Order_Desc>Перенести выбранные предметы в багажный отсек указанной техники.</VF_TransferToVehicle_Order_Desc>
+  <VF_TransferToVehicle_Cancel>Отменить перенос</VF_TransferToVehicle_Cancel>
+  <VF_TransferToVehicle_Cancel_Desc>Отменить перенос выбранных предметов в багажный отсек техники.</VF_TransferToVehicle_Cancel_Desc>
+  <!-- UI / Buttons -->
+  <VF_RandomVehicle>Случайная техника</VF_RandomVehicle>
+  <VF_ShowAllItemsOnMap>Показать все предметы на карте</VF_ShowAllItemsOnMap>
+  <VF_ResetColorPalettes>Сбросить все палитры</VF_ResetColorPalettes>
+  <VF_ResetColorPalettesConfirmation>Вы уверены, что хотите сбросить все сохранённые палитры к настройкам по умолчанию? Это действие нельзя отменить.</VF_ResetColorPalettesConfirmation>
+  <VF_RotateVehicleRendering>Повернуть технику</VF_RotateVehicleRendering>
+  <VF_SaveColorPalette>Сохранить палитру</VF_SaveColorPalette>
+  <VF_ColorOne>Цвет 1</VF_ColorOne>
+  <VF_ColorTwo>Цвет 2</VF_ColorTwo>
+  <VF_ColorThree>Цвет 3</VF_ColorThree>
+  <VF_ColorPickerHex>HEX</VF_ColorPickerHex>
+  <!-- Stats -->
+  <VF_JobSettings>Настройки задач</VF_JobSettings>
+  <VF_VehicleAgeReadout>Произведено: {0}</VF_VehicleAgeReadout>
+  <!-- Info Card -->
+  <VF_StatsReport_CargoWeight>Груз: {0}</VF_StatsReport_CargoWeight>
+  <VF_StatsReport_Deployed>Развёрнуто</VF_StatsReport_Deployed>
+  <VF_CrewCount>Экипаж</VF_CrewCount>
+  <VF_CrewCountDesc>Количество членов экипажа и пассажиров, вмещаемых в данную технику.</VF_CrewCountDesc>
+  <VF_PaintableDesc>Технику можно перекрашивать через меню цветов.</VF_PaintableDesc>
+  <VF_Upgradeable>Модифицируемая</VF_Upgradeable>
+  <VF_UpgradeableDesc>Технику можно улучшать через дерево модификаций.</VF_UpgradeableDesc>
+  <VF_FuelType>Тип топлива</VF_FuelType>
+  <VF_FuelTypeDesc>Ресурс, потребляемый техникой для работы.</VF_FuelTypeDesc>
+  <VF_CancelUpgrade>Отменить текущую модификацию для {0}.</VF_CancelUpgrade>
+  <!-- Designators -->
+  <VF_RoadZoneExpand>Область дорог</VF_RoadZoneExpand>
+  <VF_RoadZoneExpandDesc>Создать область, движение по которой техника будет предпочитать или избегать.
+
+Области типа «Предпочитать», размещённые на краю карты, задают точку въезда для автокараванов.</VF_RoadZoneExpandDesc>
+  <VF_RoadZoneClear>Удалить область дорог</VF_RoadZoneClear>
+  <VF_RoadZoneClearDesc>Удаляет область дорог. Техника больше не будет изменять движение на этом участке.</VF_RoadZoneClearDesc>
+  <!-- Tooltips -->
+  <VF_RenameVehicleTooltip>Назначить или удалить имя техники.</VF_RenameVehicleTooltip>
+  <VF_RecolorTooltip>Покрасить технику</VF_RecolorTooltip>
+  <VF_DoubleClickShuttleTarget>Нажмите для подтверждения точки назначения</VF_DoubleClickShuttleTarget>
+  <VF_SwapColors>Переключить цвета между собой.
+
+Цвет 1 &gt; Цвет 2 &gt; Цвет 3</VF_SwapColors>
+  <VF_StartFishing>Ловить рыбу</VF_StartFishing>
+  <VF_StartFishingDesc>Ловить рыбу из водоёма.</VF_StartFishingDesc>
+  <VF_NoFishermenTooltip>На борту нет поселенцев, способных ловить рыбу.</VF_NoFishermenTooltip>
+  <VF_NoFishAtSpot>В этом месте нет рыбы.</VF_NoFishAtSpot>
+  <VF_ExplosiveComponent>Взрывоопасно</VF_ExplosiveComponent>
+  <VF_EditPawnOverlayRendererTooltip>Настроить отображение поселенцев</VF_EditPawnOverlayRendererTooltip>
+  <VF_ComponentClickMoreInfoTooltip>Нажмите для подробной информации.</VF_ComponentClickMoreInfoTooltip>
+  <!-- Turrets -->
+  <VF_Deploy>Развернуть</VF_Deploy>
+  <VF_Undeploy>Свернуть</VF_Undeploy>
+  <VF_DeployDescription>Развернуть технику для использования турелей.</VF_DeployDescription>
+  <VF_MustBeDeployed>Техника должна быть развёрнута.</VF_MustBeDeployed>
+  <VF_MustBeUndeployed>Техника должна быть свёрнута.</VF_MustBeUndeployed>
+  <VF_VehicleRestriction_Stationary>Нельзя вести огонь в движении.</VF_VehicleRestriction_Stationary>
+  <VF_TurretComponentDisabled>{0} требует ремонта.</VF_TurretComponentDisabled>
+  <!-- Color Picker -->
+  <VF_Patterns>Узоры</VF_Patterns>
+  <VF_Skins>Окраски</VF_Skins>
+  <VF_PatternZoom>Масштаб</VF_PatternZoom>
+  <VF_PatternZoomTooltip>Увеличить или уменьшить масштаб узора.</VF_PatternZoomTooltip>
+  <VF_PatternDisplacementX>Смещение по X</VF_PatternDisplacementX>
+  <VF_PatternDisplacementY>Смещение по Y</VF_PatternDisplacementY>
+  <VF_PatternDisplacementXTooltip>Смещает текстуру по горизонтали.</VF_PatternDisplacementXTooltip>
+  <VF_PatternDisplacementYTooltip>Смещает текстуру по вертикали.</VF_PatternDisplacementYTooltip>
+  <VF_Electricity>Электричество</VF_Electricity>
+  <VF_ElectricFlick>Подключение к электросети</VF_ElectricFlick>
+  <VF_ElectricFlickDesc>Находясь над силовым кабелем, подключается к электросети для подзарядки аккумулятора.
+
+Подключено сейчас: {0}</VF_ElectricFlickDesc>
+  <VF_OutOfFuel>Не может двигаться: {0} требует заправки.</VF_OutOfFuel>
+  <VF_AutoAssign>Автозаполнение</VF_AutoAssign>
+  <VF_Assigned>Назначено</VF_Assigned>
+  <VF_ApplyButton>Применить</VF_ApplyButton>
+  <VF_Colonists>Поселенцы</VF_Colonists>
+  <VF_ClearSeats>Очистить</VF_ClearSeats>
+  <VF_RemoveFromRole>Снять</VF_RemoveFromRole>
+  <VF_AddToRole>Назначить</VF_AddToRole>
+  <VF_RoutePlannerButtonTip>Нажмите для перехода в режим планирования маршрута автокаравана. Проходимость пути будет рассчитываться с учётом выбранной техники.</VF_RoutePlannerButtonTip>
+  <VF_SelectVehiclesForPlanner>Выбрать технику</VF_SelectVehiclesForPlanner>
+  <VF_StartVehicleRoutePlanner>Начать маршрут</VF_StartVehicleRoutePlanner>
+  <VF_OkName>Подтвердить имя</VF_OkName>
+  <VF_RemoveName>Сбросить имя</VF_RemoveName>
+  <!-- Aerial Vehicles -->
+  <VF_NoFlightSpeed>Взлёт невозможен при скорости полёта = 0</VF_NoFlightSpeed>
+  <VF_CannotLaunchWhileMoving>Нельзя взлетать во время движения {0}.</VF_CannotLaunchWhileMoving>
+  <VF_CannotLaunchImmobile>{0} не может взлететь, будучи обездвижен(а).</VF_CannotLaunchImmobile>
+  <VF_CannotLaunchRotated>{0} не может взлететь под углом.</VF_CannotLaunchRotated>
+  <VF_CannotLaunchOverEncumbered>{0} не может взлететь при перегрузе.</VF_CannotLaunchOverEncumbered>
+  <VF_TabCargo>Груз</VF_TabCargo>
+  <VF_TabPassengers>Экипаж</VF_TabPassengers>
+  <VF_TabComponents>Состояние</VF_TabComponents>
+  <VF_TabUpgrades>Улучшения</VF_TabUpgrades>
+  <VF_ComponentHealth>Прочность</VF_ComponentHealth>
+  <VF_ComponentEfficiency>Эффективность</VF_ComponentEfficiency>
+  <VF_ComponentArmor>Броня</VF_ComponentArmor>
+  <VF_Depth>Расположение</VF_Depth>
+  <VF_Depth_Internal>Внутренний</VF_Depth_Internal>
+  <VF_Depth_External>Внешний</VF_Depth_External>
+  <VF_Depth_Undefined>Не определено</VF_Depth_Undefined>
+  <VF_EfficiencyEffector>Влияет на параметры</VF_EfficiencyEffector>
+  <VF_BaseArmorRating>Базовая броня: {0}</VF_BaseArmorRating>
+  <VF_NoFuelReturnTrip>Не хватит на обратный путь</VF_NoFuelReturnTrip>
+  <VF_NotEnoughFuel>Вне радиуса действия</VF_NotEnoughFuel>
+  <VF_NoSpaceFlight>{0} не приспособлен(а) для полётов в космосе.</VF_NoSpaceFlight>
+  <VF_ConfirmationCancelLanding>Отменить посадку на этой карте? Летательный аппарат будет возвращён на карту мира.</VF_ConfirmationCancelLanding>
+  <VF_PawnsLeftBehindConfirm>Недостаточно мест</VF_PawnsLeftBehindConfirm>
+  <VF_PawnsLeftBehindConfirmDesc>Оставить</VF_PawnsLeftBehindConfirmDesc>
+  <!-- Header Titles -->
+  <VF_Cargo>Груз</VF_Cargo>
+  <VF_Properties>Характеристики</VF_Properties>
+  <VF_LauncherProperties>Свойства запуска</VF_LauncherProperties>
+  <VF_FueledTravelPropertes>Топливо</VF_FueledTravelPropertes>
+  <VF_JobLimitations>Работы с техникой</VF_JobLimitations>
+</LanguageData>

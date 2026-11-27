@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Named heroes with dedicated synth/robot models: Nick Valentine, P.A.M., and John Henry Eden. -->
+<Defs>
+
+  <!-- Nick Valentine: Railroad ally / Diamond City synth detective -->
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_nick_valentine</defName>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Colonist</pawnKind> <!-- CHECK API: replace with Railroad PawnKindDef if faction kinds are required -->
+    <xenotype MayRequire="Ludeon.RimWorld.Biotech">TMM_SynthGen2</xenotype>
+    <nameFirst>Nick</nameFirst>
+    <nameNick>Valentine</nameNick>
+    <nameLast>Valentine</nameLast>
+    <gender>Male</gender>
+    <ageRange>52~58</ageRange>
+    <childhood>TMM_Backstory_NickChildhood</childhood>
+    <adulthood>TMM_Backstory_NickAdulthood</adulthood>
+    <forcedTraits>
+      <li><def>Kind</def></li>
+      <li><def>Tough</def></li>
+    </forcedTraits>
+    <skills>
+      <li><skill>Social</skill><level>14</level></li>
+      <li><skill>Intellectual</skill><level>13</level></li>
+      <li><skill>Shooting</skill><level>11</level></li>
+      <li><skill>Crafting</skill><level>7</level></li>
+    </skills>
+    <apparel>
+      <li>Apparel_Duster</li>
+      <li>Apparel_BowlerHat</li>
+      <li>Apparel_CollarShirt</li>
+      <li>Apparel_Pants</li>
+    </apparel>
+    <weapon>Gun_Revolver</weapon>
+    <appearance>
+      <hair>Bald</hair>
+      <beard>NoBeard</beard>
+      <headType>TMM_NickValentineHead</headType>
+      <bodyType>TMM_NickValentine</bodyType>
+      <skinColor>(0.90,0.89,0.86,1)</skinColor>
+    </appearance>
+  </TurboMegaMod.HeroDef>
+
+  <!-- P.A.M.: Railroad Predictive Analytic Machine in a repurposed Assaultron chassis -->
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_pam</defName>
+    <factionDef>TMM_RailroadFaction</factionDef>
+    <rank>3</rank>
+    <pawnKind>Colonist</pawnKind> <!-- CHECK API -->
+    <xenotype MayRequire="Ludeon.RimWorld.Biotech">TMM_RobotChassis</xenotype>
+    <nameFirst>P.A.M.</nameFirst>
+    <nameNick>P.A.M.</nameNick>
+    <nameLast>Unit</nameLast>
+    <gender>Female</gender>
+    <ageRange>210~215</ageRange>
+    <childhood>TMM_Backstory_PAMChildhood</childhood>
+    <adulthood>TMM_Backstory_PAMAdulthood</adulthood>
+    <forcedTraits>
+      <li><def>FastLearner</def></li>
+    </forcedTraits>
+    <skills>
+      <li><skill>Intellectual</skill><level>18</level></li>
+      <li><skill>Shooting</skill><level>10</level></li>
+      <li><skill>Melee</skill><level>11</level></li>
+      <li><skill>Crafting</skill><level>10</level></li>
+    </skills>
+    <apparel />
+    <weapon>Gun_Autopistol</weapon>
+    <appearance>
+      <hair>Bald</hair>
+      <beard>NoBeard</beard>
+      <headType>TMM_PAMHead</headType>
+      <bodyType>TMM_RobotChassis</bodyType>
+      <skinColor>(1,1,1,1)</skinColor>
+    </appearance>
+  </TurboMegaMod.HeroDef>
+
+  <!-- John Henry Eden: Enclave AI advisor housed in a mobile carrier chassis (rank 4, not faction leader) -->
+  <TurboMegaMod.HeroDef>
+    <defName>TMM_Hero_john_henry_eden</defName>
+    <factionDef>TMM_EnclaveFaction</factionDef>
+    <rank>4</rank>
+    <pawnKind>Colonist</pawnKind> <!-- CHECK API -->
+    <xenotype MayRequire="Ludeon.RimWorld.Biotech">TMM_RobotChassis</xenotype>
+    <nameFirst>John Henry</nameFirst>
+    <nameNick>Eden</nameNick>
+    <nameLast>Eden</nameLast>
+    <gender>Male</gender>
+    <ageRange>210~215</ageRange>
+    <childhood>TMM_Backstory_EdenChildhood</childhood>
+    <adulthood>TMM_Backstory_EdenAdulthood</adulthood>
+    <forcedTraits>
+      <li><def>TooSmart</def></li>
+    </forcedTraits>
+    <skills>
+      <li><skill>Social</skill><level>17</level></li>
+      <li><skill>Intellectual</skill><level>17</level></li>
+      <li><skill>Shooting</skill><level>9</level></li>
+    </skills>
+    <apparel />
+    <weapon>Gun_ChargeRifle</weapon>
+    <appearance>
+      <hair>Bald</hair>
+      <beard>NoBeard</beard>
+      <headType>TMM_EdenHead</headType>
+      <bodyType>TMM_RobotChassis</bodyType>
+      <skinColor>(1,1,1,1)</skinColor>
+    </appearance>
+  </TurboMegaMod.HeroDef>
+
+</Defs>

@@ -11,8 +11,9 @@
       <li>Machining</li>
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>9.0</researchViewX>
-    <researchViewY>5.6</researchViewY>
+    <researchViewX>4.5</researchViewX>
+    <researchViewY>2.0</researchViewY>
+    <tab>TMM_Wasteland</tab>
   </ResearchProjectDef>
 
   <!-- Story-gated by flag unlock.colt_bullets via Harmony patch on CanStartNow -->
@@ -27,8 +28,9 @@
       <li>MicroelectronicsBasics</li>
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>10.0</researchViewX>
-    <researchViewY>5.6</researchViewY>
+    <researchViewX>4.5</researchViewX>
+    <researchViewY>4.4</researchViewY>
+    <tab>TMM_Wasteland</tab>
   </ResearchProjectDef>
 
 </Defs>

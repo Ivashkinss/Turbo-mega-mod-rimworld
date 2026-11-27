@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-  <TMM_VehicleUnloadHome>Разгрузить машину</TMM_VehicleUnloadHome>
-  <TMM_VehicleUnloadHomeDesc>Экипаж выходит, грузчики разносят груз по складам. Груз, для которого нет склада, кладут рядом с колонией.</TMM_VehicleUnloadHomeDesc>
-  <TMM_VehicleUnloadHomeActive>Машина разгружается. Нажмите, чтобы повторить приказ, например если экипаж не смог выйти или рядом враги.</TMM_VehicleUnloadHomeActive>
-</LanguageData>

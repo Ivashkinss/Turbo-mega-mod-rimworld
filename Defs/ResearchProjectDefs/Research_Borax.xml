@@ -12,8 +12,9 @@
       <li>GunTurrets</li>
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>9.0</researchViewX>
-    <researchViewY>4.8</researchViewY>
+    <researchViewX>2.5</researchViewX>
+    <researchViewY>4.4</researchViewY>
+    <tab>TMM_Wasteland</tab>
   </ResearchProjectDef>
 
 </Defs>

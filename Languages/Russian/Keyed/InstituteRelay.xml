@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Relay.WorldJumpInspect>До завершения молекулярного прыжка: {0}</TMM.Relay.WorldJumpInspect>
+  <TMM.Relay.TechUnlockedMsg>Технология молекулярного релея открыта для исследования!</TMM.Relay.TechUnlockedMsg>
+
+  <TMM.Relay.RaidTitle>Синие вспышки у периметра</TMM.Relay.RaidTitle>
+  <TMM.Relay.RaidText>Воздух у периметра разорвали ослепительные синие вспышки! Отряд из {1} синтов фракции «{0}» материализовался прямо рядом с вашими постройками и начинает штурм.</TMM.Relay.RaidText>
+
+  <TMM.Relay.AbductionTitle>Синие вспышки: группа захвата!</TMM.Relay.AbductionTitle>
+  <TMM.Relay.AbductionText>Малый отряд фракции «{0}» телепортировался на карту с целью похитить поселенца {1}! Если им удастся схватить жертву, они уйдут обратно телепортом вскоре после захвата.</TMM.Relay.AbductionText>
+
+  <TMM.Relay.GizmoLocalLabel>Телепортировать</TMM.Relay.GizmoLocalLabel>
+  <TMM.Relay.GizmoLocalDesc>Мгновенно переносит всех поселенцев с этой площадки на другую запитанную площадку релея на той же карте. Перезарядка: 2 часа.</TMM.Relay.GizmoLocalDesc>
+  <TMM.Relay.PickDestPad>Площадка релея ({0}, {1})</TMM.Relay.PickDestPad>
+
+  <TMM.Relay.GizmoWorldLabel>Прыжок релея</TMM.Relay.GizmoWorldLabel>
+  <TMM.Relay.GizmoWorldDesc>Переносит поселенцев и вещи с площадки на карту мира в радиусе до {0} тайлов в виде каравана. Расход: {1} продвинутый компонент. Перезарядка: 1 день.</TMM.Relay.GizmoWorldDesc>
+  <TMM.Relay.WorldTargetConfirm>Нажмите, чтобы совершить прыжок релея в этот тайл.</TMM.Relay.WorldTargetConfirm>
+
+  <TMM.Relay.LocalJumpSuccess>Телепортировано поселенцев по локальной сети: {0}.</TMM.Relay.LocalJumpSuccess>
+  <TMM.Relay.WorldJumpSuccess>Прыжок релея завершён: караван ({0} чел.) материализовался на карте мира.</TMM.Relay.WorldJumpSuccess>
+
+  <TMM.Relay.FailNotSpawned>Площадка релея не размещена на карте.</TMM.Relay.FailNotSpawned>
+  <TMM.Relay.FailNoPower>Нет электропитания.</TMM.Relay.FailNoPower>
+  <TMM.Relay.FailCooldown>Конденсаторы перезаряжаются (осталось {0}).</TMM.Relay.FailCooldown>
+  <TMM.Relay.FailNoDestPad>На карте нет другой запитанной площадки релея.</TMM.Relay.FailNoDestPad>
+  <TMM.Relay.FailDestNoPower>Целевая площадка релея обесточена.</TMM.Relay.FailDestNoPower>
+  <TMM.Relay.FailNoPawns>На площадке нет ни одного поселенца.</TMM.Relay.FailNoPawns>
+  <TMM.Relay.FailDestBlocked>Целевая площадка релея полностью заблокирована.</TMM.Relay.FailDestBlocked>
+  <TMM.Relay.FailTileImpassable>Выбранный тайл на карте мира непроходим.</TMM.Relay.FailTileImpassable>
+  <TMM.Relay.FailOutOfRange>Цель находится дальше максимальной дальности релея ({0} тайлов).</TMM.Relay.FailOutOfRange>
+  <TMM.Relay.FailNeedColonist>Для прыжка на карту мира на площадке нужен хотя бы один поселенец в сознании.</TMM.Relay.FailNeedColonist>
+  <TMM.Relay.FailNoSpacerComponent>Требуется продвинутый компонент ({0} шт.) на складе или на площадке.</TMM.Relay.FailNoSpacerComponent>
+  <TMM.Relay.FailCaravanCreation>Не удалось сформировать караван в целевом тайле.</TMM.Relay.FailCaravanCreation>
+
+  <TMM.Relay.InspectLocalReady>Локальный релей: готов</TMM.Relay.InspectLocalReady>
+  <TMM.Relay.InspectLocalCooldown>Перезарядка локального релея: {0}</TMM.Relay.InspectLocalCooldown>
+  <TMM.Relay.InspectWorldReady>Мировой релей: готов</TMM.Relay.InspectWorldReady>
+  <TMM.Relay.InspectWorldCooldown>Перезарядка мирового релея: {0}</TMM.Relay.InspectWorldCooldown>
+</LanguageData>

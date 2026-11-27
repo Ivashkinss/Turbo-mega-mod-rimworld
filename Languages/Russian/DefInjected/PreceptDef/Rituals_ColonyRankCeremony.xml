@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_PromotionCeremony.label MayRequire="Ludeon.RimWorld.Ideology">церемония повышения</TMM_PromotionCeremony.label>
+  <TMM_PromotionCeremony.description MayRequire="Ludeon.RimWorld.Ideology">Торжественная церемония поселения, на которой командир отряда или лидер идеологии присваивает заслуженному поселенцу следующее звание перед строем товарищей.</TMM_PromotionCeremony.description>
+</LanguageData>

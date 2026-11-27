@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>TMM_PromotionCeremonyHonoree</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>awful promotion ceremony</label>
+        <description>My promotion ceremony was a disorganized mess. Hardly the honour I hoped for.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>uninspiring promotion ceremony</label>
+        <description>My promotion was handled in a stiff, forgettable way, though at least my service was recognized.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+      <li>
+        <label>solemn promotion ceremony</label>
+        <description>Standing before the colony to receive my new rank filled me with pride and resolve.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+      <li>
+        <label>unforgettable promotion ceremony</label>
+        <description>The entire colony cheered as I received my new rank! I will never forget this honour.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TMM_PromotionCeremonySpectator</defName>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>attended awful promotion ceremony</label>
+        <description>That promotion ceremony dragged on and felt terribly awkward.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+      <li>
+        <label>attended uninspiring promotion ceremony</label>
+        <description>The promotion ceremony was fairly dry, though it is good to see hard work rewarded.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+      <li>
+        <label>attended solemn promotion ceremony</label>
+        <description>Witnessing a comrade receive a well-earned rank lifted everyone's spirits.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>attended unforgettable promotion ceremony</label>
+        <description>What a stirring promotion ceremony! Seeing our people rise together makes us stronger.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

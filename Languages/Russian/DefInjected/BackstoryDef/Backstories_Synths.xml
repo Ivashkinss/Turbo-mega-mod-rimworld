@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Backstory_NickChildhood.title>довоенный слепок памяти</TMM_Backstory_NickChildhood.title>
+  <TMM_Backstory_NickChildhood.titleShort>слепок памяти</TMM_Backstory_NickChildhood.titleShort>
+  <TMM_Backstory_NickChildhood.description>[PAWN_nameDef] очнулся на свалке пустоши в списанном теле прототипа синта 2-го поколения с загруженными воспоминаниями довоенного бостонского детектива.</TMM_Backstory_NickChildhood.description>
+
+  <TMM_Backstory_NickAdulthood.title>синт-детектив</TMM_Backstory_NickAdulthood.title>
+  <TMM_Backstory_NickAdulthood.titleShort>детектив</TMM_Backstory_NickAdulthood.titleShort>
+  <TMM_Backstory_NickAdulthood.description>Несмотря на потёртую полимерную кожу и открытую механическую правую руку, [PAWN_nameDef] заслужил доверие Даймонд-Сити и Подземки как остроумный частный сыщик, разыскивающий пропавших людей и беглых синтов.</TMM_Backstory_NickAdulthood.description>
+
+  <TMM_Backstory_PAMChildhood.title>стратегический прогнозист</TMM_Backstory_PAMChildhood.title>
+  <TMM_Backstory_PAMChildhood.titleShort>прогнозист</TMM_Backstory_PAMChildhood.titleShort>
+  <TMM_Backstory_PAMChildhood.description>Созданная разведуправлением до Великой войны, [PAWN_nameDef] просчитывала вероятности глобальных конфликтов в глубине укреплённого подземного бункера.</TMM_Backstory_PAMChildhood.description>
+
+  <TMM_Backstory_PAMAdulthood.title>тактик Подземки</TMM_Backstory_PAMAdulthood.title>
+  <TMM_Backstory_PAMAdulthood.titleShort>тактик</TMM_Backstory_PAMAdulthood.titleShort>
+  <TMM_Backstory_PAMAdulthood.description>Помещённая Подземкой в переделанный стальной корпус штурмотрона, [PAWN_nameDef] размечает тайные убежища, предсказывает засады Института и ведёт агентов по математически выверенным маршрутам.</TMM_Backstory_PAMAdulthood.description>
+
+  <TMM_Backstory_EdenChildhood.title>архивный суперкомпьютер ZAX</TMM_Backstory_EdenChildhood.title>
+  <TMM_Backstory_EdenChildhood.titleShort>ядро ZAX</TMM_Backstory_EdenChildhood.titleShort>
+  <TMM_Backstory_EdenChildhood.description>Созданный как суперкомпьютер ZAX в Рэйвен-Роке, [PAWN_nameDef] впитал столетия президентских речей, истории и военной доктрины, пока не обрёл собственную личность.</TMM_Backstory_EdenChildhood.description>
+
+  <TMM_Backstory_EdenAdulthood.title>советник-ИИ Анклава</TMM_Backstory_EdenAdulthood.title>
+  <TMM_Backstory_EdenAdulthood.titleShort>советник-ИИ</TMM_Backstory_EdenAdulthood.titleShort>
+  <TMM_Backstory_EdenAdulthood.description>Загруженный в бронированное мобильное шасси с узнаваемой головой-монитором, [PAWN_nameDef] консультирует полевое командование Анклава, сочетая вкрадчивую радиориторику с холодным расчётом.</TMM_Backstory_EdenAdulthood.description>
+</LanguageData>

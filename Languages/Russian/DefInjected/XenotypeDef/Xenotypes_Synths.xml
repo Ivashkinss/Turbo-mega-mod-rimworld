@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_SynthGen1.label MayRequire="Ludeon.RimWorld.Biotech">синт 1-го поколения</TMM_SynthGen1.label>
+  <TMM_SynthGen1.description MayRequire="Ludeon.RimWorld.Biotech">Андроид Института первого поколения: открытый металлический эндоскелет с композитными накладками и светящимися оптическими линзами вместо глаз. Питается от встроенного энергоэлемента, не нуждается в еде и сне, обладает естественной бронёй, но внушает тревогу людям при общении.</TMM_SynthGen1.description>
+  <TMM_SynthGen1.descriptionShort MayRequire="Ludeon.RimWorld.Biotech">Скелетный андроид Института 1-го поколения. Не ест и не спит, бронирован, плох в общении.</TMM_SynthGen1.descriptionShort>
+
+  <TMM_SynthGen2.label MayRequire="Ludeon.RimWorld.Biotech">синт 2-го поколения</TMM_SynthGen2.label>
+  <TMM_SynthGen2.description MayRequire="Ludeon.RimWorld.Biotech">Синт Института второго поколения, обтянутый потёртой серой полимерной кожей поверх металлического каркаса, сквозь швы которого проглядывают сервоприводы. Не нуждается в еде и сне, невосприимчив к токсинам и болезням и заметно крепче обычного человека.</TMM_SynthGen2.description>
+  <TMM_SynthGen2.descriptionShort MayRequire="Ludeon.RimWorld.Biotech">Синт 2-го поколения с серой полимерной кожей и просветами механики. Без сна и еды, стойкий к ядам.</TMM_SynthGen2.descriptionShort>
+
+  <TMM_SynthGen3.label MayRequire="Ludeon.RimWorld.Biotech">синт 3-го поколения</TMM_SynthGen3.label>
+  <TMM_SynthGen3.description MayRequire="Ludeon.RimWorld.Biotech">Синт Института третьего поколения, выращенный из синтетических тканей вокруг скрытого нейронного компонента. Внешне почти неотличим от человека — ест, спит и дышит как все, — и лишь тончайший шов на виске и слабые кольца оптики в глазах выдают его природу.</TMM_SynthGen3.description>
+  <TMM_SynthGen3.descriptionShort MayRequire="Ludeon.RimWorld.Biotech">Биологически человекоподобный синт 3-го поколения с едва заметным швом на виске, не стареет и не болеет.</TMM_SynthGen3.descriptionShort>
+
+  <TMM_RobotChassis.label MayRequire="Ludeon.RimWorld.Biotech">шасси робота</TMM_RobotChassis.label>
+  <TMM_RobotChassis.description MayRequire="Ludeon.RimWorld.Biotech">Автономный боевой стальной корпус (переделанный штурмотрон или мобильный носитель ИИ), несущий аналитическое ядро. Защищён клёпаной бронёй, не носит человеческую одежду, не нуждается в пище и сне и полностью невосприимчив к биологическим угрозам.</TMM_RobotChassis.description>
+  <TMM_RobotChassis.descriptionShort MayRequire="Ludeon.RimWorld.Biotech">Бронированный корпус автономного робота (ПАМ, носитель ИИ). Не ест, не спит и не носит одежду.</TMM_RobotChassis.descriptionShort>
+</LanguageData>

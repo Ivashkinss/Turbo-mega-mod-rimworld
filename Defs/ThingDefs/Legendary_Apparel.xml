@@ -12,7 +12,7 @@
     <techLevel>Spacer</techLevel>
     <smeltable>false</smeltable>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</texPath> <!-- TODO art -->
+      <texPath>Things/Item/TMM/Apparel/TMM_Legendary_ProtectorArmor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <generateCommonality>0</generateCommonality>
@@ -43,7 +43,7 @@
         <li>Arms</li>
         <li>Legs</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor</wornGraphicPath> <!-- TODO art -->
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/TMM/TMM_Legendary_ProtectorArmor/TMM_Legendary_ProtectorArmor</wornGraphicPath>
       <layers>
         <li>Shell</li>
       </layers>

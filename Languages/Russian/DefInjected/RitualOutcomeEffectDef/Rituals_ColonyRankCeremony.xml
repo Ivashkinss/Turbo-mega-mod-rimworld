@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_PromotionCeremonyOutcome.description MayRequire="Ludeon.RimWorld.Ideology">В зависимости от качества церемонии повышенный колонист и зрители получают воспоминания, влияющие на настроение. При отличном качестве повышенный также получает воодушевление на пять дней.</TMM_PromotionCeremonyOutcome.description>
+  <TMM_PromotionCeremonyOutcome.comps.0.label MayRequire="Ludeon.RimWorld.Ideology">число участников</TMM_PromotionCeremonyOutcome.comps.0.label>
+  <TMM_PromotionCeremonyOutcome.comps.1.label MayRequire="Ludeon.RimWorld.Ideology">влияние в общении ({PAWN_labelShort})</TMM_PromotionCeremonyOutcome.comps.1.label>
+  <TMM_PromotionCeremonyOutcome.comps.1.labelAbstract MayRequire="Ludeon.RimWorld.Ideology">влияние ведущего в общении</TMM_PromotionCeremonyOutcome.comps.1.labelAbstract>
+  <TMM_PromotionCeremonyOutcome.comps.2.label MayRequire="Ludeon.RimWorld.Ideology">впечатление от комнаты</TMM_PromotionCeremonyOutcome.comps.2.label>
+
+  <TMM_PromotionCeremonyOutcome.outcomeChances.0.label MayRequire="Ludeon.RimWorld.Ideology">Ужасная</TMM_PromotionCeremonyOutcome.outcomeChances.0.label>
+  <TMM_PromotionCeremonyOutcome.outcomeChances.0.description MayRequire="Ludeon.RimWorld.Ideology">Церемония повышения прошла неловко и сумбурно, испортив торжественный момент.</TMM_PromotionCeremonyOutcome.outcomeChances.0.description>
+
+  <TMM_PromotionCeremonyOutcome.outcomeChances.1.label MayRequire="Ludeon.RimWorld.Ideology">Невзрачная</TMM_PromotionCeremonyOutcome.outcomeChances.1.label>
+  <TMM_PromotionCeremonyOutcome.outcomeChances.1.description MayRequire="Ludeon.RimWorld.Ideology">Церемония прошла сухо и скомканно, хотя новое звание всё же присвоено.</TMM_PromotionCeremonyOutcome.outcomeChances.1.description>
+
+  <TMM_PromotionCeremonyOutcome.outcomeChances.2.label MayRequire="Ludeon.RimWorld.Ideology">Торжественная</TMM_PromotionCeremonyOutcome.outcomeChances.2.label>
+  <TMM_PromotionCeremonyOutcome.outcomeChances.2.description MayRequire="Ludeon.RimWorld.Ideology">Церемония повышения прошла достойно и искренне, наполнив всех гордостью за поселение.</TMM_PromotionCeremonyOutcome.outcomeChances.2.description>
+
+  <TMM_PromotionCeremonyOutcome.outcomeChances.3.label MayRequire="Ludeon.RimWorld.Ideology">Незабываемая</TMM_PromotionCeremonyOutcome.outcomeChances.3.label>
+  <TMM_PromotionCeremonyOutcome.outcomeChances.3.description MayRequire="Ludeon.RimWorld.Ideology">По-настоящему вдохновляющая церемония! Овации разнеслись по всему поселению, а повышенный колонист чувствует невероятный прилив сил.</TMM_PromotionCeremonyOutcome.outcomeChances.3.description>
+</LanguageData>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_PromotionCeremonyHonoree.stages.0.label>ужасная церемония повышения</TMM_PromotionCeremonyHonoree.stages.0.label>
+  <TMM_PromotionCeremonyHonoree.stages.0.description>Моя церемония повышения превратилась в неловкий балаган. Совсем не такой почести я ждал.</TMM_PromotionCeremonyHonoree.stages.0.description>
+  <TMM_PromotionCeremonyHonoree.stages.1.label>невзрачная церемония повышения</TMM_PromotionCeremonyHonoree.stages.1.label>
+  <TMM_PromotionCeremonyHonoree.stages.1.description>Повышение прошло сухо и казённо, но мои заслуги всё-таки признали.</TMM_PromotionCeremonyHonoree.stages.1.description>
+  <TMM_PromotionCeremonyHonoree.stages.2.label>торжественная церемония повышения</TMM_PromotionCeremonyHonoree.stages.2.label>
+  <TMM_PromotionCeremonyHonoree.stages.2.description>Получить новое звание перед всем поселением — это наполняет гордостью и решимостью.</TMM_PromotionCeremonyHonoree.stages.2.description>
+  <TMM_PromotionCeremonyHonoree.stages.3.label>незабываемая церемония повышения</TMM_PromotionCeremonyHonoree.stages.3.label>
+  <TMM_PromotionCeremonyHonoree.stages.3.description>Всё поселение рукоплескало мне при вручении нового звания! Я никогда не забуду эту честь.</TMM_PromotionCeremonyHonoree.stages.3.description>
+
+  <TMM_PromotionCeremonySpectator.stages.0.label>ужасная церемония повышения товарища</TMM_PromotionCeremonySpectator.stages.0.label>
+  <TMM_PromotionCeremonySpectator.stages.0.description>Эта церемония затянулась и выглядела ужасно неловко.</TMM_PromotionCeremonySpectator.stages.0.description>
+  <TMM_PromotionCeremonySpectator.stages.1.label>невзрачная церемония повышения товарища</TMM_PromotionCeremonySpectator.stages.1.label>
+  <TMM_PromotionCeremonySpectator.stages.1.description>Церемония вышла довольно сухой, но приятно видеть, что труд вознаграждается.</TMM_PromotionCeremonySpectator.stages.1.description>
+  <TMM_PromotionCeremonySpectator.stages.2.label>торжественная церемония повышения товарища</TMM_PromotionCeremonySpectator.stages.2.label>
+  <TMM_PromotionCeremonySpectator.stages.2.description>Видеть, как товарищ получает заслуженное звание, подняло боевой дух всем вокруг.</TMM_PromotionCeremonySpectator.stages.2.description>
+  <TMM_PromotionCeremonySpectator.stages.3.label>незабываемая церемония повышения товарища</TMM_PromotionCeremonySpectator.stages.3.label>
+  <TMM_PromotionCeremonySpectator.stages.3.description>Какая воодушевляющая церемония! Когда наши люди растут и крепнут, всё поселение становится сильнее.</TMM_PromotionCeremonySpectator.stages.3.description>
+</LanguageData>

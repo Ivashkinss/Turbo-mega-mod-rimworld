@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_ReloadVehicleTurret>Перезарядить</VF_ReloadVehicleTurret>
+  <VF_ToggleAutoTargeting>Автоматическое наведение</VF_ToggleAutoTargeting>
+  <VF_ToggleAutoTargetingDesc>Определяет, будет ли турель автоматически атаковать врагов. Если включено, турель будет вести огонь по любым врагам в радиусе поражения.
+
+Автоматическое наведение сейчас: {0}.</VF_ToggleAutoTargetingDesc>
+  <VF_AutoTargetingDisabled>Автоматическое наведение недоступно для этой турели.</VF_AutoTargetingDisabled>
+  <VF_VehicleTurrets_NoAmmoToReload>Нет подходящих боеприпасов.</VF_VehicleTurrets_NoAmmoToReload>
+  <VF_SetReloadLevel>Установить уровень автоперезарядки на {0}.</VF_SetReloadLevel>
+  <VF_SetReloadLevelTooltip>Настроить уровень боеприпасов</VF_SetReloadLevelTooltip>
+</LanguageData>

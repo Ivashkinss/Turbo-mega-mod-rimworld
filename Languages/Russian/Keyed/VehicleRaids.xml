@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.VehicleRaid.LetterLabel>Механизированный рейд: {0}</TMM.VehicleRaid.LetterLabel>
+  <TMM.VehicleRaid.LetterText>Враждебный отряд фракции {0} въезжает на карту на бронетехнике (машин: {1})!\n\nОни направятся к точке высадки возле поселения, выгрузят штурмовую группу и пойдут в атаку. Если обезвредить экипаж, не уничтожив машину, её можно забрать как трофей.</TMM.VehicleRaid.LetterText>
+  <TMM.VehicleVisit.LetterLabel>Торговый грузовик: {0}</TMM.VehicleVisit.LetterLabel>
+  <TMM.VehicleVisit.LetterText>Дружественный торговый экипаж фракции {0} прибыл на машине ({1}).\n\nПосле остановки торговец выйдет к поселению и предложит товары прямо из кузова, а завершив визит — уедет обратно в пустошь.</TMM.VehicleVisit.LetterText>
+  <TMM.VehicleRaid.ClaimLabel>Захватить технику</TMM.VehicleRaid.ClaimLabel>
+  <TMM.VehicleRaid.ClaimDesc>Присвоить брошенную машину ({0}) поселению как трофей.</TMM.VehicleRaid.ClaimDesc>
+  <TMM.VehicleRaid.ClaimedMsg>Машина {0} захвачена поселением как трофей.</TMM.VehicleRaid.ClaimedMsg>
+</LanguageData>

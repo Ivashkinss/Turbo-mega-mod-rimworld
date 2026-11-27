@@ -208,4 +208,6 @@
   <TMM_OutpostCaravan_RetryDeliveryDesc>Try again to hand the cargo over to {0}.</TMM_OutpostCaravan_RetryDeliveryDesc>
   <TMM_OutpostCaravan_LowReturnFoodWarning>{0}: food for the trip home lasts {1} days, but the trip takes {2} days.</TMM_OutpostCaravan_LowReturnFoodWarning>
   <TMM_OutpostCaravan_StorageTransferFailedRetry>{0} could not accept the cargo. Everything stays with the caravan: deliver again or send it home.</TMM_OutpostCaravan_StorageTransferFailedRetry>
+  <TMM_OutpostCaravan_SilverReturnedToStockpile>Mission silver ({0}) unloaded to colony stockpile.</TMM_OutpostCaravan_SilverReturnedToStockpile>
+  <TMM_OutpostCaravan_SilverKeptByCarrier>Mission silver ({1}) remains in carrier {0}'s inventory.</TMM_OutpostCaravan_SilverKeptByCarrier>
 </LanguageData>

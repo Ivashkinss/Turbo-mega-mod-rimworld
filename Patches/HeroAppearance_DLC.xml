@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DLC-gated appearance refinements for named heroes (Royalty, Biotech, Anomaly, Ideology).
+     Existing Core fields (hair, headType) use PatchOperationReplace so no duplicate XML nodes occur;
+     DLC-only fields (faceTattoo, bodyTattoo) use PatchOperationAdd.
+     Xenotype heroes never receive headType overrides. -->
+<Patch>
+
+  <!-- ==================== Royalty: HairDefs ==================== -->
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_michael"]/appearance/hair</xpath>
+    <value><hair>William</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_lucifer"]/appearance/hair</xpath>
+    <value><hair>Richard</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_colonel_autumn"]/appearance/hair</xpath>
+    <value><hair>Henry</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_ketch"]/appearance/hair</xpath>
+    <value><hair>Stephen</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dick_roman"]/appearance/hair</xpath>
+    <value><hair>William</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_antonia_bevell"]/appearance/hair</xpath>
+    <value><hair>Victoria</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dr_hess"]/appearance/hair</xpath>
+    <value><hair>Elisabeth</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_abaddon"]/appearance/hair</xpath>
+    <value><hair>Anne</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_naomi"]/appearance/hair</xpath>
+    <value><hair>Jane</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_gwen_mcnamara"]/appearance/hair</xpath>
+    <value><hair>Mary</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Royalty">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_ellen_harvelle"]/appearance/hair</xpath>
+    <value><hair>Lisa</hair></value>
+  </Operation>
+
+  <!-- ==================== Biotech: HeadTypes (human heroes only) ==================== -->
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_maxson"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_paladin_danse"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_sergeant_dornan"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_kellogg"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_baker"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_paladin_vargas"]/appearance/headType</xpath>
+    <value><headType>Male_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_father_shaun"]/appearance/headType</xpath>
+    <value><headType>Gaunt</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dr_curling"]/appearance/headType</xpath>
+    <value><headType>Gaunt</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_stanislaus_braun"]/appearance/headType</xpath>
+    <value><headType>Gaunt</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_glory"]/appearance/headType</xpath>
+    <value><headType>Female_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Biotech">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_ronnie_shaw"]/appearance/headType</xpath>
+    <value><headType>Female_HeavyJawNormal</headType></value>
+  </Operation>
+
+  <!-- ==================== Anomaly: HairDefs & HeadTypes ==================== -->
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_maxson"]/appearance/hair</xpath>
+    <value><hair>SideCut</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dean_winchester"]/appearance/hair</xpath>
+    <value><hair>ShortCut</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_azazel"]/appearance/hair</xpath>
+    <value><hair>Parted</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_cain"]/appearance/hair</xpath>
+    <value><hair>LongMess</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_tessa"]/appearance/hair</xpath>
+    <value><hair>ShavedMohawk</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_virgil"]/appearance/hair</xpath>
+    <value><hair>PatchyShave</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_daisy"]/appearance/hair</xpath>
+    <value><hair>LongOily</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_defender_morrigan"]/appearance/hair</xpath>
+    <value><hair>SideSpikes</hair></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dr_hess"]/appearance/headType</xpath>
+    <value><headType>DarkScholar_Female</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_scribe_silas"]/appearance/headType</xpath>
+    <value><headType>DarkScholar_Male</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_bobby_singer"]/appearance/headType</xpath>
+    <value><headType>Leathery_Male</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_rufus_turner"]/appearance/headType</xpath>
+    <value><headType>Leathery_Male</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_wes"]/appearance/headType</xpath>
+    <value><headType>Leathery_Male</headType></value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Anomaly">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_desdemona"]/appearance/headType</xpath>
+    <value><headType>Leathery_Female</headType></value>
+  </Operation>
+
+  <!-- ==================== Ideology: Face & Body Tattoos ==================== -->
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_arthur_maxson"]/appearance</xpath>
+    <value>
+      <faceTattoo>TMM_Tattoo_BattleScar</faceTattoo>
+      <bodyTattoo>Body_Scar</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_kellogg"]/appearance</xpath>
+    <value>
+      <faceTattoo>TMM_Tattoo_BattleScar</faceTattoo>
+      <bodyTattoo>Body_Scar</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dean_winchester"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Sun</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_sam_winchester"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Sun</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_michael"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Wings</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_castiel"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Wings</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_lucifer"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Wings</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_cain"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Scar</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_crowley"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Royal</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_lilith"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Eclipse</faceTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_abaddon"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Line</faceTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_wes"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_tessa"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Warpaint</faceTattoo>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_clint"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_baker"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_captain_bridget"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_paladin_danse"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Power</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_henry_casdin"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Power</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_glory"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Rings</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_alpha_vampire"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Moon</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_benny_lafitte"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Cross</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_swan"]/appearance</xpath>
+    <value>
+      <bodyTattoo>Body_Spike</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_fist"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Warpaint</faceTattoo>
+      <bodyTattoo>Body_Skull</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_dead_eye"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Headshot</faceTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_mad_racer"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Warpaint</faceTattoo>
+      <bodyTattoo>Body_Spike</bodyTattoo>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Ideology">
+    <xpath>Defs/TurboMegaMod.HeroDef[defName="TMM_Hero_master_butcher"]/appearance</xpath>
+    <value>
+      <faceTattoo>Face_Warpaint</faceTattoo>
+      <bodyTattoo>Body_Skeleton</bodyTattoo>
+    </value>
+  </Operation>
+
+</Patch>

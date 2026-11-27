@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+  <TMM_FactionHierarchy_Location_Map>На карте</TMM_FactionHierarchy_Location_Map>
+  <TMM_FactionHierarchy_Location_World>В мире</TMM_FactionHierarchy_Location_World>
+  <TMM_FactionHierarchy_Location_Unknown>Неизвестно</TMM_FactionHierarchy_Location_Unknown>
   <TMM_FactionHierarchy_Title>Фракции и иерархия</TMM_FactionHierarchy_Title>
   <TMM_FactionHierarchy_Relations>Отношения: {0} ({1})</TMM_FactionHierarchy_Relations>
   <TMM_FactionHierarchy_Leader>Лидер: {0}</TMM_FactionHierarchy_Leader>

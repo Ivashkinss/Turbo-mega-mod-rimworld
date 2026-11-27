@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM.Roles.PromoteCeremonyButton>Церемония: {0}</TMM.Roles.PromoteCeremonyButton>
+  <TMM.Roles.Ceremony.GizmoHint>Открывает ритуал церемонии повышения. Новое звание присваивается по завершении церемонии.</TMM.Roles.Ceremony.GizmoHint>
+  <TMM.Roles.Ceremony.NeedsMap>Для проведения церемонии колонист должен находиться на карте поселения.</TMM.Roles.Ceremony.NeedsMap>
+  <TMM.Roles.Ceremony.DefaultTitle>Церемония повышения</TMM.Roles.Ceremony.DefaultTitle>
+  <TMM.Roles.Ceremony.MustBeFreeColonist>Должен быть здоровым свободным поселенцем.</TMM.Roles.Ceremony.MustBeFreeColonist>
+  <TMM.Roles.Ceremony.NotReadyForPromotion>Не выполнены требования для следующего звания.</TMM.Roles.Ceremony.NotReadyForPromotion>
+  <TMM.Roles.Ceremony.CannotSpeak>Должен быть поселенцем, способным говорить и вести общение.</TMM.Roles.Ceremony.CannotSpeak>
+  <TMM.Roles.Ceremony.MustBeCommanderOrLeader>Должен быть командиром отряда или лидером идеологии.</TMM.Roles.Ceremony.MustBeCommanderOrLeader>
+  <TMM.Roles.Ceremony.NoEligibleHonoree>На карте нет поселенцев, готовых к повышению в звании.</TMM.Roles.Ceremony.NoEligibleHonoree>
+  <TMM.Roles.Ceremony.InspirationGranted>Незабываемая церемония воодушевила {0}: на 5 дней повышены сознание и навыки общения.</TMM.Roles.Ceremony.InspirationGranted>
+</LanguageData>

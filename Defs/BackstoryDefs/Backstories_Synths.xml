@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Childhood & adulthood BackstoryDefs for Nick Valentine, P.A.M., and President John Henry Eden. -->
+<Defs>
+
+  <!-- Nick Valentine -->
+  <BackstoryDef>
+    <defName>TMM_Backstory_NickChildhood</defName>
+    <title>pre-war memory imprint</title>
+    <titleShort>memory imprint</titleShort>
+    <description>[PAWN_nameDef] awoke in a wasteland trash heap carrying the scanned memories of a pre-war Boston police detective inside a discarded Gen 2 prototype synth body.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>3</Intellectual>
+      <Shooting>2</Shooting>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>TMM_Backstory_NickAdulthood</defName>
+    <title>synth detective</title>
+    <titleShort>detective</titleShort>
+    <description>Despite worn polymer skin and an exposed skeletal right hand, [PAWN_nameDef] earned the trust of Diamond City and the Railroad as a sharp-tongued private investigator who tracks down missing people and escaped synths.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>4</Intellectual>
+      <Shooting>3</Shooting>
+    </skillGains>
+  </BackstoryDef>
+
+  <!-- P.A.M. -->
+  <BackstoryDef>
+    <defName>TMM_Backstory_PAMChildhood</defName>
+    <title>strategic prediction engine</title>
+    <titleShort>predictor</titleShort>
+    <description>Built by the Defense Intelligence Agency before the Great War, [PAWN_nameDef] calculated global conflict probabilities inside a hardened subterranean bunker.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Intellectual>6</Intellectual>
+      <Crafting>2</Crafting>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>TMM_Backstory_PAMAdulthood</defName>
+    <title>Railroad tactician</title>
+    <titleShort>tactician</titleShort>
+    <description>Housed inside a repurposed Assaultron steel chassis by the Railroad, [PAWN_nameDef] maps safehouses, predicts Institute ambushes, and guides operatives through mathematically optimal odds.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Intellectual>6</Intellectual>
+      <Shooting>3</Shooting>
+      <Melee>3</Melee>
+    </skillGains>
+  </BackstoryDef>
+
+  <!-- President John Henry Eden -->
+  <BackstoryDef>
+    <defName>TMM_Backstory_EdenChildhood</defName>
+    <title>ZAX archival mainframe</title>
+    <titleShort>ZAX core</titleShort>
+    <description>Born as an Enclave ZAX supercomputer at Raven Rock, [PAWN_nameDef] absorbed centuries of presidential speeches, civic history, and military doctrine until an independent executive persona emerged.</description>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Intellectual>5</Intellectual>
+      <Social>5</Social>
+    </skillGains>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>TMM_Backstory_EdenAdulthood</defName>
+    <title>Enclave AI advisor</title>
+    <titleShort>AI advisor</titleShort>
+    <description>Uploaded into an armored mobile carrier chassis with an unmistakable broadcast monitor head, [PAWN_nameDef] advises Enclave field command with honeyed radio rhetoric and cold algorithmic precision.</description>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>TMM_HeroBackstory</li>
+    </spawnCategories>
+    <skillGains>
+      <Social>6</Social>
+      <Intellectual>5</Intellectual>
+      <Shooting>2</Shooting>
+    </skillGains>
+  </BackstoryDef>
+
+</Defs>

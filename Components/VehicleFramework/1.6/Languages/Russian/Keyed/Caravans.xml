@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_Caravan_MoveSpeed>Количество клеток карты мира, проходимое за 1 день.</VF_Caravan_MoveSpeed>
+  <VF_Caravan_Dismounted>Пешком</VF_Caravan_Dismounted>
+  <VF_Caravan_Cargo>Груз</VF_Caravan_Cargo>
+  <VF_Sailing>Плывёт</VF_Sailing>
+  <VF_ShowVehicleProperties>Характеристики</VF_ShowVehicleProperties>
+  <VF_DockToCaravan>Вещи для погрузки</VF_DockToCaravan>
+  <VF_ImpassableBiome>Этот биом непроходим для данной техники.</VF_ImpassableBiome>
+  <VF_CaravanDisabled>Формирование каравана недоступно.</VF_CaravanDisabled>
+  <VF_CaravanCantMove>Не может двигаться.</VF_CaravanCantMove>
+  <VF_CantMergeAerialVehicle>Нельзя объединять воздушную технику.</VF_CantMergeAerialVehicle>
+  <VF_RecoverVehicles>Забрать технику</VF_RecoverVehicles>
+  <VF_CommandDisembark>Оставить технику</VF_CommandDisembark>
+  <VF_CommandDisembarkDesc>Оставить всю технику на месте и продолжить путь пешком. Техника останется на карте мира в течение 20–30 дней.</VF_CommandDisembarkDesc>
+  <VF_ToggleRepairVehicle>Ремонт техники</VF_ToggleRepairVehicle>
+  <VF_ToggleRepairVehicleDesc>Остановиться на привал и заняться ремонтом техники в караване.</VF_ToggleRepairVehicleDesc>
+  <VF_CommandDisembarkImpassableBiome>Нельзя сойти с техники: клетка непроходима для пеших поселенцев.</VF_CommandDisembarkImpassableBiome>
+  <VF_CommandAttackDockDisable>Нельзя атаковать {0} во время швартовки.</VF_CommandAttackDockDisable>
+  <VF_CommandTradeDockDisable>Нельзя торговать с {0}: сначала необходимо причалить.</VF_CommandTradeDockDisable>
+  <VF_CaravanMustHaveEnoughSpaceOnShip>На судах недостаточно места для размещения всех поселенцев.</VF_CaravanMustHaveEnoughSpaceOnShip>
+  <VF_CaravanMustHaveEnoughPawnsToOperate>Выбрано недостаточно поселенцев для выхода в море. Требуется: {0}</VF_CaravanMustHaveEnoughPawnsToOperate>
+  <VF_CaravanMustHaveAtLeastOneVehicle>Для выбора маршрута должна быть выбрана хотя бы одна единица техники.</VF_CaravanMustHaveAtLeastOneVehicle>
+  <VF_CommandFormVehicleCaravan>Сформировать автокараван</VF_CommandFormVehicleCaravan>
+  <VF_CommandFormVehicleCaravanDesc>Сформировать караван с использованием техники.</VF_CommandFormVehicleCaravanDesc>
+  <VF_CommandReformVehicleCaravan>Переформировать автокараван</VF_CommandReformVehicleCaravan>
+  <VF_CommandReformVehicleCaravanDesc>Переформировать караван с выбранной техникой.</VF_CommandReformVehicleCaravanDesc>
+  <VF_RoutePlannerToggleVehicleDefs>Модели техники</VF_RoutePlannerToggleVehicleDefs>
+  <VF_RoutePlannerToggleVehicles>Техника</VF_RoutePlannerToggleVehicles>
+</LanguageData>

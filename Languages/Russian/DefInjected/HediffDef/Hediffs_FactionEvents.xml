@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Hediff_HiddenSynth.label>необычный нейросигнал</TMM_Hediff_HiddenSynth.label>
+  <TMM_Hediff_HiddenSynth.description>Едва заметные аномалии сна и мимики намекают, что этого поселенца мог подменить синт Института.</TMM_Hediff_HiddenSynth.description>
+
+  <TMM_Hediff_RevealedSynth.label>синт-внедренец Института</TMM_Hediff_RevealedSynth.label>
+  <TMM_Hediff_RevealedSynth.description>Раскрытый синт третьего поколения, заменивший прежнего поселенца. Быстрее ведёт исследования, но настораживает окружающих.</TMM_Hediff_RevealedSynth.description>
+
+  <TMM_Hediff_VaultTecSerum.label>экспериментальная сыворотка Волт-Тек</TMM_Hediff_VaultTecSerum.label>
+  <TMM_Hediff_VaultTecSerum.description>Остаточный эффект клинического препарата Волт-Тек: ускоряет работу и движения ценой лёгкой нервозности.</TMM_Hediff_VaultTecSerum.description>
+
+  <TMM_Hediff_AngelicVessel.label>ангельская благодать</TMM_Hediff_AngelicVessel.label>
+  <TMM_Hediff_AngelicVessel.description>Отпечаток небесной силы, оставшийся после добровольного союза с ангелом. Ускоряет заживление и проясняет разум.</TMM_Hediff_AngelicVessel.description>
+
+  <TMM_Hediff_DemonicPossession.label>демоническая одержимость</TMM_Hediff_DemonicPossession.label>
+  <TMM_Hediff_DemonicPossession.description>Младший демон уцепился за это тело, наделяя его неестественной силой в ближнем бою и затуманивая рассудок.</TMM_Hediff_DemonicPossession.description>
+</LanguageData>

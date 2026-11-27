@@ -14,6 +14,7 @@
     <giver>TMM_Hero_preston_garvey</giver>
     <fallbackGiver>TMM_Hero_dean_winchester</fallbackGiver>
     <requires>
+      <li>story.zeroSynthJoined</li>
       <li>done:TMM_Story_A1_Castiel</li>
     </requires>
     <letterLabel>Smoke on the horizon</letterLabel>
@@ -238,12 +239,13 @@
     <giver>TMM_Hero_deacon</giver>
     <fallbackGiver>TMM_Hero_desdemona</fallbackGiver>
     <requires>
+      <li>story.zeroSynthJoined</li>
       <li>done:TMM_Story_A1_UninvitedGuests</li>
     </requires>
     <stages>
       <li Class="TurboMegaMod.StoryStage_Wait">
         <label>Restless resonance</label>
-        <text>For three nights running, the Zero Synth wakes gasping from vivid nightmares of sterile white corridors, humming surgical lasers, and a voice whispering "Subject Zero". Strangely, whenever these dreams strike, a soft blue static blankets {COLONY}, calming agitated animals and dulling psychic noise.</text>
+        <text>For three nights running, visions catch the Zero Synth wide awake: sterile white corridors, humming surgical lasers, and a voice whispering "Subject Zero". Whenever a vision strikes, a soft blue static blankets {COLONY}, calming agitated animals and dulling psychic noise.</text>
         <days>1.5</days>
       </li>
       <li Class="TurboMegaMod.StoryStage_HotelVisit">

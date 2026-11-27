@@ -4,14 +4,14 @@
   <author>Ivashkinss; исходные хранилища и холодильники — seobongzu</author>
   <packageId>colonyproject.integrated</packageId>
   <supportedVersions><li>1.6</li><li>1.7</li></supportedVersions>
-  <description>Turbo mega mod 0.17 — ранняя версия большого мира Fallout × «Сверхъестественное» для RimWorld 1.7.
+  <description>Turbo mega mod 0.18 — ранняя версия большого мира Fallout × «Сверхъестественное» для RimWorld 1.7.
 
 Уже есть: 15 новых фракций и 86 именных героев с биографиями и наследованием власти; расы демонов, ангелов, супермутантов, гулей и левиафанов (Biotech); звания колонистов с ролями и рангами; города фракций, караваны и аванпосты; гостиничный комплекс с гостиницей, клиникой, рестораном и магазином за настоящее серебро; стеклянные теплицы. Около 30 популярных модов (Harmony, HugsLib, VEF, Hospitality, Melee Animation, Pick Up And Haul и другие) уже встроены — остальные моды отключите.
 
 Разработка идёт практически ежедневно, крупные обновления — минимум раз в неделю. Баги и идеи: https://vk.ru/tvoydubrovski
 Поддержать автора: https://music.yandex.ru/artist/22932524
 Лицензии и авторы встроенных модов — папки ThirdParty и Components.</description>
-  <modVersion>0.17</modVersion>
+  <modVersion>0.18</modVersion>
   <loadAfter>
     <li>orion.hospitality</li>
     <li>brrainz.harmony</li>

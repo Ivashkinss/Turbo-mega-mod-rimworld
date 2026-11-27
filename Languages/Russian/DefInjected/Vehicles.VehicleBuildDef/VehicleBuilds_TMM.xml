@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TMM_Vehicle_Impala_Blueprint.label>чёрный седан 1967 года («Детка»)</TMM_Vehicle_Impala_Blueprint.label>
+  <TMM_Vehicle_Impala_Blueprint.description>Восстановить стремительный чёрный седан 1967 года с ревущим V8, хромированной отделкой и обитым серебром багажником охотника.</TMM_Vehicle_Impala_Blueprint.description>
+
+  <TMM_Vehicle_HunterTruck_Blueprint.label>пикап охотников</TMM_Vehicle_HunterTruck_Blueprint.label>
+  <TMM_Vehicle_HunterTruck_Blueprint.description>Собрать бронированный пикап охотников с восстановленным двигателем, стальной обшивкой, деревянными бортами и ручным пулемётом в кузове.</TMM_Vehicle_HunterTruck_Blueprint.description>
+
+  <TMM_Vehicle_CargoHauler_Blueprint.label>грузовик-тягач</TMM_Vehicle_CargoHauler_Blueprint.label>
+  <TMM_Vehicle_CargoHauler_Blueprint.description>Собрать тяжёлый шестиколёсный грузовик-тягач для перевозки стали, химтоплива и припасов между поселениями.</TMM_Vehicle_CargoHauler_Blueprint.description>
+
+  <TMM_Vehicle_Vertibird_Blueprint.label>винтокрыл Братства Стали</TMM_Vehicle_Vertibird_Blueprint.label>
+  <TMM_Vehicle_Vertibird_Blueprint.description>Построить конвертоплан Братства Стали с парными поворотными турбинами, десантным отсеком, бортовой авионикой и дверным миниганом.</TMM_Vehicle_Vertibird_Blueprint.description>
+
+</LanguageData>

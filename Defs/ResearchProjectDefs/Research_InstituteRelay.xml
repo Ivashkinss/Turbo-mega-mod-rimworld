@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Unlocked by Institute or Railroad story quest via TMMRelayUnlock.Unlock() -->
+  <ResearchProjectDef>
+    <defName>TMM_RelayTechnology</defName>
+    <label>molecular relay technology</label>
+    <description>Decode Institute carrier-wave telemetry to build functional molecular relay pads capable of instantaneous local transfers and 60-tile world-map jumps. Unlocked through Institute or Railroad story progression.</description>
+    <baseCost>3500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <prerequisites>
+      <li>Fabrication</li>
+    </prerequisites>
+    <researchViewX>6.5</researchViewX>
+    <researchViewY>4.4</researchViewY>
+    <tab>TMM_Wasteland</tab>
+    <modExtensions>
+      <li Class="TurboMegaMod.TMM_HiddenResearchExtension">
+        <hiddenUntilUnlocked>true</hiddenUntilUnlocked>
+      </li>
+    </modExtensions>
+  </ResearchProjectDef>
+
+</Defs>

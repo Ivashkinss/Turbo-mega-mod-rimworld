@@ -64,7 +64,7 @@
   <!-- TMM_Story_A3_ColdWar_KidnapAttempt -->
   <TMM_Story_A3_ColdWar_KidnapAttempt.label>охота на нулевого синта</TMM_Story_A3_ColdWar_KidnapAttempt.label>
   <TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.label>Стазис-кандалы на подходе</TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.label>
-  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>Нулевой Синт просыпается в холодном поту, схватившись за голову: «Они идут — не убивать, а заковать меня в стазис-клетку! Я чувствую, как их квантовые глушители наводятся на мою Искру!»</TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>
+  <TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>Резкий импульс пронзает мысли Нулевого Синта. Он хватается за голову. «Они идут, чтобы запереть меня в стазис-клетке! Я чувствую, как их квантовые глушители наводятся на мою Искру!»</TMM_Story_A3_ColdWar_KidnapAttempt.stages.0.text>
   <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.label>Группа захвата уничтожена</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.label>
   <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.text>Гарнизон перехватил ударную группу охотников на подступах к Нулевому Синту, разбив их стазис-ошейники и отстояв поселение!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.0.effects.2.text>
   <TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.label>Нулевой Синт похищен!</TMM_Story_A3_ColdWar_KidnapAttempt.stages.1.outcomes.1.effects.2.label>

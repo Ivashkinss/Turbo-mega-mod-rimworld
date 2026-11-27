@@ -6,7 +6,7 @@
     <defName>TMM_Ability_HealingTouch</defName>
     <label>healing touch</label>
     <description>Press two fingers to a living target's forehead to channel divine grace, instantly closing 3-4 fresh wounds and purging 50% of active infections and toxic buildup.</description>
-    <iconPath>UI/Icons/Genes/Gene_Coagulate</iconPath> <!-- CHECK API -->
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_HealingTouch</iconPath> <!-- CHECK API -->
     <cooldownTicksRange>120000</cooldownTicksRange>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -33,7 +33,7 @@
     <defName>TMM_Ability_TrueVisage</defName>
     <label>true visage</label>
     <description>Briefly unleash overwhelming celestial light through the vessel's eyes, searing the retinas (-70% sight for 6 hours) and stunning all non-angelic living beings within 5 cells in line of sight.</description>
-    <iconPath>UI/Icons/Genes/Gene_EnhancedPsychicAbility</iconPath>
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_TrueVisage</iconPath>
     <cooldownTicksRange>180000</cooldownTicksRange>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -60,7 +60,7 @@
     <defName>TMM_Ability_BlackSmokeShift</defName>
     <label>black smoke shift</label>
     <description>Dissolve into billowing sulfur smoke to rapidly relocate up to 12 cells away, stunning hostile foes within 2 cells of the destination for 2 seconds.</description>
-    <iconPath>UI/Abilities/Longjump</iconPath>
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_BlackSmokeShift</iconPath>
     <cooldownTicksRange>90000</cooldownTicksRange>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -88,7 +88,7 @@
     <defName>TMM_Ability_InfernalWhisper</defName>
     <label>infernal whisper</label>
     <description>Project dark psychic static into a victim's mind from up to 10 cells away, reducing consciousness by 25% and slowing work and aiming by 30% for 8 hours. Psychically deaf targets resist it.</description>
-    <iconPath>UI/Icons/Genes/Gene_PsychicBonding</iconPath> <!-- CHECK API -->
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_InfernalWhisper</iconPath> <!-- CHECK API -->
     <cooldownTicksRange>120000</cooldownTicksRange>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -120,7 +120,7 @@
     <defName>TMM_Ability_MutantWarRoar</defName>
     <label>mutant war roar</label>
     <description>Unleash an earth-shaking bellow that floods the mutant with adrenaline (+25% manipulation and speed for 20 seconds) while slowing nearby mortal enemies within 6 cells by 20%.</description>
-    <iconPath>UI/Icons/Genes/Gene_Aggressive</iconPath>
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_MutantWarRoar</iconPath>
     <cooldownTicksRange>60000</cooldownTicksRange>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -147,7 +147,7 @@
     <defName>TMM_Ability_GlowingPulse</defName>
     <label>glowing one's pulse</label>
     <description>Release a blinding green wave of radiation within 4.5 cells, rapidly healing nearby ghouls and super mutants while inflicting +25% toxic buildup on unprotected humans.</description>
-    <iconPath>UI/Icons/Genes/Gene_TotalToxicityResistance</iconPath>
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_GlowingPulse</iconPath>
     <cooldownTicksRange>120000</cooldownTicksRange>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -174,7 +174,7 @@
     <defName>TMM_Ability_DevourMaw</defName>
     <label>abyssal devouring maw</label>
     <description>Unhinge the jaw into a razor-lined maw to tear flesh from an adjacent living creature, dealing 45 armor-piercing bite damage, restoring 40% hunger, and healing 20 wound severity. Immediately breaks Predatory Mimicry.</description>
-    <iconPath>UI/Icons/Genes/Gene_Bloodfeeder</iconPath> <!-- CHECK API -->
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_DevourMaw</iconPath> <!-- CHECK API -->
     <cooldownTicksRange>30000</cooldownTicksRange>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
@@ -201,7 +201,7 @@
     <defName>TMM_Ability_PredatoryMimicry</defName>
     <label>predatory DNA mimicry</label>
     <description>Sample a nearby living humanoid or corpse to copy its skin color and hair for 48 hours, granting +25% to social impact, negotiation, and trade prices. Breaks on borax damage or when using Abyssal Devouring Maw.</description>
-    <iconPath>UI/Icons/Genes/Gene_Beautiful</iconPath>
+    <iconPath>UI/Icons/TMM/Abilities/TMM_Ability_PredatoryMimicry</iconPath>
     <cooldownTicksRange>180000</cooldownTicksRange>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>

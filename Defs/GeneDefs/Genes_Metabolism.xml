@@ -7,7 +7,7 @@
     <defName>TMM_Metabolism_Angelic</defName>
     <label>angelic metabolism</label>
     <description>Carriers of this gene draw sustenance from a divine source. It fully pays for the metabolic cost of the other angelic genes.</description>
-    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Metabolism_Angelic</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <biostatCpx>0</biostatCpx>
@@ -19,7 +19,7 @@
     <defName>TMM_Metabolism_Demonic</defName>
     <label>demonic metabolism</label>
     <description>Carriers of this gene sustain their mortal vessels with infernal energy. It fully pays for the metabolic cost of the other demonic genes.</description>
-    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Metabolism_Demonic</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <biostatCpx>0</biostatCpx>
@@ -31,7 +31,7 @@
     <defName>TMM_Metabolism_Mutant</defName>
     <label>FEV mutant metabolism</label>
     <description>Hyper-efficient FEV biochemistry balances the baseline metabolic cost of the super mutant xenotype, leaving only the extra caloric demand of bulky physiology.</description>
-    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Metabolism_Mutant</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <biostatCpx>0</biostatCpx>
@@ -43,7 +43,7 @@
     <defName>TMM_Metabolism_Ghoul</defName>
     <label>ghoul metabolism</label>
     <description>Irradiated necrotic tissue operates on minimal baseline nutrition, fully offsetting the metabolic cost of other ghoul genes.</description>
-    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Metabolism_Ghoul</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <biostatCpx>0</biostatCpx>
@@ -55,7 +55,7 @@
     <defName>TMM_Metabolism_Leviathan</defName>
     <label>leviathan metabolism</label>
     <description>Primordial Purgatory physiology offsets the baseline metabolic cost of Leviathan genetic traits.</description>
-    <iconPath>UI/Icons/Genes/Gene_RobustDigestion</iconPath>
+    <iconPath>UI/Icons/TMM/Genes/TMM_Metabolism_Leviathan</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <canGenerateInGeneSet>false</canGenerateInGeneSet>
     <biostatCpx>0</biostatCpx>

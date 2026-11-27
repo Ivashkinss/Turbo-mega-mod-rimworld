@@ -2,9 +2,7 @@
 <Defs>
   <FactionDef ParentName="OutlanderFactionBase" MayRequire="Ludeon.RimWorld.Biotech">
     <defName>TMM_GhoulsFaction</defName>
-    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
-    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
-    <configurationListOrderPriority>103</configurationListOrderPriority>
+    <factionIconPath>World/TMM/FactionIcons/TMM_GhoulsFaction</factionIconPath>
     <label>sapient ghouls</label>
     <description>Ghouls who kept their minds: traders, drifters and freedom-loving rogues who remember the world before the bombs and resent the smoothskins who fear them.</description>
     <pawnSingular>ghoul</pawnSingular>
@@ -12,6 +10,9 @@
     <leaderTitle>mayor</leaderTitle>
     <fixedName>Sapient Ghouls</fixedName>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>103</configurationListOrderPriority>
     <settlementGenerationWeight>0.4</settlementGenerationWeight>
     <listOrderPriority>22</listOrderPriority>
     <colorSpectrum Inherit="False">

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <NotAllowed>Отключено</NotAllowed>
+  <DriverNeeded>Управляется поселенцем</DriverNeeded>
+  <NoDriverNeeded>Управляется ИИ</NoDriverNeeded>
+  <Misc>Другое</Misc>
+  <Transport>Транспорт</Transport>
+  <Trader>Торговец</Trader>
+  <Combat>Боевой</Combat>
+  <Hybrid>Гибридный</Hybrid>
+  <Manual>Вручную</Manual>
+  <Opportunistic>По возможности</Opportunistic>
+  <Automatic>Автоматически</Automatic>
+  <VF_VehicleTracksNone>Нет</VF_VehicleTracksNone>
+  <VF_VehicleTracksVanilla>Ванильные</VF_VehicleTracksVanilla>
+  <VF_VehicleTracksFull>Полные</VF_VehicleTracksFull>
+  <VF_RoadType_Prioritize>Предпочитать</VF_RoadType_Prioritize>
+  <VF_RoadType_Avoid>Избегать</VF_RoadType_Avoid>
+</LanguageData>

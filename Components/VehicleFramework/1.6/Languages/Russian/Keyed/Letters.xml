@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VF_IncidentCrashedSiteLabel_Crashing>Крушение: {0}</VF_IncidentCrashedSiteLabel_Crashing>
+  <VF_IncidentCrashedSiteLabel_ShotDown>{1}: сбит {0}</VF_IncidentCrashedSiteLabel_ShotDown>
+  <VF_IncidentReasonLister>\n\nПричина:\n {0}</VF_IncidentReasonLister>
+  <VF_IncidentCrashedSite_Crashing>{0} терпит крушение.</VF_IncidentCrashedSite_Crashing>
+  <VF_IncidentCrashedSite_ShotDown>{0} сбивает {1}.</VF_IncidentCrashedSite_ShotDown>
+  <VF_IncidentCrashedSiteReason_OutOfFuel>Закончилось топливо</VF_IncidentCrashedSiteReason_OutOfFuel>
+  <VF_IncidentCrashedSiteReason_FlightControl>Полная потеря управления полётом</VF_IncidentCrashedSiteReason_FlightControl>
+  <VF_ReinforcementsArrivedLabel>Подкрепление</VF_ReinforcementsArrivedLabel>
+  <VF_ReinforcementsArrived>{0} прибывает с подкреплением для осмотра места крушения.</VF_ReinforcementsArrived>
+  <VF_BoatSunk>Судно затонуло</VF_BoatSunk>
+  <VF_BoatSunkDesc>{0} погрузилось на дно океана.</VF_BoatSunkDesc>
+  <VF_BoatSunkWithPawnsDesc>{0} погрузилось на дно океана. 
+
+Вместе с ним на дно ушли следующие поселенцы:
+{1}</VF_BoatSunkWithPawnsDesc>
+  <!-- Alerts -->
+  <VF_IdleInVehicle>Эти поселенцы без дела сидят в технике:\n{0}\n\nВозможно, стоит занять их полезной работой.</VF_IdleInVehicle>
+</LanguageData>

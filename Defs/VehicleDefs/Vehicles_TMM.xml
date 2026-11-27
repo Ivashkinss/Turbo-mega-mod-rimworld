@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Vehicles of Turbo mega mod on the integrated Vehicle Framework (SmashPhil, MIT).
-     Loaded only when the framework is present: the defs use its classes. Graphics use the vanilla CutoutComplex
-     shader because the framework's own RGB shaders come in AssetBundles that RimWorld 1.7 does not load. -->
+<!-- Vehicles of Turbo mega mod on the integrated Vehicle Framework (SmashPhil, MIT, v1.6.2144).
+     Graphics use vanilla CutoutComplex shader (VF AssetBundle RGB shaders are not loaded in RimWorld 1.7). -->
 <Defs>
 
-  <ResearchProjectDef>
-    <defName>TMM_Vehicle_Engines</defName>
-    <label>combustion vehicles</label>
-    <description>Rebuild pre-war combustion engines, gearboxes and wheels into working ground vehicles: trucks and cars that carry colonists and cargo across the map and the wasteland.</description>
-    <baseCost>1500</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Machining</li>
-      <li>Electricity</li>
-    </prerequisites>
-    <researchViewX>9.0</researchViewX>
-    <researchViewY>5.6</researchViewY>
-  </ResearchProjectDef>
-
+  <!-- 1. TMM_Vehicle_Impala: 1967 black sedan ("Baby") of the Winchester brothers -->
   <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
-    <defName>TMM_Vehicle_HunterTruck</defName>
-    <label>hunter pickup</label>
-    <description>An armoured pre-war pickup kept running by the Minutemen and travelling monster hunters. Seats a driver and two passengers, carries a good load in the bed and burns chemfuel. Its doors are lined with salt and iron.</description>
+    <defName>TMM_Vehicle_Impala</defName>
+    <label>1967 black sedan</label>
+    <description>A sleek, rumbling 1967 four-door hardtop sedan — lovingly called "Baby" by monster hunters. Blistering fast on roads and open ground, seats four, and hides a warded trunk built for salt, silver, and an arsenal of hunting weapons.</description>
     <graphicData>
-      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_Impala/TMM_Vehicle_Impala</texPath>
       <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(5,5)</drawSize>
       <color>(1,1,1,1)</color>
       <colorTwo>(1,1,1,1)</colorTwo>
     </graphicData>
-    <fillPercent>1</fillPercent>
-    <buildDef>TMM_Vehicle_HunterTruck_Blueprint</buildDef>
+    <fillPercent>0.85</fillPercent>
+    <buildDef>TMM_Vehicle_Impala_Blueprint</buildDef>
     <size>(2,4)</size>
     <vehicleCategory>Transport</vehicleCategory>
     <techLevel>Industrial</techLevel>
     <vehicleType>Land</vehicleType>
     <statBases>
-      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
-      <ArmorRating_Heat>0.3</ArmorRating_Heat>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
       <Flammability>0.4</Flammability>
-      <MarketValue>3200</MarketValue>
+      <MarketValue>3800</MarketValue>
     </statBases>
     <vehicleStats>
-      <Mass>220</Mass>
-      <MoveSpeed>9</MoveSpeed>
-      <CargoCapacity>500</CargoCapacity>
-      <RepairRate>0.5</RepairRate>
+      <Mass>180</Mass>
+      <MoveSpeed>13.5</MoveSpeed>
+      <CargoCapacity>220</CargoCapacity>
+      <RepairRate>0.6</RepairRate>
     </vehicleStats>
     <race>
-      <baseBodySize>3</baseBodySize>
+      <baseBodySize>2.6</baseBodySize>
     </race>
     <properties>
-      <worldSpeedMultiplier>1.2</worldSpeedMultiplier>
-      <visibilityWeight>3</visibilityWeight>
+      <worldSpeedMultiplier>4.0</worldSpeedMultiplier>
+      <visibilityWeight>2.5</visibilityWeight>
       <roles>
         <li>
           <key>driver</key>
@@ -66,7 +52,116 @@
         <li>
           <key>passenger</key>
           <label>passenger</label>
-          <slots>2</slots>
+          <slots>3</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Engine</key>
+        <label>V8 engine</label>
+        <health>200</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Wheels</key>
+        <label>wheels</label>
+        <health>200</health>
+        <depth>External</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Trunk</key>
+        <label>warded trunk</label>
+        <health>240</health>
+        <depth>External</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Body</key>
+        <label>chassis</label>
+        <health>480</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>12</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>15</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>70</fuelCapacity>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
+
+  <!-- 2. TMM_Vehicle_HunterTruck: Armored Minutemen & monster-hunter pickup with bed LMG -->
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_HunterTruck</defName>
+    <label>hunter pickup</label>
+    <description>An armoured pre-war pickup kept running by the Minutemen and travelling monster hunters. Seats a driver, a bed gunner operating a pintle-mounted light machine gun, and a cab passenger. Carries a solid cargo load and has doors lined with salt and iron.</description>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(5,5)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+    <fillPercent>1</fillPercent>
+    <buildDef>TMM_Vehicle_HunterTruck_Blueprint</buildDef>
+    <size>(2,4)</size>
+    <vehicleCategory>Combat</vehicleCategory>
+    <techLevel>Industrial</techLevel>
+    <vehicleType>Land</vehicleType>
+    <statBases>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.3</ArmorRating_Heat>
+      <Flammability>0.35</Flammability>
+      <MarketValue>3800</MarketValue>
+    </statBases>
+    <vehicleStats>
+      <Mass>220</Mass>
+      <MoveSpeed>9.5</MoveSpeed>
+      <CargoCapacity>500</CargoCapacity>
+      <RepairRate>0.5</RepairRate>
+    </vehicleStats>
+    <race>
+      <baseBodySize>3</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>4.0</worldSpeedMultiplier>
+      <visibilityWeight>3</visibilityWeight>
+      <roles>
+        <li>
+          <key>driver</key>
+          <label>driver</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>gunner</key>
+          <label>bed gunner</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Turret</handlingTypes>
+          <turretIds>
+            <li>bedLMG</li>
+          </turretIds>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>passenger</label>
+          <slots>1</slots>
         </li>
       </roles>
     </properties>
@@ -100,7 +195,7 @@
       </li>
       <li>
         <key>Body</key>
-        <label>body</label>
+        <label>armored body</label>
         <health>600</health>
         <depth>External</depth>
       </li>
@@ -110,37 +205,550 @@
         <fuelType>Chemfuel</fuelType>
         <leakDef>Filth_Fuel</leakDef>
         <fuelConsumptionRate>15</fuelConsumptionRate>
-        <fuelConsumptionWorldMultiplier>0.5</fuelConsumptionWorldMultiplier>
+        <fuelConsumptionWorldMultiplier>15</fuelConsumptionWorldMultiplier>
         <fuelCapacity>80</fuelCapacity>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleTurrets">
+        <turrets>
+          <li>
+            <turretDef>TMM_Turret_HunterLMG</turretDef>
+            <renderProperties>
+              <north>(0, -0.65)</north>
+              <south>(0, 0.65)</south>
+              <east>(-0.65, 0.25)</east>
+            </renderProperties>
+            <gizmoLabel>bed machine gun</gizmoLabel>
+            <aimPieOffset>(0, 0)</aimPieOffset>
+            <key>bedLMG</key>
+          </li>
+        </turrets>
       </li>
     </comps>
   </Vehicles.VehicleDef>
 
-  <Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
-    <defName>TMM_Vehicle_HunterTruck_Blueprint</defName>
-    <label>hunter pickup</label>
-    <description>Assemble a hunter pickup from a rebuilt engine, steel and spare parts.</description>
-    <thingToSpawn>TMM_Vehicle_HunterTruck</thingToSpawn>
-    <size>(2,4)</size>
+  <!-- 3. TMM_Vehicle_GunnerTechnical: Rusted Gunner faction raid technical with heavy MG -->
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_GunnerTechnical</defName>
+    <label>Gunner technical</label>
+    <description>A rusted wasteland pickup welded with scrap armour plates and a heavy machine gun bolted into the bed. Operated exclusively by Gunner mercenary raiding columns.</description>
     <graphicData>
-      <texPath>Things/Vehicles/TMM/TMM_Vehicle_HunterTruck/TMM_Vehicle_HunterTruck</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_GunnerTechnical/TMM_Vehicle_GunnerTechnical</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
       <drawSize>(5,5)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
     </graphicData>
+    <fillPercent>1</fillPercent>
+    <!-- Not buildable by player: no buildDef -->
+    <size>(2,4)</size>
+    <vehicleCategory>Combat</vehicleCategory>
+    <techLevel>Industrial</techLevel>
+    <vehicleType>Land</vehicleType>
     <statBases>
-      <MaxHitPoints>400</MaxHitPoints>
-      <WorkToBuild>6000</WorkToBuild>
-      <Flammability>0.1</Flammability>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Flammability>0.4</Flammability>
+      <MarketValue>4400</MarketValue>
     </statBases>
-    <costList>
-      <Steel>260</Steel>
-      <ComponentIndustrial>6</ComponentIndustrial>
-      <WoodLog>40</WoodLog>
-    </costList>
-    <researchPrerequisites>
-      <li>TMM_Vehicle_Engines</li>
-    </researchPrerequisites>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-  </Vehicles.VehicleBuildDef>
+    <vehicleStats>
+      <Mass>240</Mass>
+      <MoveSpeed>9.0</MoveSpeed>
+      <CargoCapacity>350</CargoCapacity>
+      <RepairRate>0.45</RepairRate>
+    </vehicleStats>
+    <race>
+      <baseBodySize>3</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>3.5</worldSpeedMultiplier>
+      <visibilityWeight>3.5</visibilityWeight>
+      <roles>
+        <li>
+          <key>driver</key>
+          <label>driver</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>gunner</key>
+          <label>heavy gunner</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Turret</handlingTypes>
+          <turretIds>
+            <li>heavyMG</li>
+          </turretIds>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>passenger</label>
+          <slots>1</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Engine</key>
+        <label>engine</label>
+        <health>210</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Wheels</key>
+        <label>armored tires</label>
+        <health>250</health>
+        <depth>External</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Bed</key>
+        <label>gun mount</label>
+        <health>320</health>
+        <depth>External</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Body</key>
+        <label>scrap-plated hull</label>
+        <health>650</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>18</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>13</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>85</fuelCapacity>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleTurrets">
+        <turrets>
+          <li>
+            <turretDef>TMM_Turret_GunnerHMG</turretDef>
+            <renderProperties>
+              <north>(0, -0.6)</north>
+              <south>(0, 0.6)</south>
+              <east>(-0.6, 0.25)</east>
+            </renderProperties>
+            <gizmoLabel>heavy machine gun</gizmoLabel>
+            <aimPieOffset>(0, 0)</aimPieOffset>
+            <key>heavyMG</key>
+          </li>
+        </turrets>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
+
+  <!-- 4. TMM_Vehicle_CargoHauler: Heavy 6x6 supply truck for outposts -->
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_CargoHauler</defName>
+    <label>outpost cargo hauler</label>
+    <description>A heavy, slow-moving six-wheel supply truck built to haul steel, chemfuel, and trade goods between wasteland settlements. Seats two in its reinforced cab and carries massive loads across the map and world.</description>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_CargoHauler/TMM_Vehicle_CargoHauler</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(6,6)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+    <fillPercent>1</fillPercent>
+    <buildDef>TMM_Vehicle_CargoHauler_Blueprint</buildDef>
+    <size>(3,5)</size>
+    <vehicleCategory>Transport</vehicleCategory>
+    <techLevel>Industrial</techLevel>
+    <vehicleType>Land</vehicleType>
+    <statBases>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.3</ArmorRating_Heat>
+      <Flammability>0.3</Flammability>
+      <MarketValue>4600</MarketValue>
+    </statBases>
+    <vehicleStats>
+      <Mass>420</Mass>
+      <MoveSpeed>6.2</MoveSpeed>
+      <CargoCapacity>1600</CargoCapacity>
+      <RepairRate>0.4</RepairRate>
+    </vehicleStats>
+    <race>
+      <baseBodySize>4.2</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>2.5</worldSpeedMultiplier>
+      <visibilityWeight>4.5</visibilityWeight>
+      <roles>
+        <li>
+          <key>driver</key>
+          <label>driver</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>co-driver</label>
+          <slots>1</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Engine</key>
+        <label>heavy diesel engine</label>
+        <health>300</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Wheels</key>
+        <label>heavy wheels</label>
+        <health>340</health>
+        <depth>External</depth>
+        <categories>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>CargoBay</key>
+        <label>cargo bed</label>
+        <health>480</health>
+        <depth>External</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Body</key>
+        <label>reinforced frame</label>
+        <health>820</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>22</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>11.5</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>160</fuelCapacity>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
+
+  <!-- 5. TMM_Vehicle_Vertibird: Brotherhood of Steel tilt-rotor VTOL gunship/transport -->
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_Vertibird</defName>
+    <label>Brotherhood Vertibird</label>
+    <description>An iconic pre-war tilt-rotor VTOL gunship restored by Brotherhood of Steel scribes. Carries a pilot, a door gunner, and four troopers across vast stretches of the world map like an orbital shuttle, providing rotary suppressive fire on landing.</description>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_Vertibird/TMM_Vehicle_Vertibird</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(9,9)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+    <fillPercent>1</fillPercent>
+    <buildDef>TMM_Vehicle_Vertibird_Blueprint</buildDef>
+    <size>(5,7)</size>
+    <vehicleCategory>Transport</vehicleCategory>
+    <techLevel>Spacer</techLevel>
+    <vehicleType>Air</vehicleType>
+    <statBases>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.5</ArmorRating_Heat>
+      <Flammability>0.1</Flammability>
+      <MarketValue>14500</MarketValue>
+    </statBases>
+    <vehicleStats>
+      <Mass>650</Mass>
+      <MoveSpeed>4.5</MoveSpeed>
+      <CargoCapacity>750</CargoCapacity>
+      <RepairRate>0.35</RepairRate>
+      <FlightSpeed>24</FlightSpeed>
+      <FlightControl>1.0</FlightControl>
+    </vehicleStats>
+    <race>
+      <baseBodySize>5.5</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>4.0</worldSpeedMultiplier>
+      <visibilityWeight>6</visibilityWeight>
+      <roles>
+        <li>
+          <key>pilot</key>
+          <label>pilot</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>gunner</key>
+          <label>door gunner</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Turret</handlingTypes>
+          <turretIds>
+            <li>doorGun</li>
+          </turretIds>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>trooper</label>
+          <slots>4</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Turbines</key>
+        <label>twin tilt-rotors</label>
+        <health>380</health>
+        <depth>External</depth>
+        <categories>
+          <li>FlightSpeed</li>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Avionics</key>
+        <label>flight avionics</label>
+        <health>240</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>FlightControl</li>
+        </categories>
+      </li>
+      <li>
+        <key>CargoBay</key>
+        <label>troop bay</label>
+        <health>420</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Hull</key>
+        <label>armored fuselage</label>
+        <health>1100</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>35</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>0.8</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>600</fuelCapacity>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleLauncher">
+        <fuelConsumptionWorldMultiplier>80</fuelConsumptionWorldMultiplier>
+        <launchProtocol Class="Vehicles.DefaultTakeoff">
+          <launchProperties>
+            <maxTicks>240</maxTicks>
+            <forcedRotation>East</forcedRotation>
+            <renderShadow>true</renderShadow><lockShadowZ>true</lockShadowZ>
+            <zPositionCurve><points><li>(0, 0)</li><li>(0.25, 0.25)</li><li>(0.6, 1.6)</li><li>(1, 3.5)</li></points></zPositionCurve>
+            <shadowAlphaCurve><points><li>(0, 1)</li><li>(0.6, 0.75)</li><li>(1, 0.4)</li></points></shadowAlphaCurve>
+            <shadowSizeXCurve><points><li>(0, 4.5)</li><li>(1, 3)</li></points></shadowSizeXCurve>
+            <shadowSizeZCurve><points><li>(0, 2.5)</li><li>(1, 1.7)</li></points></shadowSizeZCurve>
+          </launchProperties>
+          <landingProperties>
+            <maxTicks>240</maxTicks>
+            <forcedRotation>East</forcedRotation>
+            <renderShadow>true</renderShadow><lockShadowZ>true</lockShadowZ>
+            <zPositionCurve><points><li>(0, 3.5)</li><li>(0.4, 1.6)</li><li>(0.75, 0.25)</li><li>(1, 0)</li></points></zPositionCurve>
+            <shadowAlphaCurve><points><li>(0, 0.4)</li><li>(0.4, 0.75)</li><li>(1, 1)</li></points></shadowAlphaCurve>
+            <shadowSizeXCurve><points><li>(0, 3)</li><li>(1, 4.5)</li></points></shadowSizeXCurve>
+            <shadowSizeZCurve><points><li>(0, 1.7)</li><li>(1, 2.5)</li></points></shadowSizeZCurve>
+          </landingProperties>
+        </launchProtocol>
+        <fixedLaunchDistanceMax>200</fixedLaunchDistanceMax>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleTurrets">
+        <turrets>
+          <li>
+            <turretDef>TMM_Turret_VertibirdDoorGun</turretDef>
+            <renderProperties>
+              <north>(0.9, -0.2)</north>
+              <south>(-0.9, 0.2)</south>
+              <east>(0.2, -0.5)</east>
+            </renderProperties>
+            <gizmoLabel>door rotary gun</gizmoLabel>
+            <aimPieOffset>(0, 0)</aimPieOffset>
+            <key>doorGun</key>
+          </li>
+        </turrets>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
+
+  <!-- 5b. TMM_Vehicle_VertibirdEnclave: Black Enclave Vertibird (faction-only) -->
+  <Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+    <defName>TMM_Vehicle_VertibirdEnclave</defName>
+    <label>Enclave Vertibird</label>
+    <description>A stealth-black Enclave tilt-rotor VTOL gunship with reinforced composite plating and high-output turbines. Deployed exclusively by Enclave strike squads.</description>
+    <graphicData>
+      <texPath>Things/Vehicles/TMM/TMM_Vehicle_VertibirdEnclave/TMM_Vehicle_VertibirdEnclave</texPath>
+      <graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(9,9)</drawSize>
+      <color>(1,1,1,1)</color>
+      <colorTwo>(1,1,1,1)</colorTwo>
+    </graphicData>
+    <fillPercent>1</fillPercent>
+    <!-- Not buildable by player: no buildDef -->
+    <size>(5,7)</size>
+    <vehicleCategory>Combat</vehicleCategory>
+    <techLevel>Spacer</techLevel>
+    <vehicleType>Air</vehicleType>
+    <statBases>
+      <ArmorRating_Blunt>0.65</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.6</ArmorRating_Heat>
+      <Flammability>0.05</Flammability>
+      <MarketValue>17500</MarketValue>
+    </statBases>
+    <vehicleStats>
+      <Mass>680</Mass>
+      <MoveSpeed>5.0</MoveSpeed>
+      <CargoCapacity>750</CargoCapacity>
+      <RepairRate>0.35</RepairRate>
+      <FlightSpeed>28</FlightSpeed>
+      <FlightControl>1.1</FlightControl>
+    </vehicleStats>
+    <race>
+      <baseBodySize>5.5</baseBodySize>
+    </race>
+    <properties>
+      <worldSpeedMultiplier>4.0</worldSpeedMultiplier>
+      <visibilityWeight>6</visibilityWeight>
+      <roles>
+        <li>
+          <key>pilot</key>
+          <label>pilot</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Movement</handlingTypes>
+        </li>
+        <li>
+          <key>gunner</key>
+          <label>door gunner</label>
+          <slots>1</slots>
+          <slotsToOperate>1</slotsToOperate>
+          <handlingTypes>Turret</handlingTypes>
+          <turretIds>
+            <li>doorGun</li>
+          </turretIds>
+        </li>
+        <li>
+          <key>passenger</key>
+          <label>trooper</label>
+          <slots>4</slots>
+        </li>
+      </roles>
+    </properties>
+    <components>
+      <li>
+        <key>Turbines</key>
+        <label>twin tilt-rotors</label>
+        <health>420</health>
+        <depth>External</depth>
+        <categories>
+          <li>FlightSpeed</li>
+          <li>MoveSpeed</li>
+        </categories>
+      </li>
+      <li>
+        <key>Avionics</key>
+        <label>tactical avionics</label>
+        <health>280</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>FlightControl</li>
+        </categories>
+      </li>
+      <li>
+        <key>CargoBay</key>
+        <label>troop bay</label>
+        <health>440</health>
+        <depth>Internal</depth>
+        <categories>
+          <li>CargoCapacity</li>
+        </categories>
+      </li>
+      <li>
+        <key>Hull</key>
+        <label>composite fuselage</label>
+        <health>1250</health>
+        <depth>External</depth>
+      </li>
+    </components>
+    <comps>
+      <li Class="Vehicles.CompProperties_FueledTravel">
+        <fuelType>Chemfuel</fuelType>
+        <leakDef>Filth_Fuel</leakDef>
+        <fuelConsumptionRate>32</fuelConsumptionRate>
+        <fuelConsumptionWorldMultiplier>0.75</fuelConsumptionWorldMultiplier>
+        <fuelCapacity>650</fuelCapacity>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleLauncher">
+        <fuelConsumptionWorldMultiplier>80</fuelConsumptionWorldMultiplier>
+        <launchProtocol Class="Vehicles.DefaultTakeoff">
+          <launchProperties>
+            <maxTicks>220</maxTicks>
+            <forcedRotation>East</forcedRotation>
+            <renderShadow>true</renderShadow><lockShadowZ>true</lockShadowZ>
+            <zPositionCurve><points><li>(0, 0)</li><li>(0.25, 0.25)</li><li>(0.6, 1.6)</li><li>(1, 3.5)</li></points></zPositionCurve>
+            <shadowAlphaCurve><points><li>(0, 1)</li><li>(0.6, 0.75)</li><li>(1, 0.4)</li></points></shadowAlphaCurve>
+            <shadowSizeXCurve><points><li>(0, 4.5)</li><li>(1, 3)</li></points></shadowSizeXCurve>
+            <shadowSizeZCurve><points><li>(0, 2.5)</li><li>(1, 1.7)</li></points></shadowSizeZCurve>
+          </launchProperties>
+          <landingProperties>
+            <maxTicks>220</maxTicks>
+            <forcedRotation>East</forcedRotation>
+            <renderShadow>true</renderShadow><lockShadowZ>true</lockShadowZ>
+            <zPositionCurve><points><li>(0, 3.5)</li><li>(0.4, 1.6)</li><li>(0.75, 0.25)</li><li>(1, 0)</li></points></zPositionCurve>
+            <shadowAlphaCurve><points><li>(0, 0.4)</li><li>(0.4, 0.75)</li><li>(1, 1)</li></points></shadowAlphaCurve>
+            <shadowSizeXCurve><points><li>(0, 3)</li><li>(1, 4.5)</li></points></shadowSizeXCurve>
+            <shadowSizeZCurve><points><li>(0, 1.7)</li><li>(1, 2.5)</li></points></shadowSizeZCurve>
+          </landingProperties>
+        </launchProtocol>
+        <fixedLaunchDistanceMax>200</fixedLaunchDistanceMax>
+      </li>
+      <li Class="Vehicles.CompProperties_VehicleTurrets">
+        <turrets>
+          <li>
+            <turretDef>TMM_Turret_VertibirdDoorGun</turretDef>
+            <renderProperties>
+              <north>(0.9, -0.2)</north>
+              <south>(-0.9, 0.2)</south>
+              <east>(0.2, -0.5)</east>
+            </renderProperties>
+            <gizmoLabel>door rotary gun</gizmoLabel>
+            <aimPieOffset>(0, 0)</aimPieOffset>
+            <key>doorGun</key>
+          </li>
+        </turrets>
+      </li>
+    </comps>
+  </Vehicles.VehicleDef>
 
 </Defs>

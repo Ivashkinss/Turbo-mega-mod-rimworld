@@ -30,7 +30,7 @@
   <!-- TMM_Story_A1_ZeroSynthDreams -->
   <TMM_Story_A1_ZeroSynthDreams.label>сны о белых стенах</TMM_Story_A1_ZeroSynthDreams.label>
   <TMM_Story_A1_ZeroSynthDreams.stages.0.label>Тревожный резонанс</TMM_Story_A1_ZeroSynthDreams.stages.0.label>
-  <TMM_Story_A1_ZeroSynthDreams.stages.0.text>Три ночи подряд Нулевой Синт просыпается с криком от кошмаров о стерильных белых коридорах, гудении хирургических лазеров и голосе, шепчущем «Образец Ноль». Удивительно, но во время этих снов над {COLONY} разливается мягкая синяя статика, успокаивающая животных и глушащая психический шум.</TMM_Story_A1_ZeroSynthDreams.stages.0.text>
+  <TMM_Story_A1_ZeroSynthDreams.stages.0.text>Три ночи подряд Нулевого Синта наяву преследуют видения. Стерильные белые коридоры, гудение хирургических лазеров и голос, шепчущий «Образец Ноль». Во время каждого видения {COLONY} окутывает мягкое голубое мерцание, которое успокаивает животных и глушит психический шум.</TMM_Story_A1_ZeroSynthDreams.stages.0.text>
   <TMM_Story_A1_ZeroSynthDreams.stages.2.label>Шёпот из-под тёмных очков</TMM_Story_A1_ZeroSynthDreams.stages.2.label>
   <TMM_Story_A1_ZeroSynthDreams.stages.2.text>Тихий постоялец в тёмных очках перехватывает вас за кухней гостиницы, мгновенно сбрасывая маску простодушного охранника каравана.\n\n— Зовут меня Дьякон. Наши радиоустановки поймали духовный всплеск прямо из вашего лагеря — от такого слюнки текут и у охотников Института, и у крылатых святош. Скажи прямо: парень с Искрой для тебя человек или просто батарейка?</TMM_Story_A1_ZeroSynthDreams.stages.2.text>
   <TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.label>Заявить, что Нулевой Синт — свободный житель {COLONY}</TMM_Story_A1_ZeroSynthDreams.stages.2.choices.0.label>

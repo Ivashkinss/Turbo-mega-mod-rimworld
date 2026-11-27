@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Body_Ghoul.label MayRequire="Ludeon.RimWorld.Biotech">иссохшее тело гуля</TMM_Body_Ghoul.label>
+  <TMM_Body_Ghoul.description MayRequire="Ludeon.RimWorld.Biotech">Носители этого гена имеют истощённое, ссохшееся от радиации тело с проступающими рёбрами, натянутыми сухожилиями и слезающими лоскутами кожи.</TMM_Body_Ghoul.description>
+
+  <TMM_Body_Leviathan.label MayRequire="Ludeon.RimWorld.Biotech">оболочка левиафана</TMM_Body_Leviathan.label>
+  <TMM_Body_Leviathan.description MayRequire="Ludeon.RimWorld.Biotech">Носители этого гена обладают жилистым вытянутым телом, пронизанным чёрными подкожными венами-щупальцами и сомкнутым вертикальным швом-пастью на животе.</TMM_Body_Leviathan.description>
+
+</LanguageData>

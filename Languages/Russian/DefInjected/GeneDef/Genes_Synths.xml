@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <TMM_Skin_FullColorChassis.label MayRequire="Ludeon.RimWorld.Biotech">металлическое покрытие</TMM_Skin_FullColorChassis.label>
+  <TMM_Skin_FullColorChassis.description MayRequire="Ludeon.RimWorld.Biotech">Нейтральная непигментированная поверхность, позволяющая стали, композиту и оптике отображаться в истинных цветах.</TMM_Skin_FullColorChassis.description>
+
+  <TMM_Skin_SynthGen2.label MayRequire="Ludeon.RimWorld.Biotech">полимерная кожа</TMM_Skin_SynthGen2.label>
+  <TMM_Skin_SynthGen2.description MayRequire="Ludeon.RimWorld.Biotech">Матово-серая синтетическая резиновая кожа, натянутая поверх каркаса синта второго поколения.</TMM_Skin_SynthGen2.description>
+
+  <TMM_Head_SynthGen1.label MayRequire="Ludeon.RimWorld.Biotech">череп андроида</TMM_Head_SynthGen1.label>
+  <TMM_Head_SynthGen1.description MayRequire="Ludeon.RimWorld.Biotech">Открытый механический череп синта 1-го поколения с поршнями челюсти и светящейся оптикой.</TMM_Head_SynthGen1.description>
+
+  <TMM_Head_SynthGen2.label MayRequire="Ludeon.RimWorld.Biotech">полимерная голова</TMM_Head_SynthGen2.label>
+  <TMM_Head_SynthGen2.description MayRequire="Ludeon.RimWorld.Biotech">Голова синта 2-го поколения с серой полимерной кожей и заметными механическими швами на висках и челюсти.</TMM_Head_SynthGen2.description>
+
+  <TMM_Head_SynthGen3.label MayRequire="Ludeon.RimWorld.Biotech">синтетическое сходство</TMM_Head_SynthGen3.label>
+  <TMM_Head_SynthGen3.description MayRequire="Ludeon.RimWorld.Biotech">Почти неотличимое от человеческого лицо с едва заметным тонким швом у виска и искусственным отблеском глаз.</TMM_Head_SynthGen3.description>
+
+  <TMM_Head_RobotChassis.label MayRequire="Ludeon.RimWorld.Biotech">оптический сенсор</TMM_Head_RobotChassis.label>
+  <TMM_Head_RobotChassis.description MayRequire="Ludeon.RimWorld.Biotech">Стальная сенсорная голова штурмотрона с центральной оптической линзой, заменяемая на специализированный дисплейный модуль ИИ.</TMM_Head_RobotChassis.description>
+
+  <TMM_Body_SynthGen1.label MayRequire="Ludeon.RimWorld.Biotech">скелетный эндоскелет</TMM_Body_SynthGen1.label>
+  <TMM_Body_SynthGen1.description MayRequire="Ludeon.RimWorld.Biotech">Тощий открытый металлический каркас Института с синтетическими кабелями и белыми композитными щитками.</TMM_Body_SynthGen1.description>
+
+  <TMM_Body_RobotChassis.label MayRequire="Ludeon.RimWorld.Biotech">бронированное шасси</TMM_Body_RobotChassis.label>
+  <TMM_Body_RobotChassis.description MayRequire="Ludeon.RimWorld.Biotech">Тяжёлый стальной корпус на базе штурмотрона со встроенной бронёй и сочленёнными манипуляторами.</TMM_Body_RobotChassis.description>
+
+  <TMM_Synth_NoFood.label MayRequire="Ludeon.RimWorld.Biotech">внутренний энергоэлемент</TMM_Synth_NoFood.label>
+  <TMM_Synth_NoFood.description MayRequire="Ludeon.RimWorld.Biotech">Питание от герметичного микрореактора вместо пищеварения полностью избавляет от потребности в еде.</TMM_Synth_NoFood.description>
+
+  <TMM_Chassis_NoApparel.label MayRequire="Ludeon.RimWorld.Biotech">герметичный стальной корпус</TMM_Chassis_NoApparel.label>
+  <TMM_Chassis_NoApparel.description MayRequire="Ludeon.RimWorld.Biotech">Роботизированный корпус не рассчитан на ношение человеческой одежды; встроенная броня сама защищает от холода, жары и огня.</TMM_Chassis_NoApparel.description>
+
+  <TMM_Synth_MechanicalArmor.label MayRequire="Ludeon.RimWorld.Biotech">композитный эндоскелет</TMM_Synth_MechanicalArmor.label>
+  <TMM_Synth_MechanicalArmor.description MayRequire="Ludeon.RimWorld.Biotech">Стальные стойки и керамические нагрудные щитки дают встроенную защиту и притупляют болевой отклик.</TMM_Synth_MechanicalArmor.description>
+
+  <TMM_Synth_LightPlating.label MayRequire="Ludeon.RimWorld.Biotech">подкожный сплав</TMM_Synth_LightPlating.label>
+  <TMM_Synth_LightPlating.description MayRequire="Ludeon.RimWorld.Biotech">Металлический каркас под полимерной кожей выдерживает удары лучше человеческих костей.</TMM_Synth_LightPlating.description>
+
+  <TMM_Chassis_SteelArmor.label MayRequire="Ludeon.RimWorld.Biotech">армейская обшивка корпуса</TMM_Chassis_SteelArmor.label>
+  <TMM_Chassis_SteelArmor.description MayRequire="Ludeon.RimWorld.Biotech">Толстая клёпаная стальная броня встроена прямо в корпус робота и обеспечивает надёжную защиту без внешней экипировки.</TMM_Chassis_SteelArmor.description>
+
+  <TMM_Synth_UncannyMachine.label MayRequire="Ludeon.RimWorld.Biotech">машинная манера</TMM_Synth_UncannyMachine.label>
+  <TMM_Synth_UncannyMachine.description MayRequire="Ludeon.RimWorld.Biotech">Монотонный синтезатор речи и открытый металлический череп пугают людей, сильно снижая успех в общении.</TMM_Synth_UncannyMachine.description>
+
+  <TMM_Synth_PolymerFace.label MayRequire="Ludeon.RimWorld.Biotech">неживая мимика</TMM_Synth_PolymerFace.label>
+  <TMM_Synth_PolymerFace.description MayRequire="Ludeon.RimWorld.Biotech">Скованные полимерные черты лица слегка мешают непринуждённому общению, хотя опытные переговорщики легко это компенсируют.</TMM_Synth_PolymerFace.description>
+
+  <TMM_Synth_NeuralComponent.label MayRequire="Ludeon.RimWorld.Biotech">нейрокомпонент синта</TMM_Synth_NeuralComponent.label>
+  <TMM_Synth_NeuralComponent.description MayRequire="Ludeon.RimWorld.Biotech">Вживлённый процессор Института ускоряет исследования и слегка повышает психическую устойчивость.</TMM_Synth_NeuralComponent.description>
+
+  <TMM_Chassis_LogicCore.label MayRequire="Ludeon.RimWorld.Biotech">аналитический процессор</TMM_Chassis_LogicCore.label>
+  <TMM_Chassis_LogicCore.description MayRequire="Ludeon.RimWorld.Biotech">Выделенные прогностические и тактические сопроцессоры значительно ускоряют исследования и сохраняют хладнокровие под огнём.</TMM_Chassis_LogicCore.description>
+</LanguageData>
